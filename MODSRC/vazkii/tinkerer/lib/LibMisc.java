@@ -14,7 +14,7 @@
  */
 package vazkii.tinkerer.lib;
 
-public class LibMisc {
+public final class LibMisc {
 	
 	public static final String MOD_ID = "ThaumicTinkerer";
 	public static final String MOD_NAME = "Thaumic Tinkerer";
@@ -24,5 +24,8 @@ public class LibMisc {
 
 	public static final String COMMON_PROXY = "vazkii.tinkerer.core.proxy.TTCommonProxy";
 	public static final String CLIENT_PROXY = "vazkii.tinkerer.core.proxy.TTClientProxy";
+
+	public static final short CRAFTING_META_WILDCARD = Short.MAX_VALUE;
+	public static final short TAG_META_WILDCARD = -1;
 	
 }

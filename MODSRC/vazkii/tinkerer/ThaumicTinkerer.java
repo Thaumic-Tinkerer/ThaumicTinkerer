@@ -14,14 +14,24 @@
  */
 package vazkii.tinkerer;
 
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
+import vazkii.tinkerer.lib.LibResources;
+import vazkii.tinkerer.research.ModInfusionRecipes;
+import vazkii.tinkerer.research.ModResearchItems;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.DEPENDENCIES)
@@ -39,9 +49,21 @@ public class ThaumicTinkerer {
 	public void onPreInit(FMLPreInitializationEvent event) {
 		modInstance = this;
 		tcProxy = Thaumcraft.proxy;
+
+		ConfigurationHandler.loadConfig(event.getSuggestedConfigurationFile());
 		
-		System.out.println(tcProxy);
-		System.out.println(tcProxy.toString());
+		ThaumcraftApi.registerResearchXML(LibResources.RESEARCH_XML);
+	}
+	
+	@Init
+	public void onInit(FMLInitializationEvent event) {
+		ModItems.initItems();
+	}
+	
+	@PostInit
+	public void onPostInit(FMLPostInitializationEvent event) {
+		ModResearchItems.registerModResearchItems();
+		ModInfusionRecipes.initInfusionRecipes();
 	}
 	
 }
