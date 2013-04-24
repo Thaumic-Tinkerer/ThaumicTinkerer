@@ -1,0 +1,17 @@
+[
+{
+  "modid": "ThaumicTinkerer",
+  "name": "Thaumic Tinkerer",
+  "description": "An addon to Thaumcraft 3, implementing new content, and bringing back old TC features, restyled.",
+  "version": "sqrt(-1)",
+  "mcversion": "1.5+",
+  "logoFile": "/mods/ThaumicTinkerer/logo.png",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Vazkii"],
+  "credits": "azanor for creating Thaumcraft.",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": ["Thaumcraft"]
+}
+]
