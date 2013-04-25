@@ -1,5 +1,6 @@
 package vazkii.tinkerer.research;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
@@ -17,6 +18,13 @@ public final class ModInfusionRecipes {
 				"SSS", "SWS", "SSS",
 				'S', new ItemStack(Config.itemShard, 1, 4),
 				'W', new ItemStack(Config.itemWandCastingApprentice, 1, LibMisc.CRAFTING_META_WILDCARD));
+
+		tags = new ObjectTags().add(EnumTag.WIND, 8);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.GLOWSTONE_GAS_R, LibItemNames.GLOWSTONE_GAS_R, 5, tags, new ItemStack(ModItems.glowstoneGas),
+				"GPG", " N ",
+				'G', new ItemStack(Block.glowStone),
+				'P', new ItemStack(Config.itemEssence, 1, 0),
+				'N', new ItemStack(Config.itemResource, 1, 1));
 	}
 
 }

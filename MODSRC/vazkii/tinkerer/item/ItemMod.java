@@ -10,30 +10,27 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [24 Apr 2013, 22:54:50 (GMT)]
+ * File Created @ [25 Apr 2013, 11:37:18 (GMT)]
  */
-package vazkii.tinkerer.client.gui;
+package vazkii.tinkerer.item;
 
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import vazkii.tinkerer.item.ModItems;
-import vazkii.tinkerer.lib.LibMisc;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import vazkii.tinkerer.client.util.helper.IconHelper;
+import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ModCreativeTab extends CreativeTabs {
+public class ItemMod extends Item {
 
-	public static final ModCreativeTab INSTANCE = new ModCreativeTab();
-
-	public ModCreativeTab() {
-		super(LibMisc.MOD_ID);
-		LanguageRegistry.instance().addStringLocalization("itemGroup." + LibMisc.MOD_ID, LibMisc.MOD_NAME);
+	public ItemMod(int par1) {
+		super(par1);
+		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem() {
-		return ModItems.wandTinkerer;
+	public void registerIcons(IconRegister par1IconRegister) {
+		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 }

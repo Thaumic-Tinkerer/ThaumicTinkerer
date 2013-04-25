@@ -17,6 +17,7 @@ package vazkii.tinkerer;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
+import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
@@ -57,6 +58,7 @@ public class ThaumicTinkerer {
 
 	@Init
 	public void onInit(FMLInitializationEvent event) {
+		ModBlocks.initBlocks();
 		ModItems.initItems();
 	}
 

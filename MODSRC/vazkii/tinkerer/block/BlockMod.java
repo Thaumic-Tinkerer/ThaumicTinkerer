@@ -10,46 +10,35 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [24 Apr 2013, 22:53:54 (GMT)]
+ * File Created @ [25 Apr 2013, 11:50:58 (GMT)]
  */
-package vazkii.tinkerer.item;
+package vazkii.tinkerer.block;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemStack;
-import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWandTinkerer extends ItemWandCasting {
+public class BlockMod extends Block {
 
-	public ItemWandTinkerer(int i) {
-		super(i);
-		setCreativeTab(ModCreativeTab.INSTANCE);
-	}
-
-	@Override
-	public int getMaxVis() {
-		return 500;
-	}
-
-	@Override
-	public int getRechargeInterval() {
-		return 9;
+	public BlockMod(int par1, Material par2Material) {
+		super(par1, par2Material);
+		if(registerInCreative())
+			setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
-		itemIcon = IconHelper.forItem(par1IconRegister, this);
+		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+	/** Does the block register in the creative inv? **/
+	boolean registerInCreative() {
+		return true;
 	}
 
 }

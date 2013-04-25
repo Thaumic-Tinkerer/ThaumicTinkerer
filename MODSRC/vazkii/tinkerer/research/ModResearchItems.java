@@ -24,9 +24,13 @@ import vazkii.tinkerer.lib.LibItemNames;
 public final class ModResearchItems {
 
 	public static ResearchItem wandTinkerer;
+	public static ResearchItem glowstoneGas;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
 		wandTinkerer = new ResearchItem(LibItemNames.WAND_TINKERER_R, tags, -5, 3, ModItems.wandTinkerer).setParents(Config.researchGoggles).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.LIGHT, 7).add(EnumTag.WIND, 4).add(EnumTag.POWER, 3);
+		glowstoneGas = new ResearchItem(LibItemNames.GLOWSTONE_GAS_R, tags, 5, 2, ModItems.glowstoneGas).setParents(Config.researchNitor).registerResearchItem();
 	}
 }

@@ -26,21 +26,27 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public final class ModItems {
 
 	public static Item wandTinkerer;
+	public static Item glowstoneGas;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
+		glowstoneGas = new ItemGlowstoneGas(LibItemIDs.idGlowstoneGas).setUnlocalizedName(LibItemNames.GLOWSTONE_GAS);
 
-		applyObjectTags();
 		nameItems();
+		applyObjectTags();
 	}
 
 	private static void nameItems() {
 		LanguageRegistry.addName(wandTinkerer, LibItemNames.WAND_TINKERER_D);
+		LanguageRegistry.addName(glowstoneGas, LibItemNames.GLOWSTONE_GAS_D);
 	}
 
 	private static void applyObjectTags() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 48).add(EnumTag.VOID, 12).add(EnumTag.CRYSTAL, 15);
 		ThaumcraftApi.registerObjectTag(wandTinkerer.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.LIGHT, 12).add(EnumTag.WIND, 4).add(EnumTag.POWER, 3);
+		ThaumcraftApi.registerObjectTag(glowstoneGas.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 
 }

@@ -6,19 +6,19 @@
 <name>Wand of the Tinkerer</name>
 <popupText>Store more in less</popupText>
 <longText>You decided that the Wand of the Adept won't be enough for the magic you are trying to do. You have formulated a theory for a more advanced wand that can hold a fair bit more vis.</longText>
-<page type = "text">After learning more about the Aura trough direct inspection of it using the Goggles of Revealing, you decided you need a better wand, thus, you formulated a wand perfect for an experienced Tinkerer.
+<page type = "text">After learning more about the Aura through direct inspection of it using the Goggles of Revealing, you decided you need a better wand, thus, you formulated a wand perfect for an experienced Tinkerer.
 
 This wand can carry 500 vis, unlike the Wand of the Adept. It's not a very dispendious item either. The downside of being forced to store more vis, is that it recharges slower in comparison to it's counterpart, the Wand of the Adept.</page>
 <page type = "infusioncrafting">WAND_TINKERER</page>
 </project>
 	
 <!-- ======================================== Gaseous Glowstone /-->
-	<!-- <project id = "GASEOUS_GLOWSTONE" version = "1">
-		<name>Gaseous Glowstone</name>
-		<popupText>Shiny Air</popupText>
-		<longText>Researching the intricacies of the Light is paying off, you are close to finding a way to make completely invisible light.</longText>
-		<page type = "text">You have studied the intricacies of the Light, and found out a way to create completely invisible light by infusing Glowstone with the raw flame. This phial contains a concentrated extract of Gaseous Glowstone, that can be released trough a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
-		<page type = "infusioncrafting">GASEOUS_GLOWSTONE</page>
-	</project> /-->
+<project id = "GLOWSTONE_GAS" version = "2">
+<name>Gaseous Glowstone</name>
+<popupText>Shiny Air</popupText>
+<longText>Researching the intricacies of the Light is paying off, you are close to finding a way to make completely invisible light.</longText>
+<page type = "text">You have studied the intricacies of the Light, and found out a way to create completely invisible light by infusing Glowstone with the raw flame. This phial contains a concentrated extract of Gaseous Glowstone, that can be released trough a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
+<page type = "infusioncrafting">GLOWSTONE_GAS</page>
+</project>
 	
 </research>

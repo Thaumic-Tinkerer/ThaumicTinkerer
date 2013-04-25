@@ -14,4 +14,7 @@ public final class LibItemNames {
 	public static final String WAND_TINKERER_R = "WAND_TINKERER";
 	public static final String WAND_TINKERER_D = "Wand of the Tinkerer";
 
+	public static final String GLOWSTONE_GAS = "glowstoneGas";
+	public static final String GLOWSTONE_GAS_R = "GLOWSTONE_GAS";
+	public static final String GLOWSTONE_GAS_D = "Gaseous Glowstone";
 }
