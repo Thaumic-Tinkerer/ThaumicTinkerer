@@ -4,7 +4,7 @@
 <!-- ======================================== Wand of the Tinkerer /-->
 <project id = "WAND_TINKERER" version = "1">
 <name>Wand of the Tinkerer</name>
-<popupText>Store more in less</popupText>
+<popupText>[TT] Store more in less</popupText>
 <longText>You decided that the Wand of the Adept won't be enough for the magic you are trying to do. You have formulated a theory for a more advanced wand that can hold a fair bit more vis.</longText>
 <page type = "text">After learning more about the Aura through direct inspection of it using the Goggles of Revealing, you decided you need a better wand, thus, you formulated a wand perfect for an experienced Tinkerer.
 
@@ -15,7 +15,7 @@ This wand can carry 500 vis, unlike the Wand of the Adept. It's not a very dispe
 <!-- ======================================== Gaseous Glowstone /-->
 <project id = "GLOWSTONE_GAS" version = "2">
 <name>Gaseous Glowstone</name>
-<popupText>Shiny Air</popupText>
+<popupText>[TT] Shiny Air</popupText>
 <longText>Researching the intricacies of the Light is paying off, you are close to finding a way to make completely invisible light.</longText>
 <page type = "text">You have studied the intricacies of the Light, and found out a way to create completely invisible light by infusing Glowstone with the raw flame. This phial contains a concentrated extract of Gaseous Glowstone, that can be released trough a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
 <page type = "infusioncrafting">GLOWSTONE_GAS</page>
@@ -24,7 +24,7 @@ This wand can carry 500 vis, unlike the Wand of the Adept. It's not a very dispe
 <!-- ======================================== Spellbinding Cloth /-->
 <project id = "SPELL_CLOTH" version = "1">
 <name>Spellbinding Cloth</name>
-<popupText>Wipe off the bad luck</popupText>
+<popupText>[TT] Wipe off the bad luck</popupText>
 <longText>You've had enough with gambling on the Enchantment Table, and you seem to be figuring out a cloth that will allow you to remove those poor and unwanted enchantments.</longText>
 <page type = "text">By mixing some Enchanted Fabric with raw Enchantment power, you created a cloth that can be rubbed on an item to wipe it of it's enchantments by combining them in a Crafting Recipe.</page>
 <page type = "infusioncrafting">SPELL_CLOTH</page>
