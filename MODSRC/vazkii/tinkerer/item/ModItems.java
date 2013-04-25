@@ -27,11 +27,13 @@ public final class ModItems {
 
 	public static Item wandTinkerer;
 	public static Item glowstoneGas;
+	public static Item spellCloth;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
 		glowstoneGas = new ItemGlowstoneGas(LibItemIDs.idGlowstoneGas).setUnlocalizedName(LibItemNames.GLOWSTONE_GAS);
-
+		spellCloth = new ItemSpellCloth(LibItemIDs.idSpellCloth).setUnlocalizedName(LibItemNames.SPELL_CLOTH);
+		
 		nameItems();
 		applyObjectTags();
 	}
@@ -39,6 +41,7 @@ public final class ModItems {
 	private static void nameItems() {
 		LanguageRegistry.addName(wandTinkerer, LibItemNames.WAND_TINKERER_D);
 		LanguageRegistry.addName(glowstoneGas, LibItemNames.GLOWSTONE_GAS_D);
+		LanguageRegistry.addName(spellCloth, LibItemNames.SPELL_CLOTH_D);
 	}
 
 	private static void applyObjectTags() {
@@ -47,6 +50,8 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.LIGHT, 12).add(EnumTag.WIND, 4).add(EnumTag.POWER, 3);
 		ThaumcraftApi.registerObjectTag(glowstoneGas.itemID, LibMisc.TAG_META_WILDCARD, tags);
+	
+		tags = new ObjectTags().add(EnumTag.MAGIC, 15).add(EnumTag.CLOTH, 12).add(EnumTag.EXCHANGE, 8);
+		ThaumcraftApi.registerObjectTag(spellCloth.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
-
 }

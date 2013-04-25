@@ -17,4 +17,8 @@ public final class LibItemNames {
 	public static final String GLOWSTONE_GAS = "glowstoneGas";
 	public static final String GLOWSTONE_GAS_R = "GLOWSTONE_GAS";
 	public static final String GLOWSTONE_GAS_D = "Gaseous Glowstone";
+	
+	public static final String SPELL_CLOTH = "spellCloth";
+	public static final String SPELL_CLOTH_R = "SPELL_CLOTH";
+	public static final String SPELL_CLOTH_D = "Spellbinding Cloth";
 }

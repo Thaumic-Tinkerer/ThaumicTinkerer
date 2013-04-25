@@ -1,6 +1,7 @@
 package vazkii.tinkerer.research;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
@@ -25,6 +26,12 @@ public final class ModInfusionRecipes {
 				'G', new ItemStack(Block.glowStone),
 				'P', new ItemStack(Config.itemEssence, 1, 0),
 				'N', new ItemStack(Config.itemResource, 1, 1));
+		
+		tags = new ObjectTags().add(EnumTag.CLOTH, 4).add(EnumTag.MAGIC, 6).add(EnumTag.EXCHANGE, 8);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.SPELL_CLOTH_R, LibItemNames.SPELL_CLOTH_R, 55, tags, new ItemStack(ModItems.spellCloth), 
+				" C ", "CEC", " C ",
+				'C', new ItemStack(Config.itemResource, 1, 7),
+				'E', new ItemStack(Item.expBottle));
 	}
 
 }
