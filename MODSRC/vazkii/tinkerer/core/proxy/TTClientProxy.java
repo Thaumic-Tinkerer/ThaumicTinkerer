@@ -14,6 +14,17 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import vazkii.tinkerer.client.util.handler.ClientTickHandler;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
+
 public class TTClientProxy extends TTCommonProxy {
 
+	@Override
+	public void initTickHandlers() {
+		super.initTickHandlers();
+		
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+	}
+	
 }

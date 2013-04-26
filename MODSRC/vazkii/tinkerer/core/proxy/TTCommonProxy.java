@@ -15,5 +15,7 @@
 package vazkii.tinkerer.core.proxy;
 
 public class TTCommonProxy {
+	
+	public void initTickHandlers() { }
 
 }
