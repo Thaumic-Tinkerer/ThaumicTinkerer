@@ -21,4 +21,8 @@ public final class LibItemNames {
 	public static final String SPELL_CLOTH = "spellCloth";
 	public static final String SPELL_CLOTH_R = "SPELL_CLOTH";
 	public static final String SPELL_CLOTH_D = "Spellbinding Cloth";
+	
+	public static final String STOPWATCH = "stopwatch";
+	public static final String STOPWATCH_R = "STOPWATCH";
+	public static final String STOPWATCH_D = "Stopwatch of the Timetwister";
 }
