@@ -18,4 +18,7 @@ public final class LibFeatures {
 
 	public static final int SPELL_CLOTH_USES = 35;
 
+	public static final int STOPWATCH_TIME = 1200;
+	public static final int STOPWATCH_VIS = 20;
+	
 }

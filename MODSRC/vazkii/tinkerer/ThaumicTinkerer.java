@@ -22,6 +22,7 @@ import vazkii.tinkerer.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibResources;
+import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.research.ModInfusionRecipes;
 import vazkii.tinkerer.research.ModResearchItems;
 import vazkii.tinkerer.util.handler.ConfigurationHandler;
@@ -60,6 +61,7 @@ public class ThaumicTinkerer {
 	public void onInit(FMLInitializationEvent event) {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
+		ModPotions.initPotions();
 	}
 
 	@PostInit
