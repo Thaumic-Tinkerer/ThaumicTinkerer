@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.item;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -25,7 +25,6 @@ import net.minecraftforge.common.FakePlayer;
 import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibFeatures;
-import vazkii.tinkerer.lib.LibPotions;
 import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
 
@@ -39,7 +38,6 @@ public class ItemStopwatch extends ItemMod {
 	public static final String TAG_Z = "z";
 	public static final String TAG_PITCH = "pitch";
 	public static final String TAG_YAW = "yaw";
-	public static final String TAG_YAW_HEAD = "yawHead";
 	public static final String TAG_MOTION_X = "motionX";
 	public static final String TAG_MOTION_Y = "motionY";
 	public static final String TAG_MOTION_Z = "motionZ";
@@ -57,14 +55,14 @@ public class ItemStopwatch extends ItemMod {
 	
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		if(!par2World.isRemote && par1ItemStack.getItemDamage() >= 10 && decreaseAura(par3Entity))
+		if(!par2World.isRemote && par1ItemStack.getItemDamage() >= 1 && decreaseAura(par3Entity))
 			par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() - 1);
 		
 		if(par3Entity instanceof EntityPlayer && validate(par1ItemStack, (EntityPlayer) par3Entity)) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
 			PotionEffect effect = player.getActivePotionEffect(ModPotions.effectStopwatch);
 			if(effect.duration % 20 == 0)
-				par2World.playSoundAtEntity(par3Entity, "random.click", 0.25F, 1F);
+				par2World.playSoundAtEntity(par3Entity, "random.click", 0.5F, 1F);
 		
 			if(effect.duration == 1) {
 				moveParticlesAndSound(par3Entity);
@@ -76,7 +74,7 @@ public class ItemStopwatch extends ItemMod {
 				
 				moveParticlesAndSound(par3Entity);
 			}
-		}
+		} else wipeData(par1ItemStack, par3Entity);
 	}
 	
 	@Override
@@ -90,9 +88,10 @@ public class ItemStopwatch extends ItemMod {
 				par3EntityPlayer.addPotionEffect(effect);
 				par2World.playSoundAtEntity(par3EntityPlayer, "thaumcraft.wand", 1F, 1F);
 				par1ItemStack.damageItem(10, par3EntityPlayer);
-			} else if(par2World.isRemote)
+			} else if(!par2World.isRemote)
 				par3EntityPlayer.addChatMessage("The Stopwatch does not have enough charge to do that.");
-		}
+		} else if(!par2World.isRemote)
+			par3EntityPlayer.addChatMessage("You can not Twist Time while a Time Twister effect lingers.");
 		
 		return par1ItemStack;
 	}
@@ -118,7 +117,6 @@ public class ItemStopwatch extends ItemMod {
 		ItemNBTHelper.setDouble(stack, TAG_Z, player.posZ);
 		ItemNBTHelper.setFloat(stack, TAG_PITCH, player.rotationPitch);
 		ItemNBTHelper.setFloat(stack, TAG_YAW, player.rotationYaw);
-		ItemNBTHelper.setFloat(stack, TAG_YAW_HEAD, player.rotationYawHead);
 		ItemNBTHelper.setDouble(stack, TAG_MOTION_X, player.motionX);
 		ItemNBTHelper.setDouble(stack, TAG_MOTION_Y, player.motionY);
 		ItemNBTHelper.setDouble(stack, TAG_MOTION_Z, player.motionZ);
@@ -144,7 +142,6 @@ public class ItemStopwatch extends ItemMod {
 		double z = ItemNBTHelper.getDouble(stack, TAG_Z, 0D);
 		float pitch = ItemNBTHelper.getFloat(stack, TAG_PITCH, 0F);
 		float yaw = ItemNBTHelper.getFloat(stack, TAG_YAW, 0F);
-		float yawHead = ItemNBTHelper.getFloat(stack, TAG_YAW_HEAD, 0F);
 		double motionX = ItemNBTHelper.getDouble(stack, TAG_MOTION_X, 0D);
 		double motionY = ItemNBTHelper.getDouble(stack, TAG_MOTION_Y, 0D);
 		double motionZ = ItemNBTHelper.getDouble(stack, TAG_MOTION_Z, 0D);
@@ -153,16 +150,16 @@ public class ItemStopwatch extends ItemMod {
 		float saturation = ItemNBTHelper.getFloat(stack, TAG_SATURATION, 0F);
 		
 		player.playerNetServerHandler.setPlayerLocation(x, y, z, pitch, yaw);
-		player.rotationYawHead = yawHead;
 		player.setVelocity(motionX, motionY, motionZ);
 		player.setEntityHealth(health);
 		player.getFoodStats().setFoodLevel(food);
 		player.getFoodStats().setFoodSaturationLevel(saturation);
 	}
 	
-	private static void wipeData(ItemStack stack, EntityPlayer player) {
+	private static void wipeData(ItemStack stack, Entity player) {
 		stack.setTagCompound(null);
-		player.removePotionEffect(ModPotions.effectStopwatch.id);
+		if(player instanceof EntityLiving)
+			((EntityLiving) player).removePotionEffect(ModPotions.effectStopwatch.id);
 	}
 
 }

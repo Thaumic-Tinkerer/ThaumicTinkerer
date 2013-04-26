@@ -22,8 +22,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TTPotion extends Potion {
 
-	protected TTPotion(int par1, boolean par2, int par3) {
+	protected TTPotion(int par1, boolean par2, int par3, int ssX, int ssY) {
 		super(par1, par2, par3);
+		setIconIndex(ssX, ssY);
 	}
 	
 	@Override

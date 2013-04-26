@@ -14,18 +14,17 @@
  */
 package vazkii.tinkerer.potion;
 
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import vazkii.tinkerer.lib.LibPotions;
 import net.minecraft.potion.Potion;
 
 public final class ModPotions {
-
 	
 	public static int idStopwatch;
 	
 	public static Potion effectStopwatch;
 	
 	public static void initPotions() {
-		effectStopwatch = new TTPotion(idStopwatch, false, 0x999900).setPotionName(LibPotions.NAME_STOPWATCH);
+		effectStopwatch = new TTPotion(idStopwatch, false, 0x999900, 0, 0).setPotionName(LibPotions.DISPLAY_NAME_STOPWATCH);
 	}
-	
 }
