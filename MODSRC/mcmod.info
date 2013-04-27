@@ -2,7 +2,7 @@
 {
   "modid": "ThaumicTinkerer",
   "name": "Thaumic Tinkerer",
-  "description": "An addon to Thaumcraft 3, implementing new content, and bringing back old TC features, restyled.",
+  "description": "An addon to Thaumcraft 3, implementing new content. This mod is a spiritual successor to Elemental Tinkerer.",
   "version": "sqrt(-1)",
   "mcversion": "1.5+",
   "logoFile": "/mods/ThaumicTinkerer/logo.png",
