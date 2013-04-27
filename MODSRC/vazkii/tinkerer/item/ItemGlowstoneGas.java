@@ -40,6 +40,7 @@ public class ItemGlowstoneGas extends ItemMod {
 		if(air) {
 			if(!par2World.isRemote)
 				par2World.setBlock(x, y, z, ModBlocks.glowstoneGas.blockID, 4, 2);
+			else par3EntityPlayer.swingItem();
 			par2World.scheduleBlockUpdate(x, y, z, ModBlocks.glowstoneGas.blockID, 10);
 		}
 

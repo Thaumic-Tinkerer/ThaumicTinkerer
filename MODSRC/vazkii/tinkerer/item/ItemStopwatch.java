@@ -29,8 +29,6 @@ import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
 
 public class ItemStopwatch extends ItemMod {
-
-	public static final int TIME = 1200; // 1200 Ticks, 1 Minute
 	
 	public static final String TAG_USERNAME = "username";
 	public static final String TAG_X = "x";
