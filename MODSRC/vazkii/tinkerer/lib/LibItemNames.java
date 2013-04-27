@@ -29,4 +29,9 @@ public final class LibItemNames {
 	public static final String WAND_DISLOCATION = "wandDislocation";
 	public static final String WAND_DISLOCATION_R = "WAND_DISLOCATION";
 	public static final String WAND_DISLOCATION_D = "Wand of Dislocation";
+
+	public static final String NAMETAG = "nametag";
+	public static final String NAMETAG_R = "NAMETAG";
+	public static final String NAMETAG_D = "Golem Name Tag";
+
 }

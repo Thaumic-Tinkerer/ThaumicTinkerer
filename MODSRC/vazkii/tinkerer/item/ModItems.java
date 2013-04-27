@@ -30,6 +30,7 @@ public final class ModItems {
 	public static Item spellCloth;
 	public static Item stopwatch;
 	public static Item wandDislocation;
+	public static Item nametag;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -37,6 +38,7 @@ public final class ModItems {
 		spellCloth = new ItemSpellCloth(LibItemIDs.idSpellCloth).setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 		stopwatch = new ItemStopwatch(LibItemIDs.idStopwatch).setUnlocalizedName(LibItemNames.STOPWATCH);
 		wandDislocation = new ItemWandDislocation(LibItemIDs.idWandDislocation).setUnlocalizedName(LibItemNames.WAND_DISLOCATION);
+		nametag = new ItemNametag(LibItemIDs.idNametag).setUnlocalizedName(LibItemNames.NAMETAG);
 
 		nameItems();
 		applyObjectTags();
@@ -48,6 +50,7 @@ public final class ModItems {
 		LanguageRegistry.addName(spellCloth, LibItemNames.SPELL_CLOTH_D);
 		LanguageRegistry.addName(stopwatch, LibItemNames.STOPWATCH_D);
 		LanguageRegistry.addName(wandDislocation, LibItemNames.WAND_DISLOCATION_D);
+		LanguageRegistry.addName(nametag, LibItemNames.NAMETAG_D);
 	}
 
 	private static void applyObjectTags() {

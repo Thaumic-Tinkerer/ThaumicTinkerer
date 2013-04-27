@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer;
 
+import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
@@ -26,6 +27,7 @@ import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.research.ModInfusionRecipes;
 import vazkii.tinkerer.research.ModResearchItems;
 import vazkii.tinkerer.util.handler.ConfigurationHandler;
+import vazkii.tinkerer.util.handler.EntityInteractionHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -62,6 +64,8 @@ public class ThaumicTinkerer {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 		ModPotions.initPotions();
+
+		MinecraftForge.EVENT_BUS.register(new EntityInteractionHandler());
 
 		proxy.initTickHandlers();
 	}
