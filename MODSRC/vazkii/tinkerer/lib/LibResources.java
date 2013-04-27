@@ -18,9 +18,9 @@ public final class LibResources {
 
 	public static final String ROOT = "/mods/ThaumicTinkerer/";
 	public static final String ROOT_GUI = ROOT + "gui/";
-	
+
 	public static final String RESEARCH_XML = ROOT + "research.xml";
 
 	public static final String SS_POTIONS = ROOT_GUI + "potionEffects.png";
-	
+
 }

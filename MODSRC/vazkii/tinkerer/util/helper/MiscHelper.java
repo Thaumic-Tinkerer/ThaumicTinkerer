@@ -25,7 +25,7 @@ public final class MiscHelper {
 	public static Minecraft getMc() {
 		return Minecraft.getMinecraft();
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static EntityClientPlayerMP getClientPlayer() {
 		return getMc().thePlayer;

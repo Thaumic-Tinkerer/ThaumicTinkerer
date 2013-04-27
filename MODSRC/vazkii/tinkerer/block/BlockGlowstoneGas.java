@@ -46,7 +46,7 @@ public class BlockGlowstoneGas extends BlockMod {
 	public int getRenderType() {
 		return -1;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {

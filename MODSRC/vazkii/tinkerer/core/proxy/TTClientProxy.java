@@ -23,8 +23,8 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	public void initTickHandlers() {
 		super.initTickHandlers();
-		
+
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 	}
-	
+
 }

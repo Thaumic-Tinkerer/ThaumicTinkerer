@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [27 Apr 2013, 14:59:05 (GMT)]
  */
 package vazkii.tinkerer.item;
@@ -37,31 +37,31 @@ public class ItemWandDislocation extends ItemWandTrade {
 
 	private static String TAG_TILE_CMP = "tileEntityCMP";
 	private static String TAG_AVAILABLE = "available";
-	
+
 	public ItemWandDislocation(int i) {
 		super(i);
 		setMaxDamage(250);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
-		
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIconFromDamage(int par1) {
 		return itemIcon;
 	}
-	
+
 	@Override
 	public boolean onItemUseFirst(ItemStack arg0, EntityPlayer arg1, World arg2, int arg3, int arg4, int arg5, int arg6, float arg7, float arg8, float arg9) {
 		int id = arg2.getBlockId(arg3, arg4, arg5);
 		int meta = arg2.getBlockMetadata(arg3, arg4, arg5);
 		TileEntity tile = arg2.getBlockTileEntity(arg3, arg4, arg5);
-		
+
 		if(arg1.canPlayerEdit(arg3, arg4, arg5, arg6, arg0)) {
 			if(getPickedBlock(arg0) != null) {
 				ItemStack stack = getPickedBlock(arg0);
@@ -77,7 +77,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 	                --arg3;
 	            if (arg6 == 5)
 	                ++arg3;
-				
+
 				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(arg2, arg3, arg4, arg5, ForgeDirection.getOrientation(arg6).getOpposite().ordinal(), stack)) {
 					arg2.setBlock(arg3, arg4, arg5, stack.itemID, stack.getItemDamage(), 2);
 					NBTTagCompound tileCmp = ItemNBTHelper.getCompound(arg0, TAG_TILE_CMP, true);
@@ -92,7 +92,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 						arg1.swingItem();
 					clearPickedBlock(arg0);
 					arg0.damageItem(LibFeatures.WAND_DISLOCATION_VIS, arg1);
-					
+
 					for(int i = 0; i < 8; i++) {
 						float x = (float) (arg3 + Math.random());
 						float y = (float) (arg4 + Math.random());
@@ -105,7 +105,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 				arg2.removeBlockTileEntity(arg3, arg4, arg5);
 				arg2.setBlock(arg3, arg4, arg5, 0, 0, 2);
 				storePickedBlock(arg0, (short) id, (short) meta, tile);
-				
+
 				for(int i = 0; i < 8; i++) {
 					float x = (float) (arg3 + Math.random());
 					float y = (float) (arg4 + Math.random());
@@ -114,7 +114,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 				}
 				arg2.playSoundAtEntity(arg1, Block.blocksList[id].stepSound.getBreakSound(), 1F, 1F);
 				arg2.playSoundAtEntity(arg1, "thaumcraft.wand", 0.5F, 1F);
-				
+
 				if(arg2.isRemote)
 					arg1.swingItem();
 				arg0.damageItem(LibFeatures.WAND_DISLOCATION_VIS, arg1);
@@ -123,18 +123,18 @@ public class ItemWandDislocation extends ItemWandTrade {
 
 		return false;
 	}
-	
+
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, int x, int y, int z, EntityPlayer player) {
 		return true; // Don't allow for the wand of trade behaviour
 	}
-	
+
 	@Override
 	public ItemStack getPickedBlock(ItemStack stack) {
-		return stack.hasTagCompound() && stack.getTagCompound().hasKey(TAG_AVAILABLE) && 
-				stack.getTagCompound().getBoolean(TAG_AVAILABLE) ? super.getPickedBlock(stack) : null; 
+		return stack.hasTagCompound() && stack.getTagCompound().hasKey(TAG_AVAILABLE) &&
+				stack.getTagCompound().getBoolean(TAG_AVAILABLE) ? super.getPickedBlock(stack) : null;
 	}
-	
+
 	private void storePickedBlock(ItemStack stack, short id, short meta, TileEntity tile) {
 		super.storePickedBlock(stack, id, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
@@ -143,7 +143,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 		ItemNBTHelper.setCompound(stack, TAG_TILE_CMP, cmp);
 		ItemNBTHelper.setBoolean(stack, TAG_AVAILABLE, true);
 	}
-	
+
 	private void clearPickedBlock(ItemStack stack) {
 		ItemNBTHelper.setBoolean(stack, TAG_AVAILABLE, false);
 	}

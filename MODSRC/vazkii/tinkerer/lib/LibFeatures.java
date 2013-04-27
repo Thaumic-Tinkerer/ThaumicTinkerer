@@ -20,7 +20,7 @@ public final class LibFeatures {
 
 	public static final int STOPWATCH_TIME = 1200;
 	public static final int STOPWATCH_VIS = 20;
-	
+
 	public static final int WAND_DISLOCATION_VIS = 50;
-	
+
 }

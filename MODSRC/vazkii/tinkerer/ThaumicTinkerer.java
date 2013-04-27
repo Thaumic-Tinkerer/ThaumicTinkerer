@@ -62,7 +62,7 @@ public class ThaumicTinkerer {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 		ModPotions.initPotions();
-		
+
 		proxy.initTickHandlers();
 	}
 

@@ -21,11 +21,11 @@ public final class LibItemNames {
 	public static final String SPELL_CLOTH = "spellCloth";
 	public static final String SPELL_CLOTH_R = "SPELL_CLOTH";
 	public static final String SPELL_CLOTH_D = "Spellbinding Cloth";
-	
+
 	public static final String STOPWATCH = "stopwatch";
 	public static final String STOPWATCH_R = "STOPWATCH";
 	public static final String STOPWATCH_D = "Stopwatch of the Timetwister";
-	
+
 	public static final String WAND_DISLOCATION = "wandDislocation";
 	public static final String WAND_DISLOCATION_R = "WAND_DISLOCATION";
 	public static final String WAND_DISLOCATION_D = "Wand of Dislocation";
