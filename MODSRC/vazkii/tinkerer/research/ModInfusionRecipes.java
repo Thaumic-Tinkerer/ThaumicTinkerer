@@ -32,6 +32,18 @@ public final class ModInfusionRecipes {
 				" C ", "CEC", " C ",
 				'C', new ItemStack(Config.itemResource, 1, 7),
 				'E', new ItemStack(Item.expBottle));
+
+		tags = new ObjectTags().add(EnumTag.TIME, 12).add(EnumTag.MECHANISM, 20);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.STOPWATCH_R, LibItemNames.STOPWATCH_R, 85, tags, new ItemStack(ModItems.stopwatch),
+				" Q ", "QCQ", " Q ",
+				'Q', new ItemStack(Item.netherQuartz),
+				'C', new ItemStack(Item.pocketSundial));
+
+		tags = new ObjectTags().add(EnumTag.TRAP, 12).add(EnumTag.EXCHANGE, 14);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.WAND_DISLOCATION_R, LibItemNames.WAND_DISLOCATION_R, 90, tags, new ItemStack(ModItems.wandDislocation),
+				" H", "W ",
+				'H', new ItemStack(Config.itemPortableHole),
+				'W', new ItemStack(Config.itemWandTrade));
 	}
 
 }

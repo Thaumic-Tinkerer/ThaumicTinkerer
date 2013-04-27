@@ -18,6 +18,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
@@ -27,6 +28,8 @@ import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibFeatures;
 import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemStopwatch extends ItemMod {
 
@@ -92,6 +95,12 @@ public class ItemStopwatch extends ItemMod {
 			par3EntityPlayer.addChatMessage("You can not Twist Time while a Time Twister effect lingers.");
 
 		return par1ItemStack;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return EnumRarity.uncommon;
 	}
 
 	private static void moveParticlesAndSound(Entity entity) {

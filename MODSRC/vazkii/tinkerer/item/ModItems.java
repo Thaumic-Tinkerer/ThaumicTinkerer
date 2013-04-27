@@ -62,5 +62,14 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.MAGIC, 15).add(EnumTag.CLOTH, 12).add(EnumTag.EXCHANGE, 8);
 		ThaumcraftApi.registerObjectTag(spellCloth.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.TIME, 12).add(EnumTag.MECHANISM, 12).add(EnumTag.POWER, 9);
+		ThaumcraftApi.registerObjectTag(stopwatch.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 24).add(EnumTag.CRYSTAL, 6).add(EnumTag.EXCHANGE, 12).add(EnumTag.TRAP, 8);
+		ThaumcraftApi.registerObjectTag(wandDislocation.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.WOOD, 2).add(EnumTag.DARK, 1);
+		ThaumcraftApi.registerObjectTag(nametag.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }

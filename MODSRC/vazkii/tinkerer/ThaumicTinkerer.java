@@ -24,6 +24,7 @@ import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.potion.ModPotions;
+import vazkii.tinkerer.research.ModArcaneRecipes;
 import vazkii.tinkerer.research.ModInfusionRecipes;
 import vazkii.tinkerer.research.ModResearchItems;
 import vazkii.tinkerer.util.handler.ConfigurationHandler;
@@ -74,6 +75,7 @@ public class ThaumicTinkerer {
 	public void onPostInit(FMLPostInitializationEvent event) {
 		ModResearchItems.registerModResearchItems();
 		ModInfusionRecipes.initInfusionRecipes();
+		ModArcaneRecipes.initArcaneRecipes();
 	}
 
 }

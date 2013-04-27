@@ -26,6 +26,9 @@ public final class ModResearchItems {
 	public static ResearchItem wandTinkerer;
 	public static ResearchItem glowstoneGas;
 	public static ResearchItem spellCloth;
+	public static ResearchItem stopwatch;
+	public static ResearchItem wandDislocation;
+	public static ResearchItem nametag;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -36,5 +39,14 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.CLOTH, 9).add(EnumTag.MAGIC, 8).add(EnumTag.EXCHANGE, 6);
 		spellCloth = new ResearchItem(LibItemNames.SPELL_CLOTH_R, tags, -6, 1, ModItems.spellCloth).setParents(Config.researchFabric).setParentsHidden(Config.researchUTFT).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.TIME, 4).add(EnumTag.MECHANISM, 8);
+		stopwatch = new ResearchItem(LibItemNames.STOPWATCH_R, tags, -2, 24, ModItems.stopwatch).setParents(Config.researchTTOE).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.TRAP, 10).add(EnumTag.EXCHANGE, 8).add(EnumTag.CRYSTAL, 4);
+		wandDislocation = new ResearchItem(LibItemNames.WAND_DISLOCATION_R, tags, -1, 7, ModItems.wandDislocation).setParents(Config.researchWandTrade).setParentsHidden(Config.researchPortableHole).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.WOOD, 1).add(EnumTag.DARK, 1);
+		nametag = new ResearchItem(LibItemNames.NAMETAG_R, tags, 4, 18, ModItems.nametag).setParents(Config.researchGolemancy).registerResearchItem();
 	}
 }

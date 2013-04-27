@@ -17,7 +17,9 @@ This wand can carry 500 vis, unlike the Wand of the Adept. It's not a very dispe
 <name>Gaseous Glowstone</name>
 <popupText>[TT] Shiny Air</popupText>
 <longText>Researching the intricacies of the Light is paying off, you are close to finding a way to make completely invisible light.</longText>
-<page type = "text">You have studied the intricacies of the Light, and found out a way to create completely invisible light by infusing Glowstone with the raw flame. This phial contains a concentrated extract of Gaseous Glowstone, that can be released trough a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
+<page type = "text">You have studied the intricacies of the Light, and found out a way to create completely invisible light by infusing Glowstone with the raw flame. 
+
+This phial contains a concentrated extract of Gaseous Glowstone, that can be released trough a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
 <page type = "infusioncrafting">GLOWSTONE_GAS</page>
 </project>
 
@@ -29,5 +31,40 @@ This wand can carry 500 vis, unlike the Wand of the Adept. It's not a very dispe
 <page type = "text">By mixing some Enchanted Fabric with raw Enchantment power, you created a cloth that can be rubbed on an item to wipe it of it's enchantments by combining them in a Crafting Recipe.</page>
 <page type = "infusioncrafting">SPELL_CLOTH</page>
 </project>
-	
+
+<!-- ======================================== Stopwatch of the Timebender /-->
+<project id = "STOPWATCH" version = "1">
+<name>Stopwatch of the Timebender</name>
+<popupText>[TT] 1.21 GIGAWATTS!?!</popupText>
+<longText>You think you know a way of twisting the very fabric of time to your will.</longText>
+<page type = "text">You have found a way of twisting the very fabric of time to your own will. 
+
+With a simple click of this stopwatch you can bind your position, health, and food to it. One minute later, if you still have the watch in your possession, you will be returned to this point.</page>
+<page type = "infusioncrafting">STOPWATCH</page>
+</project>
+
+<!-- ======================================== Wand of Dislocation /-->
+<project id = "WAND_DISLOCATION" version = "1">
+<name>Wand of Dislocation</name>
+<popupText>[TT] Now you see it, now you don't</popupText>
+<longText>After studying the Wand of Equal Trade, you figured you can use it's powers to store, and move things around more effectively.</longText>
+<page type = "text">After studying the Wand of Equal Trade, you found a way to use it in order to store, and move things around. 
+
+Right clicking on one block will encase it into the wand. Right clicking with a block in the wand will move it elsewhere.
+
+This power is provenient from the portable hole, so your new wand will be able to get anything the portable hole can.</page>
+<page type = "infusioncrafting">WAND_DISLOCATION</page>
+</project>
+
+<!-- ======================================== Golem Name Tag /-->
+<project id = "NAMETAG" version = "1">
+<name>Golem Name Tag</name>
+<popupText>[TT] Hello! My name is...</popupText>
+<longText>Some black dye and magic... and you think you have figured out a way to properly name your golems.</longText>
+<page type = "text">A name tag with some magic. Giving it to one of your golem minions will have them show off their name.
+
+To do this, the item must be named in an anvil.</page>
+<page type = "arcanecrafting">NAMETAG</page>
+</project>
+
 </research>
