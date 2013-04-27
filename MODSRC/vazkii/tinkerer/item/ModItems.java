@@ -29,12 +29,14 @@ public final class ModItems {
 	public static Item glowstoneGas;
 	public static Item spellCloth;
 	public static Item stopwatch;
+	public static Item wandDislocation;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
 		glowstoneGas = new ItemGlowstoneGas(LibItemIDs.idGlowstoneGas).setUnlocalizedName(LibItemNames.GLOWSTONE_GAS);
 		spellCloth = new ItemSpellCloth(LibItemIDs.idSpellCloth).setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 		stopwatch = new ItemStopwatch(LibItemIDs.idStopwatch).setUnlocalizedName(LibItemNames.STOPWATCH);
+		wandDislocation = new ItemWandDislocation(LibItemIDs.idWandDislocation).setUnlocalizedName(LibItemNames.WAND_DISLOCATION);
 		
 		nameItems();
 		applyObjectTags();
@@ -45,6 +47,7 @@ public final class ModItems {
 		LanguageRegistry.addName(glowstoneGas, LibItemNames.GLOWSTONE_GAS_D);
 		LanguageRegistry.addName(spellCloth, LibItemNames.SPELL_CLOTH_D);
 		LanguageRegistry.addName(stopwatch, LibItemNames.STOPWATCH_D);
+		LanguageRegistry.addName(wandDislocation, LibItemNames.WAND_DISLOCATION_D);
 	}
 
 	private static void applyObjectTags() {

@@ -25,4 +25,8 @@ public final class LibItemNames {
 	public static final String STOPWATCH = "stopwatch";
 	public static final String STOPWATCH_R = "STOPWATCH";
 	public static final String STOPWATCH_D = "Stopwatch of the Timetwister";
+	
+	public static final String WAND_DISLOCATION = "wandDislocation";
+	public static final String WAND_DISLOCATION_R = "WAND_DISLOCATION";
+	public static final String WAND_DISLOCATION_D = "Wand of Dislocation";
 }
