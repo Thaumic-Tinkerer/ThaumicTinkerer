@@ -16,12 +16,15 @@ package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import vazkii.tinkerer.client.util.helper.IconHelper;
+import vazkii.tinkerer.tile.TileEntityTransmutator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTransmutator extends BlockMod {
+public class BlockTransmutator extends BlockModContainer {
 
 	Icon[] icons = new Icon[6];
 
@@ -51,6 +54,11 @@ public class BlockTransmutator extends BlockMod {
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityTransmutator();
 	}
 
 }
