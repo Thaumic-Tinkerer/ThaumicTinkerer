@@ -12,7 +12,7 @@
  *
  * File Created @ [28 Apr 2013, 20:25:08 (GMT)]
  */
-package vazkii.tinkerer.network;
+package vazkii.tinkerer.network.packet;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,6 +20,8 @@ import java.io.IOException;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import vazkii.tinkerer.lib.LibNetwork;
+import vazkii.tinkerer.network.ModPacket;
+import vazkii.tinkerer.network.PacketManager;
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

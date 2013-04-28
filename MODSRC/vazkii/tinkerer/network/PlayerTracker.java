@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.network;
 
+import vazkii.tinkerer.network.packet.PacketVerification;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.network.Player;

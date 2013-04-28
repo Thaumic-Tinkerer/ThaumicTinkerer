@@ -17,7 +17,7 @@ package vazkii.tinkerer.core.proxy;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
-import vazkii.tinkerer.network.PacketVerification;
+import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import cpw.mods.fml.common.registry.GameRegistry;
 
