@@ -17,7 +17,9 @@ package vazkii.tinkerer.lib;
 public final class LibBlockIDs {
 
 	public static final int DEFAULT_GLOWSTONE_GAS = 2150;
+	public static final int DEFAULT_TRANSMUTATOR = 2151;
 
 	public static int idGlowstoneGas;
+	public static int idTransmutator;
 
 }

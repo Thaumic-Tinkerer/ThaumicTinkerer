@@ -23,9 +23,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public final class ModBlocks {
 
 	public static Block glowstoneGas;
+	public static Block transmutator;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
+		transmutator = new BlockTransmutator(LibBlockIDs.idTransmutator).setUnlocalizedName(LibBlockNames.TRANSMUTATOR);
 
 		registerBlocks();
 		nameBlocks();
@@ -34,10 +36,12 @@ public final class ModBlocks {
 
 	private static void registerBlocks() {
 		GameRegistry.registerBlock(glowstoneGas, LibBlockNames.GLOWSTONE_GAS);
+		GameRegistry.registerBlock(transmutator, LibBlockNames.TRANSMUTATOR);
 	}
 
 	private static void nameBlocks() {
 		LanguageRegistry.addName(glowstoneGas, LibBlockNames.GLOWSTONE_GAS_D);
+		LanguageRegistry.addName(transmutator, LibBlockNames.TRANSMUTATOR);
 	}
 
 	private static void registerObjectTags() {
