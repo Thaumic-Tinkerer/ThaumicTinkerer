@@ -14,7 +14,12 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
+import vazkii.tinkerer.tile.TileEntityTransmutator;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -25,6 +30,20 @@ public class TTClientProxy extends TTCommonProxy {
 		super.initTickHandlers();
 
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+	}
+
+
+	@Override
+	public void initTileEntities() {
+		super.initTileEntities();
+
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTransmutator.class, new RenderTileTransmutator());
+	}
+
+	@Override
+	public void initPackets() {
+		super.initPackets();
+		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
 	}
 
 }

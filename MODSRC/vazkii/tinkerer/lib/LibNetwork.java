@@ -19,5 +19,6 @@ public final class LibNetwork {
 	public static final String PACKET_CHANNEL = LibMisc.MOD_ID;
 
 	public static final String SUBCHANNEL_VERIFY = "verify";
+	public static final String SUBCHANNEL_TRANSMUTATOR_SYNC = "transmutatorSync";
 
 }

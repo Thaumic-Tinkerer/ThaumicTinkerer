@@ -28,4 +28,7 @@ public final class LibMisc {
 	public static final short CRAFTING_META_WILDCARD = Short.MAX_VALUE;
 	public static final short TAG_META_WILDCARD = -1;
 
+	public static final float MODEL_DEFAULT_RENDER_SCALE = 0.0625F;
+
+
 }

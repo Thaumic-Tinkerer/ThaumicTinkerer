@@ -26,6 +26,8 @@ import cpw.mods.fml.common.TickType;
 
 public class ClientTickHandler implements ITickHandler {
 
+	public static long clientTicksElapsed;
+
 	private Collection<IHUDElement> hudElements;
 
 	public ClientTickHandler() {
@@ -46,6 +48,8 @@ public class ClientTickHandler implements ITickHandler {
 	public void clientTick() {
 		for(IHUDElement element : hudElements)
 			element.clientTick();
+
+		clientTicksElapsed++;
 	}
 
 	public void renderTick(float partialTicks) {

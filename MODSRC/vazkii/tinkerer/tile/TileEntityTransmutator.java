@@ -17,13 +17,23 @@ package vazkii.tinkerer.tile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 
 public class TileEntityTransmutator extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory {
 
 	ItemStack[] inventorySlots = new ItemStack[2];
+	public double ticksExisted = 0;
+
+	@Override
+	public void updateEntity() {
+		if(getStackInSlot(0) != null)
+			ticksExisted++;
+	}
 
 	@Override
 	public int getSizeInventory() {
@@ -95,6 +105,11 @@ public class TileEntityTransmutator extends TileEntity implements ISidedInventor
 	@Override
 	public void closeChest() {
 		// NO-OP
+	}
+
+	@Override
+	public Packet getDescriptionPacket() {
+		return PacketManager.generatePacket(new PacketTransmutatorSync(this));
 	}
 
 	@Override
