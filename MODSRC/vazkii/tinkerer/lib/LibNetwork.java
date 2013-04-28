@@ -10,19 +10,14 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [24 Apr 2013, 22:14:57 (GMT)]
+ * File Created @ [28 Apr 2013, 20:22:37 (GMT)]
  */
 package vazkii.tinkerer.lib;
 
-public final class LibResources {
+public final class LibNetwork {
 
-	public static final String ROOT = "/mods/ThaumicTinkerer/";
-	public static final String ROOT_GUI = ROOT + "gui/";
+	public static final String PACKET_CHANNEL = LibMisc.MOD_ID;
 
-	public static final String RESEARCH_XML = ROOT + "research.xml";
-
-	public static final String SS_POTIONS = ROOT_GUI + "potionEffects.png";
-
-	public static final String GUI_TRANSMUTATOR = ROOT_GUI + "guiTransmutator.png";
+	public static final String SUBCHANNEL_VERIFY = "verify";
 
 }

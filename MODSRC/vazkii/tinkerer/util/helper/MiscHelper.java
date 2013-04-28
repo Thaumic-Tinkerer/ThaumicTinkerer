@@ -31,8 +31,8 @@ public final class MiscHelper {
 	public static EntityClientPlayerMP getClientPlayer() {
 		return getMc().thePlayer;
 	}
-	
+
 	public static String stackAsString(ItemStack stack) {
-		return stack == null ? "null" : (stack.itemID + ":" + stack.getItemDamage());
+		return stack == null ? "null" : stack.itemID + ":" + stack.getItemDamage();
 	}
 }

@@ -22,7 +22,9 @@ import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
+import vazkii.tinkerer.lib.LibNetwork;
 import vazkii.tinkerer.lib.LibResources;
+import vazkii.tinkerer.network.PlayerTracker;
 import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.research.ModArcaneRecipes;
 import vazkii.tinkerer.research.ModInfusionRecipes;
@@ -41,9 +43,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.DEPENDENCIES)
-@NetworkMod()
+@NetworkMod(channels = { LibNetwork.PACKET_CHANNEL }, clientSideRequired = true)
 public class ThaumicTinkerer {
 
 	@Instance(LibMisc.MOD_ID)
@@ -61,6 +64,8 @@ public class ThaumicTinkerer {
 
 		ConfigurationHandler.loadConfig(event.getSuggestedConfigurationFile());
 
+		proxy.initPackets();
+
 		ThaumcraftApi.registerResearchXML(LibResources.RESEARCH_XML);
 	}
 
@@ -69,11 +74,12 @@ public class ThaumicTinkerer {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 		ModPotions.initPotions();
-		
+
 		proxy.initTileEntities();
 
 		MinecraftForge.EVENT_BUS.register(new EntityInteractionHandler());
-		
+
+		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		NetworkRegistry.instance().registerGuiHandler(modInstance, new GuiHandler());
 
 		proxy.initTickHandlers();
