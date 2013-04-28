@@ -29,6 +29,7 @@ import vazkii.tinkerer.research.ModInfusionRecipes;
 import vazkii.tinkerer.research.ModResearchItems;
 import vazkii.tinkerer.util.handler.ConfigurationHandler;
 import vazkii.tinkerer.util.handler.EntityInteractionHandler;
+import vazkii.tinkerer.util.handler.GuiHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -38,8 +39,11 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.DEPENDENCIES)
+@NetworkMod()
 public class ThaumicTinkerer {
 
 	@Instance(LibMisc.MOD_ID)
@@ -65,8 +69,12 @@ public class ThaumicTinkerer {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 		ModPotions.initPotions();
+		
+		proxy.initTileEntities();
 
 		MinecraftForge.EVENT_BUS.register(new EntityInteractionHandler());
+		
+		NetworkRegistry.instance().registerGuiHandler(modInstance, new GuiHandler());
 
 		proxy.initTickHandlers();
 	}

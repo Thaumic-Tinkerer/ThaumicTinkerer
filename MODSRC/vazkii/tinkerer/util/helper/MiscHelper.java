@@ -16,6 +16,7 @@ package vazkii.tinkerer.util.helper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -29,5 +30,9 @@ public final class MiscHelper {
 	@SideOnly(Side.CLIENT)
 	public static EntityClientPlayerMP getClientPlayer() {
 		return getMc().thePlayer;
+	}
+	
+	public static String stackAsString(ItemStack stack) {
+		return stack == null ? "null" : (stack.itemID + ":" + stack.getItemDamage());
 	}
 }

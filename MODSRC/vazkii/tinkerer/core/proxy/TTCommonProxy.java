@@ -14,8 +14,21 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibMisc;
+import vazkii.tinkerer.tile.TileEntityTransmutator;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class TTCommonProxy {
 
 	public void initTickHandlers() { }
+	
+	public void initTileEntities() {
+		GameRegistry.registerTileEntity(TileEntityTransmutator.class, tileName(LibBlockNames.TRANSMUTATOR));
+	}
+	
+	private static String tileName(String name) {
+		return LibMisc.MOD_ID + "_" + name;
+	}
 
 }

@@ -15,7 +15,6 @@
 package vazkii.tinkerer.tile;
 
 import vazkii.tinkerer.lib.LibBlockNames;
-import vazkii.tinkerer.util.helper.InventoryMethods;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -24,21 +23,38 @@ import net.minecraftforge.common.ForgeDirection;
 
 public class TileEntityTransmutator extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory {
 
-	ItemStack[] stacks = new ItemStack[2];
+	ItemStack[] inventorySlots = new ItemStack[2];
 	
 	@Override
 	public int getSizeInventory() {
-		return stacks.length;
+		return inventorySlots.length;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		return InventoryMethods.regularGetStackInSlot(stacks, i);
+		return inventorySlots[i];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int i, int j) {
-		return InventoryMethods.regularDecreaseStackSize(stacks, i, j);
+	public ItemStack decrStackSize(int par1, int par2) {
+		if (inventorySlots[par1] != null) {
+            ItemStack stackAt;
+
+            if (inventorySlots[par1].stackSize <= par2) {
+                stackAt = inventorySlots[par1];
+                inventorySlots[par1] = null;
+                return stackAt;
+            } else {
+                stackAt = inventorySlots[par1].splitStack(par2);
+
+                if (inventorySlots[par1].stackSize == 0)
+                    inventorySlots[par1] = null;
+
+                return stackAt;
+            }
+        }
+
+        return null;
 	}
 
 	@Override
@@ -48,7 +64,7 @@ public class TileEntityTransmutator extends TileEntity implements ISidedInventor
 
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
-		InventoryMethods.regularSetInventorySlotContents(stacks, i, itemstack);
+		inventorySlots[i] = itemstack;
 	}
 
 	@Override
