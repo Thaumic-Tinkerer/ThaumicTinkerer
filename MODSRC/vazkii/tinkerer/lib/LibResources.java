@@ -18,11 +18,16 @@ public final class LibResources {
 
 	public static final String ROOT = "/mods/ThaumicTinkerer/";
 	public static final String ROOT_GUI = ROOT + "gui/";
+	public static final String ROOT_MISC = ROOT + "misc/";
+
+	public static final String BLUR = "%blur%";
 
 	public static final String RESEARCH_XML = ROOT + "research.xml";
 
 	public static final String SS_POTIONS = ROOT_GUI + "potionEffects.png";
 
 	public static final String GUI_TRANSMUTATOR = ROOT_GUI + "guiTransmutator.png";
+
+	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
 
 }

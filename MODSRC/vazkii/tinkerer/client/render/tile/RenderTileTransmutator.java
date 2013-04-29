@@ -28,10 +28,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.lib.LibMisc;
+import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.util.helper.MiscHelper;
 
@@ -39,12 +39,13 @@ public class RenderTileTransmutator extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1,	double d2, float partialTicks) {
-		GL11.glPushMatrix();
-		GL11.glTranslated(d0 + 0.25, d1 + 0.5 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 20F, d2 + 0.5);
-		GL11.glScalef(0.5F, 0.5F, 0.5F);
-        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-
 		TileEntityTransmutator tile = (TileEntityTransmutator) tileentity;
+
+		GL11.glPushMatrix();
+		GL11.glTranslated(d0, d1, d2);
+		renderGlyphs(tile);
+		GL11.glTranslated(0.25, 0.45 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 18F, 0.5);
+		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		renderItem(tile);
 		GL11.glPopMatrix();
 	}
@@ -53,12 +54,12 @@ public class RenderTileTransmutator extends TileEntitySpecialRenderer {
 		ItemStack stack = transmutator.getStackInSlot(0);
 		Minecraft mc = MiscHelper.getMc();
 		if(stack != null) {
-	        GL11.glBindTexture(GL11.GL_TEXTURE_2D, mc.renderEngine.getTexture(stack.getItem() instanceof ItemBlock ? "/terrain.png" : "/gui/items.png"));
+	       mc.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? "/terrain.png" : "/gui/items.png");
 
 			if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[stack.itemID].getRenderType())) {
             	GL11.glTranslatef(0.5F, 0.4F, 0F);
 				new RenderBlocks().renderBlockAsItem(Block.blocksList[stack.itemID], stack.getItemDamage(), 1F);
-
+            	GL11.glTranslatef(-0.5F, -0.4F, 0F);
             } else {
             	int renderPass = 0;
 				do {
@@ -77,5 +78,27 @@ public class RenderTileTransmutator extends TileEntitySpecialRenderer {
 	        	} while(renderPass < stack.getItem().getRenderPasses(stack.getItemDamage()));
             }
         }
+	}
+
+	private void renderGlyphs(TileEntityTransmutator transmutator) {
+		Minecraft mc = MiscHelper.getMc();
+		mc.renderEngine.bindTexture(LibResources.MISC_GLYPHS);
+		GL11.glPushMatrix();
+		GL11.glDepthMask(false);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glTranslatef(0.5F, 0.4F, 0.5F);
+		float deg = ClientTickHandler.clientTicksElapsed / 1F % 360F;
+		GL11.glRotatef(deg, 0F, 1F, 0F);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		Tessellator tess = Tessellator.instance;
+		tess.startDrawingQuads();
+		tess.addVertexWithUV(-0.5, 0, 0.5, 0, 1);
+		tess.addVertexWithUV(0.5, 0, 0.5, 1, 1);
+		tess.addVertexWithUV(0.5, 0, -0.5, 1, 0);
+		tess.addVertexWithUV(-0.5, 0, -0.5, 0, 0);
+		tess.draw();
+		GL11.glDepthMask(true);
+		GL11.glPopMatrix();
 	}
 }
