@@ -17,6 +17,8 @@ package vazkii.tinkerer.tile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.common.lib.ThaumcraftCraftingManager;
@@ -40,6 +42,36 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 		if(getStackInSlot(0) != null)
 			ticksExisted++;
 	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
+		super.readFromNBT(par1NBTTagCompound);
+
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		inventorySlots = new ItemStack[getSizeInventory()];
+		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
+			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			byte var5 = var4.getByte("Slot");
+			if (var5 >= 0 && var5 < inventorySlots.length)
+				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
+		}
+	}
+	
+	@Override
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
+        super.writeToNBT(par1NBTTagCompound);
+
+    	NBTTagList var2 = new NBTTagList();
+        for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
+            if (inventorySlots[var3] != null) {
+                NBTTagCompound var4 = new NBTTagCompound();
+                var4.setByte("Slot", (byte)var3);
+                inventorySlots[var3].writeToNBT(var4);
+                var2.appendTag(var4);
+            }
+        }
+        par1NBTTagCompound.setTag("Items", var2);
+    }
 
 	@Override
 	public int getSizeInventory() {
