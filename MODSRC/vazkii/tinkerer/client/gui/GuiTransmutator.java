@@ -30,6 +30,7 @@ import thaumcraft.api.ObjectTags;
 import thaumcraft.client.lib.UtilsFX;
 import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import vazkii.tinkerer.inventory.container.ContainerTransmutator;
+import vazkii.tinkerer.inventory.slot.SlotTransmutator;
 import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.util.helper.MiscHelper;
@@ -59,6 +60,15 @@ public class GuiTransmutator extends GuiContainer {
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		float deg = (float) (transmutator.ticksExisted % 360F);
 		renderGlyphsAt(x + 154, y + 19, deg);
+		if(transmutator.getStackInSlot(0) != null) {
+			GL11.glPushMatrix();
+			GL11.glScalef(0.5F, 0.5F, 0.5F);
+			ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(transmutator.getStackInSlot(0));
+			int value = SlotTransmutator.getTotalAspectValue(tags);
+			String price = value + " vis";
+			fontRenderer.drawString(price, (x + 162 - fontRenderer.getStringWidth(price) / 2) * 2, (y + 69) * 2, 0xFFFFFF);
+			GL11.glPopMatrix();
+		}
 	}
 
 	@Override
@@ -73,7 +83,7 @@ public class GuiTransmutator extends GuiContainer {
 				int amount = tags.getAmount(tag);
 				int xpos = (int) (50 + 35 * Math.cos(renderDeg * Math.PI / 180));
 				int ypos = (int) (16 + 35 * Math.sin(renderDeg * Math.PI / 180));
-				UtilsFX.drawTag(mc, xpos, ypos, tag, amount, this, false, false);
+				UtilsFX.drawTag(mc, xpos, ypos, tag, amount * 4, this, false, false);
 				float deg = (float) (transmutator.ticksExisted * amount % 360F);
 
 				int color = tag.color;
@@ -81,7 +91,7 @@ public class GuiTransmutator extends GuiContainer {
 				int green = color >> 8 & 0xFF;
 				int blue = color & 0xFF;
 				GL11.glColor4ub((byte) red, (byte) green, (byte) blue, (byte) 128);
-				if(transmutator.foundTags.getAmount(tag) >= amount)
+				if(transmutator.foundTags.getAmount(tag) >= amount * 4)
 					renderGlyphsAt(xpos + 8, ypos + 8, deg);
 
 				if(i > xpos + x && i < xpos + x + 16 && j > ypos + y && j < ypos + y + 16)

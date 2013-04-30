@@ -59,14 +59,14 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 
 		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(getStackInSlot(0));
 		int value = SlotTransmutator.getTotalAspectValue(tags);
-		boolean hasVis = value == 1 ? true : AuraManager.decreaseClosestAura(worldObj, xCoord, yCoord, zCoord, value / 2, false);
+		boolean hasVis = value == 1 ? true : AuraManager.decreaseClosestAura(worldObj, xCoord, yCoord, zCoord, value * 2, false);
 		if(!hasVis)
 			return false;
 
 		for(EnumTag tag : tags.getAspects()) {
 			int amount = tags.getAmount(tag);
 			int transAmount = foundTags.getAmount(tag);
-			if(transAmount < amount)
+			if(transAmount < amount * 4)
 				return false;
 		}
 
@@ -159,7 +159,7 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 64;
+		return 1;
 	}
 
 	@Override

@@ -33,16 +33,6 @@ public class SlotTransmutatorOutput extends SlotPureOutput {
 	}
 
 	@Override
-	public boolean canTakeStack(EntityPlayer par1EntityPlayer) {
-		return true;
-	}
-
-	@Override
-	public ItemStack getStack() {
-		return super.getStack();
-	}
-
-	@Override
 	public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack) {
 		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(transmutator.getStackInSlot(0));
 		int value = SlotTransmutator.getTotalAspectValue(tags);
@@ -54,8 +44,9 @@ public class SlotTransmutatorOutput extends SlotPureOutput {
 			IAspectSource source = transmutator.foundTags.getSource(tag);
 			if(source != null)
 				source.takeFromSource(tag, tags.getAmount(tag));
-
 		}
+
+		par1EntityPlayer.worldObj.playSoundAtEntity(par1EntityPlayer, "thaumcraft.wand1", 0.3F, 1F);
 	}
 
 }
