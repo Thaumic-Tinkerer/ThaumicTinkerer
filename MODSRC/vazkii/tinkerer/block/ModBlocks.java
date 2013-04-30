@@ -36,12 +36,12 @@ public final class ModBlocks {
 
 	private static void registerBlocks() {
 		GameRegistry.registerBlock(glowstoneGas, LibBlockNames.GLOWSTONE_GAS);
-		GameRegistry.registerBlock(transmutator, LibBlockNames.TRANSMUTATOR_D);
+		GameRegistry.registerBlock(transmutator, LibBlockNames.TRANSMUTATOR);
 	}
 
 	private static void nameBlocks() {
 		LanguageRegistry.addName(glowstoneGas, LibBlockNames.GLOWSTONE_GAS_D);
-		LanguageRegistry.addName(transmutator, LibBlockNames.TRANSMUTATOR);
+		LanguageRegistry.addName(transmutator, LibBlockNames.TRANSMUTATOR_D);
 	}
 
 	private static void registerObjectTags() {
