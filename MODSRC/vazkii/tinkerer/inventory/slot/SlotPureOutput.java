@@ -16,6 +16,7 @@ package vazkii.tinkerer.inventory.slot;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 public class SlotPureOutput extends Slot {
 
@@ -24,7 +25,7 @@ public class SlotPureOutput extends Slot {
 	}
 
 	@Override
-	public boolean canTakeStack(net.minecraft.entity.player.EntityPlayer par1EntityPlayer) {
+	public boolean isItemValid(ItemStack par1ItemStack) {
 		return false;
 	}
 }
