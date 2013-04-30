@@ -28,8 +28,8 @@ public final class LibBlockNames {
 	public static final String GLOWSTONE_GAS_R = LibItemNames.GLOWSTONE_GAS_R;
 	public static final String GLOWSTONE_GAS_D = LibItemNames.GLOWSTONE_GAS_D;
 
-	public static final String TRANSMUTATOR = "transmutator";
+	public static final String TRANSMUTATOR = "TRANSMUTATOR";
 	public static final String TRANSMUTATOR_R = "transmutator";
-	public static final String TRANSMUTATOR_D = "transmutator";
+	public static final String TRANSMUTATOR_D = "Transmutator";
 
 }
