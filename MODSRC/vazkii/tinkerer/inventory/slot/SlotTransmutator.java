@@ -31,10 +31,10 @@ public class SlotTransmutator extends Slot {
 	public boolean isItemValid(ItemStack par1ItemStack) {
 		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(par1ItemStack);
 
-		return tags != null && getTotalAspectValue(tags) <= 50;
+		return tags != null && getTotalAspectValue(tags) <= 100;
 	}
 
-	private static int getTotalAspectValue(ObjectTags tags) {
+	public static int getTotalAspectValue(ObjectTags tags) {
 		int totalValue = 0;
 		for(EnumTag tag : tags.getAspects())
 			totalValue += tags.getAmount(tag);

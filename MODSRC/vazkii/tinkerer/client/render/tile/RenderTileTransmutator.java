@@ -99,6 +99,7 @@ public class RenderTileTransmutator extends TileEntitySpecialRenderer {
 		tess.addVertexWithUV(-0.5, 0, -0.5, 0, 0);
 		tess.draw();
 		GL11.glDepthMask(true);
+		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
 	}
 }

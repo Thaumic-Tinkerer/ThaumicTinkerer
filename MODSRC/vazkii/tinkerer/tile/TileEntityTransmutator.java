@@ -21,8 +21,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.api.EnumTag;
+import thaumcraft.api.ObjectTags;
+import thaumcraft.common.aura.AuraManager;
 import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import thaumcraft.common.tiles.TileInfusionWorkbench;
+import vazkii.tinkerer.inventory.slot.SlotTransmutator;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
@@ -41,8 +45,34 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 		super.updateEntity();
 		if(getStackInSlot(0) != null)
 			ticksExisted++;
+
+		if(!worldObj.isRemote) {
+			if(hasAspectsAndVis())
+				setInventorySlotContents(1, getStackInSlot(0).copy());
+			else setInventorySlotContents(1, null);
+		}
 	}
-	
+
+	public boolean hasAspectsAndVis() {
+		if(getStackInSlot(0) == null)
+			return false;
+
+		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(getStackInSlot(0));
+		int value = SlotTransmutator.getTotalAspectValue(tags);
+		boolean hasVis = value == 1 ? true : AuraManager.decreaseClosestAura(worldObj, xCoord, yCoord, zCoord, value / 2, false);
+		if(!hasVis)
+			return false;
+
+		for(EnumTag tag : tags.getAspects()) {
+			int amount = tags.getAmount(tag);
+			int transAmount = foundTags.getAmount(tag);
+			if(transAmount < amount)
+				return false;
+		}
+
+		return true;
+	}
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
@@ -56,7 +86,7 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
 		}
 	}
-	
+
 	@Override
     public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);

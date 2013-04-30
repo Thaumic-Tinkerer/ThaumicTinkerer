@@ -16,8 +16,8 @@ package vazkii.tinkerer.inventory.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import vazkii.tinkerer.inventory.slot.SlotPureOutput;
 import vazkii.tinkerer.inventory.slot.SlotTransmutator;
+import vazkii.tinkerer.inventory.slot.SlotTransmutatorOutput;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 
 public class ContainerTransmutator extends ContainerPlayerInv {
@@ -30,7 +30,7 @@ public class ContainerTransmutator extends ContainerPlayerInv {
 		this.transmutator = transmutator;
 
 		addSlotToContainer(new SlotTransmutator(transmutator, 0, 146, 11));
-		addSlotToContainer(new SlotPureOutput(transmutator, 1, 146, 49));
+		addSlotToContainer(new SlotTransmutatorOutput(transmutator, 1, 146, 49));
 
 		initPlayerInv();
 	}
