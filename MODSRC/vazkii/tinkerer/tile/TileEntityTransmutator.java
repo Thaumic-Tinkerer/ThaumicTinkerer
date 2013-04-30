@@ -18,19 +18,25 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import thaumcraft.common.tiles.TileInfusionWorkbench;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 
-public class TileEntityTransmutator extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory {
+public class TileEntityTransmutator extends TileInfusionWorkbench implements ISidedInventory {
 
 	ItemStack[] inventorySlots = new ItemStack[2];
 	public double ticksExisted = 0;
 
 	@Override
 	public void updateEntity() {
+		ItemStack stack = getStackInSlot(0);
+		partTags = stack == null ? null : ThaumcraftCraftingManager.getObjectTags(stack);
+		findSources(true);
+
+		super.updateEntity();
 		if(getStackInSlot(0) != null)
 			ticksExisted++;
 	}
@@ -42,6 +48,8 @@ public class TileEntityTransmutator extends TileEntity implements ISidedInventor
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
+		if(i >= inventorySlots.length)
+			return null;
 		return inventorySlots[i];
 	}
 
@@ -143,5 +151,4 @@ public class TileEntityTransmutator extends TileEntity implements ISidedInventor
 	public int getSizeInventorySide(ForgeDirection side) {
 		return 1;
 	}
-
 }
