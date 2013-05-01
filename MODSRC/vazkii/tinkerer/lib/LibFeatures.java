@@ -23,4 +23,8 @@ public final class LibFeatures {
 
 	public static final int WAND_DISLOCATION_VIS = 50;
 
+	public static final int XP_TALISMAN_RANGE = 3;
+	public static final int XP_TALISMAN_MAX_XP = 1500;
+	public static final int XP_TALISMAN_ENCHANTING_BOTTLE_COST = 10;
+
 }
