@@ -58,7 +58,7 @@ public class ItemXPTalisman extends ItemMod {
 					par3EntityPlayer.dropItem(Item.expBottle.itemID, 1);
 				int xp = getXP(par1ItemStack);
 				setXP(par1ItemStack, xp - LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST);
-				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.1F, (float) (0.1F + (Math.random() / 2F)));
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.1F, (float) (0.1F + Math.random() / 2F));
 				for(int i = 0; par2World.isRemote && i < 6; i++)
 					ThaumicTinkerer.tcProxy.sparkle((float) (par3EntityPlayer.posX + (Math.random() - 0.5)), (float) (par3EntityPlayer.posY + Math.random() - 0.5), (float) (par3EntityPlayer.posZ + (Math.random() - 0.5)), 3);
 			}

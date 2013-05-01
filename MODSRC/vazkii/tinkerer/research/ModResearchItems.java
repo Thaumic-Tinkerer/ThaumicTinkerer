@@ -32,6 +32,7 @@ public final class ModResearchItems {
 	public static ResearchItem wandDislocation;
 	public static ResearchItem nametag;
 	public static ResearchItem transmutator;
+	public static ResearchItem xpTalisman;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -54,5 +55,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.FLUX, 12).add(EnumTag.EXCHANGE, 20);
 		transmutator = new ResearchItem(LibBlockNames.TRANSMUTATOR_R, tags, -5, 24, ModBlocks.transmutator).setParents(Config.researchCrystalCore).setParentsHidden(Config.researchWandTrade).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.EVIL, 8).add(EnumTag.TRAP, 16).add(EnumTag.KNOWLEDGE, 12);
+		xpTalisman = new ResearchItem(LibItemNames.XP_TALISMAN_R, tags, -4, 14, ModItems.xpTalisman).setParents(Config.researchJarBrain).registerResearchItem();
 	}
 }

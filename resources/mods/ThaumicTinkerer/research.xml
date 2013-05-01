@@ -78,4 +78,15 @@ This block can accept an item to be used as a pattern to create a new one. Only 
 <page type = "infusioncrafting">TRANSMUTATOR</page>
 </project>
 
+<!-- ======================================== Talisman of Withhold /-->
+<project id = "XP_TALISMAN" version = "1">
+<name>Talisman of Withhold</name>
+<popupText>[TT] Talisman o' Enchanting</popupText>
+<longText>Knowing that Zombie Brains, when used well, have the ability to store experience, you are trying to figure out a way to make them portable.</longText>
+<page type = "text">After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.
+
+To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into useable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting.</page>
+<page type = "infusioncrafting">XP_TALISMAN</page>
+</project>
+
 </research>

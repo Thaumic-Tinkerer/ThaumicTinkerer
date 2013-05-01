@@ -54,6 +54,13 @@ public final class ModInfusionRecipes {
 				'T', new ItemStack(Config.itemWandTrade),
 				'F', new ItemStack(Config.itemResource, 1, 8),
 				'C', new ItemStack(Config.blockCrucible));
+
+		tags = new ObjectTags().add(EnumTag.EVIL, 6).add(EnumTag.TRAP, 18).add(EnumTag.KNOWLEDGE, 12);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.XP_TALISMAN_R, LibItemNames.XP_TALISMAN_R, 140, tags, new ItemStack(ModItems.xpTalisman),
+				"OGO", "GBG", "OGO",
+				'O', new ItemStack(Block.obsidian),
+				'G', new ItemStack(Item.ingotGold),
+				'B', new ItemStack(Config.itemResource, 1, 5));
 	}
 
 }
