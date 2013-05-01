@@ -33,5 +33,10 @@ public final class LibItemNames {
 	public static final String NAMETAG = "nametag";
 	public static final String NAMETAG_R = "NAMETAG";
 	public static final String NAMETAG_D = "Golem Name Tag";
+	
+	public static final String XP_TALISMAN = "xpTalisman";
+	public static final String XP_TALISMAN_R = "XP_TALISMAN";
+	public static final String XP_TALISMAN_D = "Talisman of Withhold";
+
 
 }
