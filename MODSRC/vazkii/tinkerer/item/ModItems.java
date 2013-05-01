@@ -74,7 +74,9 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.WOOD, 2).add(EnumTag.DARK, 1);
 		ThaumcraftApi.registerObjectTag(nametag.itemID, LibMisc.TAG_META_WILDCARD, tags);
+		
+		tags = new ObjectTags().add(EnumTag.EVIL, 4).add(EnumTag.KNOWLEDGE, 12).add(EnumTag.TRAP, 24).add(EnumTag.MAGIC, 8);
+		ThaumcraftApi.registerObjectTag(xpTalisman.itemID, LibMisc.TAG_META_WILDCARD, tags);
 
-		// TODO Tags for XP Talisman and Transmutator
 	}
 }

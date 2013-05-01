@@ -15,8 +15,12 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.Block;
+import thaumcraft.api.EnumTag;
+import thaumcraft.api.ObjectTags;
+import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.lib.LibBlockIDs;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibMisc;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -45,7 +49,8 @@ public final class ModBlocks {
 	}
 
 	private static void registerObjectTags() {
-
+		ObjectTags tags = new ObjectTags().add(EnumTag.WOOD, 16).add(EnumTag.EXCHANGE, 64).add(EnumTag.FLUX, 24).add(EnumTag.MECHANISM, 8).add(EnumTag.MAGIC, 16);
+		ThaumcraftApi.registerObjectTag(transmutator.blockID, LibMisc.CRAFTING_META_WILDCARD, tags);
 	}
 
 }
