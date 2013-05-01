@@ -46,8 +46,11 @@ public class ItemXPTalisman extends ItemMod {
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(par3EntityPlayer.isSneaking()) {
-			int dmg = par1ItemStack.getItemDamage();
-			par1ItemStack.setItemDamage(dmg == 0 ? 1 : 0);
+			if(getXP(par1ItemStack) < LibFeatures.XP_TALISMAN_MAX_XP) {
+	 			int dmg = par1ItemStack.getItemDamage();
+				par1ItemStack.setItemDamage(dmg == 0 ? 1 : 0);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+			}
 		} else if(getXP(par1ItemStack) >= LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST) {
 			boolean has = par3EntityPlayer.inventory.consumeInventoryItem(Item.glassBottle.itemID);
 			if(has) {
@@ -55,6 +58,9 @@ public class ItemXPTalisman extends ItemMod {
 					par3EntityPlayer.dropItem(Item.expBottle.itemID, 1);
 				int xp = getXP(par1ItemStack);
 				setXP(par1ItemStack, xp - LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.1F, (float) (0.1F + (Math.random() / 2F)));
+				for(int i = 0; par2World.isRemote && i < 6; i++)
+					ThaumicTinkerer.tcProxy.sparkle((float) (par3EntityPlayer.posX + (Math.random() - 0.5)), (float) (par3EntityPlayer.posY + Math.random() - 0.5), (float) (par3EntityPlayer.posZ + (Math.random() - 0.5)), 3);
 			}
 		}
 
