@@ -7,7 +7,9 @@ import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.Config;
+import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.item.ModItems;
+import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
 
@@ -44,6 +46,14 @@ public final class ModInfusionRecipes {
 				" H", "W ",
 				'H', new ItemStack(Config.itemPortableHole),
 				'W', new ItemStack(Config.itemWandTrade));
+
+		tags = new ObjectTags().add(EnumTag.FLUX, 24).add(EnumTag.EXCHANGE, 48);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.TRANSMUTATOR_R, LibBlockNames.TRANSMUTATOR_R, 320, tags, new ItemStack(ModBlocks.transmutator),
+				"WTW", "WFW", "WCW",
+				'W', new ItemStack(Config.blockWooden),
+				'T', new ItemStack(Config.itemWandTrade),
+				'F', new ItemStack(Config.itemResource, 1, 8),
+				'C', new ItemStack(Config.blockCrucible));
 	}
 
 }

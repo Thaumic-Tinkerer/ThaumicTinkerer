@@ -18,7 +18,9 @@ import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.common.Config;
+import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.item.ModItems;
+import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibItemNames;
 
 public final class ModResearchItems {
@@ -29,6 +31,7 @@ public final class ModResearchItems {
 	public static ResearchItem stopwatch;
 	public static ResearchItem wandDislocation;
 	public static ResearchItem nametag;
+	public static ResearchItem transmutator;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -48,5 +51,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.WOOD, 1).add(EnumTag.DARK, 1);
 		nametag = new ResearchItem(LibItemNames.NAMETAG_R, tags, 4, 18, ModItems.nametag).setParents(Config.researchGolemancy).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.FLUX, 12).add(EnumTag.EXCHANGE, 20);
+		transmutator = new ResearchItem(LibBlockNames.TRANSMUTATOR_R, tags, -5, 24, ModBlocks.transmutator).setParents(Config.researchCrystalCore).setParentsHidden(Config.researchWandTrade).registerResearchItem();
 	}
 }

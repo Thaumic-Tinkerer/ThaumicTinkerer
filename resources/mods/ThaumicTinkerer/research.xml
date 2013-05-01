@@ -67,4 +67,15 @@ To do this, the item must be named in an anvil.</page>
 <page type = "arcanecrafting">NAMETAG</page>
 </project>
 
+<!-- ======================================== Transmutator /-->
+<project id = "TRANSMUTATOR" version = "1">
+<name>Transmutator</name>
+<popupText>[TT] Inequivalent Exchange</popupText>
+<longText>Researching The Aura is becoming important. You seem to have figured out a way to directly conjure vis from the aura into matter.</longText>
+<page type = "text">After researching further into the intricacies of the Aura itself, you have found out a way to directly siphon it's vis, and using aspects from naerby aspectual sources, conjure it into matter.
+
+This block can accept an item to be used as a pattern to create a new one. Only simple items, in terms of aspect count can be created, and in doing so, it takes both vis from the aura, and the quadruple of each aspect from that item.</page>
+<page type = "infusioncrafting">TRANSMUTATOR</page>
+</project>
+
 </research>
