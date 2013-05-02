@@ -34,6 +34,9 @@ public class BlockTransmutator extends BlockModContainer {
 	public BlockTransmutator(int par1) {
 		super(par1, Material.wood);
         setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 6F, 1F);
+        setHardness(1.7F);
+        setResistance(1F);
+        setStepSound(soundWoodFootstep);
 	}
 
 	@Override
