@@ -29,5 +29,7 @@ public final class LibResources {
 	public static final String GUI_TRANSMUTATOR = ROOT_GUI + "guiTransmutator.png";
 
 	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
+	
+	public static final String EMTPY_TEXTURE = "emptyTexture";
 
 }

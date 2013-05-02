@@ -24,6 +24,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ThaumicTinkerer;
+import vazkii.tinkerer.client.util.helper.IconHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -39,7 +40,7 @@ public class BlockGlowstoneGas extends BlockMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
-		// NO-OP
+		blockIcon = IconHelper.emptyTexture(par1IconRegister);
 	}
 
 	@Override
