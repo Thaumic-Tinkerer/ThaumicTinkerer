@@ -47,8 +47,15 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 			ticksExisted++;
 
 		if(!worldObj.isRemote) {
-			if(hasAspectsAndVis())
-				setInventorySlotContents(1, getStackInSlot(0).copy());
+			if(hasAspectsAndVis()) {
+				ItemStack setStack = getStackInSlot(0).copy();
+				if(setStack.hasTagCompound()) {
+					NBTTagCompound cmp = setStack.getTagCompound();
+					cmp.removeTag("ench");
+				}
+				
+				setInventorySlotContents(1, setStack);
+			}
 			else setInventorySlotContents(1, null);
 		}
 	}
