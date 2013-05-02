@@ -9,6 +9,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_WAND_DISLOCATION = 21154;
 	public static final int DEFAULT_NAMETAG = 21155;
 	public static final int DEFAULT_XP_TALISMAN = 21156;
+	public static final int DEFAULT_FIRE_BRACELET = 21157;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -17,4 +18,5 @@ public final class LibItemIDs {
 	public static int idWandDislocation;
 	public static int idNametag;
 	public static int idXpTalisman;
+	public static int idFireBracelet;
 }

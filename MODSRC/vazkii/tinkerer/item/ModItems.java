@@ -32,6 +32,7 @@ public final class ModItems {
 	public static Item wandDislocation;
 	public static Item nametag;
 	public static Item xpTalisman;
+	public static Item fireBracelet;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -41,6 +42,7 @@ public final class ModItems {
 		wandDislocation = new ItemWandDislocation(LibItemIDs.idWandDislocation).setUnlocalizedName(LibItemNames.WAND_DISLOCATION);
 		nametag = new ItemNametag(LibItemIDs.idNametag).setUnlocalizedName(LibItemNames.NAMETAG);
 		xpTalisman = new ItemXPTalisman(LibItemIDs.idXpTalisman).setUnlocalizedName(LibItemNames.XP_TALISMAN);
+		fireBracelet = new ItemFireBracelet(LibItemIDs.idFireBracelet).setUnlocalizedName(LibItemNames.FIRE_BRACELET);
 
 		nameItems();
 		applyObjectTags();
@@ -54,6 +56,7 @@ public final class ModItems {
 		LanguageRegistry.addName(wandDislocation, LibItemNames.WAND_DISLOCATION_D);
 		LanguageRegistry.addName(nametag, LibItemNames.NAMETAG_D);
 		LanguageRegistry.addName(xpTalisman, LibItemNames.XP_TALISMAN_D);
+		LanguageRegistry.addName(fireBracelet, LibItemNames.FIRE_BRACELET_D);
 	}
 
 	private static void applyObjectTags() {

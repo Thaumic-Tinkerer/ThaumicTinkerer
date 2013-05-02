@@ -38,5 +38,7 @@ public final class LibItemNames {
 	public static final String XP_TALISMAN_R = "XP_TALISMAN";
 	public static final String XP_TALISMAN_D = "Talisman of Withhold";
 
-
+	public static final String FIRE_BRACELET = "fireBracelet";
+	public static final String FIRE_BRACELET_R = "FIRE_BRACELET";
+	public static final String FIRE_BRACELET_D = "Infernal Bracelet";
 }
