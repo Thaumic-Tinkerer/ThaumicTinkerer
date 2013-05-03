@@ -28,5 +28,6 @@ public final class LibFeatures {
 	public static final int XP_TALISMAN_ENCHANTING_BOTTLE_COST = 10;
 
 	public static final int FIRE_BRACELET_CHARGES = 64;
+	public static final int FIRE_BRACELET_RECHARGE_VIS = 12;
 
 }

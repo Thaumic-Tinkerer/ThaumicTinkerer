@@ -22,6 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import thaumcraft.common.Config;
+import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibFeatures;
@@ -40,9 +42,10 @@ public class ItemFireBracelet extends ItemMod {
 
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+		int id = par3World.getBlockId(par4, par5, par6);
+		int meta = par3World.getBlockMetadata(par4, par5, par6);
+		
 		if(par1ItemStack.getItemDamage() != LibFeatures.FIRE_BRACELET_CHARGES) {
-			int id = par3World.getBlockId(par4, par5, par6);
-			int meta = par3World.getBlockMetadata(par4, par5, par6);
 			ItemStack stack = new ItemStack(id, 1, meta);
 			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(stack);
 			
@@ -64,6 +67,14 @@ public class ItemFireBracelet extends ItemMod {
 				}
 				
 				did = true;
+			} else {
+				if(id == Config.blockArcaneFurnace.blockID && AuraManager.decreaseClosestAura(par3World, par4, par5, par6, LibFeatures.FIRE_BRACELET_RECHARGE_VIS)) {
+					par3World.playSoundAtEntity(par2EntityPlayer, "fire.ignite", 0.6F, 1F); 
+					par3World.playSoundAtEntity(par2EntityPlayer, "fire.fire", 1F, 1F);
+					if(par3World.isRemote)
+						par2EntityPlayer.swingItem();
+					par1ItemStack.setItemDamage(0);
+				}
 			}
 			
 			if(par1ItemStack.getItemDamage() == LibFeatures.FIRE_BRACELET_CHARGES)
