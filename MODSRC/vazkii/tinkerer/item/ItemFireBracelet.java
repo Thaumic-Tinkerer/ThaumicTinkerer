@@ -45,11 +45,11 @@ public class ItemFireBracelet extends ItemMod {
 		int id = par3World.getBlockId(par4, par5, par6);
 		int meta = par3World.getBlockMetadata(par4, par5, par6);
 		
+		boolean did = false;
+		
 		if(par1ItemStack.getItemDamage() != LibFeatures.FIRE_BRACELET_CHARGES) {
 			ItemStack stack = new ItemStack(id, 1, meta);
 			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(stack);
-			
-			boolean did = false;
 			
 			if(result != null && result.getItem() instanceof ItemBlock) {
 				par3World.setBlock(par4, par5, par6, result.itemID, result.getItemDamage(), 2);
@@ -66,25 +66,32 @@ public class ItemFireBracelet extends ItemMod {
 					ThaumicTinkerer.tcProxy.wispFX2(par3World, x, y, z, (float) Math.random() / 2F, 4, true, (float) -Math.random() / 10F);
 				}
 				
+				if(par1ItemStack.getItemDamage() == LibFeatures.FIRE_BRACELET_CHARGES)
+					par3World.playSoundAtEntity(par2EntityPlayer, "thaumcraft.brain", 1F, 1F);
+				
 				did = true;
-			} else {
-				if(id == Config.blockArcaneFurnace.blockID && AuraManager.decreaseClosestAura(par3World, par4, par5, par6, LibFeatures.FIRE_BRACELET_RECHARGE_VIS)) {
-					par3World.playSoundAtEntity(par2EntityPlayer, "fire.ignite", 0.6F, 1F); 
-					par3World.playSoundAtEntity(par2EntityPlayer, "fire.fire", 1F, 1F);
-					if(par3World.isRemote)
-						par2EntityPlayer.swingItem();
-					par1ItemStack.setItemDamage(0);
-				}
+				return did;
 			}
-			
-			if(par1ItemStack.getItemDamage() == LibFeatures.FIRE_BRACELET_CHARGES)
-				par3World.playSoundAtEntity(par2EntityPlayer, "thaumcraft.brain", 1F, 1F);
-			
-			return did;
 		}
+		
 		return false;
 	}
 	
+	@Override
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY,	float hitZ) {
+		int id = world.getBlockId(x, y, z);
+		int meta = world.getBlockMetadata(x, y, z);
+		
+		if(stack.getItemDamage() == LibFeatures.FIRE_BRACELET_CHARGES && id == Config.blockWoodenDevice.blockID && meta == 0 && AuraManager.decreaseClosestAura(world, x, y, z, LibFeatures.FIRE_BRACELET_RECHARGE_VIS)) {
+			world.playSoundAtEntity(player, "fire.ignite", 0.6F, 1F); 
+			world.playSoundAtEntity(player, "fire.fire", 1F, 1F);
+			if(world.isRemote)
+				player.swingItem();
+			stack.setItemDamage(0);
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
