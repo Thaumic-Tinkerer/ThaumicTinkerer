@@ -46,7 +46,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.DEPENDENCIES)
-@NetworkMod(channels = { LibNetwork.PACKET_CHANNEL }, clientSideRequired = true)
+@NetworkMod(channels = { LibNetwork.PACKET_CHANNEL }, clientSideRequired = true, packetHandler = PacketManager.class)
 public class ThaumicTinkerer {
 
 	@Instance(LibMisc.MOD_ID)
