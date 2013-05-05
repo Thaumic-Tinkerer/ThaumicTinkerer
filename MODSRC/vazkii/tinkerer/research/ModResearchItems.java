@@ -37,7 +37,7 @@ public final class ModResearchItems {
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
-		wandTinkerer = new ResearchItem(LibItemNames.WAND_TINKERER_R, tags, -5, 3, ModItems.wandTinkerer).setParents(Config.researchGoggles).registerResearchItem();
+		wandTinkerer = new ResearchItem(LibItemNames.WAND_TINKERER_R, tags, -5, 3, ModItems.wandTinkerer).setParentsHidden(Config.researchGoggles).registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.LIGHT, 7).add(EnumTag.WIND, 4).add(EnumTag.POWER, 3);
 		glowstoneGas = new ResearchItem(LibItemNames.GLOWSTONE_GAS_R, tags, 5, 2, ModItems.glowstoneGas).setParents(Config.researchNitor).registerResearchItem();
@@ -58,9 +58,9 @@ public final class ModResearchItems {
 		transmutator = new ResearchItem(LibBlockNames.TRANSMUTATOR_R, tags, -5, 24, ModBlocks.transmutator).setParents(Config.researchCrystalCore).setParentsHidden(Config.researchWandTrade).registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.EVIL, 8).add(EnumTag.TRAP, 16).add(EnumTag.KNOWLEDGE, 12);
-		xpTalisman = new ResearchItem(LibItemNames.XP_TALISMAN_R, tags, -4, 14, ModItems.xpTalisman).setParents(Config.researchJarBrain).registerResearchItem();
+		xpTalisman = new ResearchItem(LibItemNames.XP_TALISMAN_R, tags, -4, 14, ModItems.xpTalisman).setParents(Config.researchJarBrain).setHidden().registerResearchItem();
 	
 		tags = new ObjectTags().add(EnumTag.FIRE, 8).add(EnumTag.ROCK, 12).add(EnumTag.METAL, 4);
-		fireBracelet = new ResearchItem(LibItemNames.FIRE_BRACELET_R, tags, -4, 9, ModItems.fireBracelet).setParents(Config.researchArcaneBellows).registerResearchItem();
+		fireBracelet = new ResearchItem(LibItemNames.FIRE_BRACELET_R, tags, -4, 9, ModItems.fireBracelet).setParents(Config.researchArcaneBellows).setHidden().registerResearchItem();
 	}
 }
