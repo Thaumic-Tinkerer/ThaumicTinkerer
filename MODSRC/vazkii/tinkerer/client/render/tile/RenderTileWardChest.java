@@ -21,6 +21,7 @@ import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import vazkii.tinkerer.client.model.ModelWardChest;
 import vazkii.tinkerer.lib.LibResources;
 
 public class RenderTileWardChest extends TileEntitySpecialRenderer {
@@ -28,7 +29,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 	ModelChest chestModel;
 
 	public RenderTileWardChest() {
-		chestModel = new ModelChest();
+		chestModel = new ModelWardChest();
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 		bindTextureByName(LibResources.MODEL_WARD_CHEST);
         GL11.glPushMatrix();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-        //GL11.glEnable(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_BLEND);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glTranslatef((float)x, (float)y + 1.0F, (float)z + 1.0F);
         GL11.glScalef(1.0F, -1.0F, -1.0F);
