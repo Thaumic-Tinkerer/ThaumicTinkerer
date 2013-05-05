@@ -24,7 +24,7 @@ import vazkii.tinkerer.lib.LibResources;
 public final class IconHelper {
 
 	private static Icon emptyTexture;
-	
+
 	public static Icon forName(IconRegister ir, String name) {
 		return ir.registerIcon(LibMisc.MOD_ID + ":" + name);
 	}
@@ -36,7 +36,7 @@ public final class IconHelper {
 	public static Icon forBlock(IconRegister ir, Block block, int i) {
 		return forName(ir, block.getUnlocalizedName().replaceAll("tile.", "") + i);
 	}
-	
+
 	public static Icon emptyTexture(IconRegister ir) {
 		return emptyTexture == null ? (emptyTexture = forName(ir, LibResources.EMTPY_TEXTURE)) : emptyTexture;
 	}

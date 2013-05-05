@@ -28,10 +28,12 @@ public final class ModBlocks {
 
 	public static Block glowstoneGas;
 	public static Block transmutator;
+	public static Block wardChest;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
 		transmutator = new BlockTransmutator(LibBlockIDs.idTransmutator).setUnlocalizedName(LibBlockNames.TRANSMUTATOR);
+		wardChest = new BlockWardChest(LibBlockIDs.idWardChest).setUnlocalizedName(LibBlockNames.WARD_CHEST);
 
 		registerBlocks();
 		nameBlocks();
@@ -41,11 +43,13 @@ public final class ModBlocks {
 	private static void registerBlocks() {
 		GameRegistry.registerBlock(glowstoneGas, LibBlockNames.GLOWSTONE_GAS);
 		GameRegistry.registerBlock(transmutator, LibBlockNames.TRANSMUTATOR);
+		GameRegistry.registerBlock(wardChest, LibBlockNames.WARD_CHEST);
 	}
 
 	private static void nameBlocks() {
 		LanguageRegistry.addName(glowstoneGas, LibBlockNames.GLOWSTONE_GAS_D);
 		LanguageRegistry.addName(transmutator, LibBlockNames.TRANSMUTATOR_D);
+		LanguageRegistry.addName(wardChest, LibBlockNames.WARD_CHEST_D);
 	}
 
 	private static void registerObjectTags() {

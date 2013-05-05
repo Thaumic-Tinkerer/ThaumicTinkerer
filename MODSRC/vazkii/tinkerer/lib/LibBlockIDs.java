@@ -18,8 +18,9 @@ public final class LibBlockIDs {
 
 	public static final int DEFAULT_GLOWSTONE_GAS = 2150;
 	public static final int DEFAULT_TRANSMUTATOR = 2151;
+	public static final int DEFAULT_WARD_CHEST = 2152;
 
 	public static int idGlowstoneGas;
 	public static int idTransmutator;
-
+	public static int idWardChest;
 }

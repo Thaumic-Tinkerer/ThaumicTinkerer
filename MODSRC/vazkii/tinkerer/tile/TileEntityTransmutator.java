@@ -53,7 +53,7 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 					NBTTagCompound cmp = setStack.getTagCompound();
 					cmp.removeTag("ench");
 				}
-				
+
 				setInventorySlotContents(1, setStack);
 			}
 			else setInventorySlotContents(1, null);

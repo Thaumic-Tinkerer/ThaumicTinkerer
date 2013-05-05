@@ -32,4 +32,7 @@ public final class LibBlockNames {
 	public static final String TRANSMUTATOR_R = "TRANSMUTATOR";
 	public static final String TRANSMUTATOR_D = "Transmutator";
 
+	public static final String WARD_CHEST = "wardChest";
+	public static final String WARD_CHEST_R = "WARD_CHEST";
+	public static final String WARD_CHEST_D = "Warded Chest";
 }
