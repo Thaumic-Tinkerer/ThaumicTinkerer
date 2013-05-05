@@ -33,6 +33,7 @@ public final class ModResearchItems {
 	public static ResearchItem nametag;
 	public static ResearchItem transmutator;
 	public static ResearchItem xpTalisman;
+	public static ResearchItem fireBracelet;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -58,5 +59,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.EVIL, 8).add(EnumTag.TRAP, 16).add(EnumTag.KNOWLEDGE, 12);
 		xpTalisman = new ResearchItem(LibItemNames.XP_TALISMAN_R, tags, -4, 14, ModItems.xpTalisman).setParents(Config.researchJarBrain).registerResearchItem();
+	
+		tags = new ObjectTags().add(EnumTag.FIRE, 8).add(EnumTag.ROCK, 12).add(EnumTag.METAL, 4);
+		fireBracelet = new ResearchItem(LibItemNames.FIRE_BRACELET_R, tags, -4, 9, ModItems.fireBracelet).setParents(Config.researchArcaneBellows).registerResearchItem();
 	}
 }

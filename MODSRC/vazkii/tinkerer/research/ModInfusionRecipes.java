@@ -61,6 +61,13 @@ public final class ModInfusionRecipes {
 				'O', new ItemStack(Block.obsidian),
 				'G', new ItemStack(Item.ingotGold),
 				'B', new ItemStack(Config.itemResource, 1, 5));
+		
+		tags = new ObjectTags().add(EnumTag.FIRE, 8).add(EnumTag.ROCK, 6).add(EnumTag.METAL, 12);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.FIRE_BRACELET_R, LibItemNames.FIRE_BRACELET_R, 85, tags, new ItemStack(ModItems.fireBracelet),
+				"O O", "ILI",
+				'O', new ItemStack(Block.obsidian),
+				'I', new ItemStack(Item.ingotIron),
+				'L', new ItemStack(Item.bucketLava));
 	}
 
 }

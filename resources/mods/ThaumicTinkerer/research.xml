@@ -89,4 +89,15 @@ To switch the ability to store experience, you need to shift-right-click on the 
 <page type = "infusioncrafting">XP_TALISMAN</page>
 </project>
 
+<!-- ======================================== Infernal Bracelet /-->
+<project id = "FIRE_BRACELET" version = "1">
+<name>Infernal Bracelet</name>
+<popupText>[TT] Hands of Hell</popupText>
+<longText>Knowing the power of an Infernal Furnace, you are trying to figure out how to bring that power with you for better usage.</longText>
+<page type = "text">Knowing the ability of an Infernal Furnace to smelt items, you went on to study a way of using that power from your hands.
+
+This bracelet smelts blocks in the world with a right click on them. In order for it to do so, it needs to be charged by right clicking on an active Arcane Bellows, in order to convey the energy of the furnace.</page>
+<page type = "infusioncrafting">FIRE_BRACELET</page>
+</project>
+
 </research>

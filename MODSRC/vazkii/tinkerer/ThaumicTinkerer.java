@@ -24,6 +24,7 @@ import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibNetwork;
 import vazkii.tinkerer.lib.LibResources;
+import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.PlayerTracker;
 import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.research.ModArcaneRecipes;
