@@ -59,7 +59,7 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.EVIL, 8).add(EnumTag.TRAP, 16).add(EnumTag.KNOWLEDGE, 12);
 		xpTalisman = new ResearchItem(LibItemNames.XP_TALISMAN_R, tags, -4, 14, ModItems.xpTalisman).setParents(Config.researchJarBrain).setHidden().registerResearchItem();
-	
+
 		tags = new ObjectTags().add(EnumTag.FIRE, 8).add(EnumTag.ROCK, 12).add(EnumTag.METAL, 4);
 		fireBracelet = new ResearchItem(LibItemNames.FIRE_BRACELET_R, tags, -4, 9, ModItems.fireBracelet).setParents(Config.researchArcaneBellows).setHidden().registerResearchItem();
 	}

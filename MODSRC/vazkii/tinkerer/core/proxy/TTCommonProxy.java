@@ -19,6 +19,7 @@ import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
+import vazkii.tinkerer.tile.TileEntityWardChest;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TTCommonProxy {
@@ -27,6 +28,7 @@ public class TTCommonProxy {
 
 	public void initTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityTransmutator.class, tileName(LibBlockNames.TRANSMUTATOR));
+		GameRegistry.registerTileEntity(TileEntityWardChest.class, tileName(LibBlockNames.WARD_CHEST));
 	}
 
 	public void initPackets() {
