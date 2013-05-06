@@ -38,16 +38,20 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
+		int meta = tileentity.getBlockMetadata();
+		int rotation = meta == 2 ? 180 : meta == 3 ? 0 : meta == 4 ? 90 : 270;
+		
         GL11.glPushMatrix();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-        GL11.glEnable(GL11.GL_BLEND);
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
 
 		bindTextureByName(LibResources.MODEL_WARD_CHEST);
         GL11.glTranslatef(0F, 1F, 1F);
         GL11.glScalef(1F, -1F, -1F);
-        GL11.glRotatef(0F, 0F, 1F, 0F);
+        GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+        GL11.glRotatef(rotation, 0F, 1F, 0F);
+        GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
         chestModel.chestBelow.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
         chestModel.chestKnob.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
@@ -68,13 +72,13 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 		bindTextureByName(LibResources.MODEL_WARD_CHEST);
         GL11.glTranslatef(0F, 1F, 1F);
         GL11.glScalef(1F, -1F, -1F);
-        GL11.glRotatef(0F, 0F, 1F, 0F);
+        GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+        GL11.glRotatef(rotation, 0F, 1F, 0F);
+        GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
         chestModel.chestLid.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
         GL11.glColor4f(1F, 1F, 1F, 1F);
-
-
 	}
 
 	private void renderOverlay(TileEntityWardChest chest) {
