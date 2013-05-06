@@ -64,7 +64,7 @@ public class TileEntityWardChest extends TileOwned implements ISidedInventory, n
     public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
 
-        par1NBTTagCompound.setString(TAG_CUSTOM_NAME, customName);
+        par1NBTTagCompound.setString(TAG_CUSTOM_NAME, customName == null ? "" : customName);
 
     	NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
