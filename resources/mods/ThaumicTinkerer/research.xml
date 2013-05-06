@@ -100,4 +100,14 @@ This bracelet smelts blocks in the world with a right click on them. In order fo
 <page type = "infusioncrafting">FIRE_BRACELET</page>
 </project>
 
+<!-- ======================================== Warded Chest /-->
+<project id = "WARD_CHEST" version = "1">
+<name>Warded Chest</name>
+<popupText>[TT] Safe as can be</popupText>
+<longText>Knowing how safe Warded blocks can be, you are trying to find out a way to make them into item storage.</longText>
+<page type = "text">After creating, and working with Warded Blocks, you have discovered a way of making them into storage. This chest is completely safe and can only be opened by the person who placed it. It also has an extended storage space.
+
+Similarly to Warded Blocks, this chest can be removed with a wand. On a negative note, the chest lacks a keyhole.</page>
+<page type = "infusioncrafting">WARD_CHEST</page>
+</project>
 </research>

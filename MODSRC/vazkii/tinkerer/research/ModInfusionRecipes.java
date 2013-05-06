@@ -68,6 +68,15 @@ public final class ModInfusionRecipes {
 				'O', new ItemStack(Block.obsidian),
 				'I', new ItemStack(Item.ingotIron),
 				'L', new ItemStack(Item.bucketLava));
+
+		tags = new ObjectTags().add(EnumTag.VOID, 12).add(EnumTag.MAGIC, 16);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.WARD_CHEST_R, LibBlockNames.WARD_CHEST_R, 8, tags, new ItemStack(ModBlocks.wardChest),
+				"GGG", "IBI", "WCW",
+				'G', new ItemStack(Config.blockCosmeticOpaque, 1, 2),
+				'I', new ItemStack(Config.itemResource, 1, 2),
+				'B', new ItemStack(Config.itemResource, 1, 5),
+				'W', new ItemStack(Config.blockWooden),
+				'C', new ItemStack(Block.chest));
 	}
 
 }

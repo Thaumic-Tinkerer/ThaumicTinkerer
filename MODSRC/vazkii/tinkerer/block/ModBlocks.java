@@ -55,6 +55,9 @@ public final class ModBlocks {
 	private static void registerObjectTags() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.WOOD, 16).add(EnumTag.EXCHANGE, 64).add(EnumTag.FLUX, 24).add(EnumTag.MECHANISM, 8).add(EnumTag.MAGIC, 16);
 		ThaumcraftApi.registerObjectTag(transmutator.blockID, LibMisc.CRAFTING_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.WOOD, 16).add(EnumTag.VOID, 18).add(EnumTag.MAGIC, 12);
+		ThaumcraftApi.registerObjectTag(wardChest.blockID, LibMisc.CRAFTING_META_WILDCARD, tags);
 	}
 
 }

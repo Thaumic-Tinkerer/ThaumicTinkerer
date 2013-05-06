@@ -34,6 +34,7 @@ public final class ModResearchItems {
 	public static ResearchItem transmutator;
 	public static ResearchItem xpTalisman;
 	public static ResearchItem fireBracelet;
+	public static ResearchItem wardChest;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -62,5 +63,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.FIRE, 8).add(EnumTag.ROCK, 12).add(EnumTag.METAL, 4);
 		fireBracelet = new ResearchItem(LibItemNames.FIRE_BRACELET_R, tags, -4, 9, ModItems.fireBracelet).setParents(Config.researchArcaneBellows).setHidden().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.WOOD, 12).add(EnumTag.VOID, 12).add(EnumTag.MAGIC, 16);
+		wardChest = new ResearchItem(LibBlockNames.WARD_CHEST_R, tags, 3, 11, ModBlocks.wardChest).setParents(Config.researchArcaneDoor).registerResearchItem();
 	}
 }
