@@ -31,6 +31,19 @@ public class TileEntityWardChest extends TileOwned implements ISidedInventory, n
     private ItemStack[] inventorySlots = new ItemStack[54];
     public String customName;
 
+    public double ticksExisted;
+
+    @Override
+    public boolean canUpdate() {
+    	return true;
+    }
+
+    @Override
+    public void updateEntity() {
+    	super.updateEntity();
+    	ticksExisted++;
+    }
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);

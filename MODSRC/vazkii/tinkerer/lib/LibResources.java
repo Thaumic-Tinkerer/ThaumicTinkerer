@@ -32,6 +32,7 @@ public final class LibResources {
 	public static final String MODEL_WARD_CHEST = ROOT_MODEL + "chestWard.png";
 
 	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
+	public static final String MISC_WARD_CHEST_OVERLAY = BLUR + ROOT_MISC + "wardChestOverlay.png";
 
 	public static final String EMTPY_TEXTURE = "emptyTexture";
 
