@@ -23,6 +23,7 @@ import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.tile.TileEntityWardChest;
@@ -38,9 +39,9 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
-		int meta = tileentity.getBlockMetadata();
+		int meta = tileentity.worldObj == null ? 3 : tileentity.getBlockMetadata();
 		int rotation = meta == 2 ? 180 : meta == 3 ? 0 : meta == 4 ? 90 : 270;
-		
+
         GL11.glPushMatrix();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -66,6 +67,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
         GL11.glPushMatrix();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
 
@@ -77,6 +79,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
         GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
         chestModel.chestLid.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        GL11.glDisable(GL11.GL_BLEND);
         GL11.glPopMatrix();
         GL11.glColor4f(1F, 1F, 1F, 1F);
 	}
@@ -87,8 +90,9 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND);
+
 		GL11.glTranslatef(0.5F, 0.65F, 0.5F);
-		float deg = (float) (chest.ticksExisted % 360F);
+		float deg = (float) ((chest.worldObj == null ? ClientTickHandler.clientTicksElapsed : chest.ticksExisted) % 360F);
 		GL11.glRotatef(deg, 0F, 1F, 0F);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		Tessellator tess = Tessellator.instance;
@@ -99,6 +103,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
 		tess.addVertexWithUV(-0.45, 0, -0.45, 0, 0);
 		tess.draw();
 		GL11.glEnable(GL11.GL_LIGHTING);
+		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
 }

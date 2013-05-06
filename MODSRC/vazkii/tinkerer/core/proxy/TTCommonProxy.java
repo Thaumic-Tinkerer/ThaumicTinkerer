@@ -31,6 +31,8 @@ public class TTCommonProxy {
 		GameRegistry.registerTileEntity(TileEntityWardChest.class, tileName(LibBlockNames.WARD_CHEST));
 	}
 
+	public void initRenders() { }
+
 	public void initPackets() {
 		PacketManager.packetHandlers.add(new PacketVerification());
 	}

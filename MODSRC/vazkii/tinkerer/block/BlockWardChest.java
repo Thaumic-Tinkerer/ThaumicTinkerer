@@ -19,10 +19,15 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.common.Config;
+import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.tile.TileEntityWardChest;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWardChest extends BlockModContainer {
 
@@ -32,6 +37,7 @@ public class BlockWardChest extends BlockModContainer {
 		setHardness(6000F);
 		disableStats();
         setStepSound(soundWoodFootstep);
+        setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
         ThaumcraftApi.portableHoleBlackList.add(par1);
 	}
 
@@ -83,8 +89,14 @@ public class BlockWardChest extends BlockModContainer {
     }
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int par1, int par2) {
+		return Config.blockWooden.getIcon(par1, 0);
+	}
+
+	@Override
     public int getRenderType() {
-        return 22;
+        return LibRenderIDs.idWardChest;
     }
 
 	@Override

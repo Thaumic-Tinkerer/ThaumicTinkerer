@@ -77,6 +77,7 @@ public class ThaumicTinkerer {
 		ModPotions.initPotions();
 
 		proxy.initTileEntities();
+		proxy.initRenders();
 
 		MinecraftForge.EVENT_BUS.register(new EntityInteractionHandler());
 

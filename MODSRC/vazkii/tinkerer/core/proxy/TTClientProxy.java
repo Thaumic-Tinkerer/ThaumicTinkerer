@@ -14,14 +14,17 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
+import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -33,7 +36,6 @@ public class TTClientProxy extends TTCommonProxy {
 
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 	}
-
 
 	@Override
 	public void initTileEntities() {
@@ -47,6 +49,13 @@ public class TTClientProxy extends TTCommonProxy {
 	public void initPackets() {
 		super.initPackets();
 		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
+	}
+
+	@Override
+	public void initRenders() {
+		LibRenderIDs.idWardChest = RenderingRegistry.getNextAvailableRenderId();
+
+		RenderingRegistry.registerBlockHandler(new RenderWardChest());
 	}
 
 }
