@@ -10,6 +10,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_NAMETAG = 21155;
 	public static final int DEFAULT_XP_TALISMAN = 21156;
 	public static final int DEFAULT_FIRE_BRACELET = 21157;
+	public static final int DEFAULT_DARK_QUARTZ = 21158;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -19,4 +20,5 @@ public final class LibItemIDs {
 	public static int idNametag;
 	public static int idXpTalisman;
 	public static int idFireBracelet;
+	public static int idDarkQuartz;
 }

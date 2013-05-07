@@ -41,4 +41,9 @@ public final class LibItemNames {
 	public static final String FIRE_BRACELET = "fireBracelet";
 	public static final String FIRE_BRACELET_R = "FIRE_BRACELET";
 	public static final String FIRE_BRACELET_D = "Infernal Bracelet";
+
+	public static final String DARK_QUARTZ = "darkQuartz";
+	public static final String DARK_QUARTZ_D = "Smokey Quartz";
+	public static final String DARK_QUARTZ_R = "DARK_QUARTZ";
+
 }

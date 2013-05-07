@@ -33,10 +33,15 @@ public final class ConfigurationHandler {
 		LibItemIDs.idNametag = loadItem(LibItemNames.NAMETAG, LibItemIDs.DEFAULT_NAMETAG);
 		LibItemIDs.idXpTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.DEFAULT_XP_TALISMAN);
 		LibItemIDs.idFireBracelet = loadItem(LibItemNames.FIRE_BRACELET, LibItemIDs.DEFAULT_FIRE_BRACELET);
+		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.DEFAULT_DARK_QUARTZ);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);
+		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.DEFAULT_DARK_QUARTZ);
+		LibBlockIDs.idDarkQuartzStairs = loadBlock(LibBlockNames.DARK_QUARTZ_STAIRS, LibBlockIDs.DEFAULT_DARK_QUARTZ_STAIRS);
+		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.DEFAULT_DARK_QUARTZ_SLAB);
+		LibBlockIDs.idDarkQuartzSlabFull = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB_FULL, LibBlockIDs.DEFAULT_DARK_QUARTZ_SLAB_FULL);
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 

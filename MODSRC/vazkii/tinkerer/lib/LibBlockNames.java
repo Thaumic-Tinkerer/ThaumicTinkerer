@@ -25,8 +25,6 @@ public final class LibBlockNames {
 	 */
 
 	public static final String GLOWSTONE_GAS = LibItemNames.GLOWSTONE_GAS;
-	public static final String GLOWSTONE_GAS_R = LibItemNames.GLOWSTONE_GAS_R;
-	public static final String GLOWSTONE_GAS_D = LibItemNames.GLOWSTONE_GAS_D;
 
 	public static final String TRANSMUTATOR = "transmutator";
 	public static final String TRANSMUTATOR_R = "TRANSMUTATOR";
@@ -35,4 +33,20 @@ public final class LibBlockNames {
 	public static final String WARD_CHEST = "wardChest";
 	public static final String WARD_CHEST_R = "WARD_CHEST";
 	public static final String WARD_CHEST_D = "Warded Chest";
+
+	public static final String DARK_QUARTZ = "darkQuartz";
+
+	public static final String DARK_QUARTZ_STAIRS = "darkQuartzStairs";
+	public static final String DARK_QUARTZ_STAIRS_D = "Smokey Quartz Stairs";
+
+	public static final String DARK_QUARTZ_SLAB = "darkQuartzSlab";
+	public static final String DARK_QUARTZ_SLAB_D = "Smokey Quartz Slab";
+
+	public static final String DARK_QUARTZ_SLAB_FULL = "darkQuartzSlabFull";
+
+	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
+		"Block of Smokey Quartz",
+		"Chiseled Smokey Quartz Block",
+		"Pillar Smokey Quartz Block"
+	};
 }

@@ -28,6 +28,7 @@ import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.PlayerTracker;
 import vazkii.tinkerer.potion.ModPotions;
 import vazkii.tinkerer.research.ModArcaneRecipes;
+import vazkii.tinkerer.research.ModCraftingRecipes;
 import vazkii.tinkerer.research.ModInfusionRecipes;
 import vazkii.tinkerer.research.ModResearchItems;
 import vazkii.tinkerer.util.handler.ConfigurationHandler;
@@ -92,6 +93,7 @@ public class ThaumicTinkerer {
 		ModResearchItems.registerModResearchItems();
 		ModInfusionRecipes.initInfusionRecipes();
 		ModArcaneRecipes.initArcaneRecipes();
+		ModCraftingRecipes.initCraftingRecipes();
 	}
 
 }

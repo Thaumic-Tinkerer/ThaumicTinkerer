@@ -18,6 +18,8 @@ import net.minecraft.block.Block;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
+import vazkii.tinkerer.item.ItemDarkQuartzBlock;
+import vazkii.tinkerer.item.ItemDarkQuartzSlab;
 import vazkii.tinkerer.lib.LibBlockIDs;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibMisc;
@@ -29,11 +31,19 @@ public final class ModBlocks {
 	public static Block glowstoneGas;
 	public static Block transmutator;
 	public static Block wardChest;
+	public static Block darkQuartz;
+	public static Block darkQuartzStairs;
+	public static Block darkQuartzSlab;
+	public static Block darkQuartzSlabFull;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
 		transmutator = new BlockTransmutator(LibBlockIDs.idTransmutator).setUnlocalizedName(LibBlockNames.TRANSMUTATOR);
 		wardChest = new BlockWardChest(LibBlockIDs.idWardChest).setUnlocalizedName(LibBlockNames.WARD_CHEST);
+		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
+		darkQuartzStairs = new BlockDarkQuartzStairs(LibBlockIDs.idDarkQuartzStairs).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_STAIRS);
+		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
+		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 
 		registerBlocks();
 		nameBlocks();
@@ -44,12 +54,16 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(glowstoneGas, LibBlockNames.GLOWSTONE_GAS);
 		GameRegistry.registerBlock(transmutator, LibBlockNames.TRANSMUTATOR);
 		GameRegistry.registerBlock(wardChest, LibBlockNames.WARD_CHEST);
+		GameRegistry.registerBlock(darkQuartz, ItemDarkQuartzBlock.class, LibBlockNames.DARK_QUARTZ);
+		GameRegistry.registerBlock(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS);
+		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
+		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 	}
 
 	private static void nameBlocks() {
-		LanguageRegistry.addName(glowstoneGas, LibBlockNames.GLOWSTONE_GAS_D);
 		LanguageRegistry.addName(transmutator, LibBlockNames.TRANSMUTATOR_D);
 		LanguageRegistry.addName(wardChest, LibBlockNames.WARD_CHEST_D);
+		LanguageRegistry.addName(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS_D);
 	}
 
 	private static void registerObjectTags() {

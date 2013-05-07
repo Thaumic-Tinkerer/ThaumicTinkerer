@@ -110,4 +110,19 @@ This bracelet smelts blocks in the world with a right click on them. In order fo
 Similarly to Warded Blocks, this chest can be removed with a wand. On a negative note, the chest lacks a keyhole.</page>
 <page type = "infusioncrafting">WARD_CHEST</page>
 </project>
+
+<!-- ======================================== Smokey Quartz /-->
+<project id = "DARK_QUARTZ" version = "1">
+<name>Smokey Quartz</name>
+<popupText>[TT] Inverted Looks</popupText>
+<page type = "text">Smokey Quartz is pretty much Quartz, but negative. All regular blocks that can be made with quartz, can also be made with smokey quartz, and they look black.
+
+Dark Quartz itself can be made with a piece of coal or charcoal for tinting, and a few pieces of regular nether quartz.</page>
+<page type = "crafting">DARK_QUARTZ0</page>
+<page type = "crafting">DARK_QUARTZ1</page>
+<page type = "crafting">DARK_QUARTZ2</page>
+<page type = "crafting">DARK_QUARTZ3</page>
+<page type = "crafting">DARK_QUARTZ4</page>
+<page type = "crafting">DARK_QUARTZ5</page>
+</project>
 </research>
