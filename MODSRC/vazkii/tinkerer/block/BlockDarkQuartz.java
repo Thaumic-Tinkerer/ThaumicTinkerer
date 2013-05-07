@@ -22,6 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.util.helper.IconHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockDarkQuartz extends BlockMod {
 
@@ -38,6 +40,7 @@ public class BlockDarkQuartz extends BlockMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
     public Icon getIcon(int par1, int par2) {
         if (par2 != 2 && par2 != 3 && par2 != 4) {
             if (par1 != 1 && (par1 != 0 || par2 != 1)) {
@@ -93,6 +96,7 @@ public class BlockDarkQuartz extends BlockMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
@@ -100,6 +104,7 @@ public class BlockDarkQuartz extends BlockMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
 		darkQuartzIcons = new Icon[iconNames.length];
 
