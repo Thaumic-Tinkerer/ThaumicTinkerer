@@ -11,6 +11,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_XP_TALISMAN = 21156;
 	public static final int DEFAULT_FIRE_BRACELET = 21157;
 	public static final int DEFAULT_DARK_QUARTZ = 21158;
+	public static final int DEFAULT_TELEPORT_SIGIL = 21159;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -21,4 +22,5 @@ public final class LibItemIDs {
 	public static int idXpTalisman;
 	public static int idFireBracelet;
 	public static int idDarkQuartz;
+	public static int idTeleportSigil;
 }

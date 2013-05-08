@@ -34,6 +34,7 @@ public final class ModItems {
 	public static Item xpTalisman;
 	public static Item fireBracelet;
 	public static Item darkQuartz;
+	public static Item teleportSigil;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -45,7 +46,8 @@ public final class ModItems {
 		xpTalisman = new ItemXPTalisman(LibItemIDs.idXpTalisman).setUnlocalizedName(LibItemNames.XP_TALISMAN);
 		fireBracelet = new ItemFireBracelet(LibItemIDs.idFireBracelet).setUnlocalizedName(LibItemNames.FIRE_BRACELET);
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
-
+		teleportSigil = new ItemTeleportSigil(LibItemIDs.idTeleportSigil).setUnlocalizedName(LibItemNames.TELEPORTATION_SIGIL);
+		
 		nameItems();
 		applyObjectTags();
 	}
@@ -60,6 +62,7 @@ public final class ModItems {
 		LanguageRegistry.addName(xpTalisman, LibItemNames.XP_TALISMAN_D);
 		LanguageRegistry.addName(fireBracelet, LibItemNames.FIRE_BRACELET_D);
 		LanguageRegistry.addName(darkQuartz, LibItemNames.DARK_QUARTZ_D);
+		LanguageRegistry.addName(teleportSigil, LibItemNames.TELEPORTATION_SIGIL_D);
 	}
 
 	private static void applyObjectTags() {

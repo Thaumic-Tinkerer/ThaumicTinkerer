@@ -34,7 +34,8 @@ public final class ConfigurationHandler {
 		LibItemIDs.idXpTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.DEFAULT_XP_TALISMAN);
 		LibItemIDs.idFireBracelet = loadItem(LibItemNames.FIRE_BRACELET, LibItemIDs.DEFAULT_FIRE_BRACELET);
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.DEFAULT_DARK_QUARTZ);
-
+		LibItemIDs.idTeleportSigil = loadItem(LibItemNames.TELEPORTATION_SIGIL, LibItemIDs.DEFAULT_TELEPORT_SIGIL);
+		
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);

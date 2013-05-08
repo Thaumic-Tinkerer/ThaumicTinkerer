@@ -15,6 +15,9 @@
 package vazkii.tinkerer.block;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -36,6 +39,7 @@ public class BlockDarkQuartzSlab extends BlockHalfSlab {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
     public Icon getIcon(int par1, int par2) {
         return ModBlocks.darkQuartz.getBlockTextureFromSide(par1);
     }
@@ -56,6 +60,7 @@ public class BlockDarkQuartzSlab extends BlockHalfSlab {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
