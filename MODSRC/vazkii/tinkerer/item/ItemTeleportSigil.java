@@ -14,18 +14,25 @@
  */
 package vazkii.tinkerer.item;
 
-import java.util.List;
-
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.client.util.helper.IconHelper;
+import vazkii.tinkerer.util.helper.ItemNBTHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTeleportSigil extends ItemMod {
 
+	private static final String TAG_X = "x";
+	private static final String TAG_Y = "y";
+	private static final String TAG_Z = "z";
+	private static final String TAG_DIMENSION = "dim";
+	
 	Icon enabledIcon;
 	
 	public ItemTeleportSigil(int par1) {
@@ -34,12 +41,50 @@ public class ItemTeleportSigil extends ItemMod {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		super.getSubItems(par1, par2CreativeTabs, par3List);
-		par3List.add(new ItemStack(par1, 1, 1)); // TODO Temporary!
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if(stack.getItemDamage() == 1)
+			return true;
+		
+		setData(stack, player.dimension, x, y, z);
+		// TODO Fancify
+
+		return true;
 	}
 	
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		if(par1ItemStack.getItemDamage() == 1) {
+			// TODO Something breaks in MP?
+			if(par3EntityPlayer instanceof EntityPlayerMP && !par2World.isRemote) {
+				regressStatus(par1ItemStack, (EntityPlayerMP) par3EntityPlayer);
+				par1ItemStack.stackSize--;
+			}
+			// TODO Fancify, Charge!
+		}
+		
+		return par1ItemStack;
+	}
+	
+	@Override
+	public boolean getShareTag() {
+		return true;
+	}
+	
+	private static void setData(ItemStack stack, int dim, int x, int y, int z) {
+		ItemNBTHelper.setInt(stack, TAG_X, x);
+		ItemNBTHelper.setInt(stack, TAG_Y, y);
+		ItemNBTHelper.setInt(stack, TAG_Z, z);
+		ItemNBTHelper.setInt(stack, TAG_DIMENSION, dim);
+		stack.setItemDamage(1);
+	}
+	
+	private static void regressStatus(ItemStack stack, EntityPlayerMP player) {
+		int x = ItemNBTHelper.getInt(stack, TAG_X, 0);
+		int y = ItemNBTHelper.getInt(stack, TAG_Y, 0);
+		int z = ItemNBTHelper.getInt(stack, TAG_Z, 0);
+
+		player.playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationPitch, player.rotationYaw);
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
