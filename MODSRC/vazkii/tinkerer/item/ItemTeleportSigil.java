@@ -19,6 +19,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.util.Vec3;
@@ -140,6 +141,12 @@ public class ItemTeleportSigil extends ItemMod {
 		int z = ItemNBTHelper.getInt(stack, TAG_Z, 0);
 
 		player.playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationPitch, player.rotationYaw);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return EnumRarity.uncommon;
 	}
 
 	@Override

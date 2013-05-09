@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
@@ -134,6 +135,12 @@ public class ItemXPTalisman extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public Icon getIconFromDamage(int par1) {
 		return par1 == 1 ? enabledIcon : itemIcon;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return EnumRarity.uncommon;
 	}
 
 	public static boolean hasCmp(ItemStack stack) {
