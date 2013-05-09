@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -38,6 +39,7 @@ public class ItemTeleportSigil extends ItemMod {
 	public ItemTeleportSigil(int par1) {
 		super(par1);
 		setMaxStackSize(1);
+		setHasSubtypes(true);
 	}
 	
 	@Override
@@ -45,12 +47,22 @@ public class ItemTeleportSigil extends ItemMod {
 		if(stack.getItemDamage() == 1)
 			return true;
 		
-		setData(stack, player.dimension, x, y, z);
-		// TODO Fancify
+		if(world.isRemote)
+			player.swingItem();
+		else setData(stack, player.dimension, x, y, z);
+		
+		world.playSoundAtEntity(player, "thaumcraft.tool", 1F, 1F);
+		for(int i = 0; i < 20; i++) {
+			double x1 = x + Math.random();
+			double y1 = y + Math.random() + 0.75;
+			double z1 = z + Math.random();
+			ThaumicTinkerer.tcProxy.wispFX2(world, x1, y1, z1, 0.25F, 5, true, -0.02F);
+		}
 
 		return true;
 	}
 	
+	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(par1ItemStack.getItemDamage() == 1) {
 			// TODO Something breaks in MP?
@@ -84,7 +96,7 @@ public class ItemTeleportSigil extends ItemMod {
 
 		player.playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationPitch, player.rotationYaw);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
