@@ -47,7 +47,7 @@ public final class ModItems {
 		fireBracelet = new ItemFireBracelet(LibItemIDs.idFireBracelet).setUnlocalizedName(LibItemNames.FIRE_BRACELET);
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		teleportSigil = new ItemTeleportSigil(LibItemIDs.idTeleportSigil).setUnlocalizedName(LibItemNames.TELEPORTATION_SIGIL);
-		
+
 		nameItems();
 		applyObjectTags();
 	}

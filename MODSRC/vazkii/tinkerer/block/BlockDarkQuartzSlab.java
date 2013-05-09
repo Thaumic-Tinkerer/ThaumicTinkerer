@@ -15,9 +15,6 @@
 package vazkii.tinkerer.block;
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -25,6 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockDarkQuartzSlab extends BlockHalfSlab {
 

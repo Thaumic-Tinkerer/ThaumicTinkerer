@@ -14,6 +14,11 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
+import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
@@ -56,6 +61,14 @@ public class TTClientProxy extends TTCommonProxy {
 		LibRenderIDs.idWardChest = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
+	}
+
+	@Override
+	public void sigilLightning(World world, ItemStack stack, EntityPlayer player, Vec3 end) {
+		FXLightningBolt lightning = new FXLightningBolt(world, player.posX + player.width / 2, player.posY - player.height / 2, player.posZ + player.width / 2, end.xCoord, end.yCoord, end.zCoord, world.rand.nextLong(), 10, 2F, 5);
+		lightning.defaultFractal();
+		lightning.setType(5);
+		lightning.finalizeBolt();
 	}
 
 }

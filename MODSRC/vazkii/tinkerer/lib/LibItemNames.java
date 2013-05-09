@@ -45,7 +45,7 @@ public final class LibItemNames {
 	public static final String DARK_QUARTZ = "darkQuartz";
 	public static final String DARK_QUARTZ_D = "Smokey Quartz";
 	public static final String DARK_QUARTZ_R = "DARK_QUARTZ";
-	
+
 	public static final String TELEPORTATION_SIGIL = "teleportSigil";
 	public static final String TELEPORTATION_SIGIL_D = "Sigil of Memories";
 	public static final String TELEPORTATION_SIGIL_R = "TELEPORTATION_SIGIL";

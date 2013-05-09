@@ -14,6 +14,10 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
@@ -41,4 +45,5 @@ public class TTCommonProxy {
 		return LibMisc.MOD_ID + "_" + name;
 	}
 
+	public void sigilLightning(World world, ItemStack stack, EntityPlayer player, Vec3 end) { }
 }
