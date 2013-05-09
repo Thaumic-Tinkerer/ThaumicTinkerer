@@ -52,7 +52,7 @@ public class ItemFireBracelet extends ItemMod {
 			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(stack);
 
 			if(result != null && result.getItem() instanceof ItemBlock) {
-				par3World.setBlock(par4, par5, par6, result.itemID, result.getItemDamage(), 2);
+				par3World.setBlock(par4, par5, par6, result.itemID, result.getItemDamage(), 1 | 2);
 				par1ItemStack.damageItem(1, par2EntityPlayer);
 				par3World.playSoundAtEntity(par2EntityPlayer, "fire.ignite", 0.6F, 1F);
 				par3World.playSoundAtEntity(par2EntityPlayer, "fire.fire", 1F, 1F);

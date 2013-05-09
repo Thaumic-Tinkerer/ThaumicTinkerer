@@ -79,7 +79,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 	                ++arg3;
 
 				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(arg2, arg3, arg4, arg5, ForgeDirection.getOrientation(arg6).getOpposite().ordinal(), stack)) {
-					arg2.setBlock(arg3, arg4, arg5, stack.itemID, stack.getItemDamage(), 2);
+					arg2.setBlock(arg3, arg4, arg5, stack.itemID, stack.getItemDamage(), 1 | 2);
 					NBTTagCompound tileCmp = ItemNBTHelper.getCompound(arg0, TAG_TILE_CMP, true);
 					if(tileCmp != null && !tileCmp.getTags().isEmpty()) {
 						TileEntity tile1 = TileEntity.createAndLoadEntity(tileCmp);
@@ -95,22 +95,22 @@ public class ItemWandDislocation extends ItemWandTrade {
 
 					for(int i = 0; i < 8; i++) {
 						float x = (float) (arg3 + Math.random());
-						float y = (float) (arg4 + Math.random());
+						float y = (float) (arg4 + Math.random()) + 0.65F;
 						float z = (float) (arg5 + Math.random());
-						ThaumicTinkerer.tcProxy.sparkle(x, y, z, 1F, 2,(float) -Math.random() / 2);
+						ThaumicTinkerer.tcProxy.burst(arg2, x, y, z, 0.2F);
 					}
 					arg2.playSoundAtEntity(arg1, "thaumcraft.wand", 0.5F, 1F);
 				}
 			} else if(!ThaumcraftApi.portableHoleBlackList.contains(id) && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(arg2, arg3, arg4, arg5) != -1F) {
 				arg2.removeBlockTileEntity(arg3, arg4, arg5);
-				arg2.setBlock(arg3, arg4, arg5, 0, 0, 2);
+				arg2.setBlock(arg3, arg4, arg5, 0, 0, 1 | 2);
 				storePickedBlock(arg0, (short) id, (short) meta, tile);
 
 				for(int i = 0; i < 8; i++) {
 					float x = (float) (arg3 + Math.random());
 					float y = (float) (arg4 + Math.random());
 					float z = (float) (arg5 + Math.random());
-					ThaumicTinkerer.tcProxy.sparkle(x, y, z, 1F, 4,(float) -Math.random() / 2);
+					ThaumicTinkerer.tcProxy.burst(arg2, x, y, z, 0.2F);
 				}
 				arg2.playSoundAtEntity(arg1, Block.blocksList[id].stepSound.getBreakSound(), 1F, 1F);
 				arg2.playSoundAtEntity(arg1, "thaumcraft.wand", 0.5F, 1F);
