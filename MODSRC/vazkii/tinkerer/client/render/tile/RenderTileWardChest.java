@@ -68,6 +68,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GL11.glDepthMask(false);
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
 
@@ -80,6 +81,7 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
         chestModel.chestLid.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glDisable(GL11.GL_BLEND);
+        GL11.glDepthMask(true);
         GL11.glPopMatrix();
         GL11.glColor4f(1F, 1F, 1F, 1F);
 	}
