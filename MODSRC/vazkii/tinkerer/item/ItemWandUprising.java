@@ -61,6 +61,7 @@ public class ItemWandUprising extends ItemWandFrost {
 		world.playSoundAtEntity(p, "thaumcraft.wind", 0.4F, 1F);
 		if(world.isRemote)
 			p.swingItem();
+		else itemstack.damageItem(1, p);
 		
 		return itemstack;
 	}
