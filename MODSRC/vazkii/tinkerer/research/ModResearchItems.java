@@ -68,7 +68,7 @@ public final class ModResearchItems {
 		fireBracelet = new ResearchItem(LibItemNames.FIRE_BRACELET_R, tags, -4, 9, ModItems.fireBracelet).setParents(Config.researchArcaneBellows).setHidden().registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.WOOD, 12).add(EnumTag.VOID, 12).add(EnumTag.MAGIC, 16);
-		wardChest = new ResearchItem(LibBlockNames.WARD_CHEST_R, tags, 3, 11, ModBlocks.wardChest).setParents(Config.researchArcaneDoor).registerResearchItem();
+		wardChest = new ResearchItem(LibBlockNames.WARD_CHEST_R, tags, 3, 11, ModBlocks.wardChest).setParents(Config.researchArcaneDoor).setHidden().registerResearchItem();
 
 		tags = new ObjectTags();
 		darkQuartz = new ResearchItem(LibItemNames.DARK_QUARTZ_R, tags, -7, -3, ModItems.darkQuartz).setAutoUnlock().registerResearchItem();
