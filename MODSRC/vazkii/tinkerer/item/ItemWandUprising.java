@@ -15,8 +15,13 @@
 package vazkii.tinkerer.item;
 
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 import thaumcraft.common.items.wands.ItemWandFrost;
+import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
@@ -41,6 +46,23 @@ public class ItemWandUprising extends ItemWandFrost {
 	@SideOnly(Side.CLIENT)
 	public Icon getIconFromDamage(int par1) {
 		return itemIcon;
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer p) {
+		Vec3 vec = p.getLookVec();
+		p.motionX = (vec.xCoord / 1.5);
+		p.motionY = (vec.yCoord / 1.5);
+		p.motionZ = (vec.zCoord / 1.5);
+		p.fallDistance = 0F;
+		
+		for(int i = 0; i < 5; i++)
+			ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) Math.random() * 360, (int) p.posY);
+		world.playSoundAtEntity(p, "thaumcraft.wind", 0.4F, 1F);
+		if(world.isRemote)
+			p.swingItem();
+		
+		return itemstack;
 	}
 
 }
