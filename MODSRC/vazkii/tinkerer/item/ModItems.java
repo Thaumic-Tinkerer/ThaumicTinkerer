@@ -36,6 +36,7 @@ public final class ModItems {
 	public static Item darkQuartz;
 	public static Item teleportSigil;
 	public static Item wandUprising;
+	public static Item swordCondor;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -49,6 +50,7 @@ public final class ModItems {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		teleportSigil = new ItemTeleportSigil(LibItemIDs.idTeleportSigil).setUnlocalizedName(LibItemNames.TELEPORTATION_SIGIL);
 		wandUprising = new ItemWandUprising(LibItemIDs.idWandUprising).setUnlocalizedName(LibItemNames.WAND_UPRISING);
+		swordCondor = new ItemSwordCondor(LibItemIDs.idSwordCondor).setUnlocalizedName(LibItemNames.SWORD_CONDOR);
 
 		nameItems();
 		applyObjectTags();
@@ -66,6 +68,7 @@ public final class ModItems {
 		LanguageRegistry.addName(darkQuartz, LibItemNames.DARK_QUARTZ_D);
 		LanguageRegistry.addName(teleportSigil, LibItemNames.TELEPORTATION_SIGIL_D);
 		LanguageRegistry.addName(wandUprising, LibItemNames.WAND_UPRISING_D);
+		LanguageRegistry.addName(swordCondor, LibItemNames.SWORD_CONDOR_D);
 	}
 
 	private static void applyObjectTags() {

@@ -13,6 +13,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_DARK_QUARTZ = 21158;
 	public static final int DEFAULT_TELEPORT_SIGIL = 21159;
 	public static final int DEFAULT_WAND_UPRISING = 21160;
+	public static final int DEFAULT_SWORD_CONDOR = 21161;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -25,4 +26,5 @@ public final class LibItemIDs {
 	public static int idDarkQuartz;
 	public static int idTeleportSigil;
 	public static int idWandUprising;
+	public static int idSwordCondor;
 }

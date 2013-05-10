@@ -54,4 +54,7 @@ public final class LibItemNames {
 	public static final String WAND_UPRISING_R = "WAND_UPRISING";
 	public static final String WAND_UPRISING_D = "Wand of Uprising";
 
+	public static final String SWORD_CONDOR = "swordCondor";
+	public static final String SWORD_CONDOR_R = "SWORD_CONDOR";
+	public static final String SWORD_CONDOR_D = "Sword of the Condor";
 }

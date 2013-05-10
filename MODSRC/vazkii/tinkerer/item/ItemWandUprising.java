@@ -47,23 +47,28 @@ public class ItemWandUprising extends ItemWandFrost {
 	public Icon getIconFromDamage(int par1) {
 		return itemIcon;
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer p) {
+		return movePlayer(itemstack, world, p, false, 1 / 1.5);
+	}
+
+	// Method also used in ItemSwordCondor
+	protected static ItemStack movePlayer(ItemStack itemstack, World world, EntityPlayer p, boolean inverse, double force) {
 		Vec3 vec = p.getLookVec();
-		p.motionX = (vec.xCoord / 1.5);
-		p.motionY = (vec.yCoord / 1.5);
-		p.motionZ = (vec.zCoord / 1.5);
+		int mul = inverse ? -1 : 1;
+		p.motionX = vec.xCoord * force * mul;
+		p.motionY = vec.yCoord * force * mul;
+		p.motionZ = vec.zCoord * force * mul;
 		p.fallDistance = 0F;
-		
+
 		for(int i = 0; i < 5; i++)
 			ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) Math.random() * 360, (int) p.posY);
 		world.playSoundAtEntity(p, "thaumcraft.wind", 0.4F, 1F);
 		if(world.isRemote)
 			p.swingItem();
 		else itemstack.damageItem(1, p);
-		
+
 		return itemstack;
 	}
-
 }
