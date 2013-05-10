@@ -125,4 +125,15 @@ Dark Quartz itself can be made with a piece of coal or charcoal for tinting, and
 <page type = "crafting">DARK_QUARTZ4</page>
 <page type = "crafting">DARK_QUARTZ5</page>
 </project>
+
+<!-- ======================================== Sigil of Memories /-->
+<project id = "TELEPORTATION_SIGIL" version = "1">
+<name>Sigil of Memories</name>
+<popupText>[TT] I recall this...</popupText>
+<longText>You are planning on creating an item that will allow you return to where you once were before. Some eldritch magic should do...</longText>
+<page type = "text">You have created an item that allows you to return to where you've been before. By right clicking with this sigil somewhere, it'll be bound to it.
+
+After a sigil is bound, you can hold right click it, like a bow to charge it and activate it, which teleports you back to where the sigil was bound at. Shattering it in the proceess.</page>
+<page type = "infusioncrafting">TELEPORTATION_SIGIL</page>
+</project>
 </research>

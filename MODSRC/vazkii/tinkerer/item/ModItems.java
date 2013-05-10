@@ -87,5 +87,7 @@ public final class ModItems {
 		tags = new ObjectTags().add(EnumTag.EVIL, 12).add(EnumTag.KNOWLEDGE, 12).add(EnumTag.TRAP, 24).add(EnumTag.MAGIC, 8);
 		ThaumcraftApi.registerObjectTag(xpTalisman.itemID, LibMisc.TAG_META_WILDCARD, tags);
 
+		tags = new ObjectTags().add(EnumTag.MECHANISM, 12).add(EnumTag.MOTION, 8).add(EnumTag.ELDRITCH, 12);
+		ThaumcraftApi.registerObjectTag(teleportSigil.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }

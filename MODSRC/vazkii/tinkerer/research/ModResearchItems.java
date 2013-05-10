@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.research;
 
+import net.minecraft.item.ItemStack;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.research.ResearchItem;
@@ -36,6 +37,7 @@ public final class ModResearchItems {
 	public static ResearchItem fireBracelet;
 	public static ResearchItem wardChest;
 	public static ResearchItem darkQuartz;
+	public static ResearchItem sigilTeleport;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -70,5 +72,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags();
 		darkQuartz = new ResearchItem(LibItemNames.DARK_QUARTZ_R, tags, -7, -3, ModItems.darkQuartz).setAutoUnlock().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.MECHANISM, 12).add(EnumTag.MOTION, 16).add(EnumTag.ELDRITCH, 5);
+		sigilTeleport = new ResearchItem(LibItemNames.TELEPORTATION_SIGIL_R, tags, -2, 26, new ItemStack(ModItems.teleportSigil, 0, 1)).setParents(Config.researchTTOE).setHidden().registerResearchItem();
 	}
 }

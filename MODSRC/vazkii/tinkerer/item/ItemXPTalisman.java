@@ -136,7 +136,7 @@ public class ItemXPTalisman extends ItemMod {
 	public Icon getIconFromDamage(int par1) {
 		return par1 == 1 ? enabledIcon : itemIcon;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {

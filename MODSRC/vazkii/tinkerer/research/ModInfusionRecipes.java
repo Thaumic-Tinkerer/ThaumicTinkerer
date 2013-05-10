@@ -77,6 +77,12 @@ public final class ModInfusionRecipes {
 				'B', new ItemStack(Config.itemResource, 1, 5),
 				'W', new ItemStack(Config.blockWooden),
 				'C', new ItemStack(Block.chest));
+
+		tags = new ObjectTags().add(EnumTag.MOTION, 16).add(EnumTag.ELDRITCH, 4).add(EnumTag.MECHANISM, 12);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.TELEPORTATION_SIGIL_R, LibItemNames.TELEPORTATION_SIGIL_R, 50, tags, new ItemStack(ModItems.teleportSigil),
+				" O ", "OEO", " O ",
+				'O', new ItemStack(Block.obsidian),
+				'E', new ItemStack(Item.enderPearl));
 	}
 
 }
