@@ -16,6 +16,8 @@ package vazkii.tinkerer.item;
 
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.util.handler.PlayerDeathHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,6 +26,8 @@ public class ItemDeathRune extends ItemMod {
 	public ItemDeathRune(int par1) {
 		super(par1);
 		setMaxStackSize(1);
+		
+		MinecraftForge.EVENT_BUS.register(new PlayerDeathHandler());
 	}
 
 	@Override

@@ -14,15 +14,16 @@
  */
 package vazkii.tinkerer.core.proxy;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
+import vazkii.tinkerer.client.render.entity.RenderDeathRune;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
+import vazkii.tinkerer.entity.EntityDeathRune;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
@@ -49,6 +50,13 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTransmutator.class, new RenderTileTransmutator());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWardChest.class, new RenderTileWardChest());
 	}
+	
+	@Override
+	public void initEntities() {
+		super.initEntities();
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityDeathRune.class, new RenderDeathRune());
+	}
 
 	@Override
 	public void initPackets() {
@@ -64,8 +72,8 @@ public class TTClientProxy extends TTCommonProxy {
 	}
 
 	@Override
-	public void sigilLightning(World world, ItemStack stack, EntityPlayer player, Vec3 end) {
-		FXLightningBolt lightning = new FXLightningBolt(world, player.posX + player.width / 2, player.posY - player.height / 2, player.posZ + player.width / 2, end.xCoord, end.yCoord, end.zCoord, world.rand.nextLong(), 10, 2F, 5);
+	public void sigilLightning(World world, Entity entity, Vec3 end) {
+		FXLightningBolt lightning = new FXLightningBolt(world, entity.posX + entity.width / 2, entity.posY - entity.height / 2, entity.posZ + entity.width / 2, end.xCoord, end.yCoord, end.zCoord, world.rand.nextLong(), 10, 2F, 5);
 		lightning.defaultFractal();
 		lightning.setType(5);
 		lightning.finalizeBolt();

@@ -77,6 +77,7 @@ public class ThaumicTinkerer {
 		ModItems.initItems();
 		ModPotions.initPotions();
 
+		proxy.initEntities();
 		proxy.initTileEntities();
 		proxy.initRenders();
 

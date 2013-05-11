@@ -83,8 +83,8 @@ public class ItemTeleportSigil extends ItemMod {
 				double y = player.posY + player.width / 2 + (Math.random() - 0.5) * 4;
 				double z = player.posZ - player.height / 2 + (Math.random() - 0.5) * 4;
 				Vec3 vector = player.worldObj.getWorldVec3Pool().getVecFromPool(x, y, z);
-
-				ThaumicTinkerer.proxy.sigilLightning(player.worldObj, stack, player, vector);
+ 
+				ThaumicTinkerer.proxy.sigilLightning(player.worldObj, player, vector);
 			}
 			player.worldObj.playSoundAtEntity(player, "thaumcraft.zap", 0.2F, 1F);
 		}

@@ -14,16 +14,19 @@
  */
 package vazkii.tinkerer.core.proxy;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import vazkii.tinkerer.ThaumicTinkerer;
+import vazkii.tinkerer.entity.EntityDeathRune;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TTCommonProxy {
@@ -34,8 +37,12 @@ public class TTCommonProxy {
 		GameRegistry.registerTileEntity(TileEntityTransmutator.class, tileName(LibBlockNames.TRANSMUTATOR));
 		GameRegistry.registerTileEntity(TileEntityWardChest.class, tileName(LibBlockNames.WARD_CHEST));
 	}
-
+	
 	public void initRenders() { }
+	
+	public void initEntities() {
+		EntityRegistry.registerModEntity(EntityDeathRune.class, LibMisc.MOD_ID + "_" + LibItemNames.DEATH_RUNE, 0, ThaumicTinkerer.modInstance, 64, 10, false);
+	}
 
 	public void initPackets() {
 		PacketManager.packetHandlers.add(new PacketVerification());
@@ -45,5 +52,5 @@ public class TTCommonProxy {
 		return LibMisc.MOD_ID + "_" + name;
 	}
 
-	public void sigilLightning(World world, ItemStack stack, EntityPlayer player, Vec3 end) { }
+	public void sigilLightning(World world, Entity entity, Vec3 end) { }
 }
