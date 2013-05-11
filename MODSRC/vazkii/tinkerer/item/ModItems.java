@@ -95,5 +95,11 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.MECHANISM, 12).add(EnumTag.MOTION, 8).add(EnumTag.ELDRITCH, 12);
 		ThaumcraftApi.registerObjectTag(teleportSigil.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.FLIGHT, 8).add(EnumTag.WIND, 8).add(EnumTag.MOTION, 9).add(EnumTag.POWER, 20).add(EnumTag.MAGIC, 16);
+		ThaumcraftApi.registerObjectTag(wandUprising.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		tags = new ObjectTags().add(EnumTag.FLIGHT, 12).add(EnumTag.WIND, 24).add(EnumTag.MOTION, 20).add(EnumTag.POWER, 24).add(EnumTag.MAGIC, 30);
+		ThaumcraftApi.registerObjectTag(swordCondor.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }

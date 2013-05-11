@@ -38,6 +38,8 @@ public final class ModResearchItems {
 	public static ResearchItem wardChest;
 	public static ResearchItem darkQuartz;
 	public static ResearchItem sigilTeleport;
+	public static ResearchItem wandUprising;
+	public static ResearchItem swordCondor;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -75,5 +77,11 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.MECHANISM, 12).add(EnumTag.MOTION, 16).add(EnumTag.ELDRITCH, 5);
 		sigilTeleport = new ResearchItem(LibItemNames.TELEPORTATION_SIGIL_R, tags, -2, 26, new ItemStack(ModItems.teleportSigil, 0, 1)).setParents(Config.researchTTOE).setHidden().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 8).add(EnumTag.POWER, 8).add(EnumTag.MOTION, 12).add(EnumTag.FLIGHT, 14);
+		wandUprising = new ResearchItem(LibItemNames.WAND_UPRISING_R, tags, 2, 7, ModItems.wandUprising).setParents(Config.researchElementalSword).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.FLIGHT, 12).add(EnumTag.MOTION, 8).add(EnumTag.POWER, 14).add(EnumTag.MAGIC, 12);
+		swordCondor = new ResearchItem(LibItemNames.SWORD_CONDOR_R, tags, 4, 7, ModItems.swordCondor).setParents(wandUprising).registerResearchItem();
 	}
 }

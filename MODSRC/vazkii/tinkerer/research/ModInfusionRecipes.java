@@ -83,6 +83,18 @@ public final class ModInfusionRecipes {
 				" O ", "OEO", " O ",
 				'O', new ItemStack(Block.obsidian),
 				'E', new ItemStack(Item.enderPearl));
-	}
 
+		tags = new ObjectTags().add(EnumTag.FLIGHT, 12).add(EnumTag.WIND, 6);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.WAND_UPRISING_R, LibItemNames.WAND_UPRISING_R, 25, tags, new ItemStack(ModItems.wandUprising),
+				" Q ", "QWQ", " Q ",
+				'Q', new ItemStack(Config.itemResource, 1, 10),
+				'W', new ItemStack(Config.itemWandLightning));
+
+		tags = new ObjectTags().add(EnumTag.POWER, 14).add(EnumTag.FLIGHT, 6);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.SWORD_CONDOR_R, LibItemNames.SWORD_CONDOR_R, 25, tags, new ItemStack(ModItems.swordCondor),
+				"I W", " S ", "  I",
+				'I', new ItemStack(Config.itemResource, 1, 2),
+				'S', new ItemStack(Config.itemSwordElemental),
+				'W', new ItemStack(ModItems.wandUprising));
+	}
 }

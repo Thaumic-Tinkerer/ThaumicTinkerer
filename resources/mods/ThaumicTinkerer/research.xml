@@ -136,4 +136,26 @@ Dark Quartz itself can be made with a piece of coal or charcoal for tinting, and
 After a sigil is bound, you can hold right click it, like a bow to charge it and activate it, which teleports you back to where the sigil was bound at. Shattering it in the proceess.</page>
 <page type = "infusioncrafting">TELEPORTATION_SIGIL</page>
 </project>
+
+<!-- ======================================== Wand of Uprising /-->
+<project id = "WAND_UPRISING" version = "1">
+<name>Wand of Uprising</name>
+<popupText>[TT] I believe I can fly...</popupText>
+<longText>Knowing the power of the Sword of the Zephyr to propel foes away, you are trying to create something that will allow you to propel yourself.</longText>
+<page type = "text">Using the knowledge you got from creating the Sword of the Zephyr of propeling things around with air, you created a wand that will propel the holder in the direction that they're looking at.
+
+While someone is flying trough the use of this Wand, any fall damage that would have been taken is negated.</page>
+<page type = "infusioncrafting">WAND_UPRISING</page>
+</project>
+
+<!-- ======================================== Sword of the Condor /-->
+<project id = "SWORD_CONDOR" version = "1"> 
+<name>Sword of the Condor</name>
+<popupText>[TT] Woosh!</popupText>
+<longText>Unsatisfacted with the effort you put on the Wand of Uprising, you are trying to combine it with the Sword of the Zephyr in hopes of getting better results.</longText>
+<page type = "text">You have found a way of combining the Sword of the Zephyr with your latest creation, the Wand of Uprising. By doing so, you managed to duplicate the effect of the wand used, albeit at a faster speed. It's also possible to sneak right-click to be propeled backwards.
+
+Doing such, however, comes with a few drawbacks. The sword loses it's ability to propel nearby foes, or slow your fall, not to mention that this flight is hard to control. However, by reinforcing the sword with extra Thaumium, it became extremely resistent.</page>
+<page type = "infusioncrafting">SWORD_CONDOR</page>
+</project>
 </research>
