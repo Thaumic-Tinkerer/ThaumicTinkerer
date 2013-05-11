@@ -57,4 +57,9 @@ public final class LibItemNames {
 	public static final String SWORD_CONDOR = "swordCondor";
 	public static final String SWORD_CONDOR_R = "SWORD_CONDOR";
 	public static final String SWORD_CONDOR_D = "Sword of the Condor";
+
+	public static final String DEATH_RUNE = "deathRune";
+	public static final String DEATH_RUNE_R = "DEATH_RUNE";
+	public static final String DEATH_RUNE_D = "Rune Thanatos";
+
 }

@@ -37,6 +37,7 @@ public final class ModItems {
 	public static Item teleportSigil;
 	public static Item wandUprising;
 	public static Item swordCondor;
+	public static Item deathRune;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -51,6 +52,7 @@ public final class ModItems {
 		teleportSigil = new ItemTeleportSigil(LibItemIDs.idTeleportSigil).setUnlocalizedName(LibItemNames.TELEPORTATION_SIGIL);
 		wandUprising = new ItemWandUprising(LibItemIDs.idWandUprising).setUnlocalizedName(LibItemNames.WAND_UPRISING);
 		swordCondor = new ItemSwordCondor(LibItemIDs.idSwordCondor).setUnlocalizedName(LibItemNames.SWORD_CONDOR);
+		deathRune = new ItemDeathRune(LibItemIDs.idDeathRune).setUnlocalizedName(LibItemNames.DEATH_RUNE);
 
 		nameItems();
 		applyObjectTags();
@@ -69,6 +71,7 @@ public final class ModItems {
 		LanguageRegistry.addName(teleportSigil, LibItemNames.TELEPORTATION_SIGIL_D);
 		LanguageRegistry.addName(wandUprising, LibItemNames.WAND_UPRISING_D);
 		LanguageRegistry.addName(swordCondor, LibItemNames.SWORD_CONDOR_D);
+		LanguageRegistry.addName(deathRune, LibItemNames.DEATH_RUNE_D);
 	}
 
 	private static void applyObjectTags() {

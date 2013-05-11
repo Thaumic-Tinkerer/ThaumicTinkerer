@@ -37,6 +37,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idTeleportSigil = loadItem(LibItemNames.TELEPORTATION_SIGIL, LibItemIDs.DEFAULT_TELEPORT_SIGIL);
 		LibItemIDs.idWandUprising = loadItem(LibItemNames.WAND_UPRISING, LibItemIDs.DEFAULT_WAND_UPRISING);
 		LibItemIDs.idSwordCondor = loadItem(LibItemNames.SWORD_CONDOR, LibItemIDs.DEFAULT_SWORD_CONDOR);
+		LibItemIDs.idDeathRune = loadItem(LibItemNames.DEATH_RUNE, LibItemIDs.DEFAULT_DEATH_RUNE);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
