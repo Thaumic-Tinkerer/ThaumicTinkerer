@@ -26,7 +26,7 @@ public class ItemDeathRune extends ItemMod {
 	public ItemDeathRune(int par1) {
 		super(par1);
 		setMaxStackSize(1);
-		
+
 		MinecraftForge.EVENT_BUS.register(new PlayerDeathHandler());
 	}
 

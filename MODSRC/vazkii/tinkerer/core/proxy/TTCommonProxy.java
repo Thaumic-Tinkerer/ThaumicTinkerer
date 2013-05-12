@@ -37,9 +37,9 @@ public class TTCommonProxy {
 		GameRegistry.registerTileEntity(TileEntityTransmutator.class, tileName(LibBlockNames.TRANSMUTATOR));
 		GameRegistry.registerTileEntity(TileEntityWardChest.class, tileName(LibBlockNames.WARD_CHEST));
 	}
-	
+
 	public void initRenders() { }
-	
+
 	public void initEntities() {
 		EntityRegistry.registerModEntity(EntityDeathRune.class, LibMisc.MOD_ID + "_" + LibItemNames.DEATH_RUNE, 0, ThaumicTinkerer.modInstance, 64, 10, false);
 	}

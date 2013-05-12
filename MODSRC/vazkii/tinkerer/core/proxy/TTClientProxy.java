@@ -50,11 +50,11 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTransmutator.class, new RenderTileTransmutator());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWardChest.class, new RenderTileWardChest());
 	}
-	
+
 	@Override
 	public void initEntities() {
 		super.initEntities();
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityDeathRune.class, new RenderDeathRune());
 	}
 

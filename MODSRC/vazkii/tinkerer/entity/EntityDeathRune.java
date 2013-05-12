@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [11 May 2013, 22:43:15 (GMT)]
  */
 package vazkii.tinkerer.entity;
@@ -23,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ThaumicTinkerer;
@@ -32,19 +33,24 @@ public class EntityDeathRune extends Entity implements IInventory {
 
 	private static final String TAG_SLOTS_SIZE = "slots";
 	private static final String TAG_PLAYER_NAME = "playerName";
-	
+
 	ItemStack[] inventorySlots;
 	String username;
-	
+
 	public EntityDeathRune(World par1World) {
 		super(par1World);
+		width = 0.1F;
+		height = 0.1F;
 	}
-	
+
 	public EntityDeathRune(EntityPlayer player) {
 		super(player.worldObj);
+		width = 0.1F;
+		height = 0.1F;
 		int size = player.inventory.getSizeInventory();
-		inventorySlots = new ItemStack[size + (size % 9)];
-		
+		username = player.username;
+		inventorySlots = new ItemStack[size + size % 9];
+
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stackAt = player.inventory.getStackInSlot(i);
 			if(stackAt != null) {
@@ -53,37 +59,45 @@ public class EntityDeathRune extends Entity implements IInventory {
 			}
 		}
 	}
-	
+
 	@Override
 	protected void entityInit() {
 	}
-	
+
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		List<EntityPlayer> nearbyPlayers = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(posX - 8, posY - 4, posZ - 8, posX + 8, posY + 4, posZ + 8));
-		for(EntityPlayer player : nearbyPlayers) {
-			if(player.username.equals(username) && player.isEntityAlive())
-				restockPlayer(player);
-		}
-		
-		for(int i = 0; i < 2; i++) {
-			double x = posX + width / 2 + (Math.random() - 0.5) * 4;
-			double y = posY + width / 2 + (Math.random() - 0.5) * 4;
-			double z = posZ - height / 2 + (Math.random() - 0.5) * 4;
-			Vec3 vector = worldObj.getWorldVec3Pool().getVecFromPool(x, y, z);
+		posY = prevPosY;
 
-			ThaumicTinkerer.proxy.sigilLightning(worldObj, this, vector);
+		if(!worldObj.isRemote) {
+			List<EntityPlayer> nearbyPlayers = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(posX - 2, posY - 2, posZ - 2, posX + 2, posY + 2, posZ + 2));
+			for(EntityPlayer player : nearbyPlayers) {
+				if(player.username.equals(username) && player.isEntityAlive())
+					restockPlayer(player);
+			}
 		}
+
+		double x = posX + (Math.random() - 0.5);
+		double y = posY + (Math.random() - 0.5);
+		double z = posZ + (Math.random() - 0.5);
+		Vec3 vector = worldObj.getWorldVec3Pool().getVecFromPool(x, y, z);
+
+		ThaumicTinkerer.proxy.sigilLightning(worldObj, this, vector);
 	}
-	
+
+	@Override
+	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
+		return false;
+	}
+
 	private void restockPlayer(EntityPlayer player) {
 		boolean hasSomething = false;
-		
+
 		for(int i = 0; i < Math.min(inventorySlots.length, player.inventory.getSizeInventory()); i++) {
 			ItemStack playerStack = player.inventory.getStackInSlot(i);
-			ItemStack restockStack = getStackInSlot(i).copy();
-			if(restockStack != null) {
+			ItemStack invStack = getStackInSlot(i);
+			if(invStack != null) {
+				ItemStack restockStack = invStack.copy();
 				hasSomething = true;
 				boolean remove = false;
 				if(playerStack == null) {
@@ -91,21 +105,28 @@ public class EntityDeathRune extends Entity implements IInventory {
 					remove = true;
 				} else if(player.inventory.addItemStackToInventory(restockStack))
 					remove = true;
-				
+
 				if(remove)
 					setInventorySlotContents(i, null);
 			}
 		}
-		
+
 		if(!hasSomething)
 			setDead();
 	}
-	
+
+	@Override
+	public void setDead() {
+		super.setDead();
+		worldObj.playSoundAtEntity(this, "thaumcraft.key", 1F, 1F);
+		ThaumicTinkerer.tcProxy.burst(worldObj, posX, posY, posZ, 0.5F);
+	}
+
 	@Override
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
 		inventorySlots = new ItemStack[par1NBTTagCompound.getInteger(TAG_SLOTS_SIZE)];
 		username = par1NBTTagCompound.getString(TAG_PLAYER_NAME);
-		
+
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -120,7 +141,7 @@ public class EntityDeathRune extends Entity implements IInventory {
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
         par1NBTTagCompound.setInteger(TAG_SLOTS_SIZE, inventorySlots.length);
         par1NBTTagCompound.setString(TAG_PLAYER_NAME, username);
-        
+
     	NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
             if (inventorySlots[var3] != null) {
