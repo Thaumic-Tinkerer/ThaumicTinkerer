@@ -158,4 +158,15 @@ While someone is flying trough the use of this Wand, any fall damage that would 
 Doing such, however, comes with a few drawbacks. The sword loses it's ability to propel nearby foes, or slow your fall, not to mention that this flight is hard to control. However, by reinforcing the sword with extra Thaumium, it became extremely resistent.</page>
 <page type = "infusioncrafting">SWORD_CONDOR</page>
 </project>
+
+<!-- ======================================== Rune Thanatos /-->
+<project id = "DEATH_RUNE" version = "1"> 
+<name>Rune Thanatos</name>
+<popupText>[TT] The Extra H is for "Hamazing"!</popupText>
+<longText>That last time you got blown up by a creeper right next to a lava lake was a big loss. To that, you are trying to research death itself to find ways of securing your belongings.</longText>
+<page type = "text">By studying Death itself, you found a way of making use of the powers of item storage you learned from creating Warded Chests, and made a way to secure your belongings upon death.
+
+When you die with this item on you. All that you are carrying gets stored in it. The rune will then stay where you died, it's invulnerable, and doesn't despawn. When you come back to it, your inventory will get reorganized to it's original state before death, as best as possible. The rune will shatter in the process.</page>
+<page type = "infusioncrafting">DEATH_RUNE</page>
+</project>
 </research>

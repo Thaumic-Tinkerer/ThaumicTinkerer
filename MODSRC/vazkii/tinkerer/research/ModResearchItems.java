@@ -40,6 +40,7 @@ public final class ModResearchItems {
 	public static ResearchItem sigilTeleport;
 	public static ResearchItem wandUprising;
 	public static ResearchItem swordCondor;
+	public static ResearchItem deathRune;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -83,5 +84,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.FLIGHT, 12).add(EnumTag.MOTION, 8).add(EnumTag.POWER, 14).add(EnumTag.MAGIC, 12);
 		swordCondor = new ResearchItem(LibItemNames.SWORD_CONDOR_R, tags, 4, 7, ModItems.swordCondor).setParents(wandUprising).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.DEATH, 20).add(EnumTag.POWER, 16).add(EnumTag.TRAP, 12);
+		deathRune = new ResearchItem(LibItemNames.DEATH_RUNE_R, tags, 5, 11, ModItems.deathRune).setParents(wardChest).setHidden().registerResearchItem();
 	}
 }

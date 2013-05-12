@@ -96,5 +96,12 @@ public final class ModInfusionRecipes {
 				'I', new ItemStack(Config.itemResource, 1, 2),
 				'S', new ItemStack(Config.itemSwordElemental),
 				'W', new ItemStack(ModItems.wandUprising));
+
+		tags = new ObjectTags().add(EnumTag.DEATH, 16).add(EnumTag.POWER, 12).add(EnumTag.MAGIC, 20);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.DEATH_RUNE_R, LibItemNames.DEATH_RUNE_R, 60, tags, new ItemStack(ModItems.deathRune),
+				"TOT", "OBO", "TOT",
+				'T', new ItemStack(Config.itemResource, 1, 2),
+				'O', new ItemStack(Block.obsidian),
+				'B', new ItemStack(Config.itemResource, 1, 5));
 	}
 }
