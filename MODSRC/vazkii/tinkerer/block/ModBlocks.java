@@ -35,6 +35,7 @@ public final class ModBlocks {
 	public static Block darkQuartzStairs;
 	public static Block darkQuartzSlab;
 	public static Block darkQuartzSlabFull;
+	public static Block animationTablet;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
@@ -44,6 +45,7 @@ public final class ModBlocks {
 		darkQuartzStairs = new BlockDarkQuartzStairs(LibBlockIDs.idDarkQuartzStairs).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_STAIRS);
 		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
+		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 
 		registerBlocks();
 		nameBlocks();
@@ -58,12 +60,14 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS);
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
+		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 	}
 
 	private static void nameBlocks() {
 		LanguageRegistry.addName(transmutator, LibBlockNames.TRANSMUTATOR_D);
 		LanguageRegistry.addName(wardChest, LibBlockNames.WARD_CHEST_D);
 		LanguageRegistry.addName(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS_D);
+		LanguageRegistry.addName(animationTablet, LibBlockNames.ANIMATION_TABLET_D);
 	}
 
 	private static void registerObjectTags() {
