@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
+import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
@@ -27,6 +28,7 @@ import vazkii.tinkerer.entity.EntityDeathRune;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
+import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -49,6 +51,7 @@ public class TTClientProxy extends TTCommonProxy {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTransmutator.class, new RenderTileTransmutator());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWardChest.class, new RenderTileWardChest());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimationTablet.class, new RenderTileAnimationTablet());
 	}
 
 	@Override

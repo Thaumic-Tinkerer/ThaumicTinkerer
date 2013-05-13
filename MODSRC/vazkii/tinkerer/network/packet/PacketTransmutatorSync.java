@@ -73,5 +73,4 @@ public class PacketTransmutatorSync extends ModPacket {
 	public String getSubchannel() {
 		return LibNetwork.SUBCHANNEL_TRANSMUTATOR_SYNC;
 	}
-
 }

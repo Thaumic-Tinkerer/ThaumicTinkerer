@@ -10,13 +10,12 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [28 Apr 2013, 17:55:15 (GMT)]
+ * File Created @ [13 May 2013, 19:43:05 (GMT)]
  */
-package vazkii.tinkerer.lib;
+package vazkii.tinkerer.network.packet;
 
-public final class LibGuiIDs {
+public class PacketAnimationTabletSync {
 
-	public static final int ID_TRANSMUTATOR = 0;
-	public static final int ID_ANIMATION_TABLET = 1;
+	// TODO
 
 }

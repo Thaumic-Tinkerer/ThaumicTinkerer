@@ -17,9 +17,12 @@ package vazkii.tinkerer.util.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vazkii.tinkerer.client.gui.GuiAnimationTablet;
 import vazkii.tinkerer.client.gui.GuiTransmutator;
+import vazkii.tinkerer.inventory.container.ContainerAnimationTablet;
 import vazkii.tinkerer.inventory.container.ContainerTransmutator;
 import vazkii.tinkerer.lib.LibGuiIDs;
+import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -29,7 +32,11 @@ public final class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		switch(ID) {
-			case LibGuiIDs.ID_TRANSMUTATOR : return new ContainerTransmutator((TileEntityTransmutator) tile, player.inventory);
+			case LibGuiIDs.ID_TRANSMUTATOR :
+				return new ContainerTransmutator((TileEntityTransmutator) tile, player.inventory);
+
+			case LibGuiIDs.ID_ANIMATION_TABLET :
+				return new ContainerAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
 		}
 		return null;
 	}
@@ -38,7 +45,11 @@ public final class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		switch(ID) {
-			case LibGuiIDs.ID_TRANSMUTATOR : return new GuiTransmutator((TileEntityTransmutator) tile, player.inventory);
+			case LibGuiIDs.ID_TRANSMUTATOR :
+				return new GuiTransmutator((TileEntityTransmutator) tile, player.inventory);
+
+			case LibGuiIDs.ID_ANIMATION_TABLET :
+				return new GuiAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
 		}
 		return null;
 	}
