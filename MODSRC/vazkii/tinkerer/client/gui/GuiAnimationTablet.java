@@ -49,7 +49,7 @@ public class GuiAnimationTablet extends GuiContainer {
 		x = (width - xSize) / 2;
 		y = (height - ySize) / 2;
 		buttonListAT.clear();
-		addButton(new GuiButtonAT(0, x + (xSize / 2) - 7, y + 48, tablet.redstone));
+		addButton(new GuiButtonAT(0, x + (xSize / 2) - 7, y + 60, tablet.redstone));
 		addButton(new GuiButtonATRadio(1, x + 52, y + 15, tablet.leftClick, radioButtons));
 		addButton(new GuiButtonATRadio(2, x + 111, y + 15, !tablet.leftClick, radioButtons));
 		buttonList = buttonListAT;
@@ -76,5 +76,12 @@ public class GuiAnimationTablet extends GuiContainer {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.renderEngine.bindTexture(LibResources.GUI_ANIMATION_TABLET);
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        String left = "Left";
+        String right = "Right";
+        String redstone = "Redstone";
+        fontRenderer.drawString(left, x + 48 - fontRenderer.getStringWidth(left), y + 18, 0x999999);
+        fontRenderer.drawString(right, x + 128, y + 18, 0x999999);
+        fontRenderer.drawString(redstone, (x + xSize / 2) - fontRenderer.getStringWidth(redstone) / 2, y + 50, 0x999999);
+        GL11.glColor3f(1F, 1F, 1F);
 	}
 }
