@@ -43,7 +43,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(d0, d1, d2);
-		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_DIAL, tile.redstone ? 0 : -1, false, false, 0.65, 0.13F);
+		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_DIAL, -1, false, false, 0.65, 0.13F);
 		if(tile.leftClick)
 			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F);
 		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 1, false, true, 1, 0.13F);
@@ -91,8 +91,10 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		GL11.glDepthMask(false);
 		if(!useLighting)
 			GL11.glDisable(GL11.GL_LIGHTING);
-		if(useBlend)
+		if(useBlend) {
 			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		}
 		GL11.glTranslatef(0.5F, height, 0.5F);
 		float deg = (float) (tablet.ticksExisted * rotationMod % 360F);
 		GL11.glRotatef(deg, 0F, 1F, 0F);
