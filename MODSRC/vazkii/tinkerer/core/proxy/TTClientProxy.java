@@ -27,6 +27,7 @@ import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
@@ -65,6 +66,7 @@ public class TTClientProxy extends TTCommonProxy {
 	public void initPackets() {
 		super.initPackets();
 		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
+		PacketManager.packetHandlers.add(new PacketAnimationTabletSync());
 	}
 
 	@Override

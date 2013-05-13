@@ -14,8 +14,70 @@
  */
 package vazkii.tinkerer.network.packet;
 
-public class PacketAnimationTabletSync {
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-	// TODO
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet250CustomPayload;
+import vazkii.tinkerer.lib.LibNetwork;
+import vazkii.tinkerer.network.ModPacket;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.tile.TileEntityAnimationTablet;
+import cpw.mods.fml.common.network.Player;
+
+public class PacketAnimationTabletSync extends ModPacket {
+
+	TileEntityAnimationTablet tablet;
+
+	public PacketAnimationTabletSync() { }
+
+	public PacketAnimationTabletSync(TileEntityAnimationTablet tablet) {
+		this.tablet = tablet;
+	}
+
+	@Override
+	public ByteArrayOutputStream asOutputStream() throws IOException {
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		DataOutputStream data = new DataOutputStream(stream);
+		writeSubchannel(data);
+		data.writeInt(tablet.xCoord);
+		data.writeInt(tablet.yCoord);
+		data.writeInt(tablet.zCoord);
+		PacketManager.writeItemStackIntoStream(tablet.getStackInSlot(0), data);
+		data.writeBoolean(tablet.leftClick);
+		data.writeBoolean(tablet.redstone);
+		return stream;
+	}
+
+	@Override
+	public boolean readPayload(Packet250CustomPayload packet, INetworkManager manager, Player player, String subchannel) throws IOException {
+		if(subchannel.equals(getSubchannel()) && player != null && player instanceof EntityPlayer) {
+			ByteArrayInputStream stream = new ByteArrayInputStream(packet.data);
+			DataInputStream inputStream = new DataInputStream(stream);
+			skipSubchannel(inputStream);
+			int x = inputStream.readInt();
+			int y = inputStream.readInt();
+			int z = inputStream.readInt();
+			TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) ((EntityPlayer)player).worldObj.getBlockTileEntity(x, y, z);
+			ItemStack stack = PacketManager.getItemStackFromStream(inputStream);
+			tablet.setInventorySlotContents(0, stack);
+			boolean leftClick = inputStream.readBoolean();
+			boolean redstone = inputStream.readBoolean();
+			tablet.leftClick = leftClick;
+			tablet.redstone = redstone;
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String getSubchannel() {
+		return LibNetwork.SUBCHANNEL_ANIMATION_TABLET_SNC;
+	}
 
 }
