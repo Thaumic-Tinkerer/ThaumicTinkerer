@@ -195,18 +195,18 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 	}
 
 	@Override
-	public int[] getSizeInventorySide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int var1) {
 		return var1 == 1 ? new int[] { 1 } : new int[0];
 	}
 
-	@Override // Put
-	public boolean func_102007_a(int i, ItemStack itemstack, int j) {
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
 		return i == 1;
 	}
 
-	@Override // Take
-	public boolean func_102008_b(int i, ItemStack itemstack, int j) {
-		return func_102007_a(i, itemstack, j);
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
+		return canInsertItem(i, itemstack, j);
 	}
 
 	@Override

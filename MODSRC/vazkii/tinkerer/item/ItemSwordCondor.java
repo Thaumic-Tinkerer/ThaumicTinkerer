@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.common.items.ItemElementalSword;
+import thaumcraft.common.items.equipment.ItemElementalSword;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;

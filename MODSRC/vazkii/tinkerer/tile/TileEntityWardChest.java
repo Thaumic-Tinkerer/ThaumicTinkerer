@@ -173,17 +173,17 @@ public class TileEntityWardChest extends TileOwned implements ISidedInventory, n
 	}
 
 	@Override
-	public int[] getSizeInventorySide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int var1) {
 		return new int[0];
 	}
 
 	@Override
-	public boolean func_102007_a(int i, ItemStack itemstack, int j) {
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
 		return false;
 	}
 
 	@Override
-	public boolean func_102008_b(int i, ItemStack itemstack, int j) {
+	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
 		return false;
 	}
 
