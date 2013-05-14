@@ -21,6 +21,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChunkCoordinates;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
@@ -30,17 +31,43 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
 
+	private static final int[][] LOC_INCREASES = new int[][] {
+		{ 0, -1 },
+		{ 0, +1 },
+		{ -1, 0 },
+		{ +1, 0 }
+	};
+	
 	ItemStack[] inventorySlots = new ItemStack[1];
 	public double ticksExisted = 0;
 
 	public boolean leftClick = true;
 	public boolean redstone = false;
+	
+	public int swingProcess = 0;
 
 	@Override
 	public void updateEntity() {
 		ticksExisted++;
+		
+		System.out.println(getBlockMetadata());
+		
+		// XXX TEST!
+		ChunkCoordinates coords = getTargetLoc();
+		worldObj.setBlockToAir(coords.posX, coords.posY, coords.posZ);
 	}
 
+	public ChunkCoordinates getTargetLoc() {
+		ChunkCoordinates coords = new ChunkCoordinates(xCoord, yCoord, zCoord);
+		
+		int meta = getBlockMetadata();
+		int[] increase = LOC_INCREASES[meta - 2];
+		coords.posX += increase[0];
+		coords.posZ += increase[1];
+
+		return coords;
+	}
+	
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
