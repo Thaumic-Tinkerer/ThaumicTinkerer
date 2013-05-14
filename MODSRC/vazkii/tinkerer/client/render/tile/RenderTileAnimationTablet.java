@@ -37,6 +37,13 @@ import vazkii.tinkerer.util.helper.MiscHelper;
 
 public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
+	private static final float[][] TRANSLATIONS = new float[][] {
+		{ 0F, 0F, -1.25F },
+		{ -1.25F, 0F, 0F },
+		{ 0F, 0F, 0F },
+		{ -1.25F, 0F, -1.25F }
+	};
+
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float partialTicks) {
 		TileEntityAnimationTablet tile = (TileEntityAnimationTablet) tileentity;
@@ -48,8 +55,13 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F);
 		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 1, false, true, 1, 0.13F);
 
+		int meta = tile.worldObj == null ? 3 : tile.getBlockMetadata();
+		int rotation = meta == 2 ? 270 : meta == 3 ? 90 : meta == 4 ? 0 : 180;
+		GL11.glRotatef(rotation, 0F, 1F, 0F);
 		GL11.glTranslated(0.1, 0.2 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 18F, 0.5);
 		GL11.glScalef(0.8F, 0.8F, 0.8F);
+		float[] translations = TRANSLATIONS[meta - 2];
+		GL11.glTranslatef(translations[0], translations[1], translations[2]);
 		renderItem(tile);
 		GL11.glPopMatrix();
 	}
