@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.block;
 
+import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
@@ -39,10 +41,10 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	public BlockAnimationTablet(int par1) {
 		super(par1, Material.iron);
-        setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
-        setHardness(3F);
-        setResistance(50F);
-        setStepSound(soundMetalFootstep);
+		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
+		setHardness(3F);
+		setResistance(50F);
+		setStepSound(soundMetalFootstep);
 	}
 
 	@Override
@@ -55,22 +57,52 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack) {
-        byte b0 = 0;
-        int l1 = MathHelper.floor_double(par5EntityLiving.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		byte b0 = 0;
+		int l1 = MathHelper.floor_double(par5EntityLiving.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
-        if (l1 == 0)
-            b0 = 2;
+		if (l1 == 0)
+			b0 = 2;
 
-        if (l1 == 1)
-            b0 = 5;
+		if (l1 == 1)
+			b0 = 5;
 
-        if (l1 == 2)
-            b0 = 3;
+		if (l1 == 2)
+			b0 = 3;
 
-        if (l1 == 3)
-            b0 = 4;
+		if (l1 == 3)
+			b0 = 4;
 
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
+		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
+	}
+
+	@Override
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+		boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
+		int meta = par1World.getBlockMetadata(par2, par3, par4);
+		boolean on = (meta & 8) != 0;
+
+		if (power && !on) {
+			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta | 8, 4);
+		} else if (!power && on)
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta & 7, 4);
+	}
+
+	@Override
+	public int tickRate(World par1World) {
+		return 1;
+	}
+
+	@Override
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		if(tile != null && tile instanceof TileEntityAnimationTablet) {
+			TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) tile;
+			if(tablet.redstone && tablet.swingProgress == 0) {
+				tablet.initiateSwing();
+				par1World.addBlockEvent(par2, par3, par4, ModBlocks.animationTablet.blockID, 0, 0);
+			}
+		}
 	}
 
 	@Override

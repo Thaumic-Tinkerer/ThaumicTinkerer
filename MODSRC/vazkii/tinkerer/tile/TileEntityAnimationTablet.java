@@ -42,58 +42,64 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		{ -1, 0 },
 		{ +1, 0 }
 	};
-	
+
 	private static final int SWING_SPEED = 3;
-	
+	private static final int MAX_DEGREE = 45;
+
 	List<Entity> detectedEntities;
-	
+
 	ItemStack[] inventorySlots = new ItemStack[1];
 	public double ticksExisted = 0;
 
 	public boolean leftClick = true;
 	public boolean redstone = false;
-	
+
 	public int swingProgress = 0;
 	private int swingMod = 0;
-	
+
 	@Override
 	public void updateEntity() {
 		ticksExisted++;
-		
-		if(swingProgress >= 60)
-			swingHit();
-		
-		swingMod = swingProgress <= 0 ? (detect() ? SWING_SPEED : 0) : swingProgress >= 60 ? -SWING_SPEED : swingMod;
-		swingProgress += swingMod;
-				
-		if(!redstone && detect()) {
+
+		if(getStackInSlot(0) != null) {
+			if(swingProgress >= MAX_DEGREE)
+				swingHit();
+
+			swingMod = swingProgress <= 0 ? 0 : swingProgress >= MAX_DEGREE ? -SWING_SPEED : swingMod;
+			swingProgress += swingMod;
+			if(swingProgress < 0)
+				swingProgress = 0;
+		} else {
+			swingMod = 0;
+			swingProgress = 0;
+		}
+
+		if(!redstone && detect() && swingProgress == 0) {
 			initiateSwing();
 			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet.blockID, 0, 0);
 		}
 	}
 
 	public void initiateSwing() {
-		if(swingProgress == 0 && getStackInSlot(0) != null) {
-			swingMod = SWING_SPEED;
-			swingProgress = 1;
-		}
+		swingMod = SWING_SPEED;
+		swingProgress = 1;
 	}
-	
+
 	public void swingHit() {
 		ChunkCoordinates coords = getTargetLoc();
 		// XXX Still a test!
 		worldObj.setBlockToAir(coords.posX, coords.posY, coords.posZ);
 	}
-	
+
 	public boolean detect() {
 		ChunkCoordinates coords = getTargetLoc();
 		if(leftClick)
 			return !worldObj.isAirBlock(coords.posX, coords.posY, coords.posZ);
-		
+
 		findEntities(coords);
 		return !detectedEntities.isEmpty();
 	}
-	
+
 	private void findEntities(ChunkCoordinates coords) {
 		AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(coords.posX, coords.posY, coords.posZ, coords.posX + 1, coords.posY + 1, coords.posZ + 1);
 		detectedEntities = worldObj.getEntitiesWithinAABB(Entity.class, boundingBox);
@@ -101,23 +107,25 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	public ChunkCoordinates getTargetLoc() {
 		ChunkCoordinates coords = new ChunkCoordinates(xCoord, yCoord, zCoord);
-		
+
 		int meta = getBlockMetadata();
-		int[] increase = LOC_INCREASES[meta - 2];
+		int[] increase = LOC_INCREASES[(meta & 7) - 2];
 		coords.posX += increase[0];
 		coords.posZ += increase[1];
 
 		return coords;
 	}
-	
+
 	@Override
 	public boolean receiveClientEvent(int par1, int par2) {
-		if(par1 == 0)
+		if(par1 == 0) {
 			initiateSwing();
-		
+			return true;
+		}
+
 		return tileEntityInvalid;
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);

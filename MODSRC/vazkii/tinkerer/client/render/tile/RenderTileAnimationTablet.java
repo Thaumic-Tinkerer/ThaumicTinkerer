@@ -55,7 +55,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F);
 		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 1, false, true, 1, 0.13F);
 
-		int meta = tile.worldObj == null ? 3 : tile.getBlockMetadata();
+		int meta = tile.getBlockMetadata() & 7;
 		int rotation = meta == 2 ? 270 : meta == 3 ? 90 : meta == 4 ? 0 : 180;
 		GL11.glRotatef(rotation, 0F, 1F, 0F);
 		GL11.glTranslated(0.1, 0.2 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 18F, 0.5);

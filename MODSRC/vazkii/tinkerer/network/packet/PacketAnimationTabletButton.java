@@ -66,10 +66,11 @@ public class PacketAnimationTabletButton extends ModPacket {
 				int z = inputStream.readInt();
 				ContainerAnimationTablet container = (ContainerAnimationTablet)entityPlayer.openContainer;
 				if(container.tablet.xCoord == x && container.tablet.yCoord == y && container.tablet.zCoord == z) {
+					TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) container.tablet.worldObj.getBlockTileEntity(x, y, z);
 					boolean leftClick = inputStream.readBoolean();
 					boolean redstone = inputStream.readBoolean();
-					container.tablet.leftClick = leftClick;
-					container.tablet.redstone = redstone;
+					tablet.leftClick = leftClick;
+					tablet.redstone = redstone;
 				}
 			}
 			return true;
