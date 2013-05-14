@@ -62,6 +62,9 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		GL11.glScalef(0.8F, 0.8F, 0.8F);
 		float[] translations = TRANSLATIONS[meta - 2];
 		GL11.glTranslatef(translations[0], translations[1], translations[2]);
+		GL11.glTranslatef(0.5F, 0F, 0.5F);
+		GL11.glRotatef(tile.swingProgress, 0F, 0F, 1F);
+		GL11.glTranslatef(-0.5F, 0F, -0.5F);
 		renderItem(tile);
 		GL11.glPopMatrix();
 	}

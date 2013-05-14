@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.tile;
 
+import java.util.List;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -21,7 +24,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
@@ -38,23 +43,60 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		{ +1, 0 }
 	};
 	
+	private static final int SWING_SPEED = 3;
+	
+	List<Entity> detectedEntities;
+	
 	ItemStack[] inventorySlots = new ItemStack[1];
 	public double ticksExisted = 0;
 
 	public boolean leftClick = true;
 	public boolean redstone = false;
 	
-	public int swingProcess = 0;
-
+	public int swingProgress = 0;
+	private int swingMod = 0;
+	
 	@Override
 	public void updateEntity() {
 		ticksExisted++;
 		
-		System.out.println(getBlockMetadata());
+		if(swingProgress >= 60)
+			swingHit();
 		
-		// XXX TEST!
+		swingMod = swingProgress <= 0 ? (detect() ? SWING_SPEED : 0) : swingProgress >= 60 ? -SWING_SPEED : swingMod;
+		swingProgress += swingMod;
+				
+		if(!redstone && detect()) {
+			initiateSwing();
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet.blockID, 0, 0);
+		}
+	}
+
+	public void initiateSwing() {
+		if(swingProgress == 0 && getStackInSlot(0) != null) {
+			swingMod = SWING_SPEED;
+			swingProgress = 1;
+		}
+	}
+	
+	public void swingHit() {
 		ChunkCoordinates coords = getTargetLoc();
+		// XXX Still a test!
 		worldObj.setBlockToAir(coords.posX, coords.posY, coords.posZ);
+	}
+	
+	public boolean detect() {
+		ChunkCoordinates coords = getTargetLoc();
+		if(leftClick)
+			return !worldObj.isAirBlock(coords.posX, coords.posY, coords.posZ);
+		
+		findEntities(coords);
+		return !detectedEntities.isEmpty();
+	}
+	
+	private void findEntities(ChunkCoordinates coords) {
+		AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(coords.posX, coords.posY, coords.posZ, coords.posX + 1, coords.posY + 1, coords.posZ + 1);
+		detectedEntities = worldObj.getEntitiesWithinAABB(Entity.class, boundingBox);
 	}
 
 	public ChunkCoordinates getTargetLoc() {
@@ -66,6 +108,14 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		coords.posZ += increase[1];
 
 		return coords;
+	}
+	
+	@Override
+	public boolean receiveClientEvent(int par1, int par2) {
+		if(par1 == 0)
+			initiateSwing();
+		
+		return tileEntityInvalid;
 	}
 	
 	@Override
