@@ -23,7 +23,7 @@ import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
-import vazkii.tinkerer.network.packet.PacketVerification;
+import vazkii.tinkerer.network.packet.PacketAnimationTabletButton;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
@@ -47,7 +47,7 @@ public class TTCommonProxy {
 	}
 
 	public void initPackets() {
-		PacketManager.packetHandlers.add(new PacketVerification());
+		PacketManager.packetHandlers.add(new PacketAnimationTabletButton());
 	}
 
 	private static String tileName(String name) {

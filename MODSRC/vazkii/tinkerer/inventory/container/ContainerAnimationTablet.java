@@ -22,7 +22,7 @@ import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 
 public class ContainerAnimationTablet extends ContainerPlayerInv {
 
-	TileEntityAnimationTablet tablet;
+	public TileEntityAnimationTablet tablet;
 
 	public ContainerAnimationTablet(TileEntityAnimationTablet tablet, InventoryPlayer playerInv) {
 		super(playerInv);

@@ -19,8 +19,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
 
 public class TileEntityAnimationTablet extends TileEntity implements IInventory {
 
@@ -150,4 +153,10 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	public void closeChest() {
 		// NO-OP
 	}
+
+	@Override
+	public Packet getDescriptionPacket() {
+		return PacketManager.generatePacket(new PacketAnimationTabletSync(this));
+	}
+
 }

@@ -28,6 +28,8 @@ import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
 import vazkii.tinkerer.inventory.container.ContainerAnimationTablet;
 import vazkii.tinkerer.lib.LibResources;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketAnimationTabletButton;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 
 public class GuiAnimationTablet extends GuiContainer {
@@ -69,6 +71,8 @@ public class GuiAnimationTablet extends GuiContainer {
 
 		tablet.leftClick = buttonListAT.get(1).enabled;
 		tablet.redstone = buttonListAT.get(0).enabled;
+
+		PacketManager.sendPacketToServer(new PacketAnimationTabletButton(tablet));
 	}
 
 	@Override

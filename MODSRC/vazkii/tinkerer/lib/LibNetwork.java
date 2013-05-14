@@ -20,6 +20,6 @@ public final class LibNetwork {
 
 	public static final String SUBCHANNEL_VERIFY = "verify";
 	public static final String SUBCHANNEL_TRANSMUTATOR_SYNC = "transmutatorSync";
-	public static final String SUBCHANNEL_ANIMATION_TABLET_SNC = "tabletSync";
-
+	public static final String SUBCHANNEL_ANIMATION_TABLET_SYNC = "tabletSync";
+	public static final String SUBCHANNEL_ANIMATION_TABLET_BUTTON = "tabletButton";
 }
