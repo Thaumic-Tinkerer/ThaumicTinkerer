@@ -35,6 +35,8 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
+	private static final String TAG_PROGRESS = "progress";
+	private static final String TAG_MOD = "mod";
 
 	private static final int[][] LOC_INCREASES = new int[][] {
 		{ 0, -1 },
@@ -132,6 +134,8 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 		leftClick = par1NBTTagCompound.getBoolean(TAG_LEFT_CLICK);
 		redstone = par1NBTTagCompound.getBoolean(TAG_REDSTONE);
+		swingProgress = par1NBTTagCompound.getInteger(TAG_PROGRESS);
+		swingMod = par1NBTTagCompound.getInteger(TAG_MOD);
 
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
@@ -149,7 +153,9 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
         par1NBTTagCompound.setBoolean(TAG_LEFT_CLICK, leftClick);
         par1NBTTagCompound.setBoolean(TAG_REDSTONE, redstone);
-
+        par1NBTTagCompound.setInteger(TAG_PROGRESS, swingProgress);
+        par1NBTTagCompound.setInteger(TAG_MOD, swingMod);
+        
     	NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
             if (inventorySlots[var3] != null) {
