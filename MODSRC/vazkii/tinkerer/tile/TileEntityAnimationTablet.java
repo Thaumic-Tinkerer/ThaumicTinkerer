@@ -155,7 +155,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
         par1NBTTagCompound.setBoolean(TAG_REDSTONE, redstone);
         par1NBTTagCompound.setInteger(TAG_PROGRESS, swingProgress);
         par1NBTTagCompound.setInteger(TAG_MOD, swingMod);
-        
+
     	NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
             if (inventorySlots[var3] != null) {
