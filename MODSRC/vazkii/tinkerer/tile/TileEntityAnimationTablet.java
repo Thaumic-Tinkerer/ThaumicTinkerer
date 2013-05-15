@@ -18,6 +18,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -32,6 +33,8 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.FakePlayer;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
@@ -127,8 +130,12 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 			boolean done = false;
 			try {
-				done = item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
+				ForgeEventFactory.onPlayerInteract(player, Action.RIGHT_CLICK_AIR, coords.posX, coords.posY, coords.posZ, side);
+				Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
+				done = entity != null && entity instanceof EntityLiving && (item.itemInteractionForEntity(stack, (EntityLiving) entity) || entity.interact(player));
 
+				if(!done)
+					item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done)
 					done = Block.blocksList[id].onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
 				if(!done)
@@ -159,7 +166,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		return !worldObj.isAirBlock(coords.posX, coords.posY, coords.posZ) || !detectedEntities.isEmpty();
 	}
 
-	private void findEntities(ChunkCoordinates coords) {
+	public void findEntities(ChunkCoordinates coords) {
 		AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(coords.posX, coords.posY, coords.posZ, coords.posX + 1, coords.posY + 1, coords.posZ + 1);
 		detectedEntities = worldObj.getEntitiesWithinAABB(Entity.class, boundingBox);
 	}

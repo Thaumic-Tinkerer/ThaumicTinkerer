@@ -99,6 +99,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 		if(tile != null && tile instanceof TileEntityAnimationTablet) {
 			TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) tile;
 			if(tablet.redstone && tablet.swingProgress == 0) {
+				tablet.findEntities(tablet.getTargetLoc());
 				tablet.initiateSwing();
 				par1World.addBlockEvent(par2, par3, par4, ModBlocks.animationTablet.blockID, 0, 0);
 			}

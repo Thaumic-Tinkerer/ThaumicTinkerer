@@ -38,6 +38,13 @@ public class TabletFakePlayer extends FakePlayer {
 		posY = tablet.yCoord + 1.6;
 		posZ = tablet.zCoord + 0.5;
 
+		if(riddenByEntity != null)
+			riddenByEntity.ridingEntity = null;
+		if(ridingEntity != null)
+			ridingEntity.riddenByEntity = null;
+		riddenByEntity = null;
+		ridingEntity = null;
+
 		motionX = motionY = motionZ = 0;
 		setEntityHealth(getMaxHealth());
 		isDead = false;
