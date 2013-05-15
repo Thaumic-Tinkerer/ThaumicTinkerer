@@ -113,14 +113,22 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	public void swingHit() {
 		ChunkCoordinates coords = getTargetLoc();
 		ItemStack stack = getStackInSlot(0);
+		Item item = stack.getItem();
+		int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
 
 		player.setCurrentItemOrArmor(0, stack);
-		if(leftClick) {
 
+		boolean done = false;
+
+		if(leftClick) {
+			Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
+			if(entity != null && entity instanceof EntityLiving) {
+				stack.getDamageVsEntity(entity);
+				player.attackTargetEntityWithCurrentItem(entity);
+				done = true;
+			}
 		} else {
-			Item item = stack.getItem();
 			int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
-			int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
 
 			if(!(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ))) {
 				coords.posY -= 1;
@@ -128,7 +136,6 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 				id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
 			}
 
-			boolean done = false;
 			try {
 				ForgeEventFactory.onPlayerInteract(player, Action.RIGHT_CLICK_AIR, coords.posX, coords.posY, coords.posZ, side);
 				Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
@@ -137,7 +144,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 				if(!done)
 					item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done)
-					done = Block.blocksList[id].onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
+					done = Block.blocksList[id] != null && Block.blocksList[id].onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
 				if(!done)
 					done = item.onItemUse(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done) {
@@ -152,11 +159,11 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.getWorldInfo().getDimension(), packet);
 				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.getWorldInfo().getDimension(), packet1);
 			}
+		}
 
-			if(done) {
-				setInventorySlotContents(0, stack.stackSize == 0 ? null : stack);
-				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
-			}
+		if(done) {
+			setInventorySlotContents(0, stack.stackSize == 0 ? null : stack);
+			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 		}
 	}
 
@@ -276,7 +283,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	@Override
 	public String getInvName() {
-		return LibBlockNames.TRANSMUTATOR_D;
+		return LibBlockNames.ANIMATION_TABLET_D;
 	}
 
 	@Override

@@ -65,11 +65,14 @@ public class PacketAnimationTabletSync extends ModPacket {
 			int z = inputStream.readInt();
 			TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) ((EntityPlayer)player).worldObj.getBlockTileEntity(x, y, z);
 			ItemStack stack = PacketManager.getItemStackFromStream(inputStream);
-			tablet.setInventorySlotContents(0, stack);
-			boolean leftClick = inputStream.readBoolean();
-			boolean redstone = inputStream.readBoolean();
-			tablet.leftClick = leftClick;
-			tablet.redstone = redstone;
+			if(tablet != null) {
+				tablet.setInventorySlotContents(0, stack);
+				boolean leftClick = inputStream.readBoolean();
+				boolean redstone = inputStream.readBoolean();
+				tablet.leftClick = leftClick;
+				tablet.redstone = redstone;
+			}
+
 			return true;
 		}
 		return false;
