@@ -19,11 +19,11 @@ public final class LibBlockIDs {
 	public static final int DEFAULT_GLOWSTONE_GAS = 2150;
 	public static final int DEFAULT_TRANSMUTATOR = 2151;
 	public static final int DEFAULT_WARD_CHEST = 2152;
-	public static final int DEFAULT_DARK_QUARTZ = 2153;
-	public static final int DEFAULT_DARK_QUARTZ_SLAB = 2153;
-	public static final int DEFAULT_DARK_QUARTZ_STAIRS = 2153;
-	public static final int DEFAULT_DARK_QUARTZ_SLAB_FULL = 2153;
-	public static final int DEFAULT_ANIMATION_TABLET = 2154;
+	public static final int DEFAULT_DARK_QUARTZ = 2154;
+	public static final int DEFAULT_DARK_QUARTZ_SLAB = 2155;
+	public static final int DEFAULT_DARK_QUARTZ_STAIRS = 2156;
+	public static final int DEFAULT_DARK_QUARTZ_SLAB_FULL = 2157;
+	public static final int DEFAULT_ANIMATION_TABLET = 2153;
 
 	public static int idGlowstoneGas;
 	public static int idTransmutator;
