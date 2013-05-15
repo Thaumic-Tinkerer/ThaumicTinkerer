@@ -26,6 +26,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraftforge.common.FakePlayer;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
@@ -59,8 +60,14 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	public int swingProgress = 0;
 	private int swingMod = 0;
 
+	FakePlayer player;
+
 	@Override
 	public void updateEntity() {
+		if(player == null)
+			player = new TabletFakePlayer(this);
+
+		player.onUpdate();
 		ticksExisted++;
 
 		if(getStackInSlot(0) != null) {
@@ -89,17 +96,19 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	public void swingHit() {
 		ChunkCoordinates coords = getTargetLoc();
-		// XXX Still a test!
-		worldObj.setBlockToAir(coords.posX, coords.posY, coords.posZ);
+		if(leftClick) {
+
+		} else {
+			ItemStack stack = getStackInSlot(0);
+			ItemStack stack1 = stack.getItem().onItemRightClick(stack, worldObj, player);
+			setInventorySlotContents(0, stack1.stackSize == 0 ? null : stack1);
+		}
 	}
 
 	public boolean detect() {
 		ChunkCoordinates coords = getTargetLoc();
-		if(leftClick)
-			return !worldObj.isAirBlock(coords.posX, coords.posY, coords.posZ);
-
 		findEntities(coords);
-		return !detectedEntities.isEmpty();
+		return !worldObj.isAirBlock(coords.posX, coords.posY, coords.posZ) || !detectedEntities.isEmpty();
 	}
 
 	private void findEntities(ChunkCoordinates coords) {
