@@ -43,7 +43,7 @@ public class SlotTransmutatorOutput extends SlotPureOutput {
 		for(EnumTag tag : tags.getAspects()) {
 			IAspectSource source = transmutator.foundTags.getSource(tag);
 			if(source != null)
-				source.takeFromSource(tag, tags.getAmount(tag));
+				source.takeFromSource(tag, tags.getAmount(tag) * 4);
 		}
 
 		par1EntityPlayer.worldObj.playSoundAtEntity(par1EntityPlayer, "thaumcraft.wand", 0.3F, 1F);
