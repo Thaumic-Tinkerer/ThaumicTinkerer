@@ -16,21 +16,27 @@ package vazkii.tinkerer.tile;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet3Chat;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.FakePlayer;
+import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileEntityAnimationTablet extends TileEntity implements IInventory {
 
@@ -44,6 +50,13 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		{ 0, +1 },
 		{ -1, 0 },
 		{ +1, 0 }
+	};
+
+	private static final ForgeDirection[] SIDES = new ForgeDirection[] {
+		ForgeDirection.NORTH,
+		ForgeDirection.SOUTH,
+		ForgeDirection.WEST,
+		ForgeDirection.EAST
 	};
 
 	private static final int SWING_SPEED = 3;
@@ -96,12 +109,47 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	public void swingHit() {
 		ChunkCoordinates coords = getTargetLoc();
+		ItemStack stack = getStackInSlot(0);
+
+		player.setCurrentItemOrArmor(0, stack);
 		if(leftClick) {
 
 		} else {
-			ItemStack stack = getStackInSlot(0);
-			ItemStack stack1 = stack.getItem().onItemRightClick(stack, worldObj, player);
-			setInventorySlotContents(0, stack1.stackSize == 0 ? null : stack1);
+			Item item = stack.getItem();
+			int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
+			int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+
+			if(!(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ))) {
+				coords.posY -= 1;
+				side = ForgeDirection.UP.ordinal();
+				id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+			}
+
+			boolean done = false;
+			try {
+				done = item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
+
+				if(!done)
+					done = Block.blocksList[id].onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
+				if(!done)
+					done = item.onItemUse(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
+				if(!done) {
+					stack = item.onItemRightClick(stack, worldObj, player);
+					done = true;
+				}
+			} catch(Throwable e) {
+				e.printStackTrace();
+				Packet3Chat packet = new Packet3Chat(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log.");
+				Packet3Chat packet1 = new Packet3Chat(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage());
+
+				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.getWorldInfo().getDimension(), packet);
+				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.getWorldInfo().getDimension(), packet1);
+			}
+
+			if(done) {
+				setInventorySlotContents(0, stack.stackSize == 0 ? null : stack);
+				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+			}
 		}
 	}
 
@@ -231,7 +279,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 1;
+		return 64;
 	}
 
 	@Override
@@ -258,5 +306,4 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	public Packet getDescriptionPacket() {
 		return PacketManager.generatePacket(new PacketAnimationTabletSync(this));
 	}
-
 }

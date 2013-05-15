@@ -15,6 +15,7 @@
 package vazkii.tinkerer.tile;
 
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
 
 public class TabletFakePlayer extends FakePlayer {
@@ -24,6 +25,11 @@ public class TabletFakePlayer extends FakePlayer {
 	public TabletFakePlayer(TileEntityAnimationTablet tablet) {
 		super(tablet.worldObj, tablet.getInvName());
 		this.tablet = tablet;
+	}
+
+	@Override
+	public void openGui(Object mod, int modGuiId, World world, int x, int y, int z) {
+		// NO-OP
 	}
 
 	@Override
