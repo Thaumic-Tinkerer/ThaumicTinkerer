@@ -16,6 +16,7 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,26 +32,26 @@ public class ItemNametag extends ItemMod {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
-		if(par2EntityLiving instanceof EntityGolemBase) {
-			EntityGolemBase golem = (EntityGolemBase) par2EntityLiving;
-			EntityPlayer player = EntityInteractionHandler.getLastInteractingPlayer();
-			if(!par1ItemStack.hasDisplayName()) {
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+		if(entity instanceof EntityGolemBase) {
+			EntityGolemBase golem = (EntityGolemBase) entity;
+			if(!stack.hasDisplayName()) {
 				if(player.worldObj.isRemote)
 					player.addChatMessage("This name tag is blank. You need to name it using an anvil.");
 				return true;
 			}
 
 			if(golem.getOwnerName().equals(player.username)) {
-				golem.func_94058_c(par1ItemStack.getDisplayName());
+				golem.func_94058_c(stack.getDisplayName());
 				golem.playLivingSound();
-				/*if(player.worldObj.isRemote)
-					player.swingItem();*/
-				par1ItemStack.stackSize--;
+				if(player.worldObj.isRemote)
+					player.swingItem();
 			} else if(player.worldObj.isRemote)
 				player.addChatMessage("That golem isn't yours.");
+			
+			return true;
 		}
-
+	
 		return false;
 	}
 

@@ -63,7 +63,7 @@ This power is provenient from the portable hole, so your new wand will be able t
 <longText>Some black dye and magic... and you think you have figured out a way to properly name your golems.</longText>
 <page type = "text">A name tag with some magic. Giving it to one of your golem minions will have them show off their name.
 
-To do this, the item must be named in an anvil.</page>
+To do this, the item must be named in an anvil, one would left click the golem with the named item. This does not hit, or damage the golem.</page>
 <page type = "arcanecrafting">NAMETAG</page>
 </project>
 
