@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.tile;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
@@ -53,6 +54,16 @@ public class TabletFakePlayer extends FakePlayer {
 		int rotation = meta == 2 ? 180 : meta == 3 ? 0 : meta == 4 ? 90 : -90;
 		rotationYaw = rotationYawHead = rotation;
 		rotationPitch = -15;
+
+		for(int i = 0; i < inventory.getSizeInventory(); i++) {
+			if(i != inventory.currentItem) {
+				ItemStack stack = inventory.getStackInSlot(i);
+				if(stack != null) {
+					dropPlayerItem(stack);
+					inventory.setInventorySlotContents(i, null);
+				}
+			}
+		}
 	}
 
 	@Override

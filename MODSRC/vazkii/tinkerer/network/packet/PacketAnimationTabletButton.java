@@ -26,6 +26,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import vazkii.tinkerer.inventory.container.ContainerAnimationTablet;
 import vazkii.tinkerer.lib.LibNetwork;
 import vazkii.tinkerer.network.ModPacket;
+import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import cpw.mods.fml.common.network.Player;
 
@@ -71,6 +72,8 @@ public class PacketAnimationTabletButton extends ModPacket {
 					boolean redstone = inputStream.readBoolean();
 					tablet.leftClick = leftClick;
 					tablet.redstone = redstone;
+					PacketAnimationTabletSync packet1 = new PacketAnimationTabletSync(tablet);
+					PacketManager.sendPacketToClient(player, packet1);
 				}
 			}
 			return true;

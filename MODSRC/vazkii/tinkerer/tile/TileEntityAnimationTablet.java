@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.tile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -65,7 +66,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	private static final int SWING_SPEED = 3;
 	private static final int MAX_DEGREE = 45;
 
-	List<Entity> detectedEntities;
+	List<Entity> detectedEntities = new ArrayList();
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 	public double ticksExisted = 0;
