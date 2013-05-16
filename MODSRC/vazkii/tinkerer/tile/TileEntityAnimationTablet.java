@@ -34,7 +34,9 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.FakePlayer;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.event.Event;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.lib.LibBlockNames;
@@ -76,6 +78,11 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 	public int swingProgress = 0;
 	private int swingMod = 0;
+	
+	private boolean isBreaking = false;
+	private int initialDamage = 0;
+	private int curblockDamage = 0;
+	private int durabilityRemainingOnBlock;
 
 	FakePlayer player;
 
@@ -86,8 +93,10 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 		player.onUpdate();
 		ticksExisted++;
-
-		if(getStackInSlot(0) != null) {
+		
+		ItemStack stack = getStackInSlot(0);
+		
+		if(stack != null) {
 			if(swingProgress >= MAX_DEGREE)
 				swingHit();
 
@@ -98,9 +107,19 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		} else {
 			swingMod = 0;
 			swingProgress = 0;
+			
+			if(isBreaking)
+				stopBreaking();
 		}
-
-		if(!redstone && detect() && swingProgress == 0) {
+		
+		boolean detect = detect();
+		if(!detect)
+			stopBreaking();
+		
+		if(detect && isBreaking)
+			continueBreaking();
+		
+		if((!redstone || isBreaking) && detect && swingProgress == 0) {
 			initiateSwing();
 			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet.blockID, 0, 0);
 		}
@@ -123,10 +142,17 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 		if(leftClick) {
 			Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
-			if(entity != null && entity instanceof EntityLiving) {
+			if(entity != null) {
 				stack.getDamageVsEntity(entity);
 				player.attackTargetEntityWithCurrentItem(entity);
 				done = true;
+			} else if(!isBreaking){
+				if(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ)) {
+					System.out.println("start");
+					isBreaking = true;
+					startBreaking(Block.blocksList[id], worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ));
+					done = true;
+				}
 			}
 		} else {
 			int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
@@ -167,6 +193,130 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 		}
 	}
+	
+	private void stopBreaking() {
+		isBreaking = false;
+		ChunkCoordinates coords = getTargetLoc();
+		worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, -1);
+	}
+	
+	private void startBreaking(Block block, int meta) {
+		int side = 	SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
+		ChunkCoordinates coords = getTargetLoc();
+
+		PlayerInteractEvent event = ForgeEventFactory.onPlayerInteract(player, Action.LEFT_CLICK_BLOCK, coords.posX, coords.posY, coords.posZ, side);
+        if (event.isCanceled()) {
+        	stopBreaking();
+            return;
+        }
+        
+		this.initialDamage = this.curblockDamage;
+        float var5 = 1.0F;
+
+        if (block != null) {
+            if (event.useBlock != Event.Result.DENY)
+                block.onBlockClicked(worldObj, coords.posX, coords.posY, coords.posZ, player);
+            var5 = block.getPlayerRelativeBlockHardness(player, worldObj, coords.posX, coords.posY, coords.posZ);
+        }
+
+        if (event.useItem == Event.Result.DENY) {
+        	stopBreaking();
+            return;
+        }
+
+        if(var5 >= 1.0F) {
+            this.tryHarvestBlock(coords.posX, coords.posY, coords.posZ);
+            stopBreaking();
+        } else {
+            int var7 = (int)(var5 * 10.0F);
+            worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, var7);
+            this.durabilityRemainingOnBlock = var7;
+        }
+	}
+	
+	private void continueBreaking() {
+		++this.curblockDamage;
+        int var1;
+        float var4;
+        int var5;
+		ChunkCoordinates coords = getTargetLoc();
+
+        var1 = this.curblockDamage - this.initialDamage;
+        int var2 = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+
+        if (var2 == 0)
+        	stopBreaking();
+        else {
+            Block var3 = Block.blocksList[var2];
+            var4 = var3.getPlayerRelativeBlockHardness(player, worldObj,coords.posX, coords.posY, coords.posZ) * (float)(var1 + 1);
+            var5 = (int)(var4 * 10.0F);
+
+            if (var5 != this.durabilityRemainingOnBlock) {
+                worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, var5);
+                this.durabilityRemainingOnBlock = var5;
+            }
+            
+            if (var4 >= 1.0F) {
+                this.tryHarvestBlock(coords.posX, coords.posY, coords.posZ);
+                stopBreaking();
+            }
+        }
+	}
+	
+	// Copied from ItemInWorldManager, seems to do the trick.
+    public boolean tryHarvestBlock(int par1, int par2, int par3) {
+        ItemStack stack = getStackInSlot(0);
+        if (stack != null && stack.getItem().onBlockStartBreak(stack, par1, par2, par3, player))
+        	return false;
+
+        int var4 = worldObj.getBlockId(par1, par2, par3);
+        int var5 = worldObj.getBlockMetadata(par1, par2, par3);
+        worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
+        boolean var6 = false;
+
+        {
+            boolean var8 = false;
+            Block block = Block.blocksList[var4];
+            if (block != null)
+                var8 = block.canHarvestBlock(player, var5);
+
+            int prevSize = worldObj.loadedEntityList.size();
+            if (stack != null) {
+                stack.onBlockDestroyed(worldObj, var4, par1, par2, par3, player);
+
+                /*if (stack.stackSize == 0) {
+        			setInventorySlotContents(0, stack.stackSize == 0 ? null : stack);
+        			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+                }*/
+            }
+
+            var6 = this.removeBlock(par1, par2, par3);
+            if (var6 && var8)
+            	Block.blocksList[var4].harvestBlock(worldObj, player, par1, par2, par3, var5);
+        }
+
+        return var6;
+    }
+    
+    private boolean removeBlock(int par1, int par2, int par3)
+    {
+        Block var4 = Block.blocksList[worldObj.getBlockId(par1, par2, par3)];
+        int var5 = worldObj.getBlockMetadata(par1, par2, par3);
+
+        if (var4 != null)
+        {
+            var4.onBlockHarvested(worldObj, par1, par2, par3, var5, player);
+        }
+
+        boolean var6 = (var4 != null && var4.removeBlockByPlayer(worldObj, player, par1, par2, par3));
+
+        if (var4 != null && var6)
+        {
+            var4.onBlockDestroyedByPlayer(worldObj, par1, par2, par3, var5);
+        }
+
+        return var6;
+    }
 
 	public boolean detect() {
 		ChunkCoordinates coords = getTargetLoc();

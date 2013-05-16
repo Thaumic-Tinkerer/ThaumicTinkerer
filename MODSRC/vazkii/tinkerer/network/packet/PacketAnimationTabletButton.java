@@ -56,7 +56,6 @@ public class PacketAnimationTabletButton extends ModPacket {
 	@Override
 	public boolean readPayload(Packet250CustomPayload packet, INetworkManager manager, Player player, String subchannel) throws IOException {
 		if(subchannel.equals(getSubchannel()) && player != null && player instanceof EntityPlayer) {
-
 			EntityPlayer entityPlayer = (EntityPlayer)player;
 			if(entityPlayer.openContainer != null && entityPlayer.openContainer instanceof ContainerAnimationTablet) {
 				ByteArrayInputStream stream = new ByteArrayInputStream(packet.data);
