@@ -43,6 +43,7 @@ import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
 import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.registry.TickRegistry;
 
 public class TileEntityAnimationTablet extends TileEntity implements IInventory {
 
@@ -90,8 +91,9 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	public void updateEntity() {
 		if(player == null)
 			player = new TabletFakePlayer(this);
-
+		
 		player.onUpdate();
+		
 		ticksExisted++;
 		
 		ItemStack stack = getStackInSlot(0);
@@ -148,8 +150,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 				done = true;
 			} else if(!isBreaking){
 				if(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ)) {
-					System.out.println("start");
-					isBreaking = true;
+«					isBreaking = true;
 					startBreaking(Block.blocksList[id], worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ));
 					done = true;
 				}
