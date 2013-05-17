@@ -28,7 +28,7 @@ public final class LibBlockNames {
 
 	public static final String TRANSMUTATOR = "transmutator";
 	public static final String TRANSMUTATOR_R = "TRANSMUTATOR";
-	public static final String TRANSMUTATOR_D = "Transmutator";
+	public static final String TRANSMUTATOR_D = "Arcane Transmutator";
 
 	public static final String WARD_CHEST = "wardChest";
 	public static final String WARD_CHEST_R = "WARD_CHEST";
@@ -46,7 +46,7 @@ public final class LibBlockNames {
 
 	public static final String ANIMATION_TABLET = "animationTablet";
 	public static final String ANIMATION_TABLET_R = "ANIMATION_TABLET";
-	public static final String ANIMATION_TABLET_D = "Item Dynamism Tablet";
+	public static final String ANIMATION_TABLET_D = "Tool Dynamism Tablet";
 
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"Block of Smokey Quartz",

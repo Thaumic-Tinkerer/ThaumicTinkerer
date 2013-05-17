@@ -49,9 +49,10 @@ public final class ModInfusionRecipes {
 
 		tags = new ObjectTags().add(EnumTag.FLUX, 24).add(EnumTag.EXCHANGE, 48);
 		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.TRANSMUTATOR_R, LibBlockNames.TRANSMUTATOR_R, 320, tags, new ItemStack(ModBlocks.transmutator),
-				"WTW", "WFW", "WCW",
+				"ITI", "WFW", "WCW",
 				'W', new ItemStack(Config.blockWooden),
 				'T', new ItemStack(Config.itemWandTrade),
+				'I', new ItemStack(Config.itemResource, 1, 2),
 				'F', new ItemStack(Config.itemResource, 1, 8),
 				'C', new ItemStack(Config.blockCrucible));
 
