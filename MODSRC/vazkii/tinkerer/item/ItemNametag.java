@@ -17,11 +17,9 @@ package vazkii.tinkerer.item;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import thaumcraft.common.entities.golems.EntityGolemBase;
-import vazkii.tinkerer.util.handler.EntityInteractionHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,10 +46,10 @@ public class ItemNametag extends ItemMod {
 					player.swingItem();
 			} else if(player.worldObj.isRemote)
 				player.addChatMessage("That golem isn't yours.");
-			
+
 			return true;
 		}
-	
+
 		return false;
 	}
 
