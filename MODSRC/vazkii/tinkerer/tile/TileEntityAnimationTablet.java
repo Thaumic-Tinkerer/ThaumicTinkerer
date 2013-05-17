@@ -194,12 +194,14 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		}
 	}
 
+	// Copied from ItemInWorldManager, seems to do the trick.
 	private void stopBreaking() {
 		isBreaking = false;
 		ChunkCoordinates coords = getTargetLoc();
 		worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, -1);
 	}
 
+	// Copied from ItemInWorldManager, seems to do the trick.
 	private void startBreaking(Block block, int meta) {
 		int side = 	SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
 		ChunkCoordinates coords = getTargetLoc();
@@ -234,6 +236,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
         }
 	}
 
+	// Copied from ItemInWorldManager, seems to do the trick.
 	private void continueBreaking() {
 		++curblockDamage;
         int var1;
@@ -290,6 +293,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
         return var6;
     }
 
+	// Copied from ItemInWorldManager, seems to do the trick.
     private boolean removeBlock(int par1, int par2, int par3) {
         Block var4 = Block.blocksList[worldObj.getBlockId(par1, par2, par3)];
         int var5 = worldObj.getBlockMetadata(par1, par2, par3);
