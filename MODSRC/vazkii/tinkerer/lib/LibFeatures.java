@@ -33,4 +33,6 @@ public final class LibFeatures {
 	public static final int TELEPORT_SIGIL_TIME = 100;
 	public static final int TELEPORT_SIGIL_VIS = 25;
 
+	public static final int ENCHANT_ITEM_MAX_DMG = 1000;
+
 }

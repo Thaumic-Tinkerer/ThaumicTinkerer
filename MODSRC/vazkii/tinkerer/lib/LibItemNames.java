@@ -62,4 +62,11 @@ public final class LibItemNames {
 	public static final String DEATH_RUNE_R = "DEATH_RUNE";
 	public static final String DEATH_RUNE_D = "Rune Thanatos";
 
+	public static final String SILK_SWORD = "silkSword";
+	public static final String SILK_SWORD_R = "SILK_SWORD";
+	public static final String SILK_SWORD_D = "Silk Cutter";
+
+	public static final String FORTUNE_MAUL = "fortuneMaul";
+	public static final String FORTUNE_MAUL_R = "FORTUNE_MAUL";
+	public static final String FORTUNE_MAUL_D = "Fortunate Maul";
 }

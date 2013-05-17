@@ -38,6 +38,8 @@ public final class ConfigurationHandler {
 		LibItemIDs.idWandUprising = loadItem(LibItemNames.WAND_UPRISING, LibItemIDs.DEFAULT_WAND_UPRISING);
 		LibItemIDs.idSwordCondor = loadItem(LibItemNames.SWORD_CONDOR, LibItemIDs.DEFAULT_SWORD_CONDOR);
 		LibItemIDs.idDeathRune = loadItem(LibItemNames.DEATH_RUNE, LibItemIDs.DEFAULT_DEATH_RUNE);
+		LibItemIDs.idSilkSword = loadItem(LibItemNames.SILK_SWORD, LibItemIDs.DEFAULT_SILK_SWORD);
+		LibItemIDs.idFortuneMaul = loadItem(LibItemNames.FORTUNE_MAUL, LibItemIDs.DEFAULT_FORTUNE_MAUL);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);

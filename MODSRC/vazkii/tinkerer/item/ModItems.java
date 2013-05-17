@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.item;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
@@ -38,6 +39,8 @@ public final class ModItems {
 	public static Item wandUprising;
 	public static Item swordCondor;
 	public static Item deathRune;
+	public static Item silkSword;
+	public static Item fortuneMaul;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -53,6 +56,8 @@ public final class ModItems {
 		wandUprising = new ItemWandUprising(LibItemIDs.idWandUprising).setUnlocalizedName(LibItemNames.WAND_UPRISING);
 		swordCondor = new ItemSwordCondor(LibItemIDs.idSwordCondor).setUnlocalizedName(LibItemNames.SWORD_CONDOR);
 		deathRune = new ItemDeathRune(LibItemIDs.idDeathRune).setUnlocalizedName(LibItemNames.DEATH_RUNE);
+		silkSword = new ItemDefaultEnchant(LibItemIDs.idSilkSword, Enchantment.silkTouch, 1).setUnlocalizedName(LibItemNames.SILK_SWORD);
+		fortuneMaul = new ItemDefaultEnchant(LibItemIDs.idFortuneMaul, Enchantment.fortune, 3).setUnlocalizedName(LibItemNames.FORTUNE_MAUL);
 
 		nameItems();
 		applyObjectTags();
@@ -72,6 +77,8 @@ public final class ModItems {
 		LanguageRegistry.addName(wandUprising, LibItemNames.WAND_UPRISING_D);
 		LanguageRegistry.addName(swordCondor, LibItemNames.SWORD_CONDOR_D);
 		LanguageRegistry.addName(deathRune, LibItemNames.DEATH_RUNE_D);
+		LanguageRegistry.addName(silkSword, LibItemNames.SILK_SWORD_D);
+		LanguageRegistry.addName(fortuneMaul, LibItemNames.FORTUNE_MAUL_D);
 	}
 
 	private static void applyObjectTags() {
