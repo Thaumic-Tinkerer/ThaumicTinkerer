@@ -103,5 +103,32 @@ public final class ModInfusionRecipes {
 				'T', new ItemStack(Config.itemResource, 1, 2),
 				'O', new ItemStack(Block.obsidian),
 				'B', new ItemStack(Config.itemResource, 1, 5));
+
+		tags = new ObjectTags().add(EnumTag.CONTROL, 16).add(EnumTag.MOTION, 8).add(EnumTag.MECHANISM, 16).add(EnumTag.MAGIC, 12);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.ANIMATION_TABLET_R, LibBlockNames.ANIMATION_TABLET_R, 25, tags, new ItemStack(ModBlocks.animationTablet),
+				"GIG", "ICI",
+				'G', new ItemStack(Item.ingotGold),
+				'I', new ItemStack(Item.ingotIron),
+				'C', new ItemStack(Config.itemGolemCore, 1, 0));
+
+		tags = new ObjectTags().add(EnumTag.TOOL, 25).add(EnumTag.DARK, 4).add(EnumTag.MAGIC, 12).add(EnumTag.CLOTH, 100);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.SILK_SWORD_R, LibItemNames.SILK_SWORD_R, 100, tags, new ItemStack(ModItems.silkSword),
+				"O1O", "2D3", "O4O",
+				'1', new ItemStack(Config.itemSwordThaumium),
+				'2', new ItemStack(Config.itemAxeThaumium),
+				'3', new ItemStack(Config.itemPickThaumium),
+				'4', new ItemStack(Config.itemShovelThaumium),
+				'O', new ItemStack(Block.obsidian),
+				'D', new ItemStack(Item.diamond));
+
+		tags = new ObjectTags().add(EnumTag.TOOL, 25).add(EnumTag.DARK, 4).add(EnumTag.MAGIC, 12).add(EnumTag.VALUABLE, 25);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.FORTUNE_MAUL_R, LibItemNames.FORTUNE_MAUL_R, 100, tags, new ItemStack(ModItems.fortuneMaul),
+				"O1O", "2D3", "O4O",
+				'1', new ItemStack(Config.itemHoeThaumium),
+				'2', new ItemStack(Config.itemAxeThaumium),
+				'3', new ItemStack(Config.itemPickThaumium),
+				'4', new ItemStack(Config.itemShovelThaumium),
+				'O', new ItemStack(Block.obsidian),
+				'D', new ItemStack(Item.diamond));
 	}
 }

@@ -33,7 +33,7 @@ import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemDefaultEnchant extends ItemTool {
+public class ItemDefaultEnchant extends ItemTool implements INoRemoveEnchant {
 
 	Enchantment enchant;
 	int enchantLevel;

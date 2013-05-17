@@ -41,6 +41,9 @@ public final class ModResearchItems {
 	public static ResearchItem wandUprising;
 	public static ResearchItem swordCondor;
 	public static ResearchItem deathRune;
+	public static ResearchItem animationTablet;
+	public static ResearchItem silkSword;
+	public static ResearchItem fortuneMaul;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -87,5 +90,14 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.DEATH, 20).add(EnumTag.POWER, 16).add(EnumTag.TRAP, 12);
 		deathRune = new ResearchItem(LibItemNames.DEATH_RUNE_R, tags, 5, 11, ModItems.deathRune).setParents(wardChest).setHidden().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.CONTROL, 12).add(EnumTag.MOTION, 6).add(EnumTag.MECHANISM, 12).add(EnumTag.MAGIC, 4);
+		animationTablet = new ResearchItem(LibBlockNames.ANIMATION_TABLET_R, tags, 4, 24, ModBlocks.animationTablet).setParents(Config.researchGolemIronGuardian).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.TOOL, 12).add(EnumTag.DARK, 1).add(EnumTag.CLOTH, 48);
+		silkSword = new ResearchItem(LibItemNames.SILK_SWORD_R, tags, 7, 24, ModItems.silkSword).setParentsHidden(Config.researchThaumium).setHidden().setLost().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.TOOL, 12).add(EnumTag.DARK, 1).add(EnumTag.VALUABLE, 12);
+		fortuneMaul = new ResearchItem(LibItemNames.FORTUNE_MAUL_R, tags, 8, 24, ModItems.fortuneMaul).setParentsHidden(Config.researchThaumium).setHidden().setLost().registerResearchItem();
 	}
 }
