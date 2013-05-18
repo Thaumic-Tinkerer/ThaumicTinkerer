@@ -2,14 +2,14 @@
 {
   "modid": "ThaumicTinkerer",
   "name": "Thaumic Tinkerer",
-  "description": "An addon to Thaumcraft 3, implementing new content. This mod is a spiritual successor to Elemental Tinkerer.",
-  "version": "sqrt(-1)",
+  "description": "An addon to Thaumcraft 3, implementing new content. This mod is a spiritual successor to Elemental Tinkerer. Compiled for Thaumcraft 3.0.5.",
+  "version": "1.0pre",
   "mcversion": "1.5+",
   "logoFile": "/mods/ThaumicTinkerer/logo.png",
   "url": "",
   "updateUrl": "",
   "authors": ["Vazkii"],
-  "credits": "azanor for creating Thaumcraft.",
+  "credits": "azanor for creating Thaumcraft. TheAtlanticCraft, MartysGames, TheWhiteWolves",
   "parent": "",
   "screenshots": [],
   "dependencies": ["Thaumcraft"]
