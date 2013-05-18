@@ -134,7 +134,7 @@ public class TileEntityWardChest extends TileOwned implements ISidedInventory, n
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 0;
+		return 64;
 	}
 
 	@Override
