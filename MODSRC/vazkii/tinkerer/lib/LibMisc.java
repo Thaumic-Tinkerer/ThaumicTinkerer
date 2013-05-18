@@ -18,7 +18,7 @@ public final class LibMisc {
 
 	public static final String MOD_ID = "ThaumicTinkerer";
 	public static final String MOD_NAME = "Thaumic Tinkerer";
-	public static final String MOD_VERSION = "1.0pre";
+	public static final String MOD_VERSION = "1.0";
 
 	public static final String DEPENDENCIES = "required-after:Thaumcraft";
 

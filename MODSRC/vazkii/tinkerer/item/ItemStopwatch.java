@@ -157,7 +157,9 @@ public class ItemStopwatch extends ItemMod {
 		float saturation = ItemNBTHelper.getFloat(stack, TAG_SATURATION, 0F);
 
 		player.playerNetServerHandler.setPlayerLocation(x, y, z, pitch, yaw);
-		player.setVelocity(motionX, motionY, motionZ);
+		player.motionX = motionX;
+		player.motionY = motionY;
+		player.motionZ = motionZ;
 		player.setEntityHealth(health);
 		player.getFoodStats().setFoodLevel(food);
 		player.getFoodStats().setFoodSaturationLevel(saturation);
