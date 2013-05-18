@@ -22,7 +22,7 @@ import vazkii.tinkerer.lib.LibBlockNames;
 public class ItemDarkQuartzBlock extends ItemMultiTextureTile {
 
 	public ItemDarkQuartzBlock(int par1) {
-		super(par1, ModBlocks.darkQuartz, new String[] { });
+		super(par1, ModBlocks.darkQuartz, new String[] { "" } );
 	}
 
 	@Override

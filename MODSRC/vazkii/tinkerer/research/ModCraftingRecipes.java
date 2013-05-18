@@ -59,7 +59,7 @@ public final class ModCraftingRecipes {
 
 	private static void registerResearchItem(String name, ItemStack output, Object... stuff) {
 		GameRegistry.addRecipe(output, stuff);
-		if(name != null && name.length() == 0)
+		if(name != null && name.length() != 0)
 			ResearchList.craftingRecipesForResearch.put(name, Arrays.asList(CraftingManager.getInstance().getRecipeList().size() -1));
 	}
 
