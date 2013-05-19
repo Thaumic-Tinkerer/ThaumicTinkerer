@@ -49,5 +49,4 @@ public class SlotTransmutatorOutput extends SlotPureOutput {
 
 		par1EntityPlayer.worldObj.playSoundAtEntity(par1EntityPlayer, "thaumcraft.wand", 0.3F, 1F);
 	}
-
 }

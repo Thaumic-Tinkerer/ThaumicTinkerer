@@ -24,6 +24,7 @@ import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibGuiIDs;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -43,8 +44,11 @@ public class BlockTransmutator extends BlockModContainer {
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
-			if(tile != null)
-				par5EntityPlayer.openGui(ThaumicTinkerer.modInstance, LibGuiIDs.ID_TRANSMUTATOR, par1World, par2, par3, par4);
+			if(tile != null) {
+				if(ConfigurationHandler.enableTransmutator)
+					par5EntityPlayer.openGui(ThaumicTinkerer.modInstance, LibGuiIDs.ID_TRANSMUTATOR, par1World, par2, par3, par4);
+				else par5EntityPlayer.addChatMessage("The Arcane Transmutator is disabled on this server.");
+			}
 		}
 
 		return true;
