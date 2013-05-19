@@ -84,7 +84,7 @@ public class GuiTransmutator extends GuiContainer {
 				int amount = tags.getAmount(tag);
 				int xpos = (int) (50 + 35 * Math.cos(renderDeg * Math.PI / 180));
 				int ypos = (int) (16 + 35 * Math.sin(renderDeg * Math.PI / 180));
-				UtilsFX.drawTag(mc, xpos, ypos, tag, amount * 4, this, false, false);
+				UtilsFX.drawTag(mc, xpos, ypos, tag, amount * ConfigurationHandler.transmutatorEssentiaMultiplier, this, false, false);
 				float deg = (float) (transmutator.ticksExisted * amount % 360F);
 
 				int color = tag.color;
