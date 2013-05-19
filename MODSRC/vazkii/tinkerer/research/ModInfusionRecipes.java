@@ -131,7 +131,7 @@ public final class ModInfusionRecipes {
 				'4', new ItemStack(Config.itemShovelThaumium),
 				'O', new ItemStack(Block.obsidian),
 				'D', new ItemStack(Item.diamond));
-		
+
 		tags = new ObjectTags().add(EnumTag.TOOL, 8).add(EnumTag.VISION, 6).add(EnumTag.ELDRITCH, 12);
 		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.ENDER_MIRROR_R, LibItemNames.ENDER_MIRROR_R, 25, tags, new ItemStack(ModItems.enderMirror),
 				"E C", " M ", "O E",

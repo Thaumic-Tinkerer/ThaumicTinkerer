@@ -42,6 +42,7 @@ public final class ModItems {
 	public static Item silkSword;
 	public static Item fortuneMaul;
 	public static Item enderMirror;
+	public static Item goliathLegs;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -60,6 +61,7 @@ public final class ModItems {
 		silkSword = new ItemDefaultEnchant(LibItemIDs.idSilkSword, Enchantment.silkTouch, 1).setUnlocalizedName(LibItemNames.SILK_SWORD);
 		fortuneMaul = new ItemDefaultEnchant(LibItemIDs.idFortuneMaul, Enchantment.fortune, 3).setUnlocalizedName(LibItemNames.FORTUNE_MAUL);
 		enderMirror = new ItemEnderMirror(LibItemIDs.idEnderMirror).setUnlocalizedName(LibItemNames.ENDER_MIRROR);
+		goliathLegs = new ItemGoliathLegs(LibItemIDs.idGoliathLegs).setUnlocalizedName(LibItemNames.GOLIATH_LEGS);
 
 		nameItems();
 		applyObjectTags();
@@ -82,6 +84,7 @@ public final class ModItems {
 		LanguageRegistry.addName(silkSword, LibItemNames.SILK_SWORD_D);
 		LanguageRegistry.addName(fortuneMaul, LibItemNames.FORTUNE_MAUL_D);
 		LanguageRegistry.addName(enderMirror, LibItemNames.ENDER_MIRROR_D);
+		LanguageRegistry.addName(goliathLegs, LibItemNames.GOLIATH_LEGS_D);
 	}
 
 	private static void applyObjectTags() {

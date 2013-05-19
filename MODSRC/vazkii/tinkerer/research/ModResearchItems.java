@@ -100,7 +100,7 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.TOOL, 12).add(EnumTag.DARK, 1).add(EnumTag.VALUABLE, 12);
 		fortuneMaul = new ResearchItem(LibItemNames.FORTUNE_MAUL_R, tags, 8, 24, ModItems.fortuneMaul).setParentsHidden(Config.researchThaumium).setHidden().setLost().registerResearchItem();
-	
+
 		tags = new ObjectTags().add(EnumTag.TOOL, 8).add(EnumTag.ELDRITCH, 6).add(EnumTag.MAGIC, 12).add(EnumTag.VISION, 12);
 		enderMirror = new ResearchItem(LibItemNames.ENDER_MIRROR_R, tags, 5, 5, ModItems.enderMirror).setParents(Config.researchHandMirror).setHidden().registerResearchItem();
 	}

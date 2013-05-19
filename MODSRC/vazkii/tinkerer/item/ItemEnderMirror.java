@@ -14,12 +14,12 @@
  */
 package vazkii.tinkerer.item;
 
-import thaumcraft.common.aura.AuraManager;
-import vazkii.tinkerer.lib.LibFeatures;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import thaumcraft.common.aura.AuraManager;
+import vazkii.tinkerer.lib.LibFeatures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,7 +38,7 @@ public class ItemEnderMirror extends ItemMod {
 		}
 		return par1ItemStack;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean isFull3D() {

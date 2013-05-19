@@ -33,9 +33,10 @@ public final class LibResources {
 	public static final String GUI_ANIMATION_TABLET = ROOT_GUI + "guiAnimationTablet.png";
 
 	public static final String MODEL_WARD_CHEST = ROOT_MODEL + "chestWard.png";
+	public static final String MODEL_LEGS_GOLIATH = ROOT_MODEL + "armorGoliath.png";
 
 	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
-	public static final String MISC_WARD_CHEST_OVERLAY = BLUR + ROOT_MISC + "wardChestOverlay.png";
+	public static final String MISC_WARD_CHEST_OVERLAY = ROOT_MISC + "wardChestOverlay.png";
 	public static final String MISC_AT_OVERLAY_LEFT = BLUR + ROOT_MISC + "atLeft.png";
 	public static final String MISC_AT_OVERLAY_RIGHT = BLUR + ROOT_MISC + "atRight1.png";
 	public static final String MISC_AT_OVERLAY_DIAL = BLUR + ROOT_TC + "misc/dial.png";

@@ -55,6 +55,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idSilkSword = loadItem(LibItemNames.SILK_SWORD, LibItemIDs.DEFAULT_SILK_SWORD);
 		LibItemIDs.idFortuneMaul = loadItem(LibItemNames.FORTUNE_MAUL, LibItemIDs.DEFAULT_FORTUNE_MAUL);
 		LibItemIDs.idEnderMirror = loadItem(LibItemNames.ENDER_MIRROR, LibItemIDs.DEFAULT_ENDER_MIRROR);
+		LibItemIDs.idGoliathLegs = loadItem(LibItemNames.GOLIATH_LEGS, LibItemIDs.DEFAULT_GOLIATH_LEGS);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);

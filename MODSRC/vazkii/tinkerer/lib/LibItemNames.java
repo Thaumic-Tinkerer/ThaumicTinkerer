@@ -73,4 +73,8 @@ public final class LibItemNames {
 	public static final String ENDER_MIRROR = "enderMirror";
 	public static final String ENDER_MIRROR_R = "ENDER_MIRROR";
 	public static final String ENDER_MIRROR_D = "Ender Mirror";
+
+	public static final String GOLIATH_LEGS = "goliathLegs";
+	public static final String GOLIATH_LEGS_R = "GOLIATH_LEGS";
+	public static final String GOLIATH_LEGS_D = "Goliath's Leggings";
 }
