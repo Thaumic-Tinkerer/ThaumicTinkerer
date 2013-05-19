@@ -221,4 +221,17 @@ Furthermore, after crafting this item, it instantly comes enchanted with the For
 This mirror, for a small cost of vis from the local aura allows you to access your ender chest inventory without needing to place it down yourself.</page>
 <page type = "infusioncrafting">ENDER_MIRROR</page>
 </project>
+
+<!-- ======================================== Goliath's Leggings /-->
+<project id = "GOLIATH_LEGS" version = "1"> 
+<name>Goliath's Leggings</name>
+<popupText>[TT] Legs of the Giant</popupText>
+<longText>You are thinking you can create more protective robes using the Thaumaturge's Robes you already know how to make.</longText>
+<page type = "text">Making use of the Thaumaturge's Robes you created, you futher worked on them, creating new leggings. These leggings protect the wearer from all incoming damage, by reducing it by 1.
+
+Futhermore, when the wearer would die by a crushing blow when they have more than 2.5 hearts, they stay barely alive with half a heart. 
+
+They also give a more powerful vis reduction.</page>
+<page type = "infusioncrafting">GOLIATH_LEGS</page>
+</project>
 </research>

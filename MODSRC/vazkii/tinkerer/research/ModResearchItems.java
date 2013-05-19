@@ -45,6 +45,7 @@ public final class ModResearchItems {
 	public static ResearchItem silkSword;
 	public static ResearchItem fortuneMaul;
 	public static ResearchItem enderMirror;
+	public static ResearchItem goliathLegs;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -103,5 +104,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.TOOL, 8).add(EnumTag.ELDRITCH, 6).add(EnumTag.MAGIC, 12).add(EnumTag.VISION, 12);
 		enderMirror = new ResearchItem(LibItemNames.ENDER_MIRROR_R, tags, 5, 5, ModItems.enderMirror).setParents(Config.researchHandMirror).setHidden().registerResearchItem();
+	
+		tags = new ObjectTags().add(EnumTag.BEAST, 12).add(EnumTag.ARMOR, 12);
+		goliathLegs = new ResearchItem(LibItemNames.GOLIATH_LEGS_R, tags, 1, 15, ModItems.goliathLegs).setParentsHidden(Config.researchRobes).setParents(Config.researchUTFT).setHidden().registerResearchItem();
 	}
 }

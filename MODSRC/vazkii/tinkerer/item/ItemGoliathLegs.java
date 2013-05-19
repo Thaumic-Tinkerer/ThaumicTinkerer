@@ -20,6 +20,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import thaumcraft.api.IVisDiscounter;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibResources;
@@ -28,7 +29,7 @@ import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGoliathLegs extends ItemArmor {
+public class ItemGoliathLegs extends ItemArmor implements IVisDiscounter {
 
 	public ItemGoliathLegs(int par1) {
 		super(par1, ThaumcraftApi.armorMatSpecial, 0, 2);
@@ -52,5 +53,10 @@ public class ItemGoliathLegs extends ItemArmor {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
 		return LibResources.MODEL_LEGS_GOLIATH;
+	}
+
+	@Override
+	public int getVisDiscount() {
+		return 4;
 	}
 }
