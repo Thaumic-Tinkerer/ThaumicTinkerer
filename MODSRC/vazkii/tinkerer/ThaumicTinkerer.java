@@ -95,7 +95,7 @@ public class ThaumicTinkerer {
 		ModResearchItems.registerModResearchItems();
 		ModInfusionRecipes.initInfusionRecipes();
 		ModArcaneRecipes.initArcaneRecipes();
-		
+
 		ModItems.applyObjectTags();
 		ModBlocks.applyObjectTags();
 	}
