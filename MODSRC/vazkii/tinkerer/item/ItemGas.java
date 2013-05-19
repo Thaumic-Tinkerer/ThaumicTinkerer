@@ -14,20 +14,24 @@
  */
 package vazkii.tinkerer.item;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.block.ModBlocks;
 
-public class ItemGlowstoneGas extends ItemMod {
+public class ItemGas extends ItemMod {
 
-	public ItemGlowstoneGas(int par1) {
+	private Block setBlock;
+	
+	public ItemGas(int par1, Block setBlock) {
 		super(par1);
+		this.setBlock = setBlock;
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		int x = (int) par3EntityPlayer.posX;
+		int x = (int) par3EntityPlayer.posX;	
 		int y = (int) par3EntityPlayer.posY + 1;
 		int z = (int) par3EntityPlayer.posZ;
 		boolean air = par2World.isAirBlock(x, y, z);
@@ -39,9 +43,9 @@ public class ItemGlowstoneGas extends ItemMod {
 
 		if(air) {
 			if(!par2World.isRemote)
-				par2World.setBlock(x, y, z, ModBlocks.glowstoneGas.blockID, 4, 2);
+				par2World.setBlock(x, y, z, setBlock.blockID, 4, 2);
 			else par3EntityPlayer.swingItem();
-			par2World.scheduleBlockUpdate(x, y, z, ModBlocks.glowstoneGas.blockID, 10);
+			par2World.scheduleBlockUpdate(x, y, z, setBlock.blockID, 10);
 		}
 
 		return par1ItemStack;

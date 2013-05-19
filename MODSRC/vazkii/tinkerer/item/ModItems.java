@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
+import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.lib.LibItemIDs;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
@@ -46,7 +47,7 @@ public final class ModItems {
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
-		glowstoneGas = new ItemGlowstoneGas(LibItemIDs.idGlowstoneGas).setUnlocalizedName(LibItemNames.GLOWSTONE_GAS);
+		glowstoneGas = new ItemGas(LibItemIDs.idGlowstoneGas, ModBlocks.glowstoneGas).setUnlocalizedName(LibItemNames.GLOWSTONE_GAS);
 		spellCloth = new ItemSpellCloth(LibItemIDs.idSpellCloth).setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 		stopwatch = new ItemStopwatch(LibItemIDs.idStopwatch).setUnlocalizedName(LibItemNames.STOPWATCH);
 		wandDislocation = new ItemWandDislocation(LibItemIDs.idWandDislocation).setUnlocalizedName(LibItemNames.WAND_DISLOCATION);
