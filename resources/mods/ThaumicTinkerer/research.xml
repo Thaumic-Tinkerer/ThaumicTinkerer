@@ -209,4 +209,16 @@ This item acts as an "omnitool" of sorts, it can break virtually anything, but i
 Furthermore, after crafting this item, it instantly comes enchanted with the Fortune III enchantment. The one downside to this is that it can't be enchanted trough regular means. It also seems to hold it's magical energy with a extraordinary bond, possibly unbreakable.</page>
 <page type = "infusioncrafting">FORTUNE_MAUL</page>
 </project>
+
+
+<!-- ======================================== Ender Mirror /-->
+<project id = "ENDER_MIRROR" version = "1"> 
+<name>Ender Mirror</name>
+<popupText>[TT] Another sight</popupText>
+<longText>After learning how to transport items using Hand Mirrors, you are thinking you can apply that knowledge to the Ender Chests.</longText>
+<page type = "text">You have put the knowledge acquired from constructing the Magic Hand Mirror into good use, and applied it to the Ender Chests.
+
+This mirror, for a small cost of vis from the local aura allows you to access your ender chest inventory without needing to place it down yourself.</page>
+<page type = "infusioncrafting">ENDER_MIRROR</page>
+</project>
 </research>
