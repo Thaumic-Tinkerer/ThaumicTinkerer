@@ -33,6 +33,7 @@ import vazkii.tinkerer.inventory.container.ContainerTransmutator;
 import vazkii.tinkerer.inventory.slot.SlotTransmutator;
 import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 import vazkii.tinkerer.util.helper.MiscHelper;
 
 public class GuiTransmutator extends GuiContainer {
@@ -64,7 +65,7 @@ public class GuiTransmutator extends GuiContainer {
 			GL11.glPushMatrix();
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
 			ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(transmutator.getStackInSlot(0));
-			int value = SlotTransmutator.getTotalAspectValue(tags);
+			int value = SlotTransmutator.getTotalAspectValue(tags) * ConfigurationHandler.transmutatorVisMultiplier;
 			String price = value + " vis";
 			fontRenderer.drawString(price, (x + 162 - fontRenderer.getStringWidth(price) / 2) * 2, (y + 69) * 2, 0xFFFFFF);
 			GL11.glPopMatrix();
@@ -91,7 +92,7 @@ public class GuiTransmutator extends GuiContainer {
 				int green = color >> 8 & 0xFF;
 				int blue = color & 0xFF;
 				GL11.glColor4ub((byte) red, (byte) green, (byte) blue, (byte) 128);
-				if(transmutator.foundTags.getAmount(tag) >= amount * 4)
+				if(transmutator.foundTags.getAmount(tag) >= amount * ConfigurationHandler.transmutatorEssentiaMultiplier)
 					renderGlyphsAt(xpos + 8, ypos + 8, deg);
 
 				if(i > xpos + x && i < xpos + x + 16 && j > ypos + y && j < ypos + y + 16)

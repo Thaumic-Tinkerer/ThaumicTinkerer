@@ -4,6 +4,7 @@ import java.io.File;
 
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.Property;
 import vazkii.tinkerer.lib.LibBlockIDs;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibItemIDs;
@@ -15,14 +16,27 @@ public final class ConfigurationHandler {
 	private static Configuration config;
 
 	private static final String CATEGORY_POTIONS = "potions";
+	private static final String CATEGORY_BALANCE = "balance";
 
 	private static ConfigCategory categoryPotions;
+	private static ConfigCategory categoryBalance;
+	
+	private static String NODE_TRANSMUTATOR_VIS_MULTI = "transmutator.visMultiplier";
+	private static String NODE_TRANSMUTATOR_ESSENTIA_MULTI = "transmutator.aspectMultiplier";
+	private static String NODE_TRANSMUTATOR_MAX_VALUE = "transmutator.maxValue";
+	private static String NODE_TRANSMUTATOR_ENABLE = "transmutator.enable";
+	
+	public static int transmutatorVisMultiplier = 2;
+	public static int transmutatorEssentiaMultiplier = 4;
+	public static int transmutatorMaxValue = 75;
+	public static boolean enableTransmutator = true;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
 		categoryPotions = new ConfigCategory(CATEGORY_POTIONS);
-
+		categoryBalance = new ConfigCategory(CATEGORY_BALANCE);
+		
 		config.load();
 
 		LibItemIDs.idWandTinkerer = loadItem(LibItemNames.WAND_TINKERER, LibItemIDs.DEFAULT_WAND_TINKERER);
@@ -52,6 +66,11 @@ public final class ConfigurationHandler {
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 
+		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");
+		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");
+		transmutatorMaxValue = loadBalanceInt(NODE_TRANSMUTATOR_MAX_VALUE, transmutatorMaxValue, "The maximum cost of an item that can be put in a transmutator. Cost refers to the total amount of aspect value.");
+		enableTransmutator = loadBalanceBool(NODE_TRANSMUTATOR_ENABLE, enableTransmutator, "Set to false to completely disable the transmutator.");
+		
 		config.save();
 	}
 
@@ -67,4 +86,15 @@ public final class ConfigurationHandler {
 		return config.get(CATEGORY_POTIONS, label, deafultID).getInt(deafultID);
 	}
 
+	private static boolean loadBalanceBool(String label, boolean defaultValue, String comment) {
+		Property prop = config.get(CATEGORY_BALANCE, label, defaultValue);
+		prop.comment = comment;
+		return prop.getBoolean(defaultValue);
+	}
+	
+	private static int loadBalanceInt(String label, int defaultValue, String comment) {
+		Property prop = config.get(CATEGORY_BALANCE, label, defaultValue);
+		prop.comment = comment;
+		return prop.getInt(defaultValue);
+	}
 }

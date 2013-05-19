@@ -30,6 +30,7 @@ import vazkii.tinkerer.inventory.slot.SlotTransmutator;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 
 public class TileEntityTransmutator extends TileInfusionWorkbench implements ISidedInventory {
 
@@ -66,14 +67,14 @@ public class TileEntityTransmutator extends TileInfusionWorkbench implements ISi
 
 		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(getStackInSlot(0));
 		int value = SlotTransmutator.getTotalAspectValue(tags);
-		boolean hasVis = value == 1 ? true : AuraManager.decreaseClosestAura(worldObj, xCoord, yCoord, zCoord, value * 2, false);
+		boolean hasVis = value == 1 ? true : AuraManager.decreaseClosestAura(worldObj, xCoord, yCoord, zCoord, value * ConfigurationHandler.transmutatorVisMultiplier, false);
 		if(!hasVis)
 			return false;
 
 		for(EnumTag tag : tags.getAspects()) {
 			int amount = tags.getAmount(tag);
 			int transAmount = foundTags.getAmount(tag);
-			if(transAmount < amount * 4)
+			if(transAmount < amount * ConfigurationHandler.transmutatorEssentiaMultiplier)
 				return false;
 		}
 

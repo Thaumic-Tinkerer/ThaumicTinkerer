@@ -22,6 +22,7 @@ import thaumcraft.api.ObjectTags;
 import thaumcraft.common.aura.AuraManager;
 import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 
 public class SlotTransmutatorOutput extends SlotPureOutput {
 
@@ -36,14 +37,14 @@ public class SlotTransmutatorOutput extends SlotPureOutput {
 	public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack) {
 		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(transmutator.getStackInSlot(0));
 		int value = SlotTransmutator.getTotalAspectValue(tags);
-		int cost = value == 1 ? 0 : value / 2;
+		int cost = value == 1 ? 0 : value * ConfigurationHandler.transmutatorVisMultiplier;
 
 		AuraManager.decreaseClosestAura(transmutator.worldObj, transmutator.xCoord, transmutator.yCoord, transmutator.zCoord, cost);
 
 		for(EnumTag tag : tags.getAspects()) {
 			IAspectSource source = transmutator.foundTags.getSource(tag);
 			if(source != null)
-				source.takeFromSource(tag, tags.getAmount(tag) * 4);
+				source.takeFromSource(tag, tags.getAmount(tag) * ConfigurationHandler.transmutatorEssentiaMultiplier);
 		}
 
 		par1EntityPlayer.worldObj.playSoundAtEntity(par1EntityPlayer, "thaumcraft.wand", 0.3F, 1F);
