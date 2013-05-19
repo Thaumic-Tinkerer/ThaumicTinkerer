@@ -15,9 +15,10 @@ public final class LibItemIDs {
 	public static final int DEFAULT_WAND_UPRISING = 21160;
 	public static final int DEFAULT_SWORD_CONDOR = 21161;
 	public static final int DEFAULT_DEATH_RUNE = 21162;
-	public static final int DEFAULT_SILK_SWORD = 21162;
-	public static final int DEFAULT_FORTUNE_MAUL = 21163;
-	public static final int DEFAULT_ENDER_MIRROR = 21164;
+	public static final int DEFAULT_SILK_SWORD = 21163;
+	public static final int DEFAULT_FORTUNE_MAUL = 21164;
+	public static final int DEFAULT_ENDER_MIRROR = 21165;
+	public static final int DEFAULT_GOLIATH_LEGS = 21166;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -35,4 +36,5 @@ public final class LibItemIDs {
 	public static int idSilkSword;
 	public static int idFortuneMaul;
 	public static int idEnderMirror;
+	public static int idGoliathLegs;
 }
