@@ -16,12 +16,15 @@ package vazkii.tinkerer.item;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.IVisDiscounter;
+import thaumcraft.api.IVisRepairable;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.util.handler.PlayerDamageHandler;
@@ -29,7 +32,7 @@ import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGoliathLegs extends ItemArmor implements IVisDiscounter {
+public class ItemGoliathLegs extends ItemArmor implements IVisRepairable, IVisDiscounter {
 
 	public ItemGoliathLegs(int par1) {
 		super(par1, ThaumcraftApi.armorMatSpecial, 0, 2);
@@ -59,4 +62,12 @@ public class ItemGoliathLegs extends ItemArmor implements IVisDiscounter {
 	public int getVisDiscount() {
 		return 4;
 	}
+
+    @Override
+    public void doRepair(ItemStack stack, Entity player)
+    {
+        if (AuraManager.decreaseClosestAura(player.worldObj, player.posX, player.posY, player.posZ, 1)) {
+            stack.damageItem(-1, (EntityLiving)player);
+        }
+    }
 }
