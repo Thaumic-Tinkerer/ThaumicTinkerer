@@ -91,10 +91,12 @@ public class ThaumicTinkerer {
 
 	@PostInit
 	public void onPostInit(FMLPostInitializationEvent event) {
+		ModCraftingRecipes.initCraftingRecipes();
 		ModResearchItems.registerModResearchItems();
 		ModInfusionRecipes.initInfusionRecipes();
 		ModArcaneRecipes.initArcaneRecipes();
-		ModCraftingRecipes.initCraftingRecipes();
+		
+		ModItems.applyObjectTags();
+		ModBlocks.applyObjectTags();
 	}
-
 }

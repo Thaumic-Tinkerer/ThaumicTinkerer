@@ -51,7 +51,6 @@ public final class ModBlocks {
 
 		registerBlocks();
 		nameBlocks();
-		registerObjectTags();
 	}
 
 	private static void registerBlocks() {
@@ -73,7 +72,7 @@ public final class ModBlocks {
 		LanguageRegistry.addName(animationTablet, LibBlockNames.ANIMATION_TABLET_D);
 	}
 
-	private static void registerObjectTags() {
+	public static void applyObjectTags() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.WOOD, 16).add(EnumTag.EXCHANGE, 64).add(EnumTag.FLUX, 24).add(EnumTag.MECHANISM, 8).add(EnumTag.MAGIC, 16);
 		ThaumcraftApi.registerObjectTag(transmutator.blockID, LibMisc.CRAFTING_META_WILDCARD, tags);
 

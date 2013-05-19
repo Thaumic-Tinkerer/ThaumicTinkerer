@@ -67,7 +67,6 @@ public final class ModItems {
 		darkGas = new ItemGas(LibItemIDs.idDarkGas, ModBlocks.darkGas).setUnlocalizedName(LibItemNames.DARK_GAS);
 
 		nameItems();
-		applyObjectTags();
 	}
 
 	private static void nameItems() {
@@ -91,7 +90,7 @@ public final class ModItems {
 		LanguageRegistry.addName(darkGas, LibItemNames.DARK_GAS_D);
 	}
 
-	private static void applyObjectTags() {
+	public static void applyObjectTags() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 48).add(EnumTag.VOID, 12).add(EnumTag.CRYSTAL, 15);
 		ThaumcraftApi.registerObjectTag(wandTinkerer.itemID, LibMisc.TAG_META_WILDCARD, tags);
 
@@ -124,5 +123,8 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.DEATH, 16).add(EnumTag.TRAP, 12).add(EnumTag.POWER, 12).add(EnumTag.MAGIC, 22);
 		ThaumcraftApi.registerObjectTag(deathRune.itemID, LibMisc.TAG_META_WILDCARD, tags);
+	
+		tags = new ObjectTags().add(EnumTag.DARK, 1);
+		ThaumcraftApi.registerComplexObjectTag(darkQuartz.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }
