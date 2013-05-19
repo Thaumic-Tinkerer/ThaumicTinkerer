@@ -43,14 +43,14 @@ public class BlockAnimationTablet extends BlockModContainer {
 	Icon iconSides;
 
 	Random random;
-	
+
 	public BlockAnimationTablet(int par1) {
 		super(par1, Material.iron);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
 		setHardness(3F);
 		setResistance(50F);
 		setStepSound(soundMetalFootstep);
-		
+
 		random = new Random();
 	}
 
@@ -81,7 +81,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
 	}
-	
+
 	@Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
         TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) par1World.getBlockTileEntity(par2, par3, par4);
@@ -91,7 +91,7 @@ public class BlockAnimationTablet extends BlockModContainer {
         		ChunkCoordinates coords = tablet.getTargetLoc();
         		par1World.destroyBlockInWorldPartially(tablet.getFakePlayer().entityId, coords.posX, coords.posY, coords.posZ, -1);
         	}
-        	
+
             for (int j1 = 0; j1 < tablet.getSizeInventory(); ++j1) {
                 ItemStack itemstack = tablet.getStackInSlot(j1);
 

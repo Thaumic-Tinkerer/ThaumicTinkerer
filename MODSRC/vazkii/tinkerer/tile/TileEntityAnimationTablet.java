@@ -330,11 +330,11 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 
 		return coords;
 	}
-	
+
 	public boolean getIsBreaking() {
 		return isBreaking;
 	}
-	
+
 	public FakePlayer getFakePlayer() {
 		return player;
 	}

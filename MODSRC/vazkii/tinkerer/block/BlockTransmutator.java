@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockTransmutator extends BlockModContainer {
 
 	Icon[] icons = new Icon[6];
-	
+
 	Random random;
 
 	public BlockTransmutator(int par1) {
@@ -45,7 +45,7 @@ public class BlockTransmutator extends BlockModContainer {
         setHardness(1.7F);
         setResistance(1F);
         setStepSound(soundWoodFootstep);
-        
+
         random = new Random();
 	}
 
@@ -62,7 +62,7 @@ public class BlockTransmutator extends BlockModContainer {
 
 		return true;
 	}
-	
+
 	@Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
         TileEntityTransmutator transmutator = (TileEntityTransmutator) par1World.getBlockTileEntity(par2, par3, par4);

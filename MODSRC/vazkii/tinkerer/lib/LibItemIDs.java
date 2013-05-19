@@ -17,6 +17,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_DEATH_RUNE = 21162;
 	public static final int DEFAULT_SILK_SWORD = 21162;
 	public static final int DEFAULT_FORTUNE_MAUL = 21163;
+	public static final int DEFAULT_ENDER_MIRROR = 21164;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -33,4 +34,5 @@ public final class LibItemIDs {
 	public static int idDeathRune;
 	public static int idSilkSword;
 	public static int idFortuneMaul;
+	public static int idEnderMirror;
 }

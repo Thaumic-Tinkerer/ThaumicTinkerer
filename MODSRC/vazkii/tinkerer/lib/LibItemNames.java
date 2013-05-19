@@ -69,4 +69,8 @@ public final class LibItemNames {
 	public static final String FORTUNE_MAUL = "fortuneMaul";
 	public static final String FORTUNE_MAUL_R = "FORTUNE_MAUL";
 	public static final String FORTUNE_MAUL_D = "Fortunate Maul";
+
+	public static final String ENDER_MIRROR = "enderMirror";
+	public static final String ENDER_MIRROR_R = "ENDER_MIRROR";
+	public static final String ENDER_MIRROR_D = "Ender Mirror";
 }

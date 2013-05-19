@@ -25,8 +25,8 @@ public class ItemDarkQuartzSlab extends ItemSlab {
 	public ItemDarkQuartzSlab(int par1) {
 		super(par1, (BlockHalfSlab) ModBlocks.darkQuartzSlab, (BlockHalfSlab) ModBlocks.darkQuartzSlabFull, par1 == ModBlocks.darkQuartzSlabFull.blockID);
 	}
-	
-	
+
+
 
 	@Override
 	public String getItemDisplayName(ItemStack par1ItemStack) {

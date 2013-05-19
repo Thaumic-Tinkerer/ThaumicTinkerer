@@ -20,12 +20,12 @@ public final class ConfigurationHandler {
 
 	private static ConfigCategory categoryPotions;
 	private static ConfigCategory categoryBalance;
-	
+
 	private static String NODE_TRANSMUTATOR_VIS_MULTI = "transmutator.visMultiplier";
 	private static String NODE_TRANSMUTATOR_ESSENTIA_MULTI = "transmutator.aspectMultiplier";
 	private static String NODE_TRANSMUTATOR_MAX_VALUE = "transmutator.maxValue";
 	private static String NODE_TRANSMUTATOR_ENABLE = "transmutator.enable";
-	
+
 	public static int transmutatorVisMultiplier = 2;
 	public static int transmutatorEssentiaMultiplier = 4;
 	public static int transmutatorMaxValue = 75;
@@ -36,7 +36,7 @@ public final class ConfigurationHandler {
 
 		categoryPotions = new ConfigCategory(CATEGORY_POTIONS);
 		categoryBalance = new ConfigCategory(CATEGORY_BALANCE);
-		
+
 		config.load();
 
 		LibItemIDs.idWandTinkerer = loadItem(LibItemNames.WAND_TINKERER, LibItemIDs.DEFAULT_WAND_TINKERER);
@@ -54,6 +54,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idDeathRune = loadItem(LibItemNames.DEATH_RUNE, LibItemIDs.DEFAULT_DEATH_RUNE);
 		LibItemIDs.idSilkSword = loadItem(LibItemNames.SILK_SWORD, LibItemIDs.DEFAULT_SILK_SWORD);
 		LibItemIDs.idFortuneMaul = loadItem(LibItemNames.FORTUNE_MAUL, LibItemIDs.DEFAULT_FORTUNE_MAUL);
+		LibItemIDs.idEnderMirror = loadItem(LibItemNames.ENDER_MIRROR, LibItemIDs.DEFAULT_ENDER_MIRROR);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
@@ -70,7 +71,7 @@ public final class ConfigurationHandler {
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");
 		transmutatorMaxValue = loadBalanceInt(NODE_TRANSMUTATOR_MAX_VALUE, transmutatorMaxValue, "The maximum cost of an item that can be put in a transmutator. Cost refers to the total amount of aspect value.");
 		enableTransmutator = loadBalanceBool(NODE_TRANSMUTATOR_ENABLE, enableTransmutator, "Set to false to completely disable the transmutator.");
-		
+
 		config.save();
 	}
 
@@ -91,7 +92,7 @@ public final class ConfigurationHandler {
 		prop.comment = comment;
 		return prop.getBoolean(defaultValue);
 	}
-	
+
 	private static int loadBalanceInt(String label, int defaultValue, String comment) {
 		Property prop = config.get(CATEGORY_BALANCE, label, defaultValue);
 		prop.comment = comment;

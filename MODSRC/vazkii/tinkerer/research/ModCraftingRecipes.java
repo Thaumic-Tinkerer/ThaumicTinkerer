@@ -19,7 +19,6 @@ import java.util.Arrays;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.util.MathHelper;
 import thaumcraft.api.research.ResearchList;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.item.ModItems;
