@@ -19,7 +19,7 @@ This wand can carry 500 vis, unlike the Wand of the Adept. It's not a very dispe
 <longText>Researching the intricacies of the Light is paying off, you are close to finding a way to make completely invisible light.</longText>
 <page type = "text">You have studied the intricacies of the Light, and found out a way to create completely invisible light by infusing Glowstone with the raw flame. 
 
-This phial contains a concentrated extract of Gaseous Glowstone, that can be released trough a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
+This phial contains a concentrated extract of Gaseous Glowstone, that can be released through a right click, and will spread relatively fast in the nearby area, lighting it up.</page>
 <page type = "infusioncrafting">GLOWSTONE_GAS</page>
 </project>
 
@@ -144,7 +144,7 @@ After a sigil is bound, you can hold right click it, like a bow to charge it and
 <longText>Knowing the power of the Sword of the Zephyr to propel foes away, you are trying to create something that will allow you to propel yourself.</longText>
 <page type = "text">Using the knowledge you got from creating the Sword of the Zephyr of propeling things around with air, you created a wand that will propel the holder in the direction that they're looking at.
 
-While someone is flying trough the use of this Wand, any fall damage that would have been taken is negated.</page>
+While someone is flying through the use of this Wand, any fall damage that would have been taken is negated.</page>
 <page type = "infusioncrafting">WAND_UPRISING</page>
 </project>
 
@@ -193,7 +193,7 @@ Virtually anything can be animated, including blocks. The type of tool in the ta
 
 This item acts as an "omnitool" of sorts, it can break virtually anything, but it's not very fast at it. You think enchanting it with Efficiency using an anvil is the logical next step.
 
-Furthermore, after crafting this item, it instantly comes enchanted with the Silk Touch enchantment. The one downside to this is that it can't be enchanted trough regular means. It also seems to hold it's magical energy with a extraordinary bond, possibly unbreakable.</page>
+Furthermore, after crafting this item, it instantly comes enchanted with the Silk Touch enchantment. The one downside to this is that it can't be enchanted through regular means. It also seems to hold it's magical energy with a extraordinary bond, possibly unbreakable.</page>
 <page type = "infusioncrafting">SILK_SWORD</page>
 </project>
 
@@ -206,7 +206,7 @@ Furthermore, after crafting this item, it instantly comes enchanted with the Sil
 
 This item acts as an "omnitool" of sorts, it can break virtually anything, but it's not very fast at it. You think enchanting it with Efficiency using an anvil is the logical next step.
 
-Furthermore, after crafting this item, it instantly comes enchanted with the Fortune III enchantment. The one downside to this is that it can't be enchanted trough regular means. It also seems to hold it's magical energy with a extraordinary bond, possibly unbreakable.</page>
+Furthermore, after crafting this item, it instantly comes enchanted with the Fortune III enchantment. The one downside to this is that it can't be enchanted through regular means. It also seems to hold it's magical energy with a extraordinary bond, possibly unbreakable.</page>
 <page type = "infusioncrafting">FORTUNE_MAUL</page>
 </project>
 
