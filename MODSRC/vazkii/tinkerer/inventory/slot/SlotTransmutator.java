@@ -20,6 +20,7 @@ import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 
 public class SlotTransmutator extends Slot {
 
@@ -31,7 +32,7 @@ public class SlotTransmutator extends Slot {
 	public boolean isItemValid(ItemStack par1ItemStack) {
 		ObjectTags tags = ThaumcraftCraftingManager.getObjectTags(par1ItemStack);
 
-		return tags != null && getTotalAspectValue(tags) <= 100;
+		return tags != null && getTotalAspectValue(tags) <= ConfigurationHandler.transmutatorMaxValue;
 	}
 
 	public static int getTotalAspectValue(ObjectTags tags) {
