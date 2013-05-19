@@ -44,6 +44,7 @@ public final class ModItems {
 	public static Item fortuneMaul;
 	public static Item enderMirror;
 	public static Item goliathLegs;
+	public static Item darkGas;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -63,6 +64,7 @@ public final class ModItems {
 		fortuneMaul = new ItemDefaultEnchant(LibItemIDs.idFortuneMaul, Enchantment.fortune, 3).setUnlocalizedName(LibItemNames.FORTUNE_MAUL);
 		enderMirror = new ItemEnderMirror(LibItemIDs.idEnderMirror).setUnlocalizedName(LibItemNames.ENDER_MIRROR);
 		goliathLegs = new ItemGoliathLegs(LibItemIDs.idGoliathLegs).setUnlocalizedName(LibItemNames.GOLIATH_LEGS);
+		darkGas = new ItemGas(LibItemIDs.idDarkGas, ModBlocks.darkGas).setUnlocalizedName(LibItemNames.DARK_GAS);
 
 		nameItems();
 		applyObjectTags();
@@ -86,6 +88,7 @@ public final class ModItems {
 		LanguageRegistry.addName(fortuneMaul, LibItemNames.FORTUNE_MAUL_D);
 		LanguageRegistry.addName(enderMirror, LibItemNames.ENDER_MIRROR_D);
 		LanguageRegistry.addName(goliathLegs, LibItemNames.GOLIATH_LEGS_D);
+		LanguageRegistry.addName(darkGas, LibItemNames.DARK_GAS_D);
 	}
 
 	private static void applyObjectTags() {

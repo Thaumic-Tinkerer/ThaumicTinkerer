@@ -139,7 +139,7 @@ public final class ModInfusionRecipes {
 				'C', new ItemStack(Block.enderChest),
 				'M', new ItemStack(Config.itemHandMirror),
 				'E', new ItemStack(Item.enderPearl));
-		
+
 		tags = new ObjectTags().add(EnumTag.BEAST, 16).add(EnumTag.ARMOR, 16);
 		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.GOLIATH_LEGS_R, LibItemNames.GOLIATH_LEGS_R, 80, tags, new ItemStack(ModItems.goliathLegs),
 				"LLL", "LRL", "L L",

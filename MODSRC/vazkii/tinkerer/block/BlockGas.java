@@ -23,7 +23,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -66,7 +65,7 @@ public abstract class BlockGas extends BlockMod {
 			placeParticle(par1World, par2, par3, par4);
 		}
 	}
-	
+
 	public void placeParticle(World world, int par2, int par3, int par4) {
 		// NO-OP, override
 	}

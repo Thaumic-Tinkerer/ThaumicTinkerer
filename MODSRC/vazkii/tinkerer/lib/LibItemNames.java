@@ -77,4 +77,8 @@ public final class LibItemNames {
 	public static final String GOLIATH_LEGS = "goliathLegs";
 	public static final String GOLIATH_LEGS_R = "GOLIATH_LEGS";
 	public static final String GOLIATH_LEGS_D = "Goliath's Leggings";
+
+	public static final String DARK_GAS = "darkGas";
+	public static final String DARK_GAS_R = "DARK_GAS";
+	public static final String DARK_GAS_D = "Gaseous Tenebrae";
 }

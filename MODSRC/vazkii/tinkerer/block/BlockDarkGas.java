@@ -10,7 +10,7 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [19 May 2013, 16:10:50 (GMT)]
+ * File Created @ [19 May 2013, 16:17:59 (GMT)]
  */
 package vazkii.tinkerer.block;
 
@@ -21,22 +21,22 @@ import vazkii.tinkerer.ThaumicTinkerer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGlowstoneGas extends BlockGas {
+public class BlockDarkGas extends BlockGas {
 
-	public BlockGlowstoneGas(int par1) {
+	public BlockDarkGas(int par1) {
 		super(par1);
-		setLightValue(0.85F);
+		setLightOpacity(215);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(par5Random.nextFloat() < 0.0075F)
-			ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1F, 1, par5Random.nextFloat() / 2);
+			ThaumicTinkerer.tcProxy.wispFX2(par1World, par2 + 0.5, par3 + 0.5, par4 + 0.5, 0.125F, 5, true, -0.02F);
 	}
 
 	@Override
 	public void placeParticle(World world, int par2, int par3, int par4) {
-		ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1);
+		ThaumicTinkerer.tcProxy.wispFX2(world, par2 + 0.5, par3 + 0.5, par4 + 0.5, 0.125F, 5, true, -0.02F);
 	}
 }

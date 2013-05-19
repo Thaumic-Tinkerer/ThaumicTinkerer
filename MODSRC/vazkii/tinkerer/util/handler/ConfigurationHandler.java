@@ -56,6 +56,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idFortuneMaul = loadItem(LibItemNames.FORTUNE_MAUL, LibItemIDs.DEFAULT_FORTUNE_MAUL);
 		LibItemIDs.idEnderMirror = loadItem(LibItemNames.ENDER_MIRROR, LibItemIDs.DEFAULT_ENDER_MIRROR);
 		LibItemIDs.idGoliathLegs = loadItem(LibItemNames.GOLIATH_LEGS, LibItemIDs.DEFAULT_GOLIATH_LEGS);
+		LibItemIDs.idDarkGas = loadItem(LibItemNames.DARK_GAS, LibItemIDs.DEFAULT_DARK_GAS);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
@@ -65,6 +66,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.DEFAULT_DARK_QUARTZ_SLAB);
 		LibBlockIDs.idDarkQuartzSlabFull = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB_FULL, LibBlockIDs.DEFAULT_DARK_QUARTZ_SLAB_FULL);
 		LibBlockIDs.idAnimationTablet = loadBlock(LibBlockNames.ANIMATION_TABLET, LibBlockIDs.DEFAULT_ANIMATION_TABLET);
+		LibBlockIDs.idDarkGas = loadBlock(LibBlockNames.DARK_GAS, LibBlockIDs.DEFAULT_DARK_GAS);
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 

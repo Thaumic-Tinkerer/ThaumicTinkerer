@@ -36,6 +36,7 @@ public final class ModBlocks {
 	public static Block darkQuartzSlab;
 	public static Block darkQuartzSlabFull;
 	public static Block animationTablet;
+	public static Block darkGas;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
@@ -46,6 +47,7 @@ public final class ModBlocks {
 		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
+		darkGas = new BlockDarkGas(LibBlockIDs.idDarkGas).setUnlocalizedName(LibBlockNames.DARK_GAS);
 
 		registerBlocks();
 		nameBlocks();
@@ -61,6 +63,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
+		GameRegistry.registerBlock(darkGas, LibBlockNames.DARK_GAS);
 	}
 
 	private static void nameBlocks() {
