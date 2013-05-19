@@ -46,6 +46,7 @@ public final class ModResearchItems {
 	public static ResearchItem fortuneMaul;
 	public static ResearchItem enderMirror;
 	public static ResearchItem goliathLegs;
+	public static ResearchItem darkGas;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -107,5 +108,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.BEAST, 12).add(EnumTag.ARMOR, 12);
 		goliathLegs = new ResearchItem(LibItemNames.GOLIATH_LEGS_R, tags, 1, 15, ModItems.goliathLegs).setParentsHidden(Config.researchRobes).setParents(Config.researchUTFT).setHidden().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.DARK, 4).add(EnumTag.WIND, 5).add(EnumTag.POWER, 4);
+		darkGas = new ResearchItem(LibItemNames.DARK_GAS_R, tags, 5, -1, ModItems.darkGas).setParents(Config.researchAlumentum).setParentsHidden(glowstoneGas).registerResearchItem();
 	}
 }

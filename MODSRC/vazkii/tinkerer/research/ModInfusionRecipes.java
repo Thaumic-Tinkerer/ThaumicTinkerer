@@ -145,5 +145,12 @@ public final class ModInfusionRecipes {
 				"LLL", "LRL", "L L",
 				'L', new ItemStack(Item.leather),
 				'R', new ItemStack(Config.itemLegsRobe));
+
+		tags = new ObjectTags().add(EnumTag.WIND, 6).add(EnumTag.DARK, 2);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.DARK_GAS_R, LibItemNames.DARK_GAS_R, 5, tags, new ItemStack(ModItems.darkGas),
+				"QPQ", " A ",
+				'Q', new ItemStack(ModItems.darkQuartz),
+				'P', new ItemStack(Config.itemEssence, 1, 0),
+				'A', new ItemStack(Config.itemResource, 1, 0));
 	}
 }

@@ -212,7 +212,7 @@ Furthermore, after crafting this item, it instantly comes enchanted with the For
 
 
 <!-- ======================================== Ender Mirror /-->
-<project id = "FNDER_MIRROR" version = "1"> 
+<project id = "ENDER_MIRROR" version = "1"> 
 <name>Ender Mirror</name>
 <popupText>[TT] Another sight</popupText>
 <longText>After learning how to transport items using Hand Mirrors, you are thinking you can apply that knowledge to the Ender Chests.</longText>
@@ -233,5 +233,16 @@ Futhermore, when the wearer would die by a crushing blow when they have more tha
 
 They also give a more powerful vis reduction.</page>
 <page type = "infusioncrafting">GOLIATH_LEGS</page>
+</project>
+
+<!-- ======================================== Gaseous Glowstone /-->
+<project id = "DARK_GAS" version = "2">
+<name>Gaseous Tenebrae</name>
+<popupText>[TT] Darkened Air</popupText>
+<longText>After having learned how to create Gaseous Glowstone, you are thinking about making air that's dark. You are confident that it's possible, and that the other alchemical material is required.</longText>
+<page type = "text">You have studied the intricacies of the Shadow, and found out a way to create gaseous darkess by infusing Smokey Quartz with the raw power. 
+
+This phial contains a concentrated extract of Gaseous Tenebrae, that can be released through a right click, and will spread relatively fast in the nearby area, darkening it.</page>
+<page type = "infusioncrafting">DARK_GAS</page>
 </project>
 </research>
