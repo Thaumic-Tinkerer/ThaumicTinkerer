@@ -35,7 +35,7 @@ public final class PlayerDamageHandler {
 			event.ammount -= 1;
 
 			int health = player.getHealth();
-			if(health > LibFeatures.GOLIATH_LEGS_MAX_SAFETY && event.ammount >= health && event.source.isUnblockable()) {
+			if(health > LibFeatures.GOLIATH_LEGS_MAX_SAFETY && event.ammount >= health) {
 				event.ammount = health - 1;
 
 				if(!player.worldObj.isRemote)
