@@ -51,7 +51,7 @@ public final class ModResearchItems {
 		wandTinkerer = new ResearchItem(LibItemNames.WAND_TINKERER_R, tags, -5, 3, ModItems.wandTinkerer).setParentsHidden(Config.researchGoggles).registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.LIGHT, 7).add(EnumTag.WIND, 4).add(EnumTag.POWER, 3);
-		glowstoneGas = new ResearchItem(LibItemNames.GLOWSTONE_GAS_R, tags, 5, 2, ModItems.glowstoneGas).setParents(Config.researchNitor).registerResearchItem();
+		glowstoneGas = new ResearchItem(LibItemNames.GLOWSTONE_GAS_R, tags, 4, 2, ModItems.glowstoneGas).setParents(Config.researchNitor).registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.CLOTH, 9).add(EnumTag.MAGIC, 8).add(EnumTag.EXCHANGE, 6);
 		spellCloth = new ResearchItem(LibItemNames.SPELL_CLOTH_R, tags, -6, 1, ModItems.spellCloth).setParents(Config.researchFabric).setParentsHidden(Config.researchUTFT).registerResearchItem();
