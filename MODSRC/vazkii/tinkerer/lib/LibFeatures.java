@@ -30,7 +30,7 @@ public final class LibFeatures {
 	public static final int FIRE_BRACELET_CHARGES = 64;
 	public static final int FIRE_BRACELET_RECHARGE_VIS = 12;
 
-	public static final int TELEPORT_SIGIL_TIME = 100;
+	public static final int TELEPORT_SIGIL_TIME = 60;
 	public static final int TELEPORT_SIGIL_VIS = 25;
 
 	public static final int ENCHANT_ITEM_MAX_DMG = 1200;
