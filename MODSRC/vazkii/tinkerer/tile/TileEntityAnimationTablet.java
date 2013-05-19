@@ -148,7 +148,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 				player.attackTargetEntityWithCurrentItem(entity);
 				done = true;
 			} else if(!isBreaking){
-				if(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ)) {
+				if(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ) && Block.blocksList[id].getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) >= 0) {
 					isBreaking = true;
 					startBreaking(Block.blocksList[id], worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ));
 					done = true;
