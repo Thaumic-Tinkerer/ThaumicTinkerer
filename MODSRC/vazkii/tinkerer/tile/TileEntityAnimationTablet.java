@@ -251,7 +251,7 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
         	stopBreaking();
         else {
             Block var3 = Block.blocksList[var2];
-            var4 = var3.getPlayerRelativeBlockHardness(player, worldObj,coords.posX, coords.posY, coords.posZ) * var1 + 1F;
+            var4 = var3.getPlayerRelativeBlockHardness(player, worldObj,coords.posX, coords.posY, coords.posZ) * var1;
             var5 = (int) (var4 * 10);
 
             if (var5 != durabilityRemainingOnBlock) {
