@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.item;
 
+import thaumcraft.common.aura.AuraManager;
+import vazkii.tinkerer.lib.LibFeatures;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -30,8 +32,17 @@ public class ItemEnderMirror extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		// TODO: Do Stuff
-		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
+		if(AuraManager.decreaseClosestAura(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, LibFeatures.ENDER_MIRROR_COST)) {
+			par3EntityPlayer.displayGUIChest(par3EntityPlayer.getInventoryEnderChest());
+			par2World.playSoundAtEntity(par3EntityPlayer, "mob.endermen.portal", 1F, 1F);
+		}
+		return par1ItemStack;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean isFull3D() {
+		return true;
 	}
 
 	@Override

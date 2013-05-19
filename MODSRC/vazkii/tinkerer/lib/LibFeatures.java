@@ -34,5 +34,6 @@ public final class LibFeatures {
 	public static final int TELEPORT_SIGIL_VIS = 25;
 
 	public static final int ENCHANT_ITEM_MAX_DMG = 1200;
-
+	
+	public static final int ENDER_MIRROR_COST = 1;
 }
