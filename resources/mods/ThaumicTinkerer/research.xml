@@ -144,7 +144,7 @@ After a sigil is bound, you can hold right click it, like a bow to charge it and
 <longText>Knowing the power of the Sword of the Zephyr to propel foes away, you are trying to create something that will allow you to propel yourself.</longText>
 <page type = "text">Using the knowledge you got from creating the Sword of the Zephyr of propeling things around with air, you created a wand that will propel the holder in the direction that they're looking at.
 
-While someone is flying through the use of this Wand, any fall damage that would have been taken is negated.</page>
+While someone is flying through the use of this Wand, any acumulated gravitational energy is negated, reseting the fall damage the holder would take.</page>
 <page type = "infusioncrafting">WAND_UPRISING</page>
 </project>
 

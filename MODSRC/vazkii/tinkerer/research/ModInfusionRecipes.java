@@ -88,7 +88,7 @@ public final class ModInfusionRecipes {
 		tags = new ObjectTags().add(EnumTag.FLIGHT, 12).add(EnumTag.WIND, 6);
 		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.WAND_UPRISING_R, LibItemNames.WAND_UPRISING_R, 25, tags, new ItemStack(ModItems.wandUprising),
 				" Q ", "QWQ", " Q ",
-				'Q', new ItemStack(Config.itemResource, 1, 10),
+				'Q', new ItemStack(Config.itemResource, 1, 3),
 				'W', new ItemStack(Config.itemWandLightning));
 
 		tags = new ObjectTags().add(EnumTag.POWER, 14).add(EnumTag.FLIGHT, 6);
