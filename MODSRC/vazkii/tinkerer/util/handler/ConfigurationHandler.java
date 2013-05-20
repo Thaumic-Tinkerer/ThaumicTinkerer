@@ -57,6 +57,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idEnderMirror = loadItem(LibItemNames.ENDER_MIRROR, LibItemIDs.DEFAULT_ENDER_MIRROR);
 		LibItemIDs.idGoliathLegs = loadItem(LibItemNames.GOLIATH_LEGS, LibItemIDs.DEFAULT_GOLIATH_LEGS);
 		LibItemIDs.idDarkGas = loadItem(LibItemNames.DARK_GAS, LibItemIDs.DEFAULT_DARK_GAS);
+		LibItemIDs.idGasRemover = loadItem(LibItemNames.GAS_REMOVER, LibItemIDs.DEFAULT_GAS_REMOVER);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);

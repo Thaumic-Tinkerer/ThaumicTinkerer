@@ -81,4 +81,8 @@ public final class LibItemNames {
 	public static final String DARK_GAS = "darkGas";
 	public static final String DARK_GAS_R = "DARK_GAS";
 	public static final String DARK_GAS_D = "Gaseous Tenebrae";
+
+	public static final String GAS_REMOVER = "gasRemover";
+	public static final String GAS_REMOVER_R = "GAS_REMOVER";
+	public static final String GAS_REMOVER_D = "Fume Dissipator";
 }

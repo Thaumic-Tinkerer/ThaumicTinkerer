@@ -20,6 +20,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_ENDER_MIRROR = 21165;
 	public static final int DEFAULT_GOLIATH_LEGS = 21166;
 	public static final int DEFAULT_DARK_GAS = 21167;
+	public static final int DEFAULT_GAS_REMOVER = 21168;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -39,4 +40,5 @@ public final class LibItemIDs {
 	public static int idEnderMirror;
 	public static int idGoliathLegs;
 	public static int idDarkGas;
+	public static int idGasRemover;
 }
