@@ -46,6 +46,7 @@ public final class ModItems {
 	public static Item goliathLegs;
 	public static Item darkGas;
 	public static Item gasRemover;
+	public static Item fluxDetector;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -67,7 +68,8 @@ public final class ModItems {
 		goliathLegs = new ItemGoliathLegs(LibItemIDs.idGoliathLegs).setUnlocalizedName(LibItemNames.GOLIATH_LEGS);
 		darkGas = new ItemGas(LibItemIDs.idDarkGas, ModBlocks.darkGas).setUnlocalizedName(LibItemNames.DARK_GAS);
 		gasRemover = new ItemGasRemover(LibItemIDs.idGasRemover).setUnlocalizedName(LibItemNames.GAS_REMOVER);
-
+		fluxDetector = new ItemFluxDetector(LibItemIDs.idFluxDetector).setUnlocalizedName(LibItemNames.FLUX_DETECTOR);
+	
 		nameItems();
 	}
 
@@ -91,6 +93,7 @@ public final class ModItems {
 		LanguageRegistry.addName(goliathLegs, LibItemNames.GOLIATH_LEGS_D);
 		LanguageRegistry.addName(darkGas, LibItemNames.DARK_GAS_D);
 		LanguageRegistry.addName(gasRemover, LibItemNames.GAS_REMOVER_D);
+		LanguageRegistry.addName(fluxDetector, LibItemNames.FLUX_DETECTOR_D);
 	}
 
 	public static void applyObjectTags() {

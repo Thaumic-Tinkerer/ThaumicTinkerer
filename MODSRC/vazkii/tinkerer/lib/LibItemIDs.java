@@ -21,7 +21,8 @@ public final class LibItemIDs {
 	public static final int DEFAULT_GOLIATH_LEGS = 21166;
 	public static final int DEFAULT_DARK_GAS = 21167;
 	public static final int DEFAULT_GAS_REMOVER = 21168;
-
+	public static final int DEFAULT_FLUX_DETECTOR = 21169;
+	
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
 	public static int idSpellCloth;
@@ -41,4 +42,5 @@ public final class LibItemIDs {
 	public static int idGoliathLegs;
 	public static int idDarkGas;
 	public static int idGasRemover;
+	public static int idFluxDetector;
 }
