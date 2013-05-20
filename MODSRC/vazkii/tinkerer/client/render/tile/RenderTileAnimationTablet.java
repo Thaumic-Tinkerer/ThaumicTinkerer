@@ -38,10 +38,10 @@ import vazkii.tinkerer.util.helper.MiscHelper;
 public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 	private static final float[][] TRANSLATIONS = new float[][] {
-		{ 0F, 0F, -1.F },
-		{ -1.25F, 0F, 0F },
+		{ 0F, 0F, -1F },
+		{ -1F, 0F, 0F },
 		{ 0F, 0F, 0F },
-		{ -1.25F, 0F, -1F }
+		{ -1F, 0F, -1F }
 	};
 
 	@Override
