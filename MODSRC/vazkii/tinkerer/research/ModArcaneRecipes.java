@@ -27,6 +27,13 @@ public final class ModArcaneRecipes {
 				"SI",
 				'S', new ItemStack(Item.sign),
 				'I', new ItemStack(Item.dyePowder));
+
+		ThaumcraftApi.addArcaneCraftingRecipe(LibItemNames.GAS_REMOVER_R, LibItemNames.GAS_REMOVER_R, 15, new ItemStack(ModItems.gasRemover),
+				"DDD", "T G", "QQQ",
+				'D', new ItemStack(ModItems.darkQuartz),
+				'T', new ItemStack(ModItems.darkGas),
+				'G', new ItemStack(ModItems.glowstoneGas),
+				'Q', new ItemStack(Item.netherQuartz));
 	}
 
 }

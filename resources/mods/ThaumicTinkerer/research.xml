@@ -235,8 +235,8 @@ They also give a more powerful vis reduction.</page>
 <page type = "infusioncrafting">GOLIATH_LEGS</page>
 </project>
 
-<!-- ======================================== Gaseous Glowstone /-->
-<project id = "DARK_GAS" version = "2">
+<!-- ======================================== Gaseous Tenebrae /-->
+<project id = "DARK_GAS" version = "1">
 <name>Gaseous Tenebrae</name>
 <popupText>[TT] Darkened Air</popupText>
 <longText>After having learned how to create Gaseous Glowstone, you are thinking about making air that's dark. You are confident that it's possible, and that the other alchemical material is required.</longText>
@@ -244,5 +244,14 @@ They also give a more powerful vis reduction.</page>
 
 This phial contains a concentrated extract of Gaseous Tenebrae, that can be released through a right click, and will spread relatively fast in the nearby area, darkening it.</page>
 <page type = "infusioncrafting">DARK_GAS</page>
+</project>
+
+<!-- ======================================== Fume Dissipator /-->
+<project id = "GAS_REMOVER" version = "1">
+<name>Fume Dissipator</name>
+<popupText>[TT] Clearing the Ambient</popupText>
+<longText></longText>
+<page type = "text">After knowing both the Gaseous Glowstone and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.</page>
+<page type = "arcanecrafting">GAS_REMOVER</page>
 </project>
 </research>

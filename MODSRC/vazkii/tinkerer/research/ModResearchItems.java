@@ -47,6 +47,7 @@ public final class ModResearchItems {
 	public static ResearchItem enderMirror;
 	public static ResearchItem goliathLegs;
 	public static ResearchItem darkGas;
+	public static ResearchItem gasRemover;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -111,5 +112,9 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.DARK, 4).add(EnumTag.WIND, 5).add(EnumTag.POWER, 4);
 		darkGas = new ResearchItem(LibItemNames.DARK_GAS_R, tags, 5, -1, ModItems.darkGas).setParents(Config.researchAlumentum).setParentsHidden(glowstoneGas).registerResearchItem();
+
+		tags = new ObjectTags();
+		gasRemover = new ResearchItem(LibItemNames.GAS_REMOVER_R, tags, 5, -2, ModItems.gasRemover).setParents(darkGas).setHidden().setStub().registerResearchItem();
+		darkGas.setSiblings(gasRemover);
 	}
 }
