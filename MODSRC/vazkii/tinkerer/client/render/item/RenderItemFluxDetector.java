@@ -32,7 +32,6 @@ public class RenderItemFluxDetector extends HandheldItemRenderer {
 		GL11.glTranslatef(-0.5F, -0.5F, 0F);
 		GL11.glScalef(3F, 3F, 3F);
 		renderItemStack(arg1, arg0, 0, false);
-		// TODO Actually make the parts I should make...
 		GL11.glPopMatrix();
 	}
 }
