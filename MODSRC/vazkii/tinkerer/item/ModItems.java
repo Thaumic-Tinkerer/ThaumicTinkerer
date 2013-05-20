@@ -46,6 +46,7 @@ public final class ModItems {
 	public static Item goliathLegs;
 	public static Item darkGas;
 	public static Item gasRemover;
+	public static Item cleansingTalisman;
 	public static Item fluxDetector;
 
 	public static void initItems() {
@@ -68,6 +69,7 @@ public final class ModItems {
 		goliathLegs = new ItemGoliathLegs(LibItemIDs.idGoliathLegs).setUnlocalizedName(LibItemNames.GOLIATH_LEGS);
 		darkGas = new ItemGas(LibItemIDs.idDarkGas, ModBlocks.darkGas).setUnlocalizedName(LibItemNames.DARK_GAS);
 		gasRemover = new ItemGasRemover(LibItemIDs.idGasRemover).setUnlocalizedName(LibItemNames.GAS_REMOVER);
+		cleansingTalisman = new ItemCleansingTalisman(LibItemIDs.idCleansingTalisman).setUnlocalizedName(LibItemNames.CLEANSING_TALISMAN);
 		fluxDetector = new ItemFluxDetector(LibItemIDs.idFluxDetector).setUnlocalizedName(LibItemNames.FLUX_DETECTOR);
 
 		nameItems();
@@ -93,6 +95,7 @@ public final class ModItems {
 		LanguageRegistry.addName(goliathLegs, LibItemNames.GOLIATH_LEGS_D);
 		LanguageRegistry.addName(darkGas, LibItemNames.DARK_GAS_D);
 		LanguageRegistry.addName(gasRemover, LibItemNames.GAS_REMOVER_D);
+		LanguageRegistry.addName(cleansingTalisman, LibItemNames.CLEANSING_TALISMAN_D);
 		LanguageRegistry.addName(fluxDetector, LibItemNames.FLUX_DETECTOR_D);
 	}
 
@@ -129,8 +132,11 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.DEATH, 16).add(EnumTag.TRAP, 12).add(EnumTag.POWER, 12).add(EnumTag.MAGIC, 22);
 		ThaumcraftApi.registerObjectTag(deathRune.itemID, LibMisc.TAG_META_WILDCARD, tags);
-
+		
 		tags = new ObjectTags().add(EnumTag.DARK, 1);
 		ThaumcraftApi.registerComplexObjectTag(darkQuartz.itemID, LibMisc.TAG_META_WILDCARD, tags);
+	
+		tags = new ObjectTags().add(EnumTag.HEAL, 10).add(EnumTag.KNOWLEDGE, 12).add(EnumTag.WATER, 4).add(EnumTag.MAGIC, 8).add(EnumTag.TOOL, 6);
+		ThaumcraftApi.registerObjectTag(cleansingTalisman.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }

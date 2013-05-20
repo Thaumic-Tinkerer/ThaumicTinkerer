@@ -254,4 +254,15 @@ This phial contains a concentrated extract of Gaseous Tenebrae, that can be rele
 <page type = "text">After knowing both the Gaseous Glowstone and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.</page>
 <page type = "arcanecrafting">GAS_REMOVER</page>
 </project>
+
+<!-- ======================================== Talisman of Remedium /-->
+<project id = "CLEANSING_TALISMAN" version = "1">
+<name>Talisman of Remedium</name>
+<popupText>[TT] Better Than Milk!</popupText>
+<longText>After having studied the intricacies of life and the bodu you have discovered a way to magically protect yourself from harmful outside influences.</longText>
+<page type = "text">You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to another place. 
+
+To turn the talisman On or Off, you need to shift-right-click on the talisman. When the talisman is enabled, it will remove negative effects at the cost of draining the local aura.</page>
+<page type = "infusioncrafting">CLEANSING_TALISMAN</page>
+</project>
 </research>

@@ -89,4 +89,8 @@ public final class LibItemNames {
 	public static final String FLUX_DETECTOR = "fluxDetector";
 	public static final String FLUX_DETECTOR_R = "FLUX_DETECTOR";
 	public static final String FLUX_DETECTOR_D = "Fluxometer";
+	
+	public static final String CLEANSING_TALISMAN = "cleansingTalisman";
+	public static final String CLEANSING_TALISMAN_R = "CLEANSING_TALISMAN";
+	public static final String CLEANSING_TALISMAN_D = "Talisman of Remedium";
 }
