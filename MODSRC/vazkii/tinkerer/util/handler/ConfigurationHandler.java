@@ -59,7 +59,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idDarkGas = loadItem(LibItemNames.DARK_GAS, LibItemIDs.DEFAULT_DARK_GAS);
 		LibItemIDs.idGasRemover = loadItem(LibItemNames.GAS_REMOVER, LibItemIDs.DEFAULT_GAS_REMOVER);
 		LibItemIDs.idFluxDetector = loadItem(LibItemNames.FLUX_DETECTOR, LibItemIDs.DEFAULT_FLUX_DETECTOR);
-		
+
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);

@@ -85,7 +85,7 @@ public final class LibItemNames {
 	public static final String GAS_REMOVER = "gasRemover";
 	public static final String GAS_REMOVER_R = "GAS_REMOVER";
 	public static final String GAS_REMOVER_D = "Fume Dissipator";
-	
+
 	public static final String FLUX_DETECTOR = "fluxDetector";
 	public static final String FLUX_DETECTOR_R = "FLUX_DETECTOR";
 	public static final String FLUX_DETECTOR_D = "Fluxometer";

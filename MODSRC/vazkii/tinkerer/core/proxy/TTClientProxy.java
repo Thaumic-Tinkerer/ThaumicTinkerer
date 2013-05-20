@@ -17,14 +17,17 @@ package vazkii.tinkerer.core.proxy;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
+import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
+import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
@@ -77,6 +80,8 @@ public class TTClientProxy extends TTCommonProxy {
 		LibRenderIDs.idWardChest = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
+
+		MinecraftForgeClient.registerItemRenderer(ModItems.fluxDetector.itemID, new RenderItemFluxDetector());
 	}
 
 	@Override

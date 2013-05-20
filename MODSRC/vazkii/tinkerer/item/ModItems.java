@@ -69,7 +69,7 @@ public final class ModItems {
 		darkGas = new ItemGas(LibItemIDs.idDarkGas, ModBlocks.darkGas).setUnlocalizedName(LibItemNames.DARK_GAS);
 		gasRemover = new ItemGasRemover(LibItemIDs.idGasRemover).setUnlocalizedName(LibItemNames.GAS_REMOVER);
 		fluxDetector = new ItemFluxDetector(LibItemIDs.idFluxDetector).setUnlocalizedName(LibItemNames.FLUX_DETECTOR);
-	
+
 		nameItems();
 	}
 
