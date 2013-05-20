@@ -16,11 +16,6 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
-import thaumcraft.common.aura.AuraManager;
-import vazkii.tinkerer.client.util.helper.IconHelper;
-import vazkii.tinkerer.lib.LibFeatures;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,17 +25,22 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import thaumcraft.common.aura.AuraManager;
+import vazkii.tinkerer.client.util.helper.IconHelper;
+import vazkii.tinkerer.lib.LibFeatures;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCleansingTalisman extends ItemMod {
 
     private Icon enabledIcon;
     private long timer = 0L;
-    
+
     public ItemCleansingTalisman(int par1) {
 	super(par1);
 	setMaxStackSize(1);
     }
-    
+
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 	if(par3EntityPlayer.isSneaking()) {
@@ -48,17 +48,17 @@ public class ItemCleansingTalisman extends ItemMod {
 	    par1ItemStack.setItemDamage(damage == 0 ? 1 : 0);
 	    par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 	}
-	
+
 	return par1ItemStack;
     }
-    
+
     @Override
     public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 	if(par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
-	
-	    if(this.timer < System.currentTimeMillis()) {
-		this.timer = (System.currentTimeMillis() + 1000L);
-	
+
+	    if(timer < System.currentTimeMillis()) {
+		timer = System.currentTimeMillis() + 1000L;
+
 		if (par3Entity instanceof EntityPlayer) {
 		    EntityPlayer player = (EntityPlayer)par3Entity;
 		    boolean removed = false;
@@ -90,7 +90,7 @@ public class ItemCleansingTalisman extends ItemMod {
 			player.removePotionEffect(Potion.wither.getId());
 			removed = true;
 		    }
-		
+
 		    if(removed) {
 			AuraManager.decreaseClosestAura(par2World, player.posX, player.posY, player.posZ, LibFeatures.CLEANSING_TALISMAN_VIS);
 			par2World.playSoundAtEntity(player, "thaumcraft.wand", 0.3F, 0.1F);
@@ -99,29 +99,29 @@ public class ItemCleansingTalisman extends ItemMod {
 	    }
 	}
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
 	itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 	enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-	if(par1ItemStack.getItemDamage() == 0) 
+	if(par1ItemStack.getItemDamage() == 0)
 	    par3List.add(EnumChatFormatting.RED + "Inactive");
 	else
 	    par3List.add(EnumChatFormatting.GREEN + "Active");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1) {
 	return par1 == 1 ? enabledIcon : itemIcon;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public EnumRarity getRarity(ItemStack par1ItemStack) {

@@ -38,6 +38,6 @@ public final class LibFeatures {
 	public static final int ENDER_MIRROR_COST = 1;
 
 	public static final int GOLIATH_LEGS_MAX_SAFETY = 5;
-	
+
 	public static final int CLEANSING_TALISMAN_VIS = 10;
 }

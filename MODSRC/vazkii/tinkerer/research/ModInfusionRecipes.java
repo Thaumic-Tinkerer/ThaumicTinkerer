@@ -152,10 +152,10 @@ public final class ModInfusionRecipes {
 				'Q', new ItemStack(ModItems.darkQuartz),
 				'P', new ItemStack(Config.itemEssence, 1, 0),
 				'A', new ItemStack(Config.itemResource, 1, 0));
-				
+
 		tags = new ObjectTags().add(EnumTag.HEAL, 16).add(EnumTag.KNOWLEDGE, 18).add(EnumTag.TOOL, 12).add(EnumTag.MAGIC, 10);
 		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.CLEANSING_TALISMAN_R, LibItemNames.CLEANSING_TALISMAN_R, 100, tags, new ItemStack(ModItems.cleansingTalisman),
-				"STS", "TWT", "STS", 
+				"STS", "TWT", "STS",
 				'S', new ItemStack(ModItems.darkQuartz),
 				'T', new ItemStack(Config.itemResource, 1, 7),
 				'W', new ItemStack(Item.enderPearl));
