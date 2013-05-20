@@ -29,6 +29,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibGuiIDs;
@@ -160,8 +161,20 @@ public class BlockAnimationTablet extends BlockModContainer {
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
-			if(tile != null)
-				par5EntityPlayer.openGui(ThaumicTinkerer.modInstance, LibGuiIDs.ID_ANIMATION_TABLET, par1World, par2, par3, par4);
+			if(tile != null) {
+				TileEntityAnimationTablet tablet = (TileEntityAnimationTablet) tile;
+				if(par5EntityPlayer.getCurrentEquippedItem() != null && par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
+					int meta = par1World.getBlockMetadata(par2, par3, par4);
+					boolean activated = (meta & 8) != 0;
+					if(!activated && !tablet.getIsBreaking() && tablet.swingProgress == 0) {
+						par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 5 ? + 2 : meta + 1, 1 | 2);
+						par1World.playSoundEffect(par2, par3, par4, "thaumcraft.tool", 0.6F, 1F);
+					} else par5EntityPlayer.addChatMessage("You can not rotate the Tablet while it's activated.");
+						// Rare chance this might happen, but better to cope for it.
+
+					return true;
+				} else par5EntityPlayer.openGui(ThaumicTinkerer.modInstance, LibGuiIDs.ID_ANIMATION_TABLET, par1World, par2, par3, par4);
+			}
 		}
 
 		return true;

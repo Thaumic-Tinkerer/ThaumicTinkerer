@@ -38,10 +38,10 @@ import vazkii.tinkerer.util.helper.MiscHelper;
 public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 	private static final float[][] TRANSLATIONS = new float[][] {
-		{ 0F, 0F, -1.25F },
+		{ 0F, 0F, -1.F },
 		{ -1.25F, 0F, 0F },
 		{ 0F, 0F, 0F },
-		{ -1.25F, 0F, -1.25F }
+		{ -1.25F, 0F, -1F }
 	};
 
 	@Override
@@ -50,15 +50,15 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 		int meta = tile.getBlockMetadata() & 7;
 		int rotation = meta == 2 ? 270 : meta == 3 ? 90 : meta == 4 ? 0 : 180;
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslated(d0, d1, d2);
 		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_DIAL, -1, false, false, 0.65, 0.13F, 0F);
 		if(tile.leftClick)
 			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F, 0F);
 		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 0, false, true, 1, 0.131F, 0F);
-		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_FACING, 0, false, false, 0.65, 0.13F, (float) rotation + 90F);
-		
+		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_FACING, 0, false, false, 0.5F, 0.13F, rotation + 90F);
+
 		GL11.glRotatef(rotation, 0F, 1F, 0F);
 		GL11.glTranslated(0.1, 0.2 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 18F, 0.5);
 		float[] translations = TRANSLATIONS[meta - 2];
