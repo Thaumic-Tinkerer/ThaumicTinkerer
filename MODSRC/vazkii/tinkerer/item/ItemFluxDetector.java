@@ -45,8 +45,10 @@ public class ItemFluxDetector extends ItemThaumometer {
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		AuraNode node = MiscHelper.getClosestNode(par2World, par3Entity.posX, par3Entity.posY, par3Entity.posZ);
-		setTagCompoundForNode(par1ItemStack, node);
+		if(!par2World.isRemote) {
+			AuraNode node = MiscHelper.getClosestNode(par2World, par3Entity.posX, par3Entity.posY, par3Entity.posZ);
+			setTagCompoundForNode(par1ItemStack, node);
+		}
 	}
 
 	private void setTagCompoundForNode(ItemStack stack, AuraNode node) {
@@ -58,29 +60,34 @@ public class ItemFluxDetector extends ItemThaumometer {
 		} else {
 			NBTTagCompound cmp1 = new NBTTagCompound();
 			ObjectTags flux = node.flux;
-			for(EnumTag tag : node.flux.getAspects())
-				cmp1.setInteger(String.format(TAG_OBJECT_TAG, tag.id), flux.getAmount(tag));
+			if(flux != null && flux.getAspects().length > 0) // Nice clean aura :D
+				for(EnumTag tag : flux.getAspects())
+					if(tag != null)
+						cmp1.setInteger(String.format(TAG_OBJECT_TAG, tag.id), flux.getAmount(tag));
 			cmp.setCompoundTag(TAG_OBJECT_TAGS_CMP, cmp1);
+			stack.setTagCompound(cmp);
 		}
 	}
 
 	public static ObjectTags getTags(ItemStack stack) {
 		if(stack.hasTagCompound()) {
 			NBTTagCompound cmp = stack.getTagCompound();
-			NBTTagCompound cmp1 = cmp.getCompoundTag(TAG_OBJECT_TAGS_CMP);
-			if(cmp1 != null) {
-				ObjectTags tags = new ObjectTags();
-				Collection<NBTBase> cmpTags = cmp1.getTags();
-				for(NBTBase tag : cmpTags) {
-					if(tag instanceof NBTTagInt) {
-						NBTTagInt integer = (NBTTagInt) tag;
-						int tagID = Integer.parseInt(tag.getName().replaceAll(TAG_OBJECT_TAG_REPLACE, ""));
-						int amount = integer.data;
-						tags.add(EnumTag.get(tagID), amount);
+			if(cmp.hasKey(TAG_OBJECT_TAGS_CMP)) {
+				NBTTagCompound cmp1 = cmp.getCompoundTag(TAG_OBJECT_TAGS_CMP);
+				if(cmp1 != null) {
+					ObjectTags tags = new ObjectTags();
+					Collection<NBTBase> cmpTags = cmp1.getTags();
+					for(NBTBase tag : cmpTags) {
+						if(tag instanceof NBTTagInt) {
+							NBTTagInt integer = (NBTTagInt) tag;
+							int tagID = Integer.parseInt(tag.getName().replaceAll(TAG_OBJECT_TAG_REPLACE, ""));
+							int amount = integer.data;
+							tags.add(EnumTag.get(tagID), amount);
+						}
 					}
-				}
 
-				return tags;
+					return tags;
+				}
 			}
  		}
 
