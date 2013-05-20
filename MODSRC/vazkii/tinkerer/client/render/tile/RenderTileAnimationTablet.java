@@ -48,20 +48,22 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float partialTicks) {
 		TileEntityAnimationTablet tile = (TileEntityAnimationTablet) tileentity;
 
-		GL11.glPushMatrix();
-		GL11.glTranslated(d0, d1, d2);
-		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_DIAL, -1, false, false, 0.65, 0.13F);
-		if(tile.leftClick)
-			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F);
-		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 1, false, true, 1, 0.13F);
-
 		int meta = tile.getBlockMetadata() & 7;
 		int rotation = meta == 2 ? 270 : meta == 3 ? 90 : meta == 4 ? 0 : 180;
+		
+		GL11.glPushMatrix();
+		GL11.glTranslated(d0, d1, d2);
+		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_DIAL, -1, false, false, 0.65, 0.13F, 0F);
+		if(tile.leftClick)
+			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F, 0F);
+		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 0, false, true, 1, 0.131F, 0F);
+		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_FACING, 0, false, false, 0.65, 0.13F, (float) rotation + 90F);
+		
 		GL11.glRotatef(rotation, 0F, 1F, 0F);
 		GL11.glTranslated(0.1, 0.2 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 18F, 0.5);
-		GL11.glScalef(0.8F, 0.8F, 0.8F);
 		float[] translations = TRANSLATIONS[meta - 2];
 		GL11.glTranslatef(translations[0], translations[1], translations[2]);
+		GL11.glScalef(0.8F, 0.8F, 0.8F);
 		GL11.glTranslatef(0.5F, 0F, 0.5F);
 		GL11.glRotatef(tile.swingProgress, 0F, 0F, 1F);
 		GL11.glTranslatef(-0.5F, 0F, -0.5F);
@@ -101,7 +103,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
         }
 	}
 
-	private void renderOverlay(TileEntityAnimationTablet tablet, String texture, int rotationMod, boolean useLighting, boolean useBlend, double size, float height) {
+	private void renderOverlay(TileEntityAnimationTablet tablet, String texture, int rotationMod, boolean useLighting, boolean useBlend, double size, float height, float forceDeg) {
 		Minecraft mc = MiscHelper.getMc();
 		mc.renderEngine.bindTexture(texture);
 		GL11.glPushMatrix();
@@ -113,7 +115,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		}
 		GL11.glTranslatef(0.5F, height, 0.5F);
-		float deg = (float) (tablet.ticksExisted * rotationMod % 360F);
+		float deg = rotationMod == 0 ? forceDeg : (float) (tablet.ticksExisted * rotationMod % 360F);
 		GL11.glRotatef(deg, 0F, 1F, 0F);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		Tessellator tess = Tessellator.instance;
