@@ -20,7 +20,7 @@ public final class ModInfusionRecipes {
 		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.WAND_TINKERER_R, LibItemNames.WAND_TINKERER_R, 85, tags, new ItemStack(ModItems.wandTinkerer),
 				"SSS", "SWS", "SSS",
 				'S', new ItemStack(Config.itemShard, 1, 4),
-				'W', new ItemStack(Config.itemWandCastingApprentice, 1, LibMisc.CRAFTING_META_WILDCARD));
+				'W', new ItemStack(Config.itemWandCastingAdept, 1, LibMisc.CRAFTING_META_WILDCARD));
 
 		tags = new ObjectTags().add(EnumTag.WIND, 8);
 		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.GLOWSTONE_GAS_R, LibItemNames.GLOWSTONE_GAS_R, 5, tags, new ItemStack(ModItems.glowstoneGas),

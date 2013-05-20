@@ -37,7 +37,7 @@ public class ItemWandTinkerer extends ItemWandCasting {
 
 	@Override
 	public int getRechargeInterval() {
-		return 9;
+		return 12;
 	}
 
 	@Override
