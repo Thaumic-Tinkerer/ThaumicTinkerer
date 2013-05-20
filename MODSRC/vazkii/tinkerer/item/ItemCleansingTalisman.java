@@ -33,98 +33,87 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCleansingTalisman extends ItemMod {
 
-    private Icon enabledIcon;
-    private long timer = 0L;
+	private Icon enabledIcon;
+	private long timer = 0L;
 
-    public ItemCleansingTalisman(int par1) {
-	super(par1);
-	setMaxStackSize(1);
-    }
+	private static final int[] POTIONS_TO_REMOVE = new int[] {
+		Potion.blindness.id,
+		Potion.confusion.id,
+		Potion.poison.id,
+		Potion.weakness.id,
+		Potion.moveSlowdown.id,
+		Potion.wither.id
+	};
 
-    @Override
-    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-	if(par3EntityPlayer.isSneaking()) {
-	    int damage = par1ItemStack.getItemDamage();
-	    par1ItemStack.setItemDamage(damage == 0 ? 1 : 0);
-	    par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+	public ItemCleansingTalisman(int par1) {
+		super(par1);
+		setMaxStackSize(1);
 	}
 
-	return par1ItemStack;
-    }
-
-    @Override
-    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-	if(par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
-
-	    if(timer < System.currentTimeMillis()) {
-		timer = System.currentTimeMillis() + 1000L;
-
-		if (par3Entity instanceof EntityPlayer) {
-		    EntityPlayer player = (EntityPlayer)par3Entity;
-		    boolean removed = false;
-		    if(player.isBurning()) {
-			player.extinguish();
-			removed = true;
-		    }
-		    else if(player.getActivePotionEffect(Potion.blindness) != null) {
-			player.removePotionEffect(Potion.blindness.getId());
-			removed = true;
-		    }
-		    else if(player.getActivePotionEffect(Potion.confusion) != null) {
-			player.removePotionEffect(Potion.confusion.getId());
-			removed = true;
-	    		}
-		    else if(player.getActivePotionEffect(Potion.poison) != null) {
-			player.removePotionEffect(Potion.poison.getId());
-			removed = true;
-		    }
-		    else if(player.getActivePotionEffect(Potion.weakness) != null) {
-			player.removePotionEffect(Potion.weakness.getId());
-			removed = true;
-		    }
-		    else if(player.getActivePotionEffect(Potion.moveSlowdown) != null) {
-			player.removePotionEffect(Potion.moveSlowdown.getId());
-			removed = true;
-		    }
-		    else if(player.getActivePotionEffect(Potion.wither) != null) {
-			player.removePotionEffect(Potion.wither.getId());
-			removed = true;
-		    }
-
-		    if(removed) {
-			AuraManager.decreaseClosestAura(par2World, player.posX, player.posY, player.posZ, LibFeatures.CLEANSING_TALISMAN_VIS);
-			par2World.playSoundAtEntity(player, "thaumcraft.wand", 0.3F, 0.1F);
-		    }
+	@Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		if(par3EntityPlayer.isSneaking()) {
+			int damage = par1ItemStack.getItemDamage();
+			par1ItemStack.setItemDamage(damage == 0 ? 1 : 0);
+			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 		}
-	    }
+
+		return par1ItemStack;
 	}
-    }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister) {
-	itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
-	enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
-    }
+	@Override
+	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+		if(par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
+			if(timer < System.currentTimeMillis()) {
+				timer = System.currentTimeMillis() + 1000L;
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-	if(par1ItemStack.getItemDamage() == 0)
-	    par3List.add(EnumChatFormatting.RED + "Inactive");
-	else
-	    par3List.add(EnumChatFormatting.GREEN + "Active");
-    }
+				if (par3Entity instanceof EntityPlayer) {
+					EntityPlayer player = (EntityPlayer)par3Entity;
+					boolean removed = false;
+					if(player.isBurning()) {
+						player.extinguish();
+						removed = true;
+					} else for(int potion : POTIONS_TO_REMOVE) {
+						if(player.isPotionActive(potion)) {
+							player.removePotionEffect(potion);
+							removed = true;
+							break;
+						}
+					}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int par1) {
-	return par1 == 1 ? enabledIcon : itemIcon;
-    }
+					if(removed) {
+						AuraManager.decreaseClosestAura(par2World, player.posX, player.posY, player.posZ, LibFeatures.CLEANSING_TALISMAN_VIS);
+						par2World.playSoundAtEntity(player, "thaumcraft.wand", 0.3F, 0.1F);
+					}
+				}
+			}
+		}
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public EnumRarity getRarity(ItemStack par1ItemStack) {
-	return EnumRarity.uncommon;
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister par1IconRegister) {
+		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
+		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+		if(par1ItemStack.getItemDamage() == 0)
+			par3List.add(EnumChatFormatting.RED + "Inactive");
+		else par3List.add(EnumChatFormatting.GREEN + "Active");
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int par1) {
+		return par1 == 1 ? enabledIcon : itemIcon;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return EnumRarity.uncommon;
+	}
 }

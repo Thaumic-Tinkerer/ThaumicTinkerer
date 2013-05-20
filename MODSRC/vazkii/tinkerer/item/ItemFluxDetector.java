@@ -37,21 +37,21 @@ public class ItemFluxDetector extends ItemThaumometer {
 	private static final String TAG_OBJECT_TAGS_CMP = "tagsCmp";
 	private static final String TAG_OBJECT_TAG = "tag%s";
 	private static final String TAG_OBJECT_TAG_REPLACE = "tag";
-	
+
 	public ItemFluxDetector(int par1) {
 		super(par1);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
-	
+
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		AuraNode node = MiscHelper.getClosestNode(par2World, par3Entity.posX, par3Entity.posY, par3Entity.posZ);
 		setTagCompoundForNode(par1ItemStack, node);
 	}
-	
+
 	private void setTagCompoundForNode(ItemStack stack, AuraNode node) {
 		NBTTagCompound cmp = new NBTTagCompound();
-		
+
 		if(node == null) {
 			if(stack.hasTagCompound())
 				cmp.setCompoundTag(TAG_OBJECT_TAGS_CMP, new NBTTagCompound());
@@ -63,7 +63,7 @@ public class ItemFluxDetector extends ItemThaumometer {
 			cmp.setCompoundTag(TAG_OBJECT_TAGS_CMP, cmp1);
 		}
 	}
-	
+
 	public static ObjectTags getTags(ItemStack stack) {
 		if(stack.hasTagCompound()) {
 			NBTTagCompound cmp = stack.getTagCompound();
@@ -79,14 +79,14 @@ public class ItemFluxDetector extends ItemThaumometer {
 						tags.add(EnumTag.get(tagID), amount);
 					}
 				}
-				
+
 				return tags;
 			}
  		}
-		
+
 		return null;
 	}
-	
+
 	@Override
 	public boolean getShareTag() {
 		return true;

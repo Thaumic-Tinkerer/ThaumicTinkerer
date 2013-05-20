@@ -40,10 +40,10 @@ public final class MiscHelper {
 	public static String stackAsString(ItemStack stack) {
 		return stack == null ? "null" : stack.itemID + ":" + stack.getItemDamage();
 	}
-	
+
 	public static AuraNode getClosestNode(World world, double x, double y, double z) {
 		List<Integer> nodes = AuraManager.getAurasWithin(world, x, y, z);
-		
+
 		double closestDist = Double.MAX_VALUE;
 		AuraNode closestNode = null;
 
@@ -51,18 +51,18 @@ public final class MiscHelper {
 			AuraNode node = AuraManager.getNode(i);
 
 			float value = node.baseLevel / 4F;
-			
+
 			double distX = node.xPos - x;
 			double distY = node.yPos - y;
 			double distZ = node.zPos - z;
-			
+
 			double dist = distX * distX + distY * distY + distZ * distZ;
 			if(value * value >= dist && dist < closestDist) {
 				closestDist = dist;
 				closestNode = node;
 			}
 		}
-		
+
 		return closestNode;
 	}
 }
