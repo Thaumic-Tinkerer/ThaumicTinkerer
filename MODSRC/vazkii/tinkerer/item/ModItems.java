@@ -136,7 +136,7 @@ public final class ModItems {
 		tags = new ObjectTags().add(EnumTag.DARK, 1);
 		ThaumcraftApi.registerComplexObjectTag(darkQuartz.itemID, LibMisc.TAG_META_WILDCARD, tags);
 
-		tags = new ObjectTags().add(EnumTag.HEAL, 10).add(EnumTag.KNOWLEDGE, 12).add(EnumTag.WATER, 4).add(EnumTag.MAGIC, 8).add(EnumTag.TOOL, 6);
+		tags = new ObjectTags().add(EnumTag.HEAL, 16).add(EnumTag.KNOWLEDGE, 18).add(EnumTag.WATER, 6).add(EnumTag.MAGIC, 10).add(EnumTag.TOOL, 12);
 		ThaumcraftApi.registerObjectTag(cleansingTalisman.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }
