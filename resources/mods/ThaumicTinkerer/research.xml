@@ -265,4 +265,15 @@ This phial contains a concentrated extract of Gaseous Tenebrae, that can be rele
 To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled.</page>
 <page type = "infusioncrafting">CLEANSING_TALISMAN</page>
 </project>
+
+<!-- ======================================== Fluxometer /-->
+<project id = "FLUX_DETECTOR" version = "1">
+<name>Fluxometer</name>
+<popupText>[TT] Visual Damage</popupText>
+<longText>After research of the flux itself, you think that you can make use of one of your early discoveries, the Thaumometer, to measure the flux.</longText>
+<page type = "text">Through the research of the flux itself, and through usage of one of your early discoveries, the Thaumomenter, you managed to discover an upgrade for it.
+
+This new detector, the Fluxometer can measure the flux in the nearest relevant node. Whilst looking at the Fluxometer with Goggles of Revealing, the holder can see what flux is in the air. The flux displays as icons, the opacity of each icon indicates how much of that aspect is in the aura. If you look close, you can see maxed out aspects as a bit unstable.</page>
+<page type = "arcanecrafting">FLUX_DETECTOR</page>
+</project>
 </research>

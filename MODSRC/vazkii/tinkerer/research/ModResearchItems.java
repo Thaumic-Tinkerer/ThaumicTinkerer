@@ -49,6 +49,7 @@ public final class ModResearchItems {
 	public static ResearchItem darkGas;
 	public static ResearchItem gasRemover;
 	public static ResearchItem cleansingTalisman;
+	public static ResearchItem fluxDetector;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -120,5 +121,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.HEAL, 10).add(EnumTag.TOOL, 16).add(EnumTag.MAGIC, 8).add(EnumTag.WATER, 4).add(EnumTag.KNOWLEDGE, 16);
 		cleansingTalisman = new ResearchItem(LibItemNames.CLEANSING_TALISMAN_R, tags, 1, 18, ModItems.cleansingTalisman).setParents(Config.researchUTFT).setHidden().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.VISION, 16).add(EnumTag.MAGIC, 12).add(EnumTag.FLUX, 10);
+		fluxDetector = new ResearchItem(LibItemNames.FLUX_DETECTOR_R, tags, -3, 19, ModItems.fluxDetector).setParents(Config.researchBasicFlux).setParentsHidden(Config.researchGoggles).registerResearchItem();
 	}
 }

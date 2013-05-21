@@ -17,6 +17,7 @@ package vazkii.tinkerer.research;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.common.Config;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibItemNames;
 
@@ -34,6 +35,12 @@ public final class ModArcaneRecipes {
 				'T', new ItemStack(ModItems.darkGas),
 				'G', new ItemStack(ModItems.glowstoneGas),
 				'Q', new ItemStack(Item.netherQuartz));
+
+		ThaumcraftApi.addArcaneCraftingRecipe(LibItemNames.FLUX_DETECTOR_R, LibItemNames.FLUX_DETECTOR_R, 75, new ItemStack(ModItems.fluxDetector),
+				" G ", "FMF", " G ",
+				'G', new ItemStack(Item.ingotGold),
+				'F', new ItemStack(Config.itemResource, 1, 8),
+				'M', new ItemStack(Config.itemThaumometer));
 	}
 
 }
