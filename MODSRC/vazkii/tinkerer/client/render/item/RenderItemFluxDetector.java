@@ -71,7 +71,7 @@ public class RenderItemFluxDetector extends HandheldItemRenderer {
 				GL11.glPushMatrix();
 				GL11.glTranslatef(-2500F, -6000F, -500F);
 				GL11.glScalef(400F, 400F, 150F);
-				float opacity = Math.min(arg1.rotationPitch / 100F, amount / 100F);
+				float opacity = Math.min(arg1.rotationPitch / 100F, Math.max(0.15F, amount / 100F));
 				if(!goggles)
 					opacity = (float) Math.min(arg1.rotationPitch / 100F, Math.cos(ClientTickHandler.clientTicksElapsed / 5F) + 2F / 2F + 0.2F);
 				UtilsFX.drawTag(mc, xpos, ypos, goggles ? tag : EnumTag.UNKNOWN, 0, 0, dummyGui, false, false, opacity);
