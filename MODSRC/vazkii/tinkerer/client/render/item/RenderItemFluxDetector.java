@@ -55,7 +55,7 @@ public class RenderItemFluxDetector extends HandheldItemRenderer {
 		float originalZLevel = dummyGui.getZLevel();
 		
 		ObjectTags tags = ItemFluxDetector.getTags(arg0);
-		if(tags != null && !arg1.isSwingInProgress) {
+		if(tags != null && tags.size() > 0 && !arg1.isSwingInProgress) {
 			int degPerTag = 360 / tags.size();
 			int renderDeg = -90 + (int) (ClientTickHandler.clientTicksElapsed % 360);
 			dummyGui.setZLevel(900 - (arg1.rotationPitch * 9));
