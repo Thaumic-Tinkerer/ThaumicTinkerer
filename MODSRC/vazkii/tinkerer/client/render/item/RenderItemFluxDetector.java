@@ -52,10 +52,13 @@ public class RenderItemFluxDetector extends HandheldItemRenderer {
 		float scale = 1F / 128F;
 		GL11.glScalef(scale, scale, scale);
 
+		float originalZLevel = dummyGui.getZLevel();
+		
 		ObjectTags tags = ItemFluxDetector.getTags(arg0);
-		if(tags != null) {
+		if(tags != null && !arg1.isSwingInProgress) {
 			int degPerTag = 360 / tags.size();
 			int renderDeg = -90 + (int) (ClientTickHandler.clientTicksElapsed % 360);
+			dummyGui.setZLevel(900 - (arg1.rotationPitch * 9));
 			for(EnumTag tag : tags.getAspects()) {
 				int amount = tags.getAmount(tag);
 				int radius = (int) Math.max(0, Math.min(60, arg1.rotationPitch - 30));
@@ -72,14 +75,25 @@ public class RenderItemFluxDetector extends HandheldItemRenderer {
 				if(!goggles)
 					opacity = (float) Math.min(arg1.rotationPitch / 100F, Math.cos(ClientTickHandler.clientTicksElapsed / 5F) + 2F / 2F + 0.2F);
 				UtilsFX.drawTag(mc, xpos, ypos, goggles ? tag : EnumTag.UNKNOWN, 0, 0, dummyGui, false, false, opacity);
+				dummyGui.setZLevel(dummyGui.getZLevel() - 2F);
 				GL11.glTranslatef(0F, 0F, -1F);
 				GL11.glPopMatrix();
 
 				renderDeg += degPerTag;
 			}
 		}
+		
+		dummyGui.setZLevel(originalZLevel);
 		GL11.glPopMatrix();
 	}
 
-	private static final class DummyGui extends GuiScreen { }
+	private static final class DummyGui extends GuiScreen { 
+		public void setZLevel(float level) {
+			zLevel = level;
+		}
+		
+		public float getZLevel() {
+			return zLevel;
+		}
+	}
 }
