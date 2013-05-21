@@ -129,7 +129,7 @@ public class TileEntityWardChest extends TileOwned implements ISidedInventory, n
 
 	@Override
 	public boolean isInvNameLocalized() {
-		return !MathHelper.stringNullOrLengthZero(customName);
+		return customName != null && customName.length() > 0;
 	}
 
 	@Override
