@@ -21,6 +21,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.FoodStats;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
 import thaumcraft.common.aura.AuraManager;
@@ -161,8 +162,8 @@ public class ItemStopwatch extends ItemMod {
 		player.motionY = motionY;
 		player.motionZ = motionZ;
 		player.setEntityHealth(health);
-		player.getFoodStats().setFoodLevel(food);
-		player.getFoodStats().setFoodSaturationLevel(saturation);
+		FoodStats foodStats = player.getFoodStats();
+		foodStats.addStats(food - foodStats.getFoodLevel(), saturation - foodStats.getSaturationLevel());
 	}
 
 	private static void wipeData(ItemStack stack, Entity player) {
