@@ -22,15 +22,24 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public final class ModEnchantments {
 
 	public static Enchantment freezing;
+	public static Enchantment wither;
+	public static Enchantment sync;
+	public static Enchantment ashes;
 
 	public static void initEnchantments(){
 		freezing = new EnchantmentFreezing(LibEnchantmentIDs.freezing).setName(LibEnchantmentNames.FREEZING);
+		wither = new EnchantmentWither(LibEnchantmentIDs.wither).setName(LibEnchantmentNames.WITHER);
+		sync = new EnchantmentSync(LibEnchantmentIDs.sync).setName(LibEnchantmentNames.SYNC);
+		ashes = new EnchantmentAshes(LibEnchantmentIDs.ashes).setName(LibEnchantmentNames.ASHES);
 
 		nameEnchantments();
 	}
 
 	private static void nameEnchantments() {
 		nameEnchant(freezing, LibEnchantmentNames.FREEZING_D);
+		nameEnchant(wither, LibEnchantmentNames.WITHER_D);
+		nameEnchant(sync, LibEnchantmentNames.SYNC_D);
+		nameEnchant(ashes, LibEnchantmentNames.ASHES_D);
 	}
 
 	private static void nameEnchant(Enchantment enchant, String name) {

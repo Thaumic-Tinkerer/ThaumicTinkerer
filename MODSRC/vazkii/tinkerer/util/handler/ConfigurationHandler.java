@@ -77,6 +77,9 @@ public final class ConfigurationHandler {
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 
 		LibEnchantmentIDs.freezing = loadEnchantment(LibEnchantmentNames.FREEZING, LibEnchantmentIDs.DEFAULT_FREEZING);
+		LibEnchantmentIDs.wither = loadEnchantment(LibEnchantmentNames.WITHER, LibEnchantmentIDs.DEFAULT_WITHER);
+		LibEnchantmentIDs.sync = loadEnchantment(LibEnchantmentNames.SYNC, LibEnchantmentIDs.DEFAULT_SYNC);
+		LibEnchantmentIDs.ashes = loadEnchantment(LibEnchantmentNames.ASHES, LibEnchantmentIDs.DEFAULT_ASHES);
 
 		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");

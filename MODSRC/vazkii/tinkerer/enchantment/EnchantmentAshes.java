@@ -10,16 +10,16 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [25 May 2013, 11:03:55 (GMT)]
+ * File Created @ [25 May 2013, 12:18:48 (GMT)]
  */
 package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.EnumEnchantmentType;
 
-public class EnchantmentFreezing extends EnchantmentLost {
+public class EnchantmentAshes extends EnchantmentLost {
 
-	protected EnchantmentFreezing(int par1) {
-		super(par1, EnumEnchantmentType.weapon);
+	protected EnchantmentAshes(int par1) {
+		super(par1, EnumEnchantmentType.all);
 	}
 
 }

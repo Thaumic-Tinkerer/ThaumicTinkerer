@@ -19,13 +19,8 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 
 public class EnchantmentLost extends Enchantment {
 
-	protected EnchantmentLost(int par1, int par2, EnumEnchantmentType par3EnumEnchantmentType) {
-		super(par1, par2, par3EnumEnchantmentType);
-	}
-
-	@Override
-	public int getWeight() {
-		return 0;
+	protected EnchantmentLost(int par1, EnumEnchantmentType par3EnumEnchantmentType) {
+		super(par1, 0, par3EnumEnchantmentType);
 	}
 
 	@Override
