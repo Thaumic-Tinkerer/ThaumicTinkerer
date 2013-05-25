@@ -7,6 +7,8 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import vazkii.tinkerer.lib.LibBlockIDs;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibEnchantmentIDs;
+import vazkii.tinkerer.lib.LibEnchantmentNames;
 import vazkii.tinkerer.lib.LibItemIDs;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibPotions;
@@ -16,6 +18,7 @@ public final class ConfigurationHandler {
 	private static Configuration config;
 
 	private static final String CATEGORY_POTIONS = "potions";
+	private static final String CATEGORY_ENCHANTMENTS = "enchantments";
 	private static final String CATEGORY_BALANCE = "balance";
 
 	private static ConfigCategory categoryPotions;
@@ -73,6 +76,8 @@ public final class ConfigurationHandler {
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 
+		LibEnchantmentIDs.freezing = loadEnchantment(LibEnchantmentNames.FREEZING, LibEnchantmentIDs.DEFAULT_FREEZING);
+
 		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");
 		transmutatorMaxValue = loadBalanceInt(NODE_TRANSMUTATOR_MAX_VALUE, transmutatorMaxValue, "The maximum cost of an item that can be put in a transmutator. Cost refers to the total amount of aspect value.");
@@ -91,6 +96,10 @@ public final class ConfigurationHandler {
 
 	private static int loadPotion(String label, int deafultID) {
 		return config.get(CATEGORY_POTIONS, label, deafultID).getInt(deafultID);
+	}
+
+	private static int loadEnchantment(String label, int deafultID) {
+		return config.get(CATEGORY_ENCHANTMENTS, label, deafultID).getInt(deafultID);
 	}
 
 	private static boolean loadBalanceBool(String label, boolean defaultValue, String comment) {
