@@ -15,6 +15,7 @@
 package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
 import vazkii.tinkerer.lib.LibEnchantmentNames;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -33,6 +34,8 @@ public final class ModEnchantments {
 		ashes = new EnchantmentAshes(LibEnchantmentIDs.ashes).setName(LibEnchantmentNames.ASHES);
 
 		nameEnchantments();
+
+		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
 	}
 
 	private static void nameEnchantments() {

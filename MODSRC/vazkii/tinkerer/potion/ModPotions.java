@@ -19,11 +19,11 @@ import vazkii.tinkerer.lib.LibPotions;
 
 public final class ModPotions {
 
-	public static int idStopwatch;
-
 	public static Potion effectStopwatch;
+	public static Potion effectFrozen;
 
 	public static void initPotions() {
-		effectStopwatch = new TTPotion(idStopwatch, false, 0x999900, 0, 0).setPotionName(LibPotions.DISPLAY_NAME_STOPWATCH);
+		effectStopwatch = new TTPotion(LibPotions.idStopwatch, false, 0x999900, 0, 0).setPotionName(LibPotions.DISPLAY_NAME_STOPWATCH);
+		effectFrozen = new TTPotion(LibPotions.idFrozen, false, 0x8BCFFB, 1, 0).setPotionName(LibPotions.DISPLAY_NAME_FROZEN);
 	}
 }

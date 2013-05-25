@@ -75,6 +75,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idDarkGas = loadBlock(LibBlockNames.DARK_GAS, LibBlockIDs.DEFAULT_DARK_GAS);
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
+		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);
 
 		LibEnchantmentIDs.freezing = loadEnchantment(LibEnchantmentNames.FREEZING, LibEnchantmentIDs.DEFAULT_FREEZING);
 		LibEnchantmentIDs.wither = loadEnchantment(LibEnchantmentNames.WITHER, LibEnchantmentIDs.DEFAULT_WITHER);
