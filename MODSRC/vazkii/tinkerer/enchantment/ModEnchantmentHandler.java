@@ -46,8 +46,11 @@ public class ModEnchantmentHandler {
 			if(heldItem == null)
 				return;
 
-			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.freezing, heldItem) > 0)
+			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.freezing, heldItem) > 0) {
 				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectFrozen.id, 40));
+				if(event.entityLiving.worldObj.isRemote)
+					event.entityLiving.worldObj.playSoundAtEntity(event.entityLiving, "thaumcraft.ice", 0.6F, 1F);
+			}
 
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.soulbringer, heldItem) > 0) {
 				// TODO

@@ -140,7 +140,7 @@ public class BlockWardChest extends BlockModContainer {
             		par1World.playSoundEffect(par2, par3, par4, "thaumcraft.key", 1F, 1F);
             	} else {
             		par5EntityPlayer.addChatMessage("The Chest refuses to budge.");
-            		par1World.playSoundEffect(par2, par3, par4, "random.chestclosed", 1F, 0.2F);
+            		par1World.playSoundEffect(par2, par3, par4, "thaumcraft.doorfail", 1F, 0.2F);
             	}
             }
         }
