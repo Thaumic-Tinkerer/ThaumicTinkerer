@@ -20,6 +20,7 @@ import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.enchantment.ModEnchantments;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibNetwork;
@@ -76,6 +77,7 @@ public class ThaumicTinkerer {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 		ModPotions.initPotions();
+		ModEnchantments.initEnchantments();
 
 		proxy.initEntities();
 		proxy.initTileEntities();
