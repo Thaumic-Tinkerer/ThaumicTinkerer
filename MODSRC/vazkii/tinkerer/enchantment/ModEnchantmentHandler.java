@@ -14,12 +14,18 @@
  */
 package vazkii.tinkerer.enchantment;
 
+import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -43,10 +49,11 @@ public class ModEnchantmentHandler {
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.freezing, heldItem) > 0)
 				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectFrozen.id, 40));
 
-			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.wither, heldItem) > 0)
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.wither.id, 40));
+			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.soulbringer, heldItem) > 0) {
+				// TODO
+			}
 
-			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.sync, heldItem) > 0) {
+			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.vampirism, heldItem) > 0) {
 				// TODO
 			}
 		}
@@ -54,15 +61,14 @@ public class ModEnchantmentHandler {
 
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onItemBroken(PlayerDestroyItemEvent event) {
-		// TODO
+		if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.vampirism, event.original) > 0) {
+			// TODO
+		}
 	}
 
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		if(isEntityFrozen(event.entityLiving)) {
-			if(event.entityLiving instanceof EntityPlayer && ((EntityPlayer)event.entityLiving).capabilities.isCreativeMode)
-				return; // Ignore creative mode
-
 			event.entityLiving.landMovementFactor = 0F;
 			event.entityLiving.jumpMovementFactor = 0F;
 			event.entityLiving.setJumping(false);
@@ -75,10 +81,10 @@ public class ModEnchantmentHandler {
 			// in the same place.
 		}
 	}
-
+	
 	@ForgeSubscribe
 	public void onEntityDamage(LivingHurtEvent event) {
-		if(isEntityFrozen(event.entityLiving))
+		if(isEntityFrozen(event.entityLiving) && event.source.isFireDamage())
 			event.entityLiving.removePotionEffect(LibPotions.idFrozen);
 	}
 

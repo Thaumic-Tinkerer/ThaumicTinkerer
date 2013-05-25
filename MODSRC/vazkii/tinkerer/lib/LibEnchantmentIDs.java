@@ -17,13 +17,13 @@ package vazkii.tinkerer.lib;
 public final class LibEnchantmentIDs {
 
 	public static final int DEFAULT_FREEZING = 215;
-	public static final int DEFAULT_WITHER = 216;
-	public static final int DEFAULT_SYNC = 217;
+	public static final int DEFAULT_SOULBRINGER = 216;
+	public static final int DEFAULT_VAMPIRISM = 217;
 	public static final int DEFAULT_ASHES = 218;
 
 	public static int freezing;
-	public static int wither;
-	public static int sync;
+	public static int soulbringer;
+	public static int vampirism;
 	public static int ashes;
 
 }

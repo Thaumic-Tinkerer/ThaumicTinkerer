@@ -23,14 +23,14 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public final class ModEnchantments {
 
 	public static Enchantment freezing;
-	public static Enchantment wither;
-	public static Enchantment sync;
+	public static Enchantment soulbringer;
+	public static Enchantment vampirism;
 	public static Enchantment ashes;
 
 	public static void initEnchantments(){
 		freezing = new EnchantmentFreezing(LibEnchantmentIDs.freezing).setName(LibEnchantmentNames.FREEZING);
-		wither = new EnchantmentWither(LibEnchantmentIDs.wither).setName(LibEnchantmentNames.WITHER);
-		sync = new EnchantmentSync(LibEnchantmentIDs.sync).setName(LibEnchantmentNames.SYNC);
+		soulbringer = new EnchantmentSoulbringer(LibEnchantmentIDs.soulbringer).setName(LibEnchantmentNames.SOULBRINGER);
+		vampirism = new EnchantmentVampirism(LibEnchantmentIDs.vampirism).setName(LibEnchantmentNames.VAMPIRISM);
 		ashes = new EnchantmentAshes(LibEnchantmentIDs.ashes).setName(LibEnchantmentNames.ASHES);
 
 		nameEnchantments();
@@ -40,8 +40,8 @@ public final class ModEnchantments {
 
 	private static void nameEnchantments() {
 		nameEnchant(freezing, LibEnchantmentNames.FREEZING_D);
-		nameEnchant(wither, LibEnchantmentNames.WITHER_D);
-		nameEnchant(sync, LibEnchantmentNames.SYNC_D);
+		nameEnchant(soulbringer, LibEnchantmentNames.SOULBRINGER_D);
+		nameEnchant(vampirism, LibEnchantmentNames.VAMPIRISM_D);
 		nameEnchant(ashes, LibEnchantmentNames.ASHES_D);
 	}
 

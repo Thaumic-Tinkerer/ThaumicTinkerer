@@ -78,8 +78,8 @@ public final class ConfigurationHandler {
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);
 
 		LibEnchantmentIDs.freezing = loadEnchantment(LibEnchantmentNames.FREEZING, LibEnchantmentIDs.DEFAULT_FREEZING);
-		LibEnchantmentIDs.wither = loadEnchantment(LibEnchantmentNames.WITHER, LibEnchantmentIDs.DEFAULT_WITHER);
-		LibEnchantmentIDs.sync = loadEnchantment(LibEnchantmentNames.SYNC, LibEnchantmentIDs.DEFAULT_SYNC);
+		LibEnchantmentIDs.soulbringer = loadEnchantment(LibEnchantmentNames.SOULBRINGER, LibEnchantmentIDs.DEFAULT_SOULBRINGER);
+		LibEnchantmentIDs.vampirism = loadEnchantment(LibEnchantmentNames.VAMPIRISM, LibEnchantmentIDs.DEFAULT_VAMPIRISM);
 		LibEnchantmentIDs.ashes = loadEnchantment(LibEnchantmentNames.ASHES, LibEnchantmentIDs.DEFAULT_ASHES);
 
 		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");

@@ -20,13 +20,13 @@ public final class LibEnchantmentNames {
 	public static final String FREEZING_R = "ENCHANT_FREEZING";
 	public static final String FREEZING_D = "Freezing";
 
-	public static final String WITHER = "wither";
-	public static final String WITHER_R = "ENCHANT_WITHER";
-	public static final String WITHER_D = "Witehring";
+	public static final String SOULBRINGER = "soulbringer";
+	public static final String SOULBRINGER_R = "ENCHANT_SOULBRINGER";
+	public static final String SOULBRINGER_D = "Soulbringer";
 
-	public static final String SYNC = "sync";
-	public static final String SYNC_R = "ENCHANT_SYNC";
-	public static final String SYNC_D = "Synchronize";
+	public static final String VAMPIRISM = "vampirism";
+	public static final String VAMPIRISM_R = "ENCHANT_VAMPIRISM";
+	public static final String VAMPIRISM_D = "Vampirism";
 
 	public static final String ASHES = "ashes";
 	public static final String ASHES_R = "ENCHANT_ASHES";

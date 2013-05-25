@@ -16,9 +16,9 @@ package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.EnumEnchantmentType;
 
-public class EnchantmentSync extends EnchantmentLost {
+public class EnchantmentVampirism extends EnchantmentLost {
 
-	protected EnchantmentSync(int par1) {
+	protected EnchantmentVampirism(int par1) {
 		super(par1, EnumEnchantmentType.weapon);
 	}
 

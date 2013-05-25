@@ -16,9 +16,9 @@ package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.EnumEnchantmentType;
 
-public class EnchantmentWither extends EnchantmentLost {
+public class EnchantmentSoulbringer extends EnchantmentLost {
 
-	protected EnchantmentWither(int par1) {
+	protected EnchantmentSoulbringer(int par1) {
 		super(par1, EnumEnchantmentType.weapon);
 	}
 
