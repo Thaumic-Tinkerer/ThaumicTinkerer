@@ -14,25 +14,18 @@
  */
 package vazkii.tinkerer.enchantment;
 
-import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Vec3;
-import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
-import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
 import vazkii.tinkerer.lib.LibPotions;
 import vazkii.tinkerer.potion.ModPotions;
@@ -66,8 +59,35 @@ public class ModEnchantmentHandler {
 
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onItemBroken(PlayerDestroyItemEvent event) {
-		if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.vampirism, event.original) > 0) {
-			// TODO
+		if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.ashes, event.original) > 0) {
+			event.original.setItemDamage(0);
+			NBTTagList list = event.original.getEnchantmentTagList();
+			int remLoc = -1;
+			for(int i = 0; i < list.tagCount(); i++) {
+				short id = ((NBTTagCompound) list.tagAt(i)).getShort("id");
+				if(id == LibEnchantmentIDs.ashes) {
+					remLoc = i;
+					break;
+				}
+			}
+
+			if(remLoc >= 0)
+				list.removeTag(remLoc);
+
+			for(int i = 0; list.tagCount() > 0 && i < 2; i++) {
+				int loc = event.entity.worldObj.rand.nextInt(list.tagCount());
+				list.removeTag(loc);
+			}
+
+			if(list.tagCount() == 0)
+				event.original.getTagCompound().removeTag("ench");
+
+			event.original.stackSize++;
+			event.entityPlayer.inventory.mainInventory[event.entityPlayer.inventory.currentItem] = event.original.copy();
+
+			if(!event.entityPlayer.worldObj.isRemote)
+				event.entityPlayer.addChatMessage(EnumChatFormatting.GOLD + "" + EnumChatFormatting.ITALIC + "Your " + event.original.getDisplayName() + " was reborn from the Ashes.");
+			event.entityPlayer.worldObj.playSoundAtEntity(event.entityPlayer, "thaumcraft.fireloop", 0.6F, 1F);
 		}
 	}
 
@@ -86,7 +106,7 @@ public class ModEnchantmentHandler {
 			// in the same place.
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void onEntityDamage(LivingHurtEvent event) {
 		if(isEntityFrozen(event.entityLiving) && event.source.isFireDamage())
