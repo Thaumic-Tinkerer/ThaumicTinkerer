@@ -21,9 +21,11 @@ public final class ModPotions {
 
 	public static Potion effectStopwatch;
 	public static Potion effectFrozen;
+	public static Potion effectPossessed;
 
 	public static void initPotions() {
 		effectStopwatch = new TTPotion(LibPotions.idStopwatch, false, 0x999900, 0, 0).setPotionName(LibPotions.DISPLAY_NAME_STOPWATCH);
 		effectFrozen = new TTPotion(LibPotions.idFrozen, false, 0x8BCFFB, 1, 0).setPotionName(LibPotions.DISPLAY_NAME_FROZEN);
+		effectPossessed = new TTPotion(LibPotions.idPossessed, false, 0x13001A, 2, 0).setPotionName(LibPotions.DISPLAY_NAME_POSSESSED);
 	}
 }

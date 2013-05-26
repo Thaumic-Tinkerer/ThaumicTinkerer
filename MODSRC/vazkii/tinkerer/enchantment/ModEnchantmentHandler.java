@@ -116,4 +116,8 @@ public class ModEnchantmentHandler {
 	public static boolean isEntityFrozen(EntityLiving entity) {
 		return entity.isPotionActive(LibPotions.idFrozen);
 	}
+
+	public static boolean isEntityPossessed(EntityLiving entity) {
+		return false;
+	}
 }

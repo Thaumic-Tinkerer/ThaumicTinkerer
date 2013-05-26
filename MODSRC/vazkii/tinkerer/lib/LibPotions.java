@@ -18,13 +18,17 @@ public final class LibPotions {
 
 	public static final int DEFAULT_ID_STOPWATCH = 21;
 	public static final int DEFAULT_ID_FROZEN = 22;
+	public static final int DEFAULT_ID_POSSESSED = 23;
 
 	public static int idStopwatch;
 	public static int idFrozen;
+	public static int idPossessed = 23;
 
 	public static final String NAME_STOPWATCH = "stopwatch";
 	public static final String NAME_FROZEN = "frozen";
+	public static final String NAME_POSSESSED = "possessed";
 
 	public static final String DISPLAY_NAME_STOPWATCH = "Time Twister";
 	public static final String DISPLAY_NAME_FROZEN = "Frozen";
+	public static final String DISPLAY_NAME_POSSESSED = "Possessed";
 }

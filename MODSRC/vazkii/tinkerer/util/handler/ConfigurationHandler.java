@@ -35,7 +35,7 @@ public final class ConfigurationHandler {
 	public static int transmutatorMaxValue = 75;
 	public static boolean enableTransmutator = true;
 	public static boolean wandDislocationTiles = true;
-	
+
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
@@ -78,6 +78,7 @@ public final class ConfigurationHandler {
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);
+		LibPotions.idPossessed = loadPotion(LibPotions.NAME_POSSESSED, LibPotions.DEFAULT_ID_POSSESSED);
 
 		LibEnchantmentIDs.freezing = loadEnchantment(LibEnchantmentNames.FREEZING, LibEnchantmentIDs.DEFAULT_FREEZING);
 		LibEnchantmentIDs.soulbringer = loadEnchantment(LibEnchantmentNames.SOULBRINGER, LibEnchantmentIDs.DEFAULT_SOULBRINGER);
@@ -89,7 +90,7 @@ public final class ConfigurationHandler {
 		transmutatorMaxValue = loadBalanceInt(NODE_TRANSMUTATOR_MAX_VALUE, transmutatorMaxValue, "The maximum cost of an item that can be put in a transmutator. Cost refers to the total amount of aspect value.");
 		enableTransmutator = loadBalanceBool(NODE_TRANSMUTATOR_ENABLE, enableTransmutator, "Set to false to completely disable the transmutator.");
 		wandDislocationTiles = loadBalanceBool(NODE_WAND_DISLOCATION_TILES, wandDislocationTiles, "Set to false to prevent the wand of dislocation from picking up tile entities (chests, furnaces, etc.)");
-		
+
 		config.save();
 	}
 
