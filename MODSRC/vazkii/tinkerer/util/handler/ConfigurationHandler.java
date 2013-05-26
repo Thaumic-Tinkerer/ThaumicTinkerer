@@ -28,12 +28,14 @@ public final class ConfigurationHandler {
 	private static String NODE_TRANSMUTATOR_ESSENTIA_MULTI = "transmutator.aspectMultiplier";
 	private static String NODE_TRANSMUTATOR_MAX_VALUE = "transmutator.maxValue";
 	private static String NODE_TRANSMUTATOR_ENABLE = "transmutator.enable";
+	private static String NODE_WAND_DISLOCATION_TILES = "wandDislocation.pickupTiles";
 
 	public static int transmutatorVisMultiplier = 2;
 	public static int transmutatorEssentiaMultiplier = 4;
 	public static int transmutatorMaxValue = 75;
 	public static boolean enableTransmutator = true;
-
+	public static boolean wandDislocationTiles = true;
+	
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
@@ -86,7 +88,8 @@ public final class ConfigurationHandler {
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");
 		transmutatorMaxValue = loadBalanceInt(NODE_TRANSMUTATOR_MAX_VALUE, transmutatorMaxValue, "The maximum cost of an item that can be put in a transmutator. Cost refers to the total amount of aspect value.");
 		enableTransmutator = loadBalanceBool(NODE_TRANSMUTATOR_ENABLE, enableTransmutator, "Set to false to completely disable the transmutator.");
-
+		wandDislocationTiles = loadBalanceBool(NODE_WAND_DISLOCATION_TILES, wandDislocationTiles, "Set to false to prevent the wand of dislocation from picking up tile entities (chests, furnaces, etc.)");
+		
 		config.save();
 	}
 

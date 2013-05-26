@@ -28,6 +28,7 @@ import thaumcraft.common.items.wands.ItemWandTrade;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibFeatures;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
@@ -101,7 +102,7 @@ public class ItemWandDislocation extends ItemWandTrade {
 					}
 					arg2.playSoundAtEntity(arg1, "thaumcraft.wand", 0.5F, 1F);
 				}
-			} else if(!ThaumcraftApi.portableHoleBlackList.contains(id) && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(arg2, arg3, arg4, arg5) != -1F) {
+			} else if((tile == null || ConfigurationHandler.wandDislocationTiles) && !ThaumcraftApi.portableHoleBlackList.contains(id) && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(arg2, arg3, arg4, arg5) != -1F) {
 				arg2.removeBlockTileEntity(arg3, arg4, arg5);
 				arg2.setBlock(arg3, arg4, arg5, 0, 0, 1 | 2);
 				storePickedBlock(arg0, (short) id, (short) meta, tile);
