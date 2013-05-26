@@ -250,7 +250,7 @@ This phial contains a concentrated extract of Gaseous Tenebrae, that can be rele
 <project id = "GAS_REMOVER" version = "1">
 <name>Fume Dissipator</name>
 <popupText>[TT] Clearing the Ambient</popupText>
-<longText></longText>
+<longText>After knowing Gaseous glowstone and Tenebrae, you are thinking it might be possible to get rid of them in an easy manner. Researching the components of the two gases would be the logical next step, you think.</longText>
 <page type = "text">After knowing both the Gaseous Glowstone and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.</page>
 <page type = "arcanecrafting">GAS_REMOVER</page>
 </project>

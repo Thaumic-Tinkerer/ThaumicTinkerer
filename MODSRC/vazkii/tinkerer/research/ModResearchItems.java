@@ -115,9 +115,8 @@ public final class ModResearchItems {
 		tags = new ObjectTags().add(EnumTag.DARK, 4).add(EnumTag.WIND, 5).add(EnumTag.POWER, 4);
 		darkGas = new ResearchItem(LibItemNames.DARK_GAS_R, tags, 5, -1, ModItems.darkGas).setParents(Config.researchAlumentum).setParentsHidden(glowstoneGas).registerResearchItem();
 
-		tags = new ObjectTags();
-		gasRemover = new ResearchItem(LibItemNames.GAS_REMOVER_R, tags, 5, -2, ModItems.gasRemover).setParents(darkGas).setHidden().setStub().registerResearchItem();
-		darkGas.setSiblings(gasRemover);
+		tags = new ObjectTags().add(EnumTag.LIGHT, 1).add(EnumTag.DARK, 1).add(EnumTag.WIND, 1);
+		gasRemover = new ResearchItem(LibItemNames.GAS_REMOVER_R, tags, 5, -2, ModItems.gasRemover).setParents(darkGas).registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.HEAL, 10).add(EnumTag.TOOL, 16).add(EnumTag.MAGIC, 8).add(EnumTag.WATER, 4).add(EnumTag.KNOWLEDGE, 16);
 		cleansingTalisman = new ResearchItem(LibItemNames.CLEANSING_TALISMAN_R, tags, 1, 18, ModItems.cleansingTalisman).setParents(Config.researchUTFT).setHidden().registerResearchItem();
