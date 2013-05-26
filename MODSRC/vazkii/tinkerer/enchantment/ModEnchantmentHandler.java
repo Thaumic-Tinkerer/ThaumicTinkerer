@@ -16,6 +16,7 @@ package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -26,6 +27,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
 import vazkii.tinkerer.lib.LibPotions;
 import vazkii.tinkerer.potion.ModPotions;
@@ -42,12 +44,13 @@ public class ModEnchantmentHandler {
 				return;
 
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.freezing, heldItem) > 0) {
-				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectFrozen.id, 40));
+				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectFrozen.id, 60));
 				event.entityLiving.worldObj.playSoundAtEntity(event.entityLiving, "thaumcraft.ice", 0.6F, 1F);
 			}
 
-			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.soulbringer, heldItem) > 0) {
-				// TODO
+			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.soulbringer, heldItem) > 0 && event.entityLiving.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD && Math.random() < 0.025F) {
+				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectPossessed.id, 600));
+				event.entityLiving.worldObj.playSoundAtEntity(event.entityLiving, "thaumcraft.wand", 0.6F, 1F);
 			}
 
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.vampirism, heldItem) > 0) {
@@ -98,12 +101,38 @@ public class ModEnchantmentHandler {
 			event.entityLiving.jumpMovementFactor = 0F;
 			event.entityLiving.setJumping(false);
 			event.entityLiving.motionY = 0;
+
+			for(int i = 0; i < 6; i++) {
+				float x = (float) (event.entityLiving.posX + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
+	            float y = (float) (event.entityLiving.posY + event.entityLiving.worldObj.rand.nextDouble() * event.entityLiving.height);
+	            float z = (float) (event.entityLiving.posZ  + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
+
+	            float size = (float) Math.random();
+	            float gravity = (float) (Math.random() / 20F);
+
+	            ThaumicTinkerer.tcProxy.sparkle(x, y, z, size, 2, gravity);
+			}
 		} else if(event.entityLiving.landMovementFactor == 0F && event.entityLiving.jumpMovementFactor == 0F){
 			event.entityLiving.landMovementFactor = 0.1F;
 			event.entityLiving.jumpMovementFactor = 0.02F;
 			// This gets calibrated after, but for some entities (e.g. slimes)
 			// it doesn't get calibrated automatically, so they stay
 			// in the same place.
+		}
+
+		if(isEntityPossessed(event.entityLiving)) {
+			// TODO Make it do stuff...
+
+			for(int i = 0; i < 3; i++) {
+				float x = (float) (event.entityLiving.posX + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
+	            float y = (float) (event.entityLiving.posY + event.entityLiving.worldObj.rand.nextDouble() * event.entityLiving.height);
+	            float z = (float) (event.entityLiving.posZ  + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
+
+	            float size = (float) (Math.random() / 2F);
+	            float gravity = (float) (Math.random() / 20F);
+
+				ThaumicTinkerer.tcProxy.wispFX2(event.entityLiving.worldObj, x, y, z, size, 5, false, gravity);
+			}
 		}
 	}
 
@@ -118,6 +147,6 @@ public class ModEnchantmentHandler {
 	}
 
 	public static boolean isEntityPossessed(EntityLiving entity) {
-		return false;
+		return entity.isPotionActive(LibPotions.idPossessed);
 	}
 }
