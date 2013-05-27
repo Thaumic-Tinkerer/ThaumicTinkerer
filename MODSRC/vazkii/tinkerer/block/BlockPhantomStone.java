@@ -17,6 +17,7 @@ package vazkii.tinkerer.block;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -31,6 +32,11 @@ public class BlockPhantomStone extends BlockWarded {
 		super(par1);
 		if(Config.wardedStone)
 			setCreativeTab(ModCreativeTab.INSTANCE);
+	}
+	
+	@Override
+	public boolean canCreatureSpawn(EnumCreatureType type, World world, int x, int y, int z) {
+		return false;
 	}
 
 	@Override
