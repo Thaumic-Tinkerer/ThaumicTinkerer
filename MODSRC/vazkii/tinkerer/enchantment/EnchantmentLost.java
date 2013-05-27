@@ -28,7 +28,7 @@ public class EnchantmentLost extends Enchantment {
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
 		return false; // Thank god for forge hooks :D
 	}
-	
+
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
 		return !(par1Enchantment instanceof EnchantmentLost);

@@ -39,7 +39,7 @@ public final class ModBlocks {
 	public static Block animationTablet;
 	public static Block darkGas;
 	public static Block phantomStone;
-	
+
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
 		transmutator = new BlockTransmutator(LibBlockIDs.idTransmutator).setUnlocalizedName(LibBlockNames.TRANSMUTATOR);
@@ -51,7 +51,7 @@ public final class ModBlocks {
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 		darkGas = new BlockDarkGas(LibBlockIDs.idDarkGas).setUnlocalizedName(LibBlockNames.DARK_GAS);
 		phantomStone = new BlockPhantomStone(LibBlockIDs.idPhantomStone).setUnlocalizedName(LibBlockNames.PHANTOM_STONE);
-		
+
 		registerBlocks();
 		nameBlocks();
 	}
