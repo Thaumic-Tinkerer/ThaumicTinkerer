@@ -30,7 +30,7 @@ import vazkii.tinkerer.tile.TileEntityWardChest;
 import vazkii.tinkerer.util.helper.MiscHelper;
 
 public class RenderTileWardChest extends TileEntitySpecialRenderer {
-
+	
 	ModelChest chestModel;
 
 	public RenderTileWardChest() {
@@ -79,7 +79,6 @@ public class RenderTileWardChest extends TileEntitySpecialRenderer {
         GL11.glRotatef(rotation, 0F, 1F, 0F);
         GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
         chestModel.chestLid.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glDepthMask(true);
         GL11.glPopMatrix();
