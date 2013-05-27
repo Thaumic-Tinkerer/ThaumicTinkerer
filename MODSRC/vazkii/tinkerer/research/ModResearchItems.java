@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.research;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
@@ -22,6 +23,7 @@ import thaumcraft.common.Config;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibEnchantmentNames;
 import vazkii.tinkerer.lib.LibItemNames;
 
 public final class ModResearchItems {
@@ -50,6 +52,8 @@ public final class ModResearchItems {
 	public static ResearchItem gasRemover;
 	public static ResearchItem cleansingTalisman;
 	public static ResearchItem fluxDetector;
+	public static ResearchItem lostEnchants;
+	public static ResearchItem phantomBlocks;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -123,5 +127,11 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.VISION, 16).add(EnumTag.MAGIC, 12).add(EnumTag.FLUX, 10);
 		fluxDetector = new ResearchItem(LibItemNames.FLUX_DETECTOR_R, tags, -3, 19, ModItems.fluxDetector).setParents(Config.researchBasicFlux).setParentsHidden(Config.researchGoggles).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 12).add(EnumTag.KNOWLEDGE, 24).add(EnumTag.COLD, 12).add(EnumTag.SPIRIT, 12).add(EnumTag.FIRE, 12).add(EnumTag.INSECT, 12).add(EnumTag.ELDRITCH, 16).add(EnumTag.POWER, 12).add(EnumTag.WEAPON, 14).add(EnumTag.TOOL, 14);
+		lostEnchants = new ResearchItem(LibEnchantmentNames.LOST_ENCHANTS_RESEARCH_NAME, tags, 8, 26, Item.enchantedBook).setParentsHidden(Config.researchTTOE).setHidden().setLost().setSpecial().registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.SPIRIT, 16).add(EnumTag.CRYSTAL, 12).add(EnumTag.TRAP, 6).add(EnumTag.ROCK, 12).add(EnumTag.ELDRITCH, 4);
+		phantomBlocks = new ResearchItem(LibBlockNames.PHANTOM_STONE_R, tags, 3, 13, new ItemStack(ModBlocks.phantomStone, 1, 15)).setHidden().setParents(Config.researchArcaneDoor).registerResearchItem();
 	}
 }

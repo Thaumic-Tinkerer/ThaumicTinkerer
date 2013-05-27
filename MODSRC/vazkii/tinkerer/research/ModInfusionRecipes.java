@@ -1,15 +1,22 @@
 package vazkii.tinkerer.research;
 
+import java.util.Arrays;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.crafting.ShapedArcaneCraftingRecipes;
+import thaumcraft.api.research.ResearchList;
 import thaumcraft.common.Config;
+import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import vazkii.tinkerer.block.ModBlocks;
+import vazkii.tinkerer.enchantment.ModEnchantments;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibEnchantmentNames;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
 
@@ -159,5 +166,56 @@ public final class ModInfusionRecipes {
 				'S', new ItemStack(ModItems.darkQuartz),
 				'T', new ItemStack(Config.itemResource, 1, 7),
 				'W', new ItemStack(Item.enderPearl));
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 12).add(EnumTag.KNOWLEDGE, 32).add(EnumTag.COLD, 40);
+		ItemStack stack = new ItemStack(ModItems.dummyEnchantbook, 1, 0);
+		stack.addEnchantment(ModEnchantments.freezing, 1);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibEnchantmentNames.LOST_ENCHANTS_RESEARCH_NAME, LibEnchantmentNames.FREEZING_R, 200, tags, stack,
+				"INI", "IBI", "III",
+				'I', new ItemStack(Block.blockSnow),
+				'N', new ItemStack(Config.itemResearchNotes),
+				'B', new ItemStack(Item.book));
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 12).add(EnumTag.KNOWLEDGE, 32).add(EnumTag.INSECT, 40);
+		stack = new ItemStack(ModItems.dummyEnchantbook, 1, 1);
+		stack.addEnchantment(ModEnchantments.vampirism, 1);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibEnchantmentNames.LOST_ENCHANTS_RESEARCH_NAME, LibEnchantmentNames.VAMPIRISM_R, 200, tags, stack,
+				"INI", "IBI", "III",
+				'I', new ItemStack(Item.rottenFlesh),
+				'N', new ItemStack(Config.itemResearchNotes),
+				'B', new ItemStack(Item.book));
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 12).add(EnumTag.KNOWLEDGE, 32).add(EnumTag.SPIRIT, 40);
+		stack = new ItemStack(ModItems.dummyEnchantbook, 1, 2);
+		stack.addEnchantment(ModEnchantments.soulbringer, 1);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibEnchantmentNames.LOST_ENCHANTS_RESEARCH_NAME, LibEnchantmentNames.SOULBRINGER_R, 200, tags, stack,
+				"INI", "IBI", "III",
+				'I', new ItemStack(Block.slowSand),
+				'N', new ItemStack(Config.itemResearchNotes),
+				'B', new ItemStack(Item.book));
+
+		tags = new ObjectTags().add(EnumTag.MAGIC, 12).add(EnumTag.KNOWLEDGE, 32).add(EnumTag.FIRE, 40);
+		stack = new ItemStack(ModItems.dummyEnchantbook, 1, 3);
+		stack.addEnchantment(ModEnchantments.ashes, 1);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibEnchantmentNames.LOST_ENCHANTS_RESEARCH_NAME, LibEnchantmentNames.ASHES_R, 200, tags, stack,
+				"INI", "IBI", "III",
+				'I', new ItemStack(Item.blazeRod),
+				'N', new ItemStack(Config.itemResearchNotes),
+				'B', new ItemStack(Item.book));
+
+		for(int i = 0; i < 16; i++)
+			ThaumcraftApi.addArcaneCraftingRecipe(LibBlockNames.PHANTOM_STONE_R, 100, new ItemStack(ModBlocks.phantomStone, 2, i),
+					"SSS", "TBT", "SDS",
+					'S', new ItemStack(Block.whiteStone),
+					'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
+					'T', new ItemStack(Config.itemResource, 1, 5),
+					'D', new ItemStack(Item.dyePowder, 1, i));
+		ResearchList.craftingRecipesForResearch.put(LibBlockNames.PHANTOM_STONE_R, Arrays.asList(new ShapedArcaneCraftingRecipes[] { ThaumcraftCraftingManager.createFakeArcaneRecipe(
+				LibBlockNames.PHANTOM_STONE_R, 100, new ItemStack(ModBlocks.phantomStone, 2, LibMisc.CRAFTING_META_WILDCARD),
+				"SSS", "TBT", "SDS",
+				'S', new ItemStack(Block.whiteStone),
+				'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
+				'B', new ItemStack(Config.itemResource, 1, 5),
+				'D', new ItemStack(Item.dyePowder, 1, LibMisc.CRAFTING_META_WILDCARD)) }));
 	}
 }

@@ -18,7 +18,6 @@ import net.minecraft.block.Block;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.common.blocks.BlockWardedItem;
 import vazkii.tinkerer.item.ItemDarkQuartzBlock;
 import vazkii.tinkerer.item.ItemDarkQuartzSlab;
 import vazkii.tinkerer.item.ItemPhantomStoneBlock;

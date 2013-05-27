@@ -48,6 +48,7 @@ public final class ModItems {
 	public static Item gasRemover;
 	public static Item cleansingTalisman;
 	public static Item fluxDetector;
+	public static Item dummyEnchantbook;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -71,6 +72,7 @@ public final class ModItems {
 		gasRemover = new ItemGasRemover(LibItemIDs.idGasRemover).setUnlocalizedName(LibItemNames.GAS_REMOVER);
 		cleansingTalisman = new ItemCleansingTalisman(LibItemIDs.idCleansingTalisman).setUnlocalizedName(LibItemNames.CLEANSING_TALISMAN);
 		fluxDetector = new ItemFluxDetector(LibItemIDs.idFluxDetector).setUnlocalizedName(LibItemNames.FLUX_DETECTOR);
+		dummyEnchantbook = new ItemDummyEnchantbook(LibItemIDs.idDummyEnchantbook).setUnlocalizedName(LibItemNames.DUMMY_ENCHANTBOOK);
 
 		nameItems();
 	}
@@ -97,6 +99,7 @@ public final class ModItems {
 		LanguageRegistry.addName(gasRemover, LibItemNames.GAS_REMOVER_D);
 		LanguageRegistry.addName(cleansingTalisman, LibItemNames.CLEANSING_TALISMAN_D);
 		LanguageRegistry.addName(fluxDetector, LibItemNames.FLUX_DETECTOR_D);
+		LanguageRegistry.addName(dummyEnchantbook, "DUMMY ENCHANTING BOOK");
 	}
 
 	public static void applyObjectTags() {

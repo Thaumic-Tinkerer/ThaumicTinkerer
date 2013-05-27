@@ -23,6 +23,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_GAS_REMOVER = 21168;
 	public static final int DEFAULT_FLUX_DETECTOR = 21169;
 	public static final int DEFAULT_CLEANSING_TALISMAN = 21170;
+	public static final int DEFAULT_DUMMY_ENCHANTBOOK = 21171;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -45,4 +46,5 @@ public final class LibItemIDs {
 	public static int idGasRemover;
 	public static int idFluxDetector;
 	public static int idCleansingTalisman;
+	public static int idDummyEnchantbook;
 }

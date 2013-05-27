@@ -33,7 +33,7 @@ public class BlockPhantomStone extends BlockWarded {
 		if(Config.wardedStone)
 			setCreativeTab(ModCreativeTab.INSTANCE);
 	}
-	
+
 	@Override
 	public boolean canCreatureSpawn(EnumCreatureType type, World world, int x, int y, int z) {
 		return false;

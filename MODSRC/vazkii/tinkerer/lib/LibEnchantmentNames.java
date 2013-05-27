@@ -32,4 +32,5 @@ public final class LibEnchantmentNames {
 	public static final String ASHES_R = "ENCHANT_ASHES";
 	public static final String ASHES_D = "Ashes";
 
+	public static final String LOST_ENCHANTS_RESEARCH_NAME = "LOST_ENCHANTS";
 }

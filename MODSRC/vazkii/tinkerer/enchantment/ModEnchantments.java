@@ -18,6 +18,8 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
 import vazkii.tinkerer.lib.LibEnchantmentNames;
+import vazkii.tinkerer.util.handler.EnchantedBookCraftingHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public final class ModEnchantments {
@@ -36,6 +38,7 @@ public final class ModEnchantments {
 		nameEnchantments();
 
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
+		GameRegistry.registerCraftingHandler(new EnchantedBookCraftingHandler());
 	}
 
 	private static void nameEnchantments() {

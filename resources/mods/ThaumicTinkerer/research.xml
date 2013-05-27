@@ -276,4 +276,38 @@ To enable or disable this ability, one would shift-right click on it. As expecte
 This new detector, the Fluxometer can measure the flux in the nearest relevant node. Whilst looking at the Fluxometer with Goggles of Revealing, the holder can see what flux is in the air. The flux displays as icons, the opacity of each icon indicates how much of that aspect is in the aura. If you look close, you can see maxed out aspects as a bit unstable.</page>
 <page type = "arcanecrafting">FLUX_DETECTOR</page>
 </project>
+
+<!-- ======================================== Lost Enchantments /-->
+<project id = "LOST_ENCHANTS" version = "1">
+<name>Lost Enchantments</name>
+<popupText>[TT] A new level of magic</popupText>
+<longText>The pieces of knowledge you have been connecting speak of extremely powerful enchantments on the various schools of magic. You don't know what might come out of this, but you are sure that you would need to study various different items.</longText>
+<page type = "text">Extensive research of lost knowledge revealed a set of four very powerful enchantments.
+
+These enchantments can not be enchanted trough the regular means of using an enchanting table, rather, they would need to be created by the usage of an infusion altar. Furthermore, only one of these enchantments can be applied to a specific item at any given time.</page>
+<page type = "text">Freezing: Any entity hit with this sword will recieve a freezing effect, imparing their movement. Being set on fire will negate this.
+
+Soulbringer: When a sword imbuded with this hits an undead, there's a chance for that undead to get possessed and succumb to your side.
+
+Vampirism: Upon hitting an entity, a quarter of the damage dealt will be absorbed by the attacker.
+
+Ashes: The only of the four enchantments that isn't only for weapons. Any item that has this enchantment, upon being broken, it'll be revived back to life, at the cost of this enchantment and two random others.</page>
+<page type = "infusioncrafting">ENCHANT_FREEZING</page>
+<page type = "infusioncrafting">ENCHANT_SOULBRINGER</page>
+<page type = "infusioncrafting">ENCHANT_VAMPIRISM</page>
+<page type = "infusioncrafting">ENCHANT_ASHES</page>
+</project>
+
+<!-- ======================================== Phantom Stone Blocks /-->
+<project id = "PHANTOM_STONE" version = "1">
+<name>Phantom Stone Blocks</name>
+<popupText>[TT] Is it real?</popupText>
+<longText>You are not quite sure what you are doing, you think you might have found something, that's about it...</longText>
+<page type = "text">You don't know how you managed to do it, but you have found a way of creating blocks that exist in non-euclidean space.
+
+These blocks are based on the design you had put together for Warded Stone Blocks, they can only be broken by the player who placed them, using a wand. 
+
+However, there's a particularity to these. They have no physical boundaries for the player who placed them, allowing them to walk trough these blocks as if they didn't exist. For everything else, they act as normal blocks.</page>
+<page type = "arcanecrafting">PHANTOM_STONE</page>
+</project>
 </research>

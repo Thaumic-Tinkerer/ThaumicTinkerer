@@ -25,5 +25,4 @@ public final class LibEnchantmentIDs {
 	public static int soulbringer;
 	public static int vampirism;
 	public static int ashes;
-
 }

@@ -30,7 +30,7 @@ import vazkii.tinkerer.tile.TileEntityWardChest;
 import vazkii.tinkerer.util.helper.MiscHelper;
 
 public class RenderTileWardChest extends TileEntitySpecialRenderer {
-	
+
 	ModelChest chestModel;
 
 	public RenderTileWardChest() {
