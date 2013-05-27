@@ -14,12 +14,21 @@
  */
 package vazkii.tinkerer.research;
 
+import java.util.Arrays;
+
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.crafting.ShapedArcaneCraftingRecipes;
+import thaumcraft.api.research.ResearchList;
 import thaumcraft.common.Config;
+import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.item.ModItems;
+import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibItemNames;
+import vazkii.tinkerer.lib.LibMisc;
 
 public final class ModArcaneRecipes {
 
@@ -41,6 +50,22 @@ public final class ModArcaneRecipes {
 				'G', new ItemStack(Item.ingotGold),
 				'F', new ItemStack(Config.itemResource, 1, 8),
 				'M', new ItemStack(Config.itemThaumometer));
+		
+
+		for(int i = 0; i < 16; i++)
+			ThaumcraftApi.addArcaneCraftingRecipe(LibBlockNames.PHANTOM_STONE_R, 120, new ItemStack(ModBlocks.phantomStone, 4, i),
+					"SSS", "TBT", "SDS",
+					'S', new ItemStack(Block.whiteStone),
+					'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
+					'T', new ItemStack(Config.itemResource, 1, 5),
+					'D', new ItemStack(Item.dyePowder, 1, i));
+		ResearchList.craftingRecipesForResearch.put(LibBlockNames.PHANTOM_STONE_R, Arrays.asList(new ShapedArcaneCraftingRecipes[] { ThaumcraftCraftingManager.createFakeArcaneRecipe(
+				LibBlockNames.PHANTOM_STONE_R, 120, new ItemStack(ModBlocks.phantomStone, 4, LibMisc.CRAFTING_META_WILDCARD),
+				"SSS", "TBT", "SDS",
+				'S', new ItemStack(Block.whiteStone),
+				'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
+				'B', new ItemStack(Config.itemResource, 1, 5),
+				'D', new ItemStack(Item.dyePowder, 1, LibMisc.CRAFTING_META_WILDCARD)) }));
 	}
 
 }

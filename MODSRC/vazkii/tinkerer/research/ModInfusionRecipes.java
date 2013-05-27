@@ -202,20 +202,5 @@ public final class ModInfusionRecipes {
 				'I', new ItemStack(Item.blazeRod),
 				'N', new ItemStack(Config.itemResearchNotes),
 				'B', new ItemStack(Item.book));
-
-		for(int i = 0; i < 16; i++)
-			ThaumcraftApi.addArcaneCraftingRecipe(LibBlockNames.PHANTOM_STONE_R, 100, new ItemStack(ModBlocks.phantomStone, 2, i),
-					"SSS", "TBT", "SDS",
-					'S', new ItemStack(Block.whiteStone),
-					'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
-					'T', new ItemStack(Config.itemResource, 1, 5),
-					'D', new ItemStack(Item.dyePowder, 1, i));
-		ResearchList.craftingRecipesForResearch.put(LibBlockNames.PHANTOM_STONE_R, Arrays.asList(new ShapedArcaneCraftingRecipes[] { ThaumcraftCraftingManager.createFakeArcaneRecipe(
-				LibBlockNames.PHANTOM_STONE_R, 100, new ItemStack(ModBlocks.phantomStone, 2, LibMisc.CRAFTING_META_WILDCARD),
-				"SSS", "TBT", "SDS",
-				'S', new ItemStack(Block.whiteStone),
-				'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
-				'B', new ItemStack(Config.itemResource, 1, 5),
-				'D', new ItemStack(Item.dyePowder, 1, LibMisc.CRAFTING_META_WILDCARD)) }));
 	}
 }

@@ -132,6 +132,6 @@ public final class ModResearchItems {
 		lostEnchants = new ResearchItem(LibEnchantmentNames.LOST_ENCHANTS_RESEARCH_NAME, tags, 8, 26, Item.enchantedBook).setParentsHidden(Config.researchTTOE).setHidden().setLost().setSpecial().registerResearchItem();
 
 		tags = new ObjectTags().add(EnumTag.SPIRIT, 16).add(EnumTag.CRYSTAL, 12).add(EnumTag.TRAP, 6).add(EnumTag.ROCK, 12).add(EnumTag.ELDRITCH, 4);
-		phantomBlocks = new ResearchItem(LibBlockNames.PHANTOM_STONE_R, tags, 3, 13, new ItemStack(ModBlocks.phantomStone, 1, 15)).setHidden().setParents(Config.researchArcaneDoor).registerResearchItem();
+		phantomBlocks = new ResearchItem(LibBlockNames.PHANTOM_STONE_R, tags, 2, 13, new ItemStack(ModBlocks.phantomStone, 1, 15)).setHidden().setParents(Config.researchArcaneDoor).registerResearchItem();
 	}
 }
