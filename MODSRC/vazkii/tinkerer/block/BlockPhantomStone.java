@@ -31,7 +31,6 @@ public class BlockPhantomStone extends BlockWarded {
 		super(par1);
 		if(Config.wardedStone)
 			setCreativeTab(ModCreativeTab.INSTANCE);
-		setLightOpacity(255);
 	}
 
 	@Override
