@@ -49,6 +49,10 @@ public final class LibBlockNames {
 	public static final String ANIMATION_TABLET_D = "Tool Dynamism Tablet";
 
 	public static final String DARK_GAS = LibItemNames.DARK_GAS;
+	
+	public static final String PHANTOM_STONE = "phantomStone";
+	public static final String PHANTOM_STONE_R = "PHANTOM_STONE";
+	public static final String PHANTOM_STONE_D = "Phantom Stone Block";
 
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"Block of Smokey Quartz",

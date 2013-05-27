@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.common.blocks.BlockWardedItem;
 import vazkii.tinkerer.item.ItemDarkQuartzBlock;
 import vazkii.tinkerer.item.ItemDarkQuartzSlab;
 import vazkii.tinkerer.lib.LibBlockIDs;
@@ -37,7 +38,8 @@ public final class ModBlocks {
 	public static Block darkQuartzSlabFull;
 	public static Block animationTablet;
 	public static Block darkGas;
-
+	public static Block phantomStone;
+	
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
 		transmutator = new BlockTransmutator(LibBlockIDs.idTransmutator).setUnlocalizedName(LibBlockNames.TRANSMUTATOR);
@@ -48,7 +50,8 @@ public final class ModBlocks {
 		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 		darkGas = new BlockDarkGas(LibBlockIDs.idDarkGas).setUnlocalizedName(LibBlockNames.DARK_GAS);
-
+		phantomStone = new BlockPhantomStone(LibBlockIDs.idPhantomStone).setUnlocalizedName(LibBlockNames.PHANTOM_STONE);
+		
 		registerBlocks();
 		nameBlocks();
 	}
@@ -63,6 +66,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerBlock(darkGas, LibBlockNames.DARK_GAS);
+		GameRegistry.registerBlock(phantomStone, BlockWardedItem.class, LibBlockNames.PHANTOM_STONE);
 	}
 
 	private static void nameBlocks() {
@@ -70,6 +74,7 @@ public final class ModBlocks {
 		LanguageRegistry.addName(wardChest, LibBlockNames.WARD_CHEST_D);
 		LanguageRegistry.addName(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS_D);
 		LanguageRegistry.addName(animationTablet, LibBlockNames.ANIMATION_TABLET_D);
+		LanguageRegistry.addName(phantomStone, LibBlockNames.PHANTOM_STONE_D);
 	}
 
 	public static void applyObjectTags() {

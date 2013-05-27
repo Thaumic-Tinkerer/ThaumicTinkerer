@@ -25,6 +25,7 @@ public final class LibBlockIDs {
 	public static final int DEFAULT_DARK_QUARTZ_STAIRS = 2156;
 	public static final int DEFAULT_DARK_QUARTZ_SLAB_FULL = 2157;
 	public static final int DEFAULT_DARK_GAS = 2158;
+	public static final int DEFAULT_PHANTOM_STONE = 2159;
 
 	public static int idGlowstoneGas;
 	public static int idTransmutator;
@@ -35,4 +36,5 @@ public final class LibBlockIDs {
 	public static int idDarkQuartzSlabFull;
 	public static int idAnimationTablet;
 	public static int idDarkGas;
+	public static int idPhantomStone;
 }
