@@ -16,13 +16,19 @@ package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.item.ItemStack;
 
 public class EnchantmentLost extends Enchantment {
 
 	protected EnchantmentLost(int par1, EnumEnchantmentType par3EnumEnchantmentType) {
-		super(par1, 0, par3EnumEnchantmentType);
+		super(par1, 1, par3EnumEnchantmentType);
 	}
 
+	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack) {
+		return false; // Thank god for forge hooks :D
+	}
+	
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
 		return !(par1Enchantment instanceof EnchantmentLost);
