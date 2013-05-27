@@ -50,7 +50,7 @@ public final class ModArcaneRecipes {
 				'G', new ItemStack(Item.ingotGold),
 				'F', new ItemStack(Config.itemResource, 1, 8),
 				'M', new ItemStack(Config.itemThaumometer));
-		
+
 
 		for(int i = 0; i < 16; i++)
 			ThaumcraftApi.addArcaneCraftingRecipe(LibBlockNames.PHANTOM_STONE_R, 120, new ItemStack(ModBlocks.phantomStone, 4, i),

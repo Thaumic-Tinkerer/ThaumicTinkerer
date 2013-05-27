@@ -1,17 +1,12 @@
 package vazkii.tinkerer.research;
 
-import java.util.Arrays;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.crafting.ShapedArcaneCraftingRecipes;
-import thaumcraft.api.research.ResearchList;
 import thaumcraft.common.Config;
-import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import vazkii.tinkerer.block.ModBlocks;
 import vazkii.tinkerer.enchantment.ModEnchantments;
 import vazkii.tinkerer.item.ModItems;
