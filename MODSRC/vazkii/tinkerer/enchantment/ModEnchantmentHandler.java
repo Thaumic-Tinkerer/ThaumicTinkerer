@@ -60,7 +60,7 @@ public class ModEnchantmentHandler {
 			}
 
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.soulbringer, heldItem) > 0 && event.entityLiving.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD && !isEntityPossessed(event.entityLiving) && Math.random() < 0.05F) {
-				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectPossessed.id, 600));
+				event.entityLiving.addPotionEffect(new PotionEffect(ModPotions.effectPossessed.id, 12000));
 				if(attacker instanceof EntityPlayer) {
 					EntityPlayer player = (EntityPlayer) attacker;
 					if(!player.worldObj.isRemote)
