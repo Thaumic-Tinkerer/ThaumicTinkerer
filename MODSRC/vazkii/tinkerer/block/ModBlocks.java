@@ -21,6 +21,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.blocks.BlockWardedItem;
 import vazkii.tinkerer.item.ItemDarkQuartzBlock;
 import vazkii.tinkerer.item.ItemDarkQuartzSlab;
+import vazkii.tinkerer.item.ItemPhantomStoneBlock;
 import vazkii.tinkerer.lib.LibBlockIDs;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibMisc;
@@ -66,7 +67,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerBlock(darkGas, LibBlockNames.DARK_GAS);
-		GameRegistry.registerBlock(phantomStone, BlockWardedItem.class, LibBlockNames.PHANTOM_STONE);
+		GameRegistry.registerBlock(phantomStone, ItemPhantomStoneBlock.class, LibBlockNames.PHANTOM_STONE);
 	}
 
 	private static void nameBlocks() {
