@@ -70,6 +70,8 @@ public class ItemFireBracelet extends ItemMod {
 					par3World.playSoundAtEntity(par2EntityPlayer, "thaumcraft.brain", 1F, 1F);
 
 				did = true;
+				onItemUseFirst(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
+				
 				return did;
 			}
 		}
