@@ -57,7 +57,7 @@ public final class ModArcaneRecipes {
 					"SSS", "TBT", "SDS",
 					'S', new ItemStack(Block.whiteStone),
 					'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
-					'T', new ItemStack(Config.itemResource, 1, 5),
+					'B', new ItemStack(Config.itemResource, 1, 5),
 					'D', new ItemStack(Item.dyePowder, 1, i));
 		ResearchList.craftingRecipesForResearch.put(LibBlockNames.PHANTOM_STONE_R, Arrays.asList(new ShapedArcaneCraftingRecipes[] { ThaumcraftCraftingManager.createFakeArcaneRecipe(
 				LibBlockNames.PHANTOM_STONE_R, 120, new ItemStack(ModBlocks.phantomStone, 4, LibMisc.CRAFTING_META_WILDCARD),
