@@ -23,6 +23,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import thaumcraft.common.Config;
 import thaumcraft.common.blocks.BlockWarded;
+import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.tiles.TileOwned;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
 
@@ -47,6 +48,31 @@ public class BlockPhantomStone extends BlockWarded {
 	@Override
 	public boolean isBlockNormalCube(World world, int x, int y, int z) {
 		return false;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)  {
+		if (par1World.isRemote)
+			return true;
+
+		TileOwned tile = (TileOwned) par1World.getBlockTileEntity(par2, par3, par4);
+
+		if (tile != null) {
+			String owner = tile.owner;
+
+			if(owner.equals(par5EntityPlayer.username)) {
+				if(par5EntityPlayer.getCurrentEquippedItem() != null && par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
+					if(!par1World.isRemote) {
+						int meta = par1World.getBlockMetadata(par2, par3, par4);
+						dropBlockAsItem(par1World, par2, par3, par4, meta, par6);
+						par1World.playAuxSFX(2001, par2, par3, par4, blockID + (meta << 12));
+						par1World.setBlock(par2, par3, par4, 0, 0, 1 & 2);
+					} else par5EntityPlayer.swingItem();
+				}
+			}
+		}
+
+		return true;
 	}
 
 	@Override
