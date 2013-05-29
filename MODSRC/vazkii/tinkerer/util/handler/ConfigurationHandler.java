@@ -66,6 +66,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idFluxDetector = loadItem(LibItemNames.FLUX_DETECTOR, LibItemIDs.DEFAULT_FLUX_DETECTOR);
 		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.DEFAULT_CLEANSING_TALISMAN);
 		LibItemIDs.idDummyEnchantbook = loadItem(LibItemNames.DUMMY_ENCHANTBOOK, LibItemIDs.DEFAULT_DUMMY_ENCHANTBOOK);
+		LibItemIDs.idResearchShareBook = loadItem(LibItemNames.RESEARCH_SHARE_BOOK, LibItemIDs.DEFAULT_RESEARCH_SHARE_BOOK);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);

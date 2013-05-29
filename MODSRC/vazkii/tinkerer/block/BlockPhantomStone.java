@@ -51,7 +51,7 @@ public class BlockPhantomStone extends BlockWarded {
 	public boolean isBlockNormalCube(World world, int x, int y, int z) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)  {
 		TileOwned tile = (TileOwned) par1World.getBlockTileEntity(par2, par3, par4);

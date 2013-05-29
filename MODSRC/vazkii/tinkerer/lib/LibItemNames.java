@@ -95,4 +95,7 @@ public final class LibItemNames {
 	public static final String CLEANSING_TALISMAN_D = "Talisman of Remedium";
 
 	public static final String DUMMY_ENCHANTBOOK = "dummyEnchantbook";
+
+	public static final String RESEARCH_SHARE_BOOK = "researchShareBook";
+	public static final String RESEARCH_SHARE_BOOK_D = "Tome of Knowledge Sharing";
 }
