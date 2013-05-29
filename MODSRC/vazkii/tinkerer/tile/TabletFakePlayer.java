@@ -26,6 +26,7 @@ public class TabletFakePlayer extends FakePlayer {
 	public TabletFakePlayer(TileEntityAnimationTablet tablet) {
 		super(tablet.worldObj, tablet.getInvName());
 		this.tablet = tablet;
+		inventory = new FakeInvPlayer(this);
 	}
 
 	@Override
@@ -35,6 +36,8 @@ public class TabletFakePlayer extends FakePlayer {
 
 	@Override
 	public void onUpdate() {
+		capabilities.isCreativeMode = false;
+		
 		posX = tablet.xCoord + 0.5;
 		posY = tablet.yCoord + 1.6;
 		posZ = tablet.zCoord + 0.5;
