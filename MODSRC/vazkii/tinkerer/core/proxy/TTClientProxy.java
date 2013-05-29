@@ -15,10 +15,12 @@
 package vazkii.tinkerer.core.proxy;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import thaumcraft.client.fx.FXLightningBolt;
+import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
 import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
@@ -36,6 +38,7 @@ import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
+import vazkii.tinkerer.util.helper.MiscHelper;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -92,4 +95,33 @@ public class TTClientProxy extends TTCommonProxy {
 		lightning.finalizeBolt();
 	}
 
+	@Override
+	public void sanityCheckedFrozenParticles(EntityLiving entity) {
+		for(int i = 0; i < 6; i++) {
+			float x = (float) (entity.posX + (entity.worldObj.rand.nextDouble() - 0.5F) * (entity.width * 2F));
+            float y = (float) (entity.posY + entity.worldObj.rand.nextDouble() * entity.height);
+            float z = (float) (entity.posZ  + (entity.worldObj.rand.nextDouble() - 0.5F) * (entity.width * 2F));
+
+            float size = (float) Math.random();
+            float gravity = (float) (Math.random() / 20F);
+
+            if(MiscHelper.getMc().renderViewEntity != null)
+            	ThaumicTinkerer.tcProxy.sparkle(x, y, z, size, 2, gravity);
+		}
+	}
+
+	@Override
+	public void sanityCheckedPossessedParticles(EntityLiving entity) {
+		for(int i = 0; i < 3; i++) {
+			float x = (float) (entity.posX + (entity.worldObj.rand.nextDouble() - 0.5F) * (entity.width * 2F));
+            float y = (float) (entity.posY + entity.worldObj.rand.nextDouble() * entity.height);
+            float z = (float) (entity.posZ  + (entity.worldObj.rand.nextDouble() - 0.5F) * (entity.width * 2F));
+
+            float size = (float) (Math.random() / 2F);
+            float gravity = (float) (Math.random() / 20F);
+
+            if(MiscHelper.getMc().renderViewEntity != null)
+            	ThaumicTinkerer.tcProxy.wispFX2(entity.worldObj, x, y, z, size, 5, false, gravity);
+		}
+	}
 }

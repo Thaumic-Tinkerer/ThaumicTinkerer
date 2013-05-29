@@ -15,6 +15,7 @@
 package vazkii.tinkerer.core.proxy;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ThaumicTinkerer;
@@ -55,4 +56,8 @@ public class TTCommonProxy {
 	}
 
 	public void sigilLightning(World world, Entity entity, Vec3 end) { }
+
+	public void sanityCheckedFrozenParticles(EntityLiving entity) { }
+
+	public void sanityCheckedPossessedParticles(EntityLiving entity) { }
 }

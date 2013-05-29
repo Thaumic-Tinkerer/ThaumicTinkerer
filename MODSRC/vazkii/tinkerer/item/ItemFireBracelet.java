@@ -71,7 +71,7 @@ public class ItemFireBracelet extends ItemMod {
 
 				did = true;
 				onItemUseFirst(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
-				
+
 				return did;
 			}
 		}

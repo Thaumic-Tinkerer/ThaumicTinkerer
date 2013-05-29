@@ -40,7 +40,6 @@ import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
 import vazkii.tinkerer.lib.LibPotions;
 import vazkii.tinkerer.potion.ModPotions;
-import vazkii.tinkerer.util.helper.MiscHelper;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ModEnchantmentHandler {
@@ -119,17 +118,7 @@ public class ModEnchantmentHandler {
 			event.entityLiving.setJumping(false);
 			event.entityLiving.motionY = 0;
 
-			for(int i = 0; i < 6; i++) {
-				float x = (float) (event.entityLiving.posX + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
-	            float y = (float) (event.entityLiving.posY + event.entityLiving.worldObj.rand.nextDouble() * event.entityLiving.height);
-	            float z = (float) (event.entityLiving.posZ  + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
-
-	            float size = (float) Math.random();
-	            float gravity = (float) (Math.random() / 20F);
-
-	            if(MiscHelper.getMc().renderViewEntity != null)
-	            	ThaumicTinkerer.tcProxy.sparkle(x, y, z, size, 2, gravity);
-			}
+			ThaumicTinkerer.proxy.sanityCheckedFrozenParticles(event.entityLiving);
 		} else if(event.entityLiving.landMovementFactor == 0F && event.entityLiving.jumpMovementFactor == 0F){
 			event.entityLiving.landMovementFactor = 0.1F;
 			event.entityLiving.jumpMovementFactor = 0.02F;
@@ -153,17 +142,7 @@ public class ModEnchantmentHandler {
 			if(event.entityLiving.getAttackTarget() instanceof EntityPlayer)
 				event.entityLiving.setAttackTarget(null);
 
-			for(int i = 0; i < 3; i++) {
-				float x = (float) (event.entityLiving.posX + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
-	            float y = (float) (event.entityLiving.posY + event.entityLiving.worldObj.rand.nextDouble() * event.entityLiving.height);
-	            float z = (float) (event.entityLiving.posZ  + (event.entityLiving.worldObj.rand.nextDouble() - 0.5F) * (event.entityLiving.width * 2F));
-
-	            float size = (float) (Math.random() / 2F);
-	            float gravity = (float) (Math.random() / 20F);
-
-	            if(MiscHelper.getMc().renderViewEntity != null)
-	            	ThaumicTinkerer.tcProxy.wispFX2(event.entityLiving.worldObj, x, y, z, size, 5, false, gravity);
-			}
+			ThaumicTinkerer.proxy.sanityCheckedPossessedParticles(event.entityLiving);
 		}
 	}
 
