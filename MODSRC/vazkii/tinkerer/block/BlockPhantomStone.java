@@ -18,7 +18,9 @@ import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import thaumcraft.common.Config;
@@ -52,9 +54,6 @@ public class BlockPhantomStone extends BlockWarded {
 	
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)  {
-		if (par1World.isRemote)
-			return true;
-
 		TileOwned tile = (TileOwned) par1World.getBlockTileEntity(par2, par3, par4);
 
 		if (tile != null) {
@@ -63,16 +62,19 @@ public class BlockPhantomStone extends BlockWarded {
 			if(owner.equals(par5EntityPlayer.username)) {
 				if(par5EntityPlayer.getCurrentEquippedItem() != null && par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
 					if(!par1World.isRemote) {
+						int id = par1World.getBlockId(par2, par3, par4);
 						int meta = par1World.getBlockMetadata(par2, par3, par4);
-						dropBlockAsItem(par1World, par2, par3, par4, meta, par6);
+						par1World.spawnEntityInWorld(new EntityItem(par1World, par2 + 0.5, par3 + 0.5, par4 + 0.5, new ItemStack(id, 1, meta)));
 						par1World.playAuxSFX(2001, par2, par3, par4, blockID + (meta << 12));
+						tile.safeToRemove = true;
 						par1World.setBlock(par2, par3, par4, 0, 0, 1 & 2);
 					} else par5EntityPlayer.swingItem();
+					return true;
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	@Override
