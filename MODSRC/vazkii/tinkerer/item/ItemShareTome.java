@@ -22,7 +22,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import thaumcraft.api.research.ResearchItem;
 import thaumcraft.common.Config;
 import thaumcraft.common.research.ResearchManager;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
@@ -58,7 +57,7 @@ public class ItemShareTome extends ItemMod {
 				par3EntityPlayer.addChatMessage("Research Data Written!");
 		} else {
 			sync : {
-				List<ResearchItem> researchesDone = ResearchManager.getCompletedResearch(name);
+				List<String> researchesDone = ResearchManager.getCompletedResearch(name);
 
 				if(researchesDone == null) {
 					if(!par2World.isRemote)
@@ -66,8 +65,8 @@ public class ItemShareTome extends ItemMod {
 					break sync;
 				}
 
-				for(ResearchItem item : researchesDone)
-					ResearchManager.completeResearch(par3EntityPlayer, item.key);
+				for(String key : researchesDone)
+					ResearchManager.completeResearch(par3EntityPlayer, key);
 
 				if(!par2World.isRemote)
 					par3EntityPlayer.addChatMessage("Research Data Synced!");
