@@ -4,6 +4,8 @@ Welcome to the Thaumic Tinkerer Github Repo.
 
 Thaumic Tinkerer is a Thaumcraft addon, it's intention is to add new content to Thaumcraft, and bring back some oldies, but goodies.
 
+[Thaumic Tinkerer MCF Thread](http://www.minecraftforum.net/topic/1813058-)
+
 Thaumcraft © Azanor 2012
 [Thaumcraft MCF Thread](http://www.minecraftforum.net/topic/1585216-)
 
