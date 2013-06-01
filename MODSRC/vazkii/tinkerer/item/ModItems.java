@@ -20,6 +20,7 @@ import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.block.ModBlocks;
+import vazkii.tinkerer.item.eldritch.ItemVoidArmor;
 import vazkii.tinkerer.item.eldritch.ItemVoidCraftingMat;
 import vazkii.tinkerer.lib.LibItemIDs;
 import vazkii.tinkerer.lib.LibItemNames;
@@ -52,6 +53,10 @@ public final class ModItems {
 	public static Item dummyEnchantbook;
 	public static Item researchShareBook;
 	public static Item voidCraftingMaterial;
+	public static Item voidHelm;
+	public static Item voidChest;
+	public static Item voidLegs;
+	public static Item voidBoots;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -78,6 +83,10 @@ public final class ModItems {
 		dummyEnchantbook = new ItemDummyEnchantbook(LibItemIDs.idDummyEnchantbook).setUnlocalizedName(LibItemNames.DUMMY_ENCHANTBOOK);
 		researchShareBook = new ItemShareTome(LibItemIDs.idResearchShareBook).setUnlocalizedName(LibItemNames.RESEARCH_SHARE_BOOK);
 		voidCraftingMaterial = new ItemVoidCraftingMat(LibItemIDs.idVoidCraftingMaterial);
+		voidHelm = new ItemVoidArmor(LibItemIDs.idVoidHelm, 0).setUnlocalizedName(LibItemNames.VOID_HELM);
+		voidChest = new ItemVoidArmor(LibItemIDs.idVoidChest, 1).setUnlocalizedName(LibItemNames.VOID_CHEST);
+		voidLegs = new ItemVoidArmor(LibItemIDs.idVoidLegs, 2).setUnlocalizedName(LibItemNames.VOID_LEGS);
+		voidBoots = new ItemVoidArmor(LibItemIDs.idVoidBoots, 3).setUnlocalizedName(LibItemNames.VOID_BOOTS);
 
 		nameItems();
 	}
@@ -105,6 +114,10 @@ public final class ModItems {
 		LanguageRegistry.addName(cleansingTalisman, LibItemNames.CLEANSING_TALISMAN_D);
 		LanguageRegistry.addName(fluxDetector, LibItemNames.FLUX_DETECTOR_D);
 		LanguageRegistry.addName(researchShareBook, LibItemNames.RESEARCH_SHARE_BOOK_D);
+		LanguageRegistry.addName(voidHelm, LibItemNames.VOID_HELM_D);
+		LanguageRegistry.addName(voidChest, LibItemNames.VOID_CHEST_D);
+		LanguageRegistry.addName(voidLegs, LibItemNames.VOID_LEGS_D);
+		LanguageRegistry.addName(voidBoots, LibItemNames.VOID_BOOTS_D);
 	}
 
 	public static void applyObjectTags() {

@@ -112,4 +112,16 @@ public final class LibItemNames {
 		"Void Metal Ingot",
 		"Eldritch Cogwheel"
 	};
+
+	public static final String VOID_HELM = "voidHelmet";
+	public static final String VOID_HELM_D = "Void Metal Helm";
+
+	public static final String VOID_CHEST = "voidChest";
+	public static final String VOID_CHEST_D = "Void Metal Chestplate";
+
+	public static final String VOID_LEGS = "voidLegs";
+	public static final String VOID_LEGS_D = "Void Metal Platelegs";
+
+	public static final String VOID_BOOTS = "voidBoots";
+	public static final String VOID_BOOTS_D = "Void Metal Boots";
 }

@@ -73,5 +73,4 @@ public class ItemVoidCraftingMat extends ItemMod {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.rarityVoid;
 	}
-
 }

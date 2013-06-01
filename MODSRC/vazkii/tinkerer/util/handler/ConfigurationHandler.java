@@ -68,6 +68,10 @@ public final class ConfigurationHandler {
 		LibItemIDs.idDummyEnchantbook = loadItem(LibItemNames.DUMMY_ENCHANTBOOK, LibItemIDs.DEFAULT_DUMMY_ENCHANTBOOK);
 		LibItemIDs.idResearchShareBook = loadItem(LibItemNames.RESEARCH_SHARE_BOOK, LibItemIDs.DEFAULT_RESEARCH_SHARE_BOOK);
 		LibItemIDs.idVoidCraftingMaterial = loadItem(LibItemNames.VOID_CRAFTING_MATERIAL, LibItemIDs.DEFAULT_VOID_CRAFTING_MATERIAL);
+		LibItemIDs.idVoidHelm = loadItem(LibItemNames.VOID_HELM, LibItemIDs.DEFAULT_VOID_HELM);
+		LibItemIDs.idVoidChest = loadItem(LibItemNames.VOID_CHEST, LibItemIDs.DEFAULT_VOID_CHEST);
+		LibItemIDs.idVoidLegs = loadItem(LibItemNames.VOID_LEGS, LibItemIDs.DEFAULT_VOID_LEGS);
+		LibItemIDs.idVoidBoots = loadItem(LibItemNames.VOID_BOOTS, LibItemIDs.DEFAULT_VOID_BOOTS);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);

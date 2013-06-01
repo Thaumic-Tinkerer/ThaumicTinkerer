@@ -26,6 +26,11 @@ public final class LibItemIDs {
 	public static final int DEFAULT_DUMMY_ENCHANTBOOK = 21171;
 	public static final int DEFAULT_RESEARCH_SHARE_BOOK = 21172;
 	public static final int DEFAULT_VOID_CRAFTING_MATERIAL = 21173;
+	public static final int DEFAULT_VOID_HELM = 21174;
+	public static final int DEFAULT_VOID_CHEST = 21175;
+	public static final int DEFAULT_VOID_LEGS = 21176;
+	public static final int DEFAULT_VOID_BOOTS = 21177;
+
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -51,4 +56,8 @@ public final class LibItemIDs {
 	public static int idDummyEnchantbook;
 	public static int idResearchShareBook;
 	public static int idVoidCraftingMaterial;
+	public static int idVoidHelm;
+	public static int idVoidChest;
+	public static int idVoidLegs;
+	public static int idVoidBoots;
 }
