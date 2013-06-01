@@ -8,6 +8,7 @@ public final class LibItemNames {
 	 *  No suffix = Internal Name
 	 *  _R = Research/Recipe Name
 	 *  _D = Display Name
+	 *  _N = Metadata Sensitive Names
 	 */
 
 	public static final String WAND_TINKERER = "wandTinkerer";
@@ -98,4 +99,17 @@ public final class LibItemNames {
 
 	public static final String RESEARCH_SHARE_BOOK = "researchShareBook";
 	public static final String RESEARCH_SHARE_BOOK_D = "Tome of Knowledge Sharing";
+
+	public static final String VOID_CRAFTING_MATERIAL = "voidCraftingMaterial";
+	public static final String VOID_CRAFTING_MATERIAL_R = "VOID_CRAFTING";
+	public static final String[] VOID_CRAFTING_MATERIAL_N = new String[] {
+		"darkDrop",
+		"voidIngot",
+		"darkGear"
+	};
+	public static final String[] VOID_CRAFTING_MATERIAL_D = new String[] {
+		"Drop of Darkness",
+		"Void Metal Ingot",
+		"Eldritch Cogwheel"
+	};
 }

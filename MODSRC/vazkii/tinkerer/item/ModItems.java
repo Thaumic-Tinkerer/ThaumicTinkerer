@@ -20,6 +20,7 @@ import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.block.ModBlocks;
+import vazkii.tinkerer.item.eldritch.ItemVoidCraftingMat;
 import vazkii.tinkerer.lib.LibItemIDs;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
@@ -50,6 +51,7 @@ public final class ModItems {
 	public static Item fluxDetector;
 	public static Item dummyEnchantbook;
 	public static Item researchShareBook;
+	public static Item voidCraftingMaterial;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -75,6 +77,7 @@ public final class ModItems {
 		fluxDetector = new ItemFluxDetector(LibItemIDs.idFluxDetector).setUnlocalizedName(LibItemNames.FLUX_DETECTOR);
 		dummyEnchantbook = new ItemDummyEnchantbook(LibItemIDs.idDummyEnchantbook).setUnlocalizedName(LibItemNames.DUMMY_ENCHANTBOOK);
 		researchShareBook = new ItemShareTome(LibItemIDs.idResearchShareBook).setUnlocalizedName(LibItemNames.RESEARCH_SHARE_BOOK);
+		voidCraftingMaterial = new ItemVoidCraftingMat(LibItemIDs.idVoidCraftingMaterial);
 
 		nameItems();
 	}
