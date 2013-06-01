@@ -18,9 +18,11 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import vazkii.tinkerer.client.util.helper.IconHelper;
+import vazkii.tinkerer.core.proxy.TTClientProxy;
 import vazkii.tinkerer.item.ItemMod;
 import vazkii.tinkerer.lib.LibItemNames;
 import cpw.mods.fml.relauncher.Side;
@@ -64,6 +66,12 @@ public class ItemVoidCraftingMat extends ItemMod {
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
 		return par1ItemStack.getItemDamage() >= LibItemNames.VOID_CRAFTING_MATERIAL_N.length ? LibItemNames.VOID_CRAFTING_MATERIAL : LibItemNames.VOID_CRAFTING_MATERIAL_N[par1ItemStack.getItemDamage()];
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return TTClientProxy.rarityVoid;
 	}
 
 }

@@ -16,8 +16,10 @@ package vazkii.tinkerer.core.proxy;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.ThaumicTinkerer;
@@ -45,6 +47,10 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class TTClientProxy extends TTCommonProxy {
+
+	private static final String VOID_RARITY_NAME = "Void";
+
+	public static EnumRarity rarityVoid;
 
 	@Override
 	public void initTickHandlers() {
@@ -85,6 +91,8 @@ public class TTClientProxy extends TTCommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.fluxDetector.itemID, new RenderItemFluxDetector());
+
+		rarityVoid = EnumHelperClient.addRarity(VOID_RARITY_NAME, 5, VOID_RARITY_NAME);
 	}
 
 	@Override
