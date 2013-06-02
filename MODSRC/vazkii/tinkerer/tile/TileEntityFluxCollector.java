@@ -26,7 +26,9 @@ import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.aura.AuraNode;
 import thaumcraft.common.Config;
+import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibFeatures;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketFluxCollectorSync;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
@@ -36,8 +38,10 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 public class TileEntityFluxCollector extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory {
 
 	private static final String TAG_ASPECT = "aspect";
+	private static final String TAG_TICKS_EXISTED = "ticksExisted";
 
 	ItemStack[] inventorySlots = new ItemStack[2];
+
 	public double ticksExisted = 0;
 
 	public int aspect = -1;
@@ -51,32 +55,38 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
 			setInventorySlotContents(1, null);
 		}
 
-		ItemStack jar = getStackInSlot(0);
-		if(aspect >= 0 && jar != null) {
-			EnumTag tag = EnumTag.get(aspect);
-			AuraNode node = MiscHelper.getClosestNode(worldObj, xCoord, yCoord, zCoord);
-			if(node != null) {
-				ObjectTags flux = node.flux;
-				if(flux != null && flux.getAmount(tag) > 0) {
-					flux.getAmount(tag);
+		if(ticksExisted % LibFeatures.FLUX_CONDENSER_INTERVAL == 0) {
+			ItemStack jar = getStackInSlot(0);
+			if(aspect >= 0 && jar != null) {
+				EnumTag tag = EnumTag.get(aspect);
+				AuraNode node = MiscHelper.getClosestNode(worldObj, xCoord, yCoord, zCoord);
+				if(node != null && node.level > 0) {
+					ObjectTags flux = node.flux;
+					if(flux != null && flux.getAmount(tag) > 0) {
+						flux.getAmount(tag);
 
-					boolean emptyJar = jar.itemID == Config.blockJar.blockID;
-					boolean can = emptyJar;
-					if(!can) {
-						NBTTagCompound cmp = jar.getTagCompound();
-						int aspect = cmp.getByte("tag");
-						int jarAmount = cmp.getByte("amount");
+						boolean emptyJar = jar.itemID == Config.blockJar.blockID;
+						boolean can = emptyJar;
+						if(!can) {
+							NBTTagCompound cmp = jar.getTagCompound();
+							int aspect = cmp.getByte("tag");
+							int jarAmount = cmp.getByte("amount");
 
-						can = aspect == this.aspect && jarAmount < 64;
-					}
+							can = aspect == this.aspect && jarAmount < 64;
+						}
 
-					if(can) {
-						node.flux.reduceAmount(tag, 1);
-						if(emptyJar) {
-							jar.itemID = Config.itemJarFilled.itemID;
-							ItemNBTHelper.setByte(jar, "tag", (byte) aspect);
-							ItemNBTHelper.setByte(jar, "amount", (byte) 1);
-						} else ItemNBTHelper.setByte(jar, "amount", (byte) (ItemNBTHelper.getByte(jar, "amount", (byte) 0) + 1));
+						if(can) {
+							node.flux.reduceAmount(tag, 1);
+							if(worldObj.rand.nextInt(LibFeatures.FLUX_CONDENSER_VIS_CHANCE) == 0)
+								node.level--;
+							AuraManager.addToAuraUpdateList(node);
+
+							if(emptyJar) {
+								jar.itemID = Config.itemJarFilled.itemID;
+								ItemNBTHelper.setByte(jar, "tag", (byte) aspect);
+								ItemNBTHelper.setByte(jar, "amount", (byte) 1);
+							} else ItemNBTHelper.setByte(jar, "amount", (byte) (ItemNBTHelper.getByte(jar, "amount", (byte) 0) + 1));
+						}
 					}
 				}
 			}
@@ -90,6 +100,7 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
 		super.readFromNBT(par1NBTTagCompound);
 
 		aspect = par1NBTTagCompound.getInteger(TAG_ASPECT);
+		ticksExisted = par1NBTTagCompound.getInteger(TAG_TICKS_EXISTED);
 
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
@@ -106,6 +117,7 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
         super.writeToNBT(par1NBTTagCompound);
 
         par1NBTTagCompound.setInteger(TAG_ASPECT, aspect);
+        par1NBTTagCompound.setDouble(TAG_TICKS_EXISTED, ticksExisted);
 
     	NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
