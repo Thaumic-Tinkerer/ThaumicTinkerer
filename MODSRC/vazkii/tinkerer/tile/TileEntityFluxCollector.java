@@ -10,13 +10,14 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [6 May 2013, 21:24:32 (GMT)]
+ * File Created @ [1 Jun 2013, 22:59:38 (GMT)]
  */
-package vazkii.tinkerer.lib;
+package vazkii.tinkerer.tile;
 
-public final class LibRenderIDs {
+import net.minecraft.tileentity.TileEntity;
 
-	public static int idWardChest;
-	public static int idFluxCollector;
+public class TileEntityFluxCollector extends TileEntity {
+
+	// TODO Do stuff
 
 }

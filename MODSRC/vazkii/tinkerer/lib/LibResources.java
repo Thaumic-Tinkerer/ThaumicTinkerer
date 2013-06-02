@@ -36,6 +36,7 @@ public final class LibResources {
 	public static final String MODEL_LEGS_GOLIATH = ROOT_MODEL + "armorGoliath.png";
 	public static final String MODEL_VOID_ARMOR = ROOT_MODEL + "armorVoid.png";
 	public static final String MODEL_VOID_ARMOR1 = ROOT_MODEL + "armorVoid1.png";
+	public static final String MODEL_FLUX_COLLECTOR = ROOT_MODEL + "fluxCollector.png";
 
 	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
 	public static final String MISC_WARD_CHEST_OVERLAY = ROOT_MISC + "wardChestOverlay.png";

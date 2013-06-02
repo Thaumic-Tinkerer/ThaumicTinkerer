@@ -18,9 +18,11 @@ import net.minecraft.block.Block;
 import thaumcraft.api.EnumTag;
 import thaumcraft.api.ObjectTags;
 import thaumcraft.api.ThaumcraftApi;
+import vazkii.tinkerer.block.eldritch.BlockFluxCollector;
 import vazkii.tinkerer.item.ItemDarkQuartzBlock;
 import vazkii.tinkerer.item.ItemDarkQuartzSlab;
 import vazkii.tinkerer.item.ItemPhantomStoneBlock;
+import vazkii.tinkerer.item.eldritch.ItemEldritchBlock;
 import vazkii.tinkerer.lib.LibBlockIDs;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibMisc;
@@ -39,6 +41,7 @@ public final class ModBlocks {
 	public static Block animationTablet;
 	public static Block darkGas;
 	public static Block phantomStone;
+	public static Block fluxCollector;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
@@ -51,6 +54,7 @@ public final class ModBlocks {
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 		darkGas = new BlockDarkGas(LibBlockIDs.idDarkGas).setUnlocalizedName(LibBlockNames.DARK_GAS);
 		phantomStone = new BlockPhantomStone(LibBlockIDs.idPhantomStone).setUnlocalizedName(LibBlockNames.PHANTOM_STONE);
+		fluxCollector = new BlockFluxCollector(LibBlockIDs.idFluxCollector).setUnlocalizedName(LibBlockNames.FLUX_COLLECTOR);
 
 		registerBlocks();
 		nameBlocks();
@@ -67,6 +71,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerBlock(darkGas, LibBlockNames.DARK_GAS);
 		GameRegistry.registerBlock(phantomStone, ItemPhantomStoneBlock.class, LibBlockNames.PHANTOM_STONE);
+		GameRegistry.registerBlock(fluxCollector, ItemEldritchBlock.class, LibBlockNames.FLUX_COLLECTOR);
 	}
 
 	private static void nameBlocks() {
@@ -75,6 +80,7 @@ public final class ModBlocks {
 		LanguageRegistry.addName(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS_D);
 		LanguageRegistry.addName(animationTablet, LibBlockNames.ANIMATION_TABLET_D);
 		LanguageRegistry.addName(phantomStone, LibBlockNames.PHANTOM_STONE_D);
+		LanguageRegistry.addName(fluxCollector, LibBlockNames.FLUX_COLLECTOR_D);
 	}
 
 	public static void applyObjectTags() {
