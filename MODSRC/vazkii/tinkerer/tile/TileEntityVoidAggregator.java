@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.lib.LibBlockNames;
 
 public class TileEntityVoidAggregator extends TileEntity implements IInventory {
@@ -27,10 +28,15 @@ public class TileEntityVoidAggregator extends TileEntity implements IInventory {
 	ItemStack[] inventorySlots = new ItemStack[2];
 
 	public double ticksExisted;
+	public int work = 0;
 
 	@Override
 	public void updateEntity() {
 		++ticksExisted;
+
+		if (worldObj.isRemote /*&& work > 0**/ && ticksExisted % 3 == 0)
+				Thaumcraft.proxy.wispFX3(worldObj, xCoord + 0.3F + Math.random() * 0.4F, yCoord + 0.4F, zCoord + 0.3F + Math.random() * 0.4F, xCoord + 0.45F + Math.random() * 0.4F, yCoord + 0.5F, zCoord + 0.4F + worldObj.rand.nextFloat() * 0.2F, 0.2F, 5, true, -0.03F);
+
 	}
 
 	@Override

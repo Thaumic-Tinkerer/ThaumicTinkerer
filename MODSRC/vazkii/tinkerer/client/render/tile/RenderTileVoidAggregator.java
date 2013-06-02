@@ -49,18 +49,18 @@ public class RenderTileVoidAggregator extends TileEntitySpecialRenderer {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glTranslatef(0.5F, 0.4F, 0.5F);
 		float deg = (float) (aggregator.ticksExisted / 2F % 360F);
+		float size = (float) ((Math.cos(aggregator.ticksExisted / 10F) + 1F) * 0.05F);
 		GL11.glRotatef(deg, 0F, 1F, 0F);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 0F, 0F);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 0F, 0F);
 		Tessellator tess = Tessellator.instance;
 		tess.startDrawingQuads();
-		tess.addVertexWithUV(-0.5, 0, 0.5, 0, 1);
-		tess.addVertexWithUV(0.5, 0, 0.5, 1, 1);
-		tess.addVertexWithUV(0.5, 0, -0.5, 1, 0);
-		tess.addVertexWithUV(-0.5, 0, -0.5, 0, 0);
+		tess.addVertexWithUV(-0.4 - size, 0, 0.4 + size, 0, 1);
+		tess.addVertexWithUV(0.4 + size, 0, 0.4 + size, 1, 1);
+		tess.addVertexWithUV(0.4 + size, 0, -0.4 - size, 1, 0);
+		tess.addVertexWithUV(-0.4 - size, 0, -0.4 - size, 0, 0);
 		tess.draw();
 		GL11.glDepthMask(true);
 		GL11.glPopMatrix();
 	}
-
 }
