@@ -43,14 +43,14 @@ public class RenderTileFluxCollector extends TileEntitySpecialRenderer {
 		GL11.glTranslated(0.5F, 1.5F, 0.5F);
 		bindTextureByName(LibResources.MODEL_FLUX_COLLECTOR);
 		GL11.glScalef(1F, -1F, -1F);
-		model.render(tileentity.worldObj == null ? ClientTickHandler.clientTicksElapsed :((TileEntityFluxCollector) tileentity).ticksExisted);
+		double ticks = tileentity.worldObj == null ? ClientTickHandler.clientTicksElapsed :((TileEntityFluxCollector) tileentity).ticksExisted;
+		model.render(ticks);
 		GL11.glScalef(1F, -1F, -1F);
 		GL11.glPushMatrix();
 		GL11.glScalef(0.75F, 0.75F, 0.75F);
 		GL11.glRotatef(90F, 1F, 0F, 0F);
 		GL11.glTranslatef(0, 0, 1.6F);
-		long ticks = ClientTickHandler.clientTicksElapsed;
-		float deg = ticks * 2 % 360F;
+		float deg = (float) (ticks * 2 % 360F);
 		MiscHelper.getMc().renderEngine.bindTexture("/gui/items.png");
 		Icon icon = ModItems.voidCraftingMaterial.getIconFromDamage(2);
 		float f = icon.getMinU();
