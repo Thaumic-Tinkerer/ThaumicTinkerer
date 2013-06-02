@@ -19,5 +19,6 @@ public final class LibGuiIDs {
 	public static final int ID_TRANSMUTATOR = 0;
 	public static final int ID_ANIMATION_TABLET = 1;
 	public static final int ID_FLUX_COLLECTOR = 2;
+	public static final int ID_VOID_AGGREGATOR = 3;
 
 }

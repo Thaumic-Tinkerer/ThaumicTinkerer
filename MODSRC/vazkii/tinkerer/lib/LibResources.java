@@ -32,6 +32,7 @@ public final class LibResources {
 	public static final String GUI_TRANSMUTATOR = ROOT_GUI + "guiTransmutator.png";
 	public static final String GUI_ANIMATION_TABLET = ROOT_GUI + "guiAnimationTablet.png";
 	public static final String GUI_FLUX_COLLECTOR = ROOT_GUI + "guiFluxCollector.png";
+	public static final String GUI_VOID_AGGREGATOR = ROOT_GUI + "guiVoidAggregator.png";
 
 	public static final String MODEL_WARD_CHEST = ROOT_MODEL + "chestWard.png";
 	public static final String MODEL_LEGS_GOLIATH = ROOT_MODEL + "armorGoliath.png";

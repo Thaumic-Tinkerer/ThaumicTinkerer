@@ -17,14 +17,20 @@ package vazkii.tinkerer.block.eldritch;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
-import vazkii.tinkerer.block.BlockMod;
+import vazkii.tinkerer.ThaumicTinkerer;
+import vazkii.tinkerer.block.BlockModContainer;
 import vazkii.tinkerer.client.util.helper.IconHelper;
+import vazkii.tinkerer.lib.LibGuiIDs;
+import vazkii.tinkerer.tile.TileEntityVoidAggregator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockVoidAggregator extends BlockMod/*Container*/ {
+public class BlockVoidAggregator extends BlockModContainer {
 
 	Icon iconBottom;
 	Icon iconTop;
@@ -47,8 +53,18 @@ public class BlockVoidAggregator extends BlockMod/*Container*/ {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2) {
-        setBlockBounds(0.1875F, 0F, 0.1875F, 0.8125F, 0.375F, 0.8125F);
 		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSides;
+	}
+
+	@Override
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		if(!par1World.isRemote) {
+			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+			if(tile != null)
+				par5EntityPlayer.openGui(ThaumicTinkerer.modInstance, LibGuiIDs.ID_VOID_AGGREGATOR, par1World, par2, par3, par4);
+		}
+
+		return true;
 	}
 
 	@Override
@@ -59,5 +75,10 @@ public class BlockVoidAggregator extends BlockMod/*Container*/ {
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityVoidAggregator();
 	}
 }
