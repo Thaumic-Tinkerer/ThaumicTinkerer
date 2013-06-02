@@ -45,6 +45,7 @@ public final class LibResources {
 	public static final String MISC_AT_OVERLAY_RIGHT = BLUR + ROOT_MISC + "atRight1.png";
 	public static final String MISC_AT_OVERLAY_DIAL = BLUR + ROOT_TC + "misc/dial.png";
 	public static final String MISC_AT_OVERLAY_FACING = BLUR + ROOT_MISC + "tabletFacingInd.png";
+	public static final String MISC_FLUX_COLLECTOR_OVERLAY = BLUR + ROOT_MISC + "fluxCollectorInd.png";
 
 	public static final String EMTPY_TEXTURE = "emptyTexture";
 }

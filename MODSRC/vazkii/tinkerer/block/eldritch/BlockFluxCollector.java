@@ -34,7 +34,7 @@ public class BlockFluxCollector extends BlockModContainer {
 	public BlockFluxCollector(int par1) {
 		super(par1, Material.iron);
 		setHardness(Block.obsidian.blockHardness);
-        setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+        setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.55F, 0.9375F);
 	}
 
 	@Override

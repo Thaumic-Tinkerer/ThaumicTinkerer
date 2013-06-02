@@ -14,8 +14,11 @@
  */
 package vazkii.tinkerer.client.gui;
 
+import java.util.Arrays;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.EnumChatFormatting;
 
 import org.lwjgl.opengl.GL11;
 
@@ -50,6 +53,15 @@ public class GuiFluxCollector extends GuiContainer {
         mc.renderEngine.bindTexture(LibResources.GUI_FLUX_COLLECTOR);
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
         GL11.glColor3f(1F, 1F, 1F);
-        UtilsFX.drawTag(mc, x + 80, y + 34, EnumTag.get(collector.aspect), 0, 0, this, false, false, (float) (Math.cos(ClientTickHandler.clientTicksElapsed / 20F) + 1F) / 2F + 0.5F);
+        if(collector.aspect >= 0)
+        	UtilsFX.drawTag(mc, x + 80, y + 34, EnumTag.get(collector.aspect), 0, 0, this, false, false, (float) (Math.cos(ClientTickHandler.clientTicksElapsed / 20F) + 1F) / 2F + 0.5F);
+	}
+
+	@Override
+	protected void drawGuiContainerForegroundLayer(int i, int j) {
+		if(collector.aspect >= 0 && i > 80 + x && i < 80 + x + 16 && j > 34 + y && j < 34 + y + 16) {
+			EnumTag tag = EnumTag.get(collector.aspect);
+			UtilsFX.drawCustomTooltip(this, itemRenderer, fontRenderer, Arrays.asList(tag.name, tag.meaning), i - x, j - y, EnumChatFormatting.AQUA.ordinal());
+		}
 	}
 }
