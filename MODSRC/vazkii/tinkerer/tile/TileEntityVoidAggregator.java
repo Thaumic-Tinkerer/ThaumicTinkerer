@@ -26,6 +26,13 @@ public class TileEntityVoidAggregator extends TileEntity implements IInventory {
 
 	ItemStack[] inventorySlots = new ItemStack[2];
 
+	public double ticksExisted;
+
+	@Override
+	public void updateEntity() {
+		++ticksExisted;
+	}
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);

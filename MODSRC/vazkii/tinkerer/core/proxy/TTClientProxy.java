@@ -30,6 +30,7 @@ import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileFluxCollector;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
+import vazkii.tinkerer.client.render.tile.RenderTileVoidAggregator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
@@ -43,6 +44,7 @@ import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityFluxCollector;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
+import vazkii.tinkerer.tile.TileEntityVoidAggregator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
 import vazkii.tinkerer.util.helper.MiscHelper;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -71,6 +73,7 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWardChest.class, new RenderTileWardChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimationTablet.class, new RenderTileAnimationTablet());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFluxCollector.class, new RenderTileFluxCollector());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVoidAggregator.class, new RenderTileVoidAggregator());
 	}
 
 	@Override
