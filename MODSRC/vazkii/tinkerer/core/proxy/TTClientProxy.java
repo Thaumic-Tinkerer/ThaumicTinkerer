@@ -23,6 +23,7 @@ import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.ThaumicTinkerer;
+import vazkii.tinkerer.client.render.block.RenderFluxCollector;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
 import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
@@ -93,6 +94,7 @@ public class TTClientProxy extends TTCommonProxy {
 		LibRenderIDs.idFluxCollector = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
+		RenderingRegistry.registerBlockHandler(new RenderFluxCollector());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.fluxDetector.itemID, new RenderItemFluxDetector());
 
