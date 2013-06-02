@@ -84,6 +84,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idDarkGas = loadBlock(LibBlockNames.DARK_GAS, LibBlockIDs.DEFAULT_DARK_GAS);
 		LibBlockIDs.idPhantomStone = loadBlock(LibBlockNames.PHANTOM_STONE, LibBlockIDs.DEFAULT_PHANTOM_STONE);
 		LibBlockIDs.idFluxCollector = loadBlock(LibBlockNames.FLUX_COLLECTOR, LibBlockIDs.DEFAULT_FLUX_COLLECTOR);
+		LibBlockIDs.idVoidAggregator = loadBlock(LibBlockNames.VOID_AGGREGATOR, LibBlockIDs.DEFAULT_VOID_AGGREGATOR);
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);

@@ -37,12 +37,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockFluxCollector extends BlockModContainer {
 
 	Random random;
-	
+
 	public BlockFluxCollector(int par1) {
 		super(par1, Material.iron);
 		setHardness(Block.obsidian.blockHardness);
         setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.55F, 0.9375F);
-        
+
         random = new Random();
 	}
 

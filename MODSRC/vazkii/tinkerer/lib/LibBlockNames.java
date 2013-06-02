@@ -58,6 +58,10 @@ public final class LibBlockNames {
 	public static final String FLUX_COLLECTOR_R = "FLUX_COLLECTOR";
 	public static final String FLUX_COLLECTOR_D = "Flux Condenser";
 
+	public static final String VOID_AGGREGATOR = "voidAggregator";
+	public static final String VOID_AGGREGATOR_R = "VOID_AGGREGATOR";
+	public static final String VOID_AGGREGATOR_D = "Shadow Aggregator";
+
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"Block of Smokey Quartz",
 		"Chiseled Smokey Quartz Block",

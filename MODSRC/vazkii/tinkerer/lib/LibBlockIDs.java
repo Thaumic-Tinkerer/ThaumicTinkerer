@@ -27,6 +27,7 @@ public final class LibBlockIDs {
 	public static final int DEFAULT_DARK_GAS = 2158;
 	public static final int DEFAULT_PHANTOM_STONE = 2159;
 	public static final int DEFAULT_FLUX_COLLECTOR = 2160;
+	public static final int DEFAULT_VOID_AGGREGATOR = 2161;
 
 	public static int idGlowstoneGas;
 	public static int idTransmutator;
@@ -39,4 +40,5 @@ public final class LibBlockIDs {
 	public static int idDarkGas;
 	public static int idPhantomStone;
 	public static int idFluxCollector;
+	public static int idVoidAggregator;
 }
