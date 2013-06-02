@@ -78,8 +78,7 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
 						if(can) {
 							node.flux.reduceAmount(tag, 1);
 							if(worldObj.rand.nextInt(LibFeatures.FLUX_CONDENSER_VIS_CHANCE) == 0)
-								node.level--;
-							AuraManager.addToAuraUpdateList(node);
+								AuraManager.decreaseClosestAura(worldObj, xCoord, yCoord, zCoord, 1);
 
 							if(emptyJar) {
 								jar.itemID = Config.itemJarFilled.itemID;
