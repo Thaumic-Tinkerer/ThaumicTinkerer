@@ -37,6 +37,7 @@ import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
+import vazkii.tinkerer.network.packet.PacketFluxCollectorSync;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
@@ -86,6 +87,7 @@ public class TTClientProxy extends TTCommonProxy {
 		PacketManager.packetHandlers.add(new PacketVerification());
 		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
 		PacketManager.packetHandlers.add(new PacketAnimationTabletSync());
+		PacketManager.packetHandlers.add(new PacketFluxCollectorSync());
 	}
 
 	@Override

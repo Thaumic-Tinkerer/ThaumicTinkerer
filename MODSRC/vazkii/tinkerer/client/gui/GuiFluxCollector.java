@@ -19,6 +19,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 
 import org.lwjgl.opengl.GL11;
 
+import thaumcraft.api.EnumTag;
+import thaumcraft.client.lib.UtilsFX;
+import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.inventory.container.ContainerFluxCollector;
 import vazkii.tinkerer.lib.LibResources;
 import vazkii.tinkerer.tile.TileEntityFluxCollector;
@@ -47,5 +50,6 @@ public class GuiFluxCollector extends GuiContainer {
         mc.renderEngine.bindTexture(LibResources.GUI_FLUX_COLLECTOR);
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
         GL11.glColor3f(1F, 1F, 1F);
+        UtilsFX.drawTag(mc, x + 80, y + 34, EnumTag.get(collector.aspect), 0, 0, this, false, false, (float) (Math.cos(ClientTickHandler.clientTicksElapsed / 20F) + 1F) / 2F + 0.5F);
 	}
 }

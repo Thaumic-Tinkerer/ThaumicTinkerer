@@ -22,4 +22,5 @@ public final class LibNetwork {
 	public static final String SUBCHANNEL_TRANSMUTATOR_SYNC = "transmutatorSync";
 	public static final String SUBCHANNEL_ANIMATION_TABLET_SYNC = "tabletSync";
 	public static final String SUBCHANNEL_ANIMATION_TABLET_BUTTON = "tabletButton";
+	public static final String SUBCHANNEL_FLUX_COLLECTOR_SYNC = "fluxCollectorSync";
 }

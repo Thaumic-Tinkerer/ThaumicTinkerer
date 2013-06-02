@@ -19,18 +19,77 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.api.EnumTag;
+import thaumcraft.api.ObjectTags;
+import thaumcraft.api.aura.AuraNode;
+import thaumcraft.common.Config;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketFluxCollectorSync;
+import vazkii.tinkerer.util.helper.ItemNBTHelper;
+import vazkii.tinkerer.util.helper.MiscHelper;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileEntityFluxCollector extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory {
+
+	private static final String TAG_ASPECT = "aspect";
 
 	ItemStack[] inventorySlots = new ItemStack[2];
 	public double ticksExisted = 0;
 
+	public int aspect = -1;
+
+	@Override
+	public void updateEntity() {
+		if(getStackInSlot(1) != null) {
+			ItemStack stack = getStackInSlot(1);
+			aspect = stack.getItemDamage();
+			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+			setInventorySlotContents(1, null);
+		}
+
+		ItemStack jar = getStackInSlot(0);
+		if(aspect >= 0 && jar != null) {
+			EnumTag tag = EnumTag.get(aspect);
+			AuraNode node = MiscHelper.getClosestNode(worldObj, xCoord, yCoord, zCoord);
+			if(node != null) {
+				ObjectTags flux = node.flux;
+				if(flux != null && flux.getAmount(tag) > 0) {
+					flux.getAmount(tag);
+
+					boolean emptyJar = jar.itemID == Config.blockJar.blockID;
+					boolean can = emptyJar;
+					if(!can) {
+						NBTTagCompound cmp = jar.getTagCompound();
+						int aspect = cmp.getByte("tag");
+						int jarAmount = cmp.getByte("amount");
+
+						can = aspect == this.aspect && jarAmount < 64;
+					}
+
+					if(can) {
+						node.flux.reduceAmount(tag, 1);
+						if(emptyJar) {
+							jar.itemID = Config.itemJarFilled.itemID;
+							ItemNBTHelper.setByte(jar, "tag", (byte) aspect);
+							ItemNBTHelper.setByte(jar, "amount", (byte) 1);
+						} else ItemNBTHelper.setByte(jar, "amount", (byte) (ItemNBTHelper.getByte(jar, "amount", (byte) 0) + 1));
+					}
+				}
+			}
+		}
+
+		++ticksExisted;
+	}
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
+
+		aspect = par1NBTTagCompound.getInteger(TAG_ASPECT);
 
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
@@ -45,6 +104,8 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
 	@Override
     public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
+
+        par1NBTTagCompound.setInteger(TAG_ASPECT, aspect);
 
     	NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
@@ -132,10 +193,10 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
 		// NO-OP
 	}
 
-	/*@Override
+	@Override
 	public Packet getDescriptionPacket() {
-		return PacketManager.generatePacket(new PacketTransmutatorSync(this));
-	} TODO */
+		return PacketManager.generatePacket(new PacketFluxCollectorSync(this));
+	}
 
 	@Override
 	public boolean isStackValidForSlot(int i, ItemStack itemstack) {

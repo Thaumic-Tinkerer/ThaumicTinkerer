@@ -27,7 +27,7 @@ public class SlotJar extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.itemID == Config.blockJar.blockID;
+		return par1ItemStack.itemID == Config.blockJar.blockID || par1ItemStack.itemID == Config.itemJarFilled.itemID;
 	}
 
 }
