@@ -99,7 +99,7 @@ public class TileEntityFluxCollector extends TileEntity implements ISidedInvento
 		super.readFromNBT(par1NBTTagCompound);
 
 		aspect = par1NBTTagCompound.getInteger(TAG_ASPECT);
-		ticksExisted = par1NBTTagCompound.getInteger(TAG_TICKS_EXISTED);
+		ticksExisted = par1NBTTagCompound.getDouble(TAG_TICKS_EXISTED);
 
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
