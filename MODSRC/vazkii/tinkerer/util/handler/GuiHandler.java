@@ -18,18 +18,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.gui.GuiAnimationTablet;
-import vazkii.tinkerer.client.gui.GuiFluxCollector;
 import vazkii.tinkerer.client.gui.GuiTransmutator;
-import vazkii.tinkerer.client.gui.GuiVoidAggregator;
 import vazkii.tinkerer.inventory.container.ContainerAnimationTablet;
-import vazkii.tinkerer.inventory.container.ContainerFluxCollector;
 import vazkii.tinkerer.inventory.container.ContainerTransmutator;
-import vazkii.tinkerer.inventory.container.ContainerVoidAggregator;
 import vazkii.tinkerer.lib.LibGuiIDs;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
-import vazkii.tinkerer.tile.TileEntityFluxCollector;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
-import vazkii.tinkerer.tile.TileEntityVoidAggregator;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public final class GuiHandler implements IGuiHandler {
@@ -43,12 +37,6 @@ public final class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.ID_ANIMATION_TABLET :
 				return new ContainerAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
-
-			case LibGuiIDs.ID_FLUX_COLLECTOR :
-				return new ContainerFluxCollector((TileEntityFluxCollector) tile, player.inventory);
-
-			case LibGuiIDs.ID_VOID_AGGREGATOR :
-				return new ContainerVoidAggregator((TileEntityVoidAggregator) tile, player.inventory);
 		}
 		return null;
 	}
@@ -62,12 +50,6 @@ public final class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.ID_ANIMATION_TABLET :
 				return new GuiAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
-
-			case LibGuiIDs.ID_FLUX_COLLECTOR :
-				return new GuiFluxCollector((TileEntityFluxCollector) tile, player.inventory);
-
-			case LibGuiIDs.ID_VOID_AGGREGATOR :
-				return new GuiVoidAggregator((TileEntityVoidAggregator) tile, player.inventory);
 		}
 		return null;
 	}

@@ -16,21 +16,16 @@ package vazkii.tinkerer.core.proxy;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.ThaumicTinkerer;
-import vazkii.tinkerer.client.render.block.RenderFluxCollector;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
 import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
-import vazkii.tinkerer.client.render.tile.RenderTileFluxCollector;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
-import vazkii.tinkerer.client.render.tile.RenderTileVoidAggregator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
@@ -38,13 +33,10 @@ import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
-import vazkii.tinkerer.network.packet.PacketFluxCollectorSync;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
-import vazkii.tinkerer.tile.TileEntityFluxCollector;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
-import vazkii.tinkerer.tile.TileEntityVoidAggregator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
 import vazkii.tinkerer.util.helper.MiscHelper;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -53,10 +45,6 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class TTClientProxy extends TTCommonProxy {
-
-	private static final String VOID_RARITY_NAME = "Void";
-
-	public static EnumRarity rarityVoid;
 
 	@Override
 	public void initTickHandlers() {
@@ -72,8 +60,6 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTransmutator.class, new RenderTileTransmutator());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWardChest.class, new RenderTileWardChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimationTablet.class, new RenderTileAnimationTablet());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFluxCollector.class, new RenderTileFluxCollector());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVoidAggregator.class, new RenderTileVoidAggregator());
 	}
 
 	@Override
@@ -90,20 +76,15 @@ public class TTClientProxy extends TTCommonProxy {
 		PacketManager.packetHandlers.add(new PacketVerification());
 		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
 		PacketManager.packetHandlers.add(new PacketAnimationTabletSync());
-		PacketManager.packetHandlers.add(new PacketFluxCollectorSync());
 	}
 
 	@Override
 	public void initRenders() {
 		LibRenderIDs.idWardChest = RenderingRegistry.getNextAvailableRenderId();
-		LibRenderIDs.idFluxCollector = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
-		RenderingRegistry.registerBlockHandler(new RenderFluxCollector());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.fluxDetector.itemID, new RenderItemFluxDetector());
-
-		rarityVoid = EnumHelperClient.addRarity(VOID_RARITY_NAME, 5, VOID_RARITY_NAME);
 	}
 
 	@Override

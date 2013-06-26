@@ -67,11 +67,6 @@ public final class ConfigurationHandler {
 		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.DEFAULT_CLEANSING_TALISMAN);
 		LibItemIDs.idDummyEnchantbook = loadItem(LibItemNames.DUMMY_ENCHANTBOOK, LibItemIDs.DEFAULT_DUMMY_ENCHANTBOOK);
 		LibItemIDs.idResearchShareBook = loadItem(LibItemNames.RESEARCH_SHARE_BOOK, LibItemIDs.DEFAULT_RESEARCH_SHARE_BOOK);
-		LibItemIDs.idVoidCraftingMaterial = loadItem(LibItemNames.VOID_CRAFTING_MATERIAL, LibItemIDs.DEFAULT_VOID_CRAFTING_MATERIAL);
-		LibItemIDs.idVoidHelm = loadItem(LibItemNames.VOID_HELM, LibItemIDs.DEFAULT_VOID_HELM);
-		LibItemIDs.idVoidChest = loadItem(LibItemNames.VOID_CHEST, LibItemIDs.DEFAULT_VOID_CHEST);
-		LibItemIDs.idVoidLegs = loadItem(LibItemNames.VOID_LEGS, LibItemIDs.DEFAULT_VOID_LEGS);
-		LibItemIDs.idVoidBoots = loadItem(LibItemNames.VOID_BOOTS, LibItemIDs.DEFAULT_VOID_BOOTS);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
@@ -83,8 +78,6 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idAnimationTablet = loadBlock(LibBlockNames.ANIMATION_TABLET, LibBlockIDs.DEFAULT_ANIMATION_TABLET);
 		LibBlockIDs.idDarkGas = loadBlock(LibBlockNames.DARK_GAS, LibBlockIDs.DEFAULT_DARK_GAS);
 		LibBlockIDs.idPhantomStone = loadBlock(LibBlockNames.PHANTOM_STONE, LibBlockIDs.DEFAULT_PHANTOM_STONE);
-		LibBlockIDs.idFluxCollector = loadBlock(LibBlockNames.FLUX_COLLECTOR, LibBlockIDs.DEFAULT_FLUX_COLLECTOR);
-		LibBlockIDs.idVoidAggregator = loadBlock(LibBlockNames.VOID_AGGREGATOR, LibBlockIDs.DEFAULT_VOID_AGGREGATOR);
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);

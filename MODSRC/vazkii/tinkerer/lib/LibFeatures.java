@@ -40,7 +40,4 @@ public final class LibFeatures {
 	public static final int GOLIATH_LEGS_MAX_SAFETY = 5;
 
 	public static final int CLEANSING_TALISMAN_VIS = 10;
-
-	public static final int FLUX_CONDENSER_INTERVAL = 1200;
-	public static final int FLUX_CONDENSER_VIS_CHANCE = 8; // The chance to use 1 vis from the aura
 }
