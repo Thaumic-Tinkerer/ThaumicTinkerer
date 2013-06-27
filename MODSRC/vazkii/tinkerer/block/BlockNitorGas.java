@@ -49,7 +49,7 @@ public class BlockNitorGas extends BlockGas {
 						break;
 					}
 				
-				if(has)
+				if(!has)
 					par1World.setBlockToAir(par2, par3, par4);
 			}
 			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
