@@ -25,6 +25,7 @@ import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibEnchantmentNames;
 import vazkii.tinkerer.lib.LibItemNames;
+import vazkii.tinkerer.util.handler.ConfigurationHandler;
 
 public final class ModResearchItems {
 
@@ -73,10 +74,12 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.WOOD, 1).add(EnumTag.DARK, 1);
 		nametag = new ResearchItem(LibItemNames.NAMETAG_R, tags, 4, 18, ModItems.nametag).setParents(Config.researchGolemancy).registerResearchItem();
-
-		tags = new ObjectTags().add(EnumTag.FLUX, 12).add(EnumTag.EXCHANGE, 20);
-		transmutator = new ResearchItem(LibBlockNames.TRANSMUTATOR_R, tags, -5, 24, ModBlocks.transmutator).setParents(Config.researchCrystalCore).setParentsHidden(Config.researchWandTrade).registerResearchItem();
-
+		
+		if(ConfigurationHandler.enableTransmutator) {
+			tags = new ObjectTags().add(EnumTag.FLUX, 12).add(EnumTag.EXCHANGE, 20);
+			transmutator = new ResearchItem(LibBlockNames.TRANSMUTATOR_R, tags, -5, 24, ModBlocks.transmutator).setParents(Config.researchCrystalCore).setParentsHidden(Config.researchWandTrade).registerResearchItem();
+		}
+		
 		tags = new ObjectTags().add(EnumTag.EVIL, 8).add(EnumTag.TRAP, 16).add(EnumTag.KNOWLEDGE, 12);
 		xpTalisman = new ResearchItem(LibItemNames.XP_TALISMAN_R, tags, -4, 14, ModItems.xpTalisman).setParents(Config.researchJarBrain).setHidden().registerResearchItem();
 
