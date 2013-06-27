@@ -39,6 +39,7 @@ public final class ModBlocks {
 	public static Block animationTablet;
 	public static Block darkGas;
 	public static Block phantomStone;
+	public static Block nitorGas;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
@@ -51,6 +52,7 @@ public final class ModBlocks {
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 		darkGas = new BlockDarkGas(LibBlockIDs.idDarkGas).setUnlocalizedName(LibBlockNames.DARK_GAS);
 		phantomStone = new BlockPhantomStone(LibBlockIDs.idPhantomStone).setUnlocalizedName(LibBlockNames.PHANTOM_STONE);
+		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
 
 		registerBlocks();
 		nameBlocks();
@@ -67,6 +69,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerBlock(darkGas, LibBlockNames.DARK_GAS);
 		GameRegistry.registerBlock(phantomStone, ItemPhantomStoneBlock.class, LibBlockNames.PHANTOM_STONE);
+		GameRegistry.registerBlock(nitorGas, LibBlockNames.NITOR_GAS);
 	}
 
 	private static void nameBlocks() {

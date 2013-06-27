@@ -68,7 +68,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idDummyEnchantbook = loadItem(LibItemNames.DUMMY_ENCHANTBOOK, LibItemIDs.DEFAULT_DUMMY_ENCHANTBOOK);
 		LibItemIDs.idResearchShareBook = loadItem(LibItemNames.RESEARCH_SHARE_BOOK, LibItemIDs.DEFAULT_RESEARCH_SHARE_BOOK);
 		LibItemIDs.idBrightNitor = loadItem(LibItemNames.BRIGHT_NITOR, LibItemIDs.DEFAULT_BRIGHT_NITOR);
-		
+
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);
@@ -80,7 +80,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idDarkGas = loadBlock(LibBlockNames.DARK_GAS, LibBlockIDs.DEFAULT_DARK_GAS);
 		LibBlockIDs.idPhantomStone = loadBlock(LibBlockNames.PHANTOM_STONE, LibBlockIDs.DEFAULT_PHANTOM_STONE);
 		LibBlockIDs.idNitorGas = loadBlock(LibBlockNames.NITOR_GAS, LibBlockIDs.DEFAULT_NITOR_GAS);
-		
+
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);
 		LibPotions.idPossessed = loadPotion(LibPotions.NAME_POSSESSED, LibPotions.DEFAULT_ID_POSSESSED);
