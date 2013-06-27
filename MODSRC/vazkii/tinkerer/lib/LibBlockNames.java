@@ -54,6 +54,8 @@ public final class LibBlockNames {
 	public static final String PHANTOM_STONE_R = "PHANTOM_STONE";
 	public static final String PHANTOM_STONE_D = "Phantom Stone Block";
 
+	public static final String NITOR_GAS = "nitorGas";
+	
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"Block of Smokey Quartz",
 		"Chiseled Smokey Quartz Block",

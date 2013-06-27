@@ -25,6 +25,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_CLEANSING_TALISMAN = 21170;
 	public static final int DEFAULT_DUMMY_ENCHANTBOOK = 21171;
 	public static final int DEFAULT_RESEARCH_SHARE_BOOK = 21172;
+	public static final int DEFAULT_BRIGHT_NITOR = 21173;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -49,4 +50,5 @@ public final class LibItemIDs {
 	public static int idCleansingTalisman;
 	public static int idDummyEnchantbook;
 	public static int idResearchShareBook;
+	public static int idBrightNitor;
 }

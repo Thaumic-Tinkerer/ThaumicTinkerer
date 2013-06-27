@@ -50,7 +50,8 @@ public final class ModItems {
 	public static Item fluxDetector;
 	public static Item dummyEnchantbook;
 	public static Item researchShareBook;
-
+	public static Item brightNitor;
+	
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
 		glowstoneGas = new ItemGas(LibItemIDs.idGlowstoneGas, ModBlocks.glowstoneGas).setUnlocalizedName(LibItemNames.GLOWSTONE_GAS);
@@ -75,7 +76,8 @@ public final class ModItems {
 		fluxDetector = new ItemFluxDetector(LibItemIDs.idFluxDetector).setUnlocalizedName(LibItemNames.FLUX_DETECTOR);
 		dummyEnchantbook = new ItemDummyEnchantbook(LibItemIDs.idDummyEnchantbook).setUnlocalizedName(LibItemNames.DUMMY_ENCHANTBOOK);
 		researchShareBook = new ItemShareTome(LibItemIDs.idResearchShareBook).setUnlocalizedName(LibItemNames.RESEARCH_SHARE_BOOK);
-
+		brightNitor = new ItemBrightNitor(LibItemIDs.idBrightNitor).setUnlocalizedName(LibItemNames.BRIGHT_NITOR);
+		
 		nameItems();
 	}
 
@@ -102,6 +104,7 @@ public final class ModItems {
 		LanguageRegistry.addName(cleansingTalisman, LibItemNames.CLEANSING_TALISMAN_D);
 		LanguageRegistry.addName(fluxDetector, LibItemNames.FLUX_DETECTOR_D);
 		LanguageRegistry.addName(researchShareBook, LibItemNames.RESEARCH_SHARE_BOOK_D);
+		LanguageRegistry.addName(brightNitor, LibItemNames.BRIGHT_NITOR_D);
 	}
 
 	public static void applyObjectTags() {
