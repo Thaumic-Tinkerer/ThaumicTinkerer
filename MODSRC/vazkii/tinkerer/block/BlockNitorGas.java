@@ -14,7 +14,10 @@
  */
 package vazkii.tinkerer.block;
 
+import java.util.List;
 import java.util.Random;
+
+import vazkii.tinkerer.item.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
@@ -35,8 +38,20 @@ public class BlockNitorGas extends BlockGas {
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(!par1World.isRemote) {
-			if(par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1, par4 + 1)).isEmpty())
+			List<EntityPlayer> players = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1, par4 + 1));
+			if(players.isEmpty())
 				par1World.setBlockToAir(par2, par3, par4);
+			else {
+				boolean has = false;
+				for(EntityPlayer player : players)
+					if(player.inventory.hasItem(ModItems.brightNitor.itemID)) {
+						has = true;
+						break;
+					}
+				
+				if(has)
+					par1World.setBlockToAir(par2, par3, par4);
+			}
 			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
 		}
 	}
