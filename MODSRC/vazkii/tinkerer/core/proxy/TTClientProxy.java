@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.ThaumicTinkerer;
+import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
 import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
@@ -84,8 +85,10 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	public void initRenders() {
 		LibRenderIDs.idWardChest = RenderingRegistry.getNextAvailableRenderId();
-
+		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
+		
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
+		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.fluxDetector.itemID, new RenderItemFluxDetector());
 	}

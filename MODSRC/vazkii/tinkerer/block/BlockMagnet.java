@@ -18,6 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.tile.TileEntityMagnet;
 
 public class BlockMagnet extends BlockModContainer {
@@ -41,7 +42,7 @@ public class BlockMagnet extends BlockModContainer {
 	
 	@Override
 	public int getRenderType() {
-		return -1;
+		return LibRenderIDs.idMagnet;
 	}
 	
 	@Override

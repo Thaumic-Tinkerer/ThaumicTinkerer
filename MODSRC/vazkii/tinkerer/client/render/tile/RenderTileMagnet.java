@@ -14,14 +14,19 @@
  */
 package vazkii.tinkerer.client.render.tile;
 
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import thaumcraft.client.lib.UtilsFX;
+import thaumcraft.common.Config;
+import thaumcraft.common.items.armor.ItemHoverHarness;
 import vazkii.tinkerer.client.model.ModelMagnet;
-import vazkii.tinkerer.lib.LibMisc;
+import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.lib.LibResources;
 
 public class RenderTileMagnet extends TileEntitySpecialRenderer {
@@ -31,12 +36,28 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
         GL11.glPushMatrix();
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
-		bindTextureByName(tileentity.getBlockMetadata() == 0 ? LibResources.MODEL_MAGNET_S : LibResources.MODEL_MAGNET_N);
+		boolean blue = tileentity.worldObj == null || tileentity.getBlockMetadata() == 0;
+        bindTextureByName(blue ? LibResources.MODEL_MAGNET_S : LibResources.MODEL_MAGNET_N);
         GL11.glTranslatef(0.5F, 1.5F, 0.5F);
         GL11.glScalef(1F, -1F, -1F);
         model.render();
+        
+        GL11.glRotatef(90F, 1F, 0F, 0F);
+        GL11.glTranslatef(0F, 0F, -0.6F);
+        Icon icon = ((ItemHoverHarness) Config.itemHoverHarness).iconLightningRing;
+        for(int i = 0; i < 3; i++) {
+        	for(int j = 0; j < 2; j++) {
+                GL11.glScalef(1F, -1F, 1F);
+                UtilsFX.renderQuadCenteredFromIcon(false, icon, 1.1F, blue ? 0F : 1F, 0F, blue ? 1F : 0F, 225, GL11.GL_ONE_MINUS_SRC_ALPHA, 0.9F);
+        	}
+        	
+            GL11.glTranslated(0, 0, -(Math.cos(ClientTickHandler.clientTicksElapsed / 10F) + 1) * 0.09 - 0.1);
+        }
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+        
         GL11.glPopMatrix();
 	}
 

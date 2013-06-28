@@ -17,5 +17,6 @@ package vazkii.tinkerer.lib;
 public final class LibRenderIDs {
 
 	public static int idWardChest;
+	public static int idMagnet;
 
 }
