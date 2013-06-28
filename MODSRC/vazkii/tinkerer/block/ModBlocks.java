@@ -40,6 +40,7 @@ public final class ModBlocks {
 	public static Block darkGas;
 	public static Block phantomStone;
 	public static Block nitorGas;
+	public static Block magnet;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
@@ -53,7 +54,8 @@ public final class ModBlocks {
 		darkGas = new BlockDarkGas(LibBlockIDs.idDarkGas).setUnlocalizedName(LibBlockNames.DARK_GAS);
 		phantomStone = new BlockPhantomStone(LibBlockIDs.idPhantomStone).setUnlocalizedName(LibBlockNames.PHANTOM_STONE);
 		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
-
+		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
+		
 		registerBlocks();
 		nameBlocks();
 	}
@@ -70,6 +72,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkGas, LibBlockNames.DARK_GAS);
 		GameRegistry.registerBlock(phantomStone, ItemPhantomStoneBlock.class, LibBlockNames.PHANTOM_STONE);
 		GameRegistry.registerBlock(nitorGas, LibBlockNames.NITOR_GAS);
+		GameRegistry.registerBlock(magnet, LibBlockNames.MAGNET);
 	}
 
 	private static void nameBlocks() {
@@ -78,6 +81,7 @@ public final class ModBlocks {
 		LanguageRegistry.addName(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS_D);
 		LanguageRegistry.addName(animationTablet, LibBlockNames.ANIMATION_TABLET_D);
 		LanguageRegistry.addName(phantomStone, LibBlockNames.PHANTOM_STONE_D);
+		LanguageRegistry.addName(magnet, LibBlockNames.MAGNET_D);
 	}
 
 	public static void applyObjectTags() {
