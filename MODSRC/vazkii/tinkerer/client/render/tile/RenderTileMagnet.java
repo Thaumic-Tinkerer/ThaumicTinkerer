@@ -33,7 +33,7 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
         GL11.glPushMatrix();
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
-		bindTextureByName(tileentity.getBlockMetadata() == 0 ? LibResources.MODEL_MAGNET_N : LibResources.MODEL_MAGNET_S);
+		bindTextureByName(tileentity.getBlockMetadata() == 0 ? LibResources.MODEL_MAGNET_S : LibResources.MODEL_MAGNET_N);
         GL11.glTranslatef(0.5F, 1.5F, 0.5F);
         GL11.glScalef(1F, -1F, -1F);
         model.render();

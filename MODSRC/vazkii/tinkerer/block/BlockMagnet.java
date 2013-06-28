@@ -15,6 +15,7 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.tile.TileEntityMagnet;
@@ -27,6 +28,15 @@ public class BlockMagnet extends BlockModContainer {
         setHardness(1.7F);
         setResistance(1F);
         setStepSound(soundWoodFootstep);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		int meta = par1World.getBlockMetadata(par2, par3, par4);
+		par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 0 ? 1 : 0, 2);
+		if(!par1World.isRemote)
+			par1World.playSoundEffect(par2, par3, par4, "random.click", 1F, 0.5F);
+		return true;
 	}
 	
 	@Override
