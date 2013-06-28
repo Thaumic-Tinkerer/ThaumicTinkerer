@@ -81,7 +81,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idPhantomStone = loadBlock(LibBlockNames.PHANTOM_STONE, LibBlockIDs.DEFAULT_PHANTOM_STONE);
 		LibBlockIDs.idNitorGas = loadBlock(LibBlockNames.NITOR_GAS, LibBlockIDs.DEFAULT_NITOR_GAS);
 		LibBlockIDs.idMagnet = loadBlock(LibBlockNames.MAGNET, LibBlockIDs.DEFAULT_MAGNET);
-		
+
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);
 		LibPotions.idPossessed = loadPotion(LibPotions.NAME_POSSESSED, LibPotions.DEFAULT_ID_POSSESSED);

@@ -17,11 +17,10 @@ package vazkii.tinkerer.block;
 import java.util.List;
 import java.util.Random;
 
-import vazkii.tinkerer.item.ModItems;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import vazkii.tinkerer.item.ModItems;
 
 public class BlockNitorGas extends BlockGas {
 
@@ -48,7 +47,7 @@ public class BlockNitorGas extends BlockGas {
 						has = true;
 						break;
 					}
-				
+
 				if(!has)
 					par1World.setBlockToAir(par2, par3, par4);
 			}

@@ -86,7 +86,7 @@ public class TTClientProxy extends TTCommonProxy {
 	public void initRenders() {
 		LibRenderIDs.idWardChest = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
-		
+
 		RenderingRegistry.registerBlockHandler(new RenderWardChest());
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 

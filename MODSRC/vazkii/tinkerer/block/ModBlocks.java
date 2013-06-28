@@ -55,7 +55,7 @@ public final class ModBlocks {
 		phantomStone = new BlockPhantomStone(LibBlockIDs.idPhantomStone).setUnlocalizedName(LibBlockNames.PHANTOM_STONE);
 		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
 		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
-		
+
 		registerBlocks();
 		nameBlocks();
 	}
