@@ -14,10 +14,12 @@
  */
 package vazkii.tinkerer.block;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import vazkii.tinkerer.tile.TileEntityMagnet;
 
-public class BlockMagnet extends BlockMod/*Container*/ {
+public class BlockMagnet extends BlockModContainer {
 
 	public BlockMagnet(int par1) {
 		super(par1, Material.iron);
@@ -40,5 +42,10 @@ public class BlockMagnet extends BlockMod/*Container*/ {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityMagnet();
 	}
 }
