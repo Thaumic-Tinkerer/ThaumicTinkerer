@@ -55,6 +55,7 @@ public final class ModResearchItems {
 	public static ResearchItem fluxDetector;
 	public static ResearchItem lostEnchants;
 	public static ResearchItem phantomBlocks;
+	public static ResearchItem brightNitor;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -136,5 +137,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.SPIRIT, 16).add(EnumTag.CRYSTAL, 12).add(EnumTag.TRAP, 6).add(EnumTag.ROCK, 12).add(EnumTag.ELDRITCH, 4);
 		phantomBlocks = new ResearchItem(LibBlockNames.PHANTOM_STONE_R, tags, 2, 13, new ItemStack(ModBlocks.phantomStone, 1, 15)).setHidden().setParents(Config.researchArcaneDoor).registerResearchItem();
+	
+		tags = new ObjectTags().add(EnumTag.FIRE, 12).add(EnumTag.LIGHT, 24).add(EnumTag.POWER, 30).add(EnumTag.MOTION, 12).add(EnumTag.DESTRUCTION, 6).add(EnumTag.VISION, 16);
+		brightNitor = new ResearchItem(LibItemNames.BRIGHT_NITOR_R, tags, 2, 27, new ItemStack(ModItems.brightNitor)).setHidden().setParents(Config.researchTTOE).setParentsHidden(glowstoneGas).registerResearchItem();
 	}
 }

@@ -310,4 +310,15 @@ These blocks are based on the design you had put together for Warded Stone Block
 However, there's a particularity to these. They have no physical boundaries for the player who placed them, allowing them to walk trough these blocks as if they didn't exist. For everything else, they act as normal blocks.</page>
 <page type = "arcanecrafting">PHANTOM_STONE</page>
 </project>
+
+<!-- ======================================== Hyperenergetic Nitor /-->
+<project id = "BRIGHT_NITOR" version = "1">
+<name>Hyperenergetic Nitor</name>
+<popupText>[TT] Portable Flame</popupText>
+<longText>Breaking the fourth wall reveals an oddness of everything that's bright: it's not bright unless it's static. You are thinking, after fixing the fourth wall, about a way you can put an end to that.</longText>
+<page type = "text">After shattering some walls on the fourth quadrant, you managed to create a light that will shine even if it's being carried by a player by energizing the everburning flame that is Nitor with sources of energy, like Alumentum.
+
+The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.</page>
+<page type = "infusioncrafting">BRIGHT_NITOR</page>
+</project>
 </research>

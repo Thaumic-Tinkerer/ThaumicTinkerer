@@ -197,5 +197,12 @@ public final class ModInfusionRecipes {
 				'I', new ItemStack(Item.blazeRod),
 				'N', new ItemStack(Config.itemResearchNotes),
 				'B', new ItemStack(Item.book));
+		
+		tags = new ObjectTags().add(EnumTag.FIRE, 16).add(EnumTag.LIGHT, 32).add(EnumTag.POWER, 20);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.BRIGHT_NITOR_R, LibItemNames.BRIGHT_NITOR_R, 250, tags, new ItemStack(ModItems.brightNitor),
+				"GNG", "NAN", "GNG",
+				'A', new ItemStack(Config.itemResource, 1, 0),
+				'G', new ItemStack(ModItems.glowstoneGas),
+				'N', new ItemStack(Config.itemResource, 1, 1));
 	}
 }
