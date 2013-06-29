@@ -49,7 +49,7 @@ public class TileEntityMagnet extends TileEntity {
     			double y2 = item.posY;
     			double z2 = item.posZ;
 
-    			float distanceSqrd = blue ? ((float) ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2))) : 1.1F;
+    			float distanceSqrd = blue ? (float) ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2)) : 1.1F;
 
     			if(distanceSqrd > 1) {
         			setEntityMotionFromVector(item, x1, y1, z1, speedMod * 0.25F);

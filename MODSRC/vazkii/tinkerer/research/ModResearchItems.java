@@ -141,7 +141,7 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.FIRE, 12).add(EnumTag.LIGHT, 24).add(EnumTag.POWER, 30).add(EnumTag.MOTION, 12).add(EnumTag.DESTRUCTION, 6).add(EnumTag.VISION, 16);
 		brightNitor = new ResearchItem(LibItemNames.BRIGHT_NITOR_R, tags, 2, 27, new ItemStack(ModItems.brightNitor)).setHidden().setParents(Config.researchTTOE).setParentsHidden(glowstoneGas).registerResearchItem();
-	
+
 		tags = new ObjectTags().add(EnumTag.POWER, 6).add(EnumTag.CONTROL, 12).add(EnumTag.WIND, 6).add(EnumTag.METAL, 5).add(EnumTag.MECHANISM, 16);
 		magnet = new ResearchItem(LibBlockNames.MAGNET_R, tags, -4, 27, new ItemStack(ModBlocks.magnet)).setHidden().setParents(Config.researchHoverHarness).registerResearchItem();
 	}

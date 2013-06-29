@@ -102,4 +102,7 @@ public final class LibItemNames {
 	public static final String BRIGHT_NITOR = "brightNitor";
 	public static final String BRIGHT_NITOR_R = "BRIGHT_NITOR";
 	public static final String BRIGHT_NITOR_D = "Hyperenergetic Nitor";
+
+	public static final String RUNE = "rune";
+	public static final String RUNE_D = "Rune ";
 }

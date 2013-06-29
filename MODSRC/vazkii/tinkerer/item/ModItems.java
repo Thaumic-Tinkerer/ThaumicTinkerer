@@ -51,6 +51,7 @@ public final class ModItems {
 	public static Item dummyEnchantbook;
 	public static Item researchShareBook;
 	public static Item brightNitor;
+	public static Item rune;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -77,6 +78,7 @@ public final class ModItems {
 		dummyEnchantbook = new ItemDummyEnchantbook(LibItemIDs.idDummyEnchantbook).setUnlocalizedName(LibItemNames.DUMMY_ENCHANTBOOK);
 		researchShareBook = new ItemShareTome(LibItemIDs.idResearchShareBook).setUnlocalizedName(LibItemNames.RESEARCH_SHARE_BOOK);
 		brightNitor = new ItemBrightNitor(LibItemIDs.idBrightNitor).setUnlocalizedName(LibItemNames.BRIGHT_NITOR);
+		rune = new ItemRune(LibItemIDs.idRune).setUnlocalizedName(LibItemNames.RUNE);
 
 		nameItems();
 	}
@@ -146,5 +148,10 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.HEAL, 16).add(EnumTag.KNOWLEDGE, 18).add(EnumTag.WATER, 6).add(EnumTag.MAGIC, 10).add(EnumTag.TOOL, 12);
 		ThaumcraftApi.registerObjectTag(cleansingTalisman.itemID, LibMisc.TAG_META_WILDCARD, tags);
+
+		for(EnumTag tag : EnumTag.class.getEnumConstants()) {
+			tags = new ObjectTags().add(tag, 1);
+			ThaumcraftApi.registerObjectTag(rune.itemID, tag.id, tags);
+		}
 	}
 }
