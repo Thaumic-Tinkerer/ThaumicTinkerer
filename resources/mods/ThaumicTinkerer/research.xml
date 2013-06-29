@@ -321,4 +321,15 @@ However, there's a particularity to these. They have no physical boundaries for 
 The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.</page>
 <page type = "infusioncrafting">BRIGHT_NITOR</page>
 </project>
+
+<!-- ======================================== Thaumostatic Magnetizer /-->
+<project id = "MAGNET" version = "1">
+<name>Thaumostatic Magnetizer</name>
+<popupText>[TT] How do they work?</popupText>
+<longText>By studying the thaumostatic field to create the Thaumostatic Harness, you have acquired important knowledge in the area of moving matter in space, the question here is "magnets, how do they work?".</longText>
+<page type = "text">With the knowledge of the thaumostatic field you got from creating the Thaumostatic Harness, you made something, a bit less impressive, admittedly, that may prove useful.
+
+This block acts as a magnet, it's state can be changed by right clicking it. While in south (blue) mode, it'll pull any nearby items towards it. While in north (red) mode, it'll do the opposite. Furthermore, the range of this attraction, or repulsion, is determined by the strength of the redstone signal applied to it.</page>
+<page type = "infusioncrafting">MAGNET</page>
+</project>
 </research>

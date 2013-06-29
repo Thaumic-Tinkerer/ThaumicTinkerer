@@ -204,5 +204,15 @@ public final class ModInfusionRecipes {
 				'A', new ItemStack(Config.itemResource, 1, 0),
 				'G', new ItemStack(ModItems.glowstoneGas),
 				'N', new ItemStack(Config.itemResource, 1, 1));
+		
+		tags = new ObjectTags().add(EnumTag.POWER, 12).add(EnumTag.METAL, 16).add(EnumTag.CONTROL, 6);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.MAGNET_R, LibBlockNames.MAGNET_R, 100, tags, new ItemStack(ModBlocks.magnet),
+				" I ", "SIs", "LWR",
+				'I', new ItemStack(Item.ingotIron),
+				's', new ItemStack(Config.itemShard, 1, 3),
+				'S', new ItemStack(Config.itemShard),
+				'W', new ItemStack(Config.blockWooden),
+				'L', new ItemStack(Item.dyePowder, 1, 4),
+				'R', new ItemStack(Item.redstone));
 	}
 }
