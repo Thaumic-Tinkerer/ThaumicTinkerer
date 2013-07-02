@@ -48,7 +48,10 @@ public class SoulHeartHandler {
 	
 	@ForgeSubscribe
 	public static void onPlayerDamage(LivingHurtEvent event) {
-		// TODO
+		if(event.entityLiving instanceof EntityPlayer && event.ammount > 0) {
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			event.ammount = removeHP(player, event.ammount);
+		}
 	}
 	
 	public static boolean addHP(EntityPlayer player, int hp) {

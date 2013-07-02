@@ -21,10 +21,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import thaumcraft.api.EnumTag;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.lib.LibItemNames;
+import vazkii.tinkerer.util.handler.SoulHeartHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -85,5 +88,15 @@ public class ItemRune extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
+	}
+	
+	@Override // TODO TEMPORARY DEBUG!
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		if(par3EntityPlayer.isSneaking())
+			par3EntityPlayer.attackEntityFrom(DamageSource.causeIndirectMagicDamage(par3EntityPlayer, par3EntityPlayer), 1);
+		else SoulHeartHandler.addHP(par3EntityPlayer, 1);
+		SoulHeartHandler.updateClient(par3EntityPlayer);
+		
+		return par1ItemStack;
 	}
 }
