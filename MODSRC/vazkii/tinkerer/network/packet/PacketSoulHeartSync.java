@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [2 Jul 2013, 17:22:14 (GMT)]
  */
 package vazkii.tinkerer.network.packet;
@@ -32,13 +32,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PacketSoulHeartSync  extends ModPacket {
 
 	int sync;
-	
+
 	public PacketSoulHeartSync() { }
-	
+
 	public PacketSoulHeartSync(int sync) {
 		this.sync = sync;
 	}
-	
+
 	@Override
 	public ByteArrayOutputStream asOutputStream() throws IOException {
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -56,9 +56,9 @@ public class PacketSoulHeartSync  extends ModPacket {
 			DataInputStream inputStream = new DataInputStream(stream);
 			skipSubchannel(inputStream);
 			int hp = inputStream.readInt();
-			
+
 			SoulHeartHandler.clientPlayerHP = hp;
-			
+
 			return true;
 		}
 		return false;

@@ -89,14 +89,17 @@ public class ItemRune extends ItemMod {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}
-	
+
 	@Override // TODO TEMPORARY DEBUG!
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking())
-			par3EntityPlayer.attackEntityFrom(DamageSource.causeIndirectMagicDamage(par3EntityPlayer, par3EntityPlayer), 1);
-		else SoulHeartHandler.addHP(par3EntityPlayer, 1);
-		SoulHeartHandler.updateClient(par3EntityPlayer);
-		
+		if(!par2World.isRemote) {
+			if(par3EntityPlayer.isSneaking())
+				par3EntityPlayer.attackEntityFrom(DamageSource.causeIndirectMagicDamage(par3EntityPlayer, par3EntityPlayer), 1);
+			else SoulHeartHandler.addHP(par3EntityPlayer, 1);
+			SoulHeartHandler.updateClient(par3EntityPlayer);
+		}
+
+
 		return par1ItemStack;
 	}
 }
