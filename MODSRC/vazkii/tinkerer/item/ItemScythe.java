@@ -1,25 +1,27 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [2 Jul 2013, 19:46:26 (GMT)]
  */
 package vazkii.tinkerer.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -31,6 +33,8 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.client.util.helper.IconHelper;
 import vazkii.tinkerer.util.helper.ModCreativeTab;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemScythe extends ItemSword implements IVisRepairable {
 
@@ -38,7 +42,7 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 		super(par1, ThaumcraftApi.toolMatThaumium);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -50,17 +54,17 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 		 if (AuraManager.decreaseClosestAura(e.worldObj, e.posX, e.posY, e.posZ, 1))
 		 	stack.damageItem(-1, (EntityLiving) e);
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		return par1ItemStack;
 	}
-	
+
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
 		return EnumAction.none;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
@@ -72,22 +76,44 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 		boolean target = false;
 		
 		if(id == Block.tallGrass.blockID) {
-			for(int i = -1; i < 1; i++)
-				for(int j = -1; j < 1; j++) {
-					int id1 = par2World.getBlockId(par4 + i, par5, par6 + j);
-					if(id1 == Block.tallGrass.blockID)
-						par2World.setBlockToAir(par4 + i, par5, par6 + j);
+			for(int i = 0; i < 3; i++)
+				for(int j = 0; j < 3; j++) {
+					int x = par4 + i - 1;
+					int y = par5;
+					int z = par6 + j - 1;
+					int id1 = par2World.getBlockId(x, y, z);
+					int meta = par2World.getBlockMetadata(x, y, z);
+					if(id1 == Block.tallGrass.blockID && !par2World.isRemote) {
+						ArrayList<ItemStack> drops = Block.tallGrass.getBlockDropped(par2World, x, y, z, meta, 0);
+						for(ItemStack item : drops) {
+							EntityItem entityItem = new EntityItem(par2World, x + 0.5, y + 0.5, z + 0.5, item);
+							par2World.spawnEntityInWorld(entityItem);
+						}
+						par2World.setBlockToAir(x, y, z);	
+					}
 				}
 			
 			target = true;
 		}
 		
 		if(Block.blocksList[id].isLeaves(par2World, par4, par5, par6)) {
-			for(int i = -1; i < 1; i++)
-				for(int j = -1; j < 1; j++) {
-					int id1 = par2World.getBlockId(par4 + i, par5, par6 + j);
-					if(id1 == id && Block.blocksList[id].isLeaves(par2World, par4 + i, par5, par6 + j))
-						par2World.setBlockToAir(par4 + i, par5, par6 + j);
+			Block block = Block.blocksList[id];
+			for(int i = 0; i < 3; i++)
+				for(int j = 0; j < 3; j++)
+					for(int k = 0; k < 3; k++) {
+						int x = par4 + i - 1;
+						int y = par5 + j - 1;
+						int z = par6 + k - 1;
+						int id1 = par2World.getBlockId(x, y, z);
+						int meta = par2World.getBlockMetadata(x, y, z);
+						if(id1 == id && block.isLeaves(par2World, x, y, z) && !par2World.isRemote) {
+							ArrayList<ItemStack> drops = block.getBlockDropped(par2World, x, y, z, meta, 0);
+							for(ItemStack item : drops) {
+								EntityItem entityItem = new EntityItem(par2World, x + 0.5, y + 0.5, z + 0.5, item);
+								par2World.spawnEntityInWorld(entityItem);
+							}
+							par2World.setBlockToAir(x, y, z);	
+						}
 				}
 			
 			target = true;
@@ -97,5 +123,10 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
             par1ItemStack.damageItem(1, par7EntityLiving);
         
 		return true;
+	}
+	
+	@Override
+	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+		return par2Block.blockMaterial == Material.leaves ? 8F : super.getStrVsBlock(par1ItemStack, par2Block);
 	}
 }
