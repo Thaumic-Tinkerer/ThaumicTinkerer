@@ -214,5 +214,12 @@ public final class ModInfusionRecipes {
 				'W', new ItemStack(Config.blockWooden),
 				'L', new ItemStack(Item.dyePowder, 1, 4),
 				'R', new ItemStack(Item.redstone));
+		
+		tags = new ObjectTags().add(EnumTag.LIFE, 12).add(EnumTag.DEATH, 24).add(EnumTag.EVIL, 6).add(EnumTag.SPIRIT, 30);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.SCYTHE_R, LibItemNames.SCYTHE_R, 200, tags, new ItemStack(ModItems.scythe),
+				"QQH", "Q I", "  I",
+				'Q', new ItemStack(ModItems.darkQuartz),
+				'H', new ItemStack(Item.skull, 1, 1),
+				'I', new ItemStack(Config.itemResource, 1, 2));
 	}
 }

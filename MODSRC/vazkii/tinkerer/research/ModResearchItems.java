@@ -57,6 +57,7 @@ public final class ModResearchItems {
 	public static ResearchItem phantomBlocks;
 	public static ResearchItem brightNitor;
 	public static ResearchItem magnet;
+	public static ResearchItem scythe;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -144,5 +145,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.POWER, 6).add(EnumTag.CONTROL, 12).add(EnumTag.WIND, 6).add(EnumTag.METAL, 5).add(EnumTag.MECHANISM, 16);
 		magnet = new ResearchItem(LibBlockNames.MAGNET_R, tags, -4, 27, new ItemStack(ModBlocks.magnet)).setHidden().setParents(Config.researchHoverHarness).registerResearchItem();
+	
+		tags = new ObjectTags().add(EnumTag.DARK, 12).add(EnumTag.DEATH, 24).add(EnumTag.ELDRITCH, 6).add(EnumTag.EVIL, 9).add(EnumTag.FLESH, 14).add(EnumTag.SPIRIT, 24).add(EnumTag.LIFE, 16);
+		scythe = new ResearchItem(LibItemNames.SCYTHE_R, tags, -2, 28, new ItemStack(ModItems.scythe)).setHidden().setParents(Config.researchTTOE).registerResearchItem();
 	}
 }

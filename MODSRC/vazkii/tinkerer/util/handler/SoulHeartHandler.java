@@ -124,7 +124,7 @@ public class SoulHeartHandler {
 
 				if(actualDamage >= event.entityLiving.getHealth()) {
 					// The mob will die from this attack, calculate soul hearts now...
-					addHP(player, 1);
+					addHP(player, 2);
 					updateClient(player);
 					player.worldObj.playSoundAtEntity(player, "mob.blaze.death", 0.9F, 1F);
 				}

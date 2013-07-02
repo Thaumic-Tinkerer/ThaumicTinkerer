@@ -332,4 +332,17 @@ The light casted by this will shine closely behind the carrier, it seems to leav
 This block acts as a magnet, it's state can be changed by right clicking it. While in south (blue) mode, it'll pull any nearby items towards it. While in north (red) mode, it'll do the opposite. Furthermore, the range of this attraction, or repulsion, is determined by the strength of the redstone signal applied to it.</page>
 <page type = "infusioncrafting">MAGNET</page>
 </project>
+
+<!-- ======================================== Reaper Scythe /-->
+<project id = "SCYTHE" version = "1">
+<name>Reaper's Scythe</name>
+<popupText>[TT] Soul Life</popupText>
+<longText>You've been studying malicent knowledge, your objective is to possibly create a weapon that would do something with souls...</longText>
+<page type = "text">You've studied malicent knowledge, and created a Scythe that reaps with pure evil.
+
+This scythe pairs with a Thaumium Sword on all aspects, however, upon killing an hostile living being with it, the soul of that being will get reaped and converted into a Soul Heart, which acts as a shield, absorbing damage taken. Sadly, a soul heart will disapper entirely after protecting the bearer from any damage. Up to 20 soul hearts can be accumulated.
+
+The Scythe also cuts tall grass and leaves with finesse without sustaining as much as a scratch.</page>
+<page type = "infusioncrafting">SCYTHE</page>
+</project>
 </research>
