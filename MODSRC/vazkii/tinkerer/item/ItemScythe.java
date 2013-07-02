@@ -70,11 +70,11 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.rare;
 	}
-	
+
 	@Override
 	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int id, int par4, int par5, int par6, EntityLiving par7EntityLiving) {
 		boolean target = false;
-		
+
 		if(id == Block.tallGrass.blockID) {
 			for(int i = 0; i < 3; i++)
 				for(int j = 0; j < 3; j++) {
@@ -89,13 +89,13 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 							EntityItem entityItem = new EntityItem(par2World, x + 0.5, y + 0.5, z + 0.5, item);
 							par2World.spawnEntityInWorld(entityItem);
 						}
-						par2World.setBlockToAir(x, y, z);	
+						par2World.setBlockToAir(x, y, z);
 					}
 				}
-			
+
 			target = true;
 		}
-		
+
 		if(Block.blocksList[id].isLeaves(par2World, par4, par5, par6)) {
 			Block block = Block.blocksList[id];
 			for(int i = 0; i < 3; i++)
@@ -112,19 +112,19 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 								EntityItem entityItem = new EntityItem(par2World, x + 0.5, y + 0.5, z + 0.5, item);
 								par2World.spawnEntityInWorld(entityItem);
 							}
-							par2World.setBlockToAir(x, y, z);	
+							par2World.setBlockToAir(x, y, z);
 						}
 				}
-			
+
 			target = true;
 		}
-		
+
         if (Block.blocksList[id].getBlockHardness(par2World, par4, par5, par6) != 0 && !target)
             par1ItemStack.damageItem(1, par7EntityLiving);
-        
+
 		return true;
 	}
-	
+
 	@Override
 	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
 		return par2Block.blockMaterial == Material.leaves ? 8F : super.getStrVsBlock(par1ItemStack, par2Block);
