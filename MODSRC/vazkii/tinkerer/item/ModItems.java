@@ -52,6 +52,7 @@ public final class ModItems {
 	public static Item researchShareBook;
 	public static Item brightNitor;
 	public static Item rune;
+	public static Item scythe;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -79,6 +80,7 @@ public final class ModItems {
 		researchShareBook = new ItemShareTome(LibItemIDs.idResearchShareBook).setUnlocalizedName(LibItemNames.RESEARCH_SHARE_BOOK);
 		brightNitor = new ItemBrightNitor(LibItemIDs.idBrightNitor).setUnlocalizedName(LibItemNames.BRIGHT_NITOR);
 		rune = new ItemRune(LibItemIDs.idRune).setUnlocalizedName(LibItemNames.RUNE);
+		scythe = new ItemScythe(LibItemIDs.idScythe).setUnlocalizedName(LibItemNames.SCYTHE);
 
 		nameItems();
 	}
@@ -107,6 +109,7 @@ public final class ModItems {
 		LanguageRegistry.addName(fluxDetector, LibItemNames.FLUX_DETECTOR_D);
 		LanguageRegistry.addName(researchShareBook, LibItemNames.RESEARCH_SHARE_BOOK_D);
 		LanguageRegistry.addName(brightNitor, LibItemNames.BRIGHT_NITOR_D);
+		LanguageRegistry.addName(scythe, LibItemNames.SCYTHE_D);
 	}
 
 	public static void applyObjectTags() {

@@ -69,6 +69,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idResearchShareBook = loadItem(LibItemNames.RESEARCH_SHARE_BOOK, LibItemIDs.DEFAULT_RESEARCH_SHARE_BOOK);
 		LibItemIDs.idBrightNitor = loadItem(LibItemNames.BRIGHT_NITOR, LibItemIDs.DEFAULT_BRIGHT_NITOR);
 		LibItemIDs.idRune = loadItem(LibItemNames.RUNE, LibItemIDs.DEFAULT_RUNE);
+		LibItemIDs.idScythe = loadItem(LibItemNames.SCYTHE, LibItemIDs.DEFAULT_SCYTHE);
 
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);

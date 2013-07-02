@@ -105,4 +105,8 @@ public final class LibItemNames {
 
 	public static final String RUNE = "rune";
 	public static final String RUNE_D = "Rune ";
+
+	public static final String SCYTHE = "scythe";
+	public static final String SCYTHE_R = "SCYTHE";
+	public static final String SCYTHE_D = "Reaper's Scythe";
 }
