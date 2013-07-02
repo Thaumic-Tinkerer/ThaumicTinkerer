@@ -16,6 +16,7 @@ package vazkii.tinkerer.network;
 
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.network.packet.PacketVerification;
+import vazkii.tinkerer.util.handler.SoulHeartHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.network.Player;
 
@@ -24,6 +25,7 @@ public class PlayerTracker implements IPlayerTracker {
 	@Override
 	public void onPlayerLogin(EntityPlayer player) {
 		PacketManager.sendPacketToClient((Player) player, new PacketVerification());
+		SoulHeartHandler.updateClient(player);
 	}
 
 	@Override

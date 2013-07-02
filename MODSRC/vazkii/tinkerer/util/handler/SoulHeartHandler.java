@@ -14,12 +14,15 @@
  */
 package vazkii.tinkerer.util.handler;
 
-import vazkii.tinkerer.lib.LibMisc;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import vazkii.tinkerer.lib.LibMisc;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketSoulHeartSync;
+import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,21 +37,21 @@ public class SoulHeartHandler {
 	
 	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
-	public void renderHealthBar(RenderGameOverlayEvent event) {
+	public static void renderHealthBar(RenderGameOverlayEvent event) {
 		// TODO
 	}
 	
 	@SideOnly(Side.CLIENT)
-	private void renderHeart(int x, int y, boolean full) {
+	private static void renderHeart(int x, int y, boolean full) {
 		// TODO
 	}
 	
 	@ForgeSubscribe
-	public void onPlayerDamage(LivingHurtEvent event) {
+	public static void onPlayerDamage(LivingHurtEvent event) {
 		// TODO
 	}
 	
-	public boolean addHP(EntityPlayer player, int hp) {
+	public static boolean addHP(EntityPlayer player, int hp) {
 		int current = getHP(player);
 		if(current >= MAX_HP)
 			return false;
@@ -58,7 +61,7 @@ public class SoulHeartHandler {
 	}
 	
 	// Returns overflow damage
-	public int removeHP(EntityPlayer player, int hp) { 
+	public static int removeHP(EntityPlayer player, int hp) { 
 		int current = getHP(player);
 		int newHp = current - hp;
 		setHP(player, Math.max(0, newHp));
@@ -66,17 +69,17 @@ public class SoulHeartHandler {
 		return Math.min(0, newHp);
 	}
 	
-	public void setHP(EntityPlayer player, int hp) {
+	public static void setHP(EntityPlayer player, int hp) {
 		NBTTagCompound cmp = getCompoundToSet(player);
 		cmp.setInteger(TAG_HP, hp);
 	}
 	
-	public int getHP(EntityPlayer player) {
+	public static int getHP(EntityPlayer player) {
 		NBTTagCompound cmp = getCompoundToSet(player);
 		return cmp.hasKey(TAG_HP) ? cmp.getInteger(TAG_HP) : 0;
 	}
 	
-	private NBTTagCompound getCompoundToSet(EntityPlayer player) {
+	private static NBTTagCompound getCompoundToSet(EntityPlayer player) {
 		NBTTagCompound cmp = player.getEntityData();
 		if(!cmp.hasKey(COMPOUND))
 			cmp.setCompoundTag(COMPOUND, new NBTTagCompound());
@@ -84,7 +87,7 @@ public class SoulHeartHandler {
 		return cmp.getCompoundTag(COMPOUND);
 	}
 	
-	public void updateClient(EntityPlayer player) {
-		// TODO
+	public static void updateClient(EntityPlayer player) {
+		PacketManager.sendPacketToClient((Player) player, new PacketSoulHeartSync(getHP(player)));
 	}
 }
