@@ -17,6 +17,7 @@ package vazkii.tinkerer.util.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.tinkerer.lib.LibMisc;
@@ -37,8 +38,10 @@ public class SoulHeartHandler {
 	
 	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
-	public static void renderHealthBar(RenderGameOverlayEvent event) {
-		// TODO
+	public void renderHealthBar(RenderGameOverlayEvent event) {
+		if(event.type == ElementType.HEALTH) {
+			
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -47,7 +50,7 @@ public class SoulHeartHandler {
 	}
 	
 	@ForgeSubscribe
-	public static void onPlayerDamage(LivingHurtEvent event) {
+	public void onPlayerDamage(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer && event.ammount > 0) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			event.ammount = removeHP(player, event.ammount);
