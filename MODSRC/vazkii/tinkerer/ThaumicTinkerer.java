@@ -35,6 +35,7 @@ import vazkii.tinkerer.research.ModResearchItems;
 import vazkii.tinkerer.util.handler.ConfigurationHandler;
 import vazkii.tinkerer.util.handler.EntityInteractionHandler;
 import vazkii.tinkerer.util.handler.GuiHandler;
+import vazkii.tinkerer.util.handler.SoulHeartHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -84,6 +85,7 @@ public class ThaumicTinkerer {
 		proxy.initRenders();
 
 		MinecraftForge.EVENT_BUS.register(new EntityInteractionHandler());
+		MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
 
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		NetworkRegistry.instance().registerGuiHandler(modInstance, new GuiHandler());
