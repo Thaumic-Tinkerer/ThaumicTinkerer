@@ -20,6 +20,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.client.fx.FXLightningBolt;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
@@ -31,6 +32,7 @@ import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
 import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
+import vazkii.tinkerer.client.util.handler.SoulHeartClientHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
 import vazkii.tinkerer.entity.EntityLovePotion;
 import vazkii.tinkerer.item.ModItems;
@@ -57,6 +59,8 @@ public class TTClientProxy extends TTCommonProxy {
 		super.initTickHandlers();
 
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+
+		MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
 	}
 
 	@Override

@@ -22,9 +22,9 @@ import java.io.IOException;
 
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import vazkii.tinkerer.client.util.handler.SoulHeartClientHandler;
 import vazkii.tinkerer.lib.LibNetwork;
 import vazkii.tinkerer.network.ModPacket;
-import vazkii.tinkerer.util.handler.SoulHeartHandler;
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -57,7 +57,7 @@ public class PacketSoulHeartSync  extends ModPacket {
 			skipSubchannel(inputStream);
 			int hp = inputStream.readInt();
 
-			SoulHeartHandler.clientPlayerHP = hp;
+			SoulHeartClientHandler.clientPlayerHP = hp;
 
 			return true;
 		}
