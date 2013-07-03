@@ -87,7 +87,7 @@ public final class ModItems {
 		rainwaterBottle = new ItemRainwaterBottle(LibItemIDs.idRainwaterBottle).setUnlocalizedName(LibItemNames.RAINWATER_BOTTLE);
 		weatherCrystal = new ItemWeatherCrystal(LibItemIDs.idWeatherCrystal).setUnlocalizedName(LibItemNames.WEATHER_CRYSTAL);
 		lovePotion = new ItemLovePotion(LibItemIDs.idLovePotion).setUnlocalizedName(LibItemNames.LOVE_POTION);
-		
+
 		nameItems();
 	}
 

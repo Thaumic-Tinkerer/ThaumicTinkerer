@@ -60,6 +60,7 @@ public final class ModResearchItems {
 	public static ResearchItem scythe;
 	public static ResearchItem rainwaterBottle;
 	public static ResearchItem weatherCrystals;
+	public static ResearchItem lovePotion;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -156,5 +157,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.WEATHER, 12).add(EnumTag.FIRE, 12).add(EnumTag.WATER, 12).add(EnumTag.CRYSTAL, 10).add(EnumTag.VISION, 6);
 		weatherCrystals = new ResearchItem(LibItemNames.WEATHER_CRYSTAL_R, tags, 2, 28, new ItemStack(ModItems.weatherCrystal)).setHidden().setParents(Config.researchTTOE).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.LIFE, 24).add(EnumTag.CONTROL, 10).add(EnumTag.EARTH, 5).add(EnumTag.HEAL, 4);
+		lovePotion = new ResearchItem(LibItemNames.LOVE_POTION_R, tags, 1, 20, new ItemStack(ModItems.lovePotion)).setHidden().setParents(Config.researchUTFT).registerResearchItem();
 	}
 }

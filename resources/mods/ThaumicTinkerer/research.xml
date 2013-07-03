@@ -371,4 +371,15 @@ These two crystals, of Sunlight and Rainfall, allow you to, respectivelly, halt 
 <page type = "text">asdf</page>
 </project>
 
+<!-- ======================================== Aphrodisiac Concoction /-->
+<project id = "LOVE_POTION" version = "1">
+<name>Aphrodisiac Concoction</name>
+<popupText>[TT] Love's in the air</popupText>
+<longText>The amount of times you had to waste your hard earned wheat or potatos on breeding livestock is your inspiration for what you're researching right now, the ultimate objective is a potion that will mimic those effects.</longText>
+<page type = "text">You have forumalated a recipe for a concoction with the essence of love.
+
+This potion-like item acts similar to a splash potion, simply tossing it near an area with livestock will cause the same effects as if these animals had been fed with their food of choice.</page>
+<page type = "infusioncrafting">LOVE_POTION</page>
+</project>
+
 </research>

@@ -61,5 +61,5 @@ public final class LibItemIDs {
 	public static int idRainwaterBottle;
 	public static int idWeatherCrystal;
 	public static int idLovePotion;
-	
+
 }

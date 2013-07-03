@@ -49,7 +49,7 @@ public class TTCommonProxy {
 	public void initEntities() {
 		int id = 0;
 		EntityRegistry.registerModEntity(EntityDeathRune.class, LibMisc.MOD_ID + "_" + LibItemNames.DEATH_RUNE, id++, ThaumicTinkerer.modInstance, 64, 10, false);
-		EntityRegistry.registerModEntity(EntityLovePotion.class, LibMisc.MOD_ID + "_" + LibItemNames.LOVE_POTION, id++, ThaumicTinkerer.modInstance, 64, 10, false);
+		EntityRegistry.registerModEntity(EntityLovePotion.class, LibMisc.MOD_ID + "_" + LibItemNames.LOVE_POTION, id++, ThaumicTinkerer.modInstance, 64, 10, true);
 	}
 
 	public void initPackets() {

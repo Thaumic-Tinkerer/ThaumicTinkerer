@@ -1,24 +1,21 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [3 Jul 2013, 17:46:58 (GMT)]
  */
 package vazkii.tinkerer.entity;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
-import vazkii.tinkerer.ThaumicTinkerer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
@@ -29,6 +26,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import vazkii.tinkerer.ThaumicTinkerer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -53,19 +51,9 @@ public class EntityLovePotion extends EntityThrowable {
 
 	@Override
 	protected float getGravityVelocity() {
-		return 0.03F;
+		return 0.3F;
 	}
 
-	@Override
-	protected float func_70182_d() {
-		return 0.7F;
-	}
-
-	@Override
-	protected float func_70183_g() {
-		return -20.0F;
-	}
-	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -76,25 +64,20 @@ public class EntityLovePotion extends EntityThrowable {
 	protected void onImpact(MovingObjectPosition mop) {
 		spawnParticles();
 		AxisAlignedBB bb = boundingBox.expand(4.0D, 2.0D, 4.0D);
-		List eList = worldObj.getEntitiesWithinAABB(EntityAnimal.class, bb);
-		Iterator i = eList.iterator();
-		while (i.hasNext()) {
-			EntityAnimal e = (EntityAnimal) i.next();
-			if (e == null)
+		List<EntityAnimal> animals = worldObj.getEntitiesWithinAABB(EntityAnimal.class, bb);
+		for(EntityAnimal e : animals) {
+			if (e.getGrowingAge() < 0)
 				continue;
-		
-			if (e.getGrowingAge() != 0)
-				continue;
-			
+
 			e.inLove = 600;
-			for (int var3 = 0; var3 < 7; var3++) {
+			for (int i = 0; i < 7; i++) {
 				double var4 = rand.nextGaussian() * 0.02D;
 				double var6 = rand.nextGaussian() * 0.02D;
 				double var8 = rand.nextGaussian() * 0.02D;
 				worldObj.spawnParticle("heart", e.posX + rand.nextFloat() * e.width * 2.0F - e.width, e.posY + 0.5D + rand.nextFloat() * e.height, e.posZ + rand.nextFloat() * e.width * 2.0F - e.width, var4, var6, var8);
 			}
 		}
-		
+
 		setDead();
 	}
 
@@ -128,5 +111,5 @@ public class EntityLovePotion extends EntityThrowable {
 		}
 		worldObj.playSoundEffect(posX + 0.5D, posY + 0.5D, posZ + 0.5D, "random.glass", 1.0F, worldObj.rand.nextFloat() * 0.1F + 0.9F);
 	}
-	
+
 }

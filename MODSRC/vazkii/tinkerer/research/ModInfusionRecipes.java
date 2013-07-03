@@ -235,5 +235,18 @@ public final class ModInfusionRecipes {
 				'A', new ItemStack(Config.itemResource, 1, 6),
 				'Q', new ItemStack(Config.itemResource, 1, 3),
 				'S', new ItemStack(Config.itemShard, 1, 2));
+
+		tags = new ObjectTags().add(EnumTag.LIFE, 12).add(EnumTag.EARTH, 6).add(EnumTag.CONTROL, 5);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.LOVE_POTION_R, LibItemNames.LOVE_POTION_R, 50, tags, new ItemStack(ModItems.lovePotion),
+				"PCW", "NBM", "RGZ",
+				'P', new ItemStack(Item.potato),
+				'C', new ItemStack(Item.carrot),
+				'W', new ItemStack(Item.wheat),
+				'N', new ItemStack(Item.netherStalkSeeds),
+				'B', new ItemStack(Item.potion, 1, 0),
+				'M', new ItemStack(Item.speckledMelon),
+				'R', new ItemStack(Item.redstone),
+				'G', new ItemStack(Item.lightStoneDust),
+				'Z', new ItemStack(Item.blazePowder));
 	}
 }
