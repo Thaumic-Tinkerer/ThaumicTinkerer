@@ -54,6 +54,7 @@ public final class ModItems {
 	public static Item rune;
 	public static Item scythe;
 	public static Item rainwaterBottle;
+	public static Item weatherCrystal;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -83,6 +84,7 @@ public final class ModItems {
 		rune = new ItemRune(LibItemIDs.idRune).setUnlocalizedName(LibItemNames.RUNE);
 		scythe = new ItemScythe(LibItemIDs.idScythe).setUnlocalizedName(LibItemNames.SCYTHE);
 		rainwaterBottle = new ItemRainwaterBottle(LibItemIDs.idRainwaterBottle).setUnlocalizedName(LibItemNames.RAINWATER_BOTTLE);
+		weatherCrystal = new ItemWeatherCrystal(LibItemIDs.idWeatherCrystal).setUnlocalizedName(LibItemNames.WEATHER_CRYSTAL);
 		
 		nameItems();
 	}

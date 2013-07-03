@@ -113,4 +113,12 @@ public final class LibItemNames {
 	public static final String RAINWATER_BOTTLE = "rainwaterBottle";
 	public static final String RAINWATER_BOTTLE_R = "RAINWATER_BOTTLE";
 	public static final String RAINWATER_BOTTLE_D = "Bottle of Rain Water";
+	
+	public static final String WEATHER_CRYSTAL = "weatherCrystal";
+	public static final String WEATHER_CRYSTAL_R = "WEATHER_CRYSTAL";
+	public static final String WEATHER_CRYSTAL_R0 = "WEATHER_CRYSTAL_0";
+	public static final String WEATHER_CRYSTAL_R1 = "WEATHER_CRYSTAL_1";
+	public static final String WEATHER_CRYSTAL_D0 = "Crystal of Sunlight";
+	public static final String WEATHER_CRYSTAL_D1 = "Crystal of Rainfall";
+
 }

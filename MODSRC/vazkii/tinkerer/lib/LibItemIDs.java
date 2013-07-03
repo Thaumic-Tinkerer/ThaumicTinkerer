@@ -29,6 +29,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_RUNE = 21174;
 	public static final int DEFAULT_SCYTHE = 21175;
 	public static final int DEFAULT_RAINWATER_BOTTLE = 21176;
+	public static final int DEFAULT_WEATHER_CRYSTAL = 21177;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -57,4 +58,5 @@ public final class LibItemIDs {
 	public static int idRune;
 	public static int idScythe;
 	public static int idRainwaterBottle;
+	public static int idWeatherCrystal;
 }

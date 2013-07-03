@@ -71,6 +71,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idRune = loadItem(LibItemNames.RUNE, LibItemIDs.DEFAULT_RUNE);
 		LibItemIDs.idScythe = loadItem(LibItemNames.SCYTHE, LibItemIDs.DEFAULT_SCYTHE);
 		LibItemIDs.idRainwaterBottle = loadItem(LibItemNames.RAINWATER_BOTTLE, LibItemIDs.DEFAULT_RAINWATER_BOTTLE);
+		LibItemIDs.idWeatherCrystal = loadItem(LibItemNames.WEATHER_CRYSTAL, LibItemIDs.DEFAULT_WEATHER_CRYSTAL);
 		
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
