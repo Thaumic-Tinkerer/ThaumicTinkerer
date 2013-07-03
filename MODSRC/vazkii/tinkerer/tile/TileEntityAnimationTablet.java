@@ -189,7 +189,9 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 		}
 
 		if(done) {
-			setInventorySlotContents(0, stack.stackSize == 0 ? null : stack);
+			if(stack.stackSize == 0)
+				setInventorySlotContents(0, null);
+			
 			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 		}
 	}

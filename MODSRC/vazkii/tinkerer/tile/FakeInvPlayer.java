@@ -28,7 +28,8 @@ public class FakeInvPlayer extends InventoryPlayer {
 
 	@Override
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack) {
-			super.setInventorySlotContents(par1, par2ItemStack);
+		super.setInventorySlotContents(par1, par2ItemStack);
+		
 		if(par1 == currentItem)
 			fakePlayer.tablet.setInventorySlotContents(0, getStackInSlot(currentItem));
 	}
