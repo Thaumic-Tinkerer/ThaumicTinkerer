@@ -53,6 +53,7 @@ public final class ModItems {
 	public static Item brightNitor;
 	public static Item rune;
 	public static Item scythe;
+	public static Item rainwaterBottle;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -81,7 +82,8 @@ public final class ModItems {
 		brightNitor = new ItemBrightNitor(LibItemIDs.idBrightNitor).setUnlocalizedName(LibItemNames.BRIGHT_NITOR);
 		rune = new ItemRune(LibItemIDs.idRune).setUnlocalizedName(LibItemNames.RUNE);
 		scythe = new ItemScythe(LibItemIDs.idScythe).setUnlocalizedName(LibItemNames.SCYTHE);
-
+		rainwaterBottle = new ItemRainwaterBottle(LibItemIDs.idRainwaterBottle).setUnlocalizedName(LibItemNames.RAINWATER_BOTTLE);
+		
 		nameItems();
 	}
 
@@ -110,6 +112,7 @@ public final class ModItems {
 		LanguageRegistry.addName(researchShareBook, LibItemNames.RESEARCH_SHARE_BOOK_D);
 		LanguageRegistry.addName(brightNitor, LibItemNames.BRIGHT_NITOR_D);
 		LanguageRegistry.addName(scythe, LibItemNames.SCYTHE_D);
+		LanguageRegistry.addName(rainwaterBottle, LibItemNames.RAINWATER_BOTTLE_D);
 	}
 
 	public static void applyObjectTags() {
@@ -156,5 +159,8 @@ public final class ModItems {
 			tags = new ObjectTags().add(tag, 1);
 			ThaumcraftApi.registerObjectTag(rune.itemID, tag.id, tags);
 		}
+		
+		tags = new ObjectTags().add(EnumTag.WEATHER, 2).add(EnumTag.WATER, 1).add(EnumTag.CRYSTAL, 1);
+		ThaumcraftApi.registerObjectTag(rainwaterBottle.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }

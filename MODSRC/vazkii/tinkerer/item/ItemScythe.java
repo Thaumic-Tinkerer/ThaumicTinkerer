@@ -54,17 +54,7 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 		 if (AuraManager.decreaseClosestAura(e.worldObj, e.posX, e.posY, e.posZ, 1))
 		 	stack.damageItem(-1, (EntityLiving) e);
 	}
-
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		return par1ItemStack;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.none;
-	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {

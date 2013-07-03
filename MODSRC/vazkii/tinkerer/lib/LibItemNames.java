@@ -109,4 +109,8 @@ public final class LibItemNames {
 	public static final String SCYTHE = "scythe";
 	public static final String SCYTHE_R = "SCYTHE";
 	public static final String SCYTHE_D = "Reaper's Scythe";
+	
+	public static final String RAINWATER_BOTTLE = "rainwaterBottle";
+	public static final String RAINWATER_BOTTLE_R = "RAINWATER_BOTTLE";
+	public static final String RAINWATER_BOTTLE_D = "Bottle of Rain Water";
 }
