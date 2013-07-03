@@ -14,21 +14,20 @@
  */
 package vazkii.tinkerer.item;
 
-import java.util.Iterator;
-import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.util.handler.RainwaterBottleHandler;
 
 public class ItemRainwaterBottle extends ItemMod {
 
 	public ItemRainwaterBottle(int par1) {
 		super(par1);
+		
+		MinecraftForge.EVENT_BUS.register(new RainwaterBottleHandler());
 	}
 	
     public int getMaxItemUseDuration(ItemStack par1ItemStack) {
