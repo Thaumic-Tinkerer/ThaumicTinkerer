@@ -78,7 +78,7 @@ public class ItemRune extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		par3List.add(EnumTag.get(par1ItemStack.getItemDamage()).meaning); 
+		par3List.add(EnumTag.get(par1ItemStack.getItemDamage()).meaning);
 		par3List.add("Not Yet Implemented!");
 	}
 

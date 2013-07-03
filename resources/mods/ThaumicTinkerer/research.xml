@@ -345,4 +345,30 @@ This scythe pairs with a Thaumium Sword on all aspects, however, upon killing an
 The Scythe also cuts tall grass and leaves with finesse without sustaining as much as a scratch.</page>
 <page type = "infusioncrafting">SCYTHE</page>
 </project>
+
+<!-- ======================================== Bottle of Rain Water /-->
+<project id = "RAINWATER_BOTTLE" version = "1">
+<name>Bottle of Rain Water</name>
+<popupText>[TT] Weather Studying</popupText>
+<longText></longText>
+<page type = "text">By right clicking with an empty bottle while raining you can collect rain water.
+
+Sadly, rain water is impure and can not be put to the same uses as the spring water commonly used. On the other hand, it's the only way you know of studying the Aer aspect.
+
+Weather is a complex subject, so this probably won't come in handy until later in your career.</page>
+</project>
+
+<!-- ======================================== Weather Crystals /-->
+<project id = "WEATHER_CRYSTAL" version = "1">
+<name>Crystals of Climate</name>
+<popupText>[TT] Weather Management</popupText>
+<longText>You think you've finally put to use the long standing knowledge of weather...</longText>
+<page type = "text">By studying the element of weather, you managed to create a pair of crystals that will allow you to manipulate it.
+
+These two crystals, of Sunlight and Rainfall, allow you to, respectivelly, halt and create rain, by shattering them.</page>
+<page type = "infusioncrafting">WEATHER_CRYSTAL_0</page>
+<page type = "infusioncrafting">WEATHER_CRYSTAL_1</page>
+<page type = "text">asdf</page>
+</project>
+
 </research>

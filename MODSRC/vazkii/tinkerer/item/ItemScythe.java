@@ -22,8 +22,6 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -54,7 +52,7 @@ public class ItemScythe extends ItemSword implements IVisRepairable {
 		 if (AuraManager.decreaseClosestAura(e.worldObj, e.posX, e.posY, e.posZ, 1))
 		 	stack.damageItem(-1, (EntityLiving) e);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {

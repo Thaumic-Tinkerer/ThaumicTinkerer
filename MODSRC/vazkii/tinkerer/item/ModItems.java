@@ -85,7 +85,7 @@ public final class ModItems {
 		scythe = new ItemScythe(LibItemIDs.idScythe).setUnlocalizedName(LibItemNames.SCYTHE);
 		rainwaterBottle = new ItemRainwaterBottle(LibItemIDs.idRainwaterBottle).setUnlocalizedName(LibItemNames.RAINWATER_BOTTLE);
 		weatherCrystal = new ItemWeatherCrystal(LibItemIDs.idWeatherCrystal).setUnlocalizedName(LibItemNames.WEATHER_CRYSTAL);
-		
+
 		nameItems();
 	}
 
@@ -161,7 +161,7 @@ public final class ModItems {
 			tags = new ObjectTags().add(tag, 1);
 			ThaumcraftApi.registerObjectTag(rune.itemID, tag.id, tags);
 		}
-		
+
 		tags = new ObjectTags().add(EnumTag.WEATHER, 2).add(EnumTag.WATER, 1).add(EnumTag.CRYSTAL, 1);
 		ThaumcraftApi.registerObjectTag(rainwaterBottle.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
