@@ -20,6 +20,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.entity.EntityDeathRune;
+import vazkii.tinkerer.entity.EntityLovePotion;
 import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
@@ -46,7 +47,9 @@ public class TTCommonProxy {
 	public void initRenders() { }
 
 	public void initEntities() {
-		EntityRegistry.registerModEntity(EntityDeathRune.class, LibMisc.MOD_ID + "_" + LibItemNames.DEATH_RUNE, 0, ThaumicTinkerer.modInstance, 64, 10, false);
+		int id = 0;
+		EntityRegistry.registerModEntity(EntityDeathRune.class, LibMisc.MOD_ID + "_" + LibItemNames.DEATH_RUNE, id++, ThaumicTinkerer.modInstance, 64, 10, false);
+		EntityRegistry.registerModEntity(EntityLovePotion.class, LibMisc.MOD_ID + "_" + LibItemNames.LOVE_POTION, id++, ThaumicTinkerer.modInstance, 64, 10, false);
 	}
 
 	public void initPackets() {

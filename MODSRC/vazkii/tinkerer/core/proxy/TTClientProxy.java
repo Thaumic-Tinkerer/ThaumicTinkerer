@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.core.proxy;
 
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.Vec3;
@@ -31,6 +32,7 @@ import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
+import vazkii.tinkerer.entity.EntityLovePotion;
 import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
@@ -72,6 +74,7 @@ public class TTClientProxy extends TTCommonProxy {
 		super.initEntities();
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityDeathRune.class, new RenderDeathRune());
+		RenderingRegistry.registerEntityRenderingHandler(EntityLovePotion.class, new RenderSnowball(ModItems.lovePotion, 0));
 	}
 
 	@Override

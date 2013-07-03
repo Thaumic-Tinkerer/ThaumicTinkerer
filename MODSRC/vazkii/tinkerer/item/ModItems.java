@@ -55,6 +55,7 @@ public final class ModItems {
 	public static Item scythe;
 	public static Item rainwaterBottle;
 	public static Item weatherCrystal;
+	public static Item lovePotion;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -85,7 +86,8 @@ public final class ModItems {
 		scythe = new ItemScythe(LibItemIDs.idScythe).setUnlocalizedName(LibItemNames.SCYTHE);
 		rainwaterBottle = new ItemRainwaterBottle(LibItemIDs.idRainwaterBottle).setUnlocalizedName(LibItemNames.RAINWATER_BOTTLE);
 		weatherCrystal = new ItemWeatherCrystal(LibItemIDs.idWeatherCrystal).setUnlocalizedName(LibItemNames.WEATHER_CRYSTAL);
-
+		lovePotion = new ItemLovePotion(LibItemIDs.idLovePotion).setUnlocalizedName(LibItemNames.LOVE_POTION);
+		
 		nameItems();
 	}
 
@@ -115,6 +117,7 @@ public final class ModItems {
 		LanguageRegistry.addName(brightNitor, LibItemNames.BRIGHT_NITOR_D);
 		LanguageRegistry.addName(scythe, LibItemNames.SCYTHE_D);
 		LanguageRegistry.addName(rainwaterBottle, LibItemNames.RAINWATER_BOTTLE_D);
+		LanguageRegistry.addName(lovePotion, LibItemNames.LOVE_POTION_D);
 	}
 
 	public static void applyObjectTags() {

@@ -120,5 +120,9 @@ public final class LibItemNames {
 	public static final String WEATHER_CRYSTAL_R1 = "WEATHER_CRYSTAL_1";
 	public static final String WEATHER_CRYSTAL_D0 = "Crystal of Sunlight";
 	public static final String WEATHER_CRYSTAL_D1 = "Crystal of Rainfall";
+	
+	public static final String LOVE_POTION = "lovePotion";
+	public static final String LOVE_POTION_R = "LOVE_POTION";
+	public static final String LOVE_POTION_D = "Aphrodisiac Concoction";
 
 }
