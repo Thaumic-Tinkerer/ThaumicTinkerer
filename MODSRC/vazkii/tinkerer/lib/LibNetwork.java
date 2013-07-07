@@ -23,4 +23,5 @@ public final class LibNetwork {
 	public static final String SUBCHANNEL_ANIMATION_TABLET_SYNC = "tabletSync";
 	public static final String SUBCHANNEL_ANIMATION_TABLET_BUTTON = "tabletButton";
 	public static final String SUBCHANNEL_SOUL_HEART_SYNC = "soulHearts";
+	public static final String SUBCHANNEL_MOB_MAGNET_SYNC = "mobMagnetSync";
 }

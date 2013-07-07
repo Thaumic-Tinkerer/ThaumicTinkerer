@@ -124,5 +124,9 @@ public final class LibItemNames {
 	public static final String LOVE_POTION = "lovePotion";
 	public static final String LOVE_POTION_R = "LOVE_POTION";
 	public static final String LOVE_POTION_D = "Aphrodisiac Concoction";
+	
+	public static final String SOUL_MOULD = "soulMould";
+	public static final String SOUL_MOULD_R = "SOUL_MOULD";
+	public static final String SOUL_MOULD_D = "Soul Mould";
 
 }

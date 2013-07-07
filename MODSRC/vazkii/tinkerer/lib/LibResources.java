@@ -31,12 +31,15 @@ public final class LibResources {
 
 	public static final String GUI_TRANSMUTATOR = ROOT_GUI + "guiTransmutator.png";
 	public static final String GUI_ANIMATION_TABLET = ROOT_GUI + "guiAnimationTablet.png";
+	public static final String GUI_MOB_MAGNET = ROOT_GUI + "guiMobMagnet.png";
 	public static final String GUI_SOUL_HEARTS = ROOT_GUI + "soulHearts.png";
 
 	public static final String MODEL_WARD_CHEST = ROOT_MODEL + "chestWard.png";
 	public static final String MODEL_LEGS_GOLIATH = ROOT_MODEL + "armorGoliath.png";
 	public static final String MODEL_MAGNET_N = ROOT_MODEL + "magnetN.png";
 	public static final String MODEL_MAGNET_S = ROOT_MODEL + "magnetS.png";
+	public static final String MODEL_MOB_MAGNET_N = ROOT_MODEL + "mobMagnetN.png";
+	public static final String MODEL_MOB_MAGNET_S = ROOT_MODEL + "mobMagnetS.png";
 
 	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
 	public static final String MISC_WARD_CHEST_OVERLAY = ROOT_MISC + "wardChestOverlay.png";

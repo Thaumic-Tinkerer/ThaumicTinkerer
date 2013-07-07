@@ -18,11 +18,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.gui.GuiAnimationTablet;
+import vazkii.tinkerer.client.gui.GuiMobMagnet;
 import vazkii.tinkerer.client.gui.GuiTransmutator;
 import vazkii.tinkerer.inventory.container.ContainerAnimationTablet;
+import vazkii.tinkerer.inventory.container.ContainerMobMagnet;
 import vazkii.tinkerer.inventory.container.ContainerTransmutator;
 import vazkii.tinkerer.lib.LibGuiIDs;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
+import vazkii.tinkerer.tile.TileEntityMobMagnet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -37,6 +40,9 @@ public final class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.ID_ANIMATION_TABLET :
 				return new ContainerAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
+				
+			case LibGuiIDs.ID_MOB_MAGNET :
+			    	return new ContainerMobMagnet((TileEntityMobMagnet) tile, player.inventory);
 		}
 		return null;
 	}
@@ -50,6 +56,9 @@ public final class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.ID_ANIMATION_TABLET :
 				return new GuiAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
+				
+			case LibGuiIDs.ID_MOB_MAGNET :
+			    	return new GuiMobMagnet((TileEntityMobMagnet) tile, player.inventory);
 		}
 		return null;
 	}

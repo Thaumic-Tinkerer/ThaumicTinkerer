@@ -14,6 +14,12 @@
  */
 package vazkii.tinkerer.lib;
 
+import java.util.List;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import thaumcraft.common.Config;
+
 public final class LibMisc {
 
 	public static final String MOD_ID = "ThaumicTinkerer";
@@ -29,6 +35,48 @@ public final class LibMisc {
 	public static final short TAG_META_WILDCARD = -1;
 
 	public static final float MODEL_DEFAULT_RENDER_SCALE = 0.0625F;
+	
+	public static final int[] filterItems = new int[] {
+		Item.beefRaw.itemID,			// Adult Cow
+		Config.itemNuggetBeef.itemID,		// Baby Cow
+		Item.porkRaw.itemID, 			// Adult Pig
+		Config.itemNuggetPork.itemID, 		// Baby Pig
+		Item.chickenRaw.itemID, 		// Adult Chicken
+		Config.itemNuggetChicken.itemID,	// Baby Chicken
+		Item.silk.itemID,			// Baby Sheep
+		Item.pumpkinPie.itemID,			// Bat
+		Item.fishRaw.itemID,			// Adult Ocelot
+		Item.fishCooked.itemID,			// Baby Ocelot
+		Item.stick.itemID, 			// Adult Wolf
+		Item.cookie.itemID,			// Baby Wolf
+		
+	};
+	public static final int[] filterBlocks = new int[] {
+		Block.cloth.blockID,			// Adult Sheep
+		Block.mushroomRed.blockID,		// Adult Mooshroom
+		Block.mushroomBrown.blockID,		// Baby Mooshroom
+		
+	};
 
-
+	public static final String[] filterItemNames = new String[] {
+		"Adult Cow",
+		"Baby Cow",
+		"Adult Pig",
+		"Baby Pig",
+		"Adult Chicken",
+		"Baby Chicken",
+		"Baby Sheep",
+		"Bat",
+		"Adult Ocelot",
+		"Baby Ocelot",
+		"Adult Wolf", 
+		"Baby Wolf",
+		
+	};
+	public static final String[] filterBlockNames = new String[] {
+		"Adult Sheep", 
+		"Adult Mooshroom", 
+		"Baby Mooshroom",
+		
+	};
 }

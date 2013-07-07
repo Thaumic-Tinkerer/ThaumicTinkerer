@@ -56,6 +56,7 @@ public final class ModItems {
 	public static Item rainwaterBottle;
 	public static Item weatherCrystal;
 	public static Item lovePotion;
+	public static Item soulMould;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -87,7 +88,8 @@ public final class ModItems {
 		rainwaterBottle = new ItemRainwaterBottle(LibItemIDs.idRainwaterBottle).setUnlocalizedName(LibItemNames.RAINWATER_BOTTLE);
 		weatherCrystal = new ItemWeatherCrystal(LibItemIDs.idWeatherCrystal).setUnlocalizedName(LibItemNames.WEATHER_CRYSTAL);
 		lovePotion = new ItemLovePotion(LibItemIDs.idLovePotion).setUnlocalizedName(LibItemNames.LOVE_POTION);
-
+		soulMould = new ItemSoulMould(LibItemIDs.idSoulMould).setUnlocalizedName(LibItemNames.SOUL_MOULD);
+		
 		nameItems();
 	}
 
@@ -118,6 +120,7 @@ public final class ModItems {
 		LanguageRegistry.addName(scythe, LibItemNames.SCYTHE_D);
 		LanguageRegistry.addName(rainwaterBottle, LibItemNames.RAINWATER_BOTTLE_D);
 		LanguageRegistry.addName(lovePotion, LibItemNames.LOVE_POTION_D);
+		LanguageRegistry.addName(soulMould, LibItemNames.SOUL_MOULD_D);
 	}
 
 	public static void applyObjectTags() {
@@ -167,5 +170,8 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.WEATHER, 2).add(EnumTag.WATER, 1).add(EnumTag.CRYSTAL, 1);
 		ThaumcraftApi.registerObjectTag(rainwaterBottle.itemID, LibMisc.TAG_META_WILDCARD, tags);
+		
+		tags = new ObjectTags().add(EnumTag.LIFE, 4).add(EnumTag.KNOWLEDGE, 6).add(EnumTag.CRYSTAL, 2).add(EnumTag.SPIRIT, 4);
+		ThaumcraftApi.registerObjectTag(soulMould.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
 }

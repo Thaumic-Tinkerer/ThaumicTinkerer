@@ -28,6 +28,7 @@ import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletButton;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityMagnet;
+import vazkii.tinkerer.tile.TileEntityMobMagnet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
 import vazkii.tinkerer.tile.TileEntityWardChest;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -42,6 +43,7 @@ public class TTCommonProxy {
 		GameRegistry.registerTileEntity(TileEntityWardChest.class, tileName(LibBlockNames.WARD_CHEST));
 		GameRegistry.registerTileEntity(TileEntityAnimationTablet.class, tileName(LibBlockNames.ANIMATION_TABLET));
 		GameRegistry.registerTileEntity(TileEntityMagnet.class, tileName(LibBlockNames.MAGNET));
+		GameRegistry.registerTileEntity(TileEntityMobMagnet.class, tileName(LibBlockNames.MOB_MAGNET));
 	}
 
 	public void initRenders() { }

@@ -59,6 +59,10 @@ public final class LibBlockNames {
 	public static final String MAGNET = "magnet";
 	public static final String MAGNET_R = "MAGNET";
 	public static final String MAGNET_D = "Thaumostatic Magnetizer";
+	
+	public static final String MOB_MAGNET = "mobMagnet";
+	public static final String MOB_MAGNET_R = "MOB_MAGNET";
+	public static final String MOB_MAGNET_D = "Advanced Thaumostatic Magnetizer";
 
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"Block of Smokey Quartz",

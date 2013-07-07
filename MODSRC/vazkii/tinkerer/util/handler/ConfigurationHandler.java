@@ -73,7 +73,8 @@ public final class ConfigurationHandler {
 		LibItemIDs.idRainwaterBottle = loadItem(LibItemNames.RAINWATER_BOTTLE, LibItemIDs.DEFAULT_RAINWATER_BOTTLE);
 		LibItemIDs.idWeatherCrystal = loadItem(LibItemNames.WEATHER_CRYSTAL, LibItemIDs.DEFAULT_WEATHER_CRYSTAL);
 		LibItemIDs.idLovePotion = loadItem(LibItemNames.LOVE_POTION, LibItemIDs.DEFAULT_LOVE_POTION);
-
+		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.DEFAULT_SOUL_MOULD);
+		
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);
@@ -86,6 +87,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idPhantomStone = loadBlock(LibBlockNames.PHANTOM_STONE, LibBlockIDs.DEFAULT_PHANTOM_STONE);
 		LibBlockIDs.idNitorGas = loadBlock(LibBlockNames.NITOR_GAS, LibBlockIDs.DEFAULT_NITOR_GAS);
 		LibBlockIDs.idMagnet = loadBlock(LibBlockNames.MAGNET, LibBlockIDs.DEFAULT_MAGNET);
+		LibBlockIDs.idMobMagnet = loadBlock(LibBlockNames.MOB_MAGNET, LibBlockIDs.DEFAULT_MOB_MAGNET);
 
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);

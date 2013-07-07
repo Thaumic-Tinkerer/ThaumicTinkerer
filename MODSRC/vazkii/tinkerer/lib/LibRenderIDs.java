@@ -18,5 +18,5 @@ public final class LibRenderIDs {
 
 	public static int idWardChest;
 	public static int idMagnet;
-
+	public static int idMobMagnet;
 }

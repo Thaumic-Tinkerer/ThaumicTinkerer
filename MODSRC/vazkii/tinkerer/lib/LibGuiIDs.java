@@ -18,5 +18,5 @@ public final class LibGuiIDs {
 
 	public static final int ID_TRANSMUTATOR = 0;
 	public static final int ID_ANIMATION_TABLET = 1;
-
+	public static final int ID_MOB_MAGNET = 2;
 }
