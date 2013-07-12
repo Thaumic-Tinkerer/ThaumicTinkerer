@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.tinkerer.item.ItemMod;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
@@ -39,7 +40,6 @@ public class ItemSoulMould extends ItemMod {
 	public ItemSoulMould(int par1) {
 		super(par1);
 		setMaxStackSize(1);
-		setMaxDamage(1);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class ItemSoulMould extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		EntityLiving pattern = getPattern(par1ItemStack, par2World);
+		//EntityLiving pattern = getPattern(par1ItemStack, par2World);
 		if(par3EntityPlayer.isSneaking()) {
 			clearPattern(par1ItemStack);
 		}
@@ -68,34 +68,31 @@ public class ItemSoulMould extends ItemMod {
 		return true;
 	}
 	
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		String patternName = ItemNBTHelper.getString(par1ItemStack, TAG_PATTERN_NAME, "Blank");
-		par3List.add(EnumChatFormatting.GOLD + "Current Pattern: " + patternName);
+		if(par1ItemStack.getTagCompound() == null) {
+			par3List.add(EnumChatFormatting.GOLD + "Current Pattern: Blank");
+		}
+		else {
+			par3List.add(EnumChatFormatting.GOLD + "Current Pattern: " + StatCollector.translateToLocal("entity." + par1ItemStack.getTagCompound().getString("id") + ".name"));
+		}
 	}
 	
 	public EntityLiving getPattern(ItemStack par1ItemStack, World par2World) {
-		if(ItemNBTHelper.detectNBT(par1ItemStack)) {
-			if(par1ItemStack.getTagCompound().hasKey("id")) {
-				System.out.println("id available");
-			}
-			System.out.println("has tag");
-			NBTTagCompound tag = par1ItemStack.getTagCompound();
-			Entity pattern = EntityList.createEntityFromNBT(tag, par2World);
-			return (EntityLiving)pattern;
-		}
-		else {
-			return null;
-		}
+		String patternName = ItemNBTHelper.getString(par1ItemStack, TAG_PATTERN_NAME, "Blank");
+		NBTTagCompound tag = ItemNBTHelper.getNBT(par1ItemStack);
+		System.out.println(patternName);
+		return null;
 	}
 
-	private void storePattern(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
+	public static void storePattern(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
 		System.out.println("entered pattern storing");
-		NBTTagCompound tag = new NBTTagCompound();
-		ItemNBTHelper.setString(par1ItemStack, TAG_PATTERN_NAME, par2EntityLiving.getEntityName());
-		par2EntityLiving.addEntityID(tag);
-		ItemNBTHelper.setCompound(par1ItemStack, tag);
+		if(!(par2EntityLiving instanceof EntityPlayer)) {
+			NBTTagCompound tag = new NBTTagCompound();
+			par2EntityLiving.writeToNBT(tag);
+			tag.setString("id", (String)EntityList.classToStringMapping.get(par2EntityLiving.getClass()));
+			par1ItemStack.setTagCompound(tag);
+		}
 	}
 
 	private void clearPattern(ItemStack par1ItemStack) {
