@@ -45,7 +45,12 @@ public class ItemSoulMould extends ItemMod {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
 		EntityPlayer player = EntityInteractionHandler.getLastInteractingPlayer();
-		setPattern(player.getCurrentEquippedItem(), par2EntityLiving);
+		if(player != null) {
+			setPattern(player.getCurrentEquippedItem(), par2EntityLiving);
+		}
+		else {
+			setPattern(par1ItemStack, par2EntityLiving);
+		}
 		return true;
 	}
 	
