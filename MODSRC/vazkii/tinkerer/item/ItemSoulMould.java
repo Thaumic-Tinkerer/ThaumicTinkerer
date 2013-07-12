@@ -16,26 +16,25 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import vazkii.tinkerer.item.ItemMod;
+
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 
 public class ItemSoulMould extends ItemMod {
 
 	private static final String TAG_PATTERN = "pattern";
-	private static final String TAG_PATTERN_NAME = "patternName";
+	private static final String NON_ASSIGNED = "Blank";
+	private String pattern = "Blank";
 
 	public ItemSoulMould(int par1) {
 		super(par1);
@@ -44,58 +43,21 @@ public class ItemSoulMould extends ItemMod {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
-		storePattern(par1ItemStack, par2EntityLiving);
-		return true;
-	}
-
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		//EntityLiving pattern = getPattern(par1ItemStack, par2World);
-		if(par3EntityPlayer.isSneaking()) {
-			clearPattern(par1ItemStack);
-		}
-		return par1ItemStack;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
-	}
-
-	@Override
-	public boolean getShareTag() {
+		setPattern(par1ItemStack, par2EntityLiving);
 		return true;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if(par1ItemStack.getTagCompound() == null) {
-			par3List.add(EnumChatFormatting.GOLD + "Current Pattern: Blank");
-		}
-		else {
-			par3List.add(EnumChatFormatting.GOLD + "Current Pattern: " + StatCollector.translateToLocal("entity." + par1ItemStack.getTagCompound().getString("id") + ".name"));
-		}
+		String name = getPatternName(par1ItemStack);
+		par3List.add(EnumChatFormatting.GOLD + "Current Pattern: " + name);
 	}
 	
-	public EntityLiving getPattern(ItemStack par1ItemStack, World par2World) {
-		String patternName = ItemNBTHelper.getString(par1ItemStack, TAG_PATTERN_NAME, "Blank");
-		NBTTagCompound tag = ItemNBTHelper.getNBT(par1ItemStack);
-		System.out.println(patternName);
-		return null;
+	private void setPattern(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
+		ItemNBTHelper.setString(par1ItemStack, TAG_PATTERN, (String)EntityList.classToStringMapping.get(par2EntityLiving.getClass()));
 	}
-
-	public static void storePattern(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
-		System.out.println("entered pattern storing");
-		if(!(par2EntityLiving instanceof EntityPlayer)) {
-			NBTTagCompound tag = new NBTTagCompound();
-			par2EntityLiving.writeToNBT(tag);
-			tag.setString("id", (String)EntityList.classToStringMapping.get(par2EntityLiving.getClass()));
-			par1ItemStack.setTagCompound(tag);
-		}
-	}
-
-	private void clearPattern(ItemStack par1ItemStack) {
-		ItemNBTHelper.setCompound(par1ItemStack, null);
+	
+	private String getPatternName(ItemStack par1ItemStack) {
+		return ItemNBTHelper.getString(par1ItemStack, TAG_PATTERN, NON_ASSIGNED);
 	}
 }
