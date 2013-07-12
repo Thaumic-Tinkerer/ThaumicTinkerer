@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+import vazkii.tinkerer.util.handler.EntityInteractionHandler;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
 
 import cpw.mods.fml.relauncher.Side;
@@ -43,7 +44,8 @@ public class ItemSoulMould extends ItemMod {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
-		setPattern(par1ItemStack, par2EntityLiving);
+		EntityPlayer player = EntityInteractionHandler.getLastInteractingPlayer();
+		setPattern(player.getCurrentEquippedItem(), par2EntityLiving);
 		return true;
 	}
 	
