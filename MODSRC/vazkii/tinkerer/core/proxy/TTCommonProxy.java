@@ -26,6 +26,7 @@ import vazkii.tinkerer.lib.LibItemNames;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletButton;
+import vazkii.tinkerer.network.packet.PacketMobMagnetButton;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
 import vazkii.tinkerer.tile.TileEntityMagnet;
 import vazkii.tinkerer.tile.TileEntityMobMagnet;
@@ -56,6 +57,7 @@ public class TTCommonProxy {
 
 	public void initPackets() {
 		PacketManager.packetHandlers.add(new PacketAnimationTabletButton());
+		PacketManager.packetHandlers.add(new PacketMobMagnetButton());
 	}
 
 	private static String tileName(String name) {

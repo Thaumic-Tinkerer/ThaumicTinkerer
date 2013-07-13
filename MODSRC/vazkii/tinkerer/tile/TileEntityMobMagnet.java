@@ -18,14 +18,8 @@ package vazkii.tinkerer.tile;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityMooshroom;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityOcelot;
-import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -42,10 +36,15 @@ import vazkii.tinkerer.lib.LibBlockNames;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketMobMagnetSync;
+import vazkii.tinkerer.util.helper.ItemNBTHelper;
 
 public class TileEntityMobMagnet extends TileEntity implements IInventory {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
+	private static final String TAG_PATTERN = "pattern";
+	private static final String NON_ASSIGNED = "Blank";
+
+	public boolean adult = true;
 
 	@Override
 	public void updateEntity() {
@@ -69,24 +68,25 @@ public class TileEntityMobMagnet extends TileEntity implements IInventory {
 				if(!(entity instanceof EntityPlayer)) {
 
 					if(inventorySlots[0] != null) {		// Filter Exists
-						int counter = 0;
-						for(int filterItem : LibMisc.filterItems) {
-							if(inventorySlots[0].itemID == filterItem) {
-								
+						// Fill in Filter effects here
+						String pattern = ItemNBTHelper.getString(inventorySlots[0], TAG_PATTERN, NON_ASSIGNED);
+						Entity filter = EntityList.createEntityByName(pattern, worldObj);
+						if(entity.getEntityName().equals(filter.getEntityName())) {
+							if(entity instanceof EntityAgeable) {
+								if(adult && !(entity.isChild())) {
+									moveEntity(blue, entity, x1, y1, z1, speedMod);
+								}
+								else if(!adult && entity.isChild()) {
+									moveEntity(blue, entity, x1, y1, z1, speedMod);
+								}
 							}
 							else {
-								counter++;
+								moveEntity(blue, entity, x1, y1, z1, speedMod);
 							}
+							
 						}
-
-						counter = 0;
-						for(int filterBlock : LibMisc.filterBlocks) {
-							if(inventorySlots[0].itemID == filterBlock) {
-								
-							}
-							else {
-								counter++;
-							}
+						else {
+							return;
 						}
 					}
 					else {

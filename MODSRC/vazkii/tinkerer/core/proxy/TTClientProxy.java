@@ -41,6 +41,7 @@ import vazkii.tinkerer.item.ModItems;
 import vazkii.tinkerer.lib.LibRenderIDs;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
+import vazkii.tinkerer.network.packet.PacketMobMagnetSync;
 import vazkii.tinkerer.network.packet.PacketSoulHeartSync;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 import vazkii.tinkerer.network.packet.PacketVerification;
@@ -93,6 +94,7 @@ public class TTClientProxy extends TTCommonProxy {
 		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
 		PacketManager.packetHandlers.add(new PacketAnimationTabletSync());
 		PacketManager.packetHandlers.add(new PacketSoulHeartSync());
+		PacketManager.packetHandlers.add(new PacketMobMagnetSync());
 	}
 
 	@Override

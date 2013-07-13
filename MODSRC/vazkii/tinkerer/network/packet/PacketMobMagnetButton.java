@@ -10,7 +10,7 @@
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  * 
- * File Created @ [6 Jul 2013, 22:02:57 (GMT)]
+ * File Created @ [12 Jul 2013, 22:24:12 (GMT)]
  */
 package vazkii.tinkerer.network.packet;
 
@@ -21,22 +21,22 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import vazkii.tinkerer.inventory.container.ContainerMobMagnet;
 import vazkii.tinkerer.lib.LibNetwork;
 import vazkii.tinkerer.network.ModPacket;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.tile.TileEntityMobMagnet;
 import cpw.mods.fml.common.network.Player;
 
-public class PacketMobMagnetSync extends ModPacket {
+public class PacketMobMagnetButton extends ModPacket {
 
 	TileEntityMobMagnet mobMagnet;
 
-	public PacketMobMagnetSync() { }
+	public PacketMobMagnetButton() { }
 
-	public PacketMobMagnetSync(TileEntityMobMagnet mobMagnet) {
+	public PacketMobMagnetButton(TileEntityMobMagnet mobMagnet) {
 		this.mobMagnet = mobMagnet;
 	}
 
@@ -48,7 +48,6 @@ public class PacketMobMagnetSync extends ModPacket {
 		data.writeInt(mobMagnet.xCoord);
 		data.writeInt(mobMagnet.yCoord);
 		data.writeInt(mobMagnet.zCoord);
-		PacketManager.writeItemStackIntoStream(mobMagnet.getStackInSlot(0), data);
 		data.writeBoolean(mobMagnet.adult);
 		return stream;
 	}
@@ -56,20 +55,23 @@ public class PacketMobMagnetSync extends ModPacket {
 	@Override
 	public boolean readPayload(Packet250CustomPayload packet, INetworkManager manager, Player player, String subchannel) throws IOException {
 		if(subchannel.equals(getSubchannel()) && player != null && player instanceof EntityPlayer) {
-			ByteArrayInputStream stream = new ByteArrayInputStream(packet.data);
-			DataInputStream inputStream = new DataInputStream(stream);
-			skipSubchannel(inputStream);
-			int x = inputStream.readInt();
-			int y = inputStream.readInt();
-			int z = inputStream.readInt();
-			TileEntityMobMagnet mobMagnet = (TileEntityMobMagnet) ((EntityPlayer)player).worldObj.getBlockTileEntity(x, y, z);
-			ItemStack stack = PacketManager.getItemStackFromStream(inputStream);
-			if(mobMagnet != null) {
-			    	mobMagnet.setInventorySlotContents(0, stack);
-				boolean adult = inputStream.readBoolean();
-				mobMagnet.adult = adult;
+			EntityPlayer entityPlayer = (EntityPlayer)player;
+			if(entityPlayer.openContainer != null && entityPlayer.openContainer instanceof ContainerMobMagnet) {
+				ByteArrayInputStream stream = new ByteArrayInputStream(packet.data);
+				DataInputStream inputStream = new DataInputStream(stream);
+				skipSubchannel(inputStream);
+				int x = inputStream.readInt();
+				int y = inputStream.readInt();
+				int z = inputStream.readInt();
+				ContainerMobMagnet container = (ContainerMobMagnet)entityPlayer.openContainer;
+				if(container.mobMagnet.xCoord == x && container.mobMagnet.yCoord == y && container.mobMagnet.zCoord == z) {
+					TileEntityMobMagnet mobMagnet = (TileEntityMobMagnet) container.mobMagnet.worldObj.getBlockTileEntity(x, y, z);
+					boolean adult = inputStream.readBoolean();
+					mobMagnet.adult = adult;
+					PacketMobMagnetSync packet1 = new PacketMobMagnetSync(mobMagnet);
+					PacketManager.sendPacketToClient(player, packet1);
+				}
 			}
-
 			return true;
 		}
 		return false;
@@ -77,7 +79,7 @@ public class PacketMobMagnetSync extends ModPacket {
 
 	@Override
 	public String getSubchannel() {
-		return LibNetwork.SUBCHANNEL_MOB_MAGNET_SYNC;
+		return LibNetwork.SUBCHANNEL_MOB_MAGNET_BUTTON;
 	}
 
 }

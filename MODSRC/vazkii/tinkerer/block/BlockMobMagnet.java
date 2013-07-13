@@ -26,6 +26,7 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import thaumcraft.common.Config;
+import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibGuiIDs;
 import vazkii.tinkerer.lib.LibRenderIDs;
@@ -49,19 +50,23 @@ public class BlockMobMagnet extends BlockModContainer {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if(par5EntityPlayer.isSneaking()) {
-			if(!par1World.isRemote) {
+		if(par5EntityPlayer.getCurrentEquippedItem() != null) {
+			if(par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
 				TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
 				if(tile != null) {
 					par5EntityPlayer.openGui(ThaumicTinkerer.modInstance, LibGuiIDs.ID_MOB_MAGNET, par1World, par2, par3, par4);
+					if(!par1World.isRemote) {
+						par1World.playSoundEffect(par2, par3, par4, "thaumcraft.key", 1F, 0.5F);
+					}
 				}
+				return true;
 			}
 		}
-		else {
-			int meta = par1World.getBlockMetadata(par2, par3, par4);
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 0 ? 1 : 0, 2);
-			if(!par1World.isRemote)
-				par1World.playSoundEffect(par2, par3, par4, "random.click", 1F, 0.5F);
+
+		int meta = par1World.getBlockMetadata(par2, par3, par4);
+		par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 0 ? 1 : 0, 2);
+		if(!par1World.isRemote) {
+			par1World.playSoundEffect(par2, par3, par4, "random.click", 1F, 0.5F);
 		}
 		return true;
 	}

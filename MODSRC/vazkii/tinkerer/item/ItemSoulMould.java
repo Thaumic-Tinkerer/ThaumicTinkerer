@@ -54,6 +54,14 @@ public class ItemSoulMould extends ItemMod {
 		return true;
 	}
 	
+	@Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		if(par3EntityPlayer.isSneaking()) {
+			clearPattern(par1ItemStack);
+		}
+		return par1ItemStack;
+	}
+	
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		String name = getPatternName(par1ItemStack);
@@ -64,7 +72,11 @@ public class ItemSoulMould extends ItemMod {
 		ItemNBTHelper.setString(par1ItemStack, TAG_PATTERN, (String)EntityList.classToStringMapping.get(par2EntityLiving.getClass()));
 	}
 	
-	private String getPatternName(ItemStack par1ItemStack) {
+	public String getPatternName(ItemStack par1ItemStack) {
 		return ItemNBTHelper.getString(par1ItemStack, TAG_PATTERN, NON_ASSIGNED);
+	}
+	
+	private void clearPattern(ItemStack par1ItemStack) {
+		ItemNBTHelper.getNBT(par1ItemStack).removeTag(TAG_PATTERN);
 	}
 }
