@@ -46,6 +46,7 @@ public class GuiMobMagnet extends GuiContainer {
 	TileEntityMobMagnet mobMagnet;
 	private static final String TAG_PATTERN = "pattern";
 	private static final String NON_ASSIGNED = "Blank";
+	private String filter = "All";
 
 	List<GuiButtonMM> buttonListMM = new ArrayList();
 	List<IRadioButton> radioButtons = new ArrayList();
@@ -88,7 +89,7 @@ public class GuiMobMagnet extends GuiContainer {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.renderEngine.bindTexture(LibResources.GUI_MOB_MAGNET);
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		String filter = "All";
+		filter = "All";
 		String adult = "Adult";
 		String child = "Child";
 		stack = mobMagnet.getStackInSlot(0);

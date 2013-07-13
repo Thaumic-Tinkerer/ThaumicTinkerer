@@ -69,7 +69,7 @@ public class ItemSoulMould extends ItemMod {
 	}
 	
 	private void setPattern(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
-		ItemNBTHelper.setString(par1ItemStack, TAG_PATTERN, (String)EntityList.classToStringMapping.get(par2EntityLiving.getClass()));
+		ItemNBTHelper.setString(par1ItemStack, TAG_PATTERN, par2EntityLiving.getEntityName());
 	}
 	
 	public String getPatternName(ItemStack par1ItemStack) {

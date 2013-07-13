@@ -70,8 +70,7 @@ public class TileEntityMobMagnet extends TileEntity implements IInventory {
 					if(inventorySlots[0] != null) {		// Filter Exists
 						// Fill in Filter effects here
 						String pattern = ItemNBTHelper.getString(inventorySlots[0], TAG_PATTERN, NON_ASSIGNED);
-						Entity filter = EntityList.createEntityByName(pattern, worldObj);
-						if(entity.getEntityName().equals(filter.getEntityName())) {
+						if(entity.getEntityName().equals(pattern)) {
 							if(entity instanceof EntityAgeable) {
 								if(adult && !(entity.isChild())) {
 									moveEntity(blue, entity, x1, y1, z1, speedMod);
@@ -83,7 +82,6 @@ public class TileEntityMobMagnet extends TileEntity implements IInventory {
 							else {
 								moveEntity(blue, entity, x1, y1, z1, speedMod);
 							}
-							
 						}
 						else {
 							return;
