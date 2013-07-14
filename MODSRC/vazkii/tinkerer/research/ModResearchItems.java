@@ -61,6 +61,7 @@ public final class ModResearchItems {
 	public static ResearchItem rainwaterBottle;
 	public static ResearchItem weatherCrystals;
 	public static ResearchItem lovePotion;
+	public static ResearchItem mobMagnet;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -160,5 +161,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.LIFE, 24).add(EnumTag.CONTROL, 10).add(EnumTag.EARTH, 5).add(EnumTag.HEAL, 4);
 		lovePotion = new ResearchItem(LibItemNames.LOVE_POTION_R, tags, 1, 20, new ItemStack(ModItems.lovePotion)).setHidden().setParents(Config.researchUTFT).registerResearchItem();
+		
+		tags = new ObjectTags().add(EnumTag.POWER, 8).add(EnumTag.KNOWLEDGE, 14).add(EnumTag.MOTION, 6).add(EnumTag.METAL, 8).add(EnumTag.MECHANISM, 14).add(EnumTag.VALUABLE, 8).add(EnumTag.PURE, 12).add(EnumTag.FLESH, 10);
+		mobMagnet = new ResearchItem(LibBlockNames.MOB_MAGNET_R, tags, -5, 27, new ItemStack(ModBlocks.mobMagnet)).setHidden().setParents(magnet).registerResearchItem();
 	}
 }
