@@ -36,18 +36,18 @@ public class TileEntityInterface extends TileEntity implements ISidedInventory, 
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
 		super.writeToNBT(par1nbtTagCompound);
 
-		par1nbtTagCompound.setInteger("x", x);
-		par1nbtTagCompound.setInteger("y", y);
-		par1nbtTagCompound.setInteger("z", z);
+		par1nbtTagCompound.setInteger("xt", x);
+		par1nbtTagCompound.setInteger("yt", y);
+		par1nbtTagCompound.setInteger("zt", z);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
 		super.readFromNBT(par1nbtTagCompound);
 
-		x = par1nbtTagCompound.getInteger("x");
-		y = par1nbtTagCompound.getInteger("y");
-		z = par1nbtTagCompound.getInteger("z");
+		x = par1nbtTagCompound.getInteger("xt");
+		y = par1nbtTagCompound.getInteger("yt");
+		z = par1nbtTagCompound.getInteger("zt");
 	}
 
 	private TileEntity getTile() {
