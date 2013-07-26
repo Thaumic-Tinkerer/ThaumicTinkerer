@@ -393,7 +393,11 @@ This block acts as a magnet, it's state can be changed by right clicking it. Whi
 <page type = "infusioncrafting">MOB_MAGNET</page>
 <page type = "text">With the new function of the magnetizer, you have created a filtering system for the Advanced Magnetizer.
 
-Using a new device you have created you can Right-Click on a mob to take a copy of its magnetic signature and then use this to make the magnetizer affect only that mob.</page>
+Using a new device you have created you can Right-Click on a mob to take a copy of its magnetic signature and then use this to make the magnetizer affect only that mob.
+
+Shift-Right Clicking will clear the magnetic signature.
+
+To use the Soul Mould as a filter, Right-Click the Advanced Magnetizer with a casting wand to open the interface and place the Soul Mould in.</page>
 <page type = "arcanecrafting">SOUL_MOULD</page>
 </project>
 
