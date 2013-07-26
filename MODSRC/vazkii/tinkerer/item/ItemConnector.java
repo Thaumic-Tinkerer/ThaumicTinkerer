@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [26 Jul 2013, 02:22:00 (GMT)]
  */
 package vazkii.tinkerer.item;
@@ -39,14 +39,16 @@ public class ItemConnector extends ItemMod {
 
 		TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
 
-		// TODO Needs polish!
-		
 		if (getY(par1ItemStack) == -1) {
 			if (tile != null && tile instanceof TileEntityInterface) {
 				setX(par1ItemStack, par4);
 				setY(par1ItemStack, par5);
 				setZ(par1ItemStack, par6);
 
+				if(par3World.isRemote)
+					par2EntityPlayer.swingItem();
+
+				playSound(par3World, par4, par5, par6);
 				par2EntityPlayer.addChatMessage("Location Bound!");
 			} else
 				par2EntityPlayer.addChatMessage("Not a " + LibBlockNames.INTERFACE_D + ".");
@@ -66,17 +68,33 @@ public class ItemConnector extends ItemMod {
 
 				par2EntityPlayer.addChatMessage(LibBlockNames.INTERFACE_D + " isn't present.");
 			} else {
-				((TileEntityInterface) tile1).x = par4;
-				((TileEntityInterface) tile1).y = par5;
-				((TileEntityInterface) tile1).z = par6;
+				TileEntityInterface interf = (TileEntityInterface) tile1;
+
+				if(Math.abs(x - par4) > 3 || Math.abs(y - par5) > 3 || Math.abs(z - par6) > 3) {
+					par2EntityPlayer.addChatMessage("The Interface is too far away.");
+					return true;
+				}
+
+				interf.x = par4;
+				interf.y = par5;
+				interf.z = par6;
 
 				setY(par1ItemStack, -1);
 
+				if(par3World.isRemote)
+					par2EntityPlayer.swingItem();
+
+				playSound(par3World, par4, par5, par6);
 				par2EntityPlayer.addChatMessage("Locations bound!");
 			}
 		}
 
 		return true;
+	}
+
+	private void playSound(World world, int x, int y, int z) {
+		if(!world.isRemote)
+			world.playSoundEffect(x, y, z, "random.orb", 0.8F, 1F);
 	}
 
 	public static void setX(ItemStack stack, int x) {

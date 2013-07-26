@@ -40,7 +40,7 @@ public final class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.ID_ANIMATION_TABLET :
 				return new ContainerAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
-				
+
 			case LibGuiIDs.ID_MOB_MAGNET :
 			    	return new ContainerMobMagnet((TileEntityMobMagnet) tile, player.inventory);
 		}
@@ -56,7 +56,7 @@ public final class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.ID_ANIMATION_TABLET :
 				return new GuiAnimationTablet((TileEntityAnimationTablet) tile, player.inventory);
-				
+
 			case LibGuiIDs.ID_MOB_MAGNET :
 			    	return new GuiMobMagnet((TileEntityMobMagnet) tile, player.inventory);
 		}

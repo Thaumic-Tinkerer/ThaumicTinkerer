@@ -1,15 +1,15 @@
 /**
  * This class was created by <TheWhiteWolves>. It's distributed as
  * part of the Thaumic Tinkerer Mod.
- * 
+ *
  * Thaumic Tinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * Thaumic Tinkerer is a Derivative Work on Thaumcraft 3.
  * Thaumcraft 3 © Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [6 Jul 2013, 15:13:00 (GMT)]
  */
 
@@ -18,7 +18,6 @@ package vazkii.tinkerer.tile;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +32,6 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibBlockNames;
-import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketMobMagnetSync;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
@@ -72,7 +70,7 @@ public class TileEntityMobMagnet extends TileEntity implements IInventory {
 						String pattern = ItemNBTHelper.getString(inventorySlots[0], TAG_PATTERN, NON_ASSIGNED);
 						if(entity.getEntityName().equals(pattern)) {
 							if(entity instanceof EntityAgeable) {
-								if(adult && !(entity.isChild())) {
+								if(adult && !entity.isChild()) {
 									moveEntity(blue, entity, x1, y1, z1, speedMod);
 								}
 								else if(!adult && entity.isChild()) {

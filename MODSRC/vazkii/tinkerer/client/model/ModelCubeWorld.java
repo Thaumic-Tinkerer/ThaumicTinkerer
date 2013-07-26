@@ -2,7 +2,7 @@
  * This class was created by <Vazkii>. It can be integrated in any of your
  * minecraft projects at will. If your mod is open source, this header must
  * be present.
- * 
+ *
  * This class is licensed under a CC-BY 3.0 license.
  * http://creativecommons.org/licenses/by/3.0/
  */
@@ -99,7 +99,7 @@ public class ModelCubeWorld extends ModelBase {
      * Dimension 1 - The Y coordinates<br>
      * Dimension 2 - The Z coordinates<br>
      * Dimension 3 - Always of length 3, contains, respectively, red, green and blue values.
-     * 
+     *
      */
     public byte[][][][] getModelData() {
         return modelData;

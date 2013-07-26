@@ -66,7 +66,7 @@ public final class ModArcaneRecipes {
 				'T', new ItemStack(Config.blockInfusionWorkbench, 1, 0),
 				'B', new ItemStack(Config.itemResource, 1, 5),
 				'D', new ItemStack(Item.dyePowder, 1, LibMisc.CRAFTING_META_WILDCARD)) }));
-		
+
 		ThaumcraftApi.addArcaneCraftingRecipe(LibItemNames.SOUL_MOULD_R, LibItemNames.SOUL_MOULD_R, 50, new ItemStack(ModItems.soulMould),
 				" G ", "TET", " G ",
 				'G', new ItemStack(Item.ingotGold),

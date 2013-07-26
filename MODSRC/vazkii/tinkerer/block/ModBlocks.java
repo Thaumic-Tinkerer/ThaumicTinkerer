@@ -59,7 +59,7 @@ public final class ModBlocks {
 		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
 		mobMagnet = new BlockMobMagnet(LibBlockIDs.idMobMagnet).setUnlocalizedName(LibBlockNames.MOB_MAGNET);
 		interfase = new BlockInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
-		
+
 		registerBlocks();
 		nameBlocks();
 	}

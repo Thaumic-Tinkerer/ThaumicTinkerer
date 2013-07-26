@@ -409,12 +409,19 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
             if (inventorySlots[par1].stackSize <= par2) {
                 stackAt = inventorySlots[par1];
                 inventorySlots[par1] = null;
+
+        		if(!worldObj.isRemote)
+        			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+
                 return stackAt;
             } else {
                 stackAt = inventorySlots[par1].splitStack(par2);
 
                 if (inventorySlots[par1].stackSize == 0)
                     inventorySlots[par1] = null;
+
+        		if(!worldObj.isRemote)
+        			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 
                 return stackAt;
             }
@@ -431,6 +438,9 @@ public class TileEntityAnimationTablet extends TileEntity implements IInventory 
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventorySlots[i] = itemstack;
+
+		if(!worldObj.isRemote)
+			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 	}
 
 	@Override

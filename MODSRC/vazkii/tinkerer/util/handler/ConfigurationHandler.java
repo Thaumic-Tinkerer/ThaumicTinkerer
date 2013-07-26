@@ -75,7 +75,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idLovePotion = loadItem(LibItemNames.LOVE_POTION, LibItemIDs.DEFAULT_LOVE_POTION);
 		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.DEFAULT_SOUL_MOULD);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.DEFAULT_CONNECTOR);
-		
+
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);
@@ -90,7 +90,7 @@ public final class ConfigurationHandler {
 		LibBlockIDs.idMagnet = loadBlock(LibBlockNames.MAGNET, LibBlockIDs.DEFAULT_MAGNET);
 		LibBlockIDs.idMobMagnet = loadBlock(LibBlockNames.MOB_MAGNET, LibBlockIDs.DEFAULT_MOB_MAGNET);
 		LibBlockIDs.idInterface = loadBlock(LibBlockNames.INTERFACE, LibBlockIDs.DEFAULT_INTERFACE);
-		
+
 		LibPotions.idStopwatch = loadPotion(LibPotions.NAME_STOPWATCH, LibPotions.DEFAULT_ID_STOPWATCH);
 		LibPotions.idFrozen = loadPotion(LibPotions.NAME_FROZEN, LibPotions.DEFAULT_ID_FROZEN);
 		LibPotions.idPossessed = loadPotion(LibPotions.NAME_POSSESSED, LibPotions.DEFAULT_ID_POSSESSED);

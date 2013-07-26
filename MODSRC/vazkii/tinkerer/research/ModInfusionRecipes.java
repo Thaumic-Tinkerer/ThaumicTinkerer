@@ -248,9 +248,9 @@ public final class ModInfusionRecipes {
 				'R', new ItemStack(Item.redstone),
 				'G', new ItemStack(Item.lightStoneDust),
 				'Z', new ItemStack(Item.blazePowder));
-		
+
 		tags = new ObjectTags().add(EnumTag.POWER, 12).add(EnumTag.MOTION, 16).add(EnumTag.MECHANISM, 6).add(EnumTag.FLESH, 4);
-		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.MOB_MAGNET_R, LibBlockNames.MOB_MAGNET_R, 150, tags, new ItemStack(ModBlocks.mobMagnet), 
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.MOB_MAGNET_R, LibBlockNames.MOB_MAGNET_R, 150, tags, new ItemStack(ModBlocks.mobMagnet),
 				" I ", "SIs", "LWR",
 				'I', new ItemStack(Item.ingotGold),
 				's', new ItemStack(Config.itemShard, 1, 3),

@@ -91,7 +91,7 @@ public final class ModItems {
 		lovePotion = new ItemLovePotion(LibItemIDs.idLovePotion).setUnlocalizedName(LibItemNames.LOVE_POTION);
 		soulMould = new ItemSoulMould(LibItemIDs.idSoulMould).setUnlocalizedName(LibItemNames.SOUL_MOULD);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
-		
+
 		nameItems();
 	}
 
@@ -173,7 +173,7 @@ public final class ModItems {
 
 		tags = new ObjectTags().add(EnumTag.WEATHER, 2).add(EnumTag.WATER, 1).add(EnumTag.CRYSTAL, 1);
 		ThaumcraftApi.registerObjectTag(rainwaterBottle.itemID, LibMisc.TAG_META_WILDCARD, tags);
-		
+
 		tags = new ObjectTags().add(EnumTag.LIFE, 4).add(EnumTag.KNOWLEDGE, 6).add(EnumTag.CRYSTAL, 2).add(EnumTag.SPIRIT, 4);
 		ThaumcraftApi.registerObjectTag(soulMould.itemID, LibMisc.TAG_META_WILDCARD, tags);
 	}
