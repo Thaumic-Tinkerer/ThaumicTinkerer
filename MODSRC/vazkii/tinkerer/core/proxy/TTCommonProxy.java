@@ -28,6 +28,7 @@ import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletButton;
 import vazkii.tinkerer.network.packet.PacketMobMagnetButton;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
+import vazkii.tinkerer.tile.TileEntityInterface;
 import vazkii.tinkerer.tile.TileEntityMagnet;
 import vazkii.tinkerer.tile.TileEntityMobMagnet;
 import vazkii.tinkerer.tile.TileEntityTransmutator;
@@ -45,6 +46,7 @@ public class TTCommonProxy {
 		GameRegistry.registerTileEntity(TileEntityAnimationTablet.class, tileName(LibBlockNames.ANIMATION_TABLET));
 		GameRegistry.registerTileEntity(TileEntityMagnet.class, tileName(LibBlockNames.MAGNET));
 		GameRegistry.registerTileEntity(TileEntityMobMagnet.class, tileName(LibBlockNames.MOB_MAGNET));
+		GameRegistry.registerTileEntity(TileEntityInterface.class, tileName(LibBlockNames.INTERFACE));
 	}
 
 	public void initRenders() { }
