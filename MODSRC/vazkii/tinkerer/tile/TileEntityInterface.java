@@ -51,11 +51,11 @@ public class TileEntityInterface extends TileEntity implements ISidedInventory, 
 	}
 
 	private TileEntity getTile() {
-		if (y < 0)
+		if(!worldObj.blockExists(x, y, z))
 			return null;
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
-		if (tile == null)
+		if(tile == null)
 			y = -1;
 
 		return tile;
