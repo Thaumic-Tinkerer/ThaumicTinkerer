@@ -42,6 +42,7 @@ public final class ModBlocks {
 	public static Block nitorGas;
 	public static Block magnet;
 	public static Block mobMagnet;
+	public static Block interfase;
 
 	public static void initBlocks() {
 		glowstoneGas = new BlockGlowstoneGas(LibBlockIDs.idGlowstoneGas).setUnlocalizedName(LibBlockNames.GLOWSTONE_GAS);
@@ -57,7 +58,8 @@ public final class ModBlocks {
 		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
 		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
 		mobMagnet = new BlockMobMagnet(LibBlockIDs.idMobMagnet).setUnlocalizedName(LibBlockNames.MOB_MAGNET);
-
+		interfase = new BlockInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
+		
 		registerBlocks();
 		nameBlocks();
 	}
@@ -76,6 +78,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(nitorGas, LibBlockNames.NITOR_GAS);
 		GameRegistry.registerBlock(magnet, LibBlockNames.MAGNET);
 		GameRegistry.registerBlock(mobMagnet, LibBlockNames.MOB_MAGNET);
+		GameRegistry.registerBlock(interfase, LibBlockNames.INTERFACE);
 	}
 
 	private static void nameBlocks() {
@@ -86,6 +89,7 @@ public final class ModBlocks {
 		LanguageRegistry.addName(phantomStone, LibBlockNames.PHANTOM_STONE_D);
 		LanguageRegistry.addName(magnet, LibBlockNames.MAGNET_D);
 		LanguageRegistry.addName(mobMagnet, LibBlockNames.MOB_MAGNET_D);
+		LanguageRegistry.addName(interfase, LibBlockNames.INTERFACE_D);
 	}
 
 	public static void applyObjectTags() {

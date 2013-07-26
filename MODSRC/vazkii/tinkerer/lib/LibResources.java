@@ -40,6 +40,7 @@ public final class LibResources {
 	public static final String MODEL_MAGNET_S = ROOT_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = ROOT_MODEL + "mobMagnetN.png";
 	public static final String MODEL_MOB_MAGNET_S = ROOT_MODEL + "mobMagnetS.png";
+	public static final String MODEL_CONNECTOR = ROOT_MODEL + "connector.cub";
 
 	public static final String MISC_GLYPHS = BLUR + ROOT_MISC + "transmutatorGlyphs.png";
 	public static final String MISC_WARD_CHEST_OVERLAY = ROOT_MISC + "wardChestOverlay.png";

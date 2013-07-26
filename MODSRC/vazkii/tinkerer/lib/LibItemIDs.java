@@ -32,6 +32,7 @@ public final class LibItemIDs {
 	public static final int DEFAULT_WEATHER_CRYSTAL = 21177;
 	public static final int DEFAULT_LOVE_POTION = 21178;
 	public static final int DEFAULT_SOUL_MOULD = 21179;
+	public static final int DEFAULT_CONNECTOR = 21180;
 
 	public static int idWandTinkerer;
 	public static int idGlowstoneGas;
@@ -63,5 +64,6 @@ public final class LibItemIDs {
 	public static int idWeatherCrystal;
 	public static int idLovePotion;
 	public static int idSoulMould;
+	public static int idConnector;
 
 }
