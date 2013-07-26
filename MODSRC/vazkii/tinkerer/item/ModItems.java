@@ -58,6 +58,7 @@ public final class ModItems {
 	public static Item lovePotion;
 	public static Item soulMould;
 	public static Item connector;
+	public static Item iceGlobe;
 
 	public static void initItems() {
 		wandTinkerer = new ItemWandTinkerer(LibItemIDs.idWandTinkerer).setUnlocalizedName(LibItemNames.WAND_TINKERER);
@@ -91,6 +92,7 @@ public final class ModItems {
 		lovePotion = new ItemLovePotion(LibItemIDs.idLovePotion).setUnlocalizedName(LibItemNames.LOVE_POTION);
 		soulMould = new ItemSoulMould(LibItemIDs.idSoulMould).setUnlocalizedName(LibItemNames.SOUL_MOULD);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
+		iceGlobe = new ItemIceGlobe(LibItemIDs.idIceGlobe).setUnlocalizedName(LibItemNames.ICE_GLOBE);
 
 		nameItems();
 	}
@@ -124,6 +126,7 @@ public final class ModItems {
 		LanguageRegistry.addName(lovePotion, LibItemNames.LOVE_POTION_D);
 		LanguageRegistry.addName(soulMould, LibItemNames.SOUL_MOULD_D);
 		LanguageRegistry.addName(connector, LibItemNames.CONNECTOR_D);
+		LanguageRegistry.addName(iceGlobe, LibItemNames.ICE_GLOBE_D);
 	}
 
 	public static void applyObjectTags() {

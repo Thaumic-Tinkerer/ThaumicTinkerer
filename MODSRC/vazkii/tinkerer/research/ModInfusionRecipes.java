@@ -273,5 +273,12 @@ public final class ModInfusionRecipes {
 				'I', new ItemStack(Item.ingotIron),
 				'W', new ItemStack(Config.itemWandCastingApprentice),
 				'S', new ItemStack(Config.itemShard, 1, 4));
+
+		tags = new ObjectTags().add(EnumTag.COLD, 12).add(EnumTag.LIFE, 6).add(EnumTag.TIME, 6);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibItemNames.ICE_GLOBE_R, LibItemNames.ICE_GLOBE_R, 50, tags, new ItemStack(ModItems.iceGlobe),
+				" G ", "G G", "ICI",
+				'G', new ItemStack(Block.thinGlass),
+				'I', new ItemStack(Item.ingotIron),
+				'C', new ItemStack(Block.ice));
 	}
 }

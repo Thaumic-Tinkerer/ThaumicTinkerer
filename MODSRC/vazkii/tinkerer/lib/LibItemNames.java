@@ -132,4 +132,8 @@ public final class LibItemNames {
 	public static final String CONNECTOR = "connector";
 	public static final String CONNECTOR_R = "CONNECTOR";
 	public static final String CONNECTOR_D = "Interface Binder";
+
+	public static final String ICE_GLOBE = "iceGlobe";
+	public static final String ICE_GLOBE_R = "ICE_GLOBE";
+	public static final String ICE_GLOBE_D = "Cryogenic Globe";
 }

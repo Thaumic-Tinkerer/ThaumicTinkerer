@@ -63,6 +63,7 @@ public final class ModResearchItems {
 	public static ResearchItem lovePotion;
 	public static ResearchItem mobMagnet;
 	public static ResearchItem interfase;
+	public static ResearchItem iceGlobe;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -168,5 +169,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.MECHANISM, 5).add(EnumTag.POWER, 6).add(EnumTag.ELDRITCH, 2).add(EnumTag.EXCHANGE, 5);
 		interfase = new ResearchItem(LibBlockNames.INTERFACE_R, tags, -5, -2, new ItemStack(ModBlocks.interfase)).setHidden().setParents(Config.researchMagicBlock).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.COLD, 20).add(EnumTag.LIFE, 8).add(EnumTag.FLESH, 6).add(EnumTag.TIME, 6);
+		iceGlobe = new ResearchItem(LibItemNames.ICE_GLOBE_R, tags, -1, 20, new ItemStack(ModItems.iceGlobe)).setHidden().setParents(Config.researchUTFT).registerResearchItem();
 	}
 }

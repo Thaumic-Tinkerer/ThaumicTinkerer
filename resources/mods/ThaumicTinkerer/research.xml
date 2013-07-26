@@ -385,7 +385,7 @@ This potion-like item acts similar to a splash potion, simply tossing it near an
 <!-- ======================================== Advanced Thaumostatic Magnetizer /-->
 <project id = "MOB_MAGNET" version = "1">
 <name>Advanced Thaumostatic Magnetizer</name>
-<popupText>[TT] You know you can do better...</popupText>
+<popupText>[TT] Corporal Attraction</popupText>
 <longText>By tinkerering with the Thuamostatic Magnatizer you think you can apply the knowledge of moving matter in space to the flesh and make the field more accurate in its effect</longText>
 <page type = "text">With the Thaumostatic Magnatizer you devised a way to manipulate inanimate objects in the world with a magnetic field, this was useful but with more tinkerering you have devised a way to apply this magnetic field to the flesh (living or dead).
 
@@ -410,6 +410,17 @@ Myth = Busted! Your latest construct can be bound to a block in the nearby vacin
 
 By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)</page>
 <page type = "infusioncrafting">CONNECTOR</page>
+</project>
+
+<!-- ======================================== Cryogenic Globe /-->
+<project id = "ICE_GLOBE" version = "1">
+<name>Cryogenic Globe</name>
+<popupText>[TT] Absolute Zero</popupText>
+<longText>By studying the element of cold, you think you can create a method of preserving living beings.</longText>
+<page type = "text">After study of the element of cold, you managed to devise a globe of pure cold.
+
+This globe can be utilized by left clicking on a living being (this won't hurt them). Upon doing so, the globe is consumed, and the living being gets possessed with cryogenic energy, preventing it from naturally despawning.</page>
+<page type = "infusioncrafting">ICE_GLOBE</page>
 </project>
 
 </research>
