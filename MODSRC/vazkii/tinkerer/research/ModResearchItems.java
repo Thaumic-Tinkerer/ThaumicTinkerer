@@ -62,6 +62,7 @@ public final class ModResearchItems {
 	public static ResearchItem weatherCrystals;
 	public static ResearchItem lovePotion;
 	public static ResearchItem mobMagnet;
+	public static ResearchItem interfase;
 
 	public static void registerModResearchItems() {
 		ObjectTags tags = new ObjectTags().add(EnumTag.MAGIC, 16).add(EnumTag.VOID, 8);
@@ -164,5 +165,8 @@ public final class ModResearchItems {
 
 		tags = new ObjectTags().add(EnumTag.POWER, 8).add(EnumTag.KNOWLEDGE, 14).add(EnumTag.MOTION, 6).add(EnumTag.METAL, 8).add(EnumTag.MECHANISM, 14).add(EnumTag.VALUABLE, 8).add(EnumTag.PURE, 12).add(EnumTag.FLESH, 10);
 		mobMagnet = new ResearchItem(LibBlockNames.MOB_MAGNET_R, tags, -5, 27, new ItemStack(ModBlocks.mobMagnet)).setHidden().setParents(magnet).registerResearchItem();
+
+		tags = new ObjectTags().add(EnumTag.MECHANISM, 5).add(EnumTag.POWER, 6).add(EnumTag.ELDRITCH, 2).add(EnumTag.EXCHANGE, 5);
+		interfase = new ResearchItem(LibBlockNames.INTERFACE_R, tags, -5, -2, new ItemStack(ModBlocks.interfase)).setHidden().setParents(Config.researchMagicBlock).registerResearchItem();
 	}
 }

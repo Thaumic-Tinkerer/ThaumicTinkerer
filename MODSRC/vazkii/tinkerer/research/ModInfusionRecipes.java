@@ -258,5 +258,20 @@ public final class ModInfusionRecipes {
 				'W', new ItemStack(Config.blockJar, 1, 1),
 				'L', new ItemStack(Item.dyePowder, 1, 4),
 				'R', new ItemStack(Item.redstone));
+
+		tags = new ObjectTags().add(EnumTag.MECHANISM, 6).add(EnumTag.EXCHANGE, 6);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.INTERFACE_R, LibBlockNames.INTERFACE_R, 25, tags, new ItemStack(ModBlocks.interfase),
+				"BRB", "LEL", "BRB",
+				'B', new ItemStack(Config.blockInfusionWorkbench),
+				'E', new ItemStack(Item.enderPearl),
+				'L', new ItemStack(Item.dyePowder, 1, 4),
+				'R', new ItemStack(Item.redstone));
+
+		tags = new ObjectTags().add(EnumTag.MECHANISM, 6).add(EnumTag.POWER, 6);
+		ThaumcraftApi.addInfusionCraftingRecipe(LibBlockNames.INTERFACE_R, LibItemNames.CONNECTOR_R, 25, tags, new ItemStack(ModItems.connector),
+				" I ", " WI", "S  ",
+				'I', new ItemStack(Item.ingotIron),
+				'W', new ItemStack(Config.itemWandCastingApprentice),
+				'S', new ItemStack(Config.itemShard, 1, 4));
 	}
 }

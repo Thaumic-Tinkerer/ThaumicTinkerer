@@ -397,4 +397,19 @@ Using a new device you have created you can Right-Click on a mob to take a copy 
 <page type = "arcanecrafting">SOUL_MOULD</page>
 </project>
 
+<!-- ======================================== Transvector Interface /-->
+<project id = "INTERFACE" version = "1">
+<name>Transvector Interface</name>
+<popupText>[TT] Cubic Extension</popupText>
+<longText>The fact that you can only interact with six sides of a block at once is frustrating you. You think you can make a way of extending said interaction.</longText>
+<page type = "text">"The thing is, there's only six sides to a block." - Direwolf20
+
+Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extnsion. It can accept buildcraft power, items, and liquids, being able to also export the latter two. [continued]</page>
+<page type = "infusioncrafting">INTERFACE</page>
+<page type = "text">In order to bind an interface to another block, you need to create a special tool to do so. What you call the Interface Binder should get the job done. 
+
+By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)</page>
+<page type = "infusioncrafting">CONNECTOR</page>
+</project>
+
 </research>

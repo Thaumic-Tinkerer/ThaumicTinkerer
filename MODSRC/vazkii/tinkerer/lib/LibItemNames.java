@@ -130,5 +130,6 @@ public final class LibItemNames {
 	public static final String SOUL_MOULD_D = "Soul Mould";
 
 	public static final String CONNECTOR = "connector";
+	public static final String CONNECTOR_R = "CONNECTOR";
 	public static final String CONNECTOR_D = "Interface Binder";
 }
