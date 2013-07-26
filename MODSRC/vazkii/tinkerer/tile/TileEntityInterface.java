@@ -20,15 +20,14 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.liquids.ILiquidTank;
+import net.minecraftforge.liquids.ITankContainer;
 import net.minecraftforge.liquids.LiquidStack;
+import buildcraft.api.power.IPowerProvider;
 import buildcraft.api.power.IPowerReceptor;
-import buildcraft.api.power.PowerHandler;
-import buildcraft.api.power.PowerHandler.PowerReceiver;
 
-public class TileEntityInterface extends TileEntity implements ISidedInventory, ILiquidTank, IPowerReceptor {
+public class TileEntityInterface extends TileEntity implements ISidedInventory, ITankContainer, IPowerReceptor {
 
 	public int x, y, z;
 
@@ -129,24 +128,6 @@ public class TileEntityInterface extends TileEntity implements ISidedInventory, 
 		return tile instanceof IInventory ? ((IInventory) tile).isStackValidForSlot(i, itemstack) : false;
 	}
 
-	@Override
-	public PowerReceiver getPowerReceiver(ForgeDirection side) {
-		TileEntity tile = getTile();
-		return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).getPowerReceiver(side) : null;
-	}
-
-	@Override
-	public void doWork(PowerHandler workProvider) {
-		TileEntity tile = getTile();
-		if (tile instanceof IPowerReceptor)
-			((IPowerReceptor) tile).doWork(workProvider);
-	}
-
-	@Override
-	public World getWorld() {
-		return worldObj;
-	}
-
 	// 1.6 stuff:
 	/*@Override
 	public int fill(ForgeDirection from, LiquidStack resource, boolean doFill) {
@@ -211,32 +192,64 @@ public class TileEntityInterface extends TileEntity implements ISidedInventory, 
 	}
 
 	@Override
-	public LiquidStack getLiquid() {
+	public void doWork() {
 		TileEntity tile = getTile();
-		return tile instanceof ILiquidTank ? ((ILiquidTank) tile).getLiquid() : null;
+		if (tile instanceof IPowerReceptor)
+			((IPowerReceptor) tile).doWork();
 	}
 
 	@Override
-	public int getCapacity() {
+	public void setPowerProvider(IPowerProvider provider) {
 		TileEntity tile = getTile();
-		return tile instanceof ILiquidTank ? ((ILiquidTank) tile).getCapacity() : 0;
+		if (tile instanceof IPowerReceptor)
+			((IPowerReceptor) tile).setPowerProvider(provider);
 	}
 
 	@Override
-	public int fill(LiquidStack resource, boolean doFill) {
+	public IPowerProvider getPowerProvider() {
 		TileEntity tile = getTile();
-		return tile instanceof ILiquidTank ? ((ILiquidTank) tile).fill(resource, doFill) : 0;
+		return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).getPowerProvider() :  null;
 	}
 
 	@Override
-	public LiquidStack drain(int maxDrain, boolean doDrain) {
+	public int powerRequest(ForgeDirection from) {
 		TileEntity tile = getTile();
-		return tile instanceof ILiquidTank ? ((ILiquidTank) tile).drain(maxDrain, doDrain) : null;
+		return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).powerRequest(from) : 0;
 	}
 
 	@Override
-	public int getTankPressure() {
+	public int fill(ForgeDirection from, LiquidStack resource, boolean doFill) {
 		TileEntity tile = getTile();
-		return tile instanceof ILiquidTank ? ((ILiquidTank) tile).getTankPressure() : 0;
+		return tile instanceof ITankContainer ? ((ITankContainer) tile).fill(from, resource, doFill) : 0;
+	}
+
+	@Override
+	public int fill(int tankIndex, LiquidStack resource, boolean doFill) {
+		TileEntity tile = getTile();
+		return tile instanceof ITankContainer ? ((ITankContainer) tile).fill(tankIndex, resource, doFill) : 0;
+	}
+
+	@Override
+	public LiquidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+		TileEntity tile = getTile();
+		return tile instanceof ITankContainer ? ((ITankContainer) tile).drain(from, maxDrain, doDrain) : null;
+	}
+
+	@Override
+	public LiquidStack drain(int tankIndex, int maxDrain, boolean doDrain) {
+		TileEntity tile = getTile();
+		return tile instanceof ITankContainer ? ((ITankContainer) tile).drain(tankIndex, maxDrain, doDrain) : null;
+	}
+
+	@Override
+	public ILiquidTank[] getTanks(ForgeDirection direction) {
+		TileEntity tile = getTile();
+		return tile instanceof ITankContainer ? ((ITankContainer) tile).getTanks(direction) : null;
+	}
+
+	@Override
+	public ILiquidTank getTank(ForgeDirection direction, LiquidStack type) {
+		TileEntity tile = getTile();
+		return tile instanceof ITankContainer ? ((ITankContainer) tile).getTank(direction, type) : null;
 	}
 }

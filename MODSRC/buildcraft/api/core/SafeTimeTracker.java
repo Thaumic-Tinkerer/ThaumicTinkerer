@@ -1,8 +1,8 @@
-/**
+/** 
  * Copyright (c) SpaceToad, 2011
  * http://www.mod-buildcraft.com
- *
- * BuildCraft is distributed under the terms of the Minecraft Mod Public
+ * 
+ * BuildCraft is distributed under the terms of the Minecraft Mod Public 
  * License 1.0, or MMPL. Please check the contents of the license located in
  * http://www.mod-buildcraft.com/MMPL-1.0.txt
  */
@@ -13,9 +13,7 @@ import net.minecraft.world.World;
 
 public class SafeTimeTracker {
 
-	private long lastMark = Long.MIN_VALUE;
-	private long duration = 0;
-	private boolean marked;
+	private long lastMark = 0;
 
 	/**
 	 * Return true if a given delay has passed since last time marked was called successfully.
@@ -30,17 +28,11 @@ public class SafeTimeTracker {
 			lastMark = currentTime;
 			return false;
 		} else if (lastMark + delay <= currentTime) {
-			duration = currentTime - lastMark;
 			lastMark = world.getWorldTime();
-			marked = true;
 			return true;
 		} else
 			return false;
 
-	}
-
-	public long durationOfLastDelay(){
-		return marked ? duration : 0;
 	}
 
 	public void markTime(World world) {
