@@ -386,14 +386,14 @@ This potion-like item acts similar to a splash potion, simply tossing it near an
 <project id = "MOB_MAGNET" version = "1">
 <name>Advanced Thaumostatic Magnetizer</name>
 <popupText>[TT] Corporal Attraction</popupText>
-<longText>By tinkerering with the Thuamostatic Magnatizer you think you can apply the knowledge of moving matter in space to the flesh and make the field more accurate in its effect</longText>
-<page type = "text">With the Thaumostatic Magnatizer you devised a way to manipulate inanimate objects in the world with a magnetic field, this was useful but with more tinkerering you have devised a way to apply this magnetic field to the flesh (living or dead).
+<longText>By tinkerering with the Thuamostatic Magnetizer you think you can apply the knowledge of moving matter in space to the flesh and make the field more accurate in its effect</longText>
+<page type = "text">With the Thaumostatic Magnetizer you devised a way to manipulate inanimate objects in the world with a magnetic field, this was useful but with more tinkerering you have devised a way to apply this magnetic field to the flesh (living or dead).
 
 This block acts as a magnet, it's state can be changed by right clicking it. While in south (blue) mode, it'll pull any nearby mobs towards it. While in north (red) mode, it'll do the opposite. Furthermore, the range of this attraction, or repulsion, is determined by the strength of the redstone signal applied to it.</page>
 <page type = "infusioncrafting">MOB_MAGNET</page>
-<page type = "text">With the new function of the magnatizer, you have created a filtering system for the Advanced Magnatizer.
+<page type = "text">With the new function of the magnetizer, you have created a filtering system for the Advanced Magnetizer.
 
-Using a new device you have created you can Right-Click on a mob to take a copy of its magnetic signature and then use this to make the magnatizer effect only that mob.</page>
+Using a new device you have created you can Right-Click on a mob to take a copy of its magnetic signature and then use this to make the magnetizer affect only that mob.</page>
 <page type = "arcanecrafting">SOUL_MOULD</page>
 </project>
 
