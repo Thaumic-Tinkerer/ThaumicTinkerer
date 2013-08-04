@@ -23,6 +23,8 @@ public class BlockInterface extends BlockModContainer {
 
     public BlockInterface(int par1) {
         super(par1, Material.iron);
+        setHardness(3F);
+        setResistance(10F);
     }
 
     @Override
