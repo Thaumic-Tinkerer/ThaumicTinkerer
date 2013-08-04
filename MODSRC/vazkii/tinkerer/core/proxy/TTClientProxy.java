@@ -27,7 +27,6 @@ import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderMobMagnet;
 import vazkii.tinkerer.client.render.block.RenderWardChest;
 import vazkii.tinkerer.client.render.entity.RenderDeathRune;
-import vazkii.tinkerer.client.render.item.RenderItemConnector;
 import vazkii.tinkerer.client.render.item.RenderItemFluxDetector;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
@@ -109,7 +108,6 @@ public class TTClientProxy extends TTCommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderMobMagnet());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.fluxDetector.itemID, new RenderItemFluxDetector());
-		MinecraftForgeClient.registerItemRenderer(ModItems.connector.itemID, new RenderItemConnector());
 	}
 
 	@Override
