@@ -17,6 +17,7 @@ package vazkii.tinkerer.util.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EntityInteractionHandler {
@@ -29,6 +30,11 @@ public class EntityInteractionHandler {
 
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onInteract(PlayerInteractEvent event) {
+		lastInteractingPlayer = event.entityPlayer;
+	}
+	
+	@ForgeSubscribe(priority = EventPriority.HIGHEST)
+	public void onAttack(AttackEntityEvent event) {
 		lastInteractingPlayer = event.entityPlayer;
 	}
 

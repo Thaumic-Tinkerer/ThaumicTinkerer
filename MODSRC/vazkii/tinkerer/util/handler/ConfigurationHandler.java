@@ -76,7 +76,8 @@ public final class ConfigurationHandler {
 		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.DEFAULT_SOUL_MOULD);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.DEFAULT_CONNECTOR);
 		LibItemIDs.idIceGlobe = loadItem(LibItemNames.ICE_GLOBE, LibItemIDs.DEFAULT_ICE_GLOBE);
-
+		LibItemIDs.idMuramasa = loadItem(LibItemNames.MURAMASA, LibItemIDs.DEFAULT_MURAMASA);
+		
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);
