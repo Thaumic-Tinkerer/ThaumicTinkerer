@@ -19,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.lib.LibBlockNames;
+import vazkii.tinkerer.lib.LibFeatures;
 import vazkii.tinkerer.tile.TileEntityInterface;
 import vazkii.tinkerer.util.helper.ItemNBTHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -70,7 +71,7 @@ public class ItemConnector extends ItemMod {
 			} else {
 				TileEntityInterface interf = (TileEntityInterface) tile1;
 
-				if(Math.abs(x - par4) > 3 || Math.abs(y - par5) > 3 || Math.abs(z - par6) > 3) {
+				if(Math.abs(x - par4) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - par5) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - par6) > LibFeatures.INTERFACE_DISTANCE) {
 					par2EntityPlayer.addChatMessage("The Interface is too far away.");
 					return true;
 				}

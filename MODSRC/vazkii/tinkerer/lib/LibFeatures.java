@@ -40,4 +40,6 @@ public final class LibFeatures {
 	public static final int GOLIATH_LEGS_MAX_SAFETY = 5;
 
 	public static final int CLEANSING_TALISMAN_VIS = 10;
+
+	public static final int INTERFACE_DISTANCE = 4;
 }
