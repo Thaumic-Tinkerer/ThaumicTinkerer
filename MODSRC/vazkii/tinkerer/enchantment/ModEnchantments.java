@@ -28,13 +28,19 @@ public final class ModEnchantments {
 	public static Enchantment soulbringer;
 	public static Enchantment vampirism;
 	public static Enchantment ashes;
-
+	public static Enchantment slowfall;
+	public static Enchantment ascentboost;
+	public static Enchantment stoneskin;
+	
 	public static void initEnchantments(){
 		freezing = new EnchantmentFreezing(LibEnchantmentIDs.freezing).setName(LibEnchantmentNames.FREEZING);
 		soulbringer = new EnchantmentSoulbringer(LibEnchantmentIDs.soulbringer).setName(LibEnchantmentNames.SOULBRINGER);
 		vampirism = new EnchantmentVampirism(LibEnchantmentIDs.vampirism).setName(LibEnchantmentNames.VAMPIRISM);
 		ashes = new EnchantmentAshes(LibEnchantmentIDs.ashes).setName(LibEnchantmentNames.ASHES);
-
+		slowfall = new EnchantmentSlowfall(LibEnchantmentIDs.slowfall).setName(LibEnchantmentNames.SLOWFALL);
+		ascentboost = new EnchantmentAscentBoost(LibEnchantmentIDs.ascentboost).setName(LibEnchantmentNames.ASCENTBOOST);
+		stoneskin = new EnchantmentStoneSkin(LibEnchantmentIDs.stoneskin).setName(LibEnchantmentNames.STONESKIN);
+		
 		nameEnchantments();
 
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
@@ -46,6 +52,9 @@ public final class ModEnchantments {
 		nameEnchant(soulbringer, LibEnchantmentNames.SOULBRINGER_D);
 		nameEnchant(vampirism, LibEnchantmentNames.VAMPIRISM_D);
 		nameEnchant(ashes, LibEnchantmentNames.ASHES_D);
+		nameEnchant(slowfall, LibEnchantmentNames.SLOWFALL_D);
+		nameEnchant(ascentboost, LibEnchantmentNames.ASCENTBOOST_D);
+		nameEnchant(stoneskin, LibEnchantmentNames.STONESKIN_D);
 	}
 
 	private static void nameEnchant(Enchantment enchant, String name) {

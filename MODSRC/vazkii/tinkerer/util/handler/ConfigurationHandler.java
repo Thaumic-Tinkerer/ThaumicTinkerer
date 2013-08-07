@@ -101,7 +101,10 @@ public final class ConfigurationHandler {
 		LibEnchantmentIDs.soulbringer = loadEnchantment(LibEnchantmentNames.SOULBRINGER, LibEnchantmentIDs.DEFAULT_SOULBRINGER);
 		LibEnchantmentIDs.vampirism = loadEnchantment(LibEnchantmentNames.VAMPIRISM, LibEnchantmentIDs.DEFAULT_VAMPIRISM);
 		LibEnchantmentIDs.ashes = loadEnchantment(LibEnchantmentNames.ASHES, LibEnchantmentIDs.DEFAULT_ASHES);
-
+		LibEnchantmentIDs.slowfall = loadEnchantment(LibEnchantmentNames.SLOWFALL, LibEnchantmentIDs.DEFAULT_SLOWFALL);
+		LibEnchantmentIDs.ascentboost = loadEnchantment(LibEnchantmentNames.ASCENTBOOST, LibEnchantmentIDs.DEFAULT_ASCENTBOOST);
+		LibEnchantmentIDs.stoneskin = loadEnchantment(LibEnchantmentNames.STONESKIN, LibEnchantmentIDs.DEAFULT_STONESKIN);
+		
 		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");
 		transmutatorMaxValue = loadBalanceInt(NODE_TRANSMUTATOR_MAX_VALUE, transmutatorMaxValue, "The maximum cost of an item that can be put in a transmutator. Cost refers to the total amount of aspect value.");

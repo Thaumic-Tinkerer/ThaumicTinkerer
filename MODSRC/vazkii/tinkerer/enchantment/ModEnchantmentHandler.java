@@ -38,6 +38,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
+import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibPotions;
 import vazkii.tinkerer.potion.ModPotions;
 import cpw.mods.fml.relauncher.ReflectionHelper;
@@ -144,10 +145,29 @@ public class ModEnchantmentHandler {
 
 			ThaumicTinkerer.proxy.sanityCheckedPossessedParticles(event.entityLiving);
 		}
-	}
 
+		if(event.entityLiving instanceof EntityPlayer) {
+			// Motion Enchants
+			int ascentBoost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantmentIDs.ascentboost, event.entityLiving.getLastActiveItems());
+			int slowfall = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantmentIDs.slowfall, event.entityLiving.getLastActiveItems());
+
+			if(ascentBoost > 0 || slowfall > 0) {
+				if(!event.entityLiving.isSneaking()) {
+					if(event.entityLiving.motionY < 0) {
+						event.entityLiving.motionY /= 1 + slowfall * LibMisc.MOVEMENT_MODIFIER;
+						event.entityLiving.fallDistance = 0;
+					}
+				}
+
+				if(event.entityLiving.isAirBorne && event.entityLiving.motionY > 0 && ascentBoost > 0) {
+					event.entityLiving.moveEntity(event.entityLiving.motionX, event.entityLiving.motionY * (ascentBoost * LibMisc.MOVEMENT_MODIFIER), event.entityLiving.motionZ);
+				}
+			}
+		}
+	}
+	
 	private void messWithAttackAI(EntityAIAttackOnCollide aiEntry) {
-		// EntityAIAttackOnCollide.classTarget
+		// EntityAIAttackOnCollide.classTargets
 		ReflectionHelper.setPrivateValue(EntityAIAttackOnCollide.class, aiEntry, EntityMob.class, 7);
 	}
 
