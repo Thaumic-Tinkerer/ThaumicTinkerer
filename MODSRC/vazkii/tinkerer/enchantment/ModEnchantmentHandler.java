@@ -44,7 +44,6 @@ import vazkii.tinkerer.lib.LibPotions;
 import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketTinkerShieldSync;
 import vazkii.tinkerer.potion.ModPotions;
-import vazkii.tinkerer.util.helper.MiscHelper;
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
@@ -81,6 +80,28 @@ public class ModEnchantmentHandler {
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.vampirism, heldItem) > 0) {
 				attacker.heal((int) Math.ceil(event.ammount / 4D));
 				event.entityLiving.worldObj.playSoundAtEntity(event.entityLiving, "thaumcraft.zap", 0.6F, 1F);
+			}
+		}
+
+		// Stone Skin Enchantment
+		if(event.entityLiving instanceof EntityPlayer) {
+
+			if(event.source.canHarmInCreative()) {
+				System.out.println("Creative mode");
+				return;
+			}
+			else {
+				ItemStack[] armor = event.entityLiving.getLastActiveItems();
+				for(ItemStack stack : armor) {
+					int lvl = EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.stoneskin, stack);
+					if(lvl > 0) {
+						float base = (6 + lvl * lvl) / 3.0F * 0.75F;
+
+						if(AuraManager.decreaseClosestAura(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posY, lvl)) {
+							event.ammount -= base;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -155,7 +176,7 @@ public class ModEnchantmentHandler {
 		}
 
 		if(event.entityLiving instanceof EntityPlayer) {
-			// Motion Enchants
+			// Motion Enchantments
 			int ascentBoost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantmentIDs.ascentboost, event.entityLiving.getLastActiveItems());
 			int slowfall = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantmentIDs.slowfall, event.entityLiving.getLastActiveItems());
 
@@ -172,13 +193,13 @@ public class ModEnchantmentHandler {
 				}
 			}
 
-			// Stone Skin Enchant
+			// Stone Skin Enchantment
 			int stoneskinLevel = 0;
 			ItemStack[] armor = event.entityLiving.getLastActiveItems();
 			for(ItemStack stack : armor) {
 				stoneskinLevel += EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.stoneskin, stack);
 			}
-			
+
 			NBTTagCompound cmp = getCompoundToSet((EntityPlayer) event.entityLiving);
 			cmp.setInteger(TAG_SHIELD, stoneskinLevel);
 			PacketManager.sendPacketToClient((Player) event.entityLiving, new PacketTinkerShieldSync(stoneskinLevel));

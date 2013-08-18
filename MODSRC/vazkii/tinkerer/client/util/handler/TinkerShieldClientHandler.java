@@ -42,9 +42,9 @@ public class TinkerShieldClientHandler {
 				int y = event.resolution.getScaledHeight() - 49;
 
 				GL11.glTranslatef(0F, 10F, 0F);
-				
+
 				mc.renderEngine.bindTexture(LibResources.GUI_TINKER_SHIELDS_ON);
-				
+
 				int it = 0;
 				for(int i = 0; i < clientPlayerShield; i++) {
 					boolean half = i == clientPlayerShield - 1 && clientPlayerShield % 2 != 0;

@@ -15,10 +15,6 @@
 package vazkii.tinkerer.enchantment;
 
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
-import thaumcraft.common.aura.AuraManager;
-import vazkii.tinkerer.util.helper.MiscHelper;
 
 public class EnchantmentStoneSkin extends EnchantmentTinker {
 
@@ -29,24 +25,5 @@ public class EnchantmentStoneSkin extends EnchantmentTinker {
 	@Override
 	public int getMaxLevel() {
 		return 5;
-	}
-
-	@Override
-	public int calcModifierDamage(int par1, DamageSource par2DamageSource) {
-		if(par2DamageSource.canHarmInCreative()) {
-			return 0;
-		}
-		else {
-			float base = (6 + par1 * par1) / 3.0F * 0.75F;
-
-			if(AuraManager.decreaseClosestAura(MiscHelper.getMc().renderViewEntity.worldObj, MiscHelper.getClientPlayer().posX, MiscHelper.getClientPlayer().posY, MiscHelper.getClientPlayer().posY, par1)) {
-				System.out.println("used vis");
-				return MathHelper.floor_float(base * 2);
-			}
-			else {
-				System.out.println("didn't used vis");
-				return MathHelper.floor_float(base);
-			}
-		}
 	}
 }

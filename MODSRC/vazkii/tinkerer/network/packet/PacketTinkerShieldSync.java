@@ -32,11 +32,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PacketTinkerShieldSync extends ModPacket {
 
 	int shields;
-	
+
 	public PacketTinkerShieldSync() { }
 
-	public PacketTinkerShieldSync(int shield) {
-		this.shields = shield;
+	public PacketTinkerShieldSync(int shields) {
+		this.shields = shields;
 	}
 
 	@Override
