@@ -33,6 +33,8 @@ public final class LibResources {
 	public static final String GUI_ANIMATION_TABLET = ROOT_GUI + "guiAnimationTablet.png";
 	public static final String GUI_MOB_MAGNET = ROOT_GUI + "guiMobMagnet.png";
 	public static final String GUI_SOUL_HEARTS = ROOT_GUI + "soulHearts.png";
+	public static final String GUI_TINKER_SHIELDS_ON = ROOT_GUI + "tinkerShieldsOn.png";
+	public static final String GUI_TINKER_SHIELDS_OFF = ROOT_GUI + "tinkerShieldsOff.png";
 
 	public static final String MODEL_WARD_CHEST = ROOT_MODEL + "chestWard.png";
 	public static final String MODEL_LEGS_GOLIATH = ROOT_MODEL + "armorGoliath.png";

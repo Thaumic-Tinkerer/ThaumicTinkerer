@@ -36,14 +36,22 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
 import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibPotions;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketTinkerShieldSync;
 import vazkii.tinkerer.potion.ModPotions;
+import vazkii.tinkerer.util.helper.MiscHelper;
+import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ModEnchantmentHandler {
+
+	private static final String COMPOUND = LibMisc.MOD_ID;
+	private static final String TAG_SHIELD = "tinkerShields";
 
 	@ForgeSubscribe
 	public void onEntityDamaged(LivingHurtEvent event) {
@@ -163,9 +171,20 @@ public class ModEnchantmentHandler {
 					event.entityLiving.moveEntity(event.entityLiving.motionX, event.entityLiving.motionY * (ascentBoost * LibMisc.MOVEMENT_MODIFIER), event.entityLiving.motionZ);
 				}
 			}
+
+			// Stone Skin Enchant
+			int stoneskinLevel = 0;
+			ItemStack[] armor = event.entityLiving.getLastActiveItems();
+			for(ItemStack stack : armor) {
+				stoneskinLevel += EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.stoneskin, stack);
+			}
+			
+			NBTTagCompound cmp = getCompoundToSet((EntityPlayer) event.entityLiving);
+			cmp.setInteger(TAG_SHIELD, stoneskinLevel);
+			PacketManager.sendPacketToClient((Player) event.entityLiving, new PacketTinkerShieldSync(stoneskinLevel));
 		}
 	}
-	
+
 	private void messWithAttackAI(EntityAIAttackOnCollide aiEntry) {
 		// EntityAIAttackOnCollide.classTargets
 		ReflectionHelper.setPrivateValue(EntityAIAttackOnCollide.class, aiEntry, EntityMob.class, 7);
@@ -193,5 +212,13 @@ public class ModEnchantmentHandler {
 
 	public static boolean isEntityPossessed(EntityLiving entity) {
 		return entity.isPotionActive(LibPotions.idPossessed);
+	}
+
+	private static NBTTagCompound getCompoundToSet(EntityPlayer player) {
+		NBTTagCompound cmp = player.getEntityData();
+		if(!cmp.hasKey(COMPOUND))
+			cmp.setCompoundTag(COMPOUND, new NBTTagCompound());
+
+		return cmp.getCompoundTag(COMPOUND);
 	}
 }

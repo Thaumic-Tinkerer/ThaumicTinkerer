@@ -34,7 +34,7 @@ public class ItemWeatherCrystal extends ItemMod {
 
 	public ItemWeatherCrystal(int par1) {
 		super(par1);
-	
+
 		setHasSubtypes(true);
 	}
 

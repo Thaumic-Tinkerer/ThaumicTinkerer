@@ -136,7 +136,7 @@ public final class LibItemNames {
 	public static final String ICE_GLOBE = "iceGlobe";
 	public static final String ICE_GLOBE_R = "ICE_GLOBE";
 	public static final String ICE_GLOBE_D = "Cryogenic Globe";
-	
+
 	public static final String MURAMASA = "muramasa";
 	public static final String MURAMASA_R = "MURAMASA";
 	public static final String MURAMASA_D = "Muramasa";

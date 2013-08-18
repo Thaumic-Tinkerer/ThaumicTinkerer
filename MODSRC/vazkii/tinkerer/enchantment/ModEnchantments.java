@@ -31,7 +31,7 @@ public final class ModEnchantments {
 	public static Enchantment slowfall;
 	public static Enchantment ascentboost;
 	public static Enchantment stoneskin;
-	
+
 	public static void initEnchantments(){
 		freezing = new EnchantmentFreezing(LibEnchantmentIDs.freezing).setName(LibEnchantmentNames.FREEZING);
 		soulbringer = new EnchantmentSoulbringer(LibEnchantmentIDs.soulbringer).setName(LibEnchantmentNames.SOULBRINGER);
@@ -40,7 +40,7 @@ public final class ModEnchantments {
 		slowfall = new EnchantmentSlowfall(LibEnchantmentIDs.slowfall).setName(LibEnchantmentNames.SLOWFALL);
 		ascentboost = new EnchantmentAscentBoost(LibEnchantmentIDs.ascentboost).setName(LibEnchantmentNames.ASCENTBOOST);
 		stoneskin = new EnchantmentStoneSkin(LibEnchantmentIDs.stoneskin).setName(LibEnchantmentNames.STONESKIN);
-		
+
 		nameEnchantments();
 
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());

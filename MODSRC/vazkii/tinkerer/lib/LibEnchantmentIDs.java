@@ -23,7 +23,7 @@ public final class LibEnchantmentIDs {
 	public static final int DEFAULT_SLOWFALL = 219;
 	public static final int DEFAULT_ASCENTBOOST = 220;
 	public static final int DEAFULT_STONESKIN = 221;
-	
+
 	public static int freezing;
 	public static int soulbringer;
 	public static int vampirism;

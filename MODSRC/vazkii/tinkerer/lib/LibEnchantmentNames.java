@@ -31,15 +31,15 @@ public final class LibEnchantmentNames {
 	public static final String ASHES = "ashes";
 	public static final String ASHES_R = "ENCHANT_ASHES";
 	public static final String ASHES_D = "Ashes";
-	
+
 	public static final String SLOWFALL = "slowfall";
 	public static final String SLOWFALL_R = "ENCHANT_SLOWFALL";
 	public static final String SLOWFALL_D = "Slowfall";
-	
+
 	public static final String ASCENTBOOST = "ascentboost";
 	public static final String ASCENTBOOST_R = "ENCHANT_ASCENTBOOST";
 	public static final String ASCENTBOOST_D = "Ascent Boost";
-	
+
 	public static final String STONESKIN = "stoneskin";
 	public static final String STONESKIN_R = "ENCHANT_STONESKIN";
 	public static final String STONESKIN_D = "Stone Skin";

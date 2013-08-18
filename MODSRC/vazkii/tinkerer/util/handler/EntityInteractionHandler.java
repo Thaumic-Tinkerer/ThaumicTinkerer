@@ -32,7 +32,7 @@ public class EntityInteractionHandler {
 	public void onInteract(PlayerInteractEvent event) {
 		lastInteractingPlayer = event.entityPlayer;
 	}
-	
+
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onAttack(AttackEntityEvent event) {
 		lastInteractingPlayer = event.entityPlayer;

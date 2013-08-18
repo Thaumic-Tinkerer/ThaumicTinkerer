@@ -35,6 +35,7 @@ import vazkii.tinkerer.client.render.tile.RenderTileTransmutator;
 import vazkii.tinkerer.client.render.tile.RenderTileWardChest;
 import vazkii.tinkerer.client.util.handler.ClientTickHandler;
 import vazkii.tinkerer.client.util.handler.SoulHeartClientHandler;
+import vazkii.tinkerer.client.util.handler.TinkerShieldClientHandler;
 import vazkii.tinkerer.entity.EntityDeathRune;
 import vazkii.tinkerer.entity.EntityLovePotion;
 import vazkii.tinkerer.item.ModItems;
@@ -43,6 +44,7 @@ import vazkii.tinkerer.network.PacketManager;
 import vazkii.tinkerer.network.packet.PacketAnimationTabletSync;
 import vazkii.tinkerer.network.packet.PacketMobMagnetSync;
 import vazkii.tinkerer.network.packet.PacketSoulHeartSync;
+import vazkii.tinkerer.network.packet.PacketTinkerShieldSync;
 import vazkii.tinkerer.network.packet.PacketTransmutatorSync;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.tile.TileEntityAnimationTablet;
@@ -65,6 +67,7 @@ public class TTClientProxy extends TTCommonProxy {
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 
 		MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
+		MinecraftForge.EVENT_BUS.register(new TinkerShieldClientHandler());
 	}
 
 	@Override
@@ -94,6 +97,7 @@ public class TTClientProxy extends TTCommonProxy {
 		PacketManager.packetHandlers.add(new PacketTransmutatorSync());
 		PacketManager.packetHandlers.add(new PacketAnimationTabletSync());
 		PacketManager.packetHandlers.add(new PacketSoulHeartSync());
+		PacketManager.packetHandlers.add(new PacketTinkerShieldSync());
 		PacketManager.packetHandlers.add(new PacketMobMagnetSync());
 	}
 

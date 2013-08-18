@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.tile;
 
-import vazkii.tinkerer.lib.LibFeatures;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -25,6 +24,7 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.liquids.ILiquidTank;
 import net.minecraftforge.liquids.ITankContainer;
 import net.minecraftforge.liquids.LiquidStack;
+import vazkii.tinkerer.lib.LibFeatures;
 import buildcraft.api.power.IPowerProvider;
 import buildcraft.api.power.IPowerReceptor;
 
@@ -55,7 +55,7 @@ public class TileEntityInterface extends TileEntity implements ISidedInventory, 
 			return null;
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
-		
+
 		if(tile == null || Math.abs(x - xCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - yCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - zCoord) > LibFeatures.INTERFACE_DISTANCE) {
 			y = -1;
 			return null;
