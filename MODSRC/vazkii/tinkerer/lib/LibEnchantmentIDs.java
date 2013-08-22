@@ -22,7 +22,8 @@ public final class LibEnchantmentIDs {
 	public static final int DEFAULT_ASHES = 218;
 	public static final int DEFAULT_SLOWFALL = 219;
 	public static final int DEFAULT_ASCENTBOOST = 220;
-	public static final int DEAFULT_STONESKIN = 221;
+	public static final int DEFAULT_STONESKIN = 221;
+	public static final int DEFAULT_HELPINGHAND = 222;
 
 	public static int freezing;
 	public static int soulbringer;
@@ -31,4 +32,5 @@ public final class LibEnchantmentIDs {
 	public static int slowfall;
 	public static int ascentboost;
 	public static int stoneskin;
+	public static int helpinghand;
 }

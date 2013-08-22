@@ -43,6 +43,10 @@ public final class LibEnchantmentNames {
 	public static final String STONESKIN = "stoneskin";
 	public static final String STONESKIN_R = "ENCHANT_STONESKIN";
 	public static final String STONESKIN_D = "Stone Skin";
+	
+	public static final String HELPINGHAND = "helpinghand";
+	public static final String HELPINGHAND_R = "ENCHANT_HELPINGHAND";
+	public static final String HELPINGHAND_D = "Helping Hand";
 
 	public static final String LOST_ENCHANTS_RESEARCH_NAME = "LOST_ENCHANTS";
 	public static final String TINKER_ENCHANTS_RESEARCH_NAME = "TINKER_ENCHANTS";

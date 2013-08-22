@@ -36,7 +36,8 @@ public class EnchantedBookCraftingHandler implements ICraftingHandler {
 				ModEnchantments.ashes,
 				ModEnchantments.slowfall,
 				ModEnchantments.ascentboost,
-				ModEnchantments.stoneskin
+				ModEnchantments.stoneskin,
+				ModEnchantments.helpinghand
 		};
 	}
 

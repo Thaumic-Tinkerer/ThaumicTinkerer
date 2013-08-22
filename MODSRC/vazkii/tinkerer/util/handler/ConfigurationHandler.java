@@ -103,7 +103,8 @@ public final class ConfigurationHandler {
 		LibEnchantmentIDs.ashes = loadEnchantment(LibEnchantmentNames.ASHES, LibEnchantmentIDs.DEFAULT_ASHES);
 		LibEnchantmentIDs.slowfall = loadEnchantment(LibEnchantmentNames.SLOWFALL, LibEnchantmentIDs.DEFAULT_SLOWFALL);
 		LibEnchantmentIDs.ascentboost = loadEnchantment(LibEnchantmentNames.ASCENTBOOST, LibEnchantmentIDs.DEFAULT_ASCENTBOOST);
-		LibEnchantmentIDs.stoneskin = loadEnchantment(LibEnchantmentNames.STONESKIN, LibEnchantmentIDs.DEAFULT_STONESKIN);
+		LibEnchantmentIDs.stoneskin = loadEnchantment(LibEnchantmentNames.STONESKIN, LibEnchantmentIDs.DEFAULT_STONESKIN);
+		LibEnchantmentIDs.helpinghand = loadEnchantment(LibEnchantmentNames.HELPINGHAND, LibEnchantmentIDs.DEFAULT_HELPINGHAND);
 
 		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");

@@ -31,6 +31,7 @@ public final class ModEnchantments {
 	public static Enchantment slowfall;
 	public static Enchantment ascentboost;
 	public static Enchantment stoneskin;
+	public static Enchantment helpinghand;
 
 	public static void initEnchantments(){
 		freezing = new EnchantmentFreezing(LibEnchantmentIDs.freezing).setName(LibEnchantmentNames.FREEZING);
@@ -40,7 +41,8 @@ public final class ModEnchantments {
 		slowfall = new EnchantmentSlowfall(LibEnchantmentIDs.slowfall).setName(LibEnchantmentNames.SLOWFALL);
 		ascentboost = new EnchantmentAscentBoost(LibEnchantmentIDs.ascentboost).setName(LibEnchantmentNames.ASCENTBOOST);
 		stoneskin = new EnchantmentStoneSkin(LibEnchantmentIDs.stoneskin).setName(LibEnchantmentNames.STONESKIN);
-
+		helpinghand = new EnchantmentHelpingHand(LibEnchantmentIDs.helpinghand).setName(LibEnchantmentNames.HELPINGHAND);
+		
 		nameEnchantments();
 
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
@@ -55,6 +57,7 @@ public final class ModEnchantments {
 		nameEnchant(slowfall, LibEnchantmentNames.SLOWFALL_D);
 		nameEnchant(ascentboost, LibEnchantmentNames.ASCENTBOOST_D);
 		nameEnchant(stoneskin, LibEnchantmentNames.STONESKIN_D);
+		nameEnchant(helpinghand, LibEnchantmentNames.HELPINGHAND_D);
 	}
 
 	private static void nameEnchant(Enchantment enchant, String name) {

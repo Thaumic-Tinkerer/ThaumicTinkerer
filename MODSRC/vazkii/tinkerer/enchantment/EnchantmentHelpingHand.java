@@ -14,6 +14,16 @@
  */
 package vazkii.tinkerer.enchantment;
 
-public class EnchantmentHelpingHand {
+import net.minecraft.enchantment.EnumEnchantmentType;
 
+public class EnchantmentHelpingHand extends EnchantmentTinker {
+
+		protected EnchantmentHelpingHand(int par1) {
+			super(par1, EnumEnchantmentType.armor);
+		}
+
+		@Override
+		public int getMaxLevel() {
+			return 1;
+		}
 }

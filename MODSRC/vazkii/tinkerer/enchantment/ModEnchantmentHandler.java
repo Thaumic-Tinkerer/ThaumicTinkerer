@@ -87,7 +87,6 @@ public class ModEnchantmentHandler {
 		if(event.entityLiving instanceof EntityPlayer) {
 
 			if(event.source.canHarmInCreative()) {
-				System.out.println("Creative mode");
 				return;
 			}
 			else {
