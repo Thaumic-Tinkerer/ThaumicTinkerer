@@ -1,0 +1,17 @@
+[
+{
+  "modid": "ThaumicTinkerer",
+  "name": "Thaumic Tinkerer",
+  "description": "An addon to Thaumcraft 4, implementing new content. This mod is a spiritual successor to Elemental Tinkerer. Researches that come from this mod are prefixed by [TT]. Build ANT:BUILD.",
+  "version": "ANT:VERSION-ANT:BUILD",
+  "mcversion": "1.6.2",
+  "logoFile": "/assets/ttinkerer/textures/logo.png",
+  "url": "minecraftforum.net/topic/1813058-",
+  "updateUrl": "",
+  "authors": ["Vazkii"],
+  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDyio.",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": ["Thaumcraft"]
+}
+]
