@@ -1,0 +1,5 @@
+item.ttinkerer:darkQuartz.name=Smokey Quartz
+
+tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
+tile.ttinkerer:darkQuartzChiseled.name=Chiseled Smokey Quartz Block
+tile.ttinkerer:darkQuartzPillar.name=Pillar Smokey Quartz Block

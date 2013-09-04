@@ -18,6 +18,10 @@ import java.io.File;
 
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
+import vazkii.tinkerer.common.lib.LibBlockIDs;
+import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibItemIDs;
+import vazkii.tinkerer.common.lib.LibItemNames;
 
 public final class ConfigHandler {
 
@@ -37,8 +41,27 @@ public final class ConfigHandler {
 
 		config.load();
 
+		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
+
+		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 
 		config.save();
+	}
+	
+	private static int loadItem(String label, int defaultID) {
+		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
+	}
+
+	private static int loadBlock(String label, int defaultID) {
+		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
+	}
+
+	private static int loadPotion(String label, int deafultID) {
+		return config.get(CATEGORY_POTIONS, "id_potion." + label, deafultID).getInt(deafultID);
+	}
+
+	private static int loadEnchantment(String label, int deafultID) {
+		return config.get(CATEGORY_ENCHANTMENTS, "id_enchantment." + label, deafultID).getInt(deafultID);
 	}
 
 }
