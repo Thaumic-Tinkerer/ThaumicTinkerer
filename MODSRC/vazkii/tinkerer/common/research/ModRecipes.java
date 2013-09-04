@@ -10,21 +10,14 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [4 Sep 2013, 16:33:54 (GMT)]
+ * File Created @ [4 Sep 2013, 17:02:48 (GMT)]
  */
-package vazkii.tinkerer.client.core.proxy;
+package vazkii.tinkerer.common.research;
 
-import vazkii.tinkerer.client.core.handler.LocalizationHandler;
-import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
+public final class ModRecipes {
 
-public class TTClientProxy extends TTCommonProxy {
+	public static void initRecipes() {
 
-	@Override
-	public void init(FMLInitializationEvent event) {
-		super.init(event);
-
-		LocalizationHandler.loadLocalizations();
 	}
 
 }

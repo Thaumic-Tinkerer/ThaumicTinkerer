@@ -14,17 +14,31 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.enchantment.ModEnchantments;
+import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.potion.ModPotions;
+import vazkii.tinkerer.common.research.ModRecipes;
+import vazkii.tinkerer.common.research.ModResearch;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
+		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 
+		ModItems.initItems();
+		ModBlocks.initBlocks();
 	}
 
 	public void init(FMLInitializationEvent event) {
-
+		ModEnchantments.initEnchantments();
+		ModPotions.initPotions();
+		ModBlocks.initTileEntities();
+		ModResearch.initResearch();
+		ModRecipes.initRecipes();
 	}
 
 }
