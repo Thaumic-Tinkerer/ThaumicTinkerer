@@ -1,5 +1,5 @@
 <?xml version="1.0" ?> 
-<project name="PrisceMagica" default="build">
+<project name="ThaumicTinkerer" default="build">
 
 	<property file="build.properties" prefix="build"/>
 
