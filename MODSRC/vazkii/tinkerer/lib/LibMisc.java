@@ -29,4 +29,5 @@ public final class LibMisc {
 	public static final short TAG_META_WILDCARD = -1;
 
 	public static final float MODEL_DEFAULT_RENDER_SCALE = 0.0625F;
+	public static final float MOVEMENT_MODIFIER = 0.33F;
 }

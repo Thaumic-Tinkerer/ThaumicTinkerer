@@ -95,7 +95,7 @@ public final class ModItems {
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
 		iceGlobe = new ItemIceGlobe(LibItemIDs.idIceGlobe).setUnlocalizedName(LibItemNames.ICE_GLOBE);
 		muramasa = new ItemMuramasa(LibItemIDs.idMuramasa).setUnlocalizedName(LibItemNames.MURAMASA);
-		
+
 		nameItems();
 	}
 

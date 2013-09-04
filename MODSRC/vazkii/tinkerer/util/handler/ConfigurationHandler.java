@@ -77,7 +77,7 @@ public final class ConfigurationHandler {
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.DEFAULT_CONNECTOR);
 		LibItemIDs.idIceGlobe = loadItem(LibItemNames.ICE_GLOBE, LibItemIDs.DEFAULT_ICE_GLOBE);
 		LibItemIDs.idMuramasa = loadItem(LibItemNames.MURAMASA, LibItemIDs.DEFAULT_MURAMASA);
-		
+
 		LibBlockIDs.idGlowstoneGas = loadBlock(LibBlockNames.GLOWSTONE_GAS, LibBlockIDs.DEFAULT_GLOWSTONE_GAS);
 		LibBlockIDs.idTransmutator = loadBlock(LibBlockNames.TRANSMUTATOR, LibBlockIDs.DEFAULT_TRANSMUTATOR);
 		LibBlockIDs.idWardChest = loadBlock(LibBlockNames.WARD_CHEST, LibBlockIDs.DEFAULT_WARD_CHEST);
@@ -101,6 +101,10 @@ public final class ConfigurationHandler {
 		LibEnchantmentIDs.soulbringer = loadEnchantment(LibEnchantmentNames.SOULBRINGER, LibEnchantmentIDs.DEFAULT_SOULBRINGER);
 		LibEnchantmentIDs.vampirism = loadEnchantment(LibEnchantmentNames.VAMPIRISM, LibEnchantmentIDs.DEFAULT_VAMPIRISM);
 		LibEnchantmentIDs.ashes = loadEnchantment(LibEnchantmentNames.ASHES, LibEnchantmentIDs.DEFAULT_ASHES);
+		LibEnchantmentIDs.slowfall = loadEnchantment(LibEnchantmentNames.SLOWFALL, LibEnchantmentIDs.DEFAULT_SLOWFALL);
+		LibEnchantmentIDs.ascentboost = loadEnchantment(LibEnchantmentNames.ASCENTBOOST, LibEnchantmentIDs.DEFAULT_ASCENTBOOST);
+		LibEnchantmentIDs.stoneskin = loadEnchantment(LibEnchantmentNames.STONESKIN, LibEnchantmentIDs.DEFAULT_STONESKIN);
+		LibEnchantmentIDs.helpinghand = loadEnchantment(LibEnchantmentNames.HELPINGHAND, LibEnchantmentIDs.DEFAULT_HELPINGHAND);
 
 		transmutatorVisMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_VIS_MULTI, transmutatorVisMultiplier, "The multiplier of the vis cost for an item on the transmutator. X times the total amount of aspect value.");
 		transmutatorEssentiaMultiplier = loadBalanceInt(NODE_TRANSMUTATOR_ESSENTIA_MULTI, transmutatorEssentiaMultiplier, "The multiplier of the aspect cost for an item on the transmutator, X times the amount of the original value.");

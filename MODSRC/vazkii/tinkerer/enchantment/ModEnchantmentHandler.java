@@ -36,13 +36,21 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import thaumcraft.common.aura.AuraManager;
 import vazkii.tinkerer.ThaumicTinkerer;
 import vazkii.tinkerer.lib.LibEnchantmentIDs;
+import vazkii.tinkerer.lib.LibMisc;
 import vazkii.tinkerer.lib.LibPotions;
+import vazkii.tinkerer.network.PacketManager;
+import vazkii.tinkerer.network.packet.PacketTinkerShieldSync;
 import vazkii.tinkerer.potion.ModPotions;
+import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ModEnchantmentHandler {
+
+	private static final String COMPOUND = LibMisc.MOD_ID;
+	private static final String TAG_SHIELD = "tinkerShields";
 
 	@ForgeSubscribe
 	public void onEntityDamaged(LivingHurtEvent event) {
@@ -72,6 +80,27 @@ public class ModEnchantmentHandler {
 			if(EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.vampirism, heldItem) > 0) {
 				attacker.heal((int) Math.ceil(event.ammount / 4D));
 				event.entityLiving.worldObj.playSoundAtEntity(event.entityLiving, "thaumcraft.zap", 0.6F, 1F);
+			}
+		}
+
+		// Stone Skin Enchantment
+		if(event.entityLiving instanceof EntityPlayer) {
+
+			if(event.source.canHarmInCreative()) {
+				return;
+			}
+			else {
+				ItemStack[] armor = event.entityLiving.getLastActiveItems();
+				for(ItemStack stack : armor) {
+					int lvl = EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.stoneskin, stack);
+					if(lvl > 0) {
+						float base = (6 + lvl * lvl) / 3.0F * 0.75F;
+
+						if(AuraManager.decreaseClosestAura(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posY, lvl)) {
+							event.ammount -= base;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -144,10 +173,40 @@ public class ModEnchantmentHandler {
 
 			ThaumicTinkerer.proxy.sanityCheckedPossessedParticles(event.entityLiving);
 		}
+
+		if(event.entityLiving instanceof EntityPlayer) {
+			// Motion Enchantments
+			int ascentBoost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantmentIDs.ascentboost, event.entityLiving.getLastActiveItems());
+			int slowfall = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantmentIDs.slowfall, event.entityLiving.getLastActiveItems());
+
+			if(ascentBoost > 0 || slowfall > 0) {
+				if(!event.entityLiving.isSneaking()) {
+					if(event.entityLiving.motionY < 0) {
+						event.entityLiving.motionY /= 1 + slowfall * LibMisc.MOVEMENT_MODIFIER;
+						event.entityLiving.fallDistance = 0;
+					}
+				}
+
+				if(event.entityLiving.isAirBorne && event.entityLiving.motionY > 0 && ascentBoost > 0) {
+					event.entityLiving.moveEntity(event.entityLiving.motionX, event.entityLiving.motionY * (ascentBoost * LibMisc.MOVEMENT_MODIFIER), event.entityLiving.motionZ);
+				}
+			}
+
+			// Stone Skin Enchantment
+			int stoneskinLevel = 0;
+			ItemStack[] armor = event.entityLiving.getLastActiveItems();
+			for(ItemStack stack : armor) {
+				stoneskinLevel += EnchantmentHelper.getEnchantmentLevel(LibEnchantmentIDs.stoneskin, stack);
+			}
+
+			NBTTagCompound cmp = getCompoundToSet((EntityPlayer) event.entityLiving);
+			cmp.setInteger(TAG_SHIELD, stoneskinLevel);
+			PacketManager.sendPacketToClient((Player) event.entityLiving, new PacketTinkerShieldSync(stoneskinLevel));
+		}
 	}
 
 	private void messWithAttackAI(EntityAIAttackOnCollide aiEntry) {
-		// EntityAIAttackOnCollide.classTarget
+		// EntityAIAttackOnCollide.classTargets
 		ReflectionHelper.setPrivateValue(EntityAIAttackOnCollide.class, aiEntry, EntityMob.class, 7);
 	}
 
@@ -173,5 +232,13 @@ public class ModEnchantmentHandler {
 
 	public static boolean isEntityPossessed(EntityLiving entity) {
 		return entity.isPotionActive(LibPotions.idPossessed);
+	}
+
+	private static NBTTagCompound getCompoundToSet(EntityPlayer player) {
+		NBTTagCompound cmp = player.getEntityData();
+		if(!cmp.hasKey(COMPOUND))
+			cmp.setCompoundTag(COMPOUND, new NBTTagCompound());
+
+		return cmp.getCompoundTag(COMPOUND);
 	}
 }

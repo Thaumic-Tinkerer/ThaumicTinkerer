@@ -33,7 +33,11 @@ public class EnchantedBookCraftingHandler implements ICraftingHandler {
 				ModEnchantments.freezing,
 				ModEnchantments.vampirism,
 				ModEnchantments.soulbringer,
-				ModEnchantments.ashes
+				ModEnchantments.ashes,
+				ModEnchantments.slowfall,
+				ModEnchantments.ascentboost,
+				ModEnchantments.stoneskin,
+				ModEnchantments.helpinghand
 		};
 	}
 
