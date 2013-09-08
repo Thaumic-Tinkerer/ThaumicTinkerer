@@ -74,20 +74,20 @@ public final class ModRecipes {
 				'E', new ItemStack(Item.enderPearl),
 				'L', new ItemStack(Item.dyePowder, 1, 4),
 				'R', new ItemStack(Item.redstone));
-		registerResearchItem(LibResearch.KEY_CONNECTOR, LibResearch.KEY_INTERFACE, new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2), 
+		registerResearchItem(LibResearch.KEY_CONNECTOR, LibResearch.KEY_INTERFACE, new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2),
 				" I ", " WI", "S  ",
 				'I', new ItemStack(Item.ingotIron),
 				'W', new ItemStack(Item.stick),
 				'S', new ItemStack(ConfigItems.itemShard, 1, 4));
 	}
-	
+
 	private static void registerResearchItem(String name, String research, ItemStack output, AspectList aspects, Object... stuff) {
 		ThaumcraftApi.addArcaneCraftingRecipe(research, output, aspects, stuff);
 		List recipeList = ThaumcraftApi.getCraftingRecipes();
 		if(name != null && name.length() != 0)
 			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
 	}
-	
+
 	private static void registerResearchItem(String name, ItemStack output, Object... stuff) {
 		GameRegistry.addRecipe(output, stuff);
 		List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();

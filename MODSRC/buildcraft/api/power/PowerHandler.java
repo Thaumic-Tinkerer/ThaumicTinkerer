@@ -7,9 +7,9 @@
  */
 package buildcraft.api.power;
 
-import buildcraft.api.core.SafeTimeTracker;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
+import buildcraft.api.core.SafeTimeTracker;
 
 public final class PowerHandler {
 
@@ -91,8 +91,8 @@ public final class PowerHandler {
 	public PowerHandler(IPowerReceptor receptor, Type type) {
 		this.receptor = receptor;
 		this.type = type;
-		this.receiver = new PowerReceiver();
-		this.perdition = DEFAULT_PERDITION;
+		receiver = new PowerReceiver();
+		perdition = DEFAULT_PERDITION;
 	}
 
 	public PowerReceiver getPowerReceiver() {
@@ -143,7 +143,7 @@ public final class PowerHandler {
 		}
 		this.minEnergyReceived = minEnergyReceived;
 		this.maxEnergyReceived = maxEnergyReceived;
-		this.maxEnergyStored = maxStoredEnergy;
+		maxEnergyStored = maxStoredEnergy;
 		this.activationEnergy = activationEnergy;
 	}
 
@@ -371,7 +371,7 @@ public final class PowerHandler {
 	}
 
 	public void setEnergy(float quantity) {
-		this.energyStored = quantity;
+		energyStored = quantity;
 		validateEnergy();
 	}
 

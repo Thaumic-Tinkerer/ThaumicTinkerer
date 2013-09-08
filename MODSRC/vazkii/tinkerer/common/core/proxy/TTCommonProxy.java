@@ -39,7 +39,7 @@ public class TTCommonProxy {
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
 	}
-	
+
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.initRecipes();
 		ModResearch.initResearch();

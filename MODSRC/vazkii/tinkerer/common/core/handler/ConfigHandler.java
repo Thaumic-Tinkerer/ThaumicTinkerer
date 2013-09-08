@@ -46,27 +46,19 @@ public final class ConfigHandler {
 		LibBlockIDs.idDarkQuartzSlabFull = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB_FULL, LibBlockIDs.idDarkQuartzSlabFull);
 		LibBlockIDs.idDarkQuartzStairs = loadBlock(LibBlockNames.DARK_QUARTZ_STAIRS, LibBlockIDs.idDarkQuartzStairs);
 		LibBlockIDs.idInterface = loadBlock(LibBlockNames.INTERFACE, LibBlockIDs.idInterface);
-		
+
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
-			
+
 		config.save();
 	}
-	
+
 	private static int loadItem(String label, int defaultID) {
 		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
 	}
 
 	private static int loadBlock(String label, int defaultID) {
 		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
-	}
-
-	private static int loadPotion(String label, int deafultID) {
-		return config.get(CATEGORY_POTIONS, "id_potion." + label, deafultID).getInt(deafultID);
-	}
-
-	private static int loadEnchantment(String label, int deafultID) {
-		return config.get(CATEGORY_ENCHANTMENTS, "id_enchantment." + label, deafultID).getInt(deafultID);
 	}
 
 }

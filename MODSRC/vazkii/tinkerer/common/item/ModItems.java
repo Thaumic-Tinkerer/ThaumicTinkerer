@@ -22,7 +22,7 @@ public final class ModItems {
 
 	public static Item darkQuartz;
 	public static Item connector;
-	
+
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);

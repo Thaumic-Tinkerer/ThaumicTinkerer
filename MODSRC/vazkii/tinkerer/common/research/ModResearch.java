@@ -30,19 +30,19 @@ public final class ModResearch {
 
 	public static ResearchItem darkQuartz;
 	public static ResearchItem interfase;
-	
+
 	public static void initResearch() {
 		darkQuartz = new TTResearchItem(LibResearch.KEY_DARK_QUARTZ, LibResearch.CATEGORY_ARTIFICE, new AspectList(), -2, -1, 0, new ItemStack(ModItems.darkQuartz)).setStub().setAutoUnlock().setRound().registerResearchItem();
 		darkQuartz.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_DARK_QUARTZ + 0), recipePage(LibResearch.KEY_DARK_QUARTZ + 1), recipePage(LibResearch.KEY_DARK_QUARTZ + 2), recipePage(LibResearch.KEY_DARK_QUARTZ + 3), recipePage(LibResearch.KEY_DARK_QUARTZ + 4), recipePage(LibResearch.KEY_DARK_QUARTZ + 5));
-		
+
 		interfase = new TTResearchItem(LibResearch.KEY_INTERFACE, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), 3, -3, 1, new ItemStack(ModBlocks.interfase)).registerResearchItem();
 		interfase.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_CONNECTOR));
 	}
-	
+
 	private static ResearchPage recipePage(String name) {
 		return new ResearchPage((IRecipe) ConfigResearch.recipes.get(name));
 	}
-	
+
 	private static ResearchPage arcaneRecipePage(String name) {
 		return new ResearchPage((IArcaneRecipe) ConfigResearch.recipes.get(name));
 	}

@@ -1,7 +1,6 @@
 package ic2.api;
 
 import net.minecraft.tileentity.TileEntity;
-
 import net.minecraftforge.common.ForgeDirection;
 
 /**
@@ -67,7 +66,7 @@ public enum Direction {
 
 	/**
 	 * Get the inverse of this direction (XN -> XP, XP -> XN, etc.)
-	 * 
+	 *
 	 * @return Inverse direction
 	 */
 	public Direction getInverse() {
@@ -82,7 +81,7 @@ public enum Direction {
 
 	/**
 	 * Convert this direction to a Minecraft side value.
-	 * 
+	 *
 	 * @return Minecraft side value
 	 */
 	public int toSideValue() {
@@ -95,7 +94,7 @@ public enum Direction {
 	 * @return -1 if the direction is negative, +1 if the direction is positive
 	 */
 	private int getSign() {
-		return (dir % 2) * 2 - 1;
+		return dir % 2 * 2 - 1;
 	}
 
 	public ForgeDirection toForgeDirection() {
