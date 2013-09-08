@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.item;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
@@ -24,7 +23,7 @@ public final class ModItems {
 	public static Item darkQuartz;
 	
 	public static void initItems() {
-		darkQuartz = new Item(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ).setTextureName(LibItemNames.DARK_QUARTZ).setCreativeTab(CreativeTabs.tabMaterials);
+		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 	}
 
 }
