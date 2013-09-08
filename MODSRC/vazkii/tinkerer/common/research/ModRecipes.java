@@ -16,10 +16,15 @@ package vazkii.tinkerer.common.research;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ModItems;
@@ -30,6 +35,7 @@ public final class ModRecipes {
 
 	public static void initRecipes() {
 		initCraftingRecipes();
+		initArcaneRecipes();
 	}
 
 	private static void initCraftingRecipes() {
@@ -61,6 +67,27 @@ public final class ModRecipes {
 				'Q', ModBlocks.darkQuartz);
 	}
 
+	private static void initArcaneRecipes() {
+		registerResearchItem(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ModBlocks.interfase), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
+				"BRB", "LEL", "BRB",
+				'B', new ItemStack(Block.stone),
+				'E', new ItemStack(Item.enderPearl),
+				'L', new ItemStack(Item.dyePowder, 1, 4),
+				'R', new ItemStack(Item.redstone));
+		registerResearchItem(LibResearch.KEY_CONNECTOR, LibResearch.KEY_INTERFACE, new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2), 
+				" I ", " WI", "S  ",
+				'I', new ItemStack(Item.ingotIron),
+				'W', new ItemStack(Item.stick),
+				'S', new ItemStack(ConfigItems.itemShard, 1, 4));
+	}
+	
+	private static void registerResearchItem(String name, String research, ItemStack output, AspectList aspects, Object... stuff) {
+		ThaumcraftApi.addArcaneCraftingRecipe(research, output, aspects, stuff);
+		List recipeList = ThaumcraftApi.getCraftingRecipes();
+		if(name != null && name.length() != 0)
+			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
+	}
+	
 	private static void registerResearchItem(String name, ItemStack output, Object... stuff) {
 		GameRegistry.addRecipe(output, stuff);
 		List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();

@@ -10,13 +10,12 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  * 
- * File Created @ [4 Sep 2013, 17:43:56 (GMT)]
+ * File Created @ [8 Sep 2013, 19:01:53 (GMT)]
  */
 package vazkii.tinkerer.common.lib;
 
-public final class LibItemIDs {
-	
-	public static int idDarkQuartz = 22150;
-	public static int idConnector = 22151;
+public final class LibFeatures {
+
+	public static final int INTERFACE_DISTANCE = 4;
 	
 }

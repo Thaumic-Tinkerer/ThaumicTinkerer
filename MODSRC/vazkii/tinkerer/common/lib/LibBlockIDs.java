@@ -20,5 +20,6 @@ public final class LibBlockIDs {
 	public static int idDarkQuartzSlab = 2616;
 	public static int idDarkQuartzSlabFull = 2167;
 	public static int idDarkQuartzStairs = 2618;
+	public static int idInterface = 2619;
 	
 }

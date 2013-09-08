@@ -6,6 +6,8 @@
 	<target name="clean">
 		<delete file="${build.dir.mcp}src\minecraft\mcmod.info" />
 		<delete dir="${build.dir.mcp}\src\minecraft\vazkii" />
+		<delete dir="${build.dir.mcp}\src\minecraft\ic2" />
+		<delete dir="${build.dir.mcp}\src\minecraft\buildcraft" />
 		<delete dir="${build.dir.mcp}\reobf\minecraft" />
 		<delete dir ="${build.dir.temp}" />
 	</target>

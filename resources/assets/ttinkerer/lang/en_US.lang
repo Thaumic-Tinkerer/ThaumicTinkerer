@@ -1,8 +1,17 @@
 # MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 
+# MESSAGES
+ttmisc.connector.set=Location Set!
+ttmisc.connector.complete=Binding Complete!
+ttmisc.connector.notinterf=Not a Transvector Interface.
+ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
+ttmisc.connector.notpresent=The Transvector Interface isn't present.
+ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
+
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
+item.ttinkerer:connector.name=Transvector Binder
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -10,6 +19,7 @@ tile.ttinkerer:darkQuartzChiseled.name=Chiseled Smokey Quartz Block
 tile.ttinkerer:darkQuartzPillar.name=Pillar Smokey Quartz Block
 tile.ttinkerer:darkQuartzSlab.name=Smokey Quartz Slab
 tile.ttinkerer:darkQuartzStairs.name=Smokey Quartz Stairs
+tile.ttinkerer:interface.name=Transvector Interface
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -18,3 +28,9 @@ ttresearch.prefix=[TT]
 ttresearch.name.DARK_QUARTZ=Smokey Quartz
 ttresearch.lore.DARK_QUARTZ=Shadow of the Day
 ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative. All regular blocks that can be made with quartz, can also be made with smokey quartz, and they look black.<BR><BR>Smokey Quartz itself can be made with a piece of coal or charcoal for tinting, and a few pieces of regular nether quartz.
+
+# -- TRANSVECTOR INTERFACE
+ttresearch.name.INTERFACE=Transvector Interface
+ttresearch.lore.INTERFACE=Take a Twenty
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extnsion. It can accept BuildCraft and IC2 power, items, and liquids, being able to also export the latter two.<BR>[continued]
+ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Interface Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)

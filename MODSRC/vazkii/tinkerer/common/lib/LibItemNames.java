@@ -19,5 +19,6 @@ import vazkii.tinkerer.client.core.lib.LibResources;
 public final class LibItemNames {
 
 	public static final String DARK_QUARTZ = LibResources.PREFIX_MOD + "darkQuartz";
+	public static final String CONNECTOR = LibResources.PREFIX_MOD + "connector";
 	
 }

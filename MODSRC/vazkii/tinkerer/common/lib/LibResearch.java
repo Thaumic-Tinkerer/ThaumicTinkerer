@@ -26,4 +26,6 @@ public final class LibResearch {
 	//public static final String CATEGORY (SEKRIT :D)
 
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
+	public static final String KEY_INTERFACE = "INTERFACE";
+	public static final String KEY_CONNECTOR = "CONNECTOR";
 }
