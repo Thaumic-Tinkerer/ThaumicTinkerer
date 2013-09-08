@@ -24,23 +24,27 @@ import vazkii.tinkerer.common.lib.LibMisc;
 public class IconHelper {
 
 	public static Icon forName(IconRegister ir, String name) {
+		return ir.registerIcon(LibResources.PREFIX_MOD + name);
+	}
+	
+	public static Icon forNameRaw(IconRegister ir, String name) {
 		return ir.registerIcon(name);
 	}
 
 	public static Icon forBlock(IconRegister ir, Block block) {
-		return forName(ir, block.getUnlocalizedName().replaceAll("tile.", ""));
+		return forNameRaw(ir, block.getUnlocalizedName().replaceAll("tile.", ""));
 	}
 
 	public static Icon forBlock(IconRegister ir, Block block, int i) {
-		return forName(ir, block.getUnlocalizedName().replaceAll("tile.", "") + i);
+		return forNameRaw(ir, block.getUnlocalizedName().replaceAll("tile.", "") + i);
 	}
 
 	public static Icon forItem(IconRegister ir, Item item) {
-		return forName(ir, item.getUnlocalizedName().replaceAll("item.", ""));
+		return forNameRaw(ir, item.getUnlocalizedName().replaceAll("item.", ""));
 	}
 
 	public static Icon forItem(IconRegister ir, Item item, int i) {
-		return forName(ir, item.getUnlocalizedName().replaceAll("item.", "") + i);
+		return forNameRaw(ir, item.getUnlocalizedName().replaceAll("item.", "") + i);
 	}
 	
 }

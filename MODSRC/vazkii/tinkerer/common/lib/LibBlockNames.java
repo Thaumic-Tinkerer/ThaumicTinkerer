@@ -19,11 +19,14 @@ import vazkii.tinkerer.client.core.lib.LibResources;
 public final class LibBlockNames {
 
 	public static final String DARK_QUARTZ = LibResources.PREFIX_MOD + "darkQuartz";
+	public static final String DARK_QUARTZ_SLAB = LibResources.PREFIX_MOD + "darkQuartzSlab";
+	public static final String DARK_QUARTZ_SLAB_FULL = LibResources.PREFIX_MOD + "darkQuartzSlabFull";
+	public static final String DARK_QUARTZ_STAIRS = LibResources.PREFIX_MOD + "darkQuartzStairs";
 	
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
-		DARK_QUARTZ,
-		LibResources.PREFIX_MOD + "darkQuartzChiseled",
-		LibResources.PREFIX_MOD + "darkQuartzPillar"
+		"tile." + DARK_QUARTZ,
+		"tile." + LibResources.PREFIX_MOD + "darkQuartzChiseled",
+		"tile." + LibResources.PREFIX_MOD + "darkQuartzPillar"
 	};
 	
 }

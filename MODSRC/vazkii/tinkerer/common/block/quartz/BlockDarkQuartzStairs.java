@@ -10,15 +10,18 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  * 
- * File Created @ [4 Sep 2013, 17:47:21 (GMT)]
+ * File Created @ [8 Sep 2013, 16:02:19 (GMT)]
  */
-package vazkii.tinkerer.common.lib;
+package vazkii.tinkerer.common.block.quartz;
 
-public final class LibBlockIDs {
+import net.minecraft.block.BlockStairs;
+import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 
-	public static int idDarkQuartz = 2615;
-	public static int idDarkQuartzSlab = 2616;
-	public static int idDarkQuartzSlabFull = 2167;
-	public static int idDarkQuartzStairs = 2618;
-	
+public class BlockDarkQuartzStairs extends BlockStairs {
+
+	public BlockDarkQuartzStairs(int par1) {
+		super(par1, ModBlocks.darkQuartz, 0);
+		setCreativeTab(ModCreativeTab.INSTANCE);
+	}
 }
