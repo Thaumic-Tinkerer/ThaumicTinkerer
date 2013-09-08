@@ -18,5 +18,8 @@ public final class LibItemIDs {
 
 	public static int idDarkQuartz = 22150;
 	public static int idConnector = 22151;
+	public static int idGaseousLight = 22152;
+	public static int idGaseousShadow = 22153;
+	public static int idGasRemover = 22154;
 
 }

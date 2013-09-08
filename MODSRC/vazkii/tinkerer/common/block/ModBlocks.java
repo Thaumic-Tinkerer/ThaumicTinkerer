@@ -32,6 +32,8 @@ public final class ModBlocks {
 	public static Block darkQuartzSlabFull;
 	public static Block darkQuartzStairs;
 	public static Block interfase;
+	public static Block gaseousLight;
+	public static Block gaseousShadow;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -39,7 +41,9 @@ public final class ModBlocks {
 		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		darkQuartzStairs = new BlockDarkQuartzStairs(LibBlockIDs.idDarkQuartzStairs).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_STAIRS);
 		interfase = new BlockInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
-
+		gaseousLight = new BlockGaseousLight(LibBlockIDs.idGaseousLight).setUnlocalizedName(LibBlockNames.GASEOUS_LIGHT);
+		gaseousShadow = new BlockGaseousShadow(LibBlockIDs.idGaseousShadow).setUnlocalizedName(LibBlockNames.GASEOUS_SHADOW);
+		
 		registerBlocks();
 	}
 
@@ -49,6 +53,8 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 		GameRegistry.registerBlock(interfase, LibBlockNames.INTERFACE);
+		GameRegistry.registerBlock(gaseousLight, LibBlockNames.GASEOUS_LIGHT);
+		GameRegistry.registerBlock(gaseousShadow, LibBlockNames.GASEOUS_SHADOW);
 	}
 
 	public static void initTileEntities() {

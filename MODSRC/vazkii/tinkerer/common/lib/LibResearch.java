@@ -28,4 +28,7 @@ public final class LibResearch {
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
 	public static final String KEY_INTERFACE = "INTERFACE";
 	public static final String KEY_CONNECTOR = "CONNECTOR";
+	public static final String KEY_GASEOUS_LIGHT = "GASEOUS_LIGHT";
+	public static final String KEY_GASEOUS_SHADOW = "GASEOUS_SHADOW";
+	public static final String KEY_GAS_REMOVER = "GAS_REMOVER";
 }

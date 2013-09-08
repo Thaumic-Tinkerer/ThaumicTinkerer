@@ -22,12 +22,18 @@ import vazkii.tinkerer.client.core.lib.LibResources;
 
 public class IconHelper {
 
+	private static Icon emptyTexture;
+	
 	public static Icon forName(IconRegister ir, String name) {
 		return ir.registerIcon(LibResources.PREFIX_MOD + name);
 	}
 
 	public static Icon forNameRaw(IconRegister ir, String name) {
 		return ir.registerIcon(name);
+	}
+	
+	public static Icon emptyTexture(IconRegister ir) {
+		return emptyTexture == null ? (emptyTexture = forName(ir, LibResources.EMTPY_TEXTURE)) : emptyTexture;
 	}
 
 	public static Icon forBlock(IconRegister ir, Block block) {

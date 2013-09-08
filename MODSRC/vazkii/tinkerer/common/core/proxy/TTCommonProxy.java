@@ -30,8 +30,8 @@ public class TTCommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 
-		ModItems.initItems();
 		ModBlocks.initBlocks();
+		ModItems.initItems();
 	}
 
 	public void init(FMLInitializationEvent event) {

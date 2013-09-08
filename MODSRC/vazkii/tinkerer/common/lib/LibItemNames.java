@@ -20,5 +20,8 @@ public final class LibItemNames {
 
 	public static final String DARK_QUARTZ = LibResources.PREFIX_MOD + "darkQuartz";
 	public static final String CONNECTOR = LibResources.PREFIX_MOD + "connector";
+	public static final String GASEOUS_LIGHT = LibResources.PREFIX_MOD + "gaseousLight";
+	public static final String GASEOUS_SHADOW = LibResources.PREFIX_MOD + "gaseousShadow";
+	public static final String GAS_REMOVER = LibResources.PREFIX_MOD + "gasRemover";
 
 }

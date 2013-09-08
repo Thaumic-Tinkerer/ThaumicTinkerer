@@ -12,6 +12,9 @@ ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
 item.ttinkerer:connector.name=Transvector Binder
+item.ttinkerer:gaseousLight.name=Gaseous Illuminae
+item.ttinkerer:gaseousShadow.name=Gaseous Tenebrae
+item.ttinkerer:gasRemover.name=Fume Dissipator
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -31,6 +34,21 @@ ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative.
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvector Interface
-ttresearch.lore.INTERFACE=Take a Twenty
+ttresearch.lore.INTERFACE=Side unseen
 ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extnsion. It can accept BuildCraft and IC2 power, items, and liquids, being able to also export the latter two.<BR>[continued]
-ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Interface Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)
+ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)
+
+# -- GASEOUS ILLUMINAE
+ttresearch.name.GASEOUS_LIGHT=Gaseous Illuminae
+ttresearch.lore.GASEOUS_LIGHT=Bright out of sight
+ttresearch.page.GASEOUS_LIGHT.0=You have studied the intricacies of the light, and found out a way to create completely invisible light by infusing a phial with the raw light.<BR><BR>This phial contains a concentrated extract of Gaseous Illuminae, that can be released through a right click, and will spread relatively fast in the nearby area, lighting it up.
+
+# -- GASEOUS TENEBRAE
+ttresearch.name.GASEOUS_SHADOW=Gaseous Tenebrae
+ttresearch.lore.GASEOUS_SHADOW=The unseen world
+ttresearch.page.GASEOUS_SHADOW.0=You have studied the intricacies of the Shadow, and found out a way to create gaseous darkness by infusing a phial with the raw shadow.<BR><BR>This phial contains a concentrated extract of Gaseous Tenebrae, that can be released through a right click, and will spread relatively fast in the nearby area, darkening it.
+
+# -- FUME DISSIPATOR
+ttresearch.name.GAS_REMOVER=Fume Dissipator
+ttresearch.lore.GAS_REMOVER=Ryuuji's helper
+ttresearch.page.GAS_REMOVER.0=After knowing both the Gaseous Illuminae and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.

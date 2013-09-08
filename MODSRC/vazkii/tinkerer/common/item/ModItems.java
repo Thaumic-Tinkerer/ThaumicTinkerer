@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.item;
 
 import net.minecraft.item.Item;
+import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 
@@ -22,10 +23,16 @@ public final class ModItems {
 
 	public static Item darkQuartz;
 	public static Item connector;
+	public static Item gaseousLight;
+	public static Item gaseousShadow;
+	public static Item gasRemover;
 
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
+		gaseousLight = new ItemGas(LibItemIDs.idGaseousLight, ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
+		gaseousShadow = new ItemGas(LibItemIDs.idGaseousShadow, ModBlocks.gaseousShadow).setUnlocalizedName(LibItemNames.GASEOUS_SHADOW);
+		gasRemover = new ItemGasRemover(LibItemIDs.idGasRemover).setUnlocalizedName(LibItemNames.GAS_REMOVER);
 	}
 
 }
