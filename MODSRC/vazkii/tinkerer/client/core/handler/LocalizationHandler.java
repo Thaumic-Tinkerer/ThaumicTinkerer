@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.core.handler;
 
+import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.core.lib.LibResources;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 

@@ -22,6 +22,7 @@ import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class TTCommonProxy {
@@ -37,8 +38,10 @@ public class TTCommonProxy {
 		ModEnchantments.initEnchantments();
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
-		ModResearch.initResearch();
-		ModRecipes.initRecipes();
 	}
-
+	
+	public void postInit(FMLPostInitializationEvent event) {
+		ModRecipes.initRecipes();
+		ModResearch.initResearch();
+	}
 }

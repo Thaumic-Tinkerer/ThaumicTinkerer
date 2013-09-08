@@ -1,9 +1,20 @@
+# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 
+# ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
 
+# BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
 tile.ttinkerer:darkQuartzChiseled.name=Chiseled Smokey Quartz Block
 tile.ttinkerer:darkQuartzPillar.name=Pillar Smokey Quartz Block
 tile.ttinkerer:darkQuartzSlab.name=Smokey Quartz Slab
 tile.ttinkerer:darkQuartzStairs.name=Smokey Quartz Stairs
+
+# RESEARCH
+ttresearch.prefix=[TT] 
+
+# -- SMOKEY QUARTZ
+ttresearch.name.DARK_QUARTZ=Smokey Quartz
+ttresearch.lore.DARK_QUARTZ=Shadow of the Day
+ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative. All regular blocks that can be made with quartz, can also be made with smokey quartz, and they look black.<BR><BR>Smokey Quartz itself can be made with a piece of coal or charcoal for tinting, and a few pieces of regular nether quartz.

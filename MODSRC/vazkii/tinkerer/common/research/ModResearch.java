@@ -14,10 +14,32 @@
  */
 package vazkii.tinkerer.common.research;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.IArcaneRecipe;
+import thaumcraft.api.research.ResearchItem;
+import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigResearch;
+import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.lib.LibResearch;
+
 public final class ModResearch {
 
+	public static ResearchItem darkQuartz;
+	
 	public static void initResearch() {
-
+		darkQuartz = new TTResearchItem(LibResearch.KEY_DARK_QUARTZ, LibResearch.CATEGORY_ARTIFICE, new AspectList(), -2, -1, 0, new ItemStack(ModItems.darkQuartz)).setStub().setAutoUnlock().setRound();
+		darkQuartz.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_DARK_QUARTZ + 0), recipePage(LibResearch.KEY_DARK_QUARTZ + 1), recipePage(LibResearch.KEY_DARK_QUARTZ + 2), recipePage(LibResearch.KEY_DARK_QUARTZ + 3), recipePage(LibResearch.KEY_DARK_QUARTZ + 4), recipePage(LibResearch.KEY_DARK_QUARTZ + 5));
+		darkQuartz.registerResearchItem();
+		
 	}
-
+	
+	private static ResearchPage recipePage(String name) {
+		return new ResearchPage((IRecipe) ConfigResearch.recipes.get(name));
+	}
+	
+	private static ResearchPage arcaneRecipePage(String name) {
+		return new ResearchPage((IArcaneRecipe) ConfigResearch.recipes.get(name));
+	}
 }
