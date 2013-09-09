@@ -36,24 +36,32 @@ import buildcraft.api.power.PowerHandler.PowerReceiver;
 
 public class TileInterface extends TileEntity implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink {
 
+	private static final String TAG_X_TARGET = "xt";
+	private static final String TAG_Y_TARGET = "yt";
+	private static final String TAG_Z_TARGET = "zt";
+	private static final String TAG_CHEATY_MODE = "cheatyMode";
+	
 	public int x, y, z;
-
+	private boolean cheaty;
+	
 	@Override
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
 		super.writeToNBT(par1nbtTagCompound);
 
-		par1nbtTagCompound.setInteger("xt", x);
-		par1nbtTagCompound.setInteger("yt", y);
-		par1nbtTagCompound.setInteger("zt", z);
+		par1nbtTagCompound.setInteger(TAG_X_TARGET, x);
+		par1nbtTagCompound.setInteger(TAG_Y_TARGET, y);
+		par1nbtTagCompound.setInteger(TAG_Z_TARGET, z);
+		par1nbtTagCompound.setBoolean(TAG_CHEATY_MODE, cheaty);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
 		super.readFromNBT(par1nbtTagCompound);
 
-		x = par1nbtTagCompound.getInteger("xt");
-		y = par1nbtTagCompound.getInteger("yt");
-		z = par1nbtTagCompound.getInteger("zt");
+		x = par1nbtTagCompound.getInteger(TAG_X_TARGET);
+		y = par1nbtTagCompound.getInteger(TAG_Y_TARGET);
+		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
+		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
 	}
 
 	private TileEntity getTile() {
@@ -62,7 +70,7 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 
-		if(tile == null || Math.abs(x - xCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - yCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - zCoord) > LibFeatures.INTERFACE_DISTANCE) {
+		if(tile == null || ((Math.abs(x - xCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - yCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - zCoord) > LibFeatures.INTERFACE_DISTANCE) && !cheaty)) {
 			y = -1;
 			return null;
 		}
