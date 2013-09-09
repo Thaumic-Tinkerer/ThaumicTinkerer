@@ -86,6 +86,11 @@ public final class ModRecipes {
 				'T', new ItemStack(ModItems.gaseousShadow),
 				'G', new ItemStack(ModItems.gaseousLight),
 				'Q', new ItemStack(Item.netherQuartz));
+		registerResearchItem(LibResearch.KEY_ANIMATION_TABLET, LibResearch.KEY_ANIMATION_TABLET, new ItemStack(ModBlocks.animationTablet), new AspectList().add(Aspect.AIR, 25).add(Aspect.ORDER, 15).add(Aspect.FIRE, 10),
+				"GIG", "ICI",
+				'G', new ItemStack(Item.ingotGold),
+				'I', new ItemStack(Item.ingotIron),
+				'C', new ItemStack(ConfigItems.itemGolemCore, 1, 100));
 	}
 
 	private static void initCrucibleRecipes() {

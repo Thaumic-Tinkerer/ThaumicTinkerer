@@ -19,6 +19,7 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
 import vazkii.tinkerer.common.block.tile.TileInterface;
+import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
@@ -44,7 +45,8 @@ public final class ModBlocks {
 		interfase = new BlockInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
 		gaseousLight = new BlockGaseousLight(LibBlockIDs.idGaseousLight).setUnlocalizedName(LibBlockNames.GASEOUS_LIGHT);
 		gaseousShadow = new BlockGaseousShadow(LibBlockIDs.idGaseousShadow).setUnlocalizedName(LibBlockNames.GASEOUS_SHADOW);
-
+		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
+		
 		registerBlocks();
 	}
 
@@ -56,9 +58,11 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(interfase, LibBlockNames.INTERFACE);
 		GameRegistry.registerBlock(gaseousLight, LibBlockNames.GASEOUS_LIGHT);
 		GameRegistry.registerBlock(gaseousShadow, LibBlockNames.GASEOUS_SHADOW);
+		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 	}
 
 	public static void initTileEntities() {
 		GameRegistry.registerTileEntity(TileInterface.class, LibBlockNames.INTERFACE);
+		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
 	}
 }

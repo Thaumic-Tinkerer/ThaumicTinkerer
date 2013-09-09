@@ -14,16 +14,19 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class TTCommonProxy {
 
@@ -38,6 +41,7 @@ public class TTCommonProxy {
 		ModEnchantments.initEnchantments();
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
+		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {

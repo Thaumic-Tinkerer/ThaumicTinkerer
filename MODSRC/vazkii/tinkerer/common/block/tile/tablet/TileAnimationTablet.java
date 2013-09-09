@@ -143,6 +143,7 @@ public class TileAnimationTablet extends TileThaumcraft implements IInventory {
 		if(leftClick) {
 			Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
 			if(entity != null) {
+				player.field_110155_d.func_111147_b(stack.func_111283_C()); // Set attack strenght
 				player.attackTargetEntityWithCurrentItem(entity);
 				done = true;
 			} else if(!isBreaking){

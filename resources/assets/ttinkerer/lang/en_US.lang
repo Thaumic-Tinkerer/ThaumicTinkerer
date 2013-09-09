@@ -8,6 +8,9 @@ ttmisc.connector.notinterf=Not a Transvector Interface.
 ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
 ttmisc.connector.notpresent=The Transvector Interface isn't present.
 ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
+ttmisc.leftClick=Left Click
+ttmisc.rightClick=Right Click
+ttmisc.redstoneControl=Redstone Control
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -24,6 +27,7 @@ tile.ttinkerer:darkQuartzPillar.name=Pillar Smokey Quartz Block
 tile.ttinkerer:darkQuartzSlab.name=Smokey Quartz Slab
 tile.ttinkerer:darkQuartzStairs.name=Smokey Quartz Stairs
 tile.ttinkerer:interface.name=Transvector Interface
+tile.ttinkerer:animationTablet.name=Dynamism Tablet
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -59,3 +63,8 @@ ttresearch.page.GAS_REMOVER.0=After knowing both the Gaseous Illuminae and Teneb
 ttresearch.name.SPELL_CLOTH=Spellbinding Cloth
 ttresearch.lore.SPELL_CLOTH=The sad palmtop thaumaturge
 ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic power, you created a cloth that can be rubbed on an item to wipe it of it's enchantments by combining them in a Crafting Recipe.
+
+# -- DYNAMISM TABLET
+ttresearch.name.ANIMATION_TABLET=Dynamism Tablet
+ttresearch.lore.ANIMATION_TABLET=Rosalia's foil
+ttresearch.page.ANIMATION_TABLET.0=You decided to further discover the uses of Golem Animation Cores, and this is the fruit of that labour.<BR><BR>This tablet can accept an item to animate with mystical energy. Using the left and right buttons in the tablet's interface, you can select to do a left or right click with the item. The button in the bottom controls if the tablet reacts always when it can or just when a redstone signal is applied.<BR><BR>Virtually anything can be animated, including blocks. The type of tool in the tablet also defines how fast something breaks, as expected.

@@ -18,8 +18,11 @@ import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.research.ResearchCategories;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.core.lib.LibResources;
+import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
+import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.lib.LibResearch;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 public class TTClientProxy extends TTCommonProxy {
@@ -29,6 +32,7 @@ public class TTClientProxy extends TTCommonProxy {
 		super.init(event);
 
 		LocalizationHandler.loadLocalizations();
+		registerTiles();
 	}
 
 	@Override
@@ -36,6 +40,10 @@ public class TTClientProxy extends TTCommonProxy {
 		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
 
 		ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
+	}
+	
+	private void registerTiles() {
+		ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
 	}
 
 }

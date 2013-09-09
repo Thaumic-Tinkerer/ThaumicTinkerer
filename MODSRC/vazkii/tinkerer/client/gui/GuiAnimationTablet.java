@@ -21,8 +21,11 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 import vazkii.tinkerer.client.core.lib.LibResources;
 import vazkii.tinkerer.client.gui.button.GuiButtonAT;
@@ -30,6 +33,8 @@ import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
 import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.network.PacketManager;
+import vazkii.tinkerer.common.network.packet.PacketTabletButton;
 
 public class GuiAnimationTablet extends GuiContainer {
 
@@ -73,7 +78,7 @@ public class GuiAnimationTablet extends GuiContainer {
 		tablet.leftClick = buttonListAT.get(1).enabled;
 		tablet.redstone = buttonListAT.get(0).enabled;
 
-		//PacketManager.sendPacketToServer(new PacketAnimationTabletButton(tablet)); TODO Needs packet!
+		PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketTabletButton(tablet)));
 	}
 
 	@Override
@@ -81,9 +86,9 @@ public class GuiAnimationTablet extends GuiContainer {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.renderEngine.func_110577_a(gui);
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-        String left = "Left";
-        String right = "Right";
-        String redstone = "Redstone";
+        String left = StatCollector.translateToLocal("ttmisc.leftClick");
+        String right = StatCollector.translateToLocal("ttmisc.rightClick");
+        String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
         fontRenderer.drawString(left, x + 48 - fontRenderer.getStringWidth(left), y + 18, 0x999999);
         fontRenderer.drawString(right, x + 128, y + 18, 0x999999);
         fontRenderer.drawString(redstone, x + xSize / 2 - fontRenderer.getStringWidth(redstone) / 2, y + 50, 0x999999);

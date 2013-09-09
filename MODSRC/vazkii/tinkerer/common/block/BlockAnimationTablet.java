@@ -128,6 +128,9 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+		if(par1World.isRemote)
+			return;
+		
 		boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 		boolean on = (meta & 8) != 0;
