@@ -23,5 +23,6 @@ public final class LibItemNames {
 	public static final String GASEOUS_LIGHT = LibResources.PREFIX_MOD + "gaseousLight";
 	public static final String GASEOUS_SHADOW = LibResources.PREFIX_MOD + "gaseousShadow";
 	public static final String GAS_REMOVER = LibResources.PREFIX_MOD + "gasRemover";
-
+	public static final String SPELL_CLOTH = LibResources.PREFIX_MOD + "spellCloth";
+	
 }

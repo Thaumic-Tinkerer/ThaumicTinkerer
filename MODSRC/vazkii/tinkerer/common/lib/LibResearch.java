@@ -31,4 +31,5 @@ public final class LibResearch {
 	public static final String KEY_GASEOUS_LIGHT = "GASEOUS_LIGHT";
 	public static final String KEY_GASEOUS_SHADOW = "GASEOUS_SHADOW";
 	public static final String KEY_GAS_REMOVER = "GAS_REMOVER";
+	public static final String KEY_SPELL_CLOTH = "SPELL_CLOTH";
 }

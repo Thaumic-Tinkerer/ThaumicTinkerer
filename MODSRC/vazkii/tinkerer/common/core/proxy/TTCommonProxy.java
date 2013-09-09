@@ -44,4 +44,8 @@ public class TTCommonProxy {
 		ModRecipes.initRecipes();
 		ModResearch.initResearch();
 	}
+	
+	public void registerResearchPages() {
+		// NO-OP
+	}
 }

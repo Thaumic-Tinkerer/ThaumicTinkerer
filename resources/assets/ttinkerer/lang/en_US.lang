@@ -15,6 +15,7 @@ item.ttinkerer:connector.name=Transvector Binder
 item.ttinkerer:gaseousLight.name=Gaseous Illuminae
 item.ttinkerer:gaseousShadow.name=Gaseous Tenebrae
 item.ttinkerer:gasRemover.name=Fume Dissipator
+item.ttinkerer:spellCloth.name=Spellbinding Cloth
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -26,6 +27,7 @@ tile.ttinkerer:interface.name=Transvector Interface
 
 # RESEARCH
 ttresearch.prefix=[TT] 
+tc.research_category.TT_ENCHANTING=[TT] Enchanting
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=Smokey Quartz
@@ -52,3 +54,8 @@ ttresearch.page.GASEOUS_SHADOW.0=You have studied the intricacies of the Shadow,
 ttresearch.name.GAS_REMOVER=Fume Dissipator
 ttresearch.lore.GAS_REMOVER=Ryuuji's helper
 ttresearch.page.GAS_REMOVER.0=After knowing both the Gaseous Illuminae and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.
+
+# -- SPELLBINDING CLOTH
+ttresearch.name.SPELL_CLOTH=Spellbinding Cloth
+ttresearch.lore.SPELL_CLOTH=The sad palmtop thaumaturge
+ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic power, you created a cloth that can be rubbed on an item to wipe it of it's enchantments by combining them in a Crafting Recipe.

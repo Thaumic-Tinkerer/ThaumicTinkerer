@@ -21,5 +21,6 @@ public final class LibItemIDs {
 	public static int idGaseousLight = 22152;
 	public static int idGaseousShadow = 22153;
 	public static int idGasRemover = 22154;
+	public static int idSpellCloth = 22155;
 
 }

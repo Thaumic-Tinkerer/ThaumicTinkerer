@@ -14,8 +14,12 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
+import net.minecraft.util.ResourceLocation;
+import thaumcraft.api.research.ResearchCategories;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
+import vazkii.tinkerer.client.core.lib.LibResources;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 public class TTClientProxy extends TTCommonProxy {
@@ -26,5 +30,12 @@ public class TTClientProxy extends TTCommonProxy {
 
 		LocalizationHandler.loadLocalizations();
 	}
+	
+	@Override
+	public void registerResearchPages() {
+		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
+		
+		ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
+	} 
 
 }

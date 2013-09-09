@@ -23,6 +23,7 @@ import thaumcraft.api.crafting.RecipeCrucible;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigResearch;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -30,6 +31,8 @@ import vazkii.tinkerer.common.lib.LibResearch;
 public final class ModResearch {
 
 	public static void initResearch() {
+		ThaumicTinkerer.proxy.registerResearchPages();
+		
 		ResearchItem research;
 		
 		research = new TTResearchItem(LibResearch.KEY_DARK_QUARTZ, LibResearch.CATEGORY_ARTIFICE, new AspectList(), -2, -1, 0, new ItemStack(ModItems.darkQuartz)).setStub().setAutoUnlock().setRound().registerResearchItem();
@@ -46,6 +49,9 @@ public final class ModResearch {
 		
 		research = new TTResearchItem(LibResearch.KEY_GAS_REMOVER, LibResearch.CATEGORY_ALCHEMY, new AspectList(), 5, 0, 0, new ItemStack(ModItems.gasRemover)).setRound().setHidden().registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_GAS_REMOVER));
+	
+		research = new TTResearchItem(LibResearch.KEY_SPELL_CLOTH, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.CLOTH, 1).add(Aspect.EXCHANGE, 1), 0, 0, 2, new ItemStack(ModItems.spellCloth)).registerResearchItem();
+		research.setPages(new ResearchPage("0"), cruciblePage(LibResearch.KEY_SPELL_CLOTH));
 	}
 	
 	private static ResearchPage recipePage(String name) {
