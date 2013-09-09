@@ -80,14 +80,14 @@ public final class ModRecipes {
 				'I', new ItemStack(Item.ingotIron),
 				'W', new ItemStack(Item.stick),
 				'S', new ItemStack(ConfigItems.itemShard, 1, 4));
-		registerResearchItem(LibResearch.KEY_GAS_REMOVER, LibResearch.KEY_GAS_REMOVER, new ItemStack(ModItems.gasRemover), new AspectList().add(Aspect.AIR, 2).add(Aspect.ORDER, 2), 
+		registerResearchItem(LibResearch.KEY_GAS_REMOVER, LibResearch.KEY_GAS_REMOVER, new ItemStack(ModItems.gasRemover), new AspectList().add(Aspect.AIR, 2).add(Aspect.ORDER, 2),
 				"DDD", "T G", "QQQ",
 				'D', new ItemStack(ModItems.darkQuartz),
 				'T', new ItemStack(ModItems.gaseousShadow),
 				'G', new ItemStack(ModItems.gaseousLight),
 				'Q', new ItemStack(Item.netherQuartz));
 	}
-	
+
 	private static void initCrucibleRecipes() {
 		registerResearchItem(LibResearch.KEY_GASEOUS_LIGHT, new ItemStack(ModItems.gaseousLight), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.LIGHT, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		registerResearchItem(LibResearch.KEY_GASEOUS_SHADOW, new ItemStack(ModItems.gaseousShadow), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
@@ -107,7 +107,7 @@ public final class ModRecipes {
 		if(name != null && name.length() != 0)
 			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
 	}
-	
+
 	private static void registerResearchItem(String name, ItemStack output, ItemStack input, AspectList aspects) {
 		ThaumcraftApi.addCrucibleRecipe(name, output, input, aspects);
 		List recipeList = ThaumcraftApi.getCraftingRecipes();

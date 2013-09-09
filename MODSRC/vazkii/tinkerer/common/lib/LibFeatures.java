@@ -19,5 +19,5 @@ public final class LibFeatures {
 	public static final int INTERFACE_DISTANCE = 4;
 
 	public static final int SPELL_CLOTH_USES = 35;
-	
+
 }

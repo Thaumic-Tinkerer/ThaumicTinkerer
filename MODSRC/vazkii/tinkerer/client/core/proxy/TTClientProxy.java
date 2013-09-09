@@ -30,12 +30,12 @@ public class TTClientProxy extends TTCommonProxy {
 
 		LocalizationHandler.loadLocalizations();
 	}
-	
+
 	@Override
 	public void registerResearchPages() {
 		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
-		
+
 		ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
-	} 
+	}
 
 }

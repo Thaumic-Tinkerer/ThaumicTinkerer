@@ -24,9 +24,9 @@ public final class LibResources {
 	public static final String PREFIX_MISC = PREFIX_MOD + "/textures/misc/";
 
 	public static final String EMTPY_TEXTURE = "emptyTexture";
-	
+
 	public static final String MISC_R_ENCHANTING = PREFIX_MISC + "r_enchanting.png";
-	
+
 	public static final String[] LANGS = {
 		"en_US"
 	};
