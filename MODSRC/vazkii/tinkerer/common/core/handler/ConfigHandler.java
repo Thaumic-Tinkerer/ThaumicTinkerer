@@ -56,7 +56,8 @@ public final class ConfigHandler {
 		LibItemIDs.idGaseousShadow = loadItem(LibItemNames.GASEOUS_SHADOW, LibItemIDs.idGaseousShadow);
 		LibItemIDs.idGasRemover = loadItem(LibItemNames.GAS_REMOVER, LibItemIDs.idGasRemover);
 		LibItemIDs.idSpellCloth = loadItem(LibItemNames.SPELL_CLOTH, LibItemIDs.idSpellCloth);
-
+		LibItemIDs.idFocusFlight = loadItem(LibItemNames.FOCUS_FLIGHT, LibItemIDs.idFocusFlight);
+		
 		config.save();
 	}
 

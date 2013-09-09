@@ -49,7 +49,11 @@ public class IconHelper {
 	}
 
 	public static Icon forItem(IconRegister ir, Item item, int i) {
-		return forNameRaw(ir, item.getUnlocalizedName().replaceAll("item.", "") + i);
+		return forItem(ir, item, Integer.toString(i));
 	}
-
+	
+	public static Icon forItem(IconRegister ir, Item item, String s) {
+		return forNameRaw(ir, item.getUnlocalizedName().replaceAll("item.", "") + s);
+	}
+	
 }

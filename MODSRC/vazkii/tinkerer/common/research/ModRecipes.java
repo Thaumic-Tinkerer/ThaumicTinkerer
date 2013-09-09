@@ -91,6 +91,11 @@ public final class ModRecipes {
 				'G', new ItemStack(Item.ingotGold),
 				'I', new ItemStack(Item.ingotIron),
 				'C', new ItemStack(ConfigItems.itemGolemCore, 1, 100));
+		registerResearchItem(LibResearch.KEY_FOCUS_FLIGHT, LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), new AspectList().add(Aspect.AIR, 25),
+				"AQA", "QFQ", "AQA",
+				'A', new ItemStack(ConfigItems.itemShard),
+				'Q', new ItemStack(Item.netherQuartz),
+				'F', new ItemStack(Item.feather));
 	}
 
 	private static void initCrucibleRecipes() {
