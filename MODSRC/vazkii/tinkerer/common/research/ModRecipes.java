@@ -96,6 +96,11 @@ public final class ModRecipes {
 				'A', new ItemStack(ConfigItems.itemShard),
 				'Q', new ItemStack(Item.netherQuartz),
 				'F', new ItemStack(Item.feather));
+		registerResearchItem(LibResearch.KEY_FOCUS_DISLOCATION, LibResearch.KEY_FOCUS_DISLOCATION, new ItemStack(ModItems.focusDislocation), new AspectList().add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100),
+				"AQA", "QDQ", "AQA",
+				'A', new ItemStack(ConfigItems.itemResource, 1, 6),
+				'Q', new ItemStack(Item.netherQuartz),
+				'D', new ItemStack(Item.diamond));
 	}
 
 	private static void initCrucibleRecipes() {

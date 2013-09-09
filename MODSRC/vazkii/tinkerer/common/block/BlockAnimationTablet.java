@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [9 Sep 2013, 15:52:53 (GMT)]
  */
 package vazkii.tinkerer.common.block;
@@ -62,7 +62,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 		iconTop = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconSides = IconHelper.forBlock(par1IconRegister, this, 2);
 	}
-	
+
 	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack) {
 		byte b0 = 0;
@@ -130,7 +130,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		if(par1World.isRemote)
 			return;
-		
+
 		boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 		boolean on = (meta & 8) != 0;

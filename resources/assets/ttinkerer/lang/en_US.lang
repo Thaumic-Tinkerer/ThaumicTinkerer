@@ -11,6 +11,7 @@ ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
 ttmisc.leftClick=Left Click
 ttmisc.rightClick=Right Click
 ttmisc.redstoneControl=Redstone Control
+ttmisc.focusDislocation.tooltip=Currently Dislocating: %s
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -20,6 +21,7 @@ item.ttinkerer:gaseousShadow.name=Gaseous Tenebrae
 item.ttinkerer:gasRemover.name=Fume Dissipator
 item.ttinkerer:spellCloth.name=Spellbinding Cloth
 item.ttinkerer:focusFlight.name=Wand Focus: Uprising
+item.ttinkerer:focusDislocation.name=Wand Focus: Dislocation
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -74,3 +76,8 @@ ttresearch.page.ANIMATION_TABLET.0=You decided to further discover the uses of G
 ttresearch.name.FOCUS_FLIGHT=Wand Focus: Uprising
 ttresearch.lore.FOCUS_FLIGHT=Is this what they use in ALfheim?
 ttresearch.page.FOCUS_FLIGHT.0=Using the knowledge you got from creating the Sword of the Zephyr of propelling things around with air, you created a wand focus that will propel the holder in the direction that they're looking at.<BR><BR>When someone is propelled through the use of this focus, any accumulated gravitational energy is negated, reseting the fall damage the holder would take.
+
+# -- WAND FOCUS: DISLOCATION
+ttresearch.name.FOCUS_DISLOCATION=Wand Focus: Dislocation
+ttresearch.lore.FOCUS_DISLOCATION=Now here, now there
+ttresearch.page.FOCUS_DISLOCATION.0=You created a wand focus based on the focus of equal trade. The difference is that this one not only holds the object's fingerprint, but it holds the object itself, allowing it to be placed elsewhere.<BR><BR>To get a block to transport, right click on it. To place it back, right click somewhere else. This focus can transport pretty much anything, including chests and mob spawners.

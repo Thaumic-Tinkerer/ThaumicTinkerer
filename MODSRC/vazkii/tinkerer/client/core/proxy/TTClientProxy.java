@@ -41,7 +41,7 @@ public class TTClientProxy extends TTCommonProxy {
 
 		ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
 	}
-	
+
 	private void registerTiles() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
 	}

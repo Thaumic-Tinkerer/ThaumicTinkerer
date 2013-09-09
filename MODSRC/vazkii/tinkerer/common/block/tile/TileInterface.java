@@ -40,10 +40,10 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 	private static final String TAG_Y_TARGET = "yt";
 	private static final String TAG_Z_TARGET = "zt";
 	private static final String TAG_CHEATY_MODE = "cheatyMode";
-	
+
 	public int x, y, z;
 	private boolean cheaty;
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
 		super.writeToNBT(par1nbtTagCompound);
@@ -70,7 +70,7 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 
-		if(tile == null || ((Math.abs(x - xCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - yCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - zCoord) > LibFeatures.INTERFACE_DISTANCE) && !cheaty)) {
+		if(tile == null || (Math.abs(x - xCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - yCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - zCoord) > LibFeatures.INTERFACE_DISTANCE) && !cheaty) {
 			y = -1;
 			return null;
 		}

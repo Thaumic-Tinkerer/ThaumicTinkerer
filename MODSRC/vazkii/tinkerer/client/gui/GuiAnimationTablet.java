@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [9 Sep 2013, 16:31:14 (GMT)]
  */
 package vazkii.tinkerer.client.gui;
@@ -25,8 +25,6 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
-
 import vazkii.tinkerer.client.core.lib.LibResources;
 import vazkii.tinkerer.client.gui.button.GuiButtonAT;
 import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
@@ -35,11 +33,12 @@ import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketTabletButton;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class GuiAnimationTablet extends GuiContainer {
 
 	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ANIMATION_TABLET);
-	
+
 	int x, y;
 
 	TileAnimationTablet tablet;
