@@ -25,6 +25,8 @@ public final class LibResources {
 
 	public static final String EMTPY_TEXTURE = "emptyTexture";
 
+	public static final String GUI_ANIMATION_TABLET = PREFIX_GUI + "animationTablet.png";
+	
 	public static final String MISC_R_ENCHANTING = PREFIX_MISC + "r_enchanting.png";
 
 	public static final String[] LANGS = {
