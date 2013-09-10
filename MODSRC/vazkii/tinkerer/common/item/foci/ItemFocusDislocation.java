@@ -172,6 +172,6 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	@Override
 	public AspectList getVisCost() {
-		return new AspectList().add(Aspect.FIRE, 1); //visUsage;
+		return visUsage;
 	}
 }
