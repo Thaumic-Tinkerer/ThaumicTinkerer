@@ -28,18 +28,18 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.items.wands.foci.ItemFocusTrade;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemFocusDislocation extends ItemFocusTrade {
+public class ItemFocusDislocation extends ItemModFocus {
 
 	private static final String TAG_AVAILABLE = "available";
 	private static final String TAG_TILE_CMP = "tileCmp";
+	private static final String TAG_BLOCK_ID = "blockID";
+	private static final String TAG_BLOCK_META = "blockMeta";
 
 	private Icon ornament;
 
@@ -47,26 +47,13 @@ public class ItemFocusDislocation extends ItemFocusTrade {
 
 	public ItemFocusDislocation(int i) {
 		super(i);
-		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
-		icon = IconHelper.forItem(par1IconRegister, this);
+		super.registerIcons(par1IconRegister);
 		ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamageForRenderPass(int par1, int renderPass) {
-		return icon;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean requiresMultipleRenderPasses() {
-		return false;
 	}
 
 	@Override
@@ -98,7 +85,7 @@ public class ItemFocusDislocation extends ItemFocusTrade {
 				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, ForgeDirection.getOrientation(mop.sideHit).getOpposite().ordinal(), stack)) {
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, stack.itemID, stack.getItemDamage(), 1 | 2);
 					Block.blocksList[stack.itemID].onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
-					NBTTagCompound tileCmp = ItemNBTHelper.getCompound(itemstack, TAG_TILE_CMP, true);
+					NBTTagCompound tileCmp = getStackTileEntity(itemstack);
 					if(tileCmp != null && !tileCmp.getTags().isEmpty()) {
 						TileEntity tile1 = TileEntity.createAndLoadEntity(tileCmp);
 						tile1.xCoord = mop.blockX;
@@ -141,12 +128,27 @@ public class ItemFocusDislocation extends ItemFocusTrade {
 	}
 
 	@Override
-	public ItemStack getPickedBlock(ItemStack stack) {
-		return stack.hasTagCompound() && stack.getTagCompound().hasKey(TAG_AVAILABLE) && stack.getTagCompound().getBoolean(TAG_AVAILABLE) ? super.getPickedBlock(stack) : null;
+	public String getSortingHelper(ItemStack itemstack) {
+		return "DISLOCATION";
 	}
 
-	private void storePickedBlock(ItemStack stack, short id, short meta, TileEntity tile) {
-		super.storePickedBlock(stack, id, meta);
+	public ItemStack getPickedBlock(ItemStack stack) {
+		return stack.hasTagCompound() && stack.getTagCompound().hasKey(TAG_AVAILABLE) && stack.getTagCompound().getBoolean(TAG_AVAILABLE) ? getPickedBlockStack(stack) : null;
+	}
+
+	public ItemStack getPickedBlockStack(ItemStack stack) {
+		int id = ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
+		int meta = ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
+		return new ItemStack(id, 1, meta);
+	}
+
+	public NBTTagCompound getStackTileEntity(ItemStack stack) {
+		return ItemNBTHelper.getCompound(stack, TAG_TILE_CMP, true);
+	}
+
+	private void storePickedBlock(ItemStack stack, int id, short meta, TileEntity tile) {
+		ItemNBTHelper.setInt(stack, TAG_BLOCK_ID, id);
+		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
 		if(tile != null)
 			tile.writeToNBT(cmp);
@@ -170,6 +172,6 @@ public class ItemFocusDislocation extends ItemFocusTrade {
 
 	@Override
 	public AspectList getVisCost() {
-		return visUsage;
+		return new AspectList().add(Aspect.FIRE, 1); //visUsage;
 	}
 }

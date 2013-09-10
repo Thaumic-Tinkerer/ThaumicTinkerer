@@ -15,7 +15,9 @@
 package vazkii.tinkerer.client.core.proxy;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.research.ResearchCategories;
+import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.core.lib.LibResources;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
@@ -32,6 +34,7 @@ public class TTClientProxy extends TTCommonProxy {
 		super.init(event);
 
 		LocalizationHandler.loadLocalizations();
+		MinecraftForge.EVENT_BUS.register(new HUDHandler());
 		registerTiles();
 	}
 

@@ -15,6 +15,7 @@
 package vazkii.tinkerer.client.core.helper;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 
 public final class ClientHelper {
@@ -25,6 +26,10 @@ public final class ClientHelper {
 
 	public static FontRenderer fontRenderer() {
 		return minecraft().fontRenderer;
+	}
+
+	public static EntityClientPlayerMP clientPlayer() {
+		return minecraft().thePlayer;
 	}
 
 }

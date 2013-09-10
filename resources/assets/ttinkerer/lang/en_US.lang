@@ -12,6 +12,7 @@ ttmisc.leftClick=Left Click
 ttmisc.rightClick=Right Click
 ttmisc.redstoneControl=Redstone Control
 ttmisc.focusDislocation.tooltip=Currently Dislocating: %s
+ttmisc.focusDislocation.tooltipExtra=Extra Contents
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
