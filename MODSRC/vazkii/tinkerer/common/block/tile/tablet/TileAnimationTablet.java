@@ -28,7 +28,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet3Chat;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.EnumChatFormatting;
@@ -38,12 +42,11 @@ import net.minecraftforge.event.Event;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
-import thaumcraft.common.tiles.TileThaumcraft;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-public class TileAnimationTablet extends TileThaumcraft implements IInventory {
+public class TileAnimationTablet extends TileEntity implements IInventory {
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
@@ -356,6 +359,7 @@ public class TileAnimationTablet extends TileThaumcraft implements IInventory {
 
 		swingProgress = par1NBTTagCompound.getInteger(TAG_PROGRESS);
 		swingMod = par1NBTTagCompound.getInteger(TAG_MOD);
+		readCustomNBT(par1NBTTagCompound);
 	}
 
 	@Override
@@ -364,12 +368,10 @@ public class TileAnimationTablet extends TileThaumcraft implements IInventory {
 
         par1NBTTagCompound.setInteger(TAG_PROGRESS, swingProgress);
         par1NBTTagCompound.setInteger(TAG_MOD, swingMod);
+        writeCustomNBT(par1NBTTagCompound);
 	}
 
-	@Override
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readCustomNBT(par1NBTTagCompound);
-
 		leftClick = par1NBTTagCompound.getBoolean(TAG_LEFT_CLICK);
 		redstone = par1NBTTagCompound.getBoolean(TAG_REDSTONE);
 
@@ -383,10 +385,7 @@ public class TileAnimationTablet extends TileThaumcraft implements IInventory {
 		}
 	}
 
-	@Override
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-        super.writeCustomNBT(par1NBTTagCompound);
-
         par1NBTTagCompound.setBoolean(TAG_LEFT_CLICK, leftClick);
         par1NBTTagCompound.setBoolean(TAG_REDSTONE, redstone);
 
@@ -487,6 +486,19 @@ public class TileAnimationTablet extends TileThaumcraft implements IInventory {
 	@Override
 	public void closeChest() {
 		// NO-OP
+	}
+	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		writeCustomNBT(nbttagcompound);
+		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, -999, nbttagcompound);
+	}
+
+	@Override
+	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+		super.onDataPacket(manager, packet);
+		readCustomNBT(packet.customParam1);
 	}
 
 }
