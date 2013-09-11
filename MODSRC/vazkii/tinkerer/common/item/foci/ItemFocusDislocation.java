@@ -43,7 +43,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	private Icon ornament;
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 15000).add(Aspect.ORDER, 15000).add(Aspect.EARTH, 7000);
+	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 10000).add(Aspect.ORDER, 10000).add(Aspect.EARTH, 5000);
 
 	public ItemFocusDislocation(int i) {
 		super(i);
