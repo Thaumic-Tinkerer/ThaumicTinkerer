@@ -26,6 +26,7 @@ item.ttinkerer:spellCloth.name=Spellbinding Cloth
 item.ttinkerer:focusFlight.name=Wand Focus: Uprising
 item.ttinkerer:focusDislocation.name=Wand Focus: Dislocation
 item.ttinkerer:cleansingTalisman.name=Talisman of Remedium
+item.ttinkerer:brightNitor.name=Hyperenergetic Nitor
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -90,3 +91,8 @@ ttresearch.page.FOCUS_DISLOCATION.0=You created a wand focus based on the focus 
 ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
 ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispell most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled.
+
+# -- HYPERNERGETIC NITOR
+ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor
+ttresearch.lore.BRIGHT_NITOR=Take that, Twilight!
+ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine even if it's being carried by a player by energizing the everburning flame that is Nitor with powerful energetic aspects such as Potentia and Lux.<BR><BR>The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.
