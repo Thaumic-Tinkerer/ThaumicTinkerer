@@ -487,12 +487,12 @@ public class TileAnimationTablet extends TileEntity implements IInventory {
 	public void closeChest() {
 		// NO-OP
 	}
-	
+
 	@Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, -999, nbttagcompound);
+		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override

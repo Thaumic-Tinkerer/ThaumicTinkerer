@@ -32,7 +32,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.core.helper.ClientHelper;
-import vazkii.tinkerer.client.core.lib.LibResources;
+import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 
 public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {

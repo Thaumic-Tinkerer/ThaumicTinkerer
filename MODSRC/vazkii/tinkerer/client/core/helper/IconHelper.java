@@ -18,7 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
-import vazkii.tinkerer.client.core.lib.LibResources;
+import vazkii.tinkerer.client.lib.LibResources;
 
 public class IconHelper {
 

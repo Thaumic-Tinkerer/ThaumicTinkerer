@@ -17,7 +17,7 @@ package vazkii.tinkerer.client.gui.button;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
-import vazkii.tinkerer.client.core.lib.LibResources;
+import vazkii.tinkerer.client.lib.LibResources;
 
 public class GuiButtonAT extends GuiButton {
 

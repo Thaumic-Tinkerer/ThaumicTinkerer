@@ -14,7 +14,7 @@
  */
 package vazkii.tinkerer.common.lib;
 
-import vazkii.tinkerer.client.core.lib.LibResources;
+import vazkii.tinkerer.client.lib.LibResources;
 
 public final class LibItemNames {
 

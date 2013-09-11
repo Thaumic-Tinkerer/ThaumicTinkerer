@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [11 Sep 2013, 15:45:16 (GMT)]
  */
 package vazkii.tinkerer.common.item;
@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemCleansingTalisman extends ItemMod {
 
 	private static final String TAG_ENABLED = "enabled";
-	
+
 	private Icon enabledIcon;
 
 	public ItemCleansingTalisman(int par1) {
@@ -62,9 +62,9 @@ public class ItemCleansingTalisman extends ItemMod {
 				if (par3Entity instanceof EntityPlayer) {
 					EntityPlayer player = (EntityPlayer)par3Entity;
 					boolean removed = false;
-					
+
 					Collection<PotionEffect> potions = player.getActivePotionEffects();
-					
+
 					if(player.isBurning()) {
 						player.extinguish();
 						removed = true;
@@ -85,11 +85,11 @@ public class ItemCleansingTalisman extends ItemMod {
 			}
 		}
 	}
-	
+
 	public static boolean isEnabled(ItemStack stack) {
 		return ItemNBTHelper.getBoolean(stack, TAG_ENABLED, false);
 	}
-	
+
 	public static void flipEnabled(ItemStack stack) {
 		ItemNBTHelper.setBoolean(stack, TAG_ENABLED, !isEnabled(stack));
 	}

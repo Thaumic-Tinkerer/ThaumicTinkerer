@@ -12,7 +12,7 @@
  *
  * File Created @ [4 Sep 2013, 17:38:36 (GMT)]
  */
-package vazkii.tinkerer.client.core.lib;
+package vazkii.tinkerer.client.lib;
 
 public final class LibResources {
 

@@ -14,7 +14,7 @@
  */
 package vazkii.tinkerer.client.core.handler;
 
-import vazkii.tinkerer.client.core.lib.LibResources;
+import vazkii.tinkerer.client.lib.LibResources;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public final class LocalizationHandler {

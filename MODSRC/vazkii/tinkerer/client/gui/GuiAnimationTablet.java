@@ -25,10 +25,10 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-import vazkii.tinkerer.client.core.lib.LibResources;
 import vazkii.tinkerer.client.gui.button.GuiButtonAT;
 import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
+import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.network.PacketManager;

@@ -25,5 +25,5 @@ public final class LibBlockIDs {
 	public static int idGaseousShadow = 2621;
 	public static int idAnimationTablet = 2622;
 	public static int idNitorGas = 2623;
-	
+
 }
