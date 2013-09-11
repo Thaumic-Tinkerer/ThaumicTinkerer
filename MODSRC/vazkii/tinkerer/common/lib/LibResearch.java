@@ -35,4 +35,5 @@ public final class LibResearch {
 	public static final String KEY_ANIMATION_TABLET = "ANIMATION_TABLET";
 	public static final String KEY_FOCUS_FLIGHT = "FOCUS_FLIGHT";
 	public static final String KEY_FOCUS_DISLOCATION = "FOCUS_DISLOCATION";
+	public static final String KEY_CLEANSING_TALISMAN = "CLEANSING_TALISMAN";
 }

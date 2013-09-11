@@ -24,6 +24,7 @@ import net.minecraft.item.crafting.IRecipe;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -101,6 +102,11 @@ public final class ModRecipes {
 				'A', new ItemStack(ConfigItems.itemResource, 1, 6),
 				'Q', new ItemStack(Item.netherQuartz),
 				'D', new ItemStack(Item.diamond));
+		registerResearchItem(LibResearch.KEY_CLEANSING_TALISMAN, LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(ModItems.cleansingTalisman), new AspectList().add(Aspect.ORDER, 20).add(Aspect.FIRE, 20).add(Aspect.WATER, 10),
+				"STS", "TWT", "STS",
+				'S', new ItemStack(ModItems.darkQuartz),
+				'T', new ItemStack(ConfigItems.itemResource, 1, 7),
+				'W', new ItemStack(Item.enderPearl));
 	}
 
 	private static void initCrucibleRecipes() {

@@ -26,5 +26,6 @@ public final class LibItemNames {
 	public static final String SPELL_CLOTH = LibResources.PREFIX_MOD + "spellCloth";
 	public static final String FOCUS_FLIGHT = LibResources.PREFIX_MOD + "focusFlight";
 	public static final String FOCUS_DISLOCATION = LibResources.PREFIX_MOD + "focusDislocation";
+	public static final String CLEANSING_TALISMAN = LibResources.PREFIX_MOD + "cleansingTalisman";
 
 }

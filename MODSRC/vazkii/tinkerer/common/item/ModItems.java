@@ -31,6 +31,7 @@ public final class ModItems {
 	public static Item spellCloth;
 	public static Item focusFlight;
 	public static Item focusDislocation;
+	public static Item cleansingTalisman;
 
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -41,6 +42,6 @@ public final class ModItems {
 		spellCloth = new ItemSpellCloth(LibItemIDs.idSpellCloth).setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 		focusFlight = new ItemFocusFlight(LibItemIDs.idFocusFlight).setUnlocalizedName(LibItemNames.FOCUS_FLIGHT);
 		focusDislocation = new ItemFocusDislocation(LibItemIDs.idFocusDislocation).setUnlocalizedName(LibItemNames.FOCUS_DISLOCATION);
+		cleansingTalisman = new ItemCleansingTalisman(LibItemIDs.idCleansingTalisman).setUnlocalizedName(LibItemNames.CLEANSING_TALISMAN);
 	}
-
 }

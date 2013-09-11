@@ -58,7 +58,8 @@ public final class ConfigHandler {
 		LibItemIDs.idSpellCloth = loadItem(LibItemNames.SPELL_CLOTH, LibItemIDs.idSpellCloth);
 		LibItemIDs.idFocusFlight = loadItem(LibItemNames.FOCUS_FLIGHT, LibItemIDs.idFocusFlight);
 		LibItemIDs.idFocusDislocation = loadItem(LibItemNames.FOCUS_DISLOCATION, LibItemIDs.idFocusDislocation);
-
+		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.idCleansingTalisman);
+		
 		config.save();
 	}
 
