@@ -95,6 +95,7 @@ ttresearch.page.FOCUS_FLIGHT.0=Using the knowledge you got from creating the Swo
 ttresearch.name.FOCUS_DISLOCATION=Wand Focus: Dislocation
 ttresearch.lore.FOCUS_DISLOCATION=Now here, now there
 ttresearch.page.FOCUS_DISLOCATION.0=You created a wand focus based on the focus of equal trade. The difference is that this one not only holds the object's fingerprint, but it holds the object itself, allowing it to be placed elsewhere.<BR><BR>To get a block to transport, right click on it. To place it back, right click somewhere else. This focus can transport pretty much anything, including chests and mob spawners.
+ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the block. Placing it down is free.<BR><BR>Due to the amount of energy required for the dislocation, blocks with tile entities (such as chests and furnaces) cost 5x the amount of vis as normally. Mob spawners, in particular, cost 20x instead.
 
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium

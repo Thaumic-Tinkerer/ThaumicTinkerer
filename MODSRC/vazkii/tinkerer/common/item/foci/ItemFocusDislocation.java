@@ -20,6 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -43,7 +44,9 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	private Icon ornament;
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 10000).add(Aspect.ORDER, 10000).add(Aspect.EARTH, 5000);
+	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500).add(Aspect.EARTH, 100);
+	private static final AspectList visUsageTile = new AspectList().add(Aspect.ENTROPY, 2500).add(Aspect.ORDER, 2500).add(Aspect.EARTH, 500);
+	private static final AspectList visUsageSpawner = new AspectList().add(Aspect.ENTROPY, 10000).add(Aspect.ORDER, 10000).add(Aspect.EARTH, 5000);
 
 	public ItemFocusDislocation(int i) {
 		super(i);
@@ -105,7 +108,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 					}
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
-			} else if(!ThaumcraftApi.portableHoleBlackList.contains(id) && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getVisCost(), true)) {
+			} else if(!ThaumcraftApi.portableHoleBlackList.contains(id) && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
 				world.removeBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 				world.setBlock(mop.blockX, mop.blockY, mop.blockZ, 0, 0, 1 | 2);
 				storePickedBlock(itemstack, (short) id, (short) meta, tile);
@@ -125,6 +128,10 @@ public class ItemFocusDislocation extends ItemModFocus {
 		}
 
 		return itemstack;
+	}
+	
+	private static AspectList getCost(TileEntity tile) {
+		return tile == null ? visUsage : tile instanceof TileEntityMobSpawner ? visUsageSpawner : visUsageTile;
 	}
 
 	@Override
