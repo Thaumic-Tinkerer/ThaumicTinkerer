@@ -37,4 +37,5 @@ public final class LibResearch {
 	public static final String KEY_FOCUS_DISLOCATION = "FOCUS_DISLOCATION";
 	public static final String KEY_CLEANSING_TALISMAN = "CLEANSING_TALISMAN";
 	public static final String KEY_BRIGHT_NITOR = "BRIGHT_NITOR";
+	public static final String KEY_FOCUS_TELEKINESIS = "FOCUS_TELEKINESIS";
 }

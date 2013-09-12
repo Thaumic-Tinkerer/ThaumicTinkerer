@@ -21,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -106,6 +107,12 @@ public final class ModRecipes {
 				'S', new ItemStack(ModItems.darkQuartz),
 				'T', new ItemStack(ConfigItems.itemResource, 1, 7),
 				'W', new ItemStack(Item.enderPearl));
+		registerResearchItem(LibResearch.KEY_FOCUS_TELEKINESIS, LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(ModItems.focusTelekinesis), new AspectList().add(Aspect.AIR, 25).add(Aspect.ENTROPY, 30),
+				"IQG", "QEQ", "GQI",
+				'I', oreDictOrStack(new ItemStack(Item.ingotIron), "ingotTin"),
+				'Q', new ItemStack(Item.netherQuartz),
+				'E', new ItemStack(Item.enderPearl),
+				'G', oreDictOrStack(new ItemStack(Item.ingotGold), "ingotCopper"));
 	}
 
 	private static void initCrucibleRecipes() {
@@ -134,5 +141,9 @@ public final class ModRecipes {
 		List recipeList = ThaumcraftApi.getCraftingRecipes();
 		if(name != null && name.length() != 0)
 			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
+	}
+	
+	private static Object oreDictOrStack(ItemStack stack, String oreDict) {
+		return OreDictionary.getOres(oreDict).isEmpty() ? stack : oreDict;
 	}
 }

@@ -27,6 +27,7 @@ item.ttinkerer:focusFlight.name=Wand Focus: Uprising
 item.ttinkerer:focusDislocation.name=Wand Focus: Dislocation
 item.ttinkerer:cleansingTalisman.name=Talisman of Remedium
 item.ttinkerer:brightNitor.name=Hyperenergetic Nitor
+item.ttinkerer:focusTelekinesis.name=Wand Focus: Telekinesis
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -96,3 +97,8 @@ ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and foun
 ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor
 ttresearch.lore.BRIGHT_NITOR=Take that, Twilight!
 ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine even if it's being carried by a player by energizing the everburning flame that is Nitor with powerful energetic aspects such as Potentia and Lux.<BR><BR>The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.
+
+# -- WAND FOCUS: TELEKINESIS
+ttresearch.name.FOCUS_TELEKINESIS=Wand Focus: Telekinesis
+ttresearch.lore.FOCUS_TELEKINESIS=Beats gravity bubbles any day
+ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.
