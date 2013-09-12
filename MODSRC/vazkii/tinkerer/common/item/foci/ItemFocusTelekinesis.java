@@ -20,6 +20,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -28,6 +29,8 @@ import vazkii.tinkerer.common.core.helper.MiscHelper;
 
 public class ItemFocusTelekinesis extends ItemModFocus {
 
+	private static final AspectList visUsage = new AspectList().add(Aspect.AIR, 5).add(Aspect.ENTROPY, 5);
+	
 	public ItemFocusTelekinesis(int par1) {
 		super(par1);
 	}
@@ -36,20 +39,20 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int ticks) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(true/*wand.consumeAllVis(stack, player, getVisCost(), true)*/) {
-			
-			Vector3 target = Vector3.fromEntityCenter(player);
-			
-			final double distance = 5.5D;
-			if(!player.isSneaking()) {
-				target.add(new Vector3(player.getLookVec()).multiply(distance));
-				target.y += 0.5;
-			}
-			
-			final int range = 8;
-			List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
+		Vector3 target = Vector3.fromEntityCenter(player);
+		
+		final double distance = 5D;
+		if(!player.isSneaking())
+			target.add(new Vector3(player.getLookVec()).multiply(distance));
+	
+		target.y += 0.5;
+		
+		final int range = 6;
+		List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
+		
+		if(!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(), true)) {
 			for(EntityItem item : entities) {
-				MiscHelper.setEntityMotionFromVector(item, target, 0.5F);
+				MiscHelper.setEntityMotionFromVector(item, target, 0.3333F);
 				ThaumicTinkerer.tcProxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 0);
 			}
 		}
@@ -67,7 +70,7 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 	@Override
 	public AspectList getVisCost() {
-		return new AspectList();
+		return visUsage;
 	}
 	
 	@Override

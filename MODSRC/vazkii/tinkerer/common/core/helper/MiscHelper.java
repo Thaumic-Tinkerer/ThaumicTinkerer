@@ -21,7 +21,7 @@ public final class MiscHelper {
 
 	public static void setEntityMotionFromVector(Entity entity, Vector3 originalPosVector, float modifier) {
 		Vector3 entityVector = Vector3.fromEntityCenter(entity);
-		Vector3 finalVector = originalPosVector.subtract(entityVector);
+		Vector3 finalVector = originalPosVector.copy().subtract(entityVector);
 		
 		if(finalVector.mag() > 1)
 			finalVector.normalize();
