@@ -38,4 +38,7 @@ public final class LibResearch {
 	public static final String KEY_CLEANSING_TALISMAN = "CLEANSING_TALISMAN";
 	public static final String KEY_BRIGHT_NITOR = "BRIGHT_NITOR";
 	public static final String KEY_FOCUS_TELEKINESIS = "FOCUS_TELEKINESIS";
+	public static final String KEY_MAGNETS = "MAGNETS";
+	public static final String KEY_MAGNET = "MAGNET";
+	public static final String KEY_MOB_MAGNET = "MOB_MAGNET";
 }

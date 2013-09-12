@@ -109,4 +109,10 @@ ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine eve
 # -- WAND FOCUS: TELEKINESIS
 ttresearch.name.FOCUS_TELEKINESIS=Wand Focus: Telekinesis
 ttresearch.lore.FOCUS_TELEKINESIS=Beats gravity bubbles any day
-ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.
+ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.´
+
+# -- KINETIC ATTRACTION
+ttresearch.name.MAGNETS=Kinetic Attraction
+ttresearch.lore.MAGNETS=How do they work?
+ttresearch.page.MAGNETS.0=Working with the telekinesis focus, you managed to apply this knowledge to create a device to attract items or living beings, like a magnet.<BR><BR>These two blocks have two states, north (red) and south (blue), in north mode it'll push items, or entities away; in south mode it'll pull them in.
+ttresearch.page.MAGNETS.1=You designed two devices. The Kinetic and Corporeal Attractors, these, repsectively affect items and living beings.<BR><BR>The Corporeal Attractor involves some more complex mechanisms, to which you can access by right clicking it with a casting wand. Using a Soul Mould, you can right click on a mob to save it as a pattern, which you can set in the attractor's interface, as a filter, along with settings for child or adult animals, if available.

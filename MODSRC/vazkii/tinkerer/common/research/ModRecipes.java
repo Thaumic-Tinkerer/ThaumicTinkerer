@@ -25,6 +25,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -33,13 +34,13 @@ import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModRecipes {
-
+	
 	public static void initRecipes() {
 		initCraftingRecipes();
 		initArcaneRecipes();
 		initCrucibleRecipes();
 	}
-
+	
 	private static void initCraftingRecipes() {
 		registerResearchItem(LibResearch.KEY_DARK_QUARTZ + 0, new ItemStack(ModItems.darkQuartz, 8),
 				"QQQ", "QCQ", "QQQ",
@@ -113,6 +114,20 @@ public final class ModRecipes {
 				'Q', new ItemStack(Item.netherQuartz),
 				'E', new ItemStack(Item.enderPearl),
 				'G', oreDictOrStack(new ItemStack(Item.ingotGold), "ingotCopper"));
+		registerResearchItem(LibResearch.KEY_MAGNET, LibResearch.KEY_MAGNETS, new ItemStack(ModBlocks.magnet), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),
+			" I ", "SIs", "WFW",
+			'I', new ItemStack(Item.ingotIron),
+			's', new ItemStack(ConfigItems.itemShard, 1, 3),
+			'S', new ItemStack(ConfigItems.itemShard),
+			'W', new ItemStack(ConfigBlocks.blockMagicalLog),
+			'F', new ItemStack(ModItems.focusTelekinesis));
+		registerResearchItem(LibResearch.KEY_MOB_MAGNET, LibResearch.KEY_MAGNETS, new ItemStack(ModBlocks.magnet, 1, 1), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),
+				" G ", "SGs", "WFW",
+				'G', oreDictOrStack(new ItemStack(Item.ingotGold), "ingotCopper"),
+				's', new ItemStack(ConfigItems.itemShard, 1, 3),
+				'S', new ItemStack(ConfigItems.itemShard),
+				'W', new ItemStack(ConfigBlocks.blockMagicalLog),
+				'F', new ItemStack(ModItems.focusTelekinesis));
 	}
 
 	private static void initCrucibleRecipes() {
@@ -120,6 +135,7 @@ public final class ModRecipes {
 		registerResearchItem(LibResearch.KEY_GASEOUS_SHADOW, new ItemStack(ModItems.gaseousShadow), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		registerResearchItem(LibResearch.KEY_SPELL_CLOTH, new ItemStack(ModItems.spellCloth), new ItemStack(ConfigItems.itemResource, 0, 7), new AspectList().add(Aspect.MAGIC, 10).add(Aspect.ENTROPY, 6).add(Aspect.EXCHANGE, 4));
 		registerResearchItem(LibResearch.KEY_BRIGHT_NITOR, new ItemStack(ModItems.brightNitor), new ItemStack(ConfigItems.itemResource, 1, 1), new AspectList().add(Aspect.ENERGY, 25).add(Aspect.LIGHT, 25).add(Aspect.AIR, 10).add(Aspect.FIRE, 10));
+		registerResearchItem(LibResearch.KEY_MAGNETS, new ItemStack(ModItems.soulMould), new ItemStack(Item.enderPearl), new AspectList().add(Aspect.BEAST, 4).add(Aspect.MIND, 8).add(Aspect.SENSES, 8));
 	}
 
 	private static void registerResearchItem(String name, String research, ItemStack output, AspectList aspects, Object... stuff) {
