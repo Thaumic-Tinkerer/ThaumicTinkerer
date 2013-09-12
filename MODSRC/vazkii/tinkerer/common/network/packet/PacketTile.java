@@ -14,10 +14,11 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.network.IPacket;
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
@@ -27,7 +28,7 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 
 	private static final long serialVersionUID = -1447633008013055477L;
 
-	int x, y, z;
+	int dim, x, y, z;
 
 	transient T tile;
 
@@ -37,13 +38,20 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 		this.x = tile.xCoord;
 		this.y = tile.yCoord;
 		this.z = tile.zCoord;
+		this.dim = tile.worldObj.provider.dimensionId;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void handle(INetworkManager manager, Player player) {
-		if(player instanceof EntityPlayer) {
-			World world = ((EntityPlayer) player).worldObj;
+		MinecraftServer server = MiscHelper.server();
+		if(server != null) {
+			World world = server.worldServerForDimension(dim);
+			
+			if(world == null) {
+				MiscHelper.printCurrentStackTrace("No world found for dimension " + dim + "!");
+				return;
+			}
 
 			TileEntity tile = world.getBlockTileEntity(x, y, z);
 			if(tile != null) {

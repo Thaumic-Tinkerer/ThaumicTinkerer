@@ -15,10 +15,15 @@
 package vazkii.tinkerer.common.core.helper;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.server.MinecraftServer;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 
 public final class MiscHelper {
 
+	public static MinecraftServer server() {
+		return MinecraftServer.getServer();
+	}
+	
 	public static void setEntityMotionFromVector(Entity entity, Vector3 originalPosVector, float modifier) {
 		Vector3 entityVector = Vector3.fromEntityCenter(entity);
 		Vector3 finalVector = originalPosVector.copy().subtract(entityVector);
@@ -29,6 +34,14 @@ public final class MiscHelper {
 		entity.motionX = finalVector.x * modifier;
 		entity.motionY = finalVector.y * modifier;
 		entity.motionZ = finalVector.z * modifier;
+	}
+	
+	public static void printCurrentStackTrace(String message) {
+		if(message != null)
+			System.out.println(message);
+		
+		for(StackTraceElement element : Thread.currentThread().getStackTrace())
+			System.out.println(element);
 	}
 	
 }
