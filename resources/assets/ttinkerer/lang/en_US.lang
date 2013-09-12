@@ -15,6 +15,11 @@ ttmisc.focusDislocation.tooltip=Currently Dislocating: %s
 ttmisc.focusDislocation.tooltipExtra=Extra Contents
 ttmisc.inactive=§cInactive
 ttmisc.active=§aActive
+ttmisc.soulMould.nonAssigned=§6No Pattern
+ttmisc.soulMould.pattern=§6Current Pattern: %s
+ttmisc.all=All
+ttmisc.child=Child
+ttmisc.adult=Adult
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -28,6 +33,7 @@ item.ttinkerer:focusDislocation.name=Wand Focus: Dislocation
 item.ttinkerer:cleansingTalisman.name=Talisman of Remedium
 item.ttinkerer:brightNitor.name=Hyperenergetic Nitor
 item.ttinkerer:focusTelekinesis.name=Wand Focus: Telekinesis
+item.ttinkerer:soulMould.name=Soul Mould
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -37,6 +43,8 @@ tile.ttinkerer:darkQuartzSlab.name=Smokey Quartz Slab
 tile.ttinkerer:darkQuartzStairs.name=Smokey Quartz Stairs
 tile.ttinkerer:interface.name=Transvector Interface
 tile.ttinkerer:animationTablet.name=Dynamism Tablet
+tile.ttinkerer:magnet.name=Kinetic Attractor
+tile.ttinkerer:mobMagnet.name=Corporeal Attractor
 
 # RESEARCH
 ttresearch.prefix=[TT] 

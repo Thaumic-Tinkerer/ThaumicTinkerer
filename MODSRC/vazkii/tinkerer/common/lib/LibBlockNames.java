@@ -27,7 +27,9 @@ public final class LibBlockNames {
 	public static final String GASEOUS_SHADOW = LibResources.PREFIX_MOD + "gaseousShadow";
 	public static final String ANIMATION_TABLET = LibResources.PREFIX_MOD + "animationTablet";
 	public static final String NITOR_GAS = LibResources.PREFIX_MOD + "nitorGas";
-
+	public static final String MAGNET = LibResources.PREFIX_MOD + "magnet";
+	public static final String MOB_MAGNET = LibResources.PREFIX_MOD + "mobMagnet";
+	
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"tile." + DARK_QUARTZ,
 		"tile." + LibResources.PREFIX_MOD + "darkQuartzChiseled",

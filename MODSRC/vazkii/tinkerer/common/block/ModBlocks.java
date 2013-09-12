@@ -19,7 +19,10 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
 import vazkii.tinkerer.common.block.tile.TileInterface;
+import vazkii.tinkerer.common.block.tile.TileMagnet;
+import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.item.ItemBlockMagnet;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
@@ -37,6 +40,7 @@ public final class ModBlocks {
 	public static Block gaseousShadow;
 	public static Block animationTablet;
 	public static Block nitorGas;
+	public static Block magnet;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -48,7 +52,8 @@ public final class ModBlocks {
 		gaseousShadow = new BlockGaseousShadow(LibBlockIDs.idGaseousShadow).setUnlocalizedName(LibBlockNames.GASEOUS_SHADOW);
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
-
+		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
+		
 		registerBlocks();
 	}
 
@@ -61,10 +66,13 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(gaseousLight, LibBlockNames.GASEOUS_LIGHT);
 		GameRegistry.registerBlock(gaseousShadow, LibBlockNames.GASEOUS_SHADOW);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
+		GameRegistry.registerBlock(magnet, ItemBlockMagnet.class, LibBlockNames.MAGNET);
 	}
 
 	public static void initTileEntities() {
 		GameRegistry.registerTileEntity(TileInterface.class, LibBlockNames.INTERFACE);
 		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
+		GameRegistry.registerTileEntity(TileMagnet.class, LibBlockNames.MAGNET);
+		GameRegistry.registerTileEntity(TileMobMagnet.class, LibBlockNames.MOB_MAGNET);
 	}
 }

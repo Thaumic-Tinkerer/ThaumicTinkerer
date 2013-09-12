@@ -27,5 +27,6 @@ public final class LibItemIDs {
 	public static int idCleansingTalisman = 22158;
 	public static int idBrightNitor = 22159;
 	public static int idFocusTelekinesis = 22160;
+	public static int idSoulMould = 22161;
 
 }
