@@ -18,6 +18,7 @@ import net.minecraft.item.Item;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.foci.ItemFocusDislocation;
 import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
+import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 
@@ -33,6 +34,7 @@ public final class ModItems {
 	public static Item focusDislocation;
 	public static Item cleansingTalisman;
 	public static Item brightNitor;
+	public static Item focusTelekinesis;
 
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -45,5 +47,6 @@ public final class ModItems {
 		focusDislocation = new ItemFocusDislocation(LibItemIDs.idFocusDislocation).setUnlocalizedName(LibItemNames.FOCUS_DISLOCATION);
 		cleansingTalisman = new ItemCleansingTalisman(LibItemIDs.idCleansingTalisman).setUnlocalizedName(LibItemNames.CLEANSING_TALISMAN);
 		brightNitor = new ItemBrightNitor(LibItemIDs.idBrightNitor).setUnlocalizedName(LibItemNames.BRIGHT_NTIOR);
+		focusTelekinesis = new ItemFocusTelekinesis(LibItemIDs.idFocusTelekinesis).setUnlocalizedName(LibItemNames.FOCUS_TELEKINESIS);
 	}
 }

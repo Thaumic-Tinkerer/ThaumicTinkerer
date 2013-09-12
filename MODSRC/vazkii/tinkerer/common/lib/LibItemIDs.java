@@ -26,5 +26,6 @@ public final class LibItemIDs {
 	public static int idFocusDislocation = 22157;
 	public static int idCleansingTalisman = 22158;
 	public static int idBrightNitor = 22159;
+	public static int idFocusTelekinesis = 22160;
 
 }
