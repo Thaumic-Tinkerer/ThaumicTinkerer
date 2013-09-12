@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [12 Sep 2013, 17:01:27 (GMT)]
  */
 package vazkii.tinkerer.common.block;
@@ -41,7 +41,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockMagnet extends BlockModContainer {
 
 	Random random;
-	
+
 	public static Icon lightning;
 
 	public BlockMagnet(int par1) {
@@ -53,7 +53,7 @@ public class BlockMagnet extends BlockModContainer {
 
 		random = new Random();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -87,7 +87,7 @@ public class BlockMagnet extends BlockModContainer {
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		TileMagnet magnet = (TileMagnet) par1World.getBlockTileEntity(par2, par3, par4);
 		TileMobMagnet mobMagnet = magnet instanceof TileMobMagnet ? (TileMobMagnet) magnet : null;
-		
+
 		if (mobMagnet != null) {
 			for (int j1 = 0; j1 < mobMagnet.getSizeInventory(); ++j1) {
 				ItemStack itemstack = mobMagnet.getStackInSlot(j1);
@@ -121,7 +121,7 @@ public class BlockMagnet extends BlockModContainer {
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
@@ -149,7 +149,7 @@ public class BlockMagnet extends BlockModContainer {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
 		return (metadata & 2) == 2 ? new TileMobMagnet() : new TileMagnet();

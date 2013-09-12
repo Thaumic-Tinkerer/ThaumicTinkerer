@@ -34,13 +34,13 @@ import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModRecipes {
-	
+
 	public static void initRecipes() {
 		initCraftingRecipes();
 		initArcaneRecipes();
 		initCrucibleRecipes();
 	}
-	
+
 	private static void initCraftingRecipes() {
 		registerResearchItem(LibResearch.KEY_DARK_QUARTZ + 0, new ItemStack(ModItems.darkQuartz, 8),
 				"QQQ", "QCQ", "QQQ",
@@ -158,7 +158,7 @@ public final class ModRecipes {
 		if(name != null && name.length() != 0)
 			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
 	}
-	
+
 	private static Object oreDictOrStack(ItemStack stack, String oreDict) {
 		return OreDictionary.getOres(oreDict).isEmpty() ? stack : oreDict;
 	}

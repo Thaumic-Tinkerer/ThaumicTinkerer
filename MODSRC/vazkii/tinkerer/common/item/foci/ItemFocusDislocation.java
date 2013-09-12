@@ -129,7 +129,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 		return itemstack;
 	}
-	
+
 	private static AspectList getCost(TileEntity tile) {
 		return tile == null ? visUsage : tile instanceof TileEntityMobSpawner ? visUsageSpawner : visUsageTile;
 	}

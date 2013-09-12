@@ -28,13 +28,13 @@ public final class LibResources {
 
 	public static final String GUI_ANIMATION_TABLET = PREFIX_GUI + "animationTablet.png";
 	public static final String GUI_MOB_MAGNET = PREFIX_GUI + "mobMagnet.png";
-	
+
 	public static final String MISC_R_ENCHANTING = PREFIX_MISC + "r_enchanting.png";
 	public static final String MISC_AT_CENTER = PREFIX_MISC + "atCenter.png";
 	public static final String MISC_AT_LEFT = PREFIX_MISC + "atLeft.png";
 	public static final String MISC_AT_RIGHT = PREFIX_MISC + "atRight.png";
 	public static final String MISC_AT_INDENT = PREFIX_MISC + "atFacingIndent.png";
-	
+
 	public static final String MODEL_MAGNET_N = PREFIX_MODEL + "magnetN.png";
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = PREFIX_MODEL + "mobMagnetN.png";

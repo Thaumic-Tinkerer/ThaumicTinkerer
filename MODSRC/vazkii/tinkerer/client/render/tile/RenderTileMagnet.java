@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [12 Sep 2013, 17:55:04 (GMT)]
  */
 package vazkii.tinkerer.client.render.tile;
@@ -33,7 +33,7 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
 
 	public static boolean mob = false;
 	ModelMagnet model = new ModelMagnet();
-	
+
 	private static final ResourceLocation blue = new ResourceLocation(LibResources.MODEL_MAGNET_S);
 	private static final ResourceLocation red = new ResourceLocation(LibResources.MODEL_MAGNET_N);
 	private static final ResourceLocation blueMob = new ResourceLocation(LibResources.MODEL_MOB_MAGNET_S);
@@ -46,10 +46,10 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
 		boolean blue = tileentity.worldObj == null || (tileentity.getBlockMetadata() & 1) == 0;
-		boolean mob = tileentity.worldObj == null ? this.mob : (tileentity.getBlockMetadata() & 2) == 2;
+		boolean mob = tileentity.worldObj == null ? RenderTileMagnet.mob : (tileentity.getBlockMetadata() & 2) == 2;
 
-		ClientHelper.minecraft().renderEngine.func_110577_a(mob ? blue ? blueMob : redMob : blue ? this.blue : red);
-		
+		ClientHelper.minecraft().renderEngine.func_110577_a(mob ? blue ? blueMob : redMob : blue ? RenderTileMagnet.blue : red);
+
         int redstone = 0;
         if(tileentity.worldObj != null) {
         	for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)

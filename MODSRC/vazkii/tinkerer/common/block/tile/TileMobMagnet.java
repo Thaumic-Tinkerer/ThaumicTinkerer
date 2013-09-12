@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [12 Sep 2013, 17:14:05 (GMT)]
  */
 package vazkii.tinkerer.common.block.tile;
@@ -33,7 +33,7 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 public class TileMobMagnet extends TileMagnet implements IInventory {
 
 	private static final String TAG_ADULT = "adultCheck";
-	
+
 	ItemStack[] inventorySlots = new ItemStack[1];
 
 	public boolean adult = true;
@@ -46,12 +46,12 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 			public boolean isEntityApplicable(Entity entity) {
 				if(!(entity instanceof EntityLivingBase) || entity == null || entity instanceof EntityPlayer)
 					return false;
-				
+
 				boolean can = false;
 				if(entity instanceof EntityAgeable)
 					can = adult != ((EntityAgeable) entity).isChild();
 				else can = true;
-				
+
 				if(can && inventorySlots[0] != null) {
 					String pattern = ItemSoulMould.getPatternName(inventorySlots[0]);
 					String name = EntityList.getEntityString(entity);
@@ -59,18 +59,18 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 						return true;
 					else return false;
 				}
-				
+
 				return can;
 			}
 		};
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
 
 		readCustomNBT(par1NBTTagCompound);
-		
+
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -86,7 +86,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 		super.writeToNBT(par1NBTTagCompound);
 
 		writeCustomNBT(par1NBTTagCompound);
-		
+
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
 			if (inventorySlots[var3] != null) {
@@ -98,7 +98,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 		}
 		par1NBTTagCompound.setTag("Items", var2);
 	}
-	
+
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		par1NBTTagCompound.setBoolean(TAG_ADULT, adult);
 	}

@@ -45,10 +45,10 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileMagnet.class, new RenderTileMagnet());
 	}
 
-	private void registerRenderIDs() { 
+	private void registerRenderIDs() {
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
-		
+
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 	}
-	
+
 }

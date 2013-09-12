@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [12 Sep 2013, 18:37:02 (GMT)]
  */
 package vazkii.tinkerer.client.gui;
@@ -40,9 +40,9 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 public class GuiMobMagnet extends GuiContainer {
 
 	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_MOB_MAGNET);
-	
+
 	int x, y;
-	
+
 	ItemStack stack = null;
 	TileMobMagnet mobMagnet;
 
@@ -90,16 +90,16 @@ public class GuiMobMagnet extends GuiContainer {
 		String adult = StatCollector.translateToLocal("ttmisc.adult");
 		String child = StatCollector.translateToLocal("ttmisc.child");
 		stack = mobMagnet.getStackInSlot(0);
-		
+
 		String filter;
-		
+
 		if(stack != null){
 			String name = ItemSoulMould.getPatternName(stack);
 			if(name.equals("ttmisc.all"))
 				filter = StatCollector.translateToLocal(name);
 			else filter = StatCollector.translateToLocal("entity." + name + ".name");
 		} else filter = StatCollector.translateToLocal("ttmisc.all");
-		
+
 		fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
 		fontRenderer.drawString(adult, x + 120, y + 30, 0x999999);
 		fontRenderer.drawString(child, x + 120, y + 50, 0x999999);

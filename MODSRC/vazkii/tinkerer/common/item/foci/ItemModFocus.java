@@ -35,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
 	private Icon ornament;
-	
+
 	public ItemModFocus(int par1) {
 		super(par1);
 	}
@@ -43,7 +43,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	boolean hasOrnament() {
 		return false;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -98,7 +98,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
 		if(isVisCostPerTick())
 			paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
-		
+
 		return paramItemStack;
 	}
 

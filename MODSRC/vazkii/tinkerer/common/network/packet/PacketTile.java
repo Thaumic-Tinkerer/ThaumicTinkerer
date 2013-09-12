@@ -47,7 +47,7 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 		MinecraftServer server = MiscHelper.server();
 		if(server != null) {
 			World world = server.worldServerForDimension(dim);
-			
+
 			if(world == null) {
 				MiscHelper.printCurrentStackTrace("No world found for dimension " + dim + "!");
 				return;

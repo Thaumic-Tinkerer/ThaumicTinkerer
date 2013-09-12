@@ -51,7 +51,7 @@ public final class ConfigHandler {
 		LibBlockIDs.idAnimationTablet = loadBlock(LibBlockNames.ANIMATION_TABLET, LibBlockIDs.idAnimationTablet);
 		LibBlockIDs.idNitorGas = loadBlock(LibBlockNames.NITOR_GAS, LibBlockIDs.idNitorGas);
 		LibBlockIDs.idMagnet = loadBlock(LibBlockNames.MAGNET, LibBlockIDs.idMagnet);
-		
+
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
 		LibItemIDs.idGaseousLight = loadItem(LibItemNames.GASEOUS_LIGHT, LibItemIDs.idGaseousLight);
@@ -63,7 +63,7 @@ public final class ConfigHandler {
 		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.idCleansingTalisman);
 		LibItemIDs.idBrightNitor = loadItem(LibItemNames.BRIGHT_NTIOR, LibItemIDs.idBrightNitor);
 		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.idSoulMould);
-		
+
 		config.save();
 	}
 
