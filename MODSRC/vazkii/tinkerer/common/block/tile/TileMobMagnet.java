@@ -47,17 +47,20 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 				if(!(entity instanceof EntityLivingBase) || entity == null || entity instanceof EntityPlayer)
 					return false;
 				
-				if(inventorySlots[0] != null) {
+				boolean can = false;
+				if(entity instanceof EntityAgeable)
+					can = adult != ((EntityAgeable) entity).isChild();
+				else can = true;
+				
+				if(can && inventorySlots[0] != null) {
 					String pattern = ItemSoulMould.getPatternName(inventorySlots[0]);
 					String name = EntityList.getEntityString(entity);
-					if(name != null && name.equals(pattern)) {
-						if(entity instanceof EntityAgeable)
-							return adult != ((EntityAgeable) entity).isChild();
-						else return true;
-					} else return false;
+					if(name != null && name.equals(pattern))
+						return true;
+					else return false;
 				}
 				
-				return true;
+				return can;
 			}
 		};
 	}
