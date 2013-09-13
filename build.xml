@@ -8,6 +8,7 @@
 		<delete dir="${build.dir.mcp}\src\minecraft\vazkii" />
 		<delete dir="${build.dir.mcp}\src\minecraft\ic2" />
 		<delete dir="${build.dir.mcp}\src\minecraft\buildcraft" />
+		<delete dir="${build.dir.mcp}\src\minecraft\dan200" />
 		<delete dir="${build.dir.mcp}\reobf\minecraft" />
 		<delete dir ="${build.dir.temp}" />
 	</target>
