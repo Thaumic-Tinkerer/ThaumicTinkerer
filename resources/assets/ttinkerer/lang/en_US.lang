@@ -51,6 +51,12 @@ tile.ttinkerer:mobMagnet.name=Corporeal Attractor
 ttresearch.prefix=[TT] 
 tc.research_category.TT_ENCHANTING=[TT] Enchanting
 
+# -- COMPUTERCRAFT PERIPHERALS
+ttresearch.name.PERIPHERALS=Computercraft Peripherals
+ttresearch.lore.PERIPHERALS=When technology meets magic
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer allows for some of the blocks that it adds, alongside some vanilla Thaumcraft blocks, to be used as ComputerCraft peripherals.<BR><BR>For convenience sake, the method documentation for these peripherals is in an external webpage. Pressing ENTER right now will take you to it.
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=Smokey Quartz
 ttresearch.lore.DARK_QUARTZ=Shadow of the Day

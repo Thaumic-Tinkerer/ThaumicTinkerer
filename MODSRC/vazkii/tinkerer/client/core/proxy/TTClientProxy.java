@@ -15,6 +15,7 @@
 package vazkii.tinkerer.client.core.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
@@ -27,6 +28,8 @@ import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class TTClientProxy extends TTCommonProxy {
 
@@ -36,6 +39,7 @@ public class TTClientProxy extends TTCommonProxy {
 
 		LocalizationHandler.loadLocalizations();
 		MinecraftForge.EVENT_BUS.register(new HUDHandler());
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		registerTiles();
 		registerRenderIDs();
 	}
@@ -49,6 +53,11 @@ public class TTClientProxy extends TTCommonProxy {
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
+	}
+
+	@Override
+	protected void initCCPeripherals() {
+		// NO-OP
 	}
 
 }

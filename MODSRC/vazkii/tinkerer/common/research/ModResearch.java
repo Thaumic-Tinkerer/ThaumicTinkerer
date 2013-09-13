@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.research;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -29,6 +30,7 @@ import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
+import cpw.mods.fml.common.Loader;
 
 public final class ModResearch {
 
@@ -75,6 +77,11 @@ public final class ModResearch {
 
 		research = new TTResearchItem(LibResearch.KEY_MAGNETS, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.MOTION, 1).add(Aspect.SENSES, 1), 5, -3, 3, new ItemStack(ModBlocks.magnet)).setParentsHidden(LibResearch.KEY_FOCUS_TELEKINESIS).setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_MAGNET), arcaneRecipePage(LibResearch.KEY_MOB_MAGNET), cruciblePage(LibResearch.KEY_MAGNETS));
+
+		if(Loader.isModLoaded("ComputerCraft")) {
+			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();
+			research.setPages(new ResearchPage("0"));
+		}
 	}
 
 	private static void registerResearchPages() {

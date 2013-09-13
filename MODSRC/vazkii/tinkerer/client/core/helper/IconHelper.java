@@ -41,7 +41,11 @@ public class IconHelper {
 	}
 
 	public static Icon forBlock(IconRegister ir, Block block, int i) {
-		return forNameRaw(ir, block.getUnlocalizedName().replaceAll("tile.", "") + i);
+		return forBlock(ir, block, Integer.toString(i));
+	}
+
+	public static Icon forBlock(IconRegister ir, Block block, String s) {
+		return forNameRaw(ir, block.getUnlocalizedName().replaceAll("tile.", "") + s);
 	}
 
 	public static Icon forItem(IconRegister ir, Item item) {

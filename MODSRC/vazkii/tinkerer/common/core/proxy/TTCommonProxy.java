@@ -58,7 +58,7 @@ public class TTCommonProxy {
 		ModResearch.initResearch();
 	}
 
-	private void initCCPeripherals() {
+	protected void initCCPeripherals() {
 		IPeripheralHandler handler = new PeripheralHandler();
 		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
