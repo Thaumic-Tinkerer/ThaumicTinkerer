@@ -27,6 +27,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -170,9 +171,9 @@ public class BlockAnimationTablet extends BlockModContainer {
 					int meta = par1World.getBlockMetadata(par2, par3, par4);
 					boolean activated = (meta & 8) != 0;
 					if(!activated && !tablet.getIsBreaking() && tablet.swingProgress == 0) {
-						par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 5 ? + 2 : meta + 1, 1 | 2);
-						par1World.playSoundEffect(par2, par3, par4, "thaumcraft.tool", 0.6F, 1F);
-					} else par5EntityPlayer.addChatMessage("You can not rotate the Tablet while it's activated.");
+						par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 5 ? 2 : meta + 1, 1 | 2);
+						par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
+					} else par5EntityPlayer.addChatMessage(StatCollector.translateToLocal("ttmisc.animationTablet.notRotatable"));
 						// Rare chance this might happen, but better to cope for it.
 
 					return true;

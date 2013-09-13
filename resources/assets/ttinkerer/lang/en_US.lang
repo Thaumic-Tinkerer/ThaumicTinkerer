@@ -11,6 +11,7 @@ ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
 ttmisc.leftClick=Left Click
 ttmisc.rightClick=Right Click
 ttmisc.redstoneControl=Redstone Control
+ttmisc.animationTablet.notRotatable=You can not rotate the Tablet while it's activated.
 ttmisc.focusDislocation.tooltip=Currently Dislocating: %s
 ttmisc.focusDislocation.tooltipExtra=Extra Contents
 ttmisc.inactive=§cInactive

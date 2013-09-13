@@ -25,8 +25,11 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 
-public class TileMagnet extends TileEntity {
+public class TileMagnet extends TileEntity implements IPeripheral {
 
 	@Override
 	public void updateEntity() {
@@ -70,6 +73,54 @@ public class TileMagnet extends TileEntity {
 			}
 
 		};
+	}
+
+	@Override
+	public String getType() {
+		return "tt_magnet";
+	}
+
+	@Override
+	public String[] getMethodNames() {
+		return new String[] { "isPulling", "setPulling", "getSignal" };
+	}
+
+	@Override
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+		switch(method) {
+			case 0 : return new Object[] { (getBlockMetadata() & 1) == 0 };
+			case 1 : {
+				boolean pull = (Boolean) arguments[0];
+				int meta = (getBlockMetadata() & 2) + (pull ? 0 : 1);
+
+				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, meta, 1 | 2);
+				return null;
+			}
+			case 2 : {
+				int redstone = 0;
+				for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+					redstone = Math.max(redstone, worldObj.getIndirectPowerLevelTo(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.ordinal()));
+
+				return new Object[] { redstone };
+			}
+		}
+
+		return null;
+	}
+
+	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
+
+	@Override
+	public void attach(IComputerAccess computer) {
+		// NO-OP
+	}
+
+	@Override
+	public void detach(IComputerAccess computer) {
+		// NO-OP
 	}
 
 }

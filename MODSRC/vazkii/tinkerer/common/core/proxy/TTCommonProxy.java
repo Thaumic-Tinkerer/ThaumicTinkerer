@@ -14,8 +14,13 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import thaumcraft.api.nodes.TileNodeBase;
+import thaumcraft.common.tiles.TileAlembic;
+import thaumcraft.common.tiles.TileCrucible;
+import thaumcraft.common.tiles.TileDeconstructionTable;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.item.ModItems;
@@ -27,6 +32,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import dan200.computer.api.ComputerCraftAPI;
+import dan200.computer.api.IPeripheralHandler;
 
 public class TTCommonProxy {
 
@@ -35,6 +42,8 @@ public class TTCommonProxy {
 
 		ModBlocks.initBlocks();
 		ModItems.initItems();
+
+		initCCPeripherals();
 	}
 
 	public void init(FMLInitializationEvent event) {
@@ -47,5 +56,13 @@ public class TTCommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.initRecipes();
 		ModResearch.initResearch();
+	}
+
+	private void initCCPeripherals() {
+		IPeripheralHandler handler = new PeripheralHandler();
+		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileNodeBase.class, handler);
 	}
 }

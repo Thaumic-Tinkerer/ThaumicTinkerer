@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
+import java.util.Arrays;
+import java.util.List;
+
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -29,6 +32,9 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
 
 public class TileMobMagnet extends TileMagnet implements IInventory {
 
@@ -182,6 +188,30 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		return true;
+	}
+
+	@Override
+	public String[] getMethodNames() {
+		List<String> methods = Arrays.asList(super.getMethodNames());
+		methods.add("getAdultSearch");
+		methods.add("setAdultSearch");
+		return methods.toArray(new String[methods.size()]);
+	}
+
+	@Override
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+		switch(method) {
+			case 3 : return new Object[] { adult };
+			case 4 : {
+				boolean adult = (Boolean) arguments[0];
+
+				this.adult = adult;
+				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				return null;
+
+			}
+		}
+		return super.callMethod(computer, context, method, arguments);
 	}
 
 

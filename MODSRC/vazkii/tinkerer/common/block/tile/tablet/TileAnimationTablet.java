@@ -45,8 +45,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.common.network.PacketDispatcher;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 
-public class TileAnimationTablet extends TileEntity implements IInventory {
+public class TileAnimationTablet extends TileEntity implements IInventory, IPeripheral {
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
@@ -499,6 +502,73 @@ public class TileAnimationTablet extends TileEntity implements IInventory {
 	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
 		super.onDataPacket(manager, packet);
 		readCustomNBT(packet.customParam1);
+	}
+
+	@Override
+	public String getType() {
+		return "tt_animationTablet";
+	}
+
+	@Override
+	public String[] getMethodNames() {
+		return new String[]{ "getRedstone", "setRedstone", "getLeftClick", "setLeftClick", "getRotation", "setRotation", "hasItem", "trigger" };
+	}
+
+	@Override
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+		switch(method) {
+			case 0 : return new Object[]{ redstone };
+			case 1 : {
+				boolean redstone = (Boolean) arguments[0];
+				this.redstone = redstone;
+				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				return null;
+			}
+			case 2 : return new Object[]{ leftClick };
+			case 3 : {
+				boolean leftClick = (Boolean) arguments[0];
+				this.leftClick = leftClick;
+				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				return null;
+			}
+			case 4 : return new Object[] { getBlockMetadata() - 2 };
+			case 5 : {
+				int rotation = (int) ((Double) arguments[0]).doubleValue();
+
+				if(rotation > 3)
+					throw new Exception("Invalid value: " + rotation + ".");
+
+				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, rotation + 2, 1 | 2);
+				return null;
+			}
+			case 6 : return new Object[] { getStackInSlot(0) != null };
+			case 7 : {
+				if(swingProgress != 0)
+					return new Object[] { false };
+
+				findEntities(getTargetLoc());
+				initiateSwing();
+				worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet.blockID, 0, 0);
+
+				return new Object[] { true };
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
+
+	@Override
+	public void attach(IComputerAccess computer) {
+		// NO-OP
+	}
+
+	@Override
+	public void detach(IComputerAccess computer) {
+		// NO-OP
 	}
 
 }
