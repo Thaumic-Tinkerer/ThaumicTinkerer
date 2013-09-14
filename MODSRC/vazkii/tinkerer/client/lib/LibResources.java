@@ -29,6 +29,7 @@ public final class LibResources {
 
 	public static final String GUI_ANIMATION_TABLET = PREFIX_GUI + "animationTablet.png";
 	public static final String GUI_MOB_MAGNET = PREFIX_GUI + "mobMagnet.png";
+	public static final String GUI_ENCHANTER = PREFIX_GUI + "enchanter.png";
 
 	public static final String MISC_R_ENCHANTING = PREFIX_MISC + "r_enchanting.png";
 	public static final String MISC_AT_CENTER = PREFIX_MISC + "atCenter.png";

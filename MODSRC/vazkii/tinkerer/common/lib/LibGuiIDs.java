@@ -18,5 +18,6 @@ public final class LibGuiIDs {
 
 	public static final int GUI_ID_TABLET = 0;
 	public static final int GUI_ID_MOB_MAGNET = 1;
+	public static final int GUI_ID_ENCHANTER = 2;
 
 }

@@ -23,6 +23,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
+import vazkii.tinkerer.common.enchantment.core.rule.BasicCompatibilityRule;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -80,7 +81,14 @@ public final class EnchantmentManager {
 	}
 	
 	private static void registerCompatibilityRules() {
-		
+		for(Enchantment ench : Enchantment.enchantmentsList)
+			for(Enchantment ench1 : Enchantment.enchantmentsList) {
+				if(ench == ench1)
+					continue;
+				
+				if(!ench.canApplyTogether(ench1) || !ench1.canApplyTogether(ench))
+					rules.put(ench.effectId, new BasicCompatibilityRule(ench1));
+			}
 	}
 	
 	private static void registerExtraRules() {
