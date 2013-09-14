@@ -20,19 +20,16 @@ import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
-public class EnchantmentData extends AspectList {
+public class EnchantmentData {
 	
 	public final ResourceLocation texture;
+	public final AspectList aspects;
 	public final boolean vanilla;
 
-	public EnchantmentData(String texture, boolean vanilla) {
+	public EnchantmentData(String texture, boolean vanilla, AspectList aspects) {
 		this.texture = new ResourceLocation(texture);
 		this.vanilla = vanilla;
-	}
-
-	@Override
-	public EnchantmentData add(Aspect aspect, int count) {
-		return ((EnchantmentData) super.add(aspect, count));
+		this.aspects = aspects;
 	}
 	
 }

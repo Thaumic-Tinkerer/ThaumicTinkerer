@@ -16,6 +16,8 @@ package vazkii.tinkerer.common.core.helper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.server.MinecraftServer;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 
 public final class MiscHelper {
@@ -34,6 +36,17 @@ public final class MiscHelper {
 		entity.motionX = finalVector.x * modifier;
 		entity.motionY = finalVector.y * modifier;
 		entity.motionZ = finalVector.z * modifier;
+	}
+	
+	public static AspectList multiplyAspectList(AspectList list, int multiplier) {
+		AspectList newList = list.copy();
+		if(multiplier == 1)
+			return newList;
+		
+		for(Aspect aspect : newList.aspects.keySet())
+			newList.aspects.put(aspect, newList.aspects.get(aspect) * multiplier);
+		
+		return newList;
 	}
 
 	public static void printCurrentStackTrace(String message) {

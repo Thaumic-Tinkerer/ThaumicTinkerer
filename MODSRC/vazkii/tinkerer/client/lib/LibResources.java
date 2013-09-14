@@ -23,6 +23,7 @@ public final class LibResources {
 	public static final String PREFIX_GUI = PREFIX_MOD + "textures/gui/";
 	public static final String PREFIX_MISC = PREFIX_MOD + "textures/misc/";
 	public static final String PREFIX_MODEL = PREFIX_MOD + "textures/model/";
+	public static final String PREFIX_ENCHANTS = PREFIX_MOD + "textures/enchants/";
 
 	public static final String EMTPY_TEXTURE = "emptyTexture";
 
@@ -39,7 +40,48 @@ public final class LibResources {
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = PREFIX_MODEL + "mobMagnetN.png";
 	public static final String MODEL_MOB_MAGNET_S = PREFIX_MODEL + "mobMagnetS.png";
-
+	
+	public static final String ENCHANT_PROTECTION = PREFIX_ENCHANTS + "protection.png";
+	public static final String ENCHANT_FIRE_PROTECTION = PREFIX_ENCHANTS + "fireProtection.png";
+	public static final String ENCHANT_FEATHER_FALLING = PREFIX_ENCHANTS + "featherFalling.png";
+	public static final String ENCHANT_BLAST_PROTECTION = PREFIX_ENCHANTS + "blastProtection.png";
+	public static final String ENCHANT_PROJECTILE_PROTECTION = PREFIX_ENCHANTS + "projectileProtection.png";
+	public static final String ENCHANT_RESPIRATION = PREFIX_ENCHANTS + "respiration.png";
+	public static final String ENCHANT_AQUA_AFFINITY = PREFIX_ENCHANTS + "aquaAffinity.png";
+	public static final String ENCHANT_THORNS = PREFIX_ENCHANTS + "thorns.png";
+	public static final String ENCHANT_SHARPNESS = PREFIX_ENCHANTS + "sharpness.png";
+	public static final String ENCHANT_SMITE = PREFIX_ENCHANTS + "smite.png";
+	public static final String ENCHANT_BANE_OF_ARTHROPODS = PREFIX_ENCHANTS + "baneOfAwfulTurds.png";
+	public static final String ENCHANT_KNOCKBACK = PREFIX_ENCHANTS + "knockback.png";
+	public static final String ENCHANT_FIRE_ASPECT = PREFIX_ENCHANTS + "fireAspect.png";
+	public static final String ENCHANT_LOOTING = PREFIX_ENCHANTS + "looting.png";
+	public static final String ENCHANT_EFFICIENCY = PREFIX_ENCHANTS + "efficiency.png";
+	public static final String ENCHANT_SILK_TOUCH = PREFIX_ENCHANTS + "silkTouch.png";
+	public static final String ENCHANT_UNBREAKING = PREFIX_ENCHANTS + "unbreaking.png";
+	public static final String ENCHANT_FORTUNE = PREFIX_ENCHANTS + "fortune.png";
+	public static final String ENCHANT_POWER = PREFIX_ENCHANTS + "power.png";
+	public static final String ENCHANT_PUNCH = PREFIX_ENCHANTS + "punch.png";
+	public static final String ENCHANT_FLAME = PREFIX_ENCHANTS + "flame.png";
+	public static final String ENCHANT_INFINITY = PREFIX_ENCHANTS + "infinity.png";
+	public static final String ENCHANT_LUCK_OF_THE_SEA = PREFIX_ENCHANTS + "luckOfTheSea.png";
+	public static final String ENCHANT_LURE = PREFIX_ENCHANTS + "lure.png";
+	public static final String ENCHANT_POTENCY = PREFIX_ENCHANTS + "potency.png";
+	public static final String ENCHANT_FRUGAL = PREFIX_ENCHANTS + "frugal.png";
+	public static final String ENCHANT_TREASURE = PREFIX_ENCHANTS + "treasure.png";
+	public static final String ENCHANT_HASTE = PREFIX_ENCHANTS + "haste.png";
+	public static final String ENCHANT_REPAIR = PREFIX_ENCHANTS + "repair.png";
+	
+	public static final String ENCHANT_SLOW_FALL = PREFIX_ENCHANTS + "slowFall.png";
+	public static final String ENCHANT_ASCENT_BOOST = PREFIX_ENCHANTS + "ascentBoost.png";
+	public static final String ENCHANT_LAST_RESORT = PREFIX_ENCHANTS + "lastResort.png";
+	public static final String ENCHANT_AUTO_SMELT = PREFIX_ENCHANTS + "autoSmelt.png";
+	public static final String ENCHANT_DESINTEGRATE = PREFIX_ENCHANTS + "desintegrate.png";
+	public static final String ENCHANT_FREEZING = PREFIX_ENCHANTS + "freezing.png";
+	public static final String ENCHANT_PIERCNG = PREFIX_ENCHANTS + "piercing.png";
+	public static final String ENCHANT_SOULBRINGER = PREFIX_ENCHANTS + "soulbringer.png";
+	public static final String ENCHANT_VAMPIRISM = PREFIX_ENCHANTS + "vamprisim.png";
+	public static final String ENCHANT_QUICK_DRAW = PREFIX_ENCHANTS + "quickDraw.png";
+	
 	public static final String[] LANGS = {
 		"en_US"
 	};
