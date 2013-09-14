@@ -85,7 +85,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	            if (mop.sideHit == 5)
 	                ++mop.blockX;
 
-				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, ForgeDirection.getOrientation(mop.sideHit).getOpposite().ordinal(), stack)) {
+				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, stack)) {
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, stack.itemID, stack.getItemDamage(), 1 | 2);
 					Block.blocksList[stack.itemID].onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
 					NBTTagCompound tileCmp = getStackTileEntity(itemstack);
