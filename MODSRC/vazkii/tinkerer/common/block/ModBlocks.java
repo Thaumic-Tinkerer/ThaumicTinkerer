@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
+import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileInterface;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
@@ -41,6 +42,7 @@ public final class ModBlocks {
 	public static Block animationTablet;
 	public static Block nitorGas;
 	public static Block magnet;
+	public static Block enchanter;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -53,7 +55,8 @@ public final class ModBlocks {
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
 		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
 		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
-
+		enchanter = new BlockEnchanter(LibBlockIDs.idEnchanter).setUnlocalizedName(LibBlockNames.ENCHANTER);
+		
 		registerBlocks();
 	}
 
@@ -67,6 +70,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(gaseousShadow, LibBlockNames.GASEOUS_SHADOW);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerBlock(magnet, ItemBlockMagnet.class, LibBlockNames.MAGNET);
+		GameRegistry.registerBlock(enchanter, LibBlockNames.ENCHANTER);
 	}
 
 	public static void initTileEntities() {
@@ -74,5 +78,6 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerTileEntity(TileMagnet.class, LibBlockNames.MAGNET);
 		GameRegistry.registerTileEntity(TileMobMagnet.class, LibBlockNames.MOB_MAGNET);
+		GameRegistry.registerTileEntity(TileEnchanter.class, LibBlockNames.ENCHANTER);
 	}
 }

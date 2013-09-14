@@ -26,5 +26,6 @@ public final class LibBlockIDs {
 	public static int idAnimationTablet = 2622;
 	public static int idNitorGas = 2623;
 	public static int idMagnet = 2624;
+	public static int idEnchanter = 2625;
 
 }
