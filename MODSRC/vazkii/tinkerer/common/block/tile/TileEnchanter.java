@@ -14,25 +14,38 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import thaumcraft.api.aspects.AspectList;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
 
 public class TileEnchanter extends TileEntity implements IInventory {
 
+	private static final String TAG_ENCHANTS = "enchants";
+	private static final String TAG_LEVELS = "levels";
+	private static final String TAG_TOTAL_ASPECTS = "totalAspects";
+	private static final String TAG_CURRENT_ASPECTS = "currentAspects";
+	private static final String TAG_WORKING = "working";
+	
+	List<Integer> enchantments = new ArrayList();
+	List<Integer> levels = new ArrayList();
+	
+	AspectList totalAspects = new AspectList();
+	AspectList currentAspects = new AspectList();
+	
+	boolean working = false;
+	
 	ItemStack[] inventorySlots = new ItemStack[2];
 
 	@Override
@@ -40,7 +53,30 @@ public class TileEnchanter extends TileEntity implements IInventory {
 		super.readFromNBT(par1NBTTagCompound);
 
 		readCustomNBT(par1NBTTagCompound);
+	}
 
+	@Override
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
+		super.writeToNBT(par1NBTTagCompound);
+
+		writeCustomNBT(par1NBTTagCompound);
+	}
+
+	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
+		working = par1NBTTagCompound.getBoolean(TAG_WORKING);
+		currentAspects.readFromNBT(par1NBTTagCompound.getCompoundTag(TAG_CURRENT_ASPECTS));
+		totalAspects.readFromNBT(par1NBTTagCompound.getCompoundTag(TAG_TOTAL_ASPECTS));
+		
+		NBTTagList enchants = par1NBTTagCompound.getTagList(TAG_ENCHANTS);
+		enchantments.clear();
+		for(int i = 0; i < enchants.tagCount(); i++)
+			enchantments.add(((NBTTagInt) enchants.tagAt(i)).data);
+		
+		NBTTagList levels = par1NBTTagCompound.getTagList(TAG_LEVELS);
+		this.levels.clear();
+		for(int i = 0; i < levels.tagCount(); i++)
+			this.levels.add(((NBTTagInt) levels.tagAt(i)).data);
+		
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -51,12 +87,26 @@ public class TileEnchanter extends TileEntity implements IInventory {
 		}
 	}
 
-	@Override
-	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeToNBT(par1NBTTagCompound);
-
-		writeCustomNBT(par1NBTTagCompound);
-
+    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
+    	NBTTagList enchants = new NBTTagList();
+    	for(int enchant : enchantments)
+    		enchants.appendTag(new NBTTagInt("", enchant));
+    	NBTTagList levels = new NBTTagList();
+    	for(int level : this.levels)
+    		levels.appendTag(new NBTTagInt("", level));
+    	
+    	NBTTagCompound totalAspectsCmp = new NBTTagCompound();
+    	totalAspects.writeToNBT(totalAspectsCmp);
+    	
+    	NBTTagCompound currentAspectsCmp = new NBTTagCompound();
+    	currentAspects.writeToNBT(currentAspectsCmp);
+    	
+    	par1NBTTagCompound.setBoolean(TAG_WORKING, working);
+    	par1NBTTagCompound.setCompoundTag(TAG_TOTAL_ASPECTS, totalAspectsCmp);
+    	par1NBTTagCompound.setCompoundTag(TAG_CURRENT_ASPECTS, currentAspectsCmp);
+    	par1NBTTagCompound.setTag(TAG_ENCHANTS, enchants);
+    	par1NBTTagCompound.setTag(TAG_LEVELS, levels);
+    	
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
 			if (inventorySlots[var3] != null) {
@@ -67,14 +117,6 @@ public class TileEnchanter extends TileEntity implements IInventory {
 			}
 		}
 		par1NBTTagCompound.setTag("Items", var2);
-	}
-
-	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		
-	}
-
-    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-    	
     }
 
 	@Override

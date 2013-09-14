@@ -53,7 +53,7 @@ public class GuiEnchanter extends GuiContainer {
 		
 		ItemStack itemToEnchant = enchanter.getStackInSlot(0);
 		if(itemToEnchant != null && !itemToEnchant.isItemEnchanted())
-			drawTexturedModalRect(x + 20, y + 45, 0, ySize, 142, 25);
+			drawTexturedModalRect(x + 30, y + 50, 0, ySize, 147, 24);
 	}
 
 }
