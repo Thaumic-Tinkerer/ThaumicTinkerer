@@ -56,6 +56,7 @@ public final class EnchantmentManager {
 		registerLinearCostData(Enchantment.unbreaking, LibResources.ENCHANT_UNBREAKING, true, new AspectList().add(Aspect.ORDER, 15).add(Aspect.WATER, 8).add(Aspect.EARTH, 8));
 		registerLinearCostData(Enchantment.fortune, LibResources.ENCHANT_FORTUNE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
 		registerLinearCostData(Enchantment.power, LibResources.ENCHANT_POWER, true, new AspectList().add(Aspect.EARTH, 5).add(Aspect.ORDER, 10));
+		registerLinearCostData(Enchantment.punch, LibResources.ENCHANT_PUNCH, true, new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 5));
 		registerLinearCostData(Enchantment.flame, LibResources.ENCHANT_FLAME, true, new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.FIRE, 20).add(Aspect.EARTH, 5));
 		registerLinearCostData(Enchantment.infinity, LibResources.ENCHANT_INFINITY, true, new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.ORDER, 40).add(Aspect.EARTH, 10));
 		registerLinearCostData(Config.enchPotency, LibResources.ENCHANT_POTENCY, true, new AspectList().add(Aspect.ORDER, 15));
