@@ -15,9 +15,11 @@
 package vazkii.tinkerer.common.enchantment.core;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
@@ -45,7 +47,7 @@ public final class EnchantmentManager {
 		registerLinearCostData(Enchantment.thorns, LibResources.ENCHANT_THORNS, true, new AspectList().add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 12));
 		registerLinearCostData(Enchantment.sharpness, LibResources.ENCHANT_SHARPNESS, true, new AspectList().add(Aspect.ORDER, 10));
 		registerLinearCostData(Enchantment.smite, LibResources.ENCHANT_SMITE, true, new AspectList().add(Aspect.ORDER, 5).add(Aspect.AIR, 5));
-		registerLinearCostData(Enchantment.baneOfArthropods, LibResources.ENCHANT_BANE_OF_ARTHROPODS, true, new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.ORDER, 5).add(Aspect.FIRE, 5));
+		registerLinearCostData(Enchantment.baneOfArthropods, LibResources.ENCHANT_BANE_OF_ARTHROPODS, true, new AspectList().add(Aspect.ORDER, 5).add(Aspect.FIRE, 5));
 		registerLinearCostData(Enchantment.knockback, LibResources.ENCHANT_KNOCKBACK, true, new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.AIR, 10));
 		registerLinearCostData(Enchantment.fireAspect, LibResources.ENCHANT_FIRE_ASPECT, true, new AspectList().add(Aspect.FIRE, 15).add(Aspect.EARTH, 4));
 		registerLinearCostData(Enchantment.looting, LibResources.ENCHANT_LOOTING, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
@@ -64,6 +66,17 @@ public final class EnchantmentManager {
 		
 		registerCompatibilityRules();
 		registerExtraRules();
+	}
+	
+	public static boolean canApply(ItemStack stack, Enchantment enchant, List<Integer> currentEnchants) {
+		if(!enchant.canApply(stack) || !enchant.type.canEnchantItem(stack.getItem()))
+			return false;
+		
+		for(IEnchantmentRule rule : rules.get(enchant.effectId))
+			if(!rule.canApplyAlongside(currentEnchants))
+				return false;
+		
+		return true;
 	}
 	
 	private static void registerLinearCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects) {

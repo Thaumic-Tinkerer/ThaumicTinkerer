@@ -57,7 +57,7 @@ public class GuiButtonEnchantment extends GuiButton {
 			List<String> tooltip = new ArrayList();
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(enchant.getName()));
 			for(Aspect aspect : data.aspects.getAspectsSorted())
-				tooltip.add(" \u00a7" + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x" + data.aspects.getAmount(aspect) + " " + StatCollector.translateToLocal("ttmisc.perLevel"));
+				tooltip.add(" \u00a7" + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + data.aspects.getAmount(aspect) + " " + StatCollector.translateToLocal("ttmisc.perLevel"));
 			parent.tooltip = tooltip;
 		}
 	}

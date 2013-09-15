@@ -32,6 +32,7 @@ import vazkii.tinkerer.client.gui.button.GuiButtonEnchantment;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.container.ContainerEnchanter;
+import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 
 public class GuiEnchanting extends GuiContainer {
 
@@ -44,15 +45,21 @@ public class GuiEnchanting extends GuiContainer {
 	GuiButtonEnchantment[] enchantButtons = new GuiButtonEnchantment[8];
 	
 	public List<String> tooltip = new ArrayList();
+	
+	ItemStack lastTickStack;
+	ItemStack currentStack;
  	
 	public GuiEnchanting(TileEnchanter enchanter, InventoryPlayer inv) {
 		super(new ContainerEnchanter(enchanter, inv));
 		this.enchanter = enchanter;
+		lastTickStack = enchanter.getStackInSlot(0);
+		currentStack = enchanter.getStackInSlot(0);
 	}
 
 	@Override
 	public void initGui() {
 		super.initGui();
+		
 		x = (width - xSize) / 2;
 		y = (height - ySize) / 2;
 		
@@ -72,15 +79,40 @@ public class GuiEnchanting extends GuiContainer {
 	}
 	
 	public void asignEnchantButtons() {
-		// TODO Proper method
-		enchantButtons[0].enchant = Enchantment.efficiency;
-		enchantButtons[1].enchant = Enchantment.silkTouch;
-		enchantButtons[2].enchant = Enchantment.unbreaking;
-		enchantButtons[3].enchant = Enchantment.fortune;
-		enchantButtons[4].enchant = Config.enchRepair;
-		enchantButtons[5].enchant = null;
-		enchantButtons[6].enchant = null;
-		enchantButtons[7].enchant = null;
+		for(int i = 0; i < 8; i++) {
+			enchantButtons[i].enchant = null;
+			enchantButtons[i].enabled = false;
+		}
+		
+		if(currentStack == null || currentStack.isItemEnchanted())
+			return;
+		
+		int it = 0;
+		for(int enchant : EnchantmentManager.enchantmentData.keySet())
+			if(EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments)) {
+				enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
+				enchantButtons[it].enabled = true;
+
+				it++;
+				if(it >= 8)
+					break;
+			}
+	}
+	
+	@Override
+	public void updateScreen() {
+		currentStack = enchanter.getStackInSlot(0);
+		
+		if(currentStack != lastTickStack)
+			updateStack();
+		
+		lastTickStack = currentStack;		
+	}
+	
+	private void updateStack() {
+		enchanter.enchantments.clear();
+		enchanter.levels.clear();
+		asignEnchantButtons();
 	}
 	
 	@Override
