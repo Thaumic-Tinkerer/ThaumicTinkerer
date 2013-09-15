@@ -38,13 +38,13 @@ public class TileEnchanter extends TileEntity implements IInventory {
 	private static final String TAG_CURRENT_ASPECTS = "currentAspects";
 	private static final String TAG_WORKING = "working";
 	
-	List<Integer> enchantments = new ArrayList();
-	List<Integer> levels = new ArrayList();
+	public List<Integer> enchantments = new ArrayList();
+	public List<Integer> levels = new ArrayList();
 	
-	AspectList totalAspects = new AspectList();
-	AspectList currentAspects = new AspectList();
+	public AspectList totalAspects = new AspectList();
+	public AspectList currentAspects = new AspectList();
 	
-	boolean working = false;
+	public boolean working = false;
 	
 	ItemStack[] inventorySlots = new ItemStack[2];
 

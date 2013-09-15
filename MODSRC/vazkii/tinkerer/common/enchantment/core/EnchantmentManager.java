@@ -67,7 +67,7 @@ public final class EnchantmentManager {
 	}
 	
 	private static void registerLinearCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects) {
-		for(int i = enchantment.getMinLevel(); i < enchantment.getMaxLevel(); i++) {
+		for(int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
 			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, i));
 			registerData(enchantment.effectId, i, data);
 		}
@@ -77,18 +77,21 @@ public final class EnchantmentManager {
 		if(!enchantmentData.containsKey(enchantment))
 			enchantmentData.put(enchantment, new HashMap());
 		
-		enchantmentData.get(enchantmentData).put(level, data);
+		enchantmentData.get(enchantment).put(level, data);
 	}
 	
 	private static void registerCompatibilityRules() {
-		for(Enchantment ench : Enchantment.enchantmentsList)
-			for(Enchantment ench1 : Enchantment.enchantmentsList) {
-				if(ench == ench1)
-					continue;
-				
-				if(!ench.canApplyTogether(ench1) || !ench1.canApplyTogether(ench))
-					rules.put(ench.effectId, new BasicCompatibilityRule(ench1));
-			}
+		for(Enchantment ench : Enchantment.enchantmentsList) {
+			if(ench != null)
+				for(Enchantment ench1 : Enchantment.enchantmentsList) {
+					if(ench1 == null || ench == ench1)
+						continue;
+					
+					if(!ench.canApplyTogether(ench1) || !ench1.canApplyTogether(ench))
+						rules.put(ench.effectId, new BasicCompatibilityRule(ench1));
+				}
+		}
+			
 	}
 	
 	private static void registerExtraRules() {

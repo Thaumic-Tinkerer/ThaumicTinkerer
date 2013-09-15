@@ -23,6 +23,7 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
+import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.potion.ModPotions;
@@ -48,6 +49,7 @@ public class TTCommonProxy {
 
 	public void init(FMLInitializationEvent event) {
 		ModEnchantments.initEnchantments();
+		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());

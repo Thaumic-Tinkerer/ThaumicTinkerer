@@ -18,7 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.gui.GuiAnimationTablet;
-import vazkii.tinkerer.client.gui.GuiEnchanter;
+import vazkii.tinkerer.client.gui.GuiEnchanting;
 import vazkii.tinkerer.client.gui.GuiMobMagnet;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
@@ -58,7 +58,7 @@ public class GuiHandler  implements IGuiHandler {
 				return new GuiMobMagnet((TileMobMagnet) tile, player.inventory);
 				
 			case LibGuiIDs.GUI_ID_ENCHANTER : 
-				return new GuiEnchanter((TileEnchanter) tile, player.inventory);
+				return new GuiEnchanting((TileEnchanter) tile, player.inventory);
 		}
 		return null;
 	}
