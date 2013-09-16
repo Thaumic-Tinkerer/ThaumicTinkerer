@@ -21,7 +21,9 @@ import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
+import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
 import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
+import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
@@ -47,6 +49,7 @@ public class TTClientProxy extends TTCommonProxy {
 	private void registerTiles() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileMagnet.class, new RenderTileMagnet());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
 	}
 
 	private void registerRenderIDs() {
