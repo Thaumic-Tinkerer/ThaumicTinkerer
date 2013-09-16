@@ -130,7 +130,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 					int onWand = wandAspects.getAmount(aspect);
 					
 					if(onWand >= 100 && missing > 0) {
-						wandItem.consumeVis(wand, null, aspect, 100);
+						wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
 						currentAspects.add(aspect, 1);
 						return;
 					}
