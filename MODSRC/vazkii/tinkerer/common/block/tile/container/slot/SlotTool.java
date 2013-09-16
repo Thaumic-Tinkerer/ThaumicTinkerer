@@ -14,26 +14,41 @@
  */
 package vazkii.tinkerer.common.block.tile.container.slot;
 
-import vazkii.tinkerer.common.item.ItemSoulMould;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import thaumcraft.api.aspects.AspectList;
+import vazkii.tinkerer.common.block.tile.TileEnchanter;
 
 public class SlotTool extends Slot {
 
-	public SlotTool(IInventory par1iInventory, int par2, int par3, int par4) {
-		super(par1iInventory, par2, par3, par4);
+	TileEnchanter enchanter;
+	
+	public SlotTool(TileEnchanter enchanter, int par2, int par3, int par4) {
+		super(enchanter, par2, par3, par4);
+		this.enchanter = enchanter;
 	}
 	
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.itemID != Item.book.itemID && par1ItemStack.getItem().isItemTool(par1ItemStack);
+		return !enchanter.working && par1ItemStack.itemID != Item.book.itemID && par1ItemStack.getItem().isItemTool(par1ItemStack);
 	}
 
 	@Override
 	public int getSlotStackLimit() {
 		return 1;
 	}
+	
+	@Override
+	public boolean canTakeStack(EntityPlayer par1EntityPlayer) {
+		return !enchanter.working;
+	}
 
+	@Override
+	public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack) {
+		super.onPickupFromSlot(par1EntityPlayer, par2ItemStack);
+		enchanter.clearEnchants();
+		enchanter.updateAspectList();
+	}
 }

@@ -38,13 +38,13 @@ public final class MiscHelper {
 		entity.motionZ = finalVector.z * modifier;
 	}
 	
-	public static AspectList multiplyAspectList(AspectList list, int multiplier) {
+	public static AspectList multiplyAspectList(AspectList list, double multiplier) {
 		AspectList newList = list.copy();
 		if(multiplier == 1)
 			return newList;
 		
 		for(Aspect aspect : newList.aspects.keySet())
-			newList.aspects.put(aspect, newList.aspects.get(aspect) * multiplier);
+			newList.aspects.put(aspect, (int) ((double) newList.aspects.get(aspect) * multiplier));
 		
 		return newList;
 	}

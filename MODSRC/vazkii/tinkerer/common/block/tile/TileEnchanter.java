@@ -17,8 +17,11 @@ package vazkii.tinkerer.common.block.tile;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
@@ -27,10 +30,14 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.items.wands.ItemWandCasting;
+import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibFeatures;
 
-public class TileEnchanter extends TileEntity implements IInventory {
+public class TileEnchanter extends TileEntity implements ISidedInventory {
 
 	private static final String TAG_ENCHANTS = "enchants";
 	private static final String TAG_LEVELS = "levels";
@@ -48,6 +55,103 @@ public class TileEnchanter extends TileEntity implements IInventory {
 	
 	ItemStack[] inventorySlots = new ItemStack[2];
 
+	public void clearEnchants() {
+		enchantments.clear();
+		levels.clear();
+	}
+	
+	public void appendEnchant(int enchant) {
+		enchantments.add(enchant);
+	}
+	
+	public void appendLevel(int level) {
+		levels.add(level);
+	}
+	
+	public void removeEnchant(int index) {
+		enchantments.remove(index);
+	}
+	
+	public void removeLevel(int index) {
+		levels.remove(index);
+	}
+	
+	public void setEnchant(int index, int enchant) {
+		enchantments.set(index, enchant);
+	}
+	
+	public void setLevel(int index, int level) {
+		levels.set(index, level);
+	}
+	
+	@Override
+	public void updateEntity() {
+		if(working) {
+			ItemStack tool = getStackInSlot(0);
+			if(tool == null) {
+				working = false;
+				return;
+			}
+						
+			enchantItem : {
+				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
+					int currentAmount = currentAspects.getAmount(aspect);
+					int totalAmount = totalAspects.getAmount(aspect);
+					
+					if(currentAmount < totalAmount)
+						break enchantItem;
+	 			}
+				
+				working = false;
+				currentAspects = new AspectList();
+				totalAspects = new AspectList();
+				
+				for(int i = 0; i < enchantments.size(); i++) {
+					int enchant = enchantments.get(i);
+					int level = levels.get(i);
+					
+					tool.addEnchantment(Enchantment.enchantmentsList[enchant], level);
+				}
+				
+				enchantments.clear();
+				levels.clear();
+				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				return;
+			}
+			
+			ItemStack wand = getStackInSlot(1);
+			
+			if(wand != null && wand.getItem() instanceof ItemWandCasting) {
+				ItemWandCasting wandItem = (ItemWandCasting) wand.getItem();
+				AspectList wandAspects = wandItem.getAllVis(wand);
+				
+				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
+					int missing = totalAspects.getAmount(aspect) - currentAspects.getAmount(aspect);
+					int onWand = wandAspects.getAmount(aspect);
+					
+					if(onWand >= 100 && missing > 0) {
+						wandItem.consumeVis(wand, null, aspect, 100);
+						currentAspects.add(aspect, 1);
+						return;
+					}
+				}
+			}
+		}
+
+	}
+	
+	public void updateAspectList() { 
+		totalAspects = new AspectList();
+		for(int i = 0; i < enchantments.size(); i++) {
+			int enchant = enchantments.get(i);
+			int level = levels.get(i);
+			
+			AspectList aspects = EnchantmentManager.enchantmentData.get(enchant).get(level).aspects;
+			for(Aspect aspect : aspects.getAspectsSorted())
+				totalAspects.add(aspect, aspects.getAmount(aspect));
+		}
+	}
+	
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
@@ -193,7 +297,7 @@ public class TileEnchanter extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -209,4 +313,18 @@ public class TileEnchanter extends TileEntity implements IInventory {
 		readCustomNBT(packet.customParam1);
 	}
 
+	@Override
+	public int[] getAccessibleSlotsFromSide(int var1) {
+		return new int[0];
+	}
+
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
+		return false;
+	}
 }

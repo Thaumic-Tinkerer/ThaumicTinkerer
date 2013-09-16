@@ -42,27 +42,36 @@ public class GuiButtonEnchantment extends GuiButton {
 		this.parent = parent;
 	}
 	
+	boolean canRender() {
+		if(enchant == null || !enabled || !EnchantmentManager.enchantmentData.containsKey(enchant.effectId))
+			return false;
+		return true;
+	}
+	
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(enchant == null || !enabled || !EnchantmentManager.enchantmentData.containsKey(enchant.effectId))
+		if(!canRender())
 			return;
 		
 		EnchantmentData data = EnchantmentManager.enchantmentData.get(enchant.effectId).get(1);
 		ClientHelper.minecraft().renderEngine.func_110577_a(data.texture);
 		GL11.glEnable(GL11.GL_BLEND);
-		drawTexturedModalRect(xPosition, yPosition, 0, 0, 16, 16);
+		drawTexturedModalRect16(xPosition, yPosition, 0, 0, 16, 16);
 		GL11.glDisable(GL11.GL_BLEND);
 		
 		if(par2 >= xPosition && par2 < xPosition + 16 && par3 >= yPosition && par3 < yPosition + 16) {
 			List<String> tooltip = new ArrayList();
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(enchant.getName()));
 			for(Aspect aspect : data.aspects.getAspectsSorted())
-				tooltip.add(" \u00a7" + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + data.aspects.getAmount(aspect) + " " + StatCollector.translateToLocal("ttmisc.perLevel"));
+				tooltip.add(" \u00a7" + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + data.aspects.getAmount(aspect) + " " + StatCollector.translateToLocal("ttmisc.baseCost"));
+			if(this instanceof GuiButtonFramedEnchantment)
+				tooltip.add(EnumChatFormatting.GRAY + "" + EnumChatFormatting.ITALIC + " " + StatCollector.translateToLocal("ttmisc.clickToRemove"));
+			
 			parent.tooltip = tooltip;
 		}
 	}
 	
-    public void drawTexturedModalRect(int par1, int par2, int par3, int par4, int par5, int par6)
+    public void drawTexturedModalRect16(int par1, int par2, int par3, int par4, int par5, int par6)
     {
         float f = 1F / 16F;
         float f1 = 1F / 16F;

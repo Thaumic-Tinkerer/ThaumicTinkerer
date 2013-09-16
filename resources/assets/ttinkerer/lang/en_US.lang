@@ -21,7 +21,9 @@ ttmisc.soulMould.pattern=§6Current Pattern: %s
 ttmisc.all=All
 ttmisc.child=Child
 ttmisc.adult=Adult
-ttmisc.perLevel= per level
+ttmisc.baseCost=Base Cost
+ttmisc.clickToRemove=Click to Remove
+ttmisc.startEnchant=Start Enchanting
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz

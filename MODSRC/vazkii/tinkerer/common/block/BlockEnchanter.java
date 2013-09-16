@@ -33,6 +33,7 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -57,8 +58,10 @@ public class BlockEnchanter extends BlockModContainer {
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
-			if(tile != null)
+			if(tile != null) {
+				PacketDispatcher.sendPacketToAllInDimension(tile.getDescriptionPacket(), par1World.provider.dimensionId);
 				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ENCHANTER, par1World, par2, par3, par4);
+			}
 		}
 
 		return true;

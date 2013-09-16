@@ -10,51 +10,40 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  * 
- * File Created @ [14 Sep 2013, 21:56:21 (GMT)]
+ * File Created @ [16 Sep 2013, 15:31:55 (GMT)]
  */
 package vazkii.tinkerer.client.gui.button;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.GuiEnchanting;
 import vazkii.tinkerer.client.lib.LibResources;
-import vazkii.tinkerer.common.block.tile.TileEnchanter;
 
-public class GuiButtonEnchant extends GuiButton {
+public class GuiButtonFramedEnchantment extends GuiButtonEnchantment {
 
 	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
-	TileEnchanter enchanter;
-	GuiEnchanting parent;
 	
-	public GuiButtonEnchant(GuiEnchanting parent, TileEnchanter enchanter, int par1, int par2, int par3) {
-		super(par1, par2, par3, 15, 15, "");
-		this.enchanter = enchanter;
-		this.parent = parent;
+	public GuiButtonFramedEnchantment(GuiEnchanting parent, int par1, int par2, int par3) {
+		super(parent, par1, par2, par3);
 	}
 	
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(!enabled)
+		if(!canRender() || parent.enchanter.enchantments.isEmpty() || parent.enchanter.levels.isEmpty())
 			return;
 		
-		final int x = 176;
-		final int y = enchanter.working ? 39 : 24;
-		
 		ClientHelper.minecraft().renderEngine.func_110577_a(gui);
-		drawTexturedModalRect(xPosition, yPosition, x, y, 15, 15);
+		drawTexturedModalRect(xPosition - 4, yPosition - 4, 176, 0, 24, 24);
 		
-		if(par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15) {
-			List<String> tooltip = new ArrayList();
-			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal("ttmisc.startEnchant"));
-			parent.tooltip = tooltip;
+		int index = parent.enchanter.enchantments.indexOf((Object) enchant.effectId);
+		if(index != -1) {
+			int level = parent.enchanter.levels.get(index);
+			par1Minecraft.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal("enchantment.level." + level), xPosition + 26, yPosition + 8, 0xFFFFFF);
 		}
+		
+		super.drawButton(par1Minecraft, par2, par3);
 	}
 
 }
