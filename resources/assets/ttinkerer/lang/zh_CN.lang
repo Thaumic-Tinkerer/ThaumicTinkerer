@@ -1,0 +1,128 @@
+#zh_CN
+
+# MISC
+itemGroup.ThaumicTinkerer=神秘工匠
+
+# MESSAGES
+ttmisc.connector.set=位置已设置!
+ttmisc.connector.complete=已绑定!
+ttmisc.connector.notinterf=并非矢量变换接口
+ttmisc.connector.interffail=不能将矢量变换接口绑定到矢量变换接口上去
+ttmisc.connector.notpresent=该矢量变换接口已经不存在了
+ttmisc.connector.toofar=原来的矢量变换接口太远了
+ttmisc.leftClick=左击
+ttmisc.rightClick=右击
+ttmisc.redstoneControl=红石控制
+ttmisc.focusDislocation.tooltip=当前转移目标:%s
+ttmisc.focusDislocation.tooltipExtra=额外内容
+ttmisc.inactive=§c未激活
+ttmisc.active=§a已激活
+ttmisc.soulMould.nonAssigned=§6无模板
+ttmisc.soulMould.pattern=§6当前模板: %s
+ttmisc.all=全部
+ttmisc.child=幼体
+ttmisc.adult=成年
+ttmisc.perLevel=每级
+
+# ITEM NAMES
+item.ttinkerer:darkQuartz.name=烟黑石英
+item.ttinkerer:connector.name=矢量变换接口绑定器
+item.ttinkerer:gaseousLight.name=光明气瓶
+item.ttinkerer:gaseousShadow.name=暗影气瓶
+item.ttinkerer:gasRemover.name=烟雾驱散器
+item.ttinkerer:spellCloth.name=魅惑之布
+item.ttinkerer:focusFlight.name=法杖核心：升腾
+item.ttinkerer:focusDislocation.name=法杖核心：转移
+item.ttinkerer:cleansingTalisman.name=防身护身符
+item.ttinkerer:brightNitor.name=超能闪耀之光
+item.ttinkerer:focusTelekinesis.name=法杖核心：念力
+item.ttinkerer:soulMould.name=灵魂模具
+
+# BLOCK NAMES
+tile.ttinkerer:darkQuartz.name=烟黑石英块
+tile.ttinkerer:darkQuartzChiseled.name=雕琢烟黑石英块
+tile.ttinkerer:darkQuartzPillar.name=柱状烟黑石英块
+tile.ttinkerer:darkQuartzSlab.name=烟黑石英台阶
+tile.ttinkerer:darkQuartzStairs.name=烟黑石英楼梯
+tile.ttinkerer:interface.name=矢量变换接口
+tile.ttinkerer:animationTablet.name=活化工具台
+tile.ttinkerer:magnet.name=奥术念力磁铁
+tile.ttinkerer:mobMagnet.name=奥术生物磁铁
+tile.ttinkerer:enchanter.name=渗透附魔台
+
+# RESEARCH
+ttresearch.prefix=[TT] 
+tc.research_category.TT_ENCHANTING=[TT]附魔
+
+# -- COMPUTERCRAFT PERIPHERALS
+ttresearch.name.PERIPHERALS=电脑外设
+ttresearch.lore.PERIPHERALS=当科学遇见魔法
+ttresearch.page.PERIPHERALS.0=神秘工匠让其添加的某些方块以及神秘时代添加的一些方块可以作为电脑外设(ComputerCraft的外设)使用。<BR><BR>为方便起见，使用这些外设的文档放置在网上以供查询。按下回车可以访问对应的页面。
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+
+# -- SMOKEY QUARTZ
+ttresearch.name.DARK_QUARTZ=烟黑石英
+ttresearch.lore.DARK_QUARTZ=暗影之日
+ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英，但性状相反。石英为材料的方块都能用烟黑石英做，但是看起来是黑色的。<BR><BR>烟黑使用可以用煤炭或者木炭以及普通下界石英制成。
+
+# -- TRANSVECTOR INTERFACE
+ttresearch.name.INTERFACE=矢量变换接口
+ttresearch.lore.INTERFACE=看不见的一面
+ttresearch.page.INTERFACE.0=“事实就是，1个方块只有6个面...”——Direwolf20如是说<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子，并且你能够用这个面与选中的方块互动。它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,流体的输入输出接口。<BR>[continued]
+ttresearch.page.INTERFACE.1=为了将接口与其他方块绑定，你需要制作一个被称作矢量变换接口绑定器的特殊工具。<BR><BR>右击目标方块之后右击接口就能完成绑定操作。(注意：建筑模组的管道需要在绑定后拆掉再装才能有效)
+
+# -- GASEOUS ILLUMINAE
+ttresearch.name.GASEOUS_LIGHT=光明安瓿
+ttresearch.lore.GASEOUS_LIGHT=视线外的光明
+ttresearch.page.GASEOUS_LIGHT.0=对纷繁难懂的光的研究让你能够通过向安瓿里灌注光明要素来制作一种看不见的光源。<BR><BR>手持安瓿右击能将其内的发光气体释放出来，它会迅速弥漫，照亮四周。
+
+# -- GASEOUS TENEBRAE
+ttresearch.name.GASEOUS_SHADOW=暗影安瓿
+ttresearch.lore.GASEOUS_SHADOW=不可见的世界
+ttresearch.page.GASEOUS_SHADOW.0=对纷繁难懂的影的研究让你能够通过向安瓿里灌注黑暗要素来制作一种能够被释放的暗影。<BR><BR>手持安瓿右击能将其内的暗影气体释放出来，它会迅速弥漫，让四周陷入黑暗。
+
+# -- FUME DISSIPATOR
+ttresearch.name.GAS_REMOVER=烟雾驱散器
+ttresearch.lore.GAS_REMOVER=高须龙儿的好帮手
+ttresearch.page.GAS_REMOVER.0=在制作出光明气瓶和暗影气瓶后，你发现如何驱散这些气体成了麻烦。于是你发明了这件工具，手持它，按住shift加右键便可以驱散附近所有气体。
+
+# -- SPELLBINDING CLOTH
+ttresearch.name.SPELL_CLOTH=祛魔之布
+ttresearch.lore.SPELL_CLOTH=悲伤的掌心神秘使
+ttresearch.page.SPELL_CLOTH.0=通过在一块附魔的织物上融合原始的魔力，你制作了一块能够在合成台中擦除物品附魔的神奇之布。
+
+# -- DYNAMISM TABLET
+ttresearch.name.ANIMATION_TABLET=活化工具台
+ttresearch.lore.ANIMATION_TABLET=玫瑰色的箔
+ttresearch.page.ANIMATION_TABLET.0=你决定进一步研究傀儡活化核心，这便是研究的成果。<BR><BR>这个工具台能够使用神秘的能量驱动其内的物品，它能够根据设置模拟玩家使用其内物品左击或者右击。其设置界面下方的按钮还能设置其工作模式是持续有效还是接受红石脉冲时起效。<BR><BR>任何玩家可以持有的物品，包括方块均可放入活化工具台。正如你想的那样，活化工具台使用工具挖掘时效率只取决于工具本身，就像一名玩家在使用这个工具一样。
+
+# -- WAND FOCUS: UPRISING
+ttresearch.name.FOCUS_FLIGHT=法杖核心：升腾
+ttresearch.lore.FOCUS_FLIGHT=这难道就是精灵国度使用的技术？
+ttresearch.page.FOCUS_FLIGHT.0=研究风雷剑过程中积累的丰富知识让你能够制作这种新型的法杖核心，安装它的法杖将能够以视线方向推进持有者。<BR><BR>当使用该法杖核心飞行时，将不会计算重力势能积累，且会重置玩家可能受到的掉落伤害。
+
+# -- WAND FOCUS: DISLOCATION
+ttresearch.name.FOCUS_DISLOCATION=法杖核心：转移
+ttresearch.lore.FOCUS_DISLOCATION=看，这里！看，到那儿了！
+ttresearch.page.FOCUS_DISLOCATION.0=基于等价交换核心.你制作了这种新型的法杖核心。相比前者，新的法杖核心不但能够存储被施法对象的信息，还能存储被施法对象本身，并允许你将其放置到任意地方。<BR><BR>想要转移一个 方块，需要先手持法杖右击它。然后再右击其他某处。这个法杖核心允许你转移近乎任意方块，包括箱子和刷怪笼。
+
+# -- TALISMAN OF REMEDIUM
+ttresearch.name.CLEANSING_TALISMAN=防身护身符
+ttresearch.lore.CLEANSING_TALISMAN=妙寿安的礼物
+ttresearch.page.CLEANSING_TALISMAN.0=在研究生命以及肉体时，你发现可以利用魔力转移来自外界的伤害效果。这个护身符将为持有者抵挡大多数类型的伤害，但这会消耗它的耐久。<BR><BR>使用shift加右键来选择是否开启护身符的效果。理所当然的，只有开启时才起效。
+
+# -- HYPERNERGETIC NITOR
+ttresearch.name.BRIGHT_NITOR=超能闪耀之光
+ttresearch.lore.BRIGHT_NITOR=昏暗的天色，给我亮起来吧！
+ttresearch.page.BRIGHT_NITOR.0=你试图创造一种新型的蕴含Potentia要素以及Lux要素的闪耀之光，即使被玩家拿在手里也能通过活化永恒之焰来照亮四周。<BR><BR>被它释放出来的光亮将会照亮持有者身后邻近之处，由于其热量，在下界时看似留下一道长长的尾迹。
+
+# -- WAND FOCUS: TELEKINESIS
+ttresearch.name.FOCUS_TELEKINESIS=法杖核心：念力
+ttresearch.lore.FOCUS_TELEKINESIS=永远摆脱重力的束缚
+ttresearch.page.FOCUS_TELEKINESIS.0=你制作了一种法杖核心能够使用念力驱动躺在地板上的物品。该核心能够移开附近你指向的任意物品。当同时按住潜行，效果则为拉近物品。
+
+# -- KINETIC ATTRACTION
+ttresearch.name.MAGNETS=奥术磁铁
+ttresearch.lore.MAGNETS=啥原理呢？
+ttresearch.page.MAGNETS.0=在研究念力核心时，你试图将相关知识应用到能够向磁铁那样吸引物品或者生物的新设备上。于是你发明了这两台新设备。<BR><BR>它们都具有两种状态：北极(红色)模式和南极(蓝色)模式。红色模式推开物品或者生物；蓝色模式吸引物品或者生物。
+ttresearch.page.MAGNETS.1=你设计了两种新设备：奥术念力磁铁以及奥术生物磁铁、它们分布针对物品或者生物有效。<BR><BR>奥术生物磁铁支持一些更加复杂的机制，你可以手持铸造法杖右键打打开一个设置过滤的界面，可以选择特定生物，如果可能还能设置该生物是否成年。设备使用的模板可以使用灵魂模具右键生物得到。
