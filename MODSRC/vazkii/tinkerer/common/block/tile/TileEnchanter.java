@@ -17,8 +17,7 @@ package vazkii.tinkerer.common.block.tile;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
-
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -32,11 +31,14 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.helper.Tuple4Int;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibFeatures;
-
+import cpw.mods.fml.common.network.PacketDispatcher;
 public class TileEnchanter extends TileEntity implements ISidedInventory {
 
 	private static final String TAG_ENCHANTS = "enchants";
@@ -52,6 +54,8 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 	public AspectList currentAspects = new AspectList();
 	
 	public boolean working = false;
+	
+	private List<Tuple4Int> pillars = new ArrayList();
 	
 	ItemStack[] inventorySlots = new ItemStack[2];
 
@@ -92,7 +96,12 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 				working = false;
 				return;
 			}
-						
+			
+			checkPillars();
+			
+			if(!working) // Pillar check
+				return;
+				
 			enchantItem : {
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
 					int currentAmount = currentAspects.getAmount(aspect);
@@ -125,6 +134,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 				ItemWandCasting wandItem = (ItemWandCasting) wand.getItem();
 				AspectList wandAspects = wandItem.getAllVis(wand);
 				
+				int i = 0;
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
 					int missing = totalAspects.getAmount(aspect) - currentAspects.getAmount(aspect);
 					int onWand = wandAspects.getAmount(aspect);
@@ -132,12 +142,76 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 					if(onWand >= 100 && missing > 0) {
 						wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
 						currentAspects.add(aspect, 1);
+						Tuple4Int p = pillars.get(i);
+						ThaumicTinkerer.proxy.aspectTrailFX(getWorldObj(), p.i1, p.i4, p.i3, xCoord, yCoord, zCoord, aspect);
+						
 						return;
 					}
+					i++;
 				}
 			}
 		}
-
+	}
+	
+	public boolean checkPillars() {
+		if(pillars.isEmpty()) {
+			if(!assignPillars()) {
+				working = false;
+				currentAspects = new AspectList();
+				return false;
+			}
+			return true;
+		}
+		
+		for(int i = 0; i < pillars.size(); i++) {
+			Tuple4Int pillar = pillars.get(i);
+			int pillarHeight = findPillar(pillar.i1, pillar.i2, pillar.i3);
+			if(pillarHeight == -1) {
+				pillars.clear();
+				return checkPillars();
+			} else if(pillarHeight != pillar.i4)
+				pillar.i4 = pillarHeight;
+		}
+		
+		return true;
+	}
+	
+	public boolean assignPillars() {
+		int y = yCoord;
+		for(int x = xCoord - 4; x <= xCoord + 4; x++)
+			for(int z = zCoord - 4; z <= zCoord + 4; z++) {
+				int height = findPillar(x, y, z);
+				if(height != -1)
+					pillars.add(new Tuple4Int(x, y, z, height));
+				
+				if(pillars.size() == 6)
+					return true;
+			}
+		
+		pillars.clear();
+		return false;
+	}
+	
+	public int findPillar(int x, int y, int z) {
+		int obsidianFound = 0;
+		for(int i = 0; true; i++) {
+			if(y + i >= 256)
+				return -1;
+			
+			int id = worldObj.getBlockId(x, y + i, z);
+			int meta = worldObj.getBlockMetadata(x, y + i, z);
+			if(id == Block.obsidian.blockID) {
+				++obsidianFound;
+				continue;
+			}
+			if(id == ConfigBlocks.blockAiry.blockID && meta == 1) {
+				if(obsidianFound >= 2)
+					return y + i;
+				return -1;
+			}
+			
+			return -1;
+		}
 	}
 	
 	public void updateAspectList() { 

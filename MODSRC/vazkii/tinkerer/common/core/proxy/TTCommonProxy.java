@@ -14,10 +14,14 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.nodes.TileNodeBase;
+import thaumcraft.client.fx.FXEssentiaTrail;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;
+import vazkii.tinkerer.client.fx.FXAspectTrail;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
@@ -66,5 +70,9 @@ public class TTCommonProxy {
 		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileNodeBase.class, handler);
+	}
+	
+	public void aspectTrailFX(World world, int xs, int ys, int zs, int xt, int yt, int zt, Aspect aspect) {
+		// NO-OP
 	}
 }
