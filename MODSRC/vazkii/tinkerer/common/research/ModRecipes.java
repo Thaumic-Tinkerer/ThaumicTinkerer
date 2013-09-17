@@ -122,12 +122,17 @@ public final class ModRecipes {
 			'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 			'F', new ItemStack(ModItems.focusTelekinesis));
 		registerResearchItem(LibResearch.KEY_MOB_MAGNET, LibResearch.KEY_MAGNETS, new ItemStack(ModBlocks.magnet, 1, 1), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),
-				" G ", "SGs", "WFW",
-				'G', oreDictOrStack(new ItemStack(Item.ingotGold), "ingotCopper"),
-				's', new ItemStack(ConfigItems.itemShard, 1, 3),
-				'S', new ItemStack(ConfigItems.itemShard),
-				'W', new ItemStack(ConfigBlocks.blockMagicalLog),
-				'F', new ItemStack(ModItems.focusTelekinesis));
+			" G ", "SGs", "WFW",
+			'G', oreDictOrStack(new ItemStack(Item.ingotGold), "ingotCopper"),
+			's', new ItemStack(ConfigItems.itemShard, 1, 3),
+			'S', new ItemStack(ConfigItems.itemShard),
+			'W', new ItemStack(ConfigBlocks.blockMagicalLog),
+			'F', new ItemStack(ModItems.focusTelekinesis));
+		registerResearchItem(LibResearch.KEY_ENCHANTER, LibResearch.KEY_ENCHANTER, new ItemStack(ModBlocks.enchanter), new AspectList().add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.AIR, 10).add(Aspect.EARTH, 10),
+			"TOT", "OEO", "TOT",
+			'T', new ItemStack(ConfigItems.itemResource, 1, 2),
+			'O', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 0),
+			'E', new ItemStack(Block.enchantmentTable));
 	}
 
 	private static void initCrucibleRecipes() {

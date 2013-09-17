@@ -147,7 +147,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 						aspectsThatCanGet.add(aspect);
 				}
 				
-				int i = worldObj.rand.nextInt(aspectsThatCanGet.size());
+				int i = aspectsThatCanGet.isEmpty() ? 0 : worldObj.rand.nextInt(aspectsThatCanGet.size());
 				Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);
 				
 				if(aspect != null) {
