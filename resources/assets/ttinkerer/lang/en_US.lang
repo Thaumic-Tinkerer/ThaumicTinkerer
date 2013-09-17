@@ -69,7 +69,7 @@ ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative.
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvector Interface
 ttresearch.lore.INTERFACE=Not affiliated with nyuu
-ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extnsion. It can accept BuildCraft and IC2 power, items, and liquids, being able to also export the latter two.<BR>[continued]
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft and IC2 power, items, and liquids, being able to also export the latter two.<BR>[continued]
 ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)
 
 # -- GASEOUS ILLUMINAE
@@ -90,7 +90,7 @@ ttresearch.page.GAS_REMOVER.0=After knowing both the Gaseous Illuminae and Teneb
 # -- SPELLBINDING CLOTH
 ttresearch.name.SPELL_CLOTH=Spellbinding Cloth
 ttresearch.lore.SPELL_CLOTH=The sad palmtop thaumaturge
-ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic power, you created a cloth that can be rubbed on an item to wipe it of it's enchantments by combining them in a Crafting Recipe.
+ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic power, you created a cloth that can be rubbed on an item to wipe it of its enchantments by combining them in a Crafting Recipe.
 
 # -- DYNAMISM TABLET
 ttresearch.name.ANIMATION_TABLET=Dynamism Tablet
@@ -121,17 +121,17 @@ ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine eve
 # -- WAND FOCUS: TELEKINESIS
 ttresearch.name.FOCUS_TELEKINESIS=Wand Focus: Telekinesis
 ttresearch.lore.FOCUS_TELEKINESIS=Beats gravity bubbles any day
-ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.´
+ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.
 
 # -- KINETIC ATTRACTION
 ttresearch.name.MAGNETS=Kinetic Attraction
 ttresearch.lore.MAGNETS=How do they work?
 ttresearch.page.MAGNETS.0=Working with the telekinesis focus, you managed to apply this knowledge to create a device to attract items or living beings, like a magnet.<BR><BR>These two blocks have two states, north (red) and south (blue), in north mode it'll push items, or entities away; in south mode it'll pull them in.
-ttresearch.page.MAGNETS.1=You designed two devices. The Kinetic and Corporeal Attractors, these, repsectively affect items and living beings.<BR><BR>The Corporeal Attractor involves some more complex mechanisms, to which you can access by right clicking it with a casting wand. Using a Soul Mould, you can right click on a mob to save it as a pattern, which you can set in the attractor's interface, as a filter, along with settings for child or adult animals, if available.
+ttresearch.page.MAGNETS.1=You designed two devices. The Kinetic and Corporeal Attractors, these, respectively affect items and living beings.<BR><BR>The Corporeal Attractor involves some more complex mechanisms, to which you can access by right clicking it with a casting wand. Using a Soul Mould, you can right click on a mob to save it as a pattern, which you can set in the attractor's interface, as a filter, along with settings for child or adult animals, if available.
 
 # -- OSMOTIC ENCHANTER
 ttresearch.name.ENCHANTER=Osmotic Enchanter
 ttresearch.lore.ENCHANTER=Picking your luck
 ttresearch.page.ENCHANTER.0=You grew tired of getting terrible enchantments for your efforts. To that, you created a new enchantment table that allows you to pick what enchantments you want to apply to an item.<BR><BR>This new contraption requires a wand, each enchantment requires a specific combination of vis from that wand. The price of the enchantment is exponentially proportional to the level you want to apply.<BR><BR>Regular enchantment rules apply, for example, you can't combine Silk Touch with Fortune.
 ttresearch.page.ENCHANTER.1=After you selected the enchantments you want on an item, clicking the red button in the interface will start the enchanting progress. As the item is being enchanted, you can't take it out of the table, nor can you change the enchantments you are putting on it.<BR><BR>The table will slowly drain vis from the wand, until it's done. For this to work, there needs to be 6 pillars in the nearby vicinity (4 blocks), these pillars need to be at the same level of the table.<BR><BR>[continued]
-ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidian Totem blocks stacked on top of eachother, with a piece of nitor on top of them. The enchanter will get flux energy from them, grabbing vis from the wand and combining them to enchant the item.
+ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidian Totem blocks stacked on top of each other, with a piece of Nitor on top of them. The enchanter will get flux energy from them, grabbing vis from the wand and combining them to enchant the item.
