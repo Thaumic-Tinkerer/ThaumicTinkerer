@@ -31,7 +31,7 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 
 	@Override
 	public void handle() {
-		if(!tile.working)
+		if(tile.working)
 			return;
 		
 		if(level == -1) {

@@ -136,20 +136,33 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 				ItemWandCasting wandItem = (ItemWandCasting) wand.getItem();
 				AspectList wandAspects = wandItem.getAllVis(wand);
 				
-				int i = 0;
+				int missing, onWand;
+				List<Aspect> aspectsThatCanGet = new ArrayList();
+
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
-					int missing = totalAspects.getAmount(aspect) - currentAspects.getAmount(aspect);
-					int onWand = wandAspects.getAmount(aspect);
-					
-					if(onWand >= 100 && missing > 0) {
-						wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
-						currentAspects.add(aspect, 1);
-						Tuple4Int p = pillars.get(i);
+					missing = totalAspects.getAmount(aspect) - currentAspects.getAmount(aspect);
+					onWand = wandAspects.getAmount(aspect);
+				
+					if(missing > 0 && onWand >= 100)
+						aspectsThatCanGet.add(aspect);
+				}
+				
+				int i = worldObj.rand.nextInt(aspectsThatCanGet.size());
+				Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);
+				
+				if(aspect != null) {
+					wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
+					currentAspects.add(aspect, 1);
+					Tuple4Int p = pillars.get(i);
+					if(worldObj.rand.nextInt(4) == 0) {
 						ThaumicTinkerer.proxy.aspectTrailFX(getWorldObj(), p.i1, p.i4, p.i3, xCoord, yCoord, zCoord, aspect);
 						Thaumcraft.proxy.blockRunes(worldObj, p.i1, p.i4 - 0.75, p.i3, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15);
-						return;
+						Thaumcraft.proxy.blockRunes(worldObj, xCoord, yCoord + 0.25, zCoord, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15);	
+						if(worldObj.rand.nextInt(5) == 0)
+							worldObj.playSoundEffect(p.i1, p.i2, p.i3, "thaumcraft:brain", 0.5F, 1F);
 					}
-					i++;
+					
+					return;
 				}
 			}
 		}
