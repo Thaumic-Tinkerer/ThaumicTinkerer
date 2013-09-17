@@ -50,7 +50,7 @@ public class GuiButtonEnchant extends GuiButton {
 		ClientHelper.minecraft().renderEngine.func_110577_a(gui);
 		drawTexturedModalRect(xPosition, yPosition, x, y, 15, 15);
 		
-		if(par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15) {
+		if(par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15 && !enchanter.working) {
 			List<String> tooltip = new ArrayList();
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal("ttmisc.startEnchant"));
 			parent.tooltip = tooltip;

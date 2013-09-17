@@ -31,6 +31,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -124,6 +125,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 				
 				enchantments.clear();
 				levels.clear();
+				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "thaumcraft:wand", 1F, 1F);
 				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 				return;
 			}
@@ -144,7 +146,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 						currentAspects.add(aspect, 1);
 						Tuple4Int p = pillars.get(i);
 						ThaumicTinkerer.proxy.aspectTrailFX(getWorldObj(), p.i1, p.i4, p.i3, xCoord, yCoord, zCoord, aspect);
-						
+						Thaumcraft.proxy.blockRunes(worldObj, p.i1, p.i4 - 0.75, p.i3, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15);
 						return;
 					}
 					i++;
@@ -200,12 +202,12 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			
 			int id = worldObj.getBlockId(x, y + i, z);
 			int meta = worldObj.getBlockMetadata(x, y + i, z);
-			if(id == Block.obsidian.blockID) {
+			if(id == ConfigBlocks.blockCosmeticSolid.blockID && meta == 0) {
 				++obsidianFound;
 				continue;
 			}
 			if(id == ConfigBlocks.blockAiry.blockID && meta == 1) {
-				if(obsidianFound >= 2)
+				if(obsidianFound >= 2 && obsidianFound < 13)
 					return y + i;
 				return -1;
 			}

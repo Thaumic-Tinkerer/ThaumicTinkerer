@@ -64,7 +64,7 @@ public class GuiButtonEnchantment extends GuiButton {
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(enchant.getName()));
 			for(Aspect aspect : data.aspects.getAspectsSorted())
 				tooltip.add(" \u00a7" + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + data.aspects.getAmount(aspect) + " " + StatCollector.translateToLocal("ttmisc.baseCost"));
-			if(this instanceof GuiButtonFramedEnchantment)
+			if(this instanceof GuiButtonFramedEnchantment && !parent.enchanter.working)
 				tooltip.add(EnumChatFormatting.GRAY + "" + EnumChatFormatting.ITALIC + " " + StatCollector.translateToLocal("ttmisc.clickToRemove"));
 			
 			parent.tooltip = tooltip;

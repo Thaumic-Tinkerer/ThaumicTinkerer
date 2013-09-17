@@ -31,6 +31,9 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 
 	@Override
 	public void handle() {
+		if(!tile.working)
+			return;
+		
 		if(level == -1) {
 			int index = tile.enchantments.indexOf((Object) enchant);
 			tile.removeLevel(index);
