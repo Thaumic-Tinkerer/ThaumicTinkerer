@@ -27,6 +27,7 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.common.config.Config;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.item.ItemMod;
 import cpw.mods.fml.relauncher.Side;
@@ -43,7 +44,12 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	boolean hasOrnament() {
 		return false;
 	}
-
+	
+	@Override
+	public Icon getFocusDepthLayerIcon() {
+		return null;
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -120,6 +126,11 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	@Override
 	public boolean onFocusBlockStartBreak(ItemStack paramItemStack, int paramInt1, int paramInt2, int paramInt3, EntityPlayer paramEntityPlayer) {
 		return false;
+	}
+	
+	@Override
+	public boolean acceptsEnchant(int paramInt) {
+		return paramInt != Config.enchWandFortune.effectId;
 	}
 
 }

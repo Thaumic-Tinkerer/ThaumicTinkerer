@@ -23,20 +23,6 @@ import thaumcraft.client.fx.FXEssentiaTrail;
 public class FXAspectTrail extends FXEssentiaTrail {
 
 	public FXAspectTrail(World par1World, double par2, double par4, double par6, double tx, double ty, double tz,  Aspect aspect) {
-		super(par1World, par2, par4, par6, tx, ty, tz, 1);
-		
-		Color color = new Color(aspect.getColor());
-		particleRed = (float) color.getRed() / 255F;
-		particleGreen = (float) color.getGreen() / 255F;
-		particleBlue = (float) color.getBlue() / 255F;
+		super(par1World, par2, par4, par6, tx, ty,  tz, aspect.getColor(), 1, 1F);
 	}
-	
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		/*motionX *= 2;
-		motionY *= 2;
-		motionZ *= 2;*/
-	}
-
 }

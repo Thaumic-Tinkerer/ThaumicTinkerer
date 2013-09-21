@@ -36,7 +36,7 @@ public final class HUDHandler {
 	@ForgeSubscribe
 	public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
 		if(event.type == ElementType.HOTBAR && ClientHelper.minecraft().currentScreen == null) {
-			boolean up = !Config.dailBottom;
+			boolean up = !Config.dialBottom;
 			int xpos = 4;
 			int ypos = up ? 50 : event.resolution.getScaledHeight() - 70;
 
