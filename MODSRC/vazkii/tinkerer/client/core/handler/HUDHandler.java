@@ -54,7 +54,7 @@ public final class HUDHandler {
 						FontRenderer font = ClientHelper.fontRenderer();
 						boolean unicode = font.getUnicodeFlag();
 						font.setUnicodeFlag(true);
-						String name = String.format(StatCollector.translateToLocal("ttmisc.focusDislocation.tooltip"), pickedBlock.getDisplayName());
+						String name = String.format(StatCollector.translateToLocal("ttmisc.focusDislocation.tooltip"), pickedBlock.getItem() == null ? "null" : pickedBlock.getDisplayName());
 						int strLength = font.getStringWidth(name);
 
 						Gui.drawRect(xpos + 18, ypos, xpos + 18 + strLength + 4, ypos + 9, 0x66000000);
@@ -69,7 +69,8 @@ public final class HUDHandler {
 							font.drawStringWithShadow(content, xpos + 20, ypos + 9, 0xFFAA00);
 						}
 
-						renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, pickedBlock, xpos, ypos);
+						if(pickedBlock.getItem() != null)
+							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, pickedBlock, xpos, ypos);
 						font.setUnicodeFlag(unicode);
 					}
 				}
