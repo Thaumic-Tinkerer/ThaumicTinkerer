@@ -42,7 +42,6 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void handle(INetworkManager manager, Player player) {
 		MinecraftServer server = MiscHelper.server();
 		if(server != null) {
