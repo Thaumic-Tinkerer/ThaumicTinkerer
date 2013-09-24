@@ -60,7 +60,7 @@ tc.research_category.TT_ENCHANTING=[TT]附魔
 ttresearch.name.PERIPHERALS=电脑外设
 ttresearch.lore.PERIPHERALS=当科学遇见魔法
 ttresearch.page.PERIPHERALS.0=神秘工匠让其添加的某些方块以及神秘时代添加的一些方块可以作为电脑外设(ComputerCraft的外设)使用。<BR><BR>为方便起见，使用这些外设的文档放置在网上以供查询。按下回车可以访问对应的页面。
-ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+ttresearch.webpage.peripherals=http://tab.mcbbc.com/knowledge.php?id=57
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=烟黑石英
