@@ -30,5 +30,6 @@ public final class LibItemNames {
 	public static final String BRIGHT_NTIOR = LibResources.PREFIX_MOD + "brightNitor";
 	public static final String FOCUS_TELEKINESIS = LibResources.PREFIX_MOD + "focusTelekinesis";
 	public static final String SOUL_MOULD = LibResources.PREFIX_MOD + "soulMould";
+	public static final String XP_TALISMAN = LibResources.PREFIX_MOD + "xpTalisman";
 
 }

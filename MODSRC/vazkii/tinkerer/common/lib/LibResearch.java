@@ -43,4 +43,5 @@ public final class LibResearch {
 	public static final String KEY_MOB_MAGNET = "MOB_MAGNET";
 	public static final String KEY_PERIPHERALS = "PERIPHERALS";
 	public static final String KEY_ENCHANTER = "ENCHANTER";
+	public static final String KEY_XP_TALISMAN = "XP_TALISMAN";
 }

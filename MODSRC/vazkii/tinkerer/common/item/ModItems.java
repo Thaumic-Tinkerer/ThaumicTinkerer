@@ -36,7 +36,8 @@ public final class ModItems {
 	public static Item brightNitor;
 	public static Item focusTelekinesis;
 	public static Item soulMould;
-
+	public static Item xpTalisman;
+	
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
@@ -50,5 +51,6 @@ public final class ModItems {
 		brightNitor = new ItemBrightNitor(LibItemIDs.idBrightNitor).setUnlocalizedName(LibItemNames.BRIGHT_NTIOR);
 		focusTelekinesis = new ItemFocusTelekinesis(LibItemIDs.idFocusTelekinesis).setUnlocalizedName(LibItemNames.FOCUS_TELEKINESIS);
 		soulMould = new ItemSoulMould(LibItemIDs.idSoulMould).setUnlocalizedName(LibItemNames.SOUL_MOULD);
+		xpTalisman = new ItemXPTalisman(LibItemIDs.idXPTalisman).setUnlocalizedName(LibItemNames.XP_TALISMAN);
 	}
 }

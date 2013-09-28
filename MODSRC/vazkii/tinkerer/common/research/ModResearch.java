@@ -26,6 +26,7 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -78,16 +79,27 @@ public final class ModResearch {
 
 		research = new TTResearchItem(LibResearch.KEY_MAGNETS, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.MOTION, 1).add(Aspect.SENSES, 1), 5, -3, 3, new ItemStack(ModBlocks.magnet)).setParentsHidden(LibResearch.KEY_FOCUS_TELEKINESIS).setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_MAGNET), arcaneRecipePage(LibResearch.KEY_MOB_MAGNET), cruciblePage(LibResearch.KEY_MAGNETS));
+		
+		research = new TTResearchItem(LibResearch.KEY_ENCHANTER, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.AURA, 1).add(Aspect.ELDRITCH, 1).add(Aspect.DARKNESS, 1).add(Aspect.MIND, 1), 2, -2, 5, new ItemStack(ModBlocks.enchanter)).setParents(LibResearch.KEY_SPELL_CLOTH).setParentsHidden("RESEARCHER2").setConcealed().registerResearchItem();
+		research.setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"), infusionPage(LibResearch.KEY_ENCHANTER));
+	
+		research = new TTResearchItem(LibResearch.KEY_XP_TALISMAN, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.GREED, 1).add(Aspect.MAGIC, 1).add(Aspect.MAN, 1), -2, 2, 2, new ItemStack(ModItems.xpTalisman, 1, 1)).setParents("JARBRAIN").setConcealed().registerResearchItem();
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_XP_TALISMAN));
 
+		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"));
 		}
 		
-		research = new TTResearchItem(LibResearch.KEY_ENCHANTER, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.AURA, 1).add(Aspect.ELDRITCH, 1).add(Aspect.DARKNESS, 1).add(Aspect.MIND, 1), 2, -2, 5, new ItemStack(ModBlocks.enchanter)).setParents(LibResearch.KEY_SPELL_CLOTH).setParentsHidden("RESEARCHER2").setConcealed().registerResearchItem();
-		research.setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"), infusionPage(LibResearch.KEY_ENCHANTER));
+		// Move the Brain in a jar research
+		research = ResearchCategories.getResearch("JARBRAIN");
+		ResearchCategories.researchCategories.get(LibResearch.CATEGORY_ARTIFICE).research.remove("JARBRAIN");
+		
+		research = new ResearchItem("JARBRAIN", LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.SENSES, 1).add(Aspect.MIND, 2).add(Aspect.UNDEAD, 2), -3, 0, 2, new ItemStack(ConfigBlocks.blockJar, 1, 1)).setParentsHidden("INFUSION").setLost().registerResearchItem();
+		research.setPages(new ResearchPage("tc.research_page.JARBRAIN.1"), infusionPage("JarBrain"));
 	}
-
+	
 	private static void registerResearchPages() {
 		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
 

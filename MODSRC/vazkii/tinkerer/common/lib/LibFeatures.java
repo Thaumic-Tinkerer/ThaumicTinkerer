@@ -25,6 +25,10 @@ public final class LibFeatures {
 	public static final int INTERFACE_DISTANCE = 4;
 
 	public static final int SPELL_CLOTH_USES = 35;
+	
+	public static final int XP_TALISMAN_RANGE = 3;
+	public static final int XP_TALISMAN_MAX_XP = 1500;
+	public static final int XP_TALISMAN_ENCHANTING_BOTTLE_COST = 10;
 
 	public static final int CLEANSING_TALISMAN_USES = 100;
 

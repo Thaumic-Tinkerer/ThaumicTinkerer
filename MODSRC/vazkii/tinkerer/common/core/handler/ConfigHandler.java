@@ -64,7 +64,8 @@ public final class ConfigHandler {
 		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.idCleansingTalisman);
 		LibItemIDs.idBrightNitor = loadItem(LibItemNames.BRIGHT_NTIOR, LibItemIDs.idBrightNitor);
 		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.idSoulMould);
-
+		LibItemIDs.idXPTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.idXPTalisman);
+		
 		config.save();
 	}
 
