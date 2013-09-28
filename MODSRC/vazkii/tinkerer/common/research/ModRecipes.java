@@ -25,6 +25,9 @@ import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.CrucibleRecipe;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
@@ -38,6 +41,7 @@ public final class ModRecipes {
 	public static void initRecipes() {
 		initCraftingRecipes();
 		initArcaneRecipes();
+		initInfusionRecipes();
 		initCrucibleRecipes();
 	}
 
@@ -93,27 +97,6 @@ public final class ModRecipes {
 				'G', new ItemStack(Item.ingotGold),
 				'I', new ItemStack(Item.ingotIron),
 				'C', new ItemStack(ConfigItems.itemGolemCore, 1, 100));
-		registerResearchItem(LibResearch.KEY_FOCUS_FLIGHT, LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), new AspectList().add(Aspect.AIR, 25),
-				"AQA", "QFQ", "AQA",
-				'A', new ItemStack(ConfigItems.itemShard),
-				'Q', new ItemStack(Item.netherQuartz),
-				'F', new ItemStack(Item.feather));
-		registerResearchItem(LibResearch.KEY_FOCUS_DISLOCATION, LibResearch.KEY_FOCUS_DISLOCATION, new ItemStack(ModItems.focusDislocation), new AspectList().add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100),
-				"AQA", "QDQ", "AQA",
-				'A', new ItemStack(ConfigItems.itemResource, 1, 6),
-				'Q', new ItemStack(Item.netherQuartz),
-				'D', new ItemStack(Item.diamond));
-		registerResearchItem(LibResearch.KEY_CLEANSING_TALISMAN, LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(ModItems.cleansingTalisman), new AspectList().add(Aspect.ORDER, 20).add(Aspect.FIRE, 20).add(Aspect.WATER, 10),
-				"STS", "TWT", "STS",
-				'S', new ItemStack(ModItems.darkQuartz),
-				'T', new ItemStack(ConfigItems.itemResource, 1, 7),
-				'W', new ItemStack(Item.enderPearl));
-		registerResearchItem(LibResearch.KEY_FOCUS_TELEKINESIS, LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(ModItems.focusTelekinesis), new AspectList().add(Aspect.AIR, 25).add(Aspect.ENTROPY, 30),
-				"IQG", "QEQ", "GQI",
-				'I', oreDictOrStack(new ItemStack(Item.ingotIron), "ingotTin"),
-				'Q', new ItemStack(Item.netherQuartz),
-				'E', new ItemStack(Item.enderPearl),
-				'G', oreDictOrStack(new ItemStack(Item.ingotGold), "ingotCopper"));
 		registerResearchItem(LibResearch.KEY_MAGNET, LibResearch.KEY_MAGNETS, new ItemStack(ModBlocks.magnet), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),
 			" I ", "SIs", "WFW",
 			'I', new ItemStack(Item.ingotIron),
@@ -134,6 +117,19 @@ public final class ModRecipes {
 			'O', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1),
 			'E', new ItemStack(Block.enchantmentTable));
 	}
+	
+	private static void initInfusionRecipes() {
+		registerResearchItemI(LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), 3, new AspectList().add(Aspect.AIR, 15).add(Aspect.MOTION, 20).add(Aspect.TRAVEL, 10), new ItemStack(Item.enderPearl), 
+				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.feather), new ItemStack(Item.feather), new ItemStack(ConfigItems.itemShard, 1, 0));
+		registerResearchItemI(LibResearch.KEY_FOCUS_DISLOCATION, new ItemStack(ModItems.focusDislocation), 15, new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DARKNESS, 10).add(Aspect.VOID, 25).add(Aspect.MAGIC, 20).add(Aspect.TAINT, 5), new ItemStack(Item.enderPearl),
+				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(Item.diamond));
+		registerResearchItemI(LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(ModItems.focusTelekinesis), 5, new AspectList().add(Aspect.MOTION, 10).add(Aspect.AIR, 20).add(Aspect.ENTROPY, 20).add(Aspect.MIND, 10), new ItemStack(Item.enderPearl), 
+				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz),	new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(ConfigItems.itemShard, 1, 0));			
+		registerResearchItemI(LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(ModItems.cleansingTalisman), 8, new AspectList().add(Aspect.HEAL, 10).add(Aspect.TOOL, 10).add(Aspect.MAN, 20).add(Aspect.LIFE, 10), new ItemStack(Item.enderPearl),
+				new ItemStack(ModItems.darkQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(Item.ghastTear), new ItemStack(ConfigItems.itemResource, 1, 1));
+		registerResearchItemI(LibResearch.KEY_ENCHANTER, new ItemStack(ModBlocks.enchanter), 20, new AspectList().add(Aspect.MAGIC, 50).add(Aspect.ENERGY, 20).add(Aspect.ELDRITCH, 20).add(Aspect.VOID, 20).add(Aspect.MIND, 10), new ItemStack(Block.enchantmentTable),
+				new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack(ModItems.spellCloth));
+	}
 
 	private static void initCrucibleRecipes() {
 		registerResearchItem(LibResearch.KEY_GASEOUS_LIGHT, new ItemStack(ModItems.gaseousLight), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.LIGHT, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
@@ -144,10 +140,8 @@ public final class ModRecipes {
 	}
 
 	private static void registerResearchItem(String name, String research, ItemStack output, AspectList aspects, Object... stuff) {
-		ThaumcraftApi.addArcaneCraftingRecipe(research, output, aspects, stuff);
-		List recipeList = ThaumcraftApi.getCraftingRecipes();
-		if(name != null && name.length() != 0)
-			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
+		ShapedArcaneRecipe recipe = ThaumcraftApi.addArcaneCraftingRecipe(research, output, aspects, stuff);
+		ConfigResearch.recipes.put(name, recipe);
 	}
 
 	private static void registerResearchItem(String name, ItemStack output, Object... stuff) {
@@ -158,10 +152,13 @@ public final class ModRecipes {
 	}
 
 	private static void registerResearchItem(String name, ItemStack output, ItemStack input, AspectList aspects) {
-		ThaumcraftApi.addCrucibleRecipe(name, output, input, aspects);
-		List recipeList = ThaumcraftApi.getCraftingRecipes();
-		if(name != null && name.length() != 0)
-			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
+		CrucibleRecipe recipe = ThaumcraftApi.addCrucibleRecipe(name, output, input, aspects);
+		ConfigResearch.recipes.put(name, recipe);
+	}
+	
+	private static void registerResearchItemI(String name, Object output, int instability, AspectList aspects, ItemStack input, ItemStack... stuff) {
+		InfusionRecipe recipe = ThaumcraftApi.addInfusionCraftingRecipe(name, output, instability, aspects, input, stuff);
+		ConfigResearch.recipes.put(name, recipe);
 	}
 
 	private static Object oreDictOrStack(ItemStack stack, String oreDict) {

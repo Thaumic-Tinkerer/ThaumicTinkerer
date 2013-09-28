@@ -52,9 +52,23 @@ public class TTResearchItem extends ResearchItem {
 
 	@Override
 	public ResearchItem setPages(ResearchPage... par) {
-		for(ResearchPage page : par)
+		for(ResearchPage page : par) {
 			if(page.type == PageType.TEXT)
-				page.text = "ttresearch.page." + key + "." + page.text;
+				page.text = "ttresearch.page." + key + "." + page.text;	
+			
+			if(page.type == PageType.INFUSION_CRAFTING) {
+				if(parentsHidden == null || parentsHidden.length == 0)
+					parentsHidden = new String[] { "INFUSION" };
+				else {
+					String[] newParents = new String[parentsHidden.length + 1];
+					newParents[0] = "INFUSION";
+					for(int i = 0; i < parentsHidden.length; i++)
+						newParents[i + 1] = parentsHidden[i];
+					parentsHidden = newParents;
+				}	
+			}
+		}
+
 
 		return super.setPages(par);
 	}
