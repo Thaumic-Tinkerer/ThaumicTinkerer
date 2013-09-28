@@ -54,6 +54,9 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		TileAnimationTablet tile = (TileAnimationTablet) tileentity;
 
 		int meta = tile.getBlockMetadata() & 7;
+		if(meta < 2)
+			meta = 2; // Just in case
+		
 		int rotation = meta == 2 ? 270 : meta == 3 ? 90 : meta == 4 ? 0 : 180;
 
 		GL11.glPushMatrix();

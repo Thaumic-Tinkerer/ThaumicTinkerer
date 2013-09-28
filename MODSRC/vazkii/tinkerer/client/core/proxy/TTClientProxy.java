@@ -22,13 +22,14 @@ import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
-import vazkii.tinkerer.client.fx.FXAspectTrail;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
+import vazkii.tinkerer.client.render.tile.RenderTileFunnel;
 import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
+import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
@@ -55,6 +56,7 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileMagnet.class, new RenderTileMagnet());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
 	}
 
 	private void registerRenderIDs() {
@@ -66,12 +68,6 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	protected void initCCPeripherals() {
 		// NO-OP
-	}
-	
-	@Override
-	public void aspectTrailFX(World world, int xs, int ys, int zs, int xt, int yt, int zt, Aspect aspect) {
-		FXEssentiaTrail particle = new FXAspectTrail(world, xs + 0.5, ys + 1D, zs + 0.5, xt + 0.5, yt + 0.5, zt + 0.5, aspect);
-		ClientHelper.minecraft().effectRenderer.addEffect(particle);
 	}
 
 }
