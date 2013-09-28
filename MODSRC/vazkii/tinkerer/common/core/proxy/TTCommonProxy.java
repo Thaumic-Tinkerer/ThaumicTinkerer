@@ -70,6 +70,8 @@ public class TTCommonProxy {
 		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileJarFillable.class, handler);
+		// TODO Enchanter as peripheral
+		// TODO Brain in a jar as peripheral
 	}
 	
 	public void aspectTrailFX(World world, int xs, int ys, int zs, int xt, int yt, int zt, Aspect aspect) {
