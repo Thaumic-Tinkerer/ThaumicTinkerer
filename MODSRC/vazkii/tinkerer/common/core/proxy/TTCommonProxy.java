@@ -19,6 +19,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;
+import thaumcraft.common.tiles.TileJarFillable;
 import thaumcraft.common.tiles.TileNode;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -68,6 +69,7 @@ public class TTCommonProxy {
 		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileJarFillable.class, handler);
 	}
 	
 	public void aspectTrailFX(World world, int xs, int ys, int zs, int xt, int yt, int zt, Aspect aspect) {
