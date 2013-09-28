@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [28 Sep 2013, 19:34:46 (GMT)]
  */
 package vazkii.tinkerer.common.block.tile;
@@ -44,16 +44,16 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 			ItemJarFilled item = (ItemJarFilled) jar.getItem();
 			AspectList aspectList = item.getAspects(jar);
 			if(aspectList != null && aspectList.size() == 1) {
-				Aspect aspect = aspectList.getAspects()[0];				
-				
+				Aspect aspect = aspectList.getAspects()[0];
+
 				TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
 				if(tile != null && tile instanceof TileEntityHopper) {
 					TileEntity tile1 = getHopperFacing(tile.xCoord, tile.yCoord, tile.zCoord, tile.getBlockMetadata());
 					if(tile1 instanceof TileJarFillable) {
 						TileJarFillable jar1 = (TileJarFillable) tile1;
-						
+
 						AspectList aspectList1 = jar1.getAspects();
-						if(aspectList1 != null && aspectList1.size() == 0 || (aspectList1.getAspects()[0] == aspect && aspectList1.getAmount(aspectList1.getAspects()[0]) < 64)) {
+						if(aspectList1 != null && aspectList1.size() == 0 || aspectList1.getAspects()[0] == aspect && aspectList1.getAmount(aspectList1.getAspects()[0]) < 64) {
 							jar1.addToContainer(aspect, 1);
 							item.setAspects(jar, aspectList.remove(aspect, 1));
 						}
@@ -62,16 +62,16 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 			}
 		}
 	}
-	
+
 	private TileEntity getHopperFacing(int x, int y, int z, int meta) {
 		int i = BlockHopper.getDirectionFromMetadata(meta);
 		return worldObj.getBlockTileEntity(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i]);
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
-		
+
 		readCustomNBT(par1NBTTagCompound);
 	}
 
@@ -210,5 +210,5 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
 		return j != ForgeDirection.DOWN.ordinal();
 	}
-	
+
 }

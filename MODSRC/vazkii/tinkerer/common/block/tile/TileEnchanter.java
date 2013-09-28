@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [14 Sep 2013, 01:07:25 (GMT)]
  */
 package vazkii.tinkerer.common.block.tile;
@@ -17,7 +17,6 @@ package vazkii.tinkerer.common.block.tile;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -34,7 +33,6 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.Tuple4Int;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
@@ -47,48 +45,48 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 	private static final String TAG_TOTAL_ASPECTS = "totalAspects";
 	private static final String TAG_CURRENT_ASPECTS = "currentAspects";
 	private static final String TAG_WORKING = "working";
-	
+
 	public List<Integer> enchantments = new ArrayList();
 	public List<Integer> levels = new ArrayList();
-	
+
 	public AspectList totalAspects = new AspectList();
 	public AspectList currentAspects = new AspectList();
-	
+
 	public boolean working = false;
-	
+
 	private List<Tuple4Int> pillars = new ArrayList();
-	
+
 	ItemStack[] inventorySlots = new ItemStack[2];
 
 	public void clearEnchants() {
 		enchantments.clear();
 		levels.clear();
 	}
-	
+
 	public void appendEnchant(int enchant) {
 		enchantments.add(enchant);
 	}
-	
+
 	public void appendLevel(int level) {
 		levels.add(level);
 	}
-	
+
 	public void removeEnchant(int index) {
 		enchantments.remove(index);
 	}
-	
+
 	public void removeLevel(int index) {
 		levels.remove(index);
 	}
-	
+
 	public void setEnchant(int index, int enchant) {
 		enchantments.set(index, enchant);
 	}
-	
+
 	public void setLevel(int index, int level) {
 		levels.set(index, level);
 	}
-	
+
 	@Override
 	public void updateEntity() {
 		if(working) {
@@ -97,59 +95,59 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 				working = false;
 				return;
 			}
-			
+
 			checkPillars();
-			
+
 			if(!working) // Pillar check
 				return;
-				
+
 			enchantItem : {
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
 					int currentAmount = currentAspects.getAmount(aspect);
 					int totalAmount = totalAspects.getAmount(aspect);
-					
+
 					if(currentAmount < totalAmount)
 						break enchantItem;
 	 			}
-				
+
 				working = false;
 				currentAspects = new AspectList();
 				totalAspects = new AspectList();
-				
+
 				for(int i = 0; i < enchantments.size(); i++) {
 					int enchant = enchantments.get(i);
 					int level = levels.get(i);
-					
+
 					tool.addEnchantment(Enchantment.enchantmentsList[enchant], level);
 				}
-				
+
 				enchantments.clear();
 				levels.clear();
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "thaumcraft:wand", 1F, 1F);
 				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 				return;
 			}
-			
+
 			ItemStack wand = getStackInSlot(1);
-			
+
 			if(wand != null && wand.getItem() instanceof ItemWandCasting) {
 				ItemWandCasting wandItem = (ItemWandCasting) wand.getItem();
 				AspectList wandAspects = wandItem.getAllVis(wand);
-				
+
 				int missing, onWand;
 				List<Aspect> aspectsThatCanGet = new ArrayList();
 
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
 					missing = totalAspects.getAmount(aspect) - currentAspects.getAmount(aspect);
 					onWand = wandAspects.getAmount(aspect);
-				
+
 					if(missing > 0 && onWand >= 100)
 						aspectsThatCanGet.add(aspect);
 				}
-				
+
 				int i = aspectsThatCanGet.isEmpty() ? 0 : worldObj.rand.nextInt(aspectsThatCanGet.size());
 				Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);
-				
+
 				if(aspect != null) {
 					wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
 					currentAspects.add(aspect, 1);
@@ -157,17 +155,17 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 					if(worldObj.rand.nextInt(4) == 0) {
 						Thaumcraft.proxy.essentiaTrailFx(getWorldObj(), p.i1, p.i4, p.i3, xCoord, yCoord, zCoord, 1, aspect.getColor(), worldObj.rand.nextFloat() * 0.5F + 0.5F);
 						Thaumcraft.proxy.blockRunes(worldObj, p.i1, p.i4 - 0.75, p.i3, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15, worldObj.rand.nextFloat());
-						Thaumcraft.proxy.blockRunes(worldObj, xCoord, yCoord + 0.25, zCoord, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15, worldObj.rand.nextFloat());	
+						Thaumcraft.proxy.blockRunes(worldObj, xCoord, yCoord + 0.25, zCoord, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15, worldObj.rand.nextFloat());
 						if(worldObj.rand.nextInt(5) == 0)
 							worldObj.playSoundEffect(p.i1, p.i2, p.i3, "thaumcraft:brain", 0.5F, 1F);
 					}
-					
+
 					return;
 				}
 			}
 		}
 	}
-	
+
 	public boolean checkPillars() {
 		if(pillars.isEmpty()) {
 			if(!assignPillars()) {
@@ -177,7 +175,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			}
 			return true;
 		}
-		
+
 		for(int i = 0; i < pillars.size(); i++) {
 			Tuple4Int pillar = pillars.get(i);
 			int pillarHeight = findPillar(pillar.i1, pillar.i2, pillar.i3);
@@ -187,10 +185,10 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			} else if(pillarHeight != pillar.i4)
 				pillar.i4 = pillarHeight;
 		}
-		
+
 		return true;
 	}
-	
+
 	public boolean assignPillars() {
 		int y = yCoord;
 		for(int x = xCoord - 4; x <= xCoord + 4; x++)
@@ -198,21 +196,21 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 				int height = findPillar(x, y, z);
 				if(height != -1)
 					pillars.add(new Tuple4Int(x, y, z, height));
-				
+
 				if(pillars.size() == 6)
 					return true;
 			}
-		
+
 		pillars.clear();
 		return false;
 	}
-	
+
 	public int findPillar(int x, int y, int z) {
 		int obsidianFound = 0;
 		for(int i = 0; true; i++) {
 			if(y + i >= 256)
 				return -1;
-			
+
 			int id = worldObj.getBlockId(x, y + i, z);
 			int meta = worldObj.getBlockMetadata(x, y + i, z);
 			if(id == ConfigBlocks.blockCosmeticSolid.blockID && meta == 0) {
@@ -224,23 +222,23 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 					return y + i;
 				return -1;
 			}
-			
+
 			return -1;
 		}
 	}
-	
-	public void updateAspectList() { 
+
+	public void updateAspectList() {
 		totalAspects = new AspectList();
 		for(int i = 0; i < enchantments.size(); i++) {
 			int enchant = enchantments.get(i);
 			int level = levels.get(i);
-			
+
 			AspectList aspects = EnchantmentManager.enchantmentData.get(enchant).get(level).aspects;
 			for(Aspect aspect : aspects.getAspectsSorted())
 				totalAspects.add(aspect, aspects.getAmount(aspect));
 		}
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
@@ -259,17 +257,17 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 		working = par1NBTTagCompound.getBoolean(TAG_WORKING);
 		currentAspects.readFromNBT(par1NBTTagCompound.getCompoundTag(TAG_CURRENT_ASPECTS));
 		totalAspects.readFromNBT(par1NBTTagCompound.getCompoundTag(TAG_TOTAL_ASPECTS));
-		
+
 		NBTTagList enchants = par1NBTTagCompound.getTagList(TAG_ENCHANTS);
 		enchantments.clear();
 		for(int i = 0; i < enchants.tagCount(); i++)
 			enchantments.add(((NBTTagInt) enchants.tagAt(i)).data);
-		
+
 		NBTTagList levels = par1NBTTagCompound.getTagList(TAG_LEVELS);
 		this.levels.clear();
 		for(int i = 0; i < levels.tagCount(); i++)
 			this.levels.add(((NBTTagInt) levels.tagAt(i)).data);
-		
+
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -287,19 +285,19 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
     	NBTTagList levels = new NBTTagList();
     	for(int level : this.levels)
     		levels.appendTag(new NBTTagInt("", level));
-    	
+
     	NBTTagCompound totalAspectsCmp = new NBTTagCompound();
     	totalAspects.writeToNBT(totalAspectsCmp);
-    	
+
     	NBTTagCompound currentAspectsCmp = new NBTTagCompound();
     	currentAspects.writeToNBT(currentAspectsCmp);
-    	
+
     	par1NBTTagCompound.setBoolean(TAG_WORKING, working);
     	par1NBTTagCompound.setCompoundTag(TAG_TOTAL_ASPECTS, totalAspectsCmp);
     	par1NBTTagCompound.setCompoundTag(TAG_CURRENT_ASPECTS, currentAspectsCmp);
     	par1NBTTagCompound.setTag(TAG_ENCHANTS, enchants);
     	par1NBTTagCompound.setTag(TAG_LEVELS, levels);
-    	
+
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
 			if (inventorySlots[var3] != null) {

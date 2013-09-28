@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.network.IPacket;
 import cpw.mods.fml.common.network.Player;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class PacketTile<T extends TileEntity> implements IPacket {
 

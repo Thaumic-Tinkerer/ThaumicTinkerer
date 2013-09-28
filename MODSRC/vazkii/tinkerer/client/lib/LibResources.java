@@ -41,7 +41,7 @@ public final class LibResources {
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = PREFIX_MODEL + "mobMagnetN.png";
 	public static final String MODEL_MOB_MAGNET_S = PREFIX_MODEL + "mobMagnetS.png";
-	
+
 	public static final String ENCHANT_PROTECTION = PREFIX_ENCHANTS + "protection.png";
 	public static final String ENCHANT_FIRE_PROTECTION = PREFIX_ENCHANTS + "fireProtection.png";
 	public static final String ENCHANT_FEATHER_FALLING = PREFIX_ENCHANTS + "featherFalling.png";
@@ -71,7 +71,7 @@ public final class LibResources {
 	public static final String ENCHANT_TREASURE = PREFIX_ENCHANTS + "treasure.png";
 	public static final String ENCHANT_HASTE = PREFIX_ENCHANTS + "haste.png";
 	public static final String ENCHANT_REPAIR = PREFIX_ENCHANTS + "repair.png";
-	
+
 	public static final String ENCHANT_SLOW_FALL = PREFIX_ENCHANTS + "slowFall.png";
 	public static final String ENCHANT_ASCENT_BOOST = PREFIX_ENCHANTS + "ascentBoost.png";
 	public static final String ENCHANT_LAST_RESORT = PREFIX_ENCHANTS + "lastResort.png";
@@ -82,7 +82,7 @@ public final class LibResources {
 	public static final String ENCHANT_SOULBRINGER = PREFIX_ENCHANTS + "soulbringer.png";
 	public static final String ENCHANT_VAMPIRISM = PREFIX_ENCHANTS + "vamprisim.png";
 	public static final String ENCHANT_QUICK_DRAW = PREFIX_ENCHANTS + "quickDraw.png";
-	
+
 	public static final String[] LANGS = {
 		"en_US", "de_DE"
 	};

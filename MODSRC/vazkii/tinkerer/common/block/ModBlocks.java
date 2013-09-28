@@ -15,7 +15,6 @@
 package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
-import thaumcraft.common.config.Config;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
@@ -46,7 +45,7 @@ public final class ModBlocks {
 	public static Block magnet;
 	public static Block enchanter;
 	public static Block funnel;
-	
+
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
 		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
@@ -60,7 +59,7 @@ public final class ModBlocks {
 		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
 		enchanter = new BlockEnchanter(LibBlockIDs.idEnchanter).setUnlocalizedName(LibBlockNames.ENCHANTER);
 		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setUnlocalizedName(LibBlockNames.FUNNEL);
-		
+
 		registerBlocks();
 	}
 

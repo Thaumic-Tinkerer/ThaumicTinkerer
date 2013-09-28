@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [14 Sep 2013, 15:05:23 (GMT)]
  */
 package vazkii.tinkerer.common.enchantment.core;
@@ -33,9 +33,9 @@ import com.google.common.collect.Multimap;
 public final class EnchantmentManager {
 
 	public static final Map<Integer, Map<Integer, EnchantmentData>> enchantmentData = new HashMap();
-	
+
 	public static final Multimap<Integer, IEnchantmentRule> rules = ArrayListMultimap.create();
-	
+
 	public static void initEnchantmentData() {
 		registerExponentialCostData(Enchantment.protection, LibResources.ENCHANT_PROTECTION, true, new AspectList().add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 7));
 		registerExponentialCostData(Enchantment.fireProtection, LibResources.ENCHANT_FIRE_PROTECTION, true, new AspectList().add(Aspect.FIRE, 10).add(Aspect.ENTROPY, 3).add(Aspect.WATER, 4));
@@ -64,52 +64,52 @@ public final class EnchantmentManager {
 		registerExponentialCostData(Config.enchWandFortune, LibResources.ENCHANT_TREASURE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
 		registerExponentialCostData(Config.enchHaste, LibResources.ENCHANT_HASTE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.ENTROPY, 5).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Config.enchRepair, LibResources.ENCHANT_REPAIR, true, new AspectList().add(Aspect.WATER, 20).add(Aspect.FIRE, 20).add(Aspect.EARTH, 20).add(Aspect.AIR, 20).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 5));
-		
+
 		registerCompatibilityRules();
 		registerExtraRules();
 	}
-	
+
 	public static boolean canApply(ItemStack stack, Enchantment enchant, List<Integer> currentEnchants) {
 		if(!enchant.canApply(stack) || !enchant.type.canEnchantItem(stack.getItem()) || currentEnchants.contains(enchant.effectId))
 			return false;
-		
+
 		for(IEnchantmentRule rule : rules.get(enchant.effectId))
 			if(!rule.canApplyAlongside(currentEnchants))
 				return false;
-		
+
 		return true;
 	}
-	
+
 	private static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects) {
 		for(double i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
-			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, (i * (1D + i * 0.2))));
+			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, i * (1D + i * 0.2)));
 			registerData(enchantment.effectId, (int) i, data);
 		}
 	}
-	
+
 	private static void registerData(int enchantment, int level, EnchantmentData data) {
 		if(!enchantmentData.containsKey(enchantment))
 			enchantmentData.put(enchantment, new HashMap());
-		
+
 		enchantmentData.get(enchantment).put(level, data);
 	}
-	
+
 	private static void registerCompatibilityRules() {
 		for(Enchantment ench : Enchantment.enchantmentsList) {
 			if(ench != null)
 				for(Enchantment ench1 : Enchantment.enchantmentsList) {
 					if(ench1 == null || ench == ench1)
 						continue;
-					
+
 					if(!ench.canApplyTogether(ench1) || !ench1.canApplyTogether(ench))
 						rules.put(ench.effectId, new BasicCompatibilityRule(ench1));
 				}
 		}
-			
+
 	}
-	
+
 	private static void registerExtraRules() {
-		
+
 	}
-	
+
 }

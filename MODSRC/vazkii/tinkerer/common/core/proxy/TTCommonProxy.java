@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
-import net.minecraft.world.World;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;

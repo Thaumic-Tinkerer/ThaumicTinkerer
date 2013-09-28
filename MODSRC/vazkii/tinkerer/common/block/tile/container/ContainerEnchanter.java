@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [14 Sep 2013, 18:10:21 (GMT)]
  */
 package vazkii.tinkerer.common.block.tile.container;
@@ -26,11 +26,11 @@ import vazkii.tinkerer.common.block.tile.container.slot.SlotWand;
 public class ContainerEnchanter extends ContainerPlayerInv {
 
 	TileEnchanter enchanter;
-	
+
 	public ContainerEnchanter(TileEnchanter enchanter, InventoryPlayer playerInv) {
 		super(playerInv);
 		this.enchanter = enchanter;
-		
+
 		addSlotToContainer(new SlotTool(enchanter, 0, 6, 6));
 		addSlotToContainer(new SlotWand(enchanter, 1, 6, 31));
 
@@ -46,13 +46,13 @@ public class ContainerEnchanter extends ContainerPlayerInv {
         	ItemStack var5 = var4.getStack();
 
         	boolean wand = var5.getItem() instanceof ItemWandCasting;
-        	
+
             var3 = var5.copy();
 
             if (par2 < 2) {
             	if(!mergeItemStack(var5, 2, 38, false))
             		return null;
-            } else if(wand ? !mergeItemStack(var5, 1, 2, false) : (var5.getItem().isItemTool(var5) && !mergeItemStack(var5, 0, 1, false)))
+            } else if(wand ? !mergeItemStack(var5, 1, 2, false) : var5.getItem().isItemTool(var5) && !mergeItemStack(var5, 0, 1, false))
             	return null;
 
             if (var5.stackSize == 0)
@@ -73,5 +73,5 @@ public class ContainerEnchanter extends ContainerPlayerInv {
 	public boolean canInteractWith(EntityPlayer entityplayer) {
 		return enchanter.isUseableByPlayer(entityplayer);
 	}
-	
+
 }

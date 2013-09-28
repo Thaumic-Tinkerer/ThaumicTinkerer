@@ -14,14 +14,10 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.client.fx.FXEssentiaTrail;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
-import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;

@@ -54,8 +54,8 @@ public class TTResearchItem extends ResearchItem {
 	public ResearchItem setPages(ResearchPage... par) {
 		for(ResearchPage page : par) {
 			if(page.type == PageType.TEXT)
-				page.text = "ttresearch.page." + key + "." + page.text;	
-			
+				page.text = "ttresearch.page." + key + "." + page.text;
+
 			if(page.type == PageType.INFUSION_CRAFTING) {
 				if(parentsHidden == null || parentsHidden.length == 0)
 					parentsHidden = new String[] { "INFUSION" };
@@ -65,7 +65,7 @@ public class TTResearchItem extends ResearchItem {
 					for(int i = 0; i < parentsHidden.length; i++)
 						newParents[i + 1] = parentsHidden[i];
 					parentsHidden = newParents;
-				}	
+				}
 			}
 		}
 

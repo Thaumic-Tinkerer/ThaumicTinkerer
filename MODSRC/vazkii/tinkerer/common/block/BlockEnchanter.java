@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [14 Sep 2013, 01:13:25 (GMT)]
  */
 package vazkii.tinkerer.common.block;
@@ -43,20 +43,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockEnchanter extends BlockModContainer {
 
 	Random random;
-	
+
 	Icon iconBottom;
 	Icon iconTop;
 	Icon iconSides;
-	
+
 	protected BlockEnchanter(int par1) {
 		super(par1, Material.rock);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
 		setHardness(5.0F);
 		setResistance(2000.0F);
-		
+
 		random = new Random();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
@@ -67,7 +67,7 @@ public class BlockEnchanter extends BlockModContainer {
 		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 15000).add(Aspect.EARTH, 15000).add(Aspect.FIRE, 15000).add(Aspect.WATER, 15000).add(Aspect.ORDER, 15000).add(Aspect.ENTROPY, 15000));
 		par3List.add(wand);
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
@@ -80,7 +80,7 @@ public class BlockEnchanter extends BlockModContainer {
 
 		return true;
 	}
-		
+
 	@Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
         TileEnchanter enchanter = (TileEnchanter) par1World.getBlockTileEntity(par2, par3, par4);
@@ -118,7 +118,7 @@ public class BlockEnchanter extends BlockModContainer {
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -126,18 +126,18 @@ public class BlockEnchanter extends BlockModContainer {
 		iconTop = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconSides = IconHelper.forBlock(par1IconRegister, this, 2);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2) {
 		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSides;
 	}
-	
+
 	@Override
 	public boolean renderAsNormalBlock() {
         return false;
     }
-	
+
 	@Override
 	public boolean isOpaqueCube() {
         return false;
@@ -147,5 +147,5 @@ public class BlockEnchanter extends BlockModContainer {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEnchanter();
 	}
-	
+
 }

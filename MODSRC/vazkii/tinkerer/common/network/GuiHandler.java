@@ -40,7 +40,7 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_MOB_MAGNET :
 				return new ContainerMobMagnet((TileMobMagnet) tile, player.inventory);
-				
+
 			case LibGuiIDs.GUI_ID_ENCHANTER :
 				return new ContainerEnchanter((TileEnchanter) tile, player.inventory);
 		}
@@ -56,8 +56,8 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_MOB_MAGNET :
 				return new GuiMobMagnet((TileMobMagnet) tile, player.inventory);
-				
-			case LibGuiIDs.GUI_ID_ENCHANTER : 
+
+			case LibGuiIDs.GUI_ID_ENCHANTER :
 				return new GuiEnchanting((TileEnchanter) tile, player.inventory);
 		}
 		return null;

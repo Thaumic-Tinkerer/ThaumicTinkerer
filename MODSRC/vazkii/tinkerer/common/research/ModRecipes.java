@@ -111,19 +111,19 @@ public final class ModRecipes {
 			'S', new ItemStack(ConfigItems.itemShard),
 			'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 			'F', new ItemStack(ModItems.focusTelekinesis));
-		registerResearchItem(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(ModBlocks.funnel), new AspectList(), 
+		registerResearchItem(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(ModBlocks.funnel), new AspectList(),
 			"STS",
 			'S', new ItemStack(Block.stone),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
 	}
-	
+
 	private static void initInfusionRecipes() {
-		registerResearchItemI(LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), 3, new AspectList().add(Aspect.AIR, 15).add(Aspect.MOTION, 20).add(Aspect.TRAVEL, 10), new ItemStack(Item.enderPearl), 
+		registerResearchItemI(LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), 3, new AspectList().add(Aspect.AIR, 15).add(Aspect.MOTION, 20).add(Aspect.TRAVEL, 10), new ItemStack(Item.enderPearl),
 				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.feather), new ItemStack(Item.feather), new ItemStack(ConfigItems.itemShard, 1, 0));
 		registerResearchItemI(LibResearch.KEY_FOCUS_DISLOCATION, new ItemStack(ModItems.focusDislocation), 10, new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DARKNESS, 10).add(Aspect.VOID, 25).add(Aspect.MAGIC, 20).add(Aspect.TAINT, 5), new ItemStack(Item.enderPearl),
 				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(Item.diamond));
-		registerResearchItemI(LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(ModItems.focusTelekinesis), 5, new AspectList().add(Aspect.MOTION, 10).add(Aspect.AIR, 20).add(Aspect.ENTROPY, 20).add(Aspect.MIND, 10), new ItemStack(Item.enderPearl), 
-				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz),	new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(ConfigItems.itemShard, 1, 0));			
+		registerResearchItemI(LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(ModItems.focusTelekinesis), 5, new AspectList().add(Aspect.MOTION, 10).add(Aspect.AIR, 20).add(Aspect.ENTROPY, 20).add(Aspect.MIND, 10), new ItemStack(Item.enderPearl),
+				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz),	new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(ConfigItems.itemShard, 1, 0));
 		registerResearchItemI(LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(ModItems.cleansingTalisman), 5, new AspectList().add(Aspect.HEAL, 10).add(Aspect.TOOL, 10).add(Aspect.MAN, 20).add(Aspect.LIFE, 10), new ItemStack(Item.enderPearl),
 				new ItemStack(ModItems.darkQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(Item.ghastTear), new ItemStack(ConfigItems.itemResource, 1, 1));
 		registerResearchItemI(LibResearch.KEY_ENCHANTER, new ItemStack(ModBlocks.enchanter), 15, new AspectList().add(Aspect.MAGIC, 50).add(Aspect.ENERGY, 20).add(Aspect.ELDRITCH, 20).add(Aspect.VOID, 20).add(Aspect.MIND, 10), new ItemStack(Block.enchantmentTable),
@@ -156,7 +156,7 @@ public final class ModRecipes {
 		CrucibleRecipe recipe = ThaumcraftApi.addCrucibleRecipe(name, output, input, aspects);
 		ConfigResearch.recipes.put(name, recipe);
 	}
-	
+
 	private static void registerResearchItemI(String name, Object output, int instability, AspectList aspects, ItemStack input, ItemStack... stuff) {
 		InfusionRecipe recipe = ThaumcraftApi.addInfusionCraftingRecipe(name, output, instability, aspects, input, stuff);
 		ConfigResearch.recipes.put(name, recipe);
