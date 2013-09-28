@@ -60,7 +60,7 @@ tc.research_category.TT_ENCHANTING=[TT]附魔
 ttresearch.name.PERIPHERALS=电脑外设
 ttresearch.lore.PERIPHERALS=当科学遇见魔法
 ttresearch.page.PERIPHERALS.0=神秘工匠让其添加的某些方块以及神秘时代添加的一些方块可以作为电脑外设(ComputerCraft的外设)使用。<BR><BR>为方便起见，使用这些外设的文档放置在网上以供查询。按下回车可以访问对应的页面。
-ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+ttresearch.webpage.peripherals=http://tab.mcbbc.com/knowledge.php?id=57
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=烟黑石英
@@ -69,7 +69,7 @@ ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英，但性状相�
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=矢量变换接口
-ttresearch.lore.INTERFACE=看不见的一面
+ttresearch.lore.INTERFACE=并不属于妮悠
 ttresearch.page.INTERFACE.0=“事实就是，1个方块只有6个面...”——Direwolf20如是说<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子，并且你能够用这个面与选中的方块互动。它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,流体的输入输出接口。<BR>[continued]
 ttresearch.page.INTERFACE.1=为了将接口与其他方块绑定，你需要制作一个被称作矢量变换接口绑定器的特殊工具。<BR><BR>右击目标方块之后右击接口就能完成绑定操作。(注意：建筑模组的管道需要在绑定后拆掉再装才能有效)
 
@@ -95,7 +95,7 @@ ttresearch.page.SPELL_CLOTH.0=通过在一块附魔的织物上融合原始的�
 
 # -- DYNAMISM TABLET
 ttresearch.name.ANIMATION_TABLET=活化工具台
-ttresearch.lore.ANIMATION_TABLET=玫瑰色的箔
+ttresearch.lore.ANIMATION_TABLET=罗萨莉亚的花边
 ttresearch.page.ANIMATION_TABLET.0=你决定进一步研究傀儡活化核心，这便是研究的成果。<BR><BR>这个工具台能够使用神秘的能量驱动其内的物品，它能够根据设置模拟玩家使用其内物品左击或者右击。其设置界面下方的按钮还能设置其工作模式是持续有效还是接受红石脉冲时起效。<BR><BR>任何玩家可以持有的物品，包括方块均可放入活化工具台。正如你想的那样，活化工具台使用工具挖掘时效率只取决于工具本身，就像一名玩家在使用这个工具一样。
 
 # -- WAND FOCUS: UPRISING
