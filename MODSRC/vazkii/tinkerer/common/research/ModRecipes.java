@@ -111,6 +111,10 @@ public final class ModRecipes {
 			'S', new ItemStack(ConfigItems.itemShard),
 			'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 			'F', new ItemStack(ModItems.focusTelekinesis));
+		registerResearchItem(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(ModBlocks.funnel), new AspectList(), 
+			"STS",
+			'S', new ItemStack(Block.stone),
+			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
 	}
 	
 	private static void initInfusionRecipes() {

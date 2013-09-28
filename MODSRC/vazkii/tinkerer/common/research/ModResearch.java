@@ -86,6 +86,9 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_XP_TALISMAN, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.GREED, 1).add(Aspect.MAGIC, 1).add(Aspect.MAN, 1), -2, 2, 2, new ItemStack(ModItems.xpTalisman, 1, 1)).setParents("JARBRAIN").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_XP_TALISMAN));
 
+		research = new TTResearchItem(LibResearch.KEY_FUNNEL, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.TOOL, 1).add(Aspect.TRAVEL, 2), 8, -2, 1, new ItemStack(ModBlocks.funnel)).setParents("DISTILESSENTIA").setConcealed().registerResearchItem();
+		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FUNNEL));
+		
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();

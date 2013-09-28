@@ -145,3 +145,8 @@ ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidia
 ttresearch.name.XP_TALISMAN=Talisman of Withhold
 ttresearch.lore.XP_TALISMAN=I'll take your 'time'
 ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting.
+
+# -- ESSENTIA FUNNEL
+ttresearch.name.FUNNEL=Essentia Funnel
+ttresearch.lore.FUNNEL=Even transfer
+ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to that, you created this new mechanism to transfer the contents of one into another.<BR><BR>By placing this block above a hopper, and right clicking it with a filled jar, if the hopper is pointing into a jar that's either empty or of the same aspect, the contents of the jar will be transfered over.

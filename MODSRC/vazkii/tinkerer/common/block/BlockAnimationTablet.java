@@ -190,12 +190,6 @@ public class BlockAnimationTablet extends BlockModContainer {
 	public Icon getIcon(int par1, int par2) {
 		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSides;
 	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
-		return true;
-	}
 
 	@Override
 	public boolean renderAsNormalBlock() {
