@@ -52,6 +52,7 @@ public final class ConfigHandler {
 		LibBlockIDs.idNitorGas = loadBlock(LibBlockNames.NITOR_GAS, LibBlockIDs.idNitorGas);
 		LibBlockIDs.idMagnet = loadBlock(LibBlockNames.MAGNET, LibBlockIDs.idMagnet);
 		LibBlockIDs.idEnchanter = loadBlock(LibBlockNames.ENCHANTER, LibBlockIDs.idEnchanter);
+		LibBlockIDs.idFunnel = loadBlock(LibBlockNames.FUNNEL, LibBlockIDs.idFunnel);
 		
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);

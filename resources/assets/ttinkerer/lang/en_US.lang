@@ -54,6 +54,7 @@ tile.ttinkerer:animationTablet.name=Dynamism Tablet
 tile.ttinkerer:magnet.name=Kinetic Attractor
 tile.ttinkerer:mobMagnet.name=Corporeal Attractor
 tile.ttinkerer:enchanter.name=Osmotic Enchanter
+tile.ttinkerer:funnel.name=Essentia Funnel
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -98,7 +99,7 @@ ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic pow
 
 # -- DYNAMISM TABLET
 ttresearch.name.ANIMATION_TABLET=Dynamism Tablet
-ttresearch.lore.ANIMATION_TABLET=I'm level 78
+ttresearch.lore.ANIMATION_TABLET=I'm level 78...
 ttresearch.page.ANIMATION_TABLET.0=You decided to further discover the uses of Golem Animation Cores, and this is the fruit of that labour.<BR><BR>This tablet can accept an item to animate with mystical energy. Using the left and right buttons in the tablet's interface, you can select to do a left or right click with the item. The button in the bottom controls if the tablet reacts always when it can or just when a redstone signal is applied.<BR><BR>Virtually anything can be animated, including blocks. The type of tool in the tablet also defines how fast something breaks, as expected.
 
 # -- WAND FOCUS: UPRISING
