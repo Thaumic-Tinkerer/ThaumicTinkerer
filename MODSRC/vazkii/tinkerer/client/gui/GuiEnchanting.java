@@ -134,12 +134,12 @@ public class GuiEnchanting extends GuiContainer {
 			if(button != null && button.enchant != null)
 				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, button.enchant.effectId, 0)));
 		} else {
+			if(enchanter.enchantments.isEmpty() || enchanter.levels.isEmpty())
+				return;
+			
 			int type = (par1GuiButton.id - 9) % 3;
 			int index = (par1GuiButton.id - 9) / 3;
 			int level = enchanter.levels.get(index);
-			
-			if(enchanter.enchantments.isEmpty())
-				return;
 			
 			Enchantment enchant = Enchantment.enchantmentsList[enchanter.enchantments.get(index)];
 			
