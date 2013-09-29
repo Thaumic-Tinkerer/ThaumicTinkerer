@@ -185,4 +185,4 @@ ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allo
 # -- ENCHANTMENT: VAMPIRISM
 ttresearch.name.TTENCH_VAMPIRISM=Enchantment: Vampirism
 ttresearch.lore.TTENCH_VAMPIRISM=I'll take that
-ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a mob using that sword will be given back to the wielder.
+ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a living thing using that sword will be given back to the wielder.
