@@ -111,7 +111,7 @@ public final class ModRecipes {
 			'S', new ItemStack(ConfigItems.itemShard),
 			'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 			'F', new ItemStack(ModItems.focusTelekinesis));
-		registerResearchItem(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(ModBlocks.funnel), new AspectList(),
+		registerResearchItem(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(ModBlocks.funnel), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
 			"STS",
 			'S', new ItemStack(Block.stone),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
