@@ -152,3 +152,33 @@ ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability 
 ttresearch.name.FUNNEL=Essentia Funnel
 ttresearch.lore.FUNNEL=Even transfer
 ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to that, you created this new mechanism to transfer the contents of one into another.<BR><BR>By placing this block above a hopper, and right clicking it with a filled jar, if the hopper is pointing into a jar that's either empty or of the same aspect, the contents of the jar will be transfered over.
+
+# -- ENCHANTMENT: ASCENT BOOST
+ttresearch.name.TTENCH_ASCENT_BOOST=Enchantment: Ascent Boost
+ttresearch.lore.TTENCH_ASCENT_BOOST=Higher than a titan
+ttresearch.page.TTENCH_ASCENT_BOOST.0=You have formulated an enchantment that allows you to jump higher than you normally can.<BR><BR>This enchantment can be applied on leg armor. When done so, the wearer will be able to jump a lot higher than normal.
+
+# -- ENCHANTMENT: SLOW FALL
+ttresearch.name.TTENCH_SLOW_FALL=Enchantment: Slow Fall
+ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
+ttresearch.page.TTENCH_SLOW_FALL.0=You have formulated an enchantment that allows you to fall slowly.<BR><BR>This enchantment can be applied on foot armor. When done so, the wearer will be able to shift click while falling to fall slower, also reducing, if not negating the fall damage.
+
+# -- ENCHANTMENT: AUTO SMELT
+ttresearch.name.TTENCH_AUTO_SMELT=Enchantment: Auto Smelt
+ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
+ttresearch.page.TTENCH_AUTO_SMELT.0=You have formulated an enchantment that allows you to mine things and smelt them automatically.<BR><BR>This enchantment can be applied on tools. When done so, the wielder, upon breaking a block that yeilds something when smelted in a furnace, that result will be gotten instead.
+
+# -- ENCHANTMENT: DESINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=Enchantment: Desintegrate
+ttresearch.lore.TTENCH_DESINTEGRATE=Spacequake alert
+ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that allows you to mine things and destroy the output.<BR><BR>This enchantment can be applied on tools. When done so, the wielder, upon breaking a block that yeilds something, nothing will be dropped.
+
+# -- ENCHANTMENT: QUICK DRAW
+ttresearch.name.TTENCH_QUICK_DRAW=Enchantment: Quick Draw
+ttresearch.lore.TTENCH_QUICK_DRAW=Speedy shot
+ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allows you to draw your bow in a quicker fashion.<BR><BR>This enchantment can be applied on bows. When done so, the bow can be fully drawn faster than normally.
+
+# -- ENCHANTMENT: VAMPIRISM
+ttresearch.name.TTENCH_VAMPIRISM=Enchantment: Vampirism
+ttresearch.lore.TTENCH_VAMPIRISM=I'll take that
+ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a mob using that sword will be given back to the wielder.

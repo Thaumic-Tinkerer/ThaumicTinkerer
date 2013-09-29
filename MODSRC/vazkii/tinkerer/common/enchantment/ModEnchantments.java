@@ -31,6 +31,10 @@ public final class ModEnchantments {
 	public static void initEnchantments() {
 		ascentBoost = new EnchantmentAscentBoost(LibEnchantIDs.idAscentBoost).setName(LibEnchantNames.ASCENT_BOOST);
 		slowFall = new EnchantmentSlowFall(LibEnchantIDs.idSlowFall).setName(LibEnchantNames.SLOW_FALL);
+		autoSmelt = new EnchantmentAutoSmelt(LibEnchantIDs.idAutoSmelt).setName(LibEnchantNames.AUTO_SMELT);
+		desintegrate = new EnchantmentDesintegrate(LibEnchantIDs.idDesintegrate).setName(LibEnchantNames.DESINTEGRATE);
+		quickDraw = new EnchantmentQuickDraw(LibEnchantIDs.idQuickDraw).setName(LibEnchantNames.QUICK_DRAW);
+		vampirism = new EnchantmentVampirism(LibEnchantIDs.idVampirism).setName(LibEnchantNames.VAMPIRISM);
 		
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
 	}

@@ -15,14 +15,34 @@
 package vazkii.tinkerer.common.enchantment;
 
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
 import vazkii.tinkerer.common.lib.LibFeatures;
 
 public class ModEnchantmentHandler {
 
+	@ForgeSubscribe
+	public void onEntityDamaged(LivingHurtEvent event) {
+		if(event.source.getEntity() instanceof EntityLiving) {
+			EntityLiving attacker = (EntityLiving) event.source.getEntity();
+			ItemStack heldItem = attacker.getHeldItem();
+
+			if(heldItem == null)
+				return;
+
+			int vampirism = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idVampirism, heldItem);
+			if(vampirism > 0) {
+				attacker.heal((int) Math.ceil(event.ammount / ((3 - vampirism) * 2D)));
+				event.entityLiving.worldObj.playSoundAtEntity(event.entityLiving, "thaumcraft:zap", 0.6F, 1F);
+			}
+		}
+	}
+	
 	@ForgeSubscribe
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		final double min = -0.0784000015258789;
