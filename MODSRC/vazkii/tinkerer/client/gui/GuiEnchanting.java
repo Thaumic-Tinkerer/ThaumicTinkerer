@@ -115,7 +115,7 @@ public class GuiEnchanting extends GuiContainer {
 
 		int it = 0;
 		for(int enchant : EnchantmentManager.enchantmentData.keySet())
-			if(EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments)) {
+			if(EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().username, Enchantment.enchantmentsList[enchant])) {
 				enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
 				enchantButtons[it].enabled = true;
 

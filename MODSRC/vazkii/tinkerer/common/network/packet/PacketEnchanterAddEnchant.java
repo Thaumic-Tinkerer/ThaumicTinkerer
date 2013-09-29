@@ -15,7 +15,9 @@
 package vazkii.tinkerer.common.network.packet;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
+import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
@@ -41,8 +43,10 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 			tile.removeEnchant(index);
 		} else {
 			if(!tile.enchantments.contains(enchant)) {
-				tile.appendEnchant(enchant);
-				tile.appendLevel(1);
+				if(player instanceof EntityPlayer && EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) player).username, Enchantment.enchantmentsList[enchant])) {
+					tile.appendEnchant(enchant);
+					tile.appendLevel(1);
+				}
 			} else {
 				int maxLevel = Enchantment.enchantmentsList[enchant].getMaxLevel();
 				tile.setLevel(tile.enchantments.indexOf(enchant), Math.max(1, Math.min(maxLevel, level)));
