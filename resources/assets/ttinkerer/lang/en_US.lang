@@ -1,7 +1,5 @@
 # MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
-
-# MESSAGES
 ttmisc.connector.set=Location Set!
 ttmisc.connector.complete=Binding Complete!
 ttmisc.connector.notinterf=Not a Transvector Interface.
@@ -62,7 +60,7 @@ enchantment.tiinkerer:slowFall=Slow Fall
 
 # RESEARCH
 ttresearch.prefix=[TT] 
-tc.research_category.TT_ENCHANTING=[TT] Enchanting
+tc.research_category.TT_ENCHANTING=Enchanting
 
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft Peripherals
