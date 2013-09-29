@@ -20,6 +20,8 @@ import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibEnchantIDs;
+import vazkii.tinkerer.common.lib.LibEnchantNames;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 
@@ -67,6 +69,12 @@ public final class ConfigHandler {
 		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.idSoulMould);
 		LibItemIDs.idXPTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.idXPTalisman);
 
+		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
+		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);
+		LibEnchantIDs.idDesintegrate = loadEnchant(LibEnchantNames.DESINTEGRATE, LibEnchantIDs.idDesintegrate);
+		LibEnchantIDs.idQuickDraw = loadEnchant(LibEnchantNames.QUICK_DRAW, LibEnchantIDs.idQuickDraw);
+		LibEnchantIDs.idVampirism = loadEnchant(LibEnchantNames.VAMPIRISM, LibEnchantIDs.idVampirism);
+
 		config.save();
 	}
 
@@ -78,4 +86,7 @@ public final class ConfigHandler {
 		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
 	}
 
+	private static int loadEnchant(String label, int deafultID) {
+		return config.get(CATEGORY_ENCHANTMENTS, "id_enchant." + label, deafultID).getInt(deafultID);
+	}
 }

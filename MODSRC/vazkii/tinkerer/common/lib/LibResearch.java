@@ -45,4 +45,10 @@ public final class LibResearch {
 	public static final String KEY_ENCHANTER = "ENCHANTER";
 	public static final String KEY_XP_TALISMAN = "XP_TALISMAN";
 	public static final String KEY_FUNNEL = "FUNNEL";
+	public static final String KEY_ENCHANT_ASCENT_BOOST = "TTENCH_ASCENT_BOOST";
+	public static final String KEY_ENCHANT_AUTO_SMELT = "TTENCH_AUTO_SMELT";
+	public static final String KEY_ENCHANT_DESINTEGRATE = "TTENCH_DESINTEGRATE";
+	public static final String KEY_ENCHANT_QUICK_DRAW = "TTENCH_QUICK_DRAW";
+	public static final String KEY_ENCHANT_VAMPIRISM = "TTENCH_VAMPIRISM";
+
 }

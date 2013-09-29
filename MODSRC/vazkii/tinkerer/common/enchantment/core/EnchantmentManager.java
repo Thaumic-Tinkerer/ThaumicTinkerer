@@ -19,10 +19,13 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
+import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import thaumcraft.common.lib.research.ResearchManager;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.enchantment.core.rule.BasicCompatibilityRule;
@@ -79,10 +82,22 @@ public final class EnchantmentManager {
 
 		return true;
 	}
-
+	
+	public static boolean canEnchantmentBeUsed(String player, Enchantment enchant) {
+		if(!enchantmentData.containsKey(enchant))
+			return false;
+		
+		EnchantmentData data = enchantmentData.get(enchant).get(0);
+		return data.research.isEmpty() || ResearchManager.isResearchComplete(player, data.research);
+	}
+	
 	private static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects) {
+		registerExponentialCostData(enchantment, texture, vanilla, level1Aspects, "");
+	}
+		
+	private static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects, String research) {
 		for(double i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
-			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, i * (1D + i * 0.2)));
+			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, i * (1D + i * 0.2)), research);
 			registerData(enchantment.effectId, (int) i, data);
 		}
 	}
@@ -111,5 +126,4 @@ public final class EnchantmentManager {
 	private static void registerExtraRules() {
 
 	}
-
 }
