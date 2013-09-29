@@ -27,7 +27,7 @@ public final class ModEnchantments {
 	public static Enchantment desintegrate;
 	public static Enchantment quickDraw;
 	public static Enchantment vampirism;
-	
+
 	public static void initEnchantments() {
 		ascentBoost = new EnchantmentAscentBoost(LibEnchantIDs.idAscentBoost).setName(LibEnchantNames.ASCENT_BOOST);
 		slowFall = new EnchantmentSlowFall(LibEnchantIDs.idSlowFall).setName(LibEnchantNames.SLOW_FALL);
@@ -35,7 +35,7 @@ public final class ModEnchantments {
 		desintegrate = new EnchantmentDesintegrate(LibEnchantIDs.idDesintegrate).setName(LibEnchantNames.DESINTEGRATE);
 		quickDraw = new EnchantmentQuickDraw(LibEnchantIDs.idQuickDraw).setName(LibEnchantNames.QUICK_DRAW);
 		vampirism = new EnchantmentVampirism(LibEnchantIDs.idVampirism).setName(LibEnchantNames.VAMPIRISM);
-		
+
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
 	}
 

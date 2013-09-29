@@ -44,7 +44,7 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 	public void handle(INetworkManager manager, Player player) {
 		MinecraftServer server = MiscHelper.server();
 		this.player = player;
-		
+
 		if(server != null) {
 			World world = server.worldServerForDimension(dim);
 
