@@ -1,7 +1,5 @@
 # MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
-
-# MESSAGES
 ttmisc.connector.set=Position eingestellt!
 ttmisc.connector.complete=Das Binden ist komplett!
 ttmisc.connector.notinterf=Das ist keine Transvektor-Schnittstelle.
@@ -56,9 +54,17 @@ tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
 tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
 tile.ttinkerer:funnel.name=Essentia-Trichter
 
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
+enchantment.ttinkerer:slowFall=Langsamer Fall
+enchantment.ttinkerer:autoSmelt=Flammende Berührung
+enchantment.ttinkerer:desintegrate=Desintegrieren
+enchantment.ttinkerer:quickDraw=Schnelles Spannen
+enchantment.ttinkerer.vampirism=Vampirismus
+
 # RESEARCH
 ttresearch.prefix=[TT] 
-tc.research_category.TT_ENCHANTING=[TT] Verzaubern
+tc.research_category.TT_ENCHANTING=Verzaubern
 
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
@@ -150,3 +156,33 @@ ttresearch.page.XP_TALISMAN.0=Nachdem du nun weißt, dass Zombiehirne die Fähig
 ttresearch.name.FUNNEL=Essentia-Trichter
 ttresearch.lore.FUNNEL=Gerechter Transfer
 ttresearch.page.FUNNEL.0=Du wurdest es Leid, deine Gläser mit Phiolen zu managen, dazu hast du diesen neuen Mechanismus kreiert, um den Inhalt eines Glases in ein anderes zu transferieren.<BR><BR>Wenn du dies auf einem Trichter platzierst und mit einem gefüllten Glas rechtsklickst, wenn der Trichter in ein Glas zeigt, das entweder leer oder mit dem selben Aspekt gefüllt ist, wird der Inhalt des Glases hinübertransferiert werden.
+
+# -- ENCHANTMENT: ASCENT BOOST
+ttresearch.name.TTENCH_ASCENT_BOOST=Verzauberung: Aufstiegs-Boost
+ttresearch.lore.TTENCH_ASCENT_BOOST=Höher als ein Titan
+ttresearch.page.TTENCH_ASCENT_BOOST.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, höher zu springen als du normalerweise kannst.<BR><BR>Diese Verzauberung kann auf Beinrüstung gelegt werden. Wenn getan, wird der Träger fähig sein, deutlich höher als normal zu springen.
+
+# -- ENCHANTMENT: SLOW FALL
+ttresearch.name.TTENCH_SLOW_FALL=Verzauberung: Langsamer Fall
+ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
+ttresearch.page.TTENCH_SLOW_FALL.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, langsam zu fallen.<BR><BR>Diese Verzauberung kann auf Rüstung für Füße gelegt werden. Wenn getan, wird der Träger fähig sein, während des Fallens zu Shift-klicken, um langsamer zu fallen, was auch Fallschaden reduziert, wenn nicht negiert.
+
+# -- ENCHANTMENT: FLAMING TOUCH
+ttresearch.name.TTENCH_AUTO_SMELT=Verzauberung: Flammende Berührung
+ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
+ttresearch.page.TTENCH_AUTO_SMELT.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, imaginäre Flammen zu beschwören.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alles hölzerne mit extremer Finesse abbauen, indem er eine Flamme nutzt, die das Holz während des Abbauprozesses weich macht, es aber niemals zerstört oder schädigt. Jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
+
+# -- ENCHANTMENT: DESINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=Verzauberung: Desintegrieren
+ttresearch.lore.TTENCH_DESINTEGRATE=Weltraumbeben-Alarm
+ttresearch.page.TTENCH_DESINTEGRATE.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, weiche Materialien mit unglaublicher Geschwindigkeit abzubauen.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alle regulären Blöcke (Erde, Stein, Netherstein etc.), für die das Werkzeug gut ist, mit extremer Finesse abbauen, jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
+
+# -- ENCHANTMENT: QUICK DRAW
+ttresearch.name.TTENCH_QUICK_DRAW=Verzauberung: Schnelles Spannen
+ttresearch.lore.TTENCH_QUICK_DRAW=Rascher Schuss
+ttresearch.page.TTENCH_QUICK_DRAW.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, deinen Bogen auf schnellere Art zu spannen.<BR><BR>Diese Verzauberung kann auf Bögen gelegt werden. Wenn getan, kann der Bogen schneller voll gepannt werden als normal.
+
+# -- ENCHANTMENT: VAMPIRISM
+ttresearch.name.TTENCH_VAMPIRISM=Verzauberung: Vampirismus
+ttresearch.lore.TTENCH_VAMPIRISM=Ich werd' mir das mal nehmen
+ttresearch.page.TTENCH_VAMPIRISM.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, die Lebenskraft der Gegner, die du attackierst, auszusaugen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird ein Stück des einem Lebewesen mit diesem Schwert verursachten Schadens dem Nutzer zurückgegeben.
