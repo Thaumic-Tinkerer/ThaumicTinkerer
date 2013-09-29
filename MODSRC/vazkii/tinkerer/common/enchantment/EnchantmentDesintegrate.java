@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
+import thaumcraft.common.config.Config;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 
@@ -25,6 +26,6 @@ public class EnchantmentDesintegrate extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return false;
+		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == Config.enchRepair.effectId;
 	}
 }
