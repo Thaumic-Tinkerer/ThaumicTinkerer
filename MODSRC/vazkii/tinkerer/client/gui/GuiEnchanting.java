@@ -136,10 +136,10 @@ public class GuiEnchanting extends GuiContainer {
 		} else {
 			int type = (par1GuiButton.id - 9) % 3;
 			int index = (par1GuiButton.id - 9) / 3;
-			
+
 			if(index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
 				return;
-				
+
 			int level = enchanter.levels.get(index);
 
 			Enchantment enchant = Enchantment.enchantmentsList[enchanter.enchantments.get(index)];
