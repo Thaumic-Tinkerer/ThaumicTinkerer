@@ -24,6 +24,9 @@ ttmisc.adult=Erwachsene
 ttmisc.baseCost=Basiskosten
 ttmisc.clickToRemove=Klicke zum Entfernen
 ttmisc.startEnchant=Starte Verzaubern
+ttmisc.full=§cVoll
+ttmisc.notAbsorbing=§cNicht Absorbierend
+ttmisc.absorbing=§aAbsorbierend
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Rauchiger Quarz
@@ -38,6 +41,7 @@ item.ttinkerer:cleansingTalisman.name=Talisman des Remedium
 item.ttinkerer:brightNitor.name=Hyperenergetisches Nitor
 item.ttinkerer:focusTelekinesis.name=Stabfokus: Telekinese
 item.ttinkerer:soulMould.name=Seelenform
+item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -50,6 +54,7 @@ tile.ttinkerer:animationTablet.name=Dynamiktablett
 tile.ttinkerer:magnet.name=Kinetischer Attaktor
 tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
 tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
+tile.ttinkerer:funnel.name=Essentia-Trichter
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -94,7 +99,7 @@ ttresearch.page.SPELL_CLOTH.0=Durch das Mischen von Verzaubertem Stoff mit roher
 
 # -- DYNAMISM TABLET
 ttresearch.name.ANIMATION_TABLET=Dynamiktablett
-ttresearch.lore.ANIMATION_TABLET=Rosalia's Feind
+ttresearch.lore.ANIMATION_TABLET=Ich bin Level 78...
 ttresearch.page.ANIMATION_TABLET.0=Du hast dich entschieden, weitere Verwendungszwecke für die Golem-Animationskerne zu entdecken, Und dies ist die Frucht deiner Arbeit.<BR><BR>Dieses Tablett akzeptiert ein Item, das es mit mystischer Energie animierty. Indem du die Knöpfe rechts und links im Interface nutzt, kannst du wählen, ob das Tablett mit dem Item einen Links- oder Rechtsklick ausführt. Der Knopf unten kontrolliert, ob das Tablett immer reagiert, wenn es kann oder nur, wenn es ein Redstone-Sigal erhält.<BR><BR>Nahezu alles kann animiert werden, einschließlich Blöcke. Der Typ des Werkzeugs im Tablett definiert auch, wie schnell etwas abgebaut wird, wie zu erwarten.
 
 # -- WAND FOCUS: UPRISING
@@ -135,3 +140,13 @@ ttresearch.lore.ENCHANTER=Wähle dein Glück
 ttresearch.page.ENCHANTER.0=Du bist es Leid geworden, schreckliche Verzauberungen für deine Mühen zu bekommen. Deswegen hast du einen neuen Zaubertisch kreiert, der es dir erlaubt, zu wählen, welche Verzauberungen du auf einem Item haben möchtest.<BR><BR>Diese neue Vorrichtung benötigt einen Stab, jede Verzauberung erfordert eine spezifische Kombination von Vis aus diesem Stab. Der Preis der Verzauberung ist exponentiell zum Level, das du auflegen möchtest.<BR><BR>Es gelten reguläre Verzauberungsregeln, zum Beispiel kannst du nicht Behutsamkeit mit Glück kombinieren.
 ttresearch.page.ENCHANTER.1=Nachdem du die Verzauberunden ausgewählt hast, die du auf einem Item wünschst, wird das Klicken auf den roten Knopf den Verzauberungsprozess beginnen. Während das Item verzaubert wird, kannst du es nicht aus dem Tisch entfernen, ebenso wenig kannst du die Verzauberungen, die zu auflegst, nicht mehr ändern.<BR><BR>Der Tisch wird langsam Vis aus dem Stab ziehen bis er fertig ist. Damit das funktioniert, werden 6 Säulen in der nahen Umgebung (4 Blöcke) benötigt, diese Säulen müssen auf der selben Höhe wie der Tisch sein.<BR><BR>[fortgesetzt]
 ttresearch.page.ENCHANTER.2=Die Säulen müssen aus zwei bis zwölf übereinander gestapelten Obsidian-Totems bestehen, jeweils mit Nitor an der Spitze. Der Verzauberer wird Fluxenergie von ihnen bekommen, sich Vis aus dem Stab nehmen und beides kombinieren, um das Item zu verzaubern.
+
+# -- TALISMAN OF WITHHOLD
+ttresearch.name.XP_TALISMAN=Talisman des Einbehaltens
+ttresearch.lore.XP_TALISMAN=Ich werd' mir deine 'Zeit' nehmen
+ttresearch.page.XP_TALISMAN.0=Nachdem du nun weißt, dass Zombiehirne die Fähigkeit haben, Erfahrung zu speichern, hast du einen Talisman kreiert, der dieses Verhalten nachahmt, jedoch nicht in perfektem Ausmaß.<BR><BR>Um die Fähigkeit, Erfahrung zu speichern, zu nutzen, musst du mit dem Talisman Shift-rechtsklicken. Wenn der Talisman aktiviert ist, wird er alle nahen Erfahrungsorbs absorbieren, diese können wieder zurück zu nutzbarer Erfahrungs transformiert werden, wenn du mit einer Glasflasche in deinem Inventar rechtsklickst, was diese Flasche in ein Erfahrungsfläschchen verwandelt.
+
+# -- ESSENTIA FUNNEL
+ttresearch.name.FUNNEL=Essentia-Trichter
+ttresearch.lore.FUNNEL=Gerechter Transfer
+ttresearch.page.FUNNEL.0=Du wurdest es Leid, deine Gläser mit Phiolen zu managen, dazu hast du diesen neuen Mechanismus kreiert, um den Inhalt eines Glases in ein anderes zu transferieren.<BR><BR>Wenn du dies auf einem Trichter platzierst und mit einem gefüllten Glas rechtsklickst, wenn der Trichter in ein Glas zeigt, das entweder leer oder mit dem selben Aspekt gefüllt ist, wird der Inhalt des Glases hinübertransferiert werden.
