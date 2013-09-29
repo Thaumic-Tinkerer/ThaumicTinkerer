@@ -89,6 +89,24 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_FUNNEL, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.TOOL, 1).add(Aspect.TRAVEL, 2), 8, -2, 1, new ItemStack(ModBlocks.funnel)).setParents("DISTILESSENTIA").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FUNNEL));
 
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_ASCENT_BOOST, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.AIR, 1).add(Aspect.MOTION, 1).add(Aspect.MAGIC, 2), -2, -3, 2, new ResourceLocation(LibResources.ENCHANT_ASCENT_BOOST)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
+		research.setPages(new ResearchPage("0"));
+		
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_SLOW_FALL, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.AIR, 1).add(Aspect.MOTION, 1).add(Aspect.MAGIC, 2), -1, -5, 2, new ResourceLocation(LibResources.ENCHANT_SLOW_FALL)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
+		research.setPages(new ResearchPage("0"));
+		
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_AUTO_SMELT, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.FIRE, 1).add(Aspect.ENTROPY, 1).add(Aspect.MAGIC, 2), 1, -6, 2, new ResourceLocation(LibResources.ENCHANT_AUTO_SMELT)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
+		research.setPages(new ResearchPage("0"));
+		
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_DESINTEGRATE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.VOID, 1).add(Aspect.MAGIC, 2), 3, -6, 2, new ResourceLocation(LibResources.ENCHANT_DESINTEGRATE)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
+		research.setPages(new ResearchPage("0"));
+		
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_QUICK_DRAW, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.SENSES, 1).add(Aspect.WEAPON, 1).add(Aspect.MAGIC, 2), 5, -5, 2, new ResourceLocation(LibResources.ENCHANT_QUICK_DRAW)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
+		research.setPages(new ResearchPage("0"));
+		
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_VAMPIRISM, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.HUNGER, 1).add(Aspect.WEAPON, 1).add(Aspect.MAGIC, 2), 6, -3, 2, new ResourceLocation(LibResources.ENCHANT_VAMPIRISM)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
+		research.setPages(new ResearchPage("0"));
+		
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();

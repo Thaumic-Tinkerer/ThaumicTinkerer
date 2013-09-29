@@ -30,6 +30,7 @@ import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.rule.BasicCompatibilityRule;
+import vazkii.tinkerer.common.lib.LibResearch;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -49,29 +50,36 @@ public final class EnchantmentManager {
 		registerExponentialCostData(Enchantment.respiration, LibResources.ENCHANT_RESPIRATION, true, new AspectList().add(Aspect.WATER, 10).add(Aspect.AIR, 8).add(Aspect.ORDER, 5));
 		registerExponentialCostData(Enchantment.aquaAffinity, LibResources.ENCHANT_AQUA_AFFINITY, true, new AspectList().add(Aspect.WATER, 25).add(Aspect.ORDER, 20).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Enchantment.thorns, LibResources.ENCHANT_THORNS, true, new AspectList().add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 12));
+		
 		registerExponentialCostData(Enchantment.sharpness, LibResources.ENCHANT_SHARPNESS, true, new AspectList().add(Aspect.ORDER, 10));
 		registerExponentialCostData(Enchantment.smite, LibResources.ENCHANT_SMITE, true, new AspectList().add(Aspect.ORDER, 5).add(Aspect.AIR, 5));
 		registerExponentialCostData(Enchantment.baneOfArthropods, LibResources.ENCHANT_BANE_OF_ARTHROPODS, true, new AspectList().add(Aspect.ORDER, 5).add(Aspect.FIRE, 5));
 		registerExponentialCostData(Enchantment.knockback, LibResources.ENCHANT_KNOCKBACK, true, new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.AIR, 10));
 		registerExponentialCostData(Enchantment.fireAspect, LibResources.ENCHANT_FIRE_ASPECT, true, new AspectList().add(Aspect.FIRE, 15).add(Aspect.EARTH, 4));
 		registerExponentialCostData(Enchantment.looting, LibResources.ENCHANT_LOOTING, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
+		
 		registerExponentialCostData(Enchantment.efficiency, LibResources.ENCHANT_EFFICIENCY, true, new AspectList().add(Aspect.ENTROPY, 12).add(Aspect.EARTH, 4));
 		registerExponentialCostData(Enchantment.silkTouch, LibResources.ENCHANT_SILK_TOUCH, true, new AspectList().add(Aspect.ORDER, 50).add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 10));
 		registerExponentialCostData(Enchantment.unbreaking, LibResources.ENCHANT_UNBREAKING, true, new AspectList().add(Aspect.ORDER, 15).add(Aspect.WATER, 8).add(Aspect.EARTH, 8));
 		registerExponentialCostData(Enchantment.fortune, LibResources.ENCHANT_FORTUNE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
+		
 		registerExponentialCostData(Enchantment.power, LibResources.ENCHANT_POWER, true, new AspectList().add(Aspect.EARTH, 5).add(Aspect.ORDER, 10));
 		registerExponentialCostData(Enchantment.punch, LibResources.ENCHANT_PUNCH, true, new AspectList().add(Aspect.AIR, 4).add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 5));
 		registerExponentialCostData(Enchantment.flame, LibResources.ENCHANT_FLAME, true, new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.FIRE, 20).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Enchantment.infinity, LibResources.ENCHANT_INFINITY, true, new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.ORDER, 40).add(Aspect.EARTH, 10));
+		
 		registerExponentialCostData(Config.enchPotency, LibResources.ENCHANT_POTENCY, true, new AspectList().add(Aspect.ORDER, 15));
 		registerExponentialCostData(Config.enchFrugal, LibResources.ENCHANT_FRUGAL, true, new AspectList().add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 10));
 		registerExponentialCostData(Config.enchWandFortune, LibResources.ENCHANT_TREASURE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
 		registerExponentialCostData(Config.enchHaste, LibResources.ENCHANT_HASTE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.ENTROPY, 5).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Config.enchRepair, LibResources.ENCHANT_REPAIR, true, new AspectList().add(Aspect.WATER, 20).add(Aspect.FIRE, 20).add(Aspect.EARTH, 20).add(Aspect.AIR, 20).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 5));
 
-		registerExponentialCostData(ModEnchantments.ascentBoost, LibResources.ENCHANT_ASCENT_BOOST, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.AIR, 10));
-		registerExponentialCostData(ModEnchantments.slowFall, LibResources.ENCHANT_SLOW_FALL, false, new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 10));
-
+		registerExponentialCostData(ModEnchantments.ascentBoost, LibResources.ENCHANT_ASCENT_BOOST, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.AIR, 10), LibResearch.KEY_ENCHANT_ASCENT_BOOST);
+		registerExponentialCostData(ModEnchantments.slowFall, LibResources.ENCHANT_SLOW_FALL, false, new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 10), LibResearch.KEY_ENCHANT_SLOW_FALL);
+		registerExponentialCostData(ModEnchantments.autoSmelt, LibResources.ENCHANT_AUTO_SMELT, false, new AspectList().add(Aspect.ENTROPY, 20).add(Aspect.FIRE, 30), LibResearch.KEY_ENCHANT_AUTO_SMELT);
+		registerExponentialCostData(ModEnchantments.desintegrate, LibResources.ENCHANT_DESINTEGRATE, false, new AspectList().add(Aspect.ENTROPY, 25).add(Aspect.AIR, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_DESINTEGRATE);
+		registerExponentialCostData(ModEnchantments.quickDraw, LibResources.ENCHANT_QUICK_DRAW, false, new AspectList().add(Aspect.ORDER, 10).add(Aspect.AIR, 10).add(Aspect.WATER, 5), LibResearch.KEY_ENCHANT_QUICK_DRAW);
+		registerExponentialCostData(ModEnchantments.vampirism, LibResources.ENCHANT_VAMPIRISM, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.FIRE, 10).add(Aspect.WATER, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
 		
 		registerCompatibilityRules();
 		registerExtraRules();
@@ -89,10 +97,10 @@ public final class EnchantmentManager {
 	}
 	
 	public static boolean canEnchantmentBeUsed(String player, Enchantment enchant) {
-		if(!enchantmentData.containsKey(enchant))
+		if(!enchantmentData.containsKey(enchant.effectId))
 			return false;
 		
-		EnchantmentData data = enchantmentData.get(enchant).get(0);
+		EnchantmentData data = enchantmentData.get(enchant.effectId).get(1);
 		return data.research.isEmpty() || ResearchManager.isResearchComplete(player, data.research);
 	}
 	

@@ -115,7 +115,7 @@ public class GuiEnchanting extends GuiContainer {
 
 		int it = 0;
 		for(int enchant : EnchantmentManager.enchantmentData.keySet())
-			if(EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments)) {
+			if(EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().username, Enchantment.enchantmentsList[enchant])) {
 				enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
 				enchantButtons[it].enabled = true;
 
@@ -134,11 +134,12 @@ public class GuiEnchanting extends GuiContainer {
 			if(button != null && button.enchant != null)
 				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, button.enchant.effectId, 0)));
 		} else {
-			if(enchanter.enchantments.isEmpty() || enchanter.levels.isEmpty())
-				return;
-
 			int type = (par1GuiButton.id - 9) % 3;
 			int index = (par1GuiButton.id - 9) / 3;
+			
+			if(index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
+				return;
+				
 			int level = enchanter.levels.get(index);
 
 			Enchantment enchant = Enchantment.enchantmentsList[enchanter.enchantments.get(index)];

@@ -29,6 +29,7 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 	int dim, x, y, z;
 
 	transient T tile;
+	transient Player player;
 
 	public PacketTile(T tile) {
 		this.tile = tile;
@@ -42,6 +43,8 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 	@Override
 	public void handle(INetworkManager manager, Player player) {
 		MinecraftServer server = MiscHelper.server();
+		this.player = player;
+		
 		if(server != null) {
 			World world = server.worldServerForDimension(dim);
 
