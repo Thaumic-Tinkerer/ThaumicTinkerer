@@ -25,6 +25,6 @@ public class EnchantmentDesintegrate extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId != Enchantment.fortune.effectId && par1Enchantment.effectId != Enchantment.silkTouch.effectId;
+		return false;
 	}
 }
