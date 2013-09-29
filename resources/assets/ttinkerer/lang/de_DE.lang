@@ -1,7 +1,5 @@
 # MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
-
-# MESSAGES
 ttmisc.connector.set=Position eingestellt!
 ttmisc.connector.complete=Das Binden ist komplett!
 ttmisc.connector.notinterf=Das ist keine Transvektor-Schnittstelle.
@@ -56,9 +54,13 @@ tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
 tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
 tile.ttinkerer:funnel.name=Essentia-Trichter
 
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
+enchantment.tiinkerer:slowFall=Langsamer Fall
+
 # RESEARCH
 ttresearch.prefix=[TT] 
-tc.research_category.TT_ENCHANTING=[TT] Verzaubern
+tc.research_category.TT_ENCHANTING=Verzaubern
 
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
