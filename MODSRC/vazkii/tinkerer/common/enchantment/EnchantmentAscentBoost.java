@@ -10,17 +10,17 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  * 
- * File Created @ [29 Sep 2013, 11:09:54 (GMT)]
+ * File Created @ [29 Sep 2013, 11:50:08 (GMT)]
  */
-package vazkii.tinkerer.common.lib;
+package vazkii.tinkerer.common.enchantment;
 
-public class LibEnchantIDs {
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
 
-	public static int idAscentBoost = 220;
-	public static int idSlowFall = 221;
-	public static int idAutoSmelt = 222;
-	public static int idDesintegrate = 223;
-	public static int idQuickDraw = 224;
-	public static int idVampirism = 225;
-	
+public class EnchantmentAscentBoost extends EnchantmentMod {
+
+	protected EnchantmentAscentBoost(int par1) {
+		super(par1, 4, EnumEnchantmentType.armor_legs);
+	}
+
 }

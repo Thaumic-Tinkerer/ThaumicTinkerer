@@ -74,12 +74,8 @@ public final class LibResources {
 
 	public static final String ENCHANT_SLOW_FALL = PREFIX_ENCHANTS + "slowFall.png";
 	public static final String ENCHANT_ASCENT_BOOST = PREFIX_ENCHANTS + "ascentBoost.png";
-	public static final String ENCHANT_LAST_RESORT = PREFIX_ENCHANTS + "lastResort.png";
 	public static final String ENCHANT_AUTO_SMELT = PREFIX_ENCHANTS + "autoSmelt.png";
 	public static final String ENCHANT_DESINTEGRATE = PREFIX_ENCHANTS + "desintegrate.png";
-	public static final String ENCHANT_FREEZING = PREFIX_ENCHANTS + "freezing.png";
-	public static final String ENCHANT_PIERCNG = PREFIX_ENCHANTS + "piercing.png";
-	public static final String ENCHANT_SOULBRINGER = PREFIX_ENCHANTS + "soulbringer.png";
 	public static final String ENCHANT_VAMPIRISM = PREFIX_ENCHANTS + "vamprisim.png";
 	public static final String ENCHANT_QUICK_DRAW = PREFIX_ENCHANTS + "quickDraw.png";
 

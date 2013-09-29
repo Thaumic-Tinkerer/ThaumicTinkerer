@@ -19,6 +19,7 @@ import vazkii.tinkerer.client.lib.LibResources;
 public final class LibEnchantNames {
 
 	public static final String ASCENT_BOOST = LibResources.PREFIX_MOD + "ascentBoost";
+	public static final String SLOW_FALL = LibResources.PREFIX_MOD + "slowFall";
 	public static final String AUTO_SMELT = LibResources.PREFIX_MOD + "autoSmelt";
 	public static final String DESINTEGRATE = LibResources.PREFIX_MOD + "desintegrate";
 	public static final String QUICK_DRAW = LibResources.PREFIX_MOD + "quickDraw";

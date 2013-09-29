@@ -15,17 +15,24 @@
 package vazkii.tinkerer.common.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.common.lib.LibEnchantIDs;
+import vazkii.tinkerer.common.lib.LibEnchantNames;
 
 public final class ModEnchantments {
 
 	public static Enchantment ascentBoost;
+	public static Enchantment slowFall;
 	public static Enchantment autoSmelt;
 	public static Enchantment desintegrate;
 	public static Enchantment quickDraw;
 	public static Enchantment vampirism;
 	
 	public static void initEnchantments() {
-
+		ascentBoost = new EnchantmentAscentBoost(LibEnchantIDs.idAscentBoost).setName(LibEnchantNames.ASCENT_BOOST);
+		slowFall = new EnchantmentSlowFall(LibEnchantIDs.idSlowFall).setName(LibEnchantNames.SLOW_FALL);
+		
+		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
 	}
 
 }

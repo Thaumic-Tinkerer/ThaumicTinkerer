@@ -56,6 +56,10 @@ tile.ttinkerer:mobMagnet.name=Corporeal Attractor
 tile.ttinkerer:enchanter.name=Osmotic Enchanter
 tile.ttinkerer:funnel.name=Essentia Funnel
 
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=Ascent Boost
+enchantment.tiinkerer:slowFall=Slow Fall
+
 # RESEARCH
 ttresearch.prefix=[TT] 
 tc.research_category.TT_ENCHANTING=[TT] Enchanting

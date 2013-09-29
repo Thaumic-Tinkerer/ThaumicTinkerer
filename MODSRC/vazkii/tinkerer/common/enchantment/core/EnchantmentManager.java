@@ -28,6 +28,7 @@ import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import thaumcraft.common.lib.research.ResearchManager;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
+import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.rule.BasicCompatibilityRule;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -68,6 +69,10 @@ public final class EnchantmentManager {
 		registerExponentialCostData(Config.enchHaste, LibResources.ENCHANT_HASTE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.ENTROPY, 5).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Config.enchRepair, LibResources.ENCHANT_REPAIR, true, new AspectList().add(Aspect.WATER, 20).add(Aspect.FIRE, 20).add(Aspect.EARTH, 20).add(Aspect.AIR, 20).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 5));
 
+		registerExponentialCostData(ModEnchantments.ascentBoost, LibResources.ENCHANT_ASCENT_BOOST, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.AIR, 10));
+		registerExponentialCostData(ModEnchantments.slowFall, LibResources.ENCHANT_SLOW_FALL, false, new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 10));
+
+		
 		registerCompatibilityRules();
 		registerExtraRules();
 	}
