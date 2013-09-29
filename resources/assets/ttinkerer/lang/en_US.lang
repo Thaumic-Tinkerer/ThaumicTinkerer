@@ -57,6 +57,10 @@ tile.ttinkerer:funnel.name=Essentia Funnel
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost
 enchantment.ttinkerer:slowFall=Slow Fall
+enchantment.ttinkerer:autoSmelt=Flaming Touch
+enchantment.ttinkerer:desintegrate=Desintegrate
+enchantment.ttinkerer:quickDraw=Quick Draw
+enchantment.ttinkerer.vampirism=Vampirism
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -163,15 +167,15 @@ ttresearch.name.TTENCH_SLOW_FALL=Enchantment: Slow Fall
 ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
 ttresearch.page.TTENCH_SLOW_FALL.0=You have formulated an enchantment that allows you to fall slowly.<BR><BR>This enchantment can be applied on foot armor. When done so, the wearer will be able to shift click while falling to fall slower, also reducing, if not negating the fall damage.
 
-# -- ENCHANTMENT: AUTO SMELT
-ttresearch.name.TTENCH_AUTO_SMELT=Enchantment: Auto Smelt
+# -- ENCHANTMENT: FLAMING TOUCH
+ttresearch.name.TTENCH_AUTO_SMELT=Enchantment: Flaming Touch
 ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
-ttresearch.page.TTENCH_AUTO_SMELT.0=You have formulated an enchantment that allows you to mine things and smelt them automatically.<BR><BR>This enchantment can be applied on tools. When done so, the wielder, upon breaking a block that yeilds something when smelted in a furnace, that result will be gotten instead.
+ttresearch.page.TTENCH_AUTO_SMELT.0=You have formulated an enchantment that allows you to summon imaginary flames.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break anything wooden with extreme finesse, by use of a flame that softens the wood through the breaking process, but never destroying or damaging it. However, the tool becomes impotent against anything else, and takes double durability damage.
 
 # -- ENCHANTMENT: DESINTEGRATE
 ttresearch.name.TTENCH_DESINTEGRATE=Enchantment: Desintegrate
 ttresearch.lore.TTENCH_DESINTEGRATE=Spacequake alert
-ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that allows you to mine things and destroy the output.<BR><BR>This enchantment can be applied on tools. When done so, the wielder, upon breaking a block that yeilds something, nothing will be dropped.
+ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that allows you to mine soft materials at incredible speeds.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break regular blocks (dirt, stone, netherrack, etc.) that the tool is good for with extreme finesse, however, the tool becomes impotent against anything else, and takes double durability damage.
 
 # -- ENCHANTMENT: QUICK DRAW
 ttresearch.name.TTENCH_QUICK_DRAW=Enchantment: Quick Draw
