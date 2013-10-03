@@ -1,0 +1,188 @@
+# MISC
+itemGroup.ThaumicTinkerer=Thaumic Tinkerer
+ttmisc.connector.set=Location Set!
+ttmisc.connector.complete=Binding Complete!
+ttmisc.connector.notinterf=Not a Transvector Interface.
+ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
+ttmisc.connector.notpresent=The Transvector Interface isn't present.
+ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
+ttmisc.leftClick=Left Click
+ttmisc.rightClick=Right Click
+ttmisc.redstoneControl=Redstone Control
+ttmisc.animationTablet.notRotatable=You can not rotate the Tablet while it's activated.
+ttmisc.focusDislocation.tooltip=Currently Dislocating: %s
+ttmisc.focusDislocation.tooltipExtra=Extra Contents
+ttmisc.inactive=§cInactive
+ttmisc.active=§aActive
+ttmisc.soulMould.nonAssigned=§6No Pattern
+ttmisc.soulMould.pattern=§6Current Pattern: %s
+ttmisc.all=All
+ttmisc.child=Child
+ttmisc.adult=Adult
+ttmisc.baseCost=Base Cost
+ttmisc.clickToRemove=Click to Remove
+ttmisc.startEnchant=Start Enchanting
+ttmisc.full=§cFull
+ttmisc.notAbsorbing=§cNot Absorbing
+ttmisc.absorbing=§aAbsorbing
+
+# ITEM NAMES
+item.ttinkerer:darkQuartz.name=Smokey Quartz
+item.ttinkerer:connector.name=Transvector Binder
+item.ttinkerer:gaseousLight.name=Gaseous Illuminae
+item.ttinkerer:gaseousShadow.name=Gaseous Tenebrae
+item.ttinkerer:gasRemover.name=Fume Dissipator
+item.ttinkerer:spellCloth.name=Spellbinding Cloth
+item.ttinkerer:focusFlight.name=Wand Focus: Uprising
+item.ttinkerer:focusDislocation.name=Wand Focus: Dislocation
+item.ttinkerer:cleansingTalisman.name=Talisman of Remedium
+item.ttinkerer:brightNitor.name=Hyperenergetic Nitor
+item.ttinkerer:focusTelekinesis.name=Wand Focus: Telekinesis
+item.ttinkerer:soulMould.name=Soul Mould
+item.ttinkerer:xpTalisman.name=Talisman of Withhold
+
+# BLOCK NAMES
+tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
+tile.ttinkerer:darkQuartzChiseled.name=Chiseled Smokey Quartz Block
+tile.ttinkerer:darkQuartzPillar.name=Pillar Smokey Quartz Block
+tile.ttinkerer:darkQuartzSlab.name=Smokey Quartz Slab
+tile.ttinkerer:darkQuartzStairs.name=Smokey Quartz Stairs
+tile.ttinkerer:interface.name=Transvector Interface
+tile.ttinkerer:animationTablet.name=Dynamism Tablet
+tile.ttinkerer:magnet.name=Kinetic Attractor
+tile.ttinkerer:mobMagnet.name=Corporeal Attractor
+tile.ttinkerer:enchanter.name=Osmotic Enchanter
+tile.ttinkerer:funnel.name=Essentia Funnel
+
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=Ascent Boost
+enchantment.ttinkerer:slowFall=Slow Fall
+enchantment.ttinkerer:autoSmelt=Flaming Touch
+enchantment.ttinkerer:desintegrate=Desintegrate
+enchantment.ttinkerer:quickDraw=Quick Draw
+enchantment.ttinkerer.vampirism=Vampirism
+
+# RESEARCH
+ttresearch.prefix=[TT] 
+tc.research_category.TT_ENCHANTING=Enchanting
+
+# -- COMPUTERCRAFT PERIPHERALS
+ttresearch.name.PERIPHERALS=Computercraft Peripherals
+ttresearch.lore.PERIPHERALS=When technology meets magic
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer allows for some of the blocks that it adds, alongside some vanilla Thaumcraft blocks, to be used as ComputerCraft peripherals.<BR><BR>For convenience sake, the method documentation for these peripherals is in an external webpage. Pressing ENTER right now will take you to it.
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+
+# -- SMOKEY QUARTZ
+ttresearch.name.DARK_QUARTZ=Smokey Quartz
+ttresearch.lore.DARK_QUARTZ=Shadow of the Day
+ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative. All regular blocks that can be made with quartz, can also be made with smokey quartz, and they look black.<BR><BR>Smokey Quartz itself can be made with a piece of coal or charcoal for tinting, and a few pieces of regular nether quartz.
+
+# -- TRANSVECTOR INTERFACE
+ttresearch.name.INTERFACE=Transvector Interface
+ttresearch.lore.INTERFACE=Not affiliated with nyuu
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft and IC2 power, items, and liquids, being able to also export the latter two.<BR>[continued]
+ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)
+
+# -- GASEOUS ILLUMINAE
+ttresearch.name.GASEOUS_LIGHT=Gaseous Illuminae
+ttresearch.lore.GASEOUS_LIGHT=Bright out of sight
+ttresearch.page.GASEOUS_LIGHT.0=You have studied the intricacies of the light, and found out a way to create completely invisible light by infusing a phial with the raw light.<BR><BR>This phial contains a concentrated extract of Gaseous Illuminae, that can be released through a right click, and will spread relatively fast in the nearby area, lighting it up.
+
+# -- GASEOUS TENEBRAE
+ttresearch.name.GASEOUS_SHADOW=Gaseous Tenebrae
+ttresearch.lore.GASEOUS_SHADOW=The unseen world
+ttresearch.page.GASEOUS_SHADOW.0=You have studied the intricacies of the Shadow, and found out a way to create gaseous darkness by infusing a phial with the raw shadow.<BR><BR>This phial contains a concentrated extract of Gaseous Tenebrae, that can be released through a right click, and will spread relatively fast in the nearby area, darkening it.
+
+# -- FUME DISSIPATOR
+ttresearch.name.GAS_REMOVER=Fume Dissipator
+ttresearch.lore.GAS_REMOVER=Ryuuji's helper
+ttresearch.page.GAS_REMOVER.0=After knowing both the Gaseous Illuminae and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.
+
+# -- SPELLBINDING CLOTH
+ttresearch.name.SPELL_CLOTH=Spellbinding Cloth
+ttresearch.lore.SPELL_CLOTH=The sad palmtop thaumaturge
+ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic power, you created a cloth that can be rubbed on an item to wipe it of its enchantments by combining them in a Crafting Recipe.
+
+# -- DYNAMISM TABLET
+ttresearch.name.ANIMATION_TABLET=Dynamism Tablet
+ttresearch.lore.ANIMATION_TABLET=I'm level 78...
+ttresearch.page.ANIMATION_TABLET.0=You decided to further discover the uses of Golem Animation Cores, and this is the fruit of that labour.<BR><BR>This tablet can accept an item to animate with mystical energy. Using the left and right buttons in the tablet's interface, you can select to do a left or right click with the item. The button in the bottom controls if the tablet reacts always when it can or just when a redstone signal is applied.<BR><BR>Virtually anything can be animated, including blocks. The type of tool in the tablet also defines how fast something breaks, as expected.
+
+# -- WAND FOCUS: UPRISING
+ttresearch.name.FOCUS_FLIGHT=Wand Focus: Uprising
+ttresearch.lore.FOCUS_FLIGHT=Is this what they use in ALfheim?
+ttresearch.page.FOCUS_FLIGHT.0=Using the knowledge you got from creating the Sword of the Zephyr of propelling things around with air, you created a wand focus that will propel the holder in the direction that they're looking at.<BR><BR>When someone is propelled through the use of this focus, any accumulated gravitational energy is negated, reseting the fall damage the holder would take.
+
+# -- WAND FOCUS: DISLOCATION
+ttresearch.name.FOCUS_DISLOCATION=Wand Focus: Dislocation
+ttresearch.lore.FOCUS_DISLOCATION=Now here, now there
+ttresearch.page.FOCUS_DISLOCATION.0=You created a wand focus based on the focus of equal trade. The difference is that this one not only holds the object's fingerprint, but it holds the object itself, allowing it to be placed elsewhere.<BR><BR>To get a block to transport, right click on it. To place it back, right click somewhere else. This focus can transport pretty much anything, including chests and mob spawners.
+ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the block. Placing it down is free.<BR><BR>Due to the amount of energy required for the dislocation, blocks with tile entities (such as chests and furnaces) cost 5x the amount of vis as normally. Mob spawners, in particular, cost 20x instead.
+
+# -- TALISMAN OF REMEDIUM
+ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
+ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispell most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled.
+
+# -- HYPERNERGETIC NITOR
+ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor
+ttresearch.lore.BRIGHT_NITOR=Take that, Twilight!
+ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine even if it's being carried by a player by energizing the everburning flame that is Nitor with powerful energetic aspects such as Potentia and Lux.<BR><BR>The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.
+
+# -- WAND FOCUS: TELEKINESIS
+ttresearch.name.FOCUS_TELEKINESIS=Wand Focus: Telekinesis
+ttresearch.lore.FOCUS_TELEKINESIS=Beats gravity bubbles any day
+ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.
+
+# -- KINETIC ATTRACTION
+ttresearch.name.MAGNETS=Kinetic Attraction
+ttresearch.lore.MAGNETS=How do they work?
+ttresearch.page.MAGNETS.0=Working with the telekinesis focus, you managed to apply this knowledge to create a device to attract items or living beings, like a magnet.<BR><BR>These two blocks have two states, north (red) and south (blue), in north mode it'll push items, or entities away; in south mode it'll pull them in.
+ttresearch.page.MAGNETS.1=You designed two devices. The Kinetic and Corporeal Attractors, these, respectively affect items and living beings.<BR><BR>The Corporeal Attractor involves some more complex mechanisms, to which you can access by right clicking it with a casting wand. Using a Soul Mould, you can right click on a mob to save it as a pattern, which you can set in the attractor's interface, as a filter, along with settings for child or adult animals, if available.
+
+# -- OSMOTIC ENCHANTER
+ttresearch.name.ENCHANTER=Osmotic Enchanter
+ttresearch.lore.ENCHANTER=Picking your luck
+ttresearch.page.ENCHANTER.0=You grew tired of getting terrible enchantments for your efforts. To that, you created a new enchantment table that allows you to pick what enchantments you want to apply to an item.<BR><BR>This new contraption requires a wand, each enchantment requires a specific combination of vis from that wand. The price of the enchantment is exponentially proportional to the level you want to apply.<BR><BR>Regular enchantment rules apply, for example, you can't combine Silk Touch with Fortune.
+ttresearch.page.ENCHANTER.1=After you selected the enchantments you want on an item, clicking the red button in the interface will start the enchanting progress. As the item is being enchanted, you can't take it out of the table, nor can you change the enchantments you are putting on it.<BR><BR>The table will slowly drain vis from the wand, until it's done. For this to work, there needs to be 6 pillars in the nearby vicinity (4 blocks), these pillars need to be at the same level of the table.<BR><BR>[continued]
+ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidian Totem blocks stacked on top of each other, with a piece of Nitor on top of them. The enchanter will get flux energy from them, grabbing vis from the wand and combining them to enchant the item.
+
+# -- TALISMAN OF WITHHOLD
+ttresearch.name.XP_TALISMAN=Talisman of Withhold
+ttresearch.lore.XP_TALISMAN=I'll take your 'time'
+ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting.
+
+# -- ESSENTIA FUNNEL
+ttresearch.name.FUNNEL=Essentia Funnel
+ttresearch.lore.FUNNEL=Even transfer
+ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to that, you created this new mechanism to transfer the contents of one into another.<BR><BR>By placing this block above a hopper, and right clicking it with a filled jar, if the hopper is pointing into a jar that's either empty or of the same aspect, the contents of the jar will be transfered over.
+
+# -- ENCHANTMENT: ASCENT BOOST
+ttresearch.name.TTENCH_ASCENT_BOOST=Enchantment: Ascent Boost
+ttresearch.lore.TTENCH_ASCENT_BOOST=Higher than a titan
+ttresearch.page.TTENCH_ASCENT_BOOST.0=You have formulated an enchantment that allows you to jump higher than you normally can.<BR><BR>This enchantment can be applied on leg armor. When done so, the wearer will be able to jump a lot higher than normal.
+
+# -- ENCHANTMENT: SLOW FALL
+ttresearch.name.TTENCH_SLOW_FALL=Enchantment: Slow Fall
+ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
+ttresearch.page.TTENCH_SLOW_FALL.0=You have formulated an enchantment that allows you to fall slowly.<BR><BR>This enchantment can be applied on foot armor. When done so, the wearer will be able to shift click while falling to fall slower, also reducing, if not negating the fall damage.
+
+# -- ENCHANTMENT: FLAMING TOUCH
+ttresearch.name.TTENCH_AUTO_SMELT=Enchantment: Flaming Touch
+ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
+ttresearch.page.TTENCH_AUTO_SMELT.0=You have formulated an enchantment that allows you to summon imaginary flames.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break anything wooden with extreme finesse, by use of a flame that softens the wood through the breaking process, but never destroying or damaging it. However, the tool becomes impotent against anything else, and takes double durability damage.
+
+# -- ENCHANTMENT: DESINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=Enchantment: Desintegrate
+ttresearch.lore.TTENCH_DESINTEGRATE=Spacequake alert
+ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that allows you to mine soft materials at incredible speeds.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break regular blocks (dirt, stone, netherrack, etc.) that the tool is good for with extreme finesse, however, the tool becomes impotent against anything else, and takes double durability damage.
+
+# -- ENCHANTMENT: QUICK DRAW
+ttresearch.name.TTENCH_QUICK_DRAW=Enchantment: Quick Draw
+ttresearch.lore.TTENCH_QUICK_DRAW=Speedy shot
+ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allows you to draw your bow in a quicker fashion.<BR><BR>This enchantment can be applied on bows. When done so, the bow can be fully drawn faster than normally.
+
+# -- ENCHANTMENT: VAMPIRISM
+ttresearch.name.TTENCH_VAMPIRISM=Enchantment: Vampirism
+ttresearch.lore.TTENCH_VAMPIRISM=I'll take that
+ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a living thing using that sword will be given back to the wielder.

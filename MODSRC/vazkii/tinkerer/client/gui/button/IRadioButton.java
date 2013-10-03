@@ -6,11 +6,11 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
- * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
- * Thaumcraft 3 © Azanor 2012
+ * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
+ * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [13 May 2013, 21:47:52 (GMT)]
+ * File Created @ [9 Sep 2013, 16:32:08 (GMT)]
  */
 package vazkii.tinkerer.client.gui.button;
 

@@ -6,17 +6,16 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
- * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
- * Thaumcraft 3 © Azanor 2012
+ * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
+ * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [28 Jun 2013, 17:35:43 (GMT)]
+ * File Created @ [12 Sep 2013, 17:56:17 (GMT)]
  */
 package vazkii.tinkerer.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import vazkii.tinkerer.lib.LibMisc;
 
 public class ModelMagnet extends ModelBase {
 
@@ -70,13 +69,15 @@ public class ModelMagnet extends ModelBase {
 	}
 
 	public void render() {
-		panel.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-		magnet.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-		box1.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-		box2.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-		box3.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-		box4.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
-		box5.render(LibMisc.MODEL_DEFAULT_RENDER_SCALE);
+		final float scale = 1F / 16F;
+
+		panel.render(scale);
+		magnet.render(scale);
+		box1.render(scale);
+		box2.render(scale);
+		box3.render(scale);
+		box4.render(scale);
+		box5.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

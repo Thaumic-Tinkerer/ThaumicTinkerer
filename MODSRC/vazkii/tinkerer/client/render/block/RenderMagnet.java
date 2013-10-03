@@ -6,11 +6,11 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
- * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
- * Thaumcraft 3 © Azanor 2012
+ * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
+ * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [28 Jun 2013, 21:27:36 (GMT)]
+ * File Created @ [12 Sep 2013, 18:08:42 (GMT)]
  */
 package vazkii.tinkerer.client.render.block;
 
@@ -21,17 +21,20 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import vazkii.tinkerer.lib.LibRenderIDs;
-import vazkii.tinkerer.tile.TileEntityMagnet;
+import vazkii.tinkerer.client.lib.LibRenderIDs;
+import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
+import vazkii.tinkerer.common.block.tile.TileMagnet;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderMagnet implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+		RenderTileMagnet.mob = metadata == 1;
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		TileEntityRenderer.instance.renderTileEntityAt(new TileEntityMagnet(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileMagnet(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glPopMatrix();
 	}
 
