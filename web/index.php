@@ -8,7 +8,7 @@
 <?php
 print('<body link="#111111" vlink="#444466" alink="#000099">'); 
 
-$file_url = 'urls.txt';
+$file_url = 'https://raw.github.com/Vazkii/ThaumicTinkerer/2.0/web/urls.txt';
 $file_contents = file_get_contents($file_url);
 $file_contents_array = array_reverse(explode(PHP_EOL, $file_contents));
 
