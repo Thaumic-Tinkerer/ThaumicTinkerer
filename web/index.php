@@ -1,4 +1,6 @@
 <html>
+	<title>Thaumic Tinkerer Files</title>
+
 	<font size="6">Thaumic Tinkerer Files</font><br>
 	<a href="http://www.minecraftforum.net/topic/1813058-">Thaumic Tinkerer Thread</a><br>
 	<a href="http://vazkii.us">Back to vazkii.us</a>
