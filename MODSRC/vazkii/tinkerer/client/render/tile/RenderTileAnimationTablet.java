@@ -6,11 +6,11 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
- * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
- * Thaumcraft 3 © Azanor 2012
+ * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
+ * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [13 May 2013, 20:05:48 (GMT)]
+ * File Created @ [9 Sep 2013, 17:12:26 (GMT)]
  */
 package vazkii.tinkerer.client.render.tile;
 
@@ -21,21 +21,26 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import vazkii.tinkerer.client.util.handler.ClientTickHandler;
-import vazkii.tinkerer.lib.LibMisc;
-import vazkii.tinkerer.lib.LibResources;
-import vazkii.tinkerer.tile.TileEntityAnimationTablet;
-import vazkii.tinkerer.util.helper.MiscHelper;
+import vazkii.tinkerer.client.core.helper.ClientHelper;
+import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 
 public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
+
+	private static final ResourceLocation overlayCenter = new ResourceLocation(LibResources.MISC_AT_CENTER);
+	private static final ResourceLocation overlayLeft = new ResourceLocation(LibResources.MISC_AT_LEFT);
+	private static final ResourceLocation overlayRight = new ResourceLocation(LibResources.MISC_AT_RIGHT);
+	private static final ResourceLocation overlayIndent = new ResourceLocation(LibResources.MISC_AT_INDENT);
 
 	private static final float[][] TRANSLATIONS = new float[][] {
 		{ 0F, 0F, -1F },
@@ -46,21 +51,24 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float partialTicks) {
-		TileEntityAnimationTablet tile = (TileEntityAnimationTablet) tileentity;
+		TileAnimationTablet tile = (TileAnimationTablet) tileentity;
 
 		int meta = tile.getBlockMetadata() & 7;
+		if(meta < 2)
+			meta = 2; // Just in case
+
 		int rotation = meta == 2 ? 270 : meta == 3 ? 90 : meta == 4 ? 0 : 180;
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(d0, d1, d2);
-		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_DIAL, -1, false, false, 0.65, 0.13F, 0F);
+		renderOverlay(tile, overlayCenter, -1, false, false, 0.65, 0.13F, 0F);
 		if(tile.leftClick)
-			renderOverlay(tile, LibResources.MISC_AT_OVERLAY_LEFT, 1, false, true, 1, 0.13F, 0F);
-		else renderOverlay(tile, LibResources.MISC_AT_OVERLAY_RIGHT, 1, false, true, 1, 0.131F, 0F);
-		renderOverlay(tile, LibResources.MISC_AT_OVERLAY_FACING, 0, false, false, 0.5F, 0.13F, rotation + 90F);
+			renderOverlay(tile, overlayLeft, 1, false, true, 1, 0.13F, 0F);
+		else renderOverlay(tile, overlayRight, 1, false, true, 1, 0.131F, 0F);
+		renderOverlay(tile, overlayIndent, 0, false, false, 0.5F, 0.13F, rotation + 90F);
 
 		GL11.glRotatef(rotation, 0F, 1F, 0F);
-		GL11.glTranslated(0.1, 0.2 + Math.cos(ClientTickHandler.clientTicksElapsed / 12D) / 18F, 0.5);
+		GL11.glTranslated(0.1, 0.2 + Math.cos(System.currentTimeMillis() / 600D) / 18F, 0.5);
 		float[] translations = TRANSLATIONS[meta - 2];
 		GL11.glTranslatef(translations[0], translations[1], translations[2]);
 		GL11.glScalef(0.8F, 0.8F, 0.8F);
@@ -68,16 +76,16 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		GL11.glRotatef(tile.swingProgress, 0F, 0F, 1F);
 		GL11.glTranslatef(-0.5F, 0F, -0.5F);
 		GL11.glTranslatef(-tile.swingProgress / 250F, tile.swingProgress / 1000F, 0F);
-		GL11.glRotatef((float) Math.cos(ClientTickHandler.clientTicksElapsed / 8F) * 5F, 1F, 0F, 1F);
+		GL11.glRotatef((float) Math.cos(System.currentTimeMillis() / 400F) * 5F, 1F, 0F, 1F);
 		renderItem(tile);
 		GL11.glPopMatrix();
 	}
 
-	private void renderItem(TileEntityAnimationTablet tablet) {
+	private void renderItem(TileAnimationTablet tablet) {
 		ItemStack stack = tablet.getStackInSlot(0);
-		Minecraft mc = MiscHelper.getMc();
+		Minecraft mc = ClientHelper.minecraft();
 		if(stack != null) {
-	       mc.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? "/terrain.png" : "/gui/items.png");
+	       mc.renderEngine.func_110577_a(stack.getItem() instanceof ItemBlock ? TextureMap.field_110575_b : TextureMap.field_110576_c);
 
 			if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[stack.itemID].getRenderType())) {
             	GL11.glTranslatef(0.5F, 0.55F, 0F);
@@ -94,7 +102,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 	                     float f1 = icon.getMaxU();
 	                     float f2 = icon.getMinV();
 	                     float f3 = icon.getMaxV();
-	                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getSheetWidth(), icon.getSheetHeight(), LibMisc.MODEL_DEFAULT_RENDER_SCALE);
+	                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getOriginX(), icon.getOriginY(), 1F / 16F);
 	                     GL11.glColor3f(1F, 1F, 1F);
 	            	}
 	            	renderPass++;
@@ -103,9 +111,9 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
         }
 	}
 
-	private void renderOverlay(TileEntityAnimationTablet tablet, String texture, int rotationMod, boolean useLighting, boolean useBlend, double size, float height, float forceDeg) {
-		Minecraft mc = MiscHelper.getMc();
-		mc.renderEngine.bindTexture(texture);
+	private void renderOverlay(TileAnimationTablet tablet, ResourceLocation texture, int rotationMod, boolean useLighting, boolean useBlend, double size, float height, float forceDeg) {
+		Minecraft mc = ClientHelper.minecraft();
+		mc.renderEngine.func_110577_a(texture);
 		GL11.glPushMatrix();
 		GL11.glDepthMask(false);
 		if(!useLighting)

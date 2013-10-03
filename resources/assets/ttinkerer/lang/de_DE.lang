@@ -1,0 +1,188 @@
+# MISC
+itemGroup.ThaumicTinkerer=Thaumic Tinkerer
+ttmisc.connector.set=Position eingestellt!
+ttmisc.connector.complete=Das Binden ist komplett!
+ttmisc.connector.notinterf=Das ist keine Transvektor-Schnittstelle.
+ttmisc.connector.interffail=Du kannst keine Transvektor-Schnittstelle mit einer anderen verbinden.
+ttmisc.connector.notpresent=Die Transvektor-Schnittstelle ist nicht präsent.
+ttmisc.connector.toofar=Die ursprüngliche Transvektor-Schnittstelle ist zu weit entfernt.
+ttmisc.leftClick=Linksklick
+ttmisc.rightClick=Rechtsklick
+ttmisc.redstoneControl=Redstone-Kontrolle
+ttmisc.animationTablet.notRotatable=Du kannst das Tablett nicht rotieren, während es aktiviert ist.
+ttmisc.focusDislocation.tooltip=Aktuell dislokierend: %s
+ttmisc.focusDislocation.tooltipExtra=Extra-Inhalt
+ttmisc.inactive=§cInaktiv
+ttmisc.active=§aAktiv
+ttmisc.soulMould.nonAssigned=§6Keine Form
+ttmisc.soulMould.pattern=§6Aktuelle Form: %s
+ttmisc.all=Alle
+ttmisc.child=Kinder
+ttmisc.adult=Erwachsene
+ttmisc.baseCost=Basiskosten
+ttmisc.clickToRemove=Klicke zum Entfernen
+ttmisc.startEnchant=Starte Verzaubern
+ttmisc.full=§cVoll
+ttmisc.notAbsorbing=§cNicht Absorbierend
+ttmisc.absorbing=§aAbsorbierend
+
+# ITEM NAMES
+item.ttinkerer:darkQuartz.name=Rauchiger Quarz
+item.ttinkerer:connector.name=Transvektoren-Binder
+item.ttinkerer:gaseousLight.name=Gasförmige Illuminae
+item.ttinkerer:gaseousShadow.name=Gasförmige Tenebrae
+item.ttinkerer:gasRemover.name=Dampf-Dissipator
+item.ttinkerer:spellCloth.name=Entzauberungstuch
+item.ttinkerer:focusFlight.name=Stabfokus: Aufsteigen
+item.ttinkerer:focusDislocation.name=Stabfokus: Dislokation
+item.ttinkerer:cleansingTalisman.name=Talisman des Remedium
+item.ttinkerer:brightNitor.name=Hyperenergetisches Nitor
+item.ttinkerer:focusTelekinesis.name=Stabfokus: Telekinese
+item.ttinkerer:soulMould.name=Seelenform
+item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
+
+# BLOCK NAMES
+tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
+tile.ttinkerer:darkQuartzChiseled.name=Gemeißelter Rauchiger Quarzblock
+tile.ttinkerer:darkQuartzPillar.name=Rauchige Quarzsäule
+tile.ttinkerer:darkQuartzSlab.name=Rauchige Quarzstufe
+tile.ttinkerer:darkQuartzStairs.name=Rauchige Quarztreppe
+tile.ttinkerer:interface.name=Transvektor-Schnittstelle
+tile.ttinkerer:animationTablet.name=Dynamiktablett
+tile.ttinkerer:magnet.name=Kinetischer Attaktor
+tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
+tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
+tile.ttinkerer:funnel.name=Essentia-Trichter
+
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
+enchantment.ttinkerer:slowFall=Langsamer Fall
+enchantment.ttinkerer:autoSmelt=Flammende Berührung
+enchantment.ttinkerer:desintegrate=Desintegrieren
+enchantment.ttinkerer:quickDraw=Schnelles Spannen
+enchantment.ttinkerer.vampirism=Vampirismus
+
+# RESEARCH
+ttresearch.prefix=[TT] 
+tc.research_category.TT_ENCHANTING=Verzaubern
+
+# -- COMPUTERCRAFT PERIPHERALS
+ttresearch.name.PERIPHERALS=Computercraft-Peripherien
+ttresearch.lore.PERIPHERALS=Wenn Technologie auf Magie trifft
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+
+# -- SMOKEY QUARTZ
+ttresearch.name.DARK_QUARTZ=Rauchiger Quarz
+ttresearch.lore.DARK_QUARTZ=Schatten des Tages
+ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur negativ. Alle regulären Blöcke, die mit Quarz gemacht werden können, können auch mit Rauchigem Quarz gemacht werden, Und die sind schwarz.<BR><BR>Rauchiger Quarz kann mit einem Stück Kohle oder Holzkohle zum Färben sowie ein paar Stücken regulären Quarzes gemacht werden.
+
+# -- TRANSVECTOR INTERFACE
+ttresearch.name.INTERFACE=Transvektor-Schnittstelle
+ttresearch.lore.INTERFACE=Nicht verbunden mit nyuu
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft- und IC2-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
+ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
+
+# -- GASEOUS ILLUMINAE
+ttresearch.name.GASEOUS_LIGHT=Gasförmige Illuminae
+ttresearch.lore.GASEOUS_LIGHT=Helligkeit außer Sichtweite
+ttresearch.page.GASEOUS_LIGHT.0=Du hast die Feinheiten des Lichts studiert und einen Weg gefunden, komplett unsichtbares Licht durch das Erfüllen einer Phiole mit rohem Licht zu kreieren.<BR><BR>Diese Phiole enthält ein konzentriertes Extrakt von gasförmigen Illuminae, das durch einen Rechtsklick freigelassen werden kann, sich dann relativ schnell in der Umgebung verteilen wird und diese erhellen wird.
+
+# -- GASEOUS TENEBRAE
+ttresearch.name.GASEOUS_SHADOW=Gasförmige Tenebrae
+ttresearch.lore.GASEOUS_SHADOW=Die ungesehene Welt
+ttresearch.page.GASEOUS_SHADOW.0=Du hast die Feinheiten des Schattens studiert und einen Weg gefunden, gasförmige Dunkelheit durch das Erfüllen einer Phiole mit rohem Schatten zu kreieren.<BR><BR>Diese Phiole enthält ein konzentriertes Extrakt von gasförmigen Tenebrae, das durch einen Rechtsklick freigelassen werden kann, sich dann relativ schnell in der Umgebung verteilen wird und diese verdunkeln wird.
+
+# -- FUME DISSIPATOR
+ttresearch.name.GAS_REMOVER=Dampf-Dissipator
+ttresearch.lore.GAS_REMOVER=Ryuuji's Helfer
+ttresearch.page.GAS_REMOVER.0=Nachdem du Gasförmige Illuminae und Tenebrae kennst, denkst du, dass es ziemliche Schwierigkeiten bereitet, sie loszuwerden. Mit diesem Item, wenn du es Shift-Rechtsklickst, wird sich alles Gas in der Nähe auflösen.
+
+# -- SPELLBINDING CLOTH
+ttresearch.name.SPELL_CLOTH=Entzauberungstuch
+ttresearch.lore.SPELL_CLOTH=Der traurige Palmtop-Thaumaturge
+ttresearch.page.SPELL_CLOTH.0=Durch das Mischen von Verzaubertem Stoff mit roher magischer Energie hast du ein Tuch kreiert, das an einem Item gerieben werden kann, um dieses von seinen Verzauberungen zu befreien. Kombiniere dazu beides in einem Crafting-Feld.
+
+# -- DYNAMISM TABLET
+ttresearch.name.ANIMATION_TABLET=Dynamiktablett
+ttresearch.lore.ANIMATION_TABLET=Ich bin Level 78...
+ttresearch.page.ANIMATION_TABLET.0=Du hast dich entschieden, weitere Verwendungszwecke für die Golem-Animationskerne zu entdecken, Und dies ist die Frucht deiner Arbeit.<BR><BR>Dieses Tablett akzeptiert ein Item, das es mit mystischer Energie animierty. Indem du die Knöpfe rechts und links im Interface nutzt, kannst du wählen, ob das Tablett mit dem Item einen Links- oder Rechtsklick ausführt. Der Knopf unten kontrolliert, ob das Tablett immer reagiert, wenn es kann oder nur, wenn es ein Redstone-Sigal erhält.<BR><BR>Nahezu alles kann animiert werden, einschließlich Blöcke. Der Typ des Werkzeugs im Tablett definiert auch, wie schnell etwas abgebaut wird, wie zu erwarten.
+
+# -- WAND FOCUS: UPRISING
+ttresearch.name.FOCUS_FLIGHT=Stabfokus: Aufsteigen
+ttresearch.lore.FOCUS_FLIGHT=Ist es das, was sie in ALfheim benutzen?
+ttresearch.page.FOCUS_FLIGHT.0=Indem du das Wissen, Dinge mit Luft umherzutreiben, das du durch das Kreieren des Schwerts des Zephirs erworben hast, nutzt, hast du einen Stabfokus kreiert, der den Nutzer in die Richtung zu wirbeln, in die er schaut.<BR><BR>Wenn jemand durch die Nutzung dieses Fokus herumgewirbelt wird, wird jegliche sich ansammelnde Gravitationsenergie negiert, was möglichen Fallschaden, den der Nutzer erleiden würde, annulliert.
+
+# -- WAND FOCUS: DISLOCATION
+ttresearch.name.FOCUS_DISLOCATION=Stabfokus: Dislokation
+ttresearch.lore.FOCUS_DISLOCATION=Bald hier, bald da
+ttresearch.page.FOCUS_DISLOCATION.0=Du hast einen Stabfokus kreiert, der auf dem Fokus des Gleichen Handels basiert. Der Unterschied ist, dass dieser nicht nur den Fingerabdruck des Objektes hält, sondern das Objekt selbst, was erlaubt, es anderswo zu platzieren.<BR><BR>Um einen Block transportabel zu machen, rechtsklicke ihn. Um ihn wieder zu platzieren, rechtsklicke irgendwo anders. Dieser Fokus kann nahezu alles transportieren, einschließlich Truhen und Monster-Spawner.
+ttresearch.page.FOCUS_DISLOCATION.1=Die Vis-Kosten werden beim Aufnehmen des Blocks abgerechnet. Ihn zu platzieren, ist kostenlos.<BR><BR>Wegen der Menge an Energie, die für die Dislokation erforderlich ist, kosten Blöcke mit tile entities (wie Truhen oder Öfen) 5x so viel Vis wie normal. Monster-Spawner, im Besonderen, kosten stattdessen 20x so viel.
+
+# -- TALISMAN OF REMEDIUM
+ttresearch.name.CLEANSING_TALISMAN=Talisman des Remedium
+ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Geschenk
+ttresearch.page.CLEANSING_TALISMAN.0=Du hast das Leben und den Körper studiert und herausgefunden, dass du dich durch die Anwendung von Magie von schädlichen äußerlichen Einflüssen schützen kannst, indem du diese Effekte in ein Konstrukt umleitest. Dieser Talisman wird die meisten schädlichen Effekte auf dem Träger beseitigen und sie in sich selbst bewahren, was ihm Schaden zufügt.<BR><BR>Um diese Fähigkeit zu aktivieren oder deaktivieren, würde jemand mit ihm Shift-Rechtsklicken. Wie zu erwarten funktioniert er nur aktiviert.
+
+# -- HYPERNERGETIC NITOR
+ttresearch.name.BRIGHT_NITOR=Hyperenergetisches Nitor
+ttresearch.lore.BRIGHT_NITOR=Nimm das, Zwielicht!
+ttresearch.page.BRIGHT_NITOR.0=Du hast es geschafft, ein Licht zu kreieren, dass sogar scheint, wenn es von einem Spieler getragen wird, indem zu die immerwährende Flamme des Nitor mit mächtigen energetischen Aspekten wie Potentia und Lux speist.<BR><BR>Das Licht, das erzeugt wird, wird knapp hinter dem Träger scheinen; aufgrund der Hitze scheint es in Nether eine längere Spur zu hinterlassen.
+
+# -- WAND FOCUS: TELEKINESIS
+ttresearch.name.FOCUS_TELEKINESIS=Stabfokus: Telekinese
+ttresearch.lore.FOCUS_TELEKINESIS=Schlägt Schwerkraftblasen jederzeit
+ttresearch.page.FOCUS_TELEKINESIS.0=Du hast einen Stabfokus kreiert, der kinetisch auf dem Boden liegende Objekte bewegen kann. Dieser Fokus wird nahe Items zu dem Punkt bewegen, auf den zu zeigst. Schleichen wird die Items stattdessen zu dir bringen.
+
+# -- KINETIC ATTRACTION
+ttresearch.name.MAGNETS=Kinetische Attaktion
+ttresearch.lore.MAGNETS=Wie funktionieren die?
+ttresearch.page.MAGNETS.0=Durch das Arbeiten mit dem Telekinesefokus hast du es geschafft dieses Wissen anzuwenden, um ein Gerät zu kreieren, das Items und lebende Geschöpfe anzieht wie ein Magnet.<BR><BR>Diese Blöcke haben zwei Status, Nord (rot) und Süd (blau), im Nord-Modus werden sie Gegenstände bzw. Lebewesen abstoßen; im Süd-Modus werden sie jene anziehen.
+ttresearch.page.MAGNETS.1=Du hast zwei Geräte entworfen, den Kinetischen und den Korporealen Attraktor, die entsprechend Items oder Lebendes betreffen.<BR><BR>Der Korporeale Attraktor beinhaltet ein paar komplexere Mechanismen, auf die du per Rechtklick mit einem Zauberstab zugreifen kannst. Du kannst mit einer Seelenform ein Lebewesen rechtsklicken, um es als eine Vorlage zu speichern, die du als Filter in das Interface des Attraktors eingeben kannst, zusammen mit Einstellungen für Erwachsene oder Baby-Tiere, wenn verfügbar.
+
+# -- OSMOTIC ENCHANTER
+ttresearch.name.ENCHANTER=Osmotischer Verzauberer
+ttresearch.lore.ENCHANTER=Wähle dein Glück
+ttresearch.page.ENCHANTER.0=Du bist es Leid geworden, schreckliche Verzauberungen für deine Mühen zu bekommen. Deswegen hast du einen neuen Zaubertisch kreiert, der es dir erlaubt, zu wählen, welche Verzauberungen du auf einem Item haben möchtest.<BR><BR>Diese neue Vorrichtung benötigt einen Stab, jede Verzauberung erfordert eine spezifische Kombination von Vis aus diesem Stab. Der Preis der Verzauberung ist exponentiell zum Level, das du auflegen möchtest.<BR><BR>Es gelten reguläre Verzauberungsregeln, zum Beispiel kannst du nicht Behutsamkeit mit Glück kombinieren.
+ttresearch.page.ENCHANTER.1=Nachdem du die Verzauberunden ausgewählt hast, die du auf einem Item wünschst, wird das Klicken auf den roten Knopf den Verzauberungsprozess beginnen. Während das Item verzaubert wird, kannst du es nicht aus dem Tisch entfernen, ebenso wenig kannst du die Verzauberungen, die zu auflegst, nicht mehr ändern.<BR><BR>Der Tisch wird langsam Vis aus dem Stab ziehen bis er fertig ist. Damit das funktioniert, werden 6 Säulen in der nahen Umgebung (4 Blöcke) benötigt, diese Säulen müssen auf der selben Höhe wie der Tisch sein.<BR><BR>[fortgesetzt]
+ttresearch.page.ENCHANTER.2=Die Säulen müssen aus zwei bis zwölf übereinander gestapelten Obsidian-Totems bestehen, jeweils mit Nitor an der Spitze. Der Verzauberer wird Fluxenergie von ihnen bekommen, sich Vis aus dem Stab nehmen und beides kombinieren, um das Item zu verzaubern.
+
+# -- TALISMAN OF WITHHOLD
+ttresearch.name.XP_TALISMAN=Talisman des Einbehaltens
+ttresearch.lore.XP_TALISMAN=Ich werd' mir deine 'Zeit' nehmen
+ttresearch.page.XP_TALISMAN.0=Nachdem du nun weißt, dass Zombiehirne die Fähigkeit haben, Erfahrung zu speichern, hast du einen Talisman kreiert, der dieses Verhalten nachahmt, jedoch nicht in perfektem Ausmaß.<BR><BR>Um die Fähigkeit, Erfahrung zu speichern, zu nutzen, musst du mit dem Talisman Shift-rechtsklicken. Wenn der Talisman aktiviert ist, wird er alle nahen Erfahrungsorbs absorbieren, diese können wieder zurück zu nutzbarer Erfahrungs transformiert werden, wenn du mit einer Glasflasche in deinem Inventar rechtsklickst, was diese Flasche in ein Erfahrungsfläschchen verwandelt.
+
+# -- ESSENTIA FUNNEL
+ttresearch.name.FUNNEL=Essentia-Trichter
+ttresearch.lore.FUNNEL=Gerechter Transfer
+ttresearch.page.FUNNEL.0=Du wurdest es Leid, deine Gläser mit Phiolen zu managen, dazu hast du diesen neuen Mechanismus kreiert, um den Inhalt eines Glases in ein anderes zu transferieren.<BR><BR>Wenn du dies auf einem Trichter platzierst und mit einem gefüllten Glas rechtsklickst, wenn der Trichter in ein Glas zeigt, das entweder leer oder mit dem selben Aspekt gefüllt ist, wird der Inhalt des Glases hinübertransferiert werden.
+
+# -- ENCHANTMENT: ASCENT BOOST
+ttresearch.name.TTENCH_ASCENT_BOOST=Verzauberung: Aufstiegs-Boost
+ttresearch.lore.TTENCH_ASCENT_BOOST=Höher als ein Titan
+ttresearch.page.TTENCH_ASCENT_BOOST.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, höher zu springen als du normalerweise kannst.<BR><BR>Diese Verzauberung kann auf Beinrüstung gelegt werden. Wenn getan, wird der Träger fähig sein, deutlich höher als normal zu springen.
+
+# -- ENCHANTMENT: SLOW FALL
+ttresearch.name.TTENCH_SLOW_FALL=Verzauberung: Langsamer Fall
+ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
+ttresearch.page.TTENCH_SLOW_FALL.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, langsam zu fallen.<BR><BR>Diese Verzauberung kann auf Rüstung für Füße gelegt werden. Wenn getan, wird der Träger fähig sein, während des Fallens zu Shift-klicken, um langsamer zu fallen, was auch Fallschaden reduziert, wenn nicht negiert.
+
+# -- ENCHANTMENT: FLAMING TOUCH
+ttresearch.name.TTENCH_AUTO_SMELT=Verzauberung: Flammende Berührung
+ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
+ttresearch.page.TTENCH_AUTO_SMELT.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, imaginäre Flammen zu beschwören.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alles hölzerne mit extremer Finesse abbauen, indem er eine Flamme nutzt, die das Holz während des Abbauprozesses weich macht, es aber niemals zerstört oder schädigt. Jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
+
+# -- ENCHANTMENT: DESINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=Verzauberung: Desintegrieren
+ttresearch.lore.TTENCH_DESINTEGRATE=Weltraumbeben-Alarm
+ttresearch.page.TTENCH_DESINTEGRATE.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, weiche Materialien mit unglaublicher Geschwindigkeit abzubauen.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alle regulären Blöcke (Erde, Stein, Netherstein etc.), für die das Werkzeug gut ist, mit extremer Finesse abbauen, jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
+
+# -- ENCHANTMENT: QUICK DRAW
+ttresearch.name.TTENCH_QUICK_DRAW=Verzauberung: Schnelles Spannen
+ttresearch.lore.TTENCH_QUICK_DRAW=Rascher Schuss
+ttresearch.page.TTENCH_QUICK_DRAW.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, deinen Bogen auf schnellere Art zu spannen.<BR><BR>Diese Verzauberung kann auf Bögen gelegt werden. Wenn getan, kann der Bogen schneller voll gepannt werden als normal.
+
+# -- ENCHANTMENT: VAMPIRISM
+ttresearch.name.TTENCH_VAMPIRISM=Verzauberung: Vampirismus
+ttresearch.lore.TTENCH_VAMPIRISM=Ich werd' mir das mal nehmen
+ttresearch.page.TTENCH_VAMPIRISM.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, die Lebenskraft der Gegner, die du attackierst, auszusaugen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird ein Stück des einem Lebewesen mit diesem Schwert verursachten Schadens dem Nutzer zurückgegeben.

@@ -6,11 +6,11 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
- * ThaumicTinkerer is a Derivative Work on Thaumcraft 3.
- * Thaumcraft 3 © Azanor 2012
+ * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
+ * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [13 May 2013, 19:59:12 (GMT)]
+ * File Created @ [9 Sep 2013, 16:31:14 (GMT)]
  */
 package vazkii.tinkerer.client.gui;
 
@@ -20,27 +20,32 @@ import java.util.List;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.gui.button.GuiButtonAT;
 import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
-import vazkii.tinkerer.inventory.container.ContainerAnimationTablet;
-import vazkii.tinkerer.lib.LibResources;
-import vazkii.tinkerer.network.PacketManager;
-import vazkii.tinkerer.network.packet.PacketAnimationTabletButton;
-import vazkii.tinkerer.tile.TileEntityAnimationTablet;
+import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
+import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.network.PacketManager;
+import vazkii.tinkerer.common.network.packet.PacketTabletButton;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class GuiAnimationTablet extends GuiContainer {
 
+	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ANIMATION_TABLET);
+
 	int x, y;
 
-	TileEntityAnimationTablet tablet;
+	TileAnimationTablet tablet;
 	List<GuiButtonAT> buttonListAT = new ArrayList();
 	List<IRadioButton> radioButtons = new ArrayList();
 
-	public GuiAnimationTablet(TileEntityAnimationTablet tablet, InventoryPlayer playerInv) {
+	public GuiAnimationTablet(TileAnimationTablet tablet, InventoryPlayer playerInv) {
 		super(new ContainerAnimationTablet(tablet, playerInv));
 		this.tablet = tablet;
 	}
@@ -72,17 +77,17 @@ public class GuiAnimationTablet extends GuiContainer {
 		tablet.leftClick = buttonListAT.get(1).enabled;
 		tablet.redstone = buttonListAT.get(0).enabled;
 
-		PacketManager.sendPacketToServer(new PacketAnimationTabletButton(tablet));
+		PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketTabletButton(tablet)));
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(LibResources.GUI_ANIMATION_TABLET);
+        mc.renderEngine.func_110577_a(gui);
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-        String left = "Left";
-        String right = "Right";
-        String redstone = "Redstone";
+        String left = StatCollector.translateToLocal("ttmisc.leftClick");
+        String right = StatCollector.translateToLocal("ttmisc.rightClick");
+        String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
         fontRenderer.drawString(left, x + 48 - fontRenderer.getStringWidth(left), y + 18, 0x999999);
         fontRenderer.drawString(right, x + 128, y + 18, 0x999999);
         fontRenderer.drawString(redstone, x + xSize / 2 - fontRenderer.getStringWidth(redstone) / 2, y + 50, 0x999999);
