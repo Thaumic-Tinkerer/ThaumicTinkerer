@@ -70,7 +70,7 @@ public class ItemCleansingTalisman extends ItemMod {
 						removed = true;
 					} else for(PotionEffect potion : potions) {
 						int id = potion.getPotionID();
-						if(Potion.potionTypes[id].isBadEffect()) {
+						if(Potion.potionTypes[id].isBadEffect) {
 							player.removePotionEffect(id);
 							removed = true;
 							break;
