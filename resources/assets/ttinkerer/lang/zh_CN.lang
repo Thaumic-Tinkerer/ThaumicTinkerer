@@ -25,6 +25,10 @@ ttmisc.adult=成年
 ttmisc.baseCost=基础耗费
 ttmisc.clickToRemove=点击以移除
 ttmisc.startEnchant=开始附魔
+ttmisc.full=§c已满
+ttmisc.notAbsorbing=§c关闭吸引模式
+ttmisc.absorbing=§a开启吸引模式
+
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=烟黑石英
@@ -39,6 +43,7 @@ item.ttinkerer:cleansingTalisman.name=防身护身符
 item.ttinkerer:brightNitor.name=超能闪耀之光
 item.ttinkerer:focusTelekinesis.name=法杖核心：念力
 item.ttinkerer:soulMould.name=灵魂模具
+item.ttinkerer:xpTalisman.name=汇魔护身符
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -51,6 +56,15 @@ tile.ttinkerer:animationTablet.name=活化工具台
 tile.ttinkerer:magnet.name=奥术念力磁铁
 tile.ttinkerer:mobMagnet.name=奥术生物磁铁
 tile.ttinkerer:enchanter.name=渗透附魔台
+tile.ttinkerer:funnel.name=要素漏斗
+
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=腾迅
+enchantment.ttinkerer:slowFall=落雪
+enchantment.ttinkerer:autoSmelt=燃烧之触
+enchantment.ttinkerer:desintegrate=解离
+enchantment.ttinkerer:quickDraw=即时备战
+enchantment.ttinkerer.vampirism=吸血
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -60,7 +74,7 @@ tc.research_category.TT_ENCHANTING=[TT]附魔
 ttresearch.name.PERIPHERALS=电脑外设
 ttresearch.lore.PERIPHERALS=当科学遇见魔法
 ttresearch.page.PERIPHERALS.0=神秘工匠让其添加的某些方块以及神秘时代添加的一些方块可以作为电脑外设(ComputerCraft的外设)使用。<BR><BR>为方便起见，使用这些外设的文档放置在网上以供查询。按下回车可以访问对应的页面。
-ttresearch.webpage.peripherals=http://tab.mcbbc.com/knowledge.php?id=57
+ttresearch.webpage.peripherals=http://tab.mcmod.cn/knowledge.php?id=57
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=烟黑石英
@@ -95,7 +109,7 @@ ttresearch.page.SPELL_CLOTH.0=通过在一块附魔的织物上融合原始的�
 
 # -- DYNAMISM TABLET
 ttresearch.name.ANIMATION_TABLET=活化工具台
-ttresearch.lore.ANIMATION_TABLET=罗萨莉亚的花边
+ttresearch.lore.ANIMATION_TABLET=我已78级…
 ttresearch.page.ANIMATION_TABLET.0=你决定进一步研究傀儡活化核心，这便是研究的成果。<BR><BR>这个工具台能够使用神秘的能量驱动其内的物品，它能够根据设置模拟玩家使用其内物品左击或者右击。其设置界面下方的按钮还能设置其工作模式是持续有效还是接受红石脉冲时起效。<BR><BR>任何玩家可以持有的物品，包括方块均可放入活化工具台。正如你想的那样，活化工具台使用工具挖掘时效率只取决于工具本身，就像一名玩家在使用这个工具一样。
 
 # -- WAND FOCUS: UPRISING
@@ -129,10 +143,50 @@ ttresearch.lore.MAGNETS=啥原理呢？
 ttresearch.page.MAGNETS.0=在研究念力核心时，你试图将相关知识应用到能够向磁铁那样吸引物品或者生物的新设备上。于是你发明了这两台新设备。<BR><BR>它们都具有两种状态：北极(红色)模式和南极(蓝色)模式。红色模式推开物品或者生物；蓝色模式吸引物品或者生物。
 ttresearch.page.MAGNETS.1=你设计了两种新设备：奥术念力磁铁以及奥术生物磁铁、它们分布针对物品或者生物有效。<BR><BR>奥术生物磁铁支持一些更加复杂的机制，你可以手持铸造法杖右键打打开一个设置过滤的界面，可以选择特定生物，如果可能还能设置该生物是否成年。设备使用的模板可以使用灵魂模具右键生物得到。
 
-
 # -- OSMOTIC ENCHANTER
 ttresearch.name.ENCHANTER=渗透附魔台
 ttresearch.lore.ENCHANTER=幸运大挑选
 ttresearch.page.ENCHANTER.0=你开始厌倦辛勤付出却换来一个糟糕的附魔。于是你制造了一种新型的附魔台，允许你挑选在工具上附魔确定的属性。<BR><BR>这种新型装置工作时需要法杖，每一种附魔类型都需求法杖提供特定的灵气组合。附魔的成本与附魔等级以指数方式上涨。<BR><BR>这个附魔台同样遵循一般附魔法则，比如，精准采集与时运不得同时附魔同一物品。
 ttresearch.page.ENCHANTER.1=当你选择了需要的附魔类型，点击界面上红色按钮便可以开始附魔。在附魔过程中，你不能取走被附魔的物品，也不能改变你之前选择的附魔类型。<BR><BR>附魔台会从发展中汲取魔力，知道附魔完成。为了让附魔台的魔法仪式能够顺利完成，需要在附近立起6个4个方块的柱子，这些柱子需要和附魔台在同一水平线上。<BR><BR>[continued]
 ttresearch.page.ENCHANTER.2=这些柱子用2~12个黑曜石图腾方块堆垒而成，上方放置着闪耀之光。附魔台将会从这些柱子中汲取咒波能量，从法杖中汲取魔力，集合这两种力量最终完成附魔。
+
+# -- TALISMAN OF WITHHOLD
+ttresearch.name.XP_TALISMAN=汇魔护身符
+ttresearch.lore.XP_TALISMAN=多快好省
+ttresearch.page.XP_TALISMAN.0=僵尸之脑利用得当便能用于储存经验。你制作的这种护身符虽非完美，但也具有类似功能。<BR><BR>手持护身符按住潜行按键右击可以激活或者关闭护身符：激活的护身符会吸收附近的经验。当携带有空的玻璃瓶的时候，右击护身符，可以释放出经验来填满玻璃瓶得到附魔瓶。
+
+
+# -- ESSENTIA FUNNEL
+ttresearch.name.FUNNEL=要素漏斗
+ttresearch.lore.FUNNEL=纵已转移
+ttresearch.page.FUNNEL.0=你对用安瓿来倒腾罐子里的要素烦透了，因此你最终制造出一种新设备，能够将罐子里的要素转移到其他罐子中。<BR><BR>将此方块置于漏斗上方，用含有要素的罐子右击，如果漏斗对接的是一个空罐子或者装有相同要素的未满罐子，那么你手持罐子中的要素会向其转移。
+
+# -- ENCHANTMENT: ASCENT BOOST
+ttresearch.name.TTENCH_ASCENT_BOOST=附魔:腾迅
+ttresearch.lore.TTENCH_ASCENT_BOOST=比巨人更高
+ttresearch.page.TTENCH_ASCENT_BOOST.0=你研究出一种能够赋予你卓越弹跳能力的附魔。<BR><BR>这种附魔能够被施加在腿部装备上，穿戴该装备后你就能够比一般情况跳得高得多了。
+
+# -- ENCHANTMENT: SLOW FALL
+ttresearch.name.TTENCH_SLOW_FALL=附魔:落雪
+ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
+ttresearch.page.TTENCH_SLOW_FALL.0=你研究出一种让自己可以像雪花那样缓落的附魔。<BR><BR>这种附魔能够被施加在靴子上，穿戴后，在下落的时候按住shift就能缓慢掉落，如果不在乎掉落伤害，则可以不主动激活该功能。
+
+# -- ENCHANTMENT: FLAMING TOUCH
+ttresearch.name.TTENCH_AUTO_SMELT=附魔:燃烧之触
+ttresearch.lore.TTENCH_AUTO_SMELT=烈火神焰!
+ttresearch.page.TTENCH_AUTO_SMELT.0=你研究出一种凭空召唤火焰的附魔。<BR><BR>工具被施加该附魔后，能够通过火焰的力量软化木材结果从而轻易采伐任何木质品，且不会将其摧毁。然后，附魔后的工具将难以采集其他方块，且耐久会双倍地减少。
+
+# -- ENCHANTMENT: DESINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=附魔:解离
+ttresearch.lore.TTENCH_DESINTEGRATE=异界型时崎狂三
+ttresearch.page.TTENCH_DESINTEGRATE.0=你研究出一种能够快速采集柔软材料方块的附魔。<BR><BR>附魔后的工具能够非常轻易地采集泥土，石头，下界岩这种常见的不是非常硬的材料，然后，该工具会变得难以采集其他方块，且耐久双倍减少。
+
+# -- ENCHANTMENT: QUICK DRAW
+ttresearch.name.TTENCH_QUICK_DRAW=附魔:即时战备
+ttresearch.lore.TTENCH_QUICK_DRAW=快速施法
+ttresearch.page.TTENCH_QUICK_DRAW.0=你研究出一种让你能够更快地拉弓射箭的附魔。<BR><BR>附魔后的弓能够比普通弓更快地发射箭矢。
+
+# -- ENCHANTMENT: VAMPIRISM
+ttresearch.name.TTENCH_VAMPIRISM=附魔:吸血
+ttresearch.lore.TTENCH_VAMPIRISM=我将夺走那些
+ttresearch.page.TTENCH_VAMPIRISM.0=你研究出一种能够吸取敌人生命值为己用的附魔。<BR><BR>这种附魔能够被施加在剑上。当附魔后的剑对敌人造成伤害时，会将伤害数值的一部分作为生命值返回给使用者。
