@@ -62,8 +62,8 @@
 		<touch file="${build.file.version}" />
 		<echo file="${build.file.version}">
 {
-	"version" : "${build.version}"
-	"build" : "${build.build_number}"
+	"version" : "${build.version}",
+	"build" : "${build.build_number}",
 	"mc_version" : "${build.mc_version}"
 }
 		</echo>

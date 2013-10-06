@@ -71,7 +71,7 @@ public class ModEnchantmentHandler {
 				return;
 
 			int quickDraw = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idQuickDraw, heldItem);
-			ItemStack usingItem = player.getItemInUse();
+			ItemStack usingItem = player.itemInUse;
 			if(quickDraw > 0 && usingItem != null && usingItem.getItem() instanceof ItemBow)
 				if((usingItem.getItem().getMaxItemUseDuration(usingItem) - player.itemInUseCount) % (6 - quickDraw) == 0)
 					player.itemInUseCount --;
