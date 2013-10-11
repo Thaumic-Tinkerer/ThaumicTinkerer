@@ -54,7 +54,7 @@ public final class HUDHandler {
 						FontRenderer font = ClientHelper.fontRenderer();
 						boolean unicode = font.getUnicodeFlag();
 						font.setUnicodeFlag(true);
-						String name = String.format(StatCollector.translateToLocal("ttmisc.focusDislocation.tooltip"), pickedBlock.getItem() == null ? "null" : pickedBlock.getDisplayName());
+						String name = StatCollector.translateToLocal("ttmisc.focusDislocation.tooltip");
 						int strLength = font.getStringWidth(name);
 
 						Gui.drawRect(xpos + 18, ypos, xpos + 18 + strLength + 4, ypos + 9, 0x66000000);
