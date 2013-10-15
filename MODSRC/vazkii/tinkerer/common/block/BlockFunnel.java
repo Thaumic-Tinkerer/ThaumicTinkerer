@@ -138,10 +138,9 @@ public class BlockFunnel extends BlockModContainer {
 		if(stack == null) {
 			ItemStack playerStack = par5EntityPlayer.getCurrentEquippedItem();
 			if(funnel.canInsertItem(0, playerStack, 1)) {
-				funnel.setInventorySlotContents(0, playerStack);
+				funnel.setInventorySlotContents(0, playerStack.splitStack(1));
 
-				playerStack.stackSize--;
-				if(playerStack.stackSize == 0)
+				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 				PacketDispatcher.sendPacketToAllInDimension(funnel.getDescriptionPacket(), par1World.provider.dimensionId);
 				return true;
