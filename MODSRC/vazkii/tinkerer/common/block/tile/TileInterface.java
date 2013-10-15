@@ -14,7 +14,8 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
-import ic2.api.Direction;
+import ic2.api.energy.event.EnergyTileLoadEvent;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -24,6 +25,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
@@ -43,6 +45,8 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 
 	public int x, y, z;
 	private boolean cheaty;
+	
+	private boolean addedToICEnergyNet = false;
 
 	@Override
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
@@ -62,6 +66,32 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 		y = par1nbtTagCompound.getInteger(TAG_Y_TARGET);
 		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
 		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
+	}
+	
+	@Override
+	public void updateEntity() {
+		if(!addedToICEnergyNet) {
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+			addedToICEnergyNet = true;
+		}
+	}
+	
+	@Override
+	public void invalidate() {
+		removeFromIC2EnergyNet();
+		super.invalidate();
+	}
+	
+	@Override
+	public void onChunkUnload() {
+		removeFromIC2EnergyNet();
+	}
+	
+	private void removeFromIC2EnergyNet() {
+		if(addedToICEnergyNet) {
+			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+			addedToICEnergyNet = false;
+		}
 	}
 
 	private TileEntity getTile() {
@@ -228,27 +258,21 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 	}
 
 	@Override
-	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction) {
+	public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergySink ? ((IEnergySink) tile).acceptsEnergyFrom(emitter, direction) : false;
 	}
-
+	
 	@Override
-	public boolean isAddedToEnergyNet() {
+	public double demandedEnergyUnits() {
 		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).isAddedToEnergyNet() : false;
+		return tile instanceof IEnergySink ? ((IEnergySink) tile).demandedEnergyUnits() : 0;
 	}
 
 	@Override
-	public int demandsEnergy() {
+	public double injectEnergyUnits(ForgeDirection directionFrom, double amount) {
 		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).demandsEnergy() : 0;
-	}
-
-	@Override
-	public int injectEnergy(Direction directionFrom, int amount) {
-		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).injectEnergy(directionFrom, amount) : 0;
+		return tile instanceof IEnergySink ? ((IEnergySink) tile).injectEnergyUnits(directionFrom, amount) : 0;
 	}
 
 	@Override
