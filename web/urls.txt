@@ -18,3 +18,4 @@
 2.0-18=https://www.sugarsync.com/pf/D9740002_63478821_247812
 2.0-19=https://www.sugarsync.com/pf/D9740002_63478821_357313
 2.0-20=https://www.sugarsync.com/pf/D9740002_63478821_363575
+2.0-21=https://www.sugarsync.com/pf/D9740002_63478821_374814
