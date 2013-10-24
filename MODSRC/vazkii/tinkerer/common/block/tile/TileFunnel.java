@@ -30,6 +30,7 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.blocks.ItemJarFilled;
+import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.tiles.TileJarFillable;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
@@ -40,26 +41,28 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 	@Override
 	public void updateEntity() {
 		ItemStack jar = getStackInSlot(0);
-		if(!worldObj.isRemote && jar != null && jar.getItem() instanceof ItemJarFilled) {
-			ItemJarFilled item = (ItemJarFilled) jar.getItem();
-			AspectList aspectList = item.getAspects(jar);
-			if(aspectList != null && aspectList.size() == 1) {
-				Aspect aspect = aspectList.getAspects()[0];
+		if(jar != null && jar.getItem() instanceof ItemJarFilled) {
+			if(!worldObj.isRemote) {
+				ItemJarFilled item = (ItemJarFilled) jar.getItem();
+				AspectList aspectList = item.getAspects(jar);
+				if(aspectList != null && aspectList.size() == 1) {
+					Aspect aspect = aspectList.getAspects()[0];
 
-				TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
-				if(tile != null && tile instanceof TileEntityHopper) {
-					TileEntity tile1 = getHopperFacing(tile.xCoord, tile.yCoord, tile.zCoord, tile.getBlockMetadata());
-					if(tile1 instanceof TileJarFillable) {
-						TileJarFillable jar1 = (TileJarFillable) tile1;
+					TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
+					if(tile != null && tile instanceof TileEntityHopper) {
+						TileEntity tile1 = getHopperFacing(tile.xCoord, tile.yCoord, tile.zCoord, tile.getBlockMetadata());
+						if(tile1 instanceof TileJarFillable) {
+							TileJarFillable jar1 = (TileJarFillable) tile1;
 
-						AspectList aspectList1 = jar1.getAspects();
-						if(aspectList1 != null && aspectList1.size() == 0 || aspectList1.getAspects()[0] == aspect && aspectList1.getAmount(aspectList1.getAspects()[0]) < 64) {
-							jar1.addToContainer(aspect, 1);
-							item.setAspects(jar, aspectList.remove(aspect, 1));
+							AspectList aspectList1 = jar1.getAspects();
+							if(aspectList1 != null && aspectList1.size() == 0 || aspectList1.getAspects()[0] == aspect && aspectList1.getAmount(aspectList1.getAspects()[0]) < 64) {
+								jar1.addToContainer(aspect, 1);
+								item.setAspects(jar, aspectList.remove(aspect, 1));
+							}
 						}
 					}
 				}
-			}
+			} else setInventorySlotContents(0, new ItemStack(ConfigBlocks.blockJar));
 		}
 	}
 
