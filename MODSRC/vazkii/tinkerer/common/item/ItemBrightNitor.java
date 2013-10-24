@@ -28,9 +28,9 @@ public class ItemBrightNitor extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		int x = (int) par3Entity.posX;
+		int x = (int) Math.floor(par3Entity.posX);
 		int y = (int) par3Entity.posY + 1;
-		int z = (int) par3Entity.posZ;
+		int z = (int) Math.floor(par3Entity.posZ);
 
 		if((par2World.getBlockId(x, y, z) == 0 || par2World.getBlockId(x, y, z) == ModBlocks.nitorGas.blockID) && !par2World.isRemote)
 			par2World.setBlock(x, y, z, ModBlocks.nitorGas.blockID, 0, 2);
