@@ -194,6 +194,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		}
 
 		if(done) {
+			stack = getStackInSlot(0);
 			if(stack.stackSize == 0)
 				setInventorySlotContents(0, null);
 
