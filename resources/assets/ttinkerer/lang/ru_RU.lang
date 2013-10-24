@@ -60,7 +60,7 @@ enchantment.ttinkerer:slowFall=Замедлённое падение
 enchantment.ttinkerer:autoSmelt=Огненное прикосновение
 enchantment.ttinkerer:desintegrate=Разрушение
 enchantment.ttinkerer:quickDraw=Быстрая стрельба
-enchantment.ttinkerer.vampirism=Вампиризм
+enchantment.ttinkerer:vampirism=Вампиризм
 
 # RESEARCH
 ttresearch.prefix=[TT] 

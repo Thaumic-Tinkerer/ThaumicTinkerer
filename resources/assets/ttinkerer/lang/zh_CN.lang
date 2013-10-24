@@ -64,7 +64,7 @@ enchantment.ttinkerer:slowFall=落雪
 enchantment.ttinkerer:autoSmelt=燃烧之触
 enchantment.ttinkerer:desintegrate=解离
 enchantment.ttinkerer:quickDraw=即时备战
-enchantment.ttinkerer.vampirism=吸血
+enchantment.ttinkerer:vampirism=吸血
 
 # RESEARCH
 ttresearch.prefix=[TT] 
