@@ -18,6 +18,7 @@ import net.minecraft.item.Item;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.foci.ItemFocusDislocation;
 import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
+import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
@@ -37,7 +38,8 @@ public final class ModItems {
 	public static Item focusTelekinesis;
 	public static Item soulMould;
 	public static Item xpTalisman;
-
+	public static Item focusSmelt;
+	
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
@@ -52,5 +54,6 @@ public final class ModItems {
 		focusTelekinesis = new ItemFocusTelekinesis(LibItemIDs.idFocusTelekinesis).setUnlocalizedName(LibItemNames.FOCUS_TELEKINESIS);
 		soulMould = new ItemSoulMould(LibItemIDs.idSoulMould).setUnlocalizedName(LibItemNames.SOUL_MOULD);
 		xpTalisman = new ItemXPTalisman(LibItemIDs.idXPTalisman).setUnlocalizedName(LibItemNames.XP_TALISMAN);
+		focusSmelt = new ItemFocusSmelt(LibItemIDs.idFocusSmelt).setUnlocalizedName(LibItemNames.FOCUS_SMELT);
 	}
 }
