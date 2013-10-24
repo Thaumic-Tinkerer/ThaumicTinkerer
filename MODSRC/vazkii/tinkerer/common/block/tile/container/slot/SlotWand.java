@@ -27,7 +27,11 @@ public class SlotWand extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() instanceof ItemWandCasting;
+		if(!(par1ItemStack.getItem() instanceof ItemWandCasting))
+			return false;
+		
+		ItemWandCasting wand = (ItemWandCasting) par1ItemStack.getItem();
+		return wand.getCap(par1ItemStack).getBaseCostModifier() <= 1F;
 	}
 
 	@Override

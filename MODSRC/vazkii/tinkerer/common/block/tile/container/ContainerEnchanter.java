@@ -18,7 +18,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.container.slot.SlotTool;
 import vazkii.tinkerer.common.block.tile.container.slot.SlotWand;
@@ -45,7 +44,7 @@ public class ContainerEnchanter extends ContainerPlayerInv {
         if (var4 != null && var4.getHasStack()) {
         	ItemStack var5 = var4.getStack();
 
-        	boolean wand = var5.getItem() instanceof ItemWandCasting;
+        	boolean wand = ((Slot) inventorySlots.get(1)).isItemValid(var5);
 
             var3 = var5.copy();
 

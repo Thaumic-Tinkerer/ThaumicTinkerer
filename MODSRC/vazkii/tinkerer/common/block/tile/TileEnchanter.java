@@ -101,7 +101,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			if(!working) // Pillar check
 				return;
 
-			enchantItem : {
+			enchantItem : {				
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
 					int currentAmount = currentAspects.getAmount(aspect);
 					int totalAmount = totalAspects.getAmount(aspect);
@@ -118,7 +118,8 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 					int enchant = enchantments.get(i);
 					int level = levels.get(i);
 
-					tool.addEnchantment(Enchantment.enchantmentsList[enchant], level);
+					if(!worldObj.isRemote)
+						tool.addEnchantment(Enchantment.enchantmentsList[enchant], level);
 				}
 
 				enchantments.clear();
@@ -143,7 +144,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 
 					if(missing > 0 && onWand >= 100)
 						aspectsThatCanGet.add(aspect);
-				}
+				} 
 
 				int i = aspectsThatCanGet.isEmpty() ? 0 : worldObj.rand.nextInt(aspectsThatCanGet.size());
 				Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);
@@ -152,8 +153,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 					wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
 					currentAspects.add(aspect, 1);
 					Tuple4Int p = pillars.get(i);
-					if(worldObj.rand.nextInt(4) == 0) {
-						//Thaumcraft.proxy.essentiaTrailFx(getWorldObj(), p.i1, p.i4, p.i3, xCoord, yCoord, zCoord, 1, aspect.getColor(), worldObj.rand.nextFloat() * 0.5F + 0.5F);
+					if(worldObj.rand.nextBoolean()) {
 						Thaumcraft.proxy.blockRunes(worldObj, p.i1, p.i4 - 0.75, p.i3, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15, worldObj.rand.nextFloat());
 						Thaumcraft.proxy.blockRunes(worldObj, xCoord, yCoord + 0.25, zCoord, 0.3F + worldObj.rand.nextFloat() * 0.7F, 0.0F, 0.3F + worldObj.rand.nextFloat() * 0.7F, 15, worldObj.rand.nextFloat());
 						if(worldObj.rand.nextInt(5) == 0)
