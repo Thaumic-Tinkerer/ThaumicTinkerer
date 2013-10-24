@@ -65,6 +65,7 @@ public final class ConfigHandler {
 		LibItemIDs.idFocusFlight = loadItem(LibItemNames.FOCUS_FLIGHT, LibItemIDs.idFocusFlight);
 		LibItemIDs.idFocusDislocation = loadItem(LibItemNames.FOCUS_DISLOCATION, LibItemIDs.idFocusDislocation);
 		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.idCleansingTalisman);
+		LibItemIDs.idFocusTelekinesis = loadItem(LibItemNames.FOCUS_TELEKINESIS, LibItemIDs.idFocusTelekinesis);
 		LibItemIDs.idBrightNitor = loadItem(LibItemNames.BRIGHT_NTIOR, LibItemIDs.idBrightNitor);
 		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.idSoulMould);
 		LibItemIDs.idXPTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.idXPTalisman);
