@@ -117,7 +117,7 @@ public final class ModResearch {
 		research = ResearchCategories.getResearch("JARBRAIN");
 		ResearchCategories.researchCategories.get(LibResearch.CATEGORY_ARTIFICE).research.remove("JARBRAIN");
 
-		research = new ResearchItem("JARBRAIN", LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.SENSES, 1).add(Aspect.MIND, 2).add(Aspect.UNDEAD, 2), -3, 0, 2, new ItemStack(ConfigBlocks.blockJar, 1, 1)).setParentsHidden("INFUSION").setLost().registerResearchItem();
+		research = new ResearchItem("JARBRAIN", LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.SENSES, 1).add(Aspect.MIND, 2).add(Aspect.UNDEAD, 2), -3, 0, 2, new ItemStack(ConfigBlocks.blockJar, 1, 1)).setParentsHidden("INFUSION").registerResearchItem();
 		research.setPages(new ResearchPage("tc.research_page.JARBRAIN.1"), infusionPage("JarBrain"));
 	}
 
