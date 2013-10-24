@@ -40,6 +40,7 @@ item.ttinkerer:brightNitor.name=Hyperenergetic Nitor
 item.ttinkerer:focusTelekinesis.name=Wand Focus: Telekinesis
 item.ttinkerer:soulMould.name=Soul Mould
 item.ttinkerer:xpTalisman.name=Talisman of Withhold
+item.ttinkerer:focusSmelt.name=Wand Focus: Efreet's Flame
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
