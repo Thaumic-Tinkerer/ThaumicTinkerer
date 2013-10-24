@@ -60,7 +60,7 @@ enchantment.ttinkerer:slowFall=Slow Fall
 enchantment.ttinkerer:autoSmelt=Flaming Touch
 enchantment.ttinkerer:desintegrate=Desintegrate
 enchantment.ttinkerer:quickDraw=Quick Draw
-enchantment.ttinkerer.vampirism=Vampirism
+enchantment.ttinkerer:vampirism=Vampirism
 
 # RESEARCH
 ttresearch.prefix=[TT] 
