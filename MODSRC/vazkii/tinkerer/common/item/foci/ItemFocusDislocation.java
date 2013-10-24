@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -181,4 +182,9 @@ public class ItemFocusDislocation extends ItemModFocus {
 	public AspectList getVisCost() {
 		return visUsage;
 	}
+	
+	@Override
+	public boolean acceptsEnchant(int paramInt) {
+		return super.acceptsEnchant(paramInt) && paramInt != Config.enchPotency.effectId;
+	} 
 }

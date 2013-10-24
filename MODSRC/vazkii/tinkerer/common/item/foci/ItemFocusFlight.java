@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
@@ -21,6 +22,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 
@@ -38,7 +40,7 @@ public class ItemFocusFlight extends ItemModFocus {
 
 		if (wand.consumeAllVis(itemstack, p, getVisCost(), true)) {
 			Vec3 vec = p.getLookVec();
-			double force = 1 / 1.5;
+			double force = (1 / 1.5) * (1 + (EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, itemstack) * 0.2));
 			p.motionX = vec.xCoord * force;
 			p.motionY = vec.yCoord * force;
 			p.motionZ = vec.zCoord * force;
