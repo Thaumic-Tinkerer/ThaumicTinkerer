@@ -106,11 +106,11 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		par1NBTTagCompound.setBoolean(TAG_ADULT, adult);
+		adult = par1NBTTagCompound.getBoolean(TAG_ADULT);
 	}
 
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-    	adult = par1NBTTagCompound.getBoolean(TAG_ADULT);
+		par1NBTTagCompound.setBoolean(TAG_ADULT, adult);
     }
 
 	@Override
