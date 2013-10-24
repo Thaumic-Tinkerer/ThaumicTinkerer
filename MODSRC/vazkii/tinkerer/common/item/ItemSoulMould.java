@@ -36,7 +36,7 @@ public class ItemSoulMould extends ItemMod {
 	}
 
 	@Override
-    public boolean func_111207_a(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
+    public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
 		if(par2EntityPlayer != null)
 			setPattern(par2EntityPlayer.getCurrentEquippedItem(), par3EntityLivingBase);
 		else setPattern(par1ItemStack, par3EntityLivingBase);

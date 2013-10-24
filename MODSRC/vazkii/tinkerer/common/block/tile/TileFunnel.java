@@ -193,7 +193,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 	@Override
 	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.customParam1);
+		readCustomNBT(packet.data);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class GuiButtonEnchanterLevel extends GuiButton {
 
 		int x = 218 + (plus ? 7 : 0);
 
-		par1Minecraft.renderEngine.func_110577_a(gui);
+		par1Minecraft.renderEngine.bindTexture(gui);
 		drawTexturedModalRect(xPosition, yPosition, x, 0, 7, 7);
 	}
 

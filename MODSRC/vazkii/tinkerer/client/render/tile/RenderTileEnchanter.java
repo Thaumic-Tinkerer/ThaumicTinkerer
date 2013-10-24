@@ -51,7 +51,7 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 			GL11.glTranslatef(0.6F, -0.2F, 0F);
 			GL11.glRotatef(30F, 0F, 0F, 1F);
 
-			ClientHelper.minecraft().renderEngine.func_110577_a(TextureMap.field_110576_c);
+			ClientHelper.minecraft().renderEngine.bindTexture(TextureMap.locationItemsTexture);
 
 			int renderPass = 0;
 			do {
@@ -63,7 +63,7 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
                      float f1 = icon.getMaxU();
                      float f2 = icon.getMinV();
                      float f3 = icon.getMaxV();
-                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getOriginX(), icon.getOriginY(), 1F / 16F);
+                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
                      GL11.glColor3f(1F, 1F, 1F);
             	}
             	renderPass++;

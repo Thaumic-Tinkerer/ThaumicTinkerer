@@ -85,7 +85,7 @@ public class GuiMobMagnet extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.renderEngine.func_110577_a(gui);
+		mc.renderEngine.bindTexture(gui);
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		String adult = StatCollector.translateToLocal("ttmisc.adult");
 		String child = StatCollector.translateToLocal("ttmisc.child");

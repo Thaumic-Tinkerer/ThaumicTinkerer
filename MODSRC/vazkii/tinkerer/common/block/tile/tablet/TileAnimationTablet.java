@@ -149,7 +149,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		if(leftClick) {
 			Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
 			if(entity != null) {
-				player.field_110155_d.func_111147_b(stack.func_111283_C()); // Set attack strenght
+				player.getAttributeMap().applyAttributeModifiers(stack.getAttributeModifiers()); // Set attack strenght
 				player.attackTargetEntityWithCurrentItem(entity);
 				done = true;
 			} else if(!isBreaking){
@@ -171,7 +171,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 			try {
 				ForgeEventFactory.onPlayerInteract(player, Action.RIGHT_CLICK_AIR, coords.posX, coords.posY, coords.posZ, side);
 				Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
-				done = entity != null && entity instanceof EntityLiving && (item.func_111207_a(stack, player, (EntityLivingBase) entity) || (entity instanceof EntityAnimal ? ((EntityAnimal) entity).interact(player) : true));
+				done = entity != null && entity instanceof EntityLiving && (item.itemInteractionForEntity(stack, player, (EntityLivingBase) entity) || (entity instanceof EntityAnimal ? ((EntityAnimal) entity).interact(player) : true));
 
 				if(!done)
 					item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
@@ -501,7 +501,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 	@Override
 	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.customParam1);
+		readCustomNBT(packet.data);
 	}
 
 	@Override

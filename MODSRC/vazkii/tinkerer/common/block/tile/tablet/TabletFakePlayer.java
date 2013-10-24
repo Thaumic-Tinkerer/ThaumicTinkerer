@@ -50,7 +50,7 @@ public class TabletFakePlayer extends FakePlayer {
 		ridingEntity = null;
 
 		motionX = motionY = motionZ = 0;
-		setEntityHealth(20);
+		setHealth(20);
 		isDead = false;
 
 		int meta = tablet.getBlockMetadata() & 7;

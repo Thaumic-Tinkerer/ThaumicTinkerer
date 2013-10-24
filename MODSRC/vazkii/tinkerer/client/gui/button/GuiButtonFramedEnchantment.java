@@ -34,7 +34,7 @@ public class GuiButtonFramedEnchantment extends GuiButtonEnchantment {
 		if(!canRender() || parent.enchanter.enchantments.isEmpty() || parent.enchanter.levels.isEmpty())
 			return;
 
-		ClientHelper.minecraft().renderEngine.func_110577_a(gui);
+		ClientHelper.minecraft().renderEngine.bindTexture(gui);
 		drawTexturedModalRect(xPosition - 4, yPosition - 4, 176, 0, 24, 24);
 
 		int index = parent.enchanter.enchantments.indexOf(enchant.effectId);

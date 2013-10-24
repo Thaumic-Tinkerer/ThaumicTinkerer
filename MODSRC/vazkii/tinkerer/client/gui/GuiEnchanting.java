@@ -178,7 +178,7 @@ public class GuiEnchanting extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		mc.renderEngine.func_110577_a(gui);
+		mc.renderEngine.bindTexture(gui);
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
 		ItemStack itemToEnchant = enchanter.getStackInSlot(0);

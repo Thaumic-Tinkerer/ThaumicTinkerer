@@ -48,7 +48,7 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
 		boolean blue = tileentity.worldObj == null || (tileentity.getBlockMetadata() & 1) == 0;
 		boolean mob = tileentity.worldObj == null ? RenderTileMagnet.mob : (tileentity.getBlockMetadata() & 2) == 2;
 
-		ClientHelper.minecraft().renderEngine.func_110577_a(mob ? blue ? blueMob : redMob : blue ? RenderTileMagnet.blue : red);
+		ClientHelper.minecraft().renderEngine.bindTexture(mob ? blue ? blueMob : redMob : blue ? RenderTileMagnet.blue : red);
 
         int redstone = 0;
         if(tileentity.worldObj != null) {

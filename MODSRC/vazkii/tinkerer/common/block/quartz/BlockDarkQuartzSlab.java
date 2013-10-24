@@ -58,7 +58,7 @@ public class BlockDarkQuartzSlab extends BlockHalfSlab {
 	}
 
 	@Override
-	protected ItemStack createStackedBlock(int par1) {
+	public ItemStack createStackedBlock(int par1) {
 		return new ItemStack(ModBlocks.darkQuartzSlab);
 	}
 

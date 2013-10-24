@@ -85,7 +85,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		ItemStack stack = tablet.getStackInSlot(0);
 		Minecraft mc = ClientHelper.minecraft();
 		if(stack != null) {
-	       mc.renderEngine.func_110577_a(stack.getItem() instanceof ItemBlock ? TextureMap.field_110575_b : TextureMap.field_110576_c);
+	       mc.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 
 			if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[stack.itemID].getRenderType())) {
             	GL11.glTranslatef(0.5F, 0.55F, 0F);
@@ -102,7 +102,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 	                     float f1 = icon.getMaxU();
 	                     float f2 = icon.getMinV();
 	                     float f3 = icon.getMaxV();
-	                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getOriginX(), icon.getOriginY(), 1F / 16F);
+	                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
 	                     GL11.glColor3f(1F, 1F, 1F);
 	            	}
 	            	renderPass++;
@@ -113,7 +113,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 	private void renderOverlay(TileAnimationTablet tablet, ResourceLocation texture, int rotationMod, boolean useLighting, boolean useBlend, double size, float height, float forceDeg) {
 		Minecraft mc = ClientHelper.minecraft();
-		mc.renderEngine.func_110577_a(texture);
+		mc.renderEngine.bindTexture(texture);
 		GL11.glPushMatrix();
 		GL11.glDepthMask(false);
 		if(!useLighting)

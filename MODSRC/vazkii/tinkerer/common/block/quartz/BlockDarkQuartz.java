@@ -87,7 +87,7 @@ public class BlockDarkQuartz extends BlockMod {
 	}
 
 	@Override
-	protected ItemStack createStackedBlock(int par1) {
+	public ItemStack createStackedBlock(int par1) {
 		return par1 != 3 && par1 != 4 ? super.createStackedBlock(par1) : new ItemStack(blockID, 1, 2);
 	}
 

@@ -47,7 +47,7 @@ public class GuiButtonEnchant extends GuiButton {
 		final int x = 176;
 		final int y = enchanter.working ? 39 : 24;
 
-		ClientHelper.minecraft().renderEngine.func_110577_a(gui);
+		ClientHelper.minecraft().renderEngine.bindTexture(gui);
 		drawTexturedModalRect(xPosition, yPosition, x, y, 15, 15);
 
 		if(par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15 && !enchanter.working) {

@@ -54,7 +54,7 @@ public class GuiButtonEnchantment extends GuiButton {
 			return;
 
 		EnchantmentData data = EnchantmentManager.enchantmentData.get(enchant.effectId).get(1);
-		ClientHelper.minecraft().renderEngine.func_110577_a(data.texture);
+		ClientHelper.minecraft().renderEngine.bindTexture(data.texture);
 		GL11.glEnable(GL11.GL_BLEND);
 		drawTexturedModalRect16(xPosition, yPosition, 0, 0, 16, 16);
 		GL11.glDisable(GL11.GL_BLEND);
