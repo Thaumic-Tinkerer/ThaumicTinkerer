@@ -166,7 +166,7 @@ ttresearch.page.TTENCH_ASCENT_BOOST.0=You have formulated an enchantment that al
 # -- ENCHANTMENT: SLOW FALL
 ttresearch.name.TTENCH_SLOW_FALL=Enchantment: Slow Fall
 ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
-ttresearch.page.TTENCH_SLOW_FALL.0=You have formulated an enchantment that allows you to fall slowly.<BR><BR>This enchantment can be applied on foot armor. When done so, the wearer will be able to shift click while falling to fall slower, also reducing, if not negating the fall damage.
+ttresearch.page.TTENCH_SLOW_FALL.0=You have formulated an enchantment that allows you to fall slowly.<BR><BR>This enchantment can be applied on foot armor. When done so, the wearer will fall at a slower rate, this will also reduce, if not negating the fall damage.<BR><BR>Pressing Shift will temporarily disable this effect allowing you to fall normally.
 
 # -- ENCHANTMENT: FLAMING TOUCH
 ttresearch.name.TTENCH_AUTO_SMELT=Enchantment: Flaming Touch
