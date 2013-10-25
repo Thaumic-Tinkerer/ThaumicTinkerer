@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
+import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
@@ -29,6 +30,8 @@ import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import codechicken.microblock.BlockMicroMaterial;
+import codechicken.microblock.MicroMaterialRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModBlocks {
@@ -61,6 +64,7 @@ public final class ModBlocks {
 		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setUnlocalizedName(LibBlockNames.FUNNEL);
 
 		registerBlocks();
+		registerMultiparts();
 	}
 
 	private static void registerBlocks() {
@@ -76,7 +80,27 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(enchanter, LibBlockNames.ENCHANTER);
 		GameRegistry.registerBlock(funnel, LibBlockNames.FUNNEL);
 	}
-
+	
+	private static void registerMultiparts() {
+		registerMultipart(ConfigBlocks.blockCustomOre, 0);
+		registerMultipart(ConfigBlocks.blockCustomOre, 7);
+		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLog, 1);
+		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLeaves, 1);
+		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticOpaque, 1);
+		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
+		registerMultipartMetadataLine(ModBlocks.darkQuartz, 2);
+	}
+	
+	private static void registerMultipartMetadataLine(Block block, int maxMeta) {
+		for(int i = 0; i < maxMeta; i++)
+			registerMultipart(block, i);
+	}
+	
+	private static void registerMultipart(Block block, int meta) {
+		MicroMaterialRegistry.registerMaterial(new BlockMicroMaterial(block, meta), block.getUnlocalizedName() + (meta == 0 ? "" : "_" + meta));
+	}
+	
+	
 	public static void initTileEntities() {
 		GameRegistry.registerTileEntity(TileInterface.class, LibBlockNames.INTERFACE);
 		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
@@ -85,4 +109,5 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileEnchanter.class, LibBlockNames.ENCHANTER);
 		GameRegistry.registerTileEntity(TileFunnel.class, LibBlockNames.FUNNEL);
 	}
+	
 }
