@@ -29,6 +29,7 @@ import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.network.GuiHandler;
+import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
@@ -36,6 +37,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
 
@@ -56,6 +58,7 @@ public class TTCommonProxy {
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
+		GameRegistry.registerPlayerTracker(new PlayerTracker());
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {

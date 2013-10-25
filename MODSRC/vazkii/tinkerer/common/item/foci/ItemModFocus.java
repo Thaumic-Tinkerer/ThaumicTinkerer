@@ -100,9 +100,13 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 		return false;
 	}
 
+	public boolean isUseItem() {
+		return isVisCostPerTick();
+	}
+	
 	@Override
 	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-		if(isVisCostPerTick())
+		if(isUseItem())
 			paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
 
 		return paramItemStack;
