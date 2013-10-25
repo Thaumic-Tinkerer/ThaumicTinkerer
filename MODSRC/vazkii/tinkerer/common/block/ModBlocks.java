@@ -16,6 +16,9 @@ package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
 import thaumcraft.common.config.ConfigBlocks;
+import vazkii.tinkerer.common.block.multipart.PartCandle;
+import vazkii.tinkerer.common.block.multipart.PartNitor;
+import vazkii.tinkerer.common.block.multipart.RegisterBlockPart;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
@@ -89,6 +92,9 @@ public final class ModBlocks {
 		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticOpaque, 1);
 		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
 		registerMultipartMetadataLine(ModBlocks.darkQuartz, 2);
+		
+		(new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName())).init();
+		//(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
 	}
 	
 	private static void registerMultipartMetadataLine(Block block, int maxMeta) {
