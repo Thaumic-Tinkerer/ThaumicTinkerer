@@ -18,7 +18,9 @@ import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileJarFillable;
+import thaumcraft.common.tiles.TileJarNode;
 import thaumcraft.common.tiles.TileNode;
+import thaumcraft.common.tiles.TileWandPedestal;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
@@ -68,6 +70,9 @@ public class TTCommonProxy {
 		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileJarFillable.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileJarNode.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileWandPedestal.class, handler);
+
 		// TODO Enchanter as peripheral
 		// TODO Brain in a jar as peripheral
 	}
