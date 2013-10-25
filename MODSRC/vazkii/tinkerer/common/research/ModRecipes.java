@@ -77,7 +77,7 @@ public final class ModRecipes {
 	private static void initArcaneRecipes() {
 		registerResearchItem(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ModBlocks.interfase), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
 				"BRB", "LEL", "BRB",
-				'B', new ItemStack(Block.stone),
+				'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
 				'E', new ItemStack(Item.enderPearl),
 				'L', new ItemStack(Item.dyePowder, 1, 4),
 				'R', new ItemStack(Item.redstone));
