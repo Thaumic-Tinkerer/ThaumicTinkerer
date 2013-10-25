@@ -64,7 +64,7 @@ public class BlockEnchanter extends BlockModContainer {
 		ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
 		((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
 		((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
-		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 15000).add(Aspect.EARTH, 15000).add(Aspect.FIRE, 15000).add(Aspect.WATER, 15000).add(Aspect.ORDER, 15000).add(Aspect.ENTROPY, 15000));
+		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
 		par3List.add(wand);
 	}
 
