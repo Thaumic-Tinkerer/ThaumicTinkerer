@@ -40,6 +40,7 @@ item.ttinkerer:brightNitor.name=Hyperenergetisches Nitor
 item.ttinkerer:focusTelekinesis.name=Stabfokus: Telekinese
 item.ttinkerer:soulMould.name=Seelenform
 item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
+item.ttinkerer:focusSmelt.name=Stabfokus: Efreet's Flamme
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -145,7 +146,7 @@ ttresearch.name.ENCHANTER=Osmotischer Verzauberer
 ttresearch.lore.ENCHANTER=Wähle dein Glück
 ttresearch.page.ENCHANTER.0=Du bist es Leid geworden, schreckliche Verzauberungen für deine Mühen zu bekommen. Deswegen hast du einen neuen Zaubertisch kreiert, der es dir erlaubt, zu wählen, welche Verzauberungen du auf einem Item haben möchtest.<BR><BR>Diese neue Vorrichtung benötigt einen Stab, jede Verzauberung erfordert eine spezifische Kombination von Vis aus diesem Stab. Der Preis der Verzauberung ist exponentiell zum Level, das du auflegen möchtest.<BR><BR>Es gelten reguläre Verzauberungsregeln, zum Beispiel kannst du nicht Behutsamkeit mit Glück kombinieren.
 ttresearch.page.ENCHANTER.1=Nachdem du die Verzauberunden ausgewählt hast, die du auf einem Item wünschst, wird das Klicken auf den roten Knopf den Verzauberungsprozess beginnen. Während das Item verzaubert wird, kannst du es nicht aus dem Tisch entfernen, ebenso wenig kannst du die Verzauberungen, die zu auflegst, nicht mehr ändern.<BR><BR>Der Tisch wird langsam Vis aus dem Stab ziehen bis er fertig ist. Damit das funktioniert, werden 6 Säulen in der nahen Umgebung (4 Blöcke) benötigt, diese Säulen müssen auf der selben Höhe wie der Tisch sein.<BR><BR>[fortgesetzt]
-ttresearch.page.ENCHANTER.2=Die Säulen müssen aus zwei bis zwölf übereinander gestapelten Obsidian-Totems bestehen, jeweils mit Nitor an der Spitze. Der Verzauberer wird Fluxenergie von ihnen bekommen, sich Vis aus dem Stab nehmen und beides kombinieren, um das Item zu verzaubern.<BR><BR>Notiz: Der Verzauberer hat momentan keine Partikel. Dies ist eine temporäre Lösung für einen Fehler, bald wird er wieder Partikel haben.
+ttresearch.page.ENCHANTER.2=Die Säulen müssen aus zwei bis zwölf übereinander gestapelten Obsidian-Totems bestehen, jeweils mit Nitor an der Spitze. Der Verzauberer wird Fluxenergie von ihnen bekommen, sich Vis aus dem Stab nehmen und beides kombinieren, um das Item zu verzaubern.<BR><BR>Der Verzauberer wird nicht mit eisen- oder kupferbekappten Stäben funktionieren, weil sie zu einfach und grob für die nötigen komplexen magischen Infusionen sind.
 
 # -- TALISMAN OF WITHHOLD
 ttresearch.name.XP_TALISMAN=Talisman des Einbehaltens
@@ -165,7 +166,7 @@ ttresearch.page.TTENCH_ASCENT_BOOST.0=Du hast eine Verzauberung formuliert, die 
 # -- ENCHANTMENT: SLOW FALL
 ttresearch.name.TTENCH_SLOW_FALL=Verzauberung: Langsamer Fall
 ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
-ttresearch.page.TTENCH_SLOW_FALL.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, langsam zu fallen.<BR><BR>Diese Verzauberung kann auf Rüstung für Füße gelegt werden. Wenn getan, wird der Träger fähig sein, während des Fallens zu Shift-klicken, um langsamer zu fallen, was auch Fallschaden reduziert, wenn nicht negiert.
+ttresearch.page.TTENCH_SLOW_FALL.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, langsam zu fallen.<BR><BR>Diese Verzauberung kann auf Rüstung für Füße gelegt werden. Wenn getan, wird der Träger fähig sein, langsamer zu fallen, was auch Fallschaden reduziert, wenn nicht sogar negiert.<BR><BR>Shift zu drücken, wird diesen Effekt zeitweise deaktivieren, was es dir erlaubt, normal zu fallen.
 
 # -- ENCHANTMENT: FLAMING TOUCH
 ttresearch.name.TTENCH_AUTO_SMELT=Verzauberung: Flammende Berührung
