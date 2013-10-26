@@ -43,7 +43,7 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 		Vector3 target = Vector3.fromEntityCenter(player);
 
-		final int range = 6 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, stack);
+		final int range = 6 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 		final double distance = range - 1;
 		if(!player.isSneaking())
 			target.add(new Vector3(player.getLookVec()).multiply(distance));
