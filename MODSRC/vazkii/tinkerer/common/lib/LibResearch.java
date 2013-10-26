@@ -23,7 +23,6 @@ public final class LibResearch {
 	public static final String CATEGORY_GOLEMANCY = "GOLEMANCY";
 
 	public static final String CATEGORY_ENCHANTING = "TT_ENCHANTING";
-	//public static final String CATEGORY (SEKRIT :D)
 
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
 	public static final String KEY_INTERFACE = "INTERFACE";
@@ -51,5 +50,6 @@ public final class LibResearch {
 	public static final String KEY_ENCHANT_DESINTEGRATE = "TTENCH_DESINTEGRATE";
 	public static final String KEY_ENCHANT_QUICK_DRAW = "TTENCH_QUICK_DRAW";
 	public static final String KEY_ENCHANT_VAMPIRISM = "TTENCH_VAMPIRISM";
+	public static final String KEY_FOCUS_SMELT = "FOCUS_SMELT";
 
 }

@@ -115,6 +115,11 @@ public final class ModRecipes {
 			"STS",
 			'S', new ItemStack(Block.stone),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
+		registerResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.KEY_FOCUS_SMELT, new ItemStack(ModItems.focusSmelt), new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 6),
+				"FNE",
+				'F', new ItemStack(ConfigItems.itemFocusFire),
+				'E', new ItemStack(ConfigItems.itemFocusExcavation),
+				'N', new ItemStack(ConfigItems.itemResource, 1, 1));
 	}
 
 	private static void initInfusionRecipes() {
