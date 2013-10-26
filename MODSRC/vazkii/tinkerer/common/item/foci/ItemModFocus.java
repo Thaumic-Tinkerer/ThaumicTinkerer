@@ -35,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
-	private Icon ornament;
+	private Icon ornament, depth;
 
 	public ItemModFocus(int par1) {
 		super(par1);
@@ -44,10 +44,9 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	boolean hasOrnament() {
 		return false;
 	}
-
-	@Override
-	public Icon getFocusDepthLayerIcon() {
-		return null;
+	
+	boolean hasDepth() {
+		return false;
 	}
 
 	@Override
@@ -56,6 +55,8 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 		super.registerIcons(par1IconRegister);
 		if(hasOrnament())
 			ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
+		if(hasDepth())
+			depth = IconHelper.forItem(par1IconRegister, this, "Depth");
 	}
 
 	@Override
@@ -88,6 +89,11 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	@Override
 	public Icon getOrnament() {
 		return ornament;
+	}
+	
+	@Override
+	public Icon getFocusDepthLayerIcon() {
+		return depth;
 	}
 
 	@Override
