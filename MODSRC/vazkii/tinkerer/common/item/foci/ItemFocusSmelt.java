@@ -109,6 +109,11 @@ public class ItemFocusSmelt extends ItemModFocus {
 	}
 
 	@Override
+	public String getSortingHelper(ItemStack itemstack) {
+		return "SMELT";
+	}
+	
+	@Override
 	boolean hasOrnament() {
 		return true;
 	}
