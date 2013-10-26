@@ -187,3 +187,8 @@ ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allo
 ttresearch.name.TTENCH_VAMPIRISM=Enchantment: Vampirism
 ttresearch.lore.TTENCH_VAMPIRISM=I'll take that
 ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a living thing using that sword will be given back to the wielder.
+
+# -- WAND FOCUS: EFREET'S FLAME
+ttresearch.name.FOCUS_SMELT=Wand Focus: Efreet's Flame
+ttresearch.lore.FOCUS_SMELT=Ribbons won't make a difference
+ttresearch.page.FOCUS_SMELT.0=By combining the flame and excavation foci, you made one that has features from both.<BR><BR>This focus will smelt any blocks in the world that the caster is pointing at, akin to the excavation focus' beam. Only blocks that smelt into other blocks in a mundane furnace will be smelted.

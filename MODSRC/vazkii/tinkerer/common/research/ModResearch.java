@@ -107,6 +107,9 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_VAMPIRISM, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.HUNGER, 1).add(Aspect.WEAPON, 1).add(Aspect.MAGIC, 2), 6, -3, 2, new ResourceLocation(LibResources.ENCHANT_VAMPIRISM)).setParents(LibResearch.KEY_ENCHANTER).setHidden().registerResearchItem();
 		research.setPages(new ResearchPage("0"));
 
+		research = new TTResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.FIRE, 2).add(Aspect.ENERGY, 1).add(Aspect.MAGIC, 1), -1, -5, 2, new ItemStack(ModItems.focusSmelt)).setParents("FOCUSEXCAVATION").setParentsHidden("INFERNALFURNACE").setConcealed().registerResearchItem();
+		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_SMELT));
+		
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();
