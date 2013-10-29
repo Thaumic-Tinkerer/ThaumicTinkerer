@@ -44,6 +44,8 @@ item.ttinkerer:brightNitor.name=超能闪耀之光
 item.ttinkerer:focusTelekinesis.name=法杖核心：念力
 item.ttinkerer:soulMould.name=灵魂模具
 item.ttinkerer:xpTalisman.name=汇魔护身符
+item.ttinkerer:focusSmelt.name=法杖核心：伊夫利特之辉
+item.ttinkerer:focusHeal.name=法杖核心：工匠修理术
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -190,3 +192,8 @@ ttresearch.page.TTENCH_QUICK_DRAW.0=你研究出一种让你能够更快地拉�
 ttresearch.name.TTENCH_VAMPIRISM=附魔:吸血
 ttresearch.lore.TTENCH_VAMPIRISM=我将夺走那些
 ttresearch.page.TTENCH_VAMPIRISM.0=你研究出一种能够吸取敌人生命值为己用的附魔。<BR><BR>这种附魔能够被施加在剑上。当附魔后的剑对敌人造成伤害时，会将伤害数值的一部分作为生命值返回给使用者。
+
+# -- WAND FOCUS: FOCUS_SMELT
+ttresearch.name.FOCUS_SMELT=法杖核心:伊夫利特之辉
+ttresearch.lore.FOCUS_SMELT=丝带并没让它与众不同
+ttresearch.page.lore.FOCUS_SMELT.0=向采掘法杖核心灌注烈焰的力量能得到一种兼具两者能力的新型法杖核心.<BR><BR>安装该核心的法杖能够向指向的方块发出采掘之杖那样的光束,并如果将其放入熔炉那样冶炼成其他物品.
