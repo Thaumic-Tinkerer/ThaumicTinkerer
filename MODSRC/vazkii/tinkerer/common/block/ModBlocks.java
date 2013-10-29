@@ -15,10 +15,6 @@
 package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
-import thaumcraft.common.config.ConfigBlocks;
-import vazkii.tinkerer.common.block.multipart.PartCandle;
-import vazkii.tinkerer.common.block.multipart.PartNitor;
-import vazkii.tinkerer.common.block.multipart.RegisterBlockPart;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
@@ -33,8 +29,7 @@ import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import codechicken.microblock.BlockMicroMaterial;
-import codechicken.microblock.MicroMaterialRegistry;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModBlocks {
@@ -85,25 +80,12 @@ public final class ModBlocks {
 	}
 	
 	private static void registerMultiparts() {
-		registerMultipart(ConfigBlocks.blockCustomOre, 0);
-		registerMultipart(ConfigBlocks.blockCustomOre, 7);
-		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLog, 1);
-		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLeaves, 1);
-		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticOpaque, 1);
-		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
-		registerMultipartMetadataLine(ModBlocks.darkQuartz, 2);
-		
-		(new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName())).init();
-		//(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
-	}
-	
-	private static void registerMultipartMetadataLine(Block block, int maxMeta) {
-		for(int i = 0; i < maxMeta; i++)
-			registerMultipart(block, i);
-	}
-	
-	private static void registerMultipart(Block block, int meta) {
-		MicroMaterialRegistry.registerMaterial(new BlockMicroMaterial(block, meta), block.getUnlocalizedName() + (meta == 0 ? "" : "_" + meta));
+		if(Loader.isModLoaded("ForgeMultipart")) {
+			try {
+				Class clazz = Class.forName("vazkii.tinkerer.common.block.multipart.MultipartHandler");
+				clazz.newInstance();
+			} catch(Throwable e) {}
+		}
 	}
 	
 	
