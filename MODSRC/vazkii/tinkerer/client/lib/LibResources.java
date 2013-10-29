@@ -80,7 +80,7 @@ public final class LibResources {
 	public static final String ENCHANT_QUICK_DRAW = PREFIX_ENCHANTS + "quickDraw.png";
 
 	public static final String[] LANGS = {
-		"en_US", "de_DE"
+		"en_US", "de_DE", "zh_CN"
 	};
 
 }
