@@ -37,9 +37,9 @@ public class ItemGasRemover extends ItemMod {
 			int ys = (int) par3EntityPlayer.posY;
 			int zs = (int) par3EntityPlayer.posZ;
 
-			for(int x = xs - 2; x < xs + 2; x++)
+			for(int x = xs - 3; x < xs + 3; x++)
 				for(int y = ys - 3; y < ys + 3; y++)
-					for(int z = zs - 2; z < zs + 2; z++) {
+					for(int z = zs - 3; z < zs + 3; z++) {
 						int id = par2World.getBlockId(x, y, z);
 						if(Block.blocksList[id] != null && Block.blocksList[id] instanceof BlockGas) {
 							BlockGas gas = (BlockGas) Block.blocksList[id];
