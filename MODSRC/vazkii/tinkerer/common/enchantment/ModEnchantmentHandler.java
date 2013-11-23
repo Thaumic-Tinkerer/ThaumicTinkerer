@@ -55,10 +55,10 @@ public class ModEnchantmentHandler {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			int ascentBoost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idAscentBoost, player.inventory.armorInventory);
 			int slowfall = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idSlowFall, player.inventory.armorInventory);
-			if(slowfall > 0 && !(event.entityLiving.isSneaking()) && event.entityLiving.motionY < min) {
+			if(slowfall > 0 && !(event.entityLiving.isSneaking()) && event.entityLiving.motionY < min && event.entityLiving.fallDistance >= 2.9) {
 				event.entityLiving.motionY /= 1 + slowfall * 0.33F;
-				event.entityLiving.fallDistance = Math.max(0, player.fallDistance - slowfall / 3F);
-
+				event.entityLiving.fallDistance = Math.max(2.9F, player.fallDistance - slowfall / 3F);
+				
 				player.worldObj.spawnParticle("cloud", player.posX + 0.25, player.posY - 1, player.posZ + 0.25, -player.motionX, player.motionY, -player.motionZ);
 			}
 
