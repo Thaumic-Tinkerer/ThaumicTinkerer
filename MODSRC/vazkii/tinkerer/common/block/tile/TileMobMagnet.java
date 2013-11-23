@@ -192,10 +192,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 
 	@Override
 	public String[] getMethodNames() {
-		List<String> methods = Arrays.asList(super.getMethodNames());
-		methods.add("getAdultSearch");
-		methods.add("setAdultSearch");
-		return methods.toArray(new String[methods.size()]);
+		return new String[] { "isPulling", "setPulling", "getSignal", "getAdultSearch", "setAdultSearch" };
 	}
 
 	@Override
