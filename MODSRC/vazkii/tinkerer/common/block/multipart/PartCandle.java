@@ -14,9 +14,11 @@
  */
 package vazkii.tinkerer.common.block.multipart;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import thaumcraft.common.config.ConfigBlocks;
 import codechicken.lib.vec.Cuboid6;
 import codechicken.multipart.IRandomDisplayTick;
@@ -46,10 +48,10 @@ public class PartCandle extends McMetaPart implements IRandomDisplayTick {
 	public Block getBlock() {
 		return ConfigBlocks.blockCandle;
 	}
-	
+
 	@Override
-	public int getMetadata() {
-		return (int) meta;
+	public Iterable<ItemStack> getDrops() {
+		return Arrays.asList(new ItemStack(getBlock(), 1, meta));
 	}
 
 	@Override
