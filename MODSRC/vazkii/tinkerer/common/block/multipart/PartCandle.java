@@ -46,6 +46,11 @@ public class PartCandle extends McMetaPart implements IRandomDisplayTick {
 	public Block getBlock() {
 		return ConfigBlocks.blockCandle;
 	}
+	
+	@Override
+	public int getMetadata() {
+		return (int) meta;
+	}
 
 	@Override
 	public String getType() {
