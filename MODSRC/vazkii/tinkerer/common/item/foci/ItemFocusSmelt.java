@@ -71,11 +71,16 @@ public class ItemFocusSmelt extends ItemModFocus {
 						data.progress--;
 						decremented = true;
 						if(data.progress <= 0) {
-							if(!p.worldObj.isRemote)
+							if(!p.worldObj.isRemote) {
 								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, result.itemID, result.getItemDamage(), 1 | 2);
-							p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
-							p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
+								p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
+								p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
 
+								wand.consumeAllVis(stack, p, visUsage, true);
+								playerData.remove(p.username);
+								decremented = false;
+							}
+							
 							for(int i = 0; i < 25; i++) {
 								double x = pos.blockX + Math.random();
 								double y = pos.blockY + Math.random();
@@ -83,9 +88,6 @@ public class ItemFocusSmelt extends ItemModFocus {
 
 								ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, (float) -Math.random() / 10F);
 							}
-							wand.consumeAllVis(stack, p, visUsage, true);
-							playerData.remove(p.username);
-							decremented = false;
 						}
 					}
 				}
