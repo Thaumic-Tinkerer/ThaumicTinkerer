@@ -34,6 +34,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet3Chat;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.FakePlayer;
@@ -185,8 +186,8 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 				}
 			} catch(Throwable e) {
 				e.printStackTrace();
-				Packet3Chat packet = new Packet3Chat(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log.");
-				Packet3Chat packet1 = new Packet3Chat(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage());
+				Packet3Chat packet = new Packet3Chat(new ChatMessageComponent().addText(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log."));
+				Packet3Chat packet1 = new Packet3Chat(new ChatMessageComponent().addText(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage()));
 
 				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.provider.dimensionId, packet);
 				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.provider.dimensionId, packet1);
