@@ -22,6 +22,7 @@ import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -53,7 +54,6 @@ public class ModEnchantmentHandler {
 
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			int ascentBoost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idAscentBoost, player.inventory.armorInventory);
 			int slowfall = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idSlowFall, player.inventory.armorInventory);
 			if(slowfall > 0 && !(event.entityLiving.isSneaking()) && event.entityLiving.motionY < min && event.entityLiving.fallDistance >= 2.9) {
 				event.entityLiving.motionY /= 1 + slowfall * 0.33F;
@@ -61,9 +61,6 @@ public class ModEnchantmentHandler {
 				
 				player.worldObj.spawnParticle("cloud", player.posX + 0.25, player.posY - 1, player.posZ + 0.25, -player.motionX, player.motionY, -player.motionZ);
 			}
-
-			if(!event.entityLiving.isSneaking() && event.entityLiving.isAirBorne && event.entityLiving.motionY > 0 && ascentBoost > 0)
-				event.entityLiving.moveEntity(event.entityLiving.motionX, event.entityLiving.motionY * (ascentBoost * LibFeatures.MOVEMENT_MODIFIER), event.entityLiving.motionZ);
 
 			ItemStack heldItem = player.getHeldItem();
 
@@ -78,6 +75,17 @@ public class ModEnchantmentHandler {
 		}
 	}
 
+	@ForgeSubscribe
+	public void onPlayerJump(LivingJumpEvent event) {
+		if(event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			int boost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idAscentBoost, player.inventory.armorInventory);
+
+			if(boost >= 1 && !player.isSneaking())
+				player.motionY *= ((boost + 1) / 2D);
+		}
+	}
+	
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onGetHarvestSpeed(PlayerEvent.BreakSpeed event) {
 		ItemStack heldItem = event.entityPlayer.getHeldItem();
