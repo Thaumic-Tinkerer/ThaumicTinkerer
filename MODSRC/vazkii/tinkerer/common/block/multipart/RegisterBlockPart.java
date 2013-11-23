@@ -74,8 +74,8 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 				if(part.getName().equals("vazkii.tinkerer.common.block.multipart.PartNitor") && meta != 1)
 					return null;
 				
-				//if(part.getDeclaredConstructors().length == 1)
-					//return part.getDeclaredConstructor(int.class).newInstance(meta);
+				if(part.getDeclaredConstructor(int.class) != null)
+					return part.getDeclaredConstructor(int.class).newInstance(meta);
 				
 				return part.getConstructor().newInstance();
 			} catch (Exception e) {
