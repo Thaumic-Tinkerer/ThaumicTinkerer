@@ -45,7 +45,7 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 
 	public int x, y, z;
 	private boolean cheaty;
-	
+
 	private boolean addedToICEnergyNet = false;
 
 	@Override
@@ -67,7 +67,7 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
 		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
 	}
-	
+
 	@Override
 	public void updateEntity() {
 		if(!addedToICEnergyNet) {
@@ -75,18 +75,18 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 			addedToICEnergyNet = true;
 		}
 	}
-	
+
 	@Override
 	public void invalidate() {
 		removeFromIC2EnergyNet();
 		super.invalidate();
 	}
-	
+
 	@Override
 	public void onChunkUnload() {
 		removeFromIC2EnergyNet();
 	}
-	
+
 	private void removeFromIC2EnergyNet() {
 		if(addedToICEnergyNet) {
 			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
@@ -262,7 +262,7 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 		TileEntity tile = getTile();
 		return tile instanceof IEnergySink ? ((IEnergySink) tile).acceptsEnergyFrom(emitter, direction) : false;
 	}
-	
+
 	@Override
 	public double demandedEnergyUnits() {
 		TileEntity tile = getTile();

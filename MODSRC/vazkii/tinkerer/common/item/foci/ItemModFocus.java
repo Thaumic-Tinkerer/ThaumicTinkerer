@@ -44,7 +44,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	boolean hasOrnament() {
 		return false;
 	}
-	
+
 	boolean hasDepth() {
 		return false;
 	}
@@ -90,7 +90,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	public Icon getOrnament() {
 		return ornament;
 	}
-	
+
 	@Override
 	public Icon getFocusDepthLayerIcon() {
 		return depth;
@@ -109,7 +109,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	public boolean isUseItem() {
 		return isVisCostPerTick();
 	}
-	
+
 	@Override
 	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
 		if(isUseItem())

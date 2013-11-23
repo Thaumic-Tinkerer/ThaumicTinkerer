@@ -31,7 +31,7 @@ public class MultipartHandler {
 		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
 		registerMultipartMetadataLine(ModBlocks.darkQuartz, 2);
 
-		(new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName())).init();
+		new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName()).init();
 		//(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
 	}
 

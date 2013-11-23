@@ -101,7 +101,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			if(!working) // Pillar check
 				return;
 
-			enchantItem : {				
+			enchantItem : {
 				for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
 					int currentAmount = currentAspects.getAmount(aspect);
 					int totalAmount = totalAspects.getAmount(aspect);
@@ -144,7 +144,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 
 					if(missing > 0 && onWand >= 100)
 						aspectsThatCanGet.add(aspect);
-				} 
+				}
 
 				int i = aspectsThatCanGet.isEmpty() ? 0 : worldObj.rand.nextInt(aspectsThatCanGet.size());
 				Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);

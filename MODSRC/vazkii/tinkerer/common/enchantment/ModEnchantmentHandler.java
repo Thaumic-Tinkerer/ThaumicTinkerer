@@ -27,7 +27,6 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
-import vazkii.tinkerer.common.lib.LibFeatures;
 
 public class ModEnchantmentHandler {
 
@@ -55,10 +54,10 @@ public class ModEnchantmentHandler {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			int slowfall = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idSlowFall, player.inventory.armorInventory);
-			if(slowfall > 0 && !(event.entityLiving.isSneaking()) && event.entityLiving.motionY < min && event.entityLiving.fallDistance >= 2.9) {
+			if(slowfall > 0 && !event.entityLiving.isSneaking() && event.entityLiving.motionY < min && event.entityLiving.fallDistance >= 2.9) {
 				event.entityLiving.motionY /= 1 + slowfall * 0.33F;
 				event.entityLiving.fallDistance = Math.max(2.9F, player.fallDistance - slowfall / 3F);
-				
+
 				player.worldObj.spawnParticle("cloud", player.posX + 0.25, player.posY - 1, player.posZ + 0.25, -player.motionX, player.motionY, -player.motionZ);
 			}
 
@@ -82,10 +81,10 @@ public class ModEnchantmentHandler {
 			int boost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idAscentBoost, player.inventory.armorInventory);
 
 			if(boost >= 1 && !player.isSneaking())
-				player.motionY *= ((boost + 1) / 2D);
+				player.motionY *= (boost + 1) / 2D;
 		}
 	}
-	
+
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onGetHarvestSpeed(PlayerEvent.BreakSpeed event) {
 		ItemStack heldItem = event.entityPlayer.getHeldItem();

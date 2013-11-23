@@ -185,9 +185,9 @@ public class ItemFocusDislocation extends ItemModFocus {
 	public AspectList getVisCost() {
 		return visUsage;
 	}
-	
+
 	@Override
 	public boolean acceptsEnchant(int paramInt) {
 		return super.acceptsEnchant(paramInt) && paramInt != Config.enchPotency.effectId;
-	} 
+	}
 }

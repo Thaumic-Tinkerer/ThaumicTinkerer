@@ -11,7 +11,6 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.MovingObjectPosition;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.Utils;
@@ -51,9 +50,9 @@ public class ItemFocusSmelt extends ItemModFocus {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		if(!wand.consumeAllVis(stack, p, visUsage, false))
 			return;
-		
+
 		MovingObjectPosition pos = Utils.getTargetBlock(p.worldObj, p, false);
-		
+
 		if(pos != null) {
 			int id = p.worldObj.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
 			int meta = p.worldObj.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
@@ -66,7 +65,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 
 				if(playerData.containsKey(p.username)) {
 					SmeltData data = playerData.get(p.username);
-					
+
 					if(data.equalPos(pos)) {
 						data.progress--;
 						decremented = true;
@@ -80,7 +79,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 								playerData.remove(p.username);
 								decremented = false;
 							}
-							
+
 							for(int i = 0; i < 25; i++) {
 								double x = pos.blockX + Math.random();
 								double y = pos.blockY + Math.random();
@@ -94,16 +93,16 @@ public class ItemFocusSmelt extends ItemModFocus {
 
 				if(!decremented) {
 					int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
-					playerData.put(p.username, new SmeltData(pos, 20 - (Math.min(3, potency) * 5)));
+					playerData.put(p.username, new SmeltData(pos, 20 - Math.min(3, potency) * 5));
 				} else for(int i = 0; i < 2; i++) {
 					double x = pos.blockX + Math.random();
 					double y = pos.blockY + Math.random();
 					double z = pos.blockZ + Math.random();
 					p.worldObj.playSoundAtEntity(p, "fire.fire", (float) Math.random() / 2F + 0.5F, 1F);
-					
+
 					ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, (float) -Math.random() / 10F);
 				}
-				
+
 				if(p.worldObj.isRemote)
 					ThaumicTinkerer.tcProxy.beamCont(p.worldObj, p, pos.blockX + 0.5, pos.blockY + 0.5, pos.blockZ + 0.5, 2, 0xFF0000, true, 0F, null, 1);
 			}
@@ -114,7 +113,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 	public String getSortingHelper(ItemStack itemstack) {
 		return "SMELT";
 	}
-	
+
 	@Override
 	boolean hasOrnament() {
 		return true;

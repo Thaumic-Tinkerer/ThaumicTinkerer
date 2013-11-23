@@ -59,7 +59,7 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 			}
 		}
 	}
-	
+
 	@Override
 	public String getSortingHelper(ItemStack itemstack) {
 		return "TELEKINESIS";
