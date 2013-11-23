@@ -1,7 +1,7 @@
 /**
  * @author RWTema
  * Thanks man!
- * 
+ *
  * Check out his mod, ExtraUtilities:
  * http://www.minecraftforum.net/topic/1776056-
  */
@@ -15,7 +15,7 @@ import codechicken.multipart.MultiPartRegistry.IPartConverter;
 import codechicken.multipart.MultiPartRegistry.IPartFactory;
 import codechicken.multipart.TMultiPart;
 
-// This class is used by FMP to recreate a part during loading and to convert already existing non-mutlipart blocks into multiparts. 
+// This class is used by FMP to recreate a part during loading and to convert already existing non-mutlipart blocks into multiparts.
 
 // this is copied from the version FMP uses for vanilla torches
 
@@ -55,7 +55,7 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 	public void init() {
 		if (name.isEmpty() || block == null || part == null)
 			return;
-		
+
 		MultiPartRegistry.registerConverter(this);
 		MultiPartRegistry.registerParts(this, new String[] { name });
 	}
@@ -73,10 +73,10 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 			try {
 				if(part.getName().equals("vazkii.tinkerer.common.block.multipart.PartNitor") && meta != 1)
 					return null;
-				
+
 				if(part.getDeclaredConstructor(int.class) != null)
 					return part.getDeclaredConstructor(int.class).newInstance(meta);
-				
+
 				return part.getConstructor().newInstance();
 			} catch (Exception e) {
 				e.printStackTrace();

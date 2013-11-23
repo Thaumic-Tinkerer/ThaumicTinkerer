@@ -71,7 +71,7 @@ public final class ConfigHandler {
 		LibItemIDs.idXPTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.idXPTalisman);
 		LibItemIDs.idFocusSmelt = loadItem(LibItemNames.FOCUS_SMELT, LibItemIDs.idFocusSmelt);
 		LibItemIDs.idFocusHeal = loadItem(LibItemNames.FOCUS_HEAL, LibItemIDs.idFocusHeal);
-		
+
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
 		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);

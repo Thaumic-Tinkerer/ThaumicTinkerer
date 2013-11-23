@@ -50,7 +50,7 @@ public class BlockMagnet extends BlockModContainer {
 		setHardness(1.7F);
 		setResistance(1F);
 		setStepSound(soundWoodFootstep);
-		
+
 		random = new Random();
 	}
 
@@ -118,10 +118,11 @@ public class BlockMagnet extends BlockModContainer {
 
 			par1World.func_96440_m(par2, par3, par4, par5);
 		}
-		
+
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
+	@Override
 	public int damageDropped(int par1) {
 		switch(par1) {
 		case 1:
@@ -134,7 +135,7 @@ public class BlockMagnet extends BlockModContainer {
 			return 0;
 		}
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {

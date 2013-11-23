@@ -78,7 +78,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(enchanter, LibBlockNames.ENCHANTER);
 		GameRegistry.registerBlock(funnel, LibBlockNames.FUNNEL);
 	}
-	
+
 	private static void registerMultiparts() {
 		if(Loader.isModLoaded("ForgeMultipart")) {
 			try {
@@ -87,8 +87,8 @@ public final class ModBlocks {
 			} catch(Throwable e) {}
 		}
 	}
-	
-	
+
+
 	public static void initTileEntities() {
 		GameRegistry.registerTileEntity(TileInterface.class, LibBlockNames.INTERFACE);
 		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
@@ -97,5 +97,5 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileEnchanter.class, LibBlockNames.ENCHANTER);
 		GameRegistry.registerTileEntity(TileFunnel.class, LibBlockNames.FUNNEL);
 	}
-	
+
 }
