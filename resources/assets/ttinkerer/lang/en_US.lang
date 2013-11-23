@@ -71,7 +71,9 @@ tc.research_category.TT_ENCHANTING=Enchanting
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft Peripherals
 ttresearch.lore.PERIPHERALS=When technology meets magic
-ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer allows for some of the blocks that it adds, alongside some vanilla Thaumcraft blocks, to be used as ComputerCraft peripherals.<BR><BR>For convenience sake, the method documentation for these peripherals is in an external webpage. Pressing ENTER right now will take you to it.
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer allows for some of the blocks that it adds, alongside some vanilla Thaumcraft blocks, to be used as ComputerCraft peripherals.<BR><BR>For convenience sake, the method documentation for these peripherals is in an external webpage. Pressing ENTER right now will take you to it.<BR><BR>Sadly, this does not work on some systems. If that is the case, type in "vazkii.us/tt/docs.php" in your browser.
+# Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
+# link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
 
 # -- SMOKEY QUARTZ
