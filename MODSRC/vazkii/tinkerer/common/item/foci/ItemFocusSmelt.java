@@ -94,7 +94,6 @@ public class ItemFocusSmelt extends ItemModFocus {
 
 				if(!decremented) {
 					int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
-					System.out.println(potency);
 					playerData.put(p.username, new SmeltData(pos, 20 - (Math.min(3, potency) * 5)));
 				} else for(int i = 0; i < 2; i++) {
 					double x = pos.blockX + Math.random();
