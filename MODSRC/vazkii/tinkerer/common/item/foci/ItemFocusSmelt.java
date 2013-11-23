@@ -71,7 +71,8 @@ public class ItemFocusSmelt extends ItemModFocus {
 						data.progress--;
 						decremented = true;
 						if(data.progress <= 0) {
-							p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, result.itemID, result.getItemDamage(), 1 | 2);
+							if(!p.worldObj.isRemote)
+								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, result.itemID, result.getItemDamage(), 1 | 2);
 							p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
 							p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
 
