@@ -111,6 +111,9 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.FIRE, 2).add(Aspect.ENERGY, 1).add(Aspect.MAGIC, 1), -1, -5, 2, new ItemStack(ModItems.focusSmelt)).setParents("FOCUSEXCAVATION").setParentsHidden("INFERNALFURNACE").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_SMELT));
 		
+		research = new TTResearchItem(LibResearch.KEY_FOCUS_HEAL, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.HEAL, 2).add(Aspect.SOUL, 1).add(Aspect.MAGIC, 1), 0, -7, 2, new ItemStack(ModItems.focusHeal)).setParentsHidden("FOCUSPORTABLEHOLE").setConcealed().registerResearchItem();
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_HEAL));
+		
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();

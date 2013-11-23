@@ -135,6 +135,8 @@ public final class ModRecipes {
 				new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1), new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack(ConfigItems.itemResource, 1, 2), new ItemStack(ModItems.spellCloth));
 		registerResearchItemI(LibResearch.KEY_XP_TALISMAN, new ItemStack(ModItems.xpTalisman), 6, new AspectList().add(Aspect.GREED, 20).add(Aspect.EXCHANGE, 10).add(Aspect.BEAST, 10).add(Aspect.MECHANISM, 5), new ItemStack(Item.ingotGold),
 				new ItemStack(Item.netherQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(ConfigItems.itemResource, 1, 5), new ItemStack(Item.diamond));
+		registerResearchItemI(LibResearch.KEY_FOCUS_HEAL,new ItemStack(ModItems.focusHeal), 4, new AspectList().add(Aspect.HEAL, 10).add(Aspect.SOUL, 10).add(Aspect.LIFE, 15), new ItemStack(ConfigItems.itemFocusPech),
+				new ItemStack(Item.goldenCarrot), new ItemStack(Item.appleGold), new ItemStack(Item.goldNugget), new ItemStack(Item.goldNugget));
 	}
 
 	private static void initCrucibleRecipes() {

@@ -195,3 +195,8 @@ ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allow
 ttresearch.name.FOCUS_SMELT=Wand Focus: Efreet's Flame
 ttresearch.lore.FOCUS_SMELT=Ribbons won't make a difference
 ttresearch.page.FOCUS_SMELT.0=By combining the flame and excavation foci, you made one that has features from both.<BR><BR>This focus will smelt any blocks in the world that the caster is pointing at, akin to the excavation focus' beam. Only blocks that smelt into other blocks in a mundane furnace will be smelted.
+
+# -- WAND FOCUS: MENDING
+ttresearch.name.FOCUS_HEAL=Wand Focus: Mending
+ttresearch.lore.FOCUS_HEAL=Bandages, Voids and Feels
+ttresearch.page.FOCUS_HEAL.0=You know Pech carry powerful foci that can induce diseases, with that, you devised a way to use them to your benefits.<BR><BR>This focus will slowly mend the caster's wounds as they're using it, using vis from the wand in the process.
