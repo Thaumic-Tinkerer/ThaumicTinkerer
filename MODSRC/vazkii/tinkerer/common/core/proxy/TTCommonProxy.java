@@ -15,11 +15,14 @@
 package vazkii.tinkerer.common.core.proxy;
 
 import thaumcraft.common.tiles.TileAlembic;
+import thaumcraft.common.tiles.TileCentrifuge;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;
+import thaumcraft.common.tiles.TileInfusionMatrix;
 import thaumcraft.common.tiles.TileJarFillable;
 import thaumcraft.common.tiles.TileJarNode;
 import thaumcraft.common.tiles.TileNode;
+import thaumcraft.common.tiles.TileTubeFilter;
 import thaumcraft.common.tiles.TileWandPedestal;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -68,15 +71,17 @@ public class TTCommonProxy {
 
 	protected void initCCPeripherals() {
 		IPeripheralHandler handler = new PeripheralHandler();
-		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileCentrifuge.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileInfusionMatrix.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileJarFillable.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileJarNode.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileTubeFilter.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileWandPedestal.class, handler);
 
-		// TODO Enchanter as peripheral
-		// TODO Brain in a jar as peripheral
+		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
+
 	}
 }
