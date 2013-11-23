@@ -87,18 +87,18 @@ public class ItemFocusDislocation extends ItemModFocus {
 	                ++mop.blockX;
 
 				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, stack)) {
-					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, stack.itemID, stack.getItemDamage(), 1 | 2);
-					Block.blocksList[stack.itemID].onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
-					NBTTagCompound tileCmp = getStackTileEntity(itemstack);
-					if(tileCmp != null && !tileCmp.getTags().isEmpty()) {
-						TileEntity tile1 = TileEntity.createAndLoadEntity(tileCmp);
-						tile1.xCoord = mop.blockX;
-						tile1.yCoord = mop.blockY;
-						tile1.zCoord = mop.blockZ;
-						world.setBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ, tile1);
-					}
-					if(world.isRemote)
-						player.swingItem();
+					if(!world.isRemote) {
+						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, stack.itemID, stack.getItemDamage(), 1 | 2);
+						Block.blocksList[stack.itemID].onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
+						NBTTagCompound tileCmp = getStackTileEntity(itemstack);
+						if(tileCmp != null && !tileCmp.getTags().isEmpty()) {
+							TileEntity tile1 = TileEntity.createAndLoadEntity(tileCmp);
+							tile1.xCoord = mop.blockX;
+							tile1.yCoord = mop.blockY;
+							tile1.zCoord = mop.blockZ;
+							world.setBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ, tile1);
+						}
+					} else player.swingItem();
 					clearPickedBlock(itemstack);
 
 					for(int i = 0; i < 8; i++) {
@@ -110,8 +110,11 @@ public class ItemFocusDislocation extends ItemModFocus {
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
 			} else if(!ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
-				world.removeBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-				world.setBlock(mop.blockX, mop.blockY, mop.blockZ, 0, 0, 1 | 2);
+				if(!world.isRemote) {
+					world.removeBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
+					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, 0, 0, 1 | 2);
+				}
+
 				storePickedBlock(itemstack, (short) id, (short) meta, tile);
 
 				for(int i = 0; i < 8; i++) {
