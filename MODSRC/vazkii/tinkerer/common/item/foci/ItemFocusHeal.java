@@ -29,7 +29,7 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class ItemFocusHeal extends ItemModFocus {
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.EARTH, 125).add(Aspect.WATER, 125);
+	private static final AspectList visUsage = new AspectList().add(Aspect.EARTH, 45).add(Aspect.WATER, 45);
 	
 	public static Map<String, Integer> playerHealData = new HashMap();
 
