@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.network;
 
+import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.IPlayerTracker;
@@ -21,11 +22,14 @@ import cpw.mods.fml.common.IPlayerTracker;
 public class PlayerTracker implements IPlayerTracker {
 
 	@Override
-	public void onPlayerLogin(EntityPlayer player) { }
+	public void onPlayerLogin(EntityPlayer player) { 
+		ItemFocusHeal.playerHealData.put(player.username, 0);
+	}
 
 	@Override
 	public void onPlayerLogout(EntityPlayer player) {
 		ItemFocusSmelt.playerData.remove(player.username);
+		ItemFocusHeal.playerHealData.remove(player.username);
 	}
 
 	@Override

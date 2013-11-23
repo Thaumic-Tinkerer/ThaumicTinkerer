@@ -14,10 +14,12 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -27,32 +29,43 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class ItemFocusHeal extends ItemModFocus {
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.EARTH, 50).add(Aspect.WATER, 50);
+	private static final AspectList visUsage = new AspectList().add(Aspect.EARTH, 125).add(Aspect.WATER, 125);
 	
+	public static Map<String, Integer> playerHealData = new HashMap();
+
 	public ItemFocusHeal(int par1) {
 		super(par1);
 	}
 	
 	@Override
-	public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer p, MovingObjectPosition movingobjectposition) {
-		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-
-		if(p.shouldHeal()) {
-			if (wand.consumeAllVis(itemstack, p, getVisCost(), true)) {
-				p.heal(1 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(itemstack)));
-			
-				world.playSoundAtEntity(p, "thaumcraft:upgrade", 0.4F, 1F);
-				
-				for (int i = 0; i < 32; ++i) {
-		            ThaumicTinkerer.tcProxy.sparkle((float)p.posX + p.worldObj.rand.nextFloat() - 0.5F, (float)p.posY + p.worldObj.rand.nextFloat(), (float)p.posZ + p.worldObj.rand.nextFloat() - 0.5F, 3);
-		        }
-			}
-		}
+	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int time) {
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		if(!wand.consumeAllVis(stack, p, visUsage, false) || !p.shouldHeal())
+			return;
 		
-		if(world.isRemote)
-			p.swingItem();
+		int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 
-		return itemstack;
+		
+		if(!playerHealData.containsKey(p.username))
+			playerHealData.put(p.username, 0);
+		
+		int progress = playerHealData.get(p.username) + 1;
+		playerHealData.put(p.username, progress);
+		
+		ThaumicTinkerer.tcProxy.sparkle((float)p.posX + p.worldObj.rand.nextFloat() - 0.5F, (float)p.posY + p.worldObj.rand.nextFloat(), (float)p.posZ + p.worldObj.rand.nextFloat() - 0.5F, 0);
+		
+		if(progress >= (30 - (potency * 10 / 3))) {
+			playerHealData.put(p.username, 0);
+			
+			wand.consumeAllVis(stack, p, visUsage, true);
+			p.heal(1);
+			p.worldObj.playSoundAtEntity(p, "thaumcraft:wand", 0.5F, 1F);
+		}
+	}
+	
+	@Override
+	public void onPlayerStoppedUsingFocus(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
+		playerHealData.put(paramEntityPlayer.username, 0);
 	}
 	
 	@Override
@@ -63,6 +76,11 @@ public class ItemFocusHeal extends ItemModFocus {
 	@Override
 	public boolean isVisCostPerTick() {
 		return false;
+	}
+	
+	@Override
+	public boolean isUseItem() {
+		return true;
 	}
 	
 	@Override
