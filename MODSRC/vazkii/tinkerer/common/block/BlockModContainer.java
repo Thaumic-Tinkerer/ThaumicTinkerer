@@ -17,12 +17,14 @@ package vazkii.tinkerer.common.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public abstract class BlockModContainer extends BlockContainer {
+public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
 
 	protected BlockModContainer(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -39,6 +41,11 @@ public abstract class BlockModContainer extends BlockContainer {
 	/** Does the block register in the creative inv? **/
 	boolean registerInCreative() {
 		return true;
+	}
+	
+	@Override
+	public T createNewTileEntity(World world) {
+		return null;
 	}
 
 }
