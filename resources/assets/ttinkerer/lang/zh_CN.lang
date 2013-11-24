@@ -47,6 +47,7 @@ item.ttinkerer:soulMould.name=灵魂模具
 item.ttinkerer:xpTalisman.name=汇魔护身符
 item.ttinkerer:focusSmelt.name=法杖核心：伊夫利特之辉
 item.ttinkerer:focusHeal.name=法杖核心：愈合
+item.ttinkerer:focusEnderChest.name=法杖核心: 末影裂痕
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -205,3 +206,8 @@ ttresearch.page.lore.FOCUS_SMELT.0=向采掘法杖核心灌注烈焰的力量能
 ttresearch.name.FOCUS_HEAL=法杖核心：愈合
 ttresearch.lore.FOCUS_HEAL=绷带,空洞和感觉
 ttresearch.page.FOCUS_HEAL.0=你知道岩精携有一种能够诱发瘟病的核心.你研究出一种方法来利用它获取好处.<BR><BR>装有这种法杖核心的法杖在挥舞时会抽取法杖中魔力缓慢治疗施法者的伤口.
+
+# -- WAND FOCUS: ENDER RIFT
+ttresearch.name.FOCUS_ENDER_CHEST=法杖核心: 末影裂痕
+ttresearch.lore.FOCUS_ENDER_CHEST=对第四维度打包
+ttresearch.page.FOCUS_ENDER_CHEST.0=将便携式洞穴与魔力手镜融合,你做出一种能够用末影力量撕裂空间的法杖核心,使得你能够随时远距离打开自己的末影箱子.
