@@ -24,6 +24,7 @@ import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import vazkii.tinkerer.common.block.transvector.BlockTransvectorInterface;
 import vazkii.tinkerer.common.item.ItemBlockMagnet;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
@@ -52,7 +53,7 @@ public final class ModBlocks {
 		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
 		darkQuartzStairs = new BlockDarkQuartzStairs(LibBlockIDs.idDarkQuartzStairs).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_STAIRS);
-		interfase = new BlockInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
+		interfase = new BlockTransvectorInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
 		gaseousLight = new BlockGaseousLight(LibBlockIDs.idGaseousLight).setUnlocalizedName(LibBlockNames.GASEOUS_LIGHT);
 		gaseousShadow = new BlockGaseousShadow(LibBlockIDs.idGaseousShadow).setUnlocalizedName(LibBlockNames.GASEOUS_SHADOW);
 		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);

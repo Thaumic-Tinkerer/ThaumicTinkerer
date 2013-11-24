@@ -12,24 +12,26 @@
  *
  * File Created @ [8 Sep 2013, 18:57:25 (GMT)]
  */
-package vazkii.tinkerer.common.block;
+package vazkii.tinkerer.common.block.transvector;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
-public class BlockInterface extends BlockModContainer {
+public class BlockTransvectorInterface extends BlockTransvector {
 
-    public BlockInterface(int par1) {
+    public BlockTransvectorInterface(int par1) {
         super(par1, Material.iron);
         setHardness(3F);
         setResistance(10F);
     }
 
     @Override
-    public TileEntity createNewTileEntity(World world) {
+    public TileTransvector createNewTileEntity(World world) {
         return new TileTransvectorInterface();
     }
+
 
 }

@@ -15,7 +15,11 @@
 package vazkii.tinkerer.common.block.tile.transvector;
 
 import vazkii.tinkerer.common.lib.LibFeatures;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
 public abstract class TileTransvector extends TileEntity {
@@ -24,7 +28,12 @@ public abstract class TileTransvector extends TileEntity {
 	private static final String TAG_Y_TARGET = "yt";
 	private static final String TAG_Z_TARGET = "zt";
 	private static final String TAG_CHEATY_MODE = "cheatyMode";
-
+	private static final String TAG_CAMO = "camo";
+	private static final String TAG_CAMO_META = "camoMeta";
+	
+	public int camo;
+	public int camoMeta;
+	
 	public int x, y, z;
 	private boolean cheaty;
 	
@@ -48,6 +57,16 @@ public abstract class TileTransvector extends TileEntity {
 		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
 	}
 	
+	public void writeCustomNBT(NBTTagCompound cmp) {
+		cmp.setInteger(TAG_CAMO, camo);
+		cmp.setInteger(TAG_CAMO_META, camoMeta);
+	}
+	
+	public void readCustomNBT(NBTTagCompound cmp) {
+		camo = cmp.getInteger(TAG_CAMO);
+		camoMeta = cmp.getInteger(TAG_CAMO_META);
+	}
+	
 	final TileEntity getTile() {
 		if(!worldObj.blockExists(x, y, z))
 			return null;
@@ -63,4 +82,18 @@ public abstract class TileTransvector extends TileEntity {
 	}
 	
 	public abstract int getMaxDistance();
+	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbttagcompound = new NBTTagCompound();
+		writeCustomNBT(nbttagcompound);
+		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+	}
+
+	@Override
+	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+		super.onDataPacket(manager, packet);
+		readCustomNBT(packet.data);
+		worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
+	}
 }
