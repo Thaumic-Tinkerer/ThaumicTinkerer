@@ -42,6 +42,7 @@ item.ttinkerer:soulMould.name=Seelenform
 item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
 item.ttinkerer:focusSmelt.name=Stabfokus: Efreet's Flamme
 item.ttinkerer:focusHeal.name=Stabfokus: Heilen
+item.ttinkerer:focusEnderChest.name=Stabfokus: Enderspalt
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -200,3 +201,8 @@ ttresearch.page.FOCUS_SMELT.0=Indem du den Flammen- und Exkavationsfokus kombini
 ttresearch.name.FOCUS_HEAL=Stabfokus: Mending
 ttresearch.lore.FOCUS_HEAL=Bandagen, Leere und Gefühl
 ttresearch.page.FOCUS_HEAL.0=Du weißt, dass die Pech mächtige Foki besitzen, die Krankheiten verursachen, damit hast du dir einen Weg erdacht, sie zu deinem Vorteil zu nutzen.<BR><BR>Dieser Fokus wird langsam die Wunden des Anwenders heilen, während er ihn benutzt, indem er für den Prozess Vis aus dem Stab verwendet.
+
+# -- WAND FOCUS: ENDER RIFT
+ttresearch.name.FOCUS_ENDER_CHEST=Stabfokus: Enderspalt
+ttresearch.lore.FOCUS_ENDER_CHEST=Ein 'Loch' zur vierten Dimension
+ttresearch.page.FOCUS_ENDER_CHEST.0=Indem du einen Handspiegel mit einem Tragbaren Loch kombinierst, hast du es geschafft, einen Fokus zu konstruieren, der eine Spalte in das Ender reißt, was es dir erlaubt, von überall auf den Inhalt deiner Endertruhe zuzugreifen.
