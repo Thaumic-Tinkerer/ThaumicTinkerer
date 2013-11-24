@@ -35,8 +35,9 @@ import vazkii.tinkerer.common.lib.LibFeatures;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
+import cofh.api.energy.IEnergyHandler;
 
-public class TileInterface extends TileEntity implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink {
+public class TileInterface extends TileEntity implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler {
 
 	private static final String TAG_X_TARGET = "xt";
 	private static final String TAG_Y_TARGET = "yt";
@@ -279,5 +280,35 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 	public int getMaxSafeInput() {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergySink ? ((IEnergySink) tile).getMaxSafeInput() : 0;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+		TileEntity tile = getTile();
+		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).receiveEnergy(from, maxReceive, simulate) : 0;
+	}
+
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+		TileEntity tile = getTile();
+		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).extractEnergy(from, maxExtract, simulate) : 0;
+	}
+
+	@Override
+	public boolean canInterface(ForgeDirection from) {
+		TileEntity tile = getTile();
+		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).canInterface(from) : false;
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) {
+		TileEntity tile = getTile();
+		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).getEnergyStored(from) : 0;
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from) {
+		TileEntity tile = getTile();
+		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).getMaxEnergyStored(from) : 0;
 	}
 }
