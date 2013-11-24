@@ -2,10 +2,11 @@
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Location Set!
 ttmisc.connector.complete=Binding Complete!
-ttmisc.connector.notinterf=Not a Transvector Interface.
+ttmisc.connector.notinterf=Not a Transvector Block.
 ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
-ttmisc.connector.notpresent=The Transvector Interface isn't present.
-ttmisc.connector.toofar=The Transvector Interface of origin is too far away.
+ttmisc.connector.dislfail=Can't bind a Transvector Dislocator to another.
+ttmisc.connector.notpresent=The Transvector Block isn't present.
+ttmisc.connector.toofar=The Transvector Block of origin is too far away.
 ttmisc.leftClick=Left Click
 ttmisc.rightClick=Right Click
 ttmisc.redstoneControl=Redstone Control

@@ -12,7 +12,7 @@
  *
  * File Created @ [8 Sep 2013, 19:01:20 (GMT)]
  */
-package vazkii.tinkerer.common.block.tile;
+package vazkii.tinkerer.common.block.tile.transvector;
 
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
@@ -37,37 +37,9 @@ import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 import cofh.api.energy.IEnergyHandler;
 
-public class TileInterface extends TileEntity implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler {
-
-	private static final String TAG_X_TARGET = "xt";
-	private static final String TAG_Y_TARGET = "yt";
-	private static final String TAG_Z_TARGET = "zt";
-	private static final String TAG_CHEATY_MODE = "cheatyMode";
-
-	public int x, y, z;
-	private boolean cheaty;
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler {
 
 	private boolean addedToICEnergyNet = false;
-
-	@Override
-	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
-		super.writeToNBT(par1nbtTagCompound);
-
-		par1nbtTagCompound.setInteger(TAG_X_TARGET, x);
-		par1nbtTagCompound.setInteger(TAG_Y_TARGET, y);
-		par1nbtTagCompound.setInteger(TAG_Z_TARGET, z);
-		par1nbtTagCompound.setBoolean(TAG_CHEATY_MODE, cheaty);
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
-		super.readFromNBT(par1nbtTagCompound);
-
-		x = par1nbtTagCompound.getInteger(TAG_X_TARGET);
-		y = par1nbtTagCompound.getInteger(TAG_Y_TARGET);
-		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
-		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
-	}
 
 	@Override
 	public void updateEntity() {
@@ -75,6 +47,12 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 			addedToICEnergyNet = true;
 		}
+	}
+	
+
+	@Override
+	public int getMaxDistance() {
+		return LibFeatures.INTERFACE_DISTANCE;
 	}
 
 	@Override
@@ -93,20 +71,6 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
 			addedToICEnergyNet = false;
 		}
-	}
-
-	private TileEntity getTile() {
-		if(!worldObj.blockExists(x, y, z))
-			return null;
-
-		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
-
-		if(tile == null || (Math.abs(x - xCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - yCoord) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - zCoord) > LibFeatures.INTERFACE_DISTANCE) && !cheaty) {
-			y = -1;
-			return null;
-		}
-
-		return tile;
 	}
 
 	@Override
@@ -311,4 +275,5 @@ public class TileInterface extends TileEntity implements ISidedInventory, IFluid
 		TileEntity tile = getTile();
 		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).getMaxEnergyStored(from) : 0;
 	}
+
 }

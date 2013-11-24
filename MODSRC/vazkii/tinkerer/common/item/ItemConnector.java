@@ -18,9 +18,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import vazkii.tinkerer.common.block.tile.TileInterface;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import vazkii.tinkerer.common.lib.LibFeatures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,9 +43,10 @@ public class ItemConnector extends ItemMod {
 			return false;
 
 		TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
-
+		boolean isInterface = tile instanceof TileTransvectorInterface;
+		
 		if (getY(par1ItemStack) == -1) {
-			if (tile != null && tile instanceof TileInterface) {
+			if (tile != null && tile instanceof TileTransvector) {
 				setX(par1ItemStack, par4);
 				setY(par1ItemStack, par5);
 				setZ(par1ItemStack, par6);
@@ -57,31 +59,31 @@ public class ItemConnector extends ItemMod {
 			} else
 				par2EntityPlayer.addChatMessage("ttmisc.connector.notinterf");
 		} else {
-			if (tile != null && tile instanceof TileInterface) {
-				par2EntityPlayer.addChatMessage("ttmisc.connector.interffail");
-				return true;
-			}
-
 			int x = getX(par1ItemStack);
 			int y = getY(par1ItemStack);
 			int z = getZ(par1ItemStack);
 
 			TileEntity tile1 = par3World.getBlockTileEntity(x, y, z);
-			if (tile1 == null || !(tile1 instanceof TileInterface)) {
+			if (tile1 == null || !(tile1 instanceof TileTransvectorInterface)) {
 				setY(par1ItemStack, -1);
 
 				par2EntityPlayer.addChatMessage("ttmisc.connector.notpresent");
 			} else {
-				TileInterface interf = (TileInterface) tile1;
+				TileTransvector trans = (TileTransvector) tile1;
+				
+				if (tile != null && tile1 instanceof TileTransvectorInterface && tile instanceof TileTransvectorInterface) {
+					par2EntityPlayer.addChatMessage("ttmisc.connector.interffail");
+					return true;
+				}
 
-				if(Math.abs(x - par4) > LibFeatures.INTERFACE_DISTANCE || Math.abs(y - par5) > LibFeatures.INTERFACE_DISTANCE || Math.abs(z - par6) > LibFeatures.INTERFACE_DISTANCE) {
+				if(Math.abs(x - par4) > trans.getMaxDistance() || Math.abs(y - par5) > trans.getMaxDistance() || Math.abs(z - par6) > trans.getMaxDistance()) {
 					par2EntityPlayer.addChatMessage("ttmisc.connector.toofar");
 					return true;
 				}
 
-				interf.x = par4;
-				interf.y = par5;
-				interf.z = par6;
+				trans.x = par4;
+				trans.y = par5;
+				trans.z = par6;
 
 				setY(par1ItemStack, -1);
 

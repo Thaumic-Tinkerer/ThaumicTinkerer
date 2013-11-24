@@ -17,7 +17,7 @@ package vazkii.tinkerer.common.block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import vazkii.tinkerer.common.block.tile.TileInterface;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
 public class BlockInterface extends BlockModContainer {
 
@@ -29,7 +29,7 @@ public class BlockInterface extends BlockModContainer {
 
     @Override
     public TileEntity createNewTileEntity(World world) {
-        return new TileInterface();
+        return new TileTransvectorInterface();
     }
 
 }
