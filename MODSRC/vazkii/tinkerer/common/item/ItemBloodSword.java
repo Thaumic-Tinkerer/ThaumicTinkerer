@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Nov 24, 2013, 7:31:51 PM (GMT)]
  */
 package vazkii.tinkerer.common.item;
@@ -42,19 +42,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemBloodSword extends ItemSword {
 
 	private static final int DAMAGE = 10;
-	
+
 	public ItemBloodSword(int par1) {
 		super(par1, EnumHelper.addToolMaterial("TT_BLOOD", 0, 650, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
 		setCreativeTab(ModCreativeTab.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
-	
+
 	@Override
     public Multimap getItemAttributeModifiers() {
         Multimap multimap = HashMultimap.create();
@@ -62,20 +62,20 @@ public class ItemBloodSword extends ItemSword {
         multimap.put(SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 0.25, 1));
         return multimap;
     }
-	
+
 	static int handleNext = 0;
-	
+
 	@ForgeSubscribe
 	public void onDamageTaken(LivingAttackEvent event) {
 		if(event.entity.worldObj.isRemote)
 			return;
-		
+
 		boolean isServer = !ThaumicTinkerer.proxy.isClient();
-		
+
 		boolean handle = handleNext == 0;
 		if(!handle)
 			handleNext--;
-		
+
 		if(event.entityLiving instanceof EntityPlayer && handle) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 31 : 32);
@@ -85,7 +85,7 @@ public class ItemBloodSword extends ItemSword {
 				player.attackEntityFrom(DamageSource.magic, 3);
 			}
 		}
-		
+
 		if(handle) {
 			Entity source = event.source.getSourceOfDamage();
 			if(source != null && source instanceof EntityLivingBase) {

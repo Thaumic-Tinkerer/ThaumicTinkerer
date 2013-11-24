@@ -15,7 +15,6 @@
 package vazkii.tinkerer.common.block.transvector;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
