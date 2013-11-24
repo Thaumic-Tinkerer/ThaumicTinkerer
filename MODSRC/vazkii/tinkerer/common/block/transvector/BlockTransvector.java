@@ -71,7 +71,7 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
                     Block block = Block.blocksList[currentStack.itemID];
                     if(block == null || !block.renderAsNormalBlock() || block == this)
                     	doChange = false;
-                    
+
             	}
         	}
 

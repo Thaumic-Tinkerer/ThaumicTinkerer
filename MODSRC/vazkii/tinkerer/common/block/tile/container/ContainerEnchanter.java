@@ -47,7 +47,7 @@ public class ContainerEnchanter extends ContainerPlayerInv {
 
         	if(var5 != null && var5.itemID == Item.book.itemID)
         		return null;
-        	
+
         	boolean wand = ((Slot) inventorySlots.get(1)).isItemValid(var5);
 
             var3 = var5.copy();
