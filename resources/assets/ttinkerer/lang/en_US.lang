@@ -97,7 +97,7 @@ ttresearch.page.GASEOUS_LIGHT.0=You have studied the intricacies of the light, a
 
 # -- GASEOUS TENEBRAE
 ttresearch.name.GASEOUS_SHADOW=Gaseous Tenebrae
-ttresearch.lore.GASEOUS_SHADOW=The unseen world
+ttresearch.lore.GASEOUS_SHADOW=A red handball?
 ttresearch.page.GASEOUS_SHADOW.0=You have studied the intricacies of the Shadow, and found out a way to create gaseous darkness by infusing a phial with the raw shadow.<BR><BR>This phial contains a concentrated extract of Gaseous Tenebrae, that can be released through a right click, and will spread relatively fast in the nearby area, darkening it.
 
 # -- FUME DISSIPATOR
@@ -166,7 +166,7 @@ ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to th
 
 # -- ENCHANTMENT: ASCENT BOOST
 ttresearch.name.TTENCH_ASCENT_BOOST=Enchantment: Ascent Boost
-ttresearch.lore.TTENCH_ASCENT_BOOST=Higher than a titan
+ttresearch.lore.TTENCH_ASCENT_BOOST=Over Wall Maria
 ttresearch.page.TTENCH_ASCENT_BOOST.0=You have formulated an enchantment that allows you to jump higher than you normally can.<BR><BR>This enchantment can be applied on leg armor. When done so, the wearer will be able to jump a lot higher than normal.
 
 # -- ENCHANTMENT: SLOW FALL
@@ -186,7 +186,7 @@ ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that al
 
 # -- ENCHANTMENT: QUICK DRAW
 ttresearch.name.TTENCH_QUICK_DRAW=Enchantment: Quick Draw
-ttresearch.lore.TTENCH_QUICK_DRAW=Speedy shot
+ttresearch.lore.TTENCH_QUICK_DRAW=May the odds ever be in your favour
 ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allows you to draw your bow in a quicker fashion.<BR><BR>This enchantment can be applied on bows. When done so, the bow can be fully drawn faster than normally.
 
 # -- ENCHANTMENT: VAMPIRISM
