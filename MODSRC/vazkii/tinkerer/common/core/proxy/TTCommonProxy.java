@@ -83,7 +83,7 @@ public class TTCommonProxy {
 
 		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
 	}
-	
+
 	public boolean isClient() {
 		return false;
 	}

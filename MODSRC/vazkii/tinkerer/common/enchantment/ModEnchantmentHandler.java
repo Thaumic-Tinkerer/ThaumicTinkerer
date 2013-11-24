@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
@@ -29,6 +28,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ModEnchantmentHandler {
 
@@ -67,9 +67,9 @@ public class ModEnchantmentHandler {
 
 			if(heldItem == null)
 				return;
-			
+
 			boolean isServer = !ThaumicTinkerer.proxy.isClient();
-			
+
 			int quickDraw = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idQuickDraw, heldItem);
 			ItemStack usingItem = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 31 : 32);
 			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 32 : 33);

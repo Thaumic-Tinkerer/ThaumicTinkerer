@@ -19,7 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
-import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -43,8 +42,6 @@ public class ItemConnector extends ItemMod {
 			return false;
 
 		TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
-		boolean isInterface = tile instanceof TileTransvectorInterface;
-		
 		if (getY(par1ItemStack) == -1) {
 			if (tile != null && tile instanceof TileTransvector) {
 				setX(par1ItemStack, par4);
@@ -70,7 +67,7 @@ public class ItemConnector extends ItemMod {
 				par2EntityPlayer.addChatMessage("ttmisc.connector.notpresent");
 			} else {
 				TileTransvector trans = (TileTransvector) tile1;
-				
+
 				if (tile != null && tile1 instanceof TileTransvectorInterface && tile instanceof TileTransvectorInterface) {
 					par2EntityPlayer.addChatMessage("ttmisc.connector.interffail");
 					return true;

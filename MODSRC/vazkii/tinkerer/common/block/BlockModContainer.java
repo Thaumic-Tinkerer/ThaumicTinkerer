@@ -42,7 +42,7 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	boolean registerInCreative() {
 		return true;
 	}
-	
+
 	@Override
 	public T createNewTileEntity(World world) {
 		return null;
