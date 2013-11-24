@@ -44,6 +44,7 @@ item.ttinkerer:xpTalisman.name=Talisman of Withhold
 item.ttinkerer:focusSmelt.name=Wand Focus: Efreet's Flame
 item.ttinkerer:focusHeal.name=Wand Focus: Mending
 item.ttinkerer:focusEnderChest.name=Wand Focus: Ender Rift
+item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
