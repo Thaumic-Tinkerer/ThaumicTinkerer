@@ -23,7 +23,9 @@ import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import vazkii.tinkerer.common.block.transvector.BlockTransvectorDislocator;
 import vazkii.tinkerer.common.block.transvector.BlockTransvectorInterface;
 import vazkii.tinkerer.common.item.ItemBlockMagnet;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
@@ -47,6 +49,7 @@ public final class ModBlocks {
 	public static Block magnet;
 	public static Block enchanter;
 	public static Block funnel;
+	public static Block dislocator;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -61,7 +64,8 @@ public final class ModBlocks {
 		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
 		enchanter = new BlockEnchanter(LibBlockIDs.idEnchanter).setUnlocalizedName(LibBlockNames.ENCHANTER);
 		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setUnlocalizedName(LibBlockNames.FUNNEL);
-
+		dislocator = new BlockTransvectorDislocator(LibBlockIDs.idDislocator).setUnlocalizedName(LibBlockNames.DISLOCATOR);
+		
 		registerBlocks();
 		registerMultiparts();
 	}
@@ -78,6 +82,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(magnet, ItemBlockMagnet.class, LibBlockNames.MAGNET);
 		GameRegistry.registerBlock(enchanter, LibBlockNames.ENCHANTER);
 		GameRegistry.registerBlock(funnel, LibBlockNames.FUNNEL);
+		GameRegistry.registerBlock(dislocator, LibBlockNames.DISLOCATOR);
 	}
 
 	private static void registerMultiparts() {
@@ -97,6 +102,7 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileMobMagnet.class, LibBlockNames.MOB_MAGNET);
 		GameRegistry.registerTileEntity(TileEnchanter.class, LibBlockNames.ENCHANTER);
 		GameRegistry.registerTileEntity(TileFunnel.class, LibBlockNames.FUNNEL);
+		GameRegistry.registerTileEntity(TileTransvectorDislocator.class, LibBlockNames.DISLOCATOR);
 	}
 
 }

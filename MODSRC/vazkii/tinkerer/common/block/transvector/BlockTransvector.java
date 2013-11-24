@@ -35,7 +35,7 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side) {
         TileEntity tile = world.getBlockTileEntity(x, y, z);
-        int meta = world.getBlockId(x, y, z);
+        int meta = world.getBlockMetadata(x, y, z);
 
         if (tile instanceof TileTransvector) {
             TileTransvector transvector = (TileTransvector) tile;
@@ -46,7 +46,7 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
             }
         }
 
-        return getIconFromSideAfterCheck(meta, side);
+        return getIconFromSideAfterCheck(tile, meta, side);
     }
 
 	@Override
@@ -69,8 +69,9 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
             		}
 
                     Block block = Block.blocksList[currentStack.itemID];
-                    if(block == null || !block.renderAsNormalBlock())
+                    if(block == null || !block.renderAsNormalBlock() || block == this)
                     	doChange = false;
+                    
             	}
         	}
 
@@ -87,7 +88,7 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
         return false;
 	}
 
-	public Icon getIconFromSideAfterCheck(int meta, int side) {
+	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
 		return blockIcon;
 	}
 
