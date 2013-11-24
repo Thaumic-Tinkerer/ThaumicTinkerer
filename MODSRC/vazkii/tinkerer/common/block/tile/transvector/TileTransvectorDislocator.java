@@ -41,5 +41,10 @@ public class TileTransvectorDislocator extends TileTransvector {
 	public int getMaxDistance() {
 		return LibFeatures.DISLOCATOR_DISTANCE;
 	}
+	
+	@Override
+	boolean tileRequiredAtLink() {
+		return false;
+	}
 
 }

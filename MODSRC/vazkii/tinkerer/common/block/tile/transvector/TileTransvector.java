@@ -75,7 +75,7 @@ public abstract class TileTransvector extends TileEntity {
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 
-		if(tile == null || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
+		if((tile == null && tileRequiredAtLink()) || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
 			y = -1;
 			return null;
 		}
@@ -84,6 +84,10 @@ public abstract class TileTransvector extends TileEntity {
 	}
 
 	public abstract int getMaxDistance();
+	
+	boolean tileRequiredAtLink() {
+		return true;
+	}
 
 	@Override
 	public Packet getDescriptionPacket() {
