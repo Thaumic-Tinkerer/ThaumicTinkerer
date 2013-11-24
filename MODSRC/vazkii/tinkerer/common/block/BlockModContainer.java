@@ -44,8 +44,6 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	}
 
 	@Override
-	public T createNewTileEntity(World world) {
-		return null;
-	}
+	public abstract T createNewTileEntity(World world);
 
 }

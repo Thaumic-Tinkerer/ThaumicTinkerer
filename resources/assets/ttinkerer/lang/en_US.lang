@@ -58,6 +58,7 @@ tile.ttinkerer:magnet.name=Kinetic Attractor
 tile.ttinkerer:mobMagnet.name=Corporeal Attractor
 tile.ttinkerer:enchanter.name=Osmotic Enchanter
 tile.ttinkerer:funnel.name=Essentia Funnel
+tile.ttinkerer:dislocator.name=Transvector Dislocator
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost

@@ -14,10 +14,29 @@
  */
 package vazkii.tinkerer.common.block.tile.transvector;
 
+import net.minecraft.nbt.NBTTagCompound;
 import vazkii.tinkerer.common.lib.LibFeatures;
 
 public class TileTransvectorDislocator extends TileTransvector {
-
+	
+	private static final String TAG_ORIENTATION = "orientation";
+	
+	public int orientation;
+	
+	@Override
+	public void readCustomNBT(NBTTagCompound cmp) {
+		super.readCustomNBT(cmp);
+		
+		orientation = cmp.getInteger(TAG_ORIENTATION);
+	}
+	
+	@Override
+	public void writeCustomNBT(NBTTagCompound cmp) {
+		super.writeCustomNBT(cmp);
+		
+		cmp.setInteger(TAG_ORIENTATION, orientation);
+	}
+	
 	@Override
 	public int getMaxDistance() {
 		return LibFeatures.DISLOCATOR_DISTANCE;

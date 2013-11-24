@@ -31,6 +31,7 @@ public final class LibBlockNames {
 	public static final String MOB_MAGNET = LibResources.PREFIX_MOD + "mobMagnet";
 	public static final String ENCHANTER = LibResources.PREFIX_MOD + "enchanter";
 	public static final String FUNNEL = LibResources.PREFIX_MOD + "funnel";
+	public static final String DISLOCATOR = LibResources.PREFIX_MOD + "dislocator";
 
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"tile." + DARK_QUARTZ,
