@@ -213,4 +213,4 @@ ttresearch.page.FOCUS_ENDER_CHEST.0=By combining a Hand Mirror with a portable h
 # -- CURSED SPIRIT'S BLADE
 ttresearch.name.BLOOD_SWORD=Cursed Spirit's Blade
 ttresearch.lore.BLOOD_SWORD=You're being unpleasant
-ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparelled force. However, for this to be the case, the sword feeds on the striker's blood.<BR><BR>Upon damaging anything with this sword, the attacker will take one heart of damage. Blocking will this sword will always deal only 1.5 hearts, regardless of the original damage.<BR><BR>Furthermore, simply holding this sword gives the holder a steadfast aura, making them move faster than normal.
+ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled force. However, for this to be the case, the sword feeds on the striker's blood.<BR><BR>Upon damaging anything with this sword, the attacker will take one heart of damage. Blocking will this sword will always deal only 1.5 hearts, regardless of the original damage.<BR><BR>Furthermore, simply holding this sword gives the holder a steadfast aura, making them move faster than normal.
