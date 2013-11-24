@@ -43,7 +43,7 @@ public abstract class TileTransvector extends TileEntity {
 		par1nbtTagCompound.setInteger(TAG_Y_TARGET, y);
 		par1nbtTagCompound.setInteger(TAG_Z_TARGET, z);
 		par1nbtTagCompound.setBoolean(TAG_CHEATY_MODE, cheaty);
-		
+
 		writeCustomNBT(par1nbtTagCompound);
 	}
 
@@ -55,7 +55,7 @@ public abstract class TileTransvector extends TileEntity {
 		y = par1nbtTagCompound.getInteger(TAG_Y_TARGET);
 		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
 		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
-		
+
 		readCustomNBT(par1nbtTagCompound);
 	}
 
@@ -75,7 +75,7 @@ public abstract class TileTransvector extends TileEntity {
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 
-		if((tile == null && tileRequiredAtLink()) || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
+		if(tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
 			y = -1;
 			return null;
 		}
@@ -84,7 +84,7 @@ public abstract class TileTransvector extends TileEntity {
 	}
 
 	public abstract int getMaxDistance();
-	
+
 	boolean tileRequiredAtLink() {
 		return true;
 	}
