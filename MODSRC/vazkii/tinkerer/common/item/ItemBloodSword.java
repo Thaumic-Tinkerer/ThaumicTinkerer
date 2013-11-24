@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.item;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -28,7 +27,6 @@ import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
