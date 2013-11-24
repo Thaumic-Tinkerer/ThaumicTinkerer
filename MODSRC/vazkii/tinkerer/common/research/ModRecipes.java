@@ -142,6 +142,8 @@ public final class ModRecipes {
 				new ItemStack(Item.netherQuartz), new ItemStack(ModItems.darkQuartz), new ItemStack(ConfigItems.itemResource, 1, 5), new ItemStack(Item.diamond));
 		registerResearchItemI(LibResearch.KEY_FOCUS_HEAL,new ItemStack(ModItems.focusHeal), 4, new AspectList().add(Aspect.HEAL, 10).add(Aspect.SOUL, 10).add(Aspect.LIFE, 15), new ItemStack(ConfigItems.itemFocusPech),
 				new ItemStack(Item.goldenCarrot), new ItemStack(Item.appleGold), new ItemStack(Item.goldNugget), new ItemStack(Item.goldNugget));
+		registerResearchItemI(LibResearch.KEY_BLOOD_SWORD, new ItemStack(ModItems.bloodSword), 6, new AspectList().add(Aspect.HUNGER, 20).add(Aspect.DARKNESS, 5).add(Aspect.SOUL, 10).add(Aspect.MAN, 6), new ItemStack(ConfigItems.itemSwordThaumium),
+				new ItemStack(Item.rottenFlesh), new ItemStack(Item.porkRaw), new ItemStack(Item.beefRaw), new ItemStack(Item.bone), new ItemStack(Item.diamond), new ItemStack(Item.ghastTear));
 	}
 
 	private static void initCrucibleRecipes() {
