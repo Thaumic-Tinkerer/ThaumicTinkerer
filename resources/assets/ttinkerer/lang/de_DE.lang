@@ -85,7 +85,7 @@ ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur nega
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
 ttresearch.lore.INTERFACE=Nicht verbunden mit nyuu
-ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft- und IC2-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft-, IC2- und TE3-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
 ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
 
 # -- GASEOUS ILLUMINAE
