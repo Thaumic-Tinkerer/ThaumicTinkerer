@@ -82,6 +82,9 @@ public class TTCommonProxy {
 		ComputerCraftAPI.registerExternalPeripheral(TileWandPedestal.class, handler);
 
 		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
-
+	}
+	
+	public boolean isClient() {
+		return false;
 	}
 }
