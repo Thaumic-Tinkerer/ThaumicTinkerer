@@ -27,12 +27,14 @@ import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
@@ -57,40 +59,42 @@ public class ItemBloodSword extends ItemSword {
 	
 	@Override
     public Multimap getItemAttributeModifiers() {
-        Multimap multimap = super.getItemAttributeModifiers();
+        Multimap multimap = HashMultimap.create();
         multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", DAMAGE, 0));
         multimap.put(SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 0.25, 1));
         return multimap;
     }
 	
-	static boolean handleNext = true;
+	static int handleNext = 0;
 	
 	@ForgeSubscribe
-	public void onDamageTaken(LivingHurtEvent event) {
+	public void onDamageTaken(LivingAttackEvent event) {
+		if(event.entity.worldObj.isRemote)
+			return;
+		
 		boolean isServer = !ThaumicTinkerer.proxy.isClient();
 		
-		boolean handle = handleNext;
-		if(!handleNext)
-			handleNext = true;
+		boolean handle = handleNext == 0;
+		if(!handle)
+			handleNext--;
 		
 		if(event.entityLiving instanceof EntityPlayer && handle) {
-			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 31 : 32);
 			if(itemInUse != null && itemInUse.itemID == itemID) {
-				event.ammount = 0;
-				handleNext = false;
-				player.attackEntityFrom(event.source, 3);
+				event.setCanceled(true);
+				handleNext = 3;
+				player.attackEntityFrom(DamageSource.magic, 3);
 			}
 		}
 		
 		if(handle) {
 			Entity source = event.source.getSourceOfDamage();
-			System.out.println(source);
 			if(source != null && source instanceof EntityLivingBase) {
 				EntityLivingBase attacker = (EntityLivingBase) source;
 				ItemStack itemInUse = attacker.getCurrentItemOrArmor(0);
 				if(itemInUse != null && itemInUse.itemID == itemID)
-					attacker.attackEntityFrom(DamageSource.magic, 3);
+					attacker.attackEntityFrom(DamageSource.magic, 2);
 			}
 		}
 	}
