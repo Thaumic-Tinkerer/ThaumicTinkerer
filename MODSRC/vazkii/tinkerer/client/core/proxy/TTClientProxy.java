@@ -65,5 +65,10 @@ public class TTClientProxy extends TTCommonProxy {
 	protected void initCCPeripherals() {
 		// NO-OP
 	}
+	
+	@Override
+	public boolean isClient() {
+		return true;
+	}
 
 }
