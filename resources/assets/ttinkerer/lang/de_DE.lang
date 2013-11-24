@@ -41,7 +41,7 @@ item.ttinkerer:focusTelekinesis.name=Stabfokus: Telekinese
 item.ttinkerer:soulMould.name=Seelenform
 item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
 item.ttinkerer:focusSmelt.name=Stabfokus: Efreet's Flamme
-item.ttinkerer:focusHeal.name=Stabfokus: Reparieren
+item.ttinkerer:focusHeal.name=Stabfokus: Heilen
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -71,7 +71,9 @@ tc.research_category.TT_ENCHANTING=Verzaubern
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
 ttresearch.lore.PERIPHERALS=Wenn Technologie auf Magie trifft
-ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Briwser ein
+# Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
+# link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
 
 # -- SMOKEY QUARTZ
@@ -193,3 +195,8 @@ ttresearch.page.TTENCH_VAMPIRISM.0=Du hast eine Verzauberung formuliert, die es 
 ttresearch.name.FOCUS_SMELT=Stabfokus: Efreet's Flamme
 ttresearch.lore.FOCUS_SMELT=Bänder würden keinen Unterschied machen
 ttresearch.page.FOCUS_SMELT.0=Indem du den Flammen- und Exkavationsfokus kombinierst, hast du einen Fokus gemacht, der Eigenschaften von beiden hat.<BR><BR>Dieser Fokus wird jeglichen Block schmelzen, auf den der Träger zeigt, gleich dem Strahl des Exkavationsfokus. Nur Blöcke, die in einem gewöhnlichen Ofen zu anderen Blöcken geschmolzen werden können, werden geschmolzen.
+
+# -- WAND FOCUS: MENDING
+ttresearch.name.FOCUS_HEAL=Stabfokus: Mending
+ttresearch.lore.FOCUS_HEAL=Bandagen, Leere und Gefühl
+ttresearch.page.FOCUS_HEAL.0=Du weißt, dass die Pech mächtige Foki besitzen, die Krankheiten verursachen, damit hast du dir einen Weg erdacht, sie zu deinem Vorteil zu nutzen.<BR><BR>Dieser Fokus wird langsam die Wunden des Anwenders heilen, während er ihn benutzt, indem er für den Prozess Vis aus dem Stab verwendet.
