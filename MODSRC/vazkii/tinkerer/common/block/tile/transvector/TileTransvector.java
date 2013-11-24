@@ -43,6 +43,8 @@ public abstract class TileTransvector extends TileEntity {
 		par1nbtTagCompound.setInteger(TAG_Y_TARGET, y);
 		par1nbtTagCompound.setInteger(TAG_Z_TARGET, z);
 		par1nbtTagCompound.setBoolean(TAG_CHEATY_MODE, cheaty);
+		
+		writeCustomNBT(par1nbtTagCompound);
 	}
 
 	@Override
@@ -53,6 +55,8 @@ public abstract class TileTransvector extends TileEntity {
 		y = par1nbtTagCompound.getInteger(TAG_Y_TARGET);
 		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
 		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
+		
+		readCustomNBT(par1nbtTagCompound);
 	}
 
 	public void writeCustomNBT(NBTTagCompound cmp) {
