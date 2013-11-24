@@ -20,10 +20,10 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
-import vazkii.tinkerer.common.block.tile.TileInterface;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.item.ItemBlockMagnet;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
@@ -90,7 +90,7 @@ public final class ModBlocks {
 
 
 	public static void initTileEntities() {
-		GameRegistry.registerTileEntity(TileInterface.class, LibBlockNames.INTERFACE);
+		GameRegistry.registerTileEntity(TileTransvectorInterface.class, LibBlockNames.INTERFACE);
 		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerTileEntity(TileMagnet.class, LibBlockNames.MAGNET);
 		GameRegistry.registerTileEntity(TileMobMagnet.class, LibBlockNames.MOB_MAGNET);
