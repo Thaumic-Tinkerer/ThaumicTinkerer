@@ -26,3 +26,4 @@
 2.0-26=https://www.sugarsync.com/pf/D0065150_89047385_93725
 2.0-27=https://www.sugarsync.com/pf/D9740002_82596175_99026
 2.0-28=https://www.sugarsync.com/pf/D9740002_82596175_99298
+2.0-29=https://www.sugarsync.com/pf/D9740002_82596175_92756
