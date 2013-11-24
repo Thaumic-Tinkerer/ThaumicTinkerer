@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
@@ -67,10 +68,11 @@ public class ModEnchantmentHandler {
 				return;
 
 			int quickDraw = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idQuickDraw, heldItem);
-			ItemStack usingItem = player.itemInUse;
+			ItemStack usingItem = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, 32);
+			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, 33);
 			if(quickDraw > 0 && usingItem != null && usingItem.getItem() instanceof ItemBow)
-				if((usingItem.getItem().getMaxItemUseDuration(usingItem) - player.itemInUseCount) % (6 - quickDraw) == 0)
-					player.itemInUseCount --;
+				if((usingItem.getItem().getMaxItemUseDuration(usingItem) - time) % (6 - quickDraw) == 0)
+					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, time - 1, 33);
 		}
 	}
 
