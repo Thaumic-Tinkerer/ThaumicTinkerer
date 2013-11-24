@@ -52,5 +52,6 @@ public final class LibResearch {
 	public static final String KEY_ENCHANT_VAMPIRISM = "TTENCH_VAMPIRISM";
 	public static final String KEY_FOCUS_SMELT = "FOCUS_SMELT";
 	public static final String KEY_FOCUS_HEAL = "FOCUS_HEAL";
+	public static final String KEY_FOCUS_ENDER_CHEST = "FOCUS_ENDER_CHEST";
 
 }

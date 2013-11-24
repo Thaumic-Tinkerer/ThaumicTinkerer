@@ -31,5 +31,6 @@ public final class LibItemIDs {
 	public static int idXPTalisman = 22162;
 	public static int idFocusSmelt = 22163;
 	public static int idFocusHeal = 22164;
+	public static int idFocusEnderChest = 22165;
 
 }

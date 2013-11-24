@@ -42,6 +42,7 @@ item.ttinkerer:soulMould.name=Soul Mould
 item.ttinkerer:xpTalisman.name=Talisman of Withhold
 item.ttinkerer:focusSmelt.name=Wand Focus: Efreet's Flame
 item.ttinkerer:focusHeal.name=Wand Focus: Mending
+item.ttinkerer:focusEnderChest.name=Wand Focus: Ender Rift
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -200,3 +201,8 @@ ttresearch.page.FOCUS_SMELT.0=By combining the flame and excavation foci, you ma
 ttresearch.name.FOCUS_HEAL=Wand Focus: Mending
 ttresearch.lore.FOCUS_HEAL=Bandages, Voids and Feels
 ttresearch.page.FOCUS_HEAL.0=You know Pech carry powerful foci that can induce diseases, with that, you devised a way to use them to your benefits.<BR><BR>This focus will slowly mend the caster's wounds as they're using it, using vis from the wand in the process.
+
+# -- WAND FOCUS: ENDER RIFT
+ttresearch.name.FOCUS_ENDER_CHEST=Wand Focus: Ender Rift
+ttresearch.lore.FOCUS_ENDER_CHEST=A 'pocket' to the fourth dimension
+ttresearch.page.FOCUS_ENDER_CHEST.0=By combining a Hand Mirror with a portable hole, you managed to construct a focus that tears a rift in the ender, allowing you to access the contents of your Ender Chest remotely.

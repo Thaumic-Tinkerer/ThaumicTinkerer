@@ -120,6 +120,11 @@ public final class ModRecipes {
 				'F', new ItemStack(ConfigItems.itemFocusFire),
 				'E', new ItemStack(ConfigItems.itemFocusExcavation),
 				'N', new ItemStack(ConfigItems.itemResource, 1, 1));
+		registerResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(ModItems.focusEnderChest), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
+				"M", "E", "P",
+				'M', new ItemStack(ConfigItems.itemHandMirror),
+				'E', new ItemStack(Item.eyeOfEnder),
+				'P', new ItemStack(ConfigItems.itemFocusPortableHole));
 	}
 
 	private static void initInfusionRecipes() {
