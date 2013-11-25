@@ -89,8 +89,8 @@ ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative.
 ttresearch.name.INTERFACE=Transvector Interface
 ttresearch.lore.INTERFACE=Not affiliated with nyuu
 ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft, TE3 and IC2 power, items, and liquids, being able to also export the latter two.<BR>[continued]
-ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. (Note: buildcraft pipes need to be broken and replaced to work)
-ttresearch.page.INTERFACE.1=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
+ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. The limit is short, only 4 blocks. (Note: buildcraft pipes need to be broken and replaced to work)
+ttresearch.page.INTERFACE.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
 
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=Gaseous Illuminae
@@ -219,4 +219,4 @@ ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled
 # -- TRANSVECTOR DISLOCATOR
 ttresearch.name.DISLOCATOR=Transvector Dislocator
 ttresearch.lore.DISLOCATOR=No Blood Magic required
-ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block that swaps two blocks in space.<BR><BR>This block acts like a Transvector Interface, where it must be bound to another location in space using a Transvector Binder, you can set the direction it's facing using a wand, and when a redstone signal is applied, the dislocator will swap the block in front of it with the block linked to using the binder. It also transports any and all entities in those areas.<BR><BR>It can be camouflaged similarly to the Transvector Interface. It has a longer range than it, though.
+ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block that swaps two blocks in space.<BR><BR>This block acts like a Transvector Interface, where it must be bound to another location in space using a Transvector Binder, you can set the direction it's facing using a wand, and when a redstone signal is applied, the dislocator will swap the block in front of it with the block linked to using the binder. It also transports any and all entities in those areas.<BR><BR>It can be camouflaged similarly to the Transvector Interface. It has a longer range than it, 16 blocks.
