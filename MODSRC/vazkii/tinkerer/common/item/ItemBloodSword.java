@@ -31,6 +31,7 @@ import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -78,7 +79,7 @@ public class ItemBloodSword extends ItemSword {
 
 		if(event.entityLiving instanceof EntityPlayer && handle) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 31 : 32);
+			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
 			if(itemInUse != null && itemInUse.itemID == itemID) {
 				event.setCanceled(true);
 				handleNext = 3;
