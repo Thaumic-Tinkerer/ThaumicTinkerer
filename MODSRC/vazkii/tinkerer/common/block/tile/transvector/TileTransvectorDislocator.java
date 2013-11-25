@@ -14,11 +14,17 @@
  */
 package vazkii.tinkerer.common.block.tile.transvector;
 
+import java.util.List;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.lib.LibFeatures;
+import codechicken.lib.vec.Vector3;
 
 public class TileTransvectorDislocator extends TileTransvector {
 
@@ -64,18 +70,42 @@ public class TileTransvectorDislocator extends TileTransvector {
 		if(y < 0)
 			return;
 		
-		ChunkCoordinates target = getBlockTarget();
+		ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
+		ChunkCoordinates targetCoords = getBlockTarget();
 		
 		if(worldObj.blockExists(x, y, z)) {
-			ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
-			ChunkCoordinates targetCoords = getBlockTarget();
-			
 			BlockData endData = new BlockData(endCoords);
 			BlockData targetData = new BlockData(targetCoords);
 			
 			endData.setTo(targetCoords);
 			targetData.setTo(endCoords);
 		}
+		
+		List<Entity> entitiesAtEnd = getEntitiesAtPoint(endCoords);
+		List<Entity> entitiesAtTarget = getEntitiesAtPoint(targetCoords);
+		
+		Vector3 targetToEnd = asVector(targetCoords, endCoords);
+		Vector3 endToTarget = asVector(endCoords, targetCoords);
+		
+		for(Entity entity : entitiesAtEnd)
+			moveEntity(entity, endToTarget);
+		for(Entity entity : entitiesAtTarget)
+			moveEntity(entity, targetToEnd);
+	}
+	
+	private List<Entity> getEntitiesAtPoint(ChunkCoordinates coords) {
+		return worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(coords.posX, coords.posY, coords.posZ, coords.posX + 1, coords.posY + 1, coords.posZ + 1));
+	}
+	
+	private Vector3 asVector(ChunkCoordinates source, ChunkCoordinates target) {
+		return new Vector3(target.posX, target.posY, target.posZ).sub(new Vector3(source.posX, source.posY, source.posZ));
+	}
+	
+	private void moveEntity(Entity entity, Vector3 vec) {
+		if(entity instanceof EntityPlayerMP) {
+			EntityPlayerMP player = (EntityPlayerMP) entity;
+			player.playerNetServerHandler.setPlayerLocation(entity.posX + vec.x, entity.posY + vec.y, entity.posZ + vec.z, player.rotationYaw, player.rotationPitch);
+		} else entity.setPosition(entity.posX + vec.x, entity.posY + vec.y, entity.posZ + vec.z);
 	}
 	
 	public ChunkCoordinates getBlockTarget() {
