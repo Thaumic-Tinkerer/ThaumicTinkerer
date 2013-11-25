@@ -14,7 +14,10 @@
  */
 package vazkii.tinkerer.common.block.tile.transvector;
 
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChunkCoordinates;
+import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.lib.LibFeatures;
 
 public class TileTransvectorDislocator extends TileTransvector {
@@ -23,6 +26,16 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 	public int orientation;
 
+	public void receiveRedstonePulse() {
+		ChunkCoordinates target = getBlockTarget();
+		worldObj.setBlock(target.posX, target.posY, target.posZ, Block.bedrock.blockID); // debug
+	}
+	
+	public ChunkCoordinates getBlockTarget() {
+		ForgeDirection dir = ForgeDirection.getOrientation(orientation);
+		return new ChunkCoordinates(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+	}
+	
 	@Override
 	public void readCustomNBT(NBTTagCompound cmp) {
 		super.readCustomNBT(cmp);

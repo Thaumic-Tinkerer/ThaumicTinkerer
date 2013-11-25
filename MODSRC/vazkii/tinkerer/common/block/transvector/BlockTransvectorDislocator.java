@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.block.transvector;
 
+import java.util.Random;
+
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -37,6 +39,36 @@ public class BlockTransvectorDislocator extends BlockTransvector {
         setResistance(10F);
 	}
 
+	@Override
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+		if(par1World.isRemote)
+			return;
+
+		boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
+		int meta = par1World.getBlockMetadata(par2, par3, par4);
+		boolean on = meta != 0;
+
+		if (power && !on) {
+			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 4);
+		} else if (!power && on)
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
+	}
+	
+	@Override
+	public int tickRate(World par1World) {
+		return 1;
+	}
+
+	@Override
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		if(tile != null && tile instanceof TileTransvectorDislocator) {
+			TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
+			dislocator.receiveRedstonePulse();
+		}
+	}
+	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		icons[0] = IconHelper.forBlock(par1IconRegister, this, 0);
