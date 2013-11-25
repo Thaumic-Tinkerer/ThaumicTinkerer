@@ -54,5 +54,6 @@ public final class LibResearch {
 	public static final String KEY_FOCUS_HEAL = "FOCUS_HEAL";
 	public static final String KEY_FOCUS_ENDER_CHEST = "FOCUS_ENDER_CHEST";
 	public static final String KEY_BLOOD_SWORD = "BLOOD_SWORD";
+	public static final String KEY_DISLOCATOR = "DISLOCATOR";
 
 }
