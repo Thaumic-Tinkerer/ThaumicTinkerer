@@ -59,9 +59,12 @@ public class TileTransvectorDislocator extends TileTransvector {
 	}
 	
 	public void receiveRedstonePulse() {
-		ChunkCoordinates target = getBlockTarget();
+		getTile(); // sanity check
+		
 		if(y < 0)
 			return;
+		
+		ChunkCoordinates target = getBlockTarget();
 		
 		if(worldObj.blockExists(x, y, z)) {
 			ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
