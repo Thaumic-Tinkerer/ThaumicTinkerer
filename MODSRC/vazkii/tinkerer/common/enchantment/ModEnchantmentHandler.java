@@ -86,7 +86,7 @@ public class ModEnchantmentHandler {
 			int boost = EnchantmentHelper.getMaxEnchantmentLevel(LibEnchantIDs.idAscentBoost, player.inventory.armorInventory);
 
 			if(boost >= 1 && !player.isSneaking())
-				player.motionY *= (boost + 1) / 2D;
+				player.motionY *= (boost + 2) / 2D;
 		}
 	}
 
