@@ -41,6 +41,7 @@ public final class LibResources {
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = PREFIX_MODEL + "mobMagnetN.png";
 	public static final String MODEL_MOB_MAGNET_S = PREFIX_MODEL + "mobMagnetS.png";
+	public static final String MODEL_REVEALING_HELM = PREFIX_MODEL + "revealing.png";
 
 	public static final String ENCHANT_PROTECTION = PREFIX_ENCHANTS + "protection.png";
 	public static final String ENCHANT_FIRE_PROTECTION = PREFIX_ENCHANTS + "fireProtection.png";
