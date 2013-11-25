@@ -215,3 +215,8 @@ ttresearch.page.FOCUS_ENDER_CHEST.0=By combining a Hand Mirror with a portable h
 ttresearch.name.BLOOD_SWORD=Cursed Spirit's Blade
 ttresearch.lore.BLOOD_SWORD=You're being unpleasant
 ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled force. However, for this to be the case, the sword feeds on the striker's blood.<BR><BR>Upon damaging anything with this sword, the attacker will take one heart of damage. Blocking with this sword will always deal only 1.5 hearts, regardless of the original damage.<BR><BR>Furthermore, simply holding this sword gives the holder a steadfast aura, making them move faster than normal.
+
+# -- TRANSVECTOR DISLOCATOR
+ttresearch.name.DISLOCATOR=Transvector Dislocator
+ttresearch.lore.DISLOCATOR=No Blood Magic required
+ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block that swaps two blocks in space.<BR><BR>This block acts like a Transvector Interface, where it must be bound to another location in space using a Transvector Binder, you can set the direction it's facing using a wand, and when a redstone signal is applied, the dislocator will swap the block in front of it with the block linked to using the binder. It also transports any and all entities in those areas.<BR><BR>It can be camouflaged similarly to the Transvector Interface. It has a longer range than it, though.
