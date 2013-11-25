@@ -45,6 +45,7 @@ item.ttinkerer:focusSmelt.name=Wand Focus: Efreet's Flame
 item.ttinkerer:focusHeal.name=Wand Focus: Mending
 item.ttinkerer:focusEnderChest.name=Wand Focus: Ender Rift
 item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
+item.ttinkerer:revealingHelm.name=Helmet of Revealing
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -220,3 +221,8 @@ ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled
 ttresearch.name.DISLOCATOR=Transvector Dislocator
 ttresearch.lore.DISLOCATOR=No Blood Magic required
 ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block that swaps two blocks in space.<BR><BR>This block acts like a Transvector Interface, where it must be bound to another location in space using a Transvector Binder, you can set the direction it's facing using a wand, and when a redstone signal is applied, the dislocator will swap the block in front of it with the block linked to using the binder. It also transports any and all entities in those areas.<BR><BR>It can be camouflaged similarly to the Transvector Interface. It has a longer range than it, 16 blocks.
+
+# -- HELMET OF REVEALING
+ttresearch.name.REVEALING_HELM=Helmet of Revealing
+ttresearch.lore.REVEALING_HELM=This is why I can't use photoshop
+ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much protection from attacking zombies. You think you have a fix for that though. By strapping goggles of revealing onto a thaumium helmet, you can get the benifits of both. Well, it turns out it is a bit more complicated than that. A bit of magic is required to avoid feedback loops, and a bit of magic to keep them from slipping off, but on the whole, it more or less works.

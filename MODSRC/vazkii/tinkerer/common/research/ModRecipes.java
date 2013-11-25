@@ -116,20 +116,24 @@ public final class ModRecipes {
 			'S', new ItemStack(Block.stone),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
 		registerResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.KEY_FOCUS_SMELT, new ItemStack(ModItems.focusSmelt), new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 6),
-				"FNE",
-				'F', new ItemStack(ConfigItems.itemFocusFire),
-				'E', new ItemStack(ConfigItems.itemFocusExcavation),
-				'N', new ItemStack(ConfigItems.itemResource, 1, 1));
+			"FNE",
+			'F', new ItemStack(ConfigItems.itemFocusFire),
+			'E', new ItemStack(ConfigItems.itemFocusExcavation),
+			'N', new ItemStack(ConfigItems.itemResource, 1, 1));
 		registerResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(ModItems.focusEnderChest), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
-				"M", "E", "P",
-				'M', new ItemStack(ConfigItems.itemHandMirror),
-				'E', new ItemStack(Item.eyeOfEnder),
-				'P', new ItemStack(ConfigItems.itemFocusPortableHole));
+			"M", "E", "P",
+			'M', new ItemStack(ConfigItems.itemHandMirror),
+			'E', new ItemStack(Item.eyeOfEnder),
+			'P', new ItemStack(ConfigItems.itemFocusPortableHole));
 		registerResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ModBlocks.dislocator), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
-				" M ", "MIM", " C ",
-				'M', new ItemStack(ConfigItems.itemResource, 1, 10),
-				'I', new ItemStack(ModBlocks.interfase),
-				'C', new ItemStack(Item.comparator));
+			" M ", "MIM", " C ",
+			'M', new ItemStack(ConfigItems.itemResource, 1, 10),
+			'I', new ItemStack(ModBlocks.interfase),
+			'C', new ItemStack(Item.comparator));
+		registerResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(ModItems.revealingHelm), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
+			"GH",
+			'G', new ItemStack(ConfigItems.itemGoggles),
+			'H', new ItemStack(ConfigItems.itemHelmetThaumium));
 	}
 
 	private static void initInfusionRecipes() {

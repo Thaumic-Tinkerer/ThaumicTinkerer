@@ -44,6 +44,7 @@ public final class ModItems {
 	public static Item focusHeal;
 	public static Item focusEnderChest;
 	public static Item bloodSword;
+	public static Item revealingHelm;
 
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -63,5 +64,6 @@ public final class ModItems {
 		focusHeal = new ItemFocusHeal(LibItemIDs.idFocusHeal).setUnlocalizedName(LibItemNames.FOCUS_HEAL);
 		focusEnderChest = new ItemFocusEnderChest(LibItemIDs.idFocusEnderChest).setUnlocalizedName(LibItemNames.FOCUS_ENDER_CHEST);
 		bloodSword = new ItemBloodSword(LibItemIDs.idBloodSword).setUnlocalizedName(LibItemNames.BLOOD_SWORD);
+		revealingHelm = new ItemRevealingHelm(LibItemIDs.idRevealingHelm).setUnlocalizedName(LibItemNames.REVEALING_HELM);
 	}
 }
