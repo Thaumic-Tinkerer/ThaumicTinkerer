@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.block.tile.transvector;
 
-import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.lib.LibFeatures;
@@ -26,9 +26,53 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 	public int orientation;
 
+	class BlockData {
+		
+		int id;
+		int meta;
+		TileEntity tile;
+		
+		ChunkCoordinates coords;
+		
+		public BlockData(int id, int meta, TileEntity tile, ChunkCoordinates coords) {
+			this.id = id;
+			this.meta = meta;
+			this.tile = tile;
+			
+			this.coords = coords;
+		}
+		
+		public BlockData(ChunkCoordinates coords) {
+			this(worldObj.getBlockId(coords.posX, coords.posY, coords.posZ), worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ), worldObj.getBlockTileEntity(coords.posX, coords.posY, coords.posZ), coords);
+		}
+		
+		public void setTo(ChunkCoordinates coords) {
+			worldObj.setBlock(coords.posX, coords.posY, coords.posZ, id, meta, 1 | 2);
+			worldObj.setBlockTileEntity(coords.posX, coords.posY, coords.posZ, tile);
+			
+			if(tile != null) {
+				tile.xCoord = coords.posX;
+				tile.yCoord = coords.posY;
+				tile.zCoord = coords.posZ;
+			}
+		}
+	}
+	
 	public void receiveRedstonePulse() {
 		ChunkCoordinates target = getBlockTarget();
-		worldObj.setBlock(target.posX, target.posY, target.posZ, Block.bedrock.blockID); // debug
+		if(y < 0)
+			return;
+		
+		if(worldObj.blockExists(x, y, z)) {
+			ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
+			ChunkCoordinates targetCoords = getBlockTarget();
+			
+			BlockData endData = new BlockData(endCoords);
+			BlockData targetData = new BlockData(targetCoords);
+			
+			endData.setTo(targetCoords);
+			targetData.setTo(endCoords);
+		}
 	}
 	
 	public ChunkCoordinates getBlockTarget() {
