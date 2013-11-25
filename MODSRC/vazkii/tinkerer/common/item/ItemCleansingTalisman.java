@@ -30,6 +30,7 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibFeatures;
+import vazkii.tinkerer.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -71,7 +72,7 @@ public class ItemCleansingTalisman extends ItemMod {
 						removed = true;
 					} else for(PotionEffect potion : potions) {
 						int id = potion.getPotionID();
-						if(ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], 35)) { // isBadEffect
+						if(ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], LibObfuscation.IS_BAD_EFFECT)) {
 							player.removePotionEffect(id);
 							removed = true;
 							break;

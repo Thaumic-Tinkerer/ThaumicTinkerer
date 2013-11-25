@@ -28,6 +28,8 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
+import vazkii.tinkerer.common.lib.LibObfuscation;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ModEnchantmentHandler {
@@ -68,14 +70,12 @@ public class ModEnchantmentHandler {
 			if(heldItem == null)
 				return;
 
-			boolean isServer = !ThaumicTinkerer.proxy.isClient();
-
 			int quickDraw = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idQuickDraw, heldItem);
-			ItemStack usingItem = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 31 : 32);
-			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, isServer ? 32 : 33);
+			ItemStack usingItem = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
+			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE_COUNT);
 			if(quickDraw > 0 && usingItem != null && usingItem.getItem() instanceof ItemBow)
 				if((usingItem.getItem().getMaxItemUseDuration(usingItem) - time) % (6 - quickDraw) == 0)
-					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, time - 1, isServer ? 32 : 33);
+					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, time - 1, LibObfuscation.ITEM_IN_USE);
 		}
 	}
 
