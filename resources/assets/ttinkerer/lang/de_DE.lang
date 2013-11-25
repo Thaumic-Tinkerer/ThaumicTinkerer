@@ -44,6 +44,7 @@ item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
 item.ttinkerer:focusSmelt.name=Stabfokus: Efreet's Flamme
 item.ttinkerer:focusHeal.name=Stabfokus: Heilen
 item.ttinkerer:focusEnderChest.name=Stabfokus: Enderspalt
+item.ttinkerer:bloodSword.name=Klinge des Verfluchten Geistes
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -57,6 +58,7 @@ tile.ttinkerer:magnet.name=Kinetischer Attraktor
 tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
 tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
 tile.ttinkerer:funnel.name=Essentia-Trichter
+tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
@@ -208,3 +210,8 @@ ttresearch.page.FOCUS_HEAL.0=Du weißt, dass die Pech mächtige Foki besitzen, d
 ttresearch.name.FOCUS_ENDER_CHEST=Stabfokus: Enderspalt
 ttresearch.lore.FOCUS_ENDER_CHEST=Ein 'Loch' zur vierten Dimension
 ttresearch.page.FOCUS_ENDER_CHEST.0=Indem du einen Handspiegel mit einem Tragbaren Loch kombinierst, hast du es geschafft, einen Fokus zu konstruieren, der eine Spalte in das Ender reißt, was es dir erlaubt, von überall auf den Inhalt deiner Endertruhe zuzugreifen.
+
+# -- CURSED SPIRIT'S BLADE
+ttresearch.name.BLOOD_SWORD=Klinge des Verfluchten Geistes
+ttresearch.lore.BLOOD_SWORD=Du bist unfreundlich
+ttresearch.page.BLOOD_SWORD.0=Du hast ein Schwert kreiert, dass mit noch nie da gewesener Kraft zustößt. Jedoch, damit dass der Fall ist, ernährt sich das Schwert vom Blut des Trägers.<BR><BR>Wenn mit diesem Schwert irgendetwas angegriffen wird, wird der Angreifer ein Herz Schaden erleiden. Mit diesem Schwert zu blocken, wird immer nur 1.5 Herzen Schaden verursachen, ungeachtet des ursprünglichen Schadens.<BR><BR>Ferner wird das bloße Halten dieses Schwertes dem Träger eine unerschütterliche Aura verleihen, was sie befähigt, sich schneller zu bewegen als normal.
