@@ -16,14 +16,17 @@ package vazkii.tinkerer.common.block.transvector;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
@@ -37,6 +40,25 @@ public class BlockTransvectorDislocator extends BlockTransvector {
 		super(par1, Material.iron);
         setHardness(3F);
         setResistance(10F);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+        TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+
+    	TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
+    	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
+        
+    	if(currentStack != null && currentStack.itemID == ConfigItems.itemWandCasting.itemID) {
+    		dislocator.orientation = par6;
+			par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
+
+    		PacketDispatcher.sendPacketToAllInDimension(tile.getDescriptionPacket(), par1World.provider.dimensionId);
+
+    		return true;
+    	}
+		
+		return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
 	}
 
 	@Override
