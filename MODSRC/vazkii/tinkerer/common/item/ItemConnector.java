@@ -61,7 +61,7 @@ public class ItemConnector extends ItemMod {
 			int z = getZ(par1ItemStack);
 
 			TileEntity tile1 = par3World.getBlockTileEntity(x, y, z);
-			if (tile1 == null || !(tile1 instanceof TileTransvectorInterface)) {
+			if (tile1 == null || !(tile1 instanceof TileTransvector)) {
 				setY(par1ItemStack, -1);
 
 				par2EntityPlayer.addChatMessage("ttmisc.connector.notpresent");
