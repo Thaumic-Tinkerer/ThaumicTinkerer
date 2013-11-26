@@ -75,7 +75,7 @@ public class ModEnchantmentHandler {
 			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE_COUNT);
 			if(quickDraw > 0 && usingItem != null && usingItem.getItem() instanceof ItemBow)
 				if((usingItem.getItem().getMaxItemUseDuration(usingItem) - time) % (6 - quickDraw) == 0)
-					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, time - 1, LibObfuscation.ITEM_IN_USE);
+					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, time - 1, LibObfuscation.ITEM_IN_USE_COUNT);
 		}
 	}
 
