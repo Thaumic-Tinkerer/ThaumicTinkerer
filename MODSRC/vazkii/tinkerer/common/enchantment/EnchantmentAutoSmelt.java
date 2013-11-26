@@ -16,7 +16,9 @@ package vazkii.tinkerer.common.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.item.ItemStack;
 import thaumcraft.common.config.Config;
+import thaumcraft.common.config.ConfigItems;
 
 public class EnchantmentAutoSmelt extends EnchantmentMod {
 
@@ -27,6 +29,11 @@ public class EnchantmentAutoSmelt extends EnchantmentMod {
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
 		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == Config.enchRepair.effectId;
+	}
+	
+	@Override
+	public boolean canApply(ItemStack par1ItemStack) {
+		return super.canApply(par1ItemStack) && par1ItemStack.itemID != ConfigItems.itemAxeElemental.itemID;
 	}
 
 }
