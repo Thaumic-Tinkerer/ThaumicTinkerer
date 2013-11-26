@@ -2,10 +2,11 @@
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Position eingestellt!
 ttmisc.connector.complete=Das Binden ist komplett!
-ttmisc.connector.notinterf=Das ist keine Transvektor-Schnittstelle.
+ttmisc.connector.notinterf=Das ist kein Transvektorblock.
 ttmisc.connector.interffail=Du kannst keine Transvektor-Schnittstelle mit einer anderen verbinden.
-ttmisc.connector.notpresent=Die Transvektor-Schnittstelle ist nicht präsent.
-ttmisc.connector.toofar=Die ursprüngliche Transvektor-Schnittstelle ist zu weit entfernt.
+ttmisc.connector.dislfail=Du kannst keine Transvektor-Schnittstelle mit einer anderen verbinden.
+ttmisc.connector.notpresent=Der Transvektorblock ist nicht präsent.
+ttmisc.connector.toofar=Der ursprüngliche Transvektorblock ist zu weit entfernt.
 ttmisc.leftClick=Linksklick
 ttmisc.rightClick=Rechtsklick
 ttmisc.redstoneControl=Redstone-Kontrolle
@@ -43,6 +44,8 @@ item.ttinkerer:xpTalisman.name=Talisman des Einbehaltens
 item.ttinkerer:focusSmelt.name=Stabfokus: Efreet's Flamme
 item.ttinkerer:focusHeal.name=Stabfokus: Heilen
 item.ttinkerer:focusEnderChest.name=Stabfokus: Enderspalt
+item.ttinkerer:bloodSword.name=Klinge des Verfluchten Geistes
+item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -56,6 +59,7 @@ tile.ttinkerer:magnet.name=Kinetischer Attraktor
 tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
 tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
 tile.ttinkerer:funnel.name=Essentia-Trichter
+tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
@@ -85,8 +89,9 @@ ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur nega
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
 ttresearch.lore.INTERFACE=Nicht verbunden mit nyuu
-ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft- und IC2-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
-ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft-, IC2- und TE3-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
+ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. Die Reichweite ist kurz, lediglich vier Blöcke. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
+ttresearch.page.INTERFACE.2=Es ist auch möglich, indem du diesen Block mit irgendeinem anderen anklickst, ihn als den gehaltenen Block zu tarnen. Um die Hülle zu entfernen, rechtsklicke einfach auf den getarnten Block mit einer leeren Hand.
 
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=Gasförmige Illuminae
@@ -95,7 +100,7 @@ ttresearch.page.GASEOUS_LIGHT.0=Du hast die Feinheiten des Lichts studiert und e
 
 # -- GASEOUS TENEBRAE
 ttresearch.name.GASEOUS_SHADOW=Gasförmige Tenebrae
-ttresearch.lore.GASEOUS_SHADOW=Die ungesehene Welt
+ttresearch.lore.GASEOUS_SHADOW=Ein roter Handball?
 ttresearch.page.GASEOUS_SHADOW.0=Du hast die Feinheiten des Schattens studiert und einen Weg gefunden, gasförmige Dunkelheit durch das Erfüllen einer Phiole mit rohem Schatten zu kreieren.<BR><BR>Diese Phiole enthält ein konzentriertes Extrakt von gasförmigen Tenebrae, das durch einen Rechtsklick freigelassen werden kann, sich dann relativ schnell in der Umgebung verteilen wird und diese verdunkeln wird.
 
 # -- FUME DISSIPATOR
@@ -164,7 +169,7 @@ ttresearch.page.FUNNEL.0=Du wurdest es Leid, deine Gläser mit Phiolen zu manage
 
 # -- ENCHANTMENT: ASCENT BOOST
 ttresearch.name.TTENCH_ASCENT_BOOST=Verzauberung: Aufstiegs-Boost
-ttresearch.lore.TTENCH_ASCENT_BOOST=Höher als ein Titan
+ttresearch.lore.TTENCH_ASCENT_BOOST=Über die Wand Maria
 ttresearch.page.TTENCH_ASCENT_BOOST.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, höher zu springen als du normalerweise kannst.<BR><BR>Diese Verzauberung kann auf Beinrüstung gelegt werden. Wenn getan, wird der Träger fähig sein, deutlich höher als normal zu springen.
 
 # -- ENCHANTMENT: SLOW FALL
@@ -184,7 +189,7 @@ ttresearch.page.TTENCH_DESINTEGRATE.0=Du hast eine Verzauberung formuliert, die 
 
 # -- ENCHANTMENT: QUICK DRAW
 ttresearch.name.TTENCH_QUICK_DRAW=Verzauberung: Schnelles Spannen
-ttresearch.lore.TTENCH_QUICK_DRAW=Rascher Schuss
+ttresearch.lore.TTENCH_QUICK_DRAW=Mögen die Seltsamen auf ewig zu deinen Gunsten sein
 ttresearch.page.TTENCH_QUICK_DRAW.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, deinen Bogen auf schnellere Art zu spannen.<BR><BR>Diese Verzauberung kann auf Bögen gelegt werden. Wenn getan, kann der Bogen schneller voll gepannt werden als normal.
 
 # -- ENCHANTMENT: VAMPIRISM
@@ -206,3 +211,18 @@ ttresearch.page.FOCUS_HEAL.0=Du weißt, dass die Pech mächtige Foki besitzen, d
 ttresearch.name.FOCUS_ENDER_CHEST=Stabfokus: Enderspalt
 ttresearch.lore.FOCUS_ENDER_CHEST=Ein 'Loch' zur vierten Dimension
 ttresearch.page.FOCUS_ENDER_CHEST.0=Indem du einen Handspiegel mit einem Tragbaren Loch kombinierst, hast du es geschafft, einen Fokus zu konstruieren, der eine Spalte in das Ender reißt, was es dir erlaubt, von überall auf den Inhalt deiner Endertruhe zuzugreifen.
+
+# -- CURSED SPIRIT'S BLADE
+ttresearch.name.BLOOD_SWORD=Klinge des Verfluchten Geistes
+ttresearch.lore.BLOOD_SWORD=Du bist unfreundlich
+ttresearch.page.BLOOD_SWORD.0=Du hast ein Schwert kreiert, dass mit noch nie da gewesener Kraft zustößt. Jedoch, damit dass der Fall ist, ernährt sich das Schwert vom Blut des Trägers.<BR><BR>Wenn mit diesem Schwert irgendetwas angegriffen wird, wird der Angreifer ein Herz Schaden erleiden. Mit diesem Schwert zu blocken, wird immer nur 1.5 Herzen Schaden verursachen, ungeachtet des ursprünglichen Schadens.<BR><BR>Ferner wird das bloße Halten dieses Schwertes dem Träger eine unerschütterliche Aura verleihen, was sie befähigt, sich schneller zu bewegen als normal.
+
+# -- TRANSVECTOR DISLOCATOR
+ttresearch.name.DISLOCATOR=Transvektor-Dislokator
+ttresearch.lore.DISLOCATOR=Keine Blutmagie benötigt
+ttresearch.page.DISLOCATOR.0=Indem du Bewegung studiert hast, hast du es geschafft, einen Block zu kreieren, der zwei Blöcke im Raum austauschen kann.<BR><BR>Dieser Block funktioniert wie eine Transvektor-Schnittstelle, Also muss er mit einem Transvektoren-Binder mit einer anderen Position verbunden werden, du kannst die Richtung, der er zugewendet ist, mit einem Stab ändern, und wenn er ein Redstone-Signal empfängt, wird der Dislokator den Block vor ihm mit dem Block, mit dem er durch den Binder verbunden ist, austauschen. Er transportiert auch alle Lebewesen und Items in diesen Bereichen.<BR><BR>Er kann wie die Transvektor-Schnittstelle getarnt werden. Er hat jedoch eine größere Reichweite, 16 Blöcke.
+
+# -- HELMET OF REVEALING
+ttresearch.name.REVEALING_HELM=Helm der Enthüllung
+ttresearch.lore.REVEALING_HELM=Darum kann ich Photoshop nicht benutzen
+ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht viel Schutz gegen angreifende Zombies. Du denkst jedoch, du hast eine Lösung für das Problem gefunden. Indem du eine Brille an einem Thaumiumhelm befestigst, kannst du die Vorteile von beidem nutzen. Na ja, es stellt sich heraus, dass es ein wenig komplizierter als das ist. Ein bisschen Magie ist nötig, um Rückkopplungen zu vermeiden, und ein wenig Magie, um sie am verrutschen zu hindern, aber insgesamt scheint es mehr oder weniger zu funtionieren.
