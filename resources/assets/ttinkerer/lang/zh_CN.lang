@@ -33,7 +33,7 @@ ttmisc.absorbing=§a开启吸引模式
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=烟黑石英
-item.ttinkerer:connector.name=矢量变换接口绑定器
+item.ttinkerer:connector.name=矢量变换绑定器
 item.ttinkerer:gaseousLight.name=光明气瓶
 item.ttinkerer:gaseousShadow.name=暗影气瓶
 item.ttinkerer:gasRemover.name=烟雾驱散器
@@ -48,6 +48,8 @@ item.ttinkerer:xpTalisman.name=汇魔护身符
 item.ttinkerer:focusSmelt.name=法杖核心：伊夫利特之辉
 item.ttinkerer:focusHeal.name=法杖核心：愈合
 item.ttinkerer:focusEnderChest.name=法杖核心: 末影裂痕
+item.ttinkerer:bloodSword.name=咒灵之剑
+item.ttinkerer:revealingHelm.name=揭示之头盔
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -61,6 +63,7 @@ tile.ttinkerer:magnet.name=奥术念力磁铁
 tile.ttinkerer:mobMagnet.name=奥术生物磁铁
 tile.ttinkerer:enchanter.name=渗透附魔台
 tile.ttinkerer:funnel.name=要素漏斗
+tile.ttinkerer:dislocator.name=矢量转位仪
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=腾迅
@@ -211,3 +214,18 @@ ttresearch.page.FOCUS_HEAL.0=你知道岩精携有一种能够诱发瘟病的核
 ttresearch.name.FOCUS_ENDER_CHEST=法杖核心: 末影裂痕
 ttresearch.lore.FOCUS_ENDER_CHEST=对第四维度打包
 ttresearch.page.FOCUS_ENDER_CHEST.0=将便携式洞穴与魔力手镜融合,你做出一种能够用末影力量撕裂空间的法杖核心,使得你能够随时远距离打开自己的末影箱子.
+
+# -- CURSED SPIRIT'S BLADE
+ttresearch.name.BLOOD_SWORD=咒灵之剑
+ttresearch.lore.BLOOD_SWORD=你并不快乐
+ttresearch.page.BLOOD_SWORD.0=你打造出一柄威力无双的魔剑.然而要发挥这种威力必须以执剑者的鲜血饲之.<BR><BR>只要挥剑斩中任何东西,剑身都会抽取执剑者一颗心的生命值.而使用该剑格挡则无论受到多大程度的伤害总是固定丢失1.5颗心的伤害.<BR><BR>此外,只要手持该剑就能加持一个恒定光环来增加移动速度.
+
+# -- TRANSVECTOR DISLOCATOR
+ttresearch.name.DISLOCATOR=矢量转位仪
+ttresearch.lore.DISLOCATOR=无需血魔法
+ttresearch.page.DISLOCATOR.0=通过研究Motion要素,你设法制造出一台能够交换方块空间位置的设备.<BR><BR>这台设备用起来类似矢量变换接口,必须使用矢量变换接口绑定器将它绑定到另一个位置,你可以通过法杖设置它的朝向,当接收到红石信号后它会将朝向的方块与绑定位置的方块交换位置.它也能够传输这些位置上的实体(生物,船,矿车等).<BR><BR>可以像伪装矢量变换接口那样伪装它.但它有更远的工作范围:高达16格.
+
+# -- HELMET OF REVEALING
+ttresearch.name.REVEALING_HELM=揭示之头盔
+ttresearch.lore.REVEALING_HELM=这就是我不用PS的原因
+ttresearch.page.REVEALING_HELM.0=事实表明,揭示之护目镜没办法防御袭击而来的僵尸.你认为已经有了解决方案:将护目镜和神秘头盔合二为一.好吧,事实证明不是看上去那么简单.需要施加一点点魔法来避免反馈循环,还需要再施加一点点魔法来防止脱落,但总的来说,它基本可以投入使用了.
