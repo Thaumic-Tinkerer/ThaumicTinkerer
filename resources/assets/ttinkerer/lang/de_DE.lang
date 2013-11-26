@@ -45,6 +45,7 @@ item.ttinkerer:focusSmelt.name=Stabfokus: Efreet's Flamme
 item.ttinkerer:focusHeal.name=Stabfokus: Heilen
 item.ttinkerer:focusEnderChest.name=Stabfokus: Enderspalt
 item.ttinkerer:bloodSword.name=Klinge des Verfluchten Geistes
+item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -89,8 +90,8 @@ ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur nega
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
 ttresearch.lore.INTERFACE=Nicht verbunden mit nyuu
 ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft-, IC2- und TE3-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
-ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
-ttresearch.page.INTERFACE.1=Es ist auch möglich, indem du diesen Block mit irgendeinem anderen anklickst, ihn als den gehaltenen Block zu tarnen. Um die Hülle zu entfernen, rechtsklicke einfach auf den getarnten Block mit einer leeren Hand.
+ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. Die Reichweite ist kurz, lediglich vier Blöcke. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
+ttresearch.page.INTERFACE.2=Es ist auch möglich, indem du diesen Block mit irgendeinem anderen anklickst, ihn als den gehaltenen Block zu tarnen. Um die Hülle zu entfernen, rechtsklicke einfach auf den getarnten Block mit einer leeren Hand.
 
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=Gasförmige Illuminae
@@ -215,3 +216,13 @@ ttresearch.page.FOCUS_ENDER_CHEST.0=Indem du einen Handspiegel mit einem Tragbar
 ttresearch.name.BLOOD_SWORD=Klinge des Verfluchten Geistes
 ttresearch.lore.BLOOD_SWORD=Du bist unfreundlich
 ttresearch.page.BLOOD_SWORD.0=Du hast ein Schwert kreiert, dass mit noch nie da gewesener Kraft zustößt. Jedoch, damit dass der Fall ist, ernährt sich das Schwert vom Blut des Trägers.<BR><BR>Wenn mit diesem Schwert irgendetwas angegriffen wird, wird der Angreifer ein Herz Schaden erleiden. Mit diesem Schwert zu blocken, wird immer nur 1.5 Herzen Schaden verursachen, ungeachtet des ursprünglichen Schadens.<BR><BR>Ferner wird das bloße Halten dieses Schwertes dem Träger eine unerschütterliche Aura verleihen, was sie befähigt, sich schneller zu bewegen als normal.
+
+# -- TRANSVECTOR DISLOCATOR
+ttresearch.name.DISLOCATOR=Transvektor-Dislokator
+ttresearch.lore.DISLOCATOR=Keine Blutmagie benötigt
+ttresearch.page.DISLOCATOR.0=Indem du Bewegung studiert hast, hast du es geschafft, einen Block zu kreieren, der zwei Blöcke im Raum austauschen kann.<BR><BR>Dieser Block funktioniert wie eine Transvektor-Schnittstelle, Also muss er mit einem Transvektoren-Binder mit einer anderen Position verbunden werden, du kannst die Richtung, der er zugewendet ist, mit einem Stab ändern, und wenn er ein Redstone-Signal empfängt, wird der Dislokator den Block vor ihm mit dem Block, mit dem er durch den Binder verbunden ist, austauschen. Er transportiert auch alle Lebewesen und Items in diesen Bereichen.<BR><BR>Er kann wie die Transvektor-Schnittstelle getarnt werden. Er hat jedoch eine größere Reichweite, 16 Blöcke.
+
+# -- HELMET OF REVEALING
+ttresearch.name.REVEALING_HELM=Helm der Enthüllung
+ttresearch.lore.REVEALING_HELM=Darum kann ich Photoshop nicht benutzen
+ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht viel Schutz gegen angreifende Zombies. Du denkst jedoch, du hast eine Lösung für das Problem gefunden. Indem du eine Brille an einem Thaumiumhelm befestigst, kannst du die Vorteile von beidem nutzen. Na ja, es stellt sich heraus, dass es ein wenig komplizierter als das ist. Ein bisschen Magie ist nötig, um Rückkopplungen zu vermeiden, und ein wenig Magie, um sie am verrutschen zu hindern, aber insgesamt scheint es mehr oder weniger zu funtionieren.
