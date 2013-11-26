@@ -27,6 +27,7 @@ import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -40,12 +41,12 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBloodSword extends ItemSword {
+public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	private static final int DAMAGE = 10;
 
 	public ItemBloodSword(int par1) {
-		super(par1, EnumHelper.addToolMaterial("TT_BLOOD", 0, 650, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
+		super(par1, EnumHelper.addToolMaterial("TT_BLOOD", 0, 950, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
 		setCreativeTab(ModCreativeTab.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
