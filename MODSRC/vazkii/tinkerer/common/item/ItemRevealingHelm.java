@@ -14,13 +14,17 @@
  */
 package vazkii.tinkerer.common.item;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.StatCollector;
+import thaumcraft.api.IGoggles;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.IVisDiscounter;
 import thaumcraft.api.ThaumcraftApi;
@@ -32,7 +36,7 @@ import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IVisDiscounter {
+public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscounter {
 
 	public ItemRevealingHelm(int i) {
 		super(i, ThaumcraftApi.armorMatThaumium, 2, 0);
@@ -49,7 +53,17 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 	public boolean showNodes(ItemStack paramItemStack, EntityLivingBase paramEntityLivingBase) {
 		return true;
 	}
-	
+
+	@Override
+	public boolean showIngamePopups(ItemStack paramItemStack, EntityLivingBase paramEntityLivingBase) {
+		return true;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+		list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + getVisDiscount() + "%");
+	}
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		return LibResources.MODEL_REVEALING_HELM;
