@@ -32,7 +32,7 @@ public abstract class TileTransvector extends TileEntity {
 	public int camo;
 	public int camoMeta;
 
-	public int x, y, z;
+	public int x = 0, y = -1, z = 0;
 	private boolean cheaty;
 
 	@Override

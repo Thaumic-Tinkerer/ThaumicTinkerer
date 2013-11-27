@@ -29,8 +29,11 @@ import codechicken.lib.vec.Vector3;
 public class TileTransvectorDislocator extends TileTransvector {
 
 	private static final String TAG_ORIENTATION = "orientation";
-
+	private static final String TAG_COOLDOWN = "cooldown";
+	
 	public int orientation;
+	private int cooldown = 0;
+	private boolean pulseStored = false;
 
 	class BlockData {
 		
@@ -64,11 +67,27 @@ public class TileTransvectorDislocator extends TileTransvector {
 		}
 	}
 	
+	@Override
+	public void updateEntity() {
+		super.updateEntity();
+		
+		cooldown = Math.max(0, cooldown - 1);
+		if(cooldown == 0 && pulseStored) {
+			pulseStored = false;
+			receiveRedstonePulse();
+		}
+	}
+	
 	public void receiveRedstonePulse() {
 		getTile(); // sanity check
 		
 		if(y < 0)
 			return;
+		
+		if(cooldown > 0) {
+			pulseStored = true;
+			return;
+		}
 		
 		ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
 		ChunkCoordinates targetCoords = getBlockTarget();
@@ -91,6 +110,8 @@ public class TileTransvectorDislocator extends TileTransvector {
 			moveEntity(entity, endToTarget);
 		for(Entity entity : entitiesAtTarget)
 			moveEntity(entity, targetToEnd);
+		
+		cooldown = 10;
 	}
 	
 	private List<Entity> getEntitiesAtPoint(ChunkCoordinates coords) {
