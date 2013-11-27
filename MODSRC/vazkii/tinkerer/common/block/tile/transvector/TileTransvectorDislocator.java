@@ -16,13 +16,17 @@ package vazkii.tinkerer.common.block.tile.transvector;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import codechicken.lib.vec.Vector3;
 
@@ -96,8 +100,10 @@ public class TileTransvectorDislocator extends TileTransvector {
 			BlockData endData = new BlockData(endCoords);
 			BlockData targetData = new BlockData(targetCoords);
 			
-			endData.setTo(targetCoords);
-			targetData.setTo(endCoords);
+			if(checkBlock(targetCoords) && checkBlock(endCoords)) {
+				endData.setTo(targetCoords);
+				targetData.setTo(endCoords);
+			}
 		}
 		
 		List<Entity> entitiesAtEnd = getEntitiesAtPoint(endCoords);
@@ -112,6 +118,11 @@ public class TileTransvectorDislocator extends TileTransvector {
 			moveEntity(entity, targetToEnd);
 		
 		cooldown = 10;
+	}
+	
+	private boolean checkBlock(ChunkCoordinates coords) {
+		int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+		return !ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) != -1F;
 	}
 	
 	private List<Entity> getEntitiesAtPoint(ChunkCoordinates coords) {
