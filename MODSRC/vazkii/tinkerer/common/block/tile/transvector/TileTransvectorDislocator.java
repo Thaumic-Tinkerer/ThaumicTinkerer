@@ -122,7 +122,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 	
 	private boolean checkBlock(ChunkCoordinates coords) {
 		int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
-		return !ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) != -1F;
+		return !ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) != -1F || id == 0;
 	}
 	
 	private List<Entity> getEntitiesAtPoint(ChunkCoordinates coords) {

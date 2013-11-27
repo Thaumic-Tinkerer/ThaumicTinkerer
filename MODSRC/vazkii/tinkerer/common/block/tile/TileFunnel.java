@@ -96,7 +96,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 		}
 	}
 
-    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
+	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
 			if (inventorySlots[var3] != null) {
@@ -107,7 +107,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 			}
 		}
 		par1NBTTagCompound.setTag("Items", var2);
-    }
+	}
 
 	@Override
 	public int getSizeInventory() {
