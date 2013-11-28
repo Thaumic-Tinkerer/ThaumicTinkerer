@@ -17,7 +17,6 @@ package vazkii.tinkerer.common.block.tile.transvector;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
@@ -27,9 +26,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import codechicken.lib.vec.Vector3;
 
 public class TileTransvectorDislocator extends TileTransvector {
 
@@ -151,7 +150,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 	}
 	
 	private Vector3 asVector(ChunkCoordinates source, ChunkCoordinates target) {
-		return new Vector3(target.posX, target.posY, target.posZ).sub(new Vector3(source.posX, source.posY, source.posZ));
+		return new Vector3(target.posX, target.posY, target.posZ).subtract(new Vector3(source.posX, source.posY, source.posZ));
 	}
 	
 	private void moveEntity(Entity entity, Vector3 vec) {
