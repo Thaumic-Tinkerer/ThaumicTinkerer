@@ -27,6 +27,7 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.client.lib.LibResources;
@@ -114,14 +115,16 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_FOCUS_HEAL, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.HEAL, 2).add(Aspect.SOUL, 1).add(Aspect.MAGIC, 1), 0, -7, 2, new ItemStack(ModItems.focusHeal)).setParentsHidden("FOCUSPORTABLEHOLE").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_HEAL));
 
-		research = new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), 7, -4, 2, new ItemStack(ModItems.focusEnderChest)).setParents("FOCUSPORTABLEHOLE").setParentsHidden("MIRRORHAND").setConcealed().registerResearchItem();
-		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
+		if(Config.allowMirrors) {
+			research = new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), 7, -4, 2, new ItemStack(ModItems.focusEnderChest)).setParents("FOCUSPORTABLEHOLE").setParentsHidden("MIRRORHAND").setConcealed().registerResearchItem();
+			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
+			
+			research = new TTResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), 2, -5, 3, new ItemStack(ModBlocks.dislocator)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR").registerResearchItem();
+			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_DISLOCATOR));
+		}
 
 		research = new TTResearchItem(LibResearch.KEY_BLOOD_SWORD, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.WEAPON, 1).add(Aspect.FLESH, 1).add(Aspect.SOUL, 1), -5, 8, 3, new ItemStack(ModItems.bloodSword)).setHidden().registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOOD_SWORD)).setParentsHidden(LibResearch.KEY_FOCUS_HEAL, LibResearch.KEY_CLEANSING_TALISMAN).setParents("INFUSION");
-
-		research = new TTResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), 2, -5, 3, new ItemStack(ModBlocks.dislocator)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR").registerResearchItem();
-		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_DISLOCATOR));
 		
 		research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), -2, -5, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
