@@ -62,7 +62,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 						}
 					}
 				}
-			} else setInventorySlotContents(0, new ItemStack(ConfigBlocks.blockJar));
+			} 
 		}
 	}
 
