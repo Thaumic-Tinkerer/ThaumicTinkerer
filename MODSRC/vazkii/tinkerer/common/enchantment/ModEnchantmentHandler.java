@@ -37,7 +37,7 @@ public class ModEnchantmentHandler {
 		if(event.source.getEntity() instanceof EntityLivingBase) {
 			EntityLivingBase attacker = (EntityLivingBase) event.source.getEntity();
 			ItemStack heldItem = attacker.getHeldItem();
-			
+
 			if(heldItem == null)
 				return;
 

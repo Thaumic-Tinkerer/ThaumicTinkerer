@@ -14,10 +14,10 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
-import vazkii.tinkerer.common.item.ModItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
+import vazkii.tinkerer.common.item.ModItems;
 
 public class EnchantmentVampirism extends EnchantmentMod {
 
@@ -29,7 +29,7 @@ public class EnchantmentVampirism extends EnchantmentMod {
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
 		return par1Enchantment.effectId != Enchantment.fireAspect.effectId;
 	}
-	
+
 	@Override
 	public boolean canApply(ItemStack par1ItemStack) {
 		return super.canApply(par1ItemStack) && par1ItemStack.itemID != ModItems.bloodSword.itemID;

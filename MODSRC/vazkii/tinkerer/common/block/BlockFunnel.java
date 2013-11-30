@@ -150,10 +150,10 @@ public class BlockFunnel extends BlockModContainer {
 		} else {
 			if(stack != null && stack.itemID == ConfigItems.itemJarFilled.itemID)
 				stack = new ItemStack(ConfigBlocks.blockJar);
-			
+
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
 				par5EntityPlayer.dropPlayerItem(stack);
-			
+
 			funnel.setInventorySlotContents(0, null);
 			PacketDispatcher.sendPacketToAllInDimension(funnel.getDescriptionPacket(), par1World.provider.dimensionId);
 			return true;
