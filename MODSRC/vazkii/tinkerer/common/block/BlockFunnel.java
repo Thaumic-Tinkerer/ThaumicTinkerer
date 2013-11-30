@@ -28,11 +28,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -144,18 +144,16 @@ public class BlockFunnel extends BlockModContainer {
 
 				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-				PacketDispatcher.sendPacketToAllInDimension(funnel.getDescriptionPacket(), par1World.provider.dimensionId);
+				
+				funnel.onInventoryChanged();
 				return true;
 			}
 		} else {
-			if(stack != null && stack.itemID == ConfigItems.itemJarFilled.itemID)
-				stack = new ItemStack(ConfigBlocks.blockJar);
-
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
 				par5EntityPlayer.dropPlayerItem(stack);
 
 			funnel.setInventorySlotContents(0, null);
-			PacketDispatcher.sendPacketToAllInDimension(funnel.getDescriptionPacket(), par1World.provider.dimensionId);
+			funnel.onInventoryChanged();
 			return true;
 		}
 
