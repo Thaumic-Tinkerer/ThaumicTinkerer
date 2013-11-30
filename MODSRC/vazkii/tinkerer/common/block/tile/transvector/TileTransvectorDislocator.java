@@ -28,6 +28,7 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
+import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibFeatures;
 
 public class TileTransvectorDislocator extends TileTransvector {
@@ -72,7 +73,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 		public void setTo(ChunkCoordinates coords) {
 			worldObj.setBlock(coords.posX, coords.posY, coords.posZ, id, meta, 1 | 2);
-
+			
 			TileEntity tile = this.tile == null ? null : TileEntity.createAndLoadEntity(this.tile);
 			worldObj.setBlockTileEntity(coords.posX, coords.posY, coords.posZ, tile);
 
@@ -81,6 +82,9 @@ public class TileTransvectorDislocator extends TileTransvector {
 				tile.yCoord = coords.posY;
 				tile.zCoord = coords.posZ;
 			}
+			
+			if(Block.blocksList[id] != null)
+				Block.blocksList[id].onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ModBlocks.dislocator.blockID);
 		}
 	}
 
