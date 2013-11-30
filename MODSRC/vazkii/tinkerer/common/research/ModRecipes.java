@@ -74,7 +74,7 @@ public final class ModRecipes {
 				'Q', ModBlocks.darkQuartz);
 		registerResearchItem(LibResearch.KEY_INFUSED_INKWELL, new ItemStack(ModItems.infusedInkwell),
 				"QQQ", "QCQ", "QQQ",
-				'Q', new ItemStack(Item.dyePowder, 1, 15),
+				'Q', new ItemStack(Item.dyePowder, 1, 0),
 				'C', new ItemStack(ModItems.infusedInkwell, 1, 32767));
 	}
 
