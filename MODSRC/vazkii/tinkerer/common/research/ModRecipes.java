@@ -159,6 +159,8 @@ public final class ModRecipes {
 				new ItemStack(Item.rottenFlesh), new ItemStack(Item.porkRaw), new ItemStack(Item.beefRaw), new ItemStack(Item.bone), new ItemStack(Item.diamond), new ItemStack(Item.ghastTear));
 		registerResearchItemI(LibResearch.KEY_INFUSED_INKWELL, new ItemStack(ModItems.infusedInkwell), 2, new AspectList().add(Aspect.VOID, 8).add(Aspect.DARKNESS, 8), new ItemStack(ConfigItems.itemInkwell), 
 				new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigBlocks.blockJar), new ItemStack(ConfigItems.itemResource, 1, 3));
+		registerResearchItemI(LibResearch.KEY_REPAIRER, new ItemStack(ModBlocks.repairer), 8, new AspectList().add(Aspect.TOOL, 15).add(Aspect.CRAFT, 20).add(Aspect.ORDER, 10).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4),
+				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
 	}
 
 	private static void initCrucibleRecipes() {

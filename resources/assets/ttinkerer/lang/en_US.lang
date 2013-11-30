@@ -232,4 +232,9 @@ ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much prote
 # -- INFUSED SCRIBING TOOLS
 ttresearch.name.INFUSED_INKWELL=Infused Scribing Tools
 ttresearch.lore.INFUSED_INKWELL=More ink for the masses
-ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.
+ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.<BR><BR>(Note: These may or may not render in the table due to a thing in Thaumcraft, if they don't, it'll be fixed next TC version)
+
+# -- THAUMIC REHABILITATOR
+ttresearch.name.REPAIRER=Thaumic Rehabilitator
+ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
+ttresearch.page.REPAIRER.0=You created a new contraption to rehabilitate broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, in order of least to most effective are Ordo, Fabrico and Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
