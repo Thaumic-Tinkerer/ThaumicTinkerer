@@ -29,5 +29,6 @@ public final class LibBlockIDs {
 	public static int idEnchanter = 2625;
 	public static int idFunnel = 2626;
 	public static int idDislocator = 2627;
+	public static int idRepairer = 2628;
 
 }

@@ -36,12 +36,15 @@ public final class LibResources {
 	public static final String MISC_AT_LEFT = PREFIX_MISC + "atLeft.png";
 	public static final String MISC_AT_RIGHT = PREFIX_MISC + "atRight.png";
 	public static final String MISC_AT_INDENT = PREFIX_MISC + "atFacingIndent.png";
+	public static final String MISC_REPAIR = PREFIX_MISC + "repair.png";
+	public static final String MISC_REPAIR_OFF = PREFIX_MISC + "repairOff.png";
 
 	public static final String MODEL_MAGNET_N = PREFIX_MODEL + "magnetN.png";
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = PREFIX_MODEL + "mobMagnetN.png";
 	public static final String MODEL_MOB_MAGNET_S = PREFIX_MODEL + "mobMagnetS.png";
 	public static final String MODEL_REVEALING_HELM = PREFIX_MODEL + "revealing.png";
+	public static final String MODEL_REPAIRER = PREFIX_MODEL + "repairer.png";
 
 	public static final String ENCHANT_PROTECTION = PREFIX_ENCHANTS + "protection.png";
 	public static final String ENCHANT_FIRE_PROTECTION = PREFIX_ENCHANTS + "fireProtection.png";
