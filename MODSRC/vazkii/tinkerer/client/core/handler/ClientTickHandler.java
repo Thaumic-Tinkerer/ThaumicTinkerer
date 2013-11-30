@@ -17,10 +17,13 @@ package vazkii.tinkerer.client.core.handler;
 import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.inventory.Container;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.client.gui.GuiResearchRecipe;
+import thaumcraft.client.gui.GuiResearchTable;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.GuiResearchPeripheral;
+import vazkii.tinkerer.common.item.ItemInfusedInkwell;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.ITickHandler;
@@ -40,6 +43,11 @@ public class ClientTickHandler implements ITickHandler {
 			ResearchItem research = ReflectionHelper.getPrivateValue(GuiResearchRecipe.class, (GuiResearchRecipe) mc.currentScreen, 9);
 			if(research.key.equals(LibResearch.KEY_PERIPHERALS))
 				mc.displayGuiScreen(new GuiResearchPeripheral(research));
+		}
+		
+		if(mc.currentScreen != null && mc.currentScreen instanceof GuiResearchTable) {
+			Container container = ((GuiResearchTable) mc.currentScreen).inventorySlots;
+			ItemInfusedInkwell.messWithContainer(container);
 		}
 	}
 
