@@ -22,6 +22,7 @@ import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
+import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
@@ -50,6 +51,7 @@ public final class ModBlocks {
 	public static Block enchanter;
 	public static Block funnel;
 	public static Block dislocator;
+	public static Block repairer;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -65,6 +67,7 @@ public final class ModBlocks {
 		enchanter = new BlockEnchanter(LibBlockIDs.idEnchanter).setUnlocalizedName(LibBlockNames.ENCHANTER);
 		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setUnlocalizedName(LibBlockNames.FUNNEL);
 		dislocator = new BlockTransvectorDislocator(LibBlockIDs.idDislocator).setUnlocalizedName(LibBlockNames.DISLOCATOR);
+		repairer = new BlockRepairer(LibBlockIDs.idRepairer).setUnlocalizedName(LibBlockNames.REPAIRER);
 
 		registerBlocks();
 		registerMultiparts();
@@ -83,6 +86,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(enchanter, LibBlockNames.ENCHANTER);
 		GameRegistry.registerBlock(funnel, LibBlockNames.FUNNEL);
 		GameRegistry.registerBlock(dislocator, LibBlockNames.DISLOCATOR);
+		GameRegistry.registerBlock(repairer, LibBlockNames.REPAIRER);
 	}
 
 	private static void registerMultiparts() {
@@ -103,6 +107,7 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileEnchanter.class, LibBlockNames.ENCHANTER);
 		GameRegistry.registerTileEntity(TileFunnel.class, LibBlockNames.FUNNEL);
 		GameRegistry.registerTileEntity(TileTransvectorDislocator.class, LibBlockNames.DISLOCATOR);
+		GameRegistry.registerTileEntity(TileRepairer.class, LibBlockNames.REPAIRER);
 	}
 
 }

@@ -20,13 +20,16 @@ import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
+import vazkii.tinkerer.client.render.block.RenderRepairer;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
 import vazkii.tinkerer.client.render.tile.RenderTileFunnel;
 import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
+import vazkii.tinkerer.client.render.tile.RenderTileRepairer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
+import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -53,12 +56,15 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileMagnet.class, new RenderTileMagnet());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
 	}
 
 	private void registerRenderIDs() {
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
+		LibRenderIDs.idRepairer = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
+		RenderingRegistry.registerBlockHandler(new RenderRepairer());
 	}
 
 	@Override
