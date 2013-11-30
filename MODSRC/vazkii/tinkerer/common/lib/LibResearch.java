@@ -57,5 +57,6 @@ public final class LibResearch {
 	public static final String KEY_DISLOCATOR = "DISLOCATOR";
 	public static final String KEY_REVEALING_HELM = "REVEALING_HELM";
 	public static final String KEY_INFUSED_INKWELL = "INFUSED_INKWELL";
+	public static final String KEY_REPAIRER = "REPAIRER";
 
 }
