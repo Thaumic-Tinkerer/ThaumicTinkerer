@@ -32,28 +32,41 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileRepairer extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport {
 
-	int ticksExisted = 0;
+	int dmgLastTick = 0;
+	public int ticksExisted = 0;
+	public boolean tookLastTick = true;
 	private static final Map<Aspect, Integer> repairValues = new HashMap();
 
 	static {
 		repairValues.put(Aspect.TOOL, 8);
 		repairValues.put(Aspect.CRAFT, 5);
-		repairValues.put(Aspect.ORDER, 2);
+		repairValues.put(Aspect.ORDER, 3);
 	}
 	
 	ItemStack[] inventorySlots = new ItemStack[1];
 	
 	@Override
 	public void updateEntity() {
-		if((++ticksExisted % 10 == 0) && inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
-			int essentia = drawEssentia();
-			inventorySlots[0].setItemDamage(Math.max(0, inventorySlots[0].getItemDamage() - essentia));
-			onInventoryChanged();
+		if(++ticksExisted % 10 == 0) {
+			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
+				int essentia = drawEssentia();
+				int dmg = inventorySlots[0].getItemDamage();
+				inventorySlots[0].setItemDamage(Math.max(0, dmg - essentia));
+				onInventoryChanged();
+				
+				if(dmgLastTick != 0 && dmgLastTick != dmg) {
+					ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
+					tookLastTick = true;
+				} else tookLastTick = false;
+			} else tookLastTick = false;
+			
+			dmgLastTick = inventorySlots[0] == null ? 0 : inventorySlots[0].getItemDamage();
 		}
 	}
 	

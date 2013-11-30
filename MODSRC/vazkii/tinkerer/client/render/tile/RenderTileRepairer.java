@@ -16,6 +16,7 @@ package vazkii.tinkerer.client.render.tile;
 
 import java.awt.Color;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -28,6 +29,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.client.model.ModelRepairer;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
@@ -45,6 +47,8 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 		int meta = tileentity.worldObj == null ? 3 : tileentity.getBlockMetadata();
 		int rotation = meta == 2 ? 0 : meta == 3 ? 180 : meta == 4 ? 270 : 90;
 
+		TileRepairer repairer = (TileRepairer) tileentity;
+		
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -65,7 +69,12 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 			GL11.glPushMatrix();
 			final float scale = 0.5F;
 			GL11.glScalef(scale, scale, scale);
-			GL11.glTranslatef(-0.5F, -2.5F, 0F);
+			GL11.glTranslatef(-0.5F, (float) (-2.5F + Math.sin(repairer.ticksExisted / 10F) * 0.1F), 0F);
+			
+			float deg = (float) (repairer.ticksExisted * 0.75F % 360F);
+			GL11.glTranslatef(1F / 2F, 1F / 2F, 1F / 32F);
+			GL11.glRotatef(deg, 0F, 1F, 0F);
+			GL11.glTranslatef(-1F / 2F, -1F / 2F, -1F / 32F);
 
 			bindTexture(TextureMap.locationItemsTexture);
 
@@ -95,8 +104,36 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 		model.renderGlass();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glScalef(1F, -1F, -1F);
+		
+		renderOverlay((TileRepairer) tileentity, ((TileRepairer) tileentity).tookLastTick ? repair : repairOff , 1.25F);
 		GL11.glPopMatrix();
 		GL11.glColor4f(1F, 1F, 1F, 1F);
+	}
+
+	
+	private void renderOverlay(TileRepairer tablet, ResourceLocation texture, double size) {
+		Minecraft mc = ClientHelper.minecraft();
+		mc.renderEngine.bindTexture(texture);
+		GL11.glPushMatrix();
+		GL11.glDepthMask(false);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glTranslatef(0F, -0.525F, 0F);
+		float deg = (float) (tablet.ticksExisted * 0.75F % 360F);
+		GL11.glRotatef(deg, 0F, 1F, 0F);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		Tessellator tess = Tessellator.instance;
+		double size1 = size / 2;
+		double size2 = -size1;
+		tess.startDrawingQuads();
+		tess.addVertexWithUV(size2, 0, size1, 0, 1);
+		tess.addVertexWithUV(size1, 0, size1, 1, 1);
+		tess.addVertexWithUV(size1, 0, size2, 1, 0);
+		tess.addVertexWithUV(size2, 0, size2, 0, 0);
+		tess.draw();
+		GL11.glDepthMask(true);
+		GL11.glEnable(GL11.GL_LIGHTING);
+		GL11.glPopMatrix();
 	}
 
 }

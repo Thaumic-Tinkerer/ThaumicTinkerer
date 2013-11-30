@@ -16,6 +16,7 @@ package vazkii.tinkerer.client.render.tile;
 
 import java.awt.Color;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -23,6 +24,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer.ItemRenderType;
 
 import org.lwjgl.opengl.GL11;
@@ -30,6 +32,7 @@ import org.lwjgl.opengl.GL11;
 import thaumcraft.client.renderers.item.ItemWandRenderer;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
+import vazkii.tinkerer.common.block.tile.TileRepairer;
 
 public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
@@ -92,5 +95,4 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
 		GL11.glPopMatrix();
 	}
-
 }
