@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -29,11 +30,16 @@ import net.minecraft.util.Facing;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.api.aspects.IAspectSource;
+import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.common.blocks.ItemJarFilled;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.tiles.TileJarFillable;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-public class TileFunnel extends TileEntity implements ISidedInventory {
+public class TileFunnel extends TileEntity implements ISidedInventory, IAspectContainer {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -65,6 +71,11 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 		}
 	}
 
+	@Override
+	public void onInventoryChanged() {
+		PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+	}
+	
 	private TileEntity getHopperFacing(int x, int y, int z, int meta) {
 		int i = BlockHopper.getDirectionFromMetadata(meta);
 		return worldObj.getBlockTileEntity(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i]);
@@ -115,6 +126,12 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
+		AspectList aspects = getAspects();
+		if(inventorySlots[i] != null && inventorySlots[i].itemID == ConfigItems.itemJarFilled.itemID && aspects == null) {
+			inventorySlots[i] = new ItemStack(ConfigBlocks.blockJar);
+			onInventoryChanged();
+		}
+		
 		return inventorySlots[i];
 	}
 
@@ -211,6 +228,50 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
 		return j != ForgeDirection.DOWN.ordinal();
+	}
+
+	@Override
+	public AspectList getAspects() {
+		ItemStack stack = inventorySlots[0];
+		return stack != null && stack.getItem() instanceof IEssentiaContainerItem ? ((IEssentiaContainerItem) stack.getItem()).getAspects(stack) : null;
+	}
+
+	@Override
+	public void setAspects(AspectList paramAspectList) { }
+
+	@Override
+	public boolean doesContainerAccept(Aspect paramAspect) {
+		return false;
+	}
+
+	@Override
+	public int addToContainer(Aspect paramAspect, int paramInt) {
+		return 0;
+	}
+
+	@Override
+	public boolean takeFromContainer(Aspect paramAspect, int paramInt) {
+		return false;
+	}
+
+	@Override
+	public boolean takeFromContainer(AspectList paramAspectList) {
+		return false;
+	}
+
+	@Override
+	public boolean doesContainerContainAmount(Aspect paramAspect, int paramInt) {
+		return false;
+	}
+
+	@Override
+	public boolean doesContainerContain(AspectList paramAspectList) {
+		return false;
+	}
+
+	@Override
+	public int containerContains(Aspect paramAspect) {
+		return 0;
 	}
 
 }
