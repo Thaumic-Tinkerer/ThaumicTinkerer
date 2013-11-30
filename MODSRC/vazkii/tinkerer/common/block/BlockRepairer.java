@@ -19,6 +19,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -41,6 +42,34 @@ public class BlockRepairer extends BlockModContainer {
         setResistance(10F);
         
         random = new Random();
+	}
+	
+	@Override
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		TileRepairer repairer = (TileRepairer) par1World.getBlockTileEntity(par2, par3, par4);
+		ItemStack stack = repairer.getStackInSlot(0);
+
+		if(stack == null) {
+			ItemStack playerStack = par5EntityPlayer.getCurrentEquippedItem();
+			if(repairer.canInsertItem(0, playerStack, 1)) {
+				repairer.setInventorySlotContents(0, playerStack.splitStack(1));
+
+				if(playerStack.stackSize <= 0)
+					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
+				
+				repairer.onInventoryChanged();
+				return true;
+			}
+		} else {
+			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
+				par5EntityPlayer.dropPlayerItem(stack);
+
+			repairer.setInventorySlotContents(0, null);
+			repairer.onInventoryChanged();
+			return true;
+		}
+
+		return false;
 	}
 	
 	@Override

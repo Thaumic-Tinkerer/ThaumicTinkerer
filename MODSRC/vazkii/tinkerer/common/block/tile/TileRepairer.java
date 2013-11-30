@@ -1,5 +1,5 @@
 /**
- * This class was created by <Vazkii>. It's distributed as
+x * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
  * 
  * ThaumicTinkerer is Open Source and distributed under a
@@ -14,8 +14,11 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -23,11 +26,36 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.api.ThaumcraftApiHelper;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
-public class TileRepairer extends TileEntity implements IInventory {
+public class TileRepairer extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport {
 
+	int ticksExisted = 0;
+	private static final Map<Aspect, Integer> repairValues = new HashMap();
+
+	static {
+		repairValues.put(Aspect.TOOL, 8);
+		repairValues.put(Aspect.CRAFT, 5);
+		repairValues.put(Aspect.ORDER, 2);
+	}
+	
 	ItemStack[] inventorySlots = new ItemStack[1];
+	
+	@Override
+	public void updateEntity() {
+		if((++ticksExisted % 10 == 0) && inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
+			int essentia = drawEssentia();
+			inventorySlots[0].setItemDamage(Math.max(0, inventorySlots[0].getItemDamage() - essentia));
+			onInventoryChanged();
+		}
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
@@ -123,7 +151,7 @@ public class TileRepairer extends TileEntity implements IInventory {
 	public int getInventoryStackLimit() {
 		return 1;
 	}
-
+	
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
 		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
@@ -159,7 +187,144 @@ public class TileRepairer extends TileEntity implements IInventory {
 
 	@Override
 	public void onInventoryChanged() {
+		PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
 	}
 
+	@Override
+	public int[] getAccessibleSlotsFromSide(int var1) {
+		return new int[] { 0 };
+	}
+
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+		return itemstack.getItem().isRepairable();
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
+		return true;
+	}
+	
+	int drawEssentia() {
+		ForgeDirection orientation = getOrientation();
+		TileEntity tile = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
+		
+		if (tile != null) {
+			IEssentiaTransport ic = (IEssentiaTransport) tile;
+			
+			if (!ic.canOutputTo(orientation.getOpposite()))
+				return 0;
+			
+			for(Aspect aspect : repairValues.keySet())
+				if ((ic.getSuction(orientation.getOpposite()).getAmount(aspect) < getSuction(orientation).getAmount(aspect)) && (ic.takeVis(aspect, 1) == 1))
+					return repairValues.get(aspect);
+			
+			return 0;
+		}
+		
+		return 0;
+	}
+	
+	ForgeDirection getOrientation() {
+		return ForgeDirection.getOrientation(getBlockMetadata());
+	}
+	
+	@Override
+	public AspectList getAspects() {
+		ItemStack stack = inventorySlots[0];
+		if(stack == null)
+			return null;
+		else return new AspectList().add(Aspect.ENTROPY, stack.getItemDamage());
+	}
+
+	@Override
+	public void setAspects(AspectList paramAspectList) { }
+
+	@Override
+	public boolean doesContainerAccept(Aspect paramAspect) {
+		
+		return false;
+	}
+
+	@Override
+	public int addToContainer(Aspect paramAspect, int paramInt) {
+		return 0;
+	}
+
+	@Override
+	public boolean takeFromContainer(Aspect paramAspect, int paramInt) {
+		return false;
+	}
+
+	@Override
+	public boolean takeFromContainer(AspectList paramAspectList) {
+		return false;
+	}
+
+	@Override
+	public boolean doesContainerContainAmount(Aspect paramAspect, int paramInt) {
+		return false;
+	}
+
+	@Override
+	public boolean doesContainerContain(AspectList paramAspectList) {
+		return false;
+	}
+
+	@Override
+	public int containerContains(Aspect paramAspect) {
+		return 0;
+	}
+
+	@Override
+	public boolean isConnectable(ForgeDirection paramForgeDirection) {
+		return paramForgeDirection == getOrientation();
+	}
+
+	@Override
+	public boolean canInputFrom(ForgeDirection paramForgeDirection) {
+		return false;
+	}
+
+	@Override
+	public boolean canOutputTo(ForgeDirection paramForgeDirection) {
+		return isConnectable(paramForgeDirection);
+	}
+
+	@Override
+	public void setSuction(AspectList paramAspectList) {
+	}
+
+	@Override
+	public void setSuction(Aspect paramAspect, int paramInt) { }
+
+	@Override
+	public AspectList getSuction(ForgeDirection paramForgeDirection) {
+		AspectList list = new AspectList();
+		for(Aspect aspect : repairValues.keySet())
+			list.add(aspect, 256 + repairValues.get(aspect));
+		
+		return list;
+	}
+
+	@Override
+	public int takeVis(Aspect paramAspect, int paramInt) {
+		return 0;
+	}
+
+	@Override
+	public AspectList getEssentia(ForgeDirection paramForgeDirection) {
+		return null;
+	}
+
+	@Override
+	public int getMinimumSuction() {
+		return 0;
+	}
+
+	@Override
+	public boolean renderExtendedTube() {
+		return false;
+	}
 
 }
