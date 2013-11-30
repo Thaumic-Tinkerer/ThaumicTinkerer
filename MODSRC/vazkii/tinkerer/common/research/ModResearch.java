@@ -129,7 +129,7 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), -2, -5, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
 		
-		research = new TTResearchItem(LibResearch.KEY_INFUSED_INKWELL, LibResearch.CATEGORY_BASICS, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 2).add(Aspect.MIND, 2), 4, 0, 0, new ItemStack(ModItems.infusedInkwell)).setParents("RESEARCH").registerResearchItem();
+		research = new TTResearchItem(LibResearch.KEY_INFUSED_INKWELL, LibResearch.CATEGORY_BASICS, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 1).add(Aspect.MIND, 1), 4, 0, 2, new ItemStack(ModItems.infusedInkwell)).setParents("RESEARCH").registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_INFUSED_INKWELL), recipePage(LibResearch.KEY_INFUSED_INKWELL + 0));
 
 		// Peripheral documentation research
