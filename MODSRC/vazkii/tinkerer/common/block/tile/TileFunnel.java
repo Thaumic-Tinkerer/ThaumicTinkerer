@@ -30,7 +30,6 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.blocks.ItemJarFilled;
-import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.tiles.TileJarFillable;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
@@ -62,7 +61,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory {
 						}
 					}
 				}
-			} 
+			}
 		}
 	}
 

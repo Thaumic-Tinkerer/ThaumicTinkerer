@@ -30,7 +30,6 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibObfuscation;
 
@@ -71,8 +70,6 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	public void onDamageTaken(LivingAttackEvent event) {
 		if(event.entity.worldObj.isRemote)
 			return;
-
-		boolean isServer = !ThaumicTinkerer.proxy.isClient();
 
 		boolean handle = handleNext == 0;
 		if(!handle)

@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.block.transvector;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -41,14 +40,14 @@ public class BlockTransvectorDislocator extends BlockTransvector {
         setHardness(3F);
         setResistance(10F);
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
         TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
 
     	TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
     	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
-        
+
     	if(currentStack != null && currentStack.itemID == ConfigItems.itemWandCasting.itemID) {
     		dislocator.orientation = par6;
 			par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
@@ -57,7 +56,7 @@ public class BlockTransvectorDislocator extends BlockTransvector {
 
     		return true;
     	}
-		
+
 		return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
 	}
 
@@ -76,7 +75,7 @@ public class BlockTransvectorDislocator extends BlockTransvector {
 		} else if (!power && on)
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
 	}
-	
+
 	@Override
 	public int tickRate(World par1World) {
 		return 1;
@@ -90,7 +89,7 @@ public class BlockTransvectorDislocator extends BlockTransvector {
 			dislocator.receiveRedstonePulse();
 		}
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		icons[0] = IconHelper.forBlock(par1IconRegister, this, 0);
