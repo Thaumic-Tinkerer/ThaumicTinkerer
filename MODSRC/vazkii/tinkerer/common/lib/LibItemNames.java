@@ -36,5 +36,6 @@ public final class LibItemNames {
 	public static final String FOCUS_ENDER_CHEST = LibResources.PREFIX_MOD + "focusEnderChest";
 	public static final String BLOOD_SWORD = LibResources.PREFIX_MOD + "bloodSword";
 	public static final String REVEALING_HELM = LibResources.PREFIX_MOD + "revealingHelm";
+	public static final String INFUSED_INKWELL = LibResources.PREFIX_MOD + "infusedInkwell";
 
 }

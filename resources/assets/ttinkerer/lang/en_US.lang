@@ -46,6 +46,7 @@ item.ttinkerer:focusHeal.name=Wand Focus: Mending
 item.ttinkerer:focusEnderChest.name=Wand Focus: Ender Rift
 item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
 item.ttinkerer:revealingHelm.name=Helmet of Revealing
+item.ttinkerer:infusedInkwell.name=Infused Scribing Tools
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -227,3 +228,8 @@ ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block t
 ttresearch.name.REVEALING_HELM=Helmet of Revealing
 ttresearch.lore.REVEALING_HELM=This is why I can't use photoshop
 ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much protection from attacking zombies. You think you have a fix for that though. By strapping goggles of revealing onto a thaumium helmet, you can get the benifits of both. Well, it turns out it is a bit more complicated than that. A bit of magic is required to avoid feedback loops, and a bit of magic to keep them from slipping off, but on the whole, it more or less works.
+
+# -- INFUSED SCRIBING TOOLS
+ttresearch.name.INFUSED_INKWELL=Infused Scribing Tools
+ttresearch.lore.INFUSED_INKWELL=More ink for the masses
+ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.
