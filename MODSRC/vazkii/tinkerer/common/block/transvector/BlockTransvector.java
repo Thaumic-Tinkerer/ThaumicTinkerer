@@ -69,12 +69,10 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
             		}
 
                     Block block = Block.blocksList[currentStack.itemID];
-                    if(block == null || !block.renderAsNormalBlock() || block == this)
+                    if(block == null || !block.renderAsNormalBlock() || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
-
             	}
         	}
-
 
         	if(doChange) {
             	transvector.camo = currentStack.itemID;
