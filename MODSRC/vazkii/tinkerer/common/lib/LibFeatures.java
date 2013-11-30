@@ -34,5 +34,5 @@ public final class LibFeatures {
 	public static final int CLEANSING_TALISMAN_USES = 100;
 
 	public static final float MOVEMENT_MODIFIER = 1F;
-
+	
 }

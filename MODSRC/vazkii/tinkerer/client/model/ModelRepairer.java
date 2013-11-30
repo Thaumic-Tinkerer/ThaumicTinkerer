@@ -90,22 +90,22 @@ public class ModelRepairer extends ModelBase {
 		setRotation(Top4, 0F, 0F, 0F);
 		Opening1 = new ModelRenderer(this, 48, 30);
 		Opening1.addBox(0F, 0F, 0F, 5, 1, 1);
-		Opening1.setRotationPoint(-2.5F, 13.5F, 7F);
+		Opening1.setRotationPoint(-2.5F, 14F, 7F);
 		Opening1.setTextureSize(64, 64);
 		setRotation(Opening1, 0F, 0F, 0F);
 		Opening2 = new ModelRenderer(this, 48, 30);
 		Opening2.addBox(0F, 0F, 0F, 5, 1, 1);
-		Opening2.setRotationPoint(-2.5F, 17.5F, 7F);
+		Opening2.setRotationPoint(-2.5F, 17F, 7F);
 		Opening2.setTextureSize(64, 64);
 		setRotation(Opening2, 0F, 0F, 0F);
 		Opening3 = new ModelRenderer(this, 48, 24);
 		Opening3.addBox(0F, 0F, 0F, 1, 3, 1);
-		Opening3.setRotationPoint(-2.5F, 14.5F, 7F);
+		Opening3.setRotationPoint(-2F, 14.5F, 7F);
 		Opening3.setTextureSize(64, 64);
 		setRotation(Opening3, 0F, 0F, 0F);
 		Opening4 = new ModelRenderer(this, 48, 24);
 		Opening4.addBox(0F, 0F, 0F, 1, 3, 1);
-		Opening4.setRotationPoint(1.5F, 14.5F, 7F);
+		Opening4.setRotationPoint(1F, 14.5F, 7F);
 		Opening4.setTextureSize(64, 64);
 		setRotation(Opening4, 0F, 0F, 0F);
 		Glass1 = new ModelRenderer(this, -11, 37);
@@ -151,6 +151,12 @@ public class ModelRepairer extends ModelBase {
 		Opening2.render(scale);
 		Opening3.render(scale);
 		Opening4.render(scale);
+
+	}
+	
+	public void renderGlass() {
+		final float scale = 1F / 16F;
+
 		Glass1.render(scale);
 		Glass2.render(scale);
 		Glass3.render(scale);
