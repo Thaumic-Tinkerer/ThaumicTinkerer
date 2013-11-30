@@ -56,5 +56,6 @@ public final class LibResearch {
 	public static final String KEY_BLOOD_SWORD = "BLOOD_SWORD";
 	public static final String KEY_DISLOCATOR = "DISLOCATOR";
 	public static final String KEY_REVEALING_HELM = "REVEALING_HELM";
+	public static final String KEY_INFUSED_INKWELL = "INFUSED_INKWELL";
 
 }

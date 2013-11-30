@@ -72,6 +72,10 @@ public final class ModRecipes {
 		registerResearchItem("", new ItemStack(ModBlocks.darkQuartzStairs, 4),
 				"Q  ", "QQ ", "QQQ",
 				'Q', ModBlocks.darkQuartz);
+		registerResearchItem(LibResearch.KEY_INFUSED_INKWELL, new ItemStack(ModItems.infusedInkwell),
+				"QQQ", "QCQ", "QQQ",
+				'Q', new ItemStack(Item.dyePowder, 1, 15),
+				'C', new ItemStack(ModItems.infusedInkwell, 1, 32767));
 	}
 
 	private static void initArcaneRecipes() {
@@ -153,6 +157,8 @@ public final class ModRecipes {
 				new ItemStack(Item.goldenCarrot), new ItemStack(Item.appleGold), new ItemStack(Item.goldNugget), new ItemStack(Item.goldNugget));
 		registerResearchItemI(LibResearch.KEY_BLOOD_SWORD, new ItemStack(ModItems.bloodSword), 6, new AspectList().add(Aspect.HUNGER, 20).add(Aspect.DARKNESS, 5).add(Aspect.SOUL, 10).add(Aspect.MAN, 6), new ItemStack(ConfigItems.itemSwordThaumium),
 				new ItemStack(Item.rottenFlesh), new ItemStack(Item.porkRaw), new ItemStack(Item.beefRaw), new ItemStack(Item.bone), new ItemStack(Item.diamond), new ItemStack(Item.ghastTear));
+		registerResearchItemI(LibResearch.KEY_INFUSED_INKWELL, new ItemStack(ModItems.infusedInkwell), 2, new AspectList().add(Aspect.VOID, 8).add(Aspect.DARKNESS, 8), new ItemStack(ConfigItems.itemInkwell), 
+				new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigBlocks.blockJar), new ItemStack(ConfigItems.itemResource, 1, 3));
 	}
 
 	private static void initCrucibleRecipes() {
