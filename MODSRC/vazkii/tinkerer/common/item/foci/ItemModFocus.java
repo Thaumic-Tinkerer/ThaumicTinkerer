@@ -39,6 +39,9 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
 	public ItemModFocus(int par1) {
 		super(par1);
+		setMaxDamage(1);
+		setNoRepair();
+		setMaxStackSize(1);
 	}
 
 	boolean hasOrnament() {
