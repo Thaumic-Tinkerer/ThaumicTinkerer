@@ -46,6 +46,7 @@ item.ttinkerer:focusHeal.name=Stabfokus: Heilen
 item.ttinkerer:focusEnderChest.name=Stabfokus: Enderspalt
 item.ttinkerer:bloodSword.name=Klinge des Verfluchten Geistes
 item.ttinkerer:revealingHelm.name=Helm der Enthüllung
+item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -60,6 +61,7 @@ tile.ttinkerer:mobMagnet.name=Korporealer Attraktor
 tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
 tile.ttinkerer:funnel.name=Essentia-Trichter
 tile.ttinkerer:dislocator.name=Transvektor-Dislokator
+tile.ttinkerer:repairer.name=Thaumischer Rehabilitator
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
@@ -226,3 +228,13 @@ ttresearch.page.DISLOCATOR.0=Indem du Bewegung studiert hast, hast du es geschaf
 ttresearch.name.REVEALING_HELM=Helm der Enthüllung
 ttresearch.lore.REVEALING_HELM=Darum kann ich Photoshop nicht benutzen
 ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht viel Schutz gegen angreifende Zombies. Du denkst jedoch, du hast eine Lösung für das Problem gefunden. Indem du eine Brille an einem Thaumiumhelm befestigst, kannst du die Vorteile von beidem nutzen. Na ja, es stellt sich heraus, dass es ein wenig komplizierter als das ist. Ein bisschen Magie ist nötig, um Rückkopplungen zu vermeiden, und ein wenig Magie, um sie am verrutschen zu hindern, aber insgesamt scheint es mehr oder weniger zu funtionieren.
+
+# -- INFUSED SCRIBING TOOLS
+ttresearch.name.INFUSED_INKWELL=Infundiertes Schreibset
+ttresearch.lore.INFUSED_INKWELL=Mehr Tinte für die Massen
+ttresearch.page.INFUSED_INKWELL.0=Indem du ein gewöhnliches Schreibset mit der Essenz der Leere infundiert hast, hast du einen Weg gefunden, es mehr Tinte halten zu lassen.<BR><BR>(Hinweis: Dies könnte im Tisch rendern oder auch nicht, wegen eines Problems in Thaumcraft, sollten sie es nicht tun, wird es in der nächsten TC-Version behoben)
+
+# -- THAUMIC REHABILITATOR
+ttresearch.name.REPAIRER=Thaumischer Rehabilitator
+ttresearch.lore.REPAIRER=Weniger Risse als eine Kartoffel am Stiel
+ttresearch.page.REPAIRER.0=Du hast ein neues Gerät kreiert, um zerbrochenes Werkzeug zu rehabilitieren. Wenn du mit einem gebrochenen Werkzeug auf diesen Block klickst und ihn an Essentiaröhren anschließt, wird er Essentia aufnehmen, um das Werkzeug zu reparieren.<BR><BR>Die Essentia, die reparieren wird, ist in der Reihenfolge vom kaum bis sehr effektiv Ordo, Fabrico und Instrumentum.<BR><BR>Außerdem zeigt er, wenn du mit der Brille der Enthüllung auf den Block schaust, wie kaputt das Item in ihm noch ist.
