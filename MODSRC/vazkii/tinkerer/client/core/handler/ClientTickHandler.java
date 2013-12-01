@@ -17,6 +17,7 @@ package vazkii.tinkerer.client.core.handler;
 import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.client.gui.GuiResearchRecipe;
@@ -46,7 +47,7 @@ public class ClientTickHandler implements ITickHandler {
 		}
 		
 		if(mc.currentScreen != null && mc.currentScreen instanceof GuiResearchTable) {
-			Container container = ((GuiResearchTable) mc.currentScreen).inventorySlots;
+			Container container = ((GuiContainer) mc.currentScreen).inventorySlots;
 			ItemInfusedInkwell.messWithContainer(container);
 		}
 	}
