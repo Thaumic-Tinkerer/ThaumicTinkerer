@@ -69,7 +69,11 @@ public class TTClientProxy extends TTCommonProxy {
 
 	@Override
 	protected void initCCPeripherals() {
-		// NO-OP
+		try {
+			super.initCCPeripherals();
+		} catch(Throwable e) {
+			System.out.println("Thaumic Tinkerer: ComputerCraft not found.");
+		}
 	}
 
 	@Override
