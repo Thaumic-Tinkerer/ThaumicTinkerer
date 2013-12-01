@@ -50,6 +50,7 @@ item.ttinkerer:focusHeal.name=法杖核心：愈合
 item.ttinkerer:focusEnderChest.name=法杖核心: 末影裂痕
 item.ttinkerer:bloodSword.name=咒灵之剑
 item.ttinkerer:revealingHelm.name=揭示之头盔
+item.ttinkerer:infusedInkwell.name=注魔笔与墨
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -64,6 +65,7 @@ tile.ttinkerer:mobMagnet.name=奥术生物磁铁
 tile.ttinkerer:enchanter.name=渗透附魔台
 tile.ttinkerer:funnel.name=要素漏斗
 tile.ttinkerer:dislocator.name=矢量转位仪
+tile.ttinkerer:repairer.name=奥法修复台
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=腾迅
@@ -229,3 +231,13 @@ ttresearch.page.DISLOCATOR.0=通过研究Motion要素,你设法制造出一台�
 ttresearch.name.REVEALING_HELM=揭示之头盔
 ttresearch.lore.REVEALING_HELM=这就是我不用PS的原因
 ttresearch.page.REVEALING_HELM.0=事实表明,揭示之护目镜没办法防御袭击而来的僵尸.你认为已经有了解决方案:将护目镜和神秘头盔合二为一.好吧,事实证明不是看上去那么简单.需要施加一点点魔法来避免反馈循环,还需要再施加一点点魔法来防止脱落,但总的来说,它基本可以投入使用了.
+
+# -- INFUSED SCRIBING TOOLS
+ttresearch.name.INFUSED_INKWELL=注魔笔与墨
+ttresearch.lore.INFUSED_INKWELL=更多墨水更耐用
+ttresearch.page.INFUSED_INKWELL.0=对普通的笔与墨灌注魔力,于是你发现一种让墨水瓶容纳更多墨水的方法.
+
+# -- THAUMIC REHABILITATOR
+ttresearch.name.REPAIRER=奥法修复台
+ttresearch.lore.REPAIRER=比用棍子穿过马铃薯的伤害还小
+ttresearch.page.REPAIRER.0=你制造出一台能够修复破损工具的新设备.拿着破损工具右击设备,该设备就会通过与之相连的要素源质管道汇集源质来修复物品.<BR><BR>能够修复物品的要素按效率的次序分别是Ordo要素, Fabrico要素以及Instrumentum要素.<BR><BR>戴着护目镜或者揭示之头盔能够看见完全修复该物品还需要多少要素源质.
