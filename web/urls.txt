@@ -37,3 +37,4 @@
 2.0-37=https://www.sugarsync.com/pf/D9740002_82596175_36659
 2.0-38=https://www.sugarsync.com/pf/D9740002_82596175_36955
 2.0-39=https://www.sugarsync.com/pf/D9740002_82596175_38544
+2.0-40=https://www.sugarsync.com/pf/D9740002_82596175_38039
