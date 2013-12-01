@@ -26,6 +26,8 @@ import thaumcraft.common.tiles.TileTubeFilter;
 import thaumcraft.common.tiles.TileWandPedestal;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.tile.TileFunnel;
+import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
@@ -74,10 +76,12 @@ public class TTCommonProxy {
 		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileCentrifuge.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileFunnel.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileInfusionMatrix.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileJarFillable.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileJarNode.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
+		ComputerCraftAPI.registerExternalPeripheral(TileRepairer.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileTubeFilter.class, handler);
 		ComputerCraftAPI.registerExternalPeripheral(TileWandPedestal.class, handler);
 
