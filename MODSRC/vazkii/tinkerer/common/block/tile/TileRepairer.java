@@ -210,7 +210,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		return itemstack.getItem().isRepairable();
+		return itemstack != null && itemstack.getItem().isRepairable();
 	}
 
 	@Override
