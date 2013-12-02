@@ -61,7 +61,7 @@ tile.ttinkerer:mobMagnet.name=Corporeal Attractor
 tile.ttinkerer:enchanter.name=Osmotic Enchanter
 tile.ttinkerer:funnel.name=Essentia Funnel
 tile.ttinkerer:dislocator.name=Transvector Dislocator
-tile.ttinkerer:repairer.name=Thaumic Rehabilitator
+tile.ttinkerer:repairer.name=Thaumic Restorer
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost
@@ -235,6 +235,6 @@ ttresearch.lore.INFUSED_INKWELL=More ink for the masses
 ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.<BR><BR>(Note: This research is currently disabled and waiting on a TC API hook. If you had it before you updated TT, sorry for that)
 
 # -- THAUMIC REHABILITATOR
-ttresearch.name.REPAIRER=Thaumic Rehabilitator
+ttresearch.name.REPAIRER=Thaumic Restorer
 ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
-ttresearch.page.REPAIRER.0=You created a new contraption to rehabilitate broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, in order of least to most effective are Ordo, Fabrico and Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
+ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, in order of least to most effective are Ordo, Fabrico and Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
