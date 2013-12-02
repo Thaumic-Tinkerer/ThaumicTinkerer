@@ -232,7 +232,7 @@ ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much prote
 # -- INFUSED SCRIBING TOOLS
 ttresearch.name.INFUSED_INKWELL=Infused Scribing Tools
 ttresearch.lore.INFUSED_INKWELL=More ink for the masses
-ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.<BR><BR>(Note: These may or may not render in the table due to a thing in Thaumcraft, if they don't, it'll be fixed next TC version)
+ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.<BR><BR>(Note: This research is currently disabled and waiting on a TC API hook. If you had it before you updated TT, sorry for that)
 
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumic Rehabilitator

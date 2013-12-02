@@ -45,11 +45,6 @@ public class ClientTickHandler implements ITickHandler {
 			if(research.key.equals(LibResearch.KEY_PERIPHERALS))
 				mc.displayGuiScreen(new GuiResearchPeripheral(research));
 		}
-		
-		if(mc.currentScreen != null && mc.currentScreen instanceof GuiResearchTable) {
-			Container container = ((GuiContainer) mc.currentScreen).inventorySlots;
-			ItemInfusedInkwell.messWithContainer(container);
-		}
 	}
 
 	@Override
