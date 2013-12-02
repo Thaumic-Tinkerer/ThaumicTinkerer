@@ -34,7 +34,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 		}
 	}
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.FIRE, 120).add(Aspect.ENTROPY, 20);
+	private static final AspectList visUsage = new AspectList().add(Aspect.FIRE, 45).add(Aspect.ENTROPY, 12);
 
 	public ItemFocusSmelt(int par1) {
 		super(par1);
