@@ -25,8 +25,6 @@ public class ItemInfusedInkwell extends ItemMod {
 		canRepair = true;
 		setHasSubtypes(false);
 
-		MinecraftForge.EVENT_BUS.register(this);
-
 	}
 
 	@Override
@@ -40,25 +38,6 @@ public class ItemInfusedInkwell extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
 		return true;
-	}
-
-	@ForgeSubscribe
-	public void containerOpened(PlayerOpenContainerEvent event) {
-		Container container = event.entityPlayer.openContainer;
-		if(container instanceof ContainerResearchTable)
-			messWithContainer(container);
-	}
-	
-	public static void messWithContainer(Container container) {
-		if(container.inventorySlots.size() < 3)
-			return;
-		
-		Slot slot = (Slot) container.inventorySlots.get(0);
-		if(slot instanceof SlotLimitedByClass) {
-			Slot newSlot = new SlotResearchTableOverride(slot.inventory, slot.getSlotIndex(), slot.xDisplayPosition, slot.yDisplayPosition);
-			
-			container.inventorySlots.set(0, newSlot);
-		}
 	}
 
 }
