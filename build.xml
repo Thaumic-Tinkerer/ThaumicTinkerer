@@ -57,18 +57,6 @@
 		<replace dir="${build.dir.temp}" token="ANT:VERSION" value="${build.version}" />
 		<replace dir="${build.dir.temp}" token="ANT:BUILD" value="${build.build_number}" />
 	</target>
-	
-	<target name = "build_version_json">
-		<delete file="${build.file.version}" />
-		<touch file="${build.file.version}" />
-		<echo file="${build.file.version}">
-{
-	"version" : "${build.version}",
-	"build" : "${build.build_number}",
-	"mc_version" : "${build.mc_version}"
-}
-		</echo>
-	</target>
 
 	<target name="build">
 	
@@ -79,7 +67,6 @@
 		<antcall target="recompile" />
 		<antcall target="reobfuscate" />
 		<antcall target="prep_assets" />
-		<antcall target="build_version_json" />
 		
 		<!-- Build the jar -->
 		<mkdir dir="${build.dir.output}" />
