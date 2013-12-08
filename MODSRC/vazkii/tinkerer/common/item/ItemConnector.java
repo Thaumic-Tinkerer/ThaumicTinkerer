@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -89,6 +90,7 @@ public class ItemConnector extends ItemMod {
 
 				playSound(par3World, par4, par5, par6);
 				par2EntityPlayer.addChatMessage("ttmisc.connector.complete");
+				PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3World.provider.dimensionId);
 			}
 		}
 
