@@ -239,3 +239,8 @@ ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools w
 ttresearch.name.REPAIRER=Thaumic Restorer
 ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
 ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, in order of least to most effective are Ordo, Fabrico and Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
+
+# -- WAND FOCUS: DISTORTION
+ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
+ttresearch.lore.FOCUS_DEFLECT=I'm not an Angel
+ttresearch.page.FOCUS_DEFLECT.0=You created a focus to project you fron incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.

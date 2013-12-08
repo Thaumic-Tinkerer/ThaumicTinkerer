@@ -119,6 +119,9 @@ public final class ModResearch {
 			research = new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), 7, -4, 2, new ItemStack(ModItems.focusEnderChest)).setParents("FOCUSPORTABLEHOLE").setParentsHidden("MIRRORHAND").setConcealed().registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
 
+			research = new TTResearchItem(LibResearch.KEY_FOCUS_DEFLECT, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.MOTION, 2).add(Aspect.AIR, 1).add(Aspect.ORDER, 1).add(Aspect.DEATH, 1), 2, -7, 3, new ItemStack(ModItems.focusDeflect)).setConcealed().setParentsHidden("MIRROR").setParents(LibResearch.KEY_FOCUS_FLIGHT).registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_DEFLECT));
+			
 			research = new TTResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), 2, -5, 3, new ItemStack(ModBlocks.dislocator)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR").registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_DISLOCATOR));
 		}
@@ -135,7 +138,7 @@ public final class ModResearch {
 
 		research = new TTResearchItem(LibResearch.KEY_REPAIRER, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CRAFT, 1).add(Aspect.ORDER, 1).add(Aspect.MAGIC, 1), 6, 2, 3, new ItemStack(ModBlocks.repairer)).setConcealed().setParents("TUBES").setParentsHidden("THAUMIUM", "ENCHFABRIC").registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_REPAIRER));
-		
+				
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();
