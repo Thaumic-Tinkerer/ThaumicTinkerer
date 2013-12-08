@@ -43,11 +43,5 @@ public class SlotTool extends Slot {
 	public boolean canTakeStack(EntityPlayer par1EntityPlayer) {
 		return !enchanter.working;
 	}
-
-	@Override
-	public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack) {
-		super.onPickupFromSlot(par1EntityPlayer, par2ItemStack);
-		enchanter.clearEnchants();
-		enchanter.updateAspectList();
-	}
+	
 }

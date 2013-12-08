@@ -170,6 +170,16 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			}
 		}
 	}
+	
+	@Override
+	public void onInventoryChanged() {
+		super.onInventoryChanged();
+		if(!worldObj.isRemote) {
+			enchantments.clear();
+			levels.clear();
+			PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+		}
+	}
 
 	public boolean checkPillars() {
 		if(pillars.isEmpty()) {
