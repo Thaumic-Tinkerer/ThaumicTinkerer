@@ -130,7 +130,7 @@ public final class ModRecipes {
 			'E', new ItemStack(Item.eyeOfEnder),
 			'P', new ItemStack(ConfigItems.itemFocusPortableHole));
 		registerResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ModBlocks.dislocator), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
-			" M ", "MIM", " C ",
+			" M ", " I ", " C ",
 			'M', new ItemStack(ConfigItems.itemResource, 1, 10),
 			'I', new ItemStack(ModBlocks.interfase),
 			'C', new ItemStack(Item.comparator));
