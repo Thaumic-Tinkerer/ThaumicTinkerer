@@ -47,6 +47,7 @@ item.ttinkerer:focusEnderChest.name=Wand Focus: Ender Rift
 item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
 item.ttinkerer:revealingHelm.name=Helmet of Revealing
 item.ttinkerer:infusedInkwell.name=Infused Scribing Tools
+item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
