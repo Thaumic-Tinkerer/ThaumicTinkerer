@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.item;
 
 import net.minecraft.item.Item;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 import vazkii.tinkerer.common.item.foci.ItemFocusDislocation;
 import vazkii.tinkerer.common.item.foci.ItemFocusEnderChest;
 import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
@@ -46,6 +47,7 @@ public final class ModItems {
 	public static Item bloodSword;
 	public static Item revealingHelm;
 	public static Item infusedInkwell;
+	public static Item focusDeflect;
 
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -67,5 +69,6 @@ public final class ModItems {
 		bloodSword = new ItemBloodSword(LibItemIDs.idBloodSword).setUnlocalizedName(LibItemNames.BLOOD_SWORD);
 		revealingHelm = new ItemRevealingHelm(LibItemIDs.idRevealingHelm).setUnlocalizedName(LibItemNames.REVEALING_HELM);
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
+		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
 	}
 }

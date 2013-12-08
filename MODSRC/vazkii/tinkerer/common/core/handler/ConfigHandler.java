@@ -77,7 +77,8 @@ public final class ConfigHandler {
 		LibItemIDs.idBloodSword = loadItem(LibItemNames.BLOOD_SWORD, LibItemIDs.idBloodSword);
 		LibItemIDs.idRevealingHelm = loadItem(LibItemNames.REVEALING_HELM, LibItemIDs.idRevealingHelm);
 		LibItemIDs.idInfusedInkwell = loadItem(LibItemNames.INFUSED_INKWELL, LibItemIDs.idInfusedInkwell);
-
+		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
+		
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
 		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);
