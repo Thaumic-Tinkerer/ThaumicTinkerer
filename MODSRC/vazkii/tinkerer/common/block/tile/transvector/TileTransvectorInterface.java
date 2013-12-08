@@ -46,7 +46,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 	@Override
 	public void updateEntity() {
-		if(!addedToICEnergyNet) {
+		if(!addedToICEnergyNet && !worldObj.isRemote) {
 			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 			addedToICEnergyNet = true;
 		}
@@ -69,7 +69,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	private void removeFromIC2EnergyNet() {
-		if(addedToICEnergyNet) {
+		if(addedToICEnergyNet && !worldObj.isRemote) {
 			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
 			addedToICEnergyNet = false;
 		}
