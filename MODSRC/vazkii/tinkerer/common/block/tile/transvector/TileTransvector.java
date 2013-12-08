@@ -39,11 +39,6 @@ public abstract class TileTransvector extends TileEntity {
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
 		super.writeToNBT(par1nbtTagCompound);
 
-		par1nbtTagCompound.setInteger(TAG_X_TARGET, x);
-		par1nbtTagCompound.setInteger(TAG_Y_TARGET, y);
-		par1nbtTagCompound.setInteger(TAG_Z_TARGET, z);
-		par1nbtTagCompound.setBoolean(TAG_CHEATY_MODE, cheaty);
-
 		writeCustomNBT(par1nbtTagCompound);
 	}
 
@@ -51,20 +46,23 @@ public abstract class TileTransvector extends TileEntity {
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
 		super.readFromNBT(par1nbtTagCompound);
 
-		x = par1nbtTagCompound.getInteger(TAG_X_TARGET);
-		y = par1nbtTagCompound.getInteger(TAG_Y_TARGET);
-		z = par1nbtTagCompound.getInteger(TAG_Z_TARGET);
-		cheaty = par1nbtTagCompound.getBoolean(TAG_CHEATY_MODE);
-
 		readCustomNBT(par1nbtTagCompound);
 	}
 
 	public void writeCustomNBT(NBTTagCompound cmp) {
+		cmp.setInteger(TAG_X_TARGET, x);
+		cmp.setInteger(TAG_Y_TARGET, y);
+		cmp.setInteger(TAG_Z_TARGET, z);
+		cmp.setBoolean(TAG_CHEATY_MODE, cheaty);
 		cmp.setInteger(TAG_CAMO, camo);
 		cmp.setInteger(TAG_CAMO_META, camoMeta);
 	}
 
 	public void readCustomNBT(NBTTagCompound cmp) {
+		x = cmp.getInteger(TAG_X_TARGET);
+		y = cmp.getInteger(TAG_Y_TARGET);
+		z = cmp.getInteger(TAG_Z_TARGET);
+		cheaty = cmp.getBoolean(TAG_CHEATY_MODE);
 		camo = cmp.getInteger(TAG_CAMO);
 		camoMeta = cmp.getInteger(TAG_CAMO_META);
 	}

@@ -30,13 +30,17 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 import cofh.api.energy.IEnergyHandler;
 
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler {
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler, IAspectContainer, IEssentiaTransport {
 
 	private boolean addedToICEnergyNet = false;
 
@@ -279,6 +283,122 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	public int getMaxEnergyStored(ForgeDirection from) {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).getMaxEnergyStored(from) : 0;
+	}
+
+	@Override
+	public AspectList getAspects() {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).getAspects() : null;
+	}
+
+	@Override
+	public void setAspects(AspectList paramAspectList) {
+		TileEntity tile = getTile();
+		if(tile != null)
+			((IAspectContainer) tile).setAspects(paramAspectList);
+	}
+
+	@Override
+	public boolean doesContainerAccept(Aspect paramAspect) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).doesContainerAccept(paramAspect) : false;
+	}
+
+	@Override
+	public int addToContainer(Aspect paramAspect, int paramInt) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).addToContainer(paramAspect, paramInt) : 0;
+	}
+
+	@Override
+	public boolean takeFromContainer(Aspect paramAspect, int paramInt) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).takeFromContainer(paramAspect, paramInt) : false;
+	}
+
+	@Override
+	public boolean takeFromContainer(AspectList paramAspectList) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).takeFromContainer(paramAspectList) : false;
+	}
+
+	@Override
+	public boolean doesContainerContainAmount(Aspect paramAspect, int paramInt) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).doesContainerContainAmount(paramAspect, paramInt) : false;
+	}
+
+	@Override
+	public boolean doesContainerContain(AspectList paramAspectList) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).doesContainerContain(paramAspectList) : false;
+	}
+
+	@Override
+	public int containerContains(Aspect paramAspect) {
+		TileEntity tile = getTile();
+		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).containerContains(paramAspect) : 0;
+	}
+
+	@Override
+	public boolean isConnectable(ForgeDirection paramForgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).isConnectable(paramForgeDirection) : false;
+	}
+
+	@Override
+	public boolean canInputFrom(ForgeDirection paramForgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).canInputFrom(paramForgeDirection) : false;
+	}
+
+	@Override
+	public boolean canOutputTo(ForgeDirection paramForgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).canOutputTo(paramForgeDirection) : false;
+	}
+
+	@Override
+	public void setSuction(AspectList paramAspectList) {
+		TileEntity tile = getTile();
+		if(tile instanceof IEssentiaTransport)
+			((IEssentiaTransport) tile).setSuction(paramAspectList);
+	}
+
+	@Override
+	public void setSuction(Aspect paramAspect, int paramInt) {
+		TileEntity tile = getTile();
+		if(tile instanceof IEssentiaTransport)
+			((IEssentiaTransport) tile).setSuction(paramAspect, paramInt);
+	}
+
+	@Override
+	public AspectList getSuction(ForgeDirection paramForgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getSuction(paramForgeDirection) : null;
+	}
+
+	@Override
+	public int takeVis(Aspect paramAspect, int paramInt) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).takeVis(paramAspect, paramInt) : 0;
+	}
+
+	@Override
+	public AspectList getEssentia(ForgeDirection paramForgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentia(paramForgeDirection) : null;
+	}
+
+	@Override
+	public int getMinimumSuction() {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getMinimumSuction() : 0;
+	}
+
+	@Override
+	public boolean renderExtendedTube() {
+		return false;
 	}
 
 }
