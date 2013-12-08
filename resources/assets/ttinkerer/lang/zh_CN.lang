@@ -95,7 +95,7 @@ ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英,但性状相反.
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=矢量变换接口
 ttresearch.lore.INTERFACE=并不属于妮悠
-ttresearch.page.INTERFACE.0=“事实就是,1个方块只有6个面…”——Direwolf20如是说.<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子,并且你能够用这个面与选中的方块互动.它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,流体的输入输出接口.<BR>[continued]
+ttresearch.page.INTERFACE.0=“事实就是,1个方块只有6个面…”——Direwolf20如是说.<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子,并且你能够用这个面与选中的方块互动.它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,要素源质,流体的输入输出接口.<BR>[continued]
 ttresearch.page.INTERFACE.1=为了将接口与其他方块绑定,你需要制作一个被称作矢量变换接口绑定器的特殊工具.<BR><BR>右击目标方块之后右击接口就能完成绑定操作.(注意：建筑模组的管道需要在绑定后拆掉再装才能有效)
 
 # -- GASEOUS ILLUMINAE
@@ -130,7 +130,7 @@ ttresearch.page.FOCUS_FLIGHT.0=研究风雷剑过程中积累的丰富知识让�
 
 # -- WAND FOCUS: DISLOCATION
 ttresearch.name.FOCUS_DISLOCATION=法杖核心：转移
-ttresearch.lore.FOCUS_DISLOCATION=看,这里！看,到那儿了！
+ttresearch.lore.FOCUS_DISLOCATION=在头脑中构筑堡垒因此它永远不会崩塌.
 ttresearch.page.FOCUS_DISLOCATION.0=基于等价交换核心.你制作了这种新型的法杖核心.相比前者,新的法杖核心不但能够存储被施法对象的信息,还能存储被施法对象本身,并允许你将其放置到任意地方.<BR><BR>想要转移一个 方块,需要先手持法杖右击它.然后再右击其他某处.这个法杖核心允许你转移近乎任意方块,包括箱子和刷怪笼.
 
 # -- TALISMAN OF REMEDIUM
