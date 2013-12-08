@@ -143,7 +143,7 @@ public final class ModRecipes {
 	private static void initInfusionRecipes() {
 		registerResearchItemI(LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), 3, new AspectList().add(Aspect.AIR, 15).add(Aspect.MOTION, 20).add(Aspect.TRAVEL, 10), new ItemStack(Item.enderPearl),
 				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.feather), new ItemStack(Item.feather), new ItemStack(ConfigItems.itemShard, 1, 0));
-		registerResearchItemI(LibResearch.KEY_FOCUS_DISLOCATION, new ItemStack(ModItems.focusDislocation), 10, new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DARKNESS, 10).add(Aspect.VOID, 25).add(Aspect.MAGIC, 20).add(Aspect.TAINT, 5), new ItemStack(Item.enderPearl),
+		registerResearchItemI(LibResearch.KEY_FOCUS_DISLOCATION, new ItemStack(ModItems.focusDislocation), 8, new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DARKNESS, 10).add(Aspect.VOID, 25).add(Aspect.MAGIC, 20).add(Aspect.TAINT, 5), new ItemStack(Item.enderPearl),
 				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 6), new ItemStack(Item.diamond));
 		registerResearchItemI(LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(ModItems.focusTelekinesis), 5, new AspectList().add(Aspect.MOTION, 10).add(Aspect.AIR, 20).add(Aspect.ENTROPY, 20).add(Aspect.MIND, 10), new ItemStack(Item.enderPearl),
 				new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz), new ItemStack(Item.netherQuartz),	new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(ConfigItems.itemShard, 1, 0));
@@ -161,6 +161,8 @@ public final class ModRecipes {
 				new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigBlocks.blockJar), new ItemStack(ConfigItems.itemResource, 1, 3));
 		registerResearchItemI(LibResearch.KEY_REPAIRER, new ItemStack(ModBlocks.repairer), 8, new AspectList().add(Aspect.TOOL, 15).add(Aspect.CRAFT, 20).add(Aspect.ORDER, 10).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4),
 				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
+		registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
+				new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
 	}
 
 	private static void initCrucibleRecipes() {
