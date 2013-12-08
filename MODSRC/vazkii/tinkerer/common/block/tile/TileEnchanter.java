@@ -89,6 +89,11 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 
 	@Override
 	public void updateEntity() {
+		if(getStackInSlot(0) == null) {
+			enchantments.clear();
+			levels.clear();
+		}
+		
 		if(working) {
 			ItemStack tool = getStackInSlot(0);
 			if(tool == null) {
