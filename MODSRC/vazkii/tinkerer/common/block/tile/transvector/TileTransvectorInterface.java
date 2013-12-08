@@ -48,7 +48,6 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		}
 	}
 
-
 	@Override
 	public int getMaxDistance() {
 		return LibFeatures.INTERFACE_DISTANCE;
@@ -72,6 +71,13 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		}
 	}
 
+	@Override
+	public void onInventoryChanged() {
+		TileEntity tile = getTile();
+		if(tile != null)
+			tile.onInventoryChanged();
+	}
+	
 	@Override
 	public int getSizeInventory() {
 		TileEntity tile = getTile();
