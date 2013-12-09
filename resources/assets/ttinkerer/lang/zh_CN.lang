@@ -51,6 +51,7 @@ item.ttinkerer:focusEnderChest.name=法杖核心: 末影裂痕
 item.ttinkerer:bloodSword.name=咒灵之剑
 item.ttinkerer:revealingHelm.name=揭示之头盔
 item.ttinkerer:infusedInkwell.name=注魔笔与墨
+item.ttinkerer:focusDeflect.name=法杖核心:扭曲
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -95,7 +96,7 @@ ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英,但性状相反.
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=矢量变换接口
 ttresearch.lore.INTERFACE=并不属于妮悠
-ttresearch.page.INTERFACE.0=“事实就是,1个方块只有6个面…”——Direwolf20如是说.<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子,并且你能够用这个面与选中的方块互动.它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,流体的输入输出接口.<BR>[continued]
+ttresearch.page.INTERFACE.0=“事实就是,1个方块只有6个面…”——Direwolf20如是说.<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子,并且你能够用这个面与选中的方块互动.它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,源质,流体的输入输出接口.<BR>[continued]
 ttresearch.page.INTERFACE.1=为了将接口与其他方块绑定,你需要制作一个被称作矢量变换接口绑定器的特殊工具.<BR><BR>右击目标方块之后右击接口就能完成绑定操作.(注意：建筑模组的管道需要在绑定后拆掉再装才能有效)
 
 # -- GASEOUS ILLUMINAE
@@ -130,7 +131,7 @@ ttresearch.page.FOCUS_FLIGHT.0=研究风雷剑过程中积累的丰富知识让�
 
 # -- WAND FOCUS: DISLOCATION
 ttresearch.name.FOCUS_DISLOCATION=法杖核心：转移
-ttresearch.lore.FOCUS_DISLOCATION=看,这里！看,到那儿了！
+ttresearch.lore.FOCUS_DISLOCATION=在头脑中构筑堡垒因此它从不会崩塌.
 ttresearch.page.FOCUS_DISLOCATION.0=基于等价交换核心.你制作了这种新型的法杖核心.相比前者,新的法杖核心不但能够存储被施法对象的信息,还能存储被施法对象本身,并允许你将其放置到任意地方.<BR><BR>想要转移一个 方块,需要先手持法杖右击它.然后再右击其他某处.这个法杖核心允许你转移近乎任意方块,包括箱子和刷怪笼.
 
 # -- TALISMAN OF REMEDIUM
@@ -241,3 +242,8 @@ ttresearch.page.INFUSED_INKWELL.0=对普通的笔与墨灌注魔力,于是你发
 ttresearch.name.REPAIRER=奥法修复台
 ttresearch.lore.REPAIRER=比用棍子穿过马铃薯的伤害还小
 ttresearch.page.REPAIRER.0=你制造出一台能够修复破损工具的新设备.拿着破损工具右击设备,该设备就会通过与之相连的要素源质管道汇集源质来修复物品.<BR><BR>能够修复物品的要素按效率的次序分别是Ordo要素, Fabrico要素以及Instrumentum要素.<BR><BR>戴着护目镜或者揭示之头盔能够看见完全修复该物品还需要多少要素源质.
+
+# -- WAND FOCUS: DISTORTION
+ttresearch.name.FOCUS_DEFLECT=法杖核心:扭曲
+ttresearch.lore.FOCUS_DEFLECT=我不是天使
+ttresearch.page.FOCUS_DEFLECT.0=你制造出一种法杖核心,能够防护你免遭来袭的火球伤害.<BR><BR>这种核心在使用时会持续抽取其插入的法杖内的魔力,以在施法者附近召唤出一道防护的幕墙,使得穿过它们的寻常炮弹变得毫无伤害.<BR><BR>此处寻常炮弹包括箭矢,雪球以及药水.但似乎这种防护并不足以抵御一些更强力的攻击,比如火球或者凋灵头颅.
