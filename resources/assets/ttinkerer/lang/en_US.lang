@@ -18,6 +18,7 @@ ttmisc.active=§aActive
 ttmisc.soulMould.nonAssigned=§6No Pattern
 ttmisc.soulMould.pattern=§6Current Pattern: %s
 ttmisc.all=All
+ttmisc.none=None
 ttmisc.child=Child
 ttmisc.adult=Adult
 ttmisc.baseCost=Base Cost
