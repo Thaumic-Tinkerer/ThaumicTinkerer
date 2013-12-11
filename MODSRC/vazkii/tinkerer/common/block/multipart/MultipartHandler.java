@@ -25,6 +25,8 @@ public class MultipartHandler {
 	public MultipartHandler() {
 		registerMultipart(ConfigBlocks.blockCustomOre, 0);
 		registerMultipart(ConfigBlocks.blockCustomOre, 7);
+		registerMultipart(ConfigBlocks.blockWoodenDevice, 6);
+		registerMultipart(ConfigBlocks.blockWoodenDevice, 7);
 		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLog, 1);
 		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLeaves, 1);
 		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticOpaque, 1);
