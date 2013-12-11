@@ -45,12 +45,12 @@ public class ContainerAspectAnalyzer extends ContainerPlayerInv {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack var3 = null;
-		Slot var4 = (Slot)inventorySlots.get(par2);
+		Slot var4 = (Slot) inventorySlots.get(par2);
 
 		if (var4 != null && var4.getHasStack()) {
 			ItemStack var5 = var4.getStack();
 
-			if(slot.isItemValid(var3)) {
+			if(par2 == 0 || (var5 != null && slot.isItemValid(var5))) {
 				var3 = var5.copy();
 
 				if (par2 < 1) {
