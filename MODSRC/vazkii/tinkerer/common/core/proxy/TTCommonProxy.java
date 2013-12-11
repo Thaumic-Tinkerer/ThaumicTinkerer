@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.core.proxy;
 
 import thaumcraft.common.tiles.TileAlembic;
+import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileCentrifuge;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;
@@ -81,7 +82,7 @@ public class TTCommonProxy {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
 				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
-				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class
+				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class
 		};
 		
 		for(Class clazz : peripheralClasses)
