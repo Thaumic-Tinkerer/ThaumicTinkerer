@@ -30,5 +30,6 @@ public final class LibBlockIDs {
 	public static int idFunnel = 2626;
 	public static int idDislocator = 2627;
 	public static int idRepairer = 2628;
+	public static int idAspectAnalyzer = 2627;
 
 }

@@ -57,6 +57,7 @@ public final class ConfigHandler {
 		LibBlockIDs.idFunnel = loadBlock(LibBlockNames.FUNNEL, LibBlockIDs.idFunnel);
 		LibBlockIDs.idDislocator = loadBlock(LibBlockNames.DISLOCATOR, LibBlockIDs.idDislocator);
 		LibBlockIDs.idRepairer = loadBlock(LibBlockNames.REPAIRER, LibBlockIDs.idRepairer);
+		LibBlockIDs.idAspectAnalyzer = loadBlock(LibBlockNames.ASPECT_ANALYZER, LibBlockIDs.idAspectAnalyzer);
 		
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
