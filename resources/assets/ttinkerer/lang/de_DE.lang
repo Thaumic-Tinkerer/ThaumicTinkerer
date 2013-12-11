@@ -47,6 +47,7 @@ item.ttinkerer:focusEnderChest.name=Stabfokus: Enderspalt
 item.ttinkerer:bloodSword.name=Klinge des Verfluchten Geistes
 item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
+item.ttinkerer:focusDeflect.name=Stabfokus: Verzerrung
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -91,7 +92,7 @@ ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur nega
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
 ttresearch.lore.INTERFACE=Nicht verbunden mit nyuu
-ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft-, IC2- und TE3-Energie akzeptieren, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft-, IC2- und TE3-Energie akzeptieren, Essentia, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
 ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. Die Reichweite ist kurz, lediglich vier Blöcke. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
 ttresearch.page.INTERFACE.2=Es ist auch möglich, indem du diesen Block mit irgendeinem anderen anklickst, ihn als den gehaltenen Block zu tarnen. Um die Hülle zu entfernen, rechtsklicke einfach auf den getarnten Block mit einer leeren Hand.
 
@@ -127,7 +128,7 @@ ttresearch.page.FOCUS_FLIGHT.0=Indem du das Wissen, Dinge mit Luft umherzutreibe
 
 # -- WAND FOCUS: DISLOCATION
 ttresearch.name.FOCUS_DISLOCATION=Stabfokus: Dislokation
-ttresearch.lore.FOCUS_DISLOCATION=Bald hier, bald da
+ttresearch.lore.FOCUS_DISLOCATION=Bau die Burg in deinem Kopf, auf dass sie niemals stürze
 ttresearch.page.FOCUS_DISLOCATION.0=Du hast einen Stabfokus kreiert, der auf dem Fokus des Gleichen Handels basiert. Der Unterschied ist, dass dieser nicht nur den Fingerabdruck des Objektes hält, sondern das Objekt selbst, was erlaubt, es anderswo zu platzieren.<BR><BR>Um einen Block transportabel zu machen, rechtsklicke ihn. Um ihn wieder zu platzieren, rechtsklicke irgendwo anders. Dieser Fokus kann nahezu alles transportieren, einschließlich Truhen und Monster-Spawner.
 ttresearch.page.FOCUS_DISLOCATION.1=Die Vis-Kosten werden beim Aufnehmen des Blocks abgerechnet. Ihn zu platzieren, ist kostenlos.<BR><BR>Wegen der Menge an Energie, die für die Dislokation erforderlich ist, kosten Blöcke mit tile entities (wie Truhen oder Öfen) 5x so viel Vis wie normal. Monster-Spawner, im Besonderen, kosten stattdessen 20x so viel.
 
@@ -238,3 +239,8 @@ ttresearch.page.INFUSED_INKWELL.0=Indem du ein gewöhnliches Schreibset mit der 
 ttresearch.name.REPAIRER=Thaumischer Restaurierer
 ttresearch.lore.REPAIRER=Weniger Risse als eine Kartoffel am Stiel
 ttresearch.page.REPAIRER.0=Du hast ein neues Gerät kreiert, um zerbrochenes Werkzeug zu restaurieren. Wenn du mit einem gebrochenen Werkzeug auf diesen Block klickst und ihn an Essentiaröhren anschließt, wird er Essentia aufnehmen, um das Werkzeug zu reparieren.<BR><BR>Die Essentia, die reparieren wird, ist in der Reihenfolge vom kaum bis sehr effektiv Ordo, Fabrico und Instrumentum.<BR><BR>Außerdem zeigt er, wenn du mit der Brille der Enthüllung auf den Block schaust, wie kaputt das Item in ihm noch ist.
+
+# -- WAND FOCUS: DISTORTION
+ttresearch.name.FOCUS_DEFLECT=Stabfokus: Verzerrung
+ttresearch.lore.FOCUS_DEFLECT=Ich bin kein Engel
+ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehendem Feuer zu schützen.<BR><BR>Dieser Fokus, wenn genutzt, wird durchgehend Vis aus dem Stab ziehen, auf den er aufgesetzt ist, um eine Barriere um den Nutzer herum zu beschwören, die ordinäre Projektile harmlos durch sie hindurchfliegen lässt.<BR><BR>Ordinäre Projektile sind Pfeile, Schneebälle oder Tränke. Es scheint, dass die Barriere nicht stark genug ist, um stärkere Angriffe wie Feuerbälle oder Witherschädel abzuwehren.
