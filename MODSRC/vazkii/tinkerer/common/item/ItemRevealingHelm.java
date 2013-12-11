@@ -40,6 +40,7 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 
 	public ItemRevealingHelm(int i) {
 		super(i, ThaumcraftApi.armorMatThaumium, 2, 0);
+		setMaxDamage(500);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
