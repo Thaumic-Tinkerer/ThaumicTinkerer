@@ -19,6 +19,7 @@ import thaumcraft.common.tiles.TileCentrifuge;
 import thaumcraft.common.tiles.TileCrucible;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileInfusionMatrix;
+import thaumcraft.common.tiles.TileJarBrain;
 import thaumcraft.common.tiles.TileJarFillable;
 import thaumcraft.common.tiles.TileJarNode;
 import thaumcraft.common.tiles.TileNode;
@@ -29,6 +30,7 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
@@ -73,19 +75,16 @@ public class TTCommonProxy {
 
 	protected void initCCPeripherals() {
 		IPeripheralHandler handler = new PeripheralHandler();
-		ComputerCraftAPI.registerExternalPeripheral(TileAlembic.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileCentrifuge.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileCrucible.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileFunnel.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileInfusionMatrix.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileJarFillable.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileJarNode.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileNode.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileRepairer.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileTubeFilter.class, handler);
-		ComputerCraftAPI.registerExternalPeripheral(TileWandPedestal.class, handler);
-
-		ComputerCraftAPI.registerExternalPeripheral(TileDeconstructionTable.class, handler);
+		
+		Class[] peripheralClasses = new Class[] {
+				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
+				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
+				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
+				TileDeconstructionTable.class, TileJarBrain.class
+		};
+		
+		for(Class clazz : peripheralClasses)
+			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
 	}
 
 	public boolean isClient() {

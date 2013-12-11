@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block.tile.peripheral;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.common.tiles.TileDeconstructionTable;
+import thaumcraft.common.tiles.TileJarBrain;
 import dan200.computer.api.IHostedPeripheral;
 import dan200.computer.api.IPeripheralHandler;
 
@@ -29,6 +30,9 @@ public final class PeripheralHandler implements IPeripheralHandler {
 
 		if(tile instanceof TileDeconstructionTable)
 			return new PeripheralDeconstructor((TileDeconstructionTable) tile);
+		
+		if(tile instanceof TileJarBrain)
+			return new PeripheralBrainInAJar((TileJarBrain) tile);
 
 		return null;
 	}
