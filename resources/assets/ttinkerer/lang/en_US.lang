@@ -86,6 +86,11 @@ ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer allows for some of the blocks tha
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
 
+# -- ASPECT ANALYZER
+ttresearch.name.ASPECT_ANALYZER=Aspectalyzer
+ttresearch.lore.ASPECT_ANALYZER=Computerized Scanning
+ttresearch.page.ASPECT_ANALYZER.0=You created a device that allows Computers to know what aspects an item has.<BR><BR>This block acts like a normal inventory, any items in it can be scanned by use of a Computer. Visit the peripheral documentation entry for more info.
+
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=Smokey Quartz
 ttresearch.lore.DARK_QUARTZ=Shadow of the Day

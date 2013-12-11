@@ -138,6 +138,11 @@ public final class ModRecipes {
 			"GH",
 			'G', new ItemStack(ConfigItems.itemGoggles),
 			'H', new ItemStack(ConfigItems.itemHelmetThaumium));
+		registerResearchItem(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.KEY_ASPECT_ANALYZER, new ItemStack(ModBlocks.aspectAnalyzer), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
+			"TWT", "WMW", "TWT",
+			'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
+			'M', new ItemStack(ConfigItems.itemThaumometer),
+			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
 	}
 
 	private static void initInfusionRecipes() {
