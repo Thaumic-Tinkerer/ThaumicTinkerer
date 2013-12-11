@@ -19,6 +19,7 @@ import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileJarBrain;
 import thaumcraft.common.tiles.TileSensor;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import dan200.computer.api.IHostedPeripheral;
 import dan200.computer.api.IPeripheralHandler;
 
@@ -26,6 +27,9 @@ public final class PeripheralHandler implements IPeripheralHandler {
 
 	@Override
 	public IHostedPeripheral getPeripheral(TileEntity tile) {
+		if(tile instanceof TileTransvectorInterface)
+			return new PeripheralTransvectorInterface((TileTransvectorInterface) tile);
+		
 		if(tile instanceof IAspectContainer)
 			return new PeripheralAspectContainer((IAspectContainer) tile);
 

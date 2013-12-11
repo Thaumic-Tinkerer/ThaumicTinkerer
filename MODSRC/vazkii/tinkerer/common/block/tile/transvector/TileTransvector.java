@@ -67,7 +67,7 @@ public abstract class TileTransvector extends TileEntity {
 		camoMeta = cmp.getInteger(TAG_CAMO_META);
 	}
 
-	final TileEntity getTile() {
+	public final TileEntity getTile() {
 		if(!worldObj.blockExists(x, y, z))
 			return null;
 
