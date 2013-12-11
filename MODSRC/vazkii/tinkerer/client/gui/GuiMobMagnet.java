@@ -93,10 +93,10 @@ public class GuiMobMagnet extends GuiContainer {
 
 		String filter;
 
-		if(stack != null){
+		if(stack != null) {
 			String name = ItemSoulMould.getPatternName(stack);
-			if(name.equals("ttmisc.all"))
-				filter = StatCollector.translateToLocal(name);
+			if(name.isEmpty())
+				filter = StatCollector.translateToLocal("ttmisc.none");
 			else filter = StatCollector.translateToLocal("entity." + name + ".name");
 		} else filter = StatCollector.translateToLocal("ttmisc.all");
 
