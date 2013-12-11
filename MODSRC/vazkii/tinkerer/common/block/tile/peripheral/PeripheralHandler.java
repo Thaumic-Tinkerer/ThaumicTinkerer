@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.block.tile.peripheral;
 
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileJarBrain;
 import thaumcraft.common.tiles.TileSensor;
@@ -41,6 +42,9 @@ public final class PeripheralHandler implements IPeripheralHandler {
 		
 		if(tile instanceof TileSensor)
 			return new PeripheralArcaneEar((TileSensor) tile);
+		
+		if(tile instanceof TileArcaneBore)
+			return new PeripheralArcaneBore((TileArcaneBore) tile);
 
 		return null;
 	}
