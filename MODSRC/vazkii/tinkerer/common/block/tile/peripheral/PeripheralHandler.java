@@ -18,6 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileJarBrain;
+import thaumcraft.common.tiles.TileSensor;
 import dan200.computer.api.IHostedPeripheral;
 import dan200.computer.api.IPeripheralHandler;
 
@@ -33,6 +34,9 @@ public final class PeripheralHandler implements IPeripheralHandler {
 		
 		if(tile instanceof TileJarBrain)
 			return new PeripheralBrainInAJar((TileJarBrain) tile);
+		
+		if(tile instanceof TileSensor)
+			return new PeripheralArcaneEar((TileSensor) tile);
 
 		return null;
 	}

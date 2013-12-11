@@ -23,6 +23,7 @@ import thaumcraft.common.tiles.TileJarBrain;
 import thaumcraft.common.tiles.TileJarFillable;
 import thaumcraft.common.tiles.TileJarNode;
 import thaumcraft.common.tiles.TileNode;
+import thaumcraft.common.tiles.TileSensor;
 import thaumcraft.common.tiles.TileTubeFilter;
 import thaumcraft.common.tiles.TileWandPedestal;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -80,7 +81,7 @@ public class TTCommonProxy {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
 				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
-				TileDeconstructionTable.class, TileJarBrain.class
+				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class
 		};
 		
 		for(Class clazz : peripheralClasses)
