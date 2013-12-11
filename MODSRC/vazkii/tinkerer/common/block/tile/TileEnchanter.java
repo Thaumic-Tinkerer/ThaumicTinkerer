@@ -174,7 +174,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 	@Override
 	public void onInventoryChanged() {
 		super.onInventoryChanged();
-		if(!worldObj.isRemote) {
+		if(!worldObj.isRemote && !working) {
 			enchantments.clear();
 			levels.clear();
 			PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
