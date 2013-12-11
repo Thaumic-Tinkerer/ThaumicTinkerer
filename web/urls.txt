@@ -41,3 +41,4 @@
 2.0-41=https://www.sugarsync.com/pf/D9740002_82596175_33956
 2.0-42=https://www.sugarsync.com/pf/D9740002_82596175_666522
 2.0-43=https://www.sugarsync.com/pf/D9740002_82596175_666816
+2.0-44=https://www.sugarsync.com/pf/D9740002_82596175_676660
