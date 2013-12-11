@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
+import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
@@ -52,6 +53,7 @@ public final class ModBlocks {
 	public static Block funnel;
 	public static Block dislocator;
 	public static Block repairer;
+	public static Block aspectAnalyzer;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -68,7 +70,8 @@ public final class ModBlocks {
 		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setUnlocalizedName(LibBlockNames.FUNNEL);
 		dislocator = new BlockTransvectorDislocator(LibBlockIDs.idDislocator).setUnlocalizedName(LibBlockNames.DISLOCATOR);
 		repairer = new BlockRepairer(LibBlockIDs.idRepairer).setUnlocalizedName(LibBlockNames.REPAIRER);
-
+		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setUnlocalizedName(LibBlockNames.ASPECT_ANALYZER);
+		
 		registerBlocks();
 		registerMultiparts();
 	}
@@ -87,6 +90,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(funnel, LibBlockNames.FUNNEL);
 		GameRegistry.registerBlock(dislocator, LibBlockNames.DISLOCATOR);
 		GameRegistry.registerBlock(repairer, LibBlockNames.REPAIRER);
+		GameRegistry.registerBlock(aspectAnalyzer, LibBlockNames.ASPECT_ANALYZER);
 	}
 
 	private static void registerMultiparts() {
@@ -108,6 +112,7 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileFunnel.class, LibBlockNames.FUNNEL);
 		GameRegistry.registerTileEntity(TileTransvectorDislocator.class, LibBlockNames.DISLOCATOR);
 		GameRegistry.registerTileEntity(TileRepairer.class, LibBlockNames.REPAIRER);
+		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
 	}
 
 }
