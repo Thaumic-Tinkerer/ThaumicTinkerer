@@ -14,12 +14,24 @@
  */
 package vazkii.tinkerer.client.gui;
 
-import org.lwjgl.opengl.GL11;
+import java.util.Arrays;
+import java.util.List;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
-import vazkii.tinkerer.client.gui.button.GuiButtonMMRadio;
+
+import org.lwjgl.opengl.GL11;
+
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.client.lib.UtilsFX;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import thaumcraft.common.lib.research.ScanManager;
+import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.container.ContainerAspectAnalyzer;
@@ -30,6 +42,7 @@ public class GuiAspectAnalyzer extends GuiContainer {
 
 	int x, y;
 	TileAspectAnalyzer analyzer;
+	Aspect aspectHovered = null;
 	
 	public GuiAspectAnalyzer(TileAspectAnalyzer analyzer, InventoryPlayer inv) {
 		super(new ContainerAspectAnalyzer(analyzer, inv));
@@ -42,12 +55,46 @@ public class GuiAspectAnalyzer extends GuiContainer {
 		x = (width - xSize) / 2;
 		y = (height - ySize) / 2;
 	}
-
+	
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
+	protected void drawGuiContainerBackgroundLayer(float f, int mx, int my) {
+		aspectHovered = null;
+		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.renderEngine.bindTexture(gui);
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		
+		ItemStack stack = analyzer.getStackInSlot(0);
+		if(stack != null) {
+			String h = ScanManager.generateItemHash(stack.itemID, stack.getItemDamage());
+			  
+			List<String> list = (List) Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().username);
+			if (list != null && list.contains("@" + h) || list.contains("#" + h)) {
+				AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
+				tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);
+				if (tags != null) {
+					int i = 0;
+					for(Aspect aspect : tags.getAspectsSortedAmount()) {
+						int x = this.x + 20 + i * 18;
+						int y = this.y + 58;
+						UtilsFX.drawTag(x, y, aspect, tags.getAmount(aspect), 0, zLevel);
+						
+						if(mx > x && mx < x + 16 && my > y && my < y + 16)
+							aspectHovered = aspect;
+						
+						i++;
+					}
+				}
+			}
+		}
+	}
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mx, int my) {
+		if(aspectHovered != null)
+			ClientHelper.renderTooltip(mx - x, my - y, Arrays.asList(EnumChatFormatting.AQUA + aspectHovered.getName(), EnumChatFormatting.GRAY + aspectHovered.getLocalizedDescription()));
+		
+		super.drawGuiContainerForegroundLayer(mx, my);
 	}
 
 }
