@@ -21,6 +21,7 @@ ttmisc.active=§a已激活
 ttmisc.soulMould.nonAssigned=§6无模板
 ttmisc.soulMould.pattern=§6当前模板: %s
 ttmisc.all=全部
+ttmisc.none=无
 ttmisc.child=幼体
 ttmisc.adult=成年
 ttmisc.baseCost=基础耗费
@@ -67,6 +68,7 @@ tile.ttinkerer:enchanter.name=渗透附魔台
 tile.ttinkerer:funnel.name=要素漏斗
 tile.ttinkerer:dislocator.name=矢量转位仪
 tile.ttinkerer:repairer.name=奥法修复台
+tile.ttinkerer:aspectAnalyzer.name=要素分析仪
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=腾迅
@@ -87,6 +89,11 @@ ttresearch.page.PERIPHERALS.0=神秘工匠让其添加的某些方块以及神�
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=http://tab.mcmod.cn/knowledge.php?id=57
+
+# -- ASPECT ANALYZER
+ttresearch.name.ASPECT_ANALYZER=要素分析仪
+ttresearch.lore.ASPECT_ANALYZER=电脑扫描
+ttresearch.page.ASPECT_ANALYZER.0=你制造出一台可以使用电脑来扫描出物品蕴含什么要素的设备.<BR><BR>这台设备类似一个包含物品栏的普通容器,但任何放入其内的物品都可以使用电脑扫描.访问电脑外设文档条目以获取更多信息.
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=烟黑石英
