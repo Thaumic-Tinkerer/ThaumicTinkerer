@@ -18,6 +18,7 @@ ttmisc.active=§aAktiv
 ttmisc.soulMould.nonAssigned=§6Keine Form
 ttmisc.soulMould.pattern=§6Aktuelle Form: %s
 ttmisc.all=Alle
+ttmisc.none=Nichts
 ttmisc.child=Kinder
 ttmisc.adult=Erwachsene
 ttmisc.baseCost=Basiskosten
@@ -63,6 +64,7 @@ tile.ttinkerer:enchanter.name=Osmotischer Verzauberer
 tile.ttinkerer:funnel.name=Essentia-Trichter
 tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 tile.ttinkerer:repairer.name=Thaumischer Restaurierer
+tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
@@ -83,6 +85,11 @@ ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es 
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+
+# -- ASPECT ANALYZER
+ttresearch.name.ASPECT_ANALYZER=Aspektanalysierer
+ttresearch.lore.ASPECT_ANALYZER=Computerisiertes Scannen
+ttresearch.page.ASPECT_ANALYZER.0=Du hast ein Gerät kreiert, dass es Computern erlaubt, zu wissen, welche Aspekte ein Item hat.<BR><BR>Dieser Block funktioniert wie ein normales Inventar, jegliches Item in ihm kann mit einem Computer gescannt werdenany. Besuche den Eintrag der Peripherien-Dokumentation für mehr Infos.
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=Rauchiger Quarz
