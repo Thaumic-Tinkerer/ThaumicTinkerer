@@ -69,7 +69,7 @@ public class GuiAspectAnalyzer extends GuiContainer {
 			String h = ScanManager.generateItemHash(stack.itemID, stack.getItemDamage());
 			  
 			List<String> list = (List) Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().username);
-			if (list != null && list.contains("@" + h) || list.contains("#" + h)) {
+			if (h != null && list != null && (list.contains("@" + h) || list.contains("#" + h))) {
 				AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
 				tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);
 				if (tags != null) {
