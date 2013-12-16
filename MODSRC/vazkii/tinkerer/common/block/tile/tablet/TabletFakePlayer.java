@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block.tile.tablet;
 
+import vazkii.tinkerer.common.lib.LibBlockNames;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
@@ -24,7 +25,7 @@ public class TabletFakePlayer extends FakePlayer {
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) {
-		super(tablet.worldObj, tablet.getInvName());
+		super(tablet.worldObj, "tile." + LibBlockNames.ANIMATION_TABLET + ".name");
 		this.tablet = tablet;
 		inventory = new FakeInvPlayer(this);
 	}
