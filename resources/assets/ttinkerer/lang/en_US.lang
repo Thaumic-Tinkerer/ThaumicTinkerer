@@ -157,7 +157,7 @@ ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically mo
 # -- KINETIC ATTRACTION
 ttresearch.name.MAGNETS=Kinetic Attraction
 ttresearch.lore.MAGNETS=How do they work?
-ttresearch.page.MAGNETS.0=Working with the telekinesis focus, you managed to apply this knowledge to create a device to attract items or living beings, like a magnet.<BR><BR>These two blocks have two states, north (red) and south (blue), in north mode it'll push items, or entities away; in south mode it'll pull them in.
+ttresearch.page.MAGNETS.0=Working with the telekinesis focus, you managed to apply this knowledge to create a device to attract items or living beings, like a magnet.<BR><BR>These two blocks have two states, north (red) and south (blue), in north mode it'll push items, or entities away; in south mode it'll pull them in.<BR><BR>The range of the attraction depends on the redstone signal applied to it. A lever next to it will allow for 7.5 blocks, while a current from farther away will make it shorter. In general, the attraction is equal to half the redstone signal's strength in blocks, in every direction.
 ttresearch.page.MAGNETS.1=You designed two devices. The Kinetic and Corporeal Attractors, these, respectively affect items and living beings.<BR><BR>The Corporeal Attractor involves some more complex mechanisms, to which you can access by right clicking it with a casting wand. Using a Soul Mould, you can right click on a mob to save it as a pattern, which you can set in the attractor's interface, as a filter, along with settings for child or adult animals, if available.
 
 # -- OSMOTIC ENCHANTER
