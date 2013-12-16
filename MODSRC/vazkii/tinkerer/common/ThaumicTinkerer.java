@@ -14,11 +14,15 @@
  */
 package vazkii.tinkerer.common;
 
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.event.ForgeSubscribe;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.common.item.pipe.ThaumiumPipe;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketManager;
+import vazkii.tinkerer.common.triggers.TriggerProvider;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -27,6 +31,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 @NetworkMod(clientSideRequired = true, channels = { LibMisc.NETWORK_CHANNEL }, packetHandler = PacketManager.class)
@@ -55,5 +61,16 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
+	}
+	
+	@ForgeSubscribe
+	@SideOnly(Side.CLIENT)
+	public void loadTextures(TextureStitchEvent.Pre event) {
+		// Register mod icons
+		TriggerProvider.loadTextures(event);
+		
+		// Register Thaumium Pipe icon
+		if (event.map.textureType == 0)
+			ThaumiumPipe.registerIcons(event.map);
 	}
 }

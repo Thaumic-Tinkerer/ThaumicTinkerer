@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.client.event.TextureStitchEvent.Pre;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileCentrifuge;
@@ -42,6 +44,7 @@ import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
+import vazkii.tinkerer.common.triggers.TriggerProvider;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -67,6 +70,7 @@ public class TTCommonProxy {
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
+		TriggerProvider.init();
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 	}
 
