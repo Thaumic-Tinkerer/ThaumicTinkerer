@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.item;
 
 import net.minecraft.item.Item;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 import vazkii.tinkerer.common.item.foci.ItemFocusDislocation;
 import vazkii.tinkerer.common.item.foci.ItemFocusEnderChest;
@@ -23,6 +24,7 @@ import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
 import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 
@@ -49,6 +51,8 @@ public final class ModItems {
 	public static Item infusedInkwell;
 	public static Item focusDeflect;
 
+	public static Item kamiResource;
+	
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
@@ -70,5 +74,9 @@ public final class ModItems {
 		revealingHelm = new ItemRevealingHelm(LibItemIDs.idRevealingHelm).setUnlocalizedName(LibItemNames.REVEALING_HELM);
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
+	
+		if(ConfigHandler.enableKami) {
+			kamiResource = new ItemKamiResource(LibItemIDs.idKamiResource).setUnlocalizedName(LibItemNames.KAMI_RESOURCE);
+		}
 	}
 }

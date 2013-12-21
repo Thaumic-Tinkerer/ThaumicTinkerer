@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
+import net.minecraft.item.EnumRarity;
+import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
@@ -31,15 +33,27 @@ import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class TTClientProxy extends TTCommonProxy {
 
+	public static EnumRarity kamiRarity;
+	
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
+		
+		if(ConfigHandler.enableKami)
+			kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
+	}
+	
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
