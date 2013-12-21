@@ -50,6 +50,12 @@ item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
 item.ttinkerer:focusDeflect.name=Stabfokus: Verzerrung
 
+# KAMI ITEM NAMES
+item.ttinkerer:kamiResource.name=Kami-Ressource
+item.ttinkerer:ichor.name=Ichor
+item.ttinkerer:ichorCloth.name=Ichor-Stoff
+item.ttinkerer:ichorGem.name=Ichor-Diamant
+
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
 tile.ttinkerer:darkQuartzChiseled.name=Gemeißelter Rauchiger Quarzblock
