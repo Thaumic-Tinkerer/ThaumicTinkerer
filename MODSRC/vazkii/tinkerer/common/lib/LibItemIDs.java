@@ -37,4 +37,6 @@ public final class LibItemIDs {
 	public static int idInfusedInkwell = 22168;
 	public static int idFocusDeflect = 22169;
 	
+	public static int idKamiResource = 23150; 
+	
 }

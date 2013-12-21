@@ -33,16 +33,22 @@ public final class ConfigHandler {
 	private static final String CATEGORY_POTIONS = "potions";
 	private static final String CATEGORY_ENCHANTMENTS = "enchantments";
 
-	private static ConfigCategory categoryPotions;
-	private static ConfigCategory categoryEnchants;
+	private static final String CATEGORY_KAMI_ITEMS = "item.kami";
+	private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
 	
 	public static boolean enableKami = false;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
-		categoryPotions = new ConfigCategory(CATEGORY_POTIONS);
-		categoryEnchants = new ConfigCategory(CATEGORY_ENCHANTMENTS);
+		new ConfigCategory(CATEGORY_POTIONS);
+		new ConfigCategory(CATEGORY_ENCHANTMENTS);
+		new ConfigCategory(CATEGORY_KAMI_ITEMS);
+		new ConfigCategory(CATEGORY_KAMI_BLOCKS);
+
+		String comment = "These will only be used if kami.enabled (in general) is set to true.";
+		config.addCustomCategoryComment(CATEGORY_KAMI_ITEMS, comment);
+		config.addCustomCategoryComment(CATEGORY_KAMI_BLOCKS, comment);
 
 		config.load();
 		
@@ -87,6 +93,8 @@ public final class ConfigHandler {
 		LibItemIDs.idInfusedInkwell = loadItem(LibItemNames.INFUSED_INKWELL, LibItemIDs.idInfusedInkwell);
 		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
 		
+		LibItemIDs.idKamiResource = loadKamiItem(LibItemNames.KAMI_RESOURCE, LibItemIDs.idKamiResource);
+		
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
 		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);
@@ -99,6 +107,10 @@ public final class ConfigHandler {
 
 	private static int loadItem(String label, int defaultID) {
 		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
+	}
+	
+	private static int loadKamiItem(String label, int defaultID) {
+		return config.getItem(CATEGORY_KAMI_ITEMS, "id_item." + label, defaultID).getInt(defaultID);
 	}
 
 	private static int loadBlock(String label, int defaultID) {
