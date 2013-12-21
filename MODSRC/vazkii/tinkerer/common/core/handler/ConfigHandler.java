@@ -18,6 +18,7 @@ import java.io.File;
 
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.Property;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
@@ -34,6 +35,8 @@ public final class ConfigHandler {
 
 	private static ConfigCategory categoryPotions;
 	private static ConfigCategory categoryEnchants;
+	
+	public static boolean enableKami = false;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -42,7 +45,11 @@ public final class ConfigHandler {
 		categoryEnchants = new ConfigCategory(CATEGORY_ENCHANTMENTS);
 
 		config.load();
-
+		
+		Property propEnableKami = config.get(Configuration.CATEGORY_GENERAL, "kami.enabled", false);
+		propEnableKami.comment = "Set to true to enable the KAMI module. Warning: this module contains *extremely* powerful (even OP) items, in the vein of EE2. Do not enable unless that's what you want.";
+		enableKami = propEnableKami.getBoolean(false);
+		
 		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
 		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.idDarkQuartzSlab);
 		LibBlockIDs.idDarkQuartzSlabFull = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB_FULL, LibBlockIDs.idDarkQuartzSlabFull);
