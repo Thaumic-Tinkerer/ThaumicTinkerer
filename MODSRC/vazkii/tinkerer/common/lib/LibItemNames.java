@@ -44,6 +44,6 @@ public final class LibItemNames {
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",
 		LibResources.PREFIX_MOD + "ichorCloth",
-		LibResources.PREFIX_MOD + "ichorGem"
+		LibResources.PREFIX_MOD + "ichorium"
 	};
 }

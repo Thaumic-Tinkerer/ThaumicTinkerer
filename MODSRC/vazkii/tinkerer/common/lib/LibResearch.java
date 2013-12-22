@@ -60,5 +60,7 @@ public final class LibResearch {
 	public static final String KEY_REPAIRER = "REPAIRER";
 	public static final String KEY_FOCUS_DEFLECT = "FOCUS_DEFLECT";
 	public static final String KEY_ASPECT_ANALYZER = "ASPECT_ANALYZER";
+	
+	public static final String KEY_ICHOR = "ICHOR";
 
 }
