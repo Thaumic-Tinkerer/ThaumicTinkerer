@@ -15,6 +15,8 @@
 package vazkii.tinkerer.common.item;
 
 import net.minecraft.item.Item;
+import thaumcraft.api.wands.WandCap;
+import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
@@ -25,6 +27,8 @@ import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
+import vazkii.tinkerer.common.item.kami.wand.CapIchor;
+import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 
@@ -53,6 +57,9 @@ public final class ModItems {
 
 	public static Item kamiResource;
 	
+	public static WandCap capIchor;
+	public static WandRod rodIchorcloth;
+	
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
@@ -77,6 +84,9 @@ public final class ModItems {
 	
 		if(ConfigHandler.enableKami) {
 			kamiResource = new ItemKamiResource(LibItemIDs.idKamiResource).setUnlocalizedName(LibItemNames.KAMI_RESOURCE);
+			
+			capIchor = new CapIchor();
+			rodIchorcloth = new RodIchorcloth();
 		}
 	}
 }

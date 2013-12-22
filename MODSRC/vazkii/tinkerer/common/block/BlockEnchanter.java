@@ -35,6 +35,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
@@ -66,6 +68,14 @@ public class BlockEnchanter extends BlockModContainer {
 		((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
 		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
 		par3List.add(wand);
+		
+		if(ConfigHandler.enableKami) {
+			ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
+			((ItemWandCasting) wand1.getItem()).setRod(wand1, ModItems.rodIchorcloth);
+			((ItemWandCasting) wand1.getItem()).setCap(wand1, ModItems.capIchor);
+			((ItemWandCasting) wand1.getItem()).storeAllVis(wand1, new AspectList().add(Aspect.AIR, 100000).add(Aspect.EARTH, 100000).add(Aspect.FIRE, 100000).add(Aspect.WATER, 100000).add(Aspect.ORDER, 100000).add(Aspect.ENTROPY, 100000));
+			par3List.add(wand1);
+		}
 	}
 
 	@Override

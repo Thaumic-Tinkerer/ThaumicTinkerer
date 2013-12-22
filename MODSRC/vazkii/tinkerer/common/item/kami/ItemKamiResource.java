@@ -28,7 +28,7 @@ import vazkii.tinkerer.common.lib.LibItemNames;
 
 public class ItemKamiResource extends ItemMod {
 
-	final int subtypes = 4;
+	final int subtypes = 6;
 	Icon[] icons;
 	
 	public ItemKamiResource(int par1) {

@@ -53,10 +53,11 @@ item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=Kami Resource
 item.ttinkerer:ichor.name=Ichor
-item.ttinkerer:ichorCloth.name=Ichor Cloth
+item.ttinkerer:ichorCloth.name=Ichorcloth
 item.ttinkerer:ichorium.name=Ichorium
 item.ttinkerer:ichorNugget.name=Ichorium Nugget
-item.ttinkerer:ichorCap.name=Ichorium Wand Caps
+item.ttinkerer:ichorCap.name=Ichorium Wand Cap
+item.ttinkerer:ichorclothRod.name=Ichorcloth Strapped Silverwood Wand Core
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -81,6 +82,10 @@ enchantment.ttinkerer:autoSmelt=Flaming Touch
 enchantment.ttinkerer:desintegrate=Desintegrate
 enchantment.ttinkerer:quickDraw=Quick Draw
 enchantment.ttinkerer:vampirism=Vampirism
+
+# WAND COMPONENTS
+item.Wand.ichor.cap=Ichorium Adorned
+item.Wand.ichorcloth.rod=Ichorcloth Strapped Silverwood
 
 # RESEARCH
 ttresearch.prefix=[TT] 
