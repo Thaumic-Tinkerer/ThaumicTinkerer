@@ -50,6 +50,11 @@ public class KamiResearchItem extends TTResearchItem {
 		
 		return super.setPages(par);
 	}
+	
+	@Override
+	String getPrefix() {
+		return super.getPrefix() + ".kami";
+	}
 
 	@Override
 	boolean checkInfusion() {

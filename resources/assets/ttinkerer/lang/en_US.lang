@@ -263,3 +263,8 @@ ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming
 ttresearch.name.ICHOR=Ichor
 ttresearch.lore.ICHOR=Blood of the Gods
 ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy you have discovered a substance that is what you consider to be the next step in your endeavours.<BR><BR>This extremely powerful substance, which you call "Ichor" contains the raw awakened power of a nether star. You are sure you will be able to put it to use for countless devices in the future.
+
+# -- ICHORCLOTH
+ttresearch.name.ICHOR_CLOTH=Ichorcloth
+ttresearch.lore.ICHOR_CLOTH=Life Fiber Sychronization
+ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funilly enough, this process does not require the typical infusion procedure, as the Ichor easilly absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.

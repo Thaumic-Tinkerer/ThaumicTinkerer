@@ -47,7 +47,11 @@ public class TTResearchItem extends ResearchItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getText() {
-		return StatCollector.translateToLocal("ttresearch.prefix") + StatCollector.translateToLocal("ttresearch.lore." + key);
+		return StatCollector.translateToLocal(getPrefix()) + StatCollector.translateToLocal("ttresearch.lore." + key);
+	}
+	
+	String getPrefix() {
+		return "ttresearch.prefix";
 	}
 
 	@Override
