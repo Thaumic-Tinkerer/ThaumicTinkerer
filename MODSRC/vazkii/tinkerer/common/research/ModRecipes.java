@@ -32,6 +32,7 @@ import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -168,6 +169,11 @@ public final class ModRecipes {
 				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
 		registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
 				new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
+	
+		if(ConfigHandler.enableKami) {
+			registerResearchItemI(LibResearch.KEY_ICHOR, new ItemStack(ModItems.kamiResource, 8, 0), 7, new AspectList().add(Aspect.MAN, 32).add(Aspect.LIGHT, 32).add(Aspect.SOUL, 64), new ItemStack(Item.netherStar),
+				new ItemStack(Item.diamond), new ItemStack(Block.whiteStone), new ItemStack(Item.eyeOfEnder), new ItemStack(Block.whiteStone));
+		}
 	}
 
 	private static void initCrucibleRecipes() {
