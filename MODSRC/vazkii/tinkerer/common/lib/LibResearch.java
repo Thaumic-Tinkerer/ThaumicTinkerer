@@ -64,5 +64,7 @@ public final class LibResearch {
 	public static final String KEY_ICHOR = "ICHOR";
 	public static final String KEY_ICHOR_CLOTH = "ICHOR_CLOTH";
 	public static final String KEY_ICHORIUM = "ICHORIUM";
+	public static final String KEY_ICHOR_CAP = "ICHOR_CAP";
+	public static final String KEY_ICHORCLOTH_ROD = "ICHORCLOTH_ROD";
 
 }
