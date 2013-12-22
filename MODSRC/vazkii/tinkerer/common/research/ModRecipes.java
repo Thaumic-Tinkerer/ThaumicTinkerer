@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
+import sun.security.krb5.Config;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -144,6 +145,14 @@ public final class ModRecipes {
 			'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'M', new ItemStack(ConfigItems.itemThaumometer),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
+		
+		if(ConfigHandler.enableKami) {
+			registerResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(ModItems.kamiResource, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125), 
+				"CCC", "III", "DDD",
+				'C', new ItemStack(ConfigItems.itemResource, 1, 7),
+				'I', new ItemStack(ModItems.kamiResource, 1, 0),
+				'D', new ItemStack(Item.diamond));
+		}
 	}
 
 	private static void initInfusionRecipes() {
