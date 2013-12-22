@@ -55,6 +55,8 @@ item.ttinkerer:kamiResource.name=Kami Resource
 item.ttinkerer:ichor.name=Ichor
 item.ttinkerer:ichorCloth.name=Ichor Cloth
 item.ttinkerer:ichorium.name=Ichorium
+item.ttinkerer:ichorNugget.name=Ichorium Nugget
+item.ttinkerer:ichorCap.name=Ichorium Wand Caps
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -268,3 +270,8 @@ ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy y
 ttresearch.name.ICHOR_CLOTH=Ichorcloth
 ttresearch.lore.ICHOR_CLOTH=Life Fiber Sychronization
 ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funilly enough, this process does not require the typical infusion procedure, as the Ichor easilly absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
+
+# -- ICHORIUM
+ttresearch.name.ICHORIUM=Ichorium
+ttresearch.lore.ICHORIUM=Not from the 55th floor
+ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resillient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
