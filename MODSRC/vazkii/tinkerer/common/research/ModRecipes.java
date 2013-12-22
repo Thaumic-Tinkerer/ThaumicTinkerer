@@ -78,6 +78,10 @@ public final class ModRecipes {
 				"QQQ", "QCQ", "QQQ",
 				'Q', new ItemStack(Item.dyePowder, 1, 0),
 				'C', new ItemStack(ModItems.infusedInkwell, 1, 32767));
+		
+		if(ConfigHandler.enableKami) {
+			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.kamiResource, 9, 3), new ItemStack(ModItems.kamiResource, 1, 2));
+		}
 	}
 
 	private static void initArcaneRecipes() {
@@ -150,6 +154,12 @@ public final class ModRecipes {
 			registerResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(ModItems.kamiResource, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125), 
 				"CCC", "III", "DDD",
 				'C', new ItemStack(ConfigItems.itemResource, 1, 7),
+				'I', new ItemStack(ModItems.kamiResource, 1, 0),
+				'D', new ItemStack(Item.diamond));
+			
+			registerResearchItem(LibResearch.KEY_ICHORIUM, LibResearch.KEY_ICHORIUM, new ItemStack(ModItems.kamiResource, 1, 2), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100), 
+				" T ", "IDI", " I ",
+				'T', new ItemStack(ConfigItems.itemResource, 1, 2),
 				'I', new ItemStack(ModItems.kamiResource, 1, 0),
 				'D', new ItemStack(Item.diamond));
 		}
