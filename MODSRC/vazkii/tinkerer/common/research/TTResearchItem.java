@@ -21,6 +21,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.research.ResearchPage.PageType;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -47,7 +48,7 @@ public class TTResearchItem extends ResearchItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getText() {
-		return StatCollector.translateToLocal(getPrefix()) + StatCollector.translateToLocal("ttresearch.lore." + key);
+		return (ConfigHandler.useTootlipIndicators ? StatCollector.translateToLocal(getPrefix()): "") + StatCollector.translateToLocal("ttresearch.lore." + key);
 	}
 	
 	String getPrefix() {
