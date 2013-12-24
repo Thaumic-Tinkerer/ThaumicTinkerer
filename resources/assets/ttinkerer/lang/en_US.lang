@@ -280,3 +280,8 @@ ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with yo
 ttresearch.name.ICHORIUM=Ichorium
 ttresearch.lore.ICHORIUM=Not from the 55th floor
 ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resillient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+
+# -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
+ttresearch.name.ICHORCLOTH_ROD=Ichorcloth Strapped Silverwood Wand Core
+ttresearch.lore.ICHORCLOTH_ROD=That's a mouthful
+ttresearch.page.ICHORCLOTH_ROD.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?

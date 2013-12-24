@@ -175,7 +175,7 @@ public final class ModResearch {
 			research.setPages(new ResearchPage("0")/*, arcaneRecipePage(LibResearch.KEY_ICHORIUM)*/);
 			
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 9, 2, 5, new ItemStack(ModItems.kamiResource, 1, 5)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP).registerResearchItem();
-			research.setPages(new ResearchPage("0")/*, arcaneRecipePage(LibResearch.KEY_ICHORIUM)*/);
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
 
 		}
 	}
