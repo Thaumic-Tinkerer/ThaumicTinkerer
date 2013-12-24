@@ -58,6 +58,10 @@ item.ttinkerer:ichorium.name=Ichorium
 item.ttinkerer:ichorNugget.name=Ichorium Nugget
 item.ttinkerer:ichorCap.name=Ichorium Wand Cap
 item.ttinkerer:ichorclothRod.name=Ichorcloth Strapped Silverwood Wand Core
+item.ttinkerer:ichorclothHelm.name=Ichorcloth Cowl
+item.ttinkerer:ichorclothChest.name=Ichorcloth Robe
+item.ttinkerer:ichorclothLegs.name=Ichorcloth Leggings
+item.ttinkerer:ichorclothBoots.name=Ichorcloth Boots
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz

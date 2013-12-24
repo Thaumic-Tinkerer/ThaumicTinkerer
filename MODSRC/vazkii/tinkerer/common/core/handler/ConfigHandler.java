@@ -94,7 +94,11 @@ public final class ConfigHandler {
 		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
 		
 		LibItemIDs.idKamiResource = loadKamiItem(LibItemNames.KAMI_RESOURCE, LibItemIDs.idKamiResource);
-		
+		LibItemIDs.idIchorHelm = loadKamiItem(LibItemNames.ICHOR_HELM, LibItemIDs.idIchorHelm);
+		LibItemIDs.idIchorChest = loadKamiItem(LibItemNames.ICHOR_CHEST, LibItemIDs.idIchorChest);
+		LibItemIDs.idIchorLegs = loadKamiItem(LibItemNames.ICHOR_LEGS, LibItemIDs.idIchorLegs);
+		LibItemIDs.idIchorBoots = loadKamiItem(LibItemNames.ICHOR_BOOTS, LibItemIDs.idIchorBoots);
+
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
 		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);
