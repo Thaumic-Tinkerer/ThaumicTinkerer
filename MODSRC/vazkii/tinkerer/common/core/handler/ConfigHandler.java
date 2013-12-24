@@ -37,6 +37,7 @@ public final class ConfigHandler {
 	private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
 	
 	public static boolean enableKami = false;
+	public static boolean useTootlipIndicators = true;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -55,6 +56,10 @@ public final class ConfigHandler {
 		Property propEnableKami = config.get(Configuration.CATEGORY_GENERAL, "kami.enabled", false);
 		propEnableKami.comment = "Set to true to enable the KAMI module. Warning: this module contains *extremely* powerful (even OP) items, in the vein of EE2. Do not enable unless that's what you want.";
 		enableKami = propEnableKami.getBoolean(false);
+		
+		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
+		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
+		useTootlipIndicators = propEnableTooltips.getBoolean(true);
 		
 		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
 		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.idDarkQuartzSlab);
