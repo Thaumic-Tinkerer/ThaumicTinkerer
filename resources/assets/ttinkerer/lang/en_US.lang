@@ -285,3 +285,8 @@ ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to bl
 ttresearch.name.ICHORCLOTH_ROD=Ichorcloth Strapped Silverwood Wand Core
 ttresearch.lore.ICHORCLOTH_ROD=That's a mouthful
 ttresearch.page.ICHORCLOTH_ROD.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
+
+# -- ICHORIUM WAND CAPS
+ttresearch.name.ICHOR_CAP=Ichorium Wand Caps
+ttresearch.lore.ICHOR_CAP=Somewhat like a Steam Sale
+ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.

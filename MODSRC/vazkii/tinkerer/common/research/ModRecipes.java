@@ -22,7 +22,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
-import sun.security.krb5.Config;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -162,6 +161,12 @@ public final class ModRecipes {
 				'T', new ItemStack(ConfigItems.itemResource, 1, 2),
 				'I', new ItemStack(ModItems.kamiResource, 1, 0),
 				'D', new ItemStack(Item.diamond));
+			
+			registerResearchItem(LibResearch.KEY_ICHOR_CAP, LibResearch.KEY_ICHOR_CAP, new ItemStack(ModItems.kamiResource, 2, 4), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100), 
+					"ICI", " M ", "ICI",
+					'M', new ItemStack(ModItems.kamiResource, 1, 2),
+					'I', new ItemStack(ModItems.kamiResource, 1, 0),
+					'C', new ItemStack(ConfigItems.itemWandCap, 1, 2));
 		}
 	}
 
@@ -194,7 +199,7 @@ public final class ModRecipes {
 				new ItemStack(Item.diamond), new ItemStack(Block.whiteStone), new ItemStack(Item.eyeOfEnder), new ItemStack(Block.whiteStone));
 		
 			registerResearchItemI(LibResearch.KEY_ICHORCLOTH_ROD, new ItemStack(ModItems.kamiResource, 1, 5), 9, new AspectList().add(Aspect.MAGIC, 100).add(Aspect.LIGHT, 32).add(Aspect.TOOL, 32), new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(Item.ghastTear), new ItemStack(ModItems.kamiResource, 1, 1));
+				new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Item.ghastTear), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(ModItems.kamiResource, 1, 1));
 		}
 	}
 
