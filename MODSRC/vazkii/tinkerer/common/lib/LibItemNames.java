@@ -40,7 +40,11 @@ public final class LibItemNames {
 	public static final String FOCUS_DEFLECT = LibResources.PREFIX_MOD + "focusDeflect";
 	
 	public static final String KAMI_RESOURCE = LibResources.PREFIX_MOD + "kamiResource";
-	
+	public static final String ICHOR_HELM = LibResources.PREFIX_MOD + "ichorclothHelm";
+	public static final String ICHOR_CHEST = LibResources.PREFIX_MOD + "ichorclothChest";
+	public static final String ICHOR_LEGS = LibResources.PREFIX_MOD + "ichorclothLegs";
+	public static final String ICHOR_BOOTS = LibResources.PREFIX_MOD + "ichorclothBoots";
+
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",
 		LibResources.PREFIX_MOD + "ichorCloth",
