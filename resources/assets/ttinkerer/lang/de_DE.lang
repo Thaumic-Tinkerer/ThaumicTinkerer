@@ -1,4 +1,4 @@
-# MISC
+﻿# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Position eingestellt!
 ttmisc.connector.complete=Das Binden ist komplett!
@@ -29,7 +29,7 @@ ttmisc.notAbsorbing=§cNicht Absorbierend
 ttmisc.absorbing=§aAbsorbierend
 
 # ITEM NAMES
-item.ttinkerer:darkQuartz.name=Rauchiger Quartz
+item.ttinkerer:darkQuartz.name=Rauchiger Quarz
 item.ttinkerer:connector.name=Transvektoren-Binder
 item.ttinkerer:gaseousLight.name=Gasförmige Illuminae
 item.ttinkerer:gaseousShadow.name=Gasförmige Tenebrae
@@ -51,11 +51,11 @@ item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
 item.ttinkerer:focusDeflect.name=Stabfokus: Verzerrung
 
 # BLOCK NAMES
-tile.ttinkerer:darkQuartz.name=Rauchiger Quartzblock
-tile.ttinkerer:darkQuartzChiseled.name=Gemeißelter Rauchiger Quartzblock
-tile.ttinkerer:darkQuartzPillar.name=Rauchige Quartzsäule
-tile.ttinkerer:darkQuartzSlab.name=Rauchige Quartzstufe
-tile.ttinkerer:darkQuartzStairs.name=Rauchige Quartztreppe
+tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
+tile.ttinkerer:darkQuartzChiseled.name=Gemeißelter Rauchiger Quarzblock
+tile.ttinkerer:darkQuartzPillar.name=Rauchige Quarzsäule
+tile.ttinkerer:darkQuartzSlab.name=Rauchige Quarzstufe
+tile.ttinkerer:darkQuartzStairs.name=Rauchige Quarztreppe
 tile.ttinkerer:interface.name=Transvektor-Schnittstelle
 tile.ttinkerer:animationTablet.name=Dynamiktablett
 tile.ttinkerer:magnet.name=Kinetischer Attraktor
@@ -92,9 +92,9 @@ ttresearch.lore.ASPECT_ANALYZER=Computerisiertes Scannen
 ttresearch.page.ASPECT_ANALYZER.0=Du hast ein Gerät kreiert, dass es Computern erlaubt, zu wissen, welche Aspekte ein Item hat.<BR><BR>Dieser Block funktioniert wie ein normales Inventar, jegliches Item in ihm kann mit einem Computer gescannt werden. Besuche den Eintrag der Peripherien-Dokumentation für mehr Infos.
 
 # -- SMOKEY QUARTZ
-ttresearch.name.DARK_QUARTZ=Rauchiger Quartz
+ttresearch.name.DARK_QUARTZ=Rauchiger Quarz
 ttresearch.lore.DARK_QUARTZ=Schatten des Tages
-ttresearch.page.DARK_QUARTZ.0=Rauchiger Quartz ist ziemlich genau Quartz, nur negativ. Alle regulären Blöcke, die mit Quartz gemacht werden können, können auch mit Rauchigem Quartz gemacht werden, Und die sind schwarz.<BR><BR>Rauchiger Quartz kann mit einem Stück Kohle oder Holzkohle zum Färben sowie ein paar Stücken regulären Quartzes gemacht werden.
+ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur negativ. Alle regulären Blöcke, die mit Quarz gemacht werden können, können auch mit Rauchigem Quarz gemacht werden, Und die sind schwarz.<BR><BR>Rauchiger Quarz kann mit einem Stück Kohle oder Holzkohle zum Färben sowie ein paar Stücken regulären Quarzes gemacht werden.
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
