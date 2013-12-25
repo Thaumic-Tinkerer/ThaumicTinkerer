@@ -1,4 +1,4 @@
-# MISC
+﻿# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Position eingestellt!
 ttmisc.connector.complete=Das Binden ist komplett!
@@ -81,7 +81,7 @@ tc.research_category.TT_ENCHANTING=Verzaubern
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
 ttresearch.lore.PERIPHERALS=Wenn Technologie auf Magie trifft
-ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Briwser ein
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Browser ein
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
@@ -89,7 +89,7 @@ ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Pe
 # -- ASPECT ANALYZER
 ttresearch.name.ASPECT_ANALYZER=Aspektanalysierer
 ttresearch.lore.ASPECT_ANALYZER=Computerisiertes Scannen
-ttresearch.page.ASPECT_ANALYZER.0=Du hast ein Gerät kreiert, dass es Computern erlaubt, zu wissen, welche Aspekte ein Item hat.<BR><BR>Dieser Block funktioniert wie ein normales Inventar, jegliches Item in ihm kann mit einem Computer gescannt werdenany. Besuche den Eintrag der Peripherien-Dokumentation für mehr Infos.
+ttresearch.page.ASPECT_ANALYZER.0=Du hast ein Gerät kreiert, dass es Computern erlaubt, zu wissen, welche Aspekte ein Item hat.<BR><BR>Dieser Block funktioniert wie ein normales Inventar, jegliches Item in ihm kann mit einem Computer gescannt werden. Besuche den Eintrag der Peripherien-Dokumentation für mehr Infos.
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=Rauchiger Quarz
@@ -130,7 +130,7 @@ ttresearch.page.ANIMATION_TABLET.0=Du hast dich entschieden, weitere Verwendungs
 
 # -- WAND FOCUS: UPRISING
 ttresearch.name.FOCUS_FLIGHT=Stabfokus: Aufsteigen
-ttresearch.lore.FOCUS_FLIGHT=Ist es das, was sie in ALfheim benutzen?
+ttresearch.lore.FOCUS_FLIGHT=Ist es das, was sie in Alfheim benutzen?
 ttresearch.page.FOCUS_FLIGHT.0=Indem du das Wissen, Dinge mit Luft umherzutreiben, das du durch das Kreieren des Schwerts des Zephirs erworben hast, nutzt, hast du einen Stabfokus kreiert, der den Nutzer in die Richtung zu wirbeln, in die er schaut.<BR><BR>Wenn jemand durch die Nutzung dieses Fokus herumgewirbelt wird, wird jegliche sich ansammelnde Gravitationsenergie negiert, was möglichen Fallschaden, den der Nutzer erleiden würde, annulliert.
 
 # -- WAND FOCUS: DISLOCATION
