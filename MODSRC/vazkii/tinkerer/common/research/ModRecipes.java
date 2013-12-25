@@ -155,18 +155,28 @@ public final class ModRecipes {
 				'C', new ItemStack(ConfigItems.itemResource, 1, 7),
 				'I', new ItemStack(ModItems.kamiResource, 1, 0),
 				'D', new ItemStack(Item.diamond));
-			
 			registerResearchItem(LibResearch.KEY_ICHORIUM, LibResearch.KEY_ICHORIUM, new ItemStack(ModItems.kamiResource, 1, 2), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100), 
 				" T ", "IDI", " I ",
 				'T', new ItemStack(ConfigItems.itemResource, 1, 2),
 				'I', new ItemStack(ModItems.kamiResource, 1, 0),
 				'D', new ItemStack(Item.diamond));
-			
 			registerResearchItem(LibResearch.KEY_ICHOR_CAP, LibResearch.KEY_ICHOR_CAP, new ItemStack(ModItems.kamiResource, 2, 4), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100), 
 					"ICI", " M ", "ICI",
 					'M', new ItemStack(ModItems.kamiResource, 1, 2),
 					'I', new ItemStack(ModItems.kamiResource, 1, 0),
 					'C', new ItemStack(ConfigItems.itemWandCap, 1, 2));
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_HELM, LibResearch.KEY_ICHORCLOTH_HELM, new ItemStack(ModItems.ichorHelm), new AspectList().add(Aspect.WATER, 75), 
+					"CCC", "C C",
+					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST, LibResearch.KEY_ICHORCLOTH_CHEST, new ItemStack(ModItems.ichorChest), new AspectList().add(Aspect.AIR, 75), 
+					"C C", "CCC", "CCC",
+					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS, LibResearch.KEY_ICHORCLOTH_LEGS, new ItemStack(ModItems.ichorLegs), new AspectList().add(Aspect.FIRE, 75), 
+					"CCC", "C C", "C C",
+					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS, LibResearch.KEY_ICHORCLOTH_BOOTS, new ItemStack(ModItems.ichorBoots), new AspectList().add(Aspect.EARTH, 75), 
+					"C C", "C C",
+					'C', new ItemStack(ModItems.kamiResource, 3, 1));
 		}
 	}
 

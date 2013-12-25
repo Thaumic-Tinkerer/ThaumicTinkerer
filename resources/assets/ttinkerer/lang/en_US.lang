@@ -270,6 +270,8 @@ ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
 ttresearch.lore.FOCUS_DEFLECT=I'm not an Angel
 ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.
 
+# KAMI RESEARCH
+
 # -- ICHOR
 ttresearch.name.ICHOR=Ichor
 ttresearch.lore.ICHOR=Blood of the Gods
@@ -294,3 +296,8 @@ ttresearch.page.ICHORCLOTH_ROD.0=You have done it. By infusing a silverwood wand
 ttresearch.name.ICHOR_CAP=Ichorium Wand Caps
 ttresearch.lore.ICHOR_CAP=Somewhat like a Steam Sale
 ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+
+# -- ICHORCLOTH ARMOR
+ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
+ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely umbreakable and will never sustain as much as a scratch.
