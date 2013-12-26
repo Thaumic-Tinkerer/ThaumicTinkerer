@@ -14,21 +14,43 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
-import vazkii.tinkerer.client.core.helper.IconHelper;
-import vazkii.tinkerer.client.lib.LibResources;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import vazkii.tinkerer.client.lib.LibResources;
 
 public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
 	public ItemIchorclothArmorAdv(int par1, int par2) {
 		super(par1, par2);
+		if(ticks())
+			MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
 		return slot == 2 ? LibResources.MODEL_ARMOR_ICHOR_GEM_2 : LibResources.MODEL_ARMOR_ICHOR_GEM_1;
+	}
+	
+	boolean ticks() {
+		return false;
+	}
+	
+	@ForgeSubscribe
+	public void onEntityUpdate(LivingUpdateEvent event) {
+		if(event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			ItemStack armor = player.getCurrentArmor(3 - armorType);
+			if(armor != null && armor.getItem() == this)
+				tickPlayer(player);
+		}
+	}
+	
+	void tickPlayer(EntityPlayer player) {
+		// NO-OP
 	}
 
 }
