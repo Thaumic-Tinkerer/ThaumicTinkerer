@@ -64,7 +64,7 @@ public class ModelWings extends ModelBiped {
     public void setRotationAngles(float v1, float v2, float v3, float v4, float v5, float v6, Entity entity) {
         EntityLivingBase living = (EntityLivingBase) entity;
     	isSneak = living != null ? living.isSneaking() : false;
-        if(living != null && living instanceof EntityPlayer && ((EntityPlayer) living).capabilities.isFlying) {
+        if(living != null && living instanceof EntityPlayer) {
         	EntityPlayer player = (EntityPlayer) living;
         	
             ItemStack itemstack = player.inventory.getCurrentItem();
