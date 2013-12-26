@@ -63,6 +63,7 @@ item.ttinkerer:ichorclothChest.name=Ichorcloth Robe
 item.ttinkerer:ichorclothLegs.name=Ichorcloth Leggings
 item.ttinkerer:ichorclothBoots.name=Ichorcloth Boots
 item.ttinkerer:ichorclothHelmGem.name=Cowl of the Abyssal Depths
+item.ttinkerer:ichorclothChestGem.name=Robes of the Stratosphere
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -307,3 +308,8 @@ ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into c
 ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
 ttresearch.lore.ICHORCLOTH_HELM_GEM=Just friendly crustaceans
 ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case.
+
+# -- ROBES OF THE MAGNETIC FIELD
+ttresearch.name.ICHORCLOTH_CHEST_GEM=Robes of the Stratosphere
+ttresearch.lore.ICHORCLOTH_CHEST_GEM=Guys can wear these too
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorcloth Robes into a more powerful form.<BR><BR>Starting off, by simply wearing this robes, the wearer is blessed with the power of eternal flight (wings that don't burn after 5 minutes included), as well as having all fall damage negated.<BR>The robes also passively protect the wearer from any incoming simple projectiles, akin to the focus of Distortion.

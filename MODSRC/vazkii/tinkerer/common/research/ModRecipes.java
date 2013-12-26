@@ -213,7 +213,9 @@ public final class ModRecipes {
 			
 			registerResearchItemI(LibResearch.KEY_ICHORCLOTH_HELM_GEM, new ItemStack(ModItems.ichorHelmGem), 13, new AspectList().add(Aspect.WATER, 50).add(Aspect.ARMOR, 32).add(Aspect.HUNGER, 32).add(Aspect.AURA, 32).add(Aspect.LIGHT, 64).add(Aspect.FLESH, 16).add(Aspect.MIND, 16), new ItemStack(ModItems.ichorHelm),
 				new ItemStack(Item.diamond, 1), new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource),  new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Item.helmetGold), new ItemStack(Item.potion, 1, 8198), new ItemStack(ConfigItems.itemGoggles),  new ItemStack(ModItems.cleansingTalisman), new ItemStack(Item.fishRaw), new ItemStack(Item.cake), new ItemStack(Item.eyeOfEnder));
-					
+				
+			registerResearchItemI(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new ItemStack(ModItems.ichorChestGem), 13, new AspectList().add(Aspect.AIR, 50).add(Aspect.ARMOR, 32).add(Aspect.FLIGHT, 32).add(Aspect.ORDER, 32).add(Aspect.LIGHT, 64).add(Aspect.ELDRITCH, 16).add(Aspect.SENSES, 16), new ItemStack(ModItems.ichorChest),
+				new ItemStack(Item.diamond, 1), new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource),  new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Item.plateGold), new ItemStack(ModItems.focusFlight), new ItemStack(ConfigItems.itemHoverHarness),  new ItemStack(ModItems.focusDeflect), new ItemStack(Item.feather), new ItemStack(Item.firework), new ItemStack(Item.arrow));
 		}
 	}
 
