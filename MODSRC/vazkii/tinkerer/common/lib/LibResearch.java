@@ -71,6 +71,6 @@ public final class LibResearch {
 	public static final String KEY_ICHORCLOTH_CHEST = "ICHORCLOTH_CHEST";
 	public static final String KEY_ICHORCLOTH_LEGS = "ICHORCLOTH_LEGS";
 	public static final String KEY_ICHORCLOTH_BOOTS = "ICHORCLOTH_BOOTS";
-
+	public static final String KEY_ICHORCLOTH_HELM_GEM = "ICHORCLOTH_HELM_GEM";
 
 }
