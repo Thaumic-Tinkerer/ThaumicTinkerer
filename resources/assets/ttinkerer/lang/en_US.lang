@@ -62,6 +62,7 @@ item.ttinkerer:ichorclothHelm.name=Ichorcloth Cowl
 item.ttinkerer:ichorclothChest.name=Ichorcloth Robe
 item.ttinkerer:ichorclothLegs.name=Ichorcloth Leggings
 item.ttinkerer:ichorclothBoots.name=Ichorcloth Boots
+item.ttinkerer:ichorclothHelmGem.name=Cowl of the Abyssal Depths
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
