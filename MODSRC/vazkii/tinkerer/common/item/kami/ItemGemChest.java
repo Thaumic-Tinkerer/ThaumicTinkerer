@@ -26,6 +26,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.model.ModelWings;
 import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 
 public class ItemGemChest extends ItemIchorclothArmorAdv {
 
@@ -33,7 +34,6 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 	
 	public ItemGemChest(int par1, int par2) {
 		super(par1, par2);
-		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
@@ -41,27 +41,39 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 		return new ModelWings();
 	}
 	
+	@Override
+	boolean ticks() {
+		return true;
+	}
+	
+	@Override
+	void tickPlayer(EntityPlayer player) {
+		ItemFocusDeflect.protectFromProjectiles(player);
+	}
+	
 	@ForgeSubscribe
 	public void updatePlayerFlyStatus(LivingUpdateEvent event) {
-		EntityPlayer player = (EntityPlayer) event.entityLiving;
-		
-		ItemStack armor = player.getCurrentArmor(3 - armorType);
-		if(armor != null && armor.getItem() == this)
-			tickPlayer(player);
-		
-		if(playersWithFlight.contains(playerStr(player)))
-			if(shouldPlayerHaveFlight(player))
+		if(event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			
+			ItemStack armor = player.getCurrentArmor(3 - armorType);
+			if(armor != null && armor.getItem() == this)
+				tickPlayer(player);
+			
+			if(playersWithFlight.contains(playerStr(player)))
+				if(shouldPlayerHaveFlight(player))
+					player.capabilities.allowFlying = true;
+				else {
+					player.capabilities.allowFlying = false;
+					if(!player.capabilities.isCreativeMode)
+						player.capabilities.isFlying = false;
+					player.capabilities.disableDamage = false;
+					playersWithFlight.remove(playerStr(player));
+				}
+			else if(shouldPlayerHaveFlight(player)) {
+				playersWithFlight.add(playerStr(player));
 				player.capabilities.allowFlying = true;
-			else {
-				player.capabilities.allowFlying = false;
-				if(!player.capabilities.isCreativeMode)
-					player.capabilities.isFlying = false;
-				player.capabilities.disableDamage = false;
-				playersWithFlight.remove(playerStr(player));
 			}
-		else if(shouldPlayerHaveFlight(player)) {
-			playersWithFlight.add(playerStr(player));
-			player.capabilities.allowFlying = true;
 		}
 	}
 

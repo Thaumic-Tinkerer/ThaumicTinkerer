@@ -40,19 +40,22 @@ public class ItemFocusDeflect extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int ticks) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(wand.consumeAllVis(stack, p, getVisCost(), true)) {
-			List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 3, p.posY - 3, p.posZ - 3, p.posX + 2, p.posY + 2, p.posZ + 2));
+		if(wand.consumeAllVis(stack, p, getVisCost(), true)) 
+			protectFromProjectiles(p);
+	}
+	
+	public static void protectFromProjectiles(EntityPlayer p) {
+		List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 3, p.posY - 3, p.posZ - 3, p.posX + 2, p.posY + 2, p.posZ + 2));
+		
+		for(Entity e : projectiles) {
+			Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2) ;
 			
-			for(Entity e : projectiles) {
-				Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2) ;
-				
-				for(int i = 0; i < 6; i++)
-					ThaumicTinkerer.tcProxy.sparkle((float) e.posX, (float) e.posY, (float) e.posZ, 6);
-				
-				e.posX += motionVec.x;
-				e.posY += motionVec.y;
-				e.posZ += motionVec.z;				
-			}
+			for(int i = 0; i < 6; i++)
+				ThaumicTinkerer.tcProxy.sparkle((float) e.posX, (float) e.posY, (float) e.posZ, 6);
+			
+			e.posX += motionVec.x;
+			e.posY += motionVec.y;
+			e.posZ += motionVec.z;				
 		}
 	}
 	
