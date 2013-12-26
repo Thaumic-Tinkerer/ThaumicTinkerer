@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,9 +24,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.item.ModItems;
 
 public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
+	public static List<String> playersWithFlight = new ArrayList();
+	
 	public ItemIchorclothArmorAdv(int par1, int par2) {
 		super(par1, par2);
 		if(ticks())
@@ -43,14 +49,39 @@ public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			
 			ItemStack armor = player.getCurrentArmor(3 - armorType);
 			if(armor != null && armor.getItem() == this)
 				tickPlayer(player);
+			
+			if(playersWithFlight.contains(playerStr(player)))
+				if(shouldPlayerHaveFlight(player))
+					player.capabilities.allowFlying = true;
+				else {
+					player.capabilities.allowFlying = false;
+					if(!player.capabilities.isCreativeMode)
+						player.capabilities.isFlying = false;
+					player.capabilities.disableDamage = false;
+					playersWithFlight.remove(playerStr(player));
+				}
+			else if(shouldPlayerHaveFlight(player)) {
+				playersWithFlight.add(playerStr(player));
+				player.capabilities.allowFlying = true;
+			}
 		}
 	}
 	
 	void tickPlayer(EntityPlayer player) {
 		// NO-OP
+	}
+	
+	public static String playerStr(EntityPlayer player) {
+		return player.username + ":" + player.worldObj.isRemote;
+	}
+	
+	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
+		ItemStack armor = player.getCurrentArmor(2);
+		return armor != null && armor.itemID == ModItems.ichorChestGem.itemID;
 	}
 
 }
