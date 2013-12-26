@@ -14,11 +14,16 @@
  */
 package vazkii.tinkerer.client.model;
 
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemStack;
+
+import org.lwjgl.opengl.GL11;
 
 public class ModelWings extends ModelBiped {
 
@@ -60,10 +65,26 @@ public class ModelWings extends ModelBiped {
         EntityLivingBase living = (EntityLivingBase) entity;
     	isSneak = living != null ? living.isSneaking() : false;
         if(living != null && living instanceof EntityPlayer && ((EntityPlayer) living).capabilities.isFlying) {
-        	Wing1.rotateAngleY = (float) ((Math.sin((float) entity.ticksExisted) + 1) * (Math.PI / 180F) * 15 - 0.6108652F);        	
-        	Wing2.rotateAngleY = -Wing1.rotateAngleY;
+        	EntityPlayer player = (EntityPlayer) living;
+        	
+            ItemStack itemstack = player.inventory.getCurrentItem();
+            heldItemRight = itemstack != null ? 1 : 0;
+
+            if (itemstack != null && player.getItemInUseCount() > 0) {
+                EnumAction enumaction = itemstack.getItemUseAction();
+
+                if (enumaction == EnumAction.block)
+                    heldItemRight = 3;
+                else if (enumaction == EnumAction.bow)
+                   aimedBow = true;
+            }
+
+        	if(player.capabilities.isFlying) {
+	        	Wing1.rotateAngleY = (float) ((Math.sin((float) entity.ticksExisted) + 1) * (Math.PI / 180F) * 15 - 0.6108652F);        	
+	        	Wing2.rotateAngleY = -Wing1.rotateAngleY;
+        	}
         }
-  
+    
         super.setRotationAngles(v1, v2, v3, v4, v5, v6, entity);
     }
     
