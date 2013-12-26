@@ -302,3 +302,8 @@ ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by dev
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
 ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
 ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely umbreakable and will never sustain as much as a scratch.
+
+# -- COWL OF THE ABYSSAL DEPTHS
+ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
+ttresearch.lore.ICHORCLOTH_HELM_GEM=Just friendly crustaceans
+ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case.
