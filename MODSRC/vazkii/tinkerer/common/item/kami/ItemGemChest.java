@@ -21,12 +21,13 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.model.ModelWings;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGemChest extends ItemIchorclothArmorAdv {
 
@@ -37,6 +38,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
 		return new ModelWings();
 	}
