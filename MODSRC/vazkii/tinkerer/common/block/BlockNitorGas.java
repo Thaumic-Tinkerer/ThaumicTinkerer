@@ -54,7 +54,7 @@ public class BlockNitorGas extends BlockGas {
 			else {
 				boolean has = false;
 				for(EntityPlayer player : players)
-					if(player.inventory.hasItem(ModItems.brightNitor.itemID) || (ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == ModItems.ichorLegsGem.itemID)) {
+					if(player.inventory.hasItem(ModItems.brightNitor.itemID) || ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == ModItems.ichorLegsGem.itemID) {
 						has = true;
 						break;
 					}
@@ -65,7 +65,7 @@ public class BlockNitorGas extends BlockGas {
 			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
 		}
 	}
-	
+
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		return world.getBlockMetadata(x, y, z) == 1 ? 15 : 12;

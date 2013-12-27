@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -31,13 +30,13 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
-import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.common.blocks.ItemJarFilled;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.tiles.TileJarFillable;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileFunnel extends TileEntity implements ISidedInventory, IAspectContainer {
 
@@ -75,7 +74,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 	public void onInventoryChanged() {
 		PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
 	}
-	
+
 	private TileEntity getHopperFacing(int x, int y, int z, int meta) {
 		int i = BlockHopper.getDirectionFromMetadata(meta);
 		return worldObj.getBlockTileEntity(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i]);
@@ -131,7 +130,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 			inventorySlots[i] = new ItemStack(ConfigBlocks.blockJar);
 			onInventoryChanged();
 		}
-		
+
 		return inventorySlots[i];
 	}
 

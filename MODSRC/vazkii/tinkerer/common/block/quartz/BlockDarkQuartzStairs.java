@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.block.quartz;
 
 import net.minecraft.block.BlockStairs;
 import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 
 public class BlockDarkQuartzStairs extends BlockStairs {
 

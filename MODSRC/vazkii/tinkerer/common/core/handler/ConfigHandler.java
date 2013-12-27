@@ -36,7 +36,7 @@ public final class ConfigHandler {
 
 	private static final String CATEGORY_KAMI_ITEMS = "item.kami";
 	private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
-	
+
 	public static boolean enableKami = false;
 	public static boolean useTootlipIndicators = true;
 
@@ -53,13 +53,13 @@ public final class ConfigHandler {
 		config.addCustomCategoryComment(CATEGORY_KAMI_BLOCKS, comment);
 
 		config.load();
-		
+
 		enableKami = Loader.isModLoaded("ThaumicTinkererKami");
-		
+
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
 		useTootlipIndicators = propEnableTooltips.getBoolean(true);
-		
+
 		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
 		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.idDarkQuartzSlab);
 		LibBlockIDs.idDarkQuartzSlabFull = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB_FULL, LibBlockIDs.idDarkQuartzSlabFull);
@@ -122,7 +122,7 @@ public final class ConfigHandler {
 	private static int loadItem(String label, int defaultID) {
 		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
 	}
-	
+
 	private static int loadKamiItem(String label, int defaultID) {
 		return config.getItem(CATEGORY_KAMI_ITEMS, "id_item." + label, defaultID).getInt(defaultID);
 	}

@@ -28,8 +28,6 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibMisc;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModCreativeTab extends CreativeTabs {
 
@@ -41,43 +39,44 @@ public class ModCreativeTab extends CreativeTabs {
 		super(LibMisc.MOD_ID);
 	}
 
+	@Override
 	public ItemStack getIconItemStack() {
 		if(displayItem == null)
 			addWand();
-		
+
 		return displayItem;
 	}
-	
+
 	@Override
 	public void displayAllReleventItems(List list) {
 		this.list = list;
-		
+
 		addWand();
-		
+
 		addItem(ModItems.darkQuartz);
 		addBlock(ModBlocks.darkQuartz);
 		addBlock(ModBlocks.darkQuartzStairs);
 		addBlock(ModBlocks.darkQuartzSlab);
-		
+
 		addItem(ModItems.connector);
 		addBlock(ModBlocks.interfase);
 		addBlock(ModBlocks.dislocator);
-		
+
 		addBlock(ModBlocks.funnel);
 		addBlock(ModBlocks.platform);
 		addBlock(ModBlocks.repairer);
 		addBlock(ModBlocks.magnet);
 		addItem(ModItems.soulMould);
 		addBlock(ModBlocks.animationTablet);
-		
+
 		addItem(ModItems.gaseousLight);
 		addItem(ModItems.gaseousShadow);
 		addItem(ModItems.gasRemover);
-		
+
 		addItem(ModItems.revealingHelm);
 		addItem(ModItems.cleansingTalisman);
 		addItem(ModItems.bloodSword);
-		
+
 		addItem(ModItems.focusFlight);
 		addItem(ModItems.focusDislocation);
 		addItem(ModItems.focusTelekinesis);
@@ -85,17 +84,17 @@ public class ModCreativeTab extends CreativeTabs {
 		addItem(ModItems.focusSmelt);
 		addItem(ModItems.focusHeal);
 		addItem(ModItems.focusEnderChest);
-		
+
 		addBlock(ModBlocks.enchanter);
 		addItem(ModItems.xpTalisman);
 		addItem(ModItems.spellCloth);
-		
+
 		if(Loader.isModLoaded("ComputerCraft"))
 			addBlock(ModBlocks.aspectAnalyzer);
-		
+
 		if(ConfigHandler.enableKami) {
 			addItem(ModItems.kamiResource);
-			
+
 			addItem(ModItems.ichorHelm);
 			addItem(ModItems.ichorHelmGem);
 			addItem(ModItems.ichorChest);
@@ -104,7 +103,7 @@ public class ModCreativeTab extends CreativeTabs {
 			addItem(ModItems.ichorLegsGem);
 			addItem(ModItems.ichorBoots);
 			addItem(ModItems.ichorBootsGem);
-			
+
 			addItem(ModItems.catAmulet);
 		}
 	}
@@ -117,7 +116,7 @@ public class ModCreativeTab extends CreativeTabs {
 		if(list != null)
 			list.add(wand);
 		displayItem = wand;
-		
+
 		if(ConfigHandler.enableKami) {
 			ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
 			((ItemWandCasting) wand1.getItem()).setRod(wand1, ModItems.rodIchorcloth);
@@ -128,13 +127,13 @@ public class ModCreativeTab extends CreativeTabs {
 			displayItem = wand1;
 		}
 	}
-	
+
 	private void addItem(Item item) {
 		item.getSubItems(item.itemID, this, list);
 	}
-	
+
 	private void addBlock(Block block) {
 		block.getSubBlocks(block.blockID, this, list);
 	}
-	
+
 }

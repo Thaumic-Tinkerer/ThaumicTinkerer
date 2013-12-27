@@ -81,7 +81,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		if(tile != null)
 			tile.onInventoryChanged();
 	}
-	
+
 	@Override
 	public int getSizeInventory() {
 		TileEntity tile = getTile();

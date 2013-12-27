@@ -74,7 +74,7 @@ public final class ModItems {
 
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
-	
+
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
@@ -96,7 +96,7 @@ public final class ModItems {
 		revealingHelm = new ItemRevealingHelm(LibItemIDs.idRevealingHelm).setUnlocalizedName(LibItemNames.REVEALING_HELM);
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
-	
+
 		if(ConfigHandler.enableKami) {
 			kamiResource = new ItemKamiResource(LibItemIDs.idKamiResource).setUnlocalizedName(LibItemNames.KAMI_RESOURCE);
 			ichorHelm = new ItemIchorclothArmor(LibItemIDs.idIchorHelm, 0).setUnlocalizedName(LibItemNames.ICHOR_HELM);
@@ -108,7 +108,7 @@ public final class ModItems {
 			ichorLegsGem = new ItemGemLegs(LibItemIDs.idIchorLegsGem, 2).setUnlocalizedName(LibItemNames.ICHOR_LEGS_GEM);
 			ichorBootsGem = new ItemGemBoots(LibItemIDs.idIchorBootsGem, 3).setUnlocalizedName(LibItemNames.ICHOR_BOOTS_GEM);
 			catAmulet = new ItemCatAmulet(LibItemIDs.idCatAmulet).setUnlocalizedName(LibItemNames.CAT_AMULET);
-			
+
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
 		}

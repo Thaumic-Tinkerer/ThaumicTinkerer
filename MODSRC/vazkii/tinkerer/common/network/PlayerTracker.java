@@ -32,10 +32,10 @@ public class PlayerTracker implements IPlayerTracker {
 	public void onPlayerLogout(EntityPlayer player) {
 		ItemFocusSmelt.playerData.remove(player.username);
 		ItemFocusHeal.playerHealData.remove(player.username);
-		
+
 		ItemGemChest.playersWithFlight.remove(player.username + ":false");
 		ItemGemChest.playersWithFlight.remove(player.username + ":true");
-		
+
 		ItemGemBoots.playersWith1Step.remove(player.username);
 
 	}

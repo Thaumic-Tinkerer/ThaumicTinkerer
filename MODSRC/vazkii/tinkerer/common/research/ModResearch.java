@@ -122,7 +122,7 @@ public final class ModResearch {
 
 			research = new TTResearchItem(LibResearch.KEY_FOCUS_DEFLECT, LibResearch.CATEGORY_THAUMATURGY, new AspectList().add(Aspect.MOTION, 2).add(Aspect.AIR, 1).add(Aspect.ORDER, 1).add(Aspect.DEATH, 1), 2, -7, 3, new ItemStack(ModItems.focusDeflect)).setConcealed().setParentsHidden("MIRROR").setParents(LibResearch.KEY_FOCUS_FLIGHT).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_DEFLECT));
-			
+
 			research = new TTResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), 2, -5, 3, new ItemStack(ModBlocks.dislocator)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR").registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_DISLOCATOR));
 		}
@@ -132,22 +132,22 @@ public final class ModResearch {
 
 		research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), -2, -5, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
-		
+
 		research = new TTResearchItem(LibResearch.KEY_REPAIRER, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CRAFT, 1).add(Aspect.ORDER, 1).add(Aspect.MAGIC, 1), 6, 2, 3, new ItemStack(ModBlocks.repairer)).setConcealed().setParents("TUBES").setParentsHidden("THAUMIUM", "ENCHFABRIC").registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_REPAIRER));
-		
+
 		research = new TTResearchItem(LibResearch.KEY_PLATFORM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, -1, 3, new ItemStack(ModBlocks.platform)).setConcealed().setParents("LEVITATOR").registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_PLATFORM));
-				
+
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_BASICS, new AspectList(), 0, 2, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"));
-			
+
 			research = new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.CATEGORY_BASICS, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 0, 4, 2, new ItemStack(ModBlocks.aspectAnalyzer)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ASPECT_ANALYZER));
 		}
-		
+
 		// Move the Brain in a jar research
 		ResearchCategories.researchCategories.get(LibResearch.CATEGORY_ARTIFICE).research.remove("JARBRAIN");
 
@@ -159,41 +159,41 @@ public final class ModResearch {
 
 		research = new ResearchItem("INFUSIONENCHANTMENT", LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 1).add(Aspect.ARMOR, 1).add(Aspect.TOOL, 1), -4, -2, 5, new ResourceLocation("thaumcraft", "textures/misc/r_enchant.png"));
 		research.setPages(new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.1"), new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.2"), new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.3"), enchantPage("InfEnchRepair"), enchantPage("InfEnchHaste"), enchantPage("InfEnchPotency"), enchantPage("InfEnchFrugal"), enchantPage("InfEnchFortune"), enchantPage("InfEnch0"), enchantPage("InfEnch1"), enchantPage("InfEnch2"), enchantPage("InfEnch3"), enchantPage("InfEnch4"), enchantPage("InfEnch5"), enchantPage("InfEnch6"), enchantPage("InfEnch7"), enchantPage("InfEnch8"), enchantPage("InfEnch9"), enchantPage("InfEnch10"), enchantPage("InfEnch11"), enchantPage("InfEnch12"), enchantPage("InfEnch13"), enchantPage("InfEnch14"), enchantPage("InfEnch15"), enchantPage("InfEnch16"), enchantPage("InfEnch17"), enchantPage("InfEnch18"), enchantPage("InfEnch19"), enchantPage("InfEnch20"), enchantPage("InfEnch21")).setConcealed().setParents("JARBRAIN").registerResearchItem();
-	
+
 		if(ConfigHandler.enableKami) {
 			research = new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, LibResearch.CATEGORY_BASICS, new AspectList(), -3, -3, 0, new ItemStack(ModItems.kamiResource, 1, 7)).setStub().setAutoUnlock().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 6, 5, 5, new ItemStack(ModItems.kamiResource, 1, 0)).setConcealed().setSpecial().registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR));
-		
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.CLOTH, 2).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1).add(Aspect.SENSES, 1), 8, 4, 5, new ItemStack(ModItems.kamiResource, 1, 1)).setConcealed().setParents(LibResearch.KEY_ICHOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_CLOTH));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORIUM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.METAL, 2).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1).add(Aspect.TOOL, 1), 8, 6, 5, new ItemStack(ModItems.kamiResource, 1, 2)).setConcealed().setParents(LibResearch.KEY_ICHOR).setParentsHidden(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHORIUM));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_CAP, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.METAL, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 8, 8, 5, new ItemStack(ModItems.kamiResource, 1, 4)).setConcealed().setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_CAP));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 8, 2, 5, new ItemStack(ModItems.kamiResource, 1, 5)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ARMOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.ARMOR, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1), 11, 5, 5, new ItemStack(ModItems.ichorChest)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_HELM), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_CHEST), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_LEGS), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_BOOTS));
-		
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_HELM_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.WATER, 2).add(Aspect.HEAL, 1).add(Aspect.HUNGER, 1).add(Aspect.AURA, 1), 12, 3, 5, new ItemStack(ModItems.ichorHelmGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_HELM_GEM));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 14, 4, 5, new ItemStack(ModItems.ichorChestGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_CHEST_GEM));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 14, 6, 5, new ItemStack(ModItems.ichorLegsGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_LEGS_GEM));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TRAVEL, 1).add(Aspect.MINE, 1).add(Aspect.PLANT, 1), 12, 7, 5, new ItemStack(ModItems.ichorBootsGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM));
-			
+
 			research = new KamiResearchItem(LibResearch.KEY_CAT_AMULET, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MIND, 2).add(Aspect.ORDER, 1).add(Aspect.DARKNESS, 1).add(Aspect.DEATH, 1), 10, 7, 5, new ItemStack(ModItems.catAmulet)).setHidden().setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_CAT_AMULET));
 		}

@@ -70,7 +70,7 @@ public class TTCommonProxy {
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
-		
+
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
 		}
@@ -83,14 +83,14 @@ public class TTCommonProxy {
 
 	protected void initCCPeripherals() {
 		IPeripheralHandler handler = new PeripheralHandler();
-		
+
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
 				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class
 		};
-		
+
 		for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
 	}

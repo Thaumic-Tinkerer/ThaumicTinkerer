@@ -52,7 +52,7 @@ public final class LibResources {
 	public static final String MODEL_ARMOR_ICHOR_2 = PREFIX_MODEL + "ichor2.png";
 	public static final String MODEL_ARMOR_ICHOR_GEM_1 = PREFIX_MODEL + "ichorGem1.png";
 	public static final String MODEL_ARMOR_ICHOR_GEM_2 = PREFIX_MODEL + "ichorGem2.png";
-	
+
 	public static final String ENCHANT_PROTECTION = PREFIX_ENCHANTS + "protection.png";
 	public static final String ENCHANT_FIRE_PROTECTION = PREFIX_ENCHANTS + "fireProtection.png";
 	public static final String ENCHANT_FEATHER_FALLING = PREFIX_ENCHANTS + "featherFalling.png";

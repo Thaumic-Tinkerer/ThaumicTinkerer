@@ -30,7 +30,6 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
-import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import com.google.common.collect.HashMultimap;

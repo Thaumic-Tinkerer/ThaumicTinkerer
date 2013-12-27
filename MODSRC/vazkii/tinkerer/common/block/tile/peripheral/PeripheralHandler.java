@@ -30,19 +30,19 @@ public final class PeripheralHandler implements IPeripheralHandler {
 	public IHostedPeripheral getPeripheral(TileEntity tile) {
 		if(tile instanceof TileTransvectorInterface)
 			return new PeripheralTransvectorInterface((TileTransvectorInterface) tile);
-		
+
 		if(tile instanceof IAspectContainer)
 			return new PeripheralAspectContainer((IAspectContainer) tile);
 
 		if(tile instanceof TileDeconstructionTable)
 			return new PeripheralDeconstructor((TileDeconstructionTable) tile);
-		
+
 		if(tile instanceof TileJarBrain)
 			return new PeripheralBrainInAJar((TileJarBrain) tile);
-		
+
 		if(tile instanceof TileSensor)
 			return new PeripheralArcaneEar((TileSensor) tile);
-		
+
 		if(tile instanceof TileArcaneBore)
 			return new PeripheralArcaneBore((TileArcaneBore) tile);
 

@@ -36,8 +36,8 @@ public final class LibItemIDs {
 	public static int idRevealingHelm = 22167;
 	public static int idInfusedInkwell = 22168;
 	public static int idFocusDeflect = 22169;
-	
-	public static int idKamiResource = 23150; 
+
+	public static int idKamiResource = 23150;
 	public static int idIchorHelm = 23151;
 	public static int idIchorChest = 23152;
 	public static int idIchorLegs = 23153;

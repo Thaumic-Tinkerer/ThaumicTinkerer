@@ -45,15 +45,15 @@ import cpw.mods.fml.relauncher.Side;
 public class TTClientProxy extends TTCommonProxy {
 
 	public static EnumRarity kamiRarity;
-	
+
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-		
+
 		if(ConfigHandler.enableKami)
 			kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
 	}
-	
+
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
