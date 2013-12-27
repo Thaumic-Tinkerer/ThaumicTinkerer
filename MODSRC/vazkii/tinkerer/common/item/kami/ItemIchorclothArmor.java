@@ -67,5 +67,10 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;
 	}
+	
+	@Override
+	public boolean isItemTool(ItemStack par1ItemStack) {
+		return true;
+	}
 
 }
