@@ -133,10 +133,6 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), -2, -5, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
 		
-		research = new TTResearchItem(LibResearch.KEY_INFUSED_INKWELL, LibResearch.CATEGORY_BASICS, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 1).add(Aspect.MIND, 1), 5, -1, 2, new ItemStack(ModItems.infusedInkwell)).setHidden().setParents("RESEARCH").registerResearchItem();
-		research.setParentsHidden(LibResearch.KEY_INFUSED_INKWELL); // Prevent the research from being researched. TODO: Remove when azanor adds API hook
-		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_INFUSED_INKWELL), recipePage(LibResearch.KEY_INFUSED_INKWELL + 0));
-
 		research = new TTResearchItem(LibResearch.KEY_REPAIRER, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CRAFT, 1).add(Aspect.ORDER, 1).add(Aspect.MAGIC, 1), 6, 2, 3, new ItemStack(ModBlocks.repairer)).setConcealed().setParents("TUBES").setParentsHidden("THAUMIUM", "ENCHFABRIC").registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_REPAIRER));
 				
