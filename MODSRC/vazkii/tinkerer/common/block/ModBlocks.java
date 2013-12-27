@@ -19,6 +19,7 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
+import vazkii.tinkerer.common.block.tile.TileCamo;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
@@ -113,6 +114,7 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileTransvectorDislocator.class, LibBlockNames.DISLOCATOR);
 		GameRegistry.registerTileEntity(TileRepairer.class, LibBlockNames.REPAIRER);
 		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
+		GameRegistry.registerTileEntity(TileCamo.class, LibBlockNames.CAMO);
 	}
 
 }

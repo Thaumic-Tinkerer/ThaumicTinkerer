@@ -30,6 +30,11 @@ public abstract class TileTransvector extends TileCamo {
 
 	public int x = 0, y = -1, z = 0;
 	private boolean cheaty;
+	
+	@Override
+	public boolean canUpdate() {
+		return true;
+	}
 
 	public void writeCustomNBT(NBTTagCompound cmp) {
 		super.writeCustomNBT(cmp);
