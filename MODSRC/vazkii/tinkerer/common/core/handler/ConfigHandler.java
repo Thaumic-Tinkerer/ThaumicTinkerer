@@ -25,6 +25,7 @@ import vazkii.tinkerer.common.lib.LibEnchantIDs;
 import vazkii.tinkerer.common.lib.LibEnchantNames;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import cpw.mods.fml.common.Loader;
 
 public final class ConfigHandler {
 
@@ -47,15 +48,13 @@ public final class ConfigHandler {
 		new ConfigCategory(CATEGORY_KAMI_ITEMS);
 		new ConfigCategory(CATEGORY_KAMI_BLOCKS);
 
-		String comment = "These will only be used if kami.enabled (in general) is set to true.";
+		String comment = "These will only be used if KAMI is loaded. (KAMI is a separate download you can find in the Thaumic Tinkerer thread)";
 		config.addCustomCategoryComment(CATEGORY_KAMI_ITEMS, comment);
 		config.addCustomCategoryComment(CATEGORY_KAMI_BLOCKS, comment);
 
 		config.load();
 		
-		Property propEnableKami = config.get(Configuration.CATEGORY_GENERAL, "kami.enabled", false);
-		propEnableKami.comment = "Set to true to enable the KAMI module. Warning: this module contains *extremely* powerful (even OP) items, in the vein of EE2. Do not enable unless that's what you want.";
-		enableKami = propEnableKami.getBoolean(false);
+		enableKami = Loader.isModLoaded("ThaumicTinkererKami");
 		
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
