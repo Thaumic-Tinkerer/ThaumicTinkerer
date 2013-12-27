@@ -226,6 +226,9 @@ public final class ModRecipes {
 			
 			registerResearchItemI(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM, new ItemStack(ModItems.ichorBootsGem), 13, new AspectList().add(Aspect.EARTH, 50).add(Aspect.ARMOR, 32).add(Aspect.MINE, 32).add(Aspect.MOTION, 32).add(Aspect.LIGHT, 64).add(Aspect.PLANT, 16).add(Aspect.TRAVEL, 16), new ItemStack(ModItems.ichorBoots),
 				new ItemStack(Item.diamond, 1), new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource),  new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Item.bootsGold), new ItemStack(Block.grass), new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 5), new ItemStack(ConfigBlocks.blockMetalDevice, 1, 8), new ItemStack(Item.seeds), new ItemStack(Block.cloth), new ItemStack(Item.leash));
+		
+			registerResearchItemI(LibResearch.KEY_CAT_AMULET, new ItemStack(ModItems.catAmulet), 8, new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.ORDER, 32).add(Aspect.MIND, 16), new ItemStack(Block.blockNetherQuartz),
+				new ItemStack(ModItems.kamiResource), new ItemStack(Item.ingotGold), new ItemStack(Item.ingotGold), new ItemStack(Item.dyePowder, 1, 3), new ItemStack(Block.leaves, 1, 3), new ItemStack(Item.fishRaw));
 		}
 	}
 

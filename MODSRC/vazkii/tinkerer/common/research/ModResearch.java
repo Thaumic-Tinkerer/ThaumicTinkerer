@@ -170,10 +170,10 @@ public final class ModResearch {
 			research = new KamiResearchItem(LibResearch.KEY_ICHORIUM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.METAL, 2).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1).add(Aspect.TOOL, 1), 8, 6, 5, new ItemStack(ModItems.kamiResource, 1, 2)).setConcealed().setParents(LibResearch.KEY_ICHOR).setParentsHidden(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHORIUM));
 			
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_CAP, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.METAL, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 9, 8, 5, new ItemStack(ModItems.kamiResource, 1, 4)).setConcealed().setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_CAP, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.METAL, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 8, 8, 5, new ItemStack(ModItems.kamiResource, 1, 4)).setConcealed().setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_CAP));
 			
-			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 9, 2, 5, new ItemStack(ModItems.kamiResource, 1, 5)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 8, 2, 5, new ItemStack(ModItems.kamiResource, 1, 5)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
 			
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ARMOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.ARMOR, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1), 11, 5, 5, new ItemStack(ModItems.ichorChest)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
@@ -190,6 +190,9 @@ public final class ModResearch {
 			
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TRAVEL, 1).add(Aspect.MINE, 1).add(Aspect.PLANT, 1), 12, 7, 5, new ItemStack(ModItems.ichorBootsGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM));
+			
+			research = new KamiResearchItem(LibResearch.KEY_CAT_AMULET, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MIND, 2).add(Aspect.ORDER, 1).add(Aspect.DARKNESS, 1).add(Aspect.DEATH, 1), 10, 7, 5, new ItemStack(ModItems.catAmulet)).setHidden().setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_CAT_AMULET));
 		}
 	}
 
