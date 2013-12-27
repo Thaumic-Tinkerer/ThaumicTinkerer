@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.network;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
+import vazkii.tinkerer.common.item.kami.ItemGemBoots;
 import vazkii.tinkerer.common.item.kami.ItemGemChest;
 import cpw.mods.fml.common.IPlayerTracker;
 
@@ -34,6 +35,8 @@ public class PlayerTracker implements IPlayerTracker {
 		
 		ItemGemChest.playersWithFlight.remove(player.username + ":false");
 		ItemGemChest.playersWithFlight.remove(player.username + ":true");
+		
+		ItemGemBoots.playersWith1Step.remove(player.username);
 
 	}
 
