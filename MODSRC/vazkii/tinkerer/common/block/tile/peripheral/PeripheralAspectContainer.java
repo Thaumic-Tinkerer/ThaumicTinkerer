@@ -49,7 +49,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 				List returnStuff = new ArrayList();
 				if(container.getAspects() == null)
 					return new String[0];
-				
+
 				for(Aspect aspect : container.getAspects().getAspectsSorted())
 					returnStuff.add(aspect.getTag());
 
@@ -61,7 +61,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 
 				if(container.getAspects() == null)
 					return new Object[] { 0 };
-				
+
 				return new Object[] { container.getAspects().getAmount(aspect) };
 			}
 		}

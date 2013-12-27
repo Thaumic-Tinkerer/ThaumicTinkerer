@@ -23,7 +23,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

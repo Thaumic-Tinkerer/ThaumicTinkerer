@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Dec 11, 2013, 10:31:09 PM (GMT)]
  */
 package vazkii.tinkerer.common.block;
@@ -34,7 +34,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 	Icon[] icons = new Icon[5];
 	Random random;
-	
+
 	protected BlockAspectAnalyzer(int par1) {
 		super(par1, Material.wood);
 		setHardness(1.7F);
@@ -43,7 +43,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 		random = new Random();
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
@@ -54,7 +54,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 		return true;
 	}
-	
+
 	@Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
         TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getBlockTileEntity(par2, par3, par4);
@@ -92,18 +92,19 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-	
+
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 5; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
-	
+
 	@Override
 	public Icon getIcon(int par1, int par2) {
 		return icons[par1 == 0 || par1 == 1 ? 0 : par1 - 1];
 	}
 
+	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileAspectAnalyzer();
 	}

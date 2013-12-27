@@ -46,8 +46,8 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ENCHANTER :
 				return new ContainerEnchanter((TileEnchanter) tile, player.inventory);
-				
-			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER : 
+
+			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER :
 				return new ContainerAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
 		}
 		return null;
@@ -65,7 +65,7 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ENCHANTER :
 				return new GuiEnchanting((TileEnchanter) tile, player.inventory);
-				
+
 			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER :
 				return new GuiAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
 		}

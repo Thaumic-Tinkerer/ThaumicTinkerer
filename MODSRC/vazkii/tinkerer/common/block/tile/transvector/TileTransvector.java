@@ -15,9 +15,6 @@
 package vazkii.tinkerer.common.block.tile.transvector;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import vazkii.tinkerer.common.block.tile.TileCamo;
 
@@ -30,24 +27,26 @@ public abstract class TileTransvector extends TileCamo {
 
 	public int x = 0, y = -1, z = 0;
 	private boolean cheaty;
-	
+
 	@Override
 	public boolean canUpdate() {
 		return true;
 	}
 
+	@Override
 	public void writeCustomNBT(NBTTagCompound cmp) {
 		super.writeCustomNBT(cmp);
-		
+
 		cmp.setInteger(TAG_X_TARGET, x);
 		cmp.setInteger(TAG_Y_TARGET, y);
 		cmp.setInteger(TAG_Z_TARGET, z);
 		cmp.setBoolean(TAG_CHEATY_MODE, cheaty);
 	}
 
+	@Override
 	public void readCustomNBT(NBTTagCompound cmp) {
 		super.readCustomNBT(cmp);
-		
+
 		x = cmp.getInteger(TAG_X_TARGET);
 		y = cmp.getInteger(TAG_Y_TARGET);
 		z = cmp.getInteger(TAG_Z_TARGET);
@@ -61,7 +60,7 @@ public abstract class TileTransvector extends TileCamo {
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 
-		if((tile == null && tileRequiredAtLink()) || ((Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty)) {
+		if(tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
 			y = -1;
 			return null;
 		}

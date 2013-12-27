@@ -43,5 +43,5 @@ public class SlotTool extends Slot {
 	public boolean canTakeStack(EntityPlayer par1EntityPlayer) {
 		return !enchanter.working;
 	}
-	
+
 }

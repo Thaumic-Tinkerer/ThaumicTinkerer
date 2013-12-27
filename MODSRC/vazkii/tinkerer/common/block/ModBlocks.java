@@ -74,7 +74,7 @@ public final class ModBlocks {
 		repairer = new BlockRepairer(LibBlockIDs.idRepairer).setUnlocalizedName(LibBlockNames.REPAIRER);
 		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setUnlocalizedName(LibBlockNames.ASPECT_ANALYZER);
 		platform = new BlockPlatform(LibBlockIDs.idPlatform).setUnlocalizedName(LibBlockNames.PLATFORM);
-		
+
 		registerBlocks();
 		registerMultiparts();
 	}

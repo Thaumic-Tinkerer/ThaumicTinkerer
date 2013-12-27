@@ -14,11 +14,11 @@
  */
 package vazkii.tinkerer.common.block.tile.tablet;
 
-import vazkii.tinkerer.common.lib.LibBlockNames;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
+import vazkii.tinkerer.common.lib.LibBlockNames;
 
 public class TabletFakePlayer extends FakePlayer {
 

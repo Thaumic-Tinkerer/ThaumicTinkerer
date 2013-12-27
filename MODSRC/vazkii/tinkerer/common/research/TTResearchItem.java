@@ -50,7 +50,7 @@ public class TTResearchItem extends ResearchItem {
 	public String getText() {
 		return (ConfigHandler.useTootlipIndicators ? StatCollector.translateToLocal(getPrefix()): "") + StatCollector.translateToLocal("ttresearch.lore." + key);
 	}
-	
+
 	String getPrefix() {
 		return "ttresearch.prefix";
 	}
@@ -77,7 +77,7 @@ public class TTResearchItem extends ResearchItem {
 
 		return super.setPages(par);
 	}
-	
+
 	boolean checkInfusion() {
 		return true;
 	}

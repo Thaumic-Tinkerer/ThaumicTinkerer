@@ -27,7 +27,7 @@ public class ItemBrightNitor extends ItemMod {
 	}
 
 	public static int meta = 0;
-	
+
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		int x = (int) Math.floor(par3Entity.posX);
@@ -36,7 +36,7 @@ public class ItemBrightNitor extends ItemMod {
 
 		setBlock(x, y, z, par2World);
 	}
-	
+
 	public static void setBlock(int x, int y, int z, World world) {
 		if((world.getBlockId(x, y, z) == 0 || world.getBlockId(x, y, z) == ModBlocks.nitorGas.blockID) && !world.isRemote)
 			world.setBlock(x, y, z, ModBlocks.nitorGas.blockID, meta, 2);

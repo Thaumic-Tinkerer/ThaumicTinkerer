@@ -16,10 +16,9 @@ package vazkii.tinkerer.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 public class ModelRepairer extends ModelBase {
-	
+
 	ModelRenderer Base;
 	ModelRenderer Support1;
 	ModelRenderer Support2;
@@ -153,7 +152,7 @@ public class ModelRepairer extends ModelBase {
 		Opening4.render(scale);
 
 	}
-	
+
 	public void renderGlass() {
 		final float scale = 1F / 16F;
 

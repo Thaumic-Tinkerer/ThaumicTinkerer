@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Nov 30, 2013, 5:36:26 PM (GMT)]
  */
 package vazkii.tinkerer.common.block;
@@ -35,15 +35,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockRepairer extends BlockModContainer {
 
 	Random random;
-	
+
 	protected BlockRepairer(int par1) {
 		super(par1, Material.iron);
         setHardness(5F);
         setResistance(10F);
-        
+
         random = new Random();
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		TileRepairer repairer = (TileRepairer) par1World.getBlockTileEntity(par2, par3, par4);
@@ -56,7 +56,7 @@ public class BlockRepairer extends BlockModContainer {
 
 				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-				
+
 				repairer.onInventoryChanged();
 				return true;
 			}
@@ -71,7 +71,7 @@ public class BlockRepairer extends BlockModContainer {
 
 		return false;
 	}
-	
+
 	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack) {
 		byte b0 = 0;
@@ -130,7 +130,7 @@ public class BlockRepairer extends BlockModContainer {
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2) {
