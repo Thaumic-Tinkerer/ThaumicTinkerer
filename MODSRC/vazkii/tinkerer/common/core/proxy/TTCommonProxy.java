@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileCentrifuge;
@@ -34,6 +35,7 @@ import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
@@ -68,6 +70,10 @@ public class TTCommonProxy {
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
+		
+		if(ConfigHandler.enableKami) {
+			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
+		}
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
