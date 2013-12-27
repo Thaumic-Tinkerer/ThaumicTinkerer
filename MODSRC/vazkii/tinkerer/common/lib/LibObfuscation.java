@@ -28,4 +28,7 @@ public final class LibObfuscation {
 
 	/** EntityAINearestAttackableTarget **/
 	public static final String[] TARGET_CLASS = new String[] { "targetClass", "field_75307_b", "a" };
+	
+	/** EntityCreeper **/
+	public static final String[] TIME_SINCE_IGNITED = new String[] {  "timeSinceIgnited", "field_70833_d" , "bq" };
 }
