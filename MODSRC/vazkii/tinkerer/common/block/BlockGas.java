@@ -89,11 +89,6 @@ public abstract class BlockGas extends BlockMod {
 	}
 
 	@Override
-	boolean registerInCreative() {
-		return false;
-	}
-
-	@Override
 	public boolean canDragonDestroy(World world, int x, int y, int z) {
 		return false;
 	}

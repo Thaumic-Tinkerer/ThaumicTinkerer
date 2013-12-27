@@ -26,8 +26,6 @@ public class BlockMod extends Block {
 
 	public BlockMod(int par1, Material par2Material) {
 		super(par1, par2Material);
-		if(registerInCreative())
-			setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override
@@ -36,9 +34,5 @@ public class BlockMod extends Block {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
-	/** Does the block register in the creative inv? **/
-	boolean registerInCreative() {
-		return true;
-	}
 
 }

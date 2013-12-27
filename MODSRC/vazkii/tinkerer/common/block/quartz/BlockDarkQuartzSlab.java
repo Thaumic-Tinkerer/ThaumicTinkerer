@@ -34,10 +34,8 @@ public class BlockDarkQuartzSlab extends BlockHalfSlab {
 		super(par1, par2, Material.rock);
 		setHardness(0.8F);
 		setResistance(10F);
-		if(!par2) {
-			setCreativeTab(ModCreativeTab.INSTANCE);
+		if(!par2)
 			setLightOpacity(0);
-		}
 	}
 
 	@Override

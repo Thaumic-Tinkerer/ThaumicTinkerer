@@ -22,6 +22,5 @@ public class BlockDarkQuartzStairs extends BlockStairs {
 
 	public BlockDarkQuartzStairs(int par1) {
 		super(par1, ModBlocks.darkQuartz, 0);
-		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 }

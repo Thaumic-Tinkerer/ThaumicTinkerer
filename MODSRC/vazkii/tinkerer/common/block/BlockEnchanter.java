@@ -60,25 +60,6 @@ public class BlockEnchanter extends BlockModContainer {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		super.getSubBlocks(par1, par2CreativeTabs, par3List);
-		ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
-		((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
-		((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
-		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
-		par3List.add(wand);
-		
-		if(ConfigHandler.enableKami) {
-			ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
-			((ItemWandCasting) wand1.getItem()).setRod(wand1, ModItems.rodIchorcloth);
-			((ItemWandCasting) wand1.getItem()).setCap(wand1, ModItems.capIchor);
-			((ItemWandCasting) wand1.getItem()).storeAllVis(wand1, new AspectList().add(Aspect.AIR, 100000).add(Aspect.EARTH, 100000).add(Aspect.FIRE, 100000).add(Aspect.WATER, 100000).add(Aspect.ORDER, 100000).add(Aspect.ENTROPY, 100000));
-			par3List.add(wand1);
-		}
-	}
-
-	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
