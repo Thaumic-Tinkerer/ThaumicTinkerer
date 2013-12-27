@@ -327,3 +327,8 @@ ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorclot
 ttresearch.name.ICHORCLOTH_BOOTS_GEM=Boots of the Horizontal Shield
 ttresearch.lore.ICHORCLOTH_BOOTS_GEM=From Winterfell to King's Landing in a breeze
 ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage.
+
+# -- FELINE AMULET
+ttresearch.name.CAT_AMULET=Feline Amulet
+ttresearch.lore.CAT_AMULET=No fighting with cats in the cafeteria
+ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that, using the knowledge you have that creepers run away from cats, devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that but they'll be petrified to the point of not gathering enough stoke to explode. Great.
