@@ -28,6 +28,7 @@ import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
 import vazkii.tinkerer.common.item.kami.ItemGemChest;
 import vazkii.tinkerer.common.item.kami.ItemGemHelm;
+import vazkii.tinkerer.common.item.kami.ItemGemLegs;
 import vazkii.tinkerer.common.item.kami.ItemIchorclothArmor;
 import vazkii.tinkerer.common.item.kami.ItemIchorclothArmorAdv;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
@@ -102,7 +103,7 @@ public final class ModItems {
 			ichorBoots = new ItemIchorclothArmor(LibItemIDs.idIchorBoots, 3).setUnlocalizedName(LibItemNames.ICHOR_BOOTS);
 			ichorHelmGem = new ItemGemHelm(LibItemIDs.idIchorHelmGem, 0).setUnlocalizedName(LibItemNames.ICHOR_HELM_GEM);
 			ichorChestGem = new ItemGemChest(LibItemIDs.idIchorChestGem, 1).setUnlocalizedName(LibItemNames.ICHOR_CHEST_GEM);
-			ichorLegsGem = new ItemIchorclothArmorAdv(LibItemIDs.idIchorLegsGem, 2).setUnlocalizedName(LibItemNames.ICHOR_LEGS_GEM);
+			ichorLegsGem = new ItemGemLegs(LibItemIDs.idIchorLegsGem, 2).setUnlocalizedName(LibItemNames.ICHOR_LEGS_GEM);
 			ichorBootsGem = new ItemIchorclothArmorAdv(LibItemIDs.idIchorBootsGem, 3).setUnlocalizedName(LibItemNames.ICHOR_BOOTS_GEM);
 			
 			capIchor = new CapIchor();
