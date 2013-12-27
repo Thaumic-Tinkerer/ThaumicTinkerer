@@ -37,12 +37,12 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         TileEntity tile = world.getBlockTileEntity(x, y, z);
         int meta = world.getBlockMetadata(x, y, z);
 
-        if (tile instanceof TileTransvector) {
-            TileTransvector transvector = (TileTransvector) tile;
-            if (transvector.camo > 0 && transvector.camo < 4096) {
-                Block block = Block.blocksList[transvector.camo];
-                if (block != null && block.renderAsNormalBlock())
-                    return block.getIcon(side, transvector.camoMeta);
+        if (tile instanceof TileCamo) {
+            TileCamo camo = (TileCamo) tile;
+            if (camo.camo > 0 && camo.camo < 4096) {
+                Block block = Block.blocksList[camo.camo];
+                if (block != null && block.getRenderType() == 0)
+                    return block.getIcon(side, camo.camoMeta);
             }
         }
 
@@ -69,7 +69,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             		}
 
                     Block block = Block.blocksList[currentStack.itemID];
-                    if(block == null || !block.renderAsNormalBlock() || block == this || block.blockMaterial == Material.air)
+                    if(block == null || block.getRenderType() != 0 || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
             	}
         	}
@@ -86,6 +86,16 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         return false;
 	}
 
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+	
 	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
 		return blockIcon;
 	}
