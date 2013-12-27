@@ -28,7 +28,7 @@ import vazkii.tinkerer.common.lib.LibItemNames;
 
 public class ItemKamiResource extends ItemMod {
 
-	final int subtypes = 6;
+	final int subtypes = 8;
 	Icon[] icons;
 	
 	public ItemKamiResource(int par1) {
@@ -62,6 +62,6 @@ public class ItemKamiResource extends ItemMod {
 	
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTClientProxy.kamiRarity;
+		return par1ItemStack.getItemDamage() != 7 && par1ItemStack.getItemDamage() != 6 ? TTClientProxy.kamiRarity : super.getRarity(par1ItemStack);
 	}
 }
