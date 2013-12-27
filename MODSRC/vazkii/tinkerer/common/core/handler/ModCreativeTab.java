@@ -64,6 +64,7 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.dislocator);
 		
 		addBlock(ModBlocks.funnel);
+		addBlock(ModBlocks.platform);
 		addBlock(ModBlocks.repairer);
 		addBlock(ModBlocks.magnet);
 		addItem(ModItems.soulMould);

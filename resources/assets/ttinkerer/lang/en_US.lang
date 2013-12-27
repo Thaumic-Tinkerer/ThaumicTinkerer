@@ -82,6 +82,7 @@ tile.ttinkerer:funnel.name=Essentia Funnel
 tile.ttinkerer:dislocator.name=Transvector Dislocator
 tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
+tile.ttinkerer:platform.name=Ethereal Platform
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost
