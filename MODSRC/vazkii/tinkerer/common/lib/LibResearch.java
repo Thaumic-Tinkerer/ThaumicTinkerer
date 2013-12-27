@@ -74,5 +74,6 @@ public final class LibResearch {
 	public static final String KEY_ICHORCLOTH_HELM_GEM = "ICHORCLOTH_HELM_GEM";
 	public static final String KEY_ICHORCLOTH_CHEST_GEM = "ICHORCLOTH_CHEST_GEM";
 	public static final String KEY_ICHORCLOTH_LEGS_GEM = "ICHORCLOTH_LEGS_GEM";
+	public static final String KEY_ICHORCLOTH_BOOTS_GEM = "ICHORCLOTH_BOOTS_GEM";
 
 }
