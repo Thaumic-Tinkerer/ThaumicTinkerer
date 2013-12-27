@@ -64,6 +64,7 @@ item.ttinkerer:ichorclothLegs.name=Ichorcloth Leggings
 item.ttinkerer:ichorclothBoots.name=Ichorcloth Boots
 item.ttinkerer:ichorclothHelmGem.name=Cowl of the Abyssal Depths
 item.ttinkerer:ichorclothChestGem.name=Robes of the Stratosphere
+item.ttinkerer:ichorclothLegsGem.name=Leggings of the Burning Mantle
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -304,7 +305,12 @@ ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
 ttresearch.lore.ICHORCLOTH_HELM_GEM=Just friendly crustaceans
 ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case.
 
-# -- ROBES OF THE MAGNETIC FIELD
+# -- ROBES OF THE STRATOSPHERE
 ttresearch.name.ICHORCLOTH_CHEST_GEM=Robes of the Stratosphere
 ttresearch.lore.ICHORCLOTH_CHEST_GEM=Guys can wear these too
 ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorcloth Robes into a more powerful form.<BR><BR>Starting off, by simply wearing these robes, the wearer is blessed with the power of eternal flight (wings that don't burn after 5 minutes included), as well as having all fall damage negated.<BR>The robes also passively protect the wearer from any incoming simple projectiles, akin to the focus of Distortion.
+
+# -- LEGGINGS OF THE BURNING MANTLE
+ttresearch.name.ICHORCLOTH_LEGS_GEM=Leggings of the Burning Mantle
+ttresearch.lore.ICHORCLOTH_LEGS_GEM=A warm feeling
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevales given the creator's existance in a much extended range.<BR>Furthermore, these robes not only provide fire resistance, but they convert any incoming fire damage into healing.
