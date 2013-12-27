@@ -39,7 +39,7 @@ public class KamiResearchItem extends TTResearchItem {
 			ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
 			for(String tag : category.research.keySet()) {
 				ResearchItem research = category.research.get(tag);
-				if(research.isLost() || research instanceof KamiResearchItem || requirements.contains(tag))
+				if(research.isLost() || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
 					continue;
 				
 				requirements.add(tag);
