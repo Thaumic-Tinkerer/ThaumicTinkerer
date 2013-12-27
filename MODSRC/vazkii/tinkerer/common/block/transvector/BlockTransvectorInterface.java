@@ -16,10 +16,11 @@ package vazkii.tinkerer.common.block.transvector;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.block.BlockCamo;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
-public class BlockTransvectorInterface extends BlockTransvector {
+public class BlockTransvectorInterface extends BlockCamo {
 
     public BlockTransvectorInterface(int par1) {
         super(par1, Material.iron);

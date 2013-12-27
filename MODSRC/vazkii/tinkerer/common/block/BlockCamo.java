@@ -1,18 +1,18 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- *
+ * 
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- *
+ * 
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- *
- * File Created @ [Nov 24, 2013, 6:54:05 PM (GMT)]
+ * 
+ * File Created @ [Dec 27, 2013, 6:25:36 PM (GMT)]
  */
-package vazkii.tinkerer.common.block.transvector;
+package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,16 +22,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import vazkii.tinkerer.common.block.BlockModContainer;
+import vazkii.tinkerer.common.block.tile.TileCamo;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-public abstract class BlockTransvector extends BlockModContainer<TileTransvector> {
+public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
-	protected BlockTransvector(int par1, Material par2Material) {
+	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
 	}
-
+	
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side) {
         TileEntity tile = world.getBlockTileEntity(x, y, z);
@@ -53,8 +53,8 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
         TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
 
-        if (tile instanceof TileTransvector) {
-        	TileTransvector transvector = (TileTransvector) tile;
+        if (tile instanceof TileCamo) {
+        	TileCamo camo = (TileCamo) tile;
         	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
         	if(currentStack == null)
@@ -75,9 +75,9 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
         	}
 
         	if(doChange) {
-            	transvector.camo = currentStack.itemID;
-            	transvector.camoMeta = currentStack.getItemDamage();
-            	PacketDispatcher.sendPacketToAllInDimension(transvector.getDescriptionPacket(), par1World.provider.dimensionId);
+            	camo.camo = currentStack.itemID;
+            	camo.camoMeta = currentStack.getItemDamage();
+            	PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
 
         		return true;
         	}
