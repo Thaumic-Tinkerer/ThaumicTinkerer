@@ -148,6 +148,10 @@ public final class ModRecipes {
 			'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'M', new ItemStack(ConfigItems.itemThaumometer),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
+		registerResearchItem(LibResearch.KEY_PLATFORM, LibResearch.KEY_PLATFORM, new ItemStack(ModBlocks.platform, 2), new AspectList().add(Aspect.AIR, 2).add(Aspect.ENTROPY, 4),
+			"GSG",
+			'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
+			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));
 		
 		if(ConfigHandler.enableKami) {
 			registerResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(ModItems.kamiResource, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125), 
