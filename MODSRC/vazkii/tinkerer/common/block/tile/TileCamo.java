@@ -29,6 +29,11 @@ public class TileCamo extends TileEntity {
 	public int camoMeta;
 	
 	@Override
+	public boolean canUpdate() {
+		return false;
+	}
+	
+	@Override
 	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
 		super.writeToNBT(par1nbtTagCompound);
 		
