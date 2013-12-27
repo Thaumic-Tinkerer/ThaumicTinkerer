@@ -16,11 +16,12 @@ package vazkii.tinkerer.common.block;
 
 import java.util.List;
 
-import vazkii.tinkerer.common.block.tile.TileCamo;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.block.tile.TileCamo;
 
 public class BlockPlatform extends BlockCamo {
 
@@ -30,7 +31,7 @@ public class BlockPlatform extends BlockCamo {
 
 	@Override
 	public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity) {
-		if(par7Entity.posY > (par3 + 1) && !par7Entity.isSneaking())
+		if(par7Entity.posY > (par3 + (par7Entity instanceof EntityPlayer ? 1 : 0)) && (!(par7Entity instanceof EntityPlayer) || !par7Entity.isSneaking()))
 			super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
 	}
 
