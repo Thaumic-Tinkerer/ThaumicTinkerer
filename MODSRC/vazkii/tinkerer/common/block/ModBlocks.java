@@ -55,6 +55,7 @@ public final class ModBlocks {
 	public static Block dislocator;
 	public static Block repairer;
 	public static Block aspectAnalyzer;
+	public static Block platform;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -72,6 +73,7 @@ public final class ModBlocks {
 		dislocator = new BlockTransvectorDislocator(LibBlockIDs.idDislocator).setUnlocalizedName(LibBlockNames.DISLOCATOR);
 		repairer = new BlockRepairer(LibBlockIDs.idRepairer).setUnlocalizedName(LibBlockNames.REPAIRER);
 		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setUnlocalizedName(LibBlockNames.ASPECT_ANALYZER);
+		platform = new BlockPlatform(LibBlockIDs.idPlatform).setUnlocalizedName(LibBlockNames.PLATFORM);
 		
 		registerBlocks();
 		registerMultiparts();
@@ -92,6 +94,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(dislocator, LibBlockNames.DISLOCATOR);
 		GameRegistry.registerBlock(repairer, LibBlockNames.REPAIRER);
 		GameRegistry.registerBlock(aspectAnalyzer, LibBlockNames.ASPECT_ANALYZER);
+		GameRegistry.registerBlock(platform, LibBlockNames.PLATFORM);
 	}
 
 	private static void registerMultiparts() {
