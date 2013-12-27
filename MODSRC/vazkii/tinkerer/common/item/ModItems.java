@@ -26,6 +26,7 @@ import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
 import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
+import vazkii.tinkerer.common.item.kami.ItemCatAmulet;
 import vazkii.tinkerer.common.item.kami.ItemGemBoots;
 import vazkii.tinkerer.common.item.kami.ItemGemChest;
 import vazkii.tinkerer.common.item.kami.ItemGemHelm;
@@ -69,7 +70,8 @@ public final class ModItems {
 	public static Item ichorChestGem;
 	public static Item ichorLegsGem;
 	public static Item ichorBootsGem;
-	
+	public static Item catAmulet;
+
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
 	
@@ -105,6 +107,7 @@ public final class ModItems {
 			ichorChestGem = new ItemGemChest(LibItemIDs.idIchorChestGem, 1).setUnlocalizedName(LibItemNames.ICHOR_CHEST_GEM);
 			ichorLegsGem = new ItemGemLegs(LibItemIDs.idIchorLegsGem, 2).setUnlocalizedName(LibItemNames.ICHOR_LEGS_GEM);
 			ichorBootsGem = new ItemGemBoots(LibItemIDs.idIchorBootsGem, 3).setUnlocalizedName(LibItemNames.ICHOR_BOOTS_GEM);
+			catAmulet = new ItemCatAmulet(LibItemIDs.idCatAmulet).setUnlocalizedName(LibItemNames.CAT_AMULET);
 			
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();

@@ -66,6 +66,7 @@ item.ttinkerer:ichorclothHelmGem.name=Cowl of the Abyssal Depths
 item.ttinkerer:ichorclothChestGem.name=Robes of the Stratosphere
 item.ttinkerer:ichorclothLegsGem.name=Leggings of the Burning Mantle
 item.ttinkerer:ichorclothBootsGem.name=Boots of the Horizontal Shield
+item.ttinkerer:catAmulet.name=Feline Amulet
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
