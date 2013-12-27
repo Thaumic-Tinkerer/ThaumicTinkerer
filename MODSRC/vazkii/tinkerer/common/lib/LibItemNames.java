@@ -56,6 +56,8 @@ public final class LibItemNames {
 		LibResources.PREFIX_MOD + "ichorium",
 		LibResources.PREFIX_MOD + "ichorNugget",
 		LibResources.PREFIX_MOD + "ichorCap",
-		LibResources.PREFIX_MOD + "ichorclothRod"
+		LibResources.PREFIX_MOD + "ichorclothRod",
+		LibResources.PREFIX_MOD + "netherShard",
+		LibResources.PREFIX_MOD + "enderShard"
 	};
 }
