@@ -46,7 +46,6 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	public ItemBloodSword(int par1) {
 		super(par1, EnumHelper.addToolMaterial("TT_BLOOD", 0, 950, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
-		setCreativeTab(ModCreativeTab.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

@@ -40,7 +40,6 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter {
 	
 	public ItemIchorclothArmor(int par1, int par2) {
 		super(par1, material, 0, par2);
-		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 	
 	@Override

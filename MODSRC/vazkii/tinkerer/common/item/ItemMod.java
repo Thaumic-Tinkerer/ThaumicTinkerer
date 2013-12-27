@@ -25,7 +25,6 @@ public class ItemMod extends Item {
 
 	public ItemMod(int par1) {
 		super(par1);
-		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override
