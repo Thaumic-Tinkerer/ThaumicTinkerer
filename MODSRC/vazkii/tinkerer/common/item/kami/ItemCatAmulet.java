@@ -55,7 +55,7 @@ public class ItemCatAmulet extends ItemMod {
             boolean avoidsOcelots = false;
             for(EntityAITaskEntry entry : entries) {
             	if(entry.action instanceof EntityAIAvoidEntity)
-            		avoidsOcelots = messWithRunAwaykAI((EntityAIAvoidEntity) entry.action) || avoidsOcelots;
+            		avoidsOcelots = messWithRunAwayAI((EntityAIAvoidEntity) entry.action) || avoidsOcelots;
             	
             	if(entry.action instanceof EntityAINearestAttackableTarget)
             		messWithGetTargetAI((EntityAINearestAttackableTarget) entry.action);
@@ -73,7 +73,7 @@ public class ItemCatAmulet extends ItemMod {
 		return TTClientProxy.kamiRarity;
 	}
 
-	private boolean messWithRunAwaykAI(EntityAIAvoidEntity aiEntry) {
+	private boolean messWithRunAwayAI(EntityAIAvoidEntity aiEntry) {
 		if(ReflectionHelper.getPrivateValue(EntityAIAvoidEntity.class, aiEntry, LibObfuscation.TARGET_ENTITY_CLASS) == EntityOcelot.class) {
 			ReflectionHelper.setPrivateValue(EntityAIAvoidEntity.class, aiEntry, EntityPlayer.class, LibObfuscation.TARGET_ENTITY_CLASS);
 			return true;
