@@ -210,7 +210,7 @@ public final class ModRecipes {
 	
 		if(ConfigHandler.enableKami) {
 			registerResearchItemI(LibResearch.KEY_ICHOR, new ItemStack(ModItems.kamiResource, 8, 0), 7, new AspectList().add(Aspect.MAN, 32).add(Aspect.LIGHT, 32).add(Aspect.SOUL, 64), new ItemStack(Item.netherStar),
-				new ItemStack(Item.diamond), new ItemStack(Block.whiteStone), new ItemStack(Item.eyeOfEnder), new ItemStack(Block.whiteStone));
+				new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource, 8, 7), new ItemStack(Item.eyeOfEnder), new ItemStack(ModItems.kamiResource, 8, 6));
 		
 			registerResearchItemI(LibResearch.KEY_ICHORCLOTH_ROD, new ItemStack(ModItems.kamiResource, 1, 5), 9, new AspectList().add(Aspect.MAGIC, 100).add(Aspect.LIGHT, 32).add(Aspect.TOOL, 32), new ItemStack(ConfigItems.itemWandRod, 1, 2),
 				new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Item.ghastTear), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(ModItems.kamiResource, 1, 1));

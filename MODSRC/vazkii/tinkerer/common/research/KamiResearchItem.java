@@ -35,17 +35,18 @@ public class KamiResearchItem extends TTResearchItem {
 	public ResearchItem setPages(ResearchPage... par) {
 		List<String> requirements = parentsHidden == null || parentsHidden.length == 0 ? new ArrayList() : new ArrayList(Arrays.asList(parentsHidden));
 		
-		for(String categoryStr : ResearchCategories.researchCategories.keySet()) {
-			ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
-			for(String tag : category.research.keySet()) {
-				ResearchItem research = category.research.get(tag);
-				if(research.isLost() || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
-					continue;
-				
-				requirements.add(tag);
+		if(!isAutoUnlock())
+			for(String categoryStr : ResearchCategories.researchCategories.keySet()) {
+				ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
+				for(String tag : category.research.keySet()) {
+					ResearchItem research = category.research.get(tag);
+					if(research.isLost() || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
+						continue;
+					
+					requirements.add(tag);
+				}
 			}
-		}
-		
+			
 		parentsHidden = requirements.toArray(new String[0]);
 		
 		return super.setPages(par);
