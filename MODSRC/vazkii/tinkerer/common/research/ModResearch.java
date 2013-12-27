@@ -161,6 +161,9 @@ public final class ModResearch {
 		research.setPages(new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.1"), new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.2"), new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.3"), enchantPage("InfEnchRepair"), enchantPage("InfEnchHaste"), enchantPage("InfEnchPotency"), enchantPage("InfEnchFrugal"), enchantPage("InfEnchFortune"), enchantPage("InfEnch0"), enchantPage("InfEnch1"), enchantPage("InfEnch2"), enchantPage("InfEnch3"), enchantPage("InfEnch4"), enchantPage("InfEnch5"), enchantPage("InfEnch6"), enchantPage("InfEnch7"), enchantPage("InfEnch8"), enchantPage("InfEnch9"), enchantPage("InfEnch10"), enchantPage("InfEnch11"), enchantPage("InfEnch12"), enchantPage("InfEnch13"), enchantPage("InfEnch14"), enchantPage("InfEnch15"), enchantPage("InfEnch16"), enchantPage("InfEnch17"), enchantPage("InfEnch18"), enchantPage("InfEnch19"), enchantPage("InfEnch20"), enchantPage("InfEnch21")).setConcealed().setParents("JARBRAIN").registerResearchItem();
 	
 		if(ConfigHandler.enableKami) {
+			research = new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, LibResearch.CATEGORY_BASICS, new AspectList(), -3, -3, 0, new ItemStack(ModItems.kamiResource, 1, 7)).setStub().setAutoUnlock().setRound().registerResearchItem();
+			research.setPages(new ResearchPage("0"));
+			
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 6, 5, 5, new ItemStack(ModItems.kamiResource, 1, 0)).setConcealed().setSpecial().registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR));
 		

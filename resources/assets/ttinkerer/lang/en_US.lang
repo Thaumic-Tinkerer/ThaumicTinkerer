@@ -280,6 +280,11 @@ ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone sta
 
 # KAMI RESEARCH
 
+# -- DIMENSIONAL SHARDS
+ttresearch.name.DIMENSION_SHARDS=Dimensional Shards
+ttresearch.lore.DIMENSION_SHARDS=Rarities of the Otherworld
+ttresearch.page.DIMENSION_SHARDS.0=Similarly to the overworld, the Nether and the End also have their specific shards, these are rarely held by either Zombie Pigmen living in the Nether or Endermen living in the End. They might be useful for something later on, although you're not quite sure how.<BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
+
 # -- ICHOR
 ttresearch.name.ICHOR=Ichor
 ttresearch.lore.ICHOR=Blood of the Gods
