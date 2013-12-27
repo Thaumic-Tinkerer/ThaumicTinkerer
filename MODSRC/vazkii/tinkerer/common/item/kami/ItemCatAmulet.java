@@ -23,6 +23,7 @@ import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITaskEntry;
 import net.minecraft.entity.item.EntityEnderCrystal;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -58,6 +59,11 @@ public class ItemCatAmulet extends ItemMod {
             	
             	if(entry.action instanceof EntityAINearestAttackableTarget)
             		messWithGetTargetAI((EntityAINearestAttackableTarget) entry.action);
+            }
+            
+            if(entity instanceof EntityCreeper) {
+            	ReflectionHelper.setPrivateValue(EntityCreeper.class, ((EntityCreeper) entity), 2, LibObfuscation.TIME_SINCE_IGNITED);
+            	entity.setAttackTarget(null);
             }
 		}
 	}
