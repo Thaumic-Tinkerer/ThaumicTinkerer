@@ -19,6 +19,7 @@ import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ModItems;
@@ -29,7 +30,6 @@ public class BlockNitorGas extends BlockGas {
 
 	public BlockNitorGas(int par1) {
 		super(par1);
-		setLightValue(0.85F);
 	}
 
 	@Override
@@ -47,13 +47,14 @@ public class BlockNitorGas extends BlockGas {
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(!par1World.isRemote) {
-			List<EntityPlayer> players = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1, par4 + 1));
+			int dist = par1World.getBlockMetadata(par2, par3, par4) == 1 ? 6 : 1;
+			List<EntityPlayer> players = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2 - dist, par3 - dist, par4 - dist, par2 + dist, par3 + dist, par4 + dist));
 			if(players.isEmpty())
 				par1World.setBlockToAir(par2, par3, par4);
 			else {
 				boolean has = false;
 				for(EntityPlayer player : players)
-					if(player.inventory.hasItem(ModItems.brightNitor.itemID)) {
+					if(player.inventory.hasItem(ModItems.brightNitor.itemID) || (ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == ModItems.ichorLegsGem.itemID)) {
 						has = true;
 						break;
 					}
@@ -63,6 +64,11 @@ public class BlockNitorGas extends BlockGas {
 			}
 			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
 		}
+	}
+	
+	@Override
+	public int getLightValue(IBlockAccess world, int x, int y, int z) {
+		return world.getBlockMetadata(x, y, z) == 1 ? 15 : 12;
 	}
 
 	@Override
