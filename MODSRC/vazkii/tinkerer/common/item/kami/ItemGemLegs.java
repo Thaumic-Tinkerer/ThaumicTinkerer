@@ -14,13 +14,14 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.event.EventPriority;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import org.lwjgl.util.vector.Vector2f;
 
-import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.ModItems;
 
@@ -56,5 +57,16 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
     		int z1 = z + (int) newVector.y;
     		ItemBrightNitor.setBlock(x1, y, z1, player.worldObj);
         }
+	}
+	
+	@ForgeSubscribe(priority = EventPriority.LOWEST)
+	public void onDamageTaken(LivingHurtEvent event) {
+		if(event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == itemID && event.source.isFireDamage()) {
+				event.setCanceled(true);
+				player.heal(event.ammount);
+			}
+		}
 	}
 }
