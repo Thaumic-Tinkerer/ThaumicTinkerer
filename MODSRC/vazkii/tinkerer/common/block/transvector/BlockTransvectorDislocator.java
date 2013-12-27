@@ -27,11 +27,12 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.block.BlockCamo;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-public class BlockTransvectorDislocator extends BlockTransvector {
+public class BlockTransvectorDislocator extends BlockCamo {
 
 	Icon[] icons = new Icon[2];
 
