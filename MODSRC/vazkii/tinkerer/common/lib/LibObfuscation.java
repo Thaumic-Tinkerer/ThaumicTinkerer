@@ -22,5 +22,10 @@ public final class LibObfuscation {
 
 	/** Potion **/
 	public static final String[] IS_BAD_EFFECT = new String[] { "isBadEffect", "field_76418_K", "J" };
+	
+	/** EntityAIAvoidEntity **/
+	public static final String[] TARGET_ENTITY_CLASS = new String[] { "targetEntityClass", "field_75381_h", "i" };
 
+	/** EntityAINearestAttackableTarget **/
+	public static final String[] TARGET_CLASS = new String[] { "targetClass", "field_75307_b", "a" };
 }
