@@ -149,7 +149,7 @@ public final class ModRecipes {
 			'M', new ItemStack(ConfigItems.itemThaumometer),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
 		registerResearchItem(LibResearch.KEY_PLATFORM, LibResearch.KEY_PLATFORM, new ItemStack(ModBlocks.platform, 2), new AspectList().add(Aspect.AIR, 2).add(Aspect.ENTROPY, 4),
-			"GSG",
+			" S ", "G G",
 			'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));
 
