@@ -15,7 +15,9 @@
 package vazkii.tinkerer.common.item;
 
 import net.minecraft.item.Item;
+import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 import vazkii.tinkerer.common.item.foci.ItemFocusDislocation;
 import vazkii.tinkerer.common.item.foci.ItemFocusEnderChest;
@@ -23,6 +25,8 @@ import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
 import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
+import vazkii.tinkerer.common.item.pipe.ItemThaumiumPipe;
+import vazkii.tinkerer.common.item.pipe.ThaumiumPipe;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 
@@ -48,6 +52,7 @@ public final class ModItems {
 	public static Item revealingHelm;
 	public static Item infusedInkwell;
 	public static Item focusDeflect;
+	public static Item thaumiumPipe;
 
 	public static void initItems() {
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -70,5 +75,6 @@ public final class ModItems {
 		revealingHelm = new ItemRevealingHelm(LibItemIDs.idRevealingHelm).setUnlocalizedName(LibItemNames.REVEALING_HELM);
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
+		thaumiumPipe = ItemThaumiumPipe.registerPipe(0, ThaumiumPipe.class);
 	}
 }

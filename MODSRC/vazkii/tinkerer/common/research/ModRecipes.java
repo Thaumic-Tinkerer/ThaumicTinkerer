@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.ItemApi;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -143,6 +144,10 @@ public final class ModRecipes {
 			'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'M', new ItemStack(ConfigItems.itemThaumometer),
 			'T', new ItemStack(ConfigItems.itemResource, 1, 2));
+		registerResearchItem(LibResearch.KEY_THAUMIUM_PIPE, LibResearch.KEY_THAUMIUM_PIPE, new ItemStack(ModItems.thaumiumPipe, 8), new AspectList().add(Aspect.ORDER, 2).add(Aspect.EARTH, 2).add(Aspect.FIRE, 1).add(Aspect.AIR, 1).add(Aspect.ENTROPY, 1),
+				"XYX",
+				'X', new ItemStack(ConfigItems.itemResource, 1, 2),
+				'Y', Block.glass);
 	}
 
 	private static void initInfusionRecipes() {

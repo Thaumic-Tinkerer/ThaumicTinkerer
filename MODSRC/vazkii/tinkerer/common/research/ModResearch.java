@@ -24,6 +24,7 @@ import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
@@ -159,6 +160,9 @@ public final class ModResearch {
 
 		research = new ResearchItem("INFUSIONENCHANTMENT", LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.MIND, 1).add(Aspect.WEAPON, 1).add(Aspect.ARMOR, 1).add(Aspect.TOOL, 1), -4, -2, 5, new ResourceLocation("thaumcraft", "textures/misc/r_enchant.png"));
 		research.setPages(new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.1"), new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.2"), new ResearchPage("tc.research_page.INFUSIONENCHANTMENT.3"), enchantPage("InfEnchRepair"), enchantPage("InfEnchHaste"), enchantPage("InfEnchPotency"), enchantPage("InfEnchFrugal"), enchantPage("InfEnchFortune"), enchantPage("InfEnch0"), enchantPage("InfEnch1"), enchantPage("InfEnch2"), enchantPage("InfEnch3"), enchantPage("InfEnch4"), enchantPage("InfEnch5"), enchantPage("InfEnch6"), enchantPage("InfEnch7"), enchantPage("InfEnch8"), enchantPage("InfEnch9"), enchantPage("InfEnch10"), enchantPage("InfEnch11"), enchantPage("InfEnch12"), enchantPage("InfEnch13"), enchantPage("InfEnch14"), enchantPage("InfEnch15"), enchantPage("InfEnch16"), enchantPage("InfEnch17"), enchantPage("InfEnch18"), enchantPage("InfEnch19"), enchantPage("InfEnch20"), enchantPage("InfEnch21")).setConcealed().setParents("JARBRAIN").registerResearchItem();
+		
+		research = new TTResearchItem(LibResearch.KEY_THAUMIUM_PIPE, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.METAL, 2).add(Aspect.MAGIC, 1).add(Aspect.MECHANISM, 1), 4, 4, 3, new ItemStack(ModItems.thaumiumPipe)).setParents(new String[] { "TUBES", "THAUMIUM" }).setConcealed();
+		research.setPages(new ResearchPage[] { new ResearchPage("tc.research_page.THAUMIUM_PIPE"), new ResearchPage((ShapedArcaneRecipe) ConfigResearch.recipes.get("THAUMIUM_PIPE")) });
 	}
 
 	private static void registerResearchPages() {

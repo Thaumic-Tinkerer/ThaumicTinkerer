@@ -36,5 +36,6 @@ public final class LibItemIDs {
 	public static int idRevealingHelm = 22167;
 	public static int idInfusedInkwell = 22168;
 	public static int idFocusDeflect = 22169;
+	public static int idThaumiumPipe = 22170;
 	
 }

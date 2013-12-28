@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
@@ -32,6 +33,8 @@ import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.common.item.ModItems;
+import buildcraft.transport.TransportProxyClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -49,6 +52,7 @@ public class TTClientProxy extends TTCommonProxy {
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		registerTiles();
 		registerRenderIDs();
+		MinecraftForgeClient.registerItemRenderer(ModItems.thaumiumPipe.itemID, TransportProxyClient.pipeItemRenderer);
 	}
 
 	private void registerTiles() {

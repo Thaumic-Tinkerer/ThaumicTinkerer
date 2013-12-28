@@ -49,6 +49,7 @@ item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
 item.ttinkerer:revealingHelm.name=Helmet of Revealing
 item.ttinkerer:infusedInkwell.name=Infused Scribing Tools
 item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
+item.ttinkerer:thaumiumPipe.name=Thaumium Pipe
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -251,3 +252,8 @@ ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools
 ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
 ttresearch.lore.FOCUS_DEFLECT=I'm not an Angel
 ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.
+
+# — THAUMIUM PIPE
+ttresearch.name.THAUMIUM_PIPE=Thaumium Pipe
+ttresearch.lore.THAUMIUM_PIPE=When technology and magic work together
+ttresearch.page.THAUMIUM_PIPE=This pipe cannot be used as a normal BuildCraft pipe, it will not transport items, fluids or energy. It does not transport anything as a matter of fact. But its uses are plenty!<BR>This pipe connects only to aspect containers. It cannot pull the aspects out, but it allows you to measure them using gates. If the container has more than one aspect, the pipe will measure the most abundant one. Or, you can force the pipe to measure a specific aspect by setting a filter. Placing any aspect container items on the filter will force the pipe to measure only the aspect present in that item and ignore all others.
