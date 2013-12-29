@@ -36,6 +36,7 @@ import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
+import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
@@ -73,6 +74,7 @@ public class TTCommonProxy {
 
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
+			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
 		}
 	}
 

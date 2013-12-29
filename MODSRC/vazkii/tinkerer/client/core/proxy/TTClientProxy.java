@@ -20,6 +20,7 @@ import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
+import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderRepairer;
@@ -63,6 +64,10 @@ public class TTClientProxy extends TTCommonProxy {
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		registerTiles();
 		registerRenderIDs();
+		
+		if(ConfigHandler.enableKami) {
+			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
+		}
 	}
 
 	private void registerTiles() {
