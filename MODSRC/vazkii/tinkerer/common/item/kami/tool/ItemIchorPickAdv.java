@@ -78,15 +78,16 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 				boolean doY = direction.offsetY == 0;
 				boolean doZ = direction.offsetZ == 0;
 				
-				for(int x1 = (doX ? -2 : 0); x1 < (doX ? 3 : 1); x1++)
-					for(int y1 = (doY ? -1 : 0); y1 < (doY ? 4 : 1); y1++)
-						for(int z1 = (doZ ? -2 : 0); z1 < (doZ ? 3 : 1); z1++)
-							if(x != x1 && y != y1 && z != z1)
-								ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, ToolHandler.materialsPick, silk, fortune);
-
+				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, ToolHandler.materialsPick, silk, fortune);
+				break;
 			}
 			case 2 : {
-				
+				int xo = -direction.offsetX;
+				int yo = -direction.offsetY;
+				int zo = -direction.offsetZ;
+
+				ToolHandler.removeBlocksInIteration(player, world, x, y, z, xo >= 0 ? 0 : -10, yo >= 0 ? 0 : -10, zo >= 0 ? 0 : -10, xo > 0 ? 10 : 1, yo > 0 ? 10 : 1, zo > 0 ? 10 : 1, ToolHandler.materialsPick, silk, fortune);
+				break;
 			}
 		}
 		return false;
