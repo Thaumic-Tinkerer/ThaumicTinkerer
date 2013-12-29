@@ -27,6 +27,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 
@@ -50,6 +51,8 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(par3EntityPlayer.isSneaking()) {
 			ToolHandler.changeMode(par1ItemStack);
+			ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
+			
 			return par1ItemStack;
 		} else return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
 	}
@@ -92,7 +95,7 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		par3List.add(StatCollector.translateToLocal("ttmisc.mode.sword." + ToolHandler.getMode(par1ItemStack)));
+		par3List.add(ToolHandler.getToolModeStr(this, par1ItemStack));
 	}
 	
 	@Override

@@ -26,6 +26,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
@@ -92,6 +93,10 @@ public final class ToolHandler {
 				for(ItemStack stack : items)
 					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
 		}
+	}
+	
+	public static String getToolModeStr(IAdvancedTool tool, ItemStack stack) {
+		return StatCollector.translateToLocal("ttmisc.mode." + tool.getType() + "." + ToolHandler.getMode(stack));
 	}
 
 	/**

@@ -19,6 +19,7 @@ import java.util.EnumSet;
 import net.minecraft.client.Minecraft;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.client.gui.GuiResearchRecipe;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.GuiResearchPeripheral;
 import vazkii.tinkerer.common.lib.LibMisc;
@@ -29,6 +30,8 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ClientTickHandler implements ITickHandler {
 
+	public static int elapsedTicks;
+	
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 	}
@@ -41,6 +44,10 @@ public class ClientTickHandler implements ITickHandler {
 			if(research.key.equals(LibResearch.KEY_PERIPHERALS))
 				mc.displayGuiScreen(new GuiResearchPeripheral(research));
 		}
+		
+		ToolModeHUDHandler.clientTick();
+		
+		++elapsedTicks;
 	}
 
 	@Override

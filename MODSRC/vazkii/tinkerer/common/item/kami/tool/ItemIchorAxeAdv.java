@@ -32,6 +32,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.common.lib.Utils;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
 public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
@@ -109,6 +110,8 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		ToolHandler.changeMode(par1ItemStack);
+		ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
+		
 		return par1ItemStack;
 	}
 	
@@ -119,9 +122,9 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		par3List.add(StatCollector.translateToLocal("ttmisc.mode.axe." + ToolHandler.getMode(par1ItemStack)));
+		par3List.add(ToolHandler.getToolModeStr(this, par1ItemStack));
 	}
-
+	
 	@Override
 	public String getType() {
 		return "axe";
