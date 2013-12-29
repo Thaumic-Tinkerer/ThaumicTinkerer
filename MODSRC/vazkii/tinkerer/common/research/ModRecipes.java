@@ -169,16 +169,16 @@ public final class ModRecipes {
 					'M', new ItemStack(ModItems.kamiResource, 1, 2),
 					'I', new ItemStack(ModItems.kamiResource, 1, 0),
 					'C', new ItemStack(ConfigItems.itemWandCap, 1, 2));
-			registerResearchItem(LibResearch.KEY_ICHORCLOTH_HELM, LibResearch.KEY_ICHORCLOTH_HELM, new ItemStack(ModItems.ichorHelm), new AspectList().add(Aspect.WATER, 75),
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_HELM, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorHelm), new AspectList().add(Aspect.WATER, 75),
 					"CCC", "C C",
 					'C', new ItemStack(ModItems.kamiResource, 3, 1));
-			registerResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST, LibResearch.KEY_ICHORCLOTH_CHEST, new ItemStack(ModItems.ichorChest), new AspectList().add(Aspect.AIR, 75),
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorChest), new AspectList().add(Aspect.AIR, 75),
 					"C C", "CCC", "CCC",
 					'C', new ItemStack(ModItems.kamiResource, 3, 1));
-			registerResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS, LibResearch.KEY_ICHORCLOTH_LEGS, new ItemStack(ModItems.ichorLegs), new AspectList().add(Aspect.FIRE, 75),
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorLegs), new AspectList().add(Aspect.FIRE, 75),
 					"CCC", "C C", "C C",
 					'C', new ItemStack(ModItems.kamiResource, 3, 1));
-			registerResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS, LibResearch.KEY_ICHORCLOTH_BOOTS, new ItemStack(ModItems.ichorBoots), new AspectList().add(Aspect.EARTH, 75),
+			registerResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorBoots), new AspectList().add(Aspect.EARTH, 75),
 					"C C", "C C",
 					'C', new ItemStack(ModItems.kamiResource, 3, 1));
 		}
