@@ -32,7 +32,8 @@ import net.minecraft.world.World;
 public final class ToolHandler {
 
 	public static Material[] materialsPick = new Material[] { Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil };
-	
+    public static Material[] materialsShovel = new Material[] { Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow, Material.clay };
+
 	public static int getMode(ItemStack tool) {
 		return tool.getItemDamage();
 	}
@@ -54,19 +55,23 @@ public final class ToolHandler {
 		return false;
 	}
 	
-	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, Material[] materialsListing, boolean silk, int fortune) {
+	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, int lockID, Material[] materialsListing, boolean silk, int fortune) {
 		for(int x1 = xs; x1 < xe; x1++)
 			for(int y1 = ys; y1 < ye; y1++)
 				for(int z1 = zs; z1 < ze; z1++)
 					if(x != x1 && y != y1 && z != z1)
-						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, materialsListing, silk, fortune);
+						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, lockID, materialsListing, silk, fortune);
 	}
 
-	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Material[] materialsListing, boolean silk, int fortune) {
+	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, int lockID, Material[] materialsListing, boolean silk, int fortune) {
 		if(!world.blockExists(x, y, z))
 			return;
 
 		int id = world.getBlockId(x, y, z);
+
+		if(lockID != -1 && id != lockID)
+			return;
+		
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlockMaterial(x, y, z);
 		Block block = Block.blocksList[id];

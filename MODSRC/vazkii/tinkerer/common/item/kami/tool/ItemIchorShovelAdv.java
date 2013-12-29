@@ -10,7 +10,7 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  * 
- * File Created @ [Dec 29, 2013, 6:01:04 PM (GMT)]
+ * File Created @ [Dec 29, 2013, 7:37:10 PM (GMT)]
  */
 package vazkii.tinkerer.common.item.kami.tool;
 
@@ -29,11 +29,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
-public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
+public class ItemIchorShovelAdv extends ItemIchorShovel {
 
 	Icon[] specialIcons = new Icon[3];
 	
-	public ItemIchorPickAdv(int par1) {
+	public ItemIchorShovelAdv(int par1) {
 		super(par1);
 		setHasSubtypes(true);
 	}
@@ -60,7 +60,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
 		Material mat = world.getBlockMaterial(x, y, z);
-		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
+		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
 			return false;
 		
 		MovingObjectPosition block = ToolHandler.raytraceFromEntity(world, player, true, 4.5);
@@ -78,15 +78,12 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 				boolean doY = direction.offsetY == 0;
 				boolean doZ = direction.offsetZ == 0;
 				
-				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, -1, ToolHandler.materialsPick, silk, fortune);
+				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, -1, ToolHandler.materialsShovel, silk, fortune);
 				break;
 			}
 			case 2 : {
-				int xo = -direction.offsetX;
-				int yo = -direction.offsetY;
-				int zo = -direction.offsetZ;
-
-				ToolHandler.removeBlocksInIteration(player, world, x, y, z, xo >= 0 ? 0 : -10, yo >= 0 ? 0 : -10, zo >= 0 ? 0 : -10, xo > 0 ? 10 : 1, yo > 0 ? 10 : 1, zo > 0 ? 10 : 1, -1, ToolHandler.materialsPick, silk, fortune);
+				int id = world.getBlockId(x, y, z);
+				ToolHandler.removeBlocksInIteration(player, world, x, y, z, 0, -8, 0, 1, 8, 1, id, ToolHandler.materialsShovel, silk, fortune);
 				break;
 			}
 		}
@@ -100,7 +97,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 	
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		par3List.add(StatCollector.translateToLocal("ttmisc.mode.pick." + ToolHandler.getMode(par1ItemStack)));
+		par3List.add(StatCollector.translateToLocal("ttmisc.mode.shovel." + ToolHandler.getMode(par1ItemStack)));
 	}
-
+	
 }
