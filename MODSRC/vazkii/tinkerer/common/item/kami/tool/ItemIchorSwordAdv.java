@@ -28,6 +28,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 
 public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 
@@ -57,7 +58,7 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 	
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-		if(!ignoreLeftClick && entity instanceof EntityLivingBase)
+		if(!ignoreLeftClick && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).hurtTime == 0 && !((EntityLivingBase) entity).isDead)
 			switch(ToolHandler.getMode(stack)) {
 				case 0 : break;
 				case 1 : {
@@ -72,10 +73,10 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 				}
 				case 2 : {
 					EntityLivingBase living = (EntityLivingBase) entity;
-					PotionEffect effect = new PotionEffect(Potion.weakness.id, 0, 4);
-					player.addPotionEffect(effect);
+					PotionEffect effect = new PotionEffect(Potion.resistance.id, 1, 1);
+					living.addPotionEffect(effect);
 					
-					// TODO soul hearts
+					SoulHeartHandler.addHearts(player);
 					
 					break;
 				}
