@@ -53,6 +53,14 @@ public final class ToolHandler {
 		
 		return false;
 	}
+	
+	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, Material[] materialsListing, boolean silk, int fortune) {
+		for(int x1 = xs; x1 < xe; x1++)
+			for(int y1 = ys; y1 < ye; y1++)
+				for(int z1 = zs; z1 < ze; z1++)
+					if(x != x1 && y != y1 && z != z1)
+						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, materialsListing, silk, fortune);
+	}
 
 	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Material[] materialsListing, boolean silk, int fortune) {
 		if(!world.blockExists(x, y, z))
