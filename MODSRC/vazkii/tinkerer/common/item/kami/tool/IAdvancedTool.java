@@ -16,4 +16,6 @@ package vazkii.tinkerer.common.item.kami.tool;
 
 public interface IAdvancedTool {
 
+	public String getType();
+	
 }

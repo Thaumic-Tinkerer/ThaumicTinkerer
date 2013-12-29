@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
-public class ItemIchorShovelAdv extends ItemIchorShovel {
+public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool {
 
 	Icon[] specialIcons = new Icon[3];
 	
@@ -98,6 +98,11 @@ public class ItemIchorShovelAdv extends ItemIchorShovel {
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		par3List.add(StatCollector.translateToLocal("ttmisc.mode.shovel." + ToolHandler.getMode(par1ItemStack)));
+	}
+	
+	@Override
+	public String getType() {
+		return "shovel";
 	}
 	
 }
