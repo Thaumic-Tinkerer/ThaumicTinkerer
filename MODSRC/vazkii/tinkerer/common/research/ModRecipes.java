@@ -256,6 +256,9 @@ public final class ModRecipes {
 			registerResearchItemI(LibResearch.KEY_ICHOR_SHOVEL_GEM, new ItemStack(ModItems.ichorShovelGem), 15, new AspectList().add(Aspect.EARTH, 50).add(Aspect.MINE, 64).add(Aspect.TOOL, 32).add(Aspect.STONE, 32).add(Aspect.HARVEST, 32).add(Aspect.TRAP, 16).add(Aspect.SENSES, 16), new ItemStack(ModItems.ichorShovel), 
 					new ItemStack(ModItems.kamiResource, 1, 2), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemShovelElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Block.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemShovelElemental), new ItemStack(ModItems.kamiResource, 1, 1));
 			
+			registerResearchItemI(LibResearch.KEY_ICHOR_AXE_GEM, new ItemStack(ModItems.ichorAxeGem), 15, new AspectList().add(Aspect.WATER, 50).add(Aspect.MINE, 64).add(Aspect.TOOL, 32).add(Aspect.TREE, 32).add(Aspect.HARVEST, 32).add(Aspect.SEED, 16).add(Aspect.SENSES, 16), new ItemStack(ModItems.ichorAxe), 
+					new ItemStack(ModItems.kamiResource, 1, 2), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemAxeElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Block.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemAxeElemental), new ItemStack(ModItems.kamiResource, 1, 1));
+			
 		}
 	}
 

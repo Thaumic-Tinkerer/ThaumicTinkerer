@@ -42,6 +42,7 @@ import vazkii.tinkerer.common.item.kami.tool.ItemIchorPickAdv;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorShovel;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorShovelAdv;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorSword;
+import vazkii.tinkerer.common.item.kami.tool.ItemIchorSwordAdv;
 import vazkii.tinkerer.common.item.kami.wand.CapIchor;
 import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
 import vazkii.tinkerer.common.lib.LibItemIDs;
@@ -87,6 +88,7 @@ public final class ModItems {
 	public static Item ichorPickGem;
 	public static Item ichorShovelGem;
 	public static Item ichorAxeGem;
+	public static Item ichorSwordGem;
 
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
@@ -135,6 +137,7 @@ public final class ModItems {
 			ichorPickGem = new ItemIchorPickAdv(LibItemIDs.idIchorPickGem).setUnlocalizedName(LibItemNames.ICHOR_PICK_GEM);
 			ichorShovelGem = new ItemIchorShovelAdv(LibItemIDs.idIchorShovelGem).setUnlocalizedName(LibItemNames.ICHOR_SHOVEL_GEM);
 			ichorAxeGem = new ItemIchorAxeAdv(LibItemIDs.idIchorAxeGem).setUnlocalizedName(LibItemNames.ICHOR_AXE_GEM);
+			ichorSwordGem = new ItemIchorSwordAdv(LibItemIDs.idIchorSwordGem).setUnlocalizedName(LibItemNames.ICHOR_SWORD_GEM);
 
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
