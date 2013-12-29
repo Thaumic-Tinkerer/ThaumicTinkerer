@@ -49,6 +49,10 @@ public final class LibItemNames {
 	public static final String ICHOR_LEGS_GEM = LibResources.PREFIX_MOD + "ichorclothLegsGem";
 	public static final String ICHOR_BOOTS_GEM = LibResources.PREFIX_MOD + "ichorclothBootsGem";
 	public static final String CAT_AMULET = LibResources.PREFIX_MOD + "catAmulet";
+	public static final String ICHOR_PICK = LibResources.PREFIX_MOD + "ichorPick";
+	public static final String ICHOR_SHOVEL = LibResources.PREFIX_MOD + "ichorShovel";
+	public static final String ICHOR_AXE = LibResources.PREFIX_MOD + "ichorAxe";
+	public static final String ICHOR_SWORD = LibResources.PREFIX_MOD + "ichorSword";
 
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",
