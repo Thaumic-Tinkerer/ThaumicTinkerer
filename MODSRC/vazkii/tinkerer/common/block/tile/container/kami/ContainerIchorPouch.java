@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.common.container.InventoryFocusPouch;
 import thaumcraft.common.items.wands.ItemFocusPouch;
 import vazkii.tinkerer.common.block.tile.container.ContainerPlayerInv;
+import vazkii.tinkerer.common.block.tile.container.slot.kami.SlotNoPouches;
 
 public class ContainerIchorPouch extends ContainerPlayerInv {
 
@@ -39,7 +40,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 
 		@Override
 		public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-			return true;
+			return itemstack != null && !(itemstack.getItem() instanceof ItemFocusPouch);
 		}
 
 	}
@@ -58,7 +59,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 		
 		for(int y = 0; y < 9; y++)
 			for(int x = 0; x < 13; x++)
-				addSlotToContainer(new Slot(inv, y * 13 + x, -37 + 9 + x * 18, -42 + 6 + y * 18));
+				addSlotToContainer(new SlotNoPouches(inv, y * 13 + x, -37 + 9 + x * 18, -42 + 6 + y * 18));
 		initPlayerInv();
 
 		if (!player.worldObj.isRemote)
