@@ -12,7 +12,7 @@
  *
  * File Created @ [Dec 24, 2013, 9:37:40 PM (GMT)]
  */
-package vazkii.tinkerer.common.item.kami;
+package vazkii.tinkerer.common.item.kami.armor;
 
 import java.util.List;
 
