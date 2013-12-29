@@ -388,3 +388,8 @@ ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
 ttresearch.lore.ICHOR_SWORD_GEM=Mom's knife
 ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword, this sword contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
 ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existant. They block damage their wielder would take, but disappear in the proccess.
+
+# -- BOTTOMLESS POUCH
+ttresearch.name.ICHOR_POUCH=Bottomless Pouch
+ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
+ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can carry more than four chests. You can kiss your inventory problems goodbye.
