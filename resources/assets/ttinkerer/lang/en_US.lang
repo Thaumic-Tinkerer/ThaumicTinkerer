@@ -69,6 +69,10 @@ item.ttinkerer:ichorclothChestGem.name=Robes of the Stratosphere
 item.ttinkerer:ichorclothLegsGem.name=Leggings of the Burning Mantle
 item.ttinkerer:ichorclothBootsGem.name=Boots of the Horizontal Shield
 item.ttinkerer:catAmulet.name=Feline Amulet
+item.ttinkerer:ichorPick.name=Ichorium Pickaxe
+item.ttinkerer:ichorShovel.name=Ichorium Shovel
+item.ttinkerer:ichorAxe.name=Ichorium Axe
+item.ttinkerer:ichorSword.name=Ichorium Sword
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz

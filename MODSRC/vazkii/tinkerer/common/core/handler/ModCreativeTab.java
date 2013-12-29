@@ -103,6 +103,11 @@ public class ModCreativeTab extends CreativeTabs {
 			addItem(ModItems.ichorLegsGem);
 			addItem(ModItems.ichorBoots);
 			addItem(ModItems.ichorBootsGem);
+			
+			addItem(ModItems.ichorPick);
+			addItem(ModItems.ichorShovel);
+			addItem(ModItems.ichorAxe);
+			addItem(ModItems.ichorSword);
 
 			addItem(ModItems.catAmulet);
 		}
