@@ -38,6 +38,9 @@ ttmisc.mode.shovel.2=Column Mode
 ttmisc.mode.axe.0=Block Mode
 ttmisc.mode.axe.1=Square Mode
 ttmisc.mode.axe.2=Tree Mode
+ttmisc.mode.sword.0=Single Mode
+ttmisc.mode.sword.1=Area Mode
+ttmisc.mode.sword.2=Soul Mode
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -87,6 +90,7 @@ item.ttinkerer:ichorSword.name=Ichorium Sword
 item.ttinkerer:ichorPickGem.name=Awakened Ichorium Pickaxe
 item.ttinkerer:ichorShovelGem.name=Awakened Ichorium Shovel
 item.ttinkerer:ichorAxeGem.name=Awakened Ichorium Axe
+item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -371,4 +375,9 @@ ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=Awakened Ichorium Shovel
 ttresearch.lore.ICHOR_SHOVEL_GEM=Gravel no more!
-ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel, this pickaxe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel, this shovel contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+
+# -- AWAKENED ICHORIUM AXE
+ttresearch.name.ICHOR_AXE_GEM=Awakened Ichorium Axe
+ttresearch.lore.ICHOR_AXE_GEM=Cut you like a Clover
+ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe, this axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely profecient at cutting plant life.
