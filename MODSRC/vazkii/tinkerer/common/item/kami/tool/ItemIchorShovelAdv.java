@@ -27,6 +27,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
 public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool {
@@ -53,6 +54,8 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		ToolHandler.changeMode(par1ItemStack);
+		ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
+		
 		return par1ItemStack;
 	}
 	
@@ -97,7 +100,7 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		par3List.add(StatCollector.translateToLocal("ttmisc.mode.shovel." + ToolHandler.getMode(par1ItemStack)));
+		par3List.add(ToolHandler.getToolModeStr(this, par1ItemStack));
 	}
 	
 	@Override
