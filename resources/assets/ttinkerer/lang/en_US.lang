@@ -28,6 +28,11 @@ ttmisc.full=§cFull
 ttmisc.notAbsorbing=§cNot Absorbing
 ttmisc.absorbing=§aAbsorbing
 
+# KAMI MISC
+ttmisc.mode.pick.0=Block Mode
+ttmisc.mode.pick.1=Square Mode
+ttmisc.mode.pick.2=Line Mode
+
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
 item.ttinkerer:connector.name=Transvector Binder
@@ -73,6 +78,7 @@ item.ttinkerer:ichorPick.name=Ichorium Pickaxe
 item.ttinkerer:ichorShovel.name=Ichorium Shovel
 item.ttinkerer:ichorAxe.name=Ichorium Axe
 item.ttinkerer:ichorSword.name=Ichorium Sword
+item.ttinkerer:ichorPickGem.name=Awakened Ichorium Pickaxe
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz

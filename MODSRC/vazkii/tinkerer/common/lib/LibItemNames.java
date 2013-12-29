@@ -53,6 +53,7 @@ public final class LibItemNames {
 	public static final String ICHOR_SHOVEL = LibResources.PREFIX_MOD + "ichorShovel";
 	public static final String ICHOR_AXE = LibResources.PREFIX_MOD + "ichorAxe";
 	public static final String ICHOR_SWORD = LibResources.PREFIX_MOD + "ichorSword";
+	public static final String ICHOR_PICK_GEM = LibResources.PREFIX_MOD + "ichorPickGem";
 
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",
