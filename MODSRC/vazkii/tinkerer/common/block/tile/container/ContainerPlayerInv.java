@@ -26,18 +26,23 @@ public abstract class ContainerPlayerInv extends Container {
 		this.playerInv = playerInv;
 	}
 
-	void initPlayerInv() {
+	public void initPlayerInv() {
 		int ys = getInvYStart();
+		int xs = getInvXStart();
 
         for (int x = 0; x < 3; ++x)
             for (int y = 0; y < 9; ++y)
-                addSlotToContainer(new Slot(playerInv, y + x * 9 + 9, 8 + y * 18, ys + x * 18));
+                addSlotToContainer(new Slot(playerInv, y + x * 9 + 9, xs + y * 18, ys + x * 18));
 
         for (int x = 0; x < 9; ++x)
-            addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, ys + 58));
+            addSlotToContainer(new Slot(playerInv, x, xs + x * 18, ys + 58));
 	}
 
-	private int getInvYStart() {
+	public int getInvYStart() {
 		return 84;
+	}
+	
+	public int getInvXStart() {
+		return 8;
 	}
 }
