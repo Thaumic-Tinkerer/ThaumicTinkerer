@@ -381,3 +381,9 @@ ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichoriu
 ttresearch.name.ICHOR_AXE_GEM=Awakened Ichorium Axe
 ttresearch.lore.ICHOR_AXE_GEM=Cut you like a Clover
 ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe, this axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely profecient at cutting plant life.
+
+# -- AWAKENED ICHORIUM SWORD
+ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
+ttresearch.lore.ICHOR_SWORD_GEM=Mom's knife
+ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword, this sword contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
+ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existant. They block damage their wielder would take, but disappear in the proccess.

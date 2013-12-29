@@ -208,6 +208,9 @@ public final class ModResearch {
 			
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.SEED, 1), 13, 11, 5, new ItemStack(ModItems.ichorAxeGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_AXE_GEM));
+			
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SWORD_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.AIR, 2).add(Aspect.WEAPON, 1).add(Aspect.SOUL, 1).add(Aspect.HUNGER, 1), 13, 9, 5, new ItemStack(ModItems.ichorSwordGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_SWORD_GEM), new ResearchPage("1"));
 		}
 	}
 
