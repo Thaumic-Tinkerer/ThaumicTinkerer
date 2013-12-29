@@ -251,7 +251,8 @@ public final class ModRecipes {
 					new ItemStack(ModItems.kamiResource, 1, 2), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemAxeElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Block.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemAxeElemental), new ItemStack(ModItems.kamiResource, 1, 1));
 			registerResearchItemI(LibResearch.KEY_ICHOR_SWORD_GEM, new ItemStack(ModItems.ichorSwordGem), 15, new AspectList().add(Aspect.AIR, 50).add(Aspect.HUNGER, 64).add(Aspect.SOUL, 32).add(Aspect.WEAPON, 32).add(Aspect.ENERGY, 32).add(Aspect.ORDER, 16).add(Aspect.CRYSTAL, 16), new ItemStack(ModItems.ichorSword), 
 					new ItemStack(ModItems.kamiResource, 1, 2), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemSwordElemental), new ItemStack(ConfigItems.itemFocusFrost), new ItemStack(Block.cactus), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusFrost), new ItemStack(ConfigItems.itemSwordElemental), new ItemStack(ModItems.kamiResource, 1, 1));
-			
+			registerResearchItemI(LibResearch.KEY_ICHOR_POUCH, new ItemStack(ModItems.ichorPouch), 9, new AspectList().add(Aspect.VOID, 64).add(Aspect.MAN, 32).add(Aspect.CLOTH, 32).add(Aspect.ELDRITCH, 32).add(Aspect.AIR, 64), new ItemStack(ConfigItems.itemFocusPouch),
+					new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 		}
 	}
 
