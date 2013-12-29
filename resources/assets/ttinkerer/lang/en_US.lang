@@ -32,6 +32,9 @@ ttmisc.absorbing=§aAbsorbing
 ttmisc.mode.pick.0=Block Mode
 ttmisc.mode.pick.1=Square Mode
 ttmisc.mode.pick.2=Line Mode
+ttmisc.mode.shovel.0=Block Mode
+ttmisc.mode.shovel.1=Square Mode
+ttmisc.mode.shovel.2=Column Mode
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -79,6 +82,7 @@ item.ttinkerer:ichorShovel.name=Ichorium Shovel
 item.ttinkerer:ichorAxe.name=Ichorium Axe
 item.ttinkerer:ichorSword.name=Ichorium Sword
 item.ttinkerer:ichorPickGem.name=Awakened Ichorium Pickaxe
+item.ttinkerer:ichorShovelGem.name=Awakened Ichorium Shovel
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
