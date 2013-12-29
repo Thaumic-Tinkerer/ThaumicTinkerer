@@ -171,16 +171,36 @@ public final class ModRecipes {
 					'C', new ItemStack(ConfigItems.itemWandCap, 1, 2));
 			registerResearchItem(LibResearch.KEY_ICHORCLOTH_HELM, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorHelm), new AspectList().add(Aspect.WATER, 75),
 					"CCC", "C C",
-					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+					'C', new ItemStack(ModItems.kamiResource, 1, 1));
 			registerResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorChest), new AspectList().add(Aspect.AIR, 75),
 					"C C", "CCC", "CCC",
-					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+					'C', new ItemStack(ModItems.kamiResource, 1, 1));
 			registerResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorLegs), new AspectList().add(Aspect.FIRE, 75),
 					"CCC", "C C", "C C",
-					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+					'C', new ItemStack(ModItems.kamiResource, 1, 1));
 			registerResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(ModItems.ichorBoots), new AspectList().add(Aspect.EARTH, 75),
 					"C C", "C C",
-					'C', new ItemStack(ModItems.kamiResource, 3, 1));
+					'C', new ItemStack(ModItems.kamiResource, 1, 1));
+			registerResearchItem(LibResearch.KEY_ICHOR_PICK, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(ModItems.ichorPick), new AspectList().add(Aspect.FIRE, 75),
+					"III", " R ", " R ",
+					'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+					'I', new ItemStack(ModItems.kamiResource, 1, 2));
+			registerResearchItem(LibResearch.KEY_ICHOR_SHOVEL, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(ModItems.ichorShovel), new AspectList().add(Aspect.EARTH, 75),
+					" I ", " R ", " R ",
+					'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+					'I', new ItemStack(ModItems.kamiResource, 1, 2));
+			registerResearchItem(LibResearch.KEY_ICHOR_AXE, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(ModItems.ichorAxe), new AspectList().add(Aspect.WATER, 75),
+					"II ", "IR ", " R ",
+					'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+					'I', new ItemStack(ModItems.kamiResource, 1, 2));
+			registerResearchItem("", LibResearch.KEY_ICHOR_TOOLS, new ItemStack(ModItems.ichorAxe), new AspectList().add(Aspect.WATER, 75),
+					" II", " RI", " R ",
+					'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+					'I', new ItemStack(ModItems.kamiResource, 1, 2));
+			registerResearchItem(LibResearch.KEY_ICHOR_SWORD, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(ModItems.ichorSword), new AspectList().add(Aspect.AIR, 75),
+					" I ", " I ", " R ",
+					'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+					'I', new ItemStack(ModItems.kamiResource, 1, 2));
 		}
 	}
 

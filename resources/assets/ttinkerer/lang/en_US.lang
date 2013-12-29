@@ -343,3 +343,8 @@ ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorclo
 ttresearch.name.CAT_AMULET=Feline Amulet
 ttresearch.lore.CAT_AMULET=No fighting with cats in the cafeteria
 ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great.
+
+# -- ICHORIUM TOOLS
+ttresearch.name.ICHOR_TOOLS=Ichorium Tools
+ttresearch.lore.ICHOR_TOOLS=The top tier of rat... tools
+ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium. These tools are extremely powerful, even more so than diamond, furthermore, they never break.<BR><BR>For the creation of these tools, mundane sticks aren't enough, you decided to use Silverwood rods in replacement.
