@@ -29,6 +29,7 @@ import thaumcraft.api.IVisDiscounter;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,6 +39,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter {
 
 	public ItemIchorclothArmor(int par1, int par2) {
 		super(par1, material, 0, par2);
+		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override

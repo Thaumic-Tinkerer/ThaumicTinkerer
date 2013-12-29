@@ -23,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,8 +34,10 @@ public class BlockDarkQuartzSlab extends BlockHalfSlab {
 		super(par1, par2, Material.rock);
 		setHardness(0.8F);
 		setResistance(10F);
-		if(!par2)
+		if(!par2) {
 			setLightOpacity(0);
+			setCreativeTab(ModCreativeTab.INSTANCE);
+		}
 	}
 
 	@Override

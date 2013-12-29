@@ -30,6 +30,7 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import com.google.common.collect.HashMultimap;
@@ -46,6 +47,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	public ItemBloodSword(int par1) {
 		super(par1, EnumHelper.addToolMaterial("TT_BLOOD", 0, 950, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
 		MinecraftForge.EVENT_BUS.register(this);
+		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override
