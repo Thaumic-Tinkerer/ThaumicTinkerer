@@ -354,3 +354,8 @@ ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion t
 ttresearch.name.ICHOR_TOOLS=Ichorium Tools
 ttresearch.lore.ICHOR_TOOLS=The top tier of rat... tools
 ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium. These tools are extremely powerful, even more so than diamond, furthermore, they never break.<BR><BR>For the creation of these tools, mundane sticks aren't enough, you decided to use Silverwood rods in replacement.
+
+# -- AWAKENED ICHORIUM PICKAXE
+ttresearch.name.ICHOR_PICK_GEM=Awakened Ichorium Pickaxe
+ttresearch.lore.ICHOR_PICK_GEM=Who needs a quarry?
+ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe, this pickaxe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue) it'll break a 10 block long line starting on the original block.

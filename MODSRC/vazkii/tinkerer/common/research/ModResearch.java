@@ -199,6 +199,9 @@ public final class ModResearch {
 			
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_TOOLS, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TOOL, 2).add(Aspect.WEAPON, 1).add(Aspect.METAL, 1).add(Aspect.CRAFT, 1), 10, 9, 5, new ItemStack(ModItems.ichorPick)).setConcealed().setParents(LibResearch.KEY_ICHORIUM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_PICK), arcaneRecipePage(LibResearch.KEY_ICHOR_SHOVEL), arcaneRecipePage(LibResearch.KEY_ICHOR_AXE), arcaneRecipePage(LibResearch.KEY_ICHOR_SWORD));
+		
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.STONE, 1), 10, 11, 5, new ItemStack(ModItems.ichorPickGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_PICK_GEM));
 		}
 	}
 

@@ -83,5 +83,6 @@ public final class LibResearch {
 	public static final String KEY_ICHOR_SHOVEL = "ICHOR_SHOVEL";
 	public static final String KEY_ICHOR_AXE = "ICHOR_AXE";
 	public static final String KEY_ICHOR_SWORD = "ICHOR_SWORD";
+	public static final String KEY_ICHOR_PICK_GEM = "ICHOR_PICK_GEM";
 
 }

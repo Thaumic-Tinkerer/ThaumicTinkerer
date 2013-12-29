@@ -249,6 +249,9 @@ public final class ModRecipes {
 
 			registerResearchItemI(LibResearch.KEY_CAT_AMULET, new ItemStack(ModItems.catAmulet), 8, new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.ORDER, 32).add(Aspect.MIND, 16), new ItemStack(Block.blockNetherQuartz),
 				new ItemStack(ModItems.kamiResource), new ItemStack(Item.ingotGold), new ItemStack(Item.ingotGold), new ItemStack(Item.dyePowder, 1, 3), new ItemStack(Block.leaves, 1, 3), new ItemStack(Item.fishRaw));
+		
+			registerResearchItemI(LibResearch.KEY_ICHOR_PICK_GEM, new ItemStack(ModItems.ichorPickGem), 15, new AspectList().add(Aspect.FIRE, 50).add(Aspect.MINE, 64).add(Aspect.METAL, 32).add(Aspect.STONE, 32).add(Aspect.HARVEST, 32).add(Aspect.GREED, 16).add(Aspect.SENSES, 16), new ItemStack(ModItems.ichorPick), 
+				new ItemStack(ModItems.kamiResource, 1, 2), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemPickElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Block.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemPickElemental), new ItemStack(ModItems.kamiResource, 1, 1));
 		}
 	}
 
