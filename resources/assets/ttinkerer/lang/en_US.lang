@@ -91,6 +91,7 @@ item.ttinkerer:ichorPickGem.name=Awakened Ichorium Pickaxe
 item.ttinkerer:ichorShovelGem.name=Awakened Ichorium Shovel
 item.ttinkerer:ichorAxeGem.name=Awakened Ichorium Axe
 item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
+item.ttinkerer:ichorPouch.name=Bottomless Pouch
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
