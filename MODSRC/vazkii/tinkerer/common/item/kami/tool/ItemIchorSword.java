@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.item.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,6 +29,7 @@ public class ItemIchorSword extends ItemSword {
 
 	public ItemIchorSword(int par1) {
 		super(par1, ModItems.toolMatIchor);
+		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 	
 	@Override

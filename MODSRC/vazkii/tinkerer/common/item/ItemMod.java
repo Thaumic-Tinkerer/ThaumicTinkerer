@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.item;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,6 +25,7 @@ public class ItemMod extends Item {
 
 	public ItemMod(int par1) {
 		super(par1);
+		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@Override

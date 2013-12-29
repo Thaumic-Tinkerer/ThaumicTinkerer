@@ -18,6 +18,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.item.ModItems;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumRarity;
@@ -29,6 +30,7 @@ public class ItemIchorAxe extends ItemAxe {
 
 	public ItemIchorAxe(int par1) {
 		super(par1, ModItems.toolMatIchor);
+		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 	
 	@Override
