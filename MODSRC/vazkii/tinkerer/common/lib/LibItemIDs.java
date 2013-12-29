@@ -53,5 +53,6 @@ public final class LibItemIDs {
 	public static int idIchorSword = 23163;
 	public static int idIchorPickGem = 23164;
 	public static int idIchorShovelGem = 23165;
+	public static int idIchorAxeGem = 23166;
 
 }
