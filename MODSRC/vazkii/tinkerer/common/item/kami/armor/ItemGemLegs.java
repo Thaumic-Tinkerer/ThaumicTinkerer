@@ -12,7 +12,7 @@
  *
  * File Created @ [Dec 27, 2013, 1:03:05 AM (GMT)]
  */
-package vazkii.tinkerer.common.item.kami;
+package vazkii.tinkerer.common.item.kami.armor;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;

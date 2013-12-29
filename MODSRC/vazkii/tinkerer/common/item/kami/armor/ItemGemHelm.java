@@ -12,7 +12,7 @@
  *
  * File Created @ [Dec 26, 2013, 12:14:11 AM (GMT)]
  */
-package vazkii.tinkerer.common.item.kami;
+package vazkii.tinkerer.common.item.kami.armor;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
