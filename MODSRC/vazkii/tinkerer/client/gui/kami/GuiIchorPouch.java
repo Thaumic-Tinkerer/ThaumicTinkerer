@@ -37,8 +37,8 @@ public class GuiIchorPouch extends GuiContainer {
 		super.initGui();
 		xSize = ySize = 256;
 
-		x = (width - xSize) / 2;
-		y = (height - ySize) / 2;
+		guiLeft = x = (width - xSize) / 2;
+		guiTop = y = (height - ySize) / 2;
 	}
 
 	@Override

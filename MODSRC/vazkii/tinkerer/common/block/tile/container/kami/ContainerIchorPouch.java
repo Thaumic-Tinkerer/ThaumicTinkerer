@@ -59,7 +59,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 
 		for(int y = 0; y < 9; y++)
 			for(int x = 0; x < 13; x++)
-				addSlotToContainer(new SlotNoPouches(inv, y * 13 + x, -37 + 9 + x * 18, -42 + 6 + y * 18));
+				addSlotToContainer(new SlotNoPouches(inv, y * 13 + x, 12 + x * 18, 8 + y * 18));
 		initPlayerInv();
 
 		if (!player.worldObj.isRemote)
@@ -125,11 +125,11 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 
 	@Override
 	public int getInvXStart() {
-		return 8;
+		return 48;
 	}
 
 	@Override
 	public int getInvYStart() {
-		return 132;
+		return 177;
 	}
 }
