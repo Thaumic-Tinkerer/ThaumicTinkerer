@@ -4,7 +4,7 @@
 	<property file="build.properties" prefix="build"/>
 
 	<target name="clean">
-		<!--<delete dir="${build.dir.gradle}\build\classes\main" />-->
+		<delete dir="${build.dir.gradle}\build\classes\main" />
 		<delete file="${build.dir.gradle}\src\main\java\mcmod.info" />
 		<delete dir="${build.dir.gradle}\src\main\java\vazkii" />
 		<delete dir="${build.dir.gradle}\src\main\java\ic2" />
