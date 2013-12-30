@@ -4,12 +4,13 @@
 	<property file="build.properties" prefix="build"/>
 
 	<target name="clean">
-		<delete file="${build.dir.gradle}src\main\java\minecraft\mcmod.info" />
-		<delete dir="${build.dir.gradle}\src\main\java\minecraft\vazkii" />
-		<delete dir="${build.dir.gradle}\src\main\java\minecraft\ic2" />
-		<delete dir="${build.dir.gradle}\src\main\java\minecraft\buildcraft" />
-		<delete dir="${build.dir.gradle}\src\main\java\minecraft\dan200" />
-		<delete dir="${build.dir.gradle}\src\main\java\minecraft\cofh" />
+		<!--<delete dir="${build.dir.gradle}\build\classes\main" />-->
+		<delete file="${build.dir.gradle}\src\main\java\mcmod.info" />
+		<delete dir="${build.dir.gradle}\src\main\java\vazkii" />
+		<delete dir="${build.dir.gradle}\src\main\java\ic2" />
+		<delete dir="${build.dir.gradle}\src\main\java\uildcraft" />
+		<delete dir="${build.dir.gradle}\src\main\java\dan200" />
+		<delete dir="${build.dir.gradle}\src\main\java\cofh" />
 		<delete dir ="${build.dir.temp}" />
 	</target>
 
@@ -25,11 +26,18 @@
 		<copy todir="${build.dir.temp}">
 			<fileset dir="${build.dir.repo}\resources\" />
 		</copy>
+		
+		<copy todir="${build.dir.gradle}\src\main\java">
+			<fileset dir="${build.dir.repo}\MODSRC\" />
+		</copy>
 	</target>
 
 	<target name="replace_tokens">
 		<replace dir="${build.dir.temp}" token="ANT:VERSION" value="${build.version}" />
 		<replace dir="${build.dir.temp}" token="ANT:BUILD" value="${build.build_number}" />
+		
+		<replace dir="${build.dir.gradle}\src\main\java" token="ANT:VERSION" value="${build.version}" />
+		<replace dir="${build.dir.gradle}\src\main\java" token="ANT:BUILD" value="${build.build_number}" />
 	</target>
 
 	<target name="gradle_build">
@@ -38,17 +46,6 @@
 		</exec>
 		
 		<move file="${build.dir.gradle}\build\libs\modid-1.0.jar" tofile="${build.dir.output}\${build.mod_name}\${build.mod_name} ${build.version}-${build.build_number}.jar" />
-	</target>
-
-	<target name = "prep_assets">
-		<mkdir dir="${build.dir.temp}" />
-		
-		<copy todir="${build.dir.temp}">
-			<fileset dir="${build.dir.repo}\resources" />
-		</copy>
-		
-		<replace dir="${build.dir.temp}" token="ANT:VERSION" value="${build.version}" />
-		<replace dir="${build.dir.temp}" token="ANT:BUILD" value="${build.build_number}" />
 	</target>
 		
 	<target name="inject_assets">
@@ -63,7 +60,6 @@
 		<antcall target="prep" />
 		<antcall target="replace_tokens" />
 		<antcall target="gradle_build" />
-		<antcall target="prep_assets" />
 		<antcall target="inject_assets" />
 		<antcall target="increment_build_number" />
 		<antcall target="clean" />
