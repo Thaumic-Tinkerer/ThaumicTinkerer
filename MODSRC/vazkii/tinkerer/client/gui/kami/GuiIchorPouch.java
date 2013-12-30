@@ -43,8 +43,10 @@ public class GuiIchorPouch extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GL11.glEnable(GL11.GL_BLEND);
 		mc.renderEngine.bindTexture(gui);
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		GL11.glDisable(GL11.GL_BLEND);
 	}
 
 }
