@@ -32,6 +32,7 @@
 		<copy todir="${build.dir.mcp}\src\minecraft">
 			<fileset dir="${build.dir.temp}" />
 		</copy>
+		<delete dir ="${build.dir.temp}" />
 	</target>
 
 	<target name="replace_tokens">
