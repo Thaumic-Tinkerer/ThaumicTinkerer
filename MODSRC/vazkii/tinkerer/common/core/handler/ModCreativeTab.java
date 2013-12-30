@@ -115,6 +115,7 @@ public class ModCreativeTab extends CreativeTabs {
 
 			addItem(ModItems.ichorPouch);
 			addItem(ModItems.catAmulet);
+			addItem(ModItems.blockTalisman);
 		}
 	}
 
