@@ -299,7 +299,7 @@ ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming
 
 # -- ETHERAL PLATFORM
 ttresearch.name.PLATFORM=Ethereal Platform
-ttresearch.lore.PLATFORM=Hide the Bromide and Barium
+ttresearch.lore.PLATFORM=Hide the Bromine and Barium
 ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
 
 # KAMI RESEARCH
@@ -393,7 +393,7 @@ ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used o
 # -- BOTTOMLESS POUCH
 ttresearch.name.ICHOR_POUCH=Bottomless Pouch
 ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
-ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can carry more than four chests. You can kiss your inventory problems goodbye.
+ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can not only carry more than four chests, but it also doubles as a standard Focus Pouch, allowing any foci within it to be inserted in a wand like normally. You can kiss your inventory problems goodbye.
 
 # -- BLACK HOLE TALISMAN
 ttresearch.name.BLOCK_TALISMAN=Black Hole Talisman
