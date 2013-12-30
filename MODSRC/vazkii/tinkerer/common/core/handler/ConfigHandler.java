@@ -117,6 +117,7 @@ public final class ConfigHandler {
 		LibItemIDs.idIchorAxeGem = loadKamiItem(LibItemNames.ICHOR_AXE_GEM, LibItemIDs.idIchorAxeGem);
 		LibItemIDs.idIchorSwordGem = loadKamiItem(LibItemNames.ICHOR_SWORD_GEM, LibItemIDs.idIchorSwordGem);
 		LibItemIDs.idIchorPouch = loadKamiItem(LibItemNames.ICHOR_POUCH, LibItemIDs.idIchorPouch);
+		LibItemIDs.idBlockTalisman = loadKamiItem(LibItemNames.BLOCK_TALISMAN, LibItemIDs.idBlockTalisman);
 
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
