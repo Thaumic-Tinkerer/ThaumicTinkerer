@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.item;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -147,6 +148,13 @@ public final class ModItems {
 			
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
+			
+			MinecraftForge.setToolClass(ichorPick, "pickaxe", 4);
+			MinecraftForge.setToolClass(ichorShovel, "shovel", 4);
+			MinecraftForge.setToolClass(ichorAxe, "axe", 4);
+			MinecraftForge.setToolClass(ichorPickGem, "pickaxe", 4);
+			MinecraftForge.setToolClass(ichorShovelGem, "shovel", 4);
+			MinecraftForge.setToolClass(ichorAxeGem, "axe", 4);
 		}
 	}
 }
