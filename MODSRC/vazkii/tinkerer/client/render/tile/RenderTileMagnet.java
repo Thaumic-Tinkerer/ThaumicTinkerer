@@ -24,10 +24,11 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import thaumcraft.client.lib.UtilsFX;
+import thaumcraft.common.config.ConfigItems;
+import thaumcraft.common.items.armor.ItemHoverHarness;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.client.model.ModelMagnet;
-import vazkii.tinkerer.common.block.BlockMagnet;
 
 public class RenderTileMagnet extends TileEntitySpecialRenderer {
 
@@ -62,7 +63,8 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
 
         GL11.glRotatef(90F, 1F, 0F, 0F);
         GL11.glTranslatef(0F, 0F, -0.6F);
-        Icon icon = BlockMagnet.lightning;
+        Icon icon = ((ItemHoverHarness) ConfigItems.itemHoverHarness).iconLightningRing;
+        		
         for(int i = 0; i < 3; i++) {
         	for(int j = 0; j < 2; j++) {
                 GL11.glScalef(1F, -1F, 1F);
