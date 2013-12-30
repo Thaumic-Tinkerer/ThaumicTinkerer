@@ -386,7 +386,7 @@ ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium A
 # -- AWAKENED ICHORIUM SWORD
 ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
 ttresearch.lore.ICHOR_SWORD_GEM=Mom's knife
-ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword, this sword contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
+ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword, this sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
 ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existant. They block damage their wielder would take, but disappear in the proccess.
 
 # -- BOTTOMLESS POUCH

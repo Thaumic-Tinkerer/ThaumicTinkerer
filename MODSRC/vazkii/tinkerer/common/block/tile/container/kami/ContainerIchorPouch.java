@@ -79,10 +79,10 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 			ItemStack stackInSlot = slotObject.getStack();
 			stack = stackInSlot.copy();
 			if (slot < (13 * 9)) {
-				if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 18, inventorySlots.size(), true))
+				if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 13 * 9, inventorySlots.size(), true))
 					return null;
 			}
-			else if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 0, 18, false)) {
+			else if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 0, 13 * 9, false)) {
 				return null;
 			}
 			if (stackInSlot.stackSize == 0)
@@ -128,6 +128,6 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 	
 	@Override
 	public int getInvYStart() {
-		return 130;
+		return 132;
 	}
 }
