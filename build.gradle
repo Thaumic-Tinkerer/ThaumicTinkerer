@@ -25,8 +25,8 @@ dependencies {
 	compile files (
 		'TCDEOBF.jar',
 		'mods/CodeChickenCore-dev 0.9.0.7.jar',
-		'mods/CodeChickenLib-dev-1.6.4-1.0.0.40.jar',
-		'mods/ForgeMultipart-dev-1.6.4-1.0.0.193.jar',
+		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
+		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
 		'mods/NotEnoughItems-dev 1.6.1.5.jar'
 	)
 }
