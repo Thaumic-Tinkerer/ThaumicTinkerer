@@ -49,7 +49,7 @@ public class ItemXPTalisman extends ItemMod {
 		if(par3EntityPlayer.isSneaking()) {
 			if(getXP(par1ItemStack) < LibFeatures.XP_TALISMAN_MAX_XP) {
 	 			int dmg = par1ItemStack.getItemDamage();
-				par1ItemStack.setItemDamage(dmg == 0 ? 1 : 0);
+				par1ItemStack.setItemDamage(~dmg & 1);
 				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 			}
 		} else if(getXP(par1ItemStack) >= LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST) {
