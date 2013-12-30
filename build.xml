@@ -21,14 +21,22 @@
 	</target>
 
 	<target name="prep">
-		<copy todir="${build.dir.mcp}\src\minecraft">
+		<mkdir dir="${build.dir.temp}" />
+
+		<copy todir="${build.dir.temp}">
 			<fileset dir="${build.dir.repo}\MODSRC\" />
+		</copy>
+	</target>
+	
+	<target name="prep2">
+		<copy todir="${build.dir.mcp}\src\minecraft">
+			<fileset dir="${build.dir.temp}" />
 		</copy>
 	</target>
 
 	<target name="replace_tokens">
-		<replace dir="${build.dir.mcp}\src\minecraft" token="ANT:VERSION" value="${build.version}" />
-		<replace dir="${build.dir.mcp}\src\minecraft" token="ANT:BUILD" value="${build.build_number}" />
+		<replace dir="${build.dir.temp}" token="ANT:VERSION" value="${build.version}" />
+		<replace dir="${build.dir.temp}" token="ANT:BUILD" value="${build.build_number}" />
 	</target>
 
 	<target name="recompile">
@@ -64,6 +72,7 @@
 		<antcall target="clean" />
 		<antcall target="prep" />
 		<antcall target="replace_tokens" />
+		<antcall target="prep2" />
 		<antcall target="recompile" />
 		<antcall target="reobfuscate" />
 		<antcall target="prep_assets" />
