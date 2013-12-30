@@ -65,7 +65,7 @@ public class TTClientProxy extends TTCommonProxy {
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		registerTiles();
 		registerRenderIDs();
-		
+
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
 			MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());

@@ -97,7 +97,7 @@ public final class ModItems {
 
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
-	
+
 	public static EnumToolMaterial toolMatIchor;
 
 	public static void initItems() {
@@ -124,7 +124,7 @@ public final class ModItems {
 
 		if(ConfigHandler.enableKami) {
 			toolMatIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
-			
+
 			kamiResource = new ItemKamiResource(LibItemIDs.idKamiResource).setUnlocalizedName(LibItemNames.KAMI_RESOURCE);
 			ichorHelm = new ItemIchorclothArmor(LibItemIDs.idIchorHelm, 0).setUnlocalizedName(LibItemNames.ICHOR_HELM);
 			ichorChest = new ItemIchorclothArmor(LibItemIDs.idIchorChest, 1).setUnlocalizedName(LibItemNames.ICHOR_CHEST);
@@ -145,10 +145,10 @@ public final class ModItems {
 			ichorSwordGem = new ItemIchorSwordAdv(LibItemIDs.idIchorSwordGem).setUnlocalizedName(LibItemNames.ICHOR_SWORD_GEM);
 			ichorPouch = new ItemIchorPouch(LibItemIDs.idIchorPouch).setUnlocalizedName(LibItemNames.ICHOR_POUCH);
 			blockTalisman = new ItemBlockTalisman(LibItemIDs.idBlockTalisman).setUnlocalizedName(LibItemNames.BLOCK_TALISMAN);
-			
+
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
-			
+
 			MinecraftForge.setToolClass(ichorPick, "pickaxe", 4);
 			MinecraftForge.setToolClass(ichorShovel, "shovel", 4);
 			MinecraftForge.setToolClass(ichorAxe, "axe", 4);

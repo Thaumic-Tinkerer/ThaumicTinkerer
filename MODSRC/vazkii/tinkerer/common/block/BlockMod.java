@@ -35,7 +35,7 @@ public class BlockMod extends Block {
 	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
-	
+
 	boolean registerInCreative() {
 		return true;
 	}
