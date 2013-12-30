@@ -394,3 +394,8 @@ ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used o
 ttresearch.name.ICHOR_POUCH=Bottomless Pouch
 ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
 ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can carry more than four chests. You can kiss your inventory problems goodbye.
+
+# -- BLACK HOLE TALISMAN
+ttresearch.name.BLOCK_TALISMAN=Black Hole Talisman
+ttresearch.lore.BLOCK_TALISMAN=More pascal than your mind can take
+ttresearch.page.BLOCK_TALISMAN.0=You created a talisman that can store an insane amount of the same type of block within itself.<BR><BR>This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue.

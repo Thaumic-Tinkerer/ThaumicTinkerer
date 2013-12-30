@@ -253,6 +253,8 @@ public final class ModRecipes {
 					new ItemStack(ModItems.kamiResource, 1, 2), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemSwordElemental), new ItemStack(ConfigItems.itemFocusFrost), new ItemStack(Block.cactus), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusFrost), new ItemStack(ConfigItems.itemSwordElemental), new ItemStack(ModItems.kamiResource, 1, 1));
 			registerResearchItemI(LibResearch.KEY_ICHOR_POUCH, new ItemStack(ModItems.ichorPouch), 9, new AspectList().add(Aspect.VOID, 64).add(Aspect.MAN, 32).add(Aspect.CLOTH, 32).add(Aspect.ELDRITCH, 32).add(Aspect.AIR, 64), new ItemStack(ConfigItems.itemFocusPouch),
 					new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
+			registerResearchItemI(LibResearch.KEY_BLOCK_TALISMAN, new ItemStack(ModItems.blockTalisman), 9, new AspectList().add(Aspect.VOID, 65).add(Aspect.DARKNESS, 32).add(Aspect.MAGIC, 50).add(Aspect.ELDRITCH, 32), new ItemStack(ConfigItems.itemFocusPortableHole),
+					new ItemStack(ModItems.kamiResource), new ItemStack(Block.enderChest), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockMirror));
 		}
 	}
 
