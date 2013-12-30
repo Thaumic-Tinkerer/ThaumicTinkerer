@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Dec 29, 2013, 10:37:08 PM (GMT)]
  */
 package vazkii.tinkerer.common.block.tile.container.kami;
@@ -55,8 +55,8 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 
 		this.player = player;
 		pouch = player.getCurrentEquippedItem();
-		blockSlot = player.inventory.currentItem + 27 + (13 * 9);
-		
+		blockSlot = player.inventory.currentItem + 27 + 13 * 9;
+
 		for(int y = 0; y < 9; y++)
 			for(int x = 0; x < 13; x++)
 				addSlotToContainer(new SlotNoPouches(inv, y * 13 + x, -37 + 9 + x * 18, -42 + 6 + y * 18));
@@ -70,7 +70,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int slot) {
-		if (slot == this.blockSlot)
+		if (slot == blockSlot)
 			return null;
 
 		ItemStack stack = null;
@@ -78,7 +78,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			stack = stackInSlot.copy();
-			if (slot < (13 * 9)) {
+			if (slot < 13 * 9) {
 				if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 13 * 9, inventorySlots.size(), true))
 					return null;
 			}
@@ -89,19 +89,21 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 				slotObject.putStack(null);
 			else slotObject.onSlotChanged();
 		}
-		
+
 		return stack;
 	}
 
 
+	@Override
 	public ItemStack slotClick(int par1, int par2, int par3, EntityPlayer par4EntityPlayer)
 	{
-		if (par1 == this.blockSlot) {
+		if (par1 == blockSlot) {
 			return null;
 		}
 		return super.slotClick(par1, par2, par3, par4EntityPlayer);
 	}
 
+	@Override
 	public void onContainerClosed(EntityPlayer par1EntityPlayer)
 	{
 		super.onContainerClosed(par1EntityPlayer);
@@ -110,8 +112,8 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 			if (player == null)
 				return;
 			if (player.getHeldItem() != null && player.getHeldItem().isItemEqual(pouch))
-				player.setCurrentItemOrArmor(0, this.pouch);
-			
+				player.setCurrentItemOrArmor(0, pouch);
+
 			player.inventory.onInventoryChanged();
 		}
 	}
@@ -120,12 +122,12 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 	public boolean canInteractWith(EntityPlayer entityplayer) {
 		return true;
 	}
-	
+
 	@Override
 	public int getInvXStart() {
 		return 8;
 	}
-	
+
 	@Override
 	public int getInvYStart() {
 		return 132;

@@ -41,7 +41,7 @@ public abstract class ContainerPlayerInv extends Container {
 	public int getInvYStart() {
 		return 84;
 	}
-	
+
 	public int getInvXStart() {
 		return 8;
 	}

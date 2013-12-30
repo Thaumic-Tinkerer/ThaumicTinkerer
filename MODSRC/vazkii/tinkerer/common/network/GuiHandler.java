@@ -51,8 +51,8 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER :
 				return new ContainerAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
-			
-			case LibGuiIDs.GUI_ID_ICHOR_POUCH : 
+
+			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
 				return new ContainerIchorPouch(player);
 		}
 		return null;
@@ -73,8 +73,8 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER :
 				return new GuiAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
-				
-			case LibGuiIDs.GUI_ID_ICHOR_POUCH : 
+
+			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
 				return new GuiIchorPouch(new ContainerIchorPouch(player));
 		}
 		return null;

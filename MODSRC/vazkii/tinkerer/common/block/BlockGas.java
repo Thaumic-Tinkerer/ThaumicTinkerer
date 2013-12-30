@@ -122,7 +122,7 @@ public abstract class BlockGas extends BlockMod {
 	public boolean isAirBlock(World world, int x, int y, int z) {
 		return true;
 	}
-	
+
 	@Override
 	boolean registerInCreative() {
 		return false;
