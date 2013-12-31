@@ -21,13 +21,19 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.item.ItemMod;
 import cpw.mods.fml.relauncher.Side;
@@ -63,6 +69,46 @@ public class ItemBlockTalisman extends ItemMod {
 		int meta = par3World.getBlockMetadata(par4, par5, par6);
 		boolean set = setBlock(par1ItemStack, id, meta);
 
+		if(!set) {
+			int bid = getBlockID(par1ItemStack);
+			int bmeta = getBlockMeta(par1ItemStack);
+			
+			TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
+			if(tile != null && tile instanceof IInventory) {
+				IInventory inv = (IInventory) tile;
+				int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getAccessibleSlotsFromSide(par7) : TileTransvectorInterface.buildSlotsForLinearInventory(inv);
+				for(int slot : slots) {
+					ItemStack stackInSlot = inv.getStackInSlot(slot);
+					if(stackInSlot == null) {
+						ItemStack stack = new ItemStack(bid, 1, bmeta);
+						int maxSize = stack.getMaxStackSize();
+						stack.stackSize = remove(par1ItemStack, maxSize);
+						if(stack.stackSize != 0) {
+							if(inv.isItemValidForSlot(slot, stack) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stack, par7))) {
+								inv.setInventorySlotContents(slot, stack);
+								inv.onInventoryChanged();
+								set = true;
+							}
+						}
+					} else if(stackInSlot.itemID == bid && stackInSlot.getItemDamage() == bmeta) {
+						int maxSize = stackInSlot.getMaxStackSize();
+						int missing = maxSize - stackInSlot.stackSize;
+						if(inv.isItemValidForSlot(slot, stackInSlot) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stackInSlot, par7))) {
+							stackInSlot.stackSize += remove(par1ItemStack, missing);
+							inv.onInventoryChanged();
+							set = true;
+						}
+					}
+				}
+			} else {
+				int remove = remove(par1ItemStack, 1);
+				if(remove > 0) {
+					Item.itemsList[bid].onItemUse(new ItemStack(bid, 1, bmeta), par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
+					set = true;
+				}
+			}
+		}
+		
 		par2EntityPlayer.setCurrentItemOrArmor(0, par1ItemStack);
 
 		return set;
@@ -70,11 +116,11 @@ public class ItemBlockTalisman extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		int id = getBlockID(par1ItemStack);
-		if(!par2World.isRemote && par1ItemStack.getItemDamage() == 1 && id != 0 && par3Entity instanceof EntityPlayer) {
+		int id = getBlockID(par1ItemStack);		
+		if(/*!par2World.isRemote && */par1ItemStack.getItemDamage() == 1 && id != 0 && par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
 			int meta = getBlockMeta(par1ItemStack);
-
+			
 			int highest = -1;
 			boolean hasFreeSlot = false;
 			int[] counts = new int[player.inventory.getSizeInventory()];
@@ -94,7 +140,7 @@ public class ItemBlockTalisman extends ItemMod {
 					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
 				}
 			}
-
+			
 			if(highest == -1) {
 				if(hasFreeSlot) {
 					ItemStack stack = new ItemStack(id, remove(par1ItemStack, 64), meta);
