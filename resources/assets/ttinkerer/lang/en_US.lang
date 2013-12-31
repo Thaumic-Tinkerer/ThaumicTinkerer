@@ -93,6 +93,7 @@ item.ttinkerer:ichorAxeGem.name=Awakened Ichorium Axe
 item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
 item.ttinkerer:ichorPouch.name=Bottomless Pouch
 item.ttinkerer:blockTalisman.name=Black Hole Talisman
+item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz

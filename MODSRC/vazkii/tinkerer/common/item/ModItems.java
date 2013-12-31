@@ -33,6 +33,7 @@ import vazkii.tinkerer.common.item.kami.ItemBlockTalisman;
 import vazkii.tinkerer.common.item.kami.ItemCatAmulet;
 import vazkii.tinkerer.common.item.kami.ItemIchorPouch;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
+import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemChest;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemHelm;
@@ -73,6 +74,7 @@ public final class ModItems {
 	public static Item revealingHelm;
 	public static Item infusedInkwell;
 	public static Item focusDeflect;
+	public static Item placementMirror;
 
 	public static Item kamiResource;
 	public static Item ichorHelm;
@@ -145,7 +147,8 @@ public final class ModItems {
 			ichorSwordGem = new ItemIchorSwordAdv(LibItemIDs.idIchorSwordGem).setUnlocalizedName(LibItemNames.ICHOR_SWORD_GEM);
 			ichorPouch = new ItemIchorPouch(LibItemIDs.idIchorPouch).setUnlocalizedName(LibItemNames.ICHOR_POUCH);
 			blockTalisman = new ItemBlockTalisman(LibItemIDs.idBlockTalisman).setUnlocalizedName(LibItemNames.BLOCK_TALISMAN);
-
+			placementMirror = new ItemPlacementMirror(LibItemIDs.idPlacementMirror).setUnlocalizedName(LibItemNames.PLACEMENT_MIRROR);
+			
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
 
