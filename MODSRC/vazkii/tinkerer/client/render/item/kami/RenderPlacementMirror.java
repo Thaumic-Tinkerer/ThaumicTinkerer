@@ -38,14 +38,19 @@ public class RenderPlacementMirror implements IItemRenderer {
 				break;
 			}
 			case EQUIPPED : {
-				GL11.glEnable(GL11.GL_BLEND);
-				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				Icon icon = ModItems.placementMirror.getIconFromDamage(0);
-				float f = icon.getMinU();
-				float f1 = icon.getMaxU();
-                float f2 = icon.getMinV();
-				float f3 = icon.getMaxV();
-				ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
+				for(int i = 1; i >= 0; i--) {
+					Icon icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, i);
+					if(i == 0) {
+						GL11.glEnable(GL11.GL_BLEND);
+						GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+					}
+					
+					float f = icon.getMinU();
+					float f1 = icon.getMaxU();
+	                float f2 = icon.getMinV();
+					float f3 = icon.getMaxV();
+					ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
+				}
 				GL11.glDisable(GL11.GL_BLEND);
 				break;
 			}
@@ -56,9 +61,11 @@ public class RenderPlacementMirror implements IItemRenderer {
 			case INVENTORY : {
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				Icon icon = ModItems.placementMirror.getIconFromDamage(0);
+				Icon icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, 0);
 				render.renderIcon(0, 0, icon, 16, 16);
 				GL11.glDisable(GL11.GL_BLEND);
+				icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, 1);
+				render.renderIcon(0, 0, icon, 16, 16);
 			}
 			default : break;
 			}
