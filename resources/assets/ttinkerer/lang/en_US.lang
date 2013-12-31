@@ -352,12 +352,12 @@ ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorclo
 # -- LEGGINGS OF THE BURNING MANTLE
 ttresearch.name.ICHORCLOTH_LEGS_GEM=Leggings of the Burning Mantle
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=A warm feeling
-ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevales given the creator's existance in a much extended range.<BR>Furthermore, these robes not only provide fire resistance, but they convert any incoming fire damage into healing.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevales given the creator's existance in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
 ttresearch.name.ICHORCLOTH_BOOTS_GEM=Boots of the Horizontal Shield
 ttresearch.lore.ICHORCLOTH_BOOTS_GEM=From Winterfell to King's Landing in a breeze
-ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage.
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Boots into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage.
 
 # -- FELINE AMULET
 ttresearch.name.CAT_AMULET=Feline Amulet
@@ -382,7 +382,7 @@ ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichoriu
 # -- AWAKENED ICHORIUM AXE
 ttresearch.name.ICHOR_AXE_GEM=Awakened Ichorium Axe
 ttresearch.lore.ICHOR_AXE_GEM=Cut you like a Clover
-ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe, this axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely profecient at cutting plant life.
+ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe, this axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
 
 # -- AWAKENED ICHORIUM SWORD
 ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
