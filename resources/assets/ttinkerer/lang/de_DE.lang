@@ -93,6 +93,7 @@ item.ttinkerer:ichorAxeGem.name=Erweckte Ichoriumaxt
 item.ttinkerer:ichorSwordGem.name=Erwecktes Ichoriumschwert
 item.ttinkerer:ichorPouch.name=Bodenloser Beutel
 item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
+item.ttinkerer:placementMirror.name=Spiegel des Weltenformers
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -398,4 +399,4 @@ ttresearch.page.ICHOR_POUCH.0=Indem du einen Fokusbeutel mit Items wie dem Tragb
 # -- BLACK HOLE TALISMAN
 ttresearch.name.BLOCK_TALISMAN=Schwarzloch-Talisman
 ttresearch.lore.BLOCK_TALISMAN=Mehr Pascal als dein Hirn aushält
-ttresearch.page.BLOCK_TALISMAN.0=Du hast einen Talisman kreiert, der eine gewaltige Menge and Blöcken des selben Typs in ihm speichern kann.<BR><BR>Dieser Talisman kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein kein Problem mehr sein. Wenn der Talisman leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.
+ttresearch.page.BLOCK_TALISMAN.0=Dieser Talisman kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet. Durch Rechtsklick kann der Inhalt in einem anderen Inventar platziert werden, oder wie ein normaler Block.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein kein Problem mehr sein. Wenn der Talisman leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.
