@@ -8,10 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.item.ItemMod;
+import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
 
 public class ItemPlacementMirror extends ItemMod {
 
@@ -32,13 +34,25 @@ public class ItemPlacementMirror extends ItemMod {
 		int meta = par3World.getBlockId(par5, par6, par7);
 		
 		if(par2EntityPlayer.isSneaking()) {
-			if(Block.blocksList[id] != null && Block.blocksList[id].getRenderType() == 0) {
+			if(Block.blocksList[id] != null && Block.blocksList[id].getRenderType() == 0)
 				setBlock(par1ItemStack, id, meta);
-				return true;
-			}
-		}
+		} else placeAllBlocks(par1ItemStack, par2EntityPlayer);
 		
-		return false;
+		return true;
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		int size = getSize(par1ItemStack);
+		int newSize = size == 11 ? 3 : size + 2;
+		setSize(par1ItemStack, newSize);
+		ToolModeHUDHandler.setTooltip(newSize + " x " + newSize);
+		
+		return par1ItemStack;
+	}
+	
+	public void placeAllBlocks(ItemStack stack, EntityPlayer player) {
+		// TODO
 	}
 	
 	public static ChunkCoordinates[] getBlocksToPlace(ItemStack stack, EntityPlayer player) {
@@ -49,12 +63,20 @@ public class ItemPlacementMirror extends ItemMod {
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_ID, id);
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 	}
+	
+	private static void setSize(ItemStack stack, int size) {
+		ItemNBTHelper.setInt(stack, TAG_SIZE, size | 1);
+	}
 
-	private int getBlockID(ItemStack stack) {
+	private static int getSize(ItemStack stack) {
+		return ItemNBTHelper.getInt(stack, TAG_SIZE, 3) | 1;
+	}
+	
+	private static int getBlockID(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
 
-	private int getBlockMeta(ItemStack stack) {
+	private static int getBlockMeta(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
 	}
 	
