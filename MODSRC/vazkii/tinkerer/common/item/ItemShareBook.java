@@ -60,7 +60,7 @@ public class ItemShareBook extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		String name = getPlayerName(par1ItemStack);
-		par3List.add(name.equals(NON_ASIGNED) ? StatCollector.translateToLocal("ttmisc.shareTome.noAsign") : String.format(StatCollector.translateToLocal("ttmisc.shareTome.playerName"), name));
+		par3List.add(name.equals(NON_ASIGNED) ? StatCollector.translateToLocal("ttmisc.shareTome.noAssign") : String.format(StatCollector.translateToLocal("ttmisc.shareTome.playerName"), name));
 	}
 
 	@Override
