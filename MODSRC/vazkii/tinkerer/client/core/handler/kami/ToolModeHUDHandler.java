@@ -30,7 +30,7 @@ import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ToolModeHUDHandler {
+public final class ToolModeHUDHandler {
 
 	private static String currentTooltip;
 	private static int tooltipDisplayTicks;
