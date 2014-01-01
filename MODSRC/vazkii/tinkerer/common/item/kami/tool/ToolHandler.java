@@ -89,7 +89,7 @@ public final class ToolHandler {
 
 			block.onBlockDestroyedByPlayer(world, x, y, z, meta);
 			world.setBlockToAir(x, y, z);
-			if(!world.isRemote)
+			if(!world.isRemote && !player.capabilities.isCreativeMode)
 				for(ItemStack stack : items)
 					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
 		}
