@@ -21,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -79,19 +80,27 @@ public final class ToolHandler {
 		Block block = Block.blocksList[id];
 		if(block != null && !block.isAirBlock(world, x, y, z) && block.getBlockHardness(world, x, y, z) != -1) {
 			List<ItemStack> items = new ArrayList();
+			int xp = 0;
 
 			if(!block.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
 
 			if(silk && block.canSilkHarvest(world, player, x, y, z, meta))
 				items.add(new ItemStack(id, 1, meta));
-			else items.addAll(block.getBlockDropped(world, x, y, z, meta, fortune));
+			else {
+				items.addAll(block.getBlockDropped(world, x, y, z, meta, fortune));
+				xp += block.getExpDrop(world, meta, fortune);
+			}
 
 			block.onBlockDestroyedByPlayer(world, x, y, z, meta);
 			world.setBlockToAir(x, y, z);
-			if(!world.isRemote && !player.capabilities.isCreativeMode)
+			if(!world.isRemote && !player.capabilities.isCreativeMode) {
 				for(ItemStack stack : items)
 					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
+				
+				EntityXPOrb xpOrb = new EntityXPOrb(world, player.posX, player.posY, player.posZ, xp);
+				world.spawnEntityInWorld(xpOrb);
+			}
 		}
 	}
 
