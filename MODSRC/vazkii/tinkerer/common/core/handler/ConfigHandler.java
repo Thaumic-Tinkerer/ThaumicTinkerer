@@ -40,6 +40,8 @@ public final class ConfigHandler {
 
 	public static boolean enableKami = false;
 	public static boolean useTootlipIndicators = true;
+	public static boolean enableSurvivalShareTome = true;
+	
 	public static boolean showPlacementMirrorBlocks = true;
 
 	public static void loadConfig(File configFile) {
@@ -63,6 +65,10 @@ public final class ConfigHandler {
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
 		useTootlipIndicators = propEnableTooltips.getBoolean(true);
+		
+		Property propEnableSurvivalShareTome = config.get(Configuration.CATEGORY_GENERAL, "shareTome.survival.enabled", true);
+		propEnableSurvivalShareTome.comment = "Set to false to disable the crafting recipe for the Tome of Research Sharing.";
+		enableSurvivalShareTome = propEnableSurvivalShareTome.getBoolean(true);
 		
 		if(enableKami) {
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);

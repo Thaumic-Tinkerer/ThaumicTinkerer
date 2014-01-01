@@ -77,6 +77,14 @@ public final class ModRecipes {
 				"QQQ", "QCQ", "QQQ",
 				'Q', new ItemStack(Item.dyePowder, 1, 0),
 				'C', new ItemStack(ModItems.infusedInkwell, 1, 32767));
+		
+		if(ConfigHandler.enableSurvivalShareTome) {
+			registerResearchItem(LibResearch.KEY_SHARE_TOME, new ItemStack(ModItems.shareBook),
+				" S ", "PTP", " P ",
+				'S', new ItemStack(ConfigItems.itemInkwell),
+				'T', new ItemStack(ConfigItems.itemThaumonomicon),
+				'P', new ItemStack(Item.paper));
+		}
 
 		if(ConfigHandler.enableKami) {
 			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.kamiResource, 9, 3), new ItemStack(ModItems.kamiResource, 1, 2));
