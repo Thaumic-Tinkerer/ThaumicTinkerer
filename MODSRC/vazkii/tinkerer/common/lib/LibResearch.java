@@ -61,7 +61,8 @@ public final class LibResearch {
 	public static final String KEY_FOCUS_DEFLECT = "FOCUS_DEFLECT";
 	public static final String KEY_ASPECT_ANALYZER = "ASPECT_ANALYZER";
 	public static final String KEY_PLATFORM = "PLATFORM";
-
+	public static final String KEY_SHARE_TOME = "SHARE_TOME";
+	
 	public static final String KEY_DIMENSION_SHARDS = "DIMENSION_SHARDS";
 	public static final String KEY_ICHOR = "ICHOR";
 	public static final String KEY_ICHOR_CLOTH = "ICHOR_CLOTH";

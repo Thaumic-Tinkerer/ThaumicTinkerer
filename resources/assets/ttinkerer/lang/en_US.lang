@@ -309,6 +309,11 @@ ttresearch.name.PLATFORM=Ethereal Platform
 ttresearch.lore.PLATFORM=Hide the Bromine and Barium
 ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
 
+# -- TOME OF RESEARCH SHARING
+ttresearch.name.SHARE_TOME=Tome of Research Sharing
+ttresearch.lore.SHARE_TOME=A Goldfish's Diary
+ttresearch.page.SHARE_TOME.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else while you're logged on to the server, they'll get all the research you've discovered so far.<BR><BR>(Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)
+
 # KAMI RESEARCH
 
 # -- DIMENSIONAL SHARDS
