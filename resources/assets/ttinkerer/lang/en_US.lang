@@ -27,6 +27,11 @@ ttmisc.startEnchant=Start Enchanting
 ttmisc.full=§cFull
 ttmisc.notAbsorbing=§cNot Absorbing
 ttmisc.absorbing=§aAbsorbing
+ttmisc.shareTome.write=Research Written!
+ttmisc.shareTome.notOnline=The player who this research belongs to is not online.
+ttmisc.shareTome.sync=Research Acquired.
+ttmisc.shareTome.noAsign=Not Asigned
+ttmisc.shareTome.playerName=Bound to %s's research.
 
 # KAMI MISC
 ttmisc.mode.pick.0=Block Mode
@@ -63,6 +68,7 @@ item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
 item.ttinkerer:revealingHelm.name=Helmet of Revealing
 item.ttinkerer:infusedInkwell.name=Infused Scribing Tools (NYI)
 item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
+item.ttinkerer:shareBook.name=Tome of Knowledge Sharing
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=Kami Resource
