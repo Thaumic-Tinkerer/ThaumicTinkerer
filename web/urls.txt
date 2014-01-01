@@ -54,3 +54,4 @@
 2.1 beta-53=https://www.sugarsync.com/pf/D9740002_82596175_751460
 2.1 beta-54=https://www.sugarsync.com/pf/D9740002_82596175_751463
 2.1-55=https://www.sugarsync.com/pf/D9740002_82596175_751476
+2.1-56=https://www.sugarsync.com/pf/D9740002_82596175_752791
