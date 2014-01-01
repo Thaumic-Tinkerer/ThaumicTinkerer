@@ -73,7 +73,8 @@ public class TTClientProxy extends TTCommonProxy {
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
 			MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());
-			MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
+			if(ConfigHandler.showPlacementMirrorBlocks)
+				MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
 		}
 	}
 
