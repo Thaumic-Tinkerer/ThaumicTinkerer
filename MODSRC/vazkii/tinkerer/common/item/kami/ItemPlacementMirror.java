@@ -146,6 +146,10 @@ public class ItemPlacementMirror extends ItemMod {
 		List<ChunkCoordinates> coords = new ArrayList();
 		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(player.worldObj, player, true, 5);
 		if(pos != null) {
+			int id = player.worldObj.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
+			if(Block.blocksList[id] != null && Block.blocksList[id].isBlockReplaceable(player.worldObj, pos.blockX, pos.blockY, pos.blockZ))
+				pos.blockY--;
+			
 			ForgeDirection dir = ForgeDirection.getOrientation(pos.sideHit);
             int rotation = MathHelper.floor_double((double) (player.rotationYaw * 4F / 360F) + 0.5D) & 3;
 			int range = (getSize(stack) ^ 1) / 2;
@@ -163,8 +167,8 @@ public class ItemPlacementMirror extends ItemMod {
 						int yp = pos.blockY + y + dir.offsetY;
 						int zp =  pos.blockZ + z + dir.offsetZ;
 						
-						int id = player.worldObj.getBlockId(xp, yp, zp);
-						if(Block.blocksList[id] == null || Block.blocksList[id].isAirBlock(player.worldObj, xp, yp, zp))
+						int id1 = player.worldObj.getBlockId(xp, yp, zp);
+						if(Block.blocksList[id1] == null || Block.blocksList[id1].isAirBlock(player.worldObj, xp, yp, zp) || Block.blocksList[id1].isBlockReplaceable(player.worldObj, xp, yp, zp))
 							coords.add(new ChunkCoordinates(xp, yp,zp));
 					}
 				}
