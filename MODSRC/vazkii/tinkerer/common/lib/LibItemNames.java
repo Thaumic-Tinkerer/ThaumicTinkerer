@@ -70,6 +70,7 @@ public final class LibItemNames {
 		LibResources.PREFIX_MOD + "ichorCap",
 		LibResources.PREFIX_MOD + "ichorclothRod",
 		LibResources.PREFIX_MOD + "netherShard",
-		LibResources.PREFIX_MOD + "enderShard"
+		LibResources.PREFIX_MOD + "enderShard",
+		LibResources.PREFIX_MOD + "soulOrb"
 	};
 }
