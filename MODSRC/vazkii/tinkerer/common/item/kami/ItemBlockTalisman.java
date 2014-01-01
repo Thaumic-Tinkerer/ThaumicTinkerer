@@ -21,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.EnumRarity;
@@ -141,7 +142,8 @@ public class ItemBlockTalisman extends ItemMod {
 			}
 			
 			if(highest == -1) {
-				if(hasFreeSlot) {
+				ItemStack heldItem = player.inventory.getItemStack(); 
+				if(hasFreeSlot && heldItem == null || (heldItem.itemID != id && heldItem.getItemDamage() != meta)) {
 					ItemStack stack = new ItemStack(id, remove(par1ItemStack, 64), meta);
 					if(stack.stackSize != 0)
 						player.inventory.addItemStackToInventory(stack);
