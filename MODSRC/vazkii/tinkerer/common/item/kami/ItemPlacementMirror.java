@@ -201,7 +201,6 @@ public class ItemPlacementMirror extends ItemMod {
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		super.registerIcons(par1IconRegister);
 		icons[0] = IconHelper.forItem(par1IconRegister, this, 0);
 		icons[1] = IconHelper.forItem(par1IconRegister, this, 1);
 	}

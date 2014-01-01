@@ -217,6 +217,9 @@ public final class ModResearch {
 
 			research = new KamiResearchItem(LibResearch.KEY_BLOCK_TALISMAN, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAGIC, 1), 11, 14, 5, new ItemStack(ModItems.blockTalisman)).setHidden().setParents(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.KEY_ICHOR_SHOVEL_GEM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOCK_TALISMAN));
+			
+			research = new KamiResearchItem(LibResearch.KEY_PLACEMENT_MIRROR, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.CRAFT, 2).add(Aspect.CRYSTAL, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MIND, 1), 14, 13, 5, new ItemStack(ModItems.placementMirror)).setHidden().setParents(LibResearch.KEY_BLOCK_TALISMAN).registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_PLACEMENT_MIRROR));
 		}
 	}
 

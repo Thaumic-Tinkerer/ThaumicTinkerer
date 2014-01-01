@@ -19,7 +19,7 @@ public class RenderPlacementMirror implements IItemRenderer {
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-		return true;
+		return type != ItemRenderType.INVENTORY;
 	}
 
 	@Override
@@ -57,15 +57,6 @@ public class RenderPlacementMirror implements IItemRenderer {
 			case EQUIPPED_FIRST_PERSON : {
 				renderItem(ItemRenderType.EQUIPPED, item, data);
 				break;
-			}
-			case INVENTORY : {
-				GL11.glEnable(GL11.GL_BLEND);
-				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				Icon icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, 0);
-				render.renderIcon(0, 0, icon, 16, 16);
-				GL11.glDisable(GL11.GL_BLEND);
-				icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, 1);
-				render.renderIcon(0, 0, icon, 16, 16);
 			}
 			default : break;
 			}

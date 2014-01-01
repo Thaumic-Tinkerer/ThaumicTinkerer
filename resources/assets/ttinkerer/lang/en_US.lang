@@ -400,3 +400,8 @@ ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the P
 ttresearch.name.BLOCK_TALISMAN=Black Hole Talisman
 ttresearch.lore.BLOCK_TALISMAN=More pascal than your mind can take
 ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the talisman is empty, it can be shift right clicked into another block to change it's binding.
+
+# -- WORLDSHAPER'S SEEING GLASS
+ttresearch.name.PLACEMENT_MIRROR=Worldshaper's Seeing Glass
+ttresearch.lore.PLACEMENT_MIRROR=Eye of Mercury
+ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Talismans that contain the required block.
