@@ -144,7 +144,7 @@ public class ItemPlacementMirror extends ItemMod {
 	
 	public static ChunkCoordinates[] getBlocksToPlace(ItemStack stack, EntityPlayer player) {
 		List<ChunkCoordinates> coords = new ArrayList();
-		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(player.worldObj, player, true, 4.5);
+		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(player.worldObj, player, true, 5);
 		if(pos != null) {
 			ForgeDirection dir = ForgeDirection.getOrientation(pos.sideHit);
             int rotation = MathHelper.floor_double((double) (player.rotationYaw * 4F / 360F) + 0.5D) & 3;
@@ -158,8 +158,15 @@ public class ItemPlacementMirror extends ItemMod {
 			
 			for(int x = -xOff; x < xOff + 1; x++)
 				for(int y = 0; y < yOff * 2 + 1; y++) {
-					for(int z = -zOff; z < zOff + 1; z++)
-						coords.add(new ChunkCoordinates(pos.blockX + x + dir.offsetX, pos.blockY + y + dir.offsetY, pos.blockZ + z + dir.offsetZ));
+					for(int z = -zOff; z < zOff + 1; z++) {
+						int xp = pos.blockX + x + dir.offsetX;
+						int yp = pos.blockY + y + dir.offsetY;
+						int zp =  pos.blockZ + z + dir.offsetZ;
+						
+						int id = player.worldObj.getBlockId(xp, yp, zp);
+						if(Block.blocksList[id] == null || Block.blocksList[id].isAirBlock(player.worldObj, xp, yp, zp))
+							coords.add(new ChunkCoordinates(xp, yp,zp));
+					}
 				}
 
 		}
@@ -176,15 +183,15 @@ public class ItemPlacementMirror extends ItemMod {
 		ItemNBTHelper.setInt(stack, TAG_SIZE, size | 1);
 	}
 
-	private static int getSize(ItemStack stack) {
+	public static int getSize(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_SIZE, 3) | 1;
 	}
 	
-	private static int getBlockID(ItemStack stack) {
+	public static int getBlockID(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
 
-	private static int getBlockMeta(ItemStack stack) {
+	public static int getBlockMeta(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
 	}
 	

@@ -21,6 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
+import vazkii.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
 import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
@@ -72,6 +73,7 @@ public class TTClientProxy extends TTCommonProxy {
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
 			MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());
+			MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
 		}
 	}
 

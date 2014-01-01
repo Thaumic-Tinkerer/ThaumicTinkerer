@@ -27,7 +27,7 @@ import vazkii.tinkerer.client.lib.LibResources;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class SoulHeartClientHandler {
+public final class SoulHeartClientHandler {
 
 	private static final ResourceLocation iconsResource = new ResourceLocation("textures/gui/icons.png");
 	private static final ResourceLocation heartsResource = new ResourceLocation(LibResources.GUI_SOUL_HEARTS);
