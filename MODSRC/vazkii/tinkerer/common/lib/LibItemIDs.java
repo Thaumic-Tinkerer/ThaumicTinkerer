@@ -36,5 +36,28 @@ public final class LibItemIDs {
 	public static int idRevealingHelm = 22167;
 	public static int idInfusedInkwell = 22168;
 	public static int idFocusDeflect = 22169;
-	
+	public static int idShareBook = 22170;
+
+	public static int idKamiResource = 23150;
+	public static int idIchorHelm = 23151;
+	public static int idIchorChest = 23152;
+	public static int idIchorLegs = 23153;
+	public static int idIchorBoots = 23154;
+	public static int idIchorHelmGem = 23155;
+	public static int idIchorChestGem = 23156;
+	public static int idIchorLegsGem = 23157;
+	public static int idIchorBootsGem = 23158;
+	public static int idCatAmulet = 23159;
+	public static int idIchorPick = 23160;
+	public static int idIchorShovel = 23161;
+	public static int idIchorAxe = 23162;
+	public static int idIchorSword = 23163;
+	public static int idIchorPickGem = 23164;
+	public static int idIchorShovelGem = 23165;
+	public static int idIchorAxeGem = 23166;
+	public static int idIchorSwordGem = 23167;
+	public static int idIchorPouch = 23168;
+	public static int idBlockTalisman = 23169;
+	public static int idPlacementMirror = 23170;
+
 }

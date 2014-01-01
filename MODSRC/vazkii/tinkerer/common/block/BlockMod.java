@@ -36,9 +36,9 @@ public class BlockMod extends Block {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
-	/** Does the block register in the creative inv? **/
 	boolean registerInCreative() {
 		return true;
 	}
+
 
 }

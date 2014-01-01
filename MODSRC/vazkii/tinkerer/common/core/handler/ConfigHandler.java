@@ -18,12 +18,14 @@ import java.io.File;
 
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.Property;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
 import vazkii.tinkerer.common.lib.LibEnchantNames;
 import vazkii.tinkerer.common.lib.LibItemIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import cpw.mods.fml.common.Loader;
 
 public final class ConfigHandler {
 
@@ -32,16 +34,47 @@ public final class ConfigHandler {
 	private static final String CATEGORY_POTIONS = "potions";
 	private static final String CATEGORY_ENCHANTMENTS = "enchantments";
 
-	private static ConfigCategory categoryPotions;
-	private static ConfigCategory categoryEnchants;
+	private static final String CATEGORY_KAMI_ITEMS = "item.kami";
+	private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
+	private static final String CATEGORY_KAMI_GENERAL = "general.kami";
+
+	public static boolean enableKami = false;
+	public static boolean useTootlipIndicators = true;
+	public static boolean enableSurvivalShareTome = true;
+	
+	public static boolean showPlacementMirrorBlocks = true;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
-		categoryPotions = new ConfigCategory(CATEGORY_POTIONS);
-		categoryEnchants = new ConfigCategory(CATEGORY_ENCHANTMENTS);
+		new ConfigCategory(CATEGORY_POTIONS);
+		new ConfigCategory(CATEGORY_ENCHANTMENTS);
+		new ConfigCategory(CATEGORY_KAMI_ITEMS);
+		new ConfigCategory(CATEGORY_KAMI_BLOCKS);
+		new ConfigCategory(CATEGORY_KAMI_GENERAL);
+
+		String comment = "These will only be used if KAMI is loaded. (KAMI is a separate download you can find in the Thaumic Tinkerer thread)";
+		config.addCustomCategoryComment(CATEGORY_KAMI_ITEMS, comment);
+		config.addCustomCategoryComment(CATEGORY_KAMI_BLOCKS, comment);
+		config.addCustomCategoryComment(CATEGORY_KAMI_GENERAL, comment);
 
 		config.load();
+
+		enableKami = Loader.isModLoaded("ThaumicTinkererKami");
+
+		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
+		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
+		useTootlipIndicators = propEnableTooltips.getBoolean(true);
+		
+		Property propEnableSurvivalShareTome = config.get(Configuration.CATEGORY_GENERAL, "shareTome.survival.enabled", true);
+		propEnableSurvivalShareTome.comment = "Set to false to disable the crafting recipe for the Tome of Research Sharing.";
+		enableSurvivalShareTome = propEnableSurvivalShareTome.getBoolean(true);
+		
+		if(enableKami) {
+			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
+			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
+			showPlacementMirrorBlocks = propShowPlacementMirrorBlocks.getBoolean(true);
+		}
 
 		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
 		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.idDarkQuartzSlab);
@@ -58,7 +91,8 @@ public final class ConfigHandler {
 		LibBlockIDs.idDislocator = loadBlock(LibBlockNames.DISLOCATOR, LibBlockIDs.idDislocator);
 		LibBlockIDs.idRepairer = loadBlock(LibBlockNames.REPAIRER, LibBlockIDs.idRepairer);
 		LibBlockIDs.idAspectAnalyzer = loadBlock(LibBlockNames.ASPECT_ANALYZER, LibBlockIDs.idAspectAnalyzer);
-		
+		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
+
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
 		LibItemIDs.idGaseousLight = loadItem(LibItemNames.GASEOUS_LIGHT, LibItemIDs.idGaseousLight);
@@ -79,7 +113,30 @@ public final class ConfigHandler {
 		LibItemIDs.idRevealingHelm = loadItem(LibItemNames.REVEALING_HELM, LibItemIDs.idRevealingHelm);
 		LibItemIDs.idInfusedInkwell = loadItem(LibItemNames.INFUSED_INKWELL, LibItemIDs.idInfusedInkwell);
 		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
+		LibItemIDs.idShareBook = loadItem(LibItemNames.SHARE_BOOK, LibItemIDs.idShareBook);
 		
+		LibItemIDs.idKamiResource = loadKamiItem(LibItemNames.KAMI_RESOURCE, LibItemIDs.idKamiResource);
+		LibItemIDs.idIchorHelm = loadKamiItem(LibItemNames.ICHOR_HELM, LibItemIDs.idIchorHelm);
+		LibItemIDs.idIchorChest = loadKamiItem(LibItemNames.ICHOR_CHEST, LibItemIDs.idIchorChest);
+		LibItemIDs.idIchorLegs = loadKamiItem(LibItemNames.ICHOR_LEGS, LibItemIDs.idIchorLegs);
+		LibItemIDs.idIchorBoots = loadKamiItem(LibItemNames.ICHOR_BOOTS, LibItemIDs.idIchorBoots);
+		LibItemIDs.idIchorHelmGem = loadKamiItem(LibItemNames.ICHOR_HELM_GEM, LibItemIDs.idIchorHelmGem);
+		LibItemIDs.idIchorChestGem = loadKamiItem(LibItemNames.ICHOR_CHEST_GEM, LibItemIDs.idIchorChestGem);
+		LibItemIDs.idIchorLegsGem = loadKamiItem(LibItemNames.ICHOR_LEGS_GEM, LibItemIDs.idIchorLegsGem);
+		LibItemIDs.idIchorBootsGem = loadKamiItem(LibItemNames.ICHOR_BOOTS_GEM, LibItemIDs.idIchorBootsGem);
+		LibItemIDs.idCatAmulet = loadKamiItem(LibItemNames.CAT_AMULET, LibItemIDs.idCatAmulet);
+		LibItemIDs.idIchorPick = loadKamiItem(LibItemNames.ICHOR_PICK, LibItemIDs.idIchorPick);
+		LibItemIDs.idIchorShovel = loadKamiItem(LibItemNames.ICHOR_SHOVEL, LibItemIDs.idIchorShovel);
+		LibItemIDs.idIchorAxe = loadKamiItem(LibItemNames.ICHOR_AXE, LibItemIDs.idIchorAxe);
+		LibItemIDs.idIchorSword = loadKamiItem(LibItemNames.ICHOR_SWORD, LibItemIDs.idIchorSword);
+		LibItemIDs.idIchorPickGem = loadKamiItem(LibItemNames.ICHOR_PICK_GEM, LibItemIDs.idIchorPickGem);
+		LibItemIDs.idIchorShovelGem = loadKamiItem(LibItemNames.ICHOR_SHOVEL_GEM, LibItemIDs.idIchorShovelGem);
+		LibItemIDs.idIchorAxeGem = loadKamiItem(LibItemNames.ICHOR_AXE_GEM, LibItemIDs.idIchorAxeGem);
+		LibItemIDs.idIchorSwordGem = loadKamiItem(LibItemNames.ICHOR_SWORD_GEM, LibItemIDs.idIchorSwordGem);
+		LibItemIDs.idIchorPouch = loadKamiItem(LibItemNames.ICHOR_POUCH, LibItemIDs.idIchorPouch);
+		LibItemIDs.idBlockTalisman = loadKamiItem(LibItemNames.BLOCK_TALISMAN, LibItemIDs.idBlockTalisman);
+		LibItemIDs.idPlacementMirror = loadKamiItem(LibItemNames.PLACEMENT_MIRROR, LibItemIDs.idPlacementMirror);
+
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
 		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);
@@ -92,6 +149,10 @@ public final class ConfigHandler {
 
 	private static int loadItem(String label, int defaultID) {
 		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
+	}
+
+	private static int loadKamiItem(String label, int defaultID) {
+		return config.getItem(CATEGORY_KAMI_ITEMS, "id_item." + label, defaultID).getInt(defaultID);
 	}
 
 	private static int loadBlock(String label, int defaultID) {

@@ -14,13 +14,20 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
+import net.minecraft.item.EnumRarity;
+import net.minecraftforge.client.EnumHelperClient;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
+import vazkii.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
+import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderRepairer;
+import vazkii.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
 import vazkii.tinkerer.client.render.tile.RenderTileFunnel;
@@ -31,14 +38,27 @@ import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.common.item.ModItems;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class TTClientProxy extends TTCommonProxy {
+
+	public static EnumRarity kamiRarity;
+
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		super.preInit(event);
+
+		if(ConfigHandler.enableKami)
+			kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
+	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
@@ -49,6 +69,13 @@ public class TTClientProxy extends TTCommonProxy {
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		registerTiles();
 		registerRenderIDs();
+
+		if(ConfigHandler.enableKami) {
+			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
+			MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());
+			if(ConfigHandler.showPlacementMirrorBlocks)
+				MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
+		}
 	}
 
 	private void registerTiles() {
@@ -65,6 +92,10 @@ public class TTClientProxy extends TTCommonProxy {
 
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
+		
+		if(ConfigHandler.enableKami) {
+			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror.itemID, new RenderPlacementMirror());
+		}
 	}
 
 	@Override

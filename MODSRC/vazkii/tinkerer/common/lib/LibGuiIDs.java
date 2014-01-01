@@ -21,4 +21,6 @@ public final class LibGuiIDs {
 	public static final int GUI_ID_ENCHANTER = 2;
 	public static final int GUI_ID_ASPECT_ANALYZER = 3;
 
+	public static final int GUI_ID_ICHOR_POUCH = 50;
+
 }

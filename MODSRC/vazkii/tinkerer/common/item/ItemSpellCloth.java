@@ -29,6 +29,7 @@ public class ItemSpellCloth extends ItemMod {
 		super(par1);
 		setMaxDamage(LibFeatures.SPELL_CLOTH_USES);
 		setMaxStackSize(1);
+		setNoRepair();
 
 		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe(this));
 	}

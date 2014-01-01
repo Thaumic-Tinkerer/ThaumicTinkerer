@@ -21,6 +21,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.research.ResearchPage.PageType;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -47,7 +48,11 @@ public class TTResearchItem extends ResearchItem {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getText() {
-		return StatCollector.translateToLocal("ttresearch.prefix") + StatCollector.translateToLocal("ttresearch.lore." + key);
+		return (ConfigHandler.useTootlipIndicators ? StatCollector.translateToLocal(getPrefix()): "") + StatCollector.translateToLocal("ttresearch.lore." + key);
+	}
+
+	String getPrefix() {
+		return "ttresearch.prefix";
 	}
 
 	@Override
@@ -56,7 +61,7 @@ public class TTResearchItem extends ResearchItem {
 			if(page.type == PageType.TEXT)
 				page.text = "ttresearch.page." + key + "." + page.text;
 
-			if(page.type == PageType.INFUSION_CRAFTING) {
+			if(checkInfusion() && page.type == PageType.INFUSION_CRAFTING) {
 				if(parentsHidden == null || parentsHidden.length == 0)
 					parentsHidden = new String[] { "INFUSION" };
 				else {
@@ -71,5 +76,9 @@ public class TTResearchItem extends ResearchItem {
 
 
 		return super.setPages(par);
+	}
+
+	boolean checkInfusion() {
+		return true;
 	}
 }

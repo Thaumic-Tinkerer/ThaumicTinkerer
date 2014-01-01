@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Nov 30, 2013, 5:27:39 PM (GMT)]
  */
 package vazkii.tinkerer.client.render.tile;
@@ -48,7 +48,7 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 		int rotation = meta == 2 ? 0 : meta == 3 ? 180 : meta == 4 ? 270 : 90;
 
 		TileRepairer repairer = (TileRepairer) tileentity;
-		
+
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -70,8 +70,8 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 			final float scale = 0.5F;
 			GL11.glScalef(scale, scale, scale);
 			GL11.glTranslatef(-0.5F, (float) (-2.5F + Math.sin(repairer.ticksExisted / 10F) * 0.1F), 0F);
-			
-			float deg = (float) (repairer.ticksExisted * 0.75F % 360F);
+
+			float deg = repairer.ticksExisted * 0.75F % 360F;
 			GL11.glTranslatef(1F / 2F, 1F / 2F, 1F / 32F);
 			GL11.glRotatef(deg, 0F, 1F, 0F);
 			GL11.glTranslatef(-1F / 2F, -1F / 2F, -1F / 32F);
@@ -95,7 +95,7 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
         	} while(renderPass < item.getItem().getRenderPasses(item.getItemDamage()));
 			GL11.glPopMatrix();
 		}
-		
+
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		bindTexture(modelTex);
@@ -104,13 +104,13 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 		model.renderGlass();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glScalef(1F, -1F, -1F);
-		
+
 		renderOverlay((TileRepairer) tileentity, ((TileRepairer) tileentity).tookLastTick ? repair : repairOff , 1.25F);
 		GL11.glPopMatrix();
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 	}
 
-	
+
 	private void renderOverlay(TileRepairer tablet, ResourceLocation texture, double size) {
 		Minecraft mc = ClientHelper.minecraft();
 		mc.renderEngine.bindTexture(texture);
@@ -119,7 +119,7 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glTranslatef(0F, -0.525F, 0F);
-		float deg = (float) (tablet.ticksExisted * 0.75F % 360F);
+		float deg = tablet.ticksExisted * 0.75F % 360F;
 		GL11.glRotatef(deg, 0F, 1F, 0F);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		Tessellator tess = Tessellator.instance;

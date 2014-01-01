@@ -19,7 +19,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,7 +28,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
@@ -42,8 +40,6 @@ public class BlockMagnet extends BlockModContainer {
 
 	Random random;
 
-	public static Icon lightning;
-
 	public BlockMagnet(int par1) {
 		super(par1, Material.iron);
 		setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 1F / 16F * 2F, 0.9375F);
@@ -52,12 +48,6 @@ public class BlockMagnet extends BlockModContainer {
 		setStepSound(soundWoodFootstep);
 
 		random = new Random();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		lightning = IconHelper.forName(par1IconRegister, "lightningRing");
 	}
 
 	@Override

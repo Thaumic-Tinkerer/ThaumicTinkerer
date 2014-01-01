@@ -93,7 +93,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			enchantments.clear();
 			levels.clear();
 		}
-		
+
 		if(working) {
 			ItemStack tool = getStackInSlot(0);
 			if(tool == null) {
@@ -170,7 +170,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 			}
 		}
 	}
-	
+
 	@Override
 	public void onInventoryChanged() {
 		super.onInventoryChanged();

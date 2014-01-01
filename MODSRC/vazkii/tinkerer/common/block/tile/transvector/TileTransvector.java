@@ -15,56 +15,43 @@
 package vazkii.tinkerer.common.block.tile.transvector;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import vazkii.tinkerer.common.block.tile.TileCamo;
 
-public abstract class TileTransvector extends TileEntity {
+public abstract class TileTransvector extends TileCamo {
 
 	private static final String TAG_X_TARGET = "xt";
 	private static final String TAG_Y_TARGET = "yt";
 	private static final String TAG_Z_TARGET = "zt";
 	private static final String TAG_CHEATY_MODE = "cheatyMode";
-	private static final String TAG_CAMO = "camo";
-	private static final String TAG_CAMO_META = "camoMeta";
-
-	public int camo;
-	public int camoMeta;
 
 	public int x = 0, y = -1, z = 0;
 	private boolean cheaty;
 
 	@Override
-	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
-		super.writeToNBT(par1nbtTagCompound);
-
-		writeCustomNBT(par1nbtTagCompound);
+	public boolean canUpdate() {
+		return true;
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
-		super.readFromNBT(par1nbtTagCompound);
-
-		readCustomNBT(par1nbtTagCompound);
-	}
-
 	public void writeCustomNBT(NBTTagCompound cmp) {
+		super.writeCustomNBT(cmp);
+
 		cmp.setInteger(TAG_X_TARGET, x);
 		cmp.setInteger(TAG_Y_TARGET, y);
 		cmp.setInteger(TAG_Z_TARGET, z);
 		cmp.setBoolean(TAG_CHEATY_MODE, cheaty);
-		cmp.setInteger(TAG_CAMO, camo);
-		cmp.setInteger(TAG_CAMO_META, camoMeta);
 	}
 
+	@Override
 	public void readCustomNBT(NBTTagCompound cmp) {
+		super.readCustomNBT(cmp);
+
 		x = cmp.getInteger(TAG_X_TARGET);
 		y = cmp.getInteger(TAG_Y_TARGET);
 		z = cmp.getInteger(TAG_Z_TARGET);
 		cheaty = cmp.getBoolean(TAG_CHEATY_MODE);
-		camo = cmp.getInteger(TAG_CAMO);
-		camoMeta = cmp.getInteger(TAG_CAMO_META);
+
 	}
 
 	public final TileEntity getTile() {
@@ -73,7 +60,7 @@ public abstract class TileTransvector extends TileEntity {
 
 		TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 
-		if((tile == null && tileRequiredAtLink()) || ((Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty)) {
+		if(tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
 			y = -1;
 			return null;
 		}
@@ -87,17 +74,4 @@ public abstract class TileTransvector extends TileEntity {
 		return !cheaty;
 	}
 
-	@Override
-	public Packet getDescriptionPacket() {
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
-	}
-
-	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
-		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
-		worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
-	}
 }

@@ -27,6 +27,25 @@ ttmisc.startEnchant=Start Enchanting
 ttmisc.full=§cFull
 ttmisc.notAbsorbing=§cNot Absorbing
 ttmisc.absorbing=§aAbsorbing
+ttmisc.shareTome.write=Research Written!
+ttmisc.shareTome.notOnline=The player who this research belongs to is not online.
+ttmisc.shareTome.sync=Research Acquired.
+ttmisc.shareTome.noAsign=Not Asigned
+ttmisc.shareTome.playerName=Bound to %s's research.
+
+# KAMI MISC
+ttmisc.mode.pick.0=Block Mode
+ttmisc.mode.pick.1=Square Mode
+ttmisc.mode.pick.2=Line Mode
+ttmisc.mode.shovel.0=Block Mode
+ttmisc.mode.shovel.1=Square Mode
+ttmisc.mode.shovel.2=Column Mode
+ttmisc.mode.axe.0=Block Mode
+ttmisc.mode.axe.1=Square Mode
+ttmisc.mode.axe.2=Tree Mode
+ttmisc.mode.sword.0=Single Mode
+ttmisc.mode.sword.1=Area Mode
+ttmisc.mode.sword.2=Soul Mode
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -47,8 +66,40 @@ item.ttinkerer:focusHeal.name=Wand Focus: Mending
 item.ttinkerer:focusEnderChest.name=Wand Focus: Ender Rift
 item.ttinkerer:bloodSword.name=Cursed Spirit's Blade
 item.ttinkerer:revealingHelm.name=Helmet of Revealing
-item.ttinkerer:infusedInkwell.name=Infused Scribing Tools
+item.ttinkerer:infusedInkwell.name=Infused Scribing Tools (NYI)
 item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
+item.ttinkerer:shareBook.name=Tome of Knowledge Sharing
+
+# KAMI ITEM NAMES
+item.ttinkerer:kamiResource.name=Kami Resource
+item.ttinkerer:ichor.name=Ichor
+item.ttinkerer:ichorCloth.name=Ichorcloth
+item.ttinkerer:ichorium.name=Ichorium
+item.ttinkerer:ichorNugget.name=Ichorium Nugget
+item.ttinkerer:ichorCap.name=Ichorium Wand Cap
+item.ttinkerer:ichorclothRod.name=Ichorcloth Strapped Silverwood Wand Core
+item.ttinkerer:netherShard.name=Nether Shard
+item.ttinkerer:enderShard.name=Ender Shard
+item.ttinkerer:ichorclothHelm.name=Ichorcloth Cowl
+item.ttinkerer:ichorclothChest.name=Ichorcloth Robe
+item.ttinkerer:ichorclothLegs.name=Ichorcloth Leggings
+item.ttinkerer:ichorclothBoots.name=Ichorcloth Boots
+item.ttinkerer:ichorclothHelmGem.name=Cowl of the Abyssal Depths
+item.ttinkerer:ichorclothChestGem.name=Robes of the Stratosphere
+item.ttinkerer:ichorclothLegsGem.name=Leggings of the Burning Mantle
+item.ttinkerer:ichorclothBootsGem.name=Boots of the Horizontal Shield
+item.ttinkerer:catAmulet.name=Feline Amulet
+item.ttinkerer:ichorPick.name=Ichorium Pickaxe
+item.ttinkerer:ichorShovel.name=Ichorium Shovel
+item.ttinkerer:ichorAxe.name=Ichorium Axe
+item.ttinkerer:ichorSword.name=Ichorium Sword
+item.ttinkerer:ichorPickGem.name=Awakened Ichorium Pickaxe
+item.ttinkerer:ichorShovelGem.name=Awakened Ichorium Shovel
+item.ttinkerer:ichorAxeGem.name=Awakened Ichorium Axe
+item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
+item.ttinkerer:ichorPouch.name=Bottomless Pouch
+item.ttinkerer:blockTalisman.name=Black Hole Talisman
+item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -65,6 +116,7 @@ tile.ttinkerer:funnel.name=Essentia Funnel
 tile.ttinkerer:dislocator.name=Transvector Dislocator
 tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
+tile.ttinkerer:platform.name=Ethereal Platform
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost
@@ -74,8 +126,13 @@ enchantment.ttinkerer:desintegrate=Desintegrate
 enchantment.ttinkerer:quickDraw=Quick Draw
 enchantment.ttinkerer:vampirism=Vampirism
 
+# WAND COMPONENTS
+item.Wand.ichor.cap=Ichorium Adorned
+item.Wand.ichorcloth.rod=Ichorcloth Strapped Silverwood
+
 # RESEARCH
 ttresearch.prefix=[TT] 
+ttresearch.prefix.kami=[TTKami] 
 tc.research_category.TT_ENCHANTING=Enchanting
 
 # -- COMPUTERCRAFT PERIPHERALS
@@ -95,6 +152,11 @@ ttresearch.page.ASPECT_ANALYZER.0=You created a device that allows Computers to 
 ttresearch.name.DARK_QUARTZ=Smokey Quartz
 ttresearch.lore.DARK_QUARTZ=Shadow of the Day
 ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative. All regular blocks that can be made with quartz, can also be made with smokey quartz, and they look black.<BR><BR>Smokey Quartz itself can be made with a piece of coal or charcoal for tinting, and a few pieces of regular nether quartz.
+
+# -- TOME OF KNOWLEDGE SHARING
+ttresearch.name.SHARE_TOME=Tome of Knowledge Sharing
+ttresearch.lore.SHARE_TOME=A Goldfish's Diary
+ttresearch.page.SHARE_TOME.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else while you're logged on to the server, they'll get all the research you've discovered so far.<BR><BR>(Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvector Interface
@@ -237,11 +299,6 @@ ttresearch.name.REVEALING_HELM=Helmet of Revealing
 ttresearch.lore.REVEALING_HELM=This is why I can't use photoshop
 ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much protection from attacking zombies. You think you have a fix for that though. By strapping goggles of revealing onto a thaumium helmet, you can get the benifits of both. Well, it turns out it is a bit more complicated than that. A bit of magic is required to avoid feedback loops, and a bit of magic to keep them from slipping off, but on the whole, it more or less works.
 
-# -- INFUSED SCRIBING TOOLS
-ttresearch.name.INFUSED_INKWELL=Infused Scribing Tools
-ttresearch.lore.INFUSED_INKWELL=More ink for the masses
-ttresearch.page.INFUSED_INKWELL.0=By infusing a standard set of Scribing Tools with the the essence of the void you have found a way to make it hold more ink inside it.<BR><BR>(Note: This research is currently disabled and waiting on a TC API hook. If you had it before you updated TT, sorry for that)
-
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumic Restorer
 ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
@@ -251,3 +308,111 @@ ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools
 ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
 ttresearch.lore.FOCUS_DEFLECT=I'm not an Angel
 ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.
+
+# -- ETHERAL PLATFORM
+ttresearch.name.PLATFORM=Ethereal Platform
+ttresearch.lore.PLATFORM=Hide the Bromine and Barium
+ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
+
+# KAMI RESEARCH
+
+# -- DIMENSIONAL SHARDS
+ttresearch.name.DIMENSION_SHARDS=Dimensional Shards
+ttresearch.lore.DIMENSION_SHARDS=Rarities of the Otherworld
+ttresearch.page.DIMENSION_SHARDS.0=Similarly to the overworld, the Nether and the End also have their specific shards, these are rarely held by either Zombie Pigmen living in the Nether or Endermen living in the End. They might be useful for something later on, although you're not quite sure how.<BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
+
+# -- ICHOR
+ttresearch.name.ICHOR=Ichor
+ttresearch.lore.ICHOR=Blood of the Gods
+ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy you have discovered a substance that is what you consider to be the next step in your endeavours.<BR><BR>This extremely powerful substance, which you call "Ichor" contains the raw awakened power of a nether star. You are sure you will be able to put it to use for countless devices in the future.
+
+# -- ICHORCLOTH
+ttresearch.name.ICHOR_CLOTH=Ichorcloth
+ttresearch.lore.ICHOR_CLOTH=Life Fiber Sychronization
+ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funilly enough, this process does not require the typical infusion procedure, as the Ichor easilly absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
+
+# -- ICHORIUM
+ttresearch.name.ICHORIUM=Ichorium
+ttresearch.lore.ICHORIUM=Not from the 55th floor
+ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resillient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+
+# -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
+ttresearch.name.ICHORCLOTH_ROD=Ichorcloth Strapped Silverwood Wand Core
+ttresearch.lore.ICHORCLOTH_ROD=That's a mouthful
+ttresearch.page.ICHORCLOTH_ROD.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
+
+# -- ICHORIUM WAND CAPS
+ttresearch.name.ICHOR_CAP=Ichorium Wand Caps
+ttresearch.lore.ICHOR_CAP=Somewhat like a Steam Sale
+ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+
+# -- ICHORCLOTH ARMOR
+ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
+ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely umbreakable and will never sustain as much as a scratch.
+
+# -- COWL OF THE ABYSSAL DEPTHS
+ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
+ttresearch.lore.ICHORCLOTH_HELM_GEM=Just friendly crustaceans
+ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case.
+
+# -- ROBES OF THE STRATOSPHERE
+ttresearch.name.ICHORCLOTH_CHEST_GEM=Robes of the Stratosphere
+ttresearch.lore.ICHORCLOTH_CHEST_GEM=Guys can wear these too
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorcloth Robes into a more powerful form.<BR><BR>Starting off, by simply wearing these robes, the wearer is blessed with the power of eternal flight (wings that don't burn after 5 minutes included), as well as having all fall damage negated.<BR>The robes also passively protect the wearer from any incoming simple projectiles, akin to the focus of Distortion.
+
+# -- LEGGINGS OF THE BURNING MANTLE
+ttresearch.name.ICHORCLOTH_LEGS_GEM=Leggings of the Burning Mantle
+ttresearch.lore.ICHORCLOTH_LEGS_GEM=A warm feeling
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevales given the creator's existance in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing.
+
+# -- BOOTS OF THE HORIZONTAL SHIELD
+ttresearch.name.ICHORCLOTH_BOOTS_GEM=Boots of the Horizontal Shield
+ttresearch.lore.ICHORCLOTH_BOOTS_GEM=From Winterfell to King's Landing in a breeze
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Boots into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage.
+
+# -- FELINE AMULET
+ttresearch.name.CAT_AMULET=Feline Amulet
+ttresearch.lore.CAT_AMULET=No fighting with cats in the cafeteria
+ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great.
+
+# -- ICHORIUM TOOLS
+ttresearch.name.ICHOR_TOOLS=Ichorium Tools
+ttresearch.lore.ICHOR_TOOLS=The top tier of rat... tools
+ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium. These tools are extremely powerful, even more so than diamond, furthermore, they never break.<BR><BR>For the creation of these tools, mundane sticks aren't enough, you decided to use Silverwood rods in replacement.
+
+# -- AWAKENED ICHORIUM PICKAXE
+ttresearch.name.ICHOR_PICK_GEM=Awakened Ichorium Pickaxe
+ttresearch.lore.ICHOR_PICK_GEM=Who needs a quarry?
+ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe, this pickaxe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue) it'll break a 10 block long line starting on the original block.
+
+# -- AWAKENED ICHORIUM SHOVEL
+ttresearch.name.ICHOR_SHOVEL_GEM=Awakened Ichorium Shovel
+ttresearch.lore.ICHOR_SHOVEL_GEM=Gravel no more!
+ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel, this shovel contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+
+# -- AWAKENED ICHORIUM AXE
+ttresearch.name.ICHOR_AXE_GEM=Awakened Ichorium Axe
+ttresearch.lore.ICHOR_AXE_GEM=Cut you like a Clover
+ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe, this axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
+
+# -- AWAKENED ICHORIUM SWORD
+ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
+ttresearch.lore.ICHOR_SWORD_GEM=Mom's knife
+ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword, this sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs of the same type in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
+ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existant. They block damage their wielder would take, but disappear in the proccess.
+
+# -- BOTTOMLESS POUCH
+ttresearch.name.ICHOR_POUCH=Bottomless Pouch
+ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
+ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can not only carry more than four chests, but it also doubles as a standard Focus Pouch, allowing any foci within it to be inserted in a wand like normally. You can kiss your inventory problems goodbye.
+
+# -- BLACK HOLE TALISMAN
+ttresearch.name.BLOCK_TALISMAN=Black Hole Talisman
+ttresearch.lore.BLOCK_TALISMAN=More pascal than your mind can take
+ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the talisman is empty, it can be shift right clicked into another block to change it's binding.
+
+# -- WORLDSHAPER'S LOOKING GLASS
+ttresearch.name.PLACEMENT_MIRROR=Worldshaper's Looking Glass
+ttresearch.lore.PLACEMENT_MIRROR=Eye of Mercury
+ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Talismans that contain the required block.
