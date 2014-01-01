@@ -151,7 +151,7 @@ public class ItemPlacementMirror extends ItemMod {
 				pos.blockY--;
 			
 			ForgeDirection dir = ForgeDirection.getOrientation(pos.sideHit);
-            int rotation = MathHelper.floor_double((double) (player.rotationYaw * 4F / 360F) + 0.5D) & 3;
+            int rotation = MathHelper.floor_double(player.rotationYaw * 4F / 360F + 0.5D) & 3;
 			int range = (getSize(stack) ^ 1) / 2;
 			
 			boolean topOrBottom = dir == ForgeDirection.UP || dir == ForgeDirection.DOWN;
