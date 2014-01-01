@@ -27,6 +27,11 @@ ttmisc.startEnchant=Starte Verzaubern
 ttmisc.full=§cVoll
 ttmisc.notAbsorbing=§cNicht Absorbierend
 ttmisc.absorbing=§aAbsorbierend
+ttmisc.shareTome.write=Forschung niedergeschrieben!
+ttmisc.shareTome.notOnline=Der Spieler, dem diese Forschung gehört, ist nicht online.
+ttmisc.shareTome.sync=Forschung erlangt.
+ttmisc.shareTome.noAssign=Nicht zugewiesen
+ttmisc.shareTome.playerName=Gebunden an die Forschung von %s.
 
 # KAMI MISC
 ttmisc.mode.pick.0=Block-Modus
@@ -63,6 +68,7 @@ item.ttinkerer:bloodSword.name=Klinge des Verfluchten Geistes
 item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
 item.ttinkerer:focusDeflect.name=Stabfokus: Verzerrung
+item.ttinkerer:shareBook.name=Buch des Wissensteilens
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=Kami-Ressource
@@ -93,6 +99,7 @@ item.ttinkerer:ichorAxeGem.name=Erweckte Ichoriumaxt
 item.ttinkerer:ichorSwordGem.name=Erwecktes Ichoriumschwert
 item.ttinkerer:ichorPouch.name=Bodenloser Beutel
 item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
+item.ttinkerer:placementMirror.name=Sichtglas des Weltenformers
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -131,7 +138,7 @@ tc.research_category.TT_ENCHANTING=Verzaubern
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
 ttresearch.lore.PERIPHERALS=Wenn Technologie auf Magie trifft
-ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Browser ein
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Briwser ein
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
@@ -139,12 +146,17 @@ ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Pe
 # -- ASPECT ANALYZER
 ttresearch.name.ASPECT_ANALYZER=Aspektanalysierer
 ttresearch.lore.ASPECT_ANALYZER=Computerisiertes Scannen
-ttresearch.page.ASPECT_ANALYZER.0=Du hast ein Gerät kreiert, dass es Computern erlaubt, zu wissen, welche Aspekte ein Item hat.<BR><BR>Dieser Block funktioniert wie ein normales Inventar, jegliches Item in ihm kann mit einem Computer gescannt werden. Besuche den Eintrag der Peripherien-Dokumentation für mehr Infos.
+ttresearch.page.ASPECT_ANALYZER.0=Du hast ein Gerät kreiert, dass es Computern erlaubt, zu wissen, welche Aspekte ein Item hat.<BR><BR>Dieser Block funktioniert wie ein normales Inventar, jegliches Item in ihm kann mit einem Computer gescannt werdenany. Besuche den Eintrag der Peripherien-Dokumentation für mehr Infos.
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=Rauchiger Quarz
 ttresearch.lore.DARK_QUARTZ=Schatten des Tages
 ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur negativ. Alle regulären Blöcke, die mit Quarz gemacht werden können, können auch mit Rauchigem Quarz gemacht werden, Und die sind schwarz.<BR><BR>Rauchiger Quarz kann mit einem Stück Kohle oder Holzkohle zum Färben sowie ein paar Stücken regulären Quarzes gemacht werden.
+
+# -- TOME OF KNOWLEDGE SHARING
+ttresearch.name.SHARE_TOME=Buch des Wissensteilens
+ttresearch.lore.SHARE_TOME=Tagebuch eines Goldfischs
+ttresearch.page.SHARE_TOME.0=Wenn du möchtest, dein Wissen mit dem Rest der Welt zu teilen, ist dieses Item etwas für dich.<BR><BR>Wenn du dieses Buch einfach rechtsklickst und es einem anderen gibst, wird er, wenn du online bist, all die Forschung, die du bisher entdeckt hast, erhalten.<BR><BR>(Anmerkung: In dem Fall, dass hier kein Rezept zu sehen ist, wurde es deaktiviert und das Buch kann nur durch das Kreativ-Menü erhalten werden)
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
@@ -166,7 +178,7 @@ ttresearch.page.GASEOUS_SHADOW.0=Du hast die Feinheiten des Schattens studiert u
 # -- FUME DISSIPATOR
 ttresearch.name.GAS_REMOVER=Dampf-Dissipator
 ttresearch.lore.GAS_REMOVER=Ryuuji's Helfer
-ttresearch.page.GAS_REMOVER.0=Nachdem du Gasförmige Illuminae und Tenebrae kennst, denkst du, dass es ziemliche Schwierigkeiten bereitet, sie loszuwerden. Mit diesem Item, wenn du es Shift-Rechtsklickst, wird sich alles Gas in der Nähe auflösen.
+ttresearch.page.GAS_REMOVER.0=Nachdem du Gasförmige Illuminae und Tenebrae kennst, denkst du, dass es ziemliche Schwierigkeiten bereitet, sie loszuwerden. Mit diesem Item, wenn du es Shift-rechtsklickst, wird sich alles Gas in der Nähe auflösen.
 
 # -- SPELLBINDING CLOTH
 ttresearch.name.SPELL_CLOTH=Entzauberungstuch
@@ -192,7 +204,7 @@ ttresearch.page.FOCUS_DISLOCATION.1=Die Vis-Kosten werden beim Aufnehmen des Blo
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=Talisman des Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Geschenk
-ttresearch.page.CLEANSING_TALISMAN.0=Du hast das Leben und den Körper studiert und herausgefunden, dass du dich durch die Anwendung von Magie von schädlichen äußerlichen Einflüssen schützen kannst, indem du diese Effekte in ein Konstrukt umleitest. Dieser Talisman wird die meisten schädlichen Effekte auf dem Träger beseitigen und sie in sich selbst bewahren, was ihm Schaden zufügt.<BR><BR>Um diese Fähigkeit zu aktivieren oder deaktivieren, würde jemand mit ihm Shift-Rechtsklicken. Wie zu erwarten funktioniert er nur aktiviert.
+ttresearch.page.CLEANSING_TALISMAN.0=Du hast das Leben und den Körper studiert und herausgefunden, dass du dich durch die Anwendung von Magie von schädlichen äußerlichen Einflüssen schützen kannst, indem du diese Effekte in ein Konstrukt umleitest. Dieser Talisman wird die meisten schädlichen Effekte auf dem Träger beseitigen und sie in sich selbst bewahren, was ihm Schaden zufügt.<BR><BR>Um diese Fähigkeit zu aktivieren oder deaktivieren, würde jemand mit ihm Shift-rechtsklicken. Wie zu erwarten funktioniert er nur aktiviert.
 
 # -- HYPERNERGETIC NITOR
 ttresearch.name.BRIGHT_NITOR=Hyperenergetisches Nitor
@@ -398,4 +410,9 @@ ttresearch.page.ICHOR_POUCH.0=Indem du einen Fokusbeutel mit Items wie dem Tragb
 # -- BLACK HOLE TALISMAN
 ttresearch.name.BLOCK_TALISMAN=Schwarzloch-Talisman
 ttresearch.lore.BLOCK_TALISMAN=Mehr Pascal als dein Hirn aushält
-ttresearch.page.BLOCK_TALISMAN.0=Du hast einen Talisman kreiert, der eine gewaltige Menge and Blöcken des selben Typs in ihm speichern kann.<BR><BR>Dieser Talisman kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein kein Problem mehr sein. Wenn der Talisman leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.
+ttresearch.page.BLOCK_TALISMAN.0=Dieser Talisman kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet. Durch Rechtsklick kann der Inhalt in einem anderen Inventar platziert werden, oder wie ein normaler Block.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein kein Problem mehr sein. Wenn der Talisman leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.
+
+# -- WORLDSHAPER'S LOOKING GLASS
+ttresearch.name.PLACEMENT_MIRROR=Sichtglas des Weltenformers
+ttresearch.lore.PLACEMENT_MIRROR=Quecksilberauge
+ttresearch.page.PLACEMENT_MIRROR.0=Durch das Studieren der Welt hast du ein Glas konstruiert, das dir erlaubt, allein durch Gedankenkraft eine große Menge an Blöcken in der Welt zu platzieren.<BR><BR>Um den zu platzierenden Block einzustellen, würdest du mit dem Glas auf den Block Shift-rechtsklicken. Das Shift-Rechtsklicken des Items in der Luft ändert die Menge an Blöcken, die platziert werden.<BR><BR>Wenn Blöcke in der Welt platziert werden, wird eine Phantom-Version, die zeigt, wie die Blöcke platziert werden würden, erscheinen. Mit Rechtsklick werden die Blöcke verbraucht und platziert, entweder vom Inventar oder einem Schwarzloch-Talisman, der den benötigten Block enthält.
