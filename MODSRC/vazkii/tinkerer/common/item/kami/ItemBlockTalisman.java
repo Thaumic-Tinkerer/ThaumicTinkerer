@@ -177,7 +177,7 @@ public class ItemBlockTalisman extends ItemMod {
 		return false;
 	}
 
-	private void setCount(ItemStack stack, int count) {
+	private static void setCount(ItemStack stack, int count) {
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_COUNT, count);
 	}
 
@@ -186,22 +186,22 @@ public class ItemBlockTalisman extends ItemMod {
 		setCount(stack, current + count);
 	}
 
-	private int remove(ItemStack stack, int count) {
+	public static int remove(ItemStack stack, int count) {
 		int current = getBlockCount(stack);
 		setCount(stack, Math.max(current - count, 0));
 
 		return Math.min(current, count);
 	}
 
-	private int getBlockID(ItemStack stack) {
+	public static int getBlockID(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
 
-	private int getBlockMeta(ItemStack stack) {
+	public static int getBlockMeta(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
 	}
 
-	private int getBlockCount(ItemStack stack) {
+	public static int getBlockCount(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_COUNT, 0);
 	}
 
