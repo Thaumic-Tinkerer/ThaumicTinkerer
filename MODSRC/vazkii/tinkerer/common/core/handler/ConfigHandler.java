@@ -36,9 +36,11 @@ public final class ConfigHandler {
 
 	private static final String CATEGORY_KAMI_ITEMS = "item.kami";
 	private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
+	private static final String CATEGORY_KAMI_GENERAL = "general.kami";
 
 	public static boolean enableKami = false;
 	public static boolean useTootlipIndicators = true;
+	public static boolean showPlacementMirrorBlocks = true;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -47,10 +49,12 @@ public final class ConfigHandler {
 		new ConfigCategory(CATEGORY_ENCHANTMENTS);
 		new ConfigCategory(CATEGORY_KAMI_ITEMS);
 		new ConfigCategory(CATEGORY_KAMI_BLOCKS);
+		new ConfigCategory(CATEGORY_KAMI_GENERAL);
 
 		String comment = "These will only be used if KAMI is loaded. (KAMI is a separate download you can find in the Thaumic Tinkerer thread)";
 		config.addCustomCategoryComment(CATEGORY_KAMI_ITEMS, comment);
 		config.addCustomCategoryComment(CATEGORY_KAMI_BLOCKS, comment);
+		config.addCustomCategoryComment(CATEGORY_KAMI_GENERAL, comment);
 
 		config.load();
 
@@ -59,6 +63,12 @@ public final class ConfigHandler {
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
 		useTootlipIndicators = propEnableTooltips.getBoolean(true);
+		
+		if(enableKami) {
+			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
+			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
+			showPlacementMirrorBlocks = propShowPlacementMirrorBlocks.getBoolean(true);
+		}
 
 		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
 		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.idDarkQuartzSlab);
