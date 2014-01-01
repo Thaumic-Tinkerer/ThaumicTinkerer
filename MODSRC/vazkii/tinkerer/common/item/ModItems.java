@@ -96,6 +96,7 @@ public final class ModItems {
 	public static Item ichorSwordGem;
 	public static Item ichorPouch;
 	public static Item blockTalisman;
+	public static Item shareBook;
 
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
@@ -123,7 +124,8 @@ public final class ModItems {
 		revealingHelm = new ItemRevealingHelm(LibItemIDs.idRevealingHelm).setUnlocalizedName(LibItemNames.REVEALING_HELM);
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
-
+		shareBook = new ItemShareBook(LibItemIDs.idShareBook).setUnlocalizedName(LibItemNames.SHARE_BOOK);
+		
 		if(ConfigHandler.enableKami) {
 			toolMatIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 

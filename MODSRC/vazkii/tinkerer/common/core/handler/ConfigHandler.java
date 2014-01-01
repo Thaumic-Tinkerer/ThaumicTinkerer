@@ -107,7 +107,8 @@ public final class ConfigHandler {
 		LibItemIDs.idRevealingHelm = loadItem(LibItemNames.REVEALING_HELM, LibItemIDs.idRevealingHelm);
 		LibItemIDs.idInfusedInkwell = loadItem(LibItemNames.INFUSED_INKWELL, LibItemIDs.idInfusedInkwell);
 		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
-
+		LibItemIDs.idShareBook = loadItem(LibItemNames.SHARE_BOOK, LibItemIDs.idShareBook);
+		
 		LibItemIDs.idKamiResource = loadKamiItem(LibItemNames.KAMI_RESOURCE, LibItemIDs.idKamiResource);
 		LibItemIDs.idIchorHelm = loadKamiItem(LibItemNames.ICHOR_HELM, LibItemIDs.idIchorHelm);
 		LibItemIDs.idIchorChest = loadKamiItem(LibItemNames.ICHOR_CHEST, LibItemIDs.idIchorChest);
