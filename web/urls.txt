@@ -45,3 +45,12 @@
 2.0-45=https://www.sugarsync.com/pf/D9740002_82596175_670628
 2.0-46=https://www.sugarsync.com/pf/D9740002_82596175_670924
 2.0-47=https://www.sugarsync.com/pf/D9740002_82596175_696644
+2.1 beta-48=https://www.sugarsync.com/pf/D9740002_82596175_751438
+2.1 beta-49=https://www.sugarsync.com/pf/D9740002_82596175_751453
+2.1 beta-50=https://www.sugarsync.com/pf/D9740002_82596175_751465
+2.1 beta-50=https://www.sugarsync.com/pf/D9740002_82596175_751465
+2.1 beta-51=https://www.sugarsync.com/pf/D9740002_82596175_751467
+2.1 beta-52=https://www.sugarsync.com/pf/D9740002_82596175_751413
+2.1 beta-53=https://www.sugarsync.com/pf/D9740002_82596175_751460
+2.1 beta-54=https://www.sugarsync.com/pf/D9740002_82596175_751463
+2.1-55=https://www.sugarsync.com/pf/D9740002_82596175_751476
