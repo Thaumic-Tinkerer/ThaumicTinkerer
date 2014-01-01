@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Dec 11, 2013, 10:42:23 PM (GMT)]
  */
 package vazkii.tinkerer.common.block.tile.container;
@@ -20,13 +20,12 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import thaumcraft.common.container.SlotLimitedHasAspects;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
-import vazkii.tinkerer.common.item.ItemSoulMould;
 
 public class ContainerAspectAnalyzer extends ContainerPlayerInv {
-	
+
 	public TileAspectAnalyzer analyzer;
 	Slot slot;
-	
+
 	public ContainerAspectAnalyzer(TileAspectAnalyzer analyzer, InventoryPlayer playerInv) {
 		super(playerInv);
 
@@ -50,7 +49,7 @@ public class ContainerAspectAnalyzer extends ContainerPlayerInv {
 		if (var4 != null && var4.getHasStack()) {
 			ItemStack var5 = var4.getStack();
 
-			if(par2 == 0 || (var5 != null && slot.isItemValid(var5))) {
+			if(par2 == 0 || var5 != null && slot.isItemValid(var5)) {
 				var3 = var5.copy();
 
 				if (par2 < 1) {

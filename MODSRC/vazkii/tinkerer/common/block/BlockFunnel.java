@@ -28,9 +28,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import cpw.mods.fml.relauncher.Side;
@@ -144,7 +141,7 @@ public class BlockFunnel extends BlockModContainer {
 
 				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-				
+
 				funnel.onInventoryChanged();
 				return true;
 			}

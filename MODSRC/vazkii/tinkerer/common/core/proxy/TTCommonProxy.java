@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileCentrifuge;
@@ -34,6 +35,8 @@ import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
+import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
@@ -68,6 +71,11 @@ public class TTCommonProxy {
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
+
+		if(ConfigHandler.enableKami) {
+			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
+			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
+		}
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
@@ -77,14 +85,14 @@ public class TTCommonProxy {
 
 	protected void initCCPeripherals() {
 		IPeripheralHandler handler = new PeripheralHandler();
-		
+
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
 				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class
 		};
-		
+
 		for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
 	}

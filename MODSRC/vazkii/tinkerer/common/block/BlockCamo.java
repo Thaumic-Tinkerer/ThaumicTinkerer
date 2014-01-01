@@ -10,9 +10,9 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [Nov 24, 2013, 6:54:05 PM (GMT)]
+ * File Created @ [Dec 27, 2013, 6:25:36 PM (GMT)]
  */
-package vazkii.tinkerer.common.block.transvector;
+package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,13 +22,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import vazkii.tinkerer.common.block.BlockModContainer;
-import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
+import vazkii.tinkerer.common.block.tile.TileCamo;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-public abstract class BlockTransvector extends BlockModContainer<TileTransvector> {
+public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
-	protected BlockTransvector(int par1, Material par2Material) {
+	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
 	}
 
@@ -37,12 +36,12 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
         TileEntity tile = world.getBlockTileEntity(x, y, z);
         int meta = world.getBlockMetadata(x, y, z);
 
-        if (tile instanceof TileTransvector) {
-            TileTransvector transvector = (TileTransvector) tile;
-            if (transvector.camo > 0 && transvector.camo < 4096) {
-                Block block = Block.blocksList[transvector.camo];
-                if (block != null && block.renderAsNormalBlock())
-                    return block.getIcon(side, transvector.camoMeta);
+        if (tile instanceof TileCamo) {
+            TileCamo camo = (TileCamo) tile;
+            if (camo.camo > 0 && camo.camo < 4096) {
+                Block block = Block.blocksList[camo.camo];
+                if (block != null && block.getRenderType() == 0)
+                    return block.getIcon(side, camo.camoMeta);
             }
         }
 
@@ -53,8 +52,8 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
         TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
 
-        if (tile instanceof TileTransvector) {
-        	TileTransvector transvector = (TileTransvector) tile;
+        if (tile instanceof TileCamo) {
+        	TileCamo camo = (TileCamo) tile;
         	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
         	if(currentStack == null)
@@ -69,21 +68,31 @@ public abstract class BlockTransvector extends BlockModContainer<TileTransvector
             		}
 
                     Block block = Block.blocksList[currentStack.itemID];
-                    if(block == null || !block.renderAsNormalBlock() || block == this || block.blockMaterial == Material.air)
+                    if(block == null || block.getRenderType() != 0 || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
             	}
         	}
 
         	if(doChange) {
-            	transvector.camo = currentStack.itemID;
-            	transvector.camoMeta = currentStack.getItemDamage();
-            	PacketDispatcher.sendPacketToAllInDimension(transvector.getDescriptionPacket(), par1World.provider.dimensionId);
+            	camo.camo = currentStack.itemID;
+            	camo.camoMeta = currentStack.getItemDamage();
+            	PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
 
         		return true;
         	}
         }
 
         return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
 	}
 
 	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {

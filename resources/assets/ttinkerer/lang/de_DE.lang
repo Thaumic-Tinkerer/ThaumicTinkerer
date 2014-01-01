@@ -28,6 +28,20 @@ ttmisc.full=§cVoll
 ttmisc.notAbsorbing=§cNicht Absorbierend
 ttmisc.absorbing=§aAbsorbierend
 
+# KAMI MISC
+ttmisc.mode.pick.0=Block-Modus
+ttmisc.mode.pick.1=Quadrat-Modus
+ttmisc.mode.pick.2=Linien-Modus
+ttmisc.mode.shovel.0=Block-Modus
+ttmisc.mode.shovel.1=Quadrat-Modus
+ttmisc.mode.shovel.2=Säulen-Modus
+ttmisc.mode.axe.0=Block-Modus
+ttmisc.mode.axe.1=Quadrat-Modus
+ttmisc.mode.axe.2=Baum-Modus
+ttmisc.mode.sword.0=Einzel-Modus
+ttmisc.mode.sword.1=Bereichs-Modus
+ttmisc.mode.sword.2=Seelen-Modus
+
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Rauchiger Quarz
 item.ttinkerer:connector.name=Transvektoren-Binder
@@ -50,6 +64,36 @@ item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
 item.ttinkerer:focusDeflect.name=Stabfokus: Verzerrung
 
+# KAMI ITEM NAMES
+item.ttinkerer:kamiResource.name=Kami-Ressource
+item.ttinkerer:ichor.name=Ichor
+item.ttinkerer:ichorCloth.name=Ichortuch
+item.ttinkerer:ichorium.name=Ichorium
+item.ttinkerer:ichorNugget.name=Ichoriumnugget
+item.ttinkerer:ichorCap.name=Ichoriumstabkappe
+item.ttinkerer:ichorclothRod.name=Ichortuchverstärkter Silberholz-Stabkern
+item.ttinkerer:netherShard.name=Netherscherbe
+item.ttinkerer:enderShard.name=Enderscherbe
+item.ttinkerer:ichorclothHelm.name=Ichortuchkappe
+item.ttinkerer:ichorclothChest.name=Ichortuchrobe
+item.ttinkerer:ichorclothLegs.name=Ichortuchhose
+item.ttinkerer:ichorclothBoots.name=Ichortuchstiefel
+item.ttinkerer:ichorclothHelmGem.name=Kappe der Abgrundtiefe
+item.ttinkerer:ichorclothChestGem.name=Robe der Stratosphäre
+item.ttinkerer:ichorclothLegsGem.name=Hose der Brennenden Hülle
+item.ttinkerer:ichorclothBootsGem.name=Stiefel des Horizontalen Schildes
+item.ttinkerer:catAmulet.name=Katzenamulett
+item.ttinkerer:ichorPick.name=Ichoriumspitzhacke
+item.ttinkerer:ichorShovel.name=Ichoriumschaufel
+item.ttinkerer:ichorAxe.name=Ichoriumaxt
+item.ttinkerer:ichorSword.name=Ichoriumschwert
+item.ttinkerer:ichorPickGem.name=Erweckte Ichoriumspitzhacke
+item.ttinkerer:ichorShovelGem.name=Erweckte Ichoriumschaufel
+item.ttinkerer:ichorAxeGem.name=Erweckte Ichoriumaxt
+item.ttinkerer:ichorSwordGem.name=Erwecktes Ichoriumschwert
+item.ttinkerer:ichorPouch.name=Bodenloser Beutel
+item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
+
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
 tile.ttinkerer:darkQuartzChiseled.name=Gemeißelter Rauchiger Quarzblock
@@ -65,6 +109,7 @@ tile.ttinkerer:funnel.name=Essentia-Trichter
 tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
+tile.ttinkerer:platform.name=Ätherische Plattform
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
@@ -74,8 +119,13 @@ enchantment.ttinkerer:desintegrate=Desintegrieren
 enchantment.ttinkerer:quickDraw=Schnelles Spannen
 enchantment.ttinkerer:vampirism=Vampirismus
 
+# WAND COMPONENTS
+item.Wand.ichor.cap=Ichoriumgeschmückter
+item.Wand.ichorcloth.rod=Ichortuchverstärkter Silberholz -
+
 # RESEARCH
 ttresearch.prefix=[TT] 
+ttresearch.prefix.kami=[TTKami] 
 tc.research_category.TT_ENCHANTING=Verzaubern
 
 # -- COMPUTERCRAFT PERIPHERALS
@@ -237,11 +287,6 @@ ttresearch.name.REVEALING_HELM=Helm der Enthüllung
 ttresearch.lore.REVEALING_HELM=Darum kann ich Photoshop nicht benutzen
 ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht viel Schutz gegen angreifende Zombies. Du denkst jedoch, du hast eine Lösung für das Problem gefunden. Indem du eine Brille an einem Thaumiumhelm befestigst, kannst du die Vorteile von beidem nutzen. Na ja, es stellt sich heraus, dass es ein wenig komplizierter als das ist. Ein bisschen Magie ist nötig, um Rückkopplungen zu vermeiden, und ein wenig Magie, um sie am verrutschen zu hindern, aber insgesamt scheint es mehr oder weniger zu funtionieren.
 
-# -- INFUSED SCRIBING TOOLS
-ttresearch.name.INFUSED_INKWELL=Infundiertes Schreibset
-ttresearch.lore.INFUSED_INKWELL=Mehr Tinte für die Massen
-ttresearch.page.INFUSED_INKWELL.0=Indem du ein gewöhnliches Schreibset mit der Essenz der Leere infundiert hast, hast du einen Weg gefunden, es mehr Tinte halten zu lassen.<BR><BR>(Hinweis: Diese Forschung ist momentan deaktiviert, ein Thaumcraft API-Hook wird abgewartet. Wenn du es hattest, bevor du TT aktualisiert hast, Entschuldigung)
-
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumischer Restaurierer
 ttresearch.lore.REPAIRER=Weniger Risse als eine Kartoffel am Stiel
@@ -251,3 +296,106 @@ ttresearch.page.REPAIRER.0=Du hast ein neues Gerät kreiert, um zerbrochenes Wer
 ttresearch.name.FOCUS_DEFLECT=Stabfokus: Verzerrung
 ttresearch.lore.FOCUS_DEFLECT=Ich bin kein Engel
 ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehendem Feuer zu schützen.<BR><BR>Dieser Fokus, wenn genutzt, wird durchgehend Vis aus dem Stab ziehen, auf den er aufgesetzt ist, um eine Barriere um den Nutzer herum zu beschwören, die ordinäre Projektile harmlos durch sie hindurchfliegen lässt.<BR><BR>Ordinäre Projektile sind Pfeile, Schneebälle oder Tränke. Es scheint, dass die Barriere nicht stark genug ist, um stärkere Angriffe wie Feuerbälle oder Witherschädel abzuwehren.
+
+# -- ETHERAL PLATFORM
+ttresearch.name.PLATFORM=Ätherische Plattform
+ttresearch.lore.PLATFORM=Verstecke Brom und Barium
+ttresearch.page.PLATFORM.0=Du hast einen Block erdacht, der nur solide ist für die, die auf ihm stehen. Dieser Block hat keine Kollisionsbox für alle, die dieses Kriterium nicht erfüllen, sowie für Schleichende.<BR><BR>Du kannst diesen Block auch als jeglichen anderen Block tarnen, indem du einfach auf ihn klickst.<BR><BR>Du denkst, dass du dies mit dem Arkanen Levitator nutzen kannst, für einige interessante Effekte.
+
+# KAMI RESEARCH
+
+# -- DIMENSIONAL SHARDS
+ttresearch.name.DIMENSION_SHARDS=Dimensionale Scherben
+ttresearch.lore.DIMENSION_SHARDS=Raritäten des Jenseitigen
+ttresearch.page.DIMENSION_SHARDS.0=Gleich der Hauptwelt besitzen auch der Nether und das Ende ihre spezifische Scherben, diese werden selten von Zombie-Pigmen im Nether oder Endermen im Ende getragen. Sie könnten für spätere Dinge nützlich sein, obwohl du nicht sicher bist, inwiefern.<BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
+
+# -- ICHOR
+ttresearch.name.ICHOR=Ichor
+ttresearch.lore.ICHOR=Blut der Götter
+ttresearch.page.ICHOR.0=Durch ausgedehnte Studien in allen Aspekten der Thaumaturgie hast du eine Substanz entdeckt, die, wie du glaubst, der nächste Schritt in deinen Bestrebungen ist.<BR><BR>Diese extrem mächtige Substanz, die du "Ichor" nennst, enthält die rohe erweckte Macht eines Nethersterns. Du bist sicher, dass du fähig sein wirst, es in Zukunft für zahllose Gerätschaften zu verwenden.
+
+# -- ICHORCLOTH
+ttresearch.name.ICHOR_CLOTH=Ichortuch
+ttresearch.lore.ICHOR_CLOTH=Lebensfaser-Sychronization
+ttresearch.page.ICHOR_CLOTH.0=Du hast einen Weg gefunden, Magischen Stoff mit deiner neuesten Entdeckung, Ichor, zu versetzen. Komisch genug, dass dieser Prozess nicht das gewöhnliche Infusionsprozedere erfordert, da das Ichor den Diamanten einfach absorbiert und mit dem Stoff verschmilzt.<BR><BR>Jedoch benötigst du, um das zu bewerkstelligen, nicht nur, dass der besten Stab, den du jemals kreiert hast, voll geladen ist, du musst auch ein volles Set der Thaumaturgenrobe tragen, um genug Energie für die Kreierung zu übertragen.<BR><BR>Du denkst, dass es Zeit ist, einen neuen Stab zu entwerfen.
+
+# -- ICHORIUM
+ttresearch.name.ICHORIUM=Ichorium
+ttresearch.lore.ICHORIUM=Nicht von Stockwerk 55
+ttresearch.page.ICHORIUM.0=Mehr Forschung mit Ichor enthüllte seine Eigenschaft, mir den meisten gewöhnlichen Materialien zu verschmelzen. Die meisten Mischungen resultieren in absolut gar nichts, jedoch hast du es bereits geschafft, es mit Diamanten und Stoff zu vermischen, und dieses mal gelang es mit Thaumium.<BR><BR>Dieses Metall ist extrem stark und belastbar, zu einem Grad, zu welchem gewöhnliche Materialien niemals kommen könnten. Du hast bisher noch keinen Nutzen für es gefunden, aber du weißt, dass dir das nicht allzu schwer fallen dürfte.
+
+# -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
+ttresearch.name.ICHORCLOTH_ROD=Ichortuch-verstärkter Silberholz-Stabkern
+ttresearch.lore.ICHORCLOTH_ROD=Das ist ein langer Name
+ttresearch.page.ICHORCLOTH_ROD.0=DU hast es geschafft. Indem du einen Silberholz-Stabkern mit Ichortuch versetzt, hast du es geschafft, den ultimativen Stabkern zu erschaffen.<BR><BR>Dieser Kern hält eine gewaltige Menge von 1000 jeder Art von Vis. Dies wird mit Sicherheit die Herstellung teurer Komponenten ein wenig stressfreier machen. Nun bleibt die Frage, wo wirst du all das Vis hierfür herberkommen?
+
+# -- ICHORIUM WAND CAPS
+ttresearch.name.ICHOR_CAP=Ichorium-Stabkappen
+ttresearch.lore.ICHOR_CAP=Ein wenig wie ein Steam Sale
+ttresearch.page.ICHOR_CAP.0=Du hast den ersten Nutzen für Ichorium gefunden, indem du Stabkappen erdachtest, die dir eine Visreduktion von 20% auf alles geben. Nun musst du sie nur noch tatsächlich nutzen und einen Stab kreieren, der mehr Vis halten kann.
+
+# -- ICHORCLOTH ARMOR
+ttresearch.name.ICHORCLOTH_ARMOR=Ichortuchrobe
+ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... warte
+ttresearch.page.ICHORCLOTH_ARMOR.0=Du hast herausgefunden, wie man Ichortuch zu Kleidung verwebt.<BR><BR>Diese neue Kleidung sind etwa to effektiv wie Diamantrüstung, wenn es um Schutz vor Schaden geht. Jedoch ist dieser Stoff komplett unzerstörbar und wird niemals auch nur einen Kratzer bekommen.
+
+# -- COWL OF THE ABYSSAL DEPTHS
+ttresearch.name.ICHORCLOTH_HELM_GEM=Kappe der Abgrundtiefe
+ttresearch.lore.ICHORCLOTH_HELM_GEM=Nur freundliche Krustentiere
+ttresearch.page.ICHORCLOTH_HELM_GEM.0=Du hast einen Weg gefunden, die Ichortuchkappe in eine noch mächtigere Form umzuwandeln.<BR><BR>Zuallererst übernimmt die Kappe die Funktionen der Brille der Enthüllung.<BR>Zweitens kann der Träger ewig unter Wasser atmen und dort auch alles kristallklar sehen.<BR>Zu guter Letzt wird der Effekt der Gesundheitsregeneration bei vollem Magen auch eintreten, sollte der Träger hungrig sein.
+
+# -- ROBES OF THE STRATOSPHERE
+ttresearch.name.ICHORCLOTH_CHEST_GEM=Robe der Stratosphäre
+ttresearch.lore.ICHORCLOTH_CHEST_GEM=Männer können das auch tragen
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=Du hast einen Weg gefunden, die Ichortuchrobe in eine noch mächtigere Form umzuwandeln.<BR><BR>Erstens wird das bloße tragen dieser Robe die Gabe des Fliegens verleihen (inklusive Flügeln, die nicht nach 5 Minuten verbrennen) sowie allen Fallschaden annullieren.<BR>Die Robe schützt den Träger auch vor allen eintreffenden Projektilen, gleich dem Fokus der Verzerrung.
+
+# -- LEGGINGS OF THE BURNING MANTLE
+ttresearch.name.ICHORCLOTH_LEGS_GEM=Hose der Brennenden Hülle
+ttresearch.lore.ICHORCLOTH_LEGS_GEM=Ein warmes Gefühl
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=Du hast einen Weg gefunden, die Ichortuchhose in eine noch mächtigere Form umzuwandeln.<BR><BR>Diese Hose ist mit der Seele des Feuers versetzt.<BR>Zum einen erschafft sie ein Licht um den Träger herum, heller noch als das des Hyperenergetischen Nitors. Das Lich erweitert sich auch zum Ort, auf den der Träger schaut, gleich einer Taschenlampe, und bringt die Existenz des Erschaffers in größerer Weite zur Geltung.<BR>Zusätzlich bietet diese Hose nicht nur Feuerresistenz, sie wandelt auch allen erhaltenen Feuerschaden in Heilung um.
+
+# -- BOOTS OF THE HORIZONTAL SHIELD
+ttresearch.name.ICHORCLOTH_BOOTS_GEM=Stiefel des Horizontalen Schildes
+ttresearch.lore.ICHORCLOTH_BOOTS_GEM=Von Winterfell nach King's Landing im Kinderspiel
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=Du hast einen Weg gefunden, die Ichortuchstiefel in eine noch mächtigere Form umzuwandeln.<BR><BR>Diese Stiefel erlauben extrem geschmeidige Bewegungen, gleich den Stiefeln des Reisenden. Geschwindigkeit, Sprunghöhe und Sprungreichweite des Trägers werden durch das Tragen der Stiefel erhöht, was Bewegung zu einem Kinderspiel macht. Er kann auch über 1 Block hohe Anhöhen gehen, als wären sie Stufen, dies kann durch Schleichen unterdrückt werden.<BR>Das Tragen der Stiefel gibt auch konstanten Eile-II-Effekt, verwandelt allen Dreck unterhalb in Gras und negiert jeglichen Fallschaden.
+
+# -- FELINE AMULET
+ttresearch.name.CAT_AMULET=Katzenamulett
+ttresearch.lore.CAT_AMULET=In der Cafeteria wird nicht mit Katzen gekämpft
+ttresearch.page.CAT_AMULET.0=Es dauerte nicht lange, bis du zu dem Schluss kamst, dass du all die Male hasst, wenn sich ein Creeper an dich anschlich.<BR><BR>Um das zu beenden, hast du, das Wissen nutzend, dass Creeper vor Katzen fliehen, ein Amulett erdacht, dass, wenn lediglich getragen, alle Creeper vor Furcht vor deiner Präsenz fliehen lässt. Nicht nur das, denn sie werden so stark gelähmt sein, dass sie es nicht fertigbringen werden, zu explodieren. Großartig.
+
+# -- ICHORIUM TOOLS
+ttresearch.name.ICHOR_TOOLS=Ichoriumwerkzeug
+ttresearch.lore.ICHOR_TOOLS=Die höchste Stufe aller Ratt... Werkzeuge
+ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium herstellt. Diese Werkzeuge sind extrem mächtig, noch mächtiger als Diamant, zusätzlich werden sie niemals zerbrechen.<BR><BR>Für die Kreierung dieser Werkzeuge sind gewöhnliche Stöcke night genug, du entschiedest dich, stattdessen Silberholzstäbe zu verwenden.
+
+# -- AWAKENED ICHORIUM PICKAXE
+ttresearch.name.ICHOR_PICK_GEM=Erweckte Ichoriumspitzhacke
+ttresearch.lore.ICHOR_PICK_GEM=Wer braucht schon einen Steinbruch?
+ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt, diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau) wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen.
+
+# -- AWAKENED ICHORIUM SHOVEL
+ttresearch.name.ICHOR_SHOVEL_GEM=Erweckte Ichoriumschaufel
+ttresearch.lore.ICHOR_SHOVEL_GEM=Hier war im Englischen ein Wortspiel
+ttresearch.page.ICHOR_SHOVEL_GEM.0=Du hast das wahre Potential einer Ichoriumschaufel erweckt, diese Schaufel enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Säulen-Modus (Blau) wird sie eine Säule des selben Blocktyps wie der abzubauende Block abbauen, 8 Blöcke ober- und unterhalb.
+
+# -- AWAKENED ICHORIUM AXE
+ttresearch.name.ICHOR_AXE_GEM=Erweckte Ichoriumaxt
+ttresearch.lore.ICHOR_AXE_GEM=Bricht dich wie ein Kleeblatt
+ttresearch.page.ICHOR_AXE_GEM.0=Du hast das wahre Potential einer Ichoriumaxt erweckt, diese Axt enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Baum-Modus (Blau) wird sie ganze Bäume fällen, wenn nur einer ihrer Blöcke abgebaut wird.<BR><BR>Diese Axt ist auch beherrscht auch das vernichten der Pflanzenwelt extrem gut.
+
+# -- AWAKENED ICHORIUM SWORD
+ttresearch.name.ICHOR_SWORD_GEM=Erwecktes Ichoriumschwert
+ttresearch.lore.ICHOR_SWORD_GEM=Mom's Messer
+ttresearch.page.ICHOR_SWORD_GEM.0=Du hast das wahre Potential eines Ichoriumschwerts erweckt, dieses Schwert enthält alle Eigenschaften des regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem es sich befindet.<BR><BR>Im Einzel-Modus (Grün) wird es Monster normal attackieren.<BR><BR>Im Bereichs-Modus (Rot) wird es alle Monster des selben Typs in einem 3-Block-Radius um das attackierte herum angreifen.<BR><BR>Im Seelen-Modus (Blau) wird es weniger Schaden verursachen als gewöhnlich, aber jeder Schlag wird dem Angreifer ein Seelenherz verleihen.<BR>[fortgesetzt]
+ttresearch.page.ICHOR_SWORD_GEM.1=Seelenherzen sind Herzen, die nur einmal verwendet werden können. Die werden als metallische Herzen unterhalb deiner Nahrungsanzeige stehen, wenn existent. Die blockieren Schaden, den der Träger erhalten würde, aber verschwinden in diesem Prozess.
+
+# -- BOTTOMLESS POUCH
+ttresearch.name.ICHOR_POUCH=Bodenloser Beutel
+ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
+ttresearch.page.ICHOR_POUCH.0=Indem du einen Fokusbeutel mit Items wie dem Tragbaren Loch versetzt hast, hast du es nicht nur geschafft, ihm zu ermöglichen, anderes als Foki zu halten, sondern auch, seine Speichergröße massiv zu erweitern.<BR><BR>Dieser Beutel kann nicht nur mehr halten als vier Truhen, er dient auch immer noch als gewöhnlicher Fokusbeutel, was es Foki in ihm ermöglicht, sich wie gewohnt auf den Stab aufzusetzen. Sag deinen Inventarproblemen Auf Wiedersehen.
+
+# -- BLACK HOLE TALISMAN
+ttresearch.name.BLOCK_TALISMAN=Schwarzloch-Talisman
+ttresearch.lore.BLOCK_TALISMAN=Mehr Pascal als dein Hirn aushält
+ttresearch.page.BLOCK_TALISMAN.0=Du hast einen Talisman kreiert, der eine gewaltige Menge and Blöcken des selben Typs in ihm speichern kann.<BR><BR>Dieser Talisman kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein kein Problem mehr sein. Wenn der Talisman leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.

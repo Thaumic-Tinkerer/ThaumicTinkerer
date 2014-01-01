@@ -18,11 +18,11 @@ public final class LibMisc {
 
 	public static final String MOD_ID = "ThaumicTinkerer";
 	public static final String MOD_NAME = "Thaumic Tinkerer";
-	public static final String VERSION = "ANT:VERSION";
+	public static final String VERSION = "ANT:VERSION-ANT:BUILD";
 
 	public static final String NETWORK_CHANNEL = MOD_ID;
 
-	public static final String DEPENDENCIES = "required-after:Thaumcraft;before:MagicBees;after:IC2";
+	public static final String DEPENDENCIES = "required-after:Thaumcraft;before:MagicBees;after:IC2;after:ThaumicTinkererKami";
 
 	public static final String COMMON_PROXY = "vazkii.tinkerer.common.core.proxy.TTCommonProxy";
 	public static final String CLIENT_PROXY = "vazkii.tinkerer.client.core.proxy.TTClientProxy";

@@ -14,12 +14,10 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -28,10 +26,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
@@ -55,17 +49,6 @@ public class BlockEnchanter extends BlockModContainer {
 		setResistance(2000.0F);
 
 		random = new Random();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		super.getSubBlocks(par1, par2CreativeTabs, par3List);
-		ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
-		((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
-		((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
-		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
-		par3List.add(wand);
 	}
 
 	@Override

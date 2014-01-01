@@ -60,5 +60,36 @@ public final class LibResearch {
 	public static final String KEY_REPAIRER = "REPAIRER";
 	public static final String KEY_FOCUS_DEFLECT = "FOCUS_DEFLECT";
 	public static final String KEY_ASPECT_ANALYZER = "ASPECT_ANALYZER";
+	public static final String KEY_PLATFORM = "PLATFORM";
+	public static final String KEY_SHARE_TOME = "SHARE_TOME";
+	
+	public static final String KEY_DIMENSION_SHARDS = "DIMENSION_SHARDS";
+	public static final String KEY_ICHOR = "ICHOR";
+	public static final String KEY_ICHOR_CLOTH = "ICHOR_CLOTH";
+	public static final String KEY_ICHORIUM = "ICHORIUM";
+	public static final String KEY_ICHOR_CAP = "ICHOR_CAP";
+	public static final String KEY_ICHORCLOTH_ROD = "ICHORCLOTH_ROD";
+	public static final String KEY_ICHORCLOTH_ARMOR = "ICHORCLOTH_ARMOR";
+	public static final String KEY_ICHORCLOTH_HELM = "ICHORCLOTH_HELM";
+	public static final String KEY_ICHORCLOTH_CHEST = "ICHORCLOTH_CHEST";
+	public static final String KEY_ICHORCLOTH_LEGS = "ICHORCLOTH_LEGS";
+	public static final String KEY_ICHORCLOTH_BOOTS = "ICHORCLOTH_BOOTS";
+	public static final String KEY_ICHORCLOTH_HELM_GEM = "ICHORCLOTH_HELM_GEM";
+	public static final String KEY_ICHORCLOTH_CHEST_GEM = "ICHORCLOTH_CHEST_GEM";
+	public static final String KEY_ICHORCLOTH_LEGS_GEM = "ICHORCLOTH_LEGS_GEM";
+	public static final String KEY_ICHORCLOTH_BOOTS_GEM = "ICHORCLOTH_BOOTS_GEM";
+	public static final String KEY_CAT_AMULET = "CAT_AMULET";
+	public static final String KEY_ICHOR_TOOLS = "ICHOR_TOOLS";
+	public static final String KEY_ICHOR_PICK = "ICHOR_PICK";
+	public static final String KEY_ICHOR_SHOVEL = "ICHOR_SHOVEL";
+	public static final String KEY_ICHOR_AXE = "ICHOR_AXE";
+	public static final String KEY_ICHOR_SWORD = "ICHOR_SWORD";
+	public static final String KEY_ICHOR_PICK_GEM = "ICHOR_PICK_GEM";
+	public static final String KEY_ICHOR_SHOVEL_GEM = "ICHOR_SHOVEL_GEM";
+	public static final String KEY_ICHOR_AXE_GEM = "ICHOR_AXE_GEM";
+	public static final String KEY_ICHOR_SWORD_GEM = "ICHOR_SWORD_GEM";
+	public static final String KEY_ICHOR_POUCH = "ICHOR_POUCH";
+	public static final String KEY_BLOCK_TALISMAN = "BLOCK_TALISMAN";
+	public static final String KEY_PLACEMENT_MIRROR = "PLACEMENT_MIRROR";
 
 }

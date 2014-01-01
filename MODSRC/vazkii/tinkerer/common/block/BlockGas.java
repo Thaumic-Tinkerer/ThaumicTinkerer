@@ -89,11 +89,6 @@ public abstract class BlockGas extends BlockMod {
 	}
 
 	@Override
-	boolean registerInCreative() {
-		return false;
-	}
-
-	@Override
 	public boolean canDragonDestroy(World world, int x, int y, int z) {
 		return false;
 	}
@@ -126,5 +121,10 @@ public abstract class BlockGas extends BlockMod {
 	@Override
 	public boolean isAirBlock(World world, int x, int y, int z) {
 		return true;
+	}
+
+	@Override
+	boolean registerInCreative() {
+		return false;
 	}
 }

@@ -31,6 +31,8 @@ public final class LibResources {
 	public static final String GUI_MOB_MAGNET = PREFIX_GUI + "mobMagnet.png";
 	public static final String GUI_ENCHANTER = PREFIX_GUI + "enchanter.png";
 	public static final String GUI_ASPECT_ANALYZER = PREFIX_GUI + "aspectAnalyzer.png";
+	public static final String GUI_SOUL_HEARTS = PREFIX_GUI + "soulHearts.png";
+	public static final String GUI_ICHOR_POUCH = PREFIX_GUI + "ichorPouch.png";
 
 	public static final String MISC_R_ENCHANTING = PREFIX_MISC + "r_enchanting.png";
 	public static final String MISC_AT_CENTER = PREFIX_MISC + "atCenter.png";
@@ -46,6 +48,12 @@ public final class LibResources {
 	public static final String MODEL_MOB_MAGNET_S = PREFIX_MODEL + "mobMagnetS.png";
 	public static final String MODEL_REVEALING_HELM = PREFIX_MODEL + "revealing.png";
 	public static final String MODEL_REPAIRER = PREFIX_MODEL + "repairer.png";
+	public static final String MODEL_CAP_ICHOR = PREFIX_MODEL + "capIchor.png";
+	public static final String MODEL_ROD_ICHORCLOTH = PREFIX_MODEL + "rodIchorcloth.png";
+	public static final String MODEL_ARMOR_ICHOR_1 = PREFIX_MODEL + "ichor1.png";
+	public static final String MODEL_ARMOR_ICHOR_2 = PREFIX_MODEL + "ichor2.png";
+	public static final String MODEL_ARMOR_ICHOR_GEM_1 = PREFIX_MODEL + "ichorGem1.png";
+	public static final String MODEL_ARMOR_ICHOR_GEM_2 = PREFIX_MODEL + "ichorGem2.png";
 
 	public static final String ENCHANT_PROTECTION = PREFIX_ENCHANTS + "protection.png";
 	public static final String ENCHANT_FIRE_PROTECTION = PREFIX_ENCHANTS + "fireProtection.png";

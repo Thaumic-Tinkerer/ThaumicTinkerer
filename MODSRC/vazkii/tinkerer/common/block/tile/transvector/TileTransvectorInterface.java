@@ -81,7 +81,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		if(tile != null)
 			tile.onInventoryChanged();
 	}
-	
+
 	@Override
 	public int getSizeInventory() {
 		TileEntity tile = getTile();
@@ -205,7 +205,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return tile instanceof ISidedInventory ? ((ISidedInventory) tile).canExtractItem(i, itemstack, j) : tile instanceof IInventory;
 	}
 
-	private int[] buildSlotsForLinearInventory(IInventory inv) {
+	public static int[] buildSlotsForLinearInventory(IInventory inv) {
 		int[] slots = new int[inv.getSizeInventory()];
 		for (int i = 0; i < slots.length; i++)
 			slots[i] = i;
