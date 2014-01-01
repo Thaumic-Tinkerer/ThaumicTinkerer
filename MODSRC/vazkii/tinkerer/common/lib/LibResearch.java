@@ -89,5 +89,6 @@ public final class LibResearch {
 	public static final String KEY_ICHOR_SWORD_GEM = "ICHOR_SWORD_GEM";
 	public static final String KEY_ICHOR_POUCH = "ICHOR_POUCH";
 	public static final String KEY_BLOCK_TALISMAN = "BLOCK_TALISMAN";
+	public static final String KEY_PLACEMENT_MIRROR = "PLACEMENT_MIRROR";
 
 }
