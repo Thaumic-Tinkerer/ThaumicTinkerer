@@ -22,6 +22,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import org.lwjgl.util.vector.Vector2f;
 
+import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.ModItems;
 
@@ -47,11 +48,11 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 		int z = (int) Math.floor(player.posZ);
 
         float yaw =  MathHelper.wrapAngleTo180_float(player.rotationYaw + 90F) * (float) Math.PI / 180F;
-        Vector2f lookVector = (Vector2f) new Vector2f((float) Math.cos(yaw), (float) Math.sin(yaw)).normalise();
-        Vector2f newVector = new Vector2f(lookVector.x, lookVector.y);
+        Vector3 lookVector = new Vector3(Math.cos(yaw), Math.sin(yaw), 0).normalize();
+        Vector3 newVector = new Vector3(lookVector.x, lookVector.y, 0);
 
         for(int i = 0; i < 5; i++) {
-        	Vector2f.add(newVector, lookVector, newVector);
+        	newVector = newVector.add(lookVector);
 
     		int x1 = x + (int) newVector.x;
     		int z1 = z + (int) newVector.y;
