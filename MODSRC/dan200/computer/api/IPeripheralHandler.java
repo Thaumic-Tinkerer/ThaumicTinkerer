@@ -6,10 +6,12 @@
 
 package dan200.computer.api;
 
+import net.minecraft.tileentity.TileEntity;
+
 /**
  * TODO: Document me
  */
-public interface IPeripheralHandler
+public interface IPeripheralHandler 
 {
-	public IHostedPeripheral getPeripheral( net.minecraft.tileentity.TileEntity tile );
+	public IHostedPeripheral getPeripheral( TileEntity tile );
 }
