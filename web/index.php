@@ -11,7 +11,7 @@
 	<br><hr><br>
 	
 	<body link="#111111" vlink="#444466" alink="#000099">
-	<a href="https://www.sugarsync.com/pf/D9740002_82596175_752562"><b>ThaumicTinkerer KAMI</a> <a href="https://www.sugarsync.com/pf/D9740002_82596175_752964">(Download for Java 6 users)</a></b><br>
+	<a href="https://www.sugarsync.com/pf/D9740002_82596175_752964"><b>ThaumicTinkerer KAMI</a></b><br>
 	(Notice, KAMI is just a 1KB file that enables the features in TT, you don't have to update this)<br><br>
 	<?php
 
