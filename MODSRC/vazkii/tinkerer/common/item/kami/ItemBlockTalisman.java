@@ -122,7 +122,7 @@ public class ItemBlockTalisman extends ItemMod {
 			
 			int highest = -1;
 			boolean hasFreeSlot = false;
-			int[] counts = new int[player.inventory.getSizeInventory()];
+			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
 			Arrays.fill(counts, 0);
 
 			for(int i = 0; i < counts.length; i++) {
@@ -141,8 +141,8 @@ public class ItemBlockTalisman extends ItemMod {
 			}
 			
 			if(highest == -1) {
-				ItemStack heldItem = player.inventory.getItemStack(); 
-				if(hasFreeSlot && heldItem == null || (heldItem.itemID != id && heldItem.getItemDamage() != meta)) {
+				ItemStack heldItem = player.inventory.getItemStack();
+				if(hasFreeSlot && (heldItem == null || heldItem.itemID != id || heldItem.getItemDamage() != meta)) {
 					ItemStack stack = new ItemStack(id, remove(par1ItemStack, 64), meta);
 					if(stack.stackSize != 0)
 						player.inventory.addItemStackToInventory(stack);
