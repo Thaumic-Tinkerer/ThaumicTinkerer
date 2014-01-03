@@ -20,6 +20,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.tile.TileCamo;
 
@@ -31,8 +32,13 @@ public class BlockPlatform extends BlockCamo {
 
 	@Override
 	public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity) {
-		if(par7Entity != null && par7Entity.posY > par3 + (par7Entity instanceof EntityPlayer ? 1 : 0) && (!(par7Entity instanceof EntityPlayer) || !par7Entity.isSneaking()))
+		if(par7Entity != null && par7Entity.posY > par3 + (par7Entity instanceof EntityPlayer ? 2 : 0) && (!(par7Entity instanceof EntityPlayer) || !par7Entity.isSneaking()))
 			super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+	}
+	
+	@Override
+	public boolean getBlocksMovement(IBlockAccess par1iBlockAccess, int par2, int par3, int par4) {
+		return false;
 	}
 
 	@Override
