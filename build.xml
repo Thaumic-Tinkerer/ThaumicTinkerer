@@ -41,6 +41,10 @@
 	</target>
 
 	<target name="gradle_build">
+		<copy todir="${build.dir.gradle}" overwrite="true">
+			<fileset file="${build.dir.repo}\build.gradle"/>
+		</copy>
+	
 		<exec dir="${build.dir.gradle}" executable="cmd" osfamily="windows">
 			<arg line="/c gradle build" />
 		</exec>
