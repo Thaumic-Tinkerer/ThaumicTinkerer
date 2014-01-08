@@ -18,13 +18,16 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.IVisDiscounter;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
@@ -33,9 +36,9 @@ import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter {
+public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter, ISpecialArmor {
 
-	static EnumArmorMaterial material = EnumHelper.addArmorMaterial("ICHOR", -1, new int[]{ 3, 8, 6, 3 }, 20);
+	static EnumArmorMaterial material = EnumHelper.addArmorMaterial("ICHOR", 0, new int[] { 3, 8, 6, 3 }, 20);
 
 	public ItemIchorclothArmor(int par1, int par2) {
 		super(par1, material, 0, par2);
@@ -71,6 +74,21 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter {
 	@Override
 	public boolean isItemTool(ItemStack par1ItemStack) {
 		return true;
+	}
+
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player,ItemStack armor, DamageSource source, double damage, int slot) {
+		return new ArmorProperties(0, getArmorMaterial().getDamageReductionAmount(slot) * 0.0425, Integer.MAX_VALUE);
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+		return getArmorMaterial().getDamageReductionAmount(slot);
+	}
+
+	@Override
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {	
+		// NO-OP
 	}
 
 }
