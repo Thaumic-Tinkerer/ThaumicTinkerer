@@ -301,7 +301,7 @@ ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much prote
 
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumic Restorer
-ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
+ttresearch.lore.REPAIRER=Fewer cracks than a potato on a stick
 ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, in order of least to most effective are Ordo, Fabrico and Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
 
 # -- WAND FOCUS: DISTORTION
