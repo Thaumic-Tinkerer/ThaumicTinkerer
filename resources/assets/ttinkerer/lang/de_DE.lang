@@ -100,6 +100,7 @@ item.ttinkerer:ichorSwordGem.name=Erwecktes Ichoriumschwert
 item.ttinkerer:ichorPouch.name=Bodenloser Beutel
 item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
 item.ttinkerer:placementMirror.name=Sichtglas des Weltenformers
+item.ttinkerer:focusShadowbeam.name=Stabfokus: Dunkelstrahl
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -416,3 +417,8 @@ ttresearch.page.BLOCK_TALISMAN.0=Dieser Talisman kann jeglichen Block kompensier
 ttresearch.name.PLACEMENT_MIRROR=Sichtglas des Weltenformers
 ttresearch.lore.PLACEMENT_MIRROR=Quecksilberauge
 ttresearch.page.PLACEMENT_MIRROR.0=Durch das Studieren der Welt hast du ein Glas konstruiert, das dir erlaubt, allein durch Gedankenkraft eine große Menge an Blöcken in der Welt zu platzieren.<BR><BR>Um den zu platzierenden Block einzustellen, würdest du mit dem Glas auf den Block Shift-rechtsklicken. Das Shift-Rechtsklicken des Items in der Luft ändert die Menge an Blöcken, die platziert werden.<BR><BR>Wenn Blöcke in der Welt platziert werden, wird eine Phantom-Version, die zeigt, wie die Blöcke platziert werden würden, erscheinen. Mit Rechtsklick werden die Blöcke verbraucht und platziert, entweder vom Inventar oder einem Schwarzloch-Talisman, der den benötigten Block enthält.
+
+# -- WAND FOCUS: SHADOWBEAM
+ttresearch.name.FOCUS_SHADOWBEAM=Stabfokus: Dunkelstrahl
+ttresearch.lore.FOCUS_SHADOWBEAM=Beschützt von einem alten Mann
+ttresearch.page.FOCUS_SHADOWBEAM.0=Du hast einen Fokus kreiert, der einen Energiestrahl verschießt, der allem in seinem Weg Schaden zufügt.<BR><BR>Der Strahl hat eine ordentliche Reichweite und wird von jeglichen Blöcken reflektiert, als wären sie Spiegel.
