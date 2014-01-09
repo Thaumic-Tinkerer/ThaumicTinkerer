@@ -269,6 +269,8 @@ public final class ModRecipes {
 					new ItemStack(ModItems.kamiResource), new ItemStack(Item.arrow), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ModItems.focusDeflect), new ItemStack(ModItems.kamiResource));
 			registerResearchItemI(LibResearch.KEY_FOCUS_XP_DRAIN, new ItemStack(ModItems.focusXPDrain), 12, new AspectList().add(Aspect.MIND, 65).add(Aspect.TAINT, 16).add(Aspect.MAGIC, 50).add(Aspect.AURA, 32), new ItemStack(Item.enderPearl),
 					new ItemStack(ModItems.kamiResource), new ItemStack(Item.expBottle), new ItemStack(Item.diamond), new ItemStack(ModItems.xpTalisman), new ItemStack(Block.enchantmentTable), new ItemStack(ModItems.kamiResource));
+			registerResearchItemI(LibResearch.KEY_PROTOCLAY, new ItemStack(ModItems.protoclay), 4, new AspectList().add(Aspect.MINE, 16).add(Aspect.TOOL, 16), new ItemStack(Item.clay),
+					new ItemStack(Block.dirt), new ItemStack(Block.stone), new ItemStack(Block.wood), new ItemStack(ModItems.kamiResource, 8, 7));
 		}
 	}
 
