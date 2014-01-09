@@ -44,11 +44,11 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 		setMaxStackSize(1);
 	}
 
-	boolean hasOrnament() {
+	protected boolean hasOrnament() {
 		return false;
 	}
 
-	boolean hasDepth() {
+	protected boolean hasDepth() {
 		return false;
 	}
 

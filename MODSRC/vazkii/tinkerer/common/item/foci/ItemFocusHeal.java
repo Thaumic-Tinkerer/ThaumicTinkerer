@@ -69,7 +69,7 @@ public class ItemFocusHeal extends ItemModFocus {
 	}
 
 	@Override
-	boolean hasDepth() {
+	protected boolean hasDepth() {
 		return true;
 	}
 
