@@ -46,6 +46,7 @@ ttmisc.mode.axe.2=Baum-Modus
 ttmisc.mode.sword.0=Einzel-Modus
 ttmisc.mode.sword.1=Bereichs-Modus
 ttmisc.mode.sword.2=Seelen-Modus
+ttmisc.focusXPDrain.tooltip=Erfahrung x %s
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Rauchiger Quarz
@@ -101,6 +102,7 @@ item.ttinkerer:ichorPouch.name=Bodenloser Beutel
 item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
 item.ttinkerer:placementMirror.name=Sichtglas des Weltenformers
 item.ttinkerer:focusShadowbeam.name=Stabfokus: Dunkelstrahl
+item.ttinkerer:focusXPDrain.name=Stabfokus: Erfahrungsabsorption
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -422,3 +424,8 @@ ttresearch.page.PLACEMENT_MIRROR.0=Durch das Studieren der Welt hast du ein Glas
 ttresearch.name.FOCUS_SHADOWBEAM=Stabfokus: Dunkelstrahl
 ttresearch.lore.FOCUS_SHADOWBEAM=Beschützt von einem alten Mann
 ttresearch.page.FOCUS_SHADOWBEAM.0=Du hast einen Fokus kreiert, der einen Energiestrahl verschießt, der allem in seinem Weg Schaden zufügt.<BR><BR>Der Strahl hat eine ordentliche Reichweite und wird von jeglichen Blöcken reflektiert, als wären sie Spiegel.
+
+# -- WAND FOCUS: EXPERIENCE DRAIN
+ttresearch.name.FOCUS_XP_DRAIN=Stabfokus: Erfahrungsabsorption
+ttresearch.lore.FOCUS_XP_DRAIN=Umweltfreundliches Vis
+ttresearch.page.FOCUS_XP_DRAIN.0=Nachdem du einen Stab kreiert hast, der eine gewaltige Menge Vis speichern kann, kamst du zu dem Schluss, dass du eine alternative Quelle für Vis benötigst.<BR><BR>Deshalb hast du einen Fokus kreiert, der deine Erfahrungspunkte absorbiert, um sie schnell, aber nicht sehr effizient in Vis umzuwandeln.
