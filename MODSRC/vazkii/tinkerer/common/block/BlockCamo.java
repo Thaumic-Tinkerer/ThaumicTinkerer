@@ -46,29 +46,17 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             TileCamo camo = (TileCamo) tile;
             if (camo.camo > 0 && camo.camo < 4096) {
                 Block block = Block.blocksList[camo.camo];
-<<<<<<< HEAD
-                if (block != null) {
-		    int rendertype = block.getRenderType();
-		    if (rendertype == 0 || rendertype == 31 || rendertype == 39)
-                        return block.getIcon(side, camo.camoMeta);
-		}
-=======
                 if (block != null && isValidRenderType(block.getRenderType()))
                     return block.getIcon(side, camo.camoMeta);
->>>>>>> 70456aa28020d27113353cda49e411a544d759d8
             }
         }
 
         return getIconFromSideAfterCheck(tile, meta, side);
-<<<<<<< HEAD
-        }
-=======
     }
 	
 	public boolean isValidRenderType(int type) {
 		return validRenderTypes.contains(type);
 	}
->>>>>>> 70456aa28020d27113353cda49e411a544d759d8
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
@@ -82,7 +70,6 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         		currentStack = new ItemStack(0, 1, 0);
 
         	boolean doChange = true;
-		int rendertype = 0;
                 Block block = Block.blocksList[currentStack.itemID];
         	checkChange : {
             	if(currentStack.itemID != 0) {
@@ -91,18 +78,8 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             			break checkChange;
             		}
 
-<<<<<<< HEAD
-                    if(block == null || block == this || block.blockMaterial == Material.air)
-=======
-                    Block block = Block.blocksList[currentStack.itemID];
                     if(block == null || !isValidRenderType(block.getRenderType()) || block == this || block.blockMaterial == Material.air)
->>>>>>> 70456aa28020d27113353cda49e411a544d759d8
                     	doChange = false;
-		    else {
-			rendertype = block.getRenderType();
-                        if (rendertype != 0 && rendertype != 31 && rendertype != 39) 
-			    doChange = false;
-		    }
             	}
         	}
 
