@@ -46,7 +46,7 @@ ttmisc.mode.axe.2=Tree Mode
 ttmisc.mode.sword.0=Single Mode
 ttmisc.mode.sword.1=Area Mode
 ttmisc.mode.sword.2=Soul Mode
-ttmisc.focusXPDrain.tooltip=%s XP per tick
+ttmisc.focusXPDrain.tooltip=Experience x %s
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -102,6 +102,7 @@ item.ttinkerer:ichorPouch.name=Bottomless Pouch
 item.ttinkerer:blockTalisman.name=Black Hole Talisman
 item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
 item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
+item.ttinkerer:focusXpDrain.name=Wand Focus: Experience Drain
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz

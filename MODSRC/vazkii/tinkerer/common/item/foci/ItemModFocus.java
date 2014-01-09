@@ -70,7 +70,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		AspectList cost = getVisCost();
-		if(cost != null && cost.size() > 0) {
+		if(cost != null) {
 			list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
 			addVisCostTooltip(cost, stack, player, list, par4);
 		}
