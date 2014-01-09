@@ -103,6 +103,7 @@ item.ttinkerer:blockTalisman.name=Black Hole Talisman
 item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
 item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
 item.ttinkerer:focusXPDrain.name=Wand Focus: Experience Drain
+item.ttinkerer:protoclay.name=Protoclay
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -429,3 +430,8 @@ ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of ene
 ttresearch.name.FOCUS_XP_DRAIN=Wand Focus: Experience Drain
 ttresearch.lore.FOCUS_XP_DRAIN=Enviromental friendly Vis
 ttresearch.page.FOCUS_XP_DRAIN.0=After creating a wand that can have an insane amount of vis, you got to the conclusion that you need an alternate source of vis.<BR><BR>To that end, you created a focus that draws from your Experience pool, turning it into vis at a fast, but not very efficient rate.
+
+# -- PROTOCLAY
+ttresearch.name.PROTOCLAY=Protoclay
+ttresearch.lore.PROTOCLAY=Stolen from the Creation
+ttresearch.page.PROTOCLAY.0=You grew tired of having to constantly swap your tools.<BR><BR>This mixture will, by melding with the Ichorium, switch any Awakened Ichorium tools being held by the one used for the block being pointed at, case one tries to break it with the wrong tool.<BR><BR>As an example, trying to break a dirt block with an Awakened Ichorium Pickaxe while a Shovel is present elsewhere in the inventory will swap the two, and allow for fast disposal of the dirt block.

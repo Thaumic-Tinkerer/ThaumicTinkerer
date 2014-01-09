@@ -93,5 +93,6 @@ public final class LibResearch {
 	public static final String KEY_PLACEMENT_MIRROR = "PLACEMENT_MIRROR";
 	public static final String KEY_FOCUS_SHADOWBEAM = "FOCUS_SHADOWBEAM";
 	public static final String KEY_FOCUS_XP_DRAIN = "FOCUS_XP_DRAIN";
+	public static final String KEY_PROTOCLAY = "PROTOCLAY";
 
 }
