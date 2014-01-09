@@ -60,5 +60,6 @@ public final class LibItemIDs {
 	public static int idBlockTalisman = 23169;
 	public static int idPlacementMirror = 23170;
 	public static int idFocusShadowbeam = 23171;
+	public static int idFocusXPDrain = 23172;
 
 }
