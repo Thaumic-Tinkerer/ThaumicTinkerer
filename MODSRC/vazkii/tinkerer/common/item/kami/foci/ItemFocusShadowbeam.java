@@ -25,7 +25,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class ItemFocusShadowbeam extends ItemModFocus {
 
-	AspectList cost = new AspectList().add(Aspect.ORDER, 35).add(Aspect.ENTROPY, 35).add(Aspect.AIR, 125);
+	AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
 	
 	public ItemFocusShadowbeam(int par1) {
 		super(par1);
