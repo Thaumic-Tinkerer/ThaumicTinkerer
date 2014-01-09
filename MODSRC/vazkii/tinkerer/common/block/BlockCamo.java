@@ -26,6 +26,14 @@ import vazkii.tinkerer.common.block.tile.TileCamo;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
+	private int renderType = 0;
+	@Override
+	public int getRenderType() {
+		return renderType;
+	}
+	public void setRenderType(int value) {
+		renderType = value;
+	}
 
 	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -40,8 +48,11 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             TileCamo camo = (TileCamo) tile;
             if (camo.camo > 0 && camo.camo < 4096) {
                 Block block = Block.blocksList[camo.camo];
-                if (block != null && block.getRenderType() == 0)
-                    return block.getIcon(side, camo.camoMeta);
+                if (block != null) {
+		    int rendertype = block.getRenderType();
+		    if (rendertype == 0 || rendertype == 31 || rendertype == 39)
+                        return block.getIcon(side, camo.camoMeta);
+		}
             }
         }
 
@@ -60,6 +71,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         		currentStack = new ItemStack(0, 1, 0);
 
         	boolean doChange = true;
+		int rendertype = 0;
         	checkChange : {
             	if(currentStack.itemID != 0) {
             		if(currentStack.itemID >= 4096) {
@@ -68,15 +80,62 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             		}
 
                     Block block = Block.blocksList[currentStack.itemID];
-                    if(block == null || block.getRenderType() != 0 || block == this || block.blockMaterial == Material.air)
+                    if(block == null || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
+		    else {
+			rendertype = block.getRenderType();
+                        if (rendertype != 0 && rendertype != 31 && rendertype != 39) 
+			    doChange = false;
+		    }
             	}
         	}
 
         	if(doChange) {
+// rendertype will be initialized
+			if (rendertype == 31) {
+				int metadata = 0;
+				switch (par6) {
+					case 0:
+					case 1:
+						metadata = 0;
+						break;
+					case 2:
+					case 3:
+						metadata = 8;
+						break;
+					case 4:
+					case 5:
+						metadata = 4;
+						break;
+				}
+            			camo.camoMeta = (currentStack.getItemDamage() & 3)| metadata;
+				par1World.setBlockMetadataWithNotify(par2, par3, par4, metadata, 2);
+			} else if (rendertype == 39) {
+				int metadata = currentStack.getItemDamage();
+				if (2 == metadata) {
+					switch (par6) {
+						case 0:
+						case 1:
+							metadata = 2;
+							break;
+						case 2:
+						case 3:
+							metadata = 4;
+							break;
+						case 4:
+						case 5:
+							metadata = 3;
+							break;
+					}
+				}
+				par1World.setBlockMetadataWithNotify(par2, par3, par4, metadata, 2);
+				camo.camoMeta = metadata;
+			} else {
+            			camo.camoMeta = currentStack.getItemDamage();
+			}
             	camo.camo = currentStack.itemID;
-            	camo.camoMeta = currentStack.getItemDamage();
             	PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
+		setRenderType(rendertype);
 
         		return true;
         	}
