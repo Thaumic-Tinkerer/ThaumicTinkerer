@@ -40,6 +40,7 @@ import vazkii.tinkerer.common.item.kami.armor.ItemGemHelm;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemLegs;
 import vazkii.tinkerer.common.item.kami.armor.ItemIchorclothArmor;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
+import vazkii.tinkerer.common.item.kami.foci.ItemFocusXPDrain;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorAxe;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorAxeAdv;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorPick;
@@ -99,7 +100,8 @@ public final class ModItems {
 	public static Item blockTalisman;
 	public static Item placementMirror;
 	public static Item focusShadowbeam;
-	
+	public static Item focusXPDrain;
+
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
 
@@ -153,6 +155,7 @@ public final class ModItems {
 			blockTalisman = new ItemBlockTalisman(LibItemIDs.idBlockTalisman).setUnlocalizedName(LibItemNames.BLOCK_TALISMAN);
 			placementMirror = new ItemPlacementMirror(LibItemIDs.idPlacementMirror).setUnlocalizedName(LibItemNames.PLACEMENT_MIRROR);
 			focusShadowbeam = new ItemFocusShadowbeam(LibItemIDs.idFocusShadowbeam).setUnlocalizedName(LibItemNames.FOCUS_SHADOWBEAM);
+			focusXPDrain = new ItemFocusXPDrain(LibItemIDs.idFocusXPDrain).setUnlocalizedName(LibItemNames.FOCUS_XP_DRAIN);
 
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();

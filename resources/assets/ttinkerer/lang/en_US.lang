@@ -46,6 +46,7 @@ ttmisc.mode.axe.2=Tree Mode
 ttmisc.mode.sword.0=Single Mode
 ttmisc.mode.sword.1=Area Mode
 ttmisc.mode.sword.2=Soul Mode
+ttmisc.focusXPDrain.tooltip=%s XP per tick
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
