@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.common.block;
 
+import java.util.Arrays;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,6 +30,8 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
+	static List<Integer> validRenderTypes = Arrays.asList(0, 31, 39);
+	
 	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
 	}
@@ -40,13 +45,17 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             TileCamo camo = (TileCamo) tile;
             if (camo.camo > 0 && camo.camo < 4096) {
                 Block block = Block.blocksList[camo.camo];
-                if (block != null && block.getRenderType() == 0)
+                if (block != null && isValidRenderType(block.getRenderType()))
                     return block.getIcon(side, camo.camoMeta);
             }
         }
 
         return getIconFromSideAfterCheck(tile, meta, side);
     }
+	
+	public boolean isValidRenderType(int type) {
+		return validRenderTypes.contains(type);
+	}
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
@@ -68,7 +77,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             		}
 
                     Block block = Block.blocksList[currentStack.itemID];
-                    if(block == null || block.getRenderType() != 0 || block == this || block.blockMaterial == Material.air)
+                    if(block == null || !isValidRenderType(block.getRenderType()) || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
             	}
         	}
