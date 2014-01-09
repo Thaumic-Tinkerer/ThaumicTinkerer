@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.common.block;
 
+import java.util.Arrays;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
@@ -28,6 +31,8 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
+	static List<Integer> validRenderTypes = Arrays.asList(0, 31, 39);
+	
 	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
 	}
@@ -41,16 +46,29 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             TileCamo camo = (TileCamo) tile;
             if (camo.camo > 0 && camo.camo < 4096) {
                 Block block = Block.blocksList[camo.camo];
+<<<<<<< HEAD
                 if (block != null) {
 		    int rendertype = block.getRenderType();
 		    if (rendertype == 0 || rendertype == 31 || rendertype == 39)
                         return block.getIcon(side, camo.camoMeta);
 		}
+=======
+                if (block != null && isValidRenderType(block.getRenderType()))
+                    return block.getIcon(side, camo.camoMeta);
+>>>>>>> 70456aa28020d27113353cda49e411a544d759d8
             }
         }
 
         return getIconFromSideAfterCheck(tile, meta, side);
+<<<<<<< HEAD
         }
+=======
+    }
+	
+	public boolean isValidRenderType(int type) {
+		return validRenderTypes.contains(type);
+	}
+>>>>>>> 70456aa28020d27113353cda49e411a544d759d8
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
@@ -73,7 +91,12 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             			break checkChange;
             		}
 
+<<<<<<< HEAD
                     if(block == null || block == this || block.blockMaterial == Material.air)
+=======
+                    Block block = Block.blocksList[currentStack.itemID];
+                    if(block == null || !isValidRenderType(block.getRenderType()) || block == this || block.blockMaterial == Material.air)
+>>>>>>> 70456aa28020d27113353cda49e411a544d759d8
                     	doChange = false;
 		    else {
 			rendertype = block.getRenderType();

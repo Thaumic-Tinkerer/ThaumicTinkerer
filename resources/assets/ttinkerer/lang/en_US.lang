@@ -46,6 +46,7 @@ ttmisc.mode.axe.2=Tree Mode
 ttmisc.mode.sword.0=Single Mode
 ttmisc.mode.sword.1=Area Mode
 ttmisc.mode.sword.2=Soul Mode
+ttmisc.focusXPDrain.tooltip=%s XP per tick
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -100,6 +101,7 @@ item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
 item.ttinkerer:ichorPouch.name=Bottomless Pouch
 item.ttinkerer:blockTalisman.name=Black Hole Talisman
 item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
+item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -301,7 +303,7 @@ ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much prote
 
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumic Restorer
-ttresearch.lore.REPAIRER=Fewer cracks than a potato on a stick
+ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
 ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, in order of least to most effective are Ordo, Fabrico and Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
 
 # -- WAND FOCUS: DISTORTION
@@ -349,7 +351,7 @@ ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by dev
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
 ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
-ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely umbreakable and will never sustain as much as a scratch.
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
 
 # -- COWL OF THE ABYSSAL DEPTHS
 ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
@@ -416,3 +418,8 @@ ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block,
 ttresearch.name.PLACEMENT_MIRROR=Worldshaper's Looking Glass
 ttresearch.lore.PLACEMENT_MIRROR=Eye of Mercury
 ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Talismans that contain the required block.
+
+# -- WAND FOCUS: SHADOWBEAM
+ttresearch.name.FOCUS_SHADOWBEAM=Wand Focus: Shadowbeam
+ttresearch.lore.FOCUS_SHADOWBEAM=Guarded by an Old Man
+ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in it's path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.

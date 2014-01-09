@@ -265,6 +265,8 @@ public final class ModRecipes {
 					new ItemStack(ModItems.kamiResource), new ItemStack(Block.enderChest), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 			registerResearchItemI(LibResearch.KEY_PLACEMENT_MIRROR, new ItemStack(ModItems.placementMirror), 12, new AspectList().add(Aspect.CRAFT, 65).add(Aspect.CRYSTAL, 32).add(Aspect.MAGIC, 50).add(Aspect.MIND, 32), new ItemStack(ModItems.blockTalisman),
 					new ItemStack(ModItems.kamiResource), new ItemStack(Block.dropper), new ItemStack(Item.diamond), new ItemStack(Block.glass), new ItemStack(Item.blazePowder), new ItemStack(ModItems.kamiResource));
+			registerResearchItemI(LibResearch.KEY_FOCUS_SHADOWBEAM, new ItemStack(ModItems.focusShadowbeam), 12, new AspectList().add(Aspect.DARKNESS, 65).add(Aspect.ELDRITCH, 32).add(Aspect.MAGIC, 50).add(Aspect.WEAPON, 32), new ItemStack(ConfigItems.itemFocusShock),
+					new ItemStack(ModItems.kamiResource), new ItemStack(Item.arrow), new ItemStack(Item.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ModItems.focusDeflect), new ItemStack(ModItems.kamiResource));
 		}
 	}
 

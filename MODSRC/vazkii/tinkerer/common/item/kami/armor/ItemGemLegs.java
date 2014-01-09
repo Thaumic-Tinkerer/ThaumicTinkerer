@@ -15,7 +15,9 @@
 package vazkii.tinkerer.common.item.kami.armor;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -30,8 +32,17 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	public ItemGemLegs(int par1, int par2) {
 		super(par1, par2);
+		setHasSubtypes(true);
 	}
 
+	@Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		int dmg = par1ItemStack.getItemDamage();
+		par1ItemStack.setItemDamage(~dmg & 1);
+		par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+		return par1ItemStack;
+	}
+	
 	@Override
 	boolean ticks() {
 		return true;
@@ -39,6 +50,10 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	@Override
 	void tickPlayer(EntityPlayer player) {
+		ItemStack armor = player.getCurrentArmor(1);
+		if(armor.getItemDamage() == 1)
+			return;
+		
 		ItemBrightNitor.meta = 1;
 		ModItems.brightNitor.onUpdate(null, player.worldObj, player, 0, false);
 		ItemBrightNitor.meta = 0;

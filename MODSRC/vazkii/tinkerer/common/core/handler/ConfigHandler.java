@@ -136,6 +136,8 @@ public final class ConfigHandler {
 		LibItemIDs.idIchorPouch = loadKamiItem(LibItemNames.ICHOR_POUCH, LibItemIDs.idIchorPouch);
 		LibItemIDs.idBlockTalisman = loadKamiItem(LibItemNames.BLOCK_TALISMAN, LibItemIDs.idBlockTalisman);
 		LibItemIDs.idPlacementMirror = loadKamiItem(LibItemNames.PLACEMENT_MIRROR, LibItemIDs.idPlacementMirror);
+		LibItemIDs.idFocusShadowbeam = loadKamiItem(LibItemNames.FOCUS_SHADOWBEAM, LibItemIDs.idFocusShadowbeam);
+		LibItemIDs.idFocusXPDrain = loadKamiItem(LibItemNames.FOCUS_XP_DRAIN, LibItemIDs.idFocusXPDrain);
 
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);

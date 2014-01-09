@@ -115,7 +115,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 	}
 
 	@Override
-	boolean hasOrnament() {
+	protected boolean hasOrnament() {
 		return true;
 	}
 

@@ -15,6 +15,7 @@
 package vazkii.tinkerer.client.core.proxy;
 
 import net.minecraft.item.EnumRarity;
+import net.minecraft.world.World;
 import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,6 +25,7 @@ import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
 import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
+import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderRepairer;
@@ -41,6 +43,7 @@ import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -96,6 +99,12 @@ public class TTClientProxy extends TTCommonProxy {
 		if(ConfigHandler.enableKami) {
 			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror.itemID, new RenderPlacementMirror());
 		}
+	}
+	
+	@Override
+	public void shadowSparkle(World world, float x, float y, float z, int size) {
+		ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);
+		ClientHelper.minecraft().effectRenderer.addEffect(particle);
 	}
 
 	@Override

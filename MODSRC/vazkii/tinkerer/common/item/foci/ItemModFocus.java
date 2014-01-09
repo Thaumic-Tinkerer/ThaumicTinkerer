@@ -44,11 +44,11 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 		setMaxStackSize(1);
 	}
 
-	boolean hasOrnament() {
+	protected boolean hasOrnament() {
 		return false;
 	}
 
-	boolean hasDepth() {
+	protected boolean hasDepth() {
 		return false;
 	}
 
@@ -70,12 +70,16 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		AspectList cost = getVisCost();
-		if (cost != null && cost.size() > 0) {
+		if(cost != null && cost.size() > 0) {
 			list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
-			for (Aspect aspect : cost.getAspectsSorted()) {
-				float amount = cost.getAmount(aspect) / 100.0F;
-				list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
-			}
+			addVisCostTooltip(cost, stack, player, list, par4);
+		}
+	}
+	
+	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		for(Aspect aspect : cost.getAspectsSorted()) {
+			float amount = cost.getAmount(aspect) / 100.0F;
+			list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
 		}
 	}
 

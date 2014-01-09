@@ -61,6 +61,8 @@ public final class LibItemNames {
 	public static final String ICHOR_POUCH = LibResources.PREFIX_MOD + "ichorPouch";
 	public static final String BLOCK_TALISMAN = LibResources.PREFIX_MOD + "blockTalisman";
 	public static final String PLACEMENT_MIRROR = LibResources.PREFIX_MOD + "placementMirror";
+	public static final String FOCUS_SHADOWBEAM = LibResources.PREFIX_MOD + "focusShadowbeam";
+	public static final String FOCUS_XP_DRAIN = LibResources.PREFIX_MOD + "focusXPDrain";
 
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",
