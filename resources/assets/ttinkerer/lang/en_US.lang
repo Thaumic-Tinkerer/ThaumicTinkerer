@@ -100,6 +100,7 @@ item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
 item.ttinkerer:ichorPouch.name=Bottomless Pouch
 item.ttinkerer:blockTalisman.name=Black Hole Talisman
 item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
+item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
@@ -349,7 +350,7 @@ ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by dev
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
 ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
-ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely umbreakable and will never sustain as much as a scratch.
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
 
 # -- COWL OF THE ABYSSAL DEPTHS
 ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths

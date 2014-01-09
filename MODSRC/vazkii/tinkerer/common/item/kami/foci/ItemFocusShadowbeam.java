@@ -102,22 +102,22 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 			movementVector = new Vector3(motionX, motionY, motionZ);
 		}
 
-		public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8)
-		{
+		@Override
+		public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8) {
 			super.setThrowableHeading(par1, par3, par5, par7, par8);
 			float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
-			par1 /= (double)f2;
-			par3 /= (double)f2;
-			par5 /= (double)f2;
-			par1 += 0.007499999832361937D * (double)par8;
-			par3 += 0.007499999832361937D * (double)par8;
-			par5 += 0.007499999832361937D * (double)par8;
-			par1 *= (double)par7;
-			par3 *= (double)par7;
-			par5 *= (double)par7;
-			this.motionX = par1;
-			this.motionY = par3;
-			this.motionZ = par5;
+			par1 /= f2;
+			par3 /= f2;
+			par5 /= f2;
+			par1 += 0.007499999832361937 * par8;
+			par3 += 0.007499999832361937 * par8;
+			par5 += 0.007499999832361937 * par8;
+			par1 *= par7;
+			par3 *= par7;
+			par5 *= par7;
+			motionX = par1;
+			motionY = par3;
+			motionZ = par5;
 		}
 
 		@Override
