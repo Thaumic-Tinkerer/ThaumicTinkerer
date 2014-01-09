@@ -114,6 +114,9 @@ public class ModCreativeTab extends CreativeTabs {
 			addItem(ModItems.ichorSword);
 			addItem(ModItems.ichorSwordGem);
 
+			addItem(ModItems.focusShadowbeam);
+			addItem(ModItems.focusXPDrain);
+
 			addItem(ModItems.ichorPouch);
 			addItem(ModItems.catAmulet);
 			addItem(ModItems.blockTalisman);
