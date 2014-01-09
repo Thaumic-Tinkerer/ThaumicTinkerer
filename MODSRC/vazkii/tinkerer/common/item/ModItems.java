@@ -126,6 +126,9 @@ public final class ModItems {
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
 		shareBook = new ItemShareBook(LibItemIDs.idShareBook).setUnlocalizedName(LibItemNames.SHARE_BOOK);
 		
+		// TODO Remove
+		new ItemShadowStaff(22222);
+		
 		if(ConfigHandler.enableKami) {
 			toolMatIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 
