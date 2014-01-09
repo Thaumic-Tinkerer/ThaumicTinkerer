@@ -42,8 +42,8 @@ import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
-import vazkii.tinkerer.common.item.ItemShadowStaff;
 import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -103,7 +103,7 @@ public class TTClientProxy extends TTCommonProxy {
 	
 	@Override
 	public void shadowSparkle(World world, float x, float y, float z, int size) {
-		ItemShadowStaff.Particle particle = new ItemShadowStaff.Particle(world, x, y, z, 1.5F, 0, size);
+		ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);
 		ClientHelper.minecraft().effectRenderer.addEffect(particle);
 	}
 

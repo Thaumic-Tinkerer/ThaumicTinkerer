@@ -54,7 +54,7 @@ public class ItemFocusEnderChest extends ItemModFocus {
 	}
 
 	@Override
-	boolean hasDepth() {
+	protected boolean hasDepth() {
 		return true;
 	}
 

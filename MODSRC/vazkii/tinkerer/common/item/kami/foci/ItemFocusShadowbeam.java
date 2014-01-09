@@ -1,70 +1,71 @@
-package vazkii.tinkerer.common.item;
+package vazkii.tinkerer.common.item.kami.foci;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.client.fx.FXSparkle;
+import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.item.foci.ItemModFocus;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class ItemShadowStaff extends ItemMod {
+public class ItemFocusShadowbeam extends ItemModFocus {
 
-	public ItemShadowStaff(int par1) {
+	AspectList cost = new AspectList().add(Aspect.ORDER, 75).add(Aspect.ENTROPY, 75).add(Aspect.AIR, 25);
+	
+	public ItemFocusShadowbeam(int par1) {
 		super(par1);
-		setMaxStackSize(1);
 
 		EntityRegistry.registerModEntity(Beam.class, "ShadowbeamStaffBeam", 0, ThaumicTinkerer.instance, 0, 0, false);
-
-		// Sloppy registry, couldn't bother to actually write a lang
-		setUnlocalizedName("ttinkerer:shadowStaff");
-		LanguageRegistry.addName(this, "Shadowbeam Staff");
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
-		par3EntityPlayer.worldObj.playSoundAtEntity(par3EntityPlayer, "thaumcraft:brain", 1F, 1F);
-
-		return par1ItemStack;
-	}
-
-	@Override
-	public void onUsingItemTick(ItemStack stack, EntityPlayer player, int count) {
+	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
 		if(!player.worldObj.isRemote) {
+			if(player.worldObj.rand.nextInt(10) == 0)
+				player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
 			Beam beam = new Beam(player.worldObj, player);
 			beam.updateUntilDead();
 		}
 	}
 
 	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-		return 72000;
+	public boolean isVisCostPerTick() {
+		return true;
 	}
-
+	
 	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.bow;
-	}
-
-	@Override
-	public boolean isFull3D() {
+	protected boolean hasOrnament() {
 		return true;
 	}
 
 	@Override
-	public boolean shouldRotateAroundWhenRendering() {
-		return true;
+	public int getFocusColor() {
+		return 0x4B0053;
 	}
 
+	@Override
+	public AspectList getVisCost() {
+		return cost;
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return TTClientProxy.kamiRarity;
+	}
+	
 	public static class Particle extends FXSparkle {
 
 		public Particle(World world, double d, double d1, double d2, float f, int type, int m) {
@@ -79,10 +80,10 @@ public class ItemShadowStaff extends ItemMod {
 				setDead();
 		}
 	}
-
+	
 	public static class Beam extends EntityThrowable {
 		Vector3 movementVector;
-		final int maxTicks = 1000;
+		final int maxTicks = 300;
 
 		public Beam(World par1World, EntityLivingBase par2EntityLivingBase) {
 			super(par1World, par2EntityLivingBase);
@@ -139,11 +140,8 @@ public class ItemShadowStaff extends ItemMod {
 
 			super.onUpdate();
 
-			ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
-			/**
-			 * ItemShadowStaff.Particle particle = new ItemShadowStaff.Particle(world, x, y, z, 1.5F, 0, size);
-			 * ClientHelper.minecraft().effectRenderer.addEffect(particle);
-			 */
+			if(ticksExisted > 2)
+				ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
 
 			++ticksExisted;
 			if(ticksExisted >= maxTicks)
