@@ -1,11 +1,12 @@
 package vazkii.tinkerer.common.item.kami.foci;
 
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
@@ -15,11 +16,12 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.client.fx.FXSparkle;
+import thaumcraft.common.config.Config;
+import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
 import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ItemFocusShadowbeam extends ItemModFocus {
 
@@ -33,10 +35,15 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
-		if(!player.worldObj.isRemote) {
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		
+		if(!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true)) {
+			int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
+			
 			if(player.worldObj.rand.nextInt(10) == 0)
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
-			Beam beam = new Beam(player.worldObj, player);
+			
+			Beam beam = new Beam(player.worldObj, player, potency);
 			beam.updateUntilDead();
 		}
 	}
@@ -82,12 +89,15 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	}
 	
 	public static class Beam extends EntityThrowable {
+		
+		int potency;
 		Vector3 movementVector;
 		final int maxTicks = 300;
 
-		public Beam(World par1World, EntityLivingBase par2EntityLivingBase) {
+		public Beam(World par1World, EntityLivingBase par2EntityLivingBase, int potency) {
 			super(par1World, par2EntityLivingBase);
 
+			this.potency = potency;
 			setVelocity(motionX / 10, motionY / 10, motionZ / 10);
 			movementVector = new Vector3(motionX, motionY, motionZ);
 		}
@@ -116,8 +126,8 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 				return;
 
 			if(movingobjectposition.entityHit != null) {
-				if(movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
-					movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 5);
+				if((MinecraftServer.getServer().isPVPEnabled() || !(movingobjectposition.entityHit instanceof EntityPlayer)) && movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
+					movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 8 + potency);
 				return;
 			}
 
