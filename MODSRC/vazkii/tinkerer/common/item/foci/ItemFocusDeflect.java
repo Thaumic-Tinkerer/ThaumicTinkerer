@@ -45,7 +45,7 @@ public class ItemFocusDeflect extends ItemModFocus {
 	}
 
 	public static void protectFromProjectiles(EntityPlayer p) {
-		List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 3, p.posY - 3, p.posZ - 3, p.posX + 2, p.posY + 2, p.posZ + 2));
+		List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 4, p.posY - 4, p.posZ - 4, p.posX + 3, p.posY + 3, p.posZ + 3));
 
 		for(Entity e : projectiles) {
 			Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2) ;
