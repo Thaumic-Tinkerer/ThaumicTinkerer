@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,14 +27,6 @@ import vazkii.tinkerer.common.block.tile.TileCamo;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
-	private int renderType = 0;
-	@Override
-	public int getRenderType() {
-		return renderType;
-	}
-	public void setRenderType(int value) {
-		renderType = value;
-	}
 
 	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -57,7 +50,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         }
 
         return getIconFromSideAfterCheck(tile, meta, side);
-    }
+        }
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
@@ -72,6 +65,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
         	boolean doChange = true;
 		int rendertype = 0;
+                Block block = Block.blocksList[currentStack.itemID];
         	checkChange : {
             	if(currentStack.itemID != 0) {
             		if(currentStack.itemID >= 4096) {
@@ -79,7 +73,6 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             			break checkChange;
             		}
 
-                    Block block = Block.blocksList[currentStack.itemID];
                     if(block == null || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
 		    else {
@@ -91,51 +84,30 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         	}
 
         	if(doChange) {
-// rendertype will be initialized
-			if (rendertype == 31) {
-				int metadata = 0;
-				switch (par6) {
-					case 0:
-					case 1:
-						metadata = 0;
-						break;
-					case 2:
-					case 3:
-						metadata = 8;
-						break;
-					case 4:
-					case 5:
-						metadata = 4;
-						break;
-				}
-            			camo.camoMeta = (currentStack.getItemDamage() & 3)| metadata;
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, metadata, 2);
-			} else if (rendertype == 39) {
-				int metadata = currentStack.getItemDamage();
-				if (2 == metadata) {
-					switch (par6) {
-						case 0:
-						case 1:
-							metadata = 2;
-							break;
-						case 2:
-						case 3:
-							metadata = 4;
-							break;
-						case 4:
-						case 5:
-							metadata = 3;
-							break;
-					}
-				}
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, metadata, 2);
-				camo.camoMeta = metadata;
-			} else {
-            			camo.camoMeta = currentStack.getItemDamage();
+		int metadata = currentStack.getItemDamage();
+		if (block instanceof BlockDirectional) {
+			switch (par6) {
+				case 0:
+				case 1:
+					break;
+				case 2:
+					metadata = (metadata & 12) | 2;
+					break;
+				case 3:
+					metadata = (metadata & 12) | 0;
+					break;
+				case 4:
+					metadata = (metadata & 12) | 1;
+					break;
+				case 5:
+					metadata = (metadata & 12) | 3;
+					break;
 			}
+                }
+                camo.camoMeta = metadata;
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, metadata, 2);
             	camo.camo = currentStack.itemID;
             	PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
-		setRenderType(rendertype);
 
         		return true;
         	}
