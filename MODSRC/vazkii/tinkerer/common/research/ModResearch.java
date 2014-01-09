@@ -228,6 +228,9 @@ public final class ModResearch {
 			
 			research = new KamiResearchItem(LibResearch.KEY_FOCUS_SHADOWBEAM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.MAGIC, 1).add(Aspect.ELDRITCH, 1).add(Aspect.TAINT, 1), 7, 0, 5, new ItemStack(ModItems.focusShadowbeam)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_SHADOWBEAM));
+			
+			research = new KamiResearchItem(LibResearch.KEY_FOCUS_XP_DRAIN, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MIND, 2).add(Aspect.MAGIC, 1).add(Aspect.AURA, 1).add(Aspect.MAN, 1), 9, 0, 5, new ItemStack(ModItems.focusXPDrain)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_XP_DRAIN));
 		}
 	}
 
