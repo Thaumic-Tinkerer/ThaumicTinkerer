@@ -28,6 +28,9 @@ public class BlockPlatform extends BlockCamo {
 
 	public BlockPlatform(int par1) {
 		super(par1, Material.wood);
+		setHardness(2.0F);
+		setResistance(5.0F);
+		setStepSound(soundWoodFootstep);
 	}
 
 	@Override
