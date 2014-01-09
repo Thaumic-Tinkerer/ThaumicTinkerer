@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -69,6 +70,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         		currentStack = new ItemStack(0, 1, 0);
 
         	boolean doChange = true;
+                Block block = Block.blocksList[currentStack.itemID];
         	checkChange : {
             	if(currentStack.itemID != 0) {
             		if(currentStack.itemID >= 4096) {
@@ -76,15 +78,35 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             			break checkChange;
             		}
 
-                    Block block = Block.blocksList[currentStack.itemID];
                     if(block == null || !isValidRenderType(block.getRenderType()) || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
             	}
         	}
 
         	if(doChange) {
+		int metadata = currentStack.getItemDamage();
+		if (block instanceof BlockDirectional) {
+			switch (par6) {
+				case 0:
+				case 1:
+					break;
+				case 2:
+					metadata = (metadata & 12) | 2;
+					break;
+				case 3:
+					metadata = (metadata & 12) | 0;
+					break;
+				case 4:
+					metadata = (metadata & 12) | 1;
+					break;
+				case 5:
+					metadata = (metadata & 12) | 3;
+					break;
+			}
+                }
+                camo.camoMeta = metadata;
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, metadata, 2);
             	camo.camo = currentStack.itemID;
-            	camo.camoMeta = currentStack.getItemDamage();
             	PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
 
         		return true;
