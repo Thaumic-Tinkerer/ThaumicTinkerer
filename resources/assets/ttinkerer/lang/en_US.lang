@@ -417,3 +417,8 @@ ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block,
 ttresearch.name.PLACEMENT_MIRROR=Worldshaper's Looking Glass
 ttresearch.lore.PLACEMENT_MIRROR=Eye of Mercury
 ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Talismans that contain the required block.
+
+# -- WAND FOCUS: SHADOWBEAM
+ttresearch.name.FOCUS_SHADOWBEAM=Wand Focus: Shadowbeam
+ttresearch.lore.FOCUS_SHADOWBEAM=Guarded by an Old Man
+ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in it's path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.
