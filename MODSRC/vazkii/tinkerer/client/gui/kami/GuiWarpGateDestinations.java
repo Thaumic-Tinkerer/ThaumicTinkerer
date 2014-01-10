@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.gui.kami;
 
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 	@Override
 	public void updateScreen() {
 		++ticks;
-		
+
 		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 		int i = res.getScaledWidth();
 		int j = res.getScaledHeight();
@@ -95,7 +96,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 			return;
 		}
 	}
-	
+
 	List<String> tooltip = new ArrayList();
 
 	@Override
@@ -104,13 +105,13 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		super.drawScreen(par1, par2, par3);
 
 		tooltip.clear();
-		
+
 		int gateX = warpGate.xCoord - x;
 		int gateY = warpGate.zCoord - y;
 		mc.renderEngine.bindTexture(TextureMap.locationItemsTexture);
 
 		List<Object[]> coords = new ArrayList();
-		
+
 		for(int i = 0; i < warpGate.getSizeInventory(); i++) {
 			ItemStack stack = warpGate.getStackInSlot(i);
 			if(stack != null && ItemSkyPearl.isAttuned(stack)) {
@@ -126,7 +127,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 					coords.add(new Object[] { x - this.x, z - this.y, stack, i});
 			}
 		}
-		
+
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glColor4f(1F, 1F, 1F, (float) ((Math.sin((double) ticks / 10D) + 1F) / 4F + 0.25F));
@@ -135,7 +136,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		for(Object[] coords_ : coords) {
 			int x = (Integer) coords_[0];
 			int y = (Integer) coords_[1];
-			
+
 			GL11.glBegin(GL11.GL_LINES);
 			GL11.glVertex2i(gateX, gateY);
 			GL11.glVertex2i(x, y);
@@ -143,33 +144,33 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		}
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glDisable(GL11.GL_BLEND);
-		
+
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		drawPearlAt(0, null, (Integer) gateX, (Integer) gateY, par1, par2);
 		for(Object[] coords_ : coords)
 			drawPearlAt((Integer) coords_[3], (ItemStack) coords_[2], (Integer) coords_[0], (Integer) coords_[1], par1, par2);
-		
+
 		if(!tooltip.isEmpty())
 			ClientHelper.renderTooltip(par1, par2, tooltip);
-		
+
 		drawCenteredString(fontRenderer, StatCollector.translateToLocal("ttmisc.spaceToReset"), width / 2, 5, 0xFFFFFF);
 	}
 
 	public void drawPearlAt(int index, ItemStack stack, int xp, int yp, int mx, int my) {
 		int x = xp + this.x;
 		int y = yp + this.y;
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef(xp, yp, 0);
 		GL11.glScalef(0.5F, 0.5F, 1F);
 		render.renderIcon(-8, -8, ModItems.skyPearl.getIconFromDamage(0), 16, 16);
 		GL11.glPopMatrix();
-		
+
 		if(mx >= xp - 4 && mx <= xp + 4 && my >= yp - 4 && my < yp + 4) {
 			if(stack != null && stack.hasDisplayName())
 				tooltip.add(EnumChatFormatting.AQUA + stack.getDisplayName());
 			else tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(stack == null ? "ttmisc.entrancePoint" : "ttmisc.destination"));
-			
+
 			if(stack != null) {
 				ItemSkyPearl.addInfo(stack, warpGate.worldObj.provider.dimensionId, Vector3.fromTileEntity(warpGate), tooltip, true);
 				tooltip.add(StatCollector.translateToLocal("ttmisc.clickToTeleport"));
@@ -177,7 +178,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 				tooltip.add("X: " + x);
 				tooltip.add("Z: " + y);
 			}
-			
+
 			if(Mouse.isButtonDown(0) && isShiftKeyDown() && stack != null) {
 				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketWarpGateTeleport(warpGate, index)));
 				mc.displayGuiScreen(null);
@@ -195,7 +196,8 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		float f = 256.0F;
 		tessellator.startDrawingQuads();
-		//        tessellator.setColorOpaque_I(4210752);
+		float hue = (float) (Math.sin((double) ticks / 150D) + 1F / 2F);
+		tessellator.setColorOpaque_I(Color.HSBtoRGB(hue, 0.5F, 0.4F));
 		tessellator.addVertexWithUV(0.0D, (double)this.height, 0.0D, 0.0D, (double)((float)this.height / f + (float)par1));
 		tessellator.addVertexWithUV((double)this.width, (double)this.height, 0.0D, (double)((float)this.width / f), (double)((float)this.height / f + (float)par1));
 		tessellator.addVertexWithUV((double)this.width, 0.0D, 0.0D, (double)((float)this.width / f), (double)par1);

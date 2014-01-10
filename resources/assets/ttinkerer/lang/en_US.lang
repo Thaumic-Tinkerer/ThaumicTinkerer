@@ -56,6 +56,8 @@ ttmisc.destination=Unnamed Destination
 ttmisc.entrancePoint=Entrance Point
 ttmisc.spaceToReset=Press SPACE to return to Entrance Point
 ttmisc.clickToTeleport=Shift + Left Click to Teleport
+ttmisc.noDest=There's no Celestial Gateway in the destination.
+ttmisc.noTeleport=The Celestial Gateway in the destination does not accept incoming teleports.
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
