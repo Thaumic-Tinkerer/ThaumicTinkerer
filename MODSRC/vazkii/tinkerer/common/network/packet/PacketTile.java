@@ -26,10 +26,10 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 
 	private static final long serialVersionUID = -1447633008013055477L;
 
-	int dim, x, y, z;
+	protected int dim, x, y, z;
 
-	transient T tile;
-	transient Player player;
+	protected transient T tile;
+	protected transient Player player;
 
 	public PacketTile(T tile) {
 		this.tile = tile;
