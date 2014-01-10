@@ -20,9 +20,9 @@ import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
 
 public final class PlacementMirrorPredictionRenderer {
-	
+
 	RenderBlocks blockRender = new RenderBlocks();
-	
+
 	@ForgeSubscribe
 	public void onWorldRenderLast(RenderWorldLastEvent event) {
 		World world = Minecraft.getMinecraft().theWorld;
@@ -33,13 +33,13 @@ public final class PlacementMirrorPredictionRenderer {
 				renderPlayerLook(player, currentStack);
 		}
 	}
-	
+
 	private void renderPlayerLook(EntityPlayer player, ItemStack stack) {
 		ChunkCoordinates[] coords = ItemPlacementMirror.getBlocksToPlace(stack, player);
 		if(ItemPlacementMirror.hasBlocks(stack, player, coords)) {
 			ItemStack block = new ItemStack(ItemPlacementMirror.getBlockID(stack), 1, ItemPlacementMirror.getBlockMeta(stack));
 			ChunkCoordinates lastCoords = new ChunkCoordinates(0, 0, 0);
-			
+
 			GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -51,7 +51,7 @@ public final class PlacementMirrorPredictionRenderer {
 			GL11.glPopMatrix();
 		}
 	}
-	
+
 	private void renderBlockAt(ItemStack block, ChunkCoordinates pos, ChunkCoordinates last) {
 		GL11.glPushMatrix();
         GL11.glTranslated(pos.posX + 0.5 - RenderManager.renderPosX, pos.posY + 0.5 - RenderManager.renderPosY, pos.posZ + 0.5 - RenderManager.renderPosZ);
@@ -63,5 +63,5 @@ public final class PlacementMirrorPredictionRenderer {
 
         GL11.glPopMatrix();
 	}
-	
+
 }

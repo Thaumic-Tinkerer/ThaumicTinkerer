@@ -90,7 +90,7 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
-		
+
 		if(ConfigHandler.enableKami) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
 		}
@@ -102,16 +102,16 @@ public class TTClientProxy extends TTCommonProxy {
 
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
-		
+
 		if(ConfigHandler.enableKami) {
 			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror.itemID, new RenderPlacementMirror());
-			
+
 			LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
-			
+
 			RenderingRegistry.registerBlockHandler(new RenderWarpGate());
 		}
 	}
-	
+
 	@Override
 	public void shadowSparkle(World world, float x, float y, float z, int size) {
 		ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);

@@ -60,7 +60,7 @@ public final class ModBlocks {
 	public static Block repairer;
 	public static Block aspectAnalyzer;
 	public static Block platform;
-	
+
 	public static Block warpGate;
 
 	public static void initBlocks() {
@@ -84,7 +84,7 @@ public final class ModBlocks {
 		if(ConfigHandler.enableKami) {
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
 		}
-		
+
 		registerBlocks();
 		registerMultiparts();
 	}
@@ -105,7 +105,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(repairer, LibBlockNames.REPAIRER);
 		GameRegistry.registerBlock(aspectAnalyzer, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerBlock(platform, LibBlockNames.PLATFORM);
-		
+
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 		}
@@ -132,7 +132,7 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileRepairer.class, LibBlockNames.REPAIRER);
 		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerTileEntity(TileCamo.class, LibBlockNames.CAMO);
-		
+
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
 		}

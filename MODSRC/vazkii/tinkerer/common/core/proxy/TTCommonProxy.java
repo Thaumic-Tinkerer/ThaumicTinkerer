@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.core.proxy;
 
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import thaumcraft.common.config.Config;
 import thaumcraft.common.tiles.TileAlembic;
 import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileCentrifuge;
@@ -79,7 +78,7 @@ public class TTCommonProxy {
 
 		if(ConfigHandler.enableEasymodeResearch)
 			TickRegistry.registerTickHandler(new EasymodeResearchHandler(), Side.SERVER);
-		
+
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
 			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
@@ -108,7 +107,7 @@ public class TTCommonProxy {
 	public boolean isClient() {
 		return false;
 	}
-	
+
 	public void shadowSparkle(World world, float x, float y, float z, int size) {
 		// NO-OP
 	}

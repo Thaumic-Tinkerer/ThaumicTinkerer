@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 10, 2014, 5:45:28 PM (GMT)]
  */
 package vazkii.tinkerer.common.block.tile.container.kami;
@@ -26,15 +26,15 @@ import vazkii.tinkerer.common.item.ModItems;
 public class ContainerWarpGate extends ContainerPlayerInv {
 
 	TileWarpGate gate;
-	
+
 	public ContainerWarpGate(TileWarpGate gate, InventoryPlayer playerInv) {
 		super(playerInv);
 		this.gate = gate;
-		
+
 		for(int y = 0; y < 2; y++)
 			for(int x = 0; x < 5; x++)
 				addSlotToContainer(new SlotSkyPearl(gate, y * 5 + x, 30 + x * 25, 27 + y * 25));
-		
+
 		initPlayerInv();
 	}
 
@@ -42,7 +42,7 @@ public class ContainerWarpGate extends ContainerPlayerInv {
 	public boolean canInteractWith(EntityPlayer entityplayer) {
 		return gate.isUseableByPlayer(entityplayer);
 	}
-	
+
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack var3 = null;

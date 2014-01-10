@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 10, 2014, 5:26:45 PM (GMT)]
  */
 package vazkii.tinkerer.common.item.kami;
@@ -32,7 +32,7 @@ import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.item.ItemMod;
 
 public class ItemSkyPearl extends ItemMod {
-	
+
 	public static final String TAG_X = "x";
 	public static final String TAG_Y = "y";
 	public static final String TAG_Z = "z";
@@ -53,14 +53,14 @@ public class ItemSkyPearl extends ItemMod {
 
 		return true;
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(par3EntityPlayer.isSneaking() && isAttuned(par1ItemStack)) {
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 			ItemNBTHelper.setInt(par1ItemStack, TAG_Y, -1);
 		}
-			
+
 		return par1ItemStack;
 	}
 
@@ -68,7 +68,7 @@ public class ItemSkyPearl extends ItemMod {
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		addInfo(par1ItemStack, par2EntityPlayer.dimension, Vector3.fromEntityCenter(par2EntityPlayer), par3List, false);
 	}
-	
+
 	public static void addInfo(ItemStack stack, int dim, Vector3 pos, List<String> list, boolean simpleMode) {
 		if(isAttuned(stack)) {
 			int x = getX(stack);
@@ -84,7 +84,7 @@ public class ItemSkyPearl extends ItemMod {
 			} else list.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, simpleMode ? 0 : y, z, pos.x, simpleMode ? 0 : pos.y, pos.z)).setScale(2, RoundingMode.UP).toString() + "m");
 		}
 	}
-	
+
 	@Override
 	public boolean hasEffect(ItemStack par1ItemStack) {
 		return isAttuned(par1ItemStack);
@@ -128,7 +128,7 @@ public class ItemSkyPearl extends ItemMod {
 
 		return ItemNBTHelper.getInt(stack, TAG_DIM, 0);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;

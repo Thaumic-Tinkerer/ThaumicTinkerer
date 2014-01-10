@@ -19,16 +19,16 @@ public interface IPeripheral
 	 * @return 	A string identifying the type of peripheral.
 	 */
     public String getType();
-    
+
 	/**
-	 * Should return an array of strings that identify the methods that this 
+	 * Should return an array of strings that identify the methods that this
 	 * peripheral exposes to Lua. This will be called once before each attachment,
 	 * and should not change when called multiple times.
 	 * @return 	An array of strings representing method names.
 	 * @see 	#callMethod
 	 */
     public String[] getMethodNames();
-    
+
 	/**
 	 * This is called when a lua program on an attached computer calls peripheral.call() with
 	 * one of the methods exposed by getMethodNames().<br>
@@ -58,7 +58,7 @@ public interface IPeripheral
 	 * @see 	#getMethodNames
 	 */
     public Object[] callMethod( IComputerAccess computer, ILuaContext context, int method, Object[] arguments ) throws Exception;
-    
+
 	/**
 	 * Is called before the computer attempts to attach to the peripheral, and should return whether to allow
 	 * the attachment. Use this to restrict the number of computers that can attach, or to limit attachments to

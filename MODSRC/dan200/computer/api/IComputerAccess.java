@@ -6,6 +6,8 @@
 
 package dan200.computer.api;
 
+import net.minecraft.world.World;
+
 /**
  * The interface passed to peripherals by computers or turtles, providing methods
  * that they can call. This should not be implemented by your classes. Do not interact
@@ -25,7 +27,7 @@ public interface IComputerAccess
 	 * @see IMount
 	 */
 	public String mount( String desiredLocation, IMount mount );
-	
+
 	/**
 	 * Mount a mount onto the computers' file system in a writable mode.<br>
 	 * @param desiredLoction The location on the computer's file system where you would like the mount to be mounted.
@@ -38,7 +40,7 @@ public interface IComputerAccess
 	 * @see IMount
 	 */
 	public String mountWritable( String desiredLocation, IWritableMount mount );
-	
+
 	/**
 	 * Unmounts a directory previously mounted onto the computers file system by mount() or mountWritable().<br>
 	 * When a directory is unmounted, it will disappear from the computers file system, and the user will no longer be able to
@@ -51,14 +53,14 @@ public interface IComputerAccess
 	 * @see	#mountWritable(String, IWritableMount)
 	 */
 	public void unmount( String location );
-	
+
 	/**
 	 * Returns the numerical ID of this computer.<br>
 	 * This is the same number obtained by calling os.getComputerID() or running the "id" program from lua,
 	 * and is guarunteed unique. This number will be positive.
 	 * @return	The identifier.
 	 */
-	public int getID();	
+	public int getID();
 
 	/**
 	 * Causes an event to be raised on this computer, which the computer can respond to by calling
@@ -66,7 +68,7 @@ public interface IComputerAccess
 	 * this peripheral.
 	 * @param event		A string identifying the type of event that has occurred, this will be
 	 *					returned as the first value from os.pullEvent(). It is recommended that you
-	 *					you choose a name that is unique, and recognisable as originating from your 
+	 *					you choose a name that is unique, and recognisable as originating from your
 	 *					peripheral. eg: If your peripheral type is "button", a suitable event would be
 	 *					"button_pressed".
 	 * @param arguments	In addition to a name, you may pass an array of extra arguments to the event, that will

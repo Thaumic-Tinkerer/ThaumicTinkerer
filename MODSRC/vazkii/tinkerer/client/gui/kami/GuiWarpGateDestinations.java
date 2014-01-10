@@ -1,22 +1,20 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 10, 2014, 6:08:23 PM (GMT)]
  */
 package vazkii.tinkerer.client.gui.kami;
 
 import java.awt.Color;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,21 +31,20 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
-import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class GuiWarpGateDestinations extends GuiScreen {
 
 	private static ResourceLocation enderField = new ResourceLocation("textures/entity/end_portal.png");
 	TileWarpGate warpGate;
-	RenderItem render = new RenderItem(); 
+	RenderItem render = new RenderItem();
 
 	int lastMouseX, lastMouseY;
 	int x, y;
@@ -72,8 +69,8 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 		int i = res.getScaledWidth();
 		int j = res.getScaledHeight();
-		int mx = Mouse.getX() * i / this.mc.displayWidth;
-		int my = j - Mouse.getY() * j / this.mc.displayHeight - 1;
+		int mx = Mouse.getX() * i / mc.displayWidth;
+		int my = j - Mouse.getY() * j / mc.displayHeight - 1;
 
 		if(Mouse.isButtonDown(0)) {
 			int deltaX = mx - lastMouseX;
@@ -130,7 +127,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glColor4f(1F, 1F, 1F, (float) ((Math.sin((double) ticks / 10D) + 1F) / 4F + 0.25F));
+		GL11.glColor4f(1F, 1F, 1F, (float) ((Math.sin(ticks / 10D) + 1F) / 4F + 0.25F));
 		GL11.glLineWidth(2F);
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		for(Object[] coords_ : coords) {
@@ -146,7 +143,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glDisable(GL11.GL_BLEND);
 
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		drawPearlAt(0, null, (Integer) gateX, (Integer) gateY, par1, par2);
+		drawPearlAt(0, null, gateX, gateY, par1, par2);
 		for(Object[] coords_ : coords)
 			drawPearlAt((Integer) coords_[3], (ItemStack) coords_[2], (Integer) coords_[0], (Integer) coords_[1], par1, par2);
 
@@ -192,16 +189,16 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_FOG);
 		Tessellator tessellator = Tessellator.instance;
-		this.mc.getTextureManager().bindTexture(enderField);
+		mc.getTextureManager().bindTexture(enderField);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		float f = 256.0F;
 		tessellator.startDrawingQuads();
-		float hue = (float) (Math.sin((double) ticks / 150D) + 1F / 2F);
+		float hue = (float) (Math.sin(ticks / 150D) + 1F / 2F);
 		tessellator.setColorOpaque_I(Color.HSBtoRGB(hue, 0.5F, 0.4F));
-		tessellator.addVertexWithUV(0.0D, (double)this.height, 0.0D, 0.0D, (double)((float)this.height / f + (float)par1));
-		tessellator.addVertexWithUV((double)this.width, (double)this.height, 0.0D, (double)((float)this.width / f), (double)((float)this.height / f + (float)par1));
-		tessellator.addVertexWithUV((double)this.width, 0.0D, 0.0D, (double)((float)this.width / f), (double)par1);
-		tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D, 0.0D, (double)par1);
+		tessellator.addVertexWithUV(0.0D, height, 0.0D, 0.0D, height / f + par1);
+		tessellator.addVertexWithUV(width, height, 0.0D, width / f, height / f + par1);
+		tessellator.addVertexWithUV(width, 0.0D, 0.0D, width / f, par1);
+		tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D, 0.0D, par1);
 		tessellator.draw();
 	}
 

@@ -64,7 +64,7 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
         GL11.glRotatef(90F, 1F, 0F, 0F);
         GL11.glTranslatef(0F, 0F, -0.6F);
         Icon icon = ((ItemHoverHarness) ConfigItems.itemHoverHarness).iconLightningRing;
-        		
+
         for(int i = 0; i < 3; i++) {
         	for(int j = 0; j < 2; j++) {
                 GL11.glScalef(1F, -1F, 1F);

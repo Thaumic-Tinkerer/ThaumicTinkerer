@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 10, 2014, 3:56:13 PM (GMT)]
  */
 package vazkii.tinkerer.common.block.tile.kami;
@@ -37,7 +37,7 @@ import vazkii.tinkerer.common.lib.LibGuiIDs;
 public class TileWarpGate extends TileEntity implements IInventory {
 
 	private static final String TAG_LOCKED = "locked";
-	
+
 	public boolean locked = false;
 	boolean teleportedThisTick = false;
 	ItemStack[] inventorySlots = new ItemStack[10];
@@ -48,14 +48,14 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		for(EntityPlayer player : players)
 			if(player.isSneaking())
 				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
-	
+
 		teleportedThisTick = false;
 	}
-	
+
 	public void teleportPlayer(EntityPlayer player, int index) {
 		if(teleportedThisTick)
 			return;
-		
+
 		ItemStack stack = index < getSizeInventory() ? getStackInSlot(index) : null;
 		if(stack != null && ItemSkyPearl.isAttuned(stack)) {
 			int x = ItemSkyPearl.getX(stack);
@@ -66,7 +66,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 				teleportedThisTick = true;
 		}
 	}
-	
+
 	public static boolean teleportPlayer(EntityPlayer player, ChunkCoordinates coords) {
 		int x = coords.posX;
 		int y = coords.posY;
@@ -80,23 +80,23 @@ public class TileWarpGate extends TileEntity implements IInventory {
 
 				for(int i = 0; i < 20; i++)
 					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
-				
+
 				if(player instanceof EntityPlayerMP)
 					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
-				
+
 				for(int i = 0; i < 20; i++)
 					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
-			
+
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
 				return true;
 			} else if(!player.worldObj.isRemote)
 				player.addChatMessage("ttmisc.noTeleport");
 		} else if(!player.worldObj.isRemote)
 			player.addChatMessage("ttmisc.noDest");
-		
+
 		return false;
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
@@ -113,7 +113,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		locked = par1NBTTagCompound.getBoolean(TAG_LOCKED);
-		
+
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -126,7 +126,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
     	par1NBTTagCompound.setBoolean(TAG_LOCKED, locked);
-    	
+
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
 			if (inventorySlots[var3] != null) {

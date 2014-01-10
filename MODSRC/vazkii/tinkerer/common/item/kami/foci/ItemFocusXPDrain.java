@@ -1,7 +1,6 @@
 package vazkii.tinkerer.common.item.kami.foci;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -23,49 +22,49 @@ public class ItemFocusXPDrain extends ItemModFocus {
 
 	AspectList cost = new AspectList();
 	private int lastGiven = 0;
-	
+
 	public ItemFocusXPDrain(int par1) {
 		super(par1);
 	}
-	
+
 	@Override
 	public boolean isVisCostPerTick() {
 		return true;
 	}
-	
+
 	@Override
 	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
 		if(paramEntityPlayer.worldObj.isRemote)
 			return;
-		
+
 		ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
 		AspectList aspects = wand.getAllVis(paramItemStack);
-		
+
 		Aspect aspectToAdd = null;
 		int takes = 0;
-		
+
 		while(aspectToAdd == null) {
 			lastGiven = lastGiven == 5 ? 0 : lastGiven + 1;
 
 			Aspect aspect = Aspect.getPrimalAspects().get(lastGiven);
-			
+
 			if(aspects.getAmount(aspect) < wand.getMaxVis(paramItemStack))
 				aspectToAdd = aspect;
-			
+
 			++takes;
 			if(takes == 7)
 				return;
 		}
-		
+
 		int xpUse = getXpUse(paramItemStack);
 		if(paramEntityPlayer.experienceTotal >= xpUse) {
 			ExperienceHelper.drainPlayerXP(paramEntityPlayer, xpUse);
 			wand.storeVis(paramItemStack, aspectToAdd, wand.getVis(paramItemStack, aspectToAdd) + 500);
 		}
 	}
-	
 
-	
+
+
 	@Override
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		return getFocusColor();
@@ -74,13 +73,13 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	@Override
 	public int getFocusColor() {
 		EntityPlayer player = ClientHelper.clientPlayer();
-		return Color.HSBtoRGB((player.ticksExisted * 2 % 360) / 360F, 1F, 1F);
+		return Color.HSBtoRGB(player.ticksExisted * 2 % 360 / 360F, 1F, 1F);
 	}
-	
+
 	int getXpUse(ItemStack stack) {
 		return 30 - EnchantmentHelper.getEnchantmentLevel(Config.enchFrugal.effectId, stack) * 3;
 	}
-	
+
 	@Override
 	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		list.add(" " + EnumChatFormatting.GREEN + StatCollector.translateToLocal("ttmisc.experience") +  EnumChatFormatting.WHITE + " x " +  getXpUse(stack));
@@ -90,12 +89,12 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	public AspectList getVisCost() {
 		return cost;
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;
 	}
-	
+
 	@Override
 	public boolean acceptsEnchant(int paramInt) {
 		return paramInt == Config.enchFrugal.effectId;
