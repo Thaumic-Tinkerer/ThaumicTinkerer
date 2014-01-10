@@ -20,6 +20,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.entity.item.EntityXPOrb;
 
 import org.lwjgl.opengl.GL11;
 
@@ -41,7 +42,7 @@ public class ModelSpinningCubes extends ModelBase {
 		// NO-OP
 	}
 
-	public void renderSpinningCubes(int cubes, float hue) {
+	public void renderSpinningCubes(int cubes, int repeat, int origRepeat) {
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		
 		final float modifier = 6F;
@@ -49,8 +50,9 @@ public class ModelSpinningCubes extends ModelBase {
 		final float radiusBase = 0.7F;
 		final float radiusMod = 0.1F;
 
-		long ticks = ClientHelper.clientPlayer().ticksExisted;
+		double ticks = ClientHelper.clientPlayer().ticksExisted - 0.75 * (origRepeat - repeat);
 		float offsetPerCube = 360 / cubes;
+		
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.025F, 0.85F, -0.025F);
 		for(int i = 0; i < cubes; i++) {
@@ -70,15 +72,30 @@ public class ModelSpinningCubes extends ModelBase {
 			float zRotate = (float) Math.cos(ticks * rotationModifier) / 2F;
 	        
 			GL11.glRotatef(deg, xRotate, yRotate, zRotate);
-			GL11.glColor3f(1F, 1F, 1F);
-	        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 255F, 0.0038909912109375F);
+			if(repeat < origRepeat) {
+				GL11.glColor4f(1F, 1F, 1F, 0.2F);
+				GL11.glEnable(GL11.GL_BLEND);
+				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			} else GL11.glColor4f(1F, 1F, 1F, 1F);
+
+			int light = 15728880;
+	        int lightmapX = light % 65536;
+	        int lightmapY = light / 65536;
+	        
+	        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lightmapX, lightmapY);
 			spinningCube.render(1F / 16F);
+			
+			if(repeat < origRepeat)
+				GL11.glDisable(GL11.GL_BLEND);
 
 			GL11.glPopMatrix();
 		}
 		GL11.glPopMatrix();
 		
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		
+		if(repeat != 0)
+			renderSpinningCubes(cubes, repeat - 1, origRepeat);
 	}
 
 }
