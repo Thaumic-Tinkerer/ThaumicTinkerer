@@ -19,9 +19,12 @@ import java.util.EnumSet;
 import net.minecraft.client.Minecraft;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.client.gui.GuiResearchRecipe;
+import thaumcraft.common.config.Config;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.GuiResearchPeripheral;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.handler.EasymodeResearchHandler;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.ITickHandler;
@@ -44,6 +47,9 @@ public class ClientTickHandler implements ITickHandler {
 			if(research.key.equals(LibResearch.KEY_PERIPHERALS))
 				mc.displayGuiScreen(new GuiResearchPeripheral(research));
 		}
+		
+		if(ConfigHandler.enableEasymodeResearch)
+			EasymodeResearchHandler.onPlayerTick(mc.thePlayer);
 
 		ToolModeHUDHandler.clientTick();
 

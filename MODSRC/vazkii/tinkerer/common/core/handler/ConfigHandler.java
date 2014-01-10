@@ -41,6 +41,7 @@ public final class ConfigHandler {
 	public static boolean enableKami = false;
 	public static boolean useTootlipIndicators = true;
 	public static boolean enableSurvivalShareTome = true;
+	public static boolean enableEasymodeResearch = false;
 	
 	public static boolean showPlacementMirrorBlocks = true;
 
@@ -69,6 +70,10 @@ public final class ConfigHandler {
 		Property propEnableSurvivalShareTome = config.get(Configuration.CATEGORY_GENERAL, "shareTome.survival.enabled", true);
 		propEnableSurvivalShareTome.comment = "Set to false to disable the crafting recipe for the Tome of Research Sharing.";
 		enableSurvivalShareTome = propEnableSurvivalShareTome.getBoolean(true);
+		
+		Property propEasymodeResearch = config.get(Configuration.CATEGORY_GENERAL, "research.easymode.enabled", false);
+		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research.";
+		enableEasymodeResearch = propEasymodeResearch.getBoolean(false);
 		
 		if(enableKami) {
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
