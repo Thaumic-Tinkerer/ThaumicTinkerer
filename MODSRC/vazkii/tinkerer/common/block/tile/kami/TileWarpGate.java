@@ -42,7 +42,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 	public void updateEntity() {
 		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 1.5, zCoord + 1));
 		for(EntityPlayer player : players)
-			if(player.isAirBorne && player.motionY > 0)
+			if(player.isSneaking())
 				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
 	}
 	
