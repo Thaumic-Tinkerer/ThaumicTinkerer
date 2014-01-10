@@ -36,6 +36,8 @@ public final class LibBlockNames {
 	public static final String ASPECT_ANALYZER = LibResources.PREFIX_MOD + "aspectAnalyzer";
 	public static final String PLATFORM = LibResources.PREFIX_MOD + "platform";
 
+	public static final String WARP_GATE = LibResources.PREFIX_MOD + "warpGate";
+
 	public static final String CAMO = LibResources.PREFIX_MOD + "camo";
 
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {

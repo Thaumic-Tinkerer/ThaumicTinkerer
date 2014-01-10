@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.Block;
+import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
@@ -25,11 +26,13 @@ import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.block.transvector.BlockTransvectorDislocator;
 import vazkii.tinkerer.common.block.transvector.BlockTransvectorInterface;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ItemBlockMagnet;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
@@ -56,6 +59,8 @@ public final class ModBlocks {
 	public static Block repairer;
 	public static Block aspectAnalyzer;
 	public static Block platform;
+	
+	public static Block warpGate;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -75,6 +80,10 @@ public final class ModBlocks {
 		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setUnlocalizedName(LibBlockNames.ASPECT_ANALYZER);
 		platform = new BlockPlatform(LibBlockIDs.idPlatform).setUnlocalizedName(LibBlockNames.PLATFORM);
 
+		if(ConfigHandler.enableKami) {
+			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
+		}
+		
 		registerBlocks();
 		registerMultiparts();
 	}
@@ -95,6 +104,10 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(repairer, LibBlockNames.REPAIRER);
 		GameRegistry.registerBlock(aspectAnalyzer, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerBlock(platform, LibBlockNames.PLATFORM);
+		
+		if(ConfigHandler.enableKami) {
+			GameRegistry.registerBlock(warpGate, LibBlockNames.WARP_GATE);
+		}
 	}
 
 	private static void registerMultiparts() {
@@ -118,6 +131,10 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileRepairer.class, LibBlockNames.REPAIRER);
 		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerTileEntity(TileCamo.class, LibBlockNames.CAMO);
+		
+		if(ConfigHandler.enableKami) {
+			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
+		}
 	}
 
 }

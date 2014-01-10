@@ -98,6 +98,8 @@ public final class ConfigHandler {
 		LibBlockIDs.idAspectAnalyzer = loadBlock(LibBlockNames.ASPECT_ANALYZER, LibBlockIDs.idAspectAnalyzer);
 		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
 
+		LibBlockIDs.idWarpGate = loadBlock(LibBlockNames.WARP_GATE, LibBlockIDs.idWarpGate);
+		
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
 		LibItemIDs.idGaseousLight = loadItem(LibItemNames.GASEOUS_LIGHT, LibItemIDs.idGaseousLight);
@@ -164,6 +166,10 @@ public final class ConfigHandler {
 
 	private static int loadBlock(String label, int defaultID) {
 		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
+	}
+	
+	private static int loadKamiBlock(String label, int defaultID) {
+		return config.getBlock(CATEGORY_KAMI_BLOCKS, "id_tile." + label, defaultID).getInt(defaultID);
 	}
 
 	private static int loadEnchant(String label, int deafultID) {
