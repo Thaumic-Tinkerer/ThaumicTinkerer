@@ -94,5 +94,7 @@ public final class LibResearch {
 	public static final String KEY_FOCUS_SHADOWBEAM = "FOCUS_SHADOWBEAM";
 	public static final String KEY_FOCUS_XP_DRAIN = "FOCUS_XP_DRAIN";
 	public static final String KEY_PROTOCLAY = "PROTOCLAY";
+	public static final String KEY_WARP_GATE = "WARP_GATE";
+	public static final String KEY_SKY_PEARL = "SKY_PEARL";
 
 }
