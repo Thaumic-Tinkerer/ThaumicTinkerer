@@ -38,6 +38,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 	private static final String TAG_LOCKED = "locked";
 	
 	public boolean locked = false;
+	boolean teleportedThisTick = false;
 	ItemStack[] inventorySlots = new ItemStack[10];
 
 	@Override
@@ -46,9 +47,14 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		for(EntityPlayer player : players)
 			if(player.isSneaking())
 				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
+	
+		teleportedThisTick = false;
 	}
 	
 	public void teleportPlayer(EntityPlayer player, int index) {
+		if(teleportedThisTick)
+			return;
+		
 		ItemStack stack = index < getSizeInventory() ? getStackInSlot(index) : null;
 		if(stack != null && ItemSkyPearl.isAttuned(stack)) {
 			int x = ItemSkyPearl.getX(stack);
@@ -70,6 +76,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 						ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
 				
 					worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
+					teleportedThisTick = true;
 				} else player.addChatMessage("ttmisc.noTeleport");
 			} else player.addChatMessage("ttmisc.noDest");
 		}
