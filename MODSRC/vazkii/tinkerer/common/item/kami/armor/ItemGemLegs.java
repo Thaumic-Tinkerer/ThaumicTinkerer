@@ -14,9 +14,12 @@
  */
 package vazkii.tinkerer.common.item.kami.armor;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -25,6 +28,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.lwjgl.util.vector.Vector2f;
 
 import thaumcraft.client.codechicken.core.vec.Vector3;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.ModItems;
 
@@ -37,10 +41,17 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		int dmg = par1ItemStack.getItemDamage();
-		par1ItemStack.setItemDamage(~dmg & 1);
-		par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
-		return par1ItemStack;
+		if(par3EntityPlayer.isSneaking()) {
+			int dmg = par1ItemStack.getItemDamage();
+			par1ItemStack.setItemDamage(~dmg & 1);
+			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+			
+			ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.light" + par1ItemStack.getItemDamage()));
+			
+			return par1ItemStack;
+		}
+
+		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
 	}
 	
 	@Override
@@ -84,5 +95,11 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 				player.heal(event.ammount);
 			}
 		}
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+		if(stack.getItemDamage() == 1)
+			list.add(StatCollector.translateToLocal("ttmisc.light1"));
 	}
 }
