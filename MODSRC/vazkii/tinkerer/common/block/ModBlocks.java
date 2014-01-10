@@ -34,6 +34,7 @@ import vazkii.tinkerer.common.block.transvector.BlockTransvectorDislocator;
 import vazkii.tinkerer.common.block.transvector.BlockTransvectorInterface;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ItemBlockMagnet;
+import vazkii.tinkerer.common.item.kami.ItemBlockWarpGate;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
@@ -106,7 +107,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(platform, LibBlockNames.PLATFORM);
 		
 		if(ConfigHandler.enableKami) {
-			GameRegistry.registerBlock(warpGate, LibBlockNames.WARP_GATE);
+			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 		}
 	}
 

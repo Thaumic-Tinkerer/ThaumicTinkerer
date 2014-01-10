@@ -36,10 +36,12 @@ import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
 import vazkii.tinkerer.client.render.tile.RenderTileFunnel;
 import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
 import vazkii.tinkerer.client.render.tile.RenderTileRepairer;
+import vazkii.tinkerer.client.render.tile.kami.RenderTileWarpGate;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
@@ -88,6 +90,10 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
+		
+		if(ConfigHandler.enableKami) {
+			ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
+		}
 	}
 
 	private void registerRenderIDs() {
