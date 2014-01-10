@@ -49,6 +49,8 @@ ttmisc.mode.sword.2=Soul Mode
 ttmisc.experience=Experience
 ttmisc.light0=Light Enabled
 ttmisc.light1=Light Disabled
+ttmisc.differentDim=Different Dimension
+ttmisc.distance=Distance
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
@@ -106,6 +108,7 @@ item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
 item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
 item.ttinkerer:focusXPDrain.name=Wand Focus: Experience Drain
 item.ttinkerer:protoclay.name=Protoclay
+item.ttinkerer:skyPearl.name=Celestial Pearl
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz
