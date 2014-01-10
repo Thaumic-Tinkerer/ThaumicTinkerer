@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
@@ -65,16 +66,22 @@ public class ItemSkyPearl extends ItemMod {
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if(isAttuned(par1ItemStack)) {
-			int x = getX(par1ItemStack);
-			int y = getY(par1ItemStack);
-			int z = getZ(par1ItemStack);
-			par3List.add("X: " + x);
-			par3List.add("Y: " + y);
-			par3List.add("Z: " + z);
-			if(getDim(par1ItemStack) != par2EntityPlayer.dimension)
-				par3List.add(EnumChatFormatting.RED + StatCollector.translateToLocal("ttmisc.differentDim"));
-			else par3List.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, y, z, par2EntityPlayer.posX, par2EntityPlayer.posY, par2EntityPlayer.posZ)).setScale(2, RoundingMode.UP).toString() + "m");
+		addInfo(par1ItemStack, par2EntityPlayer.dimension, Vector3.fromEntityCenter(par2EntityPlayer), par3List, false);
+	}
+	
+	public static void addInfo(ItemStack stack, int dim, Vector3 pos, List<String> list, boolean simpleMode) {
+		if(isAttuned(stack)) {
+			int x = getX(stack);
+			int y = getY(stack);
+			int z = getZ(stack);
+			list.add("X: " + x);
+			if(!simpleMode)
+				list.add("Y: " + y);
+			list.add("Z: " + z);
+			if(getDim(stack) != dim) {
+				if(!simpleMode)
+					list.add(EnumChatFormatting.RED + StatCollector.translateToLocal("ttmisc.differentDim"));
+			} else list.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, simpleMode ? 0 : y, z, pos.x, simpleMode ? 0 : pos.y, pos.z)).setScale(2, RoundingMode.UP).toString() + "m");
 		}
 	}
 	

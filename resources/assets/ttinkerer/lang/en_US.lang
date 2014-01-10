@@ -52,6 +52,10 @@ ttmisc.light1=Light Disabled
 ttmisc.differentDim=Different Dimension
 ttmisc.distance=Distance
 ttmisc.lockedGate=Allow incoming teleports
+ttmisc.destination=Unnamed Destination
+ttmisc.entrancePoint=Entrance Point
+ttmisc.spaceToReset=Press SPACE to return to Entrance Point
+ttmisc.clickToTeleport=Shift + Left Click to Teleport
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
