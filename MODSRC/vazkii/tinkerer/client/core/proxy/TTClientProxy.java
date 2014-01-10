@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.EnumHelperClient;
@@ -130,6 +131,11 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	public boolean isClient() {
 		return true;
+	}
+	
+	@Override
+	public EntityPlayer getClientPlayer() {
+		return ClientHelper.clientPlayer();
 	}
 
 }
