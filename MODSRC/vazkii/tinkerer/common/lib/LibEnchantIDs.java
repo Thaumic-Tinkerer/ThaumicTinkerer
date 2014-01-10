@@ -19,7 +19,7 @@ public class LibEnchantIDs {
 	public static int idAscentBoost = 220;
 	public static int idSlowFall = 221;
 	public static int idAutoSmelt = 222;
-	public static int idDesintegrate = 223;
+	public static int idDisintegrate = 223;
 	public static int idQuickDraw = 224;
 	public static int idVampirism = 225;
 
