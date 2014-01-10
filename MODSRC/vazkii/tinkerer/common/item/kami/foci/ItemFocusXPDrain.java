@@ -59,7 +59,7 @@ public class ItemFocusXPDrain extends ItemModFocus {
 		int xpUse = getXpUse(paramItemStack);
 		if(paramEntityPlayer.experienceTotal >= xpUse) {
 			ExperienceHelper.drainPlayerXP(paramEntityPlayer, xpUse);
-			wand.storeVis(paramItemStack, aspectToAdd, wand.getVis(paramItemStack, aspectToAdd) + 500);
+			wand.storeVis(paramItemStack, aspectToAdd, Math.min(wand.getMaxVis(paramItemStack), wand.getVis(paramItemStack, aspectToAdd) + 500));
 		}
 	}
 
