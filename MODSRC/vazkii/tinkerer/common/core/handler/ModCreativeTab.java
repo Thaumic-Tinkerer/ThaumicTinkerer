@@ -120,11 +120,13 @@ public class ModCreativeTab extends CreativeTabs {
 
 			addItem(ModItems.focusShadowbeam);
 			addItem(ModItems.focusXPDrain);
+			addItem(ModItems.focusRecall);
 
 			addItem(ModItems.ichorPouch);
 			addItem(ModItems.catAmulet);
 			addItem(ModItems.blockTalisman);
 			addItem(ModItems.placementMirror);
+			addItem(ModItems.skyPearl);
 		}
 	}
 
