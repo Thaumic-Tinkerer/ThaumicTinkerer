@@ -15,6 +15,7 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ExperienceHelper;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
 import cpw.mods.fml.relauncher.Side;
@@ -71,10 +72,9 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public int getFocusColor() {
-		EntityPlayer player = ClientHelper.clientPlayer();
-		return Color.HSBtoRGB(player.ticksExisted * 2 % 360 / 360F, 1F, 1F);
+		EntityPlayer player = ThaumicTinkerer.proxy.getClientPlayer();
+		return player == null ? 0xFFFFFF : Color.HSBtoRGB(player.ticksExisted * 2 % 360 / 360F, 1F, 1F);
 	}
 
 	int getXpUse(ItemStack stack) {
