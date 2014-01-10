@@ -116,6 +116,7 @@ item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
 item.ttinkerer:focusXPDrain.name=Wand Focus: Experience Drain
 item.ttinkerer:protoclay.name=Protoclay
 item.ttinkerer:skyPearl.name=Celestial Pearl
+item.ttinkerer:focusRecall.name=Wand Focus: Celestial Recall
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Block of Smokey Quartz

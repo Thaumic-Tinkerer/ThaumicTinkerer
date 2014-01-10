@@ -65,6 +65,7 @@ public final class LibItemNames {
 	public static final String FOCUS_XP_DRAIN = LibResources.PREFIX_MOD + "focusXPDrain";
 	public static final String PROTOCLAY = LibResources.PREFIX_MOD + "protoclay";
 	public static final String SKY_PEARL = LibResources.PREFIX_MOD + "skyPearl";
+	public static final String FOCUS_RECALL = LibResources.PREFIX_MOD + "focusRecall";
 
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",
