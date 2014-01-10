@@ -23,6 +23,7 @@ import vazkii.tinkerer.client.gui.GuiEnchanting;
 import vazkii.tinkerer.client.gui.GuiMobMagnet;
 import vazkii.tinkerer.client.gui.kami.GuiIchorPouch;
 import vazkii.tinkerer.client.gui.kami.GuiWarpGate;
+import vazkii.tinkerer.client.gui.kami.GuiWarpGateDestinations;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
@@ -85,6 +86,9 @@ public class GuiHandler  implements IGuiHandler {
 				
 			case LibGuiIDs.GUI_ID_WARP_GATE :
 				return new GuiWarpGate((TileWarpGate) tile, player.inventory);
+				
+			case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS :
+				return new GuiWarpGateDestinations((TileWarpGate) tile);
 		}
 		return null;
 	}
