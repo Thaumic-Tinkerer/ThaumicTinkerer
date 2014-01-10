@@ -41,6 +41,7 @@ import vazkii.tinkerer.common.item.kami.armor.ItemGemChest;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemHelm;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemLegs;
 import vazkii.tinkerer.common.item.kami.armor.ItemIchorclothArmor;
+import vazkii.tinkerer.common.item.kami.foci.ItemFocusRecall;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusXPDrain;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorAxe;
@@ -105,6 +106,7 @@ public final class ModItems {
 	public static Item focusXPDrain;
 	public static Item protoclay;
 	public static Item skyPearl;
+	public static Item focusRecall;
 
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
@@ -162,7 +164,8 @@ public final class ModItems {
 			focusXPDrain = new ItemFocusXPDrain(LibItemIDs.idFocusXPDrain).setUnlocalizedName(LibItemNames.FOCUS_XP_DRAIN);
 			protoclay = new ItemProtoclay(LibItemIDs.idProtoclay).setUnlocalizedName(LibItemNames.PROTOCLAY);
 			skyPearl = new ItemSkyPearl(LibItemIDs.idSkyPearl).setUnlocalizedName(LibItemNames.SKY_PEARL);
-			
+			focusRecall = new ItemFocusRecall(LibItemIDs.idFocusRecall).setUnlocalizedName(LibItemNames.FOCUS_RECALL);
+
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
 

@@ -146,6 +146,7 @@ public final class ConfigHandler {
 		LibItemIDs.idFocusShadowbeam = loadKamiItem(LibItemNames.FOCUS_SHADOWBEAM, LibItemIDs.idFocusShadowbeam);
 		LibItemIDs.idFocusXPDrain = loadKamiItem(LibItemNames.FOCUS_XP_DRAIN, LibItemIDs.idFocusXPDrain);
 		LibItemIDs.idSkyPearl = loadKamiItem(LibItemNames.SKY_PEARL, LibItemIDs.idSkyPearl);
+		LibItemIDs.idFocusRecall = loadKamiItem(LibItemNames.FOCUS_RECALL, LibItemIDs.idFocusRecall);
 
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
