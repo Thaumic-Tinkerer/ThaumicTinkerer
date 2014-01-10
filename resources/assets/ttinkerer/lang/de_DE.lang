@@ -103,6 +103,7 @@ item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
 item.ttinkerer:placementMirror.name=Sichtglas des Weltenformers
 item.ttinkerer:focusShadowbeam.name=Stabfokus: Dunkelstrahl
 item.ttinkerer:focusXPDrain.name=Stabfokus: Erfahrungsabsorption
+item.ttinkerer:protoclay.name=Protolehm
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -429,3 +430,8 @@ ttresearch.page.FOCUS_SHADOWBEAM.0=Du hast einen Fokus kreiert, der einen Energi
 ttresearch.name.FOCUS_XP_DRAIN=Stabfokus: Erfahrungsabsorption
 ttresearch.lore.FOCUS_XP_DRAIN=Umweltfreundliches Vis
 ttresearch.page.FOCUS_XP_DRAIN.0=Nachdem du einen Stab kreiert hast, der eine gewaltige Menge Vis speichern kann, kamst du zu dem Schluss, dass du eine alternative Quelle für Vis benötigst.<BR><BR>Deshalb hast du einen Fokus kreiert, der deine Erfahrungspunkte absorbiert, um sie schnell, aber nicht sehr effizient in Vis umzuwandeln.
+
+# -- PROTOCLAY
+ttresearch.name.PROTOCLAY=Protolehm
+ttresearch.lore.PROTOCLAY=Gestohlen aus der Schöpfung
+ttresearch.page.PROTOCLAY.0=Du wurdest es satt, deine Werkzeuge kontinuierlich auswechseln zu müssen.<BR><BR>Diese Mixtur wird, durch Verschmelzen mit dem Ichorium, jegliches Erwecktes Ichoriumwerkzeug in deiner Hand mit dem auswechseln, das für den abzubauenden Block benötigt wird, falls versucht wird, ihn mit dem falschen Werkzeug abzubauen.<BR><BR>Als Beispiel, solltest du versuchen, einen Erdblock mit einer Erweckten Ichoriumspitzhacke abzubauen, während sich eine Schaufel in deinem Inventar befindet, werden beide gewechselt und dir somit ermöglicht, den Erdblock schnell zu beseitigen.
