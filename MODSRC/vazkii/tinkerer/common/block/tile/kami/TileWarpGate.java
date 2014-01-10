@@ -27,6 +27,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChunkCoordinates;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
@@ -60,26 +61,40 @@ public class TileWarpGate extends TileEntity implements IInventory {
 			int x = ItemSkyPearl.getX(stack);
 			int y = ItemSkyPearl.getY(stack);
 			int z = ItemSkyPearl.getZ(stack);
-			
-			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
-			if(tile != null && tile instanceof TileWarpGate) {
-				TileWarpGate destGate = (TileWarpGate) tile;
-				if(!destGate.locked) {
-					worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
 
-					for(int i = 0; i < 20; i++)
-						ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
-					
-					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
-					
-					for(int i = 0; i < 20; i++)
-						ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
-				
-					worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
-					teleportedThisTick = true;
-				} else player.addChatMessage("ttmisc.noTeleport");
-			} else player.addChatMessage("ttmisc.noDest");
+			if(teleportPlayer(player, new ChunkCoordinates(x, y, z)))
+				teleportedThisTick = true;
 		}
+	}
+	
+	public static boolean teleportPlayer(EntityPlayer player, ChunkCoordinates coords) {
+		int x = coords.posX;
+		int y = coords.posY;
+		int z = coords.posZ;
+
+		TileEntity tile = player.worldObj.getBlockTileEntity(x, y, z);
+		if(tile != null && tile instanceof TileWarpGate) {
+			TileWarpGate destGate = (TileWarpGate) tile;
+			if(!destGate.locked) {
+				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
+
+				for(int i = 0; i < 20; i++)
+					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
+				
+				if(player instanceof EntityPlayerMP)
+					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
+				
+				for(int i = 0; i < 20; i++)
+					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
+			
+				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
+				return true;
+			} else if(!player.worldObj.isRemote)
+				player.addChatMessage("ttmisc.noTeleport");
+		} else if(!player.worldObj.isRemote)
+			player.addChatMessage("ttmisc.noDest");
+		
+		return false;
 	}
 	
 	@Override
