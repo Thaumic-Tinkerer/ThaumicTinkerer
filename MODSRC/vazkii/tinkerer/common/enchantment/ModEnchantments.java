@@ -24,7 +24,7 @@ public final class ModEnchantments {
 	public static Enchantment ascentBoost;
 	public static Enchantment slowFall;
 	public static Enchantment autoSmelt;
-	public static Enchantment desintegrate;
+	public static Enchantment disintegrate;
 	public static Enchantment quickDraw;
 	public static Enchantment vampirism;
 
@@ -32,7 +32,7 @@ public final class ModEnchantments {
 		ascentBoost = new EnchantmentAscentBoost(LibEnchantIDs.idAscentBoost).setName(LibEnchantNames.ASCENT_BOOST);
 		slowFall = new EnchantmentSlowFall(LibEnchantIDs.idSlowFall).setName(LibEnchantNames.SLOW_FALL);
 		autoSmelt = new EnchantmentAutoSmelt(LibEnchantIDs.idAutoSmelt).setName(LibEnchantNames.AUTO_SMELT);
-		desintegrate = new EnchantmentDesintegrate(LibEnchantIDs.idDesintegrate).setName(LibEnchantNames.DESINTEGRATE);
+		disintegrate = new EnchantmentDisintegrate(LibEnchantIDs.idDisintegrate).setName(LibEnchantNames.DISINTEGRATE);
 		quickDraw = new EnchantmentQuickDraw(LibEnchantIDs.idQuickDraw).setName(LibEnchantNames.QUICK_DRAW);
 		vampirism = new EnchantmentVampirism(LibEnchantIDs.idVampirism).setName(LibEnchantNames.VAMPIRISM);
 
