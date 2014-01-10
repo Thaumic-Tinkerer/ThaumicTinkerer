@@ -60,3 +60,4 @@
 2.1 tc4.1beta-59=https://www.sugarsync.com/pf/D9740002_82596175_788701
 2.1-60=https://www.sugarsync.com/pf/D9740002_82596175_788703
 2.1-61=https://www.sugarsync.com/pf/D9740002_82596175_795173
+2.1.62=https://www.sugarsync.com/pf/D9740002_82596175_795456
