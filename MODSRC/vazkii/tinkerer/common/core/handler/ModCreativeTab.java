@@ -68,6 +68,13 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.magnet);
 		addItem(ModItems.soulMould);
 		addBlock(ModBlocks.animationTablet);
+		
+		if(Loader.isModLoaded("ComputerCraft"))
+			addBlock(ModBlocks.aspectAnalyzer);
+		
+		if(ConfigHandler.enableKami) {
+			addBlock(ModBlocks.warpGate);
+		}
 
 		addItem(ModItems.gaseousLight);
 		addItem(ModItems.gaseousShadow);
@@ -89,9 +96,6 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.enchanter);
 		addItem(ModItems.xpTalisman);
 		addItem(ModItems.spellCloth);
-
-		if(Loader.isModLoaded("ComputerCraft"))
-			addBlock(ModBlocks.aspectAnalyzer);
 
 		if(ConfigHandler.enableKami) {
 			addItem(ModItems.kamiResource);

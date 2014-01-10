@@ -33,4 +33,6 @@ public final class LibBlockIDs {
 	public static int idAspectAnalyzer = 2629;
 	public static int idPlatform = 2630;
 
+	public static int idWarpGate = 2815;
+
 }
