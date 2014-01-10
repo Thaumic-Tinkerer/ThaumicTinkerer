@@ -46,7 +46,9 @@ ttmisc.mode.axe.2=Baum-Modus
 ttmisc.mode.sword.0=Einzel-Modus
 ttmisc.mode.sword.1=Bereichs-Modus
 ttmisc.mode.sword.2=Seelen-Modus
-ttmisc.focusXPDrain.tooltip=Erfahrung x %s
+ttmisc.experience=Erfahrung
+ttmisc.light0=Licht aktiviert
+ttmisc.light1=Licht deaktiviert
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Rauchiger Quarz
@@ -369,6 +371,7 @@ ttresearch.page.ICHORCLOTH_CHEST_GEM.0=Du hast einen Weg gefunden, die Ichortuch
 ttresearch.name.ICHORCLOTH_LEGS_GEM=Hose der Brennenden Hülle
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=Ein warmes Gefühl
 ttresearch.page.ICHORCLOTH_LEGS_GEM.0=Du hast einen Weg gefunden, die Ichortuchhose in eine noch mächtigere Form umzuwandeln.<BR><BR>Diese Hose ist mit der Seele des Feuers versetzt.<BR>Zum einen erschafft sie ein Licht um den Träger herum, heller noch als das des Hyperenergetischen Nitors. Das Lich erweitert sich auch zum Ort, auf den der Träger schaut, gleich einer Taschenlampe, und bringt die Existenz des Erschaffers in größerer Weite zur Geltung.<BR>Zusätzlich bietet diese Hose nicht nur Feuerresistenz, sie wandelt auch allen erhaltenen Feuerschaden in Heilung um.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Solltest du, warum auch immer, einmal im Dunkeln sein wollen, kannst du mit der Hose Shift-klicken, um die Lichtfunktion zu aktivieren und deaktivieren.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
 ttresearch.name.ICHORCLOTH_BOOTS_GEM=Stiefel des Horizontalen Schildes
