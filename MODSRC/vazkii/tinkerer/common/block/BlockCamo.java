@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -27,6 +28,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.tile.TileCamo;
 import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
@@ -69,6 +72,8 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         		currentStack = new ItemStack(0, 1, 0);
 
         	boolean doChange = true;
+                int rendertype = 0;
+                Block block = null;
         	checkChange : {
             	if(currentStack.itemID != 0) {
             		if(currentStack.itemID >= 4096) {
@@ -76,15 +81,35 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             			break checkChange;
             		}
 
-                    Block block = Block.blocksList[currentStack.itemID];
+                    block = Block.blocksList[currentStack.itemID];
                     if(block == null || !isValidRenderType(block.getRenderType()) || block == this || block.blockMaterial == Material.air)
                     	doChange = false;
             	}
         	}
 
         	if(doChange) {
+		int metadata = currentStack.getItemDamage();
+		if (block instanceof BlockDirectional) {
+			switch (par6) {
+				case 0:
+				case 1:
+					break;
+				case 2:
+					metadata = (metadata & 12) | 2;
+					break;
+				case 3:
+					metadata = (metadata & 12) | 0;
+					break;
+				case 4:
+					metadata = (metadata & 12) | 1;
+					break;
+				case 5:
+					metadata = (metadata & 12) | 3;
+					break;
+			}
+                }
             	camo.camo = currentStack.itemID;
-            	camo.camoMeta = currentStack.getItemDamage();
+                camo.camoMeta = metadata;
             	PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
 
         		return true;
@@ -102,6 +127,22 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public int colorMultiplier(IBlockAccess par1World, int par2, int par3, int par4) {
+		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		if (tile instanceof TileCamo) {
+	    		TileCamo camo = (TileCamo) tile;
+	    		if (camo.camo >= 0 && camo.camo < 4096) {
+				Block block = Block.blocksList[camo.camo];
+				if (block != null) {
+					return block.colorMultiplier(par1World, par2, par3, par4);
+				}
+			}
+		}
+		return 16777215;
 	}
 
 	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
