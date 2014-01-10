@@ -238,6 +238,9 @@ public final class ModResearch {
 			if(Config.allowMirrors) {
 				research = new KamiResearchItem(LibResearch.KEY_WARP_GATE, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MECHANISM, 1), 16, 3, 5, new ItemStack(ModBlocks.warpGate)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_CHEST_GEM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM).registerResearchItem();
 				research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_WARP_GATE), new ResearchPage("1"), infusionPage(LibResearch.KEY_SKY_PEARL));
+			
+				research = new KamiResearchItem(LibResearch.KEY_FOCUS_RECALL, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 1), 17, 5, 5, new ItemStack(ModItems.focusRecall)).setHidden().setParents(LibResearch.KEY_WARP_GATE).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
+				research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_RECALL));
 			}
 		}
 	}

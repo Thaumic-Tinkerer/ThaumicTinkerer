@@ -278,7 +278,8 @@ public final class ModRecipes {
 						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(ModBlocks.dislocator), new ItemStack(ModItems.kamiResource, 1, 6), new ItemStack(Item.diamond), new ItemStack(Item.feather));
 				registerResearchItemI(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ModItems.skyPearl), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Item.enderPearl),
 						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(Block.blockLapis), new ItemStack(Item.diamond));
-			
+				registerResearchItemI(LibResearch.KEY_FOCUS_RECALL, new ItemStack(ModItems.focusRecall), 10, new AspectList().add(Aspect.TRAVEL, 100).add(Aspect.ELDRITCH, 64).add(Aspect.MAGIC, 50), new ItemStack(ModItems.skyPearl),
+					new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource), new ItemStack(Item.enderPearl), new ItemStack(Item.diamond), new ItemStack(ConfigBlocks.blockMirror), new ItemStack(ConfigItems.itemFocusPortableHole));
 			}
 		}
 	}
