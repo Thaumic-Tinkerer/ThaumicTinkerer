@@ -15,6 +15,7 @@
 package vazkii.tinkerer.client.render.tile.kami;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
@@ -31,7 +32,8 @@ public class RenderTileWarpGate extends TileEntitySpecialRenderer {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		GL11.glTranslated(x + 0.5, y + 2.5, z + 0.5);
 		GL11.glRotatef(180F, 1F, 0F, 1F);
-		cubes.renderSpinningCubes(12, 60F / 360F);
+		int repeat = 5;
+		cubes.renderSpinningCubes(12, repeat, repeat);
 		GL11.glPopMatrix();
 	}
 
