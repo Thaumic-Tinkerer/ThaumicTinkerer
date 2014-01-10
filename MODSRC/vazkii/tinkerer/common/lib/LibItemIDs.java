@@ -62,5 +62,6 @@ public final class LibItemIDs {
 	public static int idFocusShadowbeam = 23171;
 	public static int idFocusXPDrain = 23172;
 	public static int idProtoclay = 23173;
+	public static int idSkyPearl = 23174;
 
 }
