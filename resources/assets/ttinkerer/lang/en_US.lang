@@ -1,4 +1,4 @@
-# MISC
+﻿# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Location Set!
 ttmisc.connector.complete=Binding Complete!
@@ -134,7 +134,7 @@ tile.ttinkerer:warpGate.name=Celestial Gateway
 enchantment.ttinkerer:ascentBoost=Ascent Boost
 enchantment.ttinkerer:slowFall=Slow Fall
 enchantment.ttinkerer:autoSmelt=Flaming Touch
-enchantment.ttinkerer:desintegrate=Desintegrate
+enchantment.ttinkerer:desintegrate=Disintegrate
 enchantment.ttinkerer:quickDraw=Quick Draw
 enchantment.ttinkerer:vampirism=Vampirism
 
@@ -173,7 +173,7 @@ ttresearch.page.SHARE_TOME.0=If one day you happen to want to share your knowled
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvector Interface
 ttresearch.lore.INTERFACE=Not affiliated with nyuu
-ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vacinity. It's sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft, TE3 and IC2 power, essentia, items, and liquids, being able to also export the latter two.<BR>[continued]
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vicinity. It's sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft, TE3 and IC2 power, essentia, items, and liquids, being able to also export the latter two.<BR>[continued]
 ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. The limit is short, only 4 blocks. (Note: buildcraft pipes need to be broken and replaced to work)
 ttresearch.page.INTERFACE.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
 
@@ -205,7 +205,7 @@ ttresearch.page.ANIMATION_TABLET.0=You decided to further discover the uses of G
 # -- WAND FOCUS: UPRISING
 ttresearch.name.FOCUS_FLIGHT=Wand Focus: Uprising
 ttresearch.lore.FOCUS_FLIGHT=Is this what they use in ALfheim?
-ttresearch.page.FOCUS_FLIGHT.0=Using the knowledge you got from creating the Sword of the Zephyr of propelling things around with air, you created a wand focus that will propel the holder in the direction that they're looking at.<BR><BR>When someone is propelled through the use of this focus, any accumulated gravitational energy is negated, reseting the fall damage the holder would take.
+ttresearch.page.FOCUS_FLIGHT.0=Using the knowledge you got from creating the Sword of the Zephyr of propelling things around with air, you created a wand focus that will propel the holder in the direction that they're looking at.<BR><BR>When someone is propelled through the use of this focus, any accumulated gravitational energy is negated, resetting the fall damage the holder would take.
 
 # -- WAND FOCUS: DISLOCATION
 ttresearch.name.FOCUS_DISLOCATION=Wand Focus: Dislocation
@@ -216,9 +216,9 @@ ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the bl
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
-ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispell most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled.
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled.
 
-# -- HYPERNERGETIC NITOR
+# -- HYPERENERGETIC NITOR
 ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor
 ttresearch.lore.BRIGHT_NITOR=Take that, Twilight!
 ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine even if it's being carried by a player by energizing the everburning flame that is Nitor with powerful energetic aspects such as Potentia and Lux.<BR><BR>The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.
@@ -249,7 +249,7 @@ ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability 
 # -- ESSENTIA FUNNEL
 ttresearch.name.FUNNEL=Essentia Funnel
 ttresearch.lore.FUNNEL=Even transfer
-ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to that, you created this new mechanism to transfer the contents of one into another.<BR><BR>By placing this block above a hopper, and right clicking it with a filled jar, if the hopper is pointing into a jar that's either empty or of the same aspect, the contents of the jar will be transfered over.
+ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to that, you created this new mechanism to transfer the contents of one into another.<BR><BR>By placing this block above a hopper, and right clicking it with a filled jar, if the hopper is pointing into a jar that's either empty or of the same aspect, the contents of the jar will be transferred over.
 
 # -- ENCHANTMENT: ASCENT BOOST
 ttresearch.name.TTENCH_ASCENT_BOOST=Enchantment: Ascent Boost
@@ -266,8 +266,8 @@ ttresearch.name.TTENCH_AUTO_SMELT=Enchantment: Flaming Touch
 ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
 ttresearch.page.TTENCH_AUTO_SMELT.0=You have formulated an enchantment that allows you to summon imaginary flames.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break anything wooden with extreme finesse, by use of a flame that softens the wood through the breaking process, but never destroying or damaging it. However, the tool becomes impotent against anything else, and takes double durability damage.
 
-# -- ENCHANTMENT: DESINTEGRATE
-ttresearch.name.TTENCH_DESINTEGRATE=Enchantment: Desintegrate
+# -- ENCHANTMENT: DISINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=Enchantment: Disintegrate
 ttresearch.lore.TTENCH_DESINTEGRATE=Spacequake alert
 ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that allows you to mine soft materials at incredible speeds.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break regular blocks (dirt, stone, netherrack, etc.) that the tool is good for with extreme finesse, however, the tool becomes impotent against anything else, and takes double durability damage.
 
@@ -309,7 +309,7 @@ ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block t
 # -- HELMET OF REVEALING
 ttresearch.name.REVEALING_HELM=Helmet of Revealing
 ttresearch.lore.REVEALING_HELM=This is why I can't use photoshop
-ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much protection from attacking zombies. You think you have a fix for that though. By strapping goggles of revealing onto a thaumium helmet, you can get the benifits of both. Well, it turns out it is a bit more complicated than that. A bit of magic is required to avoid feedback loops, and a bit of magic to keep them from slipping off, but on the whole, it more or less works.
+ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much protection from attacking zombies. You think you have a fix for that though. By strapping goggles of revealing onto a thaumium helmet, you can get the benefits of both. Well, it turns out it is a bit more complicated than that. A bit of magic is required to avoid feedback loops, and a bit of magic to keep them from slipping off, but on the whole, it more or less works.
 
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumic Restorer
@@ -321,7 +321,7 @@ ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
 ttresearch.lore.FOCUS_DEFLECT=I'm not an Angel
 ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.
 
-# -- ETHERAL PLATFORM
+# -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ethereal Platform
 ttresearch.lore.PLATFORM=Hide the Bromine and Barium
 ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
@@ -340,13 +340,13 @@ ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy y
 
 # -- ICHORCLOTH
 ttresearch.name.ICHOR_CLOTH=Ichorcloth
-ttresearch.lore.ICHOR_CLOTH=Life Fiber Sychronization
-ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funilly enough, this process does not require the typical infusion procedure, as the Ichor easilly absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
+ttresearch.lore.ICHOR_CLOTH=Life Fiber Synchronization
+ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funnily enough, this process does not require the typical infusion procedure, as the Ichor easily absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
 
 # -- ICHORIUM
 ttresearch.name.ICHORIUM=Ichorium
 ttresearch.lore.ICHORIUM=Not from the 55th floor
-ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resillient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
 
 # -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
 ttresearch.name.ICHORCLOTH_ROD=Ichorcloth Strapped Silverwood Wand Core
@@ -361,7 +361,7 @@ ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by dev
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
 ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
-ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave Ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
 
 # -- COWL OF THE ABYSSAL DEPTHS
 ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
@@ -376,7 +376,7 @@ ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorclo
 # -- LEGGINGS OF THE BURNING MANTLE
 ttresearch.name.ICHORCLOTH_LEGS_GEM=Leggings of the Burning Mantle
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=A warm feeling
-ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevales given the creator's existance in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevails given the creator's existence in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing.
 ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Case you find yourself wanting to be in the darkness for whatever reason, Shift-right clicking with these leggings will toggle on or off the light feature.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
@@ -397,23 +397,23 @@ ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Awakened Ichorium Pickaxe
 ttresearch.lore.ICHOR_PICK_GEM=Who needs a quarry?
-ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe, this pickaxe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue) it'll break a 10 block long line starting on the original block.
+ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue) it'll break a 10 block long line starting on the original block.
 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=Awakened Ichorium Shovel
 ttresearch.lore.ICHOR_SHOVEL_GEM=Gravel no more!
-ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel, this shovel contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel. This shovel contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
 
 # -- AWAKENED ICHORIUM AXE
 ttresearch.name.ICHOR_AXE_GEM=Awakened Ichorium Axe
 ttresearch.lore.ICHOR_AXE_GEM=Cut you like a Clover
-ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe, this axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
+ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe. This axe contains all the traits from the regular one, however, by right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
 
 # -- AWAKENED ICHORIUM SWORD
 ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
 ttresearch.lore.ICHOR_SWORD_GEM=Mom's knife
-ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword, this sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs of the same type in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
-ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existant. They block damage their wielder would take, but disappear in the proccess.
+ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword. This sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs of the same type in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
+ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existent. They block damage their wielder would take, but disappear in the process.
 
 # -- BOTTOMLESS POUCH
 ttresearch.name.ICHOR_POUCH=Bottomless Pouch
@@ -437,7 +437,7 @@ ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of ene
 
 # -- WAND FOCUS: EXPERIENCE DRAIN
 ttresearch.name.FOCUS_XP_DRAIN=Wand Focus: Experience Drain
-ttresearch.lore.FOCUS_XP_DRAIN=Enviromental friendly Vis
+ttresearch.lore.FOCUS_XP_DRAIN=Environmentally friendly Vis
 ttresearch.page.FOCUS_XP_DRAIN.0=After creating a wand that can have an insane amount of vis, you got to the conclusion that you need an alternate source of vis.<BR><BR>To that end, you created a focus that draws from your Experience pool, turning it into vis at a fast, but not very efficient rate.
 
 # -- PROTOCLAY
