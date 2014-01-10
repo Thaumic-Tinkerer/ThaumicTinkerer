@@ -32,12 +32,15 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
+import vazkii.tinkerer.common.network.PacketManager;
+import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 
 public class GuiWarpGateDestinations extends GuiScreen {
 
@@ -120,7 +123,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 				int z = ItemSkyPearl.getZ(stack);
 
 				if(y != -1)
-					coords.add(new Object[] { x - this.x, z - this.y, stack });
+					coords.add(new Object[] { x - this.x, z - this.y, stack, i});
 			}
 		}
 		
@@ -142,9 +145,9 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glDisable(GL11.GL_BLEND);
 		
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		drawPearlAt(null, (Integer) gateX, (Integer) gateY, par1, par2);
+		drawPearlAt(0, null, (Integer) gateX, (Integer) gateY, par1, par2);
 		for(Object[] coords_ : coords)
-			drawPearlAt((ItemStack) coords_[2], (Integer) coords_[0], (Integer) coords_[1], par1, par2);
+			drawPearlAt((Integer) coords_[3], (ItemStack) coords_[2], (Integer) coords_[0], (Integer) coords_[1], par1, par2);
 		
 		if(!tooltip.isEmpty())
 			ClientHelper.renderTooltip(par1, par2, tooltip);
@@ -152,7 +155,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		drawCenteredString(fontRenderer, StatCollector.translateToLocal("ttmisc.spaceToReset"), width / 2, 5, 0xFFFFFF);
 	}
 
-	public void drawPearlAt(ItemStack stack, int xp, int yp, int mx, int my) {
+	public void drawPearlAt(int index, ItemStack stack, int xp, int yp, int mx, int my) {
 		int x = xp + this.x;
 		int y = yp + this.y;
 		
@@ -173,7 +176,12 @@ public class GuiWarpGateDestinations extends GuiScreen {
 			} else {
 				tooltip.add("X: " + x);
 				tooltip.add("Z: " + y);
-			}			
+			}
+			
+			if(Mouse.isButtonDown(0) && isShiftKeyDown() && stack != null) {
+				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketWarpGateTeleport(warpGate, index)));
+				mc.displayGuiScreen(null);
+			}
 		}
 	}
 

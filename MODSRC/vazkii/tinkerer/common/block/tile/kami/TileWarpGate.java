@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block.tile.kami;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,6 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
 
@@ -44,6 +46,22 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		for(EntityPlayer player : players)
 			if(player.isSneaking())
 				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
+	}
+	
+	public void teleportPlayer(EntityPlayer player, int index) {
+		ItemStack stack = index < getSizeInventory() ? getStackInSlot(index) : null;
+		if(stack != null && ItemSkyPearl.isAttuned(stack)) {
+			int x = ItemSkyPearl.getX(stack);
+			int y = ItemSkyPearl.getY(stack);
+			int z = ItemSkyPearl.getZ(stack);
+			
+			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
+			if(tile != null && tile instanceof TileWarpGate) {
+				TileWarpGate destGate = (TileWarpGate) tile;
+				if(!destGate.locked)
+					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
+			}
+		}
 	}
 	
 	@Override
