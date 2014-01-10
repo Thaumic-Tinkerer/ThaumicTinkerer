@@ -44,6 +44,8 @@ public final class ConfigHandler {
 	public static boolean enableEasymodeResearch = false;
 	
 	public static boolean showPlacementMirrorBlocks = true;
+	public static int netherDimensionID = -1;
+	public static int endDimensionID = 1;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -79,6 +81,14 @@ public final class ConfigHandler {
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
 			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
 			showPlacementMirrorBlocks = propShowPlacementMirrorBlocks.getBoolean(true);
+			
+			Property propNetherID = config.get(CATEGORY_KAMI_GENERAL, "dimension.nether.id", -1);
+			propNetherID.comment = "The Dimension ID for the Nether, leave at -1 if you don't modify it with another mod/plugin.";
+			netherDimensionID = propNetherID.getInt(-1);
+			
+			Property propEndID = config.get(CATEGORY_KAMI_GENERAL, "dimension.end.id", 1);
+			propEndID.comment = "The Dimension ID for the End, leave at 1 if you don't modify it with another mod/plugin.";
+			endDimensionID = propEndID.getInt(1);
 		}
 
 		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
