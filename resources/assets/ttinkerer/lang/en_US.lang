@@ -124,9 +124,9 @@ tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
 tile.ttinkerer:platform.name=Ethereal Platform
 
--# KAMI BLOCK NAMES
--tile.ttinkerer:warpGate.name=Celestial Gateway
--
+# KAMI BLOCK NAMES
+tile.ttinkerer:warpGate.name=Celestial Gateway
+
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost
 enchantment.ttinkerer:slowFall=Slow Fall
