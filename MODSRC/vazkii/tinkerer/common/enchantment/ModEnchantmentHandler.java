@@ -95,16 +95,16 @@ public class ModEnchantmentHandler {
 		if(heldItem == null)
 			return;
 
-		int desintegrate = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idDesintegrate, heldItem);
+		int disintegrate = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idDisintegrate, heldItem);
 		int autoSmelt = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idAutoSmelt, heldItem);
 
-		boolean desintegrateApplies = desintegrate > 0 && event.block.blockHardness <= 1.5F && heldItem.getItem().getStrVsBlock(heldItem, event.block, event.metadata) != 1F;
+		boolean disintegrateApplies = disintegrate > 0 && event.block.blockHardness <= 1.5F && heldItem.getItem().getStrVsBlock(heldItem, event.block, event.metadata) != 1F;
 		boolean autoSmeltApplies = autoSmelt > 0 && event.block.blockMaterial == Material.wood;
 
-		if(desintegrateApplies || autoSmeltApplies) {
+		if(disintegrateApplies || autoSmeltApplies) {
 			heldItem.damageItem(1, event.entityPlayer);
 			event.newSpeed = Float.MAX_VALUE;
-		} else if(desintegrate > 0 || autoSmelt > 0)
+		} else if(disintegrate > 0 || autoSmelt > 0)
 			event.setCanceled(true);
 	}
 }

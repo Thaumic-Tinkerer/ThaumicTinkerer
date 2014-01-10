@@ -75,7 +75,7 @@ public final class EnchantmentManager {
 		registerExponentialCostData(ModEnchantments.ascentBoost, LibResources.ENCHANT_ASCENT_BOOST, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.AIR, 10), LibResearch.KEY_ENCHANT_ASCENT_BOOST);
 		registerExponentialCostData(ModEnchantments.slowFall, LibResources.ENCHANT_SLOW_FALL, false, new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 10), LibResearch.KEY_ENCHANT_SLOW_FALL);
 		registerExponentialCostData(ModEnchantments.autoSmelt, LibResources.ENCHANT_AUTO_SMELT, false, new AspectList().add(Aspect.ENTROPY, 20).add(Aspect.FIRE, 30), LibResearch.KEY_ENCHANT_AUTO_SMELT);
-		registerExponentialCostData(ModEnchantments.desintegrate, LibResources.ENCHANT_DESINTEGRATE, false, new AspectList().add(Aspect.ENTROPY, 25).add(Aspect.AIR, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_DESINTEGRATE);
+		registerExponentialCostData(ModEnchantments.disintegrate, LibResources.ENCHANT_DISINTEGRATE, false, new AspectList().add(Aspect.ENTROPY, 25).add(Aspect.AIR, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_DISINTEGRATE);
 		registerExponentialCostData(ModEnchantments.quickDraw, LibResources.ENCHANT_QUICK_DRAW, false, new AspectList().add(Aspect.ORDER, 10).add(Aspect.AIR, 10).add(Aspect.WATER, 5), LibResearch.KEY_ENCHANT_QUICK_DRAW);
 		registerExponentialCostData(ModEnchantments.vampirism, LibResources.ENCHANT_VAMPIRISM, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.FIRE, 10).add(Aspect.WATER, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
 
