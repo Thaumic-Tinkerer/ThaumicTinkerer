@@ -51,6 +51,7 @@ ttmisc.light0=Light Enabled
 ttmisc.light1=Light Disabled
 ttmisc.differentDim=Different Dimension
 ttmisc.distance=Distance
+ttmisc.lockedGate=Allow incoming teleports
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Smokey Quartz
