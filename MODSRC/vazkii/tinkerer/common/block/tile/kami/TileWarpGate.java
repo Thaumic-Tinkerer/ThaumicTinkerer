@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.block.tile.kami;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -23,8 +25,11 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibGuiIDs;
 
 public class TileWarpGate extends TileEntity implements IInventory {
 
@@ -33,6 +38,14 @@ public class TileWarpGate extends TileEntity implements IInventory {
 	public boolean locked = false;
 	ItemStack[] inventorySlots = new ItemStack[10];
 
+	@Override
+	public void updateEntity() {
+		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 1.5, zCoord + 1));
+		for(EntityPlayer player : players)
+			if(player.isAirBorne && player.motionY > 0)
+				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
+	}
+	
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
