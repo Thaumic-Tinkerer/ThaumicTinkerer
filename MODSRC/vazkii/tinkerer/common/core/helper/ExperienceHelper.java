@@ -6,9 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 public class ExperienceHelper {
 
     public static int getPlayerXP(EntityPlayer player) {
-        return (int)(getExperienceForLevel(player.experienceLevel) + (player.experience * player.xpBarCap()));
+        return (int)(getExperienceForLevel(player.experienceLevel) + player.experience * player.xpBarCap());
 }
-	
+
 	public static void drainPlayerXP(EntityPlayer player, int amount) {
 		addPlayerXP(player, -amount);
 	}
@@ -20,7 +20,7 @@ public class ExperienceHelper {
 		int expForLevel = getExperienceForLevel(player.experienceLevel);
 		player.experience = (float)(experience - expForLevel) / (float)player.xpBarCap();
 	}
-	
+
 	public static int getExperienceForLevel(int level) {
 		if (level == 0) { return 0; }
 		if (level > 0 && level < 16) {
@@ -39,5 +39,5 @@ public class ExperienceHelper {
 		}
 		return i - 1;
 	}
-	
+
 }

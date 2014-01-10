@@ -1,26 +1,22 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 10, 2014, 4:41:02 PM (GMT)]
  */
 package vazkii.tinkerer.client.model.kami;
 
-import java.awt.Color;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.entity.item.EntityXPOrb;
 
 import org.lwjgl.opengl.GL11;
 
@@ -44,7 +40,7 @@ public class ModelSpinningCubes extends ModelBase {
 
 	public void renderSpinningCubes(int cubes, int repeat, int origRepeat) {
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		
+
 		final float modifier = 6F;
 		final float rotationModifier = 0.25F;
 		final float radiusBase = 0.7F;
@@ -52,7 +48,7 @@ public class ModelSpinningCubes extends ModelBase {
 
 		double ticks = ClientHelper.clientPlayer().ticksExisted - 0.75 * (origRepeat - repeat);
 		float offsetPerCube = 360 / cubes;
-		
+
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.025F, 0.85F, -0.025F);
 		for(int i = 0; i < cubes; i++) {
@@ -70,7 +66,7 @@ public class ModelSpinningCubes extends ModelBase {
 			float xRotate = (float) Math.sin(ticks * rotationModifier) / 2F;
 			float yRotate = (float) Math.max(0.6F, Math.sin(ticks * 0.1F) / 2F + 0.5F);
 			float zRotate = (float) Math.cos(ticks * rotationModifier) / 2F;
-	        
+
 			GL11.glRotatef(deg, xRotate, yRotate, zRotate);
 			if(repeat < origRepeat) {
 				GL11.glColor4f(1F, 1F, 1F, 0.2F);
@@ -81,19 +77,19 @@ public class ModelSpinningCubes extends ModelBase {
 			int light = 15728880;
 	        int lightmapX = light % 65536;
 	        int lightmapY = light / 65536;
-	        
+
 	        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lightmapX, lightmapY);
 			spinningCube.render(1F / 16F);
-			
+
 			if(repeat < origRepeat)
 				GL11.glDisable(GL11.GL_BLEND);
 
 			GL11.glPopMatrix();
 		}
 		GL11.glPopMatrix();
-		
+
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		
+
 		if(repeat != 0)
 			renderSpinningCubes(cubes, repeat - 1, origRepeat);
 	}

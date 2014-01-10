@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
 	static List<Integer> validRenderTypes = Arrays.asList(0, 31, 39);
-	
+
 	protected BlockCamo(int par1, Material par2Material) {
 		super(par1, par2Material);
 	}
@@ -55,7 +55,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
         return getIconFromSideAfterCheck(tile, meta, side);
     }
-	
+
 	public boolean isValidRenderType(int type) {
 		return validRenderTypes.contains(type);
 	}
@@ -72,7 +72,6 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
         		currentStack = new ItemStack(0, 1, 0);
 
         	boolean doChange = true;
-                int rendertype = 0;
                 Block block = null;
         	checkChange : {
             	if(currentStack.itemID != 0) {
@@ -95,16 +94,16 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 				case 1:
 					break;
 				case 2:
-					metadata = (metadata & 12) | 2;
+					metadata = metadata & 12 | 2;
 					break;
 				case 3:
-					metadata = (metadata & 12) | 0;
+					metadata = metadata & 12 | 0;
 					break;
 				case 4:
-					metadata = (metadata & 12) | 1;
+					metadata = metadata & 12 | 1;
 					break;
 				case 5:
-					metadata = (metadata & 12) | 3;
+					metadata = metadata & 12 | 3;
 					break;
 			}
                 }

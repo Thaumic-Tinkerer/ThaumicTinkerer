@@ -75,7 +75,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 			addVisCostTooltip(cost, stack, player, list, par4);
 		}
 	}
-	
+
 	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		for(Aspect aspect : cost.getAspectsSorted()) {
 			float amount = cost.getAmount(aspect) / 100.0F;

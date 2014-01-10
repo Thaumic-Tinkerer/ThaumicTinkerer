@@ -71,7 +71,7 @@ public class ItemBlockTalisman extends ItemMod {
 		if(!set) {
 			int bid = getBlockID(par1ItemStack);
 			int bmeta = getBlockMeta(par1ItemStack);
-			
+
 			TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
 			if(tile != null && tile instanceof IInventory) {
 				IInventory inv = (IInventory) tile;
@@ -107,7 +107,7 @@ public class ItemBlockTalisman extends ItemMod {
 				}
 			}
 		}
-		
+
 		par2EntityPlayer.setCurrentItemOrArmor(0, par1ItemStack);
 
 		return set;
@@ -115,11 +115,11 @@ public class ItemBlockTalisman extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		int id = getBlockID(par1ItemStack);		
+		int id = getBlockID(par1ItemStack);
 		if(/*!par2World.isRemote && */par1ItemStack.getItemDamage() == 1 && id != 0 && par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
 			int meta = getBlockMeta(par1ItemStack);
-			
+
 			int highest = -1;
 			boolean hasFreeSlot = false;
 			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
@@ -139,7 +139,7 @@ public class ItemBlockTalisman extends ItemMod {
 					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
 				}
 			}
-			
+
 			if(highest == -1) {
 				ItemStack heldItem = player.inventory.getItemStack();
 				if(hasFreeSlot && (heldItem == null || heldItem.itemID != id || heldItem.getItemDamage() != meta)) {

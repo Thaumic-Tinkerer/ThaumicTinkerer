@@ -6,6 +6,7 @@
 
 package dan200.computer.api;
 import java.lang.reflect.Method;
+
 import net.minecraft.world.World;
 
 /**
@@ -13,8 +14,8 @@ import net.minecraft.world.World;
  * Members in this class must be called after mod_ComputerCraft has been initialised,
  * but may be called before it is fully loaded.
  */
-public class ComputerCraftAPI 
-{	
+public class ComputerCraftAPI
+{
 	/**
 	 * Creates a numbered directory in a subfolder of the save directory for a given world, and returns that number.<br>
 	 * Use in conjuction with createSaveDirMount() to create a unique place for your peripherals or media items to store files.<br>
@@ -37,7 +38,7 @@ public class ComputerCraftAPI
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * Creates a file system mount that maps to a subfolder of the save directory for a given world, and returns it.<br>
 	 * Use in conjuction with IComputerAccess.mount() or IComputerAccess.mountWritable() to mount a folder from the
@@ -67,7 +68,7 @@ public class ComputerCraftAPI
 		}
 		return null;
 	}
-	 
+
 	/**
 	 * Creates a file system mount to a resource folder, and returns it.<br>
 	 * Use in conjuction with IComputerAccess.mount() or IComputerAccess.mountWritable() to mount a resource folder onto a computers file system.<br>
@@ -94,7 +95,7 @@ public class ComputerCraftAPI
 		}
 		return null;
 	}
-	 
+
 	/**
 	 * Registers a peripheral handler for a TileEntity that you do not have access to. Only
 	 * use this if you want to expose IPeripheral on a TileEntity from another mod. For your own
@@ -118,7 +119,7 @@ public class ComputerCraftAPI
 	// The functions below here are private, and are used to interface with the non-API ComputerCraft classes.
 	// Reflection is used here so you can develop your mod in MCP without decompiling ComputerCraft and including
 	// it in your solution.
-	
+
 	private static void findCC()
 	{
 		if( !ccSearched ) {
@@ -133,8 +134,8 @@ public class ComputerCraftAPI
 				computerCraft_createResourceMount = findCCMethod( "createResourceMount", new Class[] {
 					Class.class, String.class, String.class
 				} );
-				computerCraft_registerExternalPeripheral = findCCMethod( "registerExternalPeripheral", new Class[] { 
-					Class.class, IPeripheralHandler.class 
+				computerCraft_registerExternalPeripheral = findCCMethod( "registerExternalPeripheral", new Class[] {
+					Class.class, IPeripheralHandler.class
 				} );
 			} catch( Exception e ) {
 				net.minecraft.server.MinecraftServer.getServer().logInfo( "ComputerCraftAPI: ComputerCraft not found." );
@@ -152,9 +153,9 @@ public class ComputerCraftAPI
 			net.minecraft.server.MinecraftServer.getServer().logInfo( "ComputerCraftAPI: ComputerCraft method " + name + " not found." );
 			return null;
 		}
-	}	
-	
-	private static boolean ccSearched = false;	
+	}
+
+	private static boolean ccSearched = false;
 	private static Class computerCraft = null;
 	private static Method computerCraft_createUniqueNumberedSaveDir = null;
 	private static Method computerCraft_createSaveDirMount = null;

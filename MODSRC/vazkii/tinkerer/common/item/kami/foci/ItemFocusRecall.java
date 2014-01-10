@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 10, 2014, 9:20:05 PM (GMT)]
  */
 package vazkii.tinkerer.common.item.kami.foci;
@@ -18,7 +18,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
-import scala.annotation.meta.param;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -29,28 +28,28 @@ import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 public class ItemFocusRecall extends ItemModFocus {
 
 	AspectList cost = new AspectList().add(Aspect.AIR, 4000).add(Aspect.EARTH, 4000).add(Aspect.ORDER, 4000);
-	
+
 	public ItemFocusRecall(int par1) {
 		super(par1);
 	}
-	
+
 	@Override
 	protected boolean hasDepth() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isUseItem() {
 		return true;
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,	EntityPlayer par3EntityPlayer) {
 		ItemWandCasting wand = (ItemWandCasting) par1ItemStack.getItem();
 
 		return wand.consumeAllVis(par1ItemStack, par3EntityPlayer, cost, false) ? super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer) : par1ItemStack;
 	}
-	
+
 	@Override
 	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
 		ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
@@ -64,7 +63,7 @@ public class ItemFocusRecall extends ItemModFocus {
 					break;
 				}
 			}
-			
+
 			if(stackToCount != null) {
 				int dim = ItemSkyPearl.getDim(stackToCount);
 				if(dim == paramEntityPlayer.dimension) {
@@ -76,7 +75,7 @@ public class ItemFocusRecall extends ItemModFocus {
 						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true);
 				}
 			}
-			
+
 			paramEntityPlayer.clearItemInUse();
 		}
 	}

@@ -87,7 +87,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscounter, IS
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {	
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 		// NO-OP
 	}
 

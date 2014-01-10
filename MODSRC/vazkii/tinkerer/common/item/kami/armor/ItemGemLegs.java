@@ -24,9 +24,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-
-import org.lwjgl.util.vector.Vector2f;
-
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
@@ -45,15 +42,15 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 			int dmg = par1ItemStack.getItemDamage();
 			par1ItemStack.setItemDamage(~dmg & 1);
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
-			
+
 			ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.light" + par1ItemStack.getItemDamage()));
-			
+
 			return par1ItemStack;
 		}
 
 		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
 	}
-	
+
 	@Override
 	boolean ticks() {
 		return true;
@@ -64,7 +61,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 		ItemStack armor = player.getCurrentArmor(1);
 		if(armor.getItemDamage() == 1)
 			return;
-		
+
 		ItemBrightNitor.meta = 1;
 		ModItems.brightNitor.onUpdate(null, player.worldObj, player, 0, false);
 		ItemBrightNitor.meta = 0;
@@ -96,7 +93,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 			}
 		}
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
 		if(stack.getItemDamage() == 1)

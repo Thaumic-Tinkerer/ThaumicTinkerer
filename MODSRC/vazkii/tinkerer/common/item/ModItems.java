@@ -135,7 +135,7 @@ public final class ModItems {
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
 		shareBook = new ItemShareBook(LibItemIDs.idShareBook).setUnlocalizedName(LibItemNames.SHARE_BOOK);
-		
+
 		if(ConfigHandler.enableKami) {
 			toolMatIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 

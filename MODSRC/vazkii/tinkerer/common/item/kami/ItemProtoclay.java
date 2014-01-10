@@ -1,15 +1,15 @@
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
- * 
+ *
  * ThaumicTinkerer is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
- * 
+ *
  * ThaumicTinkerer is a Derivative Work on Thaumcraft 4.
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
- * 
+ *
  * File Created @ [Jan 9, 2014, 10:01:41 PM (GMT)]
  */
 package vazkii.tinkerer.common.item.kami;
@@ -38,7 +38,7 @@ public class ItemProtoclay extends ItemMod {
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		if(!(par3Entity instanceof EntityPlayer))
 			return;
-		
+
 		EntityPlayer player = (EntityPlayer) par3Entity;
 		ItemStack currentStack = player.getCurrentEquippedItem();
 		if(currentStack == null || !(currentStack.getItem() instanceof IAdvancedTool))
@@ -47,14 +47,14 @@ public class ItemProtoclay extends ItemMod {
 
 		if(tool.getType().equals("sword"))
 			return;
-		
+
 		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(par2World, par3Entity, true, 4.5F);
 		String typeToFind = "";
 
 		if(player.isSwingInProgress && pos != null) {
 			int id = par2World.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
 			Block block = Block.blocksList[id];
-			
+
 			if(block != null) {
 				Material mat = block.blockMaterial;
 				if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
@@ -63,9 +63,9 @@ public class ItemProtoclay extends ItemMod {
 					typeToFind = "shovel";
 				else if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
 					typeToFind = "axe";
-			}	
+			}
 		}
-		
+
 		if(tool.getType().equals(typeToFind) || typeToFind.isEmpty())
 			return;
 
@@ -81,7 +81,7 @@ public class ItemProtoclay extends ItemMod {
 			}
 		}
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;

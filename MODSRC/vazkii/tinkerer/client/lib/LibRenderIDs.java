@@ -18,7 +18,7 @@ public final class LibRenderIDs {
 
 	public static int idMagnet = -1;
 	public static int idRepairer = -1;
-	
+
 	public static int idWarpGate = -1;
 
 }

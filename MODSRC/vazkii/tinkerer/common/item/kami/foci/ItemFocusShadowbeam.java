@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 public class ItemFocusShadowbeam extends ItemModFocus {
 
 	AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
-	
+
 	public ItemFocusShadowbeam(int par1) {
 		super(par1);
 
@@ -36,13 +36,13 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		
+
 		if(!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true)) {
 			int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
-			
+
 			if(player.worldObj.rand.nextInt(10) == 0)
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
-			
+
 			Beam beam = new Beam(player.worldObj, player, potency);
 			beam.updateUntilDead();
 		}
@@ -52,7 +52,7 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	public boolean isVisCostPerTick() {
 		return true;
 	}
-	
+
 	@Override
 	protected boolean hasOrnament() {
 		return true;
@@ -67,12 +67,12 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	public AspectList getVisCost() {
 		return cost;
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;
 	}
-	
+
 	public static class Particle extends FXSparkle {
 
 		public Particle(World world, double d, double d1, double d2, float f, int type, int m) {
@@ -87,9 +87,9 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 				setDead();
 		}
 	}
-	
+
 	public static class Beam extends EntityThrowable {
-		
+
 		int potency;
 		Vector3 movementVector;
 		final int maxTicks = 300;

@@ -42,7 +42,7 @@ public final class ConfigHandler {
 	public static boolean useTootlipIndicators = true;
 	public static boolean enableSurvivalShareTome = true;
 	public static boolean enableEasymodeResearch = false;
-	
+
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
 	public static int endDimensionID = 1;
@@ -68,24 +68,24 @@ public final class ConfigHandler {
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
 		useTootlipIndicators = propEnableTooltips.getBoolean(true);
-		
+
 		Property propEnableSurvivalShareTome = config.get(Configuration.CATEGORY_GENERAL, "shareTome.survival.enabled", true);
 		propEnableSurvivalShareTome.comment = "Set to false to disable the crafting recipe for the Tome of Research Sharing.";
 		enableSurvivalShareTome = propEnableSurvivalShareTome.getBoolean(true);
-		
+
 		Property propEasymodeResearch = config.get(Configuration.CATEGORY_GENERAL, "research.easymode.enabled", false);
 		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research.";
 		enableEasymodeResearch = propEasymodeResearch.getBoolean(false);
-		
+
 		if(enableKami) {
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
 			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
 			showPlacementMirrorBlocks = propShowPlacementMirrorBlocks.getBoolean(true);
-			
+
 			Property propNetherID = config.get(CATEGORY_KAMI_GENERAL, "dimension.nether.id", -1);
 			propNetherID.comment = "The Dimension ID for the Nether, leave at -1 if you don't modify it with another mod/plugin.";
 			netherDimensionID = propNetherID.getInt(-1);
-			
+
 			Property propEndID = config.get(CATEGORY_KAMI_GENERAL, "dimension.end.id", 1);
 			propEndID.comment = "The Dimension ID for the End, leave at 1 if you don't modify it with another mod/plugin.";
 			endDimensionID = propEndID.getInt(1);
@@ -109,7 +109,7 @@ public final class ConfigHandler {
 		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
 
 		LibBlockIDs.idWarpGate = loadBlock(LibBlockNames.WARP_GATE, LibBlockIDs.idWarpGate);
-		
+
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
 		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
 		LibItemIDs.idGaseousLight = loadItem(LibItemNames.GASEOUS_LIGHT, LibItemIDs.idGaseousLight);
@@ -131,7 +131,7 @@ public final class ConfigHandler {
 		LibItemIDs.idInfusedInkwell = loadItem(LibItemNames.INFUSED_INKWELL, LibItemIDs.idInfusedInkwell);
 		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
 		LibItemIDs.idShareBook = loadItem(LibItemNames.SHARE_BOOK, LibItemIDs.idShareBook);
-		
+
 		LibItemIDs.idKamiResource = loadKamiItem(LibItemNames.KAMI_RESOURCE, LibItemIDs.idKamiResource);
 		LibItemIDs.idIchorHelm = loadKamiItem(LibItemNames.ICHOR_HELM, LibItemIDs.idIchorHelm);
 		LibItemIDs.idIchorChest = loadKamiItem(LibItemNames.ICHOR_CHEST, LibItemIDs.idIchorChest);
@@ -178,10 +178,6 @@ public final class ConfigHandler {
 
 	private static int loadBlock(String label, int defaultID) {
 		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
-	}
-	
-	private static int loadKamiBlock(String label, int defaultID) {
-		return config.getBlock(CATEGORY_KAMI_BLOCKS, "id_tile." + label, defaultID).getInt(defaultID);
 	}
 
 	private static int loadEnchant(String label, int deafultID) {

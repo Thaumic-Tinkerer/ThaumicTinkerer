@@ -68,10 +68,10 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.magnet);
 		addItem(ModItems.soulMould);
 		addBlock(ModBlocks.animationTablet);
-		
+
 		if(Loader.isModLoaded("ComputerCraft"))
 			addBlock(ModBlocks.aspectAnalyzer);
-		
+
 		if(ConfigHandler.enableKami) {
 			addBlock(ModBlocks.warpGate);
 		}

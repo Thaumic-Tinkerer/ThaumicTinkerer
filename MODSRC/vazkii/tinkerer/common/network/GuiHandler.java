@@ -58,7 +58,7 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
 				return new ContainerIchorPouch(player);
-				
+
 			case LibGuiIDs.GUI_ID_WARP_GATE :
 				return new ContainerWarpGate((TileWarpGate) tile, player.inventory);
 		}
@@ -83,10 +83,10 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
 				return new GuiIchorPouch(new ContainerIchorPouch(player));
-				
+
 			case LibGuiIDs.GUI_ID_WARP_GATE :
 				return new GuiWarpGate((TileWarpGate) tile, player.inventory);
-				
+
 			case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS :
 				return new GuiWarpGateDestinations((TileWarpGate) tile);
 		}
