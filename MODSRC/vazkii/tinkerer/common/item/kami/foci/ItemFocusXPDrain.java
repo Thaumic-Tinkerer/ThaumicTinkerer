@@ -83,7 +83,7 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	
 	@Override
 	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		list.add(" " + EnumChatFormatting.WHITE + String.format(StatCollector.translateToLocal("ttmisc.focusXPDrain.tooltip"), getXpUse(stack)));
+		list.add(" " + EnumChatFormatting.GREEN + StatCollector.translateToLocal("ttmisc.experience") +  EnumChatFormatting.WHITE + " x " +  getXpUse(stack));
 	}
 
 	@Override
