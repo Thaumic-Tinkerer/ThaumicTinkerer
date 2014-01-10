@@ -18,9 +18,9 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import thaumcraft.common.config.Config;
 
-public class EnchantmentDesintegrate extends EnchantmentMod {
+public class EnchantmentDisintegrate extends EnchantmentMod {
 
-	protected EnchantmentDesintegrate(int par1) {
+	protected EnchantmentDisintegrate(int par1) {
 		super(par1, 1, EnumEnchantmentType.digger);
 	}
 
