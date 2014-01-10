@@ -23,7 +23,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import vazkii.tinkerer.client.model.ModelWings;
+import vazkii.tinkerer.client.model.kami.ModelWings;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 import cpw.mods.fml.relauncher.Side;

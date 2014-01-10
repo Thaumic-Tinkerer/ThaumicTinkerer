@@ -12,7 +12,7 @@
  *
  * File Created @ [Dec 25, 2013, 00:18:06 PM (GMT)]
  */
-package vazkii.tinkerer.client.model;
+package vazkii.tinkerer.client.model.kami;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
