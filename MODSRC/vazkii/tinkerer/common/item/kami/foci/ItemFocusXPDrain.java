@@ -17,6 +17,8 @@ import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.core.helper.ExperienceHelper;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemFocusXPDrain extends ItemModFocus {
 
@@ -63,14 +65,13 @@ public class ItemFocusXPDrain extends ItemModFocus {
 		}
 	}
 
-
-
 	@Override
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		return getFocusColor();
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getFocusColor() {
 		EntityPlayer player = ClientHelper.clientPlayer();
 		return Color.HSBtoRGB(player.ticksExisted * 2 % 360 / 360F, 1F, 1F);
