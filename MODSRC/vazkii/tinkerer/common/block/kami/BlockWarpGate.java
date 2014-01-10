@@ -32,6 +32,8 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.BlockModContainer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 
 public class BlockWarpGate extends BlockModContainer {
 
@@ -50,8 +52,10 @@ public class BlockWarpGate extends BlockModContainer {
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
-			if(tile != null)
+			if(tile != null) {
+				PacketDispatcher.sendPacketToPlayer(tile.getDescriptionPacket(), (Player) par5EntityPlayer);
 				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE, par1World, par2, par3, par4);
+			}
 		}
 
 		return true;
