@@ -22,6 +22,7 @@ import vazkii.tinkerer.client.gui.GuiAspectAnalyzer;
 import vazkii.tinkerer.client.gui.GuiEnchanting;
 import vazkii.tinkerer.client.gui.GuiMobMagnet;
 import vazkii.tinkerer.client.gui.kami.GuiIchorPouch;
+import vazkii.tinkerer.client.gui.kami.GuiWarpGate;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
@@ -30,6 +31,8 @@ import vazkii.tinkerer.common.block.tile.container.ContainerAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.container.ContainerEnchanter;
 import vazkii.tinkerer.common.block.tile.container.ContainerMobMagnet;
 import vazkii.tinkerer.common.block.tile.container.kami.ContainerIchorPouch;
+import vazkii.tinkerer.common.block.tile.container.kami.ContainerWarpGate;
+import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -54,6 +57,9 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
 				return new ContainerIchorPouch(player);
+				
+			case LibGuiIDs.GUI_ID_WARP_GATE :
+				return new ContainerWarpGate((TileWarpGate) tile, player.inventory);
 		}
 		return null;
 	}
@@ -76,6 +82,9 @@ public class GuiHandler  implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
 				return new GuiIchorPouch(new ContainerIchorPouch(player));
+				
+			case LibGuiIDs.GUI_ID_WARP_GATE :
+				return new GuiWarpGate((TileWarpGate) tile, player.inventory);
 		}
 		return null;
 	}
