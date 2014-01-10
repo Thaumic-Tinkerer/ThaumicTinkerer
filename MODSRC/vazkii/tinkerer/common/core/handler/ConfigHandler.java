@@ -155,6 +155,7 @@ public final class ConfigHandler {
 		LibItemIDs.idPlacementMirror = loadKamiItem(LibItemNames.PLACEMENT_MIRROR, LibItemIDs.idPlacementMirror);
 		LibItemIDs.idFocusShadowbeam = loadKamiItem(LibItemNames.FOCUS_SHADOWBEAM, LibItemIDs.idFocusShadowbeam);
 		LibItemIDs.idFocusXPDrain = loadKamiItem(LibItemNames.FOCUS_XP_DRAIN, LibItemIDs.idFocusXPDrain);
+		LibItemIDs.idProtoclay = loadKamiItem(LibItemNames.PROTOCLAY, LibItemIDs.idProtoclay);
 		LibItemIDs.idSkyPearl = loadKamiItem(LibItemNames.SKY_PEARL, LibItemIDs.idSkyPearl);
 		LibItemIDs.idFocusRecall = loadKamiItem(LibItemNames.FOCUS_RECALL, LibItemIDs.idFocusRecall);
 
