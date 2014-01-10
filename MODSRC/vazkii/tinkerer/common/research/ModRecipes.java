@@ -28,6 +28,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
@@ -270,7 +271,15 @@ public final class ModRecipes {
 			registerResearchItemI(LibResearch.KEY_FOCUS_XP_DRAIN, new ItemStack(ModItems.focusXPDrain), 12, new AspectList().add(Aspect.MIND, 65).add(Aspect.TAINT, 16).add(Aspect.MAGIC, 50).add(Aspect.AURA, 32), new ItemStack(Item.enderPearl),
 					new ItemStack(ModItems.kamiResource), new ItemStack(Item.expBottle), new ItemStack(Item.diamond), new ItemStack(ModItems.xpTalisman), new ItemStack(Block.enchantmentTable), new ItemStack(ModItems.kamiResource));
 			registerResearchItemI(LibResearch.KEY_PROTOCLAY, new ItemStack(ModItems.protoclay), 4, new AspectList().add(Aspect.MINE, 16).add(Aspect.TOOL, 16), new ItemStack(Item.clay),
-					new ItemStack(Block.dirt), new ItemStack(Block.stone), new ItemStack(Block.wood), new ItemStack(ModItems.kamiResource, 8, 7));
+					new ItemStack(Block.dirt), new ItemStack(Block.stone), new ItemStack(Block.wood), new ItemStack(ModItems.kamiResource, 1, 7));
+		
+			if(Config.allowMirrors) {
+				registerResearchItemI(LibResearch.KEY_WARP_GATE, new ItemStack(ModBlocks.warpGate), 8, new AspectList().add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 50).add(Aspect.FLIGHT, 50), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2),
+						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(ModBlocks.dislocator), new ItemStack(ModItems.kamiResource, 1, 6), new ItemStack(Item.diamond), new ItemStack(Item.feather));
+				registerResearchItemI(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ModItems.skyPearl), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Item.enderPearl),
+						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(Block.blockLapis), new ItemStack(Item.diamond));
+			
+			}
 		}
 	}
 
@@ -300,7 +309,11 @@ public final class ModRecipes {
 	}
 
 	private static void registerResearchItemI(String name, Object output, int instability, AspectList aspects, ItemStack input, ItemStack... stuff) {
-		InfusionRecipe recipe = ThaumcraftApi.addInfusionCraftingRecipe(name, output, instability, aspects, input, stuff);
+		registerResearchItemI(name, name, output, instability, aspects, input, stuff);
+	}
+	
+	private static void registerResearchItemI(String name, String research, Object output, int instability, AspectList aspects, ItemStack input, ItemStack... stuff) {
+		InfusionRecipe recipe = ThaumcraftApi.addInfusionCraftingRecipe(research, output, instability, aspects, input, stuff);
 		ConfigResearch.recipes.put(name, recipe);
 	}
 

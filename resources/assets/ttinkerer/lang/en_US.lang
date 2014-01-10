@@ -451,3 +451,9 @@ ttresearch.page.FOCUS_XP_DRAIN.0=After creating a wand that can have an insane a
 ttresearch.name.PROTOCLAY=Protoclay
 ttresearch.lore.PROTOCLAY=Stolen from the Creation
 ttresearch.page.PROTOCLAY.0=You grew tired of having to constantly swap your tools.<BR><BR>This mixture will, by melding with the Ichorium, switch any Awakened Ichorium tools being held by the one used for the block being pointed at, case one tries to break it with the wrong tool.<BR><BR>As an example, trying to break a dirt block with an Awakened Ichorium Pickaxe while a Shovel is present elsewhere in the inventory will swap the two, and allow for fast disposal of the dirt block.
+
+# -- CELESTIAL GATEWAY
+ttresearch.name.WARP_GATE=Celestial Gateway
+ttresearch.lore.WARP_GATE=EM Wave Change
+ttresearch.page.WARP_GATE.0=You devised a complex mechanism that allows to displace your own position in the world. This block, when containing Celestial Pearls (see next page), will allow for teleportation to various spots in the world.<BR><BR>A grand total of 10 spots can be set. You can prevent other Gateways from connecting to this one by toggling it in the block's GUI (accessible by right click).<BR><BR>To acccess the list of possible destinations, sneak above the block.
+ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, they must be marked with Celestial Pearls. These items can be shift-right clicked into a Celestial Gateway to mark it's location (note, shift-right click on air to clear the location).<BR><BR>Placing the pearls inside a Celestial Gateway opens access to teleport to the one it's bound to. This teleport is one way, and two pearls must be used for a 2 way transport.<BR><BR>Naming these pearls with use of an Anvil will make the names appear in the Gateway's GUI, for easy labeling.
