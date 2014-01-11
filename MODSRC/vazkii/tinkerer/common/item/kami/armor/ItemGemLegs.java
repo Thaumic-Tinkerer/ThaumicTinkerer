@@ -96,6 +96,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+		super.addInformation(stack, par2EntityPlayer, list, par4);
 		if(stack.getItemDamage() == 1)
 			list.add(StatCollector.translateToLocal("ttmisc.light1"));
 	}
