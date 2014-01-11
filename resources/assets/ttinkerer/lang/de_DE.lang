@@ -1,4 +1,4 @@
-# MISC
+﻿# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Position eingestellt!
 ttmisc.connector.complete=Das Binden ist komplett!
@@ -46,7 +46,18 @@ ttmisc.mode.axe.2=Baum-Modus
 ttmisc.mode.sword.0=Einzel-Modus
 ttmisc.mode.sword.1=Bereichs-Modus
 ttmisc.mode.sword.2=Seelen-Modus
-ttmisc.focusXPDrain.tooltip=Erfahrung x %s
+ttmisc.experience.tooltip=Erfahrung
+ttmisc.light0=Licht aktiviert
+ttmisc.light1=Licht deaktiviert
+ttmisc.differentDim=Andere Dimension
+ttmisc.distance=Entfernung
+ttmisc.lockedGate=Erlaube Teleports hierher
+ttmisc.destination=Unbenanntes Ziel
+ttmisc.entrancePoint=Eingangspunkt
+ttmisc.spaceToReset=Drücke SPACE, um zum Eingangspunkt zurückzukehren
+ttmisc.clickToTeleport=Shift + linksklicke zum teleportieren
+ttmisc.noDest=Es gibt kein Himmelstor am Zielort.
+ttmisc.noTeleport=Das Himmelstor am Zielort erlaubt keine Teleports zu ihm.
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=Rauchiger Quarz
@@ -104,6 +115,8 @@ item.ttinkerer:placementMirror.name=Sichtglas des Weltenformers
 item.ttinkerer:focusShadowbeam.name=Stabfokus: Dunkelstrahl
 item.ttinkerer:focusXPDrain.name=Stabfokus: Erfahrungsabsorption
 item.ttinkerer:protoclay.name=Protolehm
+item.ttinkerer:skyPearl.name=Himmelsperle
+item.ttinkerer:focusRecall.name=Stabfokus: Himmelsrückruf
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=Rauchiger Quarzblock
@@ -121,6 +134,9 @@ tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
+
+# KAMI BLOCK NAMES
+tile.ttinkerer:warpGate.name=Himmelstor
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Aufstiegs-Boost
@@ -210,7 +226,7 @@ ttresearch.name.CLEANSING_TALISMAN=Talisman des Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Geschenk
 ttresearch.page.CLEANSING_TALISMAN.0=Du hast das Leben und den Körper studiert und herausgefunden, dass du dich durch die Anwendung von Magie von schädlichen äußerlichen Einflüssen schützen kannst, indem du diese Effekte in ein Konstrukt umleitest. Dieser Talisman wird die meisten schädlichen Effekte auf dem Träger beseitigen und sie in sich selbst bewahren, was ihm Schaden zufügt.<BR><BR>Um diese Fähigkeit zu aktivieren oder deaktivieren, würde jemand mit ihm Shift-rechtsklicken. Wie zu erwarten funktioniert er nur aktiviert.
 
-# -- HYPERNERGETIC NITOR
+# -- HYPERENERGETIC NITOR
 ttresearch.name.BRIGHT_NITOR=Hyperenergetisches Nitor
 ttresearch.lore.BRIGHT_NITOR=Nimm das, Zwielicht!
 ttresearch.page.BRIGHT_NITOR.0=Du hast es geschafft, ein Licht zu kreieren, dass sogar scheint, wenn es von einem Spieler getragen wird, indem zu die immerwährende Flamme des Nitor mit mächtigen energetischen Aspekten wie Potentia und Lux speist.<BR><BR>Das Licht, das erzeugt wird, wird knapp hinter dem Träger scheinen; aufgrund der Hitze scheint es in Nether eine längere Spur zu hinterlassen.
@@ -258,7 +274,7 @@ ttresearch.name.TTENCH_AUTO_SMELT=Verzauberung: Flammende Berührung
 ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
 ttresearch.page.TTENCH_AUTO_SMELT.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, imaginäre Flammen zu beschwören.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alles hölzerne mit extremer Finesse abbauen, indem er eine Flamme nutzt, die das Holz während des Abbauprozesses weich macht, es aber niemals zerstört oder schädigt. Jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
 
-# -- ENCHANTMENT: DESINTEGRATE
+# -- ENCHANTMENT: DISINTEGRATE
 ttresearch.name.TTENCH_DESINTEGRATE=Verzauberung: Desintegrieren
 ttresearch.lore.TTENCH_DESINTEGRATE=Weltraumbeben-Alarm
 ttresearch.page.TTENCH_DESINTEGRATE.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, weiche Materialien mit unglaublicher Geschwindigkeit abzubauen.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alle regulären Blöcke (Erde, Stein, Netherstein etc.), für die das Werkzeug gut ist, mit extremer Finesse abbauen, jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
@@ -313,7 +329,7 @@ ttresearch.name.FOCUS_DEFLECT=Stabfokus: Verzerrung
 ttresearch.lore.FOCUS_DEFLECT=Ich bin kein Engel
 ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehendem Feuer zu schützen.<BR><BR>Dieser Fokus, wenn genutzt, wird durchgehend Vis aus dem Stab ziehen, auf den er aufgesetzt ist, um eine Barriere um den Nutzer herum zu beschwören, die ordinäre Projektile harmlos durch sie hindurchfliegen lässt.<BR><BR>Ordinäre Projektile sind Pfeile, Schneebälle oder Tränke. Es scheint, dass die Barriere nicht stark genug ist, um stärkere Angriffe wie Feuerbälle oder Witherschädel abzuwehren.
 
-# -- ETHERAL PLATFORM
+# -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ätherische Plattform
 ttresearch.lore.PLATFORM=Verstecke Brom und Barium
 ttresearch.page.PLATFORM.0=Du hast einen Block erdacht, der nur solide ist für die, die auf ihm stehen. Dieser Block hat keine Kollisionsbox für alle, die dieses Kriterium nicht erfüllen, sowie für Schleichende.<BR><BR>Du kannst diesen Block auch als jeglichen anderen Block tarnen, indem du einfach auf ihn klickst.<BR><BR>Du denkst, dass du dies mit dem Arkanen Levitator nutzen kannst, für einige interessante Effekte.
@@ -332,7 +348,7 @@ ttresearch.page.ICHOR.0=Durch ausgedehnte Studien in allen Aspekten der Thaumatu
 
 # -- ICHORCLOTH
 ttresearch.name.ICHOR_CLOTH=Ichortuch
-ttresearch.lore.ICHOR_CLOTH=Lebensfaser-Sychronization
+ttresearch.lore.ICHOR_CLOTH=Lebensfaser-Synchronization
 ttresearch.page.ICHOR_CLOTH.0=Du hast einen Weg gefunden, Magischen Stoff mit deiner neuesten Entdeckung, Ichor, zu versetzen. Komisch genug, dass dieser Prozess nicht das gewöhnliche Infusionsprozedere erfordert, da das Ichor den Diamanten einfach absorbiert und mit dem Stoff verschmilzt.<BR><BR>Jedoch benötigst du, um das zu bewerkstelligen, nicht nur, dass der besten Stab, den du jemals kreiert hast, voll geladen ist, du musst auch ein volles Set der Thaumaturgenrobe tragen, um genug Energie für die Kreierung zu übertragen.<BR><BR>Du denkst, dass es Zeit ist, einen neuen Stab zu entwerfen.
 
 # -- ICHORIUM
@@ -369,6 +385,7 @@ ttresearch.page.ICHORCLOTH_CHEST_GEM.0=Du hast einen Weg gefunden, die Ichortuch
 ttresearch.name.ICHORCLOTH_LEGS_GEM=Hose der Brennenden Hülle
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=Ein warmes Gefühl
 ttresearch.page.ICHORCLOTH_LEGS_GEM.0=Du hast einen Weg gefunden, die Ichortuchhose in eine noch mächtigere Form umzuwandeln.<BR><BR>Diese Hose ist mit der Seele des Feuers versetzt.<BR>Zum einen erschafft sie ein Licht um den Träger herum, heller noch als das des Hyperenergetischen Nitors. Das Lich erweitert sich auch zum Ort, auf den der Träger schaut, gleich einer Taschenlampe, und bringt die Existenz des Erschaffers in größerer Weite zur Geltung.<BR>Zusätzlich bietet diese Hose nicht nur Feuerresistenz, sie wandelt auch allen erhaltenen Feuerschaden in Heilung um.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Solltest du, warum auch immer, einmal im Dunkeln sein wollen, kannst du mit der Hose Shift-klicken, um die Lichtfunktion zu aktivieren und zu deaktivieren.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
 ttresearch.name.ICHORCLOTH_BOOTS_GEM=Stiefel des Horizontalen Schildes
@@ -388,22 +405,22 @@ ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium he
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Erweckte Ichoriumspitzhacke
 ttresearch.lore.ICHOR_PICK_GEM=Wer braucht schon einen Steinbruch?
-ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt, diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau) wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen.
+ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau) wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen.
 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=Erweckte Ichoriumschaufel
 ttresearch.lore.ICHOR_SHOVEL_GEM=Hier war im Englischen ein Wortspiel
-ttresearch.page.ICHOR_SHOVEL_GEM.0=Du hast das wahre Potential einer Ichoriumschaufel erweckt, diese Schaufel enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Säulen-Modus (Blau) wird sie eine Säule des selben Blocktyps wie der abzubauende Block abbauen, 8 Blöcke ober- und unterhalb.
+ttresearch.page.ICHOR_SHOVEL_GEM.0=Du hast das wahre Potential einer Ichoriumschaufel erweckt. Diese Schaufel enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Säulen-Modus (Blau) wird sie eine Säule des selben Blocktyps wie der abzubauende Block abbauen, 8 Blöcke ober- und unterhalb.
 
 # -- AWAKENED ICHORIUM AXE
 ttresearch.name.ICHOR_AXE_GEM=Erweckte Ichoriumaxt
 ttresearch.lore.ICHOR_AXE_GEM=Bricht dich wie ein Kleeblatt
-ttresearch.page.ICHOR_AXE_GEM.0=Du hast das wahre Potential einer Ichoriumaxt erweckt, diese Axt enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Baum-Modus (Blau) wird sie ganze Bäume fällen, wenn nur einer ihrer Blöcke abgebaut wird.<BR><BR>Diese Axt ist auch beherrscht auch das vernichten der Pflanzenwelt extrem gut.
+ttresearch.page.ICHOR_AXE_GEM.0=Du hast das wahre Potential einer Ichoriumaxt erweckt. Diese Axt enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Baum-Modus (Blau) wird sie ganze Bäume fällen, wenn nur einer ihrer Blöcke abgebaut wird.<BR><BR>Diese Axt ist auch beherrscht auch das vernichten der Pflanzenwelt extrem gut.
 
 # -- AWAKENED ICHORIUM SWORD
 ttresearch.name.ICHOR_SWORD_GEM=Erwecktes Ichoriumschwert
 ttresearch.lore.ICHOR_SWORD_GEM=Mom's Messer
-ttresearch.page.ICHOR_SWORD_GEM.0=Du hast das wahre Potential eines Ichoriumschwerts erweckt, dieses Schwert enthält alle Eigenschaften des regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem es sich befindet.<BR><BR>Im Einzel-Modus (Grün) wird es Monster normal attackieren.<BR><BR>Im Bereichs-Modus (Rot) wird es alle Monster des selben Typs in einem 3-Block-Radius um das attackierte herum angreifen.<BR><BR>Im Seelen-Modus (Blau) wird es weniger Schaden verursachen als gewöhnlich, aber jeder Schlag wird dem Angreifer ein Seelenherz verleihen.<BR>[fortgesetzt]
+ttresearch.page.ICHOR_SWORD_GEM.0=Du hast das wahre Potential eines Ichoriumschwerts erweckt. Dieses Schwert enthält alle Eigenschaften des regulären, jedoch kannst du mit einem Rechtsklick den Modus ändern, in dem es sich befindet.<BR><BR>Im Einzel-Modus (Grün) wird es Monster normal attackieren.<BR><BR>Im Bereichs-Modus (Rot) wird es alle Monster des selben Typs in einem 3-Block-Radius um das attackierte herum angreifen.<BR><BR>Im Seelen-Modus (Blau) wird es weniger Schaden verursachen als gewöhnlich, aber jeder Schlag wird dem Angreifer ein Seelenherz verleihen.<BR>[fortgesetzt]
 ttresearch.page.ICHOR_SWORD_GEM.1=Seelenherzen sind Herzen, die nur einmal verwendet werden können. Die werden als metallische Herzen unterhalb deiner Nahrungsanzeige stehen, wenn existent. Die blockieren Schaden, den der Träger erhalten würde, aber verschwinden in diesem Prozess.
 
 # -- BOTTOMLESS POUCH
@@ -435,3 +452,14 @@ ttresearch.page.FOCUS_XP_DRAIN.0=Nachdem du einen Stab kreiert hast, der eine ge
 ttresearch.name.PROTOCLAY=Protolehm
 ttresearch.lore.PROTOCLAY=Gestohlen aus der Schöpfung
 ttresearch.page.PROTOCLAY.0=Du wurdest es satt, deine Werkzeuge kontinuierlich auswechseln zu müssen.<BR><BR>Diese Mixtur wird, durch Verschmelzen mit dem Ichorium, jegliches Erwecktes Ichoriumwerkzeug in deiner Hand mit dem auswechseln, das für den abzubauenden Block benötigt wird, falls versucht wird, ihn mit dem falschen Werkzeug abzubauen.<BR><BR>Als Beispiel, solltest du versuchen, einen Erdblock mit einer Erweckten Ichoriumspitzhacke abzubauen, während sich eine Schaufel in deinem Inventar befindet, werden beide gewechselt und dir somit ermöglicht, den Erdblock schnell zu beseitigen.
+
+# -- CELESTIAL GATEWAY
+ttresearch.name.WARP_GATE=Himmelstor
+ttresearch.lore.WARP_GATE=EM-Wellenwechsel
+ttresearch.page.WARP_GATE.0=Du hast einen komplexen Mechanismus erdacht, der es dir erlaubt, deine eigene Position in der Welt zu verändern. Dieser Block wird, wenn er Himmelsperlen enthält (siehe nächste Seite), erlauben, sich zu verschiedenen Punkten in der Welt zu teleportieren.<BR><BR>Eine Gesamtzahl von 10 Orten kann eingestellt werden. Du kannst andere Tore daran hindern, sich mit einem bestimmten zu verbinden, indem du das in der GUI des Blocks (die du per Rechtsklick öffnen kannst) einstellst.<BR><BR>Um eine Liste verfügbarer Ziele aufzurufen, schleiche auf dem Block.
+ttresearch.page.WARP_GATE.1=Um Zierlorte eines Tores einzustellen, müssen sie mit Himmelsperlen markiert werden. Diese Items können mit Shift-Rechtsklick auf ein Himmelstor die Position dieses Tores markieren (Anmerkung: Shift-rechtsklicke in Luft, um den Ort zu löschen).<BR><BR>Wenn du die Perlen in ein Himmelstor platzierst, ermöglicht das, sich zu dem Himmelstor, an das die Perle gebunden ist, zu teleportieren. Dieser Teleport ist nur in eine Richtung möglich, somit sind zwei Perlen für den Teleport hin und zurück nötig.<BR><BR>Wenn du diese Perlen in einem Amboss umbenennst, werden ihre Namen in der GUI des Tores angezeigt, was einfache Kennzeichnung erlaubt.
+
+# -- WAND FOCUS: RECALL
+ttresearch.name.FOCUS_RECALL=Stabfokus: Himmelsrückruf
+ttresearch.lore.FOCUS_RECALL=Home is where the Hearthstone is
+ttresearch.page.FOCUS_RECALL.0=Himmelstore für Teleportation zu nutzen, ist schön un gut, aber du hast dich entschieden, einen Schritt weiter zu gehen und einen Fokus zu kreieren, der genau das kann, nur von überall.<BR><BR>Dieser Fokus wird, wenn sich eine gebundene Himmelsperle in der Hotbar befindet, den Nutzer, nach kurzer Zauberzeit, zu jener Position teleportieren, als hätte er ein Himmelstor verwendet. Selbstverständlich benötigt das Teleportieren Vis aus deinem Stab.
