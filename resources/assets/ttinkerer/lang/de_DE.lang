@@ -54,8 +54,11 @@ ttmisc.distance=Entfernung
 ttmisc.lockedGate=Erlaube Teleports hierher
 ttmisc.destination=Unbenanntes Ziel
 ttmisc.entrancePoint=Eingangspunkt
-ttmisc.spaceToReset=Drücke SPACE, um zum Eingangspunkt zurückzukehren
-ttmisc.clickToTeleport=Shift + linksklicke zum teleportieren
+ttmisc.numberKeys=Nutze die Nummerntasten für schnellen Wechsel zwischen Zielorten.
+ttmisc.spaceToReset=Drücke SPACE, um zum Eingangspunkt zurückzukehren.
+ttmisc.destinationInd=(Zielort %s)
+ttmisc.clickToTeleport=Shift + Linksklick zum Teleportieren
+ttmisc.destinations=Zielorte:
 ttmisc.noDest=Es gibt kein Himmelstor am Zielort.
 ttmisc.noTeleport=Das Himmelstor am Zielort erlaubt keine Teleports zu ihm.
 
