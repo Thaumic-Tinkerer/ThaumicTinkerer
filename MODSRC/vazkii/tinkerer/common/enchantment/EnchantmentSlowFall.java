@@ -14,8 +14,10 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
+import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.item.ItemStack;
 
 public class EnchantmentSlowFall extends EnchantmentMod {
 
@@ -28,4 +30,8 @@ public class EnchantmentSlowFall extends EnchantmentMod {
 		return par1Enchantment.effectId != Enchantment.featherFalling.effectId;
 	}
 
+	@Override
+	public boolean canApply(ItemStack par1ItemStack) {
+		return !(par1ItemStack.getItem() instanceof ItemGemBoots);
+	}
 }
