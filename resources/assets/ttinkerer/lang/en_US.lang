@@ -181,7 +181,7 @@ ttresearch.page.SHARE_TOME.0=If one day you happen to want to share your knowled
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvector Interface
 ttresearch.lore.INTERFACE=Not affiliated with nyuu
-ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vicinity. It's sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft, TE3 and IC2 power, essentia, items, and liquids, being able to also export the latter two.<BR>[continued]
+ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Your latest construct can be bound to a block in the nearby vicinity. Its sides will mimic the sides of the block selected, and it'll function as an extension. It can accept BuildCraft, TE3 and IC2 power, essentia, items, and liquids, being able to also export the latter two.<BR>[continued]
 ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. The limit is short, only 4 blocks. (Note: buildcraft pipes need to be broken and replaced to work)
 ttresearch.page.INTERFACE.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
 
@@ -354,7 +354,7 @@ ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with yo
 # -- ICHORIUM
 ttresearch.name.ICHORIUM=Ichorium
 ttresearch.lore.ICHORIUM=Not from the 55th floor
-ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal it's property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal its property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
 
 # -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
 ttresearch.name.ICHORCLOTH_ROD=Ichorcloth Strapped Silverwood Wand Core
@@ -364,7 +364,7 @@ ttresearch.page.ICHORCLOTH_ROD.0=You have done it. By infusing a silverwood wand
 # -- ICHORIUM WAND CAPS
 ttresearch.name.ICHOR_CAP=Ichorium Wand Caps
 ttresearch.lore.ICHOR_CAP=Somewhat like a Steam Sale
-ttresearch.page.ICHOR_CAP.0=You have put Ichorium to it's first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+ttresearch.page.ICHOR_CAP.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
 
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
@@ -431,7 +431,7 @@ ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the P
 # -- BLACK HOLE TALISMAN
 ttresearch.name.BLOCK_TALISMAN=Black Hole Talisman
 ttresearch.lore.BLOCK_TALISMAN=More pascal than your mind can take
-ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the talisman is empty, it can be shift right clicked into another block to change it's binding.
+ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the talisman is empty, it can be shift right clicked into another block to change its binding.
 
 # -- WORLDSHAPER'S LOOKING GLASS
 ttresearch.name.PLACEMENT_MIRROR=Worldshaper's Looking Glass
@@ -441,7 +441,7 @@ ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a
 # -- WAND FOCUS: SHADOWBEAM
 ttresearch.name.FOCUS_SHADOWBEAM=Wand Focus: Shadowbeam
 ttresearch.lore.FOCUS_SHADOWBEAM=Guarded by an Old Man
-ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in it's path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.
+ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in its path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.
 
 # -- WAND FOCUS: EXPERIENCE DRAIN
 ttresearch.name.FOCUS_XP_DRAIN=Wand Focus: Experience Drain
@@ -457,7 +457,7 @@ ttresearch.page.PROTOCLAY.0=You grew tired of having to constantly swap your too
 ttresearch.name.WARP_GATE=Celestial Gateway
 ttresearch.lore.WARP_GATE=EM Wave Change
 ttresearch.page.WARP_GATE.0=You devised a complex mechanism that allows to displace your own position in the world. This block, when containing Celestial Pearls (see next page), will allow for teleportation to various spots in the world.<BR><BR>A grand total of 10 spots can be set. You can prevent other Gateways from connecting to this one by toggling it in the block's GUI (accessible by right click).<BR><BR>To acccess the list of possible destinations, sneak above the block.
-ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, they must be marked with Celestial Pearls. These items can be shift-right clicked into a Celestial Gateway to mark it's location (note, shift-right click on air to clear the location).<BR><BR>Placing the pearls inside a Celestial Gateway opens access to teleport to the one it's bound to. This teleport is one way, and two pearls must be used for a 2 way transport.<BR><BR>Naming these pearls with use of an Anvil will make the names appear in the Gateway's GUI, for easy labeling.
+ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, they must be marked with Celestial Pearls. These items can be shift-right clicked into a Celestial Gateway to mark its location (note, shift-right click on air to clear the location).<BR><BR>Placing the pearls inside a Celestial Gateway opens access to teleport to the one it's bound to. This teleport is one way, and two pearls must be used for a 2 way transport.<BR><BR>Naming these pearls with use of an Anvil will make the names appear in the Gateway's GUI, for easy labeling.
 
 # -- WAND FOCUS: RECALL
 ttresearch.name.FOCUS_RECALL=Wand Focus: Celestial Recall
