@@ -36,7 +36,7 @@ public class EasymodeResearchHandler implements ITickHandler {
 				ResearchNoteData data = ResearchManager.getData(notes);
 				boolean didAny = false;
 
-				if(data.grid != null)
+				if(data != null && data.grid != null)
 					for(int i = 0; i < 15; i++)
 						for(int j = 0; j < 15; j++)
 							if(data.grid[i][j].equals("O")) {
