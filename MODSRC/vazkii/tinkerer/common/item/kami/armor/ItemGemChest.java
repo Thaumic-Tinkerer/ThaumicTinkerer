@@ -62,17 +62,18 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 			if(armor != null && armor.getItem() == this)
 				tickPlayer(player);
 
-			if(playersWithFlight.contains(playerStr(player)))
+			if(playersWithFlight.contains(playerStr(player))) {
 				if(shouldPlayerHaveFlight(player))
 					player.capabilities.allowFlying = true;
 				else {
 					if(!player.capabilities.isCreativeMode) {
+						player.capabilities.allowFlying = false;
 						player.capabilities.isFlying = false;
 						player.capabilities.disableDamage = false;
 					}
 					playersWithFlight.remove(playerStr(player));
 				}
-			else if(shouldPlayerHaveFlight(player)) {
+			} else if(shouldPlayerHaveFlight(player)) {
 				playersWithFlight.add(playerStr(player));
 				player.capabilities.allowFlying = true;
 			}
