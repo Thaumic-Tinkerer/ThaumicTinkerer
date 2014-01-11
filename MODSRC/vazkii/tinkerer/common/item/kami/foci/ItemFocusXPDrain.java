@@ -43,7 +43,7 @@ public class ItemFocusXPDrain extends ItemModFocus {
 		Aspect aspectToAdd = null;
 		int takes = 0;
 
-		while(aspectToAdd == null) {
+		while(aspectToAdd == null && takes < 7) {
 			lastGiven = lastGiven == 5 ? 0 : lastGiven + 1;
 
 			Aspect aspect = Aspect.getPrimalAspects().get(lastGiven);
@@ -52,14 +52,14 @@ public class ItemFocusXPDrain extends ItemModFocus {
 				aspectToAdd = aspect;
 
 			++takes;
-			if(takes == 7)
-				return;
 		}
 
-		int xpUse = getXpUse(paramItemStack);
-		if(paramEntityPlayer.experienceTotal >= xpUse) {
-			ExperienceHelper.drainPlayerXP(paramEntityPlayer, xpUse);
-			wand.storeVis(paramItemStack, aspectToAdd, Math.min(wand.getMaxVis(paramItemStack), wand.getVis(paramItemStack, aspectToAdd) + 500));
+		if(aspectToAdd != null) {
+			int xpUse = getXpUse(paramItemStack);
+			if(paramEntityPlayer.experienceTotal >= xpUse) {
+				ExperienceHelper.drainPlayerXP(paramEntityPlayer, xpUse);
+				wand.storeVis(paramItemStack, aspectToAdd, Math.min(wand.getMaxVis(paramItemStack), wand.getVis(paramItemStack, aspectToAdd) + 500));
+			}
 		}
 	}
 
