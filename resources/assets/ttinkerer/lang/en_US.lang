@@ -54,8 +54,11 @@ ttmisc.distance=Distance
 ttmisc.lockedGate=Allow incoming teleports
 ttmisc.destination=Unnamed Destination
 ttmisc.entrancePoint=Entrance Point
-ttmisc.spaceToReset=Press SPACE to return to Entrance Point
+ttmisc.numberKeys=Use the number keys to quickly jump between destinations.
+ttmisc.spaceToReset=Press SPACE to return to Entrance Point.
+ttmisc.destinationInd=(Destination %s)
 ttmisc.clickToTeleport=Shift + Left Click to Teleport
+ttmisc.destinations=Destinations:
 ttmisc.noDest=There's no Celestial Gateway in the destination.
 ttmisc.noTeleport=The Celestial Gateway in the destination does not accept incoming teleports.
 
