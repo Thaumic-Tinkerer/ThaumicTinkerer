@@ -83,6 +83,7 @@ public class ModCreativeTab extends CreativeTabs {
 		addItem(ModItems.revealingHelm);
 		addItem(ModItems.cleansingTalisman);
 		addItem(ModItems.bloodSword);
+		addItem(ModItems.brightNitor);
 		addItem(ModItems.shareBook);
 
 		addItem(ModItems.focusFlight);
@@ -126,6 +127,7 @@ public class ModCreativeTab extends CreativeTabs {
 			addItem(ModItems.catAmulet);
 			addItem(ModItems.blockTalisman);
 			addItem(ModItems.placementMirror);
+			addItem(ModItems.protoclay);
 			addItem(ModItems.skyPearl);
 		}
 	}
