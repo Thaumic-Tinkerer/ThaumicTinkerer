@@ -136,12 +136,11 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	    		TileCamo camo = (TileCamo) tile;
 	    		if (camo.camo >= 0 && camo.camo < 4096) {
 				Block block = Block.blocksList[camo.camo];
-				if (block != null) {
-					return block.colorMultiplier(par1World, par2, par3, par4);
-				}
+				if (block != null)
+					return block instanceof BlockCamo ? 0xFFFFFF : block.colorMultiplier(par1World, par2, par3, par4);
 			}
 		}
-		return 16777215;
+		return 0xFFFFFF;
 	}
 
 	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
