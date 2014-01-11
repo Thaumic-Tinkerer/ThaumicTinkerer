@@ -81,7 +81,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
             		}
 
                     block = Block.blocksList[currentStack.itemID];
-                    if(block == null || !isValidRenderType(block.getRenderType()) || block == this || block.blockMaterial == Material.air)
+                    if(block == null || !isValidRenderType(block.getRenderType()) || block instanceof BlockCamo || block.blockMaterial == Material.air)
                     	doChange = false;
             	}
         	}
