@@ -45,10 +45,14 @@ public class TileWarpGate extends TileEntity implements IInventory {
 	@Override
 	public void updateEntity() {
 		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 1.5, zCoord + 1));
+		
+		EntityPlayer clientPlayer = ThaumicTinkerer.proxy.getClientPlayer();
 		for(EntityPlayer player : players)
-			if(player.isSneaking())
-				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
-
+				if(player != null && player == clientPlayer && player.isSneaking()) {
+					player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
+					break;
+				}
+			
 		teleportedThisTick = false;
 	}
 
@@ -81,6 +85,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 				for(int i = 0; i < 20; i++)
 					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
 
+				player.mountEntity(null);
 				if(player instanceof EntityPlayerMP)
 					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
 
