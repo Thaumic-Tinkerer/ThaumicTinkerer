@@ -168,4 +168,9 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 			return 0F;
 		}
 	}
+
+	@Override
+	public String getSortingHelper(ItemStack paramItemStack) {
+		return "SHADOWBEAM";
+	}
 }

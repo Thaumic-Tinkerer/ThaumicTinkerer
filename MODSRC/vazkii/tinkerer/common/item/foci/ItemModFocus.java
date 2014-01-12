@@ -136,9 +136,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	}
 
 	@Override
-	public String getSortingHelper(ItemStack paramItemStack) {
-		return "00";
-	}
+	public abstract String getSortingHelper(ItemStack paramItemStack);
 
 	@Override
 	public boolean onFocusBlockStartBreak(ItemStack paramItemStack, int paramInt1, int paramInt2, int paramInt3, EntityPlayer paramEntityPlayer) {
