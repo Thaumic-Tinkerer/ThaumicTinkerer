@@ -52,8 +52,10 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		ToolHandler.changeMode(par1ItemStack);
-		ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
+		if(par3EntityPlayer.isSneaking()) {
+			ToolHandler.changeMode(par1ItemStack);
+			ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
+		}
 
 		return par1ItemStack;
 	}
