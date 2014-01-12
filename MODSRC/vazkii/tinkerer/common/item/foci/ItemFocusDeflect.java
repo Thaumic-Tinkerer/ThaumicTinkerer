@@ -58,6 +58,11 @@ public class ItemFocusDeflect extends ItemModFocus {
 			e.posZ += motionVec.z;
 		}
 	}
+	
+	@Override
+	public String getSortingHelper(ItemStack paramItemStack) {
+		return "DEFLECT";
+	}
 
 	@Override
 	public boolean isVisCostPerTick() {

@@ -98,4 +98,9 @@ public class ItemFocusXPDrain extends ItemModFocus {
 		return paramInt == Config.enchFrugal.effectId;
 	}
 
+	@Override
+	public String getSortingHelper(ItemStack paramItemStack) {
+		return "XPDRAIN";
+	}
+
 }

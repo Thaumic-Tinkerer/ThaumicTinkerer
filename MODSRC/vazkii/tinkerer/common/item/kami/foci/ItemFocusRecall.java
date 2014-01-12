@@ -90,4 +90,9 @@ public class ItemFocusRecall extends ItemModFocus {
 		return cost;
 	}
 
+	@Override
+	public String getSortingHelper(ItemStack paramItemStack) {
+		return "RECALL";
+	}
+
 }
