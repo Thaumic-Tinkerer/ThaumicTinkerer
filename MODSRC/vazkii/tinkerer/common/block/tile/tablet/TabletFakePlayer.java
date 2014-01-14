@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block.tile.tablet;
 
+import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
@@ -32,6 +33,11 @@ public class TabletFakePlayer extends FakePlayer {
 
 	@Override
 	public void openGui(Object mod, int modGuiId, World world, int x, int y, int z) {
+		// NO-OP
+	}
+	
+	@Override
+	public void sendContainerToPlayer(Container par1Container) {
 		// NO-OP
 	}
 
