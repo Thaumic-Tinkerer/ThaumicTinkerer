@@ -98,8 +98,21 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 			super(par1World, par2EntityLivingBase);
 
 			this.potency = potency;
-			setVelocity(motionX / 10, motionY / 10, motionZ / 10);
+			setProjectileVelocity(motionX / 10, motionY / 10, motionZ / 10);
 			movementVector = new Vector3(motionX, motionY, motionZ);
+		}
+
+		// Copy of setVelocity, because that is client only for some reason
+		public void setProjectileVelocity(double par1, double par3, double par5) {
+			this.motionX = par1;
+			this.motionY = par3;
+			this.motionZ = par5;
+
+			if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
+				float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
+				this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
+				this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(par3, (double)f) * 180.0D / Math.PI);
+			}
 		}
 
 		@Override
