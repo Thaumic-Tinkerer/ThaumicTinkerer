@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.item.kami.foci;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -44,7 +45,7 @@ public class ItemFocusRecall extends ItemModFocus {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,	EntityPlayer par3EntityPlayer) {
+	public ItemStack onFocusRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
 		ItemWandCasting wand = (ItemWandCasting) par1ItemStack.getItem();
 
 		return wand.consumeAllVis(par1ItemStack, par3EntityPlayer, cost, false) ? super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer) : par1ItemStack;
