@@ -161,7 +161,7 @@ tc.research_category.TT_ENCHANTING=Verzaubern
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
 ttresearch.lore.PERIPHERALS=Wenn Technologie auf Magie trifft
-ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst,wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Browser ein
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es hinzufügt, sowie manchen Thaumcraft-Blöcken, als ComputerCraft-Peripherien genutzt zu werden.<BR><BR>Aus praktischen Gründen ist die Methoden-Dokumentation für diese Peripherien eine externe Webseite. Wenn du jetzt ENTER drückst, wird es dich zu ihr führen.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Browser ein
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
@@ -211,7 +211,7 @@ ttresearch.page.SPELL_CLOTH.0=Durch das Mischen von Verzaubertem Stoff mit roher
 # -- DYNAMISM TABLET
 ttresearch.name.ANIMATION_TABLET=Dynamiktablett
 ttresearch.lore.ANIMATION_TABLET=Ich bin Level 78...
-ttresearch.page.ANIMATION_TABLET.0=Du hast dich entschieden, weitere Verwendungszwecke für die Golem-Animationskerne zu entdecken, Und dies ist die Frucht deiner Arbeit.<BR><BR>Dieses Tablett akzeptiert ein Item, das es mit mystischer Energie animierty. Indem du die Knöpfe rechts und links im Interface nutzt, kannst du wählen, ob das Tablett mit dem Item einen Links- oder Rechtsklick ausführt. Der Knopf unten kontrolliert, ob das Tablett immer reagiert, wenn es kann oder nur, wenn es ein Redstone-Sigal erhält.<BR><BR>Nahezu alles kann animiert werden, einschließlich Blöcke. Der Typ des Werkzeugs im Tablett definiert auch, wie schnell etwas abgebaut wird, wie zu erwarten.
+ttresearch.page.ANIMATION_TABLET.0=Du hast dich entschieden, weitere Verwendungszwecke für die Golem-Animationskerne zu entdecken, Und dies ist die Frucht deiner Arbeit.<BR><BR>Dieses Tablett akzeptiert ein Item, das es mit mystischer Energie animiert. Indem du die Knöpfe rechts und links im Interface nutzt, kannst du wählen, ob das Tablett mit dem Item einen Links- oder Rechtsklick ausführt. Der Knopf unten kontrolliert, ob das Tablett immer reagiert, wenn es kann oder nur, wenn es ein Redstone-Signal erhält.<BR><BR>Nahezu alles kann animiert werden, einschließlich Blöcke. Der Typ des Werkzeugs im Tablett definiert auch, wie schnell etwas abgebaut wird, wie zu erwarten.
 
 # -- WAND FOCUS: UPRISING
 ttresearch.name.FOCUS_FLIGHT=Stabfokus: Aufsteigen
@@ -240,7 +240,7 @@ ttresearch.lore.FOCUS_TELEKINESIS=Schlägt Schwerkraftblasen jederzeit
 ttresearch.page.FOCUS_TELEKINESIS.0=Du hast einen Stabfokus kreiert, der kinetisch auf dem Boden liegende Objekte bewegen kann. Dieser Fokus wird nahe Items zu dem Punkt bewegen, auf den zu zeigst. Schleichen wird die Items stattdessen zu dir bringen.
 
 # -- KINETIC ATTRACTION
-ttresearch.name.MAGNETS=Kinetische Attaktion
+ttresearch.name.MAGNETS=Kinetische Attraktion
 ttresearch.lore.MAGNETS=Wie funktionieren die?
 ttresearch.page.MAGNETS.0=Durch das Arbeiten mit dem Telekinesefokus hast du es geschafft dieses Wissen anzuwenden, um ein Gerät zu kreieren, das Items und lebende Geschöpfe anzieht wie ein Magnet.<BR><BR>Diese Blöcke haben zwei Status, Nord (rot) und Süd (blau), im Nord-Modus werden sie Gegenstände bzw. Lebewesen abstoßen; im Süd-Modus werden sie jene anziehen.<BR><BR>Die Reichweite der Anziehung hängt vom empfangenen Redstone-Signal ab. Ein Hebel neben ihm wird in 7.5 Blöcken anziehen, während ein weiter entferntes Signal eine geringere Reichweite hat. Allgemein gesagt, die Anziehung ist gleich der Hälfte der Stärke des Redstone-Signals in Blöcken, in jede Richtung.
 ttresearch.page.MAGNETS.1=Du hast zwei Geräte entworfen, den Kinetischen und den Korporealen Attraktor, die entsprechend Items oder Lebendes betreffen.<BR><BR>Der Korporeale Attraktor beinhaltet ein paar komplexere Mechanismen, auf die du per Rechtklick mit einem Zauberstab zugreifen kannst. Du kannst mit einer Seelenform ein Lebewesen rechtsklicken, um es als eine Vorlage zu speichern, die du als Filter in das Interface des Attraktors eingeben kannst, zusammen mit Einstellungen für Erwachsene oder Baby-Tiere, wenn verfügbar.
@@ -249,13 +249,13 @@ ttresearch.page.MAGNETS.1=Du hast zwei Geräte entworfen, den Kinetischen und de
 ttresearch.name.ENCHANTER=Osmotischer Verzauberer
 ttresearch.lore.ENCHANTER=Wähle dein Glück
 ttresearch.page.ENCHANTER.0=Du bist es Leid geworden, schreckliche Verzauberungen für deine Mühen zu bekommen. Deswegen hast du einen neuen Zaubertisch kreiert, der es dir erlaubt, zu wählen, welche Verzauberungen du auf einem Item haben möchtest.<BR><BR>Diese neue Vorrichtung benötigt einen Stab, jede Verzauberung erfordert eine spezifische Kombination von Vis aus diesem Stab. Der Preis der Verzauberung ist exponentiell zum Level, das du auflegen möchtest.<BR><BR>Es gelten reguläre Verzauberungsregeln, zum Beispiel kannst du nicht Behutsamkeit mit Glück kombinieren.
-ttresearch.page.ENCHANTER.1=Nachdem du die Verzauberunden ausgewählt hast, die du auf einem Item wünschst, wird das Klicken auf den roten Knopf den Verzauberungsprozess beginnen. Während das Item verzaubert wird, kannst du es nicht aus dem Tisch entfernen, ebenso wenig kannst du die Verzauberungen, die zu auflegst, nicht mehr ändern.<BR><BR>Der Tisch wird langsam Vis aus dem Stab ziehen bis er fertig ist. Damit das funktioniert, werden 6 Säulen in der nahen Umgebung (4 Blöcke) benötigt, diese Säulen müssen auf der selben Höhe wie der Tisch sein.<BR><BR>[fortgesetzt]
+ttresearch.page.ENCHANTER.1=Nachdem du die Verzauberungen ausgewählt hast, die du auf einem Item wünschst, wird das Klicken auf den roten Knopf den Verzauberungsprozess beginnen. Während das Item verzaubert wird, kannst du es nicht aus dem Tisch entfernen, ebenso wenig kannst du die Verzauberungen, die zu auflegst, nicht mehr ändern.<BR><BR>Der Tisch wird langsam Vis aus dem Stab ziehen bis er fertig ist. Damit das funktioniert, werden 6 Säulen in der nahen Umgebung (4 Blöcke) benötigt, diese Säulen müssen auf der selben Höhe wie der Tisch sein.<BR><BR>[fortgesetzt]
 ttresearch.page.ENCHANTER.2=Die Säulen müssen aus zwei bis zwölf übereinander gestapelten Obsidian-Totems bestehen, jeweils mit Nitor an der Spitze. Der Verzauberer wird Fluxenergie von ihnen bekommen, sich Vis aus dem Stab nehmen und beides kombinieren, um das Item zu verzaubern.<BR><BR>Der Verzauberer wird nicht mit eisen- oder kupferbekappten Stäben funktionieren, weil sie zu einfach und grob für die nötigen komplexen magischen Infusionen sind.
 
 # -- TALISMAN OF WITHHOLD
 ttresearch.name.XP_TALISMAN=Talisman des Einbehaltens
 ttresearch.lore.XP_TALISMAN=Ich werd' mir deine 'Zeit' nehmen
-ttresearch.page.XP_TALISMAN.0=Nachdem du nun weißt, dass Zombiehirne die Fähigkeit haben, Erfahrung zu speichern, hast du einen Talisman kreiert, der dieses Verhalten nachahmt, jedoch nicht in perfektem Ausmaß.<BR><BR>Um die Fähigkeit, Erfahrung zu speichern, zu nutzen, musst du mit dem Talisman Shift-rechtsklicken. Wenn der Talisman aktiviert ist, wird er alle nahen Erfahrungsorbs absorbieren, diese können wieder zurück zu nutzbarer Erfahrungs transformiert werden, wenn du mit einer Glasflasche in deinem Inventar rechtsklickst, was diese Flasche in ein Erfahrungsfläschchen verwandelt.
+ttresearch.page.XP_TALISMAN.0=Nachdem du nun weißt, dass Zombiehirne die Fähigkeit haben, Erfahrung zu speichern, hast du einen Talisman kreiert, der dieses Verhalten nachahmt, jedoch nicht in perfektem Ausmaß.<BR><BR>Um die Fähigkeit, Erfahrung zu speichern, zu nutzen, musst du mit dem Talisman Shift-rechtsklicken. Wenn der Talisman aktiviert ist, wird er alle nahen Erfahrungsorbs absorbieren, diese können wieder zurück zu nutzbarer Erfahrung transformiert werden, wenn du mit einer Glasflasche in deinem Inventar rechtsklickst, was diese Flasche in ein Erfahrungsfläschchen verwandelt.
 
 # -- ESSENTIA FUNNEL
 ttresearch.name.FUNNEL=Essentia-Trichter
@@ -275,17 +275,17 @@ ttresearch.page.TTENCH_SLOW_FALL.0=Du hast eine Verzauberung formuliert, die es 
 # -- ENCHANTMENT: FLAMING TOUCH
 ttresearch.name.TTENCH_AUTO_SMELT=Verzauberung: Flammende Berührung
 ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen!
-ttresearch.page.TTENCH_AUTO_SMELT.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, imaginäre Flammen zu beschwören.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alles hölzerne mit extremer Finesse abbauen, indem er eine Flamme nutzt, die das Holz während des Abbauprozesses weich macht, es aber niemals zerstört oder schädigt. Jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
+ttresearch.page.TTENCH_AUTO_SMELT.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, imaginäre Flammen zu beschwören.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alles Hölzerne mit extremer Finesse abbauen, indem er eine Flamme nutzt, die das Holz während des Abbauprozesses weich macht, es aber niemals zerstört oder schädigt. Jedoch wird das Werkzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
 
 # -- ENCHANTMENT: DISINTEGRATE
 ttresearch.name.TTENCH_DESINTEGRATE=Verzauberung: Desintegrieren
 ttresearch.lore.TTENCH_DESINTEGRATE=Weltraumbeben-Alarm
-ttresearch.page.TTENCH_DESINTEGRATE.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, weiche Materialien mit unglaublicher Geschwindigkeit abzubauen.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alle regulären Blöcke (Erde, Stein, Netherstein etc.), für die das Werkzeug gut ist, mit extremer Finesse abbauen, jedoch wird das Werzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
+ttresearch.page.TTENCH_DESINTEGRATE.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, weiche Materialien mit unglaublicher Geschwindigkeit abzubauen.<BR><BR>Diese Verzauberung kann auf Werkzeuge gelegt werden. Wenn getan, kann der Nutzer alle regulären Blöcke (Erde, Stein, Netherstein etc.), für die das Werkzeug gut ist, mit extremer Finesse abbauen, jedoch wird das Werkzeug nutzlos gegenüber allem anderen und nimmt doppelten Haltbarkeitsschaden.
 
 # -- ENCHANTMENT: QUICK DRAW
 ttresearch.name.TTENCH_QUICK_DRAW=Verzauberung: Schnelles Spannen
 ttresearch.lore.TTENCH_QUICK_DRAW=Mögen die Seltsamen auf ewig zu deinen Gunsten sein
-ttresearch.page.TTENCH_QUICK_DRAW.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, deinen Bogen auf schnellere Art zu spannen.<BR><BR>Diese Verzauberung kann auf Bögen gelegt werden. Wenn getan, kann der Bogen schneller voll gepannt werden als normal.
+ttresearch.page.TTENCH_QUICK_DRAW.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, deinen Bogen auf schnellere Art zu spannen.<BR><BR>Diese Verzauberung kann auf Bögen gelegt werden. Wenn getan, kann der Bogen schneller voll gespannt werden als normal.
 
 # -- ENCHANTMENT: VAMPIRISM
 ttresearch.name.TTENCH_VAMPIRISM=Verzauberung: Vampirismus
@@ -320,7 +320,7 @@ ttresearch.page.DISLOCATOR.0=Indem du Bewegung studiert hast, hast du es geschaf
 # -- HELMET OF REVEALING
 ttresearch.name.REVEALING_HELM=Helm der Enthüllung
 ttresearch.lore.REVEALING_HELM=Darum kann ich Photoshop nicht benutzen
-ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht viel Schutz gegen angreifende Zombies. Du denkst jedoch, du hast eine Lösung für das Problem gefunden. Indem du eine Brille an einem Thaumiumhelm befestigst, kannst du die Vorteile von beidem nutzen. Na ja, es stellt sich heraus, dass es ein wenig komplizierter als das ist. Ein bisschen Magie ist nötig, um Rückkopplungen zu vermeiden, und ein wenig Magie, um sie am verrutschen zu hindern, aber insgesamt scheint es mehr oder weniger zu funtionieren.
+ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht viel Schutz gegen angreifende Zombies. Du denkst jedoch, du hast eine Lösung für das Problem gefunden. Indem du eine Brille an einem Thaumiumhelm befestigst, kannst du die Vorteile von beidem nutzen. Na ja, es stellt sich heraus, dass es ein wenig komplizierter als das ist. Ein bisschen Magie ist nötig, um Rückkopplungen zu vermeiden, und ein wenig Magie, um sie am verrutschen zu hindern, aber insgesamt scheint es mehr oder weniger zu funktionieren.
 
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumischer Restaurierer
@@ -351,7 +351,7 @@ ttresearch.page.ICHOR.0=Durch ausgedehnte Studien in allen Aspekten der Thaumatu
 
 # -- ICHORCLOTH
 ttresearch.name.ICHOR_CLOTH=Ichortuch
-ttresearch.lore.ICHOR_CLOTH=Lebensfaser-Synchronization
+ttresearch.lore.ICHOR_CLOTH=Lebensfaser-Synchronisation
 ttresearch.page.ICHOR_CLOTH.0=Du hast einen Weg gefunden, Magischen Stoff mit deiner neuesten Entdeckung, Ichor, zu versetzen. Komisch genug, dass dieser Prozess nicht das gewöhnliche Infusionsprozedere erfordert, da das Ichor den Diamanten einfach absorbiert und mit dem Stoff verschmilzt.<BR><BR>Jedoch benötigst du, um das zu bewerkstelligen, nicht nur, dass der besten Stab, den du jemals kreiert hast, voll geladen ist, du musst auch ein volles Set der Thaumaturgenrobe tragen, um genug Energie für die Kreierung zu übertragen.<BR><BR>Du denkst, dass es Zeit ist, einen neuen Stab zu entwerfen.
 
 # -- ICHORIUM
@@ -362,7 +362,7 @@ ttresearch.page.ICHORIUM.0=Mehr Forschung mit Ichor enthüllte seine Eigenschaft
 # -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
 ttresearch.name.ICHORCLOTH_ROD=Ichortuch-verstärkter Silberholz-Stabkern
 ttresearch.lore.ICHORCLOTH_ROD=Das ist ein langer Name
-ttresearch.page.ICHORCLOTH_ROD.0=DU hast es geschafft. Indem du einen Silberholz-Stabkern mit Ichortuch versetzt, hast du es geschafft, den ultimativen Stabkern zu erschaffen.<BR><BR>Dieser Kern hält eine gewaltige Menge von 1000 jeder Art von Vis. Dies wird mit Sicherheit die Herstellung teurer Komponenten ein wenig stressfreier machen. Nun bleibt die Frage, wo wirst du all das Vis hierfür herberkommen?
+ttresearch.page.ICHORCLOTH_ROD.0=DU hast es geschafft. Indem du einen Silberholz-Stabkern mit Ichortuch versetzt, hast du es geschafft, den ultimativen Stabkern zu erschaffen.<BR><BR>Dieser Kern hält eine gewaltige Menge von 1000 jeder Art von Vis. Dies wird mit Sicherheit die Herstellung teurer Komponenten ein wenig stressfreier machen. Nun bleibt die Frage, wo wirst du all das Vis hierfür herbekommen?
 
 # -- ICHORIUM WAND CAPS
 ttresearch.name.ICHOR_CAP=Ichorium-Stabkappen
@@ -372,7 +372,7 @@ ttresearch.page.ICHOR_CAP.0=Du hast den ersten Nutzen für Ichorium gefunden, in
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichortuchrobe
 ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... warte
-ttresearch.page.ICHORCLOTH_ARMOR.0=Du hast herausgefunden, wie man Ichortuch zu Kleidung verwebt.<BR><BR>Diese neue Kleidung sind etwa to effektiv wie Diamantrüstung, wenn es um Schutz vor Schaden geht. Jedoch ist dieser Stoff komplett unzerstörbar und wird niemals auch nur einen Kratzer bekommen.
+ttresearch.page.ICHORCLOTH_ARMOR.0=Du hast herausgefunden, wie man Ichortuch zu Kleidung verwebt.<BR><BR>Diese neue Kleidung ist etwa so effektiv wie Diamantrüstung, wenn es um Schutz vor Schaden geht. Jedoch ist dieser Stoff komplett unzerstörbar und wird niemals auch nur einen Kratzer bekommen.
 
 # -- COWL OF THE ABYSSAL DEPTHS
 ttresearch.name.ICHORCLOTH_HELM_GEM=Kappe der Abgrundtiefe
@@ -387,7 +387,7 @@ ttresearch.page.ICHORCLOTH_CHEST_GEM.0=Du hast einen Weg gefunden, die Ichortuch
 # -- LEGGINGS OF THE BURNING MANTLE
 ttresearch.name.ICHORCLOTH_LEGS_GEM=Hose der Brennenden Hülle
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=Ein warmes Gefühl
-ttresearch.page.ICHORCLOTH_LEGS_GEM.0=Du hast einen Weg gefunden, die Ichortuchhose in eine noch mächtigere Form umzuwandeln.<BR><BR>Diese Hose ist mit der Seele des Feuers versetzt.<BR>Zum einen erschafft sie ein Licht um den Träger herum, heller noch als das des Hyperenergetischen Nitors. Das Lich erweitert sich auch zum Ort, auf den der Träger schaut, gleich einer Taschenlampe, und bringt die Existenz des Erschaffers in größerer Weite zur Geltung.<BR>Zusätzlich bietet diese Hose nicht nur Feuerresistenz, sie wandelt auch allen erhaltenen Feuerschaden in Heilung um.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=Du hast einen Weg gefunden, die Ichortuchhose in eine noch mächtigere Form umzuwandeln.<BR><BR>Diese Hose ist mit der Seele des Feuers versetzt.<BR>Zum einen erschafft sie ein Licht um den Träger herum, heller noch als das des Hyperenergetischen Nitors. Das Licht erweitert sich auch zum Ort, auf den der Träger schaut, gleich einer Taschenlampe, und bringt die Existenz des Erschaffers in größerer Weite zur Geltung.<BR>Zusätzlich bietet diese Hose nicht nur Feuerresistenz, sie wandelt auch allen erhaltenen Feuerschaden in Heilung um.
 ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Solltest du, warum auch immer, einmal im Dunkeln sein wollen, kannst du mit der Hose Shift-klicken, um die Lichtfunktion zu aktivieren und zu deaktivieren.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
@@ -403,7 +403,7 @@ ttresearch.page.CAT_AMULET.0=Es dauerte nicht lange, bis du zu dem Schluss kamst
 # -- ICHORIUM TOOLS
 ttresearch.name.ICHOR_TOOLS=Ichoriumwerkzeug
 ttresearch.lore.ICHOR_TOOLS=Die höchste Stufe aller Ratt... Werkzeuge
-ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium herstellt. Diese Werkzeuge sind extrem mächtig, noch mächtiger als Diamant, zusätzlich werden sie niemals zerbrechen.<BR><BR>Für die Kreierung dieser Werkzeuge sind gewöhnliche Stöcke night genug, du entschiedest dich, stattdessen Silberholzstäbe zu verwenden.
+ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium herstellt. Diese Werkzeuge sind extrem mächtig, noch mächtiger als Diamant, zusätzlich werden sie niemals zerbrechen.<BR><BR>Für die Kreierung dieser Werkzeuge sind gewöhnliche Stöcke nicht genug, du entschiedest dich, stattdessen Silberholzstäbe zu verwenden.
 
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Erweckte Ichoriumspitzhacke
@@ -460,9 +460,9 @@ ttresearch.page.PROTOCLAY.0=Du wurdest es satt, deine Werkzeuge kontinuierlich a
 ttresearch.name.WARP_GATE=Himmelstor
 ttresearch.lore.WARP_GATE=EM-Wellenwechsel
 ttresearch.page.WARP_GATE.0=Du hast einen komplexen Mechanismus erdacht, der es dir erlaubt, deine eigene Position in der Welt zu verändern. Dieser Block wird, wenn er Himmelsperlen enthält (siehe nächste Seite), erlauben, sich zu verschiedenen Punkten in der Welt zu teleportieren.<BR><BR>Eine Gesamtzahl von 10 Orten kann eingestellt werden. Du kannst andere Tore daran hindern, sich mit einem bestimmten zu verbinden, indem du das in der GUI des Blocks (die du per Rechtsklick öffnen kannst) einstellst.<BR><BR>Um eine Liste verfügbarer Ziele aufzurufen, schleiche auf dem Block.
-ttresearch.page.WARP_GATE.1=Um Zierlorte eines Tores einzustellen, müssen sie mit Himmelsperlen markiert werden. Diese Items können mit Shift-Rechtsklick auf ein Himmelstor die Position dieses Tores markieren (Anmerkung: Shift-rechtsklicke in Luft, um den Ort zu löschen).<BR><BR>Wenn du die Perlen in ein Himmelstor platzierst, ermöglicht das, sich zu dem Himmelstor, an das die Perle gebunden ist, zu teleportieren. Dieser Teleport ist nur in eine Richtung möglich, somit sind zwei Perlen für den Teleport hin und zurück nötig.<BR><BR>Wenn du diese Perlen in einem Amboss umbenennst, werden ihre Namen in der GUI des Tores angezeigt, was einfache Kennzeichnung erlaubt.
+ttresearch.page.WARP_GATE.1=Um Zielorte eines Tores einzustellen, müssen sie mit Himmelsperlen markiert werden. Diese Items können mit Shift-Rechtsklick auf ein Himmelstor die Position dieses Tores markieren (Anmerkung: Shift-rechtsklicke in Luft, um den Ort zu löschen).<BR><BR>Wenn du die Perlen in ein Himmelstor platzierst, ermöglicht das, sich zu dem Himmelstor, an das die Perle gebunden ist, zu teleportieren. Dieser Teleport ist nur in eine Richtung möglich, somit sind zwei Perlen für den Teleport hin und zurück nötig.<BR><BR>Wenn du diese Perlen in einem Amboss umbenennst, werden ihre Namen in der GUI des Tores angezeigt, was einfache Kennzeichnung erlaubt.
 
 # -- WAND FOCUS: RECALL
 ttresearch.name.FOCUS_RECALL=Stabfokus: Himmelsrückruf
 ttresearch.lore.FOCUS_RECALL=Home is where the Hearthstone is
-ttresearch.page.FOCUS_RECALL.0=Himmelstore für Teleportation zu nutzen, ist schön un gut, aber du hast dich entschieden, einen Schritt weiter zu gehen und einen Fokus zu kreieren, der genau das kann, nur von überall.<BR><BR>Dieser Fokus wird, wenn sich eine gebundene Himmelsperle in der Hotbar befindet, den Nutzer, nach kurzer Zauberzeit, zu jener Position teleportieren, als hätte er ein Himmelstor verwendet. Selbstverständlich benötigt das Teleportieren Vis aus deinem Stab.
+ttresearch.page.FOCUS_RECALL.0=Himmelstore für Teleportation zu nutzen, ist schön und gut, aber du hast dich entschieden, einen Schritt weiter zu gehen und einen Fokus zu kreieren, der genau das kann, nur von überall.<BR><BR>Dieser Fokus wird, wenn sich eine gebundene Himmelsperle in der Hotbar befindet, den Nutzer, nach kurzer Zauberzeit, zu jener Position teleportieren, als hätte er ein Himmelstor verwendet. Selbstverständlich benötigt das Teleportieren Vis aus deinem Stab.
