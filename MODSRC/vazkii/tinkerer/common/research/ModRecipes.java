@@ -319,6 +319,6 @@ public final class ModRecipes {
 	}
 
 	private static Object oreDictOrStack(ItemStack stack, String oreDict) {
-		return OreDictionary.getOres(oreDict).isEmpty() ? stack : oreDict;
+		return OreDictionary.getOres(oreDict).isEmpty() && ConfigHandler.useOreDictMetal ? stack : oreDict;
 	}
 }
