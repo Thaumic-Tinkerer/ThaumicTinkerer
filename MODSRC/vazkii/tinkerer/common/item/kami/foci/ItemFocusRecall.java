@@ -45,13 +45,6 @@ public class ItemFocusRecall extends ItemModFocus {
 	}
 
 	@Override
-	public ItemStack onFocusRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-		ItemWandCasting wand = (ItemWandCasting) par1ItemStack.getItem();
-
-		return wand.consumeAllVis(par1ItemStack, par3EntityPlayer, cost, false) ? super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer) : par1ItemStack;
-	}
-
-	@Override
 	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
 		ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
 
@@ -72,7 +65,7 @@ public class ItemFocusRecall extends ItemModFocus {
 					int y = ItemSkyPearl.getY(stackToCount);
 					int z = ItemSkyPearl.getZ(stackToCount);
 
-					if(TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
+					if(wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
 						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true);
 				}
 			}
