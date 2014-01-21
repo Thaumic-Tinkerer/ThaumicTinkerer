@@ -42,7 +42,8 @@ public final class ConfigHandler {
 	public static boolean useTootlipIndicators = true;
 	public static boolean enableSurvivalShareTome = true;
 	public static boolean enableEasymodeResearch = false;
-
+	public static boolean useOreDictMetal = true;
+	
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
 	public static int endDimensionID = 1;
@@ -77,6 +78,10 @@ public final class ConfigHandler {
 		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research.";
 		enableEasymodeResearch = propEasymodeResearch.getBoolean(false);
 
+		Property propOreDict = config.get(Configuration.CATEGORY_GENERAL, "oreDictMetal.enabled", true);
+		propOreDict.comment = "Set to false to disable usage of ore dictionary metals (tin and copper).";
+		useOreDictMetal = propOreDict.getBoolean(true);
+		
 		if(enableKami) {
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
 			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
