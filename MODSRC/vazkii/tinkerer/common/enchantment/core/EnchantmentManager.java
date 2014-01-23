@@ -102,11 +102,11 @@ public final class EnchantmentManager {
 		return data.research.isEmpty() || ResearchManager.isResearchComplete(player, data.research);
 	}
 
-	private static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects) {
+	public static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects) {
 		registerExponentialCostData(enchantment, texture, vanilla, level1Aspects, "");
 	}
 
-	private static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects, String research) {
+	public static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects, String research) {
 		for(double i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
 			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, i * (1D + i * 0.2)), research);
 			registerData(enchantment.effectId, (int) i, data);
