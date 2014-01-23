@@ -51,7 +51,7 @@ public class GuiEnchanting extends GuiContainer {
 
 	public TileEnchanter enchanter;
 
-	GuiButtonEnchantment[] enchantButtons = new GuiButtonEnchantment[8];
+	GuiButtonEnchantment[] enchantButtons = new GuiButtonEnchantment[16];
 
 	public List<String> tooltip = new ArrayList();
 
@@ -85,8 +85,12 @@ public class GuiEnchanting extends GuiContainer {
 		buttonList.add(enchantButton);
 		enchantButton.enabled = !enchanter.enchantments.isEmpty();
 
-		for(int i = 0; i < enchantButtons.length; i++) {
-			GuiButtonEnchantment button = new GuiButtonEnchantment(this, 1 + i, x + 34 + i * 16, y + 54);
+		for(int i = 0; i < 16; i++) {
+			int z = -24;
+			if (i > 7 || (enchantButtons[8]==null || !enchantButtons[8].enabled)) {
+				z = 0;
+			}
+			GuiButtonEnchantment button = new GuiButtonEnchantment(this, 1 + i, x + 34 + ((i)%8)* 16, y + 54 + z);
 			enchantButtons[i] = button;
 			buttonList.add(button);
 		}
@@ -95,17 +99,17 @@ public class GuiEnchanting extends GuiContainer {
 
 		int i = 0;
 		for(Integer enchant : enchanter.enchantments) {
-			GuiButtonEnchantment button = new GuiButtonFramedEnchantment(this, 9 + i * 3, x + xSize + 4, y + i * 26);
+			GuiButtonEnchantment button = new GuiButtonFramedEnchantment(this, 17 + i * 3, x + xSize + 4, y + i * 26);
 			button.enchant = Enchantment.enchantmentsList[enchant];
 			buttonList.add(button);
-			buttonList.add(new GuiButtonEnchanterLevel(9 + i * 3 + 1, x + xSize + 24, y + i * 26 - 4, false));
-			buttonList.add(new GuiButtonEnchanterLevel(9 + i * 3 + 2, x + xSize + 31, y + i * 26 - 4, true));
+			buttonList.add(new GuiButtonEnchanterLevel(17 + i * 3 + 1, x + xSize + 24, y + i * 26 - 4, false));
+			buttonList.add(new GuiButtonEnchanterLevel(17 + i * 3 + 2, x + xSize + 31, y + i * 26 - 4, true));
 			++i;
 		}
 	}
 
 	public void asignEnchantButtons() {
-		for(int i = 0; i < 8; i++) {
+		for(int i = 0; i < 16; i++) {
 			enchantButtons[i].enchant = null;
 			enchantButtons[i].enabled = false;
 		}
@@ -114,28 +118,30 @@ public class GuiEnchanting extends GuiContainer {
 			return;
 
 		int it = 0;
-		for(int enchant : EnchantmentManager.enchantmentData.keySet())
+		
+		for(int enchant : EnchantmentManager.enchantmentData.keySet()) {
 			if(EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().username, Enchantment.enchantmentsList[enchant])) {
 				enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
 				enchantButtons[it].enabled = true;
-
 				it++;
-				if(it >= 8)
+				if(it >= 16)
 					break;
 			}
+		}
+		
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if(par1GuiButton.id == 0) {
 			PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterStartWorking(enchanter)));
-		} else if(par1GuiButton.id <= 8) {
+		} else if(par1GuiButton.id <= 16) {
 			GuiButtonEnchantment button = enchantButtons[par1GuiButton.id - 1];
 			if(button != null && button.enchant != null)
 				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, button.enchant.effectId, 0)));
 		} else {
-			int type = (par1GuiButton.id - 9) % 3;
-			int index = (par1GuiButton.id - 9) / 3;
+			int type = (par1GuiButton.id - 17) % 3;
+			int index = (par1GuiButton.id - 17) / 3;
 
 			if(index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
 				return;
@@ -166,7 +172,7 @@ public class GuiEnchanting extends GuiContainer {
 	@Override
 	public void updateScreen() {
 		currentStack = enchanter.getStackInSlot(0);
-
+		buildButtonList();
 		if(currentStack != lastTickStack || !lastTickEnchants.equals(enchanter.enchantments) || !lastTickLevels.equals(enchanter.levels))
 			buildButtonList();
 
@@ -182,15 +188,24 @@ public class GuiEnchanting extends GuiContainer {
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
 		ItemStack itemToEnchant = enchanter.getStackInSlot(0);
+		if (enchantButtons[8].enabled) {
+		if(itemToEnchant != null && !itemToEnchant.isItemEnchanted())
+			drawTexturedModalRect(x + 30, y + 26, 0, ySize, 147, 24);
+		}
+		
 		if(itemToEnchant != null && !itemToEnchant.isItemEnchanted())
 			drawTexturedModalRect(x + 30, y + 50, 0, ySize, 147, 24);
+		
 
 		if(!enchanter.enchantments.isEmpty()) {
 			int x = this.x + 40;
 			GL11.glEnable(GL11.GL_BLEND);
 			int xo = 15;
+			int z = 50;
+			if (enchantButtons[8].enabled)
+				z = 26;
 			for(Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
-				drawAspectBar(aspect, x + xo, y + 50, i, j);
+				drawAspectBar(aspect, x + xo, y + z, i, j);
 				xo += 15;
 			}
 			GL11.glDisable(GL11.GL_BLEND);
