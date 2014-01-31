@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import net.minecraft.world.World;
-
 /**
  * Represents a read only part of a virtual filesystem that can be mounted onto a computer using IComputerAccess.mount().
  * Ready made implementations of this interface can be created using ComputerCraftAPI.createSaveDirMount() or ComputerCraftAPI.createResourceMount(), or you're free to implement it yourselves!
@@ -49,11 +47,11 @@ public interface IMount
 	 * @return the size of the file, in bytes
 	 */
 	public long getSize( String path ) throws IOException;
-
+	
 	/**
 	 * Opens a file with a given path, and returns an inputstream representing it's contents.
 	 * @param path A file path in normalised format, relative to the mount location. ie: "programs/myprogram"
 	 * @return a stream representing the contents of the file
 	 */
-	public InputStream openForRead( String path ) throws IOException;
+	public InputStream openForRead( String path ) throws IOException;	
 }
