@@ -36,6 +36,7 @@ import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.EasymodeResearchHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
@@ -57,6 +58,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
+import dan200.turtle.api.TurtleAPI;
 
 public class TTCommonProxy {
 
@@ -103,6 +105,8 @@ public class TTCommonProxy {
 
 		for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
+		MinecraftForge.EVENT_BUS.register(new FumeTool());
+		TurtleAPI.registerUpgrade(new FumeTool());
 	}
 
 	public boolean isClient() {
