@@ -1,19 +1,26 @@
+*.class
+dist
+download
+.DS_Store
+push.sh
+remotebuild.py
+
+
 ## gradle
 /.gradle
 /build
-
+/eclipse
 ## ForgeGradle
 /run
+/out
 
+## idea
+*.iml
+*.ipr
+*.iws
 ## eclipse
 /.settings
 /.metadata
 /.classpath
 /.project
 /bin
-
-## intellij
-/out
-/.idea
-/*.iml
-/atlassian-ide-plugin.xml
