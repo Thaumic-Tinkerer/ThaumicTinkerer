@@ -19,11 +19,13 @@ import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketManager;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
@@ -45,6 +47,9 @@ public class ThaumicTinkerer {
 		tcProxy = Thaumcraft.proxy;
 
 		proxy.preInit(event);
+		if(Loader.isModLoaded("Waila")) {
+			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");
+		}
 	}
 
 	@EventHandler
