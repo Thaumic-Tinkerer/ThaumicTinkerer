@@ -5,6 +5,7 @@ import java.util.List;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
@@ -79,8 +80,17 @@ public class TTinkererProvider implements IWailaDataProvider {
 			if(tile!=null)
 				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord,tile.yCoord,tile.zCoord));
 		}
-		if(accessor.getBlock()==ModBlocks.magnet)
+		if(accessor.getBlock()==ModBlocks.repairer)
 		{
+			TileRepairer tileRepair=(TileRepairer)accessor.getTileEntity();
+			ItemStack item=tileRepair.getStackInSlot(0);
+			if(item!=null)
+			{
+				if(item.getItemDamage()>0)
+					currenttip.add("Repairing: "+ item.getDisplayName());
+				else
+					currenttip.add("Finished Repairing: "+item.getDisplayName());
+			}
 			
 		}
 		return currenttip;
@@ -97,6 +107,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 	public static void callbackRegister(IWailaRegistrar registrar) {
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.animationTablet.blockID);
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.interfase.blockID);
+		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.repairer.blockID);
 		registrar.registerBodyProvider(new MagnetProvider(), ModBlocks.magnet.blockID);
 }
 
