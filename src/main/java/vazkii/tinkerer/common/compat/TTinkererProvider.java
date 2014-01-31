@@ -6,6 +6,7 @@ import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
@@ -93,6 +94,14 @@ public class TTinkererProvider implements IWailaDataProvider {
 			}
 			
 		}
+		if(accessor.getBlock()==ModBlocks.warpGate)
+		{
+			TileWarpGate tileWarp=(TileWarpGate)accessor.getTileEntity();
+			if(tileWarp.locked)
+				currenttip.add("Dosn't allow incoming teleports");
+			else
+				currenttip.add("Allows incoming teleports");
+		}
 		return currenttip;
 	}
 
@@ -108,6 +117,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.animationTablet.blockID);
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.interfase.blockID);
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.repairer.blockID);
+		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.warpGate.blockID);
 		registrar.registerBodyProvider(new MagnetProvider(), ModBlocks.magnet.blockID);
 }
 
