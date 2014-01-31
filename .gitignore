@@ -24,3 +24,6 @@ remotebuild.py
 /.classpath
 /.project
 /bin
+
+## misc
+TCDEOBF.jar
