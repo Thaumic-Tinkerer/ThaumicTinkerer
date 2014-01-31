@@ -14,6 +14,13 @@
  */
 package vazkii.tinkerer.common.block.tile.transvector;
 
+import buildcraft.api.power.IPowerReceptor;
+import buildcraft.api.power.PowerHandler;
+import buildcraft.api.power.PowerHandler.PowerReceiver;
+import cofh.api.energy.IEnergyHandler;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
@@ -25,22 +32,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import buildcraft.api.power.IPowerReceptor;
-import buildcraft.api.power.PowerHandler;
-import buildcraft.api.power.PowerHandler.PowerReceiver;
-import cofh.api.energy.IEnergyHandler;
 
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler, IAspectContainer, IEssentiaTransport {
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, IEnergySink, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
 	private boolean addedToICEnergyNet = false;
 
@@ -401,4 +400,37 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return false;
 	}
 
+	@Override
+	public String getType() {
+		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getType() : "Transvector Interface Unconnected Peripherad";
+	}
+
+	@Override
+	public String[] getMethodNames() {
+		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getMethodNames() : new String[0];
+	}
+
+	@Override
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).callMethod(computer, context, method, arguments) : new Object[0];
+	}
+
+	@Override
+	public boolean canAttachToSide(int side) {
+		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).canAttachToSide(side) : false;
+	}
+
+	@Override
+	public void attach(IComputerAccess computer) {
+		if(getTile() instanceof  IPeripheral){
+			((IPeripheral) getTile()).attach(computer);
+		}
+	}
+
+	@Override
+	public void detach(IComputerAccess computer) {
+		if(getTile() instanceof  IPeripheral){
+			((IPeripheral) getTile()).detach(computer);
+		}
+	}
 }
