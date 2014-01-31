@@ -2,6 +2,7 @@ package vazkii.tinkerer.common.compat;
 
 import java.util.List;
 
+import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
@@ -47,6 +48,21 @@ public class TTinkererProvider implements IWailaDataProvider {
 				currentTool=stack.getDisplayName();
 			}
 			currenttip.add("Current Tool: "+currentTool);
+			if(stack!=null)
+			{
+				if(tileAn.leftClick)
+				{
+					currenttip.add("Left Click");
+				}
+				else
+				{
+					currenttip.add("Right Click");
+				}
+				if(tileAn.redstone)
+					currenttip.add("Redstone Activated");
+				else
+					currenttip.add("Autonomous");
+			}
 		}
 		if(accessor.getBlock()==ModBlocks.interfase)
 		{
@@ -63,6 +79,10 @@ public class TTinkererProvider implements IWailaDataProvider {
 			if(tile!=null)
 				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord,tile.yCoord,tile.zCoord));
 		}
+		if(accessor.getBlock()==ModBlocks.magnet)
+		{
+			
+		}
 		return currenttip;
 	}
 
@@ -77,6 +97,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 	public static void callbackRegister(IWailaRegistrar registrar) {
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.animationTablet.blockID);
 		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.interfase.blockID);
+		registrar.registerBodyProvider(new MagnetProvider(), ModBlocks.magnet.blockID);
 }
 
 }
