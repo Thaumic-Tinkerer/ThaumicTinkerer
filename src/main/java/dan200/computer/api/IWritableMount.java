@@ -8,8 +8,7 @@ package dan200.computer.api;
 
 import java.io.IOException;
 import java.io.OutputStream;
-
-import net.minecraft.world.World;
+import java.util.List;
 
 /**
  * Represents a part of a virtual filesystem that can be mounted onto a computer using IComputerAccess.mount() or IComputerAccess.mountWritable(), that can also be written to.
