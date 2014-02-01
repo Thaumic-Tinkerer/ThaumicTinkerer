@@ -10,7 +10,6 @@ public interface IMovableTile {
 	 * @return 
 	 */
 	boolean prepareToMove();
-	
 	/**
 	 * notification that your block was moved, called after validate.
 	 */
