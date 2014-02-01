@@ -36,9 +36,7 @@ public final class LibBlockIDs {
 	public static int idWarpGate = 2815;
 
 
-	public static int idMobilizerDust = 2631;
-
-
-	public static int idLevitator = 2632;
+	public static int idMobilizerRelay = 2631;
+	public static int idMobilizer = 2632;
 
 }

@@ -14,19 +14,16 @@
  */
 package vazkii.tinkerer.common.block;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
+import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
-import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
-import vazkii.tinkerer.common.block.tile.TileCamo;
-import vazkii.tinkerer.common.block.tile.TileEnchanter;
-import vazkii.tinkerer.common.block.tile.TileFunnel;
-import vazkii.tinkerer.common.block.tile.TileMagnet;
-import vazkii.tinkerer.common.block.tile.TileMobMagnet;
-import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.block.tile.*;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
@@ -40,8 +37,6 @@ import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModBlocks {
 
@@ -64,7 +59,9 @@ public final class ModBlocks {
 
 	public static Block warpGate;
 
-	public static Block mobilizerDust;
+	public static Block mobilizerRelay;
+
+	public static Block mobilizer;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -84,7 +81,8 @@ public final class ModBlocks {
 		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setUnlocalizedName(LibBlockNames.ASPECT_ANALYZER);
 		platform = new BlockPlatform(LibBlockIDs.idPlatform).setUnlocalizedName(LibBlockNames.PLATFORM);
 
-		mobilizerDust = new BlockMobilizerRelay(LibBlockIDs.idMobilizerDust).setUnlocalizedName(LibBlockNames.MOBILIZER_DUST);
+		mobilizerRelay = new BlockMobilizerRelay(LibBlockIDs.idMobilizerRelay).setUnlocalizedName(LibBlockNames.MOBILIZER_RELAY);
+		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
 
 		if(ConfigHandler.enableKami) {
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
@@ -111,7 +109,9 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(aspectAnalyzer, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerBlock(platform, LibBlockNames.PLATFORM);
 
-		GameRegistry.registerBlock(mobilizerDust, LibBlockNames.MOBILIZER_DUST);
+		GameRegistry.registerBlock(mobilizerRelay, LibBlockNames.MOBILIZER_RELAY);
+
+		GameRegistry.registerBlock(mobilizer, LibBlockNames.MOBILIZER);
 
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
