@@ -140,6 +140,11 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerTileEntity(TileCamo.class, LibBlockNames.CAMO);
 
+
+		GameRegistry.registerTileEntity(TileEntityMobilizer.class, LibBlockNames.MOBILIZER);
+
+		GameRegistry.registerTileEntity(TileEntityRelay.class, LibBlockNames.MOBILIZER_RELAY);
+
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
 		}
