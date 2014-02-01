@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.block.tile.kami;
 
-import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
@@ -33,6 +31,8 @@ import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
+
+import java.util.List;
 
 public class TileWarpGate extends TileEntity implements IInventory {
 

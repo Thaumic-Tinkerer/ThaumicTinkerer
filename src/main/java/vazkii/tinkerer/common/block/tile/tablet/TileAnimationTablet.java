@@ -14,9 +14,11 @@
  */
 package vazkii.tinkerer.common.block.tile.tablet;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -45,12 +47,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
 
-public class TileAnimationTablet extends TileEntity implements IInventory, IPeripheral {
+import java.util.ArrayList;
+import java.util.List;
+
+public class TileAnimationTablet extends TileEntity implements IInventory, IPeripheral, IMovableTile {
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
@@ -573,4 +574,13 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		// NO-OP
 	}
 
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
+	}
 }
