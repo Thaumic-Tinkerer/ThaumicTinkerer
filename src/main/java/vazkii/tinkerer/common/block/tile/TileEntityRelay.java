@@ -26,11 +26,11 @@ public class TileEntityRelay extends TileEntity {
 
 		verifyPartner();
 
-		if(worldObj.getTotalWorldTime()%100==0){
+		if(worldObj.getTotalWorldTime()%200==0){
 			checkForPartner();
 		}
 		int i=xCoord;
-		if(hasPartner && worldObj.getTotalWorldTime()%200==0){
+		if(hasPartner && worldObj.getTotalWorldTime()%200>-1){
 			do{
 
 				int j=zCoord;
