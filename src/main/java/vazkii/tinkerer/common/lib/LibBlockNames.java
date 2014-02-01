@@ -47,8 +47,8 @@ public final class LibBlockNames {
 	};
 
 
-	public static final String MOBILIZER_DUST = LibResources.PREFIX_MOD + "Mobilization Dust";
+	public static final String MOBILIZER_RELAY = LibResources.PREFIX_MOD + "Mobilization Relay";
 
-	public static final String LEVITATOR = LibResources.PREFIX_MOD + "Levitationary Locomotion";
+	public static final String MOBILIZER = LibResources.PREFIX_MOD + "Mobilization Levitator";
 
 }
