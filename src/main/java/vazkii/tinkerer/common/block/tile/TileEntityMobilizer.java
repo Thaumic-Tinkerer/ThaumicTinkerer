@@ -1,5 +1,8 @@
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.IAppEngApi;
+import appeng.api.Util;
+import appeng.api.movable.IMovableHandler;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -62,49 +65,71 @@ public class TileEntityMobilizer extends TileEntity {
 	}
 
 	public void updateEntity(){
-		verifyRelay();
+		if(!worldObj.isRemote){
+			verifyRelay();
+			if(linked && worldObj.getTotalWorldTime()%100==0){
 
-		if(linked && worldObj.getTotalWorldTime()%20==0){
+				int targetX = xCoord+movementDirection.offsetX;
+				int targetZ = zCoord+movementDirection.offsetZ;
+
+				//Switch direction if at end of track
+				if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0){
+					System.out.println(worldObj.getBlockId(targetX, yCoord, targetZ));
+					movementDirection = movementDirection.getOpposite();
+					targetX = xCoord+movementDirection.offsetX;
+					targetZ = zCoord+movementDirection.offsetZ;
+				}
+				if(worldObj.getBlockId(targetX, yCoord, targetZ) == 0){
+
+					//Move Passenger
+
+					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
+					IAppEngApi api = Util.getAppEngApi();
+					if(passenger==null){
+						worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
+						worldObj.setBlock(xCoord, yCoord+1, zCoord, 0);
+					}else if(api != null){
+						IMovableHandler handler = api.getMovableRegistry().getHandler(passenger);
+						if(handler != null && handler.canHandle(passenger.getClass(), passenger)){
+							worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
+							handler.moveTile(passenger, passenger.worldObj, targetX, yCoord+1, targetZ);
+							worldObj.setBlock(xCoord, yCoord+1, zCoord, 0);
+						}
+					}else if(passenger instanceof IMovableTile){
+						((IMovableTile) passenger).prepareToMove();
+						passenger.invalidate();
+
+						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
+						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
+
+						worldObj.removeBlockTileEntity(xCoord, yCoord+1, zCoord);
+						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
+
+						worldObj.setBlock(targetX, yCoord+1, targetZ, id);
+						worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, meta, 3);
 
 
-			int targetX = xCoord+movementDirection.offsetX;
-			int targetZ = zCoord+movementDirection.offsetZ;
-			//Switch direction if at end of track
-			if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0){
-				movementDirection = movementDirection.getOpposite();
-				targetX = xCoord+movementDirection.offsetX;
-				targetZ = zCoord+movementDirection.offsetZ;
-			}
+						passenger.xCoord=targetX;
+						passenger.zCoord=targetZ;
 
+						passenger.validate();
+						worldObj.addTileEntity(passenger);
 
-			if(worldObj.getBlockId(targetX, yCoord, targetZ) == 0){
-				//Move self
-				worldObj.setBlock(targetX, yCoord, targetZ, LibBlockIDs.idMobilizer);
-				worldObj.setBlockTileEntity(xCoord, yCoord, zCoord, this);
-				worldObj.setBlock(xCoord, yCoord, zCoord, 0);
-				this.xCoord = targetX;
-				this.zCoord = targetZ;
-
-				//Move Passenger
-
-				TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
-
-				if(passenger instanceof IMovableTile){
-					((IMovableTile) passenger).prepareToMove();
-					worldObj.removeBlockTileEntity(xCoord, yCoord+1, zCoord);
-					passenger.xCoord=targetX;
-					passenger.zCoord=targetZ;
-					worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
-					worldObj.setBlock(targetX, yCoord+1, targetZ, 0);
-					worldObj.setBlockTileEntity(targetX, yCoord+1, targetZ, passenger);
-					passenger.validate();
-					((IMovableTile) passenger).doneMoving();
+						((IMovableTile) passenger).doneMoving();
+					}
+					//Move self
+					this.invalidate();
+					worldObj.removeBlockTileEntity(xCoord, yCoord, zCoord);
+					worldObj.setBlock(xCoord, yCoord, zCoord, 0);
+					worldObj.setBlock(targetX, yCoord, targetZ, LibBlockIDs.idMobilizer);
+					this.xCoord=targetX;
+					this.zCoord=targetZ;
+					this.validate();
+					worldObj.addTileEntity(this);
 				}
 
 
 			}
-
-
 		}
 	}
 
