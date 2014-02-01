@@ -46,4 +46,9 @@ public final class LibBlockNames {
 		"tile." + LibResources.PREFIX_MOD + "darkQuartzPillar"
 	};
 
+
+	public static final String MOBILIZER_DUST = LibResources.PREFIX_MOD + "Mobilization Dust";
+
+	public static final String LEVITATOR = LibResources.PREFIX_MOD + "Levitationary Locomotion";
+
 }
