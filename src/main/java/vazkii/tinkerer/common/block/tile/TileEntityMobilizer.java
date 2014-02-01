@@ -68,13 +68,11 @@ public class TileEntityMobilizer extends TileEntity {
 		if(!worldObj.isRemote){
 			verifyRelay();
 			if(linked && worldObj.getTotalWorldTime()%100==0){
-
 				int targetX = xCoord+movementDirection.offsetX;
 				int targetZ = zCoord+movementDirection.offsetZ;
 
 				//Switch direction if at end of track
 				if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0){
-					System.out.println(worldObj.getBlockId(targetX, yCoord, targetZ));
 					movementDirection = movementDirection.getOpposite();
 					targetX = xCoord+movementDirection.offsetX;
 					targetZ = zCoord+movementDirection.offsetZ;
@@ -85,20 +83,29 @@ public class TileEntityMobilizer extends TileEntity {
 
 					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
 					IAppEngApi api = Util.getAppEngApi();
+					System.out.println(1);
 					if(passenger==null){
+
+						System.out.println(2);
 						worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
 						worldObj.setBlock(xCoord, yCoord+1, zCoord, 0);
 					}else if(api != null){
+
+						System.out.println(3);
 						IMovableHandler handler = api.getMovableRegistry().getHandler(passenger);
 						if(handler != null && handler.canHandle(passenger.getClass(), passenger)){
-							worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
-							handler.moveTile(passenger, passenger.worldObj, targetX, yCoord+1, targetZ);
-							worldObj.setBlock(xCoord, yCoord+1, zCoord, 0);
+
+							System.out.println(4);
+							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
+							passenger.invalidate();
+							worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
+							handler.moveTile(passenger, passenger.worldObj, targetX, yCoord + 1, targetZ);
+							passenger.validate();
 						}
 					}else if(passenger instanceof IMovableTile){
-						((IMovableTile) passenger).prepareToMove();
-						passenger.invalidate();
 
+						System.out.println(5);
+						((IMovableTile) passenger).prepareToMove();
 						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
 						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
 
@@ -122,10 +129,16 @@ public class TileEntityMobilizer extends TileEntity {
 					worldObj.removeBlockTileEntity(xCoord, yCoord, zCoord);
 					worldObj.setBlock(xCoord, yCoord, zCoord, 0);
 					worldObj.setBlock(targetX, yCoord, targetZ, LibBlockIDs.idMobilizer);
+
+					int oldX=xCoord;
+					int oldZ=zCoord;
+
 					this.xCoord=targetX;
 					this.zCoord=targetZ;
 					this.validate();
 					worldObj.addTileEntity(this);
+					worldObj.removeBlockTileEntity(oldX, yCoord, oldZ);
+
 				}
 
 
