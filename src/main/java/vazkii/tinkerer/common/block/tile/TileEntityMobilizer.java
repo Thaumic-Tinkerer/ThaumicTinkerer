@@ -86,7 +86,7 @@ public class TileEntityMobilizer extends TileEntity {
 				this.zCoord = targetZ;
 
 				//Move Passenger
-				worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
+
 				TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
 
 				if(passenger instanceof IMovableTile){
@@ -94,6 +94,8 @@ public class TileEntityMobilizer extends TileEntity {
 					worldObj.removeBlockTileEntity(xCoord, yCoord+1, zCoord);
 					passenger.xCoord=targetX;
 					passenger.zCoord=targetZ;
+					worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
+					worldObj.setBlock(targetX, yCoord+1, targetZ, 0);
 					worldObj.setBlockTileEntity(targetX, yCoord+1, targetZ, passenger);
 					passenger.validate();
 					((IMovableTile) passenger).doneMoving();
