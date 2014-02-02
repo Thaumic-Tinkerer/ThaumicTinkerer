@@ -14,8 +14,10 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
-import java.util.List;
-
+import appeng.api.movable.IMovableTile;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -25,11 +27,10 @@ import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
 
-public class TileMagnet extends TileEntity implements IPeripheral {
+import java.util.List;
+
+public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile {
 
 	@Override
 	public void updateEntity() {
@@ -121,6 +122,16 @@ public class TileMagnet extends TileEntity implements IPeripheral {
 	@Override
 	public void detach(IComputerAccess computer) {
 		// NO-OP
+	}
+
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 
 }

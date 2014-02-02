@@ -2,7 +2,6 @@ package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.IAppEngApi;
 import appeng.api.Util;
-import appeng.api.movable.IMovableHandler;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -92,14 +91,14 @@ public class TileEntityMobilizer extends TileEntity {
 					}else if(api != null){
 
 						System.out.println(3);
-						IMovableHandler handler = api.getMovableRegistry().getHandler(passenger);
-						if(handler != null && handler.canHandle(passenger.getClass(), passenger)){
+
+						if(api.getMovableRegistry().askToMove(passenger)){
 
 							System.out.println(4);
 							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 							passenger.invalidate();
 							worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
-							handler.moveTile(passenger, passenger.worldObj, targetX, yCoord + 1, targetZ);
+							api.getMovableRegistry().doneMoveing(passenger);
 							passenger.validate();
 						}
 					}else if(passenger instanceof IMovableTile){

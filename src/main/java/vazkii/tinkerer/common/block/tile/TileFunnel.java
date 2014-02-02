@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.movable.IMovableTile;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -38,7 +39,7 @@ import thaumcraft.common.tiles.TileJarFillable;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-public class TileFunnel extends TileEntity implements ISidedInventory, IAspectContainer {
+public class TileFunnel extends TileEntity implements ISidedInventory, IAspectContainer, IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -271,6 +272,16 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 	@Override
 	public int containerContains(Aspect paramAspect) {
 		return 0;
+	}
+
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 
 }
