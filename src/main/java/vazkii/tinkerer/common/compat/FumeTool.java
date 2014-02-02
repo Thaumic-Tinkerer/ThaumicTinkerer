@@ -28,7 +28,7 @@ public class FumeTool implements ITurtleUpgrade {
 
 	@Override
 	public String getAdjective() {
-		return "Dissapating";
+		return "Dissipating";
 	}
 
 	@Override
