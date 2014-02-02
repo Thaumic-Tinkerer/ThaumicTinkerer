@@ -5,6 +5,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class TileEntityRelay extends TileEntity implements IMovableTile {
 	public TileEntityRelay(World world) {
@@ -48,7 +49,20 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 	public void updateEntity() {
 
 		verifyPartner();
+		if(hasPartner){
+			float i=0;
+			float j=0;
+			do{
 
+				j=zCoord;
+				do{
+
+					ThaumicTinkerer.tcProxy.sparkle(i, (float) yCoord, i, 1);
+					j+=Math.copySign(.1,partnerZ-zCoord);
+				}while (j < partnerZ);
+				i+=Math.copySign(.1, partnerX-xCoord);
+			}while (i < partnerX);
+		}
 		if(worldObj.getTotalWorldTime()%200==0){
 			checkForPartner();
 		}

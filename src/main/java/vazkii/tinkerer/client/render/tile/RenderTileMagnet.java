@@ -19,10 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeDirection;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-
 import thaumcraft.client.lib.UtilsFX;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.armor.ItemHoverHarness;
