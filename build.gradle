@@ -5,6 +5,10 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+		maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
@@ -19,11 +23,13 @@ archivesBaseName = "modid"
 
 minecraft {
 	version = "1.6.4-9.11.1.964"
+	assetDir = "eclipse/assets"
 }
 
 dependencies {
 	compile files (
 		'TCDEOBF.jar',
+		'mods/Waila_Dev_1.4.4.zip',
 		'mods/CodeChickenCore-dev 0.9.0.7.jar',
 		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
 		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
