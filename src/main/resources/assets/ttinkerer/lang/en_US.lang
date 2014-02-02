@@ -466,3 +466,10 @@ ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, the
 ttresearch.name.FOCUS_RECALL=Wand Focus: Celestial Recall
 ttresearch.lore.FOCUS_RECALL=Home is where the Hearthstone is
 ttresearch.page.FOCUS_RECALL.0=While using Celestial Gateways for teleportation is all well and good, you decided to take it a step further and create a focus that allows you to do just that, but from anywhere.<BR><BR>This focus, in the presence of a properly bound Celestial Pearl in the caster's hotbar, will, after a short cast time, teleport the caster to that position, just as if they had used a Celestial Gateway. Of course, this comes at a vis cost.
+
+# -- WAILA
+ttwaila.nothing=Nothing
+ttwaila.currentTool=Current Tool:
+ttwaila.leftClick=Left Click
+ttwaila.rightClick=Right Click
+ 
