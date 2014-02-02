@@ -12,4 +12,4 @@ Thaumcraft © Azanor 2012
 This mod is made with a Deobfuscated version of Thaumcraft, loaded as a Library. You can get a deobfuscated version of Thaumcraft using immibis' [Bearded Octo Nemesis](https://github.com/immibis/bearded-octo-nemesis).  
 ![](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
 
-Thaumic Tinkerer by Vazkii is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+Thaumic Tinkerer Was originally by Vazkii and is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
