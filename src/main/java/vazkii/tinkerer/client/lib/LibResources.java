@@ -43,6 +43,8 @@ public final class LibResources {
 	public static final String MISC_REPAIR = PREFIX_MISC + "repair.png";
 	public static final String MISC_REPAIR_OFF = PREFIX_MISC + "repairOff.png";
 
+
+	public static final String MODEL_RELAY_TEXTURE = PREFIX_MODEL + "relay.png";
 	public static final String MODEL_MAGNET_N = PREFIX_MODEL + "magnetN.png";
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
 	public static final String MODEL_MOB_MAGNET_N = PREFIX_MODEL + "mobMagnetN.png";
