@@ -14,9 +14,10 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.api.movable.IMovableTile;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -27,11 +28,11 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.ThaumcraftCraftingManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
 
-public class TileAspectAnalyzer extends TileEntity implements IInventory, IPeripheral {
+import java.util.ArrayList;
+import java.util.List;
+
+public class TileAspectAnalyzer extends TileEntity implements IInventory, IPeripheral, IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -201,6 +202,15 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	@Override
 	public void detach(IComputerAccess computer) {
 		// NO-OP
+	}
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 
 }

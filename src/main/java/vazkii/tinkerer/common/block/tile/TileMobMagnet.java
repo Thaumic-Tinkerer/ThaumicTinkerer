@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.movable.IMovableTile;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -33,7 +34,7 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 import dan200.computer.api.IComputerAccess;
 import dan200.computer.api.ILuaContext;
 
-public class TileMobMagnet extends TileMagnet implements IInventory {
+public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTile {
 
 	private static final String TAG_ADULT = "adultCheck";
 
@@ -220,6 +221,16 @@ public class TileMobMagnet extends TileMagnet implements IInventory {
 	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
 		super.onDataPacket(manager, packet);
 		readCustomNBT(packet.data);
+	}
+
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 
 }

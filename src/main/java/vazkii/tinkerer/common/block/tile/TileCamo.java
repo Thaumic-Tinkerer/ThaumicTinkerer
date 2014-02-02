@@ -14,13 +14,14 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.movable.IMovableTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileCamo extends TileEntity {
+public class TileCamo extends TileEntity implements IMovableTile {
 
 	private static final String TAG_CAMO = "camo";
 	private static final String TAG_CAMO_META = "camoMeta";
@@ -71,4 +72,13 @@ public class TileCamo extends TileEntity {
 		worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
 	}
 
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
+	}
 }

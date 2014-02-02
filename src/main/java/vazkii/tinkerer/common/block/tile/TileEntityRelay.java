@@ -1,10 +1,11 @@
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.movable.IMovableTile;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
-public class TileEntityRelay extends TileEntity {
+public class TileEntityRelay extends TileEntity implements IMovableTile {
 	public TileEntityRelay(World world) {
 	}
 
@@ -98,6 +99,16 @@ public class TileEntityRelay extends TileEntity {
 				}
 			}
 		}
+	}
+
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 
 }

@@ -14,9 +14,8 @@ x * This class was created by <Vazkii>. It's distributed as
  */
 package vazkii.tinkerer.common.block.tile;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -34,9 +33,11 @@ import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
-public class TileRepairer extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport {
+import java.util.HashMap;
+import java.util.Map;
+
+public class TileRepairer extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport, IMovableTile {
 
 	int dmgLastTick = 0;
 	public int ticksExisted = 0;
@@ -338,6 +339,16 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	@Override
 	public boolean renderExtendedTube() {
 		return false;
+	}
+
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 
 }

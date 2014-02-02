@@ -14,9 +14,8 @@
  */
 package vazkii.tinkerer.common.block.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -37,8 +36,10 @@ import vazkii.tinkerer.common.core.helper.Tuple4Int;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import cpw.mods.fml.common.network.PacketDispatcher;
-public class TileEnchanter extends TileEntity implements ISidedInventory {
+
+import java.util.ArrayList;
+import java.util.List;
+public class TileEnchanter extends TileEntity implements ISidedInventory, IMovableTile {
 
 	private static final String TAG_ENCHANTS = "enchants";
 	private static final String TAG_LEVELS = "levels";
@@ -428,5 +429,15 @@ public class TileEnchanter extends TileEntity implements ISidedInventory {
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
 		return false;
+	}
+
+	@Override
+	public boolean prepareToMove() {
+		return true;
+	}
+
+	@Override
+	public void doneMoving() {
+
 	}
 }
