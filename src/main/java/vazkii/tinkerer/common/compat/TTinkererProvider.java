@@ -12,6 +12,7 @@ import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StatCollector;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -43,22 +44,22 @@ public class TTinkererProvider implements IWailaDataProvider {
 			ItemStack stack=tileAn.getStackInSlot(0);
 			if(stack==null)
 			{
-				currentTool="Nothing";
+				currentTool=StatCollector.translateToLocal("ttwaila.nothing");
 			}
 			else
 			{
 				currentTool=stack.getDisplayName();
 			}
-			currenttip.add("Current Tool: "+currentTool);
+			currenttip.add(StatCollector.translateToLocal("ttwaila.currentTool")+currentTool);
 			if(stack!=null)
 			{
 				if(tileAn.leftClick)
 				{
-					currenttip.add("Left Click");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.leftClick"));
 				}
 				else
 				{
-					currenttip.add("Right Click");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.rightClick"));
 				}
 				if(tileAn.redstone)
 					currenttip.add("Redstone Activated");
@@ -72,7 +73,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 			String currentBlock="";
 			TileEntity tile = tileTrans.getTile();
 			if(tile == null)
-				currentBlock="Nothing";
+				currentBlock=StatCollector.translateToLocal("ttwaila.nothing");
 			else
 			{
 				currentBlock=tile.getBlockType().getLocalizedName();
