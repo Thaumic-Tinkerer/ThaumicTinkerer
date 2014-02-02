@@ -67,7 +67,7 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 			checkForPartner();
 		}
 		int i=xCoord;
-		if(hasPartner && worldObj.getTotalWorldTime()%200>-1){
+		if(hasPartner && worldObj.getTotalWorldTime()%200==1){
 			do{
 
 				int j=zCoord;
