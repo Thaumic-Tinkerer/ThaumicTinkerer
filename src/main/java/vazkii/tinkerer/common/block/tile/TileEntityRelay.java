@@ -50,24 +50,24 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 
 		verifyPartner();
 		if(hasPartner){
-			float i=0;
-			float j=0;
+			int i=xCoord;
+			int j;
+			System.out.println(Math.copySign(1, partnerZ-zCoord));
 			do{
-
 				j=zCoord;
 				do{
-
-					ThaumicTinkerer.tcProxy.sparkle(i, (float) yCoord, i, 1);
-					j+=Math.copySign(.1,partnerZ-zCoord);
+					ThaumicTinkerer.tcProxy.sparkle((float) (0.5 + i), (float) (yCoord+0.5), (float) (j + 0.5), 2);
+					j+=Math.copySign(1,partnerZ-zCoord);
 				}while (j < partnerZ);
-				i+=Math.copySign(.1, partnerX-xCoord);
+				i+=Math.copySign(1, partnerX-xCoord);
+
 			}while (i < partnerX);
 		}
-		if(worldObj.getTotalWorldTime()%200==0){
+		if(worldObj.getTotalWorldTime()%40==0){
 			checkForPartner();
 		}
 		int i=xCoord;
-		if(hasPartner && worldObj.getTotalWorldTime()%200==1){
+		if(hasPartner && worldObj.getTotalWorldTime()%40==0){
 			do{
 
 				int j=zCoord;
@@ -105,35 +105,28 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 
 	public void checkForPartner(){
 		if(!hasPartner){
-			for(int i=-10;i<10;i++){
+			for(int i=-32;i<32;i++){
+				if(i!=0){
+					TileEntity te = worldObj.getBlockTileEntity(xCoord, yCoord, zCoord+i);
+					setPartners(te);
 
-				TileEntity te = worldObj.getBlockTileEntity(xCoord+i, yCoord, zCoord);
-
-				if(te instanceof TileEntityRelay){
-					((TileEntityRelay) te).partnerX=this.xCoord;
-					((TileEntityRelay) te).partnerZ=this.zCoord;
-					this.partnerX=te.xCoord;
-					this.partnerZ=te.zCoord;
-
-					this.hasPartner=true;
-					((TileEntityRelay) te).hasPartner=true;
-
-				}
-
-
-
-				te = worldObj.getBlockTileEntity(xCoord+i, yCoord, zCoord);
-				if(te instanceof TileEntityRelay){
-					((TileEntityRelay) te).partnerX=this.xCoord;
-					((TileEntityRelay) te).partnerZ=this.zCoord;
-					this.partnerX=te.xCoord;
-					this.partnerZ=te.zCoord;
-
-
-					this.hasPartner=true;
-					((TileEntityRelay) te).hasPartner=true;
+					te = worldObj.getBlockTileEntity(xCoord+i, yCoord, zCoord);
+					setPartners(te);
 				}
 			}
+		}
+	}
+
+	private void setPartners(TileEntity te) {
+		if(te instanceof TileEntityRelay){
+			((TileEntityRelay) te).partnerX=this.xCoord;
+			((TileEntityRelay) te).partnerZ=this.zCoord;
+			this.partnerX=te.xCoord;
+			this.partnerZ=te.zCoord;
+
+			this.hasPartner=true;
+			((TileEntityRelay) te).hasPartner=true;
+
 		}
 	}
 
