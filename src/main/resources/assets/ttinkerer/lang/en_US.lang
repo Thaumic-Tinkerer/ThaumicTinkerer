@@ -165,7 +165,7 @@ ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer allows for some of the blocks tha
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
-
+ttcomputer.dissipator=Dissipating
 # -- ASPECT ANALYZER
 ttresearch.name.ASPECT_ANALYZER=Aspectalyzer
 ttresearch.lore.ASPECT_ANALYZER=Computerized Scanning
@@ -469,7 +469,25 @@ ttresearch.page.FOCUS_RECALL.0=While using Celestial Gateways for teleportation 
 
 # -- WAILA
 ttwaila.nothing=Nothing
-ttwaila.currentTool=Current Tool:
+ttwaila.currentTool=Current Tool: %s
 ttwaila.leftClick=Left Click
 ttwaila.rightClick=Right Click
- 
+ttwaila.redstone=Redstone Activated
+ttwaila.autonomous=Autonomous
+ttwaila.connected=Connected to: %s
+ttwaila.repairing=Repairing: %s
+ttwaila.finishedRepairing=Finished repairing: %s
+ttwaila.allowIncoming=Allows incoming teleports
+ttwaila.disaalowIncoming=Dosn't allow incoming teleports
+ttwaila.pushingMode=Mode: Pushing
+ttwaila.pullingMode=Mode: Pulling
+ttwaila.pushing=Pushing
+ttwaila.pulling=Pulling
+ttwaila.pullingAdult=Pulling: Adults
+ttwaila.pullingChild=Pulling: Children
+ttwaila.pushingAdult=Pushing: Adults
+ttwaila.pushingChild=Pushing: Children
+ttwaila.pullingAdultType=Pulling: Adult %s
+ttwaila.pullingChildType=Pulling: Child %s
+ttwaila.pushingAdultType=Pushing: Adult %s
+ttwaila.pushingChildType=Pushing: Child %s
