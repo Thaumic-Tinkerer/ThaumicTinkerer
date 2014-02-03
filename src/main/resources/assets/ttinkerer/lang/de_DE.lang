@@ -165,7 +165,7 @@ ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer erlaubt einigen Blöcken, die es 
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
 ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
-
+ttcomputer.dissipator=Dissipating
 # -- ASPECT ANALYZER
 ttresearch.name.ASPECT_ANALYZER=Aspektanalysierer
 ttresearch.lore.ASPECT_ANALYZER=Computerisiertes Scannen
@@ -466,3 +466,28 @@ ttresearch.page.WARP_GATE.1=Um Zielorte eines Tores einzustellen, müssen sie mi
 ttresearch.name.FOCUS_RECALL=Stabfokus: Himmelsrückruf
 ttresearch.lore.FOCUS_RECALL=Home is where the Hearthstone is
 ttresearch.page.FOCUS_RECALL.0=Himmelstore für Teleportation zu nutzen, ist schön und gut, aber du hast dich entschieden, einen Schritt weiter zu gehen und einen Fokus zu kreieren, der genau das kann, nur von überall.<BR><BR>Dieser Fokus wird, wenn sich eine gebundene Himmelsperle in der Hotbar befindet, den Nutzer, nach kurzer Zauberzeit, zu jener Position teleportieren, als hätte er ein Himmelstor verwendet. Selbstverständlich benötigt das Teleportieren Vis aus deinem Stab.
+
+# -- WAILA
+ttwaila.nothing=Nichts
+ttwaila.currentTool=Aktuelles Werkzeug:  %s
+ttwaila.leftClick=Linksklick
+ttwaila.rightClick=Rechtsklick
+ttwaila.redstone=Redstone-Aktiviert
+ttwaila.autonomous=Autonom
+ttwaila.connected=Verbunden mit: %s
+ttwaila.repairing=Repariert: %s
+ttwaila.finishedRepairing=Reparieren beendet: %s
+ttwaila.allowIncoming=Erlaubt eingehende Teleports
+ttwaila.disallowIncoming=Erlaubt keine eingehenden Teleports
+ttwaila.pushingMode=Modus: Abstoßen
+ttwaila.pullingMode=Modus: Anziehen
+ttwaila.pushing=Abstoßen
+ttwaila.pulling=Anziehen
+ttwaila.pullingAdult=Anziehend: Erwachsene
+ttwaila.pullingChild=Anziehend: Kinder
+ttwaila.pushingAdult=Abstoßend: Erwachsene
+ttwaila.pushingChild=Abstoßend: Kinder
+ttwaila.pullingAdultType=Anziehend: %s (Erwachsen)
+ttwaila.pullingChildType=Anziehend: %s (Kind)
+ttwaila.pushingAdultType=Abstoßend: %s (Erwachsen)
+ttwaila.pushingChildType=Abstoßend: %s (Kind)
