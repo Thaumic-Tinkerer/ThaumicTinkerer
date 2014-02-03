@@ -14,8 +14,7 @@
  */
 package vazkii.tinkerer.common.core.handler;
 
-import java.util.List;
-
+import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -27,7 +26,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibMisc;
-import cpw.mods.fml.common.Loader;
+
+import java.util.List;
 
 public class ModCreativeTab extends CreativeTabs {
 
@@ -57,6 +57,9 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.darkQuartz);
 		addBlock(ModBlocks.darkQuartzStairs);
 		addBlock(ModBlocks.darkQuartzSlab);
+
+		addBlock(ModBlocks.mobilizer);
+		addBlock(ModBlocks.mobilizerRelay);
 
 		addItem(ModItems.connector);
 		addBlock(ModBlocks.interfase);
