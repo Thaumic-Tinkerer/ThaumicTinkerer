@@ -7,6 +7,7 @@ import vazkii.tinkerer.common.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -28,7 +29,7 @@ public class FumeTool implements ITurtleUpgrade {
 
 	@Override
 	public String getAdjective() {
-		return "Dissipating";
+		return StatCollector.translateToLocal("ttcomputer.dissipator");
 	}
 
 	@Override
