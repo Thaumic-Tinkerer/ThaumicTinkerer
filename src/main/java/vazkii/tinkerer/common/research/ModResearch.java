@@ -144,8 +144,8 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_PLATFORM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, -1, 3, new ItemStack(ModBlocks.platform)).setConcealed().setParents("MOBILIZER").registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_PLATFORM));
 
-		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -2, -1, 3, new ItemStack(ModBlocks.mobilizer)).setConcealed().setParents(LibResearch.KEY_MAGNETS).registerResearchItem();
-		research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_MOBILIZER));
+//		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -2, -1, 3, new ItemStack(ModBlocks.mobilizer)).setConcealed().setParents(LibResearch.KEY_MAGNETS).registerResearchItem();
+//		research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_MOBILIZER));
 
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
