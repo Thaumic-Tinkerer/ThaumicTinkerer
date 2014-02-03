@@ -12,6 +12,7 @@ import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StatCollector;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -43,27 +44,27 @@ public class TTinkererProvider implements IWailaDataProvider {
 			ItemStack stack=tileAn.getStackInSlot(0);
 			if(stack==null)
 			{
-				currentTool="Nothing";
+				currentTool=StatCollector.translateToLocal("ttwaila.nothing");
 			}
 			else
 			{
 				currentTool=stack.getDisplayName();
 			}
-			currenttip.add("Current Tool: "+currentTool);
+			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.currentTool",currentTool));
 			if(stack!=null)
 			{
 				if(tileAn.leftClick)
 				{
-					currenttip.add("Left Click");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.leftClick"));
 				}
 				else
 				{
-					currenttip.add("Right Click");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.rightClick"));
 				}
 				if(tileAn.redstone)
-					currenttip.add("Redstone Activated");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.redstone"));
 				else
-					currenttip.add("Autonomous");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.autonomous"));
 			}
 		}
 		if(accessor.getBlock()==ModBlocks.interfase)
@@ -72,12 +73,12 @@ public class TTinkererProvider implements IWailaDataProvider {
 			String currentBlock="";
 			TileEntity tile = tileTrans.getTile();
 			if(tile == null)
-				currentBlock="Nothing";
+				currentBlock=StatCollector.translateToLocal("ttwaila.nothing");
 			else
 			{
 				currentBlock=tile.getBlockType().getLocalizedName();
 			}
-			currenttip.add("Connected to: "+currentBlock);
+			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.connected", currentBlock));
 			if(tile!=null)
 				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord,tile.yCoord,tile.zCoord));
 		}
@@ -88,9 +89,9 @@ public class TTinkererProvider implements IWailaDataProvider {
 			if(item!=null)
 			{
 				if(item.getItemDamage()>0)
-					currenttip.add("Repairing: "+ item.getDisplayName());
+					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.repairing",item.getDisplayName()));
 				else
-					currenttip.add("Finished Repairing: "+item.getDisplayName());
+					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.finishedRepairing",item.getDisplayName()));
 			}
 			
 		}
@@ -98,9 +99,9 @@ public class TTinkererProvider implements IWailaDataProvider {
 		{
 			TileWarpGate tileWarp=(TileWarpGate)accessor.getTileEntity();
 			if(tileWarp.locked)
-				currenttip.add("Dosn't allow incoming teleports");
+				currenttip.add(StatCollector.translateToLocal("ttwaila.allowIncoming"));
 			else
-				currenttip.add("Allows incoming teleports");
+				currenttip.add(StatCollector.translateToLocal("ttwaila.disallowIncoming"));
 		}
 		return currenttip;
 	}
