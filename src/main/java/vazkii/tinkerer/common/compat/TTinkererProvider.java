@@ -50,7 +50,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 			{
 				currentTool=stack.getDisplayName();
 			}
-			currenttip.add(StatCollector.translateToLocal("ttwaila.currentTool")+currentTool);
+			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.currentTool",currentTool));
 			if(stack!=null)
 			{
 				if(tileAn.leftClick)
@@ -62,9 +62,9 @@ public class TTinkererProvider implements IWailaDataProvider {
 					currenttip.add(StatCollector.translateToLocal("ttwaila.rightClick"));
 				}
 				if(tileAn.redstone)
-					currenttip.add("Redstone Activated");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.redstone"));
 				else
-					currenttip.add("Autonomous");
+					currenttip.add(StatCollector.translateToLocal("ttwaila.autonomous"));
 			}
 		}
 		if(accessor.getBlock()==ModBlocks.interfase)
@@ -78,7 +78,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 			{
 				currentBlock=tile.getBlockType().getLocalizedName();
 			}
-			currenttip.add("Connected to: "+currentBlock);
+			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.connected", currentBlock));
 			if(tile!=null)
 				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord,tile.yCoord,tile.zCoord));
 		}
@@ -89,9 +89,9 @@ public class TTinkererProvider implements IWailaDataProvider {
 			if(item!=null)
 			{
 				if(item.getItemDamage()>0)
-					currenttip.add("Repairing: "+ item.getDisplayName());
+					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.repairing",item.getDisplayName()));
 				else
-					currenttip.add("Finished Repairing: "+item.getDisplayName());
+					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.finishedRepairing",item.getDisplayName()));
 			}
 			
 		}
@@ -99,9 +99,9 @@ public class TTinkererProvider implements IWailaDataProvider {
 		{
 			TileWarpGate tileWarp=(TileWarpGate)accessor.getTileEntity();
 			if(tileWarp.locked)
-				currenttip.add("Dosn't allow incoming teleports");
+				currenttip.add(StatCollector.translateToLocal("ttwaila.allowIncoming"));
 			else
-				currenttip.add("Allows incoming teleports");
+				currenttip.add(StatCollector.translateToLocal("ttwaila.disallowIncoming"));
 		}
 		return currenttip;
 	}

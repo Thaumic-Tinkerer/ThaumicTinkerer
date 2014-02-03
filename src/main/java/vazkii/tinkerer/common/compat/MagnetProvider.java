@@ -36,21 +36,39 @@ public class MagnetProvider implements IWailaDataProvider {
 		TileMagnet tileMagnet=(TileMagnet)accessor.getTileEntity();
 		boolean isPulling=(tileMagnet.getBlockMetadata() & 1) == 0;
 		if(isPulling)
-			currenttip.add("Mode: Pulling");
+			currenttip.add(StatCollector.translateToLocal("ttwaila.pullingMode"));
 		else
-			currenttip.add("Mode: Pushing");
+			currenttip.add(StatCollector.translateToLocal("ttwaila.pushingMode"));
 		if(mobMagnet)
 		{
 			TileMobMagnet tileMob=(TileMobMagnet)tileMagnet;
 			if(tileMob.getStackInSlot(0)==null)
 			{
-				currenttip.add((isPulling?"Pulling: ":"Pushing: ")+ ((tileMob.adult)?"Adults":"Children"));
+				if(isPulling)
+					if(tileMob.adult)
+						currenttip.add(StatCollector.translateToLocal("ttwaila.pullingAdult"));
+					else
+						currenttip.add(StatCollector.translateToLocal("ttwaila.pullingChild"));
+				else
+					if(tileMob.adult)
+						currenttip.add(StatCollector.translateToLocal("ttwaila.pushingAdult"));
+					else
+						currenttip.add(StatCollector.translateToLocal("ttwaila.pushingChild"));
 			}
 			else
 			{
 				String name=ItemSoulMould.getPatternName(tileMob.getStackInSlot(0));
 				name=StatCollector.translateToLocal("entity." + name + ".name");
-				currenttip.add((isPulling?"Pulling: ":"Pushing: ")+((tileMob.adult)?"Adult ":"Child ")+ name);
+				if(isPulling)
+					if(tileMob.adult)
+						currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.pullingAdultType",name));
+					else
+						currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.pullingChildType",name));
+				else
+					if(tileMob.adult)
+						currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.pushingAdultType",name));
+					else
+						currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.pushingChildType",name));
 			}
 		}
 		return currenttip;
