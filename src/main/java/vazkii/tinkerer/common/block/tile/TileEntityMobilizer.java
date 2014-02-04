@@ -98,6 +98,7 @@ public class TileEntityMobilizer extends TileEntity {
 							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 							passenger.invalidate();
 							worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
+							api.getMovableRegistry().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord+1, targetZ);
 							api.getMovableRegistry().doneMoveing(passenger);
 							passenger.validate();
 						}

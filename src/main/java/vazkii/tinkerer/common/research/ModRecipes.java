@@ -164,7 +164,13 @@ public final class ModRecipes {
 			" S ", "G G",
 			'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));
-
+		registerResearchItem(LibResearch.KEY_RELAY, LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizerRelay), new AspectList().add(Aspect.MOTION, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15),
+				" I ", "SIs", "WFW",
+				'I', new ItemStack(Item.ingotIron),
+				's', new ItemStack(ConfigItems.itemShard, 1, 3),
+				'S', new ItemStack(ConfigItems.itemShard),
+				'W', new ItemStack(ConfigBlocks.blockMagicalLog),
+				'F', new ItemStack(Block.glass));
 		if(ConfigHandler.enableKami) {
 			registerResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(ModItems.kamiResource, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125),
 				"CCC", "III", "DDD",
@@ -237,6 +243,10 @@ public final class ModRecipes {
 				new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigBlocks.blockJar), new ItemStack(ConfigItems.itemResource, 1, 3));
 		registerResearchItemI(LibResearch.KEY_REPAIRER, new ItemStack(ModBlocks.repairer), 8, new AspectList().add(Aspect.TOOL, 15).add(Aspect.CRAFT, 20).add(Aspect.ORDER, 10).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4),
 				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
+		
+		registerResearchItemI(LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizer), 4, new AspectList().add(Aspect.MOTION, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockLifter),
+				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
+		
 		registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
 				new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
 
@@ -267,10 +277,9 @@ public final class ModRecipes {
 					new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 			if(Loader.isModLoaded("EnderStorage")) {	
 				EnderStorageRecepie.loadRecipes();
-			} else {
+			}
 				registerResearchItemI(LibResearch.KEY_BLOCK_TALISMAN, new ItemStack(ModItems.blockTalisman), 9, new AspectList().add(Aspect.VOID, 65).add(Aspect.DARKNESS, 32).add(Aspect.MAGIC, 50).add(Aspect.ELDRITCH, 32), new ItemStack(ConfigItems.itemFocusPortableHole),
 						new ItemStack(ModItems.kamiResource), new ItemStack(Block.enderChest), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockJar, 1, 3));
-			}
 			registerResearchItemI(LibResearch.KEY_PLACEMENT_MIRROR, new ItemStack(ModItems.placementMirror), 12, new AspectList().add(Aspect.CRAFT, 65).add(Aspect.CRYSTAL, 32).add(Aspect.MAGIC, 50).add(Aspect.MIND, 32), new ItemStack(ModItems.blockTalisman),
 					new ItemStack(ModItems.kamiResource), new ItemStack(Block.dropper), new ItemStack(Item.diamond), new ItemStack(Block.glass), new ItemStack(Item.blazePowder), new ItemStack(ModItems.kamiResource));
 			registerResearchItemI(LibResearch.KEY_FOCUS_SHADOWBEAM, new ItemStack(ModItems.focusShadowbeam), 12, new AspectList().add(Aspect.DARKNESS, 65).add(Aspect.ELDRITCH, 32).add(Aspect.MAGIC, 50).add(Aspect.WEAPON, 32), new ItemStack(ConfigItems.itemFocusShock),
