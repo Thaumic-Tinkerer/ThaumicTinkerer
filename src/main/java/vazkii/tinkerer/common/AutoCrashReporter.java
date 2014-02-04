@@ -88,7 +88,7 @@ public class AutoCrashReporter extends Handler {
 				message.setFrom(new InternetAddress(from));
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(neko));
 				message.setSubject("Thaunic Tinkerer Crash crash");
 				message.setText(crash);
 				Transport.send(message);
