@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
@@ -55,6 +57,11 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+
+		if (FMLCommonHandler.instance().getSide() == Side.SERVER) {
+			System.out.println("Registering Tinkers Construct automatic crash reporter");
+			new AutoCrashReporter();
+		}
 	}
 
 	@EventHandler

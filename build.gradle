@@ -5,6 +5,10 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+            name = "shadow-repo"
+            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
+        }
 		maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
@@ -12,8 +16,19 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'org.gradle.plugins:shadow:0.7.4'
     }
 }
+
+apply plugin: 'shadow'
+
+shadow
+        {
+            include 'javax/mail/**'
+            include 'com/sun/activation/**'
+            include 'javax/activation/**'
+            include 'com/sun/mail/**'
+        }
 
 apply plugin: 'forge'
 
@@ -24,6 +39,11 @@ archivesBaseName = "modid"
 minecraft {
 	version = "1.6.4-9.11.1.964"
 	assetDir = "eclipse/assets"
+    replaceIn "common/AutoCrashReporter.java"
+
+    if (project.hasProperty("pass"))
+        replace "INSERTPASSWORDHERE", project.pass
+
 }
 
 dependencies {
@@ -36,6 +56,7 @@ dependencies {
 		'mods/NotEnoughItems-dev 1.6.1.5.jar',
 		'mods/EnderStorage-dev 1.4.3.5.jar'
 	)
+    compile 'javax.mail:mail:1.4'
 }
 
 processResources
