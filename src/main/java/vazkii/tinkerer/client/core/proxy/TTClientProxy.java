@@ -62,7 +62,7 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-
+		
 		if(ConfigHandler.enableKami)
 			kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
 	}
