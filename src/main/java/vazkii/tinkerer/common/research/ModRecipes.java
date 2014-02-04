@@ -165,12 +165,13 @@ public final class ModRecipes {
 			'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));
 		registerResearchItem(LibResearch.KEY_RELAY, LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizerRelay), new AspectList().add(Aspect.MOTION, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15),
-				" I ", "SIs", "WFW",
+				"   ", "SIs", "WFW",
 				'I', new ItemStack(Item.ingotIron),
 				's', new ItemStack(ConfigItems.itemShard, 1, 3),
 				'S', new ItemStack(ConfigItems.itemShard),
 				'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 				'F', new ItemStack(Block.glass));
+		
 		if(ConfigHandler.enableKami) {
 			registerResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(ModItems.kamiResource, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125),
 				"CCC", "III", "DDD",
