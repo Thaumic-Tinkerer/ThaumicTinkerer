@@ -59,7 +59,7 @@ public class ThaumicTinkerer {
 		proxy.init(event);
 
 		if (FMLCommonHandler.instance().getSide() == Side.SERVER) {
-			System.out.println("Registering Tinkers Construct automatic crash reporter");
+			System.out.println("Registering Thaumic Tinkerer's automatic crash reporter");
 			new AutoCrashReporter();
 		}
 	}
