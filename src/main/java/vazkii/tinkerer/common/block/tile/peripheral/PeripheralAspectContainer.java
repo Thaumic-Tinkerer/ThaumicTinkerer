@@ -46,8 +46,8 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		switch(method) {
 			case 0 : {
-				List returnStuff = new ArrayList();
-				if(container.getAspects() == null)
+				List<String> returnStuff = new ArrayList<String>();
+				if(container.getAspects() == null || container.getAspects().size()==0)
 					return new String[0];
 
 				for(Aspect aspect : container.getAspects().getAspectsSorted())
