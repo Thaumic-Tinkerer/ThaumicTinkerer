@@ -23,7 +23,7 @@ public final class LibResearch {
 	public static final String CATEGORY_GOLEMANCY = "GOLEMANCY";
 
 	public static final String CATEGORY_ENCHANTING = "TT_ENCHANTING";
-
+	public static final String CATEGORY_THAUMICTINKERER = "TT_CATEGORY";
 
 	public static final String KEY_MOBILIZER = "LEVITATOR";
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
@@ -99,5 +99,6 @@ public final class LibResearch {
 	public static final String KEY_WARP_GATE = "WARP_GATE";
 	public static final String KEY_SKY_PEARL = "SKY_PEARL";
 	public static final String KEY_FOCUS_RECALL = "FOCUS_RECALL";
+	public static final String KEY_RELAY = "LEVITATOR_RELAY";
 
 }

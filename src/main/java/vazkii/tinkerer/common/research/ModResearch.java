@@ -14,6 +14,11 @@
  */
 package vazkii.tinkerer.common.research;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -27,6 +32,7 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.research.ResearchPage.PageType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigResearch;
@@ -34,6 +40,7 @@ import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.lib.LibResearch;
 import cpw.mods.fml.common.Loader;
 
@@ -141,11 +148,11 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_REPAIRER, LibResearch.CATEGORY_ALCHEMY, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CRAFT, 1).add(Aspect.ORDER, 1).add(Aspect.MAGIC, 1), 6, 2, 3, new ItemStack(ModBlocks.repairer)).setConcealed().setParents("TUBES").setParentsHidden("THAUMIUM", "ENCHFABRIC").registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_REPAIRER));
 
-		research = new TTResearchItem(LibResearch.KEY_PLATFORM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, -1, 3, new ItemStack(ModBlocks.platform)).setConcealed().setParents("MOBILIZER").registerResearchItem();
+		research = new TTResearchItem(LibResearch.KEY_PLATFORM, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, -1, 3, new ItemStack(ModBlocks.platform)).setConcealed().setParents(LibResearch.KEY_MOBILIZER).registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_PLATFORM));
 
-//		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, LibResearch.CATEGORY_ARTIFICE, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -2, -1, 3, new ItemStack(ModBlocks.mobilizer)).setConcealed().setParents(LibResearch.KEY_MAGNETS).registerResearchItem();
-//		research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_MOBILIZER));
+		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -2, 0, 3, new ItemStack(ModBlocks.mobilizer)).setParents(LibResearch.KEY_MAGNETS).registerResearchItem();
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_MOBILIZER),new ResearchPage("1"),arcaneRecipePage(LibResearch.KEY_RELAY),new ResearchPage("2"),LeviationaryHelp());
 
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
@@ -252,6 +259,7 @@ public final class ModResearch {
 		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
 
 		ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
+		ResearchCategories.registerCategory(LibResearch.CATEGORY_THAUMICTINKERER, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
 	}
 
 	private static ResearchPage recipePage(String name) {
@@ -272,5 +280,10 @@ public final class ModResearch {
 
 	private static ResearchPage cruciblePage(String name) {
 		return new ResearchPage((CrucibleRecipe) ConfigResearch.recipes.get(name));
+	}
+	private static ResearchPage LeviationaryHelp()
+	{
+		ResearchPage page=new ResearchPage(Arrays.asList((new AspectList()),5,1,1,Arrays.asList(new ItemStack(ModBlocks.mobilizerRelay),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizer),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizerRelay))));
+		return page;
 	}
 }
