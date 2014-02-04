@@ -82,19 +82,11 @@ public class TileEntityMobilizer extends TileEntity {
 
 					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
 					IAppEngApi api = Util.getAppEngApi();
-					System.out.println(1);
 					if(passenger==null){
-
-						System.out.println(2);
 						worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
 						worldObj.setBlock(xCoord, yCoord+1, zCoord, 0);
 					}else if(api != null){
-
-						System.out.println(3);
-
 						if(api.getMovableRegistry().askToMove(passenger)){
-
-							System.out.println(4);
 							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 							passenger.invalidate();
 							worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
@@ -103,8 +95,6 @@ public class TileEntityMobilizer extends TileEntity {
 							passenger.validate();
 						}
 					}else if(passenger instanceof IMovableTile){
-
-						System.out.println(5);
 						((IMovableTile) passenger).prepareToMove();
 						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
 						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
