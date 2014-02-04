@@ -4,10 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.block.BlockMod;
 import vazkii.tinkerer.common.block.BlockModContainer;
 import vazkii.tinkerer.common.block.tile.TileEntityMobilizer;
 
-public class BlockMobilizer extends BlockModContainer<TileEntityMobilizer> {
+public class BlockMobilizer extends BlockMod {
 
 	public BlockMobilizer(int par1) {
 		super(par1, Material.iron);
@@ -17,10 +18,12 @@ public class BlockMobilizer extends BlockModContainer<TileEntityMobilizer> {
 		return true;
 	}
 
+
 	@Override
-	public TileEntityMobilizer createNewTileEntity(World world) {
+	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityMobilizer(world);
 	}
+	
 
 	
 
