@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.research;
 
 import java.util.List;
 
-import codechicken.enderstorage.EnderStorage;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -267,8 +266,7 @@ public final class ModRecipes {
 			registerResearchItemI(LibResearch.KEY_ICHOR_POUCH, new ItemStack(ModItems.ichorPouch), 9, new AspectList().add(Aspect.VOID, 64).add(Aspect.MAN, 32).add(Aspect.CLOTH, 32).add(Aspect.ELDRITCH, 32).add(Aspect.AIR, 64), new ItemStack(ConfigItems.itemFocusPouch),
 					new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource, 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 			if(Loader.isModLoaded("EnderStorage")) {	
-				registerResearchItemI(LibResearch.KEY_BLOCK_TALISMAN, new ItemStack(ModItems.blockTalisman), 9, new AspectList().add(Aspect.VOID, 65).add(Aspect.DARKNESS, 32).add(Aspect.MAGIC, 50).add(Aspect.ELDRITCH, 32), new ItemStack(ConfigItems.itemFocusPortableHole),
-						new ItemStack(ModItems.kamiResource), new ItemStack(EnderStorage.blockEnderChest, 0), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockJar, 1, 3));
+				EnderStorageRecepie.loadRecipes();
 			} else {
 				registerResearchItemI(LibResearch.KEY_BLOCK_TALISMAN, new ItemStack(ModItems.blockTalisman), 9, new AspectList().add(Aspect.VOID, 65).add(Aspect.DARKNESS, 32).add(Aspect.MAGIC, 50).add(Aspect.ELDRITCH, 32), new ItemStack(ConfigItems.itemFocusPortableHole),
 						new ItemStack(ModItems.kamiResource), new ItemStack(Block.enderChest), new ItemStack(Item.diamond), new ItemStack(ModItems.kamiResource), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockJar, 1, 3));
@@ -318,7 +316,7 @@ public final class ModRecipes {
 		ConfigResearch.recipes.put(name, recipe);
 	}
 
-	private static void registerResearchItemI(String name, Object output, int instability, AspectList aspects, ItemStack input, ItemStack... stuff) {
+	static void registerResearchItemI(String name, Object output, int instability, AspectList aspects, ItemStack input, ItemStack... stuff) {
 		registerResearchItemI(name, name, output, instability, aspects, input, stuff);
 	}
 
