@@ -3,6 +3,7 @@ package vazkii.tinkerer.common.block.tile;
 import appeng.api.IAppEngApi;
 import appeng.api.Util;
 import appeng.api.movable.IMovableTile;
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -94,16 +95,16 @@ public class TileEntityMobilizer extends TileEntity {
 							api.getMovableRegistry().doneMoveing(passenger);
 							passenger.validate();
 						}
-					}else if(passenger instanceof IMovableTile){
-
-						((IMovableTile) passenger).prepareToMove();
+					}else if(passenger instanceof IMovableTile || passenger.getClass().getName().startsWith("net.minecraft.tileentity")){
+						boolean imovable=passenger instanceof IMovableTile;
+						if(imovable)
+							((IMovableTile) passenger).prepareToMove();
 
 						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
 						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
 
 						worldObj.removeBlockTileEntity(xCoord, yCoord+1, zCoord);
 						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
-
 						worldObj.setBlock(targetX, yCoord+1, targetZ, id);
 						worldObj.setBlockMetadataWithNotify(targetX, yCoord, targetZ, meta, 3);
 
@@ -111,6 +112,7 @@ public class TileEntityMobilizer extends TileEntity {
 						passenger.zCoord=targetZ;
 
 						passenger.validate();
+						if(imovable)
 						worldObj.addTileEntity(passenger);
 
 						((IMovableTile) passenger).doneMoving();
