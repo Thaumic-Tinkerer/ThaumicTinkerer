@@ -18,7 +18,7 @@ public final class LibMisc {
 
 	public static final String MOD_ID = "ThaumicTinkerer";
 	public static final String MOD_NAME = "Thaumic Tinkerer";
-	public static final String VERSION = "2.2b-75";
+	public static final String VERSION = "2.2b-76";
 
 	public static final String NETWORK_CHANNEL = MOD_ID;
 
