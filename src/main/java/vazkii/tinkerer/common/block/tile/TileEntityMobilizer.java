@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
@@ -37,6 +38,8 @@ public class TileEntityMobilizer extends TileEntity {
 
 		nbt.setInteger("SecondRelayX", secondRelayX);
 		nbt.setInteger("SecondRelayZ", secondRelayZ);
+
+		nbt.setInteger("Direction", movementDirection.ordinal());
 	}
 
 	@Override
@@ -50,6 +53,8 @@ public class TileEntityMobilizer extends TileEntity {
 
 		this.secondRelayX = nbt.getInteger("SecondRelayX");
 		this.secondRelayZ = nbt.getInteger("SecondRelayZ");
+
+		movementDirection=ForgeDirection.VALID_DIRECTIONS[nbt.getInteger("Direction")];
 	}
 
 
@@ -95,27 +100,28 @@ public class TileEntityMobilizer extends TileEntity {
 							api.getMovableRegistry().doneMoveing(passenger);
 							passenger.validate();
 						}
+
 					}else if(passenger instanceof IMovableTile || passenger.getClass().getName().startsWith("net.minecraft.tileentity")){
 						boolean imovable=passenger instanceof IMovableTile;
 						if(imovable)
-							((IMovableTile) passenger).prepareToMove();
-
-						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
-						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
-
-						worldObj.removeBlockTileEntity(xCoord, yCoord+1, zCoord);
+						((IMovableTile) passenger).prepareToMove();
+						worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
+						passenger.invalidate();
 						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
-						worldObj.setBlock(targetX, yCoord+1, targetZ, id);
-						worldObj.setBlockMetadataWithNotify(targetX, yCoord, targetZ, meta, 3);
 
-						passenger.xCoord=targetX;
-						passenger.zCoord=targetZ;
+						//IMovableHandler default code
+						Chunk c = worldObj.getChunkFromBlockCoords( targetX, targetZ );
+						c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1 + yCoord+1, targetZ & 0xF, passenger );
 
-						passenger.validate();
+						if ( c.isChunkLoaded )
+						{
+							worldObj.addTileEntity(passenger);
+							worldObj.markBlockForUpdate(targetX, yCoord+1, targetZ);
+						}
 						if(imovable)
-						worldObj.addTileEntity(passenger);
+							((IMovableTile) passenger).doneMoving();
+						passenger.validate();
 
-						((IMovableTile) passenger).doneMoving();
 					}
 					//Move self
 					this.invalidate();
