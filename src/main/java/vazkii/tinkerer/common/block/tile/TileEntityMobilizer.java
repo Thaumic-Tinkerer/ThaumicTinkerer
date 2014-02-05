@@ -95,7 +95,9 @@ public class TileEntityMobilizer extends TileEntity {
 							passenger.validate();
 						}
 					}else if(passenger instanceof IMovableTile){
+
 						((IMovableTile) passenger).prepareToMove();
+
 						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
 						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
 
@@ -103,8 +105,7 @@ public class TileEntityMobilizer extends TileEntity {
 						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
 
 						worldObj.setBlock(targetX, yCoord+1, targetZ, id);
-						worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, meta, 3);
-
+						worldObj.setBlockMetadataWithNotify(targetX, yCoord, targetZ, meta, 3);
 
 						passenger.xCoord=targetX;
 						passenger.zCoord=targetZ;
