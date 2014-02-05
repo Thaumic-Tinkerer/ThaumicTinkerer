@@ -44,6 +44,7 @@ import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
@@ -62,7 +63,7 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-
+		MinecraftForge.EVENT_BUS.register(new FumeTool());
 		if(ConfigHandler.enableKami)
 			kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
 	}
