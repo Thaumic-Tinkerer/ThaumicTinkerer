@@ -160,6 +160,7 @@ item.Wand.ichorcloth.rod=Ichorcloth Strapped Silverwood
 ttresearch.prefix=[TT] 
 ttresearch.prefix.kami=[TTKami] 
 tc.research_category.TT_ENCHANTING=Enchanting
+tc.research_category.TT_CATEGORY=Thaumic Tinkering
 
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft Peripherals
