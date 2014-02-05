@@ -69,3 +69,4 @@
 2.1-68=https://www.sugarsync.com/pf/D9740002_82596175_858039
 2.1-73=https://dl.dropboxusercontent.com/u/18912303/ThaumicTinkerer/ThaumicTinkerer-2.1-73.jar
 2.1-74=https://dl.dropboxusercontent.com/u/18912303/ThaumicTinkerer/ThaumicTinkerer-2.1-74.jar
+2.2 beta unstable-75=https://dl.dropboxusercontent.com/u/18912303/ThaumicTinkerer/ThaumicTinkerer-2.2b-75.jar
