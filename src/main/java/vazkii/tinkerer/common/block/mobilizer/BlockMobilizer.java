@@ -14,7 +14,7 @@ import vazkii.tinkerer.common.block.tile.TileEntityMobilizer;
 
 public class BlockMobilizer extends BlockMod {
 
-	public BlockMobilizer(int par1, Material par2Material) {
+	public BlockMobilizer(int par1) {
 		super(par1, par2Material);
 	}
 
