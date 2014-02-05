@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.ForgeDirection;
+import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 public class TileEntityMobilizer extends TileEntity {
@@ -18,6 +19,7 @@ public class TileEntityMobilizer extends TileEntity {
 
 	public int firstRelayZ;
 	public int secondRelayZ;
+	public boolean dead=false;;
 
 	public ForgeDirection movementDirection;
 
@@ -64,12 +66,17 @@ public class TileEntityMobilizer extends TileEntity {
 	}
 
 	public void updateEntity(){
+		if(dead)
+			return;
 		if(!worldObj.isRemote){
 			verifyRelay();
 			if(linked && worldObj.getTotalWorldTime()%100==0 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
 				int targetX = xCoord+movementDirection.offsetX;
 				int targetZ = zCoord+movementDirection.offsetZ;
-
+				if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
+				{
+					return;
+				}
 				//Switch direction if at end of track
 				if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
 					movementDirection = movementDirection.getOpposite();
