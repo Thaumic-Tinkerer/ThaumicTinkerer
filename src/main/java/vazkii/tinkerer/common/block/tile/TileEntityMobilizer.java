@@ -3,19 +3,13 @@ package vazkii.tinkerer.common.block.tile;
 import appeng.api.IAppEngApi;
 import appeng.api.Util;
 import appeng.api.movable.IMovableTile;
-import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 public class TileEntityMobilizer extends TileEntity {
-
-	public TileEntityMobilizer(World world) {
-
-	}
 
 	public boolean linked;
 
