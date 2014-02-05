@@ -11,7 +11,6 @@ import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockMod;
 import vazkii.tinkerer.common.block.tile.TileEntityRelay;
-import vazkii.tinkerer.common.lib.LibMisc;
 
 public class BlockMobilizerRelay  extends BlockMod {
 
@@ -27,7 +26,7 @@ public class BlockMobilizerRelay  extends BlockMod {
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
-		return new TileEntityRelay();
+		return new TileEntityRelay(world);
 	}
 
 	@SideOnly(Side.CLIENT)
