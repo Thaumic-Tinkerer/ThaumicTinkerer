@@ -22,12 +22,13 @@ public class EnderStorageFunctions {
 		ItemStack focus=wand.getFocusItem(stack);
 		if(world.isRemote)
 			return stack;
+		if(!focus.hasTagCompound())
+			focus.setTagCompound(new NBTTagCompound());
 		if(pos!=null)
 		{
 			TileEntity tile = world.getBlockTileEntity(pos.blockX, pos.blockY, pos.blockZ);
 
-			if(!focus.hasTagCompound())
-				focus.setTagCompound(new NBTTagCompound());
+			
 			if(tile instanceof TileEnderChest && p.isSneaking())
 			{
 				TileEnderChest chest = (TileEnderChest)tile;
@@ -35,6 +36,7 @@ public class EnderStorageFunctions {
 				focus.getTagCompound().setInteger("freq", chest.freq);
 				focus.getTagCompound().setString("owner", chest.owner);
 				focus.getTagCompound().setBoolean("ender", true);
+				wand.setFocus(stack, focus);
 				return stack;
 			}
 			if(world.getBlockId(pos.blockX, pos.blockY, pos.blockZ)==Block.obsidian.blockID && p.isSneaking())
@@ -43,11 +45,12 @@ public class EnderStorageFunctions {
 				focus.getTagCompound().setInteger("freq", -1);
 				focus.getTagCompound().setString("owner", p.username);
 				focus.getTagCompound().setBoolean("ender", false);
+				wand.setFocus(stack, focus);
 				return stack;
 			}
 		}
 		boolean vanilla=!focus.getTagCompound().getBoolean("ender");
-
+		
 		if(wand.consumeAllVis(stack, p, ItemFocusEnderChest.visUsage, true)) {
 			if(vanilla)
 			{
@@ -59,7 +62,7 @@ public class EnderStorageFunctions {
 				int freq=focus.getTagCompound().getInteger("freq");
 				((EnderItemStorage) EnderStorageManager.instance(world.isRemote)
 						.getStorage(getOwner(focus), freq & 0xFFF, "item"))
-						.openSMPGui(p, focus.getUnlocalizedName()+".name");
+						.openSMPGui(p, focus.getDisplayName());
 			}
 		}
 
