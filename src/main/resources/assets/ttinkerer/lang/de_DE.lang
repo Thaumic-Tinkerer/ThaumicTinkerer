@@ -137,8 +137,10 @@ tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
-tile.ttinkerer:Mobilization Levitator.name=Levitational Locomotive
-tile.ttinkerer:Mobilization Levitator Relay.name=Levitational Locomotive Relay
+
+tile.ttinkerer:Mobilization Levitator.name=Levitationslokomotive
+tile.ttinkerer:Mobilization Levitator Relay.name=Levitationslokomotivrelais
+
 # KAMI BLOCK NAMES
 tile.ttinkerer:warpGate.name=Himmelstor
 
@@ -158,6 +160,7 @@ item.Wand.ichorcloth.rod=Ichortuchverstärkter Silberholz -
 ttresearch.prefix=[TT] 
 ttresearch.prefix.kami=[TTKami] 
 tc.research_category.TT_ENCHANTING=Verzaubern
+tc.research_category.TT_CATEGORY=Thaumische Bastelei
 
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=Computercraft-Peripherien
@@ -334,11 +337,9 @@ ttresearch.lore.FOCUS_DEFLECT=Ich bin kein Engel
 ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehendem Feuer zu schützen.<BR><BR>Dieser Fokus, wenn genutzt, wird durchgehend Vis aus dem Stab ziehen, auf den er aufgesetzt ist, um eine Barriere um den Nutzer herum zu beschwören, die ordinäre Projektile harmlos durch sie hindurchfliegen lässt.<BR><BR>Ordinäre Projektile sind Pfeile, Schneebälle oder Tränke. Es scheint, dass die Barriere nicht stark genug ist, um stärkere Angriffe wie Feuerbälle oder Witherschädel abzuwehren.
 
 # -- LEVITATOR
-ttresearch.name.LEVITATOR=Levitational Locomotive
-ttresearch.lore.LEVITATOR=It moves to the left, it moves to the right.
-ttresearch.page.LEVITATOR.0=Test Page please ignore
-ttresearch.page.LEVITATOR.1=Test Page please ignore 2
-ttresearch.page.LEVITATOR.2=Test Page please ignore 3
+ttresearch.name.LEVITATOR=Levitationslokomotive
+ttresearch.lore.LEVITATOR=Es fährt nach links, es fährt nach rechts.
+ttresearch.page.LEVITATOR.0=Du hast eine neue Gerätschaft kreiert, um Dinge vor- und rückwärts zu bewegen. Zwei Relais platziert in einer geraden Linie werden zwischen sich einen Energiestrahl projezieren.<BR><BR> Platziere einen Levitator innerhalb des projezierten Strahls. Der Levitator wird nun auf dem Strahl vor- und rückwärts bewegt und den Block über ihm mitbewegen.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ätherische Plattform
