@@ -66,7 +66,7 @@ public class TileEntityMobilizer extends TileEntity {
 	public void updateEntity(){
 		if(!worldObj.isRemote){
 			verifyRelay();
-			if(linked && worldObj.getTotalWorldTime()%100==0){
+			if(linked && worldObj.getTotalWorldTime()%100==0 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
 				int targetX = xCoord+movementDirection.offsetX;
 				int targetZ = zCoord+movementDirection.offsetZ;
 

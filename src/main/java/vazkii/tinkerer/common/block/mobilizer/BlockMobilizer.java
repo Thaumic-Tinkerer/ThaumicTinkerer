@@ -11,12 +11,11 @@ import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockMod;
 import vazkii.tinkerer.common.block.tile.TileEntityMobilizer;
-import vazkii.tinkerer.common.lib.LibMisc;
 
 public class BlockMobilizer extends BlockMod {
 
-	public BlockMobilizer(int par1) {
-		super(par1, Material.iron);
+	public BlockMobilizer(int par1, Material par2Material) {
+		super(par1, par2Material);
 	}
 
 	@Override
