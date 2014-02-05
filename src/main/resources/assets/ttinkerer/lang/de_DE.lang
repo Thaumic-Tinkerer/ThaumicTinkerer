@@ -137,7 +137,8 @@ tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
-
+tile.ttinkerer:Mobilization Levitator.name=Levitational Locomotive
+tile.ttinkerer:Mobilization Levitator Relay.name=Levitational Locomotive Relay
 # KAMI BLOCK NAMES
 tile.ttinkerer:warpGate.name=Himmelstor
 
@@ -331,6 +332,13 @@ ttresearch.page.REPAIRER.0=Du hast ein neues Gerät kreiert, um zerbrochenes Wer
 ttresearch.name.FOCUS_DEFLECT=Stabfokus: Verzerrung
 ttresearch.lore.FOCUS_DEFLECT=Ich bin kein Engel
 ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehendem Feuer zu schützen.<BR><BR>Dieser Fokus, wenn genutzt, wird durchgehend Vis aus dem Stab ziehen, auf den er aufgesetzt ist, um eine Barriere um den Nutzer herum zu beschwören, die ordinäre Projektile harmlos durch sie hindurchfliegen lässt.<BR><BR>Ordinäre Projektile sind Pfeile, Schneebälle oder Tränke. Es scheint, dass die Barriere nicht stark genug ist, um stärkere Angriffe wie Feuerbälle oder Witherschädel abzuwehren.
+
+# -- LEVITATOR
+ttresearch.name.LEVITATOR=Levitational Locomotive
+ttresearch.lore.LEVITATOR=It moves to the left, it moves to the right.
+ttresearch.page.LEVITATOR.0=Test Page please ignore
+ttresearch.page.LEVITATOR.1=Test Page please ignore 2
+ttresearch.page.LEVITATOR.2=Test Page please ignore 3
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ätherische Plattform
