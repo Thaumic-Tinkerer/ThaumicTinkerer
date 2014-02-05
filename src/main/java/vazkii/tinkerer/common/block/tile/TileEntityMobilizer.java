@@ -18,6 +18,7 @@ public class TileEntityMobilizer extends TileEntity {
 
 	public int firstRelayZ;
 	public int secondRelayZ;
+	public boolean dead=false;;
 
 	public ForgeDirection movementDirection;
 
@@ -64,6 +65,8 @@ public class TileEntityMobilizer extends TileEntity {
 	}
 
 	public void updateEntity(){
+		if(dead)
+			return;
 		if(!worldObj.isRemote){
 			verifyRelay();
 			if(linked && worldObj.getTotalWorldTime()%100==0){
