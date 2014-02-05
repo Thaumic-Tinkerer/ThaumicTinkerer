@@ -576,6 +576,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 
 	@Override
 	public boolean prepareToMove() {
+		stopBreaking();
 		return true;
 	}
 
