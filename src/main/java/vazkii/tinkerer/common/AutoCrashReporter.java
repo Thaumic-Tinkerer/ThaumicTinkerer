@@ -66,7 +66,7 @@ public class AutoCrashReporter extends Handler {
 	}
 
 	public void call(String crash) {
-		if (crash.contains("minechem") && crash.indexOf("System Details") > crash.indexOf("minechem") && !crash.contains("occupied by")) {
+		if (crash.contains("vazkii.tinkerer") && crash.indexOf("System Details") > crash.indexOf("vazkii.tinkerer") && !crash.contains("occupied by")) {
 			String to = "adlytempleton@gmail.com";
 			String neko = "kat.swales+ThaumicTIinkerer@nekokittygames.com";
 			String from = "thaumiccrashes@gmail.com";
