@@ -105,7 +105,7 @@ public class TTCommonProxy {
 
 		for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
-		MinecraftForge.EVENT_BUS.register(new FumeTool());
+		
 		TurtleAPI.registerUpgrade(new FumeTool());
 	}
 
