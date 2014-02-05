@@ -165,7 +165,7 @@ public final class ModRecipes {
 			'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));
 		registerResearchItem(LibResearch.KEY_RELAY, LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizerRelay), new AspectList().add(Aspect.MOTION, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15),
-				"   ", "SIs", "WFW",
+				"WFW", "SIs", "WFW",
 				'I', new ItemStack(Item.ingotIron),
 				's', new ItemStack(ConfigItems.itemShard, 1, 3),
 				'S', new ItemStack(ConfigItems.itemShard),
@@ -246,7 +246,7 @@ public final class ModRecipes {
 				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
 		
 		registerResearchItemI(LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizer), 4, new AspectList().add(Aspect.MOTION, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockLifter),
-				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
+				new ItemStack(Item.ingotIron), new ItemStack(Item.feather), new ItemStack(Item.ingotIron), new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
 		
 		registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
 				new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
