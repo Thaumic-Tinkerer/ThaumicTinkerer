@@ -15,19 +15,20 @@ import vazkii.tinkerer.common.lib.LibMisc;
 
 public class BlockMobilizer extends BlockMod {
 
+
+
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4,
-			int par5, int par6) {
-		
-		//System.out.println(1);
+	public void onBlockPreDestroy(World par1World, int par2, int par3,
+			int par4, int par5) {
+		System.out.println(1);
 		TileEntity tile=par1World.getBlockTileEntity(par2, par3, par4);
 		if(tile!=null&& tile instanceof TileEntityMobilizer)
 		{
-			//System.out.println(2);
+			System.out.println(2);
 		
 			((TileEntityMobilizer)tile).dead=true;
 		}
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.onBlockPreDestroy(par1World, par2, par3, par4, par5);
 	}
 
 	public BlockMobilizer(int par1) {
