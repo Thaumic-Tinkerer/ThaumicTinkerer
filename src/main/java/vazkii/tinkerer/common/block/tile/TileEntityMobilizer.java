@@ -37,6 +37,8 @@ public class TileEntityMobilizer extends TileEntity {
 
 		nbt.setInteger("SecondRelayX", secondRelayX);
 		nbt.setInteger("SecondRelayZ", secondRelayZ);
+
+		nbt.setInteger("Direction", movementDirection.ordinal());
 	}
 
 	@Override
@@ -50,6 +52,8 @@ public class TileEntityMobilizer extends TileEntity {
 
 		this.secondRelayX = nbt.getInteger("SecondRelayX");
 		this.secondRelayZ = nbt.getInteger("SecondRelayZ");
+
+		movementDirection=ForgeDirection.VALID_DIRECTIONS[nbt.getInteger("Direction")];
 	}
 
 
