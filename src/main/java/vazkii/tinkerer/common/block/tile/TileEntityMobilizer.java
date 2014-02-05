@@ -38,7 +38,7 @@ public class TileEntityMobilizer extends TileEntity {
 		nbt.setInteger("SecondRelayX", secondRelayX);
 		nbt.setInteger("SecondRelayZ", secondRelayZ);
 
-		nbt.setInteger("Direction", movementDirection.ordinal());
+		nbt.setInteger("Direction", movementDirection != null ? movementDirection.ordinal() : 0);
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class TileEntityMobilizer extends TileEntity {
 
 						//IMovableHandler default code
 						Chunk c = worldObj.getChunkFromBlockCoords( targetX, targetZ );
-						c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1 + yCoord+1, targetZ & 0xF, passenger );
+						c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1, targetZ & 0xF, passenger );
 
 						if ( c.isChunkLoaded )
 						{
