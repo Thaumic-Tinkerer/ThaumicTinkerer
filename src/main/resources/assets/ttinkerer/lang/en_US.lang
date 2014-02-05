@@ -137,8 +137,10 @@ tile.ttinkerer:dislocator.name=Transvector Dislocator
 tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
 tile.ttinkerer:platform.name=Ethereal Platform
-tile.ttinkerer:Mobilization Levitator.name=Levitational Locomotive
-tile.ttinkerer:Mobilization Levitator Relay.name=Levitational Locomotive Relay
+
+tile.ttinkerer:Levitational Locomotive.name=Levitational Locomotive
+tile.ttinkerer:Levitational Locomotive Relay.name=Levitational Locomotive Relay
+
 # KAMI BLOCK NAMES
 tile.ttinkerer:warpGate.name=Celestial Gateway
 
@@ -336,10 +338,7 @@ ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming
 # -- LEVITATOR
 ttresearch.name.LEVITATOR=Levitational Locomotive
 ttresearch.lore.LEVITATOR=It moves to the left, it moves to the right.
-ttresearch.page.LEVITATOR.0=Test Page please ignore
-ttresearch.page.LEVITATOR.1=Test Page please ignore 2
-ttresearch.page.LEVITATOR.2=Test Page please ignore 3
-
+ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ethereal Platform
 ttresearch.lore.PLATFORM=Hide the Bromine and Barium
