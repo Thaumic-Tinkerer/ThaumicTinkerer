@@ -26,7 +26,7 @@ public class BlockMobilizer extends BlockMod {
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
-		return new TileEntityMobilizer(world);
+		return new TileEntityMobilizer();
 	}
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
