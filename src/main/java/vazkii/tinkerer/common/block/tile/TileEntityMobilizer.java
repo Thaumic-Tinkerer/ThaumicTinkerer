@@ -71,7 +71,7 @@ public class TileEntityMobilizer extends TileEntity {
 				int targetZ = zCoord+movementDirection.offsetZ;
 
 				//Switch direction if at end of track
-				if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0){
+				if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
 					movementDirection = movementDirection.getOpposite();
 					targetX = xCoord+movementDirection.offsetX;
 					targetZ = zCoord+movementDirection.offsetZ;
