@@ -76,7 +76,7 @@ public class TileEntityMobilizer extends TileEntity {
 					targetX = xCoord+movementDirection.offsetX;
 					targetZ = zCoord+movementDirection.offsetZ;
 				}
-				if(worldObj.getBlockId(targetX, yCoord, targetZ) == 0){
+				if(worldObj.getBlockId(targetX, yCoord, targetZ) == 0 && worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0){
 
 					//Move Passenger
 
