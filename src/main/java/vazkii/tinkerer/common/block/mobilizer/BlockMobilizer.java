@@ -1,10 +1,14 @@
 package vazkii.tinkerer.common.block.mobilizer;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockMod;
 import vazkii.tinkerer.common.block.tile.TileEntityMobilizer;
 import vazkii.tinkerer.common.lib.LibMisc;
@@ -24,27 +28,24 @@ public class BlockMobilizer extends BlockMod {
 	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityMobilizer(world);
 	}
-
-	private Icon top;
-	private Icon bottom;
-	private Icon side;
+	@SideOnly(Side.CLIENT)
+	private Icon iconTop;
+	@SideOnly(Side.CLIENT)
+	private Icon iconBottom;
+	@SideOnly(Side.CLIENT)
+	private Icon iconSide;
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		top=iconRegister.registerIcon(LibMisc.MOD_ID+":mobilizer_top");
-		bottom=iconRegister.registerIcon(LibMisc.MOD_ID+":mobilizer_bottom");
-		side=iconRegister.registerIcon(LibMisc.MOD_ID+":mobilizer_side");
+		iconBottom = IconHelper.forBlock(iconRegister, this, 0);
+		iconTop = IconHelper.forBlock(iconRegister, this, 1);
+		iconSide = IconHelper.forBlock(iconRegister, this, 2);
 	}
 
 	@Override
-	public Icon getIcon(int s, int meta) {
-		switch(s){
-			case 0:
-				return bottom;
-			case 1:
-				return top;
-			default:
-				return side;
-		}
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int par1, int meta) {
+		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSide;
 	}
 }
