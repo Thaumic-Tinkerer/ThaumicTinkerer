@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
+import java.util.ArrayList;
+
+import appeng.api.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +45,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	private static final String TAG_TILE_CMP = "tileCmp";
 	private static final String TAG_BLOCK_ID = "blockID";
 	private static final String TAG_BLOCK_META = "blockMeta";
-
+	private static ArrayList<Integer> BlackList=new ArrayList<Integer>();
 	private Icon ornament;
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500).add(Aspect.EARTH, 100);
@@ -109,7 +112,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 					}
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
-			} else if(!ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
+			} else if(!BlackList.contains(id) && !ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
 				if(!world.isRemote) {
 					world.removeBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, 0, 0, 1 | 2);
@@ -144,31 +147,43 @@ public class ItemFocusDislocation extends ItemModFocus {
 	}
 
 	public ItemStack getPickedBlock(ItemStack stack) {
-		return stack.hasTagCompound() && stack.getTagCompound().hasKey(TAG_AVAILABLE) && stack.getTagCompound().getBoolean(TAG_AVAILABLE) ? getPickedBlockStack(stack) : null;
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemStack focus=wand.getFocusItem(stack);
+		return focus.hasTagCompound() && focus.getTagCompound().hasKey(TAG_AVAILABLE) && focus.getTagCompound().getBoolean(TAG_AVAILABLE) ? getPickedBlockStack(stack) : null;
 	}
 
 	public ItemStack getPickedBlockStack(ItemStack stack) {
-		int id = ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
-		int meta = ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemStack focus=wand.getFocusItem(stack);
+		int id = ItemNBTHelper.getInt(focus, TAG_BLOCK_ID, 0);
+		int meta = ItemNBTHelper.getInt(focus, TAG_BLOCK_META, 0);
 		return new ItemStack(id, 1, meta);
 	}
 
 	public NBTTagCompound getStackTileEntity(ItemStack stack) {
-		return ItemNBTHelper.getCompound(stack, TAG_TILE_CMP, true);
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemStack focus=wand.getFocusItem(stack);
+		return ItemNBTHelper.getCompound(focus, TAG_TILE_CMP, true);
 	}
 
 	private void storePickedBlock(ItemStack stack, int id, short meta, TileEntity tile) {
-		ItemNBTHelper.setInt(stack, TAG_BLOCK_ID, id);
-		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemStack focus=wand.getFocusItem(stack);
+		ItemNBTHelper.setInt(focus, TAG_BLOCK_ID, id);
+		ItemNBTHelper.setInt(focus, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
 		if(tile != null)
 			tile.writeToNBT(cmp);
-		ItemNBTHelper.setCompound(stack, TAG_TILE_CMP, cmp);
-		ItemNBTHelper.setBoolean(stack, TAG_AVAILABLE, true);
+		ItemNBTHelper.setCompound(focus, TAG_TILE_CMP, cmp);
+		ItemNBTHelper.setBoolean(focus, TAG_AVAILABLE, true);
+		wand.setFocus(stack, focus);
 	}
 
 	private void clearPickedBlock(ItemStack stack) {
-		ItemNBTHelper.setBoolean(stack, TAG_AVAILABLE, false);
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemStack focus=wand.getFocusItem(stack);
+		ItemNBTHelper.setBoolean(focus, TAG_AVAILABLE, false);
+		wand.setFocus(stack, focus);
 	}
 
 	@Override
@@ -189,5 +204,12 @@ public class ItemFocusDislocation extends ItemModFocus {
 	@Override
 	public boolean acceptsEnchant(int paramInt) {
 		return super.acceptsEnchant(paramInt) && paramInt != Config.enchPotency.effectId;
+	}
+	static
+	{
+		BlackList.add(Block.pistonBase.blockID);
+		BlackList.add(Block.pistonExtension.blockID);
+		BlackList.add(Block.pistonMoving.blockID);
+		BlackList.add(Block.pistonStickyBase.blockID);
 	}
 }

@@ -9,8 +9,7 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class TileEntityRelay extends TileEntity implements IMovableTile {
 
-	public TileEntityRelay(World world) {
-		this.worldObj=world;
+	public TileEntityRelay() {
 	}
 
 	public void verifyPartner(){

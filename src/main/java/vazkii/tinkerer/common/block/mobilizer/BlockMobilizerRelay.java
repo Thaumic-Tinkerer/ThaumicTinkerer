@@ -26,7 +26,7 @@ public class BlockMobilizerRelay  extends BlockMod {
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
-		return new TileEntityRelay(world);
+		return new TileEntityRelay();
 	}
 
 	@SideOnly(Side.CLIENT)
