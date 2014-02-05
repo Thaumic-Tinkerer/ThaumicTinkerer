@@ -310,6 +310,7 @@ ttresearch.page.FOCUS_HEAL.0=You know Pech carry powerful foci that can induce d
 ttresearch.name.FOCUS_ENDER_CHEST=Wand Focus: Ender Rift
 ttresearch.lore.FOCUS_ENDER_CHEST=A 'pocket' to the fourth dimension
 ttresearch.page.FOCUS_ENDER_CHEST.0=By combining a Hand Mirror with a portable hole, you managed to construct a focus that tears a rift in the ender, allowing you to access the contents of your Ender Chest remotely.
+ttresearch.page.FOCUS_ENDER_CHEST.ES=By combining a Hand Mirror with a portable hole, you managed to construct a focus that tears a rift in the ender, allowing you to access the contents of your Ender Chests remotely. <BR> Shift right click on an ender chest to set the focus to that colour, or shift right click on a block of obsidian to set the focus to the vanilla ender storage.
 
 # -- CURSED SPIRIT'S BLADE
 ttresearch.name.BLOOD_SWORD=Cursed Spirit's Blade
