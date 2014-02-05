@@ -152,7 +152,7 @@ public final class ModResearch {
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_PLATFORM));
 
 		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -2, 0, 3, new ItemStack(ModBlocks.mobilizer)).setParents(LibResearch.KEY_MAGNETS).registerResearchItem();
-		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_MOBILIZER),new ResearchPage("1"),arcaneRecipePage(LibResearch.KEY_RELAY),new ResearchPage("2"),LeviationaryHelp());
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_MOBILIZER),new ResearchPage("1"),arcaneRecipePage(LibResearch.KEY_RELAY),new ResearchPage("2"));
 
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
