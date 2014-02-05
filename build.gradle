@@ -32,9 +32,9 @@ shadow
 
 apply plugin: 'forge'
 
-version = "1.0"
+version = "2.2b-75"
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
 	version = "1.6.4-9.11.1.964"
