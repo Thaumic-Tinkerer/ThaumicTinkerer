@@ -19,33 +19,34 @@ import net.minecraft.world.World;
 public class EnderStorageFunctions {
 	public static ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemStack focus=wand.getFocusItem(stack);
 		if(world.isRemote)
 			return stack;
 		if(pos!=null)
 		{
 			TileEntity tile = world.getBlockTileEntity(pos.blockX, pos.blockY, pos.blockZ);
 
-			if(!stack.hasTagCompound())
-				stack.setTagCompound(new NBTTagCompound());
+			if(!focus.hasTagCompound())
+				focus.setTagCompound(new NBTTagCompound());
 			if(tile instanceof TileEnderChest && p.isSneaking())
 			{
 				TileEnderChest chest = (TileEnderChest)tile;
 
-				stack.getTagCompound().setInteger("freq", chest.freq);
-				stack.getTagCompound().setString("owner", chest.owner);
-				stack.getTagCompound().setBoolean("ender", true);
+				focus.getTagCompound().setInteger("freq", chest.freq);
+				focus.getTagCompound().setString("owner", chest.owner);
+				focus.getTagCompound().setBoolean("ender", true);
 				return stack;
 			}
 			if(world.getBlockId(pos.blockX, pos.blockY, pos.blockZ)==Block.obsidian.blockID && p.isSneaking())
 			{
 
-				stack.getTagCompound().setInteger("freq", -1);
-				stack.getTagCompound().setString("owner", p.username);
-				stack.getTagCompound().setBoolean("ender", false);
+				focus.getTagCompound().setInteger("freq", -1);
+				focus.getTagCompound().setString("owner", p.username);
+				focus.getTagCompound().setBoolean("ender", false);
 				return stack;
 			}
 		}
-		boolean vanilla=!stack.getTagCompound().getBoolean("ender");
+		boolean vanilla=!focus.getTagCompound().getBoolean("ender");
 
 		if(wand.consumeAllVis(stack, p, ItemFocusEnderChest.visUsage, true)) {
 			if(vanilla)
@@ -55,10 +56,10 @@ public class EnderStorageFunctions {
 			}
 			else
 			{
-				int freq=stack.getTagCompound().getInteger("freq");
+				int freq=focus.getTagCompound().getInteger("freq");
 				((EnderItemStorage) EnderStorageManager.instance(world.isRemote)
-						.getStorage(getOwner(stack), freq & 0xFFF, "item"))
-						.openSMPGui(p, stack.getUnlocalizedName()+".name");
+						.getStorage(getOwner(focus), freq & 0xFFF, "item"))
+						.openSMPGui(p, focus.getUnlocalizedName()+".name");
 			}
 		}
 
