@@ -6,6 +6,7 @@ import appeng.api.movable.IMovableTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
@@ -97,23 +98,23 @@ public class TileEntityMobilizer extends TileEntity {
 					}else if(passenger instanceof IMovableTile){
 
 						((IMovableTile) passenger).prepareToMove();
-
-						int id=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
-						int meta=worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord);
-
-						worldObj.removeBlockTileEntity(xCoord, yCoord+1, zCoord);
+						worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
+						passenger.invalidate();
 						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
 
-						worldObj.setBlock(targetX, yCoord+1, targetZ, id);
-						worldObj.setBlockMetadataWithNotify(targetX, yCoord, targetZ, meta, 3);
+						//IMovableHandler default code
+						Chunk c = worldObj.getChunkFromBlockCoords( targetX, targetZ );
+						c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1 + yCoord+1, targetZ & 0xF, passenger );
 
-						passenger.xCoord=targetX;
-						passenger.zCoord=targetZ;
-
-						passenger.validate();
-						worldObj.addTileEntity(passenger);
+						if ( c.isChunkLoaded )
+						{
+							worldObj.addTileEntity(passenger);
+							worldObj.markBlockForUpdate(targetX, yCoord+1, targetZ);
+						}
 
 						((IMovableTile) passenger).doneMoving();
+						passenger.validate();
+
 					}
 					//Move self
 					this.invalidate();
