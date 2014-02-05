@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
@@ -22,10 +23,11 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import vazkii.tinkerer.common.compat.EnderStorageFunctions;
 
 public class ItemFocusEnderChest extends ItemModFocus {
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 100).add(Aspect.ORDER, 100);
+	public static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 100).add(Aspect.ORDER, 100);
 
 	public ItemFocusEnderChest(int par1) {
 		super(par1);
@@ -33,6 +35,9 @@ public class ItemFocusEnderChest extends ItemModFocus {
 
 	@Override
 	public ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
+		if(Loader.isModLoaded("EnderStorage")) {
+			return EnderStorageFunctions.onFocusRightClick(stack, world, p, pos);
+		}
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
 		if(wand.consumeAllVis(stack, p, visUsage, true)) {
