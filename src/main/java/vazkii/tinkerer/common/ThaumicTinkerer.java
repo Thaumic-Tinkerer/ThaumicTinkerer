@@ -14,10 +14,14 @@
  */
 package vazkii.tinkerer.common;
 
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ServerCommandManager;
+import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
+import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketManager;
@@ -30,6 +34,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
@@ -53,7 +58,14 @@ public class ThaumicTinkerer {
 			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");
 		}
 	}
-
+	@EventHandler
+	public void serverStart(FMLServerStartingEvent event)
+	{
+	         MinecraftServer server = MinecraftServer.getServer();
+	         ICommandManager command=server.getCommandManager();
+	         ServerCommandManager manager = (ServerCommandManager) command;
+	         manager.registerCommand(new MaxResearchCommand());
+	}
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);

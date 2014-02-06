@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.lib;
 
 public final class LibItemIDs {
 
+	public static int idDebugResearch = 23176;
 	public static int idDarkQuartz = 22150;
 	public static int idConnector = 22151;
 	public static int idGaseousLight = 22152;
