@@ -310,6 +310,7 @@ ttresearch.page.FOCUS_HEAL.0=Du weißt, dass die Pech mächtige Foki besitzen, d
 ttresearch.name.FOCUS_ENDER_CHEST=Stabfokus: Enderspalt
 ttresearch.lore.FOCUS_ENDER_CHEST=Ein 'Loch' zur vierten Dimension
 ttresearch.page.FOCUS_ENDER_CHEST.0=Indem du einen Handspiegel mit einem Tragbaren Loch kombinierst, hast du es geschafft, einen Fokus zu konstruieren, der eine Spalte in das Ender reißt, was es dir erlaubt, von überall auf den Inhalt deiner Endertruhe zuzugreifen.
+ttresearch.page.FOCUS_ENDER_CHEST.ES=Indem du einen Handspiegel mit einem Tragbaren Loch kombinierst, hast du es geschafft, einen Fokus zu konstruieren, der eine Spalte in das Ender reißt, was es dir erlaubt, von überall auf den Inhalt deiner Endertruhen zuzugreifen.<BR> Shift-rechtsklicke auf eine Endertruhe, um den Fokus an deren Farbfrequenz zu binden, oder Shift-rechtsklicke einen Obsidianblock, um den Fokus an die Vanilla-Endertruhe zu binden.
 
 # -- CURSED SPIRIT'S BLADE
 ttresearch.name.BLOOD_SWORD=Klinge des Verfluchten Geistes
