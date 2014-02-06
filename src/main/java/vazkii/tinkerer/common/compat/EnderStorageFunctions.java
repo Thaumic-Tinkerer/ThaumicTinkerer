@@ -78,4 +78,15 @@ public class EnderStorageFunctions {
 		if(stack.hasTagCompound() && !stack.getTagCompound().getString("owner").equals("global"))
 			list.add(stack.getTagCompound().getString("owner"));
 	}
+
+	public static String getSortingHelper(ItemStack focus) {
+		String base="ENDERCHEST";
+		if(!focus.hasTagCompound())
+			return base+"-VANILLA";
+		boolean vanilla=!focus.getTagCompound().getBoolean("ender");
+		if(vanilla)
+			return base+"-VANILLA";
+		int freq=focus.getTagCompound().getInteger("freq");
+		return base+Integer.toString(freq)+getOwner(focus);
+	}
 }
