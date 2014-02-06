@@ -76,6 +76,9 @@ public class ItemFocusEnderChest extends ItemModFocus {
 
 	@Override
 	public String getSortingHelper(ItemStack paramItemStack) {
+		if(Loader.isModLoaded("EnderStorage")) {
+			return EnderStorageFunctions.getSortingHelper(paramItemStack);
+		}
 		return "ENDERCHEST";
 	}
 

@@ -143,26 +143,62 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	@Override
 	public String getSortingHelper(ItemStack itemstack) {
-		return "DISLOCATION";
+		return "DISLOCATION"+getUniqueKey(itemstack);
 	}
-
+	public String getUniqueKey(ItemStack itemstack)
+	{
+		ItemStack stack=getPickedBlock(itemstack);
+		if(stack==null)
+			return "";
+		String name=stack.getUnlocalizedName();
+		int datahash=0;
+		if(stack.getTagCompound()!=null)
+		{
+			datahash=stack.getTagCompound().hashCode();
+		}
+		return String.format("%s-%d", name,datahash);
+	}
 	public ItemStack getPickedBlock(ItemStack stack) {
-		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		ItemStack focus=wand.getFocusItem(stack);
+		ItemStack focus;
+		if(stack.getItem() instanceof ItemWandCasting)
+		{
+			ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+			focus=wand.getFocusItem(stack);
+		}
+		else
+		{
+			focus=stack;
+		}
 		return focus.hasTagCompound() && focus.getTagCompound().hasKey(TAG_AVAILABLE) && focus.getTagCompound().getBoolean(TAG_AVAILABLE) ? getPickedBlockStack(stack) : null;
 	}
 
 	public ItemStack getPickedBlockStack(ItemStack stack) {
-		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		ItemStack focus=wand.getFocusItem(stack);
+		ItemStack focus;
+		if(stack.getItem() instanceof ItemWandCasting)
+		{
+			ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+			focus=wand.getFocusItem(stack);
+		}
+		else
+		{
+			focus=stack;
+		}
 		int id = ItemNBTHelper.getInt(focus, TAG_BLOCK_ID, 0);
 		int meta = ItemNBTHelper.getInt(focus, TAG_BLOCK_META, 0);
 		return new ItemStack(id, 1, meta);
 	}
 
 	public NBTTagCompound getStackTileEntity(ItemStack stack) {
-		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		ItemStack focus=wand.getFocusItem(stack);
+		ItemStack focus;
+		if(stack.getItem() instanceof ItemWandCasting)
+		{
+			ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+			focus=wand.getFocusItem(stack);
+		}
+		else
+		{
+			focus=stack;
+		}
 		return ItemNBTHelper.getCompound(focus, TAG_TILE_CMP, true);
 	}
 
