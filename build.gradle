@@ -1,34 +1,52 @@
 buildscript {
     repositories {
         mavenCentral()
+
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "shadow-repo"
-            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
         }
 		maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+		 maven {
+            name = "shadow-repo"
+            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
-        classpath 'org.gradle.plugins:shadow:0.7.4'
+		classpath 'org.gradle.plugins:shadow:0.7.4'
     }
 }
+repositories {
+	ivy {
+        name 'Forge FS legacy'
+        artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
+    }
+	ivy {
+        name 'CB FS'
+        artifactPattern "http://www.chickenbones.craftsaddle.org/Files/New_Versions/1.6.4/[module]-dev%20[revision].[ext]"
+    }
 
+}
 apply plugin: 'shadow'
 
-shadow
-        {
-            include 'javax/mail/**'
-            include 'com/sun/activation/**'
-            include 'javax/activation/**'
-            include 'com/sun/mail/**'
-        }
+shadow {
+	include 'javax/mail/**'
+	include 'com/sun/activation/**'
+	include 'javax/activation/**'
+	include 'com/sun/mail/**'
+}
+
+//libsDir = new File('libs')
+task download {
+	ant.mkdir(dir: "libs")
+//	libsDir.mkdirs()
+	ant.get(src:"http://teneo.illyohs.us/dependencies/tt/Thaumcraft_Dev_4.0.5b.zip", dest: "libs", verbose:true, usetimestamp:false)
+	ant.get(src:"http://teneo.illyohs.us/dependencies/tt/Waila_Dev_1.4.4.zip", dest: "libs", verbose:true, usetimestamp:false)
+}
 
 apply plugin: 'forge'
 
@@ -39,23 +57,23 @@ archivesBaseName = "ThaumicTinkerer"
 minecraft {
 	version = "1.6.4-9.11.1.964"
 	assetDir = "eclipse/assets"
-    replaceIn "common/AutoCrashReporter.java"
-
-    if (project.hasProperty("pass"))
+	replaceIn "common/AutoCrashReporter.java"
+	if (project.hasProperty("pass"))
         replace "INSERTPASSWORDHERE", project.pass
-
 }
 
 dependencies {
+	
+	compile name: 'ForgeMultipart', version: '1.6.4-1.0.0.240', ext: 'jar'
+    compile name: 'CodeChickenLib', version: '1.6.4-1.0.0.55', ext: 'jar'
+    compile name: 'NotEnoughItems', version: '1.6.1.8', type: 'jar'
+    compile name: 'CodeChickenCore', version: '0.9.0.7', type: 'jar'
+    compile name: 'EnderStorage', version: '1.4.3.5', type: 'jar'
+
 	compile files (
-		'TCDEOBF.jar',
-		'mods/Waila_Dev_1.4.4.zip',
-		'mods/CodeChickenCore-dev 0.9.0.7.jar',
-		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
-		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
-		'mods/NotEnoughItems-dev 1.6.1.5.jar',
-		'mods/EnderStorage-dev 1.4.3.5.jar'
-	)
+        "libs/Thaumcraft_Dev_4.0.5b.zip", //Temp till the private repo works
+        "libs/Waila_Dev_1.4.4.zip" //Temp till private the repo work
+            )
     compile 'javax.mail:mail:1.4'
 }
 
@@ -73,4 +91,11 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+	task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+	}
+	artifacts {
+		archives deobfJar
+	}
 }
