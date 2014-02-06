@@ -42,6 +42,7 @@ public final class ConfigHandler {
 	public static boolean useTootlipIndicators = true;
 	public static boolean enableSurvivalShareTome = true;
 	public static boolean enableEasymodeResearch = false;
+	public static boolean enableDebugCommands=false;
 	public static boolean useOreDictMetal = true;
 	
 	public static boolean showPlacementMirrorBlocks = true;
@@ -77,7 +78,11 @@ public final class ConfigHandler {
 		Property propEasymodeResearch = config.get(Configuration.CATEGORY_GENERAL, "research.easymode.enabled", false);
 		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research.";
 		enableEasymodeResearch = propEasymodeResearch.getBoolean(false);
-
+		
+		Property propDebugCommands = config.get(Configuration.CATEGORY_GENERAL, "debugCommands.enabled", false);
+		propDebugCommands.comment = "Set to true to enable debugging commands.";
+		enableDebugCommands = propDebugCommands.getBoolean(false);
+		
 		Property propOreDict = config.get(Configuration.CATEGORY_GENERAL, "oreDictMetal.enabled", true);
 		propOreDict.comment = "Set to false to disable usage of ore dictionary metals (tin and copper).";
 		useOreDictMetal = propOreDict.getBoolean(true);

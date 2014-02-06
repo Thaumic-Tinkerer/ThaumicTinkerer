@@ -88,7 +88,6 @@ public class ModCreativeTab extends CreativeTabs {
 		addItem(ModItems.bloodSword);
 		addItem(ModItems.brightNitor);
 		addItem(ModItems.shareBook);
-
 		addItem(ModItems.focusFlight);
 		addItem(ModItems.focusDislocation);
 		addItem(ModItems.focusTelekinesis);
