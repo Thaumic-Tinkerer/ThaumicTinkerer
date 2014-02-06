@@ -22,7 +22,7 @@ public final class LibResearch {
 	public static final String CATEGORY_ARTIFICE = "ARTIFICE";
 	public static final String CATEGORY_GOLEMANCY = "GOLEMANCY";
 
-	public static final String CATEGORY_ENCHANTING = "TT_ENCHANTING";
+	public static final String CATEGORY_ENCHANTING = "TT_CATEGORY";
 	public static final String CATEGORY_THAUMICTINKERER = "TT_CATEGORY";
 
 	public static final String KEY_MOBILIZER = "LEVITATOR";
