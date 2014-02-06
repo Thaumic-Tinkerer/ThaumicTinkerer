@@ -77,4 +77,5 @@ public final class LibItemNames {
 		LibResources.PREFIX_MOD + "netherShard",
 		LibResources.PREFIX_MOD + "enderShard"
 	};
+	public static final String DEBUG_RESEARCH = LibResources.PREFIX_MOD + "debugResearch";;
 }
