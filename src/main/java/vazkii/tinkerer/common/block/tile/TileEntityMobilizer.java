@@ -3,6 +3,7 @@ package vazkii.tinkerer.common.block.tile;
 import appeng.api.IAppEngApi;
 import appeng.api.Util;
 import appeng.api.movable.IMovableTile;
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.chunk.Chunk;
@@ -83,7 +84,8 @@ public class TileEntityMobilizer extends TileEntity {
 					targetX = xCoord+movementDirection.offsetX;
 					targetZ = zCoord+movementDirection.offsetZ;
 				}
-				if(worldObj.getBlockId(targetX, yCoord, targetZ) == 0 && worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0){
+				if((worldObj.getBlockId(targetX, yCoord, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord, targetZ)].isAirBlock(worldObj, targetX, yCoord, targetZ))
+						&& (worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
 
 					//Move Passenger
 
