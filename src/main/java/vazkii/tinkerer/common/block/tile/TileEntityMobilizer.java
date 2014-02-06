@@ -4,12 +4,16 @@ import appeng.api.IAppEngApi;
 import appeng.api.Util;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
+
+import java.util.List;
 
 public class TileEntityMobilizer extends TileEntity {
 
@@ -69,24 +73,31 @@ public class TileEntityMobilizer extends TileEntity {
 	public void updateEntity(){
 		if(dead)
 			return;
-		if(!worldObj.isRemote){
-			verifyRelay();
-			if(linked && worldObj.getTotalWorldTime()%100==0 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
-				int targetX = xCoord+movementDirection.offsetX;
-				int targetZ = zCoord+movementDirection.offsetZ;
-				if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
-				{
-					return;
-				}
-				//Switch direction if at end of track
-				if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
-					movementDirection = movementDirection.getOpposite();
-					targetX = xCoord+movementDirection.offsetX;
-					targetZ = zCoord+movementDirection.offsetZ;
-				}
-				if((worldObj.getBlockId(targetX, yCoord, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord, targetZ)].isAirBlock(worldObj, targetX, yCoord, targetZ))
-						&& (worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
+		verifyRelay();
+		if(linked && worldObj.getTotalWorldTime()%100==0 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
+			int targetX = xCoord+movementDirection.offsetX;
+			int targetZ = zCoord+movementDirection.offsetZ;
+			if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
+			{
+				return;
+			}
+			//Switch direction if at end of track
+			if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
+				movementDirection = movementDirection.getOpposite();
+				targetX = xCoord+movementDirection.offsetX;
+				targetZ = zCoord+movementDirection.offsetZ;
+			}
+			if((worldObj.getBlockId(targetX, yCoord, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord, targetZ)].isAirBlock(worldObj, targetX, yCoord, targetZ))
+					&& (worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
 
+				//Move Entities
+				List<Entity> entities = worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord+1, yCoord+3, zCoord+1));
+				System.out.print(entities);
+				for(Entity e: entities){
+					e.setPosition(e.posX+movementDirection.offsetX, e.posY, e.posZ+movementDirection.offsetZ);
+				}
+
+				if(!worldObj.isRemote){
 					//Move Passenger
 
 					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
@@ -107,7 +118,7 @@ public class TileEntityMobilizer extends TileEntity {
 					}else if(passenger instanceof IMovableTile || passenger.getClass().getName().startsWith("net.minecraft.tileentity")){
 						boolean imovable=passenger instanceof IMovableTile;
 						if(imovable)
-						((IMovableTile) passenger).prepareToMove();
+							((IMovableTile) passenger).prepareToMove();
 						worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 						passenger.invalidate();
 						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
@@ -141,10 +152,12 @@ public class TileEntityMobilizer extends TileEntity {
 					worldObj.addTileEntity(this);
 					worldObj.removeBlockTileEntity(oldX, yCoord, oldZ);
 
+
+
 				}
 
-
 			}
+
 		}
 	}
 
