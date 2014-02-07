@@ -52,4 +52,5 @@ public enum EnumGolemDecorations {
              decorationChar=ch;
              this.name=name;
      }
+	
 }
