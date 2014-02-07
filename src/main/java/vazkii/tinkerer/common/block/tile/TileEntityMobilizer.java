@@ -2,6 +2,7 @@ package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.IAppEngApi;
 import appeng.api.Util;
+import appeng.api.WorldCoord;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -13,6 +14,7 @@ import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TileEntityMobilizer extends TileEntity {
@@ -41,6 +43,8 @@ public class TileEntityMobilizer extends TileEntity {
 		nbt.setInteger("SecondRelayZ", secondRelayZ);
 
 		nbt.setInteger("Direction", movementDirection != null ? movementDirection.ordinal() : 0);
+
+		nbt.setBoolean("DelayedMove", delayedMove);
 	}
 
 	@Override
@@ -54,6 +58,8 @@ public class TileEntityMobilizer extends TileEntity {
 
 		this.secondRelayX = nbt.getInteger("SecondRelayX");
 		this.secondRelayZ = nbt.getInteger("SecondRelayZ");
+
+		this.delayedMove = nbt.getBoolean("DelayedMove");
 
 		movementDirection=ForgeDirection.VALID_DIRECTIONS[nbt.getInteger("Direction")];
 	}
@@ -70,6 +76,9 @@ public class TileEntityMobilizer extends TileEntity {
 		}
 	}
 
+	//For chaining multiple mobilizers
+	public boolean delayedMove;
+
 	public void updateEntity(){
 		if(dead)
 			return;
@@ -78,12 +87,36 @@ public class TileEntityMobilizer extends TileEntity {
 
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
+
+
 			//Switch direction if at end of track
-			if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
-				movementDirection = movementDirection.getOpposite();
+
+			int idFront=worldObj.getBlockId(targetX, yCoord, targetZ);
+			int idTop=worldObj.getBlockId(targetX, yCoord+1, targetZ);
+			if((idFront != 0 && !Block.blocksList[idFront].isAirBlock(worldObj, targetX, yCoord, targetZ) && idFront != LibBlockIDs.idMobilizer)
+					||((idTop != 0 && !Block.blocksList[idTop].isAirBlock(worldObj, targetX, yCoord+1, targetZ)))){
+				ArrayList<WorldCoord> switched = new ArrayList<WorldCoord>();
+				ArrayList<WorldCoord> toSwitch = new ArrayList<WorldCoord>();
+				toSwitch.add(new WorldCoord(xCoord, yCoord, zCoord));
+				while(toSwitch.size() > 0){
+					WorldCoord curr = toSwitch.remove(0);
+					for(ForgeDirection d:ForgeDirection.VALID_DIRECTIONS){
+						WorldCoord next = curr.copy().add(d, 1);
+						if(!switched.contains(next) && worldObj.getBlockId(next.x, next.y, next.z) == LibBlockIDs.idMobilizer){
+							toSwitch.add(next);
+						}
+					}
+					TileEntity te = worldObj.getBlockTileEntity(curr.x, curr.y, curr.z);
+					if(te instanceof TileEntityMobilizer){
+						((TileEntityMobilizer) te).movementDirection = ((TileEntityMobilizer) te).movementDirection.getOpposite();
+					}
+					switched.add(curr);
+				}
+
 			}
 		}
-		if(linked && worldObj.getTotalWorldTime()%100==1 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
+		if(linked && (delayedMove || worldObj.getTotalWorldTime()%100==1) && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
+			delayedMove=false;
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
 			if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
@@ -156,10 +189,13 @@ public class TileEntityMobilizer extends TileEntity {
 					worldObj.addTileEntity(this);
 					worldObj.removeBlockTileEntity(oldX, yCoord, oldZ);
 
-
-
 				}
 
+			}else{
+				delayedMove=false;
+				if(worldObj.getBlockId(targetX, yCoord, targetZ) == LibBlockIDs.idMobilizer){
+					delayedMove=true;
+				}
 			}
 
 		}
