@@ -75,18 +75,22 @@ public class TileEntityMobilizer extends TileEntity {
 			return;
 		verifyRelay();
 		if(linked && worldObj.getTotalWorldTime()%100==0 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
+
+			int targetX = xCoord+movementDirection.offsetX;
+			int targetZ = zCoord+movementDirection.offsetZ;
+			//Switch direction if at end of track
+			if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
+				movementDirection = movementDirection.getOpposite();
+			}
+		}
+		if(linked && worldObj.getTotalWorldTime()%100==1 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
 			if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
 			{
 				return;
 			}
-			//Switch direction if at end of track
-			if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
-				movementDirection = movementDirection.getOpposite();
-				targetX = xCoord+movementDirection.offsetX;
-				targetZ = zCoord+movementDirection.offsetZ;
-			}
+
 			if((worldObj.getBlockId(targetX, yCoord, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord, targetZ)].isAirBlock(worldObj, targetX, yCoord, targetZ))
 					&& (worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
 
