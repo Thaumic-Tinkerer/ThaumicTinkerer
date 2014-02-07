@@ -95,9 +95,9 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 							te.linked = true;
 
 							if(xCoord != partnerX){
-								te.movementDirection = ForgeDirection.NORTH;
-							}else{
 								te.movementDirection = ForgeDirection.EAST;
+							}else{
+								te.movementDirection = ForgeDirection.NORTH;
 							}
 						}
 					}
