@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.StatCollector;
 import thaumcraft.common.entities.golems.EntityGolemBase;
+import vazkii.tinkerer.common.core.golems.EnumGolemCores;
 import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 import dan200.computer.api.IComputerAccess;
 import dan200.computer.api.ILuaContext;
@@ -44,11 +45,11 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[] { "getDecorations" };
+		return new String[] { "getDecorations","getPosition","getType","getHealth","getCore" };
 	}
 	public String[] getGolemDecorations() throws Exception
     {
-            if(golem.decoration==null || golem.decoration.length()==0)
+            if(golem==null ||golem.decoration==null || golem.decoration.length()==0)
                     return new String[]{};
             String[] decorations=new String[golem.decoration.length()];
             for(int i=0;i<golem.decoration.length();i++)
@@ -62,7 +63,21 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
             return decorations;
            
     }
-	
+	public String[] getGolemCore() throws Exception
+    {
+            if(golem==null)
+                    return new String[]{};
+            if(golem.getCore()==-1)
+            	return new String[]{StatCollector.translateToLocal("item.ItemGolemCore.100.name")};
+            String[] decorations=new String[1];
+            EnumGolemCores golemCore=EnumGolemCores.getFromByte(golem.getCore());
+            if(golemCore==null)
+            	throw new Exception("Golem has Unknown core: "+golem.getCore());
+                decorations[0]=StatCollector.translateToLocal(golemCore.getName());
+           
+            return decorations;
+           
+    }
 	@Override
 	public void writeCustomNBT(NBTTagCompound cmp) {
 		super.writeCustomNBT(cmp);
@@ -110,8 +125,46 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
 		{
 		case 0:
 			return getGolemDecorations();
+		case 1:
+			if(golem==null)
+				return new Integer[]{};
+			return new Integer[]{(int)golem.posX,(int)golem.posY,(int)golem.posZ};
+		case 2:
+			return getGolemType();
+		case 3:
+			if(golem==null)
+				return new Float[]{};
+			return new Float[]{golem.getHealth()};
+		case 4:
+			return getGolemCore();
 		}
 		return null;
+	}
+
+	private String[] getGolemType() throws Exception {
+		if(golem==null)
+			return new String[]{};
+		switch(golem.getGolemType())
+		{
+		case CLAY:
+			return new String[]{"Clay"};
+		case FLESH:
+			return new String[]{"Flesh"};
+		case IRON:
+			return new String[]{"Iron"};
+		case STONE:
+			return new String[]{"Stone"};
+		case STRAW:
+			return new String[]{"Straw"};
+		case TALLOW:
+			return new String[]{"Tallow"};
+		case THAUMIUM:
+			return new String[]{"Thaumium"};
+		case WOOD:
+			return new String[]{"Wood"};
+		default:
+			throw new Exception("Unknown Golem Type: "+golem.getGolemType());
+		}
 	}
 
 	@Override
