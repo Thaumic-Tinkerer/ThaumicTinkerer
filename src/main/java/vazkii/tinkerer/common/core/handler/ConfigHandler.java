@@ -117,7 +117,6 @@ public final class ConfigHandler {
 		LibBlockIDs.idRepairer = loadBlock(LibBlockNames.REPAIRER, LibBlockIDs.idRepairer);
 		LibBlockIDs.idAspectAnalyzer = loadBlock(LibBlockNames.ASPECT_ANALYZER, LibBlockIDs.idAspectAnalyzer);
 		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
-		LibBlockIDs.idGolemConnector = loadBlock(LibBlockNames.GOLEMCONNECTOR, LibBlockIDs.idGolemConnector);
 
 		LibBlockIDs.idWarpGate = loadBlock(LibBlockNames.WARP_GATE, LibBlockIDs.idWarpGate);
 
