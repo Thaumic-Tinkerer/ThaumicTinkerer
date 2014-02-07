@@ -50,6 +50,5 @@ public final class LibBlockNames {
 	public static final String MOBILIZER_RELAY = LibResources.PREFIX_MOD + "Levitational Locomotive Relay";
 
 	public static final String MOBILIZER = LibResources.PREFIX_MOD + "Levitational Locomotive";
-	public static final String GOLEMCONNECTOR = LibResources.PREFIX_MOD + "golemConnector";
 
 }
