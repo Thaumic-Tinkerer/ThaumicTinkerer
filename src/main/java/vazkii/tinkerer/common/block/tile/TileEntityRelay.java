@@ -46,7 +46,6 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 	public int partnerX;
 	public int partnerZ;
 
-
 	@Override
 	public void updateEntity() {
 
