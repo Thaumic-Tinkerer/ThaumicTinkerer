@@ -14,17 +14,12 @@
  */
 package vazkii.tinkerer.common.item;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import thaumcraft.common.entities.golems.EntityGolemBase;
-import thaumcraft.common.entities.golems.EnumGolemType;
-import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
-import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
@@ -35,9 +30,7 @@ public class ItemConnector extends ItemMod {
 	private static final String TAG_POS_X = "posx";
 	private static final String TAG_POS_Y = "posy";
 	private static final String TAG_POS_Z = "posz";
-	private static final String TAG_UUID_MOST="UUIDMost";
-	private static final String TAG_UUID_LEAST="UUIDLeast";
-	private static final String TAG_CONNECTING_GOLEM="ConnectingGolem";
+
 	public ItemConnector(int par1) {
 		super(par1);
 
@@ -50,9 +43,8 @@ public class ItemConnector extends ItemMod {
 			return false;
 
 		TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
-
 		if (getY(par1ItemStack) == -1) {
-			if (tile != null && (tile instanceof TileTransvector || tile instanceof TileGolemConnector)) {
+			if (tile != null && tile instanceof TileTransvector) {
 				setX(par1ItemStack, par4);
 				setY(par1ItemStack, par5);
 				setZ(par1ItemStack, par6);
@@ -105,81 +97,11 @@ public class ItemConnector extends ItemMod {
 		return true;
 	}
 
-	@Override
-	public boolean itemInteractionForEntity(ItemStack par1ItemStack,
-			EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
-		if(par2EntityPlayer.isSneaking())
-		{
-			
-		}
-		if(par3EntityLivingBase instanceof EntityGolemBase)
-		{
-		
-			if(getY(par1ItemStack)==-1)
-			{
-				par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notinterf");
-				return true;
-			}
-			int x = getX(par1ItemStack);
-			int y = getY(par1ItemStack);
-			int z = getZ(par1ItemStack);
-			TileEntity tile1 = par2EntityPlayer.worldObj.getBlockTileEntity(x, y, z);
-			if (tile1 == null || !(tile1 instanceof TileGolemConnector)) {
-				setY(par1ItemStack, -1);
-
-				par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notpresent");
-			} else {
-				TileGolemConnector trans = (TileGolemConnector) tile1;
-
-
-				trans.ConnectGolem(par3EntityLivingBase.getUniqueID());
-
-				setY(par1ItemStack, -1);
-
-				if(par3EntityLivingBase.worldObj.isRemote)
-					par2EntityPlayer.swingItem();
-
-				playSound(par3EntityLivingBase.worldObj, (int)par3EntityLivingBase.posX, (int)par3EntityLivingBase.posY, (int)par3EntityLivingBase.posZ);
-				par2EntityPlayer.addChatMessage("ttmisc.golemconnector.complete");
-				PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3EntityLivingBase.worldObj.provider.dimensionId);
-			}
-			return true;
-		}
-		return false;
-	}
-
 	private void playSound(World world, int x, int y, int z) {
 		if(!world.isRemote)
 			world.playSoundEffect(x, y, z, "random.orb", 0.8F, 1F);
 	}
-	
-	public static long getUUIDMost(ItemStack stack)
-	{
-		return ItemNBTHelper.getLong(stack, TAG_UUID_MOST, 0);
-	}
-	public static long getUUIDLeast(ItemStack stack)
-	{
-		return ItemNBTHelper.getLong(stack, TAG_UUID_LEAST, 0);
-	}
-	
-	public static boolean getConnectingGolem(ItemStack stack)
-	{
-		return ItemNBTHelper.getBoolean(stack, TAG_CONNECTING_GOLEM, false);
-	}
-	
-	public static void setUUIDMost(ItemStack stack,long most)
-	{
-		ItemNBTHelper.setLong(stack, TAG_UUID_MOST, most);
-	}
-	
-	public static void setUUIDLeast(ItemStack stack,long least)
-	{
-		ItemNBTHelper.setLong(stack, TAG_UUID_LEAST, least);
-	}
-	public static void setConnectingGolem(ItemStack stack,boolean connecting)
-	{
-		ItemNBTHelper.setBoolean(stack, TAG_CONNECTING_GOLEM, connecting);
-	}
+
 	public static void setX(ItemStack stack, int x) {
 		ItemNBTHelper.setInt(stack, TAG_POS_X, x);
 	}
