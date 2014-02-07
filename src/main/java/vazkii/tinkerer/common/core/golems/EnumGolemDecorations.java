@@ -26,7 +26,7 @@ public enum EnumGolemDecorations {
     		 return BowTie;
     	 case 'F':
     		 return Fez;
-    	 case 'D':
+    	 case 'R':
     		 return DartGun;
     	 case 'V':
     		 return Visor;
