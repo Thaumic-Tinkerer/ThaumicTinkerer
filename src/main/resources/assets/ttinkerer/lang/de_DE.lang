@@ -340,7 +340,7 @@ ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehe
 # -- LEVITATOR
 ttresearch.name.LEVITATOR=Levitationslokomotive
 ttresearch.lore.LEVITATOR=Es fährt nach links, es fährt nach rechts.
-ttresearch.page.LEVITATOR.0=Du hast eine neue Gerätschaft kreiert, um Dinge vor- und rückwärts zu bewegen. Zwei Relais platziert in einer geraden Linie werden zwischen sich einen Energiestrahl projezieren.<BR><BR> Platziere einen Levitator innerhalb des projezierten Strahls. Der Levitator wird nun auf dem Strahl vor- und rückwärts bewegt und den Block über ihm mitbewegen.
+ttresearch.page.LEVITATOR.0=Du hast eine neue Gerätschaft kreiert, um Dinge vor- und rückwärts zu bewegen. Zwei Relais platziert in einer geraden Linie werden zwischen sich einen Energiestrahl projezieren. Auch zeigt sich ein visueller Effekt, sollten Partikel in den Videoeinstellungen aktiviert sein.<BR><BR> Platziere einen Levitator innerhalb des projezierten Strahls. Der Levitator wird nun auf dem Strahl vor- und rückwärts bewegt und den Block über ihm mitbewegen.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ätherische Plattform
