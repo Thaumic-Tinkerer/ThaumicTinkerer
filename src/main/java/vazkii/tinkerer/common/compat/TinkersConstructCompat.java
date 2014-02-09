@@ -32,7 +32,21 @@ public class TinkersConstructCompat {
 		
 		if(ItemNBTHelper.verifyExistance(stack, TAG_ENERGY) || ItemNBTHelper.verifyExistance(stack, TAG_CHARGE))
 			return -1;
-		
+		if(ItemNBTHelper.getNBT(stack).hasKey(TAG_INFINITOOL))
+		{
+			NBTTagCompound InfiniTool=ItemNBTHelper.getNBT(stack).getCompoundTag(TAG_INFINITOOL);
+			if(InfiniTool.hasKey(TAG_BROKEN) && InfiniTool.getBoolean(TAG_BROKEN))
+			{
+				if(InfiniTool.hasKey(TAG_DURABILITY))
+					return InfiniTool.getInteger(TAG_DURABILITY);
+				else
+					return -1;
+			}
+			if(InfiniTool.hasKey(TAG_DAMAGE))
+			{
+				return InfiniTool.getInteger(TAG_DAMAGE);
+			}
+		}
 		return -1;
 	}
 	
