@@ -122,8 +122,10 @@ public class TileEntityMobilizer extends TileEntity {
 
 						if(passenger==null){
 							if(passengerId != 7 && passengerId != 34){
-								worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
-								worldObj.setBlock(xCoord, yCoord+1, zCoord, 0, 0, 2);
+								worldObj.setBlock(targetX, yCoord+1, targetZ, passengerId, worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
+								if(passengerId != 0){
+									worldObj.setBlock(xCoord, yCoord+1, zCoord, 0, 0, 2);
+								}
 							}
 							//If AE is installed, use its handler
 						}else if(api != null){
