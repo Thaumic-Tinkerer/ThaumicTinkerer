@@ -106,7 +106,7 @@ public class TileEntityMobilizer extends TileEntity {
 
 					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
 					IAppEngApi api = Util.getAppEngApi();
-					if(passenger==null){
+					if(passenger==null && worldObj.getBlockId(xCoord, yCoord+1, zCoord) != 7){
 						worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
 						worldObj.setBlock(xCoord, yCoord+1, zCoord, 0);
 					}else if(api != null){
