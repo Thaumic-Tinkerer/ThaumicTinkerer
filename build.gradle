@@ -19,6 +19,20 @@ buildscript {
         classpath 'org.gradle.plugins:shadow:0.7.4'
     }
 }
+repositories {
+	maven {
+       name 'SlimeKnights Maven FS'
+          url 'http://aeon.sunstrike.io'
+	}
+	maven {
+          name 'ForgeFS'
+          url 'http://files.minecraftforge.net/maven'
+     }
+     maven {
+          name 'MinecraftS3'
+          url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
+     }
+}
 
 apply plugin: 'shadow'
 
@@ -57,6 +71,7 @@ dependencies {
 		'mods/EnderStorage-dev 1.4.3.5.jar'
 	)
     compile 'javax.mail:mail:1.4'
+	compile "tconstruct:TConstruct:7a2abb:dev"
 }
 
 processResources
