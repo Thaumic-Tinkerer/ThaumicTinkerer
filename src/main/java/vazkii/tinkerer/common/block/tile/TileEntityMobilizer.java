@@ -71,11 +71,14 @@ public class TileEntityMobilizer extends TileEntity {
 	}
 
 	public void updateEntity(){
+		//Check for ghost TEs
 		if(dead)
 			return;
+		//Make sure the relays haven't been broken
 		verifyRelay();
+		//Bounce
 		if(linked && worldObj.getTotalWorldTime()%100==0 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
-
+			//Target coordinates to check
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
 			//Switch direction if at end of track
@@ -83,16 +86,19 @@ public class TileEntityMobilizer extends TileEntity {
 				movementDirection = movementDirection.getOpposite();
 			}
 		}
+		//Move
 		if(linked && worldObj.getTotalWorldTime()%100==1 && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)){
+			//Cache coordinated
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
+			//Check for abandoned TEs
 			if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
 			{
 				return;
 			}
-
+			//Check if the space the mobilizer will move into is empty
 			if((worldObj.getBlockId(targetX, yCoord, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord, targetZ)].isAirBlock(worldObj, targetX, yCoord, targetZ))
-					&& (worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
+					&& (worldObj.getBlockId(xCoord, yCoord+1, zCoord) ==0 || worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
 
 				//Move Entities
 				List<Entity> entities = worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord+1, yCoord+3, zCoord+1));
@@ -101,18 +107,21 @@ public class TileEntityMobilizer extends TileEntity {
 					e.setPosition(e.posX+movementDirection.offsetX, e.posY, e.posZ+movementDirection.offsetZ);
 				}
 
+				//Move the block on top of the mobilizer
 				if(!worldObj.isRemote){
-					//Move Passenger
 
 					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
 					IAppEngApi api = Util.getAppEngApi();
 
+					//Prevent the passenger from popping off. Not sent to clients.
 					worldObj.setBlock(targetX, yCoord, targetZ, 1, 0, 0);
-
+					//Move non-TE blocks
 					if(passenger==null && worldObj.getBlockId(xCoord, yCoord+1, zCoord) != 7){
 						worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
 						worldObj.setBlock(xCoord, yCoord+1, zCoord, 0, 0, 2);
+					//If AE is installed, use its handler
 					}else if(api != null){
+
 						if(api.getMovableRegistry().askToMove(passenger)){
 							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 							passenger.invalidate();
@@ -122,6 +131,7 @@ public class TileEntityMobilizer extends TileEntity {
 							passenger.validate();
 						}
 
+					//Handler IMovableTiles and vanilla TEs without AE
 					}else if(passenger instanceof IMovableTile || passenger.getClass().getName().startsWith("net.minecraft.tileentity")){
 						boolean imovable=passenger instanceof IMovableTile;
 						if(imovable)
