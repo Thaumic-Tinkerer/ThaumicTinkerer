@@ -15,8 +15,10 @@ public class TinkersConstructCompat {
 	private static final String TAG_CHARGE = "charge";
 	private static final String TAG_ENERGY = "Energy";
 	
-	public boolean isTConstructTool(ItemStack stack)
+	public static boolean isTConstructTool(ItemStack stack)
 	{	
+		if(stack==null)
+			return false;
 		Item item=stack.getItem();
 		
 		if(item instanceof ToolCore)
@@ -25,8 +27,10 @@ public class TinkersConstructCompat {
 			return false;
 	}
 	
-	public int getDamage(ItemStack stack)
+	public static int getDamage(ItemStack stack)
 	{
+		if(stack==null)
+			return -1;
 		if(!isTConstructTool(stack))
 			return -1;
 		
@@ -52,9 +56,31 @@ public class TinkersConstructCompat {
 	
 	
 	
-	public boolean fixDamage(ItemStack item,int amount)
+	public static boolean fixDamage(ItemStack stack,int amount)
 	{
-		return false;
+		if(stack==null)
+			return false;
+		if(!isTConstructTool(stack))
+			return false;
 		
+		if(ItemNBTHelper.verifyExistance(stack, TAG_ENERGY) || ItemNBTHelper.verifyExistance(stack, TAG_CHARGE))
+			return false;
+		if(ItemNBTHelper.getNBT(stack).hasKey(TAG_INFINITOOL))
+		{
+			NBTTagCompound InfiniTool=ItemNBTHelper.getNBT(stack).getCompoundTag(TAG_INFINITOOL);
+			if(InfiniTool.hasKey(TAG_BROKEN) && InfiniTool.getBoolean(TAG_BROKEN))
+			{
+				InfiniTool.setBoolean(TAG_BROKEN, false);
+				ItemNBTHelper.setCompound(stack, TAG_INFINITOOL, InfiniTool);
+			}
+			if(!InfiniTool.hasKey(TAG_DAMAGE))
+				return false;
+			int fDamage=InfiniTool.getInteger(TAG_DAMAGE);
+			if(fDamage-amount<0)
+				fDamage=0;
+			InfiniTool.setInteger(TAG_DAMAGE, fDamage);
+			ItemNBTHelper.setCompound(stack, TAG_INFINITOOL, InfiniTool);
+		}
+		return false;
 	}
 }
