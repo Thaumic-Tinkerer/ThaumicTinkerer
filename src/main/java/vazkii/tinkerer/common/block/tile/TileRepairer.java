@@ -15,6 +15,7 @@ x * This class was created by <Vazkii>. It's distributed as
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -32,6 +33,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.compat.TinkersConstructCompat;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.HashMap;
@@ -55,6 +57,26 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	@Override
 	public void updateEntity() {
 		if(++ticksExisted % 10 == 0) {
+			if(Loader.isModLoaded("TConstruct"))
+			{
+				if(inventorySlots[0] != null)
+				{
+					if(TinkersConstructCompat.isTConstructTool(inventorySlots[0]))
+					{
+						int dmg=TinkersConstructCompat.getDamage(inventorySlots[0]);
+						if( dmg > 0) {
+							int essentia = drawEssentia();
+							TinkersConstructCompat.fixDamage(inventorySlots[0], Math.max(0, dmg - essentia));
+							onInventoryChanged();
+							if(dmgLastTick != 0 && dmgLastTick != dmg) {
+								ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
+								tookLastTick = true;
+							} else tookLastTick = false;
+						} else tookLastTick=false;
+						return ;
+					}
+				}
+			}
 			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
 				int essentia = drawEssentia();
 				int dmg = inventorySlots[0].getItemDamage();
@@ -211,6 +233,13 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+		if(Loader.isModLoaded("TConstruct"))
+		{
+			if(TinkersConstructCompat.isTConstructTool(itemstack))
+			{
+				return itemstack!=null;
+			}
+		}
 		return itemstack != null && itemstack.getItem().isRepairable();
 	}
 
