@@ -29,6 +29,8 @@ import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.compat.TinkersConstructCompat;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -112,7 +114,19 @@ public class BlockRepairer extends BlockModContainer {
 							k1 = itemstack.stackSize;
 
 						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+						int dmg;
+						if(Loader.isModLoaded("TConstruct"))
+						{
+							if(TinkersConstructCompat.isTConstructTool(itemstack))
+							{
+								dmg=TinkersConstructCompat.getDamage(itemstack);
+							}
+							else
+								dmg=itemstack.getItemDamage();
+						}
+						else
+							dmg=itemstack.getItemDamage();
+						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, dmg));
 						float f3 = 0.05F;
 						entityitem.motionX = (float)random.nextGaussian() * f3;
 						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
