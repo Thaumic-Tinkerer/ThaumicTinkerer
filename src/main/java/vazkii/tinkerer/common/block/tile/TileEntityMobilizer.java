@@ -116,43 +116,49 @@ public class TileEntityMobilizer extends TileEntity {
 					//Prevent the passenger from popping off. Not sent to clients.
 					worldObj.setBlock(targetX, yCoord, targetZ, 1, 0, 0);
 					//Move non-TE blocks
-					if(passenger==null && worldObj.getBlockId(xCoord, yCoord+1, zCoord) != 7){
-						worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
-						worldObj.setBlock(xCoord, yCoord+1, zCoord, 0, 0, 2);
-					//If AE is installed, use its handler
-					}else if(api != null){
+					int passengerId=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
 
-						if(api.getMovableRegistry().askToMove(passenger)){
+					if(passengerId == 0 || Block.blocksList[passengerId].canPlaceBlockAt(worldObj, targetX, yCoord+1, targetZ)){
+
+						if(passenger==null){
+							if(passengerId != 7 && passengerId != 34){
+								worldObj.setBlock(targetX, yCoord+1, targetZ, worldObj.getBlockId(xCoord, yCoord+1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
+								worldObj.setBlock(xCoord, yCoord+1, zCoord, 0, 0, 2);
+							}
+							//If AE is installed, use its handler
+						}else if(api != null){
+							if(api.getMovableRegistry().askToMove(passenger)){
+								worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
+								passenger.invalidate();
+								worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
+								api.getMovableRegistry().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord+1, targetZ);
+								api.getMovableRegistry().doneMoveing(passenger);
+								passenger.validate();
+							}
+
+							//Handler IMovableTiles and vanilla TEs without AE
+						}else if(passenger instanceof IMovableTile ||passenger.getClass().getName().startsWith("net.minecraft.tileentity")){
+							boolean imovable=passenger instanceof IMovableTile;
+							if(imovable)
+								((IMovableTile) passenger).prepareToMove();
 							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 							passenger.invalidate();
 							worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
-							api.getMovableRegistry().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord+1, targetZ);
-							api.getMovableRegistry().doneMoveing(passenger);
+
+							//IMovableHandler default code
+							Chunk c = worldObj.getChunkFromBlockCoords( targetX, targetZ );
+							c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1, targetZ & 0xF, passenger );
+
+							if ( c.isChunkLoaded )
+							{
+								worldObj.addTileEntity(passenger);
+								worldObj.markBlockForUpdate(targetX, yCoord+1, targetZ);
+							}
+							if(imovable)
+								((IMovableTile) passenger).doneMoving();
 							passenger.validate();
+
 						}
-
-					//Handler IMovableTiles and vanilla TEs without AE
-					}else if(passenger instanceof IMovableTile || passenger.getClass().getName().startsWith("net.minecraft.tileentity")){
-						boolean imovable=passenger instanceof IMovableTile;
-						if(imovable)
-							((IMovableTile) passenger).prepareToMove();
-						worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
-						passenger.invalidate();
-						worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
-
-						//IMovableHandler default code
-						Chunk c = worldObj.getChunkFromBlockCoords( targetX, targetZ );
-						c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1, targetZ & 0xF, passenger );
-
-						if ( c.isChunkLoaded )
-						{
-							worldObj.addTileEntity(passenger);
-							worldObj.markBlockForUpdate(targetX, yCoord+1, targetZ);
-						}
-						if(imovable)
-							((IMovableTile) passenger).doneMoving();
-						passenger.validate();
-
 					}
 					//Move self
 					this.invalidate();
