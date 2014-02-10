@@ -91,7 +91,7 @@ public final class ModBlocks {
 		registerBlocks();
 		registerMultiparts();
 	}
-
+	
 	private static void registerBlocks() {
 		GameRegistry.registerBlock(darkQuartz, ItemDarkQuartzBlock.class, LibBlockNames.DARK_QUARTZ);
 		GameRegistry.registerBlock(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS);

@@ -66,13 +66,14 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 						int dmg=TinkersConstructCompat.getDamage(inventorySlots[0]);
 						if( dmg > 0) {
 							int essentia = drawEssentia();
-							TinkersConstructCompat.fixDamage(inventorySlots[0], Math.max(0, dmg - essentia));
+							TinkersConstructCompat.fixDamage(inventorySlots[0], essentia);
 							onInventoryChanged();
 							if(dmgLastTick != 0 && dmgLastTick != dmg) {
 								ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
 								tookLastTick = true;
 							} else tookLastTick = false;
 						} else tookLastTick=false;
+						dmgLastTick = inventorySlots[0] == null ? 0 : TinkersConstructCompat.getDamage(inventorySlots[0]);
 						return ;
 					}
 				}
@@ -108,27 +109,26 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
-		inventorySlots = new ItemStack[getSizeInventory()];
-		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
-			byte var5 = var4.getByte("Slot");
-			if (var5 >= 0 && var5 < inventorySlots.length)
-				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
-		}
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        inventorySlots = new ItemStack[1];
+        
+        if(nbttaglist.tagCount()>0)
+        {
+            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.tagAt(0);
+                inventorySlots[0] = ItemStack.loadItemStackFromNBT(tagList);
+        }
 	}
 
 	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		NBTTagList var2 = new NBTTagList();
-		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
-			if (inventorySlots[var3] != null) {
-				NBTTagCompound var4 = new NBTTagCompound();
-				var4.setByte("Slot", (byte)var3);
-				inventorySlots[var3].writeToNBT(var4);
-				var2.appendTag(var4);
-			}
-		}
-		par1NBTTagCompound.setTag("Items", var2);
+		 NBTTagList nbttaglist = new NBTTagList();
+	            if (inventorySlots[0] != null)
+	            {
+	                NBTTagCompound tagList = new NBTTagCompound();
+	                tagList.setByte("Slot", (byte) 0);
+	                inventorySlots[0].writeToNBT(tagList);
+	                nbttaglist.appendTag(tagList);
+	        }
+	        par1NBTTagCompound.setTag("Items", nbttaglist);
 	}
 
 	@Override
@@ -277,7 +277,12 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		ItemStack stack = inventorySlots[0];
 		if(stack == null)
 			return null;
-		else return new AspectList().add(Aspect.ENTROPY, stack.getItemDamage());
+		if(Loader.isModLoaded("TConstruct"))
+		{
+			if(TinkersConstructCompat.isTConstructTool(stack))
+				return new AspectList().add(Aspect.ENTROPY, TinkersConstructCompat.getDamage(stack));
+		}
+		return new AspectList().add(Aspect.ENTROPY, stack.getItemDamage());
 	}
 
 	@Override
