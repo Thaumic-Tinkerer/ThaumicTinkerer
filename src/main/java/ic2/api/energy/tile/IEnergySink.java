@@ -4,7 +4,7 @@ import net.minecraftforge.common.ForgeDirection;
 
 /**
  * Allows a tile entity (mostly a machine) to receive energy.
- *
+ * 
  * See ic2/api/energy/usage.txt for an overall description of the energy net api.
  */
 public interface IEnergySink extends IEnergyAcceptor {
@@ -21,7 +21,7 @@ public interface IEnergySink extends IEnergyAcceptor {
 
 	/**
 	 * Transfer energy to the sink.
-	 *
+	 * 
 	 * It's highly recommended to accept all energy by letting the internal buffer overflow to
 	 * increase the performance and accuracy of the distribution simulation.
 	 *
