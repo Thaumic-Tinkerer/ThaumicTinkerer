@@ -1,5 +1,6 @@
 package vazkii.tinkerer.common.compat;
 
+import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import net.minecraft.item.Item;
@@ -14,6 +15,7 @@ public class TinkersConstructCompat {
 	private static final String TAG_DURABILITY = "TotalDurability";
 	private static final String TAG_CHARGE = "charge";
 	private static final String TAG_ENERGY = "Energy";
+	private static final String TAG_REPAIRCOUNT = "RepairCount";
 	
 	public static boolean isTConstructTool(ItemStack stack)
 	{	
@@ -22,7 +24,11 @@ public class TinkersConstructCompat {
 		Item item=stack.getItem();
 		
 		if(item instanceof ToolCore)
+		{
+			if(ItemNBTHelper.verifyExistance(stack, TAG_ENERGY) || ItemNBTHelper.verifyExistance(stack, TAG_CHARGE))
+				return false;
 			return true;
+		}
 		else
 			return false;
 	}
@@ -68,19 +74,50 @@ public class TinkersConstructCompat {
 		if(ItemNBTHelper.getNBT(stack).hasKey(TAG_INFINITOOL))
 		{
 			NBTTagCompound InfiniTool=ItemNBTHelper.getNBT(stack).getCompoundTag(TAG_INFINITOOL);
-			if(InfiniTool.hasKey(TAG_BROKEN) && InfiniTool.getBoolean(TAG_BROKEN))
-			{
-				InfiniTool.setBoolean(TAG_BROKEN, false);
-				ItemNBTHelper.setCompound(stack, TAG_INFINITOOL, InfiniTool);
-			}
-			if(!InfiniTool.hasKey(TAG_DAMAGE))
-				return false;
-			int fDamage=InfiniTool.getInteger(TAG_DAMAGE);
-			if(fDamage-amount<0)
-				fDamage=0;
-			InfiniTool.setInteger(TAG_DAMAGE, fDamage);
+			InfiniTool.setBoolean("Broken", false);
+	        int damage = InfiniTool.getInteger("Damage");
+	        int dur = InfiniTool.getInteger("BaseDurability");
+	        int itemsUsed = 0;
+	        int increase = calculateIncrease(stack,amount);
+	        int repair =InfiniTool.getInteger("RepairCount");
+	        repair += itemsUsed;
+	        InfiniTool.setInteger("RepairCount", repair);
+
+	        damage -= increase;
+	        if (damage < 0)
+	            damage = 0;
+	        InfiniTool.setInteger("Damage", damage);
+
+	        AbilityHelper.damageTool(stack, 0, null, true);
 			ItemNBTHelper.setCompound(stack, TAG_INFINITOOL, InfiniTool);
+			AbilityHelper.damageTool(stack, 0, null, true);
 		}
 		return false;
+	}
+
+	private static int calculateIncrease(ItemStack tool, int amount) {
+		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
+        int damage = tags.getInteger("Damage");
+        int dur = tags.getInteger("BaseDurability");
+        int increase = (int) amount*2;
+
+        int modifiers = tags.getInteger("Modifiers");
+        float mods = 1.0f;
+        if (modifiers == 2)
+            mods = 1.0f;
+        else if (modifiers == 1)
+            mods = 0.75f;
+        else if (modifiers == 0)
+            mods = 0.5f;
+
+        increase *= mods;
+
+        int repair = tags.getInteger("RepairCount");
+        float repairCount = (100 - repair) / 100f;
+        if (repairCount < 0.5f)
+            repairCount = 0.5f;
+        increase *= repairCount;
+        increase /= ((ToolCore) tool.getItem()).getRepairCost();
+        return increase;
 	}
 }
