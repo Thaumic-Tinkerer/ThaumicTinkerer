@@ -18,6 +18,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
+import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
@@ -25,6 +26,7 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
 import vazkii.tinkerer.common.block.tile.*;
+import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
@@ -65,6 +67,7 @@ public final class ModBlocks {
 	public static Block mobilizer;
 
 	public static Block bedrock;
+	public static Block portal;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -94,6 +97,7 @@ public final class ModBlocks {
 			bedrock = new BlockBedrockKAMI();
 
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
+			portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 
 		}
 
@@ -125,7 +129,8 @@ public final class ModBlocks {
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
-			//GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
+			GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
+
 		}
 	}
 
@@ -158,6 +163,8 @@ public final class ModBlocks {
 
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
+
+			GameRegistry.registerTileEntity(TileBedrockPortal.class, LibBlockNames.PORTAL);
 		}
 	}
 
