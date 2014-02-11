@@ -18,10 +18,10 @@ import vazkii.tinkerer.client.lib.LibResources;
 
 public final class LibItemNames {
 
-	public static final String DARK_QUARTZ = LibResources.PREFIX_MOD + "darkQuartz";
+	public static final String DARK_QUARTZ = LibResources.PREFIX_MOD + "darkQuartzItem";
 	public static final String CONNECTOR = LibResources.PREFIX_MOD + "connector";
-	public static final String GASEOUS_LIGHT = LibResources.PREFIX_MOD + "gaseousLight";
-	public static final String GASEOUS_SHADOW = LibResources.PREFIX_MOD + "gaseousShadow";
+	public static final String GASEOUS_LIGHT = LibResources.PREFIX_MOD + "gaseousLightItem";
+	public static final String GASEOUS_SHADOW = LibResources.PREFIX_MOD + "gaseousShadowItem";
 	public static final String GAS_REMOVER = LibResources.PREFIX_MOD + "gasRemover";
 	public static final String SPELL_CLOTH = LibResources.PREFIX_MOD + "spellCloth";
 	public static final String FOCUS_FLIGHT = LibResources.PREFIX_MOD + "focusFlight";

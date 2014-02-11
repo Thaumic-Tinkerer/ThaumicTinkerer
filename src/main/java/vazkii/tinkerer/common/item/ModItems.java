@@ -115,9 +115,10 @@ public final class ModItems {
 	public static EnumToolMaterial toolMatIchor;
 	public static boolean Registered=false;
 	public static void initItems() {
+		gaseousLight = new ItemGas(LibItemIDs.idGaseousLight, ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
 		darkQuartz = new ItemMod(LibItemIDs.idDarkQuartz).setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector(LibItemIDs.idConnector).setUnlocalizedName(LibItemNames.CONNECTOR);
-		gaseousLight = new ItemGas(LibItemIDs.idGaseousLight, ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
+		
 		gaseousShadow = new ItemGas(LibItemIDs.idGaseousShadow, ModBlocks.gaseousShadow).setUnlocalizedName(LibItemNames.GASEOUS_SHADOW);
 		gasRemover = new ItemGasRemover(LibItemIDs.idGasRemover).setUnlocalizedName(LibItemNames.GAS_REMOVER);
 		spellCloth = new ItemSpellCloth(LibItemIDs.idSpellCloth).setUnlocalizedName(LibItemNames.SPELL_CLOTH);
@@ -183,9 +184,9 @@ public final class ModItems {
 	{
 		if(!Registered)
 		{
+		GameRegistry.registerItem(gaseousLight,LibItemNames.GASEOUS_LIGHT);
 		GameRegistry.registerItem(darkQuartz,LibItemNames.DARK_QUARTZ);
 		GameRegistry.registerItem(connector, LibItemNames.CONNECTOR);
-		GameRegistry.registerItem(gaseousLight,LibItemNames.GASEOUS_LIGHT);
 		GameRegistry.registerItem(gaseousShadow,LibItemNames.GASEOUS_SHADOW);
 		GameRegistry.registerItem(gasRemover,LibItemNames.GAS_REMOVER);
 		GameRegistry.registerItem(spellCloth,LibItemNames.SPELL_CLOTH);
