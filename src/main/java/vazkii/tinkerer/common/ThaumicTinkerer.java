@@ -14,28 +14,28 @@
  */
 package vazkii.tinkerer.common;
 
-import net.minecraft.command.ICommandManager;
-import net.minecraft.command.ServerCommandManager;
-import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import thaumcraft.common.CommonProxy;
-import thaumcraft.common.Thaumcraft;
-import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
-import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
-import vazkii.tinkerer.common.lib.LibMisc;
-import vazkii.tinkerer.common.network.PacketManager;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.relauncher.Side;
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ServerCommandManager;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.DimensionManager;
+import thaumcraft.common.CommonProxy;
+import thaumcraft.common.Thaumcraft;
+import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
+import vazkii.tinkerer.common.dim.BiomeGenBedrock;
+import vazkii.tinkerer.common.dim.WorldProviderBedrock;
+import vazkii.tinkerer.common.lib.LibMisc;
+import vazkii.tinkerer.common.network.PacketManager;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 @NetworkMod(clientSideRequired = true, channels = { LibMisc.NETWORK_CHANNEL }, packetHandler = PacketManager.class)
@@ -48,6 +48,11 @@ public class ThaumicTinkerer {
 	public static TTCommonProxy proxy;
 
 	public static CommonProxy tcProxy;
+
+	public static final BiomeGenBedrock bedrockBiome = new BiomeGenBedrock(19);
+	public static int dimID = 19;
+
+
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -74,6 +79,12 @@ public class ThaumicTinkerer {
 			System.out.println("Registering Thaumic Tinkerer's automatic crash reporter");
 			new AutoCrashReporter();
 		}
+
+		if(ConfigHandler.enableKami){
+			DimensionManager.registerProviderType(dimID, WorldProviderBedrock.class, true);
+			DimensionManager.registerDimension(dimID, dimID);
+		}
+
 	}
 
 	@EventHandler

@@ -51,4 +51,5 @@ public final class LibBlockNames {
 
 	public static final String MOBILIZER = LibResources.PREFIX_MOD + "Levitational Locomotive";
 
+	public static final String PORTAL = LibResources.PREFIX_MOD + "SubBedrock Portal";
 }
