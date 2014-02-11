@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
@@ -89,8 +90,8 @@ public final class ModBlocks {
 
 		if(ConfigHandler.enableKami) {
 
-			//Block.blocksList[7]=null;
-			//bedrock = new BlockBedrockKAMI();
+			Block.blocksList[7]=null;
+			bedrock = new BlockBedrockKAMI();
 
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
 
