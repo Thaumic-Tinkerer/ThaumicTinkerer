@@ -52,7 +52,7 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		tcProxy = Thaumcraft.proxy;
-
+		
 		proxy.preInit(event);
 		if(Loader.isModLoaded("Waila")) {
 			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");

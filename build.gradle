@@ -20,6 +20,10 @@ buildscript {
     }
 }
 repositories {
+	ivy {
+        name 'Forge FS legacy'
+        artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
+    }
 	maven {
        name 'SlimeKnights Maven FS'
           url 'http://aeon.sunstrike.io'
