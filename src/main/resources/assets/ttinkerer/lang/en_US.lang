@@ -63,10 +63,10 @@ ttmisc.noDest=There's no Celestial Gateway in the destination.
 ttmisc.noTeleport=The Celestial Gateway in the destination does not accept incoming teleports.
 
 # ITEM NAMES
-item.ttinkerer:darkQuartz.name=Smokey Quartz
+item.ttinkerer:darkQuartzItem.name=Smokey Quartz
 item.ttinkerer:connector.name=Transvector Binder
-item.ttinkerer:gaseousLight.name=Gaseous Illuminae
-item.ttinkerer:gaseousShadow.name=Gaseous Tenebrae
+item.ttinkerer:gaseousLightItem.name=Gaseous Illuminae
+item.ttinkerer:gaseousShadowItem.name=Gaseous Tenebrae
 item.ttinkerer:gasRemover.name=Fume Dissipator
 item.ttinkerer:spellCloth.name=Spellbinding Cloth
 item.ttinkerer:focusFlight.name=Wand Focus: Uprising
