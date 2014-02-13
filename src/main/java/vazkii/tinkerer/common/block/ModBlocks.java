@@ -18,7 +18,6 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
-import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
@@ -66,7 +65,6 @@ public final class ModBlocks {
 	public static Block mobilizer;
 
 	public static Block bedrock;
-	public static Block portal;
 
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
@@ -96,7 +94,6 @@ public final class ModBlocks {
 			bedrock = new BlockBedrockKAMI();
 
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
-			portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 
 		}
 
@@ -128,8 +125,7 @@ public final class ModBlocks {
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
-			GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
-
+			//GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
 		}
 	}
 
