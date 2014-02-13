@@ -31,20 +31,20 @@ public class ChunkProviderBedrock implements IChunkProvider
 	private WorldGenLakes waterLakeGenerator;
 	private WorldGenLakes lavaLakeGenerator;
 
-	public ChunkProviderBedrock(World par1World, long par2, boolean par4)
+	public ChunkProviderBedrock(World par1World, long par2)
 	{
 		this.worldObj = par1World;
 		this.random = new Random(par2);
 
 
 
-			FlatLayerInfo flatlayerinfo = new FlatLayerInfo(256, 7);
+		FlatLayerInfo flatlayerinfo = new FlatLayerInfo(256, 7);
 
-			for (int j = flatlayerinfo.getMinY(); j < flatlayerinfo.getMinY() + flatlayerinfo.getLayerCount(); ++j)
-			{
-				this.cachedBlockIDs[j] = (byte)(flatlayerinfo.getFillBlock() & 255);
-				this.cachedBlockMetadata[j] = (byte)flatlayerinfo.getFillBlockMeta();
-			}
+		for (int j = flatlayerinfo.getMinY(); j < flatlayerinfo.getMinY() + flatlayerinfo.getLayerCount(); ++j)
+		{
+			this.cachedBlockIDs[j] = (byte)(flatlayerinfo.getFillBlock() & 255);
+			this.cachedBlockMetadata[j] = (byte)flatlayerinfo.getFillBlockMeta();
+		}
 
 	}
 
