@@ -2,8 +2,6 @@ package vazkii.tinkerer.common.compat;
 
 import java.util.List;
 
-import cpw.mods.fml.common.Loader;
-
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -90,17 +88,6 @@ public class TTinkererProvider implements IWailaDataProvider {
 			ItemStack item=tileRepair.getStackInSlot(0);
 			if(item!=null)
 			{
-				if(Loader.isModLoaded("TConstruct"))
-				{
-					if(TinkersConstructCompat.isTConstructTool(item))
-					{
-						if(TinkersConstructCompat.getDamage(item) >0)
-							currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.repairing",item.getDisplayName()));
-						else
-							currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.finishedRepairing",item.getDisplayName()));
-						return currenttip;
-					}
-				}
 				if(item.getItemDamage()>0)
 					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.repairing",item.getDisplayName()));
 				else

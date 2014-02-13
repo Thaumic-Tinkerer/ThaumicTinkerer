@@ -17,12 +17,10 @@ package vazkii.tinkerer.common;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
-import vazkii.tinkerer.common.compat.SyncCompat;
 import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.lib.LibMisc;
@@ -54,14 +52,10 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		tcProxy = Thaumcraft.proxy;
-		
+
 		proxy.preInit(event);
 		if(Loader.isModLoaded("Waila")) {
 			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");
-		}
-		if(Loader.isModLoaded("Sync"))
-		{
-//			MinecraftForge.EVENT_BUS.register(new SyncCompat());
 		}
 	}
 	@EventHandler
@@ -80,10 +74,12 @@ public class ThaumicTinkerer {
 			System.out.println("Registering Thaumic Tinkerer's automatic crash reporter");
 			new AutoCrashReporter();
 		}
+		
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
+		
 	}
 }
