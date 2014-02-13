@@ -25,6 +25,7 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzStairs;
 import vazkii.tinkerer.common.block.tile.*;
+import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
@@ -158,6 +159,8 @@ public final class ModBlocks {
 
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
+
+			GameRegistry.registerTileEntity(TileBedrockPortal.class, LibBlockNames.PORTAL);
 		}
 	}
 
