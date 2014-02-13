@@ -23,10 +23,8 @@ import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
-<<<<<<< HEAD
+import vazkii.tinkerer.common.dim.BiomeGenBedrock;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
-=======
->>>>>>> parent of 527ff00... Work on dimensions
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketManager;
 import cpw.mods.fml.common.Loader;
@@ -52,14 +50,9 @@ public class ThaumicTinkerer {
 	public static TTCommonProxy proxy;
 
 	public static CommonProxy tcProxy;
-
-<<<<<<< HEAD
+	public static final BiomeGenBedrock bedrockBiome = new BiomeGenBedrock(19);
 	public static int dimID = 19;
 
-
-
-=======
->>>>>>> parent of 527ff00... Work on dimensions
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		tcProxy = Thaumcraft.proxy;
