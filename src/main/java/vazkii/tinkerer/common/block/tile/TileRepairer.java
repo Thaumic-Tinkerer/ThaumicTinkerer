@@ -34,6 +34,7 @@ import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.compat.TinkersConstructCompat;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	@Override
 	public void updateEntity() {
 		if(++ticksExisted % 10 == 0) {
-			if(Loader.isModLoaded("TConstruct"))
+			if(Loader.isModLoaded("TConstruct") && ConfigHandler.repairTConTools)
 			{
 				if(inventorySlots[0] != null)
 				{
@@ -233,7 +234,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		if(Loader.isModLoaded("TConstruct"))
+		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
 		{
 			if(TinkersConstructCompat.isTConstructTool(itemstack))
 			{
@@ -277,7 +278,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		ItemStack stack = inventorySlots[0];
 		if(stack == null)
 			return null;
-		if(Loader.isModLoaded("TConstruct"))
+		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
 		{
 			if(TinkersConstructCompat.isTConstructTool(stack))
 				return new AspectList().add(Aspect.ENTROPY, TinkersConstructCompat.getDamage(stack));
