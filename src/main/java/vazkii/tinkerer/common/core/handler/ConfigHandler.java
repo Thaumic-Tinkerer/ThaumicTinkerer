@@ -44,6 +44,7 @@ public final class ConfigHandler {
 	public static boolean enableEasymodeResearch = false;
 	public static boolean enableDebugCommands=false;
 	public static boolean useOreDictMetal = true;
+	public static boolean repairTConTools = false;
 	
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
@@ -82,6 +83,10 @@ public final class ConfigHandler {
 		Property propDebugCommands = config.get(Configuration.CATEGORY_GENERAL, "debugCommands.enabled", false);
 		propDebugCommands.comment = "Set to true to enable debugging commands.";
 		enableDebugCommands = propDebugCommands.getBoolean(false);
+		
+		Property propRepairTCon = config.get(Configuration.CATEGORY_GENERAL, "repairTconTools.enabled", false);
+		propRepairTCon.comment = "Can Thaumic Tinkerer repair Tinkers Construct tools.";
+		repairTConTools = propRepairTCon.getBoolean(false);
 		
 		Property propOreDict = config.get(Configuration.CATEGORY_GENERAL, "oreDictMetal.enabled", true);
 		propOreDict.comment = "Set to false to disable usage of ore dictionary metals (tin and copper).";

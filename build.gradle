@@ -67,7 +67,7 @@ minecraft {
 dependencies {
 	compile files (
 		'TCDEOBF.jar',
-		'mods/Waila_Dev_1.4.4.zip',
+		'mods/Waila_1.4.5a_Dev.zip',
 		'mods/CodeChickenCore-dev 0.9.0.7.jar',
 		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
 		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
