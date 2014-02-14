@@ -144,7 +144,7 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileEntityMobilizer.class, LibBlockNames.MOBILIZER);
 
 		GameRegistry.registerTileEntity(TileEntityRelay.class, LibBlockNames.MOBILIZER_RELAY);
-
+		GameRegistry.registerTileEntity(TileGolemConnector.class, LibBlockNames.GOLEMCONNECTOR);
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
 		}

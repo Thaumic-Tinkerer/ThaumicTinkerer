@@ -35,8 +35,6 @@ public class ItemConnector extends ItemMod {
 	private static final String TAG_POS_X = "posx";
 	private static final String TAG_POS_Y = "posy";
 	private static final String TAG_POS_Z = "posz";
-	private static final String TAG_UUID_MOST="UUIDMost";
-	private static final String TAG_UUID_LEAST="UUIDLeast";
 	private static final String TAG_CONNECTING_GOLEM="ConnectingGolem";
 	public ItemConnector(int par1) {
 		super(par1);
@@ -61,7 +59,10 @@ public class ItemConnector extends ItemMod {
 					par2EntityPlayer.swingItem();
 
 				playSound(par3World, par4, par5, par6);
-				par2EntityPlayer.addChatMessage("ttmisc.connector.set");
+				if(tile instanceof TileTransvector)
+					par2EntityPlayer.addChatMessage("ttmisc.connector.set");
+				else
+					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.set");
 			} else
 				par2EntityPlayer.addChatMessage("ttmisc.connector.notinterf");
 		} else {
@@ -93,9 +94,6 @@ public class ItemConnector extends ItemMod {
 
 				setY(par1ItemStack, -1);
 
-				if(par3World.isRemote)
-					par2EntityPlayer.swingItem();
-
 				playSound(par3World, par4, par5, par6);
 				par2EntityPlayer.addChatMessage("ttmisc.connector.complete");
 				PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3World.provider.dimensionId);
@@ -108,42 +106,55 @@ public class ItemConnector extends ItemMod {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack,
 			EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
+		par1ItemStack=par2EntityPlayer.getCurrentEquippedItem();
 		if(par2EntityPlayer.isSneaking())
 		{
-			
-		}
-		if(par3EntityLivingBase instanceof EntityGolemBase)
-		{
-		
-			if(getY(par1ItemStack)==-1)
+
+			if(par3EntityLivingBase instanceof EntityGolemBase)
 			{
-				par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notinterf");
+
+				if(getY(par1ItemStack)==-1)
+				{
+					if(par3EntityLivingBase.worldObj.isRemote)
+					{
+						return false;
+					}
+					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notinterf");
+					return true;
+				}
+				int x = getX(par1ItemStack);
+				int y = getY(par1ItemStack);
+				int z = getZ(par1ItemStack);
+				TileEntity tile1 = par2EntityPlayer.worldObj.getBlockTileEntity(x, y, z);
+				if (tile1 == null || !(tile1 instanceof TileGolemConnector)) {
+					setY(par1ItemStack, -1);
+					if(par3EntityLivingBase.worldObj.isRemote)
+					{
+						return false;
+					}
+					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notpresent");
+					return false;
+				} else {
+					if(par3EntityLivingBase.worldObj.isRemote)
+					{
+						par2EntityPlayer.swingItem();
+						return false;
+					}
+					TileGolemConnector trans = (TileGolemConnector) tile1;
+
+
+					trans.ConnectGolem(par3EntityLivingBase.getUniqueID());
+
+					setY(par1ItemStack, -1);
+
+
+
+					playSound(par3EntityLivingBase.worldObj, (int)par3EntityLivingBase.posX, (int)par3EntityLivingBase.posY, (int)par3EntityLivingBase.posZ);
+					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.complete");
+					PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3EntityLivingBase.worldObj.provider.dimensionId);
+				}
 				return true;
 			}
-			int x = getX(par1ItemStack);
-			int y = getY(par1ItemStack);
-			int z = getZ(par1ItemStack);
-			TileEntity tile1 = par2EntityPlayer.worldObj.getBlockTileEntity(x, y, z);
-			if (tile1 == null || !(tile1 instanceof TileGolemConnector)) {
-				setY(par1ItemStack, -1);
-
-				par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notpresent");
-			} else {
-				TileGolemConnector trans = (TileGolemConnector) tile1;
-
-
-				trans.ConnectGolem(par3EntityLivingBase.getUniqueID());
-
-				setY(par1ItemStack, -1);
-
-				if(par3EntityLivingBase.worldObj.isRemote)
-					par2EntityPlayer.swingItem();
-
-				playSound(par3EntityLivingBase.worldObj, (int)par3EntityLivingBase.posX, (int)par3EntityLivingBase.posY, (int)par3EntityLivingBase.posZ);
-				par2EntityPlayer.addChatMessage("ttmisc.golemconnector.complete");
-				PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3EntityLivingBase.worldObj.provider.dimensionId);
-			}
-			return true;
 		}
 		return false;
 	}
@@ -152,30 +163,15 @@ public class ItemConnector extends ItemMod {
 		if(!world.isRemote)
 			world.playSoundEffect(x, y, z, "random.orb", 0.8F, 1F);
 	}
-	
-	public static long getUUIDMost(ItemStack stack)
-	{
-		return ItemNBTHelper.getLong(stack, TAG_UUID_MOST, 0);
-	}
-	public static long getUUIDLeast(ItemStack stack)
-	{
-		return ItemNBTHelper.getLong(stack, TAG_UUID_LEAST, 0);
-	}
-	
+
+
+
 	public static boolean getConnectingGolem(ItemStack stack)
 	{
 		return ItemNBTHelper.getBoolean(stack, TAG_CONNECTING_GOLEM, false);
 	}
-	
-	public static void setUUIDMost(ItemStack stack,long most)
-	{
-		ItemNBTHelper.setLong(stack, TAG_UUID_MOST, most);
-	}
-	
-	public static void setUUIDLeast(ItemStack stack,long least)
-	{
-		ItemNBTHelper.setLong(stack, TAG_UUID_LEAST, least);
-	}
+
+
 	public static void setConnectingGolem(ItemStack stack,boolean connecting)
 	{
 		ItemNBTHelper.setBoolean(stack, TAG_CONNECTING_GOLEM, connecting);
