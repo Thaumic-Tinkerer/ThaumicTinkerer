@@ -163,7 +163,9 @@ public final class ModResearch {
 
 			research = new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 2, 2, 2, new ItemStack(ModBlocks.aspectAnalyzer)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ASPECT_ANALYZER));
-		}
+			research=new TTResearchItem(LibResearch.KEY_GOLEMCONNECTOR, LibResearch.CATEGORY_THAUMICTINKERER,new AspectList().add(Aspect.ORDER, 1).add(Aspect.TRAVEL, 2).add(Aspect.TOOL, 1),2,6,0,new ItemStack(ModBlocks.golemConnector)).setParents(LibResearch.KEY_PERIPHERALS).setConcealed().setRound().registerResearchItem();
+			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_GOLEMCONNECTOR), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_CONNECTOR), new ResearchPage("2"));
+		}	
 
 		if(ConfigHandler.enableKami) {
 			research = new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), 0, 0, 0, new ItemStack(ModItems.kamiResource, 1, 7)).setStub().setAutoUnlock().setRound().registerResearchItem();
