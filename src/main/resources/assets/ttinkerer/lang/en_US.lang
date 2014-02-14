@@ -197,6 +197,12 @@ ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." 
 ttresearch.page.INTERFACE.1=In order to bind an interface to another block, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by right clicking on the target, these two get bound and ready for operation. The limit is short, only 4 blocks. (Note: buildcraft pipes need to be broken and replaced to work)
 ttresearch.page.INTERFACE.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
 
+# -- GOLEM CONNECTOR
+ttresearch.name.GOLEM_CONNECTOR=Golem Connector
+ttresearch.lore.GOLEM_CONNECTOR=No Golemic mind control involved. Honest!
+ttresearch.page.GOLEM_CONNECTOR.0=By exploring what you can do with motion, tools, and a little bit of order, you have discovered how to make those golems just a tiny bit more obedient! You discover a block, that when you place a computer by it, can read the mind of golems nearby, and 'convince' them to do as the computer asks
+ttresearch.page.GOLEM_CONNECTOR.1=In order to bind a Connector to a golem, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by shift-right clicking on the target golem, these two get bound and ready for operation. The limit is quite long, 30 blocks away!
+ttresearch.page.GOLEM_CONNECTOR.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=Gaseous Illuminae
 ttresearch.lore.GASEOUS_LIGHT=Bright out of sight
