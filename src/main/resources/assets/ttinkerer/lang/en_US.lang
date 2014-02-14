@@ -203,6 +203,10 @@ ttresearch.lore.GOLEM_CONNECTOR=No Golemic mind control involved. Honest!
 ttresearch.page.GOLEM_CONNECTOR.0=By exploring what you can do with motion, tools, and a little bit of order, you have discovered how to make those golems just a tiny bit more obedient! You discover a block, that when you place a computer by it, can read the mind of golems nearby, and 'convince' them to do as the computer asks
 ttresearch.page.GOLEM_CONNECTOR.1=In order to bind a Connector to a golem, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the interface followed by shift-right clicking on the target golem, these two get bound and ready for operation. The limit is quite long, 30 blocks away!
 ttresearch.page.GOLEM_CONNECTOR.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
+ttresearch.page.GOLEM_CONNECTOR.3=<BR><BR>For convenience sake, the method documentation for this block is in an external webpage. Pressing ENTER right now will take you to it.<BR><BR>Sadly, this does not work on some systems. If that is the case, type in "vazkii.us/tt/docs.php" in your browser.
+# Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
+# link to it and the short URL (see above) you want for it on my website and I'll add it. 
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=Gaseous Illuminae
 ttresearch.lore.GASEOUS_LIGHT=Bright out of sight
