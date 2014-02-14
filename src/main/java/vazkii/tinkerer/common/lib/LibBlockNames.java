@@ -40,6 +40,9 @@ public final class LibBlockNames {
 
 	public static final String CAMO = LibResources.PREFIX_MOD + "camo";
 
+	public static final String PORTAL = LibResources.PREFIX_MOD + "portal";
+
+
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 		"tile." + DARK_QUARTZ,
 		"tile." + LibResources.PREFIX_MOD + "darkQuartzChiseled",
