@@ -174,9 +174,9 @@ public final class ModRecipes {
 				'F', new ItemStack(Block.glass));
 		if(Loader.isModLoaded("ComputerCraft"))
 		{
-			registerResearchItem(LibResearch.KEY_GOLEMCONNECTOR, LibResearch.KEY_GOLEMCONNECTOR, new ItemStack(ModBlocks.golemConnector), new AspectList().add(Aspect.TRAVEL, 20).add(Aspect.ORDER, 5).add(Aspect.TOOL, 15),
+			registerResearchItem(LibResearch.KEY_GOLEMCONNECTOR, LibResearch.KEY_GOLEMCONNECTOR, new ItemStack(ModBlocks.golemConnector), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 15),
 					"WFW", "sIs", "WFW",
-					'I', new ItemStack(Item.ingotIron),
+					'I', new ItemStack(ConfigItems.itemGolemBell),
 					's', new ItemStack(Item.enderPearl),
 					'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 					'F', new ItemStack(Block.blockRedstone));
