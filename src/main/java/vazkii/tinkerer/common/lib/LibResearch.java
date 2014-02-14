@@ -100,5 +100,6 @@ public final class LibResearch {
 	public static final String KEY_SKY_PEARL = "SKY_PEARL";
 	public static final String KEY_FOCUS_RECALL = "FOCUS_RECALL";
 	public static final String KEY_RELAY = "LEVITATOR_RELAY";
+	public static final String KEY_GOLEMCONNECTOR = "GOLEM_CONNECTOR";
 
 }

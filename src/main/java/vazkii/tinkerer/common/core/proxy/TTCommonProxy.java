@@ -105,7 +105,7 @@ public class TTCommonProxy {
 
 		for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
-		
+			
 		TurtleAPI.registerUpgrade(new FumeTool());
 	}
 

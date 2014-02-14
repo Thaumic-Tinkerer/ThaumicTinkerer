@@ -40,6 +40,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
+import dan200.computer.api.ComputerCraftAPI;
 
 public final class ModRecipes {
 
@@ -102,7 +103,7 @@ public final class ModRecipes {
 				'E', new ItemStack(Item.enderPearl),
 				'L', new ItemStack(Item.dyePowder, 1, 4),
 				'R', new ItemStack(Item.redstone));
-		registerResearchItem(LibResearch.KEY_CONNECTOR, LibResearch.KEY_INTERFACE, new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2),
+		registerResearchItem(LibResearch.KEY_CONNECTOR, LibResearch.KEY_PERIPHERALS,  new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2),
 				" I ", " WI", "S  ",
 				'I', new ItemStack(Item.ingotIron),
 				'W', new ItemStack(Item.stick),
@@ -171,7 +172,15 @@ public final class ModRecipes {
 				'S', new ItemStack(ConfigItems.itemShard),
 				'W', new ItemStack(ConfigBlocks.blockMagicalLog),
 				'F', new ItemStack(Block.glass));
-		
+		if(Loader.isModLoaded("ComputerCraft"))
+		{
+			registerResearchItem(LibResearch.KEY_GOLEMCONNECTOR, LibResearch.KEY_GOLEMCONNECTOR, new ItemStack(ModBlocks.golemConnector), new AspectList().add(Aspect.TRAVEL, 20).add(Aspect.ORDER, 5).add(Aspect.TOOL, 15),
+					"WFW", "sIs", "WFW",
+					'I', new ItemStack(Item.ingotIron),
+					's', new ItemStack(Item.enderPearl),
+					'W', new ItemStack(ConfigBlocks.blockMagicalLog),
+					'F', new ItemStack(Block.blockRedstone));
+		}
 		if(ConfigHandler.enableKami) {
 			registerResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(ModItems.kamiResource, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125),
 				"CCC", "III", "DDD",
