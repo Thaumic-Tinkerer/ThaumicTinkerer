@@ -14,9 +14,6 @@
  */
 package vazkii.tinkerer.common.item.kami.tool;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -29,6 +26,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.dim.WorldProviderBedrock;
+import vazkii.tinkerer.common.lib.LibBlockIDs;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class ToolHandler {
 
@@ -58,11 +60,16 @@ public final class ToolHandler {
 	}
 
 	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, int lockID, Material[] materialsListing, boolean silk, int fortune) {
-		for(int x1 = xs; x1 < xe; x1++)
-			for(int y1 = ys; y1 < ye; y1++)
-				for(int z1 = zs; z1 < ze; z1++)
-					if(x != x1 && y != y1 && z != z1)
+		for(int x1 = xs; x1 < xe; x1++){
+			for(int y1 = ys; y1 < ye; y1++){
+				for(int z1 = zs; z1 < ze; z1++){
+					if(x != x1 && y != y1 && z != z1){
 						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, lockID, materialsListing, silk, fortune);
+
+					}
+				}
+			}
+		}
 	}
 
 	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, int lockID, Material[] materialsListing, boolean silk, int fortune) {
@@ -96,6 +103,9 @@ public final class ToolHandler {
 			if(!world.isRemote && !player.capabilities.isCreativeMode)
 				for(ItemStack stack : items)
 					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
+			if(id==7 && (world.provider.isSurfaceWorld() && y<5) || world.provider instanceof WorldProviderBedrock){
+				world.setBlock(x, y, z, LibBlockIDs.idPortal);
+			}
 		}
 	}
 

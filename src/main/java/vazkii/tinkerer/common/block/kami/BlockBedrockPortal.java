@@ -25,6 +25,7 @@ public class BlockBedrockPortal extends Block{
 		disableStats();
 		setBlockBounds(0F, 0.25F, 0F, 1F, 0.75F, 1F);
 		setCreativeTab(ModCreativeTab.INSTANCE);
+		setBlockUnbreakable();
 	}
 
 	@Override
