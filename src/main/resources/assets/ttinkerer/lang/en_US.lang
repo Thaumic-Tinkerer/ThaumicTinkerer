@@ -138,6 +138,7 @@ tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
 tile.ttinkerer:platform.name=Ethereal Platform
 
+tile.ttinkerer:portal.name=Bedrock Portal
 tile.ttinkerer:Levitational Locomotive.name=Levitational Locomotive
 tile.ttinkerer:Levitational Locomotive Relay.name=Levitational Locomotive Relay
 
