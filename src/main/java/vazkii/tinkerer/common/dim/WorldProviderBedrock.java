@@ -45,6 +45,7 @@ public class WorldProviderBedrock extends WorldProvider {
 	{
 		return 10.0F;
 	}
+
 	public boolean renderClouds()
 	{
 		return true;
