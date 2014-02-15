@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Facing;
 import net.minecraft.world.IBlockAccess;
@@ -23,9 +24,12 @@ public class BlockBedrockPortal extends Block{
 		setStepSound(soundStoneFootstep);
 		setResistance(6000000.0F);
 		disableStats();
-		setBlockBounds(0F, 0.25F, 0F, 1F, 0.75F, 1F);
 		setCreativeTab(ModCreativeTab.INSTANCE);
-		setBlockUnbreakable();
+	}
+
+	@Override
+	public AxisAlignedBB getSelectedBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+		return null;
 	}
 
 	@Override
