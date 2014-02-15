@@ -96,7 +96,7 @@ public final class ModBlocks {
 
 			Block.blocksList[7]=null;
 			bedrock = new BlockBedrockKAMI();
-			portal = new BlockBedrockPortal(LibBlockIDs.idPortal);
+			portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
 
 		}
