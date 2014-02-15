@@ -21,14 +21,11 @@ public class TeleporterBedrock extends Teleporter {
 
 	@Override
 	public boolean placeInExistingPortal(Entity entity, double par2, double par4, double par6, float par8) {
-		entity.setLocationAndAngles(0, 72, 0, entity.rotationYaw, entity.rotationPitch);
 		return true;
 	}
 
 	@Override
 	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
-
-		placeInExistingPortal(par1Entity, par2, par4, par6, par8);
 
 	}
 }
