@@ -26,21 +26,15 @@ public class BlockBedrockKAMI extends Block {
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
-		par1World.setBlock(par2, par3, par4, LibBlockIDs.idPortal);
-	}
-
-
-
-	@Override
 	public void harvestBlock(World world, EntityPlayer entityPlayer, int par3, int par4, int par5, int par6) {
-		if((world.provider.isSurfaceWorld() && par4<5) || world.provider instanceof WorldProviderBedrock){
-			if(entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv ? true : false){
+		if((world.provider.isSurfaceWorld() && par4<5)){
+			if(entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv){
 				world.setBlock(par3, par4, par5, LibBlockIDs.idPortal);
 			}
 		}
 	}
+
+
 
 	@Override
 	public float getPlayerRelativeBlockHardness(EntityPlayer entityPlayer, World world, int par3, int par4, int par5) {
