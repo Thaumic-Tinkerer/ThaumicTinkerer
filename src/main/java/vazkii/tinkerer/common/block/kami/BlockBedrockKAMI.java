@@ -6,7 +6,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.item.kami.tool.ItemIchorPickAdv;
+import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 import java.util.ArrayList;
 
@@ -24,8 +26,22 @@ public class BlockBedrockKAMI extends Block {
 	}
 
 	@Override
-	public float getPlayerRelativeBlockHardness(EntityPlayer entityPlayer, World par2World, int par3, int par4, int par5) {
-		return entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv ? 2 : -1;
+	public void harvestBlock(World world, EntityPlayer entityPlayer, int par3, int par4, int par5, int par6) {
+		if((world.provider.isSurfaceWorld() && par4<5)){
+			if(entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv){
+				world.setBlock(par3, par4, par5, LibBlockIDs.idPortal);
+			}
+		}
+	}
+
+
+
+	@Override
+	public float getPlayerRelativeBlockHardness(EntityPlayer entityPlayer, World world, int par3, int par4, int par5) {
+		if((world.provider.isSurfaceWorld() && par4<5) || world.provider instanceof WorldProviderBedrock){
+			return entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv ? 3F : -1;
+		}
+		return -1;
 	}
 
 	@Override

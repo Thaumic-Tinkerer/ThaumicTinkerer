@@ -35,7 +35,7 @@ public class WorldProviderBedrock extends WorldProvider {
 	}
 	public String getDimensionName()
 	{
-		return "UnDead";
+		return "Bedrock";
 	}
 	public boolean renderStars()
 	{
@@ -45,6 +45,7 @@ public class WorldProviderBedrock extends WorldProvider {
 	{
 		return 10.0F;
 	}
+
 	public boolean renderClouds()
 	{
 		return true;
