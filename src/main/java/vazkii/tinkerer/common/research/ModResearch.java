@@ -206,7 +206,7 @@ public final class ModResearch {
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_PICK), arcaneRecipePage(LibResearch.KEY_ICHOR_SHOVEL), arcaneRecipePage(LibResearch.KEY_ICHOR_AXE), arcaneRecipePage(LibResearch.KEY_ICHOR_SWORD));
 
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.STONE, 1), 13, 15, 5, new ItemStack(ModItems.ichorPickGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
-			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_PICK_GEM));
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_PICK_GEM), new ResearchPage("1"));
 
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SHOVEL_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 15, 15, 5, new ItemStack(ModItems.ichorShovelGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_SHOVEL_GEM));
