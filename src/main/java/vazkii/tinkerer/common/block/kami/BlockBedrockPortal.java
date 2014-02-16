@@ -19,6 +19,7 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.dim.TeleporterBedrock;
+import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 public class BlockBedrockPortal extends Block {
@@ -90,6 +91,24 @@ public class BlockBedrockPortal extends Block {
 					entity.worldObj.setBlock(par2, 254, par4, LibBlockIDs.idPortal);
 				}
 				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, 252, par4 + 0.5, 0, 0);
+			}
+		}else if(entity.worldObj.provider instanceof WorldProviderBedrock){
+			if(entity instanceof EntityPlayer && !par1World.isRemote){
+
+				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, 0, new TeleporterBedrock((WorldServer) par1World));
+
+				int x = (int) entity.posX;
+				int z = (int) entity.posZ;
+
+				int y=255;
+
+				while(entity.worldObj.getBlockId(x, y, z) == 0 || Block.blocksList[entity.worldObj.getBlockId(x, y, z)].isAirBlock(par1World, x, y, z)){
+					y--;
+				}
+
+
+
+				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, y, par4 + 0.5, 0, 0);
 			}
 		}
 
