@@ -138,6 +138,7 @@ tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
 
+tile.ttinkerer:portal.name=Bedrock-Portal
 tile.ttinkerer:Mobilization Levitator.name=Levitationslokomotive
 tile.ttinkerer:Mobilization Levitator Relay.name=Levitationslokomotivrelais
 
@@ -418,7 +419,8 @@ ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium he
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Erweckte Ichoriumspitzhacke
 ttresearch.lore.ICHOR_PICK_GEM=Wer braucht schon einen Steinbruch?
-ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Shift-Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau) wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen.
+ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Shift-Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau)
+ttresearch.page.ICHOR_PICK_GEM.1=wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen. Sie kann auch Bedrock abbauen, was dich dem Herz der Erde noch näher bringt, denn du glaubst, dass es noch ertragreicher sein könnte, dort zu graben.
 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=Erweckte Ichoriumschaufel
