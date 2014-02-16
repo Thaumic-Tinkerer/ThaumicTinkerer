@@ -20,9 +20,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -36,11 +38,18 @@ import vazkii.tinkerer.common.lib.LibObfuscation;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBloodSword extends ItemSword implements IRepairable {
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+		
+		return super.getItemUseAction(par1ItemStack);
+	}
 
 	private static final int DAMAGE = 10;
 
@@ -79,6 +88,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
 			if(itemInUse != null && itemInUse.itemID == itemID) {
+				
 				event.setCanceled(true);
 				handleNext = 3;
 				player.attackEntityFrom(DamageSource.magic, 3);
@@ -94,5 +104,12 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 					attacker.attackEntityFrom(DamageSource.magic, 2);
 			}
 		}
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
+			EntityPlayer par3EntityPlayer) {
+
+		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
 	}
 }
