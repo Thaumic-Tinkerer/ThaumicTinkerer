@@ -420,7 +420,7 @@ ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium
 ttresearch.name.ICHOR_PICK_GEM=Awakened Ichorium Pickaxe
 ttresearch.lore.ICHOR_PICK_GEM=Who needs a quarry?
 ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue)
-ttresearch.page.ICHOR_PICK_GEM.0=It'll break a 10 block long line starting on the original block. It can also break bedrock, taking you deeper into the the heart of the earth. You believe digging there might prove to be more fruitful.
+ttresearch.page.ICHOR_PICK_GEM.1=It'll break a 10 block long line starting on the original block. It can also break bedrock, taking you deeper into the the heart of the earth. You believe digging there might prove to be more fruitful.
 
 
 # -- AWAKENED ICHORIUM SHOVEL
