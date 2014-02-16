@@ -27,7 +27,8 @@ public class BlockBedrockKAMI extends Block {
 
 	@Override
 	public void harvestBlock(World world, EntityPlayer entityPlayer, int par3, int par4, int par5, int par6) {
-		if((world.provider.isSurfaceWorld() && par4<5)){
+		if((world.provider.isSurfaceWorld() && par4<5) || (world.provider instanceof WorldProviderBedrock && par4>253)){
+			System.out.println(1);
 			if(entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv){
 				world.setBlock(par3, par4, par5, LibBlockIDs.idPortal);
 			}

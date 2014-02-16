@@ -103,7 +103,8 @@ public final class ToolHandler {
 			if(!world.isRemote && !player.capabilities.isCreativeMode)
 				for(ItemStack stack : items)
 					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
-			if(id==7 && (world.provider.isSurfaceWorld() && y<5) || world.provider instanceof WorldProviderBedrock){
+			if(id==7 && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
+
 				world.setBlock(x, y, z, LibBlockIDs.idPortal);
 			}
 		}
