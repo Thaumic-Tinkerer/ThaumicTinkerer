@@ -40,4 +40,5 @@ public final class LibBlockIDs {
 	public static int idMobilizer = 2632;
 
 	public static int idPortal = 2816;
+	public static int idGolemConnector=2817;
 }

@@ -104,8 +104,6 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
 	@Override
 	public void updateEntity() {
 		super.updateEntity();
-		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) 
-			throw new RuntimeException("CRASH!!");
 		if(worldObj.getTotalWorldTime()%100==1)
 		{
 			verifyGolem();

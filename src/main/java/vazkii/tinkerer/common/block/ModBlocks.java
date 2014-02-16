@@ -70,6 +70,7 @@ public final class ModBlocks {
 
 
 	public static Block portal;
+	public static Block golemConnector;
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
 		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
@@ -90,7 +91,7 @@ public final class ModBlocks {
 
 		mobilizerRelay = new BlockMobilizerRelay(LibBlockIDs.idMobilizerRelay).setUnlocalizedName(LibBlockNames.MOBILIZER_RELAY);
 		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
-
+		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
 
 		if(ConfigHandler.enableKami) {
 
@@ -125,6 +126,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(mobilizerRelay, LibBlockNames.MOBILIZER_RELAY);
 
 		GameRegistry.registerBlock(mobilizer, LibBlockNames.MOBILIZER);
+		GameRegistry.registerBlock(golemConnector, LibBlockNames.GOLEMCONNECTOR);
 
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
