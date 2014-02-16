@@ -22,6 +22,8 @@ import vazkii.tinkerer.common.dim.TeleporterBedrock;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
+import java.util.Random;
+
 public class BlockBedrockPortal extends Block {
 
 	public BlockBedrockPortal(int id) {
@@ -97,18 +99,22 @@ public class BlockBedrockPortal extends Block {
 
 				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, 0, new TeleporterBedrock((WorldServer) par1World));
 
-				int x = (int) entity.posX;
-				int z = (int) entity.posZ;
+				Random rand = new Random();
 
-				int y=255;
+				int x = (int) entity.posX + rand.nextInt(100);
+				int z = (int) entity.posZ + rand.nextInt(100);
+
+				x-=50;
+				z-=50;
+
+				int y=120;
 
 				while(entity.worldObj.getBlockId(x, y, z) == 0 || Block.blocksList[entity.worldObj.getBlockId(x, y, z)].isAirBlock(par1World, x, y, z)){
 					y--;
 				}
 
 
-
-				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, y, par4 + 0.5, 0, 0);
+						((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 3, z + 0.5, 0, 0);
 			}
 		}
 
