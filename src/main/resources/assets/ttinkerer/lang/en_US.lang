@@ -142,6 +142,7 @@ tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
 tile.ttinkerer:platform.name=Ethereal Platform
 
+tile.ttinkerer:portal.name=Bedrock Portal
 tile.ttinkerer:Levitational Locomotive.name=Levitational Locomotive
 tile.ttinkerer:Levitational Locomotive Relay.name=Levitational Locomotive Relay
 tile.ttinkerer:golemConnector.name=Golem Connector
@@ -355,7 +356,7 @@ ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming
 # -- LEVITATOR
 ttresearch.name.LEVITATOR=Levitational Locomotive
 ttresearch.lore.LEVITATOR=It moves to the left, it moves to the right.
-ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
+ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them. A visual effect will be shown if particles are enabled.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ethereal Platform
@@ -433,7 +434,9 @@ ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Awakened Ichorium Pickaxe
 ttresearch.lore.ICHOR_PICK_GEM=Who needs a quarry?
-ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue) it'll break a 10 block long line starting on the original block.
+ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Line Mode (Blue)
+ttresearch.page.ICHOR_PICK_GEM.1=It'll break a 10 block long line starting on the original block. It can also break bedrock, taking you deeper into the the heart of the earth. You believe digging there might prove to be more fruitful.
+
 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=Awakened Ichorium Shovel

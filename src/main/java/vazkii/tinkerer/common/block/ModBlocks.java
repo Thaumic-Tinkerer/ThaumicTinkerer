@@ -16,7 +16,10 @@ package vazkii.tinkerer.common.block;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
+import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
@@ -62,7 +65,11 @@ public final class ModBlocks {
 	public static Block mobilizerRelay;
 
 	public static Block mobilizer;
-	public static Block golemConnector;
+
+	public static Block bedrock;
+
+
+	public static Block portal;
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
 		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
@@ -83,9 +90,15 @@ public final class ModBlocks {
 
 		mobilizerRelay = new BlockMobilizerRelay(LibBlockIDs.idMobilizerRelay).setUnlocalizedName(LibBlockNames.MOBILIZER_RELAY);
 		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
-		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
+
+
 		if(ConfigHandler.enableKami) {
+
+			Block.blocksList[7]=null;
+			bedrock = new BlockBedrockKAMI();
+			portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
+
 		}
 
 		registerBlocks();
@@ -112,9 +125,13 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(mobilizerRelay, LibBlockNames.MOBILIZER_RELAY);
 
 		GameRegistry.registerBlock(mobilizer, LibBlockNames.MOBILIZER);
-		GameRegistry.registerBlock(golemConnector, LibBlockNames.GOLEMCONNECTOR);
+
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
+
+			GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
+
+			GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
 		}
 	}
 
