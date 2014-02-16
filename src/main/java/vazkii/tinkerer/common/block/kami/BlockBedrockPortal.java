@@ -32,8 +32,18 @@ public class BlockBedrockPortal extends Block {
 	}
 
 	@Override
+	public float getBlockHardness(World par1World, int par2, int par3, int par4) {
+		return -1;
+	}
+
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		return null;
+	}
+
+	@Override
+	public boolean canHarvestBlock(EntityPlayer player, int meta) {
+		return false;
 	}
 
 	@Override
