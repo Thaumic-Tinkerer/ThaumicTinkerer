@@ -65,7 +65,6 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 					if(partnerX - xCoord != 0){
 						xInc = ((float) Math.copySign(.05, partnerX-xCoord))*(worldObj.getTotalWorldTime() % 20);
 					}
-
 					ThaumicTinkerer.tcProxy.sparkle((float) (0.5 + i + xInc), (float) (yCoord+0.5), (float) (j + 0.5 + zInc), xCoord < partnerX || zCoord > partnerX ? 2 : 14);
 					j+=Math.copySign(1,partnerZ-zCoord);
 				}while (j < partnerZ);
@@ -94,13 +93,9 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 
 							te.linked = true;
 
-							if(xCoord < partnerX){
+							if(xCoord != partnerX){
 								te.movementDirection = ForgeDirection.EAST;
-							}else if(xCoord > partnerX){
-								te.movementDirection = ForgeDirection.WEST;
-							}else if(zCoord < partnerZ){
-								te.movementDirection = ForgeDirection.SOUTH;
-							}else if(zCoord > partnerZ){
+							}else{
 								te.movementDirection = ForgeDirection.NORTH;
 							}
 						}

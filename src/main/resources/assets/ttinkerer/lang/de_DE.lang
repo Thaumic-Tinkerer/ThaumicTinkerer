@@ -13,10 +13,10 @@ ttmisc.redstoneControl=Redstone-Kontrolle
 ttmisc.animationTablet.notRotatable=Du kannst das Tablett nicht rotieren, während es aktiviert ist.
 ttmisc.focusDislocation.tooltip=Aktuell dislokierend
 ttmisc.focusDislocation.tooltipExtra=Extra-Inhalt
-ttmisc.inactive=§cInaktiv
-ttmisc.active=§aAktiv
-ttmisc.soulMould.nonAssigned=§6Keine Form
-ttmisc.soulMould.pattern=§6Aktuelle Form: %s
+ttmisc.inactive=Inaktiv
+ttmisc.active=Aktiv
+ttmisc.soulMould.nonAssigned=Keine Form
+ttmisc.soulMould.pattern=Aktuelle Form: %s
 ttmisc.all=Alle
 ttmisc.none=Nichts
 ttmisc.child=Kinder
@@ -24,9 +24,9 @@ ttmisc.adult=Erwachsene
 ttmisc.baseCost=Basiskosten
 ttmisc.clickToRemove=Klicke zum Entfernen
 ttmisc.startEnchant=Starte Verzaubern
-ttmisc.full=§cVoll
-ttmisc.notAbsorbing=§cNicht Absorbierend
-ttmisc.absorbing=§aAbsorbierend
+ttmisc.full=Voll
+ttmisc.notAbsorbing=Nicht Absorbierend
+ttmisc.absorbing=Absorbierend
 ttmisc.shareTome.write=Forschung niedergeschrieben!
 ttmisc.shareTome.notOnline=Der Spieler, dem diese Forschung gehört, ist nicht online.
 ttmisc.shareTome.sync=Forschung erlangt.
@@ -138,6 +138,7 @@ tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
 
+tile.ttinkerer:portal.name=Bedrock-Portal
 tile.ttinkerer:Mobilization Levitator.name=Levitationslokomotive
 tile.ttinkerer:Mobilization Levitator Relay.name=Levitationslokomotivrelais
 
@@ -340,7 +341,7 @@ ttresearch.page.FOCUS_DEFLECT.0=Du hast einen Fokus kreiert, um dich vor eingehe
 # -- LEVITATOR
 ttresearch.name.LEVITATOR=Levitationslokomotive
 ttresearch.lore.LEVITATOR=Es fährt nach links, es fährt nach rechts.
-ttresearch.page.LEVITATOR.0=Du hast eine neue Gerätschaft kreiert, um Dinge vor- und rückwärts zu bewegen. Zwei Relais platziert in einer geraden Linie werden zwischen sich einen Energiestrahl projezieren.<BR><BR> Platziere einen Levitator innerhalb des projezierten Strahls. Der Levitator wird nun auf dem Strahl vor- und rückwärts bewegt und den Block über ihm mitbewegen.
+ttresearch.page.LEVITATOR.0=Du hast eine neue Gerätschaft kreiert, um Dinge vor- und rückwärts zu bewegen. Zwei Relais platziert in einer geraden Linie werden zwischen sich einen Energiestrahl projezieren. Auch zeigt sich ein visueller Effekt, sollten Partikel in den Videoeinstellungen aktiviert sein.<BR><BR> Platziere einen Levitator innerhalb des projezierten Strahls. Der Levitator wird nun auf dem Strahl vor- und rückwärts bewegt und den Block über ihm mitbewegen.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ätherische Plattform
@@ -418,7 +419,8 @@ ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium he
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Erweckte Ichoriumspitzhacke
 ttresearch.lore.ICHOR_PICK_GEM=Wer braucht schon einen Steinbruch?
-ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Shift-Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau) wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen.
+ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Shift-Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau)
+ttresearch.page.ICHOR_PICK_GEM.1=wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen. Sie kann auch Bedrock abbauen, was dich dem Herz der Erde noch näher bringt, denn du glaubst, dass es noch ertragreicher sein könnte, dort zu graben.
 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=Erweckte Ichoriumschaufel

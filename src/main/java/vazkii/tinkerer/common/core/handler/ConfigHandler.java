@@ -14,18 +14,13 @@
  */
 package vazkii.tinkerer.common.core.handler;
 
-import java.io.File;
-
+import cpw.mods.fml.common.Loader;
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
-import vazkii.tinkerer.common.lib.LibBlockIDs;
-import vazkii.tinkerer.common.lib.LibBlockNames;
-import vazkii.tinkerer.common.lib.LibEnchantIDs;
-import vazkii.tinkerer.common.lib.LibEnchantNames;
-import vazkii.tinkerer.common.lib.LibItemIDs;
-import vazkii.tinkerer.common.lib.LibItemNames;
-import cpw.mods.fml.common.Loader;
+import vazkii.tinkerer.common.lib.*;
+
+import java.io.File;
 
 public final class ConfigHandler {
 
@@ -66,7 +61,7 @@ public final class ConfigHandler {
 
 		config.load();
 
-		enableKami = Loader.isModLoaded("ThaumicTinkererKami");
+		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || config.get(Configuration.CATEGORY_GENERAL, "kami.forceenabled", false).getBoolean(false);
 
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
@@ -122,7 +117,6 @@ public final class ConfigHandler {
 		LibBlockIDs.idRepairer = loadBlock(LibBlockNames.REPAIRER, LibBlockIDs.idRepairer);
 		LibBlockIDs.idAspectAnalyzer = loadBlock(LibBlockNames.ASPECT_ANALYZER, LibBlockIDs.idAspectAnalyzer);
 		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
-		LibBlockIDs.idGolemConnector = loadBlock(LibBlockNames.GOLEMCONNECTOR, LibBlockIDs.idGolemConnector);
 
 		LibBlockIDs.idWarpGate = loadBlock(LibBlockNames.WARP_GATE, LibBlockIDs.idWarpGate);
 
