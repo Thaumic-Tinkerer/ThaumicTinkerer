@@ -60,7 +60,7 @@ public class ModCreativeTab extends CreativeTabs {
 
 		addBlock(ModBlocks.mobilizer);
 		addBlock(ModBlocks.mobilizerRelay);
-
+		addBlock(ModBlocks.golemConnector);
 		addItem(ModItems.connector);
 		addBlock(ModBlocks.interfase);
 		addBlock(ModBlocks.dislocator);

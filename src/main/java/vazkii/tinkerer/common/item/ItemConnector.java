@@ -14,12 +14,17 @@
  */
 package vazkii.tinkerer.common.item;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import thaumcraft.common.entities.golems.EntityGolemBase;
+import thaumcraft.common.entities.golems.EnumGolemType;
+import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
@@ -30,6 +35,7 @@ public class ItemConnector extends ItemMod {
 	private static final String TAG_POS_X = "posx";
 	private static final String TAG_POS_Y = "posy";
 	private static final String TAG_POS_Z = "posz";
+	private static final String TAG_CONNECTING_GOLEM="ConnectingGolem";
 	public ItemConnector(int par1) {
 		super(par1);
 
@@ -42,8 +48,9 @@ public class ItemConnector extends ItemMod {
 			return false;
 
 		TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
+
 		if (getY(par1ItemStack) == -1) {
-			if (tile != null && tile instanceof TileTransvector) {
+			if (tile != null && (tile instanceof TileTransvector || tile instanceof TileGolemConnector)) {
 				setX(par1ItemStack, par4);
 				setY(par1ItemStack, par5);
 				setZ(par1ItemStack, par6);
@@ -152,12 +159,23 @@ public class ItemConnector extends ItemMod {
 		return false;
 	}
 
-
 	private void playSound(World world, int x, int y, int z) {
 		if(!world.isRemote)
 			world.playSoundEffect(x, y, z, "random.orb", 0.8F, 1F);
 	}
 
+
+
+	public static boolean getConnectingGolem(ItemStack stack)
+	{
+		return ItemNBTHelper.getBoolean(stack, TAG_CONNECTING_GOLEM, false);
+	}
+
+
+	public static void setConnectingGolem(ItemStack stack,boolean connecting)
+	{
+		ItemNBTHelper.setBoolean(stack, TAG_CONNECTING_GOLEM, connecting);
+	}
 	public static void setX(ItemStack stack, int x) {
 		ItemNBTHelper.setInt(stack, TAG_POS_X, x);
 	}
