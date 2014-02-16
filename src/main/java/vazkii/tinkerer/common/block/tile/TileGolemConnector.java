@@ -8,6 +8,9 @@ import java.util.UUID;
 
 import org.bouncycastle.jcajce.provider.digest.GOST3411.HashMac;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
@@ -57,20 +60,20 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
 	}
 
 	
-	public String[] getGolemDecorations() throws Exception
+	public Object[] getGolemDecorations() throws Exception
     {
             if(golem==null ||golem.decoration==null || golem.decoration.length()==0)
                     return new String[]{};
-            String[] decorations=new String[golem.decoration.length()];
+            HashMap<Double,String> decorations=new HashMap<Double, String>();
             for(int i=0;i<golem.decoration.length();i++)
             {
                     EnumGolemDecorations golemDec=EnumGolemDecorations.getFromChar(golem.decoration.charAt(i));
                     if(golemDec==null)
                     	throw new Exception("Golem is wearing unknown accessory: "+golem.decoration.charAt(i));
-                    decorations[i]=StatCollector.translateToLocal(golemDec.getName());
+                    decorations.put((double) i,StatCollector.translateToLocal(golemDec.getName()));
             }
            
-            return decorations;
+            return new Object[]{decorations};
            
     }
 	public String[] getGolemCore() throws Exception
@@ -101,6 +104,8 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
 	@Override
 	public void updateEntity() {
 		super.updateEntity();
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) 
+			throw new RuntimeException("CRASH!!");
 		if(worldObj.getTotalWorldTime()%100==1)
 		{
 			verifyGolem();

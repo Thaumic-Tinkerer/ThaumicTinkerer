@@ -51,8 +51,10 @@ public class ThaumicTinkerer {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		new AutoCrashReporter();
 		tcProxy = Thaumcraft.proxy;
-
+			System.out.println("Registering Thaumic Tinkerer's automatic crash reporter");
+			
 		proxy.preInit(event);
 		if(Loader.isModLoaded("Waila")) {
 			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");
@@ -70,10 +72,7 @@ public class ThaumicTinkerer {
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
 
-		if (FMLCommonHandler.instance().getSide() == Side.SERVER) {
-			System.out.println("Registering Thaumic Tinkerer's automatic crash reporter");
-			new AutoCrashReporter();
-		}
+		
 		
 	}
 
