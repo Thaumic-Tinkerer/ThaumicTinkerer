@@ -50,17 +50,19 @@ shadow
 
 apply plugin: 'forge'
 
-version = "2.2b-81"
+version = "2.2b-90"
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
 	version = "1.6.4-9.11.1.964"
 	assetDir = "eclipse/assets"
+	replace '${version}', project.version
     replaceIn "common/AutoCrashReporter.java"
 
     if (project.hasProperty("pass"))
         replace "INSERTPASSWORDHERE", project.pass
+    
 
 }
 
