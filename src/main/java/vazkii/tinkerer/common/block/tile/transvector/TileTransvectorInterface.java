@@ -358,13 +358,6 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
-	public void setSuction(AspectList paramAspectList) {
-		TileEntity tile = getTile();
-		if(tile instanceof IEssentiaTransport)
-			((IEssentiaTransport) tile).setSuction(paramAspectList);
-	}
-
-	@Override
 	public void setSuction(Aspect paramAspect, int paramInt) {
 		TileEntity tile = getTile();
 		if(tile instanceof IEssentiaTransport)
@@ -372,21 +365,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
-	public AspectList getSuction(ForgeDirection paramForgeDirection) {
-		TileEntity tile = getTile();
-		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getSuction(paramForgeDirection) : null;
-	}
-
-	@Override
 	public int takeVis(Aspect paramAspect, int paramInt) {
 		TileEntity tile = getTile();
 		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).takeVis(paramAspect, paramInt) : 0;
-	}
-
-	@Override
-	public AspectList getEssentia(ForgeDirection paramForgeDirection) {
-		TileEntity tile = getTile();
-		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentia(paramForgeDirection) : null;
 	}
 
 	@Override
@@ -398,6 +379,36 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public boolean renderExtendedTube() {
 		return false;
+	}
+
+	@Override
+	public int addVis(Aspect arg0, int arg1) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).addVis(arg0, arg1) : 0;
+	}
+
+	@Override
+	public int getEssentiaAmount(ForgeDirection arg0) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaAmount(arg0) : 0;
+	}
+
+	@Override
+	public Aspect getEssentiaType(ForgeDirection arg0) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaType(arg0) : null;
+	}
+
+	@Override
+	public int getSuctionAmount(ForgeDirection arg0) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getSuctionAmount(arg0) : 0;
+	}
+	
+	@Override
+	public Aspect getSuctionType(ForgeDirection arg0) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getSuctionType(arg0) : null;
 	}
 
 	@Override

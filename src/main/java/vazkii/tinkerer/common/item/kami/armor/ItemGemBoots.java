@@ -46,7 +46,8 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
 		if(player.worldObj.isRemote)
 			player.stepHeight = player.isSneaking() ? 0.5F : 1F;
-		Utils.setWalkSpeed(player.capabilities, Utils.getWalkSpeed(player.capabilities) + 0.15F);
+		if((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F)
+			player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.075F : 0.15F);
 		player.jumpMovementFactor = player.isSprinting() ? 0.05F : 0.04F;
 		player.fallDistance = 0F;
 
