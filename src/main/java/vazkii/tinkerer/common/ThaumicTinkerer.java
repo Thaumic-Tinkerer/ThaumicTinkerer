@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -22,7 +21,6 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.relauncher.Side;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
@@ -74,7 +72,7 @@ public class ThaumicTinkerer {
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
 
-		if(ConfigHandler.enableKami){
+		if(ConfigHandler.enableKami && dimID != 0){
 			DimensionManager.registerProviderType(dimID, WorldProviderBedrock.class, false);
 			DimensionManager.registerDimension(dimID, dimID);
 		}
