@@ -24,6 +24,14 @@ public class BlockGolemConnector extends BlockCamo {
 		// TODO Auto-generated method stub
 		return new TileGolemConnector();
 	}
-	
+	@Override
+	public boolean isOpaqueCube() {
+		return true;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return true;
+	}
 
 }

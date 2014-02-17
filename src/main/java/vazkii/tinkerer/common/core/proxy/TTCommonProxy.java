@@ -38,7 +38,6 @@ import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import vazkii.tinkerer.common.core.handler.EasymodeResearchHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
@@ -79,8 +78,6 @@ public class TTCommonProxy {
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 
-		if(ConfigHandler.enableEasymodeResearch)
-			TickRegistry.registerTickHandler(new EasymodeResearchHandler(), Side.SERVER);
 
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
