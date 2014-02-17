@@ -39,7 +39,7 @@ public class BlockBedrockKAMI extends Block {
 
 	@Override
 	public float getPlayerRelativeBlockHardness(EntityPlayer entityPlayer, World world, int par3, int par4, int par5) {
-		if((world.provider.isSurfaceWorld() && par4<5) || world.provider instanceof WorldProviderBedrock){
+		if((world.provider.isSurfaceWorld() && par4<5) || (world.provider instanceof WorldProviderBedrock && par4>1)){
 			return entityPlayer.inventory.getCurrentItem() != null && entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemIchorPickAdv ? 3F : -1;
 		}
 		return -1;
