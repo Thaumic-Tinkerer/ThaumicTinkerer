@@ -84,7 +84,7 @@ public final class ToolHandler {
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlockMaterial(x, y, z);
 		Block block = Block.blocksList[id];
-		if(block != null && !block.isAirBlock(world, x, y, z) && block.getBlockHardness(world, x, y, z) != -1) {
+		if(block != null && !block.isAirBlock(world, x, y, z) && block.getPlayerRelativeBlockHardness(player, world, x, y, z) != -1) {
 			List<ItemStack> items = new ArrayList();
 
 			if(!block.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
