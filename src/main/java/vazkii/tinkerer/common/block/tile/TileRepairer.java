@@ -251,21 +251,16 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	int drawEssentia() {
 		ForgeDirection orientation = getOrientation();
-		TileEntity tile = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
-
-		if (tile != null) {
-			IEssentiaTransport ic = (IEssentiaTransport) tile;
-
-			if (!ic.canOutputTo(orientation.getOpposite()))
+		TileEntity te = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
+		if (te != null) {
+			IEssentiaTransport ic = (IEssentiaTransport)te;
+			if (!ic.canOutputTo(orientation.getOpposite())) 
 				return 0;
 
 			for(Aspect aspect : repairValues.keySet())
-				if (ic.getSuction(orientation.getOpposite()).getAmount(aspect) < getSuction(orientation).getAmount(aspect) && ic.takeVis(aspect, 1) == 1)
+				if(ic.getSuctionType(orientation.getOpposite()) == aspect && ic.getSuctionAmount(orientation.getOpposite()) < getSuctionAmount(orientation) && ic.takeVis(aspect, 1) == 1)
 					return repairValues.get(aspect);
-
-			return 0;
 		}
-
 		return 0;
 	}
 
@@ -341,29 +336,11 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	@Override
-	public void setSuction(AspectList paramAspectList) {
-	}
-
-	@Override
 	public void setSuction(Aspect paramAspect, int paramInt) { }
-
-	@Override
-	public AspectList getSuction(ForgeDirection paramForgeDirection) {
-		AspectList list = new AspectList();
-		for(Aspect aspect : repairValues.keySet())
-			list.add(aspect, 256 + repairValues.get(aspect));
-
-		return list;
-	}
-
+	
 	@Override
 	public int takeVis(Aspect paramAspect, int paramInt) {
 		return 0;
-	}
-
-	@Override
-	public AspectList getEssentia(ForgeDirection paramForgeDirection) {
-		return null;
 	}
 
 	@Override
@@ -374,6 +351,31 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	@Override
 	public boolean renderExtendedTube() {
 		return false;
+	}
+	
+	@Override
+	public int addVis(Aspect arg0, int arg1) {
+		return 0;
+	}
+
+	@Override
+	public int getEssentiaAmount(ForgeDirection arg0) {
+		return 0;
+	}
+
+	@Override
+	public Aspect getEssentiaType(ForgeDirection arg0) {
+		return null;
+	}
+
+	@Override
+	public int getSuctionAmount(ForgeDirection arg0) {
+		return arg0 == getOrientation() ? 128 : 0;
+	}
+
+	@Override
+	public Aspect getSuctionType(ForgeDirection arg0) {
+		return arg0 == getOrientation() ? Aspect.TOOL : null;
 	}
 
 	@Override
