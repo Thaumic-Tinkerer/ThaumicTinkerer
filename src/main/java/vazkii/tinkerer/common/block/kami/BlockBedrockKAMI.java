@@ -23,6 +23,7 @@ public class BlockBedrockKAMI extends Block {
 		disableStats();
 		setCreativeTab(CreativeTabs.tabBlock);
 		setTextureName("bedrock");
+		setBlockUnbreakable();
 	}
 
 	@Override
