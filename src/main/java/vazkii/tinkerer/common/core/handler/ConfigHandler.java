@@ -46,7 +46,7 @@ public final class ConfigHandler {
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
 	public static int endDimensionID = 1;
-
+	public static int bedrockDimensionID=19;
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
@@ -93,6 +93,9 @@ public final class ConfigHandler {
 		useOreDictMetal = propOreDict.getBoolean(true);
 		
 		if(enableKami) {
+			Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", 19);
+			propDimensionID.comment = "Set to the dimension id wished for bedrock dimension, or 0 to disable";
+			bedrockDimensionID= propDimensionID.getInt(19);
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
 			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
 			showPlacementMirrorBlocks = propShowPlacementMirrorBlocks.getBoolean(true);
@@ -188,7 +191,7 @@ public final class ConfigHandler {
 		LibEnchantIDs.idQuickDraw = loadEnchant(LibEnchantNames.QUICK_DRAW, LibEnchantIDs.idQuickDraw);
 		LibEnchantIDs.idVampirism = loadEnchant(LibEnchantNames.VAMPIRISM, LibEnchantIDs.idVampirism);
 
-		ThaumicTinkerer.dimID = config.get(Configuration.CATEGORY_GENERAL, "Bedrock dimension id", 19).getInt(19);
+		
 
 
 		config.save();
