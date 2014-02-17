@@ -250,7 +250,7 @@ public final class ModResearch {
 	private static void registerResearchPages() {
 		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
 
-		ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
+		//ResearchCategories.registerCategory(LibResearch.CATEGORY_ENCHANTING, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
 		ResearchCategories.registerCategory(LibResearch.CATEGORY_THAUMICTINKERER, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
 	}
 
