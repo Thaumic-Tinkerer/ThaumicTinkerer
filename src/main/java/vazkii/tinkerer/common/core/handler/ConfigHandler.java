@@ -123,6 +123,8 @@ public final class ConfigHandler {
 		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
 
 		LibBlockIDs.idWarpGate = loadBlock(LibBlockNames.WARP_GATE, LibBlockIDs.idWarpGate);
+
+		LibBlockIDs.idPortal = loadBlock(LibBlockNames.PORTAL, LibBlockIDs.idPortal);
 		LibBlockIDs.idGolemConnector= loadBlock(LibBlockNames.GOLEMCONNECTOR, LibBlockIDs.idGolemConnector);
 
 		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
