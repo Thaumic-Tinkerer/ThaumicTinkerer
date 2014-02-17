@@ -18,6 +18,7 @@ import cpw.mods.fml.common.Loader;
 import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
+import thaumcraft.common.config.Config;
 import vazkii.tinkerer.common.lib.*;
 
 import java.io.File;
@@ -76,6 +77,7 @@ public final class ConfigHandler {
 		Property propEasymodeResearch = config.get(Configuration.CATEGORY_GENERAL, "research.easymode.enabled", false);
 		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research.";
 		enableEasymodeResearch = propEasymodeResearch.getBoolean(false);
+		Config.researchDifficulty=(enableEasymodeResearch)?-1:Config.researchDifficulty;
 		
 		Property propDebugCommands = config.get(Configuration.CATEGORY_GENERAL, "debugCommands.enabled", false);
 		propDebugCommands.comment = "Set to true to enable debugging commands.";
