@@ -75,7 +75,7 @@ public final class ConfigHandler {
 		enableSurvivalShareTome = propEnableSurvivalShareTome.getBoolean(true);
 
 		Property propEasymodeResearch = config.get(Configuration.CATEGORY_GENERAL, "research.easymode.enabled", false);
-		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research.";
+		propEasymodeResearch.comment = "Set to true to enable Easy Research (getting research notes = instant discovery). For those who don't like research. (DEPRECATED: Please use thaumcraft.cfg to edit this now, all this does is alter that)";
 		enableEasymodeResearch = propEasymodeResearch.getBoolean(false);
 		Config.researchDifficulty=(enableEasymodeResearch)?-1:Config.researchDifficulty;
 		
