@@ -26,7 +26,7 @@ public class OreClusterGenerator implements IWorldGenerator{
 				int firstBlockZCoord = 16 * chunkZ + random.nextInt(16);
 				ItemStack itemStack = oreIds.get(random.nextInt(oreIds.size()));
 				for(int l=0; l<200; l++){
-					int firstBlockYCoord = random.nextInt(250);
+					int firstBlockYCoord = random.nextInt(248)+3;
 					WorldGenMinable mineable = new WorldGenMinable(itemStack.itemID,itemStack.getItemDamage(), random.nextInt(20), 7);
 					mineable.generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
 				}
