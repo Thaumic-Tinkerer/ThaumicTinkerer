@@ -47,7 +47,6 @@ public class ThaumicTinkerer {
 
 	public static CommonProxy tcProxy;
 	public static final BiomeGenBedrock bedrockBiome = new BiomeGenBedrock(19);
-	public static int dimID = 19;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -72,9 +71,9 @@ public class ThaumicTinkerer {
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
 
-		if(ConfigHandler.enableKami && dimID != 0){
-			DimensionManager.registerProviderType(dimID, WorldProviderBedrock.class, false);
-			DimensionManager.registerDimension(dimID, dimID);
+		if(ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0){
+			DimensionManager.registerProviderType(ConfigHandler.bedrockDimensionID, WorldProviderBedrock.class, false);
+			DimensionManager.registerDimension(ConfigHandler.bedrockDimensionID, ConfigHandler.bedrockDimensionID);
 		}
 	}
 

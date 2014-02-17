@@ -22,6 +22,7 @@ import net.minecraft.world.WorldServer;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.dim.TeleporterBedrock;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
@@ -102,7 +103,7 @@ public class BlockBedrockPortal extends Block {
 
 			if(entity instanceof EntityPlayer && !par1World.isRemote){
 
-				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, ThaumicTinkerer.dimID, new TeleporterBedrock((WorldServer) par1World));
+				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, ConfigHandler.bedrockDimensionID, new TeleporterBedrock((WorldServer) par1World));
 
 				if(entity.worldObj.getBlockId(par2, 251, par4) == 7){
 					entity.worldObj.setBlock(par2, 251, par4, 0);

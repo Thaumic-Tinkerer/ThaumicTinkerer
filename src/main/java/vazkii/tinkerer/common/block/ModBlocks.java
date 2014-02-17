@@ -94,7 +94,7 @@ public final class ModBlocks {
 		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
 		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
 
-		if(ConfigHandler.enableKami && ThaumicTinkerer.dimID != 0) {
+		if(ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0) {
 
 			Block.blocksList[7]=null;
 			bedrock = new BlockBedrockKAMI();
