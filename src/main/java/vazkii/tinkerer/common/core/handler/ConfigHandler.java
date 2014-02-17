@@ -19,7 +19,6 @@ import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import thaumcraft.common.config.Config;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.*;
 
 import java.io.File;
