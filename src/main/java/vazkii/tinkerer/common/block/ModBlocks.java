@@ -18,6 +18,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
 import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
@@ -93,7 +94,7 @@ public final class ModBlocks {
 		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
 		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
 
-		if(ConfigHandler.enableKami) {
+		if(ConfigHandler.enableKami && ThaumicTinkerer.dimID != 0) {
 
 			Block.blocksList[7]=null;
 			bedrock = new BlockBedrockKAMI();

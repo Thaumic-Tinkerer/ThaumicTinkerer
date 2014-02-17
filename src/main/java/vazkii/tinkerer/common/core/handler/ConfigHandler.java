@@ -19,6 +19,7 @@ import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import thaumcraft.common.config.Config;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.*;
 
 import java.io.File;
@@ -186,6 +187,9 @@ public final class ConfigHandler {
 		LibEnchantIDs.idDesintegrate = loadEnchant(LibEnchantNames.DESINTEGRATE, LibEnchantIDs.idDesintegrate);
 		LibEnchantIDs.idQuickDraw = loadEnchant(LibEnchantNames.QUICK_DRAW, LibEnchantIDs.idQuickDraw);
 		LibEnchantIDs.idVampirism = loadEnchant(LibEnchantNames.VAMPIRISM, LibEnchantIDs.idVampirism);
+
+		ThaumicTinkerer.dimID = config.get(Configuration.CATEGORY_GENERAL, "Bedrock dimension id", 19).getInt(19);
+
 
 		config.save();
 	}
