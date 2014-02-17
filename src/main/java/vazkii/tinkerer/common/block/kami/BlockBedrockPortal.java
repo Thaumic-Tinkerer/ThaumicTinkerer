@@ -1,8 +1,11 @@
 package vazkii.tinkerer.common.block.kami;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,15 +15,19 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Facing;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.dim.TeleporterBedrock;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
+
+import java.util.Random;
 
 public class BlockBedrockPortal extends Block {
 
@@ -31,6 +38,24 @@ public class BlockBedrockPortal extends Block {
 		disableStats();
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
+
+	@SideOnly(Side.CLIENT)
+	private Icon icon;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+
+		icon = IconHelper.forName(iconRegister, "portal");
+
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int par1, int meta) {
+		return icon;
+	}
+
 
 	@Override
 	public float getBlockHardness(World par1World, int par2, int par3, int par4) {
@@ -97,18 +122,22 @@ public class BlockBedrockPortal extends Block {
 
 				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, 0, new TeleporterBedrock((WorldServer) par1World));
 
-				int x = (int) entity.posX;
-				int z = (int) entity.posZ;
+				Random rand = new Random();
 
-				int y=255;
+				int x = (int) entity.posX + rand.nextInt(100);
+				int z = (int) entity.posZ + rand.nextInt(100);
+
+				x-=50;
+				z-=50;
+
+				int y=120;
 
 				while(entity.worldObj.getBlockId(x, y, z) == 0 || Block.blocksList[entity.worldObj.getBlockId(x, y, z)].isAirBlock(par1World, x, y, z)){
 					y--;
 				}
 
 
-
-				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, y, par4 + 0.5, 0, 0);
+				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 3, z + 0.5, 0, 0);
 			}
 		}
 
@@ -161,4 +190,7 @@ public class BlockBedrockPortal extends Block {
 			e.worldObj.theProfiler.endSection();
 		}
 	}
+
+
+
 }
