@@ -94,19 +94,20 @@ public final class ModBlocks {
 		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
 		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
 
-		if(ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0) {
+		if(ConfigHandler.enableKami) {
 
-			Block.blocksList[7]=null;
-			bedrock = new BlockBedrockKAMI();
-			portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
-
+			if(ConfigHandler.bedrockDimensionID != 0) {
+				Block.blocksList[7]=null;
+				bedrock = new BlockBedrockKAMI();
+				portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
+			}
 		}
 
 		registerBlocks();
 		registerMultiparts();
 	}
-	
+
 	private static void registerBlocks() {
 		GameRegistry.registerBlock(darkQuartz, ItemDarkQuartzBlock.class, LibBlockNames.DARK_QUARTZ);
 		GameRegistry.registerBlock(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS);
@@ -132,9 +133,11 @@ public final class ModBlocks {
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
-			GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
+			if(ConfigHandler.bedrockDimensionID != 0) {
+				GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
 
-			GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
+				GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
+			}
 		}
 	}
 
