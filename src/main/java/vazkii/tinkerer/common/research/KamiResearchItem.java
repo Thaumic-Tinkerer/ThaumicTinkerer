@@ -14,16 +14,16 @@
  */
 package vazkii.tinkerer.common.research;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class KamiResearchItem extends TTResearchItem {
 
@@ -40,7 +40,7 @@ public class KamiResearchItem extends TTResearchItem {
 				ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
 				for(String tag : category.research.keySet()) {
 					ResearchItem research = category.research.get(tag);
-					if(research.isLost() || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
+					if(research.isLost() || (research.parentsHidden==null && research.parents==null)|| research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
 						continue;
 
 					requirements.add(tag);
