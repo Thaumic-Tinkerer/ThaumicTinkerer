@@ -25,7 +25,7 @@ public class RodIchorcloth extends WandRod {
 	ResourceLocation res = new ResourceLocation(LibResources.MODEL_ROD_ICHORCLOTH);
 
 	public RodIchorcloth() {
-		super("ichorcloth", 1000, new ItemStack(ModItems.kamiResource, 1, 5), 10);
+		super("ICHORCLOTH", 1000, new ItemStack(ModItems.kamiResource, 1, 5), 10);
 		setGlowing(true);
 	}
 

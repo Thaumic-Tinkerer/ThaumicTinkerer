@@ -25,7 +25,7 @@ public class CapIchor extends WandCap {
 	ResourceLocation res = new ResourceLocation(LibResources.MODEL_CAP_ICHOR);
 
 	public CapIchor() {
-		super("ichor", 0.8F, new ItemStack(ModItems.kamiResource, 1, 4), 10);
+		super("ICHOR", 0.8F, new ItemStack(ModItems.kamiResource, 1, 4), 10);
 	}
 
 	@Override

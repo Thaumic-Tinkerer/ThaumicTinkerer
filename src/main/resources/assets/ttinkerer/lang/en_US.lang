@@ -159,8 +159,8 @@ enchantment.ttinkerer:quickDraw=Quick Draw
 enchantment.ttinkerer:vampirism=Vampirism
 
 # WAND COMPONENTS
-item.Wand.ichor.cap=Ichorium Adorned
-item.Wand.ichorcloth.rod=Ichorcloth Strapped Silverwood
+item.Wand.ICHOR.cap=Ichorium Adorned
+item.Wand.ICHORCLOTH.rod=Ichorcloth Strapped Silverwood
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -386,14 +386,14 @@ ttresearch.lore.ICHORIUM=Not from the 55th floor
 ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal its property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
 
 # -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
-ttresearch.name.ICHORCLOTH_ROD=Ichorcloth Strapped Silverwood Wand Core
-ttresearch.lore.ICHORCLOTH_ROD=That's a mouthful
-ttresearch.page.ICHORCLOTH_ROD.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
+ttresearch.name.ROD_ICHORCLOTH=Ichorcloth Strapped Silverwood Wand Core
+ttresearch.lore.ROD_ICHORCLOTH=That's a mouthful
+ttresearch.page.ROD_ICHORCLOTH.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
 
 # -- ICHORIUM WAND CAPS
-ttresearch.name.ICHOR_CAP=Ichorium Wand Caps
-ttresearch.lore.ICHOR_CAP=Somewhat like a Steam Sale
-ttresearch.page.ICHOR_CAP.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+ttresearch.name.CAP_ICHOR=Ichorium Wand Caps
+ttresearch.lore.CAP_ICHOR=Somewhat like a Steam Sale
+ttresearch.page.CAP_ICHOR.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
 
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
