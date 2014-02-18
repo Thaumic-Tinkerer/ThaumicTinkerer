@@ -77,3 +77,4 @@
 2.3-93 For Thaumcraft 4.1=https://www.dropbox.com/s/hvy402hrg0qzao0/ThaumicTinkerer-2.3-93.jar
 2.3-94 For Thaumcraft 4.1=https://www.dropbox.com/s/ikirsvm11sv3kym/ThaumicTinkerer-2.3-94.jar
 2.3-95 For Thaumcraft 4.1=https://www.dropbox.com/s/lm6llbgqroje502/ThaumicTinkerer-2.3-95.jar
+2.3-96 For Thaumcraft 4.1=https://www.dropbox.com/s/3u1qdsu27dmysf3/ThaumicTinkerer-2.3-96.jar
