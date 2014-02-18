@@ -74,3 +74,4 @@
 2.2 beta unstable-78=https://dl.dropboxusercontent.com/u/18912303/ThaumicTinkerer/ThaumicTinkerer-2.2b-78.jar
 2.3-91 For Thaumcraft 4.1=https://dl.dropboxusercontent.com/u/18912303/ThaumicTinkerer/ThaumicTinkerer-2.3-91.jar
 2.3-92 For Thaumcraft 4.1=https://www.dropbox.com/s/p9ztxnmus128g9j/ThaumicTinkerer-2.3-92.jar
+2.3-93 For Thaumcraft 4.1=https://www.dropbox.com/s/hvy402hrg0qzao0/ThaumicTinkerer-2.3-93.jar
