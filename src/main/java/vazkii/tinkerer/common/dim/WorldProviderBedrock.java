@@ -7,9 +7,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 
 public class WorldProviderBedrock extends WorldProvider {
@@ -17,7 +17,7 @@ public class WorldProviderBedrock extends WorldProvider {
 	private float[] colorsSunriseSunset = new float[4];
 	public void registerWorldChunkManager()
 	{
-		this.worldChunkMgr = new WorldChunkManagerHell(new BiomeGenBedrock(19), this.dimensionId, this.dimensionId);
+		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, this.dimensionId, this.dimensionId);
 		this.dimensionId = ConfigHandler.bedrockDimensionID;
 		this.hasNoSky = false;
 	}
