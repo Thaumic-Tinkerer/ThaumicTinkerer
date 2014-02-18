@@ -27,6 +27,7 @@ import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.helper.ProjectileHelper;
 
 public class ItemFocusDeflect extends ItemModFocus {
 
@@ -48,6 +49,8 @@ public class ItemFocusDeflect extends ItemModFocus {
 		List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 4, p.posY - 4, p.posZ - 4, p.posX + 3, p.posY + 3, p.posZ + 3));
 
 		for(Entity e : projectiles) {
+			if(ProjectileHelper.getOwner(e) == p) continue;
+
 			Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2) ;
 
 			for(int i = 0; i < 6; i++)
