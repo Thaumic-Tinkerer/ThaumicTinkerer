@@ -1,12 +1,16 @@
 ﻿# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Position eingestellt!
-ttmisc.connector.complete=Das Binden ist komplett!
+ttmisc.connector.complete=Erfolgreich gebunden!
 ttmisc.connector.notinterf=Das ist kein Transvektorblock.
 ttmisc.connector.interffail=Du kannst keine Transvektor-Schnittstelle mit einer anderen verbinden.
 ttmisc.connector.dislfail=Du kannst keine Transvektor-Schnittstelle mit einer anderen verbinden.
 ttmisc.connector.notpresent=Der Transvektorblock ist nicht präsent.
 ttmisc.connector.toofar=Der ursprüngliche Transvektorblock ist zu weit entfernt.
+ttmisc.golemconnector.set=Konnektor eingestellt!
+ttmisc.golemconnector.complete=Erfolgreich gebunden!
+ttmisc.golemconnector.notinterf=Der Konnektor ist nicht mit einem Golemkonnektorblock verbunden
+ttmisc.golemconnector.notpresent=Der Golemkonnektorblock ist nicht präsent.
 ttmisc.leftClick=Linksklick
 ttmisc.rightClick=Rechtsklick
 ttmisc.redstoneControl=Redstone-Kontrolle
@@ -91,7 +95,7 @@ item.ttinkerer:ichor.name=Ichor
 item.ttinkerer:ichorCloth.name=Ichortuch
 item.ttinkerer:ichorium.name=Ichorium
 item.ttinkerer:ichorNugget.name=Ichoriumnugget
-item.ttinkerer:ichorCap.name=Ichoriumstabkappe
+item.ttinkerer:ichorCap.name=Ichoriumkappe
 item.ttinkerer:ichorclothRod.name=Ichortuchverstärkter Silberholz-Stabkern
 item.ttinkerer:netherShard.name=Netherscherbe
 item.ttinkerer:enderShard.name=Enderscherbe
@@ -141,6 +145,7 @@ tile.ttinkerer:platform.name=Ätherische Plattform
 tile.ttinkerer:portal.name=Bedrock-Portal
 tile.ttinkerer:Mobilization Levitator.name=Levitationslokomotive
 tile.ttinkerer:Mobilization Levitator Relay.name=Levitationslokomotivrelais
+tile.ttinkerer:golemConnector.name=Golemkonnektor
 
 # KAMI BLOCK NAMES
 tile.ttinkerer:warpGate.name=Himmelstor
@@ -192,6 +197,17 @@ ttresearch.lore.INTERFACE=Nicht verbunden mit nyuu
 ttresearch.page.INTERFACE.0=The thing is, there's only six sides to a block..." - Direwolf20<BR><BR>Myth = Busted! Dein neuestes Konstrukt kann an einen Block in unmittelbarer Nähe gebunden werden. Seine Seiten werden die Seiten des ausgewählten Blocks nachahmen, und es wird als Erweiterung arbeiten. Es kann BuildCraft-, IC2- und TE3-Energie akzeptieren, Essentia, Items und Flüssigkeiten, auch ist es fähig, die letzteren beiden zu exportieren.<BR>[fortgesetzt]
 ttresearch.page.INTERFACE.1=Um eine Schnittstelle an einen anderen Block zu binden, wirst du ein spezielles Werkzeug benötigen. Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklicken auf die Schnittstelle gefolgt vom Rechtsklicken auf das Ziel werden beide verbunden und bereit für die Arbeit. Die Reichweite ist kurz, lediglich vier Blöcke. (Anmerkung: Buildcraft-Rohre müssen entfernt und neu platziert werden, um zu arbeiten)
 ttresearch.page.INTERFACE.2=Es ist auch möglich, indem du diesen Block mit irgendeinem anderen anklickst, ihn als den gehaltenen Block zu tarnen. Um die Hülle zu entfernen, rechtsklicke einfach auf den getarnten Block mit einer leeren Hand.
+
+# -- GOLEM CONNECTOR
+ttresearch.name.GOLEM_CONNECTOR=Golemkonnektor
+ttresearch.lore.GOLEM_CONNECTOR=Hier wird keine Golem-Gehirnkontrolle verwendet. Ehrlich!
+ttresearch.page.GOLEM_CONNECTOR.0=Durch das Erkunden der Möglichkeiten von Bewegung, Werkzeug und etwas Order hast du entdeckt, wie du diese Golems ein klein wenig gehorsamer machen kannst! Du entdecktest einen Block, der, wenn du ihn an einen Computer anschließt, das Bewusstsein naher Golems lesen und diese 'überzeugen' kann zu tun, was der Computer fordert.
+ttresearch.page.GOLEM_CONNECTOR.1=Um einen Konnektor an einen Golem zu binden, benötigst du ein besonderes Werkzeug.  Was du Transvektoren-Binder nennst, sollte den Job erledigen.<BR><BR>Mit dem Rechtsklick auf den Konnektor gefolgt vom Shift-Rechtsklicken auf den Zielgolem werden beide verbunden und bereit für die Arbeit. Die Reichweite ist ziemlich groß, ganze 30 Blöcke!
+ttresearch.page.GOLEM_CONNECTOR.2=Es ist auch möglich, indem du diesen Block mit irgendeinem anderen anklickst, ihn als den gehaltenen Block zu tarnen. Um die Hülle zu entfernen, rechtsklicke einfach auf den getarnten Block mit einer leeren Hand.
+ttresearch.page.GOLEM_CONNECTOR.3=<BR><BR>Der Einfachheit wegen ist die Methodendokumentation für diesen Block auf einer externen Website. Wenn du jetzt ENTER drückst, wirst du zu ihr geführt.<BR><BR>Leider funktioniert das nicht auf allen Systemen. Sollte das der Fall sein, gib "vazkii.us/tt/docs.php" in deinen Browser ein.
+# Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
+# link to it and the short URL (see above) you want for it on my website and I'll add it. 
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
 
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=Gasförmige Illuminae
