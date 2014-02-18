@@ -159,8 +159,8 @@ enchantment.ttinkerer:quickDraw=Schnelles Spannen
 enchantment.ttinkerer:vampirism=Vampirismus
 
 # WAND COMPONENTS
-item.Wand.ichor.cap=Ichoriumgeschmückter
-item.Wand.ichorcloth.rod=Ichortuchverstärkter Silberholz -
+item.Wand.ICHOR.cap=Ichoriumgeschmückter
+item.Wand.ICHORCLOTH.rod=Ichortuchverstärkter Silberholz
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -387,14 +387,14 @@ ttresearch.lore.ICHORIUM=Nicht von Stockwerk 55
 ttresearch.page.ICHORIUM.0=Mehr Forschung mit Ichor enthüllte seine Eigenschaft, mir den meisten gewöhnlichen Materialien zu verschmelzen. Die meisten Mischungen resultieren in absolut gar nichts, jedoch hast du es bereits geschafft, es mit Diamanten und Stoff zu vermischen, und dieses mal gelang es mit Thaumium.<BR><BR>Dieses Metall ist extrem stark und belastbar, zu einem Grad, zu welchem gewöhnliche Materialien niemals kommen könnten. Du hast bisher noch keinen Nutzen für es gefunden, aber du weißt, dass dir das nicht allzu schwer fallen dürfte.
 
 # -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
-ttresearch.name.ICHORCLOTH_ROD=Ichortuch-verstärkter Silberholz-Stabkern
-ttresearch.lore.ICHORCLOTH_ROD=Das ist ein langer Name
-ttresearch.page.ICHORCLOTH_ROD.0=DU hast es geschafft. Indem du einen Silberholz-Stabkern mit Ichortuch versetzt, hast du es geschafft, den ultimativen Stabkern zu erschaffen.<BR><BR>Dieser Kern hält eine gewaltige Menge von 1000 jeder Art von Vis. Dies wird mit Sicherheit die Herstellung teurer Komponenten ein wenig stressfreier machen. Nun bleibt die Frage, wo wirst du all das Vis hierfür herbekommen?
+ttresearch.name.ROD_ICHORCLOTH=Ichortuch-verstärkter Silberholz-Stabkern
+ttresearch.lore.ROD_ICHORCLOTH=Das ist ein langer Name
+ttresearch.page.ROD_ICHORCLOTH.0=DU hast es geschafft. Indem du einen Silberholz-Stabkern mit Ichortuch versetzt, hast du es geschafft, den ultimativen Stabkern zu erschaffen.<BR><BR>Dieser Kern hält eine gewaltige Menge von 1000 jeder Art von Vis. Dies wird mit Sicherheit die Herstellung teurer Komponenten ein wenig stressfreier machen. Nun bleibt die Frage, wo wirst du all das Vis hierfür herbekommen?
 
 # -- ICHORIUM WAND CAPS
-ttresearch.name.ICHOR_CAP=Ichorium-Stabkappen
-ttresearch.lore.ICHOR_CAP=Ein wenig wie ein Steam Sale
-ttresearch.page.ICHOR_CAP.0=Du hast den ersten Nutzen für Ichorium gefunden, indem du Stabkappen erdachtest, die dir eine Visreduktion von 20% auf alles geben. Nun musst du sie nur noch tatsächlich nutzen und einen Stab kreieren, der mehr Vis halten kann.
+ttresearch.name.CAP_ICHOR=Ichorium-Stabkappen
+ttresearch.lore.CAP_ICHOR=Ein wenig wie ein Steam Sale
+ttresearch.page.CAP_ICHOR.0=Du hast den ersten Nutzen für Ichorium gefunden, indem du Stabkappen erdachtest, die dir eine Visreduktion von 20% auf alles geben. Nun musst du sie nur noch tatsächlich nutzen und einen Stab kreieren, der mehr Vis halten kann.
 
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichortuchrobe
