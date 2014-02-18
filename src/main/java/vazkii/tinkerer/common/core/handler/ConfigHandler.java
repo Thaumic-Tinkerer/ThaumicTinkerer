@@ -19,6 +19,7 @@ import net.minecraftforge.common.ConfigCategory;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import thaumcraft.common.config.Config;
+import vazkii.tinkerer.common.dim.OreClusterGenerator;
 import vazkii.tinkerer.common.lib.*;
 
 import java.io.File;
@@ -66,6 +67,7 @@ public final class ConfigHandler {
 		propEnableKami.comment = "Set to true to enable all kami stuff (note, either this OR the kami mod file will work)";
 		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(false);
 
+
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
 		useTootlipIndicators = propEnableTooltips.getBoolean(true);
@@ -95,6 +97,12 @@ public final class ConfigHandler {
 			Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -19);
 			propDimensionID.comment = "Set to the dimension id wished for bedrock dimension, or 0 to disable";
 			bedrockDimensionID= propDimensionID.getInt(-19);
+
+			Property propOreDensity=config.get(Configuration.CATEGORY_GENERAL, "Bedrock Dimension ore density", 1);
+			propOreDensity.comment = "The number of verticle veins of ore per chunk. Default: 1";
+			OreClusterGenerator.density=propOreDensity.getInt(1);
+
+
 			Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
 			propShowPlacementMirrorBlocks.comment = "Set to false to remove the phantom blocks displayed by the Worldshaper's Seeing Glass.";
 			showPlacementMirrorBlocks = propShowPlacementMirrorBlocks.getBoolean(true);
