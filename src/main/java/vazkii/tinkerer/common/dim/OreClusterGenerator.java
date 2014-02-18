@@ -21,7 +21,7 @@ public class OreClusterGenerator implements IWorldGenerator{
 			oreIds=getOreIds();
 		}
 		if (world.provider instanceof WorldProviderBedrock) {
-			for (int k = 0; k < 6; k++) {
+			for (int k = 0; k < 1; k++) {
 				int firstBlockXCoord = 16 * chunkX + random.nextInt(16);
 				int firstBlockZCoord = 16 * chunkZ + random.nextInt(16);
 				ItemStack itemStack = oreIds.get(random.nextInt(oreIds.size()));
