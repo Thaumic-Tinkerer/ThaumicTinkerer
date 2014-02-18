@@ -71,6 +71,7 @@ public class TileEntityMobilizer extends TileEntity {
 	}
 
 	public void updateEntity(){
+
 		//Check for ghost TEs
 		if(dead)
 			return;
