@@ -137,7 +137,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
 			ItemStack wand = getStackInSlot(1);
 
-			if(wand != null && wand.getItem() instanceof ItemWandCasting) {
+			if(wand != null && wand.getItem() instanceof ItemWandCasting && !((ItemWandCasting) wand.getItem()).isStaff(wand)) {
 				ItemWandCasting wandItem = (ItemWandCasting) wand.getItem();
 				AspectList wandAspects = wandItem.getAllVis(wand);
 
