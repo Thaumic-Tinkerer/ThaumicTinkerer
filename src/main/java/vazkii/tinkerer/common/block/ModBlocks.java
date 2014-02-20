@@ -18,7 +18,6 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
 import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
@@ -41,6 +40,9 @@ import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 public final class ModBlocks {
 
@@ -100,6 +102,21 @@ public final class ModBlocks {
 			if(ConfigHandler.bedrockDimensionID != 0) {
 				Block.blocksList[7]=null;
 				bedrock = new BlockBedrockKAMI();
+
+				try {
+					Field bedrockField=Block.class.getField("bedrock");
+					bedrockField.setAccessible(true);
+					Field modifiersField = Field.class.getDeclaredField("modifiers");
+					modifiersField.setAccessible(true);
+					int modifiers = modifiersField.getInt(bedrockField);
+					modifiers &= ~Modifier.FINAL;
+					modifiersField.setInt(bedrockField, modifiers);
+					bedrockField.set(null, bedrock);
+				} catch (NoSuchFieldException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
 				portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 			}
 		}
