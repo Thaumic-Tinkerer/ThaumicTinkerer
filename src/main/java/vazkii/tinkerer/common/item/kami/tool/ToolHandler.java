@@ -26,6 +26,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
@@ -103,7 +104,7 @@ public final class ToolHandler {
 			if(!world.isRemote && !player.capabilities.isCreativeMode)
 				for(ItemStack stack : items)
 					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
-			if(id==7 && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
+			if(ConfigHandler.bedrockDimensionID != 0 && id==7 && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
 
 				world.setBlock(x, y, z, LibBlockIDs.idPortal);
 			}
