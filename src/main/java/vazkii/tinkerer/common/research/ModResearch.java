@@ -189,59 +189,59 @@ public final class ModResearch {
 			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ARMOR, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.ARMOR, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1), 17, 5, 5, new ItemStack(ModItems.ichorChest)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_HELM), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_CHEST), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_LEGS), arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_BOOTS));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_HELM_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WATER, 2).add(Aspect.HEAL, 1).add(Aspect.HUNGER, 1).add(Aspect.AURA, 1), 18, 3, 5, new ItemStack(ModItems.ichorHelmGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_HELM_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WATER, 2).add(Aspect.HEAL, 1).add(Aspect.HUNGER, 1).add(Aspect.AURA, 1), 18, 3, 5, new ItemStack(ModItems.ichorHelmGem)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_HELM_GEM));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 17, 7, 5, new ItemStack(ModItems.ichorChestGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 17, 7, 5, new ItemStack(ModItems.ichorChestGem)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_CHEST_GEM));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 17, 9, 5, new ItemStack(ModItems.ichorLegsGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 17, 9, 5, new ItemStack(ModItems.ichorLegsGem)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_LEGS_GEM), new ResearchPage("1"));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TRAVEL, 1).add(Aspect.MINE, 1).add(Aspect.PLANT, 1), 15, 10, 5, new ItemStack(ModItems.ichorBootsGem)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TRAVEL, 1).add(Aspect.MINE, 1).add(Aspect.PLANT, 1), 15, 10, 5, new ItemStack(ModItems.ichorBootsGem)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM));
 
-			research = new KamiResearchItem(LibResearch.KEY_CAT_AMULET, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MIND, 2).add(Aspect.ORDER, 1).add(Aspect.DARKNESS, 1).add(Aspect.DEATH, 1), 13, 10, 5, new ItemStack(ModItems.catAmulet)).setHidden().setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_CAT_AMULET, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MIND, 2).add(Aspect.ORDER, 1).add(Aspect.DARKNESS, 1).add(Aspect.DEATH, 1), 13, 10, 5, new ItemStack(ModItems.catAmulet)).setParents(LibResearch.KEY_ICHORIUM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_CAT_AMULET));
 
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_TOOLS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.WEAPON, 1).add(Aspect.METAL, 1).add(Aspect.CRAFT, 1), 13, 12, 5, new ItemStack(ModItems.ichorPick)).setConcealed().setParents(LibResearch.KEY_ICHORIUM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_PICK), arcaneRecipePage(LibResearch.KEY_ICHOR_SHOVEL), arcaneRecipePage(LibResearch.KEY_ICHOR_AXE), arcaneRecipePage(LibResearch.KEY_ICHOR_SWORD));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.STONE, 1), 13, 15, 5, new ItemStack(ModItems.ichorPickGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.STONE, 1), 13, 15, 5, new ItemStack(ModItems.ichorPickGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_PICK_GEM), new ResearchPage("1"));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SHOVEL_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 15, 15, 5, new ItemStack(ModItems.ichorShovelGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SHOVEL_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 15, 15, 5, new ItemStack(ModItems.ichorShovelGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_SHOVEL_GEM));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.SEED, 1), 16, 14, 5, new ItemStack(ModItems.ichorAxeGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.SEED, 1), 16, 14, 5, new ItemStack(ModItems.ichorAxeGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_AXE_GEM));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SWORD_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AIR, 2).add(Aspect.WEAPON, 1).add(Aspect.SOUL, 1).add(Aspect.HUNGER, 1), 16, 12, 5, new ItemStack(ModItems.ichorSwordGem)).setHidden().setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SWORD_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AIR, 2).add(Aspect.WEAPON, 1).add(Aspect.SOUL, 1).add(Aspect.HUNGER, 1), 16, 12, 5, new ItemStack(ModItems.ichorSwordGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_SWORD_GEM), new ResearchPage("1"));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_POUCH, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.VOID, 2).add(Aspect.CLOTH, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAN, 1), 13, 6, 5, new ItemStack(ModItems.ichorPouch)).setHidden().setParents(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_POUCH, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.VOID, 2).add(Aspect.CLOTH, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAN, 1), 13, 6, 5, new ItemStack(ModItems.ichorPouch)).setParents(LibResearch.KEY_ICHOR_CLOTH).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_POUCH));
 
-			research = new KamiResearchItem(LibResearch.KEY_BLOCK_TALISMAN, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAGIC, 1), 14, 17, 5, new ItemStack(ModItems.blockTalisman)).setHidden().setParents(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.KEY_ICHOR_SHOVEL_GEM).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_BLOCK_TALISMAN, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAGIC, 1), 14, 17, 5, new ItemStack(ModItems.blockTalisman)).setParents(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.KEY_ICHOR_SHOVEL_GEM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOCK_TALISMAN));
 
-			research = new KamiResearchItem(LibResearch.KEY_PLACEMENT_MIRROR, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.CRAFT, 2).add(Aspect.CRYSTAL, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MIND, 1), 17, 16, 5, new ItemStack(ModItems.placementMirror)).setHidden().setParents(LibResearch.KEY_BLOCK_TALISMAN).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_PLACEMENT_MIRROR, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.CRAFT, 2).add(Aspect.CRYSTAL, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MIND, 1), 17, 16, 5, new ItemStack(ModItems.placementMirror)).setParents(LibResearch.KEY_BLOCK_TALISMAN).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_PLACEMENT_MIRROR));
 
-			research = new KamiResearchItem(LibResearch.KEY_FOCUS_SHADOWBEAM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.MAGIC, 1).add(Aspect.ELDRITCH, 1).add(Aspect.TAINT, 1), 14, 4, 5, new ItemStack(ModItems.focusShadowbeam)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_FOCUS_SHADOWBEAM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.MAGIC, 1).add(Aspect.ELDRITCH, 1).add(Aspect.TAINT, 1), 14, 4, 5, new ItemStack(ModItems.focusShadowbeam)).setParents(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_SHADOWBEAM));
 
-			research = new KamiResearchItem(LibResearch.KEY_FOCUS_XP_DRAIN, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MIND, 2).add(Aspect.MAGIC, 1).add(Aspect.AURA, 1).add(Aspect.MAN, 1), 12, 3, 5, new ItemStack(ModItems.focusXPDrain)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_FOCUS_XP_DRAIN, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MIND, 2).add(Aspect.MAGIC, 1).add(Aspect.AURA, 1).add(Aspect.MAN, 1), 12, 3, 5, new ItemStack(ModItems.focusXPDrain)).setParents(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_XP_DRAIN));
 
-			research = new KamiResearchItem(LibResearch.KEY_PROTOCLAY, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.MINE, 1).add(Aspect.MAN, 1).add(Aspect.MECHANISM, 1), 12, 17, 5, new ItemStack(ModItems.protoclay)).setHidden().setParents(LibResearch.KEY_ICHOR_PICK_GEM).setParentsHidden(LibResearch.KEY_ICHOR_SHOVEL_GEM).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_PROTOCLAY, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.MINE, 1).add(Aspect.MAN, 1).add(Aspect.MECHANISM, 1), 12, 17, 5, new ItemStack(ModItems.protoclay)).setParents(LibResearch.KEY_ICHOR_PICK_GEM).setParentsHidden(LibResearch.KEY_ICHOR_SHOVEL_GEM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_PROTOCLAY));
 
 			if(Config.allowMirrors) {
-				research = new KamiResearchItem(LibResearch.KEY_WARP_GATE, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MECHANISM, 1), 19, 6, 5, new ItemStack(ModBlocks.warpGate)).setHidden().setParents(LibResearch.KEY_ICHORCLOTH_CHEST_GEM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM).registerResearchItem();
+				research = new KamiResearchItem(LibResearch.KEY_WARP_GATE, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MECHANISM, 1), 19, 6, 5, new ItemStack(ModBlocks.warpGate)).setParents(LibResearch.KEY_ICHORCLOTH_CHEST_GEM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM).registerResearchItem();
 				research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_WARP_GATE), new ResearchPage("1"), infusionPage(LibResearch.KEY_SKY_PEARL));
 
-				research = new KamiResearchItem(LibResearch.KEY_FOCUS_RECALL, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 1), 20, 8, 5, new ItemStack(ModItems.focusRecall)).setHidden().setParents(LibResearch.KEY_WARP_GATE).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
+				research = new KamiResearchItem(LibResearch.KEY_FOCUS_RECALL, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 1), 20, 8, 5, new ItemStack(ModItems.focusRecall)).setParents(LibResearch.KEY_WARP_GATE).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 				research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_RECALL));
 			}
 		}
