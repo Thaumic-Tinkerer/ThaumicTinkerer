@@ -41,6 +41,7 @@ import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -105,7 +106,8 @@ public final class ModBlocks {
 				bedrock = new BlockBedrockKAMI();
 
 				try {
-					Field bedrockField=ReflectionHelper.findField(Block.class, "bedrock");
+					ReflectionHelper.findField(Block.class, LibObfuscation.BEDROCK);
+					Field bedrockField=ReflectionHelper.findField(Block.class, LibObfuscation.BEDROCK);
 					bedrockField.setAccessible(true);
 					Field modifiersField = Field.class.getDeclaredField("modifiers");
 					modifiersField.setAccessible(true);
