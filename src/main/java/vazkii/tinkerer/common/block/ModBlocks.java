@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.Block;
 import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
 import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
@@ -104,7 +105,7 @@ public final class ModBlocks {
 				bedrock = new BlockBedrockKAMI();
 
 				try {
-					Field bedrockField=Block.class.getField("bedrock");
+					Field bedrockField=ReflectionHelper.findField(Block.class, "bedrock");
 					bedrockField.setAccessible(true);
 					Field modifiersField = Field.class.getDeclaredField("modifiers");
 					modifiersField.setAccessible(true);
