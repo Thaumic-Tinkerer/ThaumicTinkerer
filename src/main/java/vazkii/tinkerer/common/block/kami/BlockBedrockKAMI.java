@@ -3,6 +3,7 @@ package vazkii.tinkerer.common.block.kami;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -38,6 +39,12 @@ public class BlockBedrockKAMI extends Block {
 	@Override
 	public float getBlockHardness(World par1World, int par2, int par3, int par4) {
 		return -1;
+	}
+
+	@Override
+	public boolean canEntityDestroy(World world, int x, int y, int z, Entity entity) {
+		System.out.println(entity.getClass());
+		return false;
 	}
 
 	@Override
