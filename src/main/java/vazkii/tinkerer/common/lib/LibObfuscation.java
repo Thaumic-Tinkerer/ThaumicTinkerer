@@ -31,4 +31,7 @@ public final class LibObfuscation {
 
 	/** EntityCreeper **/
 	public static final String[] TIME_SINCE_IGNITED = new String[] {  "timeSinceIgnited", "field_70833_d" , "bq" };
+
+	/** Block **/
+	public static final String[] BEDROCK = new String[] {  "bedrock", "field_71986_z" , "E" };
 }
