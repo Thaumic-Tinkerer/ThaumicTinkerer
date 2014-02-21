@@ -4,16 +4,12 @@ import appeng.api.IAppEngApi;
 import appeng.api.Util;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
-
-import java.util.List;
 
 public class TileEntityMobilizer extends TileEntity {
 
@@ -102,11 +98,11 @@ public class TileEntityMobilizer extends TileEntity {
 					&& (worldObj.getBlockId(xCoord, yCoord+1, zCoord) ==0 || worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
 
 				//Move Entities
-				List<Entity> entities = worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord+1, yCoord+3, zCoord+1));
-				System.out.print(entities);
-				for(Entity e: entities){
-					e.setPosition(e.posX+movementDirection.offsetX, e.posY, e.posZ+movementDirection.offsetZ);
-				}
+				//List<Entity> entities = worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord+1, yCoord+3, zCoord+1));
+				//System.out.print(entities);
+				//for(Entity e: entities){
+				//	e.setPosition(e.posX+movementDirection.offsetX, e.posY, e.posZ+movementDirection.offsetZ);
+				//}
 
 				//Move the block on top of the mobilizer
 				if(!worldObj.isRemote){
