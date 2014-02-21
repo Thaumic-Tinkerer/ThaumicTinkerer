@@ -166,7 +166,9 @@ public final class ModBlocks {
 			try {
 				Class clazz = Class.forName("vazkii.tinkerer.common.block.multipart.MultipartHandler");
 				clazz.newInstance();
-			} catch(Throwable e) {}
+			} catch(Throwable e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
