@@ -9,11 +9,13 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class OreClusterGenerator implements IWorldGenerator{
 
 	public static int density;
+	public static String[] blacklist = new String[]{"oreFirestone"};
 	ArrayList<ItemStack> oreIds=null;
 
 	@Override
@@ -40,7 +42,7 @@ public class OreClusterGenerator implements IWorldGenerator{
 		Random r = new Random();
 		ArrayList<ItemStack> result = new ArrayList<ItemStack>();
 		for(String s: OreDictionary.getOreNames()){
-			if(s.contains("ore") && !OreDictionary.getOres(s).isEmpty() && OreDictionary.getOres(s).get(0).getItem() instanceof ItemBlock){
+			if(s.contains("ore") && Arrays.asList(blacklist).contains(s) && !OreDictionary.getOres(s).isEmpty() && OreDictionary.getOres(s).get(0).getItem() instanceof ItemBlock){
 				result.add((OreDictionary.getOres(s).get(0)));
 			}
 		}

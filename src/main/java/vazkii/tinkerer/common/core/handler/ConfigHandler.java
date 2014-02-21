@@ -98,6 +98,10 @@ public final class ConfigHandler {
 			propDimensionID.comment = "Set to the dimension id wished for bedrock dimension, or 0 to disable";
 			bedrockDimensionID= propDimensionID.getInt(-19);
 
+			Property oreBlacklist = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension ore Blacklist", new String[]{"oreFirestone"});
+			oreBlacklist.comment = "These ores will not be spawned in the bedrock dimension";
+			OreClusterGenerator.blacklist= oreBlacklist.getStringList();
+
 			Property propOreDensity=config.get(Configuration.CATEGORY_GENERAL, "Bedrock Dimension ore density", 1);
 			propOreDensity.comment = "The number of verticle veins of ore per chunk. Default: 1";
 			OreClusterGenerator.density=propOreDensity.getInt(1);
