@@ -1,10 +1,8 @@
 *.class
 dist
 download
-.DS_Store
 push.sh
 remotebuild.py
-
 
 ## gradle
 /.gradle
@@ -21,6 +19,7 @@ remotebuild.py
 *.iml
 *.ipr
 *.iws
+
 ## eclipse
 /.settings
 /.metadata
@@ -30,3 +29,11 @@ remotebuild.py
 
 ## misc
 TCDEOBF.jar
+
+## Ignore OS cache files
+*.DS_Store
+_MACOSX
+Thumbs.db
+
+## Ignore unnecessary files
+*.log
