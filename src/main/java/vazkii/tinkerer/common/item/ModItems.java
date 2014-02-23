@@ -170,6 +170,9 @@ public final class ModItems {
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
 
+			new CapIchor("Ichor");
+			new RodIchorcloth("Ichorcloth");
+
 			MinecraftForge.setToolClass(ichorPick, "pickaxe", 4);
 			MinecraftForge.setToolClass(ichorShovel, "shovel", 4);
 			MinecraftForge.setToolClass(ichorAxe, "axe", 4);
