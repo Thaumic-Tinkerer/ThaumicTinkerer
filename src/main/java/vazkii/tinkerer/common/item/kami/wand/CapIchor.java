@@ -28,6 +28,11 @@ public class CapIchor extends WandCap {
 		super("ICHOR", 0.8F, new ItemStack(ModItems.kamiResource, 1, 4), 10);
 	}
 
+
+	public CapIchor(String s) {
+		super(s, 0.8F, new ItemStack(ModItems.kamiResource, 1, 4), 10);
+	}
+
 	@Override
 	public ResourceLocation getTexture() {
 		return res;
