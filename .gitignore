@@ -37,3 +37,4 @@ Thumbs.db
 
 ## Ignore unnecessary files
 *.log
+*.lck
