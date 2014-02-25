@@ -20,95 +20,83 @@ import dan200.computer.api.ILuaContext;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IAspectContainer;
-import thaumcraft.common.tiles.TileJarFillable;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PeripheralAspectContainer implements IHostedPeripheral {
 
-	IAspectContainer container;
+    IAspectContainer container;
 
-	public PeripheralAspectContainer(IAspectContainer container) {
-		this.container = container;
-	}
+    public PeripheralAspectContainer(IAspectContainer container) {
+        this.container = container;
+    }
 
-	@Override
-	public String getType() {
-		return "tt_aspectContainer";
-	}
+    @Override
+    public String getType() {
+        return "tt_aspectContainer";
+    }
 
-	@Override
-	public String[] getMethodNames() {
-		return new String[] { "getAspects", "getAspectCount" };
-	}
+    @Override
+    public String[] getMethodNames() {
+        return new String[]{"getAspects", "getAspectCount"};
+    }
 
-	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		switch(method) {
-			case 0 : {
-                return new Object[]{getAspects()};
+    @Override
+    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+        switch (method) {
+            case 0: {
+                List<String> returnStuff = new ArrayList<String>();
+                if (container.getAspects() == null || container.getAspects().size() == 0)
+                    return new String[0];
+
+                for (Aspect aspect : container.getAspects().getAspectsSorted())
+                    returnStuff.add(aspect.getTag());
+
+                return returnStuff.toArray();
             }
-            case 1 : {
-				String aspectName = (String) arguments[0];
-				Aspect aspect = Aspect.getAspect(aspectName);
+            case 1: {
+                String aspectName = (String) arguments[0];
+                Aspect aspect = Aspect.getAspect(aspectName);
 
-				if(container.getAspects() == null)
-					return new Object[] { 0 };
+                if (container.getAspects() == null)
+                    return new Object[]{0};
 
-				return new Object[] { container.getAspects().getAmount(aspect) };
-			}
-		}
-
-		return null;
-	}
-
-    private Map<Double, String> getAspects() {
-        HashMap<Double, String> retVal = new HashMap<Double, String>();
-        if (container instanceof TileJarFillable) {
-            TileJarFillable jar = (TileJarFillable) container;
-            if (jar.aspectFilter != null && !retVal.containsValue(jar.aspectFilter.getTag())) {
-                retVal.put((double) retVal.size() + 1, jar.aspectFilter.getTag());
+                return new Object[]{container.getAspects().getAmount(aspect)};
             }
+        }
 
-        }
-        if (container.getAspects() == null || container.getAspects().size() == 0)
-            return retVal;
-        for (Aspect aspect : container.getAspects().getAspectsSorted()) {
-            if (!retVal.containsValue(aspect.getTag()))
-                retVal.put((double) retVal.size() + 1, aspect.getTag());
-        }
-        return retVal;
+        return null;
     }
 
     @Override
     public boolean canAttachToSide(int side) {
         return true;
-	}
+    }
 
-	@Override
-	public void attach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void attach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public void detach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void detach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public void update() {
-		// NO-OP
-	}
+    @Override
+    public void update() {
+        // NO-OP
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbttagcompound) {
+        // NO-OP
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbttagcompound) {
+        // NO-OP
+    }
 
 }
