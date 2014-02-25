@@ -46,6 +46,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
     public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
         switch (method) {
             case 0: {
+                // DUMMY CHANGE
                 List<String> returnStuff = new ArrayList<String>();
                 if (container.getAspects() == null || container.getAspects().size() == 0)
                     return new String[0];
@@ -55,7 +56,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 
                 return returnStuff.toArray();
             }
-            case 1 : {
+            case 1: {
                 String aspectName = (String) arguments[0];
                 Aspect aspect = Aspect.getAspect(aspectName);
 
