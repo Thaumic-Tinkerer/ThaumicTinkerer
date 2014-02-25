@@ -29,6 +29,7 @@ public class KamiResearchItem extends TTResearchItem {
 
 	public KamiResearchItem(String par1, String par2, AspectList tags, int par3, int par4, int par5, ItemStack icon) {
 		super(par1, par2, tags, par3, par4, par5, icon);
+		setConcealed();
 	}
 
 	@Override
