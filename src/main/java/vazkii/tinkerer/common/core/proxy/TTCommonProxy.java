@@ -14,22 +14,18 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import dan200.computer.api.ComputerCraftAPI;
+import dan200.computer.api.IPeripheralHandler;
+import dan200.turtle.api.TurtleAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import thaumcraft.common.tiles.TileAlembic;
-import thaumcraft.common.tiles.TileArcaneBore;
-import thaumcraft.common.tiles.TileCentrifuge;
-import thaumcraft.common.tiles.TileCrucible;
-import thaumcraft.common.tiles.TileDeconstructionTable;
-import thaumcraft.common.tiles.TileInfusionMatrix;
-import thaumcraft.common.tiles.TileJarBrain;
-import thaumcraft.common.tiles.TileJarFillable;
-import thaumcraft.common.tiles.TileJarNode;
-import thaumcraft.common.tiles.TileNode;
-import thaumcraft.common.tiles.TileSensor;
-import thaumcraft.common.tiles.TileTubeFilter;
-import thaumcraft.common.tiles.TileWandPedestal;
+import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
@@ -48,16 +44,6 @@ import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
-import dan200.computer.api.ComputerCraftAPI;
-import dan200.computer.api.IPeripheralHandler;
-import dan200.turtle.api.TurtleAPI;
 
 public class TTCommonProxy {
 
@@ -99,8 +85,8 @@ public class TTCommonProxy {
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class
 		};
-
-		for(Class clazz : peripheralClasses)
+        // DUMMY CHANGE
+        for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
 			
 		TurtleAPI.registerUpgrade(new FumeTool());
