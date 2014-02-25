@@ -20,9 +20,10 @@ import dan200.computer.api.ILuaContext;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.common.tiles.TileJarFillable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PeripheralAspectContainer implements IHostedPeripheral {
 
@@ -46,14 +47,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
     public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
         switch (method) {
             case 0: {
-                List<String> returnStuff = new ArrayList<String>();
-                if (container.getAspects() == null || container.getAspects().size() == 0)
-                    return new String[0];
-
-                for (Aspect aspect : container.getAspects().getAspectsSorted())
-                    returnStuff.add(aspect.getTag());
-
-                return returnStuff.toArray();
+                return new Object[]{getAspects()};
             }
             case 1: {
                 String aspectName = (String) arguments[0];
@@ -67,6 +61,24 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
         }
 
         return null;
+    }
+
+    private Map<Double, String> getAspects() {
+        HashMap<Double, String> retVal = new HashMap<Double, String>();
+        if (container instanceof TileJarFillable) {
+            TileJarFillable jar = (TileJarFillable) container;
+            if (jar.aspectFilter != null && !retVal.containsValue(jar.aspectFilter.getTag())) {
+                retVal.put((double) retVal.size() + 1, jar.aspectFilter.getTag());
+            }
+
+        }
+        if (container.getAspects() == null || container.getAspects().size() == 0)
+            return retVal;
+        for (Aspect aspect : container.getAspects().getAspectsSorted()) {
+            if (!retVal.containsValue(aspect.getTag()))
+                retVal.put((double) retVal.size() + 1, aspect.getTag());
+        }
+        return retVal;
     }
 
     @Override
