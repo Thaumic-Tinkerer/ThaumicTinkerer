@@ -17,19 +17,7 @@ package vazkii.tinkerer.common.core.proxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import thaumcraft.common.tiles.TileAlembic;
-import thaumcraft.common.tiles.TileArcaneBore;
-import thaumcraft.common.tiles.TileCentrifuge;
-import thaumcraft.common.tiles.TileCrucible;
-import thaumcraft.common.tiles.TileDeconstructionTable;
-import thaumcraft.common.tiles.TileInfusionMatrix;
-import thaumcraft.common.tiles.TileJarBrain;
-import thaumcraft.common.tiles.TileJarFillable;
-import thaumcraft.common.tiles.TileJarNode;
-import thaumcraft.common.tiles.TileNode;
-import thaumcraft.common.tiles.TileSensor;
-import thaumcraft.common.tiles.TileTubeFilter;
-import thaumcraft.common.tiles.TileWandPedestal;
+import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
@@ -95,7 +83,7 @@ public class TTCommonProxy {
 
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
-				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
+				TileInfusionMatrix.class, TileJarFillable.class,TileJarFillableVoid.class, TileJarNode.class, TileNode.class,
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class
 		};
