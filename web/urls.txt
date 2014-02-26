@@ -85,3 +85,4 @@
 2.3-101 For Thaumcraft 4.1=https://www.dropbox.com/s/f8e1n3j3uujym6a/ThaumicTinkerer-2.3-101.jar
 2.3-102 For Thaumcraft 4.1=https://www.dropbox.com/s/oh6kstlli45c0kz/ThaumicTinkerer-2.3-102.jar
 2.3-103 For Thaumcraft 4.1=https://www.dropbox.com/s/es8dtwxrkpxmu09/ThaumicTinkerer-2.3-103.jar2.3-23=https://nekosune.ci.cloudbees.com/job/Thaumic%20Tinkerer/110//artifact/build/libs/ThaumicTinkerer-2.3-110.jar
+\r\n2.3-27=https://nekosune.ci.cloudbees.com/job/Thaumic%20Tinkerer/115//artifact/build/libs/ThaumicTinkerer-2.3-115.jar
