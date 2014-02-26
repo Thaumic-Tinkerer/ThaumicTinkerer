@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.research;
 
-import java.util.List;
-
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,11 +36,8 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
-import dan200.computer.api.ComputerCraftAPI;
+
+import java.util.List;
 
 public final class ModRecipes {
 
@@ -142,17 +139,14 @@ public final class ModRecipes {
 			'F', new ItemStack(ConfigItems.itemFocusFire),
 			'E', new ItemStack(ConfigItems.itemFocusExcavation),
 			'N', new ItemStack(ConfigItems.itemResource, 1, 1));
-		registerResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(ModItems.focusEnderChest), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
-			"M", "E", "P",
-			'M', new ItemStack(ConfigBlocks.blockMirror),
-			'E', new ItemStack(Item.eyeOfEnder),
-			'P', new ItemStack(ConfigItems.itemFocusPortableHole));
-		registerResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ModBlocks.dislocator), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
+        if (Config.allowMirrors) {
+            registerResearchItem(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ModBlocks.dislocator), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
 			" M ", " I ", " C ",
 			'M', new ItemStack(ConfigItems.itemResource, 1, 10),
 			'I', new ItemStack(ModBlocks.interfase),
 			'C', new ItemStack(Item.comparator));
-		registerResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(ModItems.revealingHelm), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
+        }
+        registerResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(ModItems.revealingHelm), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
 			"GH",
 			'G', new ItemStack(ConfigItems.itemGoggles),
 			'H', new ItemStack(ConfigItems.itemHelmetThaumium));
@@ -256,9 +250,11 @@ public final class ModRecipes {
 		
 		registerResearchItemI(LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizer), 4, new AspectList().add(Aspect.MOTION, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockLifter),
 				new ItemStack(Item.ingotIron), new ItemStack(Item.feather), new ItemStack(Item.ingotIron), new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
-		
-		registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
-				new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
+        if (Config.allowMirrors) {
+            registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
+                    new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
+
+        }
 
 		if(ConfigHandler.enableKami) {
 			registerResearchItemI(LibResearch.KEY_ICHOR, new ItemStack(ModItems.kamiResource, 8, 0), 7, new AspectList().add(Aspect.MAN, 32).add(Aspect.LIGHT, 32).add(Aspect.SOUL, 64), new ItemStack(Item.netherStar),
@@ -300,7 +296,12 @@ public final class ModRecipes {
 					new ItemStack(Block.dirt), new ItemStack(Block.stone), new ItemStack(Block.wood), new ItemStack(ModItems.kamiResource, 1, 7));
 
 			if(Config.allowMirrors) {
-				registerResearchItemI(LibResearch.KEY_WARP_GATE, new ItemStack(ModBlocks.warpGate), 8, new AspectList().add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 50).add(Aspect.FLIGHT, 50), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2),
+                registerResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(ModItems.focusEnderChest), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
+                        "M", "E", "P",
+                        'M', new ItemStack(ConfigBlocks.blockMirror),
+                        'E', new ItemStack(Item.eyeOfEnder),
+                        'P', new ItemStack(ConfigItems.itemFocusPortableHole));
+                registerResearchItemI(LibResearch.KEY_WARP_GATE, new ItemStack(ModBlocks.warpGate), 8, new AspectList().add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 50).add(Aspect.FLIGHT, 50), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2),
 						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(ModBlocks.dislocator), new ItemStack(ModItems.kamiResource, 1, 6), new ItemStack(Item.diamond), new ItemStack(Item.feather));
 				registerResearchItemI(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ModItems.skyPearl, 2), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Item.enderPearl),
 						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(Block.blockLapis), new ItemStack(Item.diamond));
