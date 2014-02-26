@@ -167,11 +167,11 @@ public final class ModItems {
 			skyPearl = new ItemSkyPearl(LibItemIDs.idSkyPearl).setUnlocalizedName(LibItemNames.SKY_PEARL);
 			focusRecall = new ItemFocusRecall(LibItemIDs.idFocusRecall).setUnlocalizedName(LibItemNames.FOCUS_RECALL);
 
+			new CapIchor("ichor");
+			new RodIchorcloth("ichorcloth");
+
 			capIchor = new CapIchor();
 			rodIchorcloth = new RodIchorcloth();
-
-			new CapIchor("Ichor");
-			new RodIchorcloth("Ichorcloth");
 
 			MinecraftForge.setToolClass(ichorPick, "pickaxe", 4);
 			MinecraftForge.setToolClass(ichorShovel, "shovel", 4);
