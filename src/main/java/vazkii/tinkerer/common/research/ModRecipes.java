@@ -145,6 +145,11 @@ public final class ModRecipes {
 			'M', new ItemStack(ConfigItems.itemResource, 1, 10),
 			'I', new ItemStack(ModBlocks.interfase),
 			'C', new ItemStack(Item.comparator));
+            registerResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(ModItems.focusEnderChest), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
+                    "M", "E", "P",
+                    'M', new ItemStack(ConfigBlocks.blockMirror),
+                    'E', new ItemStack(Item.eyeOfEnder),
+                    'P', new ItemStack(ConfigItems.itemFocusPortableHole));
         }
         registerResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(ModItems.revealingHelm), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
 			"GH",
@@ -296,11 +301,7 @@ public final class ModRecipes {
 					new ItemStack(Block.dirt), new ItemStack(Block.stone), new ItemStack(Block.wood), new ItemStack(ModItems.kamiResource, 1, 7));
 
 			if(Config.allowMirrors) {
-                registerResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(ModItems.focusEnderChest), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
-                        "M", "E", "P",
-                        'M', new ItemStack(ConfigBlocks.blockMirror),
-                        'E', new ItemStack(Item.eyeOfEnder),
-                        'P', new ItemStack(ConfigItems.itemFocusPortableHole));
+                
                 registerResearchItemI(LibResearch.KEY_WARP_GATE, new ItemStack(ModBlocks.warpGate), 8, new AspectList().add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 50).add(Aspect.FLIGHT, 50), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2),
 						new ItemStack(ModItems.kamiResource), new ItemStack(ModItems.kamiResource, 1, 7), new ItemStack(ModBlocks.dislocator), new ItemStack(ModItems.kamiResource, 1, 6), new ItemStack(Item.diamond), new ItemStack(Item.feather));
 				registerResearchItemI(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ModItems.skyPearl, 2), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Item.enderPearl),
