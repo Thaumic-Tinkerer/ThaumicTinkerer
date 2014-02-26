@@ -15,7 +15,7 @@
 	(Notice, KAMI is just a 1KB file that enables the features in TT, you don't have to update this)<br><br>
 	<?php
 
-	$file_url = 'https://raw.github.com/Vazkii/ThaumicTinkerer/master/web/urls.txt';
+	$file_url = 'https://raw.github.com/pixlepix/ThaumicTinkerer/website/web/urls.txt';
 	$file_contents = file_get_contents($file_url);
 	$file_contents_array = array_reverse(explode(PHP_EOL, $file_contents));
 
