@@ -88,3 +88,4 @@
 2.3-121=https://nekosune.ci.cloudbees.com/job/Thaumic%20Tinkerer/121//artifact/build/libs/ThaumicTinkerer-2.3-121.jar
 2.3-125=https://nekosune.ci.cloudbees.com/job/Thaumic%20Tinkerer/125//artifact/build/libs/ThaumicTinkerer-2.3-125.jar
 2.3-127=https://nekosune.ci.cloudbees.com/job/Thaumic%20Tinkerer/127//artifact/build/libs/ThaumicTinkerer-2.3-127.jar
+2.3-130=https://nekosune.ci.cloudbees.com/job/Thaumic%20Tinkerer/130//artifact/build/libs/ThaumicTinkerer-2.3-130.jar
