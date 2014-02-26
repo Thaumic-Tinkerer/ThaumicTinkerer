@@ -55,7 +55,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 
                 return returnStuff.toArray();
             }
-            case 1 : {
+            case 1: {
                 String aspectName = (String) arguments[0];
                 Aspect aspect = Aspect.getAspect(aspectName);
 
