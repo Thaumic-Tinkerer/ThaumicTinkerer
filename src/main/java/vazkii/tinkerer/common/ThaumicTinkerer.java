@@ -27,6 +27,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
+import vazkii.tinkerer.common.core.commands.KamiUnlockedCommand;
 import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
@@ -64,6 +65,7 @@ public class ThaumicTinkerer {
 	         ICommandManager command=server.getCommandManager();
 	         ServerCommandManager manager = (ServerCommandManager) command;
 	         manager.registerCommand(new MaxResearchCommand());
+            manager.registerCommand(new KamiUnlockedCommand());
 	}
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
