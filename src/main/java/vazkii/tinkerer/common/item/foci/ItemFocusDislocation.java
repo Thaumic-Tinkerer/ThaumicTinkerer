@@ -116,9 +116,8 @@ public class ItemFocusDislocation extends ItemModFocus {
 				if(!world.isRemote) {
 					world.removeBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, 0, 0, 1 | 2);
+					storePickedBlock(itemstack, (short) id, (short) meta, tile);
 				}
-
-				storePickedBlock(itemstack, (short) id, (short) meta, tile);
 
 				for(int i = 0; i < 8; i++) {
 					float x = (float) (mop.blockX + Math.random());

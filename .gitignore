@@ -27,7 +27,7 @@ remotebuild.py
 /bin
 /.idea
 /client/
-
+/classes/
 ## misc
 TCDEOBF.jar
 
