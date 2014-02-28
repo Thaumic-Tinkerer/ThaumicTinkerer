@@ -14,10 +14,9 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
@@ -27,10 +26,15 @@ import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.helper.ProjectileHelper;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ItemFocusDeflect extends ItemModFocus {
 
-	AspectList visUsage = new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 4);
+    public static List<Class<?>> DeflectBlacklist = Arrays.asList(new Class<?>[]{EntityExpBottle.class});
+    AspectList visUsage = new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 4);
 
 	public ItemFocusDeflect(int par1) {
 		super(par1);
@@ -48,6 +52,8 @@ public class ItemFocusDeflect extends ItemModFocus {
 		List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 4, p.posY - 4, p.posZ - 4, p.posX + 3, p.posY + 3, p.posZ + 3));
 
 		for(Entity e : projectiles) {
+            if (DeflectBlacklist.contains(e.getClass()) || ProjectileHelper.getOwner(e) == p)
+                continue;
 			Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2) ;
 
 			for(int i = 0; i < 6; i++)
