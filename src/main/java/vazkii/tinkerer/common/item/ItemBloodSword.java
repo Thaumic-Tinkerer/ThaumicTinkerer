@@ -29,7 +29,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Icon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
@@ -60,10 +63,21 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
+	private Icon activatedIcon;
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
+		activatedIcon = IconHelper.forItem(par1IconRegister, this, "Activated");
+	}
+
+	@Override
+	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+		if(stack.stackTagCompound==null || stack.stackTagCompound.getInteger("Activated")==0){
+			return itemIcon;
+		}
+		return activatedIcon;
 	}
 
 	@Override
@@ -88,7 +102,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 			EntityPlayer player = (EntityPlayer) event.source.getEntity();
 			ItemStack stack = player.getCurrentEquippedItem();
-			if (stack != null && stack.getItem() == this) {
+			if (stack != null && stack.getItem() == this  && stack.stackTagCompound!=null && stack.stackTagCompound.getInteger("Activated")==1) {
 				Aspect[] aspects = EnumMobAspect.getAspectsForEntity(event.entity);
 				if(aspects!=null){
 					event.drops.removeAll(event.drops);
@@ -132,15 +146,28 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase) {
-		return super.hitEntity(par1ItemStack, par2EntityLivingBase, par3EntityLivingBase);
+	public boolean hitEntity(ItemStack itemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase) {
+		return super.hitEntity(itemStack, par2EntityLivingBase, par3EntityLivingBase);
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
+	public ItemStack onItemRightClick(ItemStack stack, World par2World,
 	                                  EntityPlayer par3EntityPlayer) {
 
-		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
+		ItemStack cache=super.onItemRightClick(stack, par2World, par3EntityPlayer);
+		if(par3EntityPlayer.isSneaking() && !par2World.isRemote){
+			if(stack.stackTagCompound ==null){
+				stack.stackTagCompound = new NBTTagCompound();
+			}
+			if(stack.stackTagCompound.getInteger("Activated")==0){
+				par3EntityPlayer.addChatMessage("\u00a74"+ StatCollector.translateToLocal("ttmisc.bloodSword.activateEssentiaHarvest"));
+				stack.stackTagCompound.setInteger("Activated",1);
+			}else{
+				par3EntityPlayer.addChatMessage("\u00a74"+ StatCollector.translateToLocal("ttmisc.bloodSword.deactivateEssentiaHarvest"));
+				stack.stackTagCompound.setInteger("Activated",0);
+			}
+		}
+		return cache;
 	}
 
 
