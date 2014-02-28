@@ -36,7 +36,7 @@ import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscounter {
+public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscountGear {
 
 	public ItemRevealingHelm(int i) {
 		super(i, ThaumcraftApi.armorMatThaumium, 2, 0);
@@ -81,8 +81,10 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 	}
 
 	@Override
-	public int getVisDiscount() {
+	public int getVisDiscount(ItemStack Itemstack, EntityPlayer Player, Aspect Aspect) {
+		
 		return 5;
+		
 	}
 
 }
