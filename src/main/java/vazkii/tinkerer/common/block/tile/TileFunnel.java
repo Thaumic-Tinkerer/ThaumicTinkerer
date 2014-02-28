@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -33,12 +34,9 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.common.blocks.ItemJarFilled;
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.tiles.TileJarFillable;
 import thaumcraft.common.tiles.TileJarFillableVoid;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileFunnel extends TileEntity implements ISidedInventory, IAspectContainer, IMovableTile {
 
@@ -129,10 +127,17 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 	@Override
 	public ItemStack getStackInSlot(int i) {
 		AspectList aspects = getAspects();
-		if(inventorySlots[i] != null && inventorySlots[i].itemID == ConfigItems.itemJarFilled.itemID && aspects == null) {
-			inventorySlots[i] = new ItemStack(ConfigBlocks.blockJar);
-			onInventoryChanged();
-		}
+        //if(inventorySlots[i] != null && inventorySlots[i].itemID == ConfigItems.itemJarFilled.itemID && aspects == null) {
+        //	Aspect filter=((ItemJarFilled)inventorySlots[i].getItem()).getFilter(inventorySlots[i]);
+        //    inventorySlots[i] = new ItemStack(ConfigBlocks.blockJar,1,inventorySlots[i].getItemDamage());
+        //    if(filter!=null)
+        //    {
+        //        if(inventorySlots[i].getTagCompound()==null)
+        //            inventorySlots[i].setTagCompound(new NBTTagCompound());
+        //        inventorySlots[i].getTagCompound().setString("AspectFilter",filter.getTag());
+        //    }
+        //	onInventoryChanged();
+        //}
 
 		return inventorySlots[i];
 	}
