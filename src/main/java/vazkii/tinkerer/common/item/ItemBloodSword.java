@@ -14,11 +14,17 @@
  */
 package vazkii.tinkerer.common.item;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
@@ -29,25 +35,20 @@ import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.lib.LibObfuscation;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		
+
 		return super.getItemUseAction(par1ItemStack);
 	}
 
@@ -66,14 +67,38 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	}
 
 	@Override
-    public Multimap getItemAttributeModifiers() {
-        Multimap multimap = HashMultimap.create();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", DAMAGE, 0));
-        multimap.put(SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 0.25, 1));
-        return multimap;
-    }
+	public Multimap getItemAttributeModifiers() {
+		Multimap multimap = HashMultimap.create();
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", DAMAGE, 0));
+		multimap.put(SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 0.25, 1));
+		return multimap;
+	}
 
 	static int handleNext = 0;
+
+	public void addDrops(LivingDropsEvent event, ItemStack dropStack) {
+		EntityItem entityitem = new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, dropStack);
+		entityitem.delayBeforeCanPickup = 10;
+		event.drops.add(entityitem);
+	}
+
+	@ForgeSubscribe
+	public void onDrops(LivingDropsEvent event){
+		if (event.source.damageType.equals("player")) {
+
+			EntityPlayer player = (EntityPlayer) event.source.getEntity();
+			ItemStack stack = player.getCurrentEquippedItem();
+			if (stack != null && stack.getItem() == this) {
+				Aspect[] aspects = EnumMobAspect.getAspectsForEntity(event.entity);
+				if(aspects!=null){
+					event.drops.removeAll(event.drops);
+					for(Aspect a:aspects){
+						addDrops(event, ItemMobAspect.getStackFromAspect(a));
+					}
+				}
+			}
+		}
+	}
 
 	@ForgeSubscribe
 	public void onDamageTaken(LivingAttackEvent event) {
@@ -88,7 +113,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
 			if(itemInUse != null && itemInUse.itemID == itemID) {
-				
+
 				event.setCanceled(true);
 				handleNext = 3;
 				player.attackEntityFrom(DamageSource.magic, 3);
@@ -107,9 +132,16 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	}
 
 	@Override
+	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase) {
+		return super.hitEntity(par1ItemStack, par2EntityLivingBase, par3EntityLivingBase);
+	}
+
+	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
-			EntityPlayer par3EntityPlayer) {
+	                                  EntityPlayer par3EntityPlayer) {
 
 		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
 	}
+
+
 }

@@ -73,6 +73,7 @@ public final class ModBlocks {
 
 	public static Block bedrock;
 
+	public static Block spawner;
 
 	public static Block portal;
 	public static Block golemConnector;
