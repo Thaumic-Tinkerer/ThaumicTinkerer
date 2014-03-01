@@ -10,13 +10,26 @@ import java.util.List;
 
 public class ItemMobAspect extends Item {
 
-	public static final int aspectCount=100;
+	//Real value is 16
+	//Padding room included
+	//To prevent corruption
+	public static final int aspectCount=20;
 
 	public ItemMobAspect(int par1) {
 		super(par1);
 		setMaxStackSize(1);
 	}
 
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		if(isCondensed(stack)){
+			return super.getUnlocalizedName(stack)+".condensed";
+		}
+		if (isInfused(stack)){
+			return super.getUnlocalizedName(stack)+".infused";
+		}
+		return super.getUnlocalizedName(stack);
+	}
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean par4) {
 		list.add(getAspect(itemStack).getName());

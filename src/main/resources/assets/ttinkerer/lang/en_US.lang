@@ -90,6 +90,9 @@ item.ttinkerer:revealingHelm.name=Helmet of Revealing
 item.ttinkerer:infusedInkwell.name=Infused Scribing Tools (NYI)
 item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
 item.ttinkerer:shareBook.name=Tome of Knowledge Sharing
+item.ttinkerer:mobAspect.name=Soul Aspect
+item.ttinkerer:mobAspect.condensed.name=Condensed Soul Aspect
+item.ttinkerer:mobAspect.infused.name=Infused Soul Aspect
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=Kami Resource
