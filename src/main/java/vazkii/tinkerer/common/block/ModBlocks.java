@@ -99,6 +99,8 @@ public final class ModBlocks {
 		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
 		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
 
+		spawner = new BlockSummon(LibBlockIDs.idSpawner).setUnlocalizedName(LibBlockNames.SPAWNER);
+
 		if(ConfigHandler.enableKami) {
 
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
@@ -151,6 +153,8 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(mobilizer, LibBlockNames.MOBILIZER);
 		GameRegistry.registerBlock(golemConnector, LibBlockNames.GOLEMCONNECTOR);
 
+		GameRegistry.registerBlock(spawner, LibBlockNames.SPAWNER);
+
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
@@ -191,6 +195,8 @@ public final class ModBlocks {
 
 		GameRegistry.registerTileEntity(TileEntityRelay.class, LibBlockNames.MOBILIZER_RELAY);
 		GameRegistry.registerTileEntity(TileGolemConnector.class, LibBlockNames.GOLEMCONNECTOR);
+
+		GameRegistry.registerTileEntity(TileSummon.class, LibBlockNames.SPAWNER);
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
 		}
