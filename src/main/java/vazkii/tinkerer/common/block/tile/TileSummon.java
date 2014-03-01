@@ -45,7 +45,7 @@ public class TileSummon extends TileEntity {
 							aspects.add(ModItems.mobAspect.getAspect(ped3.getStackInSlot(0)));
 
 							for(EnumMobAspect recipe:EnumMobAspect.values()){
-								if(aspects.containsAll(Arrays.asList(recipe.aspects))){
+								if(Arrays.asList(recipe.aspects).containsAll(aspects) && aspects.containsAll(Arrays.asList(recipe.aspects))){
 									ped1.setInventorySlotContents(0, null);
 									ped2.setInventorySlotContents(0, null);
 									ped3.setInventorySlotContents(0, null);
@@ -61,7 +61,6 @@ public class TileSummon extends TileEntity {
 										ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, ped2.xCoord, ped2.yCoord, ped2.zCoord, xCoord, yCoord, zCoord, 20, aspects.get(1).getColor(), 20);
 										ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, ped3.xCoord, ped3.yCoord, ped3.zCoord, xCoord, yCoord, zCoord, 20, aspects.get(2).getColor(), 20);
 
-										ThaumicTinkerer.tcProxy.splooshFX(worldObj, xCoord, yCoord, zCoord);
 									} catch (InstantiationException e) {
 										e.printStackTrace();
 									} catch (IllegalAccessException e) {
