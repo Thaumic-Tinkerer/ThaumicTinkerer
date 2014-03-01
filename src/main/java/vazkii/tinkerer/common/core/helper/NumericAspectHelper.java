@@ -7,12 +7,25 @@ import java.util.ArrayList;
 public class NumericAspectHelper {
 
 	public static void init(){
-		for(Aspect a:Aspect.getCompoundAspects()){
-			new NumericAspectHelper(a);
-		}
-		for(Aspect a:Aspect.getPrimalAspects()){
-			new NumericAspectHelper(a);
-		}
+
+		new NumericAspectHelper(Aspect.WATER);
+		new NumericAspectHelper(Aspect.MAN);
+		new NumericAspectHelper(Aspect.AIR);
+		new NumericAspectHelper(Aspect.FLIGHT);
+		new NumericAspectHelper(Aspect.FIRE);
+		new NumericAspectHelper(Aspect.MAGIC);
+		new NumericAspectHelper(Aspect.UNDEAD);
+		new NumericAspectHelper(Aspect.FLESH);
+		new NumericAspectHelper(Aspect.BEAST);
+		new NumericAspectHelper(Aspect.POISON);
+		new NumericAspectHelper(Aspect.EARTH);
+		new NumericAspectHelper(Aspect.ELDRITCH);
+		new NumericAspectHelper(Aspect.TRAVEL);
+		new NumericAspectHelper(Aspect.METAL);
+		new NumericAspectHelper(Aspect.SLIME);
+		new NumericAspectHelper(Aspect.SEED);
+
+
 	}
 
 	private Aspect aspect;
