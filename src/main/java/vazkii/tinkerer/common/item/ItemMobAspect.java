@@ -23,6 +23,9 @@ public class ItemMobAspect extends Item {
 	}
 
 	public Aspect getAspect(ItemStack item){
+		if(item==null){
+			return null;
+		}
 		return NumericAspectHelper.getAspect(item.getItemDamage()%aspectCount);
 	}
 
