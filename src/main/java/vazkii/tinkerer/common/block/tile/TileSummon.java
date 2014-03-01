@@ -5,6 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.tiles.TilePedestal;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.item.ItemMobAspect;
 import vazkii.tinkerer.common.item.ModItems;
@@ -17,7 +18,7 @@ public class TileSummon extends TileEntity {
 
 	@Override
 	public void updateEntity(){
-		if(!worldObj.isRemote && worldObj.getTotalWorldTime()%10==0){
+		if(worldObj.getTotalWorldTime()%300==0){
 			ArrayList<TileEntity> pedestals = new ArrayList<TileEntity>();
 			for(int x=xCoord-5;x<xCoord+5;x++){
 				for(int z=zCoord-5;z<zCoord+5;z++){
@@ -50,10 +51,17 @@ public class TileSummon extends TileEntity {
 									ped3.setInventorySlotContents(0, null);
 
 									try {
-										Entity spawn = (Entity) recipe.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
-										spawn.setLocationAndAngles(xCoord+.5, yCoord+1, zCoord+.5, 0, 0);
-										worldObj.spawnEntityInWorld(spawn);
-										return;
+										if(!worldObj.isRemote){
+											Entity spawn = (Entity) recipe.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
+											spawn.setLocationAndAngles(xCoord+.5, yCoord+1, zCoord+.5, 0, 0);
+											worldObj.spawnEntityInWorld(spawn);
+										}
+
+										ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, ped1.xCoord, ped1.yCoord, ped1.zCoord, xCoord, yCoord, zCoord, 20, aspects.get(0).getColor(), 20);
+										ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, ped2.xCoord, ped2.yCoord, ped2.zCoord, xCoord, yCoord, zCoord, 20, aspects.get(1).getColor(), 20);
+										ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, ped3.xCoord, ped3.yCoord, ped3.zCoord, xCoord, yCoord, zCoord, 20, aspects.get(2).getColor(), 20);
+
+										ThaumicTinkerer.tcProxy.splooshFX(worldObj, xCoord, yCoord, zCoord);
 									} catch (InstantiationException e) {
 										e.printStackTrace();
 									} catch (IllegalAccessException e) {
@@ -64,6 +72,9 @@ public class TileSummon extends TileEntity {
 										e.printStackTrace();
 									}
 
+
+									return;
+
 								}
 							}
 
@@ -72,7 +83,7 @@ public class TileSummon extends TileEntity {
 						}
 
 					}
-				}	
+				}
 			}
 
 		}
