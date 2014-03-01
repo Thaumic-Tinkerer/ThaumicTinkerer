@@ -1,0 +1,82 @@
+package vazkii.tinkerer.common.block.tile;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.common.tiles.TilePedestal;
+import vazkii.tinkerer.common.core.helper.EnumMobAspect;
+import vazkii.tinkerer.common.item.ItemMobAspect;
+import vazkii.tinkerer.common.item.ModItems;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class TileSummon extends TileEntity {
+
+	@Override
+	public void updateEntity(){
+		if(!worldObj.isRemote && worldObj.getTotalWorldTime()%10==0){
+			ArrayList<TileEntity> pedestals = new ArrayList<TileEntity>();
+			for(int x=xCoord-5;x<xCoord+5;x++){
+				for(int z=zCoord-5;z<zCoord+5;z++){
+					TileEntity tile = worldObj.getBlockTileEntity(x, yCoord, z);
+					if(tile instanceof TilePedestal && ((TilePedestal) tile).getStackInSlot(0) != null && ((TilePedestal) tile).getStackInSlot(0).getItem() instanceof ItemMobAspect){
+						pedestals.add(tile);
+					}
+				}
+			}
+
+			for(int i=0;i<pedestals.size();i++){
+				for(int j=0;j<pedestals.size();j++){
+					for(int k=0;k<pedestals.size();k++){
+						TilePedestal ped1= (TilePedestal) pedestals.get(i);
+						TilePedestal ped2= (TilePedestal) pedestals.get(j);
+						TilePedestal ped3= (TilePedestal) pedestals.get(k);
+
+						if((ped1!=ped2) && (ped2!=ped3) && (ped1!=ped3)){
+							ArrayList<Aspect> aspects = new ArrayList<Aspect>();
+							aspects.add(ModItems.mobAspect.getAspect(ped1.getStackInSlot(0)));
+
+							aspects.add(ModItems.mobAspect.getAspect(ped2.getStackInSlot(0)));
+
+							aspects.add(ModItems.mobAspect.getAspect(ped3.getStackInSlot(0)));
+
+							for(EnumMobAspect recipe:EnumMobAspect.values()){
+								if(aspects.containsAll(Arrays.asList(recipe.aspects))){
+									ped1.setInventorySlotContents(0, null);
+									ped2.setInventorySlotContents(0, null);
+									ped3.setInventorySlotContents(0, null);
+
+									try {
+										Entity spawn = (Entity) recipe.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
+										spawn.setLocationAndAngles(xCoord+.5, yCoord+1, zCoord+.5, 0, 0);
+										worldObj.spawnEntityInWorld(spawn);
+										return;
+									} catch (InstantiationException e) {
+										e.printStackTrace();
+									} catch (IllegalAccessException e) {
+										e.printStackTrace();
+									} catch (InvocationTargetException e) {
+										e.printStackTrace();
+									} catch (NoSuchMethodException e) {
+										e.printStackTrace();
+									}
+
+								}
+							}
+
+
+
+						}
+
+					}
+				}	
+			}
+
+		}
+	}
+
+
+}
