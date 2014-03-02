@@ -45,7 +45,7 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 	@Override
 	void tickPlayer(EntityPlayer player) {
         ItemStack armor = player.getCurrentArmor(0);
-        if(!ThaumicTinkerer.proxy.isOn(player) || armor.getItemDamage() == 1)
+        if(!ThaumicTinkerer.proxy.armorStatus(player) || armor.getItemDamage() == 1)
             return;
 		player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2, 1, true));
 
@@ -69,7 +69,7 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).itemID == itemID;
 
-			if(hasArmor && ThaumicTinkerer.proxy.isOn(player) && player.getCurrentArmor(0).getItemDamage()==0)
+			if(hasArmor && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0)
 				 player.motionY += 0.3;
 		}
 	}
@@ -82,10 +82,10 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 			boolean highStepListed = playersWith1Step.contains(player.username);
 			boolean hasHighStep = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).itemID == itemID;
 
-			if( !highStepListed && (hasHighStep && ThaumicTinkerer.proxy.isOn(player) && player.getCurrentArmor(0).getItemDamage()==0))
+			if( !highStepListed && (hasHighStep && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0))
 				playersWith1Step.add(player.username);
 
-			if((!hasHighStep || !ThaumicTinkerer.proxy.isOn(player) || player.getCurrentArmor(0).getItemDamage()==1)&& highStepListed) {
+			if((!hasHighStep || !ThaumicTinkerer.proxy.armorStatus(player) || player.getCurrentArmor(0).getItemDamage()==1)&& highStepListed) {
 				playersWith1Step.remove(player.username);
 				player.stepHeight = 0.5F;
 			}

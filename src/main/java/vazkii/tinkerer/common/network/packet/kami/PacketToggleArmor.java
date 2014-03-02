@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.network.IPacket;
 
 /**
@@ -12,10 +13,10 @@ import vazkii.tinkerer.common.network.IPacket;
  */
 public class PacketToggleArmor implements IPacket {
     private static final long serialVersionUID = -1247633508013055777L;
-    public boolean armorOn=true;
-    public PacketToggleArmor(boolean turnOn)
+    public boolean armorStatus;
+    public PacketToggleArmor(boolean status)
     {
-        armorOn=turnOn;
+        armorStatus=status;
     }
     @Override
     public void handle(INetworkManager manager, Player player) {
@@ -23,8 +24,7 @@ public class PacketToggleArmor implements IPacket {
         {
 
             EntityPlayer entityPlayer=(EntityPlayer)player;
-            ThaumicTinkerer.proxy.setGemArmor(armorOn,entityPlayer);
-
+            ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);
 
         }
     }

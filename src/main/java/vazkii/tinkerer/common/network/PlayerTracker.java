@@ -17,7 +17,9 @@ package vazkii.tinkerer.common.network;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
@@ -29,9 +31,9 @@ import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 public class PlayerTracker implements IPlayerTracker {
 
 	@Override
-	public void onPlayerLogin(EntityPlayer player) {
-		ItemFocusHeal.playerHealData.put(player.username, 0);
-        PacketDispatcher.sendPacketToPlayer(PacketManager.buildPacket(new PacketToggleArmor(ThaumicTinkerer.proxy.isOn(player))),(Player)player);
+	public void onPlayerLogin(EntityPlayer entityPlayer) {
+		ItemFocusHeal.playerHealData.put(entityPlayer.username, 0);
+        PacketDispatcher.sendPacketToPlayer(PacketManager.buildPacket(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(entityPlayer))),(Player)entityPlayer);
 	}
 
 	@Override
