@@ -22,6 +22,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRevealer {
 
@@ -46,7 +47,8 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 
 	@Override
 	void tickPlayer(EntityPlayer player) {
-		if(player.isInsideOfMaterial(Material.water)) {
+        ItemStack armor=player.getCurrentArmor(3);
+		if(player.isInsideOfMaterial(Material.water) && ThaumicTinkerer.proxy.isOn(player) && armor.getItemDamage()==0) {
 			player.setAir(300);
 			PotionEffect effect = player.getActivePotionEffect(Potion.nightVision);
 
