@@ -15,6 +15,7 @@
 package vazkii.tinkerer.client.core.proxy;
 
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.world.World;
@@ -25,6 +26,7 @@ import vazkii.tinkerer.client.core.handler.ClientTickHandler;
 import vazkii.tinkerer.client.core.handler.GemArmorKeyHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
+import vazkii.tinkerer.client.core.handler.kami.KamiArmorClientHandler;
 import vazkii.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
 import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
@@ -48,6 +50,7 @@ import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
@@ -136,16 +139,18 @@ public class TTClientProxy extends TTCommonProxy {
 	public boolean isClient() {
 		return true;
 	}
+    @Override
+    public boolean armorStatus(EntityPlayer player)
+    {
+            return KamiArmorClientHandler.ArmorEnabled;
+
+    }
 
     @Override
-    public  boolean isOn(EntityPlayer player)
+    public void setArmor(EntityPlayer player,boolean status)
     {
-       return GemArmorKeyHandler.armorToggled;
-    }
-    @Override
-    public void setGemArmor(boolean status,EntityPlayer entityPlayer) {
-        super.setGemArmor(status,entityPlayer);
-        GemArmorKeyHandler.armorToggled=status;
+        super.setArmor(player,status);
+        KamiArmorClientHandler.ArmorEnabled=status;
     }
 
     @Override

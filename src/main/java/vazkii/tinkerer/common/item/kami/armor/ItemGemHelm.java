@@ -48,7 +48,7 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 	@Override
 	void tickPlayer(EntityPlayer player) {
         ItemStack armor=player.getCurrentArmor(3);
-		if(player.isInsideOfMaterial(Material.water) && ThaumicTinkerer.proxy.isOn(player) && armor.getItemDamage()==0) {
+		if(player.isInsideOfMaterial(Material.water) && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0) {
 			player.setAir(300);
 			PotionEffect effect = player.getActivePotionEffect(Potion.nightVision);
 
