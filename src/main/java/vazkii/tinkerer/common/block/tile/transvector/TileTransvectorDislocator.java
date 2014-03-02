@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.block.tile.transvector;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -30,6 +28,8 @@ import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibFeatures;
+
+import java.util.List;
 
 public class TileTransvectorDislocator extends TileTransvector {
 
@@ -75,12 +75,14 @@ public class TileTransvectorDislocator extends TileTransvector {
 			worldObj.setBlock(coords.posX, coords.posY, coords.posZ, id, meta, 1 | 2);
 
 			TileEntity tile = this.tile == null ? null : TileEntity.createAndLoadEntity(this.tile);
+
 			worldObj.setBlockTileEntity(coords.posX, coords.posY, coords.posZ, tile);
 
 			if(tile != null) {
 				tile.xCoord = coords.posX;
 				tile.yCoord = coords.posY;
 				tile.zCoord = coords.posZ;
+				tile.updateContainingBlockInfo();
 			}
 
 			if(Block.blocksList[id] != null)
