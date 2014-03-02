@@ -14,9 +14,12 @@
  */
 package vazkii.tinkerer.common.core.handler.kami;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
@@ -25,8 +28,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketSoulHearts;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
 
 public class SoulHeartHandler {
 
@@ -85,7 +86,9 @@ public class SoulHeartHandler {
 	}
 
 	public static void updateClient(EntityPlayer player) {
-		PacketDispatcher.sendPacketToPlayer(PacketManager.buildPacket(new PacketSoulHearts(getHP(player))), (Player) player);
+		if(player instanceof EntityPlayerMP && ((EntityPlayerMP) player).playerNetServerHandler!=null){
+			PacketDispatcher.sendPacketToPlayer(PacketManager.buildPacket(new PacketSoulHearts(getHP(player))), (Player) player);
+		}
 	}
 
 	// =============== METHODS COPIED FROM ENTITYLIVING ==================== //
