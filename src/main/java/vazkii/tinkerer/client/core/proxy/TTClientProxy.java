@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.world.World;
@@ -21,6 +22,7 @@ import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
+import vazkii.tinkerer.client.core.handler.GemArmorKeyHandler;
 import vazkii.tinkerer.client.core.handler.HUDHandler;
 import vazkii.tinkerer.client.core.handler.LocalizationHandler;
 import vazkii.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
@@ -111,6 +113,7 @@ public class TTClientProxy extends TTCommonProxy {
 			LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
 
 			RenderingRegistry.registerBlockHandler(new RenderWarpGate());
+            KeyBindingRegistry.registerKeyBinding(new GemArmorKeyHandler());
 		}
 	}
 
@@ -133,8 +136,19 @@ public class TTClientProxy extends TTCommonProxy {
 	public boolean isClient() {
 		return true;
 	}
-	
-	@Override
+
+    @Override
+    public  boolean isOn(EntityPlayer player)
+    {
+       return GemArmorKeyHandler.armorToggled;
+    }
+    @Override
+    public void setGemArmor(boolean status,EntityPlayer entityPlayer) {
+        super.setGemArmor(status,entityPlayer);
+        GemArmorKeyHandler.armorToggled=status;
+    }
+
+    @Override
 	public EntityPlayer getClientPlayer() {
 		return ClientHelper.clientPlayer();
 	}

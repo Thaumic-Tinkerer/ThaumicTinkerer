@@ -23,6 +23,8 @@ import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
 import dan200.turtle.api.TurtleAPI;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.common.tiles.*;
@@ -91,11 +93,30 @@ public class TTCommonProxy {
 			
 		TurtleAPI.registerUpgrade(new FumeTool());
 	}
-
+    public  boolean isOn(EntityPlayer entityPlayer)
+    {
+        EntityPlayerMP player=(EntityPlayerMP)entityPlayer;
+        if(player.getEntityData().hasKey(EntityPlayer.PERSISTED_NBT_TAG))
+            if(player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG).hasKey("ThaumicTinkerer"))
+                return player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG).getCompoundTag("ThaumicTinkerer").getBoolean("GemArmorStatus");
+        return true;
+    }
 	public boolean isClient() {
 		return false;
 	}
-	
+    public void setGemArmor(boolean status,EntityPlayer entityPlayer)
+    {
+        EntityPlayerMP player=(EntityPlayerMP)entityPlayer;
+        NBTTagCompound base= player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+        if(base==null)
+            base=new NBTTagCompound();
+        NBTTagCompound persisted= base.getCompoundTag("ThaumicTinkerer");
+        if(persisted==null)
+            persisted=new NBTTagCompound();
+        persisted.setBoolean("GemArmorStatus",status);
+        base.setCompoundTag("ThaumicTinkerer",persisted);
+        player.getEntityData().setCompoundTag(EntityPlayer.PERSISTED_NBT_TAG,base);
+    }
 	public EntityPlayer getClientPlayer() {
 		return null;
 	}
