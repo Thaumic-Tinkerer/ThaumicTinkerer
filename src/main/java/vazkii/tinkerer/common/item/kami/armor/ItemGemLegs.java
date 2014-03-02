@@ -46,7 +46,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	@Override
 	void tickPlayer(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(1);
-		if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.isOn(player))
+		if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
 			return;
 
 		ItemBrightNitor.meta = 1;
@@ -74,7 +74,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	public void onDamageTaken(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == itemID && event.source.isFireDamage() && ThaumicTinkerer.proxy.isOn(player)) {
+			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == itemID && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
 				event.setCanceled(true);
 				player.heal(event.ammount);
 			}

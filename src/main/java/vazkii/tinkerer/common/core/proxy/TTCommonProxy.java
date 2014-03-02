@@ -37,6 +37,7 @@ import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
+import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
@@ -93,29 +94,19 @@ public class TTCommonProxy {
 			
 		TurtleAPI.registerUpgrade(new FumeTool());
 	}
-    public  boolean isOn(EntityPlayer entityPlayer)
-    {
-        EntityPlayerMP player=(EntityPlayerMP)entityPlayer;
-        if(player.getEntityData().hasKey(EntityPlayer.PERSISTED_NBT_TAG))
-            if(player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG).hasKey("ThaumicTinkerer"))
-                return player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG).getCompoundTag("ThaumicTinkerer").getBoolean("GemArmorStatus");
-        return true;
-    }
+
 	public boolean isClient() {
 		return false;
 	}
-    public void setGemArmor(boolean status,EntityPlayer entityPlayer)
+
+    public boolean armorStatus(EntityPlayer player)
     {
-        EntityPlayerMP player=(EntityPlayerMP)entityPlayer;
-        NBTTagCompound base= player.getEntityData().getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
-        if(base==null)
-            base=new NBTTagCompound();
-        NBTTagCompound persisted= base.getCompoundTag("ThaumicTinkerer");
-        if(persisted==null)
-            persisted=new NBTTagCompound();
-        persisted.setBoolean("GemArmorStatus",status);
-        base.setCompoundTag("ThaumicTinkerer",persisted);
-        player.getEntityData().setCompoundTag(EntityPlayer.PERSISTED_NBT_TAG,base);
+        return KamiArmorHandler.getArmorStatus(player);
+    }
+
+    public void setArmor(EntityPlayer player,boolean status)
+    {
+        KamiArmorHandler.setArmorStatus(player,status);
     }
 	public EntityPlayer getClientPlayer() {
 		return null;

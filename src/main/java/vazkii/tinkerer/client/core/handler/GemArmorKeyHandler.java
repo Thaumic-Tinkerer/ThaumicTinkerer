@@ -9,6 +9,7 @@ import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.PacketHandler;
+import vazkii.tinkerer.client.core.handler.kami.KamiArmorClientHandler;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
@@ -22,7 +23,6 @@ import java.util.EnumSet;
 public class GemArmorKeyHandler extends KeyBindingRegistry.KeyHandler {
 
     static KeyBinding SpecialAbility = new KeyBinding("ttmisc.toggleArmor", Keyboard.KEY_R);
-    public static boolean armorToggled;
     /**
      * Pass an array of keybindings and a repeat flag for each one
      *
@@ -58,9 +58,7 @@ public class GemArmorKeyHandler extends KeyBindingRegistry.KeyHandler {
     public void keyUp(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd) {
         if(tickEnd)
         {
-            armorToggled=!armorToggled;
-            System.out.println("Key Up!");
-            PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketToggleArmor(armorToggled)));
+           KamiArmorClientHandler.SetStatus(!ThaumicTinkerer.proxy.armorStatus(ThaumicTinkerer.proxy.getClientPlayer()));
         }
     }
 

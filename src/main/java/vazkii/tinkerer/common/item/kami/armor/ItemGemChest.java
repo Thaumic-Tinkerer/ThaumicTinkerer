@@ -52,7 +52,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 	@Override
 	void tickPlayer(EntityPlayer player) {
         ItemStack armor = player.getCurrentArmor(2);
-        if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.isOn(player))
+        if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
             return;
 
         ItemFocusDeflect.protectFromProjectiles(player);
@@ -91,7 +91,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(2);
-		return armor != null && armor.itemID == ModItems.ichorChestGem.itemID && ThaumicTinkerer.proxy.isOn(player) && armor.getItemDamage()==0;
+		return armor != null && armor.itemID == ModItems.ichorChestGem.itemID && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0;
 	}
 
 }
