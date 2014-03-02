@@ -20,8 +20,10 @@ import dan200.computer.api.ILuaContext;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.common.tiles.TileJarFillable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PeripheralAspectContainer implements IHostedPeripheral {
@@ -46,14 +48,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
     public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
         switch (method) {
             case 0: {
-                List<String> returnStuff = new ArrayList<String>();
-                if (container.getAspects() == null || container.getAspects().size() == 0)
-                    return new String[0];
-
-                for (Aspect aspect : container.getAspects().getAspectsSorted())
-                    returnStuff.add(aspect.getTag());
-
-                return returnStuff.toArray();
+                return getAspects();
             }
             case 1: {
                 String aspectName = (String) arguments[0];
@@ -67,6 +62,25 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
         }
 
         return null;
+    }
+
+    public Object[] getAspects() {
+        HashMap<Double,String> returnStuff = new HashMap<Double,String>();
+        boolean jar=false;
+        double i=1;
+        if(container instanceof TileJarFillable && ((TileJarFillable)container).aspectFilter!=null)
+        {
+            jar=true;
+            returnStuff.put(i++,((TileJarFillable)container).aspectFilter.getTag());
+            return new Object[]{returnStuff};
+        }
+        if (container.getAspects() == null || container.getAspects().size() == 0)
+            return new Object[]{returnStuff};
+
+        for (Aspect aspect : container.getAspects().getAspectsSorted())
+            returnStuff.put(i++, aspect.getTag());
+
+        return new Object[]{returnStuff};
     }
 
     @Override

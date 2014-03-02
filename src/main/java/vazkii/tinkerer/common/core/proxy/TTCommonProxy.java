@@ -23,6 +23,8 @@ import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
 import dan200.turtle.api.TurtleAPI;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.common.tiles.*;
@@ -35,6 +37,7 @@ import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
+import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
@@ -95,7 +98,16 @@ public class TTCommonProxy {
 	public boolean isClient() {
 		return false;
 	}
-	
+
+    public boolean armorStatus(EntityPlayer player)
+    {
+        return KamiArmorHandler.getArmorStatus(player);
+    }
+
+    public void setArmor(EntityPlayer player,boolean status)
+    {
+        KamiArmorHandler.setArmorStatus(player,status);
+    }
 	public EntityPlayer getClientPlayer() {
 		return null;
 	}

@@ -26,6 +26,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.ModItems;
 
@@ -33,23 +34,9 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	public ItemGemLegs(int par1, int par2) {
 		super(par1, par2);
-		setHasSubtypes(true);
+
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
-			int dmg = par1ItemStack.getItemDamage();
-			par1ItemStack.setItemDamage(~dmg & 1);
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
-
-			ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.light" + par1ItemStack.getItemDamage()));
-
-			return par1ItemStack;
-		}
-
-		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
-	}
 
 	@Override
 	boolean ticks() {
@@ -59,7 +46,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	@Override
 	void tickPlayer(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(1);
-		if(armor.getItemDamage() == 1)
+		if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
 			return;
 
 		ItemBrightNitor.meta = 1;
@@ -87,17 +74,10 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	public void onDamageTaken(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == itemID && event.source.isFireDamage()) {
+			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == itemID && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
 				event.setCanceled(true);
 				player.heal(event.ammount);
 			}
 		}
-	}
-
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
-		super.addInformation(stack, par2EntityPlayer, list, par4);
-		if(stack.getItemDamage() == 1)
-			list.add(StatCollector.translateToLocal("ttmisc.light1"));
 	}
 }

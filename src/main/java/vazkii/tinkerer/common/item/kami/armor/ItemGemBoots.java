@@ -19,6 +19,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.EventPriority;
@@ -26,6 +27,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import thaumcraft.common.lib.Utils;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
@@ -42,6 +44,9 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
 	@Override
 	void tickPlayer(EntityPlayer player) {
+        ItemStack armor = player.getCurrentArmor(0);
+        if(!ThaumicTinkerer.proxy.armorStatus(player) || armor.getItemDamage() == 1)
+            return;
 		player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2, 1, true));
 
 		if(player.worldObj.isRemote)
@@ -64,7 +69,7 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).itemID == itemID;
 
-			if(hasArmor)
+			if(hasArmor && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0)
 				 player.motionY += 0.3;
 		}
 	}
@@ -77,10 +82,10 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 			boolean highStepListed = playersWith1Step.contains(player.username);
 			boolean hasHighStep = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).itemID == itemID;
 
-			if(hasHighStep && !highStepListed)
+			if( !highStepListed && (hasHighStep && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0))
 				playersWith1Step.add(player.username);
 
-			if(!hasHighStep && highStepListed) {
+			if((!hasHighStep || !ThaumicTinkerer.proxy.armorStatus(player) || player.getCurrentArmor(0).getItemDamage()==1)&& highStepListed) {
 				playersWith1Step.remove(player.username);
 				player.stepHeight = 0.5F;
 			}
