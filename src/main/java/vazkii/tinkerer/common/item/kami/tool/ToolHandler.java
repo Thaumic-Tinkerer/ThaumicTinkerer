@@ -94,7 +94,9 @@ public final class ToolHandler {
 			if(silk && block.canSilkHarvest(world, player, x, y, z, meta))
 				items.add(new ItemStack(id, 1, meta));
 			else {
-				items.addAll(block.getBlockDropped(world, x, y, z, meta, fortune));
+				if(block.getBlockDropped(world, x, y, z, meta, fortune)!=null){
+					items.addAll(block.getBlockDropped(world, x, y, z, meta, fortune));
+				}
 				if(!player.capabilities.isCreativeMode)
 					block.dropXpOnBlockBreak(world, x, y, z, block.getExpDrop(world, meta, fortune));
 			}
