@@ -17,19 +17,46 @@ package vazkii.tinkerer.common.item.kami.armor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.lib.LibResources;
+
+import java.util.List;
 
 public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
 	public ItemIchorclothArmorAdv(int par1, int par2) {
 		super(par1, par2);
+        setHasSubtypes(true);
 		if(ticks())
 			MinecraftForge.EVENT_BUS.register(this);
 	}
 
+    @Override
+    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+        if(par3EntityPlayer.isSneaking()) {
+            int dmg = par1ItemStack.getItemDamage();
+            par1ItemStack.setItemDamage(~dmg & 1);
+            par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+
+            ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.awakenedArmor" + par1ItemStack.getItemDamage()));
+
+            return par1ItemStack;
+        }
+
+        return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
+    }
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+        super.addInformation(stack, par2EntityPlayer, list, par4);
+        if(stack.getItemDamage() == 1)
+            list.add(StatCollector.translateToLocal("ttmisc.awakenedArmor1"));
+    }
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
 		return slot == 2 ? LibResources.MODEL_ARMOR_ICHOR_GEM_2 : LibResources.MODEL_ARMOR_ICHOR_GEM_1;
