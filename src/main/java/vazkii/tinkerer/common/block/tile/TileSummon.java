@@ -46,9 +46,20 @@ public class TileSummon extends TileEntity {
 
 							for(EnumMobAspect recipe:EnumMobAspect.values()){
 								if(Arrays.asList(recipe.aspects).containsAll(aspects) && aspects.containsAll(Arrays.asList(recipe.aspects))){
-									ped1.setInventorySlotContents(0, null);
-									ped2.setInventorySlotContents(0, null);
-									ped3.setInventorySlotContents(0, null);
+
+									boolean isInfused=ModItems.mobAspect.isInfused(ped1.getStackInSlot(0)) &&
+											ModItems.mobAspect.isInfused(ped2.getStackInSlot(0)) &&
+											ModItems.mobAspect.isInfused(ped3.getStackInSlot(0));
+
+									if(isInfused && worldObj.getTotalWorldTime()%1200!=0){
+										return;
+									}
+
+									if(!isInfused){
+										ped1.setInventorySlotContents(0, null);
+										ped2.setInventorySlotContents(0, null);
+										ped3.setInventorySlotContents(0, null);
+									}
 
 									try {
 										if(!worldObj.isRemote){
