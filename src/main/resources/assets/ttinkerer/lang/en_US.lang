@@ -36,6 +36,7 @@ ttmisc.shareTome.notOnline=The player who this research belongs to is not online
 ttmisc.shareTome.sync=Research Acquired.
 ttmisc.shareTome.noAssign=Not Assigned
 ttmisc.shareTome.playerName=Bound to %s's research.
+ttmisc.toggleArmor=Toggle Awakened Armor
 
 # KAMI MISC
 ttmisc.mode.pick.0=Block Mode
@@ -53,6 +54,8 @@ ttmisc.mode.sword.2=Soul Mode
 ttmisc.experience=Experience
 ttmisc.light0=Light Enabled
 ttmisc.light1=Light Disabled
+ttmisc.awakenedArmor0=Armor Piece Enabled
+ttmisc.awakenedArmor1=Armor Piece Disabled
 ttmisc.differentDim=Different Dimension
 ttmisc.distance=Distance
 ttmisc.lockedGate=Allow incoming teleports

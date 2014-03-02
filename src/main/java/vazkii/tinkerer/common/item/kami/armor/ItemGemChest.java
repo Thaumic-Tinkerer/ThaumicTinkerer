@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.model.kami.ModelWings;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 import cpw.mods.fml.relauncher.Side;
@@ -50,7 +51,11 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	@Override
 	void tickPlayer(EntityPlayer player) {
-		ItemFocusDeflect.protectFromProjectiles(player);
+        ItemStack armor = player.getCurrentArmor(2);
+        if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
+            return;
+
+        ItemFocusDeflect.protectFromProjectiles(player);
 	}
 
 	@ForgeSubscribe
@@ -86,7 +91,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(2);
-		return armor != null && armor.itemID == ModItems.ichorChestGem.itemID;
+		return armor != null && armor.itemID == ModItems.ichorChestGem.itemID && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0;
 	}
 
 }
