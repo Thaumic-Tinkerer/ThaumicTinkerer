@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block.tile.tablet;
 
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
@@ -22,6 +23,25 @@ import net.minecraftforge.common.FakePlayer;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 public class TabletFakePlayer extends FakePlayer {
+
+
+	private class FakeInvPlayer extends InventoryPlayer {
+
+		TabletFakePlayer fakePlayer;
+
+		public FakeInvPlayer(TabletFakePlayer fakePlayer) {
+			super(fakePlayer);
+			this.fakePlayer = fakePlayer;
+		}
+
+		@Override
+		public void setInventorySlotContents(int par1, ItemStack par2ItemStack) {
+			super.setInventorySlotContents(par1, par2ItemStack);
+
+			if(par1 == currentItem)
+				fakePlayer.tablet.setInventorySlotContents(0, getStackInSlot(currentItem));
+		}
+	}
 
 	TileAnimationTablet tablet;
 
