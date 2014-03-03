@@ -95,7 +95,6 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 
 	@Override
 	public void updateEntity() {
-		if(player == null)
 			player = new TabletFakePlayer(this);
 
 		player.onUpdate();
@@ -345,9 +344,6 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		return isBreaking;
 	}
 
-	public FakePlayer getFakePlayer() {
-		return player;
-	}
 
 	@Override
 	public boolean receiveClientEvent(int par1, int par2) {

@@ -91,7 +91,7 @@ public class BlockAnimationTablet extends BlockModContainer {
         if (tablet != null) {
         	if(tablet.getIsBreaking()) {
         		ChunkCoordinates coords = tablet.getTargetLoc();
-        		par1World.destroyBlockInWorldPartially(tablet.getFakePlayer().entityId, coords.posX, coords.posY, coords.posZ, -1);
+        		//par1World.destroyBlockInWorldPartially(tablet.getFakePlayer().entityId, coords.posX, coords.posY, coords.posZ, -1);
         	}
 
             for (int j1 = 0; j1 < tablet.getSizeInventory(); ++j1) {
