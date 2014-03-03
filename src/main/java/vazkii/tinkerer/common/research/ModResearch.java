@@ -50,8 +50,8 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_DARK_QUARTZ, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), -2, 2, 0, new ItemStack(ModItems.darkQuartz)).setStub().setAutoUnlock().setRound().registerResearchItem();
 		research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_DARK_QUARTZ + 0), recipePage(LibResearch.KEY_DARK_QUARTZ + 1), recipePage(LibResearch.KEY_DARK_QUARTZ + 2), recipePage(LibResearch.KEY_DARK_QUARTZ + 3), recipePage(LibResearch.KEY_DARK_QUARTZ + 4), recipePage(LibResearch.KEY_DARK_QUARTZ + 5));
 
-		research = new TTResearchItem(LibResearch.KEY_SHARE_TOME, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), 0, 0, 0, new ItemStack(ModItems.shareBook)).setStub().setAutoUnlock().setRound().registerResearchItem();
-		if(ConfigHandler.enableSurvivalShareTome)
+        research = new TTResearchItem(LibResearch.KEY_SHARE_TOME, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), 0, -1, 0, new ItemStack(ModItems.shareBook)).setStub().setAutoUnlock().setRound().registerResearchItem();
+        if(ConfigHandler.enableSurvivalShareTome)
 			research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_SHARE_TOME));
 		else research.setPages(new ResearchPage("0"));
 
