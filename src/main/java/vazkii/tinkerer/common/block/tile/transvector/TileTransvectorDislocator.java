@@ -87,6 +87,10 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 			if(Block.blocksList[id] != null)
 				Block.blocksList[id].onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ModBlocks.dislocator.blockID);
+
+			worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 3);
+
+
 		}
 	}
 
