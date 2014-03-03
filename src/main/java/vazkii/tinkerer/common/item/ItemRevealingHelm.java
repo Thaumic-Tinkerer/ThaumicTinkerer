@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.item;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,17 +26,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.IRepairable;
-import thaumcraft.api.IVisDiscounter;
+import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.nodes.IRevealer;
 import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscounter {
+import java.util.List;
+
+public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscountGear {
 
 	public ItemRevealingHelm(int i) {
 		super(i, ThaumcraftApi.armorMatThaumium, 2, 0);
@@ -62,8 +63,8 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
-		list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + getVisDiscount() + "%");
-	}
+        list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + 5 + "%");
+    }
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
@@ -80,9 +81,9 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 		return par2ItemStack.isItemEqual(new ItemStack(ConfigItems.itemResource, 1, 2)) ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 
-	@Override
-	public int getVisDiscount() {
-		return 5;
+    @Override
+    public int getVisDiscount(ItemStack Itemstack, EntityPlayer Player, Aspect Aspect) {
+        return 5;
 	}
 
 }
