@@ -164,8 +164,8 @@ public final class ModRecipes {
 			" S ", "G G",
 			'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 			'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));
-		registerResearchItem(LibResearch.KEY_RELAY, LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizerRelay), new AspectList().add(Aspect.MOTION, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15),
-				"WFW", "SIs", "WFW",
+        registerResearchItem(LibResearch.KEY_RELAY, LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizerRelay), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15),
+                "WFW", "SIs", "WFW",
 				'I', new ItemStack(Item.ingotIron),
 				's', new ItemStack(ConfigItems.itemShard, 1, 3),
 				'S', new ItemStack(ConfigItems.itemShard),
