@@ -24,33 +24,17 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 
 public class TabletFakePlayer extends FakePlayer {
 
-
-	public class FakeInvPlayer extends InventoryPlayer {
-
-		TabletFakePlayer fakePlayer;
-
-		public FakeInvPlayer(TabletFakePlayer fakePlayer) {
-			super(fakePlayer);
-			this.fakePlayer = fakePlayer;
-		}
-
-		@Override
-		public void setInventorySlotContents(int par1, ItemStack par2ItemStack) {
-			super.setInventorySlotContents(par1, par2ItemStack);
-
-			if(par1 == currentItem)
-				fakePlayer.tablet.setInventorySlotContents(0, getStackInSlot(currentItem));
-		}
-	}
-
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) {
 		super(tablet.worldObj, "tile." + LibBlockNames.ANIMATION_TABLET + ".name");
 		this.tablet = tablet;
-		inventory = new FakeInvPlayer(this);
 	}
-
+    @Override
+    public void setDead() {
+        inventory.clearInventory(-1, -1);
+        super.setDead();
+    }
 	@Override
 	public void openGui(Object mod, int modGuiId, World world, int x, int y, int z) {
 		// NO-OP
