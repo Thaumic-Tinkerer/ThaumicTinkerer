@@ -16,7 +16,9 @@ public class KamiArmorClientHandler {
 
     public static void SetStatus(boolean status)
     {
-        ArmorEnabled=status;
-        PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketToggleArmor(status)));
+        if(FMLClientHandler.instance().getClient().currentScreen == null){
+            ArmorEnabled=status;
+            PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketToggleArmor(status)));
+        }
     }
 }
