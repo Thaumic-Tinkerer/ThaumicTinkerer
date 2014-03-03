@@ -25,10 +25,6 @@ repositories {
         artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
     }
 	maven {
-       name 'SlimeKnights Maven FS'
-          url 'http://aeon.sunstrike.io'
-	}
-	maven {
           name 'ForgeFS'
           url 'http://files.minecraftforge.net/maven'
      }
@@ -76,10 +72,10 @@ dependencies {
 		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
 		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
 		'mods/NotEnoughItems-dev 1.6.1.5.jar',
-		'mods/EnderStorage-dev 1.4.3.5.jar'
+            'mods/EnderStorage-dev 1.4.3.5.jar',
+            'mods/TConstruct-7a2abb-dev.jar'
 	)
     compile 'javax.mail:mail:1.4'
-	compile "tconstruct:TConstruct:7a2abb:dev"
 }
 
 processResources
