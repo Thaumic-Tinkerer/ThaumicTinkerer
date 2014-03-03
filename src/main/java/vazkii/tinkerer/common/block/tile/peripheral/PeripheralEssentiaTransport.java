@@ -23,36 +23,19 @@ public static int GetDirection(Object obj) {
     return (int) num.intValue();
 }
 
-    /**
-     * A method called on each hosted peripheral once per tick, on the main thread
-     * over the lifetime of the turtle or block. May be used to update the state
-     * of the peripheral, and may interact with IComputerAccess or ITurtleAccess
-     * however it likes at this time.
-     */
+
     @Override
     public void update() {
 
     }
 
-    /**
-     * A method called whenever data is read from the Turtle's NBTTag,
-     * over the lifetime of the turtle. You should only use this for
-     * reading data you want to stay with the peripheral.
-     *
-     * @param nbttagcompound The peripheral's NBTTag
-     */
+
     @Override
     public void readFromNBT(NBTTagCompound nbttagcompound) {
 
     }
 
-    /**
-     * A method called whenever data is written to the Turtle's NBTTag,
-     * over the lifetime of the turtle. You should only use this for
-     * writing data you want to stay with the peripheral.
-     *
-     * @param nbttagcompound The peripheral's NBTTag.
-     */
+
     @Override
     public void writeToNBT(NBTTagCompound nbttagcompound) {
 
