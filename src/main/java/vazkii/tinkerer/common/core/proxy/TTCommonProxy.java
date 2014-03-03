@@ -27,6 +27,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -86,7 +87,7 @@ public class TTCommonProxy {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
 				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
-				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class
+				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class,IEssentiaTransport.class
 		};
         // DUMMY CHANGE
         for(Class clazz : peripheralClasses)
