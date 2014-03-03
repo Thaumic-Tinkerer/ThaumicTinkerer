@@ -25,7 +25,7 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 public class TabletFakePlayer extends FakePlayer {
 
 
-	private class FakeInvPlayer extends InventoryPlayer {
+	public class FakeInvPlayer extends InventoryPlayer {
 
 		TabletFakePlayer fakePlayer;
 
