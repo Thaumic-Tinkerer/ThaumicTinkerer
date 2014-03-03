@@ -16,10 +16,8 @@ package vazkii.tinkerer.common.block.tile.peripheral;
 
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.IAspectContainer;
-import thaumcraft.common.tiles.TileArcaneBore;
-import thaumcraft.common.tiles.TileDeconstructionTable;
-import thaumcraft.common.tiles.TileJarBrain;
-import thaumcraft.common.tiles.TileSensor;
+import thaumcraft.api.aspects.IEssentiaTransport;
+import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import dan200.computer.api.IHostedPeripheral;
 import dan200.computer.api.IPeripheralHandler;
@@ -46,6 +44,8 @@ public final class PeripheralHandler implements IPeripheralHandler {
 		if(tile instanceof TileArcaneBore)
 			return new PeripheralArcaneBore((TileArcaneBore) tile);
 
+        if(tile instanceof IEssentiaTransport)
+            return new PeripheralEssentiaTransport((IEssentiaTransport)tile);
 		return null;
 	}
 
