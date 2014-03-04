@@ -36,6 +36,7 @@ ttmisc.shareTome.notOnline=Der Spieler, dem diese Forschung gehört, ist nicht o
 ttmisc.shareTome.sync=Forschung erlangt.
 ttmisc.shareTome.noAssign=Nicht zugewiesen
 ttmisc.shareTome.playerName=Gebunden an die Forschung von %s.
+ttmisc.toggleArmor=Erweckte Rüstung umschalten
 
 # KAMI MISC
 ttmisc.mode.pick.0=Block-Modus
@@ -53,6 +54,8 @@ ttmisc.mode.sword.2=Seelen-Modus
 ttmisc.experience.tooltip=Erfahrung
 ttmisc.light0=Licht aktiviert
 ttmisc.light1=Licht deaktiviert
+ttmisc.awakenedArmor0=Rüstungsteil aktiviert
+ttmisc.awakenedArmor1=Rüstungsteil deaktiviert
 ttmisc.differentDim=Andere Dimension
 ttmisc.distance=Entfernung
 ttmisc.lockedGate=Erlaube Teleports hierher
@@ -435,7 +438,7 @@ ttresearch.page.ICHOR_TOOLS.0=Du hast entdeckt, wie man Werkzeug aus Ichorium he
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=Erweckte Ichoriumspitzhacke
 ttresearch.lore.ICHOR_PICK_GEM=Wer braucht schon einen Steinbruch?
-ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Shift-Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen.<BR><BR>Im Linien-Modus (Blau)
+ttresearch.page.ICHOR_PICK_GEM.0=Du hast das wahre Potential einer Ichoriumspitzhacke erweckt. Diese Spitzhacke enthält alle Eigenschaften der regulären, jedoch kannst du mit einem Shift-Rechtsklick den Modus ändern, in dem sie sich befindet.<BR><BR>Im Block-Modus (Grün) wird sie Blöcke normal abbauen.<BR><BR>Im Quadrat-Modus (Rot) wird sie ein 5x5-Feld um den abzubauenden Block herum abbauen. Der Abbaubereich ist ein wenig versetzt, um Bergbau zu vereinfachen.<BR><BR>Im Linien-Modus (Blau)
 ttresearch.page.ICHOR_PICK_GEM.1=wird sie eine 10-Block lange Linie, beginnend bei dem abzubauenden Block, abbauen. Sie kann auch Bedrock abbauen, was dich dem Herz der Erde noch näher bringt, denn du glaubst, dass es noch ertragreicher sein könnte, dort zu graben.
 
 # -- AWAKENED ICHORIUM SHOVEL
