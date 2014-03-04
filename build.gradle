@@ -13,10 +13,14 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+        maven {
+            url 'https://oss.sonatype.org/content/groups/public'
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
         classpath 'org.gradle.plugins:shadow:0.7.4'
+        classpath group: 'net.monofraps', name: 'GradleCurse', version: '1.0-SNAPSHOT'
     }
 }
 repositories {
@@ -33,7 +37,25 @@ repositories {
           url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
      }
 }
+version = "2.3-DEV"
 
+if (project.hasProperty("buildnum"))
+    version = "2.3-"+project.buildnum
+
+apply plugin: 'gradle-curse'
+curseDeploy
+        {
+            gamehandle='minecraft'
+            deployment
+                    {
+                        curseProjectName='thaumic-tinkerer'
+                        apiKey=project.apiKey
+                        uploadFileName='ThaumicTinkerer-'+version+'.jar'
+                        changeLog='placeholder'
+                        file='build/libs/ThaumicTinkerer-'+version+'.jar'
+                        gameVersions=[326]
+                    }
+        }
 apply plugin: 'shadow'
 
 shadow
@@ -46,10 +68,7 @@ shadow
 
 apply plugin: 'forge'
 
-version = "2.3-DEV"
 
-if (project.hasProperty("buildnum"))
-    version = "2.3-"+project.buildnum
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
