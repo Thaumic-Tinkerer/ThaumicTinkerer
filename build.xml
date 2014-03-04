@@ -8,7 +8,7 @@
 		<delete file="${build.dir.gradle}\src\main\java\mcmod.info" />
 		<delete dir="${build.dir.gradle}\src\main\java\vazkii" />
 		<delete dir="${build.dir.gradle}\src\main\java\ic2" />
-		<delete dir="${build.dir.gradle}\src\main\java\uildcraft" />
+		<delete dir="${build.dir.gradle}\src\main\java\buildcraft" />
 		<delete dir="${build.dir.gradle}\src\main\java\dan200" />
 		<delete dir="${build.dir.gradle}\src\main\java\cofh" />
 		<delete dir ="${build.dir.temp}" />
