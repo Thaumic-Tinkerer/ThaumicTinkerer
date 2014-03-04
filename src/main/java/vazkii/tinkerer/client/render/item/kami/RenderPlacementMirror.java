@@ -65,8 +65,10 @@ public class RenderPlacementMirror implements IItemRenderer {
             case INVENTORY:
             {
                 GL11.glPushMatrix();
-                GL11.glScalef(-1.5f,1.5f,1.5f);
-                GL11.glTranslatef(-0.5F, -0.5F, 0F);
+                GL11.glRotatef(45f,0f,1f,0f);
+                GL11.glScalef(1.5f,1.8f,1.8f);
+                GL11.glRotatef(-45f,0f,0f,1f);
+                GL11.glTranslatef(-0.46F, -0.58F, 0F);
 
 
                 renderItem(ItemRenderType.EQUIPPED,item,data);
