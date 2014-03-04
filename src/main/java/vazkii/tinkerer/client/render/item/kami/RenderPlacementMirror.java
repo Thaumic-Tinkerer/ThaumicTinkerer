@@ -19,11 +19,15 @@ public class RenderPlacementMirror implements IItemRenderer {
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-		return type != ItemRenderType.INVENTORY;
+		//return type != ItemRenderType.INVENTORY && type!=ItemRenderType.ENTITY;
+        //return type != ItemRenderType.INVENTORY ;
+        return true;
 	}
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+        if(type==ItemRenderType.ENTITY || type==ItemRenderType.INVENTORY)
+            return true;
 		return false;
 	}
 
@@ -33,7 +37,7 @@ public class RenderPlacementMirror implements IItemRenderer {
 			case ENTITY : {
 				GL11.glPushMatrix();
 				GL11.glTranslatef(-0.5F, 0F, 0F);
-				renderItem(ItemRenderType.EQUIPPED, item, data);
+                renderItem(ItemRenderType.EQUIPPED,item,data);
 				GL11.glPopMatrix();
 				break;
 			}
@@ -58,6 +62,17 @@ public class RenderPlacementMirror implements IItemRenderer {
 				renderItem(ItemRenderType.EQUIPPED, item, data);
 				break;
 			}
+            case INVENTORY:
+            {
+                GL11.glPushMatrix();
+                GL11.glScalef(-1.5f,1.5f,1.5f);
+                GL11.glTranslatef(-0.5F, -0.5F, 0F);
+
+
+                renderItem(ItemRenderType.EQUIPPED,item,data);
+                GL11.glPopMatrix();
+                break;
+            }
 			default : break;
 			}
 		}
