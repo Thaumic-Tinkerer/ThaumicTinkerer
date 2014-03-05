@@ -22,7 +22,7 @@ public final class LibMisc {
 
 	public static final String NETWORK_CHANNEL = MOD_ID;
 
-	public static final String DEPENDENCIES = "required-after:Thaumcraft@[4.1,];before:MagicBees;after:IC2;after:ThaumicTinkererKami;after:Waila";
+	public static final String DEPENDENCIES = "required-after:Thaumcraft@[4.1,];before:MagicBees;before:advthaum;after:IC2;after:ThaumicTinkererKami;after:Waila";
 
 	public static final String COMMON_PROXY = "vazkii.tinkerer.common.core.proxy.TTCommonProxy";
 	public static final String CLIENT_PROXY = "vazkii.tinkerer.client.core.proxy.TTClientProxy";
