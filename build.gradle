@@ -37,22 +37,23 @@ repositories {
           url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
      }
 }
-version = "2.3-DEV"
-
-if (project.hasProperty("buildnum"))
-    version = "2.3-"+project.buildnum
-
+String changelogLoc='https://raw.github.com/pixlepix/ThaumicTinkerer/curseForge/web/changelog'
 apply plugin: 'gradle-curse'
-curseDeploy
-        {
-            gamehandle='minecraft'
-            deployment
-                    {
+
+curseDeploy {
+    gameHandle = 'minecraft'
+    def version = "2.3-DEV"
+
+    if (project.hasProperty("buildnum"))
+        version = "2.3-"+project.buildnum
+    deployment {
                         curseProjectName='thaumic-tinkerer'
                         apiKey=project.apiKey
                         uploadFileName='ThaumicTinkerer-'+version+'.jar'
-                        changeLog='placeholder'
-                        file='build/libs/ThaumicTinkerer-'+version+'.jar'
+                        changeLog=new URL(changelogLoc).getText()
+                        changeLogMarkup='MARKDOWN'
+                        file='build/libs/ThaumicTinkerer-'+version+'-shadow.jar'
+                        fileType=project.releaseType
                         gameVersions=[326]
                     }
         }
@@ -67,48 +68,51 @@ shadow
         }
 
 apply plugin: 'forge'
+version = "2.3-DEV"
 
+if (project.hasProperty("buildnum"))
+    version = "2.3-"+project.buildnum
 
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-	version = "1.6.4-9.11.1.964"
-	assetDir = "eclipse/assets"
-	replace '${version}', project.version
+    version = "1.6.4-9.11.1.964"
+    assetDir = "eclipse/assets"
+    replace '${version}', project.version
 
     if (project.hasProperty("pass"))
         replace "INSERTPASSWORDHERE", project.pass
-    
+
 
 }
 
 dependencies {
-	compile files (
-		'TCDEOBF.jar',
-		'mods/Waila_1.4.5a_Dev.zip',
-		'mods/CodeChickenCore-dev 0.9.0.7.jar',
-		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
-		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
-		'mods/NotEnoughItems-dev 1.6.1.5.jar',
+    compile files (
+            'TCDEOBF.jar',
+            'mods/Waila_1.4.5a_Dev.zip',
+            'mods/CodeChickenCore-dev 0.9.0.7.jar',
+            'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
+            'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
+            'mods/NotEnoughItems-dev 1.6.1.5.jar',
             'mods/EnderStorage-dev 1.4.3.5.jar',
             'mods/TConstruct-7a2abb-dev.jar'
-	)
+    )
     compile 'javax.mail:mail:1.4'
 }
 
 processResources
-{
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'MCversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+        {
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version':project.version, 'MCversion':project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
