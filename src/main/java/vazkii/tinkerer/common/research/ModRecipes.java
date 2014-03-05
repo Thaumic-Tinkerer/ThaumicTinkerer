@@ -89,7 +89,7 @@ public final class ModRecipes {
 		}
 
 		for(int i=0;i<16;i++){
-			GameRegistry.addShapedRecipe(new ItemStack(ModItems.mobAspect, 1, i+20), "XXX", "XXX", "XXX", 'X', new ItemStack(ModItems.mobAspect, 1, i));
+			registerResearchItem(LibResearch.KEY_SUMMON+"1",new ItemStack(ModItems.mobAspect, 1, i+20), "XXX", "XXX", "XXX", 'X', new ItemStack(ModItems.mobAspect, 1, i));
 		}
 
 		if(ConfigHandler.enableKami) {
@@ -262,7 +262,7 @@ public final class ModRecipes {
 
 		for(int i=0;i<16;i++){
 			ItemStack input=new ItemStack(ModItems.mobAspect, 1, i+20);
-			ThaumcraftApi.addInfusionCraftingRecipe(LibResearch.KEY_BLOOD_SWORD, new ItemStack(ModItems.mobAspect, 1, i+40), 4,
+			registerResearchItemI(LibResearch.KEY_SUMMON+"2", new ItemStack(ModItems.mobAspect, 1, i+40), 4,
 					new AspectList().add(ModItems.mobAspect.getAspect(new ItemStack(ModItems.mobAspect, 1, i)), 10), input,
 					new ItemStack[]{input, input, input, input, input, input, input, input});
 		}
