@@ -98,6 +98,8 @@ public final class ModRecipes {
 	}
 
 	private static void initArcaneRecipes() {
+
+		registerResearchItem(LibResearch.KEY_SUMMON+"0", new ItemStack(ModBlocks.spawner), "WWW", "SSS", 'S', new ItemStack(Block.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
 		registerResearchItem(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ModBlocks.interfase), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
 				"BRB", "LEL", "BRB",
 				'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
@@ -260,11 +262,13 @@ public final class ModRecipes {
 		registerResearchItemI(LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizer), 4, new AspectList().add(Aspect.MOTION, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockLifter),
 				new ItemStack(Item.ingotIron), new ItemStack(Item.feather), new ItemStack(Item.ingotIron), new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
 
+
+
 		for(int i=0;i<16;i++){
 			ItemStack input=new ItemStack(ModItems.mobAspect, 1, i+20);
-			registerResearchItemI(LibResearch.KEY_SUMMON+"2", new ItemStack(ModItems.mobAspect, 1, i+40), 4,
+			registerResearchItemI(LibResearch.KEY_SUMMON + "2", new ItemStack(ModItems.mobAspect, 1, i + 40), 4,
 					new AspectList().add(ModItems.mobAspect.getAspect(new ItemStack(ModItems.mobAspect, 1, i)), 10), input,
-					new ItemStack[]{input, input, input, input, input, input, input, input});
+					new ItemStack[]{ input, input, input, input, input, input, input, input });
 		}
 
         if (Config.allowMirrors) {
