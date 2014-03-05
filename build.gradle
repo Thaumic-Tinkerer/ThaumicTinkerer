@@ -51,7 +51,7 @@ curseDeploy {
                         apiKey=project.apiKey
                         uploadFileName='ThaumicTinkerer-'+version+'.jar'
                         changeLog=new URL(changelogLoc).getText()
-                        changeLogMarkup='MARKDOWN'
+                        changeLogMarkup='CREOLE'
                         file='build/libs/ThaumicTinkerer-'+version+'-shadow.jar'
                         fileType=project.releaseType
                         gameVersions=[326]
