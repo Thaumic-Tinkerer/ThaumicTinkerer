@@ -143,7 +143,10 @@ public final class ModResearch {
 		}
 
 		research = new TTResearchItem(LibResearch.KEY_BLOOD_SWORD, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.WEAPON, 1).add(Aspect.FLESH, 1).add(Aspect.SOUL, 1), -4, 6, 3, new ItemStack(ModItems.bloodSword)).setParents(LibResearch.KEY_CLEANSING_TALISMAN).registerResearchItem();
-		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOOD_SWORD)).setParents("INFUSION").setSecondary();
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOOD_SWORD), new ResearchPage("1")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_SUMMON, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ModBlocks.spawner)).setParents(LibResearch.KEY_BLOOD_SWORD).registerResearchItem();
+		research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_SUMMON+"1"), infusionPage(LibResearch.KEY_SUMMON+"2"), new ResearchPage("1"));
 
         research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
         research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
