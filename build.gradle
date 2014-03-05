@@ -37,7 +37,7 @@ repositories {
           url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
      }
 }
-String changelogLoc='https://raw.github.com/pixlepix/ThaumicTinkerer/curseForge/web/changelog'
+String changelogLoc='https://raw.github.com/pixlepix/ThaumicTinkerer/master/web/changelog'
 apply plugin: 'gradle-curse'
 
 curseDeploy {
