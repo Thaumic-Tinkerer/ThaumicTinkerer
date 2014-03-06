@@ -20,9 +20,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.common.FakePlayer;
+import thaumcraft.common.lib.FakeThaumcraftPlayer;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-public class TabletFakePlayer extends FakePlayer {
+public class TabletFakePlayer extends FakeThaumcraftPlayer {
 
 	TileAnimationTablet tablet;
 
@@ -40,10 +41,7 @@ public class TabletFakePlayer extends FakePlayer {
 		// NO-OP
 	}
 	
-	@Override
-	public void sendContainerToPlayer(Container par1Container) {
-		// NO-OP
-	}
+
 
 	@Override
 	public void onUpdate() {

@@ -45,6 +45,7 @@ import net.minecraftforge.event.Event;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
+import thaumcraft.common.lib.FakeThaumcraftPlayer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
@@ -91,7 +92,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 	private int curblockDamage = 0;
 	private int durabilityRemainingOnBlock;
 
-	FakePlayer player;
+	FakeThaumcraftPlayer player;
 
 	@Override
 	public void updateEntity() {
@@ -184,6 +185,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 					stack = item.onItemRightClick(stack, worldObj, player);
 					done = true;
 				}
+
 			} catch(Throwable e) {
 				e.printStackTrace();
 				Packet3Chat packet = new Packet3Chat(new ChatMessageComponent().addText(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log."));
@@ -195,12 +197,13 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		}
 
 		if(done) {
-			stack = getStackInSlot(0);
+			stack = player.getCurrentEquippedItem();
 			if(stack == null || stack.stackSize == 0)
 				setInventorySlotContents(0, null);
 
 			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 		}
+        onInventoryChanged();
 	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
