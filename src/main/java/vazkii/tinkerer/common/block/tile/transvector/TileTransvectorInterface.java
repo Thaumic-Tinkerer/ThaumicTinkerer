@@ -45,6 +45,10 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 	@Override
 	public void updateEntity() {
+        if(worldObj.getTotalWorldTime()%100==0)
+        {
+            worldObj.notifyBlockChange(xCoord,yCoord,zCoord,worldObj.getBlockId(xCoord,yCoord,zCoord));
+        }
 		if(!addedToICEnergyNet && !worldObj.isRemote) {
 			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
 			addedToICEnergyNet = true;
