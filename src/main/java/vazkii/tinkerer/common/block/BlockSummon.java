@@ -30,9 +30,8 @@ import java.util.Random;
 
 public class BlockSummon extends Block {
 
-	Icon iconBottom;
 	Icon iconTop;
-	Icon iconSides;
+	Icon iconSide;
 
 	Random random;
 
@@ -45,20 +44,6 @@ public class BlockSummon extends Block {
 
 		random = new Random();
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		iconBottom = IconHelper.forBlock(par1IconRegister, this, 0);
-		iconTop = IconHelper.forBlock(par1IconRegister, this, 1);
-		iconSides = IconHelper.forBlock(par1IconRegister, this, 2);
-	}
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
-		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSides;
-	}
-
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
@@ -77,5 +62,18 @@ public class BlockSummon extends Block {
 	@Override
 	public TileEntity createTileEntity(World world, int meta) {
 		return new TileSummon();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+		iconTop = IconHelper.forBlock(iconRegister, this, 1);
+		iconSide = IconHelper.forBlock(iconRegister, this, 2);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int par1, int meta) {
+		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? Block.obsidian.getIcon(0, 0) : iconSide;
 	}
 }

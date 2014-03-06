@@ -29,7 +29,7 @@ public class NumericAspectHelper {
 	}
 
 	private Aspect aspect;
-	private int num;
+	public int num;
 
 	private static int nextNum=0;
 
