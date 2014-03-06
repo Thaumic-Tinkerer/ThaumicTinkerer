@@ -42,10 +42,10 @@ public class KamiUnlockedCommand extends CommandBase {
             List<String> list = new ArrayList<String> (parents);
             list.removeAll(unlocked);
             ((EntityPlayer)icommandsender).addChatMessage("Remaining: "+StringUtils.join(list,','));
-            EntityPlayer player=(EntityPlayer)icommandsender;
-            EntityGiantBrainyZombie bat=new EntityGiantBrainyZombie(player.worldObj);
-            bat.setPositionAndRotation(player.posX,player.posY,player.posZ,1,1);
-            player.worldObj.spawnEntityInWorld(bat);
+            //EntityPlayer player=(EntityPlayer)icommandsender;
+            //EntityGiantBrainyZombie bat=new EntityGiantBrainyZombie(player.worldObj);
+            //bat.setPositionAndRotation(player.posX,player.posY,player.posZ,1,1);
+            //player.worldObj.spawnEntityInWorld(bat);
         }
     }
 
