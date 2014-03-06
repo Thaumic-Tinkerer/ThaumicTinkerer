@@ -107,11 +107,13 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 			ItemStack stack = player.getCurrentEquippedItem();
 			if (stack != null && stack.getItem() == this  && stack.stackTagCompound!=null && stack.stackTagCompound.getInteger("Activated")==1) {
 				Aspect[] aspects = EnumMobAspect.getAspectsForEntity(event.entity);
-                ScanResult sr=new ScanResult((byte)2,0,0,event.entity,"");
-                AspectList as=ScanManager.getScanAspects(sr,event.entity.worldObj);
-				if(as!=null && as.size()!=0){
+                //ScanResult sr=new ScanResult((byte)2,0,0,event.entity,"");
+                //AspectList as=ScanManager.getScanAspects(sr,event.entity.worldObj);
+				//if(as!=null && as.size()!=0){
+                if(aspects!=null){
 					event.drops.removeAll(event.drops);
-					for(Aspect a:as.getAspects()){
+					//for(Aspect a:as.getAspects()){
+                    for(Aspect a:aspects){
 						addDrops(event, ItemMobAspect.getStackFromAspect(a));
 					}
 				}
