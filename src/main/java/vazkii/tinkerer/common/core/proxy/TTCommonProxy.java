@@ -19,6 +19,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
 import dan200.turtle.api.TurtleAPI;
@@ -28,6 +29,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.aspects.IEssentiaTransport;
+import thaumcraft.common.entities.golems.EnumGolemType;
 import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -49,6 +51,8 @@ import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
 
+import java.lang.reflect.Field;
+
 public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
@@ -57,7 +61,7 @@ public class TTCommonProxy {
 		ModBlocks.initBlocks();
 		ModItems.initItems();
 
-		initCCPeripherals();
+        initCCPeripherals();
 	}
 
 	public void init(FMLInitializationEvent event) {

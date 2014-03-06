@@ -11,7 +11,7 @@ import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
-public class TileEntityMobilizer extends TileEntity {
+public class    TileEntityMobilizer extends TileEntity {
 
 	public boolean linked;
 
