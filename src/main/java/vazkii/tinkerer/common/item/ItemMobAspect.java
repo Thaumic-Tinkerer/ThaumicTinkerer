@@ -21,7 +21,7 @@ public class ItemMobAspect extends Item {
 
 	public ItemMobAspect(int par1) {
 		super(par1);
-		setMaxStackSize(1);
+		setMaxStackSize(16);
 	}
 
 	@Override
