@@ -6,6 +6,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import org.apache.commons.lang3.StringUtils;
 import thaumcraft.common.entities.monster.EntityFireBat;
+import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.lib.research.ResearchManager;
 import vazkii.tinkerer.common.research.ModResearch;
 
@@ -41,10 +42,10 @@ public class KamiUnlockedCommand extends CommandBase {
             List<String> list = new ArrayList<String> (parents);
             list.removeAll(unlocked);
             ((EntityPlayer)icommandsender).addChatMessage("Remaining: "+StringUtils.join(list,','));
-            //EntityPlayer player=(EntityPlayer)icommandsender;
-            //EntityFireBat bat=new EntityFireBat(player.worldObj);
-            //bat.setPositionAndRotation(player.posX,player.posY,player.posZ,1,1);
-            //player.worldObj.spawnEntityInWorld(bat);
+            EntityPlayer player=(EntityPlayer)icommandsender;
+            EntityGiantBrainyZombie bat=new EntityGiantBrainyZombie(player.worldObj);
+            bat.setPositionAndRotation(player.posX,player.posY,player.posZ,1,1);
+            player.worldObj.spawnEntityInWorld(bat);
         }
     }
 

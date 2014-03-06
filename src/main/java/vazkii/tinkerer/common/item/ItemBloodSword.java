@@ -42,6 +42,9 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ScanResult;
+import thaumcraft.common.lib.research.ScanManager;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
@@ -104,9 +107,11 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 			ItemStack stack = player.getCurrentEquippedItem();
 			if (stack != null && stack.getItem() == this  && stack.stackTagCompound!=null && stack.stackTagCompound.getInteger("Activated")==1) {
 				Aspect[] aspects = EnumMobAspect.getAspectsForEntity(event.entity);
-				if(aspects!=null){
+                ScanResult sr=new ScanResult((byte)2,0,0,event.entity,"");
+                AspectList as=ScanManager.getScanAspects(sr,event.entity.worldObj);
+				if(as!=null && as.size()!=0){
 					event.drops.removeAll(event.drops);
-					for(Aspect a:aspects){
+					for(Aspect a:as.getAspects()){
 						addDrops(event, ItemMobAspect.getStackFromAspect(a));
 					}
 				}
