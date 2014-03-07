@@ -101,4 +101,5 @@ public final class LibResources {
 
 	public static final String ENCHANT_FOCUSED_STRIKE = "";
 	public static final String ENCHANT_DISPERSED_STRIKE = "";
+	public static final String ENCHANT_VALIANCE = "";
 }

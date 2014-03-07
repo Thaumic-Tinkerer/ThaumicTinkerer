@@ -51,6 +51,13 @@ public class ModEnchantmentHandler {
 				heldItem.stackTagCompound = new NBTTagCompound();
 			}
 
+			int valiance = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.valiance, heldItem);
+			if(valiance > 0){
+				if(attacker.getHealth()/attacker.getMaxHealth()<.5F){
+					event.ammount *= (1 + .1*valiance);
+				}
+			}
+
 			int focusedStrikes = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.focusedStrike, heldItem);
 
 			int dispersedStrikes = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.dispersedStrikes, heldItem);
