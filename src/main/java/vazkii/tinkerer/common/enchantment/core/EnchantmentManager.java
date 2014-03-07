@@ -84,6 +84,7 @@ public final class EnchantmentManager {
 
 		registerExponentialCostData(ModEnchantments.dispersedStrikes, LibResources.ENCHANT_DISPERSED_STRIKE, false, new AspectList().add(Aspect.ENTROPY, 12).add(Aspect.FIRE, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
 		registerExponentialCostData(ModEnchantments.valiance, LibResources.ENCHANT_VALIANCE, false, new AspectList().add(Aspect.ORDER, 12).add(Aspect.FIRE, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
+		registerExponentialCostData(ModEnchantments.finalStrike, LibResources.ENCHANT_FINAL_STRIKE, false, new AspectList().add(Aspect.ENTROPY, 16).add(Aspect.FIRE, 16), LibResearch.KEY_ENCHANT_VAMPIRISM);
 
 		registerCompatibilityRules();
 		registerExtraRules();
