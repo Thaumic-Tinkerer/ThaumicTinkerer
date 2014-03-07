@@ -99,4 +99,6 @@ public final class LibResources {
 		"en_US", "de_DE", "zh_CN", "ru_RU"
 	};
 
+	public static final String ENCHANT_FOCUSED_STRIKE = "";
+	public static final String ENCHANT_DISPERSED_STRIKE = "";
 }

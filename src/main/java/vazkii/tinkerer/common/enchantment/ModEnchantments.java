@@ -68,8 +68,6 @@ public final class ModEnchantments {
 		tunnel = new EnchantmentTunnel(LibEnchantIDs.tunnel).setName(LibEnchantNames.tunnel);
 
 		valiance = new EnchantmentValiance(LibEnchantIDs.valiance).setName(LibEnchantNames.valiance);
-
-		vampirism = new EnchantmentVampirism(LibEnchantIDs.idVampirism).setName(LibEnchantNames.VAMPIRISM);
 		
 
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
