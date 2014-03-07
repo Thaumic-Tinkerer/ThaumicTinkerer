@@ -31,6 +31,8 @@ import vazkii.tinkerer.common.lib.LibEnchantIDs;
 import vazkii.tinkerer.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
+import java.util.Random;
+
 public class ModEnchantmentHandler {
 
 	public final String NBTLastTarget="TTEnchantLastTarget";
@@ -49,6 +51,14 @@ public class ModEnchantmentHandler {
 
 			if(heldItem.stackTagCompound == null){
 				heldItem.stackTagCompound = new NBTTagCompound();
+			}
+
+			int finalStrike = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.finalStrike, heldItem);
+			if(finalStrike > 0){
+				Random rand = new Random();
+				if(rand.nextInt(20-finalStrike)==0){
+					event.ammount*=3;
+				}
 			}
 
 			int valiance = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.valiance, heldItem);
