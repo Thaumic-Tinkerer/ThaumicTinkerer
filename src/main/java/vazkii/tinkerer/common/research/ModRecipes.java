@@ -266,7 +266,7 @@ public final class ModRecipes {
 
 		for(int i=0;i<16;i++){
 			ItemStack input=new ItemStack(ModItems.mobAspect, 1, i+20);
-			registerResearchItemI(LibResearch.KEY_SUMMON + "2", new ItemStack(ModItems.mobAspect, 1, i + 40), 4,
+			registerResearchItemI(LibResearch.KEY_SUMMON, new ItemStack(ModItems.mobAspect, 1, i + 40), 4,
 					new AspectList().add(ModItems.mobAspect.getAspect(new ItemStack(ModItems.mobAspect, 1, i)), 10), input,
 					new ItemStack[]{ input, input, input, input, input, input, input, input });
 		}
