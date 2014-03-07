@@ -20,6 +20,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
@@ -32,6 +33,11 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ModEnchantmentHandler {
 
+	public final String NBTLastTarget="TTEnchantLastTarget";
+
+	public final String NBTSuccessiveStrike="TTEnchantSuccessiveStrike";
+
+
 	@ForgeSubscribe
 	public void onEntityDamaged(LivingHurtEvent event) {
 		if(event.source.getEntity() instanceof EntityLivingBase) {
@@ -40,6 +46,40 @@ public class ModEnchantmentHandler {
 
 			if(heldItem == null)
 				return;
+
+			if(heldItem.stackTagCompound == null){
+				heldItem.stackTagCompound = new NBTTagCompound();
+			}
+
+			int focusedStrikes = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.focusedStrike, heldItem);
+
+			int dispersedStrikes = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.dispersedStrikes, heldItem);
+
+			if(focusedStrikes > 0 || dispersedStrikes > 0) {
+				int lastTarget=heldItem.stackTagCompound.getInteger(NBTLastTarget);
+				int successiveStrikes=heldItem.stackTagCompound.getInteger(NBTSuccessiveStrike);
+				int entityId=event.entityLiving.entityId;
+
+				if(lastTarget!=entityId){
+					heldItem.stackTagCompound.setInteger(NBTSuccessiveStrike, 0);
+					successiveStrikes=0;
+				}else{
+					heldItem.stackTagCompound.setInteger(NBTSuccessiveStrike, successiveStrikes+1);
+					successiveStrikes=1;
+				}
+
+				if(focusedStrikes > 0){
+					event.ammount/=2;
+					event.ammount+=(.5*successiveStrikes*event.ammount*focusedStrikes);
+				}
+				if(dispersedStrikes > 0){
+					event.ammount*=1+(successiveStrikes/5);
+					event.ammount/=(1+(successiveStrikes*2));
+				}
+
+				heldItem.stackTagCompound.setInteger("TTEnchantLastTarget", entityId);
+
+			}
 
 			int vampirism = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idVampirism, heldItem);
 			if(vampirism > 0) {

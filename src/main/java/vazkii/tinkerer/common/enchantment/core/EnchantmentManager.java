@@ -14,10 +14,8 @@
  */
 package vazkii.tinkerer.common.enchantment.core;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
@@ -30,8 +28,9 @@ import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.rule.BasicCompatibilityRule;
 import vazkii.tinkerer.common.lib.LibResearch;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class EnchantmentManager {
 
@@ -78,6 +77,10 @@ public final class EnchantmentManager {
 		registerExponentialCostData(ModEnchantments.desintegrate, LibResources.ENCHANT_DESINTEGRATE, false, new AspectList().add(Aspect.ENTROPY, 25).add(Aspect.AIR, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_DESINTEGRATE);
 		registerExponentialCostData(ModEnchantments.quickDraw, LibResources.ENCHANT_QUICK_DRAW, false, new AspectList().add(Aspect.ORDER, 10).add(Aspect.AIR, 10).add(Aspect.WATER, 5), LibResearch.KEY_ENCHANT_QUICK_DRAW);
 		registerExponentialCostData(ModEnchantments.vampirism, LibResources.ENCHANT_VAMPIRISM, false, new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.FIRE, 10).add(Aspect.WATER, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
+
+		registerExponentialCostData(ModEnchantments.focusedStrike, LibResources.ENCHANT_FOCUSED_STRIKE, false, new AspectList().add(Aspect.ORDER, 12).add(Aspect.AIR, 10).add(Aspect.WATER, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
+
+		registerExponentialCostData(ModEnchantments.dispersedStrikes, LibResources.ENCHANT_DISPERSED_STRIKE, false, new AspectList().add(Aspect.ENTROPY, 12).add(Aspect.FIRE, 10).add(Aspect.EARTH, 10), LibResearch.KEY_ENCHANT_VAMPIRISM);
 
 		registerCompatibilityRules();
 		registerExtraRules();
