@@ -12,6 +12,7 @@ import vazkii.tinkerer.common.item.kami.tool.ItemIchorPickAdv;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BlockBedrockKAMI extends Block {
 
@@ -34,6 +35,14 @@ public class BlockBedrockKAMI extends Block {
 				world.setBlock(par3, par4, par5, LibBlockIDs.idPortal);
 			}
 		}
+	}
+
+	public int idDropped(int par1, Random par2Random, int par3){
+		return 0;
+	}
+
+	public int quantityDropped(Random par1Random){
+		return 0;
 	}
 
 	@Override
