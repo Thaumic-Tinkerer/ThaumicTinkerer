@@ -51,6 +51,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 				currentTool=stack.getDisplayName();
 			}
 			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.currentTool",currentTool));
+
 			if(stack!=null)
 			{
 				if(tileAn.leftClick)
@@ -66,6 +67,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 				else
 					currenttip.add(StatCollector.translateToLocal("ttwaila.autonomous"));
 			}
+            //currenttip.add("Owned by: "+tileAn.Owner);
 		}
 		if(accessor.getBlock()==ModBlocks.interfase)
 		{
