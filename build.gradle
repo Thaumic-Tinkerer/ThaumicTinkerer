@@ -46,6 +46,8 @@ curseDeploy {
 
     if (project.hasProperty("buildnum"))
         version = "2.3-"+project.buildnum
+    if(project.releaseType=="ALPHA")
+        version="alpha-"+version
     deployment {
                         curseProjectName='thaumic-tinkerer'
                         apiKey=project.apiKey
@@ -72,6 +74,8 @@ version = "2.3-DEV"
 
 if (project.hasProperty("buildnum"))
     version = "2.3-"+project.buildnum
+if(project.releaseType=="ALPHA")
+    version="alpha-"+version
 
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
