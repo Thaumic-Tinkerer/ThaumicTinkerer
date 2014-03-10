@@ -82,6 +82,10 @@ public class BlockAnimationTablet extends BlockModContainer {
 			b0 = 4;
 
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
+        TileAnimationTablet tablet = (TileAnimationTablet) par1World.getBlockTileEntity(par2, par3, par4);
+        //if(par5EntityLiving instanceof  EntityPlayer) {
+        //    tablet.Owner = ((EntityPlayer) par5EntityLiving).username;
+        //}
 	}
 
 	@Override
@@ -177,7 +181,12 @@ public class BlockAnimationTablet extends BlockModContainer {
 						// Rare chance this might happen, but better to cope for it.
 
 					return true;
-				} else par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_TABLET, par1World, par2, par3, par4);
+				} else
+                {
+                    //if(tablet.Owner==null || tablet.Owner.equals(""))
+                    //    tablet.Owner=par5EntityPlayer.username;
+                    par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_TABLET, par1World, par2, par3, par4);
+                }
 			}
 		}
 
