@@ -1,11 +1,13 @@
-**Build 140**
+**Build 135**
 * Added computercraft support for basic essentia pipes
 * Fixed some problems with the dislocator
 * Fixed problem with tablet and mods that alter Player inventory
-* Fixed worldshapers looking glass
+* Fixed worldshapers looking glass rendering
 * Fixed Relay needing Motus
 * Fixed overlapping research
 * Made Kami armor toggleable individually, and attached to a keybind
+* Fixed various rendering issues
+*
 
 **Build 130**
 * Fixed crash cased by kami and mirrors interaction
