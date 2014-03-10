@@ -117,7 +117,10 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
             entityitem.hoverStart = 0.0F;
             GL11.glPushMatrix();
             GL11.glTranslatef(0.5F, 0.55F, 0F);
-            GL11.glScalef(2F, 2F, 2F);
+            if(stack.getItem() instanceof ItemBlock)
+                GL11.glScalef(2.5F, 2.5F, 2.5F);
+            else
+                GL11.glScalef(1.5F, 1.5F, 1.5F);
             RenderItem.renderInFrame = true;
             RenderManager.instance.renderEntityWithPosYaw(entityitem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
             RenderItem.renderInFrame = false;
