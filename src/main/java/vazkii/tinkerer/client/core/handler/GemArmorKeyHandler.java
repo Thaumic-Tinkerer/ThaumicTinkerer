@@ -22,7 +22,7 @@ import java.util.EnumSet;
 @SideOnly(Side.CLIENT)
 public class GemArmorKeyHandler extends KeyBindingRegistry.KeyHandler {
 
-    static KeyBinding SpecialAbility = new KeyBinding("ttmisc.toggleArmor", Keyboard.KEY_R);
+    static KeyBinding SpecialAbility = new KeyBinding("ttmisc.toggleArmor", Keyboard.KEY_A);
     /**
      * Pass an array of keybindings and a repeat flag for each one
      *
