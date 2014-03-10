@@ -27,8 +27,8 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 
 	TileAnimationTablet tablet;
 
-	public TabletFakePlayer(TileAnimationTablet tablet) {
-		super(tablet.worldObj, "tile." + LibBlockNames.ANIMATION_TABLET + ".name");
+	public TabletFakePlayer(TileAnimationTablet tablet) { //,String name) {
+		super(tablet.worldObj, "[ThaumcraftTablet]");
 		this.tablet = tablet;
 	}
     @Override

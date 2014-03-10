@@ -20,6 +20,7 @@ import dan200.computer.api.IComputerAccess;
 import dan200.computer.api.ILuaContext;
 import dan200.computer.api.IPeripheral;
 import net.minecraft.block.Block;
+import net.minecraft.command.PlayerSelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,6 +35,7 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet3Chat;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatMessageComponent;
@@ -58,6 +60,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 	private static final String TAG_REDSTONE = "redstone";
 	private static final String TAG_PROGRESS = "progress";
 	private static final String TAG_MOD = "mod";
+    private static final String TAG_OWNER = "owner";
 
 	private static final int[][] LOC_INCREASES = new int[][] {
 		{ 0, -1 },
@@ -91,12 +94,12 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 	private int initialDamage = 0;
 	private int curblockDamage = 0;
 	private int durabilityRemainingOnBlock;
-
+    //public String Owner;
 	FakeThaumcraftPlayer player;
 
 	@Override
 	public void updateEntity() {
-			player = new TabletFakePlayer(this);
+			player = new TabletFakePlayer(this);//,Owner);
 
 		player.onUpdate();
 
@@ -145,6 +148,11 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
 
 		player.setCurrentItemOrArmor(0, stack);
+        //EntityPlayer realPlayer=MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(Owner);
+        //NBTTagCompound data=realPlayer.getEntityData().getCompoundTag("PlayerPersisted");
+        //player.getEntityData().setCompoundTag("PlayerPersisted",data);
+        //NBTTagCompound cmp=player.getEntityData().getCompoundTag("PlayerPersisted");
+        //System.out.println(cmp.getCompoundTag("TCResearch").getTagList("TCResearchList").tagCount());
 
 		boolean done = false;
 
@@ -363,7 +371,11 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		super.readFromNBT(par1NBTTagCompound);
 
 		swingProgress = par1NBTTagCompound.getInteger(TAG_PROGRESS);
-		swingMod = par1NBTTagCompound.getInteger(TAG_MOD);
+
+        //if(par1NBTTagCompound.hasKey(TAG_OWNER))
+        //    Owner=par1NBTTagCompound.getString(TAG_OWNER);
+        //else
+        //    Owner="";
 		readCustomNBT(par1NBTTagCompound);
 	}
 
@@ -373,6 +385,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 
         par1NBTTagCompound.setInteger(TAG_PROGRESS, swingProgress);
         par1NBTTagCompound.setInteger(TAG_MOD, swingMod);
+        //par1NBTTagCompound.setString(TAG_OWNER,Owner);
         writeCustomNBT(par1NBTTagCompound);
 	}
 
