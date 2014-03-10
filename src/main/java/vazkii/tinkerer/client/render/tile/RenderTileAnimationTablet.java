@@ -88,30 +88,6 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		ItemStack stack = tablet.getStackInSlot(0);
 		Minecraft mc = ClientHelper.minecraft();
 		if(stack != null) {
-
-	       //mc.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
-
-			//if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[stack.itemID].getRenderType())) {
-            //	GL11.glTranslatef(0.5F, 0.55F, 0F);
-			//	new RenderBlocks().renderBlockAsItem(Block.blocksList[stack.itemID], stack.getItemDamage(), 1F);
-            //	GL11.glTranslatef(-0.5F, -0.55F, 0F);
-            //} else {
-            //	int renderPass = 0;
-			//	do {
-	        //    	Icon icon = stack.getItem().getIcon(stack, renderPass);
-	        //    	if(icon != null) {
-	        //    		 Color color = new Color(stack.getItem().getColorFromItemStack(stack, renderPass));
-	        //    		 GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
-	        //    		 float f = icon.getMinU();
-	        //             float f1 = icon.getMaxU();
-	        //             float f2 = icon.getMinV();
-	        //             float f3 = icon.getMaxV();
-	        //             ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
-	        //             GL11.glColor3f(1F, 1F, 1F);
-	        //    	}
-	         //   	renderPass++;
-	        //	} while(renderPass < stack.getItem().getRenderPasses(stack.getItemDamage()));
-            //}
             EntityItem entityitem = new EntityItem(tablet.worldObj, 0.0D, 0.0D, 0.0D, stack);
             entityitem.getEntityItem().stackSize = 1;
             entityitem.hoverStart = 0.0F;
