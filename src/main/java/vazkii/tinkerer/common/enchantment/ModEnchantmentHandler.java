@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -27,9 +28,9 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
 import vazkii.tinkerer.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 import java.util.Random;
 
@@ -38,6 +39,8 @@ public class ModEnchantmentHandler {
 	public final String NBTLastTarget="TTEnchantLastTarget";
 
 	public final String NBTSuccessiveStrike="TTEnchantSuccessiveStrike";
+
+	public final String NBTTunnelDirection="TTEnchantTunnelDir";
 
 
 	@ForgeSubscribe
@@ -145,12 +148,39 @@ public class ModEnchantmentHandler {
 		}
 	}
 
+	@ForgeSubscribe
+	public void onBreakBlock(BlockEvent.BreakEvent event) {
+		ItemStack item=event.getPlayer().getCurrentEquippedItem();
+		int tunnel=EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, item);
+		if(tunnel > 0){
+			float dir = event.getPlayer().rotationYaw;
+			item.stackTagCompound.setFloat(NBTTunnelDirection,dir);
+		}
+	}
+
+
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onGetHarvestSpeed(PlayerEvent.BreakSpeed event) {
 		ItemStack heldItem = event.entityPlayer.getHeldItem();
 
+		System.out.println("GetOnHarvestSpeed");
+
 		if(heldItem == null)
 			return;
+
+		int tunnel=EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, heldItem);
+		if(tunnel > 0){
+			float dir = event.entityPlayer.rotationYaw;
+			if(heldItem.stackTagCompound.hasKey(NBTTunnelDirection)){
+				float oldDir=heldItem.stackTagCompound.getFloat(NBTTunnelDirection);
+				float dif =Math.abs(oldDir-dir);
+				if(dif < 50){
+					event.newSpeed*=(1+(.8*tunnel));
+				}else{
+					event.newSpeed*=.3;
+				}
+			}
+		}
 
 		int desintegrate = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idDesintegrate, heldItem);
 		int autoSmelt = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idAutoSmelt, heldItem);

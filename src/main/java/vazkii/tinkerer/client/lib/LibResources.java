@@ -103,4 +103,5 @@ public final class LibResources {
 	public static final String ENCHANT_DISPERSED_STRIKE = "";
 	public static final String ENCHANT_VALIANCE = "";
 	public static final String ENCHANT_FINAL_STRIKE = "";
+	public static final String ENCHANT_TUNNEL="";
 }
