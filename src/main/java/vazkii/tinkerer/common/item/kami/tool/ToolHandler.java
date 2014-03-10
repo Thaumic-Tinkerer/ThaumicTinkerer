@@ -61,11 +61,14 @@ public final class ToolHandler {
 	}
 
 	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, int lockID, Material[] materialsListing, boolean silk, int fortune) {
+        final int blockID = world.getBlockId(x, y, z);
+        final Block block = Block.blocksList[blockID];
+        float blockHardness = block.getBlockHardness(world, x, y, z);
 		for(int x1 = xs; x1 < xe; x1++){
 			for(int y1 = ys; y1 < ye; y1++){
 				for(int z1 = zs; z1 < ze; z1++){
 					if(x != x1 && y != y1 && z != z1){
-						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, lockID, materialsListing, silk, fortune);
+						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, lockID, materialsListing, silk, fortune,blockHardness);
 
 					}
 				}
@@ -73,7 +76,7 @@ public final class ToolHandler {
 		}
 	}
 
-	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, int lockID, Material[] materialsListing, boolean silk, int fortune) {
+	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, int lockID, Material[] materialsListing, boolean silk, int fortune,float blockHardness) {
 		if(!world.blockExists(x, y, z))
 			return;
 
@@ -90,26 +93,21 @@ public final class ToolHandler {
 
 			if(!block.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
-
-			if(silk && block.canSilkHarvest(world, player, x, y, z, meta))
-				items.add(new ItemStack(id, 1, meta));
-			else {
-				if(block.getBlockDropped(world, x, y, z, meta, fortune)!=null){
-					items.addAll(block.getBlockDropped(world, x, y, z, meta, fortune));
-				}
-				if(!player.capabilities.isCreativeMode)
-					block.dropXpOnBlockBreak(world, x, y, z, block.getExpDrop(world, meta, fortune));
-			}
-
-			block.onBlockDestroyedByPlayer(world, x, y, z, meta);
-			world.setBlockToAir(x, y, z);
-			if(!world.isRemote && !player.capabilities.isCreativeMode)
-				for(ItemStack stack : items)
-					world.spawnEntityInWorld(new EntityItem(world, bx + 0.5, by + 0.5, bz + 0.5, stack));
 			if(ConfigHandler.bedrockDimensionID != 0 && id==7 && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
-
 				world.setBlock(x, y, z, LibBlockIDs.idPortal);
 			}
+            if (!player.capabilities.isCreativeMode) {
+                int localMeta = world.getBlockMetadata(x, y, z);
+                if (block.removeBlockByPlayer(world, player, x, y, z)) {
+                    block.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
+                }
+                block.harvestBlock(world, player, x, y, z, localMeta);
+                block.onBlockHarvested(world, x, y, z, localMeta, player);
+            }
+            else
+            {
+                world.setBlockToAir(x, y, z);
+            }
 		}
 	}
 
