@@ -350,7 +350,7 @@ ttresearch.page.REVEALING_HELM.0=Wie sich herausstellt, bietet eine Brille nicht
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumischer Restaurierer
 ttresearch.lore.REPAIRER=Weniger Risse als eine Kartoffel am Stiel
-ttresearch.page.REPAIRER.0=Du hast ein neues Gerät kreiert, um zerbrochenes Werkzeug zu restaurieren. Wenn du mit einem gebrochenen Werkzeug auf diesen Block klickst und ihn an Essentiaröhren anschließt, wird er Essentia aufnehmen, um das Werkzeug zu reparieren.<BR><BR>Die Essentia, die reparieren wird, ist in der Reihenfolge vom kaum bis sehr effektiv Ordo, Fabrico und Instrumentum.<BR><BR>Außerdem zeigt er, wenn du mit der Brille der Enthüllung auf den Block schaust, wie kaputt das Item in ihm noch ist.
+ttresearch.page.REPAIRER.0=Du hast ein neues Gerät kreiert, um zerbrochenes Werkzeug zu restaurieren. Wenn du mit einem gebrochenen Werkzeug auf diesen Block klickst und ihn an Essentiaröhren anschließt, wird er Essentia aufnehmen, um das Werkzeug zu reparieren.<BR><BR>Die Essentia, die reparieren wird, ist Instrumentum.<BR><BR>Außerdem zeigt er, wenn du mit der Brille der Enthüllung auf den Block schaust, wie kaputt das Item in ihm noch ist.
 
 # -- WAND FOCUS: DISTORTION
 ttresearch.name.FOCUS_DEFLECT=Stabfokus: Verzerrung
