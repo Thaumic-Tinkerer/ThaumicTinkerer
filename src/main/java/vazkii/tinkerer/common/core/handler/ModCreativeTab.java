@@ -100,6 +100,9 @@ public class ModCreativeTab extends CreativeTabs {
 		addItem(ModItems.xpTalisman);
 		addItem(ModItems.spellCloth);
 
+		addItem(ModItems.mobAspect);
+		addBlock(ModBlocks.spawner);
+
 		if(ConfigHandler.enableKami) {
 			addItem(ModItems.kamiResource);
 
