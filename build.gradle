@@ -37,7 +37,7 @@ repositories {
           url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
      }
 }
-String changelogLoc='https://raw.github.com/pixlepix/ThaumicTinkerer/master/web/changelog'
+String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 apply plugin: 'gradle-curse'
 
 curseDeploy {
@@ -92,16 +92,16 @@ minecraft {
 }
 
 dependencies {
-	compile files (
-		'TCDEOBF.jar',
-		'mods/Waila_1.4.5a_Dev.zip',
-		'mods/CodeChickenCore-dev 0.9.0.7.jar',
-		'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
-		'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
-		'mods/NotEnoughItems-dev 1.6.1.5.jar',
+    compile files (
+            'TCDEOBF.jar',
+            'mods/Waila_1.4.5a_Dev.zip',
+            'mods/CodeChickenCore-dev 0.9.0.7.jar',
+            'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
+            'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
+            'mods/NotEnoughItems-dev 1.6.1.5.jar',
             'mods/EnderStorage-dev 1.4.3.5.jar',
             'mods/TConstruct-7a2abb-dev.jar'
-	)
+    )
     compile 'javax.mail:mail:1.4'
 }
 
