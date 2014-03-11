@@ -15,6 +15,8 @@ ttmisc.leftClick=Left Click
 ttmisc.rightClick=Right Click
 ttmisc.redstoneControl=Redstone Control
 ttmisc.animationTablet.notRotatable=You can not rotate the Tablet while it's activated.
+ttmisc.bloodSword.activateEssentiaHarvest=Activated Essentia Harvesting
+ttmisc.bloodSword.deactivateEssentiaHarvest=Deactivated Essentia Harvesting
 ttmisc.focusDislocation.tooltip=Currently Dislocating
 ttmisc.focusDislocation.tooltipExtra=Extra Contents
 ttmisc.inactive=Inactive
@@ -91,6 +93,9 @@ item.ttinkerer:revealingHelm.name=Helmet of Revealing
 item.ttinkerer:infusedInkwell.name=Infused Scribing Tools (NYI)
 item.ttinkerer:focusDeflect.name=Wand Focus: Distortion
 item.ttinkerer:shareBook.name=Tome of Knowledge Sharing
+item.ttinkerer:mobAspect.name=Soul Aspect
+item.ttinkerer:mobAspect.condensed.name=Condensed Soul Aspect
+item.ttinkerer:mobAspect.infused.name=Infused Soul Aspect
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=Kami Resource
@@ -144,7 +149,7 @@ tile.ttinkerer:dislocator.name=Transvector Dislocator
 tile.ttinkerer:repairer.name=Thaumic Restorer
 tile.ttinkerer:aspectAnalyzer.name=Aspectalyzer
 tile.ttinkerer:platform.name=Ethereal Platform
-
+tile.ttinkerer:spawner.name=Tablet of Necromancy
 tile.ttinkerer:portal.name=Bedrock Portal
 tile.ttinkerer:Levitational Locomotive.name=Levitational Locomotive
 tile.ttinkerer:Levitational Locomotive Relay.name=Levitational Locomotive Relay
@@ -335,6 +340,13 @@ ttresearch.page.FOCUS_ENDER_CHEST.ES=By combining a Hand Mirror with a portable 
 ttresearch.name.BLOOD_SWORD=Cursed Spirit's Blade
 ttresearch.lore.BLOOD_SWORD=You're being unpleasant
 ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled force. However, for this to be the case, the sword feeds on the striker's blood.<BR><BR>Upon damaging anything with this sword, the attacker will take one heart of damage. Blocking with this sword will always deal only 1.5 hearts, regardless of the original damage.<BR><BR>Furthermore, simply holding this sword gives the holder a steadfast aura, making them move faster than normal.
+ttresearch.page.BLOOD_SWORD.1=You have also discovered that the sword can reap the souls of mobs instead of normal drops. This ability is activated via a shift-right click. These souls are rich in essentia, but you suspect that they might have other uses.
+
+# -- Mob Summoning
+ttresearch.name.SUMMON=Mob Summoning
+ttresearch.lore.SUMMON=Almost necromancy
+ttresearch.page.SUMMON.0=You are able to use the souls gained from a Cursed spirits blade in order to summon mobs. Place three pedestals around a Tablet of Necromancy. On the pedestals, place three soul aspects. Different types of soul aspects give different types of mobs. Every mob has a different composition.
+ttresearch.page.SUMMON.1=By creating Infused Soul Aspects, you are able to summon mobs without consuming Soul Aspects. Summoning using Infused Soul Aspects is much slower than normal.
 
 # -- TRANSVECTOR DISLOCATOR
 ttresearch.name.DISLOCATOR=Transvector Dislocator

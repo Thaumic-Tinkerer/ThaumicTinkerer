@@ -35,6 +35,7 @@ import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderRepairer;
 import vazkii.tinkerer.client.render.block.kami.RenderWarpGate;
+import vazkii.tinkerer.client.render.item.kami.RenderMobAspect;
 import vazkii.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
@@ -109,6 +110,9 @@ public class TTClientProxy extends TTCommonProxy {
 
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
+
+		MinecraftForgeClient.registerItemRenderer(ModItems.mobAspect.itemID, new RenderMobAspect());
+
 
 		if(ConfigHandler.enableKami) {
 			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror.itemID, new RenderPlacementMirror());

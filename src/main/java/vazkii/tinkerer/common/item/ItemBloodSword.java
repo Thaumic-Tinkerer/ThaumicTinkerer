@@ -19,20 +19,29 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ScanResult;
+import thaumcraft.common.lib.research.ScanManager;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import com.google.common.collect.HashMultimap;
@@ -75,6 +84,35 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	static int handleNext = 0;
 
+
+	public void addDrops(LivingDropsEvent event, ItemStack dropStack) {
+		EntityItem entityitem = new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, dropStack);
+		entityitem.delayBeforeCanPickup = 10;
+		event.drops.add(entityitem);
+	}
+
+	@ForgeSubscribe
+	public void onDrops(LivingDropsEvent event){
+		if (event.source.damageType.equals("player")) {
+
+			EntityPlayer player = (EntityPlayer) event.source.getEntity();
+			ItemStack stack = player.getCurrentEquippedItem();
+			if (stack != null && stack.getItem() == this  && stack.stackTagCompound!=null && stack.stackTagCompound.getInteger("Activated")==1) {
+				Aspect[] aspects = EnumMobAspect.getAspectsForEntity(event.entity);
+                //ScanResult sr=new ScanResult((byte)2,0,0,event.entity,"");
+                //AspectList as=ScanManager.getScanAspects(sr,event.entity.worldObj);
+				//if(as!=null && as.size()!=0){
+                if(aspects!=null){
+					event.drops.removeAll(event.drops);
+					//for(Aspect a:as.getAspects()){
+                    for(Aspect a:aspects){
+						addDrops(event, ItemMobAspect.getStackFromAspect(a));
+					}
+				}
+			}
+		}
+	}
+
 	@ForgeSubscribe
 	public void onDamageTaken(LivingAttackEvent event) {
 		if(event.entity.worldObj.isRemote)
@@ -106,10 +144,23 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 		}
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,
-			EntityPlayer par3EntityPlayer) {
+    @Override
+    public ItemStack onItemRightClick(ItemStack stack, World par2World,
+                                      EntityPlayer par3EntityPlayer) {
 
-		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
-	}
+        ItemStack cache=super.onItemRightClick(stack, par2World, par3EntityPlayer);
+        if(par3EntityPlayer.isSneaking() && !par2World.isRemote){
+            if(stack.stackTagCompound ==null){
+                stack.stackTagCompound = new NBTTagCompound();
+            }
+            if(stack.stackTagCompound.getInteger("Activated")==0){
+                par3EntityPlayer.addChatMessage("\u00a74"+ StatCollector.translateToLocal("ttmisc.bloodSword.activateEssentiaHarvest"));
+                stack.stackTagCompound.setInteger("Activated",1);
+            }else{
+                par3EntityPlayer.addChatMessage("\u00a74"+ StatCollector.translateToLocal("ttmisc.bloodSword.deactivateEssentiaHarvest"));
+                stack.stackTagCompound.setInteger("Activated",0);
+            }
+        }
+        return cache;
+    }
 }

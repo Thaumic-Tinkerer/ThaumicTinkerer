@@ -88,12 +88,18 @@ public final class ModRecipes {
 				'P', new ItemStack(Item.paper));
 		}
 
+		for(int i=0;i<16;i++){
+			registerResearchItem(LibResearch.KEY_SUMMON+"1",new ItemStack(ModItems.mobAspect, 1, i+20), "XXX", "XXX", "XXX", 'X', new ItemStack(ModItems.mobAspect, 1, i));
+		}
+
 		if(ConfigHandler.enableKami) {
 			GameRegistry.addShapelessRecipe(new ItemStack(ModItems.kamiResource, 9, 3), new ItemStack(ModItems.kamiResource, 1, 2));
 		}
 	}
 
 	private static void initArcaneRecipes() {
+
+		registerResearchItem(LibResearch.KEY_SUMMON+"0", new ItemStack(ModBlocks.spawner), "WWW", "SSS", 'S', new ItemStack(Block.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
 		registerResearchItem(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ModBlocks.interfase), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
 				"BRB", "LEL", "BRB",
 				'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
@@ -252,9 +258,19 @@ public final class ModRecipes {
 				new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigBlocks.blockJar), new ItemStack(ConfigItems.itemResource, 1, 3));
 		registerResearchItemI(LibResearch.KEY_REPAIRER, new ItemStack(ModBlocks.repairer), 8, new AspectList().add(Aspect.TOOL, 15).add(Aspect.CRAFT, 20).add(Aspect.ORDER, 10).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4),
 				new ItemStack(Item.ingotIron), new ItemStack(Item.ingotGold), new ItemStack(Item.diamond), new ItemStack(Block.cobblestone), new ItemStack(Block.planks), new ItemStack(Item.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
-		
+
 		registerResearchItemI(LibResearch.KEY_MOBILIZER, new ItemStack(ModBlocks.mobilizer), 4, new AspectList().add(Aspect.MOTION, 15).add(Aspect.ORDER, 20).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockLifter),
 				new ItemStack(Item.ingotIron), new ItemStack(Item.feather), new ItemStack(Item.ingotIron), new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
+
+
+
+		for(int i=0;i<16;i++){
+			ItemStack input=new ItemStack(ModItems.mobAspect, 1, i+20);
+			registerResearchItemI(LibResearch.KEY_SUMMON, new ItemStack(ModItems.mobAspect, 1, i + 40), 4,
+					new AspectList().add(ModItems.mobAspect.getAspect(new ItemStack(ModItems.mobAspect, 1, i)), 10), input,
+					new ItemStack[]{ input, input, input, input, input, input, input, input });
+		}
+
         if (Config.allowMirrors) {
             registerResearchItemI(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(ModItems.focusDeflect), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ModItems.focusFlight),
                     new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
@@ -299,6 +315,8 @@ public final class ModRecipes {
 					new ItemStack(ModItems.kamiResource), new ItemStack(Item.expBottle), new ItemStack(Item.diamond), new ItemStack(ModItems.xpTalisman), new ItemStack(Block.enchantmentTable), new ItemStack(ModItems.kamiResource));
 			registerResearchItemI(LibResearch.KEY_PROTOCLAY, new ItemStack(ModItems.protoclay), 4, new AspectList().add(Aspect.MINE, 16).add(Aspect.TOOL, 16), new ItemStack(Item.clay),
 					new ItemStack(Block.dirt), new ItemStack(Block.stone), new ItemStack(Block.wood), new ItemStack(ModItems.kamiResource, 1, 7));
+
+
 
 			if(Config.allowMirrors) {
                 
