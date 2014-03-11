@@ -22,16 +22,20 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
 import vazkii.tinkerer.common.lib.LibObfuscation;
 
+import java.util.List;
 import java.util.Random;
 
 public class ModEnchantmentHandler {
@@ -145,6 +149,21 @@ public class ModEnchantmentHandler {
 
 			if(boost >= 1 && !player.isSneaking())
 				player.motionY *= (boost + 2) / 2D;
+		}
+	}
+
+	@ForgeSubscribe(priority = EventPriority.LOW)
+	public void onFall(LivingFallEvent event){
+		if(event.entityLiving instanceof EntityPlayer){
+			ItemStack boots = ((EntityPlayer)event.entityLiving).getCurrentArmor(0);
+			int shockwave = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.shockwave, boots);
+			if(shockwave > 0){
+				for(EntityLivingBase target:(List<EntityLivingBase>)event.entity.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(event.entity.posX-10, event.entity.posY-10, event.entity.posZ-10, event.entity.posX+10, event.entity.posY+10, event.entity.posZ+10))){
+					if(target != event.entity && event.distance>3){
+						target.attackEntityFrom(DamageSource.fall, .1F*shockwave*event.distance);
+					}
+				}
+			}
 		}
 	}
 
