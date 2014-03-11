@@ -48,9 +48,13 @@ public class KamiResearchItem extends TTResearchItem {
 
 					if(research.isLost() || (research.parentsHidden==null && research.parents==null)|| research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
 						continue;
+                    boolean found=false;
                     for(String black:Blacklist)
-                        if(tag.startsWith(black))
-                            continue;
+                        if(tag.startsWith(black)) {
+                            found=true;
+                        }
+                    if(found)
+                        continue;
 					requirements.add(tag);
 				}
 			}
