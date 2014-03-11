@@ -163,10 +163,17 @@ public class ModEnchantmentHandler {
 	public void onGetHarvestSpeed(PlayerEvent.BreakSpeed event) {
 		ItemStack heldItem = event.entityPlayer.getHeldItem();
 
-		System.out.println("GetOnHarvestSpeed");
-
 		if(heldItem == null)
 			return;
+
+		int shatter=EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.shatter, heldItem);
+		if(shatter > 0){
+			if(event.block.getBlockHardness(event.entityPlayer.worldObj, 0, 0, 0) > 20F){
+				event.newSpeed*=(3*shatter);
+			}else{
+				event.newSpeed*=.8;
+			}
+		}
 
 		int tunnel=EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, heldItem);
 		if(tunnel > 0){
