@@ -1,4 +1,4 @@
-package vazkii.tinkerer.client.render.item.kami;
+package vazkii.tinkerer.client.render.item;
 
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;

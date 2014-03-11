@@ -38,6 +38,7 @@ public enum EnumMobAspect {
 	WITCH(EntityWitch.class, new Aspect[]{Aspect.MAGIC, Aspect.UNDEAD, Aspect.ELDRITCH}),
 	WOLF(EntityWolf.class, new Aspect[]{Aspect.BEAST, Aspect.BEAST, Aspect.BEAST}),
 	ZOMBIE(EntityZombie.class, new Aspect[]{Aspect.FLESH, Aspect.FLESH, Aspect.UNDEAD})
+
 	;
 
 
@@ -49,7 +50,10 @@ public enum EnumMobAspect {
 		this.aspects=aspects;
 		this.entity=entity;
 	}
-
+    public Class getEntity()
+    {
+        return entity;
+    }
 	public static Aspect[] getAspectsForEntity(Entity e){
 		return getAspectsForEntity(e.getClass());
 	}

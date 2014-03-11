@@ -99,7 +99,6 @@ public final class ModBlocks {
 		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
 
 		spawner = new BlockSummon(LibBlockIDs.idSpawner).setUnlocalizedName(LibBlockNames.SPAWNER);
-
 		if(ConfigHandler.enableKami) {
 
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
@@ -153,7 +152,6 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(golemConnector, LibBlockNames.GOLEMCONNECTOR);
 
 		GameRegistry.registerBlock(spawner, LibBlockNames.SPAWNER);
-
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
