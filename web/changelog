@@ -1,0 +1,318 @@
+**Build 136**
+* Added computercraft support for basic essentia pipes
+* Fixed some problems with the dislocator
+* Fixed problem with tablet and mods that alter Player inventory
+* Fixed worldshapers looking glass rendering
+* Fixed Relay needing Motus
+* Fixed overlapping research
+* Made Kami armor toggleable individually, and attached to a keybind
+* Fixed various rendering issues
+*
+
+**Build 130**
+* Fixed crash cased by kami and mirrors interaction
+
+**Build 127**
+* Made erroring focii only available when mirrors enabled
+* Made Thaumic Tinkerer add CC API to Void jars
+* Attempt to fix crash with updating ichor wands
+
+**Build 101**
+* Removed Locomotive's entity movement
+* Added blacklist for spawning ores in the bedrock dimension
+* Fixed bug where conflicting enchantments could be applied in the enchanter
+* Fix error with disabling dimension
+* KAMI research is no longer hidden.
+
+**Build 99**
+* Update German Translations
+* Config file for bedrock dimension ore density
+* Updated vis discounting to work with 4.1
+* Removed ability of staffs to work in enchanter, at Azanor's request
+* Fix withers breaking bedrock
+* Fix potential compatibility issues
+* Fix AoE pickaxe if bedrock dimension is disabled
+
+**Build 98**
+* Fixed Ichorium wand components.
+
+**Build 97**
+* Bedrock dimension has 1/6 of the ores. Now it looks sad and lonely.
+
+**Build 96**
+* Make some research not-hidden
+* Fixed: Excavation focus can break bedrock
+
+**Build 95**
+* Changed default dimension ID from 19 to -19
+
+**Build 94**
+* Removed special bedrock biome
+
+**Build 93**
+* Recreated Thaumic Tinkerer research tree
+
+**Build 92**
+* Added config for dimension Id.
+
+**Build 91**
+* Added Golem Connector
+* Added Tinkers Construct compatibility
+* Added Ender storage compatibility
+* Altered Dislocation Focus to store block on focus
+
+**Build 75 BETA unstable** 05/02/2014
+* Added Levitational Locomotive.
+* Fixed issue #189
+* Fixed issue #169
+
+**Build 74**
+* Fixed server crash
+
+**Build 73**
+* Fixed artifice tab Crash
+
+**Build 72**
+* WAILA support
+* Added Dissipating turtle
+* (Flaxbeard) Made sure API for osmotic enchanter was in again.
+
+**Build 68**
+* (Flaxbeard) Added an API for the osmotic enchanter.
+
+**Build 67**
+* Fixed the Celestial Recall focus not working.
+* Added a config option to remove Ore Dictionary recipes, they cause issues if you have Magical Crops and no other mods that add copper.
+
+**Build 66**
+* Fixed a DC when using a Shadowbeam focus in a server.
+* Fixed a crash when right clicking a XP Drain focus.
+* Fixed a dupe involving Dynamism Tablets, bottles and cauldrons.
+
+**Build 65**
+* Fixed some foci not being able to be put in wands.
+* Changed Awakened Ichorium Tools to change mode with **shift**-right click.
+
+**Build 64**
+* Fixed a crash when using Camo blocks to camo Camo blocks (yo dawg).
+* Fixed a crash with Easymode research and Lost Research Note.
+* Fixed the Leggings of the Burning Mantle not showing the discount tooltip.
+* Fixed Nether/Ender shards being extremely common.
+* Fixed Hyperenergetic Nitor and Protoclay not being in the creative tab.
+* Fixed being able to apply Slow Fall to the Boots of the Horizontal Shield.
+* Fixed the flight status not resetting after taking off the Robes of the Stratosphere.
+* Fixed a multiplayer bug where the Celestial Network would occasionally open it's GUI for a player who wasn't standing on it.
+* Made the Celestial Network GUI easier to navigate.
+* Tweaked the code for the XP Drain focus a bit.
+* Moved the Shadowbeam Focus research to not be in the same place as a research from Thaumic Exploration.
+* Changed the Celestial Pearl recipe to output 2 rather than 1.
+
+**Build 63**
+* Fixed Protoclay not having a config option for ID.
+* Fixed the XP Drain focus sometimes going over the max value on the wand.
+
+**Build 62**
+* Fixed Server Crash.
+
+**Build 61**
+* Allow for blocks with directions (i.e. Furnaces, Pumpkins) to keep the direction in camo blocks
+* Allow for more blocks to be used with camo blocks (i.e. Wood Logs, Quartz Blocks)
+* Fixed the Ethereal Platform breaking instantly.
+* Fixed camo blocks not respecting biome colors
+* Some typo fixes
+* Added a way to turn off the light feature in the Leggings of the Burning Mantle.
+* Added a config option to specify dimension IDs (for people who change them)
+* (KAMI) Added a few new things ;)
+
+**Build 60**
+* Fixed ground level Ethereal Platforms having collision boxes on all sides.
+* Fixed the Ichorcloth armor not protecting from damage, it now protects just a little more than diamond.
+
+**Build 59**
+(This build is for the TC4.1 beta, do not use it unless you have it).
+* Fixed some API/method usage from old versions that doesn't work on 4.1.
+
+**Build 58**
+* Updated the ComputerCraft API.
+* (KAMI) Fixed the Robes of the Stratosphere removing creative mode flight.
+* (KAMI) Changed Vector objects from LWJGL Vector2f to TC Vector3, should fix server crashes with the Leggings of the Burning Mantle.
+* (KAMI) Fixed the Worldshaper's Looking Glass acting really weird with Metadata.
+* (KAMI) Fixed a critical issue with the Black Hole Talisman where it would empty itself case your inventory was full.
+* (KAMI) Changed some logic with the Black Hole Talisman, should fix a potential crash.
+
+**Build 57**
+* Fixed a crash with Ethereal Platforms.
+
+**Build 56**
+* (KAMI) Fixed a really bad derp involving XP orbs going all over the place when blocks are broken with the Awakened Ichorium Tools.
+
+**Builds 48 through 55**
+(48 through 54 were closed beta)
+* Sorted the mod's creative tab, it's a lot cleaner now.
+* Added a config option to remove the [TT] tooltips from the thauminomicon.
+* Upgraded the Transvector blocks' camouflage code, you can now camo them as glass and other blocks of the like.
+* Removed the Infused Scribing Tools' research for once.
+* Fixed a dupe bug with the Spellbinding Cloth.
+* Changed the texture for the lightning in the attractors, shouldn't cause issues with other mods that add animated textures any more.
+* Added KAMI, a separate downloadable module that includes a bunch of new, really powerful items.
+* Added two new things for people who don't play with KAMI.
+
+**Build 47**
+* Fixed a crash when putting items in the Aspectalyzer.
+* Changed the name of the fake player used by the Dynamism Tablet to localize on clients.
+* Added better documentation for Kinetic Attraction.
+
+**Build 46**
+* Fix a ID typo which was making the config all weird.
+
+**Build 45**
+* Buffed the durability of the Helmet of Revealing.
+* Fixed weird localization with an empty Soul Mould on a Corporeal Attractor.
+* Added Microblock support for the Greatwood and Silverwood planks.
+* Added Peripheral support for a bunch of TC and TT blocks.
+* Added a new block (exclusive to ComputerCraft users).
+
+**Build 44**
+* Fixed Osmotic Enchanter removing it's set enchantments when the wand is removed.
+
+**Build 43**
+* Fixed an IC2 API call on client that was crashing the game.
+
+**Build 42**
+* Fixed the research for Gaseous Illuminae always being instant.
+* Fixed exploit with Osmotic Enchanter where one could enchant items with illegal enchants by switching the items without removing them.
+* Made the Transvector Dislocator's recipe be a lot cheaper.
+* Changed the Transvector Interface to pass inventoryChanged() calls to the bound tile. Should fix issues with some blocks (i.e. Factorization Barrels) looking weird.
+* Added Essentia Tube support to the Transvector Interface.
+* Nerfed the instability in the Dislocation Focus.
+* New stuff?
+
+**Build 41**
+* Renamed the Thaumic Rehabilitator, it sounded stupid.
+* Buffed the Wand Focus: Efreet's Flame as it was ridiculously expensive, I don't even what was going through my head.
+* Removed the research for the Infused Scribing Tools. The reason for this being they are not function as TC is right now. They will come back when and if a TC hook that I requested is added.
+
+**Build 40**
+* Fixed ComputerCraft integration not working on clientside.
+* Added Funnel and Repairer to the list of available peripherals.
+
+**Build 39**
+* Fixed another compilation crash when opening the research table gui.
+* Fixed crash when clicking the Thaumic Rehabilitator with an empty hand.
+
+**Build 38**
+* Fixed compilation crash.
+
+**Build 37**
+* Fixed TT foci stacking.
+* Fixed Vampirism enchantment not working.
+* Made the enchanting particles have less gravity.
+* Fixed a bunch of stuff with the Essentia Funnel so it can work well with automation.
+* The Essentia Funnel now shows how many aspects are on the jar on hover.
+* Fixed the Transvector Dislocator not updating the block moved.
+* Fixed Transvector Blocks being able to be camouflaged with items, getting a null texture.
+* Fixed Cheaty Mode for for the Transvector Blocks not working.
+* A Cheaty Mode Transvector Interface will no longer lose it's binding if there's no tile on the end.
+* Added 2 new things.
+
+**Build 36**
+* Fixed the Essentia Funnel being stupid.
+* Made the Ender Rift focus a bit easier to craft.
+
+**Build 35**
+* Fix the mod being dependant on CodeChickenCore, oops.
+* If mirrors are disabled in the TC config, the Ender Rift focus and the Transvector Dislocator can't be  researched.
+
+**Build 34**
+* Fixed Transvector Dislocator not bringing tile entity contents along
+* Added a short cooldown to the Transvector Dislocator to prevent trapping
+* The Transvector Dislocator will no longer pick up unbreakable blocks, anything the portable hole can't or aura nodes.
+
+**Build 33**
+* Fixed crash with Quick Draw enchant.
+* Rebalanced the Cursed Spirit's Blade a bit, it has more durability and can get Repair now, but not Vampirism.
+* Removed the ability for the Axe of the Stream to have Flaming Touch, it was causing issues.
+* Fixed the Helmet of Revealing not showing aspects and added the discount to the tooltip.
+
+**Build 32**
+* Fixed Ascent Boost I Enchantment having no effect.
+
+**Build 31**
+* (Hopefully) Fixed incompatibility with M&B Battlegear 2.
+* Fixed being able to place books in the Osmotic Enchanter with shift-click.
+* MOAR REFERENCES
+* Added the ability to Camouflage the Transvector Interface by right clicking it with a block.
+* Added 3 items.
+
+**Build 30**
+* Fixed crash in SMP.
+* Added TE3 energy support to Transvector Interface.
+* Added a new item.
+
+**Build 29**
+* Fix crash all the time, again. Looks like forge changed.
+* Fixed Efreet's Flame focus being weird client-side.
+* Changed slow fall to only work after some time falling.
+* Fixed anti-crash checks in the dynamism tablet.
+* Fixed crash with putting a corporeal magnetizer next to a computer.
+* Add a check to the Dislocation focus to prevent visual anomalies.
+* Remove a stupid println.
+* Fix ascent boost enchantment making the player take more knockback.
+* Change ascent boost enchantment to be smoother.
+* Fixed candle multiparts not working with metadata.
+* Moved some researches around, again.
+* Added peripherals to a bunch more TC blocks
+* Rewrote and added research for the Mending focus.
+
+**Build 28**
+* Made the mod not crash upon being loaded, oops.
+
+**Build 27**
+* Moved some researches around to make more sense with the latest TT versions.
+* Increased range of Fume Dissipator by 2 blocks.
+* I'm back baby! -Vazkii
+
+**Build 26**
+* Fixed NullPointerError with Dynamism Tablet.
+* Mending Focus does something now (Crafting and Research will come later).
+
+**Build 25**
+* Moved Funnel location in research page to fit with latest changes.
+* Updated Language Files.
+
+**Build 24**
+* Fixed Corporeal Attractor dropping as a Kinetic Attractor.
+* Changed ForgeMultipart to be a soft dependency.
+
+**Build 23**
+* Added support for the Potency enchantment for a few wands from my mod.
+* Slow fall enchantment now works when not shifting, and is smoother.
+* Fixed wand in creative mode having more vis than it should.
+* Moved some researches around.
+* Implemented Multiblocks for TC and TT blocks, and Multipart for Candles (ForgeMultipart Required).
+* Added ComputerCraft Peripheral support for Nodes in Jars and Wand Pedestals.
+* Added a new focus.
+
+**Build 22**
+* Added Telekinesis Focus ID to the config.
+* Localized Vampirism enchantment properly.
+* Fixed Corporeal Attractor not saving adult/child setting.
+* Fix Essentia Funnel not setting the jar to regular Warded Jar when done.
+* Fixed the Dynamism Tablet destroying buckets if they were used to milk a cow.
+* Fixed Hyperenergetic Nitor not placing properly in caves and closed places.
+* Fixed dupe with Osmotic Enchanter with iron/copper capped wands.
+* Fixed Osmotic Enchanter sometimes doubling enchantments up.
+* Removed lost enchantment flag from Brain in a Jar.
+
+**Build 21**
+* Fix a major issue with the Osmotic Enchanter crashing the game.
+* Fixed an issue with the Essentia Funnel.
+
+**Build 20**
+* Tweaks.
+
+**Build 19**
+* Fixed a crash.
+
+**Build 18**
+* Initial Release.
