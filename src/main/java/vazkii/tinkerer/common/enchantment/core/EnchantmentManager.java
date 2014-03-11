@@ -88,6 +88,8 @@ public final class EnchantmentManager {
 		registerExponentialCostData(ModEnchantments.tunnel, LibResources.ENCHANT_TUNNEL, false, new AspectList().add(Aspect.EARTH, 16).add(Aspect.ORDER, 16), LibResearch.KEY_ENCHANT_VAMPIRISM);
 
 		registerExponentialCostData(ModEnchantments.shatter, LibResources.ENCHANT_SHATTER, false, new AspectList().add(Aspect.EARTH, 16).add(Aspect.ENTROPY, 16), LibResearch.KEY_ENCHANT_VAMPIRISM);
+		registerExponentialCostData(ModEnchantments.shockwave, LibResources.ENCHANT_SHOCKWAVE, false, new AspectList().add(Aspect.EARTH, 16).add(Aspect.AIR, 16), LibResearch.KEY_ENCHANT_VAMPIRISM);
+
 
 		registerCompatibilityRules();
 		registerExtraRules();
