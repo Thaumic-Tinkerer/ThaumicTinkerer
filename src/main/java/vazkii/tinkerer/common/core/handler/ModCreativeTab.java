@@ -102,7 +102,8 @@ public class ModCreativeTab extends CreativeTabs {
 
 		addItem(ModItems.mobAspect);
 		addBlock(ModBlocks.spawner);
-
+        // TODO: Add Different heads here maybe?
+        addItem(ModItems.mobDisplay);
 		if(ConfigHandler.enableKami) {
 			addItem(ModItems.kamiResource);
 

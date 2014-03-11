@@ -15,7 +15,6 @@
 package vazkii.tinkerer.client.core.proxy;
 
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.world.World;
@@ -35,7 +34,8 @@ import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderRepairer;
 import vazkii.tinkerer.client.render.block.kami.RenderWarpGate;
-import vazkii.tinkerer.client.render.item.kami.RenderMobAspect;
+import vazkii.tinkerer.client.render.item.RenderMobAspect;
+import vazkii.tinkerer.client.render.item.RenderMobDisplay;
 import vazkii.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
 import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
@@ -51,7 +51,6 @@ import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
@@ -99,6 +98,7 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
 
+
 		if(ConfigHandler.enableKami) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
 		}
@@ -107,12 +107,11 @@ public class TTClientProxy extends TTCommonProxy {
 	private void registerRenderIDs() {
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idRepairer = RenderingRegistry.getNextAvailableRenderId();
-
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.mobAspect.itemID, new RenderMobAspect());
-
+        MinecraftForgeClient.registerItemRenderer(ModItems.mobDisplay.itemID,new RenderMobDisplay());
 
 		if(ConfigHandler.enableKami) {
 			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror.itemID, new RenderPlacementMirror());
