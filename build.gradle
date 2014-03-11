@@ -54,7 +54,7 @@ curseDeploy {
                         uploadFileName='ThaumicTinkerer-'+version+'.jar'
                         changeLog=new URL(changelogLoc).getText()
                         changeLogMarkup='CREOLE'
-                        file='build/libs/ThaumicTinkerer-'+version+'-shadow.jar'
+                        file='art/ThaumicTinkerer-'+version+'.jar'
                         fileType=project.releaseType
                         gameVersions=[326]
                     }
