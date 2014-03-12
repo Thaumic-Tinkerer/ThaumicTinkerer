@@ -59,6 +59,19 @@ public class ModEnchantmentHandler {
 			if(heldItem.stackTagCompound == null){
 				heldItem.stackTagCompound = new NBTTagCompound();
 			}
+			if(attacker instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) attacker;
+
+				ItemStack legs = player.getCurrentArmor(1);
+				int pounce = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.pounce, legs);
+				if(pounce > 0){
+					if(player.worldObj.getBlockId((int)Math.floor(player.posX), (int)Math.floor(player.posY)-1, (int)Math.floor(player.posZ)) == 0){
+
+						event.ammount*=1+(.4*pounce);
+					}
+				}
+
+			}
 
 			int finalStrike = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.finalStrike, heldItem);
 			if(finalStrike > 0){
