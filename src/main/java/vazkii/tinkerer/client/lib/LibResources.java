@@ -107,4 +107,5 @@ public final class LibResources {
 
 	public static final String ENCHANT_SHATTER="";
 	public static final String ENCHANT_SHOCKWAVE="";
+	public static final String ENCHANT_POUNCE="";
 }
