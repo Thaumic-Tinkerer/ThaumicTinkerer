@@ -49,18 +49,13 @@ public final class ModEnchantments {
 
 		dispersedStrikes = new EnchantmentDispersedStrikes(LibEnchantIDs.dispersedStrikes).setName(LibEnchantNames.dispersedStrikes);
 
-		filtration = new EnchantmentFiltration(LibEnchantIDs.filtration).setName(LibEnchantNames.filtration);
 
 		finalStrike = new EnchantmentFinalStrike(LibEnchantIDs.finalStrike).setName(LibEnchantNames.finalStrike);
 
 		focusedStrike = new EnchantmentFocusedStrikes(LibEnchantIDs.focusedStrike).setName(LibEnchantNames.focusedStrike);
 
-		imbued = new EnchantmentImbued(LibEnchantIDs.imbued).setName(LibEnchantNames.imbued);
 
 		pounce = new EnchantmentPounce(LibEnchantIDs.pounce).setName(LibEnchantNames.pounce);
-
-		resolute = new EnchantmentResolute(LibEnchantIDs.resolute).setName(LibEnchantNames.resolute);
-
 		shatter = new EnchantmentShatter(LibEnchantIDs.shatter).setName(LibEnchantNames.shatter);
 
 		shockwave = new EnchantmentShockwave(LibEnchantIDs.shockwave).setName(LibEnchantNames.shockwave);
