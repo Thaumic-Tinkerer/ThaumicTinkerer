@@ -79,7 +79,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 					}
 				}
 			}
-			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
+			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0 && inventorySlots[0].getItem().isRepairable()) {
 				int essentia = drawEssentia();
 				int dmg = inventorySlots[0].getItemDamage();
 				inventorySlots[0].setItemDamage(Math.max(0, dmg - essentia));
