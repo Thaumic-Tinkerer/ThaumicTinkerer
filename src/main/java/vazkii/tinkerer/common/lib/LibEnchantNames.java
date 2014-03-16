@@ -27,12 +27,9 @@ public final class LibEnchantNames {
 
 
 	public static final String dispersedStrikes= LibResources.PREFIX_MOD + "dispersedStrike";
-	public static final String filtration= LibResources.PREFIX_MOD + "filtration";
 	public static final String finalStrike= LibResources.PREFIX_MOD + "finalStrike";
 	public static final String focusedStrike= LibResources.PREFIX_MOD + "focusedStrike";
-	public static final String imbued= LibResources.PREFIX_MOD + "imbued";
 	public static final String pounce= LibResources.PREFIX_MOD + "pounce";
-	public static final String resolute= LibResources.PREFIX_MOD + "resolute";
 	public static final String shatter= LibResources.PREFIX_MOD + "shatter";
 	public static final String shockwave= LibResources.PREFIX_MOD + "shockwave";
 	public static final String tunnel= LibResources.PREFIX_MOD + "tunnel";

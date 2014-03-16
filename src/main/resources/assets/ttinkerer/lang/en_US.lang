@@ -163,6 +163,16 @@ enchantment.ttinkerer:desintegrate=Disintegrate
 enchantment.ttinkerer:quickDraw=Quick Draw
 enchantment.ttinkerer:vampirism=Vampirism
 
+enchantment.ttinkerer:dispersedStrike=Dispersed Strike
+enchantment.ttinkerer:focusedStrike=Focused Strike
+enchantment.ttinkerer:tunnel=Tunnel
+enchantment.ttinkerer:finalStrike=Final Strike
+enchantment.ttinkerer:pounce=Pounce
+enchantment.ttinkerer:shatter=Shatter
+enchantment.ttinkerer:shockwave=Shockwave
+enchantment.ttinkerer:valiance=Valiance
+
+
 # WAND COMPONENTS
 item.Wand.ICHOR.cap=Ichorium Adorned
 item.Wand.ICHORCLOTH.rod=Ichorcloth Strapped Silverwood
@@ -316,6 +326,48 @@ ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allo
 ttresearch.name.TTENCH_VAMPIRISM=Enchantment: Vampirism
 ttresearch.lore.TTENCH_VAMPIRISM=I'll take that
 ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a living thing using that sword will be given back to the wielder.
+
+# -- ENCHANTMENT: DISPERSED_STRIKES
+ttresearch.name.TTENCH_DISPERSED=Enchantment: Dispersed Strikes
+ttresearch.lore.TTENCH_DISPERSED=Kill ALL the mobs
+ttresearch.page.TTENCH_DISPERSED.0=You have formulated an enchantment that allows you to fight many mobs at once.<BR><BR>This enchantment can be applied on swords. When done so, the damage to a mob on the first hit will be multiplied, but the damage on successive strikes to the same mob will be decreased.
+
+# -- ENCHANTMENT: FOCUSED_STRIKES
+ttresearch.name.TTENCH_FOCUSED=Enchantment: Focused Strikes
+ttresearch.lore.TTENCH_FOCUSED=Kill ONE OF the mobs
+ttresearch.page.TTENCH_FOCUSED.0=You have formulated an enchantment that enables you to become proficient at fighting a single mob.<BR><BR>This enchantment can be applied on swords. When done so, the damage to a mob on the first hit will be decreased, but the damage on successive strikes to the same mob will be increased.
+
+# -- ENCHANTMENT: FINAL_STRIKE
+ttresearch.name.TTENCH_FINAL=Enchantment: Final Strike
+ttresearch.lore.TTENCH_FINAL=Go for the head!
+ttresearch.page.TTENCH_FINAL.0=You have formulated an enchantment that enables you to occasionally score critical hits.<BR><BR>This enchantment can be applied on swords. When done so, there is a chance that a hit will do triple damage.
+
+# -- ENCHANTMENT: VALIANCE
+ttresearch.name.TTENCH_VALIANCE=Enchantment: Valiance
+ttresearch.lore.TTENCH_VALIANCE=Back from the edge
+ttresearch.page.TTENCH_VALIANCE.0=You have formulated an enchantment that enables you to fight better when at low health.<BR><BR>This enchantment can be applied on swords. When done so, damage done with the sword will be increased when the weilder is at low health.
+
+
+# -- ENCHANTMENT: TUNNEL
+ttresearch.name.TTENCH_TUNNEL=Enchantment: Tunnel
+ttresearch.lore.TTENCH_TUNNEL=Mining is boring
+ttresearch.page.TTENCH_TUNNEL.0=You have formulated an enchantment that enables you to become more efficient at digging straight lines.<BR><BR>This enchantment can be applied on tools. When done so, digging multiple blocks in a straight line will increase your digging speed.
+
+# -- ENCHANTMENT: SHATTER
+ttresearch.name.TTENCH_SHATTER=Enchantment: Shatter
+ttresearch.lore.TTENCH_SHATTER=Who needs obsidian
+ttresearch.page.TTENCH_SHATTER.0=You have formulated an enchantment that enables you to become more efficient at destroying strong blocks.<BR><BR>This enchantment can be applied on tools. When done so, digging speed will be greatly increased on strong blocks.
+
+# -- ENCHANTMENT: SHOCKWAVE
+ttresearch.name.TTENCH_SHOCKWAVE=Enchantment: Shockwave
+ttresearch.lore.TTENCH_SHOCKWAVE=Mini Earthquakes
+ttresearch.page.TTENCH_SHOCKWAVE.0=You have formulated an enchantment that enables you to become to kill enemies while falling.<BR><BR>This enchantment can be applied on boots. When done so, whenever the wearer falls, damage will be dealt to surrounding mobs or players.
+
+# -- ENCHANTMENT: POUNCE
+ttresearch.name.TTENCH_POUNCE=Enchantment: Pounce
+ttresearch.lore.TTENCH_POUNCE=Like a kitty-cat
+ttresearch.page.TTENCH_POUNCE.0=You have formulated an enchantment that enables you to to leap on your foes.<BR><BR>This enchantment can be applied on leggings. When done so, your attacks will be more powerful while you are in the air.
+
 
 # -- WAND FOCUS: EFREET'S FLAME
 ttresearch.name.FOCUS_SMELT=Wand Focus: Efreet's Flame
