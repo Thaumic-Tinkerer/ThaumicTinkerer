@@ -166,6 +166,16 @@ enchantment.ttinkerer:desintegrate=Desintegrieren
 enchantment.ttinkerer:quickDraw=Schnelles Spannen
 enchantment.ttinkerer:vampirism=Vampirismus
 
+enchantment.ttinkerer:dispersedStrike=Gestreuter Schlag
+enchantment.ttinkerer:focusedStrike=Fokussierter Schlag
+enchantment.ttinkerer:tunnel=Tunnel
+enchantment.ttinkerer:finalStrike=Finalschlag
+enchantment.ttinkerer:pounce=Niederstoßen
+enchantment.ttinkerer:shatter=Zerspringen
+enchantment.ttinkerer:shockwave=Schockwelle
+enchantment.ttinkerer:valiance=Tapferkeit
+
+
 # WAND COMPONENTS
 item.Wand.ICHOR.cap=Ichoriumgeschmückter
 item.Wand.ICHORCLOTH.rod=Ichortuchverstärkter Silberholz
@@ -320,6 +330,48 @@ ttresearch.page.TTENCH_QUICK_DRAW.0=Du hast eine Verzauberung formuliert, die es
 ttresearch.name.TTENCH_VAMPIRISM=Verzauberung: Vampirismus
 ttresearch.lore.TTENCH_VAMPIRISM=Ich werd' mir das mal nehmen
 ttresearch.page.TTENCH_VAMPIRISM.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, die Lebenskraft der Gegner, die du attackierst, auszusaugen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird ein Stück des einem Lebewesen mit diesem Schwert verursachten Schadens dem Nutzer zurückgegeben.
+
+# -- ENCHANTMENT: DISPERSED_STRIKES
+ttresearch.name.TTENCH_DISPERSED=Verzauberung: Gestreuter Schlag
+ttresearch.lore.TTENCH_DISPERSED=Alle Monster töten
+ttresearch.page.TTENCH_DISPERSED.0=Du hast eine Verzauberung formuliert, die es erleichtert, viele Monster auf einmal zu bekämpfen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird der Schaden des Erstschlags auf ein Monster verfielfacht, aber der Schaden aufeinanderfolgender Schläge wird reduziert.
+
+# -- ENCHANTMENT: FOCUSED_STRIKES
+ttresearch.name.TTENCH_FOCUSED=Verzauberung: Fokussierter Schlag
+ttresearch.lore.TTENCH_FOCUSED=Ein Monster töten
+ttresearch.page.TTENCH_FOCUSED.0=Du hast eine Verzauberung formuliert, die es erleichtert, einzelne Monster zu bekämpfen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird der Schaden des Erstschlags auf ein Monster verringert, aber der Schaden aufeinanderfolgender Schläge wird vervielfacht.
+
+# -- ENCHANTMENT: FINAL_STRIKE
+ttresearch.name.TTENCH_FINAL=Verzauberung: Finalschlag
+ttresearch.lore.TTENCH_FINAL=Der Gnadenstoß
+ttresearch.page.TTENCH_FINAL.0=Du hast eine Verzauberung formuliert, die dich gelegentlich kritische Treffer landen lässt.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, besteht die Chance, dass ein Treffer dreifachen Schaden verursacht.
+
+# -- ENCHANTMENT: VALIANCE
+ttresearch.name.TTENCH_VALIANCE=Verzauberung: Tapferkeit
+ttresearch.lore.TTENCH_VALIANCE=Mit dem Rücken zur Wand
+ttresearch.page.TTENCH_VALIANCE.0=Du hast eine Verzauberung formuliert, die dich besser kämpfen lässt, wenn du verletzt bist.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird der Schaden mit dem Schwert erhöht, wenn der Träger nur noch wenig Lebenskraft hat.
+
+
+# -- ENCHANTMENT: TUNNEL
+ttresearch.name.TTENCH_TUNNEL=Verzauberung: Tunnel
+ttresearch.lore.TTENCH_TUNNEL=Graben mach Spaß
+ttresearch.page.TTENCH_TUNNEL.0=Du hast eine Verzauberung formuliert, die dich besser im Graben gerader Tunnel macht.<BR><BR>Diese Verzauberung kann auf Werkzeug gelegt werden. Wenn getan, wird das Abbauen mehrerer Blöcke in einer geraden Linie die Abbaugeschwindigkeit erhöhen.
+
+# -- ENCHANTMENT: SHATTER
+ttresearch.name.TTENCH_SHATTER=Verzauberung: Zerspringen
+ttresearch.lore.TTENCH_SHATTER=Wer braucht Obsidian
+ttresearch.page.TTENCH_SHATTER.0=Du hast eine Verzauberung formuliert, die dich besser im Abbauen härterer Blöcke macht.<BR><BR>Diese Verzauberung kann auf Werkzeug gelegt werden. Wenn getan, wird die Geschwindigkeit des Abbauens harter Blöcke deutlich erhöht sein.
+
+# -- ENCHANTMENT: SHOCKWAVE
+ttresearch.name.TTENCH_SHOCKWAVE=Verzauberung: Schockwelle
+ttresearch.lore.TTENCH_SHOCKWAVE=Mini-Erdebeben
+ttresearch.page.TTENCH_SHOCKWAVE.0=Du hast eine Verzauberung formuliert, die dir das Töten von Monstern im Fall erleichtert.<BR><BR>Diese Verzauberung kann auf Stiefel gelegt werden. Wenn getan, wird, wenn der Träger fällt, allen Monstern und Spielern in der Umgebung Schaden zugefügt.
+
+# -- ENCHANTMENT: POUNCE
+ttresearch.name.TTENCH_POUNCE=Verzauberung: Niederstoßen
+ttresearch.lore.TTENCH_POUNCE=Wie ein Kätzchen
+ttresearch.page.TTENCH_POUNCE.0=Du hast eine Verzauberung formuliert, die dich deine Gegner direkt anspringen lässt.<BR><BR>Diese Verzauberung kann auf Beinschutz gelegt werden. Wenn getan, sind deine Angriffe stärker, während du dich in der Luft befindest.
+
 
 # -- WAND FOCUS: EFREET'S FLAME
 ttresearch.name.FOCUS_SMELT=Stabfokus: Efreet's Flamme
