@@ -202,6 +202,15 @@ public final class ConfigHandler {
 		LibEnchantIDs.idQuickDraw = loadEnchant(LibEnchantNames.QUICK_DRAW, LibEnchantIDs.idQuickDraw);
 		LibEnchantIDs.idVampirism = loadEnchant(LibEnchantNames.VAMPIRISM, LibEnchantIDs.idVampirism);
 
+		LibEnchantIDs.focusedStrike = loadEnchant(LibEnchantNames.focusedStrike, LibEnchantIDs.focusedStrike);
+		LibEnchantIDs.dispersedStrikes = loadEnchant(LibEnchantNames.dispersedStrikes, LibEnchantIDs.dispersedStrikes);
+		LibEnchantIDs.finalStrike = loadEnchant(LibEnchantNames.finalStrike, LibEnchantIDs.finalStrike);
+		LibEnchantIDs.valiance = loadEnchant(LibEnchantNames.valiance, LibEnchantIDs.valiance);
+		LibEnchantIDs.pounce = loadEnchant(LibEnchantNames.pounce, LibEnchantIDs.pounce);
+		LibEnchantIDs.shockwave = loadEnchant(LibEnchantNames.shockwave, LibEnchantIDs.shockwave);
+		LibEnchantIDs.shatter = loadEnchant(LibEnchantNames.shatter, LibEnchantIDs.shatter);
+		LibEnchantIDs.tunnel = loadEnchant(LibEnchantNames.tunnel, LibEnchantIDs.tunnel);
+
 		
 
 
