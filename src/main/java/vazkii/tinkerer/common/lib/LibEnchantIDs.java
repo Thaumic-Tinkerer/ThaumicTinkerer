@@ -23,4 +23,16 @@ public class LibEnchantIDs {
 	public static int idQuickDraw = 224;
 	public static int idVampirism = 225;
 
+	public static int dispersedStrikes = 226;
+	public static int filtration = 227;
+	public static int finalStrike = 228;
+	public static int focusedStrike = 229;
+	public static int imbued = 230;
+	public static int pounce = 231;
+	public static int resolute = 232;
+	public static int shatter = 233;
+	public static int shockwave = 234;
+	public static int tunnel = 235;
+	public static int valiance = 236;
+
 }
