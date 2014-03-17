@@ -15,6 +15,8 @@ ttmisc.leftClick=Linksklick
 ttmisc.rightClick=Rechtsklick
 ttmisc.redstoneControl=Redstone-Kontrolle
 ttmisc.animationTablet.notRotatable=Du kannst das Tablett nicht rotieren, während es aktiviert ist.
+ttmisc.bloodSword.activateEssentiaHarvest=Essentia-Ernten aktiviert
+ttmisc.bloodSword.deactivateEssentiaHarvest=Essentia-Ernten deaktiviert
 ttmisc.focusDislocation.tooltip=Aktuell dislokierend
 ttmisc.focusDislocation.tooltipExtra=Extra-Inhalt
 ttmisc.inactive=Inaktiv
@@ -91,6 +93,9 @@ item.ttinkerer:revealingHelm.name=Helm der Enthüllung
 item.ttinkerer:infusedInkwell.name=Infundiertes Schreibset
 item.ttinkerer:focusDeflect.name=Stabfokus: Verzerrung
 item.ttinkerer:shareBook.name=Buch des Wissensteilens
+item.ttinkerer:mobAspect.name=Seelenaspekt
+item.ttinkerer:mobAspect.condensed.name=Verdichteter Seelenaspekt
+item.ttinkerer:mobAspect.infused.name=Infundierter Seelenaspekt
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=Kami-Ressource
@@ -144,7 +149,7 @@ tile.ttinkerer:dislocator.name=Transvektor-Dislokator
 tile.ttinkerer:repairer.name=Thaumischer Restaurierer
 tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
-
+tile.ttinkerer:spawner.name=Nekromantentafel
 tile.ttinkerer:portal.name=Bedrock-Portal
 tile.ttinkerer:Mobilization Levitator.name=Levitationslokomotive
 tile.ttinkerer:Mobilization Levitator Relay.name=Levitationslokomotivrelais
@@ -160,6 +165,16 @@ enchantment.ttinkerer:autoSmelt=Flammende Berührung
 enchantment.ttinkerer:desintegrate=Desintegrieren
 enchantment.ttinkerer:quickDraw=Schnelles Spannen
 enchantment.ttinkerer:vampirism=Vampirismus
+
+enchantment.ttinkerer:dispersedStrike=Gestreuter Schlag
+enchantment.ttinkerer:focusedStrike=Fokussierter Schlag
+enchantment.ttinkerer:tunnel=Tunnel
+enchantment.ttinkerer:finalStrike=Finalschlag
+enchantment.ttinkerer:pounce=Niederstoßen
+enchantment.ttinkerer:shatter=Zerspringen
+enchantment.ttinkerer:shockwave=Schockwelle
+enchantment.ttinkerer:valiance=Tapferkeit
+
 
 # WAND COMPONENTS
 item.Wand.ICHOR.cap=Ichoriumgeschmückter
@@ -316,6 +331,48 @@ ttresearch.name.TTENCH_VAMPIRISM=Verzauberung: Vampirismus
 ttresearch.lore.TTENCH_VAMPIRISM=Ich werd' mir das mal nehmen
 ttresearch.page.TTENCH_VAMPIRISM.0=Du hast eine Verzauberung formuliert, die es dir erlaubt, die Lebenskraft der Gegner, die du attackierst, auszusaugen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird ein Stück des einem Lebewesen mit diesem Schwert verursachten Schadens dem Nutzer zurückgegeben.
 
+# -- ENCHANTMENT: DISPERSED_STRIKES
+ttresearch.name.TTENCH_DISPERSED=Verzauberung: Gestreuter Schlag
+ttresearch.lore.TTENCH_DISPERSED=Alle Monster töten
+ttresearch.page.TTENCH_DISPERSED.0=Du hast eine Verzauberung formuliert, die es erleichtert, viele Monster auf einmal zu bekämpfen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird der Schaden des Erstschlags auf ein Monster verfielfacht, aber der Schaden aufeinanderfolgender Schläge wird reduziert.
+
+# -- ENCHANTMENT: FOCUSED_STRIKES
+ttresearch.name.TTENCH_FOCUSED=Verzauberung: Fokussierter Schlag
+ttresearch.lore.TTENCH_FOCUSED=Ein Monster töten
+ttresearch.page.TTENCH_FOCUSED.0=Du hast eine Verzauberung formuliert, die es erleichtert, einzelne Monster zu bekämpfen.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird der Schaden des Erstschlags auf ein Monster verringert, aber der Schaden aufeinanderfolgender Schläge wird vervielfacht.
+
+# -- ENCHANTMENT: FINAL_STRIKE
+ttresearch.name.TTENCH_FINAL=Verzauberung: Finalschlag
+ttresearch.lore.TTENCH_FINAL=Der Gnadenstoß
+ttresearch.page.TTENCH_FINAL.0=Du hast eine Verzauberung formuliert, die dich gelegentlich kritische Treffer landen lässt.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, besteht die Chance, dass ein Treffer dreifachen Schaden verursacht.
+
+# -- ENCHANTMENT: VALIANCE
+ttresearch.name.TTENCH_VALIANCE=Verzauberung: Tapferkeit
+ttresearch.lore.TTENCH_VALIANCE=Mit dem Rücken zur Wand
+ttresearch.page.TTENCH_VALIANCE.0=Du hast eine Verzauberung formuliert, die dich besser kämpfen lässt, wenn du verletzt bist.<BR><BR>Diese Verzauberung kann auf Schwerter gelegt werden. Wenn getan, wird der Schaden mit dem Schwert erhöht, wenn der Träger nur noch wenig Lebenskraft hat.
+
+
+# -- ENCHANTMENT: TUNNEL
+ttresearch.name.TTENCH_TUNNEL=Verzauberung: Tunnel
+ttresearch.lore.TTENCH_TUNNEL=Graben mach Spaß
+ttresearch.page.TTENCH_TUNNEL.0=Du hast eine Verzauberung formuliert, die dich besser im Graben gerader Tunnel macht.<BR><BR>Diese Verzauberung kann auf Werkzeug gelegt werden. Wenn getan, wird das Abbauen mehrerer Blöcke in einer geraden Linie die Abbaugeschwindigkeit erhöhen.
+
+# -- ENCHANTMENT: SHATTER
+ttresearch.name.TTENCH_SHATTER=Verzauberung: Zerspringen
+ttresearch.lore.TTENCH_SHATTER=Wer braucht Obsidian
+ttresearch.page.TTENCH_SHATTER.0=Du hast eine Verzauberung formuliert, die dich besser im Abbauen härterer Blöcke macht.<BR><BR>Diese Verzauberung kann auf Werkzeug gelegt werden. Wenn getan, wird die Geschwindigkeit des Abbauens harter Blöcke deutlich erhöht sein.
+
+# -- ENCHANTMENT: SHOCKWAVE
+ttresearch.name.TTENCH_SHOCKWAVE=Verzauberung: Schockwelle
+ttresearch.lore.TTENCH_SHOCKWAVE=Mini-Erdebeben
+ttresearch.page.TTENCH_SHOCKWAVE.0=Du hast eine Verzauberung formuliert, die dir das Töten von Monstern im Fall erleichtert.<BR><BR>Diese Verzauberung kann auf Stiefel gelegt werden. Wenn getan, wird, wenn der Träger fällt, allen Monstern und Spielern in der Umgebung Schaden zugefügt.
+
+# -- ENCHANTMENT: POUNCE
+ttresearch.name.TTENCH_POUNCE=Verzauberung: Niederstoßen
+ttresearch.lore.TTENCH_POUNCE=Wie ein Kätzchen
+ttresearch.page.TTENCH_POUNCE.0=Du hast eine Verzauberung formuliert, die dich deine Gegner direkt anspringen lässt.<BR><BR>Diese Verzauberung kann auf Beinschutz gelegt werden. Wenn getan, sind deine Angriffe stärker, während du dich in der Luft befindest.
+
+
 # -- WAND FOCUS: EFREET'S FLAME
 ttresearch.name.FOCUS_SMELT=Stabfokus: Efreet's Flamme
 ttresearch.lore.FOCUS_SMELT=Bänder würden keinen Unterschied machen
@@ -336,6 +393,13 @@ ttresearch.page.FOCUS_ENDER_CHEST.ES=Indem du einen Handspiegel mit einem Tragba
 ttresearch.name.BLOOD_SWORD=Klinge des Verfluchten Geistes
 ttresearch.lore.BLOOD_SWORD=Du bist unfreundlich
 ttresearch.page.BLOOD_SWORD.0=Du hast ein Schwert kreiert, dass mit noch nie da gewesener Kraft zustößt. Jedoch, damit dass der Fall ist, ernährt sich das Schwert vom Blut des Trägers.<BR><BR>Wenn mit diesem Schwert irgendetwas angegriffen wird, wird der Angreifer ein Herz Schaden erleiden. Mit diesem Schwert zu blocken, wird immer nur 1.5 Herzen Schaden verursachen, ungeachtet des ursprünglichen Schadens.<BR><BR>Ferner wird das bloße Halten dieses Schwertes dem Träger eine unerschütterliche Aura verleihen, was sie befähigt, sich schneller zu bewegen als normal.
+ttresearch.page.BLOOD_SWORD.1=Du hast auch entdeckt, dass das Schwert die Seelen der Monster herausreißen kann. Diese Fähigkeit kann durch Shift-rechtsklicken aktiviert werden. Diese Seelen sind reich an Essentia, aber du vermutest, dass sie noch weitere Nutzen haben könnten.
+
+# -- Mob Summoning
+ttresearch.name.SUMMON=Monsterbeschwörung
+ttresearch.lore.SUMMON=Fast Nekromantie
+ttresearch.page.SUMMON.0=Du bist fähig, die Seelen, die du von der Klinge des Verfluchten Geistes erhalten hast, zu verwenden, um Monster zu beschwören. Platziere drei Sockel um eine Nekromantentafel. Auf den Sockeln, platziere drei Seelenaspekte. Verschiedene Typen von Seelenaspekten ergeben verschiedene Monstertypen. Jedes Monster benötigt eine andere Kombination.
+ttresearch.page.SUMMON.1=Durch das Kreieren von infundierten Seelenaspekten bist du fähig, Monster zu beschwören, ohne die Seelenaspekte dabei zu verbrauchen. Beschwörungen mit Infundierten Seelenaspekten sind jedoch deutlich langsamer als normal.
 
 # -- TRANSVECTOR DISLOCATOR
 ttresearch.name.DISLOCATOR=Transvektor-Dislokator
