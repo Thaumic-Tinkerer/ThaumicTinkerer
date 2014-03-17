@@ -36,6 +36,7 @@ public final class ConfigHandler {
 	private static final String CATEGORY_KAMI_GENERAL = "general.kami";
 
 	public static boolean enableKami = false;
+    public static boolean enableFlight = true;
 	public static boolean useTootlipIndicators = true;
 	public static boolean enableSurvivalShareTome = true;
 	public static boolean enableEasymodeResearch = false;
@@ -84,7 +85,11 @@ public final class ConfigHandler {
 		Property propDebugCommands = config.get(Configuration.CATEGORY_GENERAL, "debugCommands.enabled", false);
 		propDebugCommands.comment = "Set to true to enable debugging commands.";
 		enableDebugCommands = propDebugCommands.getBoolean(false);
-		
+
+        Property propEnableFlight = config.get(Configuration.CATEGORY_GENERAL, "modFlight.enabled", true);
+        propEnableFlight.comment = "Set to true to enable flight in this mod.";
+        enableFlight = propEnableFlight.getBoolean(true);
+
 		Property propRepairTCon = config.get(Configuration.CATEGORY_GENERAL, "repairTconTools.enabled", false);
 		propRepairTCon.comment = "Can Thaumic Tinkerer repair Tinkers Construct tools.";
 		repairTConTools = propRepairTCon.getBoolean(false);
