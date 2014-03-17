@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.item.foci;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -25,6 +26,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 
 public class ItemFocusFlight extends ItemModFocus {
 
@@ -37,7 +39,10 @@ public class ItemFocusFlight extends ItemModFocus {
 	@Override
 	public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer p, MovingObjectPosition movingobjectposition) {
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-
+        if(!ConfigHandler.enableFlight)
+        {
+            return itemstack;
+        }
 		if (wand.consumeAllVis(itemstack, p, getVisCost(), true)) {
 			Vec3 vec = p.getLookVec();
 			double force = 1 / 1.5 * (1 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(itemstack)) * 0.2);
@@ -45,7 +50,9 @@ public class ItemFocusFlight extends ItemModFocus {
 			p.motionY = vec.yCoord * force;
 			p.motionZ = vec.zCoord * force;
 			p.fallDistance = 0F;
-
+            if(p instanceof EntityPlayerMP){
+                ((EntityPlayerMP)p).playerNetServerHandler.ticksForFloatKick = 0;
+            }
 			for(int i = 0; i < 5; i++)
 				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) Math.random() * 360, (int) p.posY);
 			world.playSoundAtEntity(p, "thaumcraft:wind", 0.4F, 1F);
