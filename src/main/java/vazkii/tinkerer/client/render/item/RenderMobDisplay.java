@@ -33,7 +33,7 @@ public class RenderMobDisplay implements IItemRenderer {
         ItemMobDisplay item= (ItemMobDisplay) itemStack.getItem();
         Entity entity= EntityList.createEntityByName(item.getEntityType(itemStack),Minecraft.getMinecraft().theWorld);
 
-        float f1 = 0.4375F;
+        float f1 = 0.5f;
         switch(itemRenderType) {
 
             case ENTITY:
