@@ -11,7 +11,7 @@ import thaumcraft.common.entities.monster.EntityWisp;
 public enum EnumMobAspect {
 
 	SNOW_GOLEM(EntitySnowman.class, new Aspect[]{Aspect.WATER, Aspect.WATER, Aspect.MAN}),
-	BAT(EntityBat.class, new Aspect[]{Aspect.AIR, Aspect.AIR, Aspect.FLIGHT}),
+	BAT(EntityBat.class, new Aspect[]{Aspect.AIR, Aspect.AIR, Aspect.FLIGHT},1.0f,-0.3f),
 	BLAZE(EntityBlaze.class, new Aspect[]{Aspect.FIRE, Aspect.FLIGHT, Aspect.MAGIC}),
 	BRAIN_ZOMBIE(EntityBrainyZombie.class, new Aspect[]{Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH}),
 	FIRE_BAT(EntityFireBat.class, new Aspect[]{Aspect.FLIGHT, Aspect.FIRE, Aspect.MAGIC}),
@@ -19,11 +19,11 @@ public enum EnumMobAspect {
 	CHICKEN(EntityChicken.class, new Aspect[]{Aspect.SEED, Aspect.FLIGHT, Aspect.BEAST}),
 	COW(EntityCow.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.BEAST}),
 	CREEPER(EntityCreeper.class, new Aspect[]{Aspect.MAGIC, Aspect.BEAST, Aspect.ELDRITCH}),
-	ENDERMAN(EntityEnderman.class, new Aspect[]{Aspect.ELDRITCH, Aspect.ELDRITCH, Aspect.MAN}),
-	GHAST(EntityGhast.class, new Aspect[]{Aspect.FIRE, Aspect.FLIGHT, Aspect.MAGIC}),
+	ENDERMAN(EntityEnderman.class, new Aspect[]{Aspect.ELDRITCH, Aspect.ELDRITCH, Aspect.MAN},0.3f,0.0f),
+	GHAST(EntityGhast.class, new Aspect[]{Aspect.FIRE, Aspect.FLIGHT, Aspect.MAGIC},0.1f,0.2f),
 	HORSE(EntityHorse.class, new Aspect[]{Aspect.BEAST, Aspect.BEAST, Aspect.TRAVEL}),
-	IRON_GOLEM(EntityIronGolem.class, new Aspect[]{Aspect.METAL, Aspect.METAL, Aspect.MAN}),
-	MAGMA_CUBE(EntityMagmaCube.class, new Aspect[]{Aspect.FIRE, Aspect.SLIME, Aspect.SLIME}),
+	IRON_GOLEM(EntityIronGolem.class, new Aspect[]{Aspect.METAL, Aspect.METAL, Aspect.MAN},0.3f,0.0f),
+	MAGMA_CUBE(EntityMagmaCube.class, new Aspect[]{Aspect.FIRE, Aspect.SLIME, Aspect.SLIME},0.6f,0.0f),
 	MOOSHROOM(EntityMooshroom.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.SEED}),
 	OCELOT(EntityOcelot.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.ELDRITCH}),
 	PIG(EntityPig.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.TRAVEL}),
@@ -31,11 +31,11 @@ public enum EnumMobAspect {
 	SHEEP(EntitySheep.class, new Aspect[]{Aspect.EARTH, Aspect.EARTH, Aspect.BEAST}),
 	SILVERFISH(EntitySilverfish.class, new Aspect[]{Aspect.METAL, Aspect.METAL, Aspect.EARTH}),
 	SKELETON(EntitySkeleton.class, new Aspect[]{Aspect.UNDEAD, Aspect.MAN, Aspect.UNDEAD}),
-	SLIME(EntitySlime.class, new Aspect[]{Aspect.SLIME, Aspect.SLIME, Aspect.BEAST}),
+	SLIME(EntitySlime.class, new Aspect[]{Aspect.SLIME, Aspect.SLIME, Aspect.BEAST},0.6f,0.0f),
 	SPIDER(EntitySpider.class, new Aspect[]{Aspect.BEAST, Aspect.UNDEAD, Aspect.UNDEAD}),
-	SQUID(EntitySquid.class, new Aspect[]{Aspect.WATER, Aspect.WATER, Aspect.WATER}),
+	SQUID(EntitySquid.class, new Aspect[]{Aspect.WATER, Aspect.WATER, Aspect.WATER},0.3f,0.5f),
 	WISP(EntityWisp.class, new Aspect[]{Aspect.AIR, Aspect.MAGIC, Aspect.MAGIC}),
-	WITCH(EntityWitch.class, new Aspect[]{Aspect.MAGIC, Aspect.UNDEAD, Aspect.ELDRITCH}),
+	WITCH(EntityWitch.class, new Aspect[]{Aspect.MAGIC, Aspect.UNDEAD, Aspect.ELDRITCH},0.35f,0.0f),
 	WOLF(EntityWolf.class, new Aspect[]{Aspect.BEAST, Aspect.BEAST, Aspect.BEAST}),
 	ZOMBIE(EntityZombie.class, new Aspect[]{Aspect.FLESH, Aspect.FLESH, Aspect.UNDEAD})
 
@@ -45,11 +45,30 @@ public enum EnumMobAspect {
 
 	public Aspect[] aspects;
 	public Class entity;
-
-	EnumMobAspect(Class entity, Aspect[] aspects){
+    private float scale;
+    private float offset;
+	EnumMobAspect(Class entity, Aspect[] aspects,float scale,float offset){
 		this.aspects=aspects;
 		this.entity=entity;
+        this.scale=scale;
+        this.offset=offset;
 	}
+    public float getVerticalOffset()
+    {
+        return offset;
+    }
+
+    public float getScale()
+    {
+        return scale;
+    }
+
+    EnumMobAspect(Class entity, Aspect[] aspects){
+        this.aspects=aspects;
+        this.entity=entity;
+        this.scale=0.4f;
+        this.offset=0.0f;
+    }
     public Class getEntity()
     {
         return entity;

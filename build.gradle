@@ -46,16 +46,19 @@ curseDeploy {
 
     if (project.hasProperty("buildnum"))
         version = "2.3-"+project.buildnum
-    if(project.releaseType=="ALPHA")
-        version="alpha-"+version
+    if(project.hasProperty("releaseType"))
+        if (project.releaseType=="ALPHA")
+            version="alpha-"+version
     deployment {
                         curseProjectName='thaumic-tinkerer'
-                        apiKey=project.apiKey
+                        if(project.hasProperty("apiKey"))
+                            apiKey=project.apiKey
                         uploadFileName='ThaumicTinkerer-'+version+'.jar'
                         changeLog=new URL(changelogLoc).getText()
                         changeLogMarkup='CREOLE'
                         file='art/ThaumicTinkerer-'+version+'.jar'
-                        fileType=project.releaseType
+                        if(project.hasProperty("releaseType"))
+                            fileType=project.releaseType
                         gameVersions=[326]
                     }
         }
@@ -74,8 +77,9 @@ version = "2.3-DEV"
 
 if (project.hasProperty("buildnum"))
     version = "2.3-"+project.buildnum
-if(project.releaseType=="ALPHA")
-    version="alpha-"+version
+if(project.hasProperty("releaseType"))
+    if (project.releaseType=="ALPHA")
+        version="alpha-"+version
 
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
