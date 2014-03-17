@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.item.foci;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -45,6 +46,10 @@ public class ItemFocusFlight extends ItemModFocus {
 			p.motionY = vec.yCoord * force;
 			p.motionZ = vec.zCoord * force;
 			p.fallDistance = 0F;
+			
+			 if(p instanceof EntityPlayerMP){
+                         ((EntityPlayerMP)p).playerNetServerHandler.ticksForFloatKick = 0;
+                     }
 
 			for(int i = 0; i < 5; i++)
 				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) Math.random() * 360, (int) p.posY);
