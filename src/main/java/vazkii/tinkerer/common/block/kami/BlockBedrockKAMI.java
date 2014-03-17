@@ -37,13 +37,19 @@ public class BlockBedrockKAMI extends Block {
 		}
 	}
 
-	public int idDropped(int par1, Random par2Random, int par3){
+	/**
+	 * Returns the quantity of items to drop on block destruction.
+	 */
+	public int quantityDropped(Random par1Random)
+	{
 		return 0;
 	}
 
-	public int quantityDropped(Random par1Random){
+	public int idDropped(Random par1Random)
+	{
 		return 0;
 	}
+
 
 	@Override
 	public float getBlockHardness(World par1World, int par2, int par3, int par4) {
