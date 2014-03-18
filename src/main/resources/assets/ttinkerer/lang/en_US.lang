@@ -35,6 +35,7 @@ ttmisc.notAbsorbing=Not Absorbing
 ttmisc.absorbing=Absorbing
 ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.notOnline=The player who this research belongs to is not online.
+ttmisc.shareTomb.offlineshare=Offline share
 ttmisc.shareTome.sync=Research Acquired.
 ttmisc.shareTome.noAssign=Not Assigned
 ttmisc.shareTome.playerName=Bound to %s's research.
