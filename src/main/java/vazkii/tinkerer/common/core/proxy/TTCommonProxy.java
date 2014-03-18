@@ -14,11 +14,14 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.versioning.ArtifactVersion;
+import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
@@ -93,11 +96,27 @@ public class TTCommonProxy {
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class,IEssentiaTransport.class
 		};
-        // DUMMY CHANGE
-        for(Class clazz : peripheralClasses)
-			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
-			
-		TurtleAPI.registerUpgrade(new FumeTool());
+        boolean loadMod=true;
+       if(Loader.isModLoaded("OpenPeripheralCore") ) {
+           int ver=Loader.instance().getIndexedModList().get("OpenPeripheralCore").getProcessedVersion().compareTo(new DefaultArtifactVersion("0.3.3"));
+           if(ver<0) {
+               System.out.println("Open Peripherals not detected, loading own classes");
+               // DUMMY CHANGE
+               loadMod=true;
+           }
+           else
+           {
+               System.out.println("Open Peripherals detected, not loading own classes");
+               loadMod=false;
+           }
+       }
+        if(loadMod)
+        {
+            for (Class clazz : peripheralClasses)
+                ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
+
+            TurtleAPI.registerUpgrade(new FumeTool());
+        }
 	}
 
 	public boolean isClient() {
