@@ -34,10 +34,13 @@ import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public final class ModResearch {
 
@@ -170,8 +173,21 @@ public final class ModResearch {
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOOD_SWORD), new ResearchPage("1")).setSecondary();
 
 		research = new TTResearchItem(LibResearch.KEY_SUMMON, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ModBlocks.spawner)).setParents(LibResearch.KEY_BLOOD_SWORD).registerResearchItem();
-		research.setPages(new ResearchPage("0") ,recipePage(LibResearch.KEY_SUMMON+"0"),recipePage(LibResearch.KEY_SUMMON+"1"), infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
-
+		//research.setPages(new ResearchPage("0") ,recipePage(LibResearch.KEY_SUMMON+"0"),recipePage(LibResearch.KEY_SUMMON+"1"), infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
+        List<ResearchPage> list=new ArrayList<ResearchPage>();
+        list.add(new ResearchPage("0"));
+        list.add(recipePage(LibResearch.KEY_SUMMON+"0"));
+        list.add(recipePage(LibResearch.KEY_SUMMON+"1"));
+        list.add(infusionPage(LibResearch.KEY_SUMMON));
+        list.add(new ResearchPage("1"));
+        for(EnumMobAspect aspect:EnumMobAspect.values()) {
+            list.add(aspect.GetRecepiePage());
+        }
+        ResearchPage[] pages=new ResearchPage[list.size()];
+        int i=0;
+        for(ResearchPage page:list)
+            pages[i++]=page;
+        research.setPages(pages);
         research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
         research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
 
