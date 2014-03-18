@@ -126,7 +126,7 @@ public class ModEnchantmentHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		final double min = -0.0784000015258789;
 
