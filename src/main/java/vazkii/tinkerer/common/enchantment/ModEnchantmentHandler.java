@@ -67,7 +67,7 @@ public class ModEnchantmentHandler {
 				if(pounce > 0){
 					if(player.worldObj.getBlockId((int)Math.floor(player.posX), (int)Math.floor(player.posY)-1, (int)Math.floor(player.posZ)) == 0){
 
-						event.ammount*=1+(.4*pounce);
+						event.ammount*=1+(.25*pounce);
 					}
 				}
 
