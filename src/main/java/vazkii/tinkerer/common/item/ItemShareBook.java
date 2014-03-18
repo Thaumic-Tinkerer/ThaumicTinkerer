@@ -47,8 +47,15 @@ public class ItemShareBook extends ItemMod {
 			}
             if(researchesDone==null && isOfflineShare(par1ItemStack))
             {
-                researchesDone=getPlayerResearch(par1ItemStack);
+                if(par2World.isRemote)
+                    researchesDone=getPlayerResearch(par1ItemStack);
+                else {
+                    par3EntityPlayer.addChatMessage("ttmisc.shareTome.sync");
+                    break sync;
+
+                }
             }
+
 			for(String key : researchesDone)
 				ThaumicTinkerer.tcProxy.getResearchManager().completeResearch(par3EntityPlayer, key);
 
