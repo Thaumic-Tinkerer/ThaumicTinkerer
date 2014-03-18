@@ -10,6 +10,6 @@ public class EnchantmentShatter extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return super.canApplyTogether(par1Enchantment);
+		return par1Enchantment != Enchantment.efficiency && par1Enchantment != ModEnchantments.desintegrate;
 	}
 }
