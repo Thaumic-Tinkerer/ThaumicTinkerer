@@ -90,6 +90,7 @@ public class TTCommonProxy {
             ComputerCraftAPI.registerPeripheralProvider(handler);
 			
 		//TurtleAPI.registerUpgrade(new FumeTool());
+        ComputerCraftAPI.registerUpgrade(new FumeTool());
 	}
 
 	public boolean isClient() {
