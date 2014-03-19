@@ -67,7 +67,7 @@ public class ModEnchantmentHandler {
 				if(pounce > 0){
 					if(player.worldObj.getBlockId((int)Math.floor(player.posX), (int)Math.floor(player.posY)-1, (int)Math.floor(player.posZ)) == 0){
 
-						event.ammount*=1+(.4*pounce);
+						event.ammount*=1+(.25*pounce);
 					}
 				}
 
@@ -126,7 +126,7 @@ public class ModEnchantmentHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		final double min = -0.0784000015258789;
 
@@ -214,7 +214,7 @@ public class ModEnchantmentHandler {
 				float oldDir=heldItem.stackTagCompound.getFloat(NBTTunnelDirection);
 				float dif =Math.abs(oldDir-dir);
 				if(dif < 50){
-					event.newSpeed*=(1+(.8*tunnel));
+					event.newSpeed*=(1+(.4*tunnel));
 				}else{
 					event.newSpeed*=.3;
 				}
