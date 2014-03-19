@@ -1,8 +1,9 @@
 package vazkii.tinkerer.common.block.tile;
 
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
+
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
@@ -347,10 +348,6 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
         }
     }
 
-    @Override
-    public boolean canAttachToSide(int side) {
-        return true;
-    }
 
     @Override
     public void attach(IComputerAccess computer) {
@@ -362,5 +359,10 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
     public void detach(IComputerAccess computer) {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
     }
 }
