@@ -379,7 +379,7 @@ ttresearch.lore.FOCUS_SMELT=Bänder würden keinen Unterschied machen
 ttresearch.page.FOCUS_SMELT.0=Indem du den Flammen- und Exkavationsfokus kombinierst, hast du einen Fokus gemacht, der Eigenschaften von beiden hat.<BR><BR>Dieser Fokus wird jeglichen Block schmelzen, auf den der Träger zeigt, gleich dem Strahl des Exkavationsfokus. Nur Blöcke, die in einem gewöhnlichen Ofen zu anderen Blöcken geschmolzen werden können, werden geschmolzen.
 
 # -- WAND FOCUS: MENDING
-ttresearch.name.FOCUS_HEAL=Stabfokus: Mending
+ttresearch.name.FOCUS_HEAL=Stabfokus: Heilen
 ttresearch.lore.FOCUS_HEAL=Bandagen, Leere und Gefühl
 ttresearch.page.FOCUS_HEAL.0=Du weißt, dass die Pech mächtige Foki besitzen, die Krankheiten verursachen, damit hast du dir einen Weg erdacht, sie zu deinem Vorteil zu nutzen.<BR><BR>Dieser Fokus wird langsam die Wunden des Anwenders heilen, während er ihn benutzt, indem er für den Prozess Vis aus dem Stab verwendet.
 
