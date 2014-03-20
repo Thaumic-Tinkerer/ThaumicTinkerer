@@ -191,8 +191,8 @@ public class ItemPlacementMirror extends ItemMod {
 		return ItemNBTHelper.getInt(stack, TAG_SIZE, 3) | 1;
 	}
 
-	public static int getBlockID(ItemStack stack) {
-		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
+	public static String getBlockName(ItemStack stack) {
+		return ItemNBTHelper.getString(stack, TAG_BLOCK_ID, "");
 	}
 
 	public static int getBlockMeta(ItemStack stack) {

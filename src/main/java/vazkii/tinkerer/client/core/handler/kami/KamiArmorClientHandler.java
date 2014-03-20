@@ -1,6 +1,6 @@
 package vazkii.tinkerer.client.core.handler.kami;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 import cpw.mods.fml.client.FMLClientHandler;
 
@@ -17,7 +17,7 @@ public class KamiArmorClientHandler {
     {
         if(FMLClientHandler.instance().getClient().currentScreen == null){
             ArmorEnabled=status;
-            PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketToggleArmor(status)));
+            ThaumicTinkerer.packetPipeline.sendToServer(new PacketToggleArmor(status));
         }
     }
 }
