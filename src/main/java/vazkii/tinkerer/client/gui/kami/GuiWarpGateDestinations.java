@@ -33,9 +33,11 @@ import org.lwjgl.opengl.GL11;
 
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
+import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
@@ -94,7 +96,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		if(par2 >= 2 && par2 < 12) {
 			int num = par2 - 2;
 			ItemStack stack = warpGate.getStackInSlot(num);
-			if(stack != null && ItemSkyPearl.isAttuned(stack) && ItemSkyPearl.getDim(stack) == warpGate.worldObj.provider.dimensionId) {
+			if(stack != null && ItemSkyPearl.isAttuned(stack) && ItemSkyPearl.getDim(stack) == warpGate.getWorldObj().provider.dimensionId) {
 				int x = ItemSkyPearl.getX(stack);
 				int z = ItemSkyPearl.getZ(stack);
 
@@ -123,7 +125,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 			ItemStack stack = warpGate.getStackInSlot(i);
 			if(stack != null && ItemSkyPearl.isAttuned(stack)) {
 				int dim = ItemSkyPearl.getDim(stack);
-				if(warpGate.worldObj.provider.dimensionId != dim)
+				if(warpGate.getWorldObj().provider.dimensionId != dim)
 					continue;
 
 				int x = ItemSkyPearl.getX(stack);
@@ -190,7 +192,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 			tooltip.add(EnumChatFormatting.AQUA + destName + destNum);
 			
 			if(stack != null) {
-				ItemSkyPearl.addInfo(stack, warpGate.worldObj.provider.dimensionId, Vector3.fromTileEntity(warpGate), tooltip, true);
+				ItemSkyPearl.addInfo(stack, warpGate.getWorldObj().provider.dimensionId, Vector3.fromTileEntity(warpGate), tooltip, true);
 				tooltip.add(StatCollector.translateToLocal("ttmisc.clickToTeleport"));				
 			} else {
 				tooltip.add("X: " + x);
@@ -198,7 +200,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 			}
 
 			if(Mouse.isButtonDown(0) && isShiftKeyDown() && stack != null) {
-				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketWarpGateTeleport(warpGate, index)));
+                ThaumicTinkerer.packetPipeline.sendToServer(new PacketWarpGateTeleport(warpGate,index));
 				mc.displayGuiScreen(null);
 			}
 		}
