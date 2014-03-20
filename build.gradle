@@ -18,13 +18,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
         classpath 'org.gradle.plugins:shadow:0.7.4'
         classpath group: 'net.monofraps', name: 'GradleCurse', version: '1.0-SNAPSHOT'
     }
 }
 repositories {
 	ivy {
+
         name 'Forge FS legacy'
         artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
     }
@@ -98,13 +99,7 @@ minecraft {
 dependencies {
     compile files (
             'TCDEOBF.jar',
-            'mods/Waila_1.4.5a_Dev.zip',
-            'mods/CodeChickenCore-dev 0.9.0.7.jar',
-            'mods/1.6.4/CodeChickenLib-dev-1.6.4-1.0.0.45.jar',
-            'mods/1.6.4/ForgeMultipart-dev-1.6.4-1.0.0.219.jar',
-            'mods/NotEnoughItems-dev 1.6.1.5.jar',
-            'mods/EnderStorage-dev 1.4.3.5.jar',
-            'mods/TConstruct-7a2abb-dev.jar'
+            'mods/mods/TConstruct-1.7.2-1.6.0.jenkins438-deobf.jar'
     )
     compile 'javax.mail:mail:1.4'
 }
