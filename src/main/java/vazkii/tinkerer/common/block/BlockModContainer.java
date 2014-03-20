@@ -26,8 +26,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
 
-	protected BlockModContainer(int par1, Material par2Material) {
-		super(par1, par2Material);
+	protected BlockModContainer(Material par2Material) {
+		super(par2Material);
 		if(registerInCreative())
 			setCreativeTab(ModCreativeTab.INSTANCE);
 	}

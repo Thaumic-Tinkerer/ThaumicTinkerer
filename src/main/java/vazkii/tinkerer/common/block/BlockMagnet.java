@@ -40,8 +40,8 @@ public class BlockMagnet extends BlockModContainer {
 
 	Random random;
 
-	public BlockMagnet(int par1) {
-		super(par1, Material.iron);
+	public BlockMagnet() {
+		super(Material.iron);
 		setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 1F / 16F * 2F, 0.9375F);
 		setHardness(1.7F);
 		setResistance(1F);

@@ -28,8 +28,8 @@ public class BlockMobilizer extends BlockMod {
 		super.onBlockPreDestroy(par1World, par2, par3, par4, par5);
 	}
 
-	public BlockMobilizer(int par1) {
-		super(par1, Material.iron);
+	public BlockMobilizer() {
+		super(Material.iron);
 	}
 
 	@Override

@@ -35,8 +35,8 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	Icon[] icons = new Icon[5];
 	Random random;
 
-	protected BlockAspectAnalyzer(int par1) {
-		super(par1, Material.wood);
+	protected BlockAspectAnalyzer() {
+		super(Material.wood);
 		setHardness(1.7F);
 		setResistance(1F);
 		setStepSound(soundWoodFootstep);

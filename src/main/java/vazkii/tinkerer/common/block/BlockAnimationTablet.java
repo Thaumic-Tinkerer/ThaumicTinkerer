@@ -46,8 +46,8 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	Random random;
 
-	public BlockAnimationTablet(int par1) {
-		super(par1, Material.iron);
+	public BlockAnimationTablet() {
+		super(Material.iron);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
 		setHardness(3F);
 		setResistance(50F);

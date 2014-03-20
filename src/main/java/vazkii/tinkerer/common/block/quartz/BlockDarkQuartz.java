@@ -35,8 +35,8 @@ public class BlockDarkQuartz extends BlockMod {
 	private Icon pillarDarkQuartzIcon;
 	private Icon darkQuartzTopIcon;
 
-	public BlockDarkQuartz(int par1) {
-		super(par1, Material.rock);
+	public BlockDarkQuartz() {
+		super(Material.rock);
 		setHardness(0.8F);
 		setResistance(10F);
 	}

@@ -28,8 +28,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNitorGas extends BlockGas {
 
-	public BlockNitorGas(int par1) {
-		super(par1);
+	public BlockNitorGas() {
+		super();
 	}
 
 	@Override

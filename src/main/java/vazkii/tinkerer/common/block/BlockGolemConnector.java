@@ -15,8 +15,8 @@ public class BlockGolemConnector extends BlockCamo {
 
 	
 	
-	protected BlockGolemConnector(int par1) {
-		super(par1, Material.wood);
+	protected BlockGolemConnector() {
+		super(Material.wood);
 	}
 
 	@Override

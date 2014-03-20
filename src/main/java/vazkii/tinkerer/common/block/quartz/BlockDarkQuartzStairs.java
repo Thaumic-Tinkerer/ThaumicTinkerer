@@ -20,8 +20,8 @@ import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 
 public class BlockDarkQuartzStairs extends BlockStairs {
 
-	public BlockDarkQuartzStairs(int par1) {
-		super(par1, ModBlocks.darkQuartz, 0);
+	public BlockDarkQuartzStairs() {
+		super(ModBlocks.darkQuartz, 0);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 }

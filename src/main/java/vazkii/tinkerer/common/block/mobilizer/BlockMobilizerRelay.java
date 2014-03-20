@@ -14,8 +14,8 @@ import vazkii.tinkerer.common.block.tile.TileEntityRelay;
 
 public class BlockMobilizerRelay  extends BlockMod {
 
-	public BlockMobilizerRelay(int par1) {
-		super(par1, Material.iron);
+	public BlockMobilizerRelay() {
+		super(Material.iron);
 	}
 
 	@Override
