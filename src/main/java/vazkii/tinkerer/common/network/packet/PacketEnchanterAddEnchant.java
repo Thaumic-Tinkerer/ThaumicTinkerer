@@ -14,11 +14,12 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 
@@ -32,7 +33,21 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 		this.level = level;
 	}
 
-	@Override
+    @Override
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.encodeInto(channelHandlerContext, byteBuf);
+        byteBuf.writeInt(enchant);
+        byteBuf.writeInt(level);
+    }
+
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.decodeInto(channelHandlerContext, byteBuf);
+        enchant=byteBuf.readInt();
+        level=byteBuf.readInt();
+    }
+
+    @Override
 	public void handle() {
 		if(tile.working)
 			return;
@@ -43,7 +58,7 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 			tile.removeEnchant(index);
 		} else {
 			if(!tile.enchantments.contains(enchant)){
-				if(player instanceof EntityPlayer && EnchantmentManager.canApply(tile.getStackInSlot(0), Enchantment.enchantmentsList[enchant], tile.enchantments)&& EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) player).username, Enchantment.enchantmentsList[enchant])) {
+				if(player != null && EnchantmentManager.canApply(tile.getStackInSlot(0), Enchantment.enchantmentsList[enchant], tile.enchantments)&& EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) player).getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
 					tile.appendEnchant(enchant);
 					tile.appendLevel(1);
 				}
@@ -54,6 +69,6 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 		}
 		tile.updateAspectList();
 
-		PacketDispatcher.sendPacketToAllPlayers(tile.getDescriptionPacket());
+        tile.getWorldObj().markBlockForUpdate(tile.xCoord,tile.yCoord,tile.zCoord);
 	}
 }

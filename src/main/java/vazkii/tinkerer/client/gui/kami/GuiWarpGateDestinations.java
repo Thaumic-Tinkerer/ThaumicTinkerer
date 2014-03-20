@@ -36,7 +36,6 @@ import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import cpw.mods.fml.common.network.PacketDispatcher;
 

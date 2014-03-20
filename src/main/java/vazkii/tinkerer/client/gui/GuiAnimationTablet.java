@@ -31,7 +31,6 @@ import vazkii.tinkerer.client.gui.button.IRadioButton;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketTabletButton;
 import cpw.mods.fml.common.network.PacketDispatcher;
 

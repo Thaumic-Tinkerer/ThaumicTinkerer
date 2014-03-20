@@ -26,7 +26,6 @@ import vazkii.tinkerer.client.gui.button.kami.GuiButtonWG;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.container.kami.ContainerWarpGate;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import cpw.mods.fml.common.network.PacketDispatcher;
 

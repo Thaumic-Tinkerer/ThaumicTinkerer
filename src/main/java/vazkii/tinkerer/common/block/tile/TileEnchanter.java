@@ -24,8 +24,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -403,18 +406,19 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 		return false;
 	}
 
-	@Override
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+        super.onDataPacket(net, pkt);
+        readCustomNBT(pkt.func_148857_g());
+    }
+
+    @Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+        return new S35PacketUpdateTileEntity(xCoord,yCoord,zCoord,-999,nbttagcompound);
 	}
 
-	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
-		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
-	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int var1) {

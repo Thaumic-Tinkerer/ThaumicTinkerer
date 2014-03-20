@@ -14,12 +14,13 @@
  */
 package vazkii.tinkerer.common.network.packet.kami;
 
-import net.minecraft.network.INetworkManager;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import net.minecraft.entity.player.EntityPlayer;
+import thaumcraft.common.lib.network.AbstractPacket;
 import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
-import vazkii.tinkerer.common.network.IPacket;
-import cpw.mods.fml.common.network.Player;
 
-public class PacketSoulHearts implements IPacket {
+public class PacketSoulHearts extends AbstractPacket {
 
 	private static final long serialVersionUID = 8044672277674872323L;
 	int hearts;
@@ -27,10 +28,27 @@ public class PacketSoulHearts implements IPacket {
 	public PacketSoulHearts(int hearts) {
 		this.hearts = hearts;
 	}
+    public PacketSoulHearts()
+    {
 
-	@Override
-	public void handle(INetworkManager manager, Player player) {
-		SoulHeartClientHandler.clientPlayerHP = hearts;
-	}
+    }
+    @Override
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        byteBuf.writeInt(hearts);
+    }
 
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        hearts=byteBuf.readInt();
+    }
+
+    @Override
+    public void handleClientSide(EntityPlayer entityPlayer) {
+        SoulHeartClientHandler.clientPlayerHP=hearts;
+    }
+
+    @Override
+    public void handleServerSide(EntityPlayer entityPlayer) {
+
+    }
 }

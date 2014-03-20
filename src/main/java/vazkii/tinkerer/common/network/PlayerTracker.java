@@ -14,8 +14,11 @@
  */
 package vazkii.tinkerer.common.network;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -24,34 +27,30 @@ import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
 import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemChest;
-import cpw.mods.fml.common.IPlayerTracker;
-import vazkii.tinkerer.common.item.kami.armor.ItemIchorclothArmorAdv;
 import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 
-public class PlayerTracker implements IPlayerTracker {
+public class PlayerTracker {
 
-	@Override
-	public void onPlayerLogin(EntityPlayer entityPlayer) {
-		ItemFocusHeal.playerHealData.put(entityPlayer.username, 0);
-        PacketDispatcher.sendPacketToPlayer(PacketManager.buildPacket(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(entityPlayer))),(Player)entityPlayer);
+	@SubscribeEvent
+	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+
+        if(FMLCommonHandler.instance().getEffectiveSide()== Side.SERVER) {
+            ItemFocusHeal.playerHealData.put(event.player.getGameProfile().getName(), 0);
+            ThaumicTinkerer.packetPipeline.sendTo(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(event.player)), (EntityPlayerMP) event.player);
+        }
 	}
 
-	@Override
-	public void onPlayerLogout(EntityPlayer player) {
-		ItemFocusSmelt.playerData.remove(player.username);
-		ItemFocusHeal.playerHealData.remove(player.username);
+    @SubscribeEvent
+	public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        EntityPlayer player=event.player;
+        String username=player.getGameProfile().getName();
+		ItemFocusSmelt.playerData.remove(username);
+		ItemFocusHeal.playerHealData.remove(username);
 
-		ItemGemChest.playersWithFlight.remove(player.username + ":false");
-		ItemGemChest.playersWithFlight.remove(player.username + ":true");
+		ItemGemChest.playersWithFlight.remove(username + ":false");
+		ItemGemChest.playersWithFlight.remove(username + ":true");
 
-		ItemGemBoots.playersWith1Step.remove(player.username);
+		ItemGemBoots.playersWith1Step.remove(username);
 
 	}
-
-	@Override
-	public void onPlayerChangedDimension(EntityPlayer player) { }
-
-	@Override
-	public void onPlayerRespawn(EntityPlayer player) { }
-
 }
