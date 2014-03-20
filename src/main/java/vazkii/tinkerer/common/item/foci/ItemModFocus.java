@@ -37,8 +37,8 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
 	private Icon ornament, depth;
 
-	public ItemModFocus(int par1) {
-		super(par1);
+	public ItemModFocus() {
+		super();
 		setMaxDamage(1);
 		setNoRepair();
 		setMaxStackSize(1);

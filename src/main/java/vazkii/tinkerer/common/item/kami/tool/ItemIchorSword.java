@@ -27,8 +27,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemIchorSword extends ItemSword {
 
-	public ItemIchorSword(int par1) {
-		super(par1, ModItems.toolMatIchor);
+	public ItemIchorSword() {
+		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 

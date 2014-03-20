@@ -27,8 +27,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemIchorPick extends ItemPickaxe {
 
-	public ItemIchorPick(int par1) {
-		super(par1, ModItems.toolMatIchor);
+	public ItemIchorPick() {
+		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 
         setHarvestLevel("pickaxe", 4);

@@ -30,8 +30,8 @@ import java.util.List;
 
 public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
-	public ItemIchorclothArmorAdv(int par1, int par2) {
-		super(par1, par2);
+	public ItemIchorclothArmorAdv(int par2) {
+		super(par2);
         setHasSubtypes(true);
 		if(ticks())
 			MinecraftForge.EVENT_BUS.register(this);

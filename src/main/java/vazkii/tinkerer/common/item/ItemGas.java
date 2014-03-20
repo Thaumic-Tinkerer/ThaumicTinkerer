@@ -23,8 +23,8 @@ public class ItemGas extends ItemMod {
 
 	private Block setBlock;
 
-	public ItemGas(int par1, Block setBlock) {
-		super(par1);
+	public ItemGas(Block setBlock) {
+		super();
 		this.setBlock = setBlock;
 	}
 

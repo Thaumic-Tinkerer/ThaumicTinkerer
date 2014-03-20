@@ -39,8 +39,8 @@ import java.util.List;
 
 public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscountGear {
 
-	public ItemRevealingHelm(int i) {
-		super(i, ThaumcraftApi.armorMatThaumium, 2, 0);
+	public ItemRevealingHelm() {
+		super(ThaumcraftApi.armorMatThaumium, 2, 0);
 		setMaxDamage(500);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}

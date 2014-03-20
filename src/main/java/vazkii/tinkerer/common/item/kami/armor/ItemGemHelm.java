@@ -26,8 +26,8 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRevealer {
 
-	public ItemGemHelm(int par1, int par2) {
-		super(par1, par2);
+	public ItemGemHelm(int par2) {
+		super(par2);
 	}
 
 	@Override

@@ -25,8 +25,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSpellCloth extends ItemMod {
 
-	public ItemSpellCloth(int par1) {
-		super(par1);
+	public ItemSpellCloth() {
+		super();
 		setMaxDamage(LibFeatures.SPELL_CLOTH_USES);
 		setMaxStackSize(1);
 		setNoRepair();

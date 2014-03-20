@@ -42,8 +42,8 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, 
 
 	static EnumArmorMaterial material = EnumHelper.addArmorMaterial("ICHOR", 0, new int[] { 3, 8, 6, 3 }, 20);
 
-	public ItemIchorclothArmor(int par1, int par2) {
-		super(par1, material, 0, par2);
+	public ItemIchorclothArmor(int par2) {
+		super(material, 0, par2);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 

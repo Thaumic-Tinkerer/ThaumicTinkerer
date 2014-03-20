@@ -41,8 +41,7 @@ public class ItemCleansingTalisman extends ItemMod {
 
 	private Icon enabledIcon;
 
-	public ItemCleansingTalisman(int par1) {
-		super(par1);
+	public ItemCleansingTalisman() {
 		setMaxStackSize(1);
 		setMaxDamage(LibFeatures.CLEANSING_TALISMAN_USES);
 	}

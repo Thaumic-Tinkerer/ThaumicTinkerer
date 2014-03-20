@@ -34,8 +34,8 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 
 	Icon[] specialIcons = new Icon[3];
 
-	public ItemIchorSwordAdv(int par1) {
-		super(par1);
+	public ItemIchorSwordAdv() {
+		super();
 		setHasSubtypes(true);
 	}
 

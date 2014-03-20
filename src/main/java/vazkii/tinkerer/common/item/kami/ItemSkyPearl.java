@@ -38,8 +38,8 @@ public class ItemSkyPearl extends ItemMod {
 	public static final String TAG_Z = "z";
 	public static final String TAG_DIM = "dim";
 
-	public ItemSkyPearl(int par1) {
-		super(par1);
+	public ItemSkyPearl() {
+		super();
 		setMaxStackSize(1);
 	}
 

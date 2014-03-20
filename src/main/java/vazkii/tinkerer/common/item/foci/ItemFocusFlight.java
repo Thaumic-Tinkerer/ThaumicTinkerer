@@ -32,10 +32,6 @@ public class ItemFocusFlight extends ItemModFocus {
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.AIR, 15);
 
-	public ItemFocusFlight(int i) {
-		super(i);
-	}
-
 	@Override
 	public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer p, MovingObjectPosition movingobjectposition) {
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();

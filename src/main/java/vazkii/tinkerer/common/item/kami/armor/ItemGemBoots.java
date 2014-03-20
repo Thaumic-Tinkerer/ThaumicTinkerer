@@ -33,8 +33,8 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
 	public static List<String> playersWith1Step = new ArrayList();
 
-	public ItemGemBoots(int par1, int par2) {
-		super(par1, par2);
+	public ItemGemBoots(int par2) {
+		super(par2);
 	}
 
 	@Override

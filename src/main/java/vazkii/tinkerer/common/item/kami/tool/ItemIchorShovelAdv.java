@@ -33,8 +33,8 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 
 	Icon[] specialIcons = new Icon[3];
 
-	public ItemIchorShovelAdv(int par1) {
-		super(par1);
+	public ItemIchorShovelAdv() {
+		super();
 		setHasSubtypes(true);
 	}
 

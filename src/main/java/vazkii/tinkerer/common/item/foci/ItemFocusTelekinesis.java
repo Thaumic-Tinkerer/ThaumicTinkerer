@@ -33,10 +33,6 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.AIR, 5).add(Aspect.ENTROPY, 5);
 
-	public ItemFocusTelekinesis(int par1) {
-		super(par1);
-	}
-
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int ticks) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();

@@ -37,8 +37,8 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ItemCatAmulet extends ItemMod {
 
-	public ItemCatAmulet(int par1) {
-		super(par1);
+	public ItemCatAmulet() {
+		super();
 		setMaxStackSize(1);
 	}
 

@@ -32,8 +32,8 @@ import vazkii.tinkerer.common.item.ModItems;
 
 public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
-	public ItemGemLegs(int par1, int par2) {
-		super(par1, par2);
+	public ItemGemLegs(int par2) {
+		super(par2);
 
 	}
 

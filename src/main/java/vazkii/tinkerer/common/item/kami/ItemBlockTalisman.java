@@ -46,8 +46,8 @@ public class ItemBlockTalisman extends ItemMod {
 
 	Icon enabledIcon;
 
-	public ItemBlockTalisman(int par1) {
-		super(par1);
+	public ItemBlockTalisman() {
+		super();
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 	}

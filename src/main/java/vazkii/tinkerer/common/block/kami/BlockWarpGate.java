@@ -40,8 +40,8 @@ public class BlockWarpGate extends BlockModContainer {
 	public static Icon[] icons = new Icon[3];
 	Random random;
 
-	public BlockWarpGate(int par1) {
-		super(par1, Material.rock);
+	public BlockWarpGate() {
+		super(Material.rock);
 		setHardness(5.0F);
 		setResistance(2000.0F);
 

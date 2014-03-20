@@ -36,8 +36,8 @@ public class ItemConnector extends ItemMod {
 	private static final String TAG_POS_Y = "posy";
 	private static final String TAG_POS_Z = "posz";
 	private static final String TAG_CONNECTING_GOLEM="ConnectingGolem";
-	public ItemConnector(int par1) {
-		super(par1);
+	public ItemConnector() {
+		super();
 
 		setMaxStackSize(1);
 	}

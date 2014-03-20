@@ -33,8 +33,8 @@ public class ItemPlacementMirror extends ItemMod {
 
 	Icon[] icons = new Icon[2];
 
-	public ItemPlacementMirror(int par1) {
-		super(par1);
+	public ItemPlacementMirror() {
+		super();
 		setMaxStackSize(1);
 	}
 
