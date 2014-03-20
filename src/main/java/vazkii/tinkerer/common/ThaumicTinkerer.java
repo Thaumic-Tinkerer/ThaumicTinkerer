@@ -20,23 +20,22 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.network.NetworkMod;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.lib.network.PacketPipeline;
 import vazkii.tinkerer.common.core.commands.KamiUnlockedCommand;
 import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibMisc;
-import vazkii.tinkerer.common.network.PacketManager;
+
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
-@NetworkMod(clientSideRequired = true, channels = { LibMisc.NETWORK_CHANNEL }, packetHandler = PacketManager.class)
 public class ThaumicTinkerer {
 
 	@Instance(LibMisc.MOD_ID)
@@ -46,7 +45,7 @@ public class ThaumicTinkerer {
 	public static TTCommonProxy proxy;
 
 	public static CommonProxy tcProxy;
-
+    public static final PacketPipeline packetPipeline = new PacketPipeline();
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		new AutoCrashReporter();
@@ -69,7 +68,9 @@ public class ThaumicTinkerer {
 	}
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+        packetPipeline.initialise();
 		proxy.init(event);
+
 
 		if(ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0){
 			DimensionManager.registerProviderType(ConfigHandler.bedrockDimensionID, WorldProviderBedrock.class, false);
@@ -80,6 +81,7 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
+        packetPipeline.postInitialise();
 		
 	}
 }

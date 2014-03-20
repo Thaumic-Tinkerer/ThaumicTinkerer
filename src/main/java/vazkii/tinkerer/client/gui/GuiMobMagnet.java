@@ -33,7 +33,6 @@ import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.container.ContainerMobMagnet;
 import vazkii.tinkerer.common.item.ItemSoulMould;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketMobMagnetButton;
 import cpw.mods.fml.common.network.PacketDispatcher;
 

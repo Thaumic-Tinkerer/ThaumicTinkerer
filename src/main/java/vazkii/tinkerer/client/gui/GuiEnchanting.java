@@ -38,7 +38,6 @@ import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.container.ContainerEnchanter;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketEnchanterAddEnchant;
 import vazkii.tinkerer.common.network.packet.PacketEnchanterStartWorking;
 import cpw.mods.fml.common.network.PacketDispatcher;

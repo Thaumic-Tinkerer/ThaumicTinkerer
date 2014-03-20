@@ -14,22 +14,25 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
-import net.minecraft.network.INetworkManager;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import thaumcraft.common.lib.network.AbstractPacket;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
-import vazkii.tinkerer.common.network.IPacket;
-import cpw.mods.fml.common.network.Player;
 
-public abstract class PacketTile<T extends TileEntity> implements IPacket {
+
+public abstract class PacketTile<T extends TileEntity> extends AbstractPacket {
 
 	private static final long serialVersionUID = -1447633008013055477L;
 
 	protected int dim, x, y, z;
 
 	protected transient T tile;
-	protected transient Player player;
+	protected transient EntityPlayer player;
 
 	public PacketTile(T tile) {
 		this.tile = tile;
@@ -37,30 +40,56 @@ public abstract class PacketTile<T extends TileEntity> implements IPacket {
 		this.x = tile.xCoord;
 		this.y = tile.yCoord;
 		this.z = tile.zCoord;
-		this.dim = tile.worldObj.provider.dimensionId;
+		this.dim = tile.getWorldObj().provider.dimensionId;
 	}
 
-	@Override
-	public void handle(INetworkManager manager, Player player) {
-		MinecraftServer server = MiscHelper.server();
-		this.player = player;
+	private void handle(EntityPlayer player) {
+        MinecraftServer server = MiscHelper.server();
+        this.player = player;
 
-		if(server != null) {
-			World world = server.worldServerForDimension(dim);
+        if(server != null) {
+            World world = server.worldServerForDimension(dim);
 
-			if(world == null) {
-				MiscHelper.printCurrentStackTrace("No world found for dimension " + dim + "!");
-				return;
-			}
+            if(world == null) {
+                MiscHelper.printCurrentStackTrace("No world found for dimension " + dim + "!");
+                return;
+            }
 
-			TileEntity tile = world.getBlockTileEntity(x, y, z);
-			if(tile != null) {
-				T castedTile = (T) tile;
-				this.tile = castedTile;
-				handle();
-			}
-		}
+            TileEntity tile = world.getTileEntity(x,y,z);
+            if(tile != null) {
+                T castedTile = (T) tile;
+                this.tile = castedTile;
+                handle();
+            }
+        }
 	}
 
 	public abstract void handle();
+
+    @Override
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        byteBuf.writeInt(x);
+        byteBuf.writeInt(y);
+        byteBuf.writeInt(z);
+        byteBuf.writeInt(dim);
+    }
+
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        x=byteBuf.readInt();
+        y=byteBuf.readInt();
+        z=byteBuf.readInt();
+        dim=byteBuf.readInt();
+
+    }
+
+    @Override
+    public void handleClientSide(EntityPlayer entityPlayer) {
+        handle(entityPlayer);
+    }
+
+    @Override
+    public void handleServerSide(EntityPlayer entityPlayer) {
+        handle(entityPlayer);
+    }
 }

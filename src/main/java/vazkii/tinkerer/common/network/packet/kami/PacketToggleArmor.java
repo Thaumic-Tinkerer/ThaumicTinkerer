@@ -1,29 +1,48 @@
 package vazkii.tinkerer.common.network.packet.kami;
 
-import cpw.mods.fml.common.network.Player;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
+import thaumcraft.common.lib.network.AbstractPacket;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
-import vazkii.tinkerer.common.network.IPacket;
 
 /**
  * Created by Katrina on 28/02/14.
  */
-public class PacketToggleArmor implements IPacket {
+public class PacketToggleArmor extends AbstractPacket {
     private static final long serialVersionUID = -1247633508013055777L;
     public boolean armorStatus;
     public PacketToggleArmor(boolean status)
     {
         armorStatus=status;
     }
+
+
     @Override
-    public void handle(INetworkManager manager, Player player) {
-        if(player instanceof EntityPlayer)
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        byteBuf.writeBoolean(armorStatus);
+    }
+
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        armorStatus=byteBuf.readBoolean();
+    }
+
+    @Override
+    public void handleClientSide(EntityPlayer entityPlayer) {
+        if(entityPlayer instanceof EntityPlayer)
         {
 
-            EntityPlayer entityPlayer=(EntityPlayer)player;
+            ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);
+
+        }
+    }
+
+    @Override
+    public void handleServerSide(EntityPlayer entityPlayer) {
+        if(entityPlayer instanceof EntityPlayer)
+        {
+
             ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);
 
         }

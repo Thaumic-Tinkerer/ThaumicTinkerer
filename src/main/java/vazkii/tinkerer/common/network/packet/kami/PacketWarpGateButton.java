@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.network.packet.kami;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.network.packet.PacketTile;
 
@@ -27,7 +29,19 @@ public class PacketWarpGateButton extends PacketTile<TileWarpGate> {
 		locked = tile.locked;
 	}
 
-	@Override
+    @Override
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.encodeInto(channelHandlerContext, byteBuf);
+        byteBuf.writeBoolean(locked);
+    }
+
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.decodeInto(channelHandlerContext, byteBuf);
+        locked=byteBuf.readBoolean();
+    }
+
+    @Override
 	public void handle() {
 		tile.locked = locked;
 	}
