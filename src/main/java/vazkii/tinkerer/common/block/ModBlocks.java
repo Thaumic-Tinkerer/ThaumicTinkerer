@@ -77,31 +77,31 @@ public final class ModBlocks {
 	public static Block portal;
 	public static Block golemConnector;
 	public static void initBlocks() {
-		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setUnlocalizedName(LibBlockNames.DARK_QUARTZ);
-		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
-		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_SLAB);
-		darkQuartzStairs = new BlockDarkQuartzStairs(LibBlockIDs.idDarkQuartzStairs).setUnlocalizedName(LibBlockNames.DARK_QUARTZ_STAIRS);
-		interfase = new BlockTransvectorInterface(LibBlockIDs.idInterface).setUnlocalizedName(LibBlockNames.INTERFACE);
-		gaseousLight = new BlockGaseousLight(LibBlockIDs.idGaseousLight).setUnlocalizedName(LibBlockNames.GASEOUS_LIGHT);
-		gaseousShadow = new BlockGaseousShadow(LibBlockIDs.idGaseousShadow).setUnlocalizedName(LibBlockNames.GASEOUS_SHADOW);
-		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setUnlocalizedName(LibBlockNames.ANIMATION_TABLET);
-		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setUnlocalizedName(LibBlockNames.NITOR_GAS);
-		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setUnlocalizedName(LibBlockNames.MAGNET);
-		enchanter = new BlockEnchanter(LibBlockIDs.idEnchanter).setUnlocalizedName(LibBlockNames.ENCHANTER);
-		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setUnlocalizedName(LibBlockNames.FUNNEL);
-		dislocator = new BlockTransvectorDislocator(LibBlockIDs.idDislocator).setUnlocalizedName(LibBlockNames.DISLOCATOR);
-		repairer = new BlockRepairer(LibBlockIDs.idRepairer).setUnlocalizedName(LibBlockNames.REPAIRER);
-		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setUnlocalizedName(LibBlockNames.ASPECT_ANALYZER);
-		platform = new BlockPlatform(LibBlockIDs.idPlatform).setUnlocalizedName(LibBlockNames.PLATFORM);
+		darkQuartz = new BlockDarkQuartz(LibBlockIDs.idDarkQuartz).setBlockName(LibBlockNames.DARK_QUARTZ);
+		darkQuartzSlab = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlab, false).setBlockName(LibBlockNames.DARK_QUARTZ_SLAB);
+		darkQuartzSlabFull = new BlockDarkQuartzSlab(LibBlockIDs.idDarkQuartzSlabFull, true).setBlockName(LibBlockNames.DARK_QUARTZ_SLAB);
+		darkQuartzStairs = new BlockDarkQuartzStairs(LibBlockIDs.idDarkQuartzStairs).setBlockName(LibBlockNames.DARK_QUARTZ_STAIRS);
+		interfase = new BlockTransvectorInterface(LibBlockIDs.idInterface).setBlockName(LibBlockNames.INTERFACE);
+		gaseousLight = new BlockGaseousLight(LibBlockIDs.idGaseousLight).setBlockName(LibBlockNames.GASEOUS_LIGHT);
+		gaseousShadow = new BlockGaseousShadow(LibBlockIDs.idGaseousShadow).setBlockName(LibBlockNames.GASEOUS_SHADOW);
+		animationTablet = new BlockAnimationTablet(LibBlockIDs.idAnimationTablet).setBlockName(LibBlockNames.ANIMATION_TABLET);
+		nitorGas = new BlockNitorGas(LibBlockIDs.idNitorGas).setBlockName(LibBlockNames.NITOR_GAS);
+		magnet = new BlockMagnet(LibBlockIDs.idMagnet).setBlockName(LibBlockNames.MAGNET);
+		enchanter = new BlockEnchanter(LibBlockIDs.idEnchanter).setBlockName(LibBlockNames.ENCHANTER);
+		funnel = new BlockFunnel(LibBlockIDs.idFunnel).setBlockName(LibBlockNames.FUNNEL);
+		dislocator = new BlockTransvectorDislocator(LibBlockIDs.idDislocator).setBlockName(LibBlockNames.DISLOCATOR);
+		repairer = new BlockRepairer(LibBlockIDs.idRepairer).setBlockName(LibBlockNames.REPAIRER);
+		aspectAnalyzer = new BlockAspectAnalyzer(LibBlockIDs.idAspectAnalyzer).setBlockName(LibBlockNames.ASPECT_ANALYZER);
+		platform = new BlockPlatform(LibBlockIDs.idPlatform).setBlockName(LibBlockNames.PLATFORM);
 
-		mobilizerRelay = new BlockMobilizerRelay(LibBlockIDs.idMobilizerRelay).setUnlocalizedName(LibBlockNames.MOBILIZER_RELAY);
-		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setUnlocalizedName(LibBlockNames.MOBILIZER);
-		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setUnlocalizedName(LibBlockNames.GOLEMCONNECTOR);
+		mobilizerRelay = new BlockMobilizerRelay(LibBlockIDs.idMobilizerRelay).setBlockName(LibBlockNames.MOBILIZER_RELAY);
+		mobilizer = new BlockMobilizer(LibBlockIDs.idMobilizer).setBlockName(LibBlockNames.MOBILIZER);
+		golemConnector=new BlockGolemConnector(LibBlockIDs.idGolemConnector).setBlockName(LibBlockNames.GOLEMCONNECTOR);
 
-		spawner = new BlockSummon(LibBlockIDs.idSpawner).setUnlocalizedName(LibBlockNames.SPAWNER);
+		spawner = new BlockSummon(LibBlockIDs.idSpawner).setBlockName(LibBlockNames.SPAWNER);
 		if(ConfigHandler.enableKami) {
 
-			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
+			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setBlockName(LibBlockNames.WARP_GATE);
 			if(ConfigHandler.bedrockDimensionID != 0) {
 				Block.blocksList[7]=null;
 				bedrock = new BlockBedrockKAMI();
@@ -121,7 +121,7 @@ public final class ModBlocks {
 				} catch (IllegalAccessException e) {
 					e.printStackTrace();
 				}
-				portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
+				portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setBlockName(LibBlockNames.PORTAL);
 			}
 		}
 

@@ -14,15 +14,15 @@
  */
 package vazkii.tinkerer.common.item.quartz;
 
-import net.minecraft.item.ItemMultiTextureTile;
+import net.minecraft.item.ItemMultiTexture;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-
-public class ItemDarkQuartzBlock extends ItemMultiTextureTile {
+//Changed from ItemMultiTextureTile to ItemMultiTexture for 1.7
+public class ItemDarkQuartzBlock extends ItemMultiTexture {
 
 	public ItemDarkQuartzBlock(int par1) {
-		super(par1, ModBlocks.darkQuartz, new String[] { "" } );
+		super(ModBlocks.darkQuartz, ModBlocks.darkQuartz, new String[] { "" } );
 	}
 
 	@Override

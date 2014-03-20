@@ -27,9 +27,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemIchorShovel extends ItemSpade {
 
-	public ItemIchorShovel(int par1) {
-		super(par1, ModItems.toolMatIchor);
+	public ItemIchorShovel() {
+		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
+        setHarvestLevel("shovel", 4);
 	}
 
 	@Override
