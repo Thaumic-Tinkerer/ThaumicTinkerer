@@ -23,8 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGaseousLight extends BlockGas {
 
-	public BlockGaseousLight(int par1) {
-		super(par1);
+	public BlockGaseousLight() {
+        super();
 		setLightValue(0.85F);
 	}
 

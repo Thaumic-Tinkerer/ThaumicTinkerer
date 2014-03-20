@@ -36,8 +36,8 @@ public class BlockTransvectorDislocator extends BlockCamo {
 
 	Icon[] icons = new Icon[2];
 
-	public BlockTransvectorDislocator(int par1) {
-		super(par1, Material.iron);
+	public BlockTransvectorDislocator() {
+		super(Material.iron);
         setHardness(3F);
         setResistance(10F);
 	}

@@ -31,8 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockDarkQuartzSlab extends BlockSlab {
 
-	public BlockDarkQuartzSlab(int par1, boolean par2) {
-		super(par1, par2, Material.rock);
+	public BlockDarkQuartzSlab(boolean par2) {
+		super(par2, Material.rock);
 		setHardness(0.8F);
 		setResistance(10F);
 		if(!par2) {

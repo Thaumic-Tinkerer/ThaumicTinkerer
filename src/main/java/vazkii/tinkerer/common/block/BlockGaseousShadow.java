@@ -23,8 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGaseousShadow extends BlockGas {
 
-	public BlockGaseousShadow(int par1) {
-		super(par1);
+	public BlockGaseousShadow() {
+		super();
 		setLightOpacity(215);
 	}
 

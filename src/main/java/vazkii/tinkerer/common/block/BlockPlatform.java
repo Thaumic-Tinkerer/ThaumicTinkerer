@@ -26,8 +26,8 @@ import vazkii.tinkerer.common.block.tile.TileCamo;
 
 public class BlockPlatform extends BlockCamo {
 
-	public BlockPlatform(int par1) {
-		super(par1, Material.wood);
+	public BlockPlatform() {
+		super(Material.wood);
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(soundWoodFootstep);

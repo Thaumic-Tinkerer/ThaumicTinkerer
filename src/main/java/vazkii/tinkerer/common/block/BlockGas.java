@@ -29,8 +29,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockGas extends BlockMod {
 
-	public BlockGas(int par1) {
-		super(par1, Material.air);
+	public BlockGas() {
+		super(Material.air);
 		setBlockBounds(0, 0, 0, 0, 0, 0);
 		setTickRandomly(true);
 	}

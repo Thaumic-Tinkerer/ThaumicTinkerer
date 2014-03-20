@@ -39,8 +39,8 @@ public class BlockFunnel extends BlockModContainer {
 
 	Random random;
 
-	protected BlockFunnel(int par1) {
-		super(par1, Material.rock);
+	protected BlockFunnel() {
+		super(Material.rock);
 		setHardness(3.0F);
 		setResistance(8.0F);
 		setStepSound(Block.soundStoneFootstep);

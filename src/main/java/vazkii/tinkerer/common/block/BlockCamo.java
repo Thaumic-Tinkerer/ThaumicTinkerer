@@ -35,8 +35,8 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
 	static List<Integer> validRenderTypes = Arrays.asList(0, 31, 39);
 
-	protected BlockCamo(int par1, Material par2Material) {
-		super(par1, par2Material);
+	protected BlockCamo(Material par2Material) {
+		super(par2Material);
 	}
 
 	@Override

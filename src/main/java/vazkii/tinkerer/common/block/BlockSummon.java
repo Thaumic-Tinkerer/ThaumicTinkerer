@@ -35,8 +35,8 @@ public class BlockSummon extends Block {
 
 	Random random;
 
-	public BlockSummon(int par1) {
-		super(par1, Material.iron);
+	public BlockSummon() {
+		super(Material.iron);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
 		setHardness(3F);
 		setResistance(50F);
