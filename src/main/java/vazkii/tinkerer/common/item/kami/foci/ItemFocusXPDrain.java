@@ -23,10 +23,6 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	AspectList cost = new AspectList();
 	private int lastGiven = 0;
 
-	public ItemFocusXPDrain(int par1) {
-		super(par1);
-	}
-
 	@Override
 	public boolean isVisCostPerTick() {
 		return true;

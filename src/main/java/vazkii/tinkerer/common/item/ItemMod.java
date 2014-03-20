@@ -23,8 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMod extends Item {
 
-	public ItemMod(int par1) {
-		super(par1);
+	public ItemMod() {
+		super();
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 

@@ -19,8 +19,8 @@ public class ItemMobAspect extends Item {
 	//To prevent corruption
 	public static final int aspectCount=20;
 
-	public ItemMobAspect(int par1) {
-		super(par1);
+	public ItemMobAspect() {
+		super();
 		setMaxStackSize(16);
 	}
 

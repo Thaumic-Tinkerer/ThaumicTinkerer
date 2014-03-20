@@ -27,8 +27,8 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 
 	AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
 
-	public ItemFocusShadowbeam(int par1) {
-		super(par1);
+	public ItemFocusShadowbeam() {
+		super();
 
 		EntityRegistry.registerModEntity(Beam.class, "ShadowbeamStaffBeam", 0, ThaumicTinkerer.instance, 0, 0, false);
 	}

@@ -23,8 +23,8 @@ public class ItemShareBook extends ItemMod {
 	private static final String TAG_PLAYER = "player";
 	private static final String NON_ASIGNED = "[none]";
 
-	public ItemShareBook(int par1) {
-		super(par1);
+	public ItemShareBook() {
+		super();
 		setMaxStackSize(1);
 	}
 

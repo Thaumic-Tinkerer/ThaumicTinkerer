@@ -19,8 +19,8 @@ public class ItemMobDisplay extends ItemMod {
     public static final String TAG_TYPE="type";
 
 
-    public ItemMobDisplay(int par1) {
-        super(par1);
+    public ItemMobDisplay() {
+        super();
         setHasSubtypes(true); // This allows the item to be marked as a metadata item.
         setMaxDamage(0); // This makes it so your item doesn't have the damage bar at the bottom of its icon, when "damaged" similar to the Tools.
     }

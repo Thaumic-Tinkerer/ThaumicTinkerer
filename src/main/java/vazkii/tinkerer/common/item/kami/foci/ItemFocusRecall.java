@@ -30,8 +30,8 @@ public class ItemFocusRecall extends ItemModFocus {
 
 	AspectList cost = new AspectList().add(Aspect.AIR, 4000).add(Aspect.EARTH, 4000).add(Aspect.ORDER, 4000);
 
-	public ItemFocusRecall(int par1) {
-		super(par1);
+	public ItemFocusRecall() {
+		super();
 	}
 
 	@Override

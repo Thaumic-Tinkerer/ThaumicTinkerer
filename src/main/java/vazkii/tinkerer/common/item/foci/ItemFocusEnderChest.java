@@ -40,10 +40,6 @@ public class ItemFocusEnderChest extends ItemModFocus {
 
 	public static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 100).add(Aspect.ORDER, 100);
 
-	public ItemFocusEnderChest(int par1) {
-		super(par1);
-	}
-
 	@Override
 	public ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
 		if(Loader.isModLoaded("EnderStorage")) {

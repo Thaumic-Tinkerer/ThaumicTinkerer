@@ -31,8 +31,8 @@ public class ItemKamiResource extends ItemMod {
 	final int subtypes = 8;
 	Icon[] icons;
 
-	public ItemKamiResource(int par1) {
-		super(par1);
+	public ItemKamiResource() {
+		super();
 		setHasSubtypes(true);
 	}
 

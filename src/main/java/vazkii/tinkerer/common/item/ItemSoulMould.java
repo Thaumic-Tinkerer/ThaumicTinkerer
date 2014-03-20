@@ -30,8 +30,7 @@ public class ItemSoulMould extends ItemMod {
 
 	private static final String TAG_PATTERN = "pattern";
 
-	public ItemSoulMould(int par1) {
-		super(par1);
+	public ItemSoulMould() {
 		setMaxStackSize(1);
 	}
 

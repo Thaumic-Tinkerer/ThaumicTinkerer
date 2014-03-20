@@ -38,8 +38,8 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 
 	Icon[] specialIcons = new Icon[3];
 
-	public ItemIchorAxeAdv(int par1) {
-		super(par1);
+	public ItemIchorAxeAdv() {
+		super();
 		setHasSubtypes(true);
 	}
 

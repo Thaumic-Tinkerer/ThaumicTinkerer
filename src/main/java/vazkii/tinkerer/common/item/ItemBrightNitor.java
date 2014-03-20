@@ -21,8 +21,8 @@ import vazkii.tinkerer.common.block.ModBlocks;
 
 public class ItemBrightNitor extends ItemMod {
 
-	public ItemBrightNitor(int par1) {
-		super(par1);
+	public ItemBrightNitor() {
+		super();
 		setMaxStackSize(1);
 	}
 

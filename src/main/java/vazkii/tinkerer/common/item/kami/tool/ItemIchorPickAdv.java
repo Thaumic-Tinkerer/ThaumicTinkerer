@@ -33,8 +33,8 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
 	Icon[] specialIcons = new Icon[3];
 
-	public ItemIchorPickAdv(int par1) {
-		super(par1);
+	public ItemIchorPickAdv() {
+		super();
 		setHasSubtypes(true);
 	}
 

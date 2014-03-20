@@ -25,8 +25,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGasRemover extends ItemMod {
 
-	public ItemGasRemover(int par1) {
-		super(par1);
+	public ItemGasRemover() {
+		super();
 		setMaxStackSize(1);
 	}
 

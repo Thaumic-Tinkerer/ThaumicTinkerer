@@ -33,8 +33,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemIchorPouch extends ItemFocusPouch {
 
-	public ItemIchorPouch(int par1) {
-		super(par1);
+	public ItemIchorPouch() {
+		super();
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 

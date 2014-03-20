@@ -36,9 +36,6 @@ public class ItemFocusDeflect extends ItemModFocus {
     public static List<Class<?>> DeflectBlacklist = Arrays.asList(new Class<?>[]{EntityExpBottle.class});
     AspectList visUsage = new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 4);
 
-	public ItemFocusDeflect(int par1) {
-		super(par1);
-	}
 
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int ticks) {

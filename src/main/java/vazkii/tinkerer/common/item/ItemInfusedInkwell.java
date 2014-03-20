@@ -9,8 +9,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemInfusedInkwell extends ItemMod {
 
-	public ItemInfusedInkwell(int par1) {
-		super(par1);
+	public ItemInfusedInkwell() {
+		super();
 
 		setMaxDamage(800);
 		maxStackSize = 1;

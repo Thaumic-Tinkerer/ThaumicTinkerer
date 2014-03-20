@@ -28,8 +28,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -62,8 +62,8 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	private static final int DAMAGE = 10;
 
-	public ItemBloodSword(int par1) {
-		super(par1, EnumHelper.addToolMaterial("TT_BLOOD", 0, 950, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
+	public ItemBloodSword() {
+		super(EnumHelper.addToolMaterial("TT_BLOOD", 0, 950, 0, 0, ThaumcraftApi.toolMatThaumium.getEnchantability()));
 		MinecraftForge.EVENT_BUS.register(this);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}

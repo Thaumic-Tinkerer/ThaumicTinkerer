@@ -29,8 +29,8 @@ import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
 
 public class ItemProtoclay extends ItemMod {
 
-	public ItemProtoclay(int par1) {
-		super(par1);
+	public ItemProtoclay() {
+		super();
 		setMaxStackSize(1);
 	}
 

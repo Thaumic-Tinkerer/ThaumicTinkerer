@@ -33,8 +33,8 @@ public class ItemFocusHeal extends ItemModFocus {
 
 	public static Map<String, Integer> playerHealData = new HashMap();
 
-	public ItemFocusHeal(int par1) {
-		super(par1);
+	public ItemFocusHeal() {
+		super();
 	}
 
 	@Override

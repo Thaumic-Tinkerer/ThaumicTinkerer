@@ -39,8 +39,8 @@ public class ItemXPTalisman extends ItemMod {
 	private static final String TAG_XP = "xp";
 	Icon enabledIcon;
 
-	public ItemXPTalisman(int par1) {
-		super(par1);
+	public ItemXPTalisman() {
+		super();
 		setMaxStackSize(1);
 	}
 
