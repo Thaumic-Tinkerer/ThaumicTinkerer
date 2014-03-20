@@ -28,8 +28,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemIchorAxe extends ItemAxe {
 
 	public ItemIchorAxe(int par1) {
-		super(par1, ModItems.toolMatIchor);
+		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
+        setHarvestLevel("axe", 4);
 	}
 
 	@Override
