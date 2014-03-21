@@ -7,12 +7,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
-import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.PacketHandler;
 import vazkii.tinkerer.client.core.handler.kami.KamiArmorClientHandler;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.network.PacketManager;
-import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 
 import java.util.EnumSet;
 

@@ -29,9 +29,9 @@ import vazkii.tinkerer.client.gui.button.GuiButtonAT;
 import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketTabletButton;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
@@ -77,7 +77,7 @@ public class GuiAnimationTablet extends GuiContainer {
 		tablet.leftClick = buttonListAT.get(1).enabled;
 		tablet.redstone = buttonListAT.get(0).enabled;
 
-		PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketTabletButton(tablet)));
+        ThaumicTinkerer.packetPipeline.sendToServer(new PacketTabletButton(tablet));
 	}
 
 	@Override

@@ -24,9 +24,9 @@ import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.gui.button.kami.GuiButtonWG;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.container.kami.ContainerWarpGate;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
@@ -47,7 +47,7 @@ public class GuiWarpGate extends GuiContainer {
 		((GuiButtonWG) par1GuiButton).enabled = !((GuiButtonWG) par1GuiButton).enabled;
 		warpGate.locked = ((GuiButtonWG) par1GuiButton).enabled;
 
-		PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketWarpGateButton(warpGate)));
+        ThaumicTinkerer.packetPipeline.sendToServer(new PacketWarpGateButton(warpGate));
 	}
 
 	@Override

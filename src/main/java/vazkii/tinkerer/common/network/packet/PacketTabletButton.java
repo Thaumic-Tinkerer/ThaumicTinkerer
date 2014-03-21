@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 
 public class PacketTabletButton extends PacketTile<TileAnimationTablet> {
@@ -32,5 +34,19 @@ public class PacketTabletButton extends PacketTile<TileAnimationTablet> {
 		tile.leftClick = leftClick;
 		tile.redstone = redstone;
 	}
+
+    @Override
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.encodeInto(channelHandlerContext, byteBuf);
+        byteBuf.writeBoolean(leftClick);
+        byteBuf.writeBoolean(redstone);
+    }
+
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.decodeInto(channelHandlerContext, byteBuf);
+        leftClick=byteBuf.readBoolean();
+        redstone=byteBuf.readBoolean();
+    }
 
 }

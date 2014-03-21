@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 
 public class PacketMobMagnetButton extends PacketTile<TileMobMagnet> {
@@ -31,5 +33,17 @@ public class PacketMobMagnetButton extends PacketTile<TileMobMagnet> {
 	public void handle() {
 		tile.adult = adult;
 	}
+
+    @Override
+    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.encodeInto(channelHandlerContext, byteBuf);
+        byteBuf.writeBoolean(adult);
+    }
+
+    @Override
+    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+        super.decodeInto(channelHandlerContext, byteBuf);
+        adult=byteBuf.readBoolean();
+    }
 
 }
