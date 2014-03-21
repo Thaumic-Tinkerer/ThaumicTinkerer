@@ -33,7 +33,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import vazkii.tinkerer.common.lib.LibEnchantIDs;
-import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import java.util.List;
 import java.util.Random;

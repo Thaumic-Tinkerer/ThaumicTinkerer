@@ -30,7 +30,6 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import java.util.Collection;
 import java.util.List;

@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -30,7 +29,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.item.ItemMod;
-import vazkii.tinkerer.common.lib.LibObfuscation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +60,7 @@ public class ItemCatAmulet extends ItemMod {
             }
 
             if(entity instanceof EntityCreeper) {
-            	ReflectionHelper.setPrivateValue(EntityCreeper.class, (EntityCreeper) entity, 2, LibObfuscation.TIME_SINCE_IGNITED);
+                ((EntityCreeper)entity).timeSinceIgnited=2;
             	entity.setAttackTarget(null);
             }
 		}
@@ -74,15 +72,15 @@ public class ItemCatAmulet extends ItemMod {
 	}
 
 	private boolean messWithRunAwayAI(EntityAIAvoidEntity aiEntry) {
-		if(ReflectionHelper.getPrivateValue(EntityAIAvoidEntity.class, aiEntry, LibObfuscation.TARGET_ENTITY_CLASS) == EntityOcelot.class) {
-			ReflectionHelper.setPrivateValue(EntityAIAvoidEntity.class, aiEntry, EntityPlayer.class, LibObfuscation.TARGET_ENTITY_CLASS);
+		if(aiEntry.targetEntityClass== EntityOcelot.class) {
+			aiEntry.targetEntityClass=EntityPlayer.class;
 			return true;
 		}
 		return false;
 	}
 
 	private void messWithGetTargetAI(EntityAINearestAttackableTarget aiEntry) {
-		if(ReflectionHelper.getPrivateValue(EntityAINearestAttackableTarget.class, aiEntry, LibObfuscation.TARGET_CLASS) == EntityPlayer.class)
-			ReflectionHelper.setPrivateValue(EntityAINearestAttackableTarget.class, aiEntry, EntityEnderCrystal.class, LibObfuscation.TARGET_CLASS); // Something random that won't be around
+		if( aiEntry.targetClass== EntityPlayer.class)
+			aiEntry.targetClass=EntityEnderCrystal.class; // Something random that won't be around
 	}
 }

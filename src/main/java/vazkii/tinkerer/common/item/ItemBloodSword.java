@@ -44,7 +44,6 @@ import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
-import vazkii.tinkerer.common.lib.LibObfuscation;
 
 public class ItemBloodSword extends ItemSword implements IRepairable {
 
