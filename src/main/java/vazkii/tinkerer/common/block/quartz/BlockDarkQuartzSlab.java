@@ -15,13 +15,13 @@
 package vazkii.tinkerer.common.block.quartz;
 
 import java.util.Random;
-
-import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
@@ -43,20 +43,20 @@ public class BlockDarkQuartzSlab extends BlockSlab {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return ModBlocks.darkQuartz.getBlockTextureFromSide(par1);
 	}
 
-	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
-		return ModBlocks.darkQuartzSlab.blockID;
-	}
+    @Override
+    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+        return Item.getItemFromBlock(ModBlocks.darkQuartzSlab);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World par1World, int par2, int par3, int par4) {
-		return blockID;
-	}
+    //@Override
+	//public int idDropped(int par1, Random par2Random, int par3) {
+	//	return ModBlocks.darkQuartzSlab.blockID;
+	//}
+
 
 	@Override
 	public ItemStack createStackedBlock(int par1) {
@@ -64,13 +64,13 @@ public class BlockDarkQuartzSlab extends BlockSlab {
 	}
 
 	@Override
-	public String getFullSlabName(int i) {
+	public String func_150002_b(int i) {
 		return "tile." + LibBlockNames.DARK_QUARTZ_SLAB;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		// NO-OP
 	}
 }

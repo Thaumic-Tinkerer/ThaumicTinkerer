@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.network;
 
+import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -36,7 +37,6 @@ import vazkii.tinkerer.common.block.tile.container.kami.ContainerWarpGate;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
-import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler  implements IGuiHandler {
 
