@@ -42,9 +42,9 @@ public class ItemGas extends ItemMod {
 
 		if(air) {
 			if(!par2World.isRemote)
-				par2World.setBlock(x, y, z, setBlock.blockID, 4, 2);
+				par2World.setBlock(x, y, z, setBlock, 4, 2);
 			else par3EntityPlayer.swingItem();
-			par2World.scheduleBlockUpdate(x, y, z, setBlock.blockID, 10);
+			par2World.scheduleBlockUpdate(x, y, z, setBlock, 10);
 		}
 
 		return par1ItemStack;

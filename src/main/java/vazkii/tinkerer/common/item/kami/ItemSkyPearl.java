@@ -14,10 +14,7 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -30,6 +27,10 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.item.ItemMod;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 
 public class ItemSkyPearl extends ItemMod {
 
@@ -45,8 +46,8 @@ public class ItemSkyPearl extends ItemMod {
 
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		int id = par3World.getBlockId(par4, par5, par6);
-		if(id == ModBlocks.warpGate.blockID && !isAttuned(par1ItemStack)) {
+        Block block=par3World.getBlock(par4, par5, par6);
+		if(block == ModBlocks.warpGate && !isAttuned(par1ItemStack)) {
 			setValues(par1ItemStack, par4, par5, par6, par2EntityPlayer.dimension);
 			par3World.playSoundAtEntity(par2EntityPlayer, "random.orb", 0.3F, 0.1F);
 		}

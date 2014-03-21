@@ -39,7 +39,7 @@ public class SpellClothRecipe implements IRecipe {
 				if(stack.isItemEnchanted() && !(stack.getItem() instanceof INoRemoveEnchant) && !foundEnchanted)
 					foundEnchanted = true;
 
-				else if(stack.itemID == item.itemID && !foundCloth)
+				else if(stack.getItem() == item && !foundCloth)
 					foundCloth = true;
 
 				else return false; // Found an invalid item, breaking the recipe

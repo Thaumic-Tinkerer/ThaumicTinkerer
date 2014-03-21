@@ -1,11 +1,11 @@
 package vazkii.tinkerer.common.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
@@ -29,18 +29,12 @@ public class ItemMobAspect extends Item {
 		return true;
 	}
 
-	@Override
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 
-		for(NumericAspectHelper aspect:NumericAspectHelper.values){
-			par3List.add(getStackFromAspect(aspect.getAspect()));
-		}
-	}
 
-	public static Icon[] aspectIcons = new Icon[aspectCount];
+	public static IIcon[] aspectIcons = new IIcon[aspectCount];
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 
 		for(NumericAspectHelper aspect:NumericAspectHelper.values){
@@ -49,8 +43,15 @@ public class ItemMobAspect extends Item {
 	}
 
 
-	@Override
-	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+    @Override
+    public void getSubItems(Item par1Item, CreativeTabs par2CreativeTabs, List par3List) {
+        for(NumericAspectHelper aspect:NumericAspectHelper.values){
+            par3List.add(getStackFromAspect(aspect.getAspect()));
+        }
+    }
+
+    @Override
+	public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
 		return aspectIcons[par1%aspectCount];
 	}
 

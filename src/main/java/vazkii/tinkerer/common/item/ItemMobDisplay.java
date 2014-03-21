@@ -1,15 +1,12 @@
 package vazkii.tinkerer.common.item;
 
-import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,8 +32,8 @@ public class ItemMobDisplay extends ItemMod {
         ItemNBTHelper.setString(stack, TAG_TYPE, type);
     }
     @Override
-    public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List list) {
-        super.getSubItems(par1, par2CreativeTabs, list);
+    public void getSubItems(Item par1Item, CreativeTabs par2CreativeTabs, List list) {
+        super.getSubItems(par1Item, par2CreativeTabs, list);
         for(EnumMobAspect aspect:EnumMobAspect.values())
         {
             Class aspClass=aspect.getEntityClass();

@@ -3,7 +3,7 @@ package vazkii.tinkerer.common.item.kami;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
@@ -32,7 +32,7 @@ public class ItemPlacementMirror extends ItemMod {
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static final String TAG_SIZE = "size";
 
-	Icon[] icons = new Icon[2];
+	IIcon[] icons = new IIcon[2];
 
 	public ItemPlacementMirror() {
 		super();
@@ -46,7 +46,7 @@ public class ItemPlacementMirror extends ItemMod {
 
 		if(par2EntityPlayer.isSneaking()) {
 			if(block != null && block.getRenderType() == 0)
-				setBlock(par1ItemStack, id, meta);
+				setBlock(par1ItemStack, block, meta);
 		} else placeAllBlocks(par1ItemStack, par2EntityPlayer);
 
 		return true;
@@ -77,37 +77,36 @@ public class ItemPlacementMirror extends ItemMod {
 	}
 
 	private void placeBlockAndConsume(EntityPlayer player, ItemStack blockToPlace, ChunkCoordinates coords) {
-		player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.getBlockFromItem(blockToPlace.getItem()), blockToPlace.getItemDamage(), 1 | 2);
+        player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.getBlockFromItem(blockToPlace.getItem()), blockToPlace.getItemDamage(), 1 | 2);
 
-		if(player.capabilities.isCreativeMode)
-			return;
+        if (player.capabilities.isCreativeMode)
+            return;
 
-		List<ItemStack> talismansToCheck = new ArrayList();
-		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
-			ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-			if(stackInSlot != null && stackInSlot.getItem() == blockToPlace.getItem() && stackInSlot.getItemDamage() == blockToPlace.getItemDamage()) {
-				stackInSlot.stackSize--;
-				if(stackInSlot.stackSize == 0)
-					player.inventory.setInventorySlotContents(i, null);
+        List<ItemStack> talismansToCheck = new ArrayList();
+        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+            ItemStack stackInSlot = player.inventory.getStackInSlot(i);
+            if (stackInSlot != null && stackInSlot.getItem() == blockToPlace.getItem() && stackInSlot.getItemDamage() == blockToPlace.getItemDamage()) {
+                stackInSlot.stackSize--;
+                if (stackInSlot.stackSize == 0)
+                    player.inventory.setInventorySlotContents(i, null);
 
-				return;
-			}
-
-			if(stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
-				talismansToCheck.add(stackInSlot);
-		}
-
-		for(ItemStack talisman : talismansToCheck) {
-            Block block = ItemBlockTalisman.getBlock(talisman);
-			int meta = ItemBlockTalisman.getBlockMeta(talisman);
-
-            if(Item.getItemFromBlock(block) == blockToPlace.getItem() && meta == blockToPlace.getItemDamage()) {
-                    ItemBlockTalisman.remove(talisman, 1);
-                    return;
-                }
+                return;
             }
-		}
-	}
+
+            if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
+                talismansToCheck.add(stackInSlot);
+        }
+
+        for (ItemStack talisman : talismansToCheck) {
+            Block block = ItemBlockTalisman.getBlock(talisman);
+            int meta = ItemBlockTalisman.getBlockMeta(talisman);
+
+            if (Item.getItemFromBlock(block) == blockToPlace.getItem() && meta == blockToPlace.getItemDamage()) {
+                ItemBlockTalisman.remove(talisman, 1);
+                return;
+            }
+        }
+    }
 
 	public static boolean hasBlocks(ItemStack stack, EntityPlayer player, ChunkCoordinates[] blocks) {
 		if(player.capabilities.isCreativeMode)
@@ -115,7 +114,6 @@ public class ItemPlacementMirror extends ItemMod {
 
 		int required = blocks.length;
 		int current = 0;
-
 		ItemStack reqStack = new ItemStack(getBlock(stack), 1, getBlockMeta(stack));
 		List<ItemStack> talismansToCheck = new ArrayList();
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
@@ -180,8 +178,8 @@ public class ItemPlacementMirror extends ItemMod {
 		return coords.toArray(new ChunkCoordinates[0]);
 	}
 
-	private void setBlock(ItemStack stack, String name, int meta) {
-		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, name);
+	private void setBlock(ItemStack stack, Block block, int meta) {
+		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, block.getUnlocalizedName());
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 	}
 
@@ -199,7 +197,11 @@ public class ItemPlacementMirror extends ItemMod {
 	}
     public static Block getBlock(ItemStack stack)
     {
-        return Block.getBlockFromName(getBlockName(stack));
+        Block block=Block.getBlockFromName(getBlockName(stack));
+        if(block==Blocks.air)
+            block=Block.getBlockById(getBlockID(stack));
+
+        return block;
     }
     public static String getBlockName(ItemStack stack)
     {
@@ -210,13 +212,14 @@ public class ItemPlacementMirror extends ItemMod {
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		icons[0] = IconHelper.forItem(par1IconRegister, this, 0);
 		icons[1] = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
+
 	@Override
-	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+	public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
 		return icons[par2 & 1];
 	}
 
@@ -233,14 +236,10 @@ public class ItemPlacementMirror extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		int id = getBlockID(par1ItemStack);
         Block block=getBlock(par1ItemStack);
 		int size = getSize(par1ItemStack);
 
 		par3List.add(size + " x " + size);
-        if(block== Blocks.air)
-            if(id!=0)
-                block=Block.getBlockById(id);
         if(block!=Blocks.air)
 			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
 	}

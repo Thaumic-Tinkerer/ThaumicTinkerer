@@ -14,9 +14,7 @@
  */
 package vazkii.tinkerer.common.item.kami.tool;
 
-import java.util.List;
-
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,15 +22,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 
+import java.util.List;
+
 public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 
-	Icon[] specialIcons = new Icon[3];
+	IIcon[] specialIcons = new IIcon[3];
 
 	public ItemIchorSwordAdv() {
 		super();
@@ -40,7 +40,7 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		for(int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
@@ -88,7 +88,7 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 	}
 
 	@Override
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return par1 >= specialIcons.length ? super.getIconFromDamage(par1) : specialIcons[par1];
 	}
 

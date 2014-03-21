@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -40,11 +41,11 @@ public class ItemGasRemover extends ItemMod {
 			for(int x = xs - 3; x < xs + 3; x++)
 				for(int y = ys - 3; y < ys + 3; y++)
 					for(int z = zs - 3; z < zs + 3; z++) {
-						int id = par2World.getBlockId(x, y, z);
-						if(Block.blocksList[id] != null && Block.blocksList[id] instanceof BlockGas) {
-							BlockGas gas = (BlockGas) Block.blocksList[id];
+						Block block = par2World.getBlock(x, y, z);
+						if(block != null && block instanceof BlockGas) {
+							BlockGas gas = (BlockGas) block;
 							gas.placeParticle(par2World, x, y, z);
-							par2World.setBlock(x, y, z, 0, 0, 1 | 2);
+							par2World.setBlock(x, y, z, Blocks.air, 0, 1 | 2);
 						}
 					}
 

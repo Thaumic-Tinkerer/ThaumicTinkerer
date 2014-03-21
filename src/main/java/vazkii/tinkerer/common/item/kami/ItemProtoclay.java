@@ -52,11 +52,10 @@ public class ItemProtoclay extends ItemMod {
 		String typeToFind = "";
 
 		if(player.isSwingInProgress && pos != null) {
-			int id = par2World.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
-			Block block = Block.blocksList[id];
+			Block block = par2World.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
 			if(block != null) {
-				Material mat = block.blockMaterial;
+				Material mat = block.getMaterial();
 				if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
 					typeToFind = "pick";
 				else if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))

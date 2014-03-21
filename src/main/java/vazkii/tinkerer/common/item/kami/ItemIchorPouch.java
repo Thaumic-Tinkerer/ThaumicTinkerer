@@ -14,22 +14,23 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 import thaumcraft.common.items.wands.ItemFocusPouch;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemIchorPouch extends ItemFocusPouch {
 
@@ -40,12 +41,12 @@ public class ItemIchorPouch extends ItemFocusPouch {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 
 	@Override
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return itemIcon;
 	}
 
@@ -64,9 +65,9 @@ public class ItemIchorPouch extends ItemFocusPouch {
 	public ItemStack[] getInventory(ItemStack item) {
 		ItemStack[] stackList = new ItemStack[13 * 9];
 		if (item.hasTagCompound()) {
-			NBTTagList var2 = item.stackTagCompound.getTagList("Inventory");
+			NBTTagList var2 = item.stackTagCompound.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
 			for (int var3 = 0; var3 < var2.tagCount(); var3++) {
-				NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+				NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 				int var5 = var4.getByte("Slot") & 0xFF;
 				if (var5 >= 0 && var5 < stackList.length)
 					stackList[var5] = ItemStack.loadItemStackFromNBT(var4);
