@@ -18,15 +18,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 import thaumcraft.common.entities.golems.EntityGolemBase;
-import thaumcraft.common.entities.golems.EnumGolemType;
 import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
-import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -60,11 +58,11 @@ public class ItemConnector extends ItemMod {
 
 				playSound(par3World, par4, par5, par6);
 				if(tile instanceof TileTransvector)
-					par2EntityPlayer.addChatMessage("ttmisc.connector.set");
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.set"));
 				else
-					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.set");
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.set"));
 			} else
-				par2EntityPlayer.addChatMessage("ttmisc.connector.notinterf");
+				par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.notinterf"));
 		} else {
 			int x = getX(par1ItemStack);
 			int y = getY(par1ItemStack);
@@ -74,17 +72,17 @@ public class ItemConnector extends ItemMod {
 			if (tile1 == null || !(tile1 instanceof TileTransvector)) {
 				setY(par1ItemStack, -1);
 
-				par2EntityPlayer.addChatMessage("ttmisc.connector.notpresent");
+				par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.notpresent"));
 			} else {
 				TileTransvector trans = (TileTransvector) tile1;
 
 				if (tile != null && tile1 instanceof TileTransvectorInterface && tile instanceof TileTransvectorInterface) {
-					par2EntityPlayer.addChatMessage("ttmisc.connector.interffail");
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.interffail"));
 					return true;
 				}
 
 				if(Math.abs(x - par4) > trans.getMaxDistance() || Math.abs(y - par5) > trans.getMaxDistance() || Math.abs(z - par6) > trans.getMaxDistance()) {
-					par2EntityPlayer.addChatMessage("ttmisc.connector.toofar");
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.toofar"));
 					return true;
 				}
 
@@ -95,8 +93,8 @@ public class ItemConnector extends ItemMod {
 				setY(par1ItemStack, -1);
 
 				playSound(par3World, par4, par5, par6);
-				par2EntityPlayer.addChatMessage("ttmisc.connector.complete");
-				PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3World.provider.dimensionId);
+				par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.complete"));
+                par3World.markBlockForUpdate(trans.x,trans.y,trans.z);
 			}
 		}
 
@@ -119,7 +117,7 @@ public class ItemConnector extends ItemMod {
 					{
 						return false;
 					}
-					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notinterf");
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.notinterf"));
 					return true;
 				}
 				int x = getX(par1ItemStack);
@@ -132,7 +130,7 @@ public class ItemConnector extends ItemMod {
 					{
 						return false;
 					}
-					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.notpresent");
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.notpresent"));
 					return false;
 				} else {
 					if(par3EntityLivingBase.worldObj.isRemote)
@@ -150,8 +148,8 @@ public class ItemConnector extends ItemMod {
 
 
 					playSound(par3EntityLivingBase.worldObj, (int)par3EntityLivingBase.posX, (int)par3EntityLivingBase.posY, (int)par3EntityLivingBase.posZ);
-					par2EntityPlayer.addChatMessage("ttmisc.golemconnector.complete");
-					PacketDispatcher.sendPacketToAllInDimension(trans.getDescriptionPacket(), par3EntityLivingBase.worldObj.provider.dimensionId);
+					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.complete"));
+                    par2EntityPlayer.worldObj.markBlockForUpdate(trans.xCoord,trans.yCoord,trans.zCoord);
 				}
 				return true;
 			}

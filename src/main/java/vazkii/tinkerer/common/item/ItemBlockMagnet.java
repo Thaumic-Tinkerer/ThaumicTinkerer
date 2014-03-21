@@ -16,12 +16,13 @@ package vazkii.tinkerer.common.item;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 public class ItemBlockMagnet extends ItemBlock {
 
-	public ItemBlockMagnet(int par1) {
-		super(par1);
+	public ItemBlockMagnet() {
+		super(ModBlocks.magnet);
 		setHasSubtypes(true);
 	}
 

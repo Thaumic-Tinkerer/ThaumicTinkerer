@@ -52,8 +52,8 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 			player.setAir(300);
 			PotionEffect effect = player.getActivePotionEffect(Potion.nightVision);
 
-			if(effect != null && effect.duration <= 202)
-				effect.duration = 202;
+			if(effect != null && effect.getDuration() <= 202)
+				effect.setPotionDurationMax(202);
 			else player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 202, 0));
 		}
 
