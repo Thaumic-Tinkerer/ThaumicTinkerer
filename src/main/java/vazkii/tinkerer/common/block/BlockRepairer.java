@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.block;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -23,7 +24,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigBlocks;
@@ -64,7 +65,7 @@ public class BlockRepairer extends BlockModContainer {
 			}
 		} else {
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
-				par5EntityPlayer.dropPlayerItem(stack);
+				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			repairer.setInventorySlotContents(0, null);
 			repairer.onInventoryChanged();
@@ -95,7 +96,7 @@ public class BlockRepairer extends BlockModContainer {
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
 		TileRepairer repairer = (TileRepairer) par1World.getTileEntity(par2, par3, par4);
 
 		if (repairer != null) {
@@ -126,7 +127,7 @@ public class BlockRepairer extends BlockModContainer {
 						}
 						else
 							dmg=itemstack.getItemDamage();
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, dmg));
+						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, dmg));
 						float f3 = 0.05F;
 						entityitem.motionX = (float)random.nextGaussian() * f3;
 						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -138,7 +139,7 @@ public class BlockRepairer extends BlockModContainer {
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_147453_f(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -147,7 +148,7 @@ public class BlockRepairer extends BlockModContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return ConfigBlocks.blockCosmeticSolid.getIcon(par1, 4);
 	}
 
@@ -167,7 +168,7 @@ public class BlockRepairer extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileRepairer();
 	}
 
