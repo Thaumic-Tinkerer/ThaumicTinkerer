@@ -54,7 +54,7 @@ public class BlockNitorGas extends BlockGas {
 			else {
 				boolean has = false;
 				for(EntityPlayer player : players)
-					if(player.inventory.hasItem(ModItems.brightNitor.itemID) || ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == ModItems.ichorLegsGem.itemID) {
+					if(player.inventory.hasItem(ModItems.brightNitor) || ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ModItems.ichorLegsGem) {
 						has = true;
 						break;
 					}
@@ -62,7 +62,7 @@ public class BlockNitorGas extends BlockGas {
 				if(!has)
 					par1World.setBlockToAir(par2, par3, par4);
 			}
-			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
+			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
 		}
 	}
 
@@ -74,7 +74,7 @@ public class BlockNitorGas extends BlockGas {
 	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		if(!par1World.isRemote)
-			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
+			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
 	}
 
 }
