@@ -17,6 +17,8 @@ package vazkii.tinkerer.common.block;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.audio.SoundList;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -25,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
@@ -40,9 +43,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAnimationTablet extends BlockModContainer {
 
-	Icon iconBottom;
-	Icon iconTop;
-	Icon iconSides;
+	IIcon iconBottom;
+	IIcon iconTop;
+	IIcon iconSides;
 
 	Random random;
 
@@ -51,14 +54,14 @@ public class BlockAnimationTablet extends BlockModContainer {
 		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
 		setHardness(3F);
 		setResistance(50F);
-		setStepSound(soundMetalFootstep);
+		setStepSound(soundTypeMetal);
 
 		random = new Random();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		iconBottom = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconTop = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconSides = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -195,7 +198,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSides;
 	}
 
@@ -210,7 +213,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int par2) {
 		return new TileAnimationTablet();
 	}
 }

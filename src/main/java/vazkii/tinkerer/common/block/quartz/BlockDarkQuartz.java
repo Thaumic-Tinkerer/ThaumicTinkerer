@@ -17,10 +17,11 @@ package vazkii.tinkerer.common.block.quartz;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockMod;
@@ -30,10 +31,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockDarkQuartz extends BlockMod {
 
 	private static final String[] iconNames = new String[] {"darkQuartz0", "chiseledDarkQuartz0", "pillarDarkQuartz0", null, null};
-	private Icon[] darkQuartzIcons;
-	private Icon chiseledDarkQuartzIcon;
-	private Icon pillarDarkQuartzIcon;
-	private Icon darkQuartzTopIcon;
+	private IIcon[] darkQuartzIcons;
+	private IIcon chiseledDarkQuartzIcon;
+	private IIcon pillarDarkQuartzIcon;
+	private IIcon darkQuartzTopIcon;
 
 	public BlockDarkQuartz() {
 		super(Material.rock);
@@ -43,7 +44,7 @@ public class BlockDarkQuartz extends BlockMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2) {
+    public IIcon getIcon(int par1, int par2) {
         if (par2 != 2 && par2 != 3 && par2 != 4) {
             if (par1 != 1 && (par1 != 0 || par2 != 1)) {
                 if (par1 == 0)
@@ -88,7 +89,7 @@ public class BlockDarkQuartz extends BlockMod {
 
 	@Override
 	public ItemStack createStackedBlock(int par1) {
-		return par1 != 3 && par1 != 4 ? super.createStackedBlock(par1) : new ItemStack(blockID, 1, 2);
+		return par1 != 3 && par1 != 4 ? super.createStackedBlock(par1) : new ItemStack(this, 1, 2);
 	}
 
 	@Override
@@ -96,18 +97,18 @@ public class BlockDarkQuartz extends BlockMod {
 		return 39;
 	}
 
-	@Override
+    @Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
-		par3List.add(new ItemStack(par1, 1, 2));
+    public void getSubBlocks(Item item, CreativeTabs tab, List par3List) {
+		par3List.add(new ItemStack(this, 1, 0));
+		par3List.add(new ItemStack(this, 1, 1));
+		par3List.add(new ItemStack(this, 1, 2));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		darkQuartzIcons = new Icon[iconNames.length];
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
+		darkQuartzIcons = new IIcon[iconNames.length];
 
 		for (int i = 0; i < darkQuartzIcons.length; ++i) {
 			if (iconNames[i] == null)

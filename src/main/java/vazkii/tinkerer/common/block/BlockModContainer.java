@@ -16,7 +16,7 @@ package vazkii.tinkerer.common.block;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
@@ -34,16 +34,16 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
 	/** Does the block register in the creative inv? **/
 	boolean registerInCreative() {
 		return true;
-	}
+    }
 
-	@Override
-	public abstract T createNewTileEntity(World world);
+    @Override
+	public abstract T createNewTileEntity(World world, int var2);
 
 }

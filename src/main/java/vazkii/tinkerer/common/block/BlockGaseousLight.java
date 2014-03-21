@@ -25,7 +25,7 @@ public class BlockGaseousLight extends BlockGas {
 
 	public BlockGaseousLight() {
         super();
-		setLightValue(0.85F);
+		setLightLevel(0.85F);
 	}
 
 	@Override
