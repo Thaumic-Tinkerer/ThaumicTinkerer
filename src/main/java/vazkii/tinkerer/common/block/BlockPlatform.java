@@ -16,6 +16,7 @@ package vazkii.tinkerer.common.block;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +31,7 @@ public class BlockPlatform extends BlockCamo {
 		super(Material.wood);
 		setHardness(2.0F);
 		setResistance(5.0F);
-		setStepSound(soundWoodFootstep);
+		setStepSound(Block.soundTypeWood);
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class BlockPlatform extends BlockCamo {
 	}
 
 	@Override
-	public TileCamo createNewTileEntity(World world) {
+	public TileCamo createNewTileEntity(World world, int meta) {
 		return new TileCamo();
 	}
 
