@@ -15,24 +15,16 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import net.minecraftforge.common.util.Constants;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class TileAspectAnalyzer extends TileEntity implements IInventory, IPeripheral, IMovableTile {
+public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -40,10 +32,10 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
@@ -108,15 +100,18 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.MAGNET;
-	}
+    @Override
+    public String getInventoryName() {
+            return LibBlockNames.MAGNET;
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    }
+
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
+
+
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -128,22 +123,23 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
 
-	@Override
+    @Override
+    public void closeInventory() {
+
+    }
+
+
+    @Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public String getType() {
 		return "tt_aspectanalyzer";
 	}
@@ -202,7 +198,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	@Override
 	public void detach(IComputerAccess computer) {
 		// NO-OP
-	}
+	}*/
 	@Override
 	public boolean prepareToMove() {
 		return true;

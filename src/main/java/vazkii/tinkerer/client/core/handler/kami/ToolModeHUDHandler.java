@@ -14,28 +14,26 @@
  */
 package vazkii.tinkerer.client.core.handler.kami;
 
-import java.awt.Color;
-
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.ForgeSubscribe;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.core.handler.ClientTickHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.awt.*;
 
 public final class ToolModeHUDHandler {
 
 	private static String currentTooltip;
 	private static int tooltipDisplayTicks;
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
 		if (event.type == ElementType.ALL && tooltipDisplayTicks > 0 && !MathHelper.stringNullOrLengthZero(currentTooltip)) {

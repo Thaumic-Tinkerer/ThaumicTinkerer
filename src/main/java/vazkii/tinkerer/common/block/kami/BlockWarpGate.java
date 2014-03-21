@@ -15,16 +15,15 @@
 package vazkii.tinkerer.common.block.kami;
 
 
-import java.util.Random;
-
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
@@ -32,12 +31,12 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.BlockModContainer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
+
+import java.util.Random;
 
 public class BlockWarpGate extends BlockModContainer {
 
-	public static Icon[] icons = new Icon[3];
+	public static IIcon[] icons = new IIcon[3];
 	Random random;
 
 	public BlockWarpGate() {
@@ -53,7 +52,7 @@ public class BlockWarpGate extends BlockModContainer {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 			if(tile != null) {
-				PacketDispatcher.sendPacketToPlayer(tile.getDescriptionPacket(), (Player) par5EntityPlayer);
+				par1World.markBlockForUpdate(par2,par3,par4);
 				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE, par1World, par2, par3, par4);
 			}
 		}
@@ -62,7 +61,7 @@ public class BlockWarpGate extends BlockModContainer {
 	}
 
 	@Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
         TileWarpGate warpGate = (TileWarpGate) par1World.getTileEntity(par2, par3, par4);
 
         if (warpGate != null) {
@@ -81,7 +80,7 @@ public class BlockWarpGate extends BlockModContainer {
                             k1 = itemstack.stackSize;
 
                         itemstack.stackSize -= k1;
-                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
                         float f3 = 0.05F;
                         entityitem.motionX = (float)random.nextGaussian() * f3;
                         entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -94,23 +93,24 @@ public class BlockWarpGate extends BlockModContainer {
             }
 
             par1World.func_96440_m(par2, par3, par4, par5);
+
         }
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world,int in) {
 		return new TileWarpGate();
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return icons[par1 == 1 ? 0 : 1];
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}

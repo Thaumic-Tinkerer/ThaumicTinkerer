@@ -17,12 +17,12 @@ package vazkii.tinkerer.common.block.tile.transvector;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.client.codechicken.core.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
@@ -40,14 +40,14 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 	class BlockData {
 
-		int id;
+		Block block;
 		int meta;
 		NBTTagCompound tile;
 
 		ChunkCoordinates coords;
 
-		public BlockData(int id, int meta, TileEntity tile, ChunkCoordinates coords) {
-			this.id = id;
+		public BlockData(Block block, int meta, TileEntity tile, ChunkCoordinates coords) {
+			this.block = block;
 			this.meta = meta;
 
 			if(tile != null) {
@@ -60,23 +60,22 @@ public class TileTransvectorDislocator extends TileTransvector {
 		}
 
 		public BlockData(ChunkCoordinates coords) {
-			this(worldObj.getBlockId(coords.posX, coords.posY, coords.posZ), worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ), worldObj.getTileEntity(coords.posX, coords.posY, coords.posZ), coords);
+			this(worldObj.getBlock(coords.posX, coords.posY, coords.posZ), worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ), worldObj.getTileEntity(coords.posX, coords.posY, coords.posZ), coords);
 		}
 
 		public void clearTileEntityAt() {
-			Block block = Block.blocksList[id];
 			if(block != null) {
 				TileEntity tileToSet = block.createTileEntity(worldObj, meta);
-				worldObj.setBlockTileEntity(coords.posX, coords.posY, coords.posZ, tileToSet);
+				worldObj.setTileEntity(coords.posX, coords.posY, coords.posZ, tileToSet);
 			}
 		}
 
 		public void setTo(ChunkCoordinates coords) {
-			worldObj.setBlock(coords.posX, coords.posY, coords.posZ, id, meta, 1 | 2);
+			worldObj.setBlock(coords.posX, coords.posY, coords.posZ, block, meta, 1 | 2);
 
 			TileEntity tile = this.tile == null ? null : TileEntity.createAndLoadEntity(this.tile);
 
-			worldObj.setBlockTileEntity(coords.posX, coords.posY, coords.posZ, tile);
+			worldObj.setTileEntity(coords.posX, coords.posY, coords.posZ, tile);
 
 			if(tile != null) {
 				tile.xCoord = coords.posX;
@@ -85,8 +84,8 @@ public class TileTransvectorDislocator extends TileTransvector {
 				tile.updateContainingBlockInfo();
 			}
 
-			if(Block.blocksList[id] != null)
-				Block.blocksList[id].onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ModBlocks.dislocator.blockID);
+			if(block != null)
+				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ModBlocks.dislocator);
 
 			worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 3);
 
@@ -147,10 +146,10 @@ public class TileTransvectorDislocator extends TileTransvector {
 	}
 
 	private boolean checkBlock(ChunkCoordinates coords) {
-		int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+		Block block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
 		int meta = worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ);
 
-		return !(id == ConfigBlocks.blockAiry.blockID && meta == 0) && !ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) != -1F || id == 0;
+		return !(block == ConfigBlocks.blockAiry && meta == 0) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) != -1F || block != Blocks.air;
 	}
 
 	private List<Entity> getEntitiesAtPoint(ChunkCoordinates coords) {

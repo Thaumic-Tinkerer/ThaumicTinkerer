@@ -15,35 +15,28 @@
 package vazkii.tinkerer.common.block.tile.tablet;
 
 import appeng.api.movable.IMovableTile;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
+import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.block.Block;
-import net.minecraft.command.PlayerSelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
-import net.minecraft.network.packet.Packet3Chat;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.common.FakePlayer;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.event.Event;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -54,7 +47,7 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileAnimationTablet extends TileEntity implements IInventory, IPeripheral, IMovableTile {
+public class TileAnimationTablet extends TileEntity implements IInventory ,IMovableTile{
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
@@ -132,7 +125,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 
 		if((!redstone || isBreaking) && detect && swingProgress == 0) {
 			initiateSwing();
-			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet.blockID, 0, 0);
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
 		}
 	}
 
@@ -145,7 +138,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		ChunkCoordinates coords = getTargetLoc();
 		ItemStack stack = getStackInSlot(0);
 		Item item = stack.getItem();
-		int id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+		Block block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
 
 		player.setCurrentItemOrArmor(0, stack);
         //EntityPlayer realPlayer=MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(Owner);
@@ -163,19 +156,19 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 				player.attackTargetEntityWithCurrentItem(entity);
 				done = true;
 			} else if(!isBreaking){
-				if(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ) && Block.blocksList[id].getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) >= 0) {
+				if(block!=Blocks.air && !block.isAir(worldObj, coords.posX, coords.posY, coords.posZ) && block.getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) >= 0) {
 					isBreaking = true;
-					startBreaking(Block.blocksList[id], worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ));
+					startBreaking(block, worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ));
 					done = true;
 				}
 			}
 		} else {
 			int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
 
-			if(!(id != 0 && !Block.blocksList[id].isAirBlock(worldObj, coords.posX, coords.posY, coords.posZ))) {
+			if(!(block!=Blocks.air && !block.isAir(worldObj, coords.posX, coords.posY, coords.posZ))) {
 				coords.posY -= 1;
 				side = ForgeDirection.UP.ordinal();
-				id = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+				block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
 			}
 
 			try {
@@ -186,7 +179,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 				if(!done)
 					item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done)
-					done = Block.blocksList[id] != null && Block.blocksList[id].onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
+					done = block != null && block.onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
 				if(!done)
 					done = item.onItemUse(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done) {
@@ -196,12 +189,13 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 
 			} catch(Throwable e) {
 				e.printStackTrace();
-				Packet3Chat packet = new Packet3Chat(new ChatMessageComponent().addText(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log."));
-				Packet3Chat packet1 = new Packet3Chat(new ChatMessageComponent().addText(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage()));
-
-				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.provider.dimensionId, packet);
-				PacketDispatcher.sendPacketToAllAround(xCoord, yCoord, zCoord, 16, worldObj.provider.dimensionId, packet1);
-			}
+                List list=worldObj.getEntitiesWithinAABB(EntityPlayer.class,AxisAlignedBB.getBoundingBox(xCoord-8,yCoord-8,zCoord-8,xCoord+8,yCoord+8,zCoord+8));
+                for(Object player:list)
+                {
+                    ((EntityPlayer)player).addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log."));
+                    ((EntityPlayer)player).addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage()));
+                }
+            }
 		}
 
 		if(done) {
@@ -209,16 +203,16 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 			if(stack == null || stack.stackSize == 0)
 				setInventorySlotContents(0, null);
 
-			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
-		}
-        onInventoryChanged();
+            worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+        }
+        markDirty();
 	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
 	private void stopBreaking() {
 		isBreaking = false;
 		ChunkCoordinates coords = getTargetLoc();
-		worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, -1);
+		worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, -1);
 	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
@@ -251,7 +245,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
             stopBreaking();
         } else {
             int var7 = (int) (var5 * 10);
-            worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, var7);
+            worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, var7);
             durabilityRemainingOnBlock = var7;
         }
 	}
@@ -265,17 +259,16 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		ChunkCoordinates coords = getTargetLoc();
 
         var1 = curblockDamage - initialDamage;
-        int var2 = worldObj.getBlockId(coords.posX, coords.posY, coords.posZ);
+        Block block= worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
 
-        if (var2 == 0)
+        if (block== Blocks.air)
         	stopBreaking();
         else {
-            Block var3 = Block.blocksList[var2];
-            var4 = var3.getPlayerRelativeBlockHardness(player, worldObj,coords.posX, coords.posY, coords.posZ) * var1;
+            var4 = block.getPlayerRelativeBlockHardness(player, worldObj,coords.posX, coords.posY, coords.posZ) * var1;
             var5 = (int) (var4 * 10);
 
             if (var5 != durabilityRemainingOnBlock) {
-                worldObj.destroyBlockInWorldPartially(player.entityId, coords.posX, coords.posY, coords.posZ, var5);
+                worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, var5);
                 durabilityRemainingOnBlock = var5;
             }
 
@@ -292,36 +285,35 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
         if (stack != null && stack.getItem().onBlockStartBreak(stack, par1, par2, par3, player))
         	return false;
 
-        int var4 = worldObj.getBlockId(par1, par2, par3);
+        Block block =worldObj.getBlock(par1, par2, par3);
         int var5 = worldObj.getBlockMetadata(par1, par2, par3);
-        worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
+        //worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
         boolean var6 = false;
 
         boolean var8 = false;
-        Block block = Block.blocksList[var4];
         if (block != null)
             var8 = block.canHarvestBlock(player, var5);
 
         worldObj.loadedEntityList.size();
         if (stack != null)
-            stack.onBlockDestroyed(worldObj, var4, par1, par2, par3, player);
+            stack.getItem().onBlockDestroyed(stack, worldObj, block, par1, par2, par3, player);
 
         var6 = removeBlock(par1, par2, par3);
         if (var6 && var8)
-        	Block.blocksList[var4].harvestBlock(worldObj, player, par1, par2, par3, var5);
+        	block.harvestBlock(worldObj, player, par1, par2, par3, var5);
 
         return var6;
     }
 
 	// Copied from ItemInWorldManager, seems to do the trick.
     private boolean removeBlock(int par1, int par2, int par3) {
-        Block var4 = Block.blocksList[worldObj.getBlockId(par1, par2, par3)];
+        Block var4 = worldObj.getBlock(par1, par2, par3);
         int var5 = worldObj.getBlockMetadata(par1, par2, par3);
 
         if (var4 != null)
             var4.onBlockHarvested(worldObj, par1, par2, par3, var5, player);
 
-        boolean var6 = var4 != null && var4.removeBlockByPlayer(worldObj, player, par1, par2, par3);
+        boolean var6 = var4 != null && var4.removedByPlayer(worldObj, player, par1, par2, par3);
 
         if (var4 != null && var6)
             var4.onBlockDestroyedByPlayer(worldObj, par1, par2, par3, var5);
@@ -393,10 +385,10 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		leftClick = par1NBTTagCompound.getBoolean(TAG_LEFT_CLICK);
 		redstone = par1NBTTagCompound.getBoolean(TAG_REDSTONE);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
@@ -439,7 +431,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
                 inventorySlots[par1] = null;
 
         		if(!worldObj.isRemote)
-        			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 
                 return stackAt;
             } else {
@@ -449,7 +441,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
                     inventorySlots[par1] = null;
 
         		if(!worldObj.isRemote)
-        			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+        			worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 
                 return stackAt;
             }
@@ -468,18 +460,18 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		inventorySlots[i] = itemstack;
 
 		if(!worldObj.isRemote)
-			PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+			worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.ANIMATION_TABLET;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.ANIMATION_TABLET;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -496,30 +488,31 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
+
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
+
 
 	@Override
-	public void closeChest() {
-		// NO-OP
-	}
-
-	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
+		readCustomNBT(packet.func_148857_g());
 	}
 
-	@Override
+	/*@Override
 	public String getType() {
 		return "tt_animationTablet";
 	}
@@ -527,9 +520,9 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 	@Override
 	public String[] getMethodNames() {
 		return new String[]{ "getRedstone", "setRedstone", "getLeftClick", "setLeftClick", "getRotation", "setRotation", "hasItem", "trigger" };
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		switch(method) {
 			case 0 : return new Object[]{ redstone };
@@ -569,22 +562,22 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 			}
 		}
 		return null;
-	}
+	}*/
 
-	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
+	//@Override
+	//public boolean canAttachToSide(int side) {
+	//	return true;
+	//}
 
-	@Override
-	public void attach(IComputerAccess computer) {
-		// NO-OP
-	}
+	//@Override
+	//public void attach(IComputerAccess computer) {
+	//	// NO-OP
+	//}
 
-	@Override
-	public void detach(IComputerAccess computer) {
-		// NO-OP
-	}
+	//@Override
+	//public void detach(IComputerAccess computer) {
+	//	// NO-OP
+	//}
 
 	@Override
 	public boolean prepareToMove() {

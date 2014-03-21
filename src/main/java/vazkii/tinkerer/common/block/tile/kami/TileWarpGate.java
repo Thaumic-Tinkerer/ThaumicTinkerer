@@ -20,12 +20,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraftforge.common.util.Constants;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
@@ -95,9 +96,9 @@ public class TileWarpGate extends TileEntity implements IInventory {
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
 				return true;
 			} else if(!player.worldObj.isRemote)
-				player.addChatMessage("ttmisc.noTeleport");
+				player.addChatMessage(new ChatComponentTranslation("ttmisc.noTeleport"));
 		} else if(!player.worldObj.isRemote)
-			player.addChatMessage("ttmisc.noDest");
+			player.addChatMessage(new ChatComponentTranslation("ttmisc.noDest"));
 
 		return false;
 	}
@@ -119,10 +120,10 @@ public class TileWarpGate extends TileEntity implements IInventory {
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		locked = par1NBTTagCompound.getBoolean(TAG_LOCKED);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
@@ -186,15 +187,15 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.WARP_GATE;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.WARP_GATE;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -206,32 +207,34 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
+
+
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return itemstack.itemID == ModItems.skyPearl.itemID;
+		return itemstack.getItem() == ModItems.skyPearl;
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
+		readCustomNBT(packet.func_148857_g());
 	}
 
 }

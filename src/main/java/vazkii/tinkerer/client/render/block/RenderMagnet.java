@@ -16,7 +16,7 @@ package vazkii.tinkerer.client.render.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -34,7 +34,7 @@ public class RenderMagnet implements ISimpleBlockRenderingHandler {
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		TileEntityRenderer.instance.renderTileEntityAt(new TileMagnet(), 0.0D, 0.0D, 0.0D, 0.0F);
+        TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileMagnet(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glPopMatrix();
 	}
 
@@ -43,10 +43,10 @@ public class RenderMagnet implements ISimpleBlockRenderingHandler {
 		return false;
 	}
 
-	@Override
-	public boolean shouldRender3DInInventory() {
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelId) {
+        return true;
+    }
 
 	@Override
 	public int getRenderId() {

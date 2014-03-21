@@ -14,17 +14,12 @@
  */
 package vazkii.tinkerer.client.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.gui.button.GuiButtonAT;
 import vazkii.tinkerer.client.gui.button.GuiButtonATRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
@@ -33,7 +28,9 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.network.packet.PacketTabletButton;
-import cpw.mods.fml.common.network.PacketDispatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiAnimationTablet extends GuiContainer {
 
@@ -88,9 +85,10 @@ public class GuiAnimationTablet extends GuiContainer {
         String left = StatCollector.translateToLocal("ttmisc.leftClick");
         String right = StatCollector.translateToLocal("ttmisc.rightClick");
         String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
-        fontRenderer.drawString(left, x + 48 - fontRenderer.getStringWidth(left), y + 18, 0x999999);
-        fontRenderer.drawString(right, x + 128, y + 18, 0x999999);
-        fontRenderer.drawString(redstone, x + xSize / 2 - fontRenderer.getStringWidth(redstone) / 2, y + 50, 0x999999);
+
+        fontRendererObj.drawString(left, x + 48 - fontRendererObj.getStringWidth(left), y + 18, 0x999999);
+        fontRendererObj.drawString(right, x + 128, y + 18, 0x999999);
+        fontRendererObj.drawString(redstone, x + xSize / 2 - fontRendererObj.getStringWidth(redstone) / 2, y + 50, 0x999999);
         GL11.glColor3f(1F, 1F, 1F);
 	}
 }

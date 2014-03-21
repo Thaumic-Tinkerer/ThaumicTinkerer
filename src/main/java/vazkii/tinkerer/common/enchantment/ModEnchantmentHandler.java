@@ -14,7 +14,8 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,8 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.EventPriority;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -46,7 +45,7 @@ public class ModEnchantmentHandler {
 	public final String NBTTunnelDirection="TTEnchantTunnelDir";
 
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
 		if(event.source.getEntity() instanceof EntityLivingBase) {
 			EntityLivingBase attacker = (EntityLivingBase) event.source.getEntity();
@@ -64,7 +63,7 @@ public class ModEnchantmentHandler {
 				ItemStack legs = player.getCurrentArmor(1);
 				int pounce = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.pounce, legs);
 				if(pounce > 0){
-					if(player.worldObj.getBlockId((int)Math.floor(player.posX), (int)Math.floor(player.posY)-1, (int)Math.floor(player.posZ)) == 0){
+					if(player.worldObj.getBlock((int) Math.floor(player.posX), (int) Math.floor(player.posY) - 1, (int) Math.floor(player.posZ)) == net.minecraft.init.Blocks.air){
 
 						event.ammount*=1+(.25*pounce);
 					}
@@ -94,7 +93,7 @@ public class ModEnchantmentHandler {
 			if(focusedStrikes > 0 || dispersedStrikes > 0) {
 				int lastTarget=heldItem.stackTagCompound.getInteger(NBTLastTarget);
 				int successiveStrikes=heldItem.stackTagCompound.getInteger(NBTSuccessiveStrike);
-				int entityId=event.entityLiving.entityId;
+				int entityId=event.entityLiving.getEntityId();
 
 				if(lastTarget!=entityId){
 					heldItem.stackTagCompound.setInteger(NBTSuccessiveStrike, 0);
@@ -125,7 +124,7 @@ public class ModEnchantmentHandler {
 		}
 	}
 
-	@ForgeSubscribe(priority = EventPriority.HIGHEST)
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		final double min = -0.0784000015258789;
 
@@ -145,15 +144,15 @@ public class ModEnchantmentHandler {
 				return;
 
 			int quickDraw = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idQuickDraw, heldItem);
-			ItemStack usingItem = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
-			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE_COUNT);
+			ItemStack usingItem = player.itemInUse;
+			int time = player.itemInUseCount;
 			if(quickDraw > 0 && usingItem != null && usingItem.getItem() instanceof ItemBow)
 				if((usingItem.getItem().getMaxItemUseDuration(usingItem) - time) % (6 - quickDraw) == 0)
-					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, time - 1, LibObfuscation.ITEM_IN_USE_COUNT);
+					player.itemInUseCount=time - 1;
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPlayerJump(LivingJumpEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
@@ -164,7 +163,7 @@ public class ModEnchantmentHandler {
 		}
 	}
 
-	@ForgeSubscribe(priority = EventPriority.LOW)
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onFall(LivingFallEvent event){
 		if(event.entityLiving instanceof EntityPlayer){
 			ItemStack boots = ((EntityPlayer)event.entityLiving).getCurrentArmor(0);
@@ -179,7 +178,7 @@ public class ModEnchantmentHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
 		ItemStack item=event.getPlayer().getCurrentEquippedItem();
 		int tunnel=EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, item);
@@ -190,7 +189,7 @@ public class ModEnchantmentHandler {
 	}
 
 
-	@ForgeSubscribe(priority = EventPriority.HIGHEST)
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onGetHarvestSpeed(PlayerEvent.BreakSpeed event) {
 		ItemStack heldItem = event.entityPlayer.getHeldItem();
 
@@ -223,8 +222,8 @@ public class ModEnchantmentHandler {
 		int desintegrate = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idDesintegrate, heldItem);
 		int autoSmelt = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.idAutoSmelt, heldItem);
 
-		boolean desintegrateApplies = desintegrate > 0 && event.block.blockHardness <= 1.5F && heldItem.getItem().getStrVsBlock(heldItem, event.block, event.metadata) != 1F;
-		boolean autoSmeltApplies = autoSmelt > 0 && event.block.blockMaterial == Material.wood;
+		boolean desintegrateApplies = desintegrate > 0 && event.block.blockHardness <= 1.5F;
+		boolean autoSmeltApplies = autoSmelt > 0 && event.block.getMaterial() == Material.wood;
 
 		if(desintegrateApplies || autoSmeltApplies) {
 			heldItem.damageItem(1, event.entityPlayer);

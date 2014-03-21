@@ -16,17 +16,16 @@ package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -68,7 +67,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 						if( dmg > 0) {
 							int essentia = drawEssentia();
 							TinkersConstructCompat.fixDamage(inventorySlots[0], essentia);
-							onInventoryChanged();
+							markDirty();
 							if(dmgLastTick != 0 && dmgLastTick != dmg) {
 								ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
 								tookLastTick = true;
@@ -83,7 +82,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 				int essentia = drawEssentia();
 				int dmg = inventorySlots[0].getItemDamage();
 				inventorySlots[0].setItemDamage(Math.max(0, dmg - essentia));
-				onInventoryChanged();
+				markDirty();
 
 				if(dmgLastTick != 0 && dmgLastTick != dmg) {
 					ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
@@ -110,12 +109,12 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         inventorySlots = new ItemStack[1];
         
         if(nbttaglist.tagCount()>0)
         {
-            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.tagAt(0);
+            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.getCompoundTagAt(0);
                 inventorySlots[0] = ItemStack.loadItemStackFromNBT(tagList);
         }
 	}
@@ -174,15 +173,15 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.FUNNEL;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.FUNNEL;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -194,15 +193,16 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
+
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
@@ -210,21 +210,22 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
+		readCustomNBT(packet.func_148857_g());
 	}
 
 	@Override
-	public void onInventoryChanged() {
-		PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+	public void markDirty() {
+        super.markDirty();
+		worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 	}
 
 	@Override

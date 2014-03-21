@@ -1,19 +1,15 @@
 package appeng.api.config;
 
 
-public enum CondenserOuput implements IConfigEnum {
-	Trash,
-	MatterBalls,
-	Singularity;
-	
-	@Override
-	public IConfigEnum[] getValues() {
-		return values();
-	}
+public enum CondenserOuput
+{
 
-	@Override
-	public String getName() {
-		return "CondenserOutput";
-	}
-	
+	TRASH, // 0
+
+	MATTER_BALLS, // 256
+
+	SINGULARITY; // 250,000
+
+	public int requiredPower = 0;
+
 }
