@@ -2,31 +2,25 @@ package vazkii.tinkerer.common.core.helper;
 
 import com.google.common.collect.Maps;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.item.ItemStack;
-import sun.rmi.runtime.Log;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.entities.monster.EntityBrainyZombie;
 import thaumcraft.common.entities.monster.EntityFireBat;
 import thaumcraft.common.entities.monster.EntityWisp;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ItemMobAspect;
 import vazkii.tinkerer.common.item.ItemMobDisplay;
 import vazkii.tinkerer.common.item.ModItems;
-import vazkii.tinkerer.common.lib.LibObfuscation;
 import vazkii.tinkerer.common.lib.LibResearch;
 
-import java.lang.reflect.Method;
 import java.util.Map;
 
 public enum EnumMobAspect {
