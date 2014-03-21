@@ -1,20 +1,17 @@
 package vazkii.tinkerer.common.item.kami;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.Icon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
@@ -22,12 +19,16 @@ import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.item.ItemMod;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemPlacementMirror extends ItemMod {
 
+    @Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
+
+    private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static final String TAG_SIZE = "size";
 
@@ -40,11 +41,11 @@ public class ItemPlacementMirror extends ItemMod {
 
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		int id = par3World.getBlockId(par4, par5, par6);
+		Block block = par3World.getBlock(par4, par5, par6);
 		int meta = par3World.getBlockMetadata(par4, par5, par6);
 
 		if(par2EntityPlayer.isSneaking()) {
-			if(Block.blocksList[id] != null && Block.blocksList[id].getRenderType() == 0)
+			if(block != null && block.getRenderType() == 0)
 				setBlock(par1ItemStack, id, meta);
 		} else placeAllBlocks(par1ItemStack, par2EntityPlayer);
 
@@ -69,14 +70,14 @@ public class ItemPlacementMirror extends ItemMod {
 		if(!hasBlocks(stack, player, blocksToPlace))
 			return;
 
-		ItemStack stackToPlace = new ItemStack(getBlockID(stack), 1, getBlockMeta(stack));
+		ItemStack stackToPlace = new ItemStack(getBlock(stack), 1, getBlockMeta(stack));
 		for(ChunkCoordinates coords : blocksToPlace)
 			placeBlockAndConsume(player, stackToPlace, coords);
 		player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
 	}
 
 	private void placeBlockAndConsume(EntityPlayer player, ItemStack blockToPlace, ChunkCoordinates coords) {
-		player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, blockToPlace.itemID, blockToPlace.getItemDamage(), 1 | 2);
+		player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.getBlockFromItem(blockToPlace.getItem()), blockToPlace.getItemDamage(), 1 | 2);
 
 		if(player.capabilities.isCreativeMode)
 			return;
@@ -84,7 +85,7 @@ public class ItemPlacementMirror extends ItemMod {
 		List<ItemStack> talismansToCheck = new ArrayList();
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-			if(stackInSlot != null && stackInSlot.itemID == blockToPlace.itemID && stackInSlot.getItemDamage() == blockToPlace.getItemDamage()) {
+			if(stackInSlot != null && stackInSlot.getItem() == blockToPlace.getItem() && stackInSlot.getItemDamage() == blockToPlace.getItemDamage()) {
 				stackInSlot.stackSize--;
 				if(stackInSlot.stackSize == 0)
 					player.inventory.setInventorySlotContents(i, null);
@@ -92,18 +93,19 @@ public class ItemPlacementMirror extends ItemMod {
 				return;
 			}
 
-			if(stackInSlot != null && stackInSlot.itemID == ModItems.blockTalisman.itemID)
+			if(stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
 				talismansToCheck.add(stackInSlot);
 		}
 
 		for(ItemStack talisman : talismansToCheck) {
-			int id = ItemBlockTalisman.getBlockID(talisman);
+            Block block = ItemBlockTalisman.getBlock(talisman);
 			int meta = ItemBlockTalisman.getBlockMeta(talisman);
 
-			if(id == blockToPlace.itemID && meta == blockToPlace.getItemDamage()) {
-				ItemBlockTalisman.remove(talisman, 1);
-				return;
-			}
+            if(Item.getItemFromBlock(block) == blockToPlace.getItem() && meta == blockToPlace.getItemDamage()) {
+                    ItemBlockTalisman.remove(talisman, 1);
+                    return;
+                }
+            }
 		}
 	}
 
@@ -114,24 +116,24 @@ public class ItemPlacementMirror extends ItemMod {
 		int required = blocks.length;
 		int current = 0;
 
-		ItemStack reqStack = new ItemStack(getBlockID(stack), 1, getBlockMeta(stack));
+		ItemStack reqStack = new ItemStack(getBlock(stack), 1, getBlockMeta(stack));
 		List<ItemStack> talismansToCheck = new ArrayList();
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-			if(stackInSlot != null && stackInSlot.itemID == reqStack.itemID && stackInSlot.getItemDamage() == reqStack.getItemDamage()) {
+			if(stackInSlot != null && stackInSlot.getItem()== reqStack.getItem() && stackInSlot.getItemDamage() == reqStack.getItemDamage()) {
 				current += stackInSlot.stackSize;
 				if(current >= required)
 					return true;
 			}
-			if(stackInSlot != null && stackInSlot.itemID == ModItems.blockTalisman.itemID)
+			if(stackInSlot != null && stackInSlot.getItem()== ModItems.blockTalisman)
 				talismansToCheck.add(stackInSlot);
 		}
 
 		for(ItemStack talisman : talismansToCheck) {
-			int id = ItemBlockTalisman.getBlockID(talisman);
+			Block block = ItemBlockTalisman.getBlock(talisman);
 			int meta = ItemBlockTalisman.getBlockMeta(talisman);
 
-			if(id == reqStack.itemID && meta == reqStack.getItemDamage()) {
+			if(Item.getItemFromBlock(block) == reqStack.getItem() && meta == reqStack.getItemDamage()) {
 				current += ItemBlockTalisman.getBlockCount(talisman);
 
 				if(current >= required)
@@ -146,8 +148,8 @@ public class ItemPlacementMirror extends ItemMod {
 		List<ChunkCoordinates> coords = new ArrayList();
 		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(player.worldObj, player, true, 5);
 		if(pos != null) {
-			int id = player.worldObj.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
-			if(Block.blocksList[id] != null && Block.blocksList[id].isBlockReplaceable(player.worldObj, pos.blockX, pos.blockY, pos.blockZ))
+            Block block=player.worldObj.getBlock(pos.blockX,pos.blockY,pos.blockZ);
+			if(block != null && block.isReplaceable(player.worldObj,pos.blockX,pos.blockY,pos.blockZ))
 				pos.blockY--;
 
 			ForgeDirection dir = ForgeDirection.getOrientation(pos.sideHit);
@@ -167,8 +169,8 @@ public class ItemPlacementMirror extends ItemMod {
 						int yp = pos.blockY + y + dir.offsetY;
 						int zp =  pos.blockZ + z + dir.offsetZ;
 
-						int id1 = player.worldObj.getBlockId(xp, yp, zp);
-						if(Block.blocksList[id1] == null || Block.blocksList[id1].isAirBlock(player.worldObj, xp, yp, zp) || Block.blocksList[id1].isBlockReplaceable(player.worldObj, xp, yp, zp))
+						Block block1 = player.worldObj.getBlock(xp, yp, zp);
+						if(block1 == null || block1.isAir(player.worldObj, xp, yp, zp) || block1.isReplaceable(player.worldObj, xp, yp, zp))
 							coords.add(new ChunkCoordinates(xp, yp,zp));
 					}
 				}
@@ -178,8 +180,8 @@ public class ItemPlacementMirror extends ItemMod {
 		return coords.toArray(new ChunkCoordinates[0]);
 	}
 
-	private void setBlock(ItemStack stack, int id, int meta) {
-		ItemNBTHelper.setInt(stack, TAG_BLOCK_ID, id);
+	private void setBlock(ItemStack stack, String name, int meta) {
+		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, name);
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 	}
 
@@ -191,10 +193,18 @@ public class ItemPlacementMirror extends ItemMod {
 		return ItemNBTHelper.getInt(stack, TAG_SIZE, 3) | 1;
 	}
 
-	public static String getBlockName(ItemStack stack) {
-		return ItemNBTHelper.getString(stack, TAG_BLOCK_ID, "");
+    @Deprecated
+	public static  int getBlockID(ItemStack stack) {
+		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
-
+    public static Block getBlock(ItemStack stack)
+    {
+        return Block.getBlockFromName(getBlockName(stack));
+    }
+    public static String getBlockName(ItemStack stack)
+    {
+        return ItemNBTHelper.getString(stack,TAG_BLOCK_NAME,"");
+    }
 	public static int getBlockMeta(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
 	}
@@ -224,10 +234,15 @@ public class ItemPlacementMirror extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		int id = getBlockID(par1ItemStack);
+        Block block=getBlock(par1ItemStack);
 		int size = getSize(par1ItemStack);
+
 		par3List.add(size + " x " + size);
-		if(id != 0 && Block.blocksList[id] != null)
-			par3List.add(StatCollector.translateToLocal(new ItemStack(Block.blocksList[id], 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
+        if(block== Blocks.air)
+            if(id!=0)
+                block=Block.getBlockById(id);
+        if(block!=Blocks.air)
+			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
 	}
 
 }
