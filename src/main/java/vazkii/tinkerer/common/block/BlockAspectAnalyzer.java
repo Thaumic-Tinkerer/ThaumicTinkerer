@@ -16,14 +16,15 @@ package vazkii.tinkerer.common.block;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -32,14 +33,14 @@ import vazkii.tinkerer.common.lib.LibGuiIDs;
 
 public class BlockAspectAnalyzer extends BlockModContainer {
 
-	Icon[] icons = new Icon[5];
+	IIcon[] icons = new IIcon[5];
 	Random random;
 
 	protected BlockAspectAnalyzer() {
 		super(Material.wood);
 		setHardness(1.7F);
 		setResistance(1F);
-		setStepSound(soundWoodFootstep);
+		setStepSound(Block.soundTypeWood);
 
 		random = new Random();
 	}
@@ -56,7 +57,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	}
 
 	@Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
         TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
 
         if (analyzer != null) {
@@ -75,7 +76,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
                             k1 = itemstack.stackSize;
 
                         itemstack.stackSize -= k1;
-                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
                         float f3 = 0.05F;
                         entityitem.motionX = (float)random.nextGaussian() * f3;
                         entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -87,25 +88,25 @@ public class BlockAspectAnalyzer extends BlockModContainer {
                 }
             }
 
-            par1World.func_96440_m(par2, par3, par4, par5);
+            par1World.func_147453_f(par2, par3, par4, par5);
         }
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		for(int i = 0; i < 5; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return icons[par1 == 0 || par1 == 1 ? 0 : par1 - 1];
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileAspectAnalyzer();
 	}
 
