@@ -18,10 +18,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -37,7 +39,7 @@ public abstract class BlockGas extends BlockMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		blockIcon = IconHelper.emptyTexture(par1IconRegister);
 	}
 
@@ -71,15 +73,15 @@ public abstract class BlockGas extends BlockMod {
 	}
 
 	private void setAt(World world, int x, int y, int z, int meta) {
-		if(world.isAirBlock(x, y, z) && world.getBlockId(x, y, z) != blockID) {
+		if(world.isAirBlock(x, y, z) && world.getBlock(x, y, z) != this) {
 			if(!world.isRemote)
-				world.setBlock(x, y, z, blockID, meta, 2);
-			world.scheduleBlockUpdate(x, y, z, blockID, 10);
+				world.setBlock(x, y, z, this, meta, 2);
+			world.scheduleBlockUpdate(x, y, z, this, 10);
 		}
 	}
 
 	@Override
-	public boolean isBlockNormalCube(World world, int x, int y, int z) {
+	public boolean isBlockNormalCube() {
 		return false;
 	}
 
@@ -88,8 +90,9 @@ public abstract class BlockGas extends BlockMod {
 		return false;
 	}
 
+
 	@Override
-	public boolean canDragonDestroy(World world, int x, int y, int z) {
+	public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity e) {
 		return false;
 	}
 
@@ -99,7 +102,7 @@ public abstract class BlockGas extends BlockMod {
 	}
 
 	@Override
-	public boolean canBeReplacedByLeaves(World world, int x, int y, int z) {
+	public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z) {
 		return true;
 	}
 
@@ -108,8 +111,8 @@ public abstract class BlockGas extends BlockMod {
 		return false;
 	}
 
-	@Override
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
+    @Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		return new ArrayList(); // Empty List
 	}
 
@@ -118,8 +121,9 @@ public abstract class BlockGas extends BlockMod {
 		return null;
 	}
 
+
 	@Override
-	public boolean isAirBlock(World world, int x, int y, int z) {
+	public boolean isAir(IBlockAccess world, int x, int y, int z) {
 		return true;
 	}
 

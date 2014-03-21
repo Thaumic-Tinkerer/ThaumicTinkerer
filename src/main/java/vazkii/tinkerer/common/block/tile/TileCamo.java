@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
@@ -26,7 +27,7 @@ public class TileCamo extends TileEntity implements IMovableTile {
 	private static final String TAG_CAMO = "camo";
 	private static final String TAG_CAMO_META = "camoMeta";
 
-	public int camo;
+	public Block camo;
 	public int camoMeta;
 
 	@Override
@@ -49,12 +50,12 @@ public class TileCamo extends TileEntity implements IMovableTile {
 	}
 
 	public void writeCustomNBT(NBTTagCompound cmp) {
-		cmp.setInteger(TAG_CAMO, camo);
+		cmp.setString(TAG_CAMO, camo.getUnlocalizedName());
 		cmp.setInteger(TAG_CAMO_META, camoMeta);
 	}
 
 	public void readCustomNBT(NBTTagCompound cmp) {
-		camo = cmp.getInteger(TAG_CAMO);
+		camo = Block.getBlockFromName(cmp.getString(TAG_CAMO));
 		camoMeta = cmp.getInteger(TAG_CAMO_META);
 	}
 
