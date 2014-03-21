@@ -20,7 +20,7 @@ public class BlockGolemConnector extends BlockCamo {
 	}
 
 	@Override
-	public TileCamo createNewTileEntity(World world) {
+	public TileCamo createNewTileEntity(World world, int meta) {
 		// TODO Auto-generated method stub
 		return new TileGolemConnector();
 	}
