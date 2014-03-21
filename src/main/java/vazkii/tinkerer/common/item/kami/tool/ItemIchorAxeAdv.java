@@ -14,29 +14,29 @@
  */
 package vazkii.tinkerer.common.item.kami.tool;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.common.lib.Utils;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
+import java.util.List;
+
 public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 
-	Icon[] specialIcons = new Icon[3];
+	IIcon[] specialIcons = new IIcon[3];
 
 	public ItemIchorAxeAdv() {
 		super();
@@ -46,7 +46,7 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	@Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
-		Material mat = world.getBlockMaterial(x, y, z);
+		Material mat = world.getBlock(x,y,z).getMaterial();
 		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
 			return false;
 
@@ -69,11 +69,11 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 				break;
 			}
 			case 2 : {
-				int id = world.getBlockId(x, y, z);
+				Block blck = world.getBlock(x, y, z);
 				if(Utils.isWoodLog(world, x, y, z)) {
-					while(id != 0) {
-						Utils.breakFurthestBlock(world, x, y, z, id, player);
-						id = world.getBlockId(x, y, z);
+					while(blck != Blocks.air) {
+						Utils.breakFurthestBlock(world, x, y, z, blck, player);
+                        blck = world.getBlock(x, y, z);
 					}
 
 					List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x - 5, y - 1, z - 5, x + 5, y + 64, z + 5));
@@ -90,19 +90,20 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, Block block, int meta) {
-		return Math.max(super.getStrVsBlock(stack, block, meta), Item.shears.getStrVsBlock(stack, block, meta));
+	public float func_150893_a(ItemStack stack, Block block) {
+
+		return Math.max(super.func_150893_a(stack, block), Items.shears.func_150893_a(stack, block));
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		for(int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return par1 >= specialIcons.length ? super.getIconFromDamage(par1) : specialIcons[par1];
 	}
 
@@ -116,10 +117,7 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 		return par1ItemStack;
 	}
 
-	@Override
-	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
-		return true;
-	}
+
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

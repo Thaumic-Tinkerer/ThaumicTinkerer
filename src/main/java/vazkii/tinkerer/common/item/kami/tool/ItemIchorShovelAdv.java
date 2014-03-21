@@ -14,24 +14,24 @@
  */
 package vazkii.tinkerer.common.item.kami.tool;
 
-import java.util.List;
-
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
+import java.util.List;
+
 public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool {
 
-	Icon[] specialIcons = new Icon[3];
+	IIcon[] specialIcons = new IIcon[3];
 
 	public ItemIchorShovelAdv() {
 		super();
@@ -39,14 +39,14 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		for(int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return par1 >= specialIcons.length ? super.getIconFromDamage(par1) : specialIcons[par1];
 	}
 
@@ -63,10 +63,9 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	@Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
-		Material mat = world.getBlockMaterial(x, y, z);
+		Material mat = world.getBlock(x, y, z).getMaterial();
 		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
 			return false;
-
 		MovingObjectPosition block = ToolHandler.raytraceFromEntity(world, player, true, 4.5);
 		if(block == null)
 			return false;
@@ -82,22 +81,19 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 				boolean doY = direction.offsetY == 0;
 				boolean doZ = direction.offsetZ == 0;
 
-				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, -1, ToolHandler.materialsShovel, silk, fortune);
+				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, null, ToolHandler.materialsShovel, silk, fortune);
 				break;
 			}
 			case 2 : {
-				int id = world.getBlockId(x, y, z);
-				ToolHandler.removeBlocksInIteration(player, world, x, y, z, 0, -8, 0, 1, 8, 1, id, ToolHandler.materialsShovel, silk, fortune);
+				Block blk= world.getBlock(x, y, z);
+				ToolHandler.removeBlocksInIteration(player, world, x, y, z, 0, -8, 0, 1, 8, 1, blk, ToolHandler.materialsShovel, silk, fortune);
 				break;
 			}
 		}
 		return false;
 	}
 
-	@Override
-	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
-		return true;
-	}
+
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

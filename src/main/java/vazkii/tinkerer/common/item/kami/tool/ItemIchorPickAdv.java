@@ -14,16 +14,17 @@
  */
 package vazkii.tinkerer.common.item.kami.tool;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 
@@ -31,7 +32,7 @@ import java.util.List;
 
 public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
-	Icon[] specialIcons = new Icon[3];
+	IIcon[] specialIcons = new IIcon[3];
 
 	public ItemIchorPickAdv() {
 		super();
@@ -39,14 +40,14 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		for(int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return par1 >= specialIcons.length ? super.getIconFromDamage(par1) : specialIcons[par1];
 	}
 
@@ -63,7 +64,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 	@Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
-		Material mat = world.getBlockMaterial(x, y, z);
+		Material mat = world.getBlock(x, y, z).getMaterial();
 		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
 			return false;
 
@@ -71,7 +72,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		if(block == null)
 			return false;
 
-		int id=world.getBlockId(x, y, z);
+		Block blk=world.getBlock(x, y, z);
 
 		ForgeDirection direction = ForgeDirection.getOrientation(block.sideHit);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
@@ -85,8 +86,8 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 				boolean doZ = direction.offsetZ == 0;
 
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, -1, ToolHandler.materialsPick, silk, fortune);
-				if(id==7){
-					world.setBlock(x, y, z, 7);
+				if(blk== Blocks.bedrock){
+					world.setBlock(x, y, z, Blocks.bedrock);
 				}
 				break;
 			}
@@ -96,19 +97,16 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 				int zo = -direction.offsetZ;
 
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, xo >= 0 ? 0 : -10, yo >= 0 ? 0 : -10, zo >= 0 ? 0 : -10, xo > 0 ? 10 : 1, yo > 0 ? 10 : 1, zo > 0 ? 10 : 1, -1, ToolHandler.materialsPick, silk, fortune);
-				if(id==7){
-					world.setBlock(x, y, z, 7);
-				}
+                if(blk== Blocks.bedrock){
+                    world.setBlock(x, y, z, Blocks.bedrock);
+                }
 				break;
 			}
 		}
 		return false;
 	}
 
-	@Override
-	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
-		return true;
-	}
+
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

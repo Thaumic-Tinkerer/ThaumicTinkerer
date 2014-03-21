@@ -17,18 +17,18 @@ package vazkii.tinkerer.common.item.kami.tool;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
-import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,15 +60,13 @@ public final class ToolHandler {
 		return false;
 	}
 
-	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, int lockID, Material[] materialsListing, boolean silk, int fortune) {
-        final int blockID = world.getBlockId(x, y, z);
-        final Block block = Block.blocksList[blockID];
+	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, Block block, Material[] materialsListing, boolean silk, int fortune) {
         float blockHardness = block.getBlockHardness(world, x, y, z);
 		for(int x1 = xs; x1 < xe; x1++){
 			for(int y1 = ys; y1 < ye; y1++){
 				for(int z1 = zs; z1 < ze; z1++){
 					if(x != x1 && y != y1 && z != z1){
-						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, lockID, materialsListing, silk, fortune,blockHardness);
+						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune,blockHardness);
 
 					}
 				}
@@ -76,29 +74,28 @@ public final class ToolHandler {
 		}
 	}
 
-	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, int lockID, Material[] materialsListing, boolean silk, int fortune,float blockHardness) {
+	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune,float blockHardness) {
 		if(!world.blockExists(x, y, z))
 			return;
 
-		int id = world.getBlockId(x, y, z);
+		Block blk = world.getBlock(x, y, z);
 
-		if(lockID != -1 && id != lockID)
+		if(block != null && blk != block)
 			return;
 
 		int meta = world.getBlockMetadata(x, y, z);
-		Material mat = world.getBlockMaterial(x, y, z);
-		Block block = Block.blocksList[id];
-		if(block != null && !block.isAirBlock(world, x, y, z) && (block.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)) {
+		Material mat = world.getBlock(x, y, z).getMaterial();
+		if(block != null && !block.isAir(world, x, y, z) && (block.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)) {
 			List<ItemStack> items = new ArrayList();
 
 			if(!block.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
-			if(ConfigHandler.bedrockDimensionID != 0 && id==7 && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
-				world.setBlock(x, y, z, LibBlockIDs.idPortal);
+			if(ConfigHandler.bedrockDimensionID != 0 && block== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
+				world.setBlock(x, y, z, ModBlocks.portal);
 			}
             if (!player.capabilities.isCreativeMode) {
                 int localMeta = world.getBlockMetadata(x, y, z);
-                if (block.removeBlockByPlayer(world, player, x, y, z)) {
+                if (block.removedByPlayer(world, player, x, y, z)) {
                     block.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
                 }
                 block.harvestBlock(world, player, x, y, z, localMeta);
@@ -138,7 +135,7 @@ public final class ToolHandler {
 		if (player instanceof EntityPlayerMP)
 			d3 = ((EntityPlayerMP) player).theItemInWorldManager.getBlockReachDistance();
 		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
-		return world.rayTraceBlocks_do_do(vec3, vec31, par3, !par3);
+        return world.rayTraceBlocks(vec3, vec31, par3);
 	}
 
 }

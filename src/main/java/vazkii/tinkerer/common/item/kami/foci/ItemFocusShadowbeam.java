@@ -1,5 +1,6 @@
 package vazkii.tinkerer.common.item.kami.foci;
 
+import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.client.codechicken.core.vec.Vector3;
@@ -21,7 +22,6 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
-import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class ItemFocusShadowbeam extends ItemModFocus {
 

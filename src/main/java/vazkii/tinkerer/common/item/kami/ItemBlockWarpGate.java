@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -21,7 +22,7 @@ import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 
 public class ItemBlockWarpGate extends ItemBlock {
 
-	public ItemBlockWarpGate(int par1) {
+	public ItemBlockWarpGate(Block par1) {
 		super(par1);
 	}
 

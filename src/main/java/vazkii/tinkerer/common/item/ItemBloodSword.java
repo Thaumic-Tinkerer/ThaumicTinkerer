@@ -14,7 +14,13 @@
  */
 package vazkii.tinkerer.common.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -25,32 +31,20 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.research.ScanResult;
-import thaumcraft.common.lib.research.ScanManager;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.lib.LibObfuscation;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBloodSword extends ItemSword implements IRepairable {
 
@@ -70,7 +64,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 
@@ -91,7 +85,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 		event.drops.add(entityitem);
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onDrops(LivingDropsEvent event){
 		if (event.source.damageType.equals("player")) {
 
@@ -113,7 +107,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onDamageTaken(LivingAttackEvent event) {
 		if(event.entity.worldObj.isRemote)
 			return;
@@ -125,7 +119,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 		if(event.entityLiving instanceof EntityPlayer && handle) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
-			if(itemInUse != null && itemInUse.itemID == itemID) {
+			if(itemInUse != null && itemInUse.getItem()==this) {
 				
 				event.setCanceled(true);
 				handleNext = 3;
@@ -137,8 +131,8 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 			Entity source = event.source.getSourceOfDamage();
 			if(source != null && source instanceof EntityLivingBase) {
 				EntityLivingBase attacker = (EntityLivingBase) source;
-				ItemStack itemInUse = attacker.getCurrentItemOrArmor(0);
-				if(itemInUse != null && itemInUse.itemID == itemID)
+				ItemStack itemInUse = attacker.getHeldItem();
+				if(itemInUse != null && itemInUse.getItem()==this)
 					attacker.attackEntityFrom(DamageSource.magic, 2);
 			}
 		}
@@ -154,10 +148,10 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
                 stack.stackTagCompound = new NBTTagCompound();
             }
             if(stack.stackTagCompound.getInteger("Activated")==0){
-                par3EntityPlayer.addChatMessage("\u00a74"+ StatCollector.translateToLocal("ttmisc.bloodSword.activateEssentiaHarvest"));
+                par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.bloodSword.activateEssentiaHarvest"));
                 stack.stackTagCompound.setInteger("Activated",1);
             }else{
-                par3EntityPlayer.addChatMessage("\u00a74"+ StatCollector.translateToLocal("ttmisc.bloodSword.deactivateEssentiaHarvest"));
+                par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.bloodSword.deactivateEssentiaHarvest"));
                 stack.stackTagCompound.setInteger("Activated",0);
             }
         }

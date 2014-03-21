@@ -14,22 +14,22 @@
  */
 package vazkii.tinkerer.common.item.kami.armor;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.model.kami.ModelWings;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemGemChest extends ItemIchorclothArmorAdv {
 
@@ -59,7 +59,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
         ItemFocusDeflect.protectFromProjectiles(player);
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void updatePlayerFlyStatus(LivingUpdateEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
@@ -87,12 +87,12 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 	}
 
 	public static String playerStr(EntityPlayer player) {
-		return player.username + ":" + player.worldObj.isRemote;
+		return player.getGameProfile().getName() + ":" + player.worldObj.isRemote;
 	}
 
 	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(2);
-		return armor != null && armor.itemID == ModItems.ichorChestGem.itemID && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0 && ConfigHandler.enableFlight;
+		return armor != null && armor.getItem() == ModItems.ichorChestGem&& ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0 && ConfigHandler.enableFlight;
 	}
 
 }
