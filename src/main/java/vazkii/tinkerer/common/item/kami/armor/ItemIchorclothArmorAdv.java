@@ -14,14 +14,13 @@
  */
 package vazkii.tinkerer.common.item.kami.armor;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.lib.LibResources;
@@ -58,7 +57,7 @@ public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
             list.add(StatCollector.translateToLocal("ttmisc.awakenedArmor1"));
     }
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		return slot == 2 ? LibResources.MODEL_ARMOR_ICHOR_GEM_2 : LibResources.MODEL_ARMOR_ICHOR_GEM_1;
 	}
 
@@ -66,7 +65,7 @@ public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 		return false;
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;

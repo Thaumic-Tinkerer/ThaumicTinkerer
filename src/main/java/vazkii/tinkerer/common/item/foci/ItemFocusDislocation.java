@@ -14,17 +14,17 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.ArrayList;
-
-import appeng.api.Blocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -36,8 +36,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
 
 public class ItemFocusDislocation extends ItemModFocus {
 
@@ -46,7 +46,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	private static final String TAG_BLOCK_ID = "blockID";
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static ArrayList<Integer> BlackList=new ArrayList<Integer>();
-	private Icon ornament;
+	private IIcon ornament;
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500).add(Aspect.EARTH, 100);
 	private static final AspectList visUsageTile = new AspectList().add(Aspect.ENTROPY, 2500).add(Aspect.ORDER, 2500).add(Aspect.EARTH, 500);
@@ -54,7 +54,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
 	}
@@ -64,7 +64,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 		if(mop == null)
 			return itemstack;
 
-		int id = world.getBlockId(mop.blockX, mop.blockY, mop.blockZ);
+		Block block= world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 		int meta = world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ);
 		TileEntity tile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();

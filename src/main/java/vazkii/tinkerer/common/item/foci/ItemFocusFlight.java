@@ -47,7 +47,7 @@ public class ItemFocusFlight extends ItemModFocus {
 			p.motionZ = vec.zCoord * force;
 			p.fallDistance = 0F;
             if(p instanceof EntityPlayerMP){
-                ((EntityPlayerMP)p).playerNetServerHandler.ticksForFloatKick = 0;
+                ((EntityPlayerMP)p).playerNetServerHandler.floatingTickCount = 0;
             }
 			for(int i = 0; i < 5; i++)
 				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) Math.random() * 360, (int) p.posY);
