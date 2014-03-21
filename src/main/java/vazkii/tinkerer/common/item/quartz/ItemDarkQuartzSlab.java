@@ -14,14 +14,15 @@
  */
 package vazkii.tinkerer.common.item.quartz;
 
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.item.ItemSlab;
 import vazkii.tinkerer.common.block.ModBlocks;
 
 public class ItemDarkQuartzSlab extends ItemSlab {
 
-	public ItemDarkQuartzSlab(int par1) {
-		super(par1, (BlockHalfSlab) ModBlocks.darkQuartzSlab, (BlockHalfSlab) ModBlocks.darkQuartzSlabFull, par1 == ModBlocks.darkQuartzSlabFull.blockID);
+	public ItemDarkQuartzSlab(Block par1) {
+        super(par1, (BlockSlab) ModBlocks.darkQuartzSlab, (BlockSlab) ModBlocks.darkQuartzSlabFull, false);
 	}
 
 }

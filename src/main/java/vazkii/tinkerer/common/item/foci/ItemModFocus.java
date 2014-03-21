@@ -14,13 +14,13 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.List;
-
-import net.minecraft.client.renderer.texture.IconRegister;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -30,12 +30,12 @@ import thaumcraft.api.wands.IWandFocus;
 import thaumcraft.common.config.Config;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.item.ItemMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
-	private Icon ornament, depth;
+	private IIcon ornament, depth;
 
 	public ItemModFocus() {
 		super();
@@ -54,7 +54,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		if(hasOrnament())
 			ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
@@ -94,12 +94,12 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	}
 
 	@Override
-	public Icon getOrnament() {
+	public IIcon getOrnament() {
 		return ornament;
 	}
 
 	@Override
-	public Icon getFocusDepthLayerIcon() {
+	public IIcon getFocusDepthLayerIcon() {
 		return depth;
 	}
 

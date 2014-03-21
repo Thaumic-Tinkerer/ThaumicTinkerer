@@ -14,14 +14,12 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAITaskEntry;
+import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.passive.EntityOcelot;
@@ -33,7 +31,9 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.item.ItemMod;
 import vazkii.tinkerer.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemCatAmulet extends ItemMod {
 
@@ -49,11 +49,11 @@ public class ItemCatAmulet extends ItemMod {
 		List<EntityLiving> entities = par2World.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(e.posX - range, e.posY - rangeY, e.posZ - range, e.posX + range, e.posY + rangeY, e.posZ + range));
 
 		for(EntityLiving entity : entities) {
-            List<EntityAITaskEntry> entries = new ArrayList(entity.tasks.taskEntries);
+            List<EntityAITasks.EntityAITaskEntry> entries = new ArrayList(entity.tasks.taskEntries);
             entries.addAll(new ArrayList(entity.targetTasks.taskEntries));
 
             boolean avoidsOcelots = false;
-            for(EntityAITaskEntry entry : entries) {
+            for(EntityAITasks.EntityAITaskEntry entry : entries) {
             	if(entry.action instanceof EntityAIAvoidEntity)
             		avoidsOcelots = messWithRunAwayAI((EntityAIAvoidEntity) entry.action) || avoidsOcelots;
 

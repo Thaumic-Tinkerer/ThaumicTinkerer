@@ -14,14 +14,14 @@
  */
 package vazkii.tinkerer.common.item;
 
-import java.awt.Color;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.awt.*;
 
 public class ItemSpellCloth extends ItemMod {
 
@@ -46,9 +46,8 @@ public class ItemSpellCloth extends ItemMod {
 	}
 
 	@Override
-	public ItemStack getContainerItemStack(ItemStack itemStack) {
+	public ItemStack getContainerItem(ItemStack itemStack) {
 		itemStack.setItemDamage(itemStack.getItemDamage() + 1);
-
 		return itemStack;
 	}
 

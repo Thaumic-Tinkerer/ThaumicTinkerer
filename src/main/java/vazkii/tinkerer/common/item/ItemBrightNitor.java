@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.item;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -38,7 +39,7 @@ public class ItemBrightNitor extends ItemMod {
 	}
 
 	public static void setBlock(int x, int y, int z, World world) {
-		if((world.getBlockId(x, y, z) == 0 || world.getBlockId(x, y, z) == ModBlocks.nitorGas.blockID) && !world.isRemote)
-			world.setBlock(x, y, z, ModBlocks.nitorGas.blockID, meta, 2);
+		if((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ModBlocks.nitorGas) && !world.isRemote)
+			world.setBlock(x, y, z, ModBlocks.nitorGas, meta, 2);
 	}
 }

@@ -14,32 +14,32 @@
  */
 package vazkii.tinkerer.common.item;
 
-import java.util.Collection;
-import java.util.List;
-
-import net.minecraft.client.renderer.texture.IconRegister;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import vazkii.tinkerer.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Collection;
+import java.util.List;
 
 public class ItemCleansingTalisman extends ItemMod {
 
 	private static final String TAG_ENABLED = "enabled";
 
-	private Icon enabledIcon;
+	private IIcon enabledIcon;
 
 	public ItemCleansingTalisman() {
 		setMaxStackSize(1);
@@ -97,7 +97,7 @@ public class ItemCleansingTalisman extends ItemMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
 	}
@@ -111,7 +111,7 @@ public class ItemCleansingTalisman extends ItemMod {
 	}
 
 	@Override
-	public Icon getIcon(ItemStack stack, int pass) {
+	public IIcon getIcon(ItemStack stack, int pass) {
 		return isEnabled(stack) ? enabledIcon : itemIcon;
 	}
 

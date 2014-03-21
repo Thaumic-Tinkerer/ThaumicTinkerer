@@ -14,20 +14,19 @@
  */
 package vazkii.tinkerer.common.item.kami.armor;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.block.Block;
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.event.EventPriority;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import thaumcraft.common.lib.Utils;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
@@ -59,34 +58,34 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 		int x = (int) player.posX;
         int y = (int) player.posY - 1;
         int z = (int) player.posZ;
-        if(player.worldObj.getBlockId(x, y, z) == Block.dirt.blockID)
-                player.worldObj.setBlock(x, y, z, Block.grass.blockID, 0, 2);
+        if(player.worldObj.getBlock(x, y, z) == Blocks.dirt)
+                player.worldObj.setBlock(x, y, z, Blocks.grass, 0, 2);
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPlayerJump(LivingJumpEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).itemID == itemID;
+			boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).getItem()== this;
 
 			if(hasArmor && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0)
 				 player.motionY += 0.3;
 		}
 	}
 
-	@ForgeSubscribe(priority = EventPriority.HIGH)
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onLivingUpdate(LivingUpdateEvent event) {
 		if(event.entityLiving instanceof EntityPlayer && event.entityLiving.worldObj.isRemote) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 
-			boolean highStepListed = playersWith1Step.contains(player.username);
-			boolean hasHighStep = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).itemID == itemID;
+			boolean highStepListed = playersWith1Step.contains(player.getGameProfile().getName());
+			boolean hasHighStep = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).getItem() == this;
 
 			if( !highStepListed && (hasHighStep && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0))
-				playersWith1Step.add(player.username);
+				playersWith1Step.add(player.getGameProfile().getName());
 
 			if((!hasHighStep || !ThaumicTinkerer.proxy.armorStatus(player) || player.getCurrentArmor(0).getItemDamage()==1)&& highStepListed) {
-				playersWith1Step.remove(player.username);
+				playersWith1Step.remove(player.getGameProfile().getName());
 				player.stepHeight = 0.5F;
 			}
 		}
