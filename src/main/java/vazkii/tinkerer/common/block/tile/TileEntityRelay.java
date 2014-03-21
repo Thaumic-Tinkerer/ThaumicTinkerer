@@ -14,7 +14,7 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 
 
 	public void verifyPartner(){
-		TileEntity te = worldObj.getBlockTileEntity(partnerX, yCoord, partnerZ);
+		TileEntity te = worldObj.getTileEntity(partnerX, yCoord, partnerZ);
 		if(!(hasPartner && te instanceof TileEntityRelay && ((TileEntityRelay) te).partnerX == this.xCoord && ((TileEntityRelay) te).partnerZ == this.zCoord)){
 			hasPartner=false;
 		}
@@ -81,8 +81,8 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 
 				int j=zCoord;
 				do{
-					if(worldObj.getBlockTileEntity(i, yCoord, j) instanceof TileEntityMobilizer){
-						TileEntityMobilizer te = (TileEntityMobilizer) worldObj.getBlockTileEntity(i, yCoord, j);
+					if(worldObj.getTileEntity(i, yCoord, j) instanceof TileEntityMobilizer){
+						TileEntityMobilizer te = (TileEntityMobilizer) worldObj.getTileEntity(i, yCoord, j);
 						te.verifyRelay();
 						if(!te.linked){
 							te.firstRelayX = xCoord;
@@ -112,10 +112,10 @@ public class TileEntityRelay extends TileEntity implements IMovableTile {
 		if(!hasPartner){
 			for(int i=-32;i<32;i++){
 				if(i!=0){
-					TileEntity te = worldObj.getBlockTileEntity(xCoord, yCoord, zCoord+i);
+					TileEntity te = worldObj.getTileEntity(xCoord, yCoord, zCoord+i);
 					setPartners(te);
 
-					te = worldObj.getBlockTileEntity(xCoord+i, yCoord, zCoord);
+					te = worldObj.getTileEntity(xCoord+i, yCoord, zCoord);
 					setPartners(te);
 				}
 			}

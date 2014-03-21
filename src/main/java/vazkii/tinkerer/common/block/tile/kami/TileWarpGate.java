@@ -76,7 +76,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		int y = coords.posY;
 		int z = coords.posZ;
 
-		TileEntity tile = player.worldObj.getBlockTileEntity(x, y, z);
+		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
 		if(tile != null && tile instanceof TileWarpGate) {
 			TileWarpGate destGate = (TileWarpGate) tile;
 			if(!destGate.locked) {
@@ -203,7 +203,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
 	@Override

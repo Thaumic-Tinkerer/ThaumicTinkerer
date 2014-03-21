@@ -41,7 +41,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
 	@Override
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side) {
-        TileEntity tile = world.getBlockTileEntity(x, y, z);
+        TileEntity tile = world.getTileEntity(x, y, z);
         int meta = world.getBlockMetadata(x, y, z);
 
         if (tile instanceof TileCamo) {
@@ -62,7 +62,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-        TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
         if (tile instanceof TileCamo) {
         	TileCamo camo = (TileCamo) tile;
@@ -131,7 +131,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public int colorMultiplier(IBlockAccess par1World, int par2, int par3, int par4) {
-		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if (tile instanceof TileCamo) {
 	    		TileCamo camo = (TileCamo) tile;
 	    		if (camo.camo >= 0 && camo.camo < 4096) {

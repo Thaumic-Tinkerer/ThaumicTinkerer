@@ -93,7 +93,7 @@ public class BlockFunnel extends BlockModContainer {
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		TileFunnel funnel = (TileFunnel) par1World.getBlockTileEntity(par2, par3, par4);
+		TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
 
 		if (funnel != null) {
 			for (int j1 = 0; j1 < funnel.getSizeInventory(); ++j1) {
@@ -131,7 +131,7 @@ public class BlockFunnel extends BlockModContainer {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		TileFunnel funnel = (TileFunnel) par1World.getBlockTileEntity(par2, par3, par4);
+		TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
 		ItemStack stack = funnel.getStackInSlot(0);
 
 		if(stack == null) {

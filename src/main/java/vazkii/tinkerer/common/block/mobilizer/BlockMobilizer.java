@@ -19,7 +19,7 @@ public class BlockMobilizer extends BlockMod {
 	@Override
 	public void onBlockPreDestroy(World par1World, int par2, int par3,
 			int par4, int par5) {
-		TileEntity tile=par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tile=par1World.getTileEntity(par2, par3, par4);
 		if(tile!=null&& tile instanceof TileEntityMobilizer)
 		{
 		

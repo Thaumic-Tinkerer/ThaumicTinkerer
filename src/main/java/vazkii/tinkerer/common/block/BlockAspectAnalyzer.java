@@ -47,7 +47,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
-			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 			if(tile != null)
 				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ASPECT_ANALYZER, par1World, par2, par3, par4);
 		}
@@ -57,7 +57,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 	@Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-        TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getBlockTileEntity(par2, par3, par4);
+        TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
 
         if (analyzer != null) {
             for (int j1 = 0; j1 < analyzer.getSizeInventory(); ++j1) {

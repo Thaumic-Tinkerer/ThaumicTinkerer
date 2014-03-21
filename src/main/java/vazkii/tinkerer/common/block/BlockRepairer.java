@@ -48,7 +48,7 @@ public class BlockRepairer extends BlockModContainer {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		TileRepairer repairer = (TileRepairer) par1World.getBlockTileEntity(par2, par3, par4);
+		TileRepairer repairer = (TileRepairer) par1World.getTileEntity(par2, par3, par4);
 		ItemStack stack = repairer.getStackInSlot(0);
 
 		if(stack == null) {
@@ -96,7 +96,7 @@ public class BlockRepairer extends BlockModContainer {
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		TileRepairer repairer = (TileRepairer) par1World.getBlockTileEntity(par2, par3, par4);
+		TileRepairer repairer = (TileRepairer) par1World.getTileEntity(par2, par3, par4);
 
 		if (repairer != null) {
 			for (int j1 = 0; j1 < repairer.getSizeInventory(); ++j1) {

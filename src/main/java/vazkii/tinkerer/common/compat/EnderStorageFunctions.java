@@ -26,7 +26,7 @@ public class EnderStorageFunctions {
 			focus.setTagCompound(new NBTTagCompound());
 		if(pos!=null)
 		{
-			TileEntity tile = world.getBlockTileEntity(pos.blockX, pos.blockY, pos.blockZ);
+			TileEntity tile = world.getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
 
 			
 			if(tile instanceof TileEnderChest && p.isSneaking())
