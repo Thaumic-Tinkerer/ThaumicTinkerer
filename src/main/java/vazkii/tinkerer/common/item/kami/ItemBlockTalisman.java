@@ -73,7 +73,7 @@ public class ItemBlockTalisman extends ItemMod {
 			int bid = getBlockID(par1ItemStack);
 			int bmeta = getBlockMeta(par1ItemStack);
 
-			TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
+			TileEntity tile = par3World.getTileEntity(par4, par5, par6);
 			if(tile != null && tile instanceof IInventory) {
 				IInventory inv = (IInventory) tile;
 				int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getAccessibleSlotsFromSide(par7) : TileTransvectorInterface.buildSlotsForLinearInventory(inv);

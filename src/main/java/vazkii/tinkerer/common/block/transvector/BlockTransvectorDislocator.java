@@ -44,7 +44,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-        TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
     	TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
     	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
@@ -84,7 +84,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(tile != null && tile instanceof TileTransvectorDislocator) {
 			TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
 			dislocator.receiveRedstonePulse();
@@ -109,7 +109,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 
 	@Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
-		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		int orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
 		((TileTransvectorDislocator) tile).orientation = orientation;
 		PacketDispatcher.sendPacketToAllInDimension(tile.getDescriptionPacket(), par1World.provider.dimensionId);

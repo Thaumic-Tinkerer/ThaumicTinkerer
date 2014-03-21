@@ -57,7 +57,7 @@ public class    TileEntityMobilizer extends TileEntity {
 
 
 	public void verifyRelay(){
-		TileEntity te = worldObj.getBlockTileEntity(firstRelayX, yCoord, firstRelayZ);
+		TileEntity te = worldObj.getTileEntity(firstRelayX, yCoord, firstRelayZ);
 		if(te instanceof TileEntityRelay){
 			((TileEntityRelay) te).verifyPartner();
 		}
@@ -107,7 +107,7 @@ public class    TileEntityMobilizer extends TileEntity {
 				//Move the block on top of the mobilizer
 				if(!worldObj.isRemote){
 
-					TileEntity passenger = worldObj.getBlockTileEntity(xCoord, yCoord+1, zCoord);
+					TileEntity passenger = worldObj.getTileEntity(xCoord, yCoord+1, zCoord);
 					IAppEngApi api = Util.getAppEngApi();
 
 					//Prevent the passenger from popping off. Not sent to clients.

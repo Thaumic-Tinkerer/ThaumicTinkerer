@@ -16,23 +16,19 @@ package vazkii.tinkerer.common.block;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.SoundList;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.Icon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
@@ -85,15 +81,15 @@ public class BlockAnimationTablet extends BlockModContainer {
 			b0 = 4;
 
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
-        TileAnimationTablet tablet = (TileAnimationTablet) par1World.getBlockTileEntity(par2, par3, par4);
+        TileAnimationTablet tablet = (TileAnimationTablet) par1World.getTileEntity(par2, par3, par4);
         //if(par5EntityLiving instanceof  EntityPlayer) {
         //    tablet.Owner = ((EntityPlayer) par5EntityLiving).username;
         //}
 	}
 
 	@Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-        TileAnimationTablet tablet = (TileAnimationTablet) par1World.getBlockTileEntity(par2, par3, par4);
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+        TileAnimationTablet tablet = (TileAnimationTablet) par1World.getTileEntity(par2, par3, par4);
 
         if (tablet != null) {
         	if(tablet.getIsBreaking()) {
@@ -116,7 +112,7 @@ public class BlockAnimationTablet extends BlockModContainer {
                             k1 = itemstack.stackSize;
 
                         itemstack.stackSize -= k1;
-                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
                         float f3 = 0.05F;
                         entityitem.motionX = (float)random.nextGaussian() * f3;
                         entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -128,14 +124,16 @@ public class BlockAnimationTablet extends BlockModContainer {
                 }
             }
 
-            par1World.func_96440_m(par2, par3, par4, par5);
+
+            //Look here if something breaks in 1.7
+            par1World.func_147453_f(par2, par3, par4, par5);
         }
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
 
 	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
 		if(par1World.isRemote)
 			return;
 
@@ -144,7 +142,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 		boolean on = (meta & 8) != 0;
 
 		if (power && !on) {
-			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
+			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta | 8, 4);
 		} else if (!power && on)
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta & 7, 4);
@@ -157,13 +155,13 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(tile != null && tile instanceof TileAnimationTablet) {
 			TileAnimationTablet tablet = (TileAnimationTablet) tile;
 			if(tablet.redstone && tablet.swingProgress == 0) {
 				tablet.findEntities(tablet.getTargetLoc());
 				tablet.initiateSwing();
-				par1World.addBlockEvent(par2, par3, par4, ModBlocks.animationTablet.blockID, 0, 0);
+				par1World.addBlockEvent(par2, par3, par4, ModBlocks.animationTablet, 0, 0);
 			}
 		}
 	}
@@ -171,7 +169,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(!par1World.isRemote) {
-			TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 			if(tile != null) {
 				TileAnimationTablet tablet = (TileAnimationTablet) tile;
 				if(par5EntityPlayer.getCurrentEquippedItem() != null && par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
@@ -180,7 +178,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 					if(!activated && !tablet.getIsBreaking() && tablet.swingProgress == 0) {
 						par1World.setBlockMetadataWithNotify(par2, par3, par4, meta == 5 ? 2 : meta + 1, 1 | 2);
 						par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
-					} else par5EntityPlayer.addChatMessage(StatCollector.translateToLocal("ttmisc.animationTablet.notRotatable"));
+					} else par5EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.animationTablet.notRotatable"));
 						// Rare chance this might happen, but better to cope for it.
 
 					return true;

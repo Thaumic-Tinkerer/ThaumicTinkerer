@@ -47,7 +47,7 @@ public class ItemConnector extends ItemMod {
 		if (par3World.isRemote)
 			return false;
 
-		TileEntity tile = par3World.getBlockTileEntity(par4, par5, par6);
+		TileEntity tile = par3World.getTileEntity(par4, par5, par6);
 
 		if (getY(par1ItemStack) == -1) {
 			if (tile != null && (tile instanceof TileTransvector || tile instanceof TileGolemConnector)) {
@@ -70,7 +70,7 @@ public class ItemConnector extends ItemMod {
 			int y = getY(par1ItemStack);
 			int z = getZ(par1ItemStack);
 
-			TileEntity tile1 = par3World.getBlockTileEntity(x, y, z);
+			TileEntity tile1 = par3World.getTileEntity(x, y, z);
 			if (tile1 == null || !(tile1 instanceof TileTransvector)) {
 				setY(par1ItemStack, -1);
 
@@ -125,7 +125,7 @@ public class ItemConnector extends ItemMod {
 				int x = getX(par1ItemStack);
 				int y = getY(par1ItemStack);
 				int z = getZ(par1ItemStack);
-				TileEntity tile1 = par2EntityPlayer.worldObj.getBlockTileEntity(x, y, z);
+				TileEntity tile1 = par2EntityPlayer.worldObj.getTileEntity(x, y, z);
 				if (tile1 == null || !(tile1 instanceof TileGolemConnector)) {
 					setY(par1ItemStack, -1);
 					if(par3EntityLivingBase.worldObj.isRemote)

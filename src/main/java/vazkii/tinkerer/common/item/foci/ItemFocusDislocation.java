@@ -66,7 +66,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 		int id = world.getBlockId(mop.blockX, mop.blockY, mop.blockZ);
 		int meta = world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ);
-		TileEntity tile = world.getBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
+		TileEntity tile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
 
 		if(player.canPlayerEdit(mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, itemstack)) {

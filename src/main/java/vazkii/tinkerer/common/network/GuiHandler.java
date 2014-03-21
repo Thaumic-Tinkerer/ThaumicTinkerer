@@ -42,7 +42,7 @@ public class GuiHandler  implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		TileEntity tile = world.getTileEntity(x, y, z);
 		switch(ID) {
 			case LibGuiIDs.GUI_ID_TABLET :
 				return new ContainerAnimationTablet((TileAnimationTablet) tile, player.inventory);
@@ -67,7 +67,7 @@ public class GuiHandler  implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		TileEntity tile = world.getTileEntity(x, y, z);
 		switch(ID) {
 			case LibGuiIDs.GUI_ID_TABLET :
 				return new GuiAnimationTablet((TileAnimationTablet) tile, player.inventory);

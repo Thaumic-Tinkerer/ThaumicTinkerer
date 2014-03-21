@@ -60,7 +60,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 		}
 
 		public BlockData(ChunkCoordinates coords) {
-			this(worldObj.getBlockId(coords.posX, coords.posY, coords.posZ), worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ), worldObj.getBlockTileEntity(coords.posX, coords.posY, coords.posZ), coords);
+			this(worldObj.getBlockId(coords.posX, coords.posY, coords.posZ), worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ), worldObj.getTileEntity(coords.posX, coords.posY, coords.posZ), coords);
 		}
 
 		public void clearTileEntityAt() {

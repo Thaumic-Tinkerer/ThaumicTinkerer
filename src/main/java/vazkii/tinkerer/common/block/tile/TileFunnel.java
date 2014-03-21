@@ -53,7 +53,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 				if(aspectList != null && aspectList.size() == 1) {
 					Aspect aspect = aspectList.getAspects()[0];
 
-					TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
+					TileEntity tile = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
 					if(tile != null && tile instanceof TileEntityHopper) {
 						TileEntity tile1 = getHopperFacing(tile.xCoord, tile.yCoord, tile.zCoord, tile.getBlockMetadata());
 						if(tile1 instanceof TileJarFillable) {
@@ -78,7 +78,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 
 	private TileEntity getHopperFacing(int x, int y, int z, int meta) {
 		int i = BlockHopper.getDirectionFromMetadata(meta);
-		return worldObj.getBlockTileEntity(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i]);
+		return worldObj.getTileEntity(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i]);
 	}
 
 	@Override
@@ -191,7 +191,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
 	@Override
