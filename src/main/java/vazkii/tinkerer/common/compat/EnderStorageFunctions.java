@@ -1,24 +1,16 @@
 package vazkii.tinkerer.common.compat;
 
-import java.util.List;
-
-import codechicken.enderstorage.api.EnderStorageManager;
-import codechicken.enderstorage.storage.item.EnderItemStorage;
-import codechicken.enderstorage.storage.item.TileEnderChest;
-
-import thaumcraft.common.items.wands.ItemWandCasting;
-import vazkii.tinkerer.common.item.foci.ItemFocusEnderChest;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import java.util.List;
+
 public class EnderStorageFunctions {
 	public static ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
-		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		return stack;
+        /*ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
 		if(world.isRemote)
 			return stack;
@@ -66,7 +58,7 @@ public class EnderStorageFunctions {
 			}
 		}
 
-		return stack;
+		return stack;*/
 	}
 
 	private static String getOwner(ItemStack stack) {

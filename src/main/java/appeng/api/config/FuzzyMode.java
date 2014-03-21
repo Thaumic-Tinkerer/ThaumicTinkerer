@@ -1,27 +1,21 @@
 package appeng.api.config;
 
+public enum FuzzyMode
+{
+	// Note that percentage damaged, is the inverse of percentage durability.
+	IGNORE_ALL(-1), PERCENT_99(0), PERCENT_75(25), PERCENT_50(50), PERCENT_25(75);
 
-public enum FuzzyMode implements IConfigEnum<FuzzyMode> {
-	IgnoreAll(-1.0F),
-	Percent_99(1.0F),
-	Percent_75(0.75F),
-	Percent_50(0.5F),
-	Percent_25(0.25F);
-	
-	public float breakPoint;
-	
-	private FuzzyMode( float p )
+	final public float breakPoint;
+	final public int percentage;
+
+	private FuzzyMode(int p) {
+		percentage = p;
+		breakPoint = calculateBreakPoint( 1 );
+	}
+
+	public int calculateBreakPoint(int maxDamage)
 	{
-		breakPoint = p;
+		return (percentage * maxDamage) / 100;
 	}
 
-	@Override
-	public IConfigEnum[] getValues() {
-		return values();
-	}
-
-	@Override
-	public String getName() {
-		return "FuzzyMode";
-	}
 }

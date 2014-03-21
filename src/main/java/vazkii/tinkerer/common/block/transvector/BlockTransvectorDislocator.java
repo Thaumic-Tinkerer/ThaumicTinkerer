@@ -14,27 +14,27 @@
  */
 package vazkii.tinkerer.common.block.transvector;
 
-import java.util.Random;
-
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockCamo;
-import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
+import vazkii.tinkerer.common.block.tile.TileCamo;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
-import cpw.mods.fml.common.network.PacketDispatcher;
+
+import java.util.Random;
 
 public class BlockTransvectorDislocator extends BlockCamo {
 
-	Icon[] icons = new Icon[2];
+	IIcon[] icons = new IIcon[2];
 
 	public BlockTransvectorDislocator() {
 		super(Material.iron);
@@ -49,11 +49,11 @@ public class BlockTransvectorDislocator extends BlockCamo {
     	TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
     	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
-    	if(currentStack != null && currentStack.itemID == ConfigItems.itemWandCasting.itemID) {
+    	if(currentStack != null && currentStack.getItem()== ConfigItems.itemWandCasting) {
     		dislocator.orientation = par6;
 			par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
 
-    		PacketDispatcher.sendPacketToAllInDimension(tile.getDescriptionPacket(), par1World.provider.dimensionId);
+    		par1World.markBlockForUpdate(par2,par3,par4);
 
     		return true;
     	}
@@ -62,7 +62,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
 		if(par1World.isRemote)
 			return;
 
@@ -71,7 +71,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 		boolean on = meta != 0;
 
 		if (power && !on) {
-			par1World.scheduleBlockUpdate(par2, par3, par4, blockID, tickRate(par1World));
+			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 4);
 		} else if (!power && on)
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
@@ -92,18 +92,18 @@ public class BlockTransvectorDislocator extends BlockCamo {
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		icons[0] = IconHelper.forBlock(par1IconRegister, this, 0);
 		icons[1] = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
+	public IIcon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
 		return icons[((TileTransvectorDislocator) tile).orientation == side ? 1 : 0];
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return icons[0];
 	}
 
@@ -112,12 +112,12 @@ public class BlockTransvectorDislocator extends BlockCamo {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		int orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
 		((TileTransvectorDislocator) tile).orientation = orientation;
-		PacketDispatcher.sendPacketToAllInDimension(tile.getDescriptionPacket(), par1World.provider.dimensionId);
+		par1World.markBlockForUpdate(par2,par3,par4);
     }
 
-	@Override
-	public TileTransvector createNewTileEntity(World world) {
-		return new TileTransvectorDislocator();
-	}
 
+    @Override
+    public TileCamo createNewTileEntity(World world, int var2) {
+        return new TileTransvectorDislocator();
+    }
 }

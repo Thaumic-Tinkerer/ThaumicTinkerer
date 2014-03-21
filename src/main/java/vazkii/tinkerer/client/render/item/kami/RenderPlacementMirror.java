@@ -5,11 +5,9 @@ import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.common.item.ModItems;
 
 public class RenderPlacementMirror implements IItemRenderer {
@@ -43,7 +41,7 @@ public class RenderPlacementMirror implements IItemRenderer {
 			}
 			case EQUIPPED : {
 				for(int i = 1; i >= 0; i--) {
-					Icon icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, i);
+					IIcon icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, i);
 					if(i == 0) {
 						GL11.glEnable(GL11.GL_BLEND);
 						GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

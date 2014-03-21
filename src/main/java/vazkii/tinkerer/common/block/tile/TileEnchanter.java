@@ -15,7 +15,7 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import cpw.mods.fml.common.network.PacketDispatcher;
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -23,13 +23,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.Thaumcraft;
@@ -134,7 +132,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 				enchantments.clear();
 				levels.clear();
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "thaumcraft:wand", 1F, 1F);
-				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 				return;
 			}
 
@@ -175,13 +173,13 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 		}
 	}
 
-	@Override
-	public void onInventoryChanged() {
-		super.onInventoryChanged();
+    @Override
+	public void markDirty() {
+		super.markDirty();
 		if(!worldObj.isRemote && !working) {
 			enchantments.clear();
 			levels.clear();
-			PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+			worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 		}
 	}
 
@@ -230,13 +228,13 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 			if(y + i >= 256)
 				return -1;
 
-			int id = worldObj.getBlockId(x, y + i, z);
+			Block block = worldObj.getBlock(x, y + i, z);
 			int meta = worldObj.getBlockMetadata(x, y + i, z);
-			if(id == ConfigBlocks.blockCosmeticSolid.blockID && meta == 0) {
+			if(block == ConfigBlocks.blockCosmeticSolid && meta == 0) {
 				++obsidianFound;
 				continue;
 			}
-			if(id == ConfigBlocks.blockAiry.blockID && meta == 1) {
+			if(block == ConfigBlocks.blockAiry && meta == 1) {
 				if(obsidianFound >= 2 && obsidianFound < 13)
 					return y + i;
 				return -1;
@@ -277,20 +275,20 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 		currentAspects.readFromNBT(par1NBTTagCompound.getCompoundTag(TAG_CURRENT_ASPECTS));
 		totalAspects.readFromNBT(par1NBTTagCompound.getCompoundTag(TAG_TOTAL_ASPECTS));
 
-		NBTTagList enchants = par1NBTTagCompound.getTagList(TAG_ENCHANTS);
+		NBTTagList enchants = par1NBTTagCompound.getTagList(TAG_ENCHANTS, Constants.NBT.TAG_INT);
 		enchantments.clear();
 		for(int i = 0; i < enchants.tagCount(); i++)
-			enchantments.add(((NBTTagInt) enchants.tagAt(i)).data);
+			enchantments.add(Integer.parseInt(enchants.getStringTagAt(i)));
 
-		NBTTagList levels = par1NBTTagCompound.getTagList(TAG_LEVELS);
+		NBTTagList levels = par1NBTTagCompound.getTagList(TAG_LEVELS, Constants.NBT.TAG_INT);
 		this.levels.clear();
 		for(int i = 0; i < levels.tagCount(); i++)
-			this.levels.add(((NBTTagInt) levels.tagAt(i)).data);
+			this.levels.add(Integer.parseInt(levels.getStringTagAt(i)));
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items",Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
@@ -300,10 +298,10 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
     	NBTTagList enchants = new NBTTagList();
     	for(int enchant : enchantments)
-    		enchants.appendTag(new NBTTagInt("", enchant));
+    		enchants.appendTag(new NBTTagInt(enchant));
     	NBTTagList levels = new NBTTagList();
     	for(int level : this.levels)
-    		levels.appendTag(new NBTTagInt("", level));
+    		levels.appendTag(new NBTTagInt(level));
 
     	NBTTagCompound totalAspectsCmp = new NBTTagCompound();
     	totalAspects.writeToNBT(totalAspectsCmp);
@@ -312,8 +310,8 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     	currentAspects.writeToNBT(currentAspectsCmp);
 
     	par1NBTTagCompound.setBoolean(TAG_WORKING, working);
-    	par1NBTTagCompound.setCompoundTag(TAG_TOTAL_ASPECTS, totalAspectsCmp);
-    	par1NBTTagCompound.setCompoundTag(TAG_CURRENT_ASPECTS, currentAspectsCmp);
+    	par1NBTTagCompound.setTag(TAG_TOTAL_ASPECTS, totalAspectsCmp);
+    	par1NBTTagCompound.setTag(TAG_CURRENT_ASPECTS, currentAspectsCmp);
     	par1NBTTagCompound.setTag(TAG_ENCHANTS, enchants);
     	par1NBTTagCompound.setTag(TAG_LEVELS, levels);
 
@@ -371,15 +369,17 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.ENCHANTER;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.ENCHANTER;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
+
+
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -391,15 +391,17 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
+
+
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {

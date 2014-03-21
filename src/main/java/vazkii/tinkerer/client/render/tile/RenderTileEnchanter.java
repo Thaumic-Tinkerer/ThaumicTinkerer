@@ -14,22 +14,20 @@
  */
 package vazkii.tinkerer.client.render.tile;
 
-import java.awt.Color;
-
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-
 import org.lwjgl.opengl.GL11;
-
 import thaumcraft.client.renderers.item.ItemWandRenderer;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
+
+import java.awt.*;
 
 public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
@@ -55,7 +53,7 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
 			int renderPass = 0;
 			do {
-            	Icon icon = item.getItem().getIcon(item, renderPass);
+            	IIcon icon = item.getItem().getIcon(item, renderPass);
             	if(icon != null) {
             		 Color color = new Color(item.getItem().getColorFromItemStack(item, renderPass));
             		 GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());

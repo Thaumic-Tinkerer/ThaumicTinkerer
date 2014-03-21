@@ -14,26 +14,25 @@
  */
 package vazkii.tinkerer.client.render.block.kami;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-
 import org.lwjgl.opengl.GL11;
-
 import thaumcraft.client.renderers.block.BlockRenderer;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderWarpGate extends BlockRenderer implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		Icon topIcon = BlockWarpGate.icons[0];
-		Icon sideIcon = BlockWarpGate.icons[1];
+		IIcon topIcon = BlockWarpGate.icons[0];
+		IIcon sideIcon = BlockWarpGate.icons[1];
+
 		drawFaces(renderer, block, sideIcon, topIcon, sideIcon, sideIcon, sideIcon, sideIcon, false);
 		GL11.glColor3f(1F, 1F, 1F);
 
@@ -65,10 +64,10 @@ public class RenderWarpGate extends BlockRenderer implements ISimpleBlockRenderi
 		return true;
 	}
 
-	@Override
-	public boolean shouldRender3DInInventory() {
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelId) {
+        return true;
+    }
 
 	@Override
 	public int getRenderId() {

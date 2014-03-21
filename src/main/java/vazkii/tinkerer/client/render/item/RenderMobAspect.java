@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import vazkii.tinkerer.common.item.ItemMobAspect;
@@ -46,7 +46,7 @@ public class RenderMobAspect implements IItemRenderer {
 			}
 			case INVENTORY: {
 
-				Icon icon = ItemMobAspect.aspectIcons[item.getItemDamage()%ItemMobAspect.aspectCount];
+				IIcon icon = ItemMobAspect.aspectIcons[item.getItemDamage()%ItemMobAspect.aspectCount];
 				renderItem.renderIcon(0, 0, icon, 16, 16);
 			}
 			case EQUIPPED : {
@@ -54,7 +54,7 @@ public class RenderMobAspect implements IItemRenderer {
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-				Icon icon = ItemMobAspect.aspectIcons[item.getItemDamage()%ItemMobAspect.aspectCount];
+				IIcon icon = ItemMobAspect.aspectIcons[item.getItemDamage()%ItemMobAspect.aspectCount];
 				float f = icon.getMinU();
 				float f1 = icon.getMaxU();
 				float f2 = icon.getMinV();

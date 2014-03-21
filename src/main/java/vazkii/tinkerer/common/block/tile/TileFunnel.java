@@ -15,20 +15,19 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.util.Facing;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
@@ -72,8 +71,9 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 	}
 
 	@Override
-	public void onInventoryChanged() {
-		PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+	public void markDirty() {
+        super.markDirty();
+		worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 	}
 
 	private TileEntity getHopperFacing(int x, int y, int z, int meta) {
@@ -96,10 +96,10 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
@@ -174,15 +174,17 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.FUNNEL;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.FUNNEL;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
+
+
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -194,15 +196,16 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
+
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
@@ -210,16 +213,16 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
+		readCustomNBT(packet.func_148857_g());
 	}
 
 	@Override

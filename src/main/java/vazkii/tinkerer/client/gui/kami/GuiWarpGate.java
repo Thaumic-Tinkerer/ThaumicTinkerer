@@ -19,16 +19,13 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.gui.button.kami.GuiButtonWG;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.container.kami.ContainerWarpGate;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class GuiWarpGate extends GuiContainer {
 
@@ -65,7 +62,7 @@ public class GuiWarpGate extends GuiContainer {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.renderEngine.bindTexture(gui);
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-        fontRenderer.drawStringWithShadow(StatCollector.translateToLocal("ttmisc.lockedGate"), x + 20, y + 7, 0x999999);
+        fontRendererObj.drawStringWithShadow(StatCollector.translateToLocal("ttmisc.lockedGate"), x + 20, y + 7, 0x999999);
 	}
 
 }
