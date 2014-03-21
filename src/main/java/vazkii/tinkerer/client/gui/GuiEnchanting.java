@@ -14,19 +14,13 @@
  */
 package vazkii.tinkerer.client.gui;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.button.GuiButtonEnchant;
@@ -34,14 +28,17 @@ import vazkii.tinkerer.client.gui.button.GuiButtonEnchanterLevel;
 import vazkii.tinkerer.client.gui.button.GuiButtonEnchantment;
 import vazkii.tinkerer.client.gui.button.GuiButtonFramedEnchantment;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.container.ContainerEnchanter;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.lib.LibFeatures;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketEnchanterAddEnchant;
 import vazkii.tinkerer.common.network.packet.PacketEnchanterStartWorking;
-import cpw.mods.fml.common.network.PacketDispatcher;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiEnchanting extends GuiContainer {
 
@@ -120,7 +117,7 @@ public class GuiEnchanting extends GuiContainer {
 		int it = 0;
 		
 		for(int enchant : EnchantmentManager.enchantmentData.keySet()) {
-			if(currentStack.getItem().getItemEnchantability()!=0  && EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().username, Enchantment.enchantmentsList[enchant])) {
+			if(currentStack.getItem().getItemEnchantability()!=0  && EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
 				enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
 				enchantButtons[it].enabled = true;
 				it++;
@@ -134,11 +131,11 @@ public class GuiEnchanting extends GuiContainer {
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if(par1GuiButton.id == 0) {
-			PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterStartWorking(enchanter)));
+            ThaumicTinkerer.packetPipeline.sendToServer(new PacketEnchanterStartWorking(enchanter));
 		} else if(par1GuiButton.id <= 16) {
 			GuiButtonEnchantment button = enchantButtons[par1GuiButton.id - 1];
 			if(button != null && button.enchant != null)
-				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, button.enchant.effectId, 0)));
+                ThaumicTinkerer.packetPipeline.sendToServer(new PacketEnchanterAddEnchant(enchanter,button.enchant.effectId,0));
 		} else {
 			int type = (par1GuiButton.id - 17) % 3;
 			int index = (par1GuiButton.id - 17) / 3;
@@ -152,15 +149,15 @@ public class GuiEnchanting extends GuiContainer {
 
 			switch(type) {
 			case 0 : {
-				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, -1)));
+                ThaumicTinkerer.packetPipeline.sendToServer(new PacketEnchanterAddEnchant(enchanter,enchant.effectId,-1));
 				break;
 			}
 			case 1 : {
-				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, level == 1 ? -1 : level - 1)));
+                ThaumicTinkerer.packetPipeline.sendToServer(new PacketEnchanterAddEnchant(enchanter,enchant.effectId,level == 1 ? -1 : level - 1));
 				break;
 			}
 			case 2 : {
-				PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, level + 1)));
+                ThaumicTinkerer.packetPipeline.sendToServer(new PacketEnchanterAddEnchant(enchanter,enchant.effectId,level + 1));
 				break;
 			}
 		}

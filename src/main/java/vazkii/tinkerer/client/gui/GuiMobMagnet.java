@@ -30,10 +30,10 @@ import vazkii.tinkerer.client.gui.button.GuiButtonMM;
 import vazkii.tinkerer.client.gui.button.GuiButtonMMRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.container.ContainerMobMagnet;
 import vazkii.tinkerer.common.item.ItemSoulMould;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.PacketMobMagnetButton;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
@@ -79,7 +79,7 @@ public class GuiMobMagnet extends GuiContainer {
 
 		mobMagnet.adult = buttonListMM.get(0).enabled;
 
-		PacketDispatcher.sendPacketToServer(PacketManager.buildPacket(new PacketMobMagnetButton(mobMagnet)));
+        ThaumicTinkerer.packetPipeline.sendToServer(new PacketMobMagnetButton(mobMagnet));
 	}
 
 	@Override

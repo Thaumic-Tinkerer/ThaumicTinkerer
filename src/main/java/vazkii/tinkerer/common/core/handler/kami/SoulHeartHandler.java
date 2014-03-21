@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.core.handler.kami;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,10 +23,9 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibMisc;
-import vazkii.tinkerer.common.network.PacketManager;
 import vazkii.tinkerer.common.network.packet.kami.PacketSoulHearts;
 
 public class SoulHeartHandler {
@@ -35,7 +34,7 @@ public class SoulHeartHandler {
 	private static final String TAG_HP = "soulHearts";
 	private static final int MAX_HP = 20;
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPlayerDamage(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer && event.ammount > 0) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
@@ -80,14 +79,14 @@ public class SoulHeartHandler {
 	private static NBTTagCompound getCompoundToSet(EntityPlayer player) {
 		NBTTagCompound cmp = player.getEntityData();
 		if(!cmp.hasKey(COMPOUND))
-			cmp.setCompoundTag(COMPOUND, new NBTTagCompound());
+			cmp.setTag(COMPOUND, new NBTTagCompound());
 
 		return cmp.getCompoundTag(COMPOUND);
 	}
 
 	public static void updateClient(EntityPlayer player) {
 		if(player instanceof EntityPlayerMP && ((EntityPlayerMP) player).playerNetServerHandler!=null){
-			PacketDispatcher.sendPacketToPlayer(PacketManager.buildPacket(new PacketSoulHearts(getHP(player))), (Player) player);
+            ThaumicTinkerer.packetPipeline.sendTo(new PacketSoulHearts(getHP(player)), (EntityPlayerMP) player);
 		}
 	}
 

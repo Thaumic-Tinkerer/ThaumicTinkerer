@@ -2,6 +2,7 @@ package vazkii.tinkerer.client.core.handler.kami;
 
 import java.util.List;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -23,13 +24,13 @@ public final class PlacementMirrorPredictionRenderer {
 
 	RenderBlocks blockRender = new RenderBlocks();
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onWorldRenderLast(RenderWorldLastEvent event) {
 		World world = Minecraft.getMinecraft().theWorld;
 		List<EntityPlayer> playerEntities = world.playerEntities;
 		for(EntityPlayer player : playerEntities) {
 			ItemStack currentStack = player.getCurrentEquippedItem();
-			if(currentStack != null && currentStack.itemID == ModItems.placementMirror.itemID && ItemPlacementMirror.getBlockID(currentStack) != 0)
+			if(currentStack != null && currentStack.getItem() == ModItems.placementMirror && ItemPlacementMirror.getBlockID(currentStack) != 0)
 				renderPlayerLook(player, currentStack);
 		}
 	}

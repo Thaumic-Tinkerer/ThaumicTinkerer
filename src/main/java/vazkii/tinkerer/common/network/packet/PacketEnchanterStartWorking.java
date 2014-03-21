@@ -15,7 +15,6 @@
 package vazkii.tinkerer.common.network.packet;
 
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> {
 
@@ -29,7 +28,7 @@ public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> {
 	public void handle() {
 		if(!tile.working && !tile.enchantments.isEmpty() && !tile.levels.isEmpty()) {
 			tile.working = true;
-			PacketDispatcher.sendPacketToAllPlayers(tile.getDescriptionPacket());
+			tile.getWorldObj().markBlockForUpdate(tile.xCoord,tile.yCoord,tile.zCoord);
 		}
 	}
 

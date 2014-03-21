@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.core.proxy;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -48,6 +49,14 @@ import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.network.PlayerTracker;
+import vazkii.tinkerer.common.network.packet.PacketEnchanterAddEnchant;
+import vazkii.tinkerer.common.network.packet.PacketEnchanterStartWorking;
+import vazkii.tinkerer.common.network.packet.PacketMobMagnetButton;
+import vazkii.tinkerer.common.network.packet.PacketTabletButton;
+import vazkii.tinkerer.common.network.packet.kami.PacketSoulHearts;
+import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
+import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
+import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
@@ -71,16 +80,28 @@ public class TTCommonProxy {
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
 		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
-		GameRegistry.registerPlayerTracker(new PlayerTracker());
+        RegisterPackets();
+        FMLCommonHandler.instance().bus().register(new PlayerTracker());
 
 
 		if(ConfigHandler.enableKami) {
-			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
-			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
+            FMLCommonHandler.instance().bus().register(new DimensionalShardDropHandler());
+            FMLCommonHandler.instance().bus().register(new SoulHeartHandler());
 		}
 	}
 
-	public void postInit(FMLPostInitializationEvent event) {
+    private void RegisterPackets() {
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketSoulHearts.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketToggleArmor.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketWarpGateButton.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketWarpGateTeleport.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketEnchanterAddEnchant.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketEnchanterStartWorking.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketMobMagnetButton.class);
+        ThaumicTinkerer.packetPipeline.registerPacket(PacketTabletButton.class);
+    }
+
+    public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.initRecipes();
 		ModResearch.initResearch();
 	}
