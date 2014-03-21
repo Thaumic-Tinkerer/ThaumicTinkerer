@@ -18,11 +18,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.tile.TileSummon;
 
@@ -30,8 +30,8 @@ import java.util.Random;
 
 public class BlockSummon extends Block {
 
-	Icon iconTop;
-	Icon iconSide;
+	IIcon iconTop;
+	IIcon iconSide;
 
 	Random random;
 
@@ -40,7 +40,7 @@ public class BlockSummon extends Block {
 		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
 		setHardness(3F);
 		setResistance(50F);
-		setStepSound(soundMetalFootstep);
+		setStepSound(Block.soundTypeMetal);
 
 		random = new Random();
 	}
@@ -66,14 +66,14 @@ public class BlockSummon extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
+	public void registerBlockIcons(IIconRegister iconRegister) {
 		iconTop = IconHelper.forBlock(iconRegister, this, 1);
 		iconSide = IconHelper.forBlock(iconRegister, this, 2);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int meta) {
-		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? Block.obsidian.getIcon(0, 0) : iconSide;
+	public IIcon getIcon(int par1, int meta) {
+		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? Block.getBlockFromName("obsidian").getIcon(0, 0) : iconSide;
 	}
 }
