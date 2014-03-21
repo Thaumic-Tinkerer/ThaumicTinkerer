@@ -14,18 +14,13 @@
  */
 package vazkii.tinkerer.common.item.kami.armor;
 
-import java.util.List;
-
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
-import net.minecraftforge.event.EventPriority;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import thaumcraft.client.codechicken.core.vec.Vector3;
-import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.ModItems;
@@ -70,11 +65,11 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
         }
 	}
 
-	@ForgeSubscribe(priority = EventPriority.LOWEST)
+	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onDamageTaken(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).itemID == itemID && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
+			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
 				event.setCanceled(true);
 				player.heal(event.ammount);
 			}
