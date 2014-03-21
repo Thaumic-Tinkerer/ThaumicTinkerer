@@ -39,8 +39,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockTalisman extends ItemMod {
-
+    @Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
+    private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static final String TAG_BLOCK_COUNT = "blockCount";
 
@@ -193,7 +194,7 @@ public class ItemBlockTalisman extends ItemMod {
 
 		return Math.min(current, count);
 	}
-
+    @Deprecated
 	public static int getBlockID(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
