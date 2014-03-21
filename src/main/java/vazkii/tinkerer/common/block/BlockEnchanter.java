@@ -14,33 +14,33 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockEnchanter extends BlockModContainer {
 
 	Random random;
 
-	Icon iconBottom;
-	Icon iconTop;
-	Icon iconSides;
+	IIcon iconBottom;
+	IIcon iconTop;
+	IIcon iconSides;
 
 	protected BlockEnchanter() {
 		super(Material.rock);
@@ -65,7 +65,7 @@ public class BlockEnchanter extends BlockModContainer {
 	}
 
 	@Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
         TileEnchanter enchanter = (TileEnchanter) par1World.getTileEntity(par2, par3, par4);
 
         if (enchanter != null) {
@@ -84,7 +84,7 @@ public class BlockEnchanter extends BlockModContainer {
                             k1 = itemstack.stackSize;
 
                         itemstack.stackSize -= k1;
-                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
                         float f3 = 0.05F;
                         entityitem.motionX = (float)random.nextGaussian() * f3;
                         entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -96,7 +96,7 @@ public class BlockEnchanter extends BlockModContainer {
                 }
             }
 
-            par1World.func_96440_m(par2, par3, par4, par5);
+            par1World.func_147453_f(par2, par3, par4, par5);
         }
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -104,7 +104,7 @@ public class BlockEnchanter extends BlockModContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		iconBottom = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconTop = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconSides = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -112,7 +112,7 @@ public class BlockEnchanter extends BlockModContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSides;
 	}
 
@@ -127,7 +127,7 @@ public class BlockEnchanter extends BlockModContainer {
     }
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEnchanter();
 	}
 
