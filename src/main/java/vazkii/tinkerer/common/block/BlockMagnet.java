@@ -54,7 +54,7 @@ public class BlockMagnet extends BlockModContainer {
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(par5EntityPlayer.getCurrentEquippedItem() != null) {
 			if(par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
-				TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
+				TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 				if(tile != null && tile instanceof TileMobMagnet) {
 					par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_MOB_MAGNET, par1World, par2, par3, par4);
 					if(!par1World.isRemote) {
@@ -75,7 +75,7 @@ public class BlockMagnet extends BlockModContainer {
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		TileMagnet magnet = (TileMagnet) par1World.getBlockTileEntity(par2, par3, par4);
+		TileMagnet magnet = (TileMagnet) par1World.getTileEntity(par2, par3, par4);
 		TileMobMagnet mobMagnet = magnet instanceof TileMobMagnet ? (TileMobMagnet) magnet : null;
 
 		if (mobMagnet != null) {

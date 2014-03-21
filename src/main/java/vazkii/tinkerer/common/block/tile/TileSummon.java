@@ -22,7 +22,7 @@ public class TileSummon extends TileEntity {
 			ArrayList<TileEntity> pedestals = new ArrayList<TileEntity>();
 			for(int x=xCoord-5;x<xCoord+5;x++){
 				for(int z=zCoord-5;z<zCoord+5;z++){
-					TileEntity tile = worldObj.getBlockTileEntity(x, yCoord, z);
+					TileEntity tile = worldObj.getTileEntity(x, yCoord, z);
 					if(tile instanceof TilePedestal && ((TilePedestal) tile).getStackInSlot(0) != null && ((TilePedestal) tile).getStackInSlot(0).getItem() instanceof ItemMobAspect){
 						pedestals.add(tile);
 					}
