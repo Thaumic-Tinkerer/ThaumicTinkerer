@@ -18,14 +18,14 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
@@ -35,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFunnel extends BlockModContainer {
 
-	Icon sideIcon, topIcon;
+	IIcon sideIcon, topIcon;
 
 	Random random;
 
@@ -43,7 +43,7 @@ public class BlockFunnel extends BlockModContainer {
 		super(Material.rock);
 		setHardness(3.0F);
 		setResistance(8.0F);
-		setStepSound(Block.soundStoneFootstep);
+		setStepSound(Block.soundTypeStone);
 		setBlockBounds(0F, 0F, 0F, 1F, 1F / 8F, 1F);
 
 		random = new Random();
@@ -62,14 +62,14 @@ public class BlockFunnel extends BlockModContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		topIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		sideIcon = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return par1 > 1 ? sideIcon : topIcon;
 	}
 
@@ -80,19 +80,19 @@ public class BlockFunnel extends BlockModContainer {
 
 	@Override
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.getBlockId(par2, par3 - 1, par4) == Block.hopperBlock.blockID;
+		return par1World.getBlock(par2, par3 - 1, par4) == Block.getBlockFromName("hopper");
 	}
 
 	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		if(par1World.getBlockId(par2, par3 - 1, par4) != Block.hopperBlock.blockID) {
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
+		if(par1World.getBlock(par2, par3 - 1, par4) != Block.getBlockFromName("hopper")) {
 			dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
-			par1World.setBlock(par2, par3, par4, 0);
+			par1World.setBlockToAir(par2, par3, par4);
 		}
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
 		TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
 
 		if (funnel != null) {
@@ -111,7 +111,7 @@ public class BlockFunnel extends BlockModContainer {
 							k1 = itemstack.stackSize;
 
 						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 						float f3 = 0.05F;
 						entityitem.motionX = (float)random.nextGaussian() * f3;
 						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -123,7 +123,7 @@ public class BlockFunnel extends BlockModContainer {
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_147453_f(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -147,7 +147,7 @@ public class BlockFunnel extends BlockModContainer {
 			}
 		} else {
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
-				par5EntityPlayer.dropPlayerItem(stack);
+				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			funnel.setInventorySlotContents(0, null);
 			funnel.onInventoryChanged();
@@ -158,7 +158,7 @@ public class BlockFunnel extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileFunnel();
 	}
 }
