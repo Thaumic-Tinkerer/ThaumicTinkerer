@@ -22,10 +22,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
@@ -45,7 +46,7 @@ public class BlockMagnet extends BlockModContainer {
 		setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 1F / 16F * 2F, 0.9375F);
 		setHardness(1.7F);
 		setResistance(1F);
-		setStepSound(soundWoodFootstep);
+		setStepSound(Block.soundTypeWood);
 
 		random = new Random();
 	}
@@ -74,7 +75,7 @@ public class BlockMagnet extends BlockModContainer {
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
 		TileMagnet magnet = (TileMagnet) par1World.getTileEntity(par2, par3, par4);
 		TileMobMagnet mobMagnet = magnet instanceof TileMobMagnet ? (TileMobMagnet) magnet : null;
 
@@ -94,7 +95,7 @@ public class BlockMagnet extends BlockModContainer {
 							k1 = itemstack.stackSize;
 
 						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 						float f3 = 0.05F;
 						entityitem.motionX = (float)random.nextGaussian() * f3;
 						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
@@ -106,7 +107,7 @@ public class BlockMagnet extends BlockModContainer {
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_147453_f(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -128,15 +129,15 @@ public class BlockMagnet extends BlockModContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		super.getSubBlocks(par1, par2CreativeTabs, par3List);
 		par3List.add(new ItemStack(par1, 1, 1));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
-		return Block.wood.getIcon(par1, 1);
+	public IIcon getIcon(int par1, int par2) {
+		return Block.getBlockFromName("log").getIcon(par1, 1);
 	}
 
 	@Override
@@ -155,12 +156,7 @@ public class BlockMagnet extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
+	public TileEntity createNewTileEntity(World world, int metadata) {
 		return (metadata & 2) == 2 ? new TileMobMagnet() : new TileMagnet();
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return null;
 	}
 }
