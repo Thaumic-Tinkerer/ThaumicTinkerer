@@ -39,7 +39,6 @@ import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
-import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class GuiWarpGateDestinations extends GuiScreen {
 
@@ -154,7 +153,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glDisable(GL11.GL_BLEND);
 
-		fontRenderer.drawStringWithShadow(EnumChatFormatting.UNDERLINE + StatCollector.translateToLocal("ttmisc.destinations"), 3, 40, 0xFFFFFF);
+		fontRendererObj.drawStringWithShadow(EnumChatFormatting.UNDERLINE + StatCollector.translateToLocal("ttmisc.destinations"), 3, 40, 0xFFFFFF);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		drawPearlAt(0, null, gateX, gateY, par1, par2);
 		for(Object[] coords_ : coords)
@@ -163,8 +162,8 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		if(!tooltip.isEmpty())
 			ClientHelper.renderTooltip(par1, par2, tooltip);
 		
-		drawCenteredString(fontRenderer, StatCollector.translateToLocal("ttmisc.numberKeys"), width / 2, 5, 0xFFFFFF);
-		drawCenteredString(fontRenderer, StatCollector.translateToLocal("ttmisc.spaceToReset"), width / 2, 16, 0xFFFFFF);
+		drawCenteredString(fontRendererObj, StatCollector.translateToLocal("ttmisc.numberKeys"), width / 2, 5, 0xFFFFFF);
+		drawCenteredString(fontRendererObj, StatCollector.translateToLocal("ttmisc.spaceToReset"), width / 2, 16, 0xFFFFFF);
 	}
 
 	public void drawPearlAt(int index, ItemStack stack, int xp, int yp, int mx, int my) {
@@ -186,7 +185,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		else destName = StatCollector.translateToLocal(stack == null ? "ttmisc.entrancePoint" : "ttmisc.destination");
 		
 		if(stack != null)
-			fontRenderer.drawString((index + 1) + ": " + destName, 5, 54 + index * 11, 0xFFFFFF);
+			fontRendererObj.drawString((index + 1) + ": " + destName, 5, 54 + index * 11, 0xFFFFFF);
 
 		if(mx >= xp - 4 && mx <= xp + 4 && my >= yp - 4 && my < yp + 4) {
 			tooltip.add(EnumChatFormatting.AQUA + destName + destNum);

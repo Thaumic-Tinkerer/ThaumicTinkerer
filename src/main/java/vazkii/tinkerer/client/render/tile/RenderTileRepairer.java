@@ -23,7 +23,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -44,7 +44,7 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float t) {
-		int meta = tileentity.worldObj == null ? 3 : tileentity.getBlockMetadata();
+		int meta = tileentity.getWorldObj() == null ? 3 : tileentity.getBlockMetadata();
 		int rotation = meta == 2 ? 0 : meta == 3 ? 180 : meta == 4 ? 270 : 90;
 
 		TileRepairer repairer = (TileRepairer) tileentity;
@@ -80,7 +80,7 @@ public class RenderTileRepairer extends TileEntitySpecialRenderer {
 
 			int renderPass = 0;
 			do {
-            	Icon icon = item.getItem().getIcon(item, renderPass);
+            	IIcon icon = item.getItem().getIcon(item, renderPass);
             	if(icon != null) {
             		 Color color = new Color(item.getItem().getColorFromItemStack(item, renderPass));
             		 GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
