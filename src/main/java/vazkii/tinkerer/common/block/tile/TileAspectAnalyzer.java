@@ -21,12 +21,13 @@ import dan200.computer.api.IPeripheral;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
@@ -40,10 +41,10 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+		NBTTagList var2 = (NBTTagList) par1NBTTagCompound.getTag("Items");
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
@@ -108,15 +109,15 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.MAGNET;
-	}
+    @Override
+    public String getInventoryName() {
+        return null;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -128,15 +129,15 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
+
+    @Override
+    public void closeInventory() {
+
+    }
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {

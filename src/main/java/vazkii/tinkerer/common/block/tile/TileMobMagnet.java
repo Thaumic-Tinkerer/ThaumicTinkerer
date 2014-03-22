@@ -153,16 +153,15 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 		inventorySlots[i] = itemstack;
 	}
 
-	@Override
-	public String getInvName() {
-		return LibBlockNames.MAGNET;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.MAGNET;
+    }
 
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
-
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 	@Override
 	public int getInventoryStackLimit() {
 		return 1;
@@ -173,16 +172,15 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-	@Override
-	public void openChest() {
-		// NO-OP
-	}
+    @Override
+    public void openInventory() {
 
-	@Override
-	public void closeChest() {
-		// NO-OP
-	}
+    }
 
+    @Override
+    public void closeInventory() {
+
+    }
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		return true;

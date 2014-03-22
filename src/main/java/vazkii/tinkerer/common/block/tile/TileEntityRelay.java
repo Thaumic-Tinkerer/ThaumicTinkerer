@@ -3,7 +3,7 @@ package vazkii.tinkerer.common.block.tile;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 
 public class TileEntityRelay extends TileEntity implements IMovableTile {
