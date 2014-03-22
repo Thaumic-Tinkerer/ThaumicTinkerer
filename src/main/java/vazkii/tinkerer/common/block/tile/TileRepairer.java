@@ -26,6 +26,7 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
@@ -110,12 +111,12 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_LIST);
         inventorySlots = new ItemStack[1];
         
         if(nbttaglist.tagCount()>0)
         {
-            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.tagAt(0);
+            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.getCompoundTagAt(0);
                 inventorySlots[0] = ItemStack.loadItemStackFromNBT(tagList);
         }
 	}
