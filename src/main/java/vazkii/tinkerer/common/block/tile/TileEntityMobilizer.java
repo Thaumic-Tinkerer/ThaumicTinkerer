@@ -7,7 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 
@@ -79,7 +79,7 @@ public class    TileEntityMobilizer extends TileEntity {
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
 			//Switch direction if at end of track
-			if(worldObj.getBlockId(targetX, yCoord, targetZ) != 0 || worldObj.getBlockId(targetX, yCoord + 1, targetZ) != 0){
+			if(worldObj.getBlock(targetX, yCoord, targetZ) != Block.getBlockFromName("air") || worldObj.getBlock(targetX, yCoord + 1, targetZ) != Block.getBlockFromName("air")){
 				movementDirection = movementDirection.getOpposite();
 			}
 		}
@@ -89,13 +89,13 @@ public class    TileEntityMobilizer extends TileEntity {
 			int targetX = xCoord+movementDirection.offsetX;
 			int targetZ = zCoord+movementDirection.offsetZ;
 			//Check for abandoned TEs
-			if(worldObj.getBlockId(xCoord, yCoord, zCoord) != ModBlocks.mobilizer.blockID)
+			if(worldObj.getBlock(xCoord, yCoord, zCoord) != ModBlocks.mobilizer)
 			{
 				return;
 			}
 			//Check if the space the mobilizer will move into is empty
-			if((worldObj.getBlockId(targetX, yCoord, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord, targetZ)].isAirBlock(worldObj, targetX, yCoord, targetZ))
-					&& (worldObj.getBlockId(xCoord, yCoord+1, zCoord) ==0 || worldObj.getBlockId(targetX, yCoord+1, targetZ) == 0|| Block.blocksList[worldObj.getBlockId(targetX, yCoord+1, targetZ)].isAirBlock(worldObj, targetX, yCoord+1, targetZ))){
+			if((worldObj.isAirBlock(targetX, yCoord, targetZ) || worldObj.getBlock(targetX, yCoord, targetZ).isAir(worldObj, targetX, yCoord, targetZ)
+					&& (worldObj.isAirBlock(xCoord, yCoord+1, zCoord) || worldObj.isAirBlock(targetX, yCoord+1, targetZ)|| worldObj.getBlock(targetX, yCoord+1, targetZ).isAir(worldObj, targetX, yCoord+1, targetZ)))){
 
 				//Move Entities
 				//List<Entity> entities = worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord+1, yCoord+3, zCoord+1));
@@ -111,25 +111,25 @@ public class    TileEntityMobilizer extends TileEntity {
 					IAppEngApi api = Util.getAppEngApi();
 
 					//Prevent the passenger from popping off. Not sent to clients.
-					worldObj.setBlock(targetX, yCoord, targetZ, 1, 0, 0);
+					worldObj.setBlock(targetX, yCoord, targetZ, Block.getBlockFromName("stone"), 0, 0);
 					//Move non-TE blocks
-					int passengerId=worldObj.getBlockId(xCoord, yCoord+1, zCoord);
+					Block passengerId=worldObj.getBlock(xCoord, yCoord+1, zCoord);
 
-					if(passengerId == 0 || Block.blocksList[passengerId].canPlaceBlockAt(worldObj, targetX, yCoord+1, targetZ)){
+					if(worldObj.isAirBlock(xCoord, yCoord+1, zCoord) || passengerId.canPlaceBlockAt(worldObj, targetX, yCoord+1, targetZ)){
 
 						if(passenger==null){
-							if(passengerId != 7 && passengerId != 34){
+							if(passengerId !=Block.getBlockFromName("bedrock") && passengerId != Block.getBlockFromName("")){
 								worldObj.setBlock(targetX, yCoord+1, targetZ, passengerId, worldObj.getBlockMetadata(xCoord, yCoord+1, zCoord), 3);
-								if(passengerId != 0){
-									worldObj.setBlock(xCoord, yCoord+1, zCoord, 0, 0, 2);
+								if(passengerId != Block.getBlockFromName("air") && passengerId != Block.getBlockFromName("piston_head")){
+									worldObj.setBlock(xCoord, yCoord+1, zCoord, Block.getBlockFromName("air"), 0, 2);
 								}
 							}
 							//If AE is installed, use its handler
 						}else if(api != null){
 							if(api.getMovableRegistry().askToMove(passenger)){
-								worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
+								worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlock(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 								passenger.invalidate();
-								worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
+								worldObj.setBlockToAir(xCoord, yCoord + 1, zCoord);
 								api.getMovableRegistry().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord+1, targetZ);
 								api.getMovableRegistry().doneMoveing(passenger);
 								passenger.validate();
@@ -140,13 +140,14 @@ public class    TileEntityMobilizer extends TileEntity {
 							boolean imovable=passenger instanceof IMovableTile;
 							if(imovable)
 								((IMovableTile) passenger).prepareToMove();
-							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlockId(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
+							worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlock(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 							passenger.invalidate();
-							worldObj.setBlock(xCoord, yCoord + 1, zCoord, 0);
+							worldObj.setBlockToAir(xCoord, yCoord + 1, zCoord);
 
 							//IMovableHandler default code
 							Chunk c = worldObj.getChunkFromBlockCoords( targetX, targetZ );
-							c.setChunkBlockTileEntity( targetX & 0xF, yCoord+1, targetZ & 0xF, passenger );
+
+							c.func_150812_a( targetX & 0xF, yCoord+1, targetZ & 0xF, passenger );
 
 							if ( c.isChunkLoaded )
 							{
@@ -161,9 +162,9 @@ public class    TileEntityMobilizer extends TileEntity {
 					}
 					//Move self
 					this.invalidate();
-					worldObj.removeBlockTileEntity(xCoord, yCoord, zCoord);
-					worldObj.setBlock(xCoord, yCoord, zCoord, 0, 0, 2);
-					worldObj.setBlock(targetX, yCoord, targetZ, LibBlockIDs.idMobilizer);
+					worldObj.removeTileEntity(xCoord, yCoord, zCoord);
+					worldObj.setBlock(xCoord, yCoord, zCoord, Block.getBlockFromName("air"), 0, 2);
+					worldObj.setBlock(targetX, yCoord, targetZ, ModBlocks.mobilizer);
 
 					int oldX=xCoord;
 					int oldZ=zCoord;
@@ -172,9 +173,10 @@ public class    TileEntityMobilizer extends TileEntity {
 					this.zCoord=targetZ;
 					this.validate();
 					worldObj.addTileEntity(this);
-					worldObj.removeBlockTileEntity(oldX, yCoord, oldZ);
+					worldObj.removeTileEntity(oldX, yCoord, oldZ);
 
-					worldObj.notifyBlockChange(oldX, yCoord, oldZ, 0);
+
+					worldObj.notifyBlockChange(oldX, yCoord, oldZ, Block.getBlockFromName("air"));
 
 				}
 
