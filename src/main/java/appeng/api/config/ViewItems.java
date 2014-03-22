@@ -1,19 +1,6 @@
 package appeng.api.config;
 
-
-public enum ViewItems implements IConfigEnum
+public enum ViewItems
 {
-	ALL,
-	STORED,
-	CRAFTABLE;
-	
-	@Override
-	public IConfigEnum[] getValues() {
-		return values();
-	}
-
-	@Override
-	public String getName() {
-		return "ViewItems";
-	}
+	ALL, STORED, CRAFTABLE
 }

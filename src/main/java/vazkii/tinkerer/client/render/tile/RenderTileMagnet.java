@@ -16,9 +16,9 @@ package vazkii.tinkerer.client.render.tile;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import thaumcraft.client.lib.UtilsFX;
@@ -44,15 +44,15 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x, (float)y , (float)z);
-		boolean blue = tileentity.worldObj == null || (tileentity.getBlockMetadata() & 1) == 0;
-		boolean mob = tileentity.worldObj == null ? RenderTileMagnet.mob : (tileentity.getBlockMetadata() & 2) == 2;
+		boolean blue = tileentity.getWorldObj() == null || (tileentity.getBlockMetadata() & 1) == 0;
+		boolean mob = tileentity.getWorldObj() == null ? RenderTileMagnet.mob : (tileentity.getBlockMetadata() & 2) == 2;
 
 		ClientHelper.minecraft().renderEngine.bindTexture(mob ? blue ? blueMob : redMob : blue ? RenderTileMagnet.blue : red);
 
         int redstone = 0;
-        if(tileentity.worldObj != null) {
+        if(tileentity.getWorldObj() != null) {
         	for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
-    			redstone = Math.max(redstone, tileentity.worldObj.getIndirectPowerLevelTo(tileentity.xCoord + dir.offsetX, tileentity.yCoord + dir.offsetY, tileentity.zCoord + dir.offsetZ, dir.ordinal()));
+    			redstone = Math.max(redstone, tileentity.getWorldObj().getIndirectPowerLevelTo(tileentity.xCoord + dir.offsetX, tileentity.yCoord + dir.offsetY, tileentity.zCoord + dir.offsetZ, dir.ordinal()));
         } else redstone = 15;
 
         GL11.glTranslatef(0.5F, 1.5F, 0.5F);
@@ -61,7 +61,7 @@ public class RenderTileMagnet extends TileEntitySpecialRenderer {
 
         GL11.glRotatef(90F, 1F, 0F, 0F);
         GL11.glTranslatef(0F, 0F, -0.6F);
-        Icon icon = ((ItemHoverHarness) ConfigItems.itemHoverHarness).iconLightningRing;
+        IIcon icon = ((ItemHoverHarness) ConfigItems.itemHoverHarness).iconLightningRing;
 
         for(int i = 0; i < 3; i++) {
         	for(int j = 0; j < 2; j++) {

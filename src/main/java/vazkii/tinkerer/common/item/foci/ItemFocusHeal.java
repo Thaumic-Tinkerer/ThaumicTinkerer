@@ -14,9 +14,6 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,6 +23,9 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ItemFocusHeal extends ItemModFocus {
 
@@ -46,16 +46,16 @@ public class ItemFocusHeal extends ItemModFocus {
 		int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 
 
-		if(!playerHealData.containsKey(p.username))
-			playerHealData.put(p.username, 0);
+		if(!playerHealData.containsKey(p.getGameProfile().getName()))
+			playerHealData.put(p.getGameProfile().getName(), 0);
 
-		int progress = playerHealData.get(p.username) + 1;
-		playerHealData.put(p.username, progress);
+		int progress = playerHealData.get(p.getGameProfile().getName()) + 1;
+		playerHealData.put(p.getGameProfile().getName(), progress);
 
 		ThaumicTinkerer.tcProxy.sparkle((float)p.posX + p.worldObj.rand.nextFloat() - 0.5F, (float)p.posY + p.worldObj.rand.nextFloat(), (float)p.posZ + p.worldObj.rand.nextFloat() - 0.5F, 0);
 
 		if(progress >= 30 - potency * 10 / 3) {
-			playerHealData.put(p.username, 0);
+			playerHealData.put(p.getGameProfile().getName(), 0);
 
 			wand.consumeAllVis(stack, p, visUsage, true);
 			p.heal(1);
@@ -65,7 +65,7 @@ public class ItemFocusHeal extends ItemModFocus {
 
 	@Override
 	public void onPlayerStoppedUsingFocus(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
-		playerHealData.put(paramEntityPlayer.username, 0);
+		playerHealData.put(paramEntityPlayer.getGameProfile().getName(), 0);
 	}
 
 	@Override

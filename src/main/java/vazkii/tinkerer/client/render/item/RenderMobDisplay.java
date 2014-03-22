@@ -1,23 +1,15 @@
 package vazkii.tinkerer.client.render.item;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
-import vazkii.tinkerer.common.item.ItemMobAspect;
 import vazkii.tinkerer.common.item.ItemMobDisplay;
 
 public class RenderMobDisplay implements IItemRenderer {

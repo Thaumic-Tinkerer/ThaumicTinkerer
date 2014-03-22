@@ -33,7 +33,7 @@ public class EnchantmentAutoSmelt extends EnchantmentMod {
 
 	@Override
 	public boolean canApply(ItemStack par1ItemStack) {
-		return super.canApply(par1ItemStack) && par1ItemStack.itemID != ConfigItems.itemAxeElemental.itemID;
+		return super.canApply(par1ItemStack) && par1ItemStack.getItem() != ConfigItems.itemAxeElemental;
 	}
 
 }

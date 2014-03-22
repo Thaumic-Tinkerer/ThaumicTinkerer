@@ -14,12 +14,13 @@
  */
 package vazkii.tinkerer.client.core.handler.kami;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.ForgeSubscribe;
+
 
 import org.lwjgl.opengl.GL11;
 
@@ -36,7 +37,7 @@ public final class SoulHeartClientHandler {
 	public static int clientPlayerHP = 0;
 
 	@SideOnly(Side.CLIENT)
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void renderHealthBar(RenderGameOverlayEvent event) {
 		if(event.type == ElementType.FOOD && clientPlayerHP > 0) {
 			if(event instanceof RenderGameOverlayEvent.Post) {

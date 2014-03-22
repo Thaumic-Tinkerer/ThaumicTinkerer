@@ -14,18 +14,13 @@
  */
 package vazkii.tinkerer.client.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.gui.button.GuiButtonMM;
 import vazkii.tinkerer.client.gui.button.GuiButtonMMRadio;
 import vazkii.tinkerer.client.gui.button.IRadioButton;
@@ -35,7 +30,9 @@ import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.block.tile.container.ContainerMobMagnet;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 import vazkii.tinkerer.common.network.packet.PacketMobMagnetButton;
-import cpw.mods.fml.common.network.PacketDispatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiMobMagnet extends GuiContainer {
 
@@ -100,9 +97,9 @@ public class GuiMobMagnet extends GuiContainer {
 			else filter = StatCollector.translateToLocal("entity." + name + ".name");
 		} else filter = StatCollector.translateToLocal("ttmisc.all");
 
-		fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
-		fontRenderer.drawString(adult, x + 120, y + 30, 0x999999);
-		fontRenderer.drawString(child, x + 120, y + 50, 0x999999);
+        fontRendererObj.drawString(filter, x + xSize / 2 - fontRendererObj.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
+        fontRendererObj.drawString(adult, x + 120, y + 30, 0x999999);
+        fontRendererObj.drawString(child, x + 120, y + 50, 0x999999);
 		GL11.glColor3f(1F, 1F, 1F);
 	}
 

@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.core.handler;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -22,7 +23,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.ForgeSubscribe;
 import thaumcraft.api.wands.IWandFocus;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -33,7 +33,7 @@ public final class HUDHandler {
 
 	RenderItem renderItem = new RenderItem();
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
 		if(event.type == ElementType.HOTBAR && ClientHelper.minecraft().currentScreen == null) {
 			boolean up = !Config.dialBottom;
