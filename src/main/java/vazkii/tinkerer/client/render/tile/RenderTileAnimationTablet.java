@@ -29,7 +29,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -88,7 +87,7 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 		ItemStack stack = tablet.getStackInSlot(0);
 		Minecraft mc = ClientHelper.minecraft();
 		if(stack != null) {
-            EntityItem entityitem = new EntityItem(tablet.worldObj, 0.0D, 0.0D, 0.0D, stack);
+            EntityItem entityitem = new EntityItem(tablet.getWorldObj(), 0.0D, 0.0D, 0.0D, stack);
             entityitem.getEntityItem().stackSize = 1;
             entityitem.hoverStart = 0.0F;
             GL11.glPushMatrix();

@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.client.core.handler;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.Minecraft;
@@ -27,6 +28,7 @@ import vazkii.tinkerer.common.lib.LibResearch;
 public class ClientTickHandler  {
 
 	public static int elapsedTicks;
+    @SubscribeEvent
 	public void tickEnd(TickEvent event) {
         if(event.phase== TickEvent.Phase.END) {
             Minecraft mc = ClientHelper.minecraft();

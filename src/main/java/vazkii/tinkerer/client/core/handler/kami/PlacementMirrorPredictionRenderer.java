@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.event.ForgeSubscribe;
 
 import org.lwjgl.opengl.GL11;
 
@@ -38,7 +37,7 @@ public final class PlacementMirrorPredictionRenderer {
 	private void renderPlayerLook(EntityPlayer player, ItemStack stack) {
 		ChunkCoordinates[] coords = ItemPlacementMirror.getBlocksToPlace(stack, player);
 		if(ItemPlacementMirror.hasBlocks(stack, player, coords)) {
-			ItemStack block = new ItemStack(ItemPlacementMirror.getBlockID(stack), 1, ItemPlacementMirror.getBlockMeta(stack));
+			ItemStack block = new ItemStack(ItemPlacementMirror.getBlock(stack), 1, ItemPlacementMirror.getBlockMeta(stack));
 			ChunkCoordinates lastCoords = new ChunkCoordinates(0, 0, 0);
 
 			GL11.glPushMatrix();
@@ -60,7 +59,7 @@ public final class PlacementMirrorPredictionRenderer {
 		GL11.glColor4f(1F, 1F, 1F, 0.6F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		blockRender.useInventoryTint = false;
-		blockRender.renderBlockAsItem(Block.blocksList[block.itemID], block.getItemDamage(), 1F);
+		blockRender.renderBlockAsItem(Block.getBlockFromItem(block.getItem()), block.getItemDamage(), 1F);
 
         GL11.glPopMatrix();
 	}
