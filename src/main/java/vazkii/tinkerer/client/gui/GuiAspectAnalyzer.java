@@ -14,27 +14,25 @@
  */
 package vazkii.tinkerer.client.gui;
 
-import java.util.Arrays;
-import java.util.List;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.client.lib.UtilsFX;
 import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.lib.ThaumcraftCraftingManager;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import thaumcraft.common.lib.research.ScanManager;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.container.ContainerAspectAnalyzer;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class GuiAspectAnalyzer extends GuiContainer {
 
@@ -66,9 +64,9 @@ public class GuiAspectAnalyzer extends GuiContainer {
 
 		ItemStack stack = analyzer.getStackInSlot(0);
 		if(stack != null) {
-			String h = ScanManager.generateItemHash(stack.itemID, stack.getItemDamage());
+			String h = ScanManager.generateItemHash(stack.getItem(), stack.getItemDamage());
 
-			List<String> list = Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().username);
+			List<String> list = Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().getGameProfile().getName());
 			if (h != null && list != null && (list.contains("@" + h) || list.contains("#" + h))) {
 				AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
 				tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);

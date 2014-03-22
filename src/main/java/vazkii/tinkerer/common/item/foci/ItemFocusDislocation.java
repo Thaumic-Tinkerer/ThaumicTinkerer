@@ -14,18 +14,17 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.ArrayList;
-
-import appeng.api.Blocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
@@ -36,17 +35,19 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
 
 public class ItemFocusDislocation extends ItemModFocus {
 
 	private static final String TAG_AVAILABLE = "available";
 	private static final String TAG_TILE_CMP = "tileCmp";
+    @Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
+    private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
-	private static ArrayList<Integer> BlackList=new ArrayList<Integer>();
-	private Icon ornament;
+	private static ArrayList<Block> BlackList=new ArrayList<Block>();
+	private IIcon ornament;
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500).add(Aspect.EARTH, 100);
 	private static final AspectList visUsageTile = new AspectList().add(Aspect.ENTROPY, 2500).add(Aspect.ORDER, 2500).add(Aspect.EARTH, 500);
@@ -54,7 +55,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
 	}
@@ -64,7 +65,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 		if(mop == null)
 			return itemstack;
 
-		int id = world.getBlockId(mop.blockX, mop.blockY, mop.blockZ);
+		Block block= world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 		int meta = world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ);
 		TileEntity tile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
@@ -85,17 +86,17 @@ public class ItemFocusDislocation extends ItemModFocus {
 	            if (mop.sideHit == 5)
 	                ++mop.blockX;
 
-				if(Block.blocksList[stack.itemID].canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, stack)) {
+				if(block.canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit)) {
 					if(!world.isRemote) {
-						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, stack.itemID, stack.getItemDamage(), 1 | 2);
-						Block.blocksList[stack.itemID].onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
+						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1 | 2);
+						block.onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
 						NBTTagCompound tileCmp = getStackTileEntity(itemstack);
-						if(tileCmp != null && !tileCmp.getTags().isEmpty()) {
+						if(tileCmp != null && tileCmp.hasNoTags()) {
 							TileEntity tile1 = TileEntity.createAndLoadEntity(tileCmp);
 							tile1.xCoord = mop.blockX;
 							tile1.yCoord = mop.blockY;
 							tile1.zCoord = mop.blockZ;
-							world.setBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ, tile1);
+							world.setTileEntity(mop.blockX, mop.blockY, mop.blockZ, tile1);
 						}
 					} else player.swingItem();
 					clearPickedBlock(itemstack);
@@ -108,11 +109,11 @@ public class ItemFocusDislocation extends ItemModFocus {
 					}
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
-			} else if(!BlackList.contains(id) && !ThaumcraftApi.portableHoleBlackList.contains(id) && Item.itemsList[id] != null && Block.blocksList[id] != null && Block.blocksList[id].getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
+			} else if(!BlackList.contains(block.getUnlocalizedName()) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
 				if(!world.isRemote) {
-					world.removeBlockTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, 0, 0, 1 | 2);
-					storePickedBlock(itemstack, (short) id, (short) meta, tile);
+					world.removeTileEntity(mop.blockX, mop.blockY, mop.blockZ);
+					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Blocks.air, 0, 1 | 2);
+					storePickedBlock(itemstack, block, (short) meta, tile);
 				}
 
 				for(int i = 0; i < 8; i++) {
@@ -121,7 +122,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 					float z = (float) (mop.blockZ + Math.random());
 					ThaumicTinkerer.tcProxy.burst(world, x, y, z, 0.2F);
 				}
-				world.playSoundAtEntity(player, Block.blocksList[id].stepSound.getBreakSound(), 1F, 1F);
+				world.playSoundAtEntity(player, block.stepSound.getBreakSound(), 1F, 1F);
 				world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 
 				if(world.isRemote)
@@ -178,9 +179,14 @@ public class ItemFocusDislocation extends ItemModFocus {
 		{
 			focus=stack;
 		}
-		int id = ItemNBTHelper.getInt(focus, TAG_BLOCK_ID, 0);
+        String name=ItemNBTHelper.getString(focus,TAG_BLOCK_NAME,"");
+        Block block=Block.getBlockFromName(name);
+        if(block== Blocks.air) {
+            int id = ItemNBTHelper.getInt(focus, TAG_BLOCK_ID, 0);
+            block = Block.getBlockById(id);
+        }
 		int meta = ItemNBTHelper.getInt(focus, TAG_BLOCK_META, 0);
-		return new ItemStack(id, 1, meta);
+		return new ItemStack(block, 1, meta);
 	}
 
 	public NBTTagCompound getStackTileEntity(ItemStack stack) {
@@ -197,10 +203,10 @@ public class ItemFocusDislocation extends ItemModFocus {
 		return ItemNBTHelper.getCompound(focus, TAG_TILE_CMP, true);
 	}
 
-	private void storePickedBlock(ItemStack stack, int id, short meta, TileEntity tile) {
+	private void storePickedBlock(ItemStack stack,Block block, short meta, TileEntity tile) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
-		ItemNBTHelper.setInt(focus, TAG_BLOCK_ID, id);
+		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, block.getUnlocalizedName());
 		ItemNBTHelper.setInt(focus, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
 		if(tile != null)
@@ -223,7 +229,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	}
 
 	@Override
-	public Icon getOrnament() {
+	public IIcon getOrnament() {
 		return ornament;
 	}
 
@@ -238,9 +244,8 @@ public class ItemFocusDislocation extends ItemModFocus {
 	}
 	static
 	{
-		BlackList.add(Block.pistonBase.blockID);
-		BlackList.add(Block.pistonExtension.blockID);
-		BlackList.add(Block.pistonMoving.blockID);
-		BlackList.add(Block.pistonStickyBase.blockID);
+		BlackList.add(Blocks.piston_extension);
+		BlackList.add(Blocks.piston_head);
+
 	}
 }

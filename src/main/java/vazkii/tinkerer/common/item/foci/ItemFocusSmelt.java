@@ -1,8 +1,6 @@
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -15,6 +13,9 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.Utils;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ItemFocusSmelt extends ItemModFocus {
 
@@ -54,29 +55,29 @@ public class ItemFocusSmelt extends ItemModFocus {
 		MovingObjectPosition pos = Utils.getTargetBlock(p.worldObj, p, false);
 
 		if(pos != null) {
-			int id = p.worldObj.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
+			Block block = p.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 			int meta = p.worldObj.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
 
-			ItemStack blockStack = new ItemStack(id, 1, meta);
+			ItemStack blockStack = new ItemStack(block, 1, meta);
 			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(blockStack);
 
 			if(result != null && result.getItem() instanceof ItemBlock) {
 				boolean decremented = false;
 
-				if(playerData.containsKey(p.username)) {
-					SmeltData data = playerData.get(p.username);
+				if(playerData.containsKey(p.getGameProfile().getName())) {
+					SmeltData data = playerData.get(p.getGameProfile().getName());
 
 					if(data.equalPos(pos)) {
 						data.progress--;
 						decremented = true;
 						if(data.progress <= 0) {
 							if(!p.worldObj.isRemote) {
-								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, result.itemID, result.getItemDamage(), 1 | 2);
+								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Block.getBlockFromItem(result.getItem()), result.getItemDamage(), 1 | 2);
 								p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
 								p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
 
 								wand.consumeAllVis(stack, p, visUsage, true);
-								playerData.remove(p.username);
+								playerData.remove(p.getGameProfile().getName());
 								decremented = false;
 							}
 
@@ -93,7 +94,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 
 				if(!decremented) {
 					int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
-					playerData.put(p.username, new SmeltData(pos, 20 - Math.min(3, potency) * 5));
+					playerData.put(p.getGameProfile().getName(), new SmeltData(pos, 20 - Math.min(3, potency) * 5));
 				} else for(int i = 0; i < 2; i++) {
 					double x = pos.blockX + Math.random();
 					double y = pos.blockY + Math.random();

@@ -70,7 +70,7 @@ public class TileCamo extends TileEntity implements IMovableTile {
 	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
 		super.onDataPacket(manager, packet);
 		readCustomNBT(packet.data);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
