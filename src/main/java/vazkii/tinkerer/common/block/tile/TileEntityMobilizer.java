@@ -1,7 +1,7 @@
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.AEApi;
 import appeng.api.IAppEngApi;
-import appeng.api.Util;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
@@ -108,7 +108,7 @@ public class TileEntityMobilizer extends TileEntity {
 				if(!worldObj.isRemote){
 
 					TileEntity passenger = worldObj.getTileEntity(xCoord, yCoord+1, zCoord);
-					IAppEngApi api = Util.getAppEngApi();
+					IAppEngApi api = AEApi.instance();
 
 					//Prevent the passenger from popping off. Not sent to clients.
 					worldObj.setBlock(targetX, yCoord, targetZ, Block.getBlockFromName("stone"), 0, 0);
@@ -126,12 +126,12 @@ public class TileEntityMobilizer extends TileEntity {
 							}
 							//If AE is installed, use its handler
 						}else if(api != null){
-							if(api.getMovableRegistry().askToMove(passenger)){
+							if(api.registries().moveable().askToMove(passenger)){
 								worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlock(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 								passenger.invalidate();
 								worldObj.setBlockToAir(xCoord, yCoord + 1, zCoord);
-								api.getMovableRegistry().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord+1, targetZ);
-								api.getMovableRegistry().doneMoveing(passenger);
+								api.registries().moveable().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord+1, targetZ);
+								api.registries().moveable().doneMoving(passenger);
 								passenger.validate();
 							}
 
