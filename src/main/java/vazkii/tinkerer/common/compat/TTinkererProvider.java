@@ -1,3 +1,4 @@
+/*
 package vazkii.tinkerer.common.compat;
 
 import java.util.List;
@@ -124,4 +125,4 @@ public class TTinkererProvider implements IWailaDataProvider {
 		registrar.registerBodyProvider(new MagnetProvider(), ModBlocks.magnet.blockID);
 }
 
-}
+}*/

@@ -11,7 +11,8 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [Dec 11, 2013, 10:03:09 PM (GMT)]
- */
+ *//*
+
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 import net.minecraft.enchantment.Enchantment;
@@ -93,3 +94,4 @@ public class PeripheralArcaneBore implements IHostedPeripheral {
 	}
 
 }
+*/

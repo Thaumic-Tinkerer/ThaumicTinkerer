@@ -27,7 +27,7 @@ public class SlotSkyPearl extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.itemID == ModItems.skyPearl.itemID;
+		return par1ItemStack.getItem() == ModItems.skyPearl;
 	}
 
 	@Override

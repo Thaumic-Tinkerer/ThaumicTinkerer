@@ -56,7 +56,7 @@ public class BlockEnchanter extends BlockModContainer {
 		if(!par1World.isRemote) {
 			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 			if(tile != null) {
-				PacketDispatcher.sendPacketToAllInDimension(tile.getDescriptionPacket(), par1World.provider.dimensionId);
+				par1World.markBlockForUpdate(par2,par3,par4);
 				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ENCHANTER, par1World, par2, par3, par4);
 			}
 		}

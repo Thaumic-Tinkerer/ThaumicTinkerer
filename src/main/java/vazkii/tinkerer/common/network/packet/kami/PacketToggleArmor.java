@@ -3,8 +3,8 @@ package vazkii.tinkerer.common.network.packet.kami;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
-import thaumcraft.common.lib.network.AbstractPacket;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.network.AbstractPacket;
 
 /**
  * Created by Katrina on 28/02/14.

@@ -80,9 +80,9 @@ public final class ItemNBTHelper {
 			getNBT(stack).setTag(tag, cmp);
 	}
 
-	public static void setCompound(ItemStack stack, NBTTagCompound cmp) {
-		setCompound(stack, cmp., cmp);
-	}
+	//public static void setCompound(ItemStack stack, NBTTagCompound cmp) {
+	//	setCompound(stack, cmp, cmp);
+	//}
 
 	public static void setString(ItemStack stack, String tag, String s) {
 		getNBT(stack).setString(tag, s);

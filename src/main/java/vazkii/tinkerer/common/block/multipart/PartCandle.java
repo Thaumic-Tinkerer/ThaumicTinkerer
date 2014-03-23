@@ -1,4 +1,5 @@
-/**
+/*
+*
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
  *
@@ -11,7 +12,8 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [25 Oct 2013, 17:26:07 (GMT)]
- */
+
+
 package vazkii.tinkerer.common.block.multipart;
 
 import java.util.Arrays;
@@ -60,3 +62,4 @@ public class PartCandle extends McMetaPart implements IRandomDisplayTick {
 	}
 
 }
+*/

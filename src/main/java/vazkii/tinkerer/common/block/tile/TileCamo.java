@@ -17,9 +17,8 @@ package vazkii.tinkerer.common.block.tile;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileCamo extends TileEntity implements IMovableTile {
@@ -60,17 +59,17 @@ public class TileCamo extends TileEntity implements IMovableTile {
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
-		worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
+		readCustomNBT(packet.func_148857_g());
+		worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
 	}
 
 	@Override

@@ -15,7 +15,6 @@
 package vazkii.tinkerer.common.block.transvector;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.BlockCamo;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
@@ -29,14 +28,11 @@ public class BlockTransvectorInterface extends BlockCamo {
         setResistance(10F);
     }
 
+
+
+
     @Override
-    public TileTransvector createNewTileEntity(World world) {
+    public TileTransvector createNewTileEntity(World var1, int var2) {
         return new TileTransvectorInterface();
-    }
-
-
-    @Override
-    public TileEntity createNewTileEntity(World var1, int var2) {
-        return null;
     }
 }

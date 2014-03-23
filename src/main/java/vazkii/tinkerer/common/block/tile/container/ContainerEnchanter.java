@@ -16,8 +16,8 @@ package vazkii.tinkerer.common.block.tile.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.container.slot.SlotTool;
@@ -45,7 +45,7 @@ public class ContainerEnchanter extends ContainerPlayerInv {
         if (var4 != null && var4.getHasStack()) {
         	ItemStack var5 = var4.getStack();
 
-        	if(var5 != null && var5.itemID == Item.book.itemID)
+        	if(var5 != null && var5.getItem() == Items.book)
         		return null;
 
         	boolean wand = ((Slot) inventorySlots.get(1)).isItemValid(var5);

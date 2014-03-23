@@ -1,3 +1,4 @@
+/*
 package vazkii.tinkerer.common.compat;
 
 import cpw.mods.fml.relauncher.Side;
@@ -91,3 +92,4 @@ public class FumeTool implements ITurtleUpgrade {
 	}
 	
 }
+*/

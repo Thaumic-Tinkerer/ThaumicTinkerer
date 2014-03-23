@@ -14,26 +14,23 @@
  */
 package vazkii.tinkerer.common.block.tile.tablet;
 
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
+import com.mojang.authlib.GameProfile;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
-import net.minecraftforge.common.FakePlayer;
 import thaumcraft.common.lib.FakeThaumcraftPlayer;
-import vazkii.tinkerer.common.lib.LibBlockNames;
 
 public class TabletFakePlayer extends FakeThaumcraftPlayer {
 
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) { //,String name) {
-		super(tablet.worldObj, "[ThaumcraftTablet]");
+		super(tablet.getWorldObj(), new GameProfile("","[ThaumcraftTablet]"));
 		this.tablet = tablet;
 	}
     @Override
     public void setDead() {
-        inventory.clearInventory(-1, -1);
+        inventory.clearInventory(null, -1);
         super.setDead();
     }
 	@Override
@@ -71,7 +68,7 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 			if(i != inventory.currentItem) {
 				ItemStack stack = inventory.getStackInSlot(i);
 				if(stack != null) {
-					dropPlayerItem(stack);
+                    entityDropItem(stack,1.0f);
 					inventory.setInventorySlotContents(i, null);
 				}
 			}

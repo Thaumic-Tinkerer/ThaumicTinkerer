@@ -21,8 +21,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import thaumcraft.common.lib.network.AbstractPacket;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
+import vazkii.tinkerer.common.network.AbstractPacket;
 
 
 public abstract class PacketTile<T extends TileEntity> extends AbstractPacket {

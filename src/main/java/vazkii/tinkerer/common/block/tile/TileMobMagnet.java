@@ -25,15 +25,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.Constants;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
 
 public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTile {
 
@@ -187,7 +183,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public String[] getMethodNames() {
 		return new String[] { "isPulling", "setPulling", "getSignal", "getAdultSearch", "setAdultSearch" };
 	}
@@ -206,20 +202,20 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 			}
 		}
 		return super.callMethod(computer, context, method, arguments);
-	}
+	}*/
 
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
+		readCustomNBT(packet.func_148857_g());
 	}
 
 	@Override

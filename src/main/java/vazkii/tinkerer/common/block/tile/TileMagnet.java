@@ -15,9 +15,6 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -30,7 +27,7 @@ import vazkii.tinkerer.common.core.helper.MiscHelper;
 
 import java.util.List;
 
-public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile {
+public class TileMagnet extends TileEntity implements /*IPeripheral,*/ IMovableTile {
 
 	@Override
 	public void updateEntity() {
@@ -76,7 +73,7 @@ public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile 
 		};
 	}
 
-	@Override
+	/*@Override
 	public String getType() {
 		return "tt_magnet";
 	}
@@ -122,7 +119,7 @@ public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile 
 	@Override
 	public void detach(IComputerAccess computer) {
 		// NO-OP
-	}
+	}*/
 
 	@Override
 	public boolean prepareToMove() {

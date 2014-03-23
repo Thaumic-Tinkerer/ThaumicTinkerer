@@ -1,7 +1,5 @@
 package vazkii.tinkerer.common.block.tile;
 
-import appeng.api.AEApi;
-import appeng.api.IAppEngApi;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,7 +7,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 public class TileEntityMobilizer extends TileEntity {
 

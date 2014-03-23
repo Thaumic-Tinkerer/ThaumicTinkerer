@@ -1,3 +1,4 @@
+/*
 package vazkii.tinkerer.common.compat;
 
 import tconstruct.library.tools.AbilityHelper;
@@ -121,3 +122,4 @@ public class TinkersConstructCompat {
         return increase;
 	}
 }
+*/

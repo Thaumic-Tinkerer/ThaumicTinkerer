@@ -1,20 +1,19 @@
 package vazkii.tinkerer.common.block.tile;
 
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.StatCollector;
 import thaumcraft.common.entities.golems.EntityGolemBase;
-import thaumcraft.common.entities.golems.Marker;
 import vazkii.tinkerer.common.core.golems.EnumGolemCores;
 import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-public class TileGolemConnector extends TileCamo implements IPeripheral {
+public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
     private static final String TAG_UUID_MOST = "UUIDMost";
     private static final String TAG_UUID_LEAST = "UUIDLeast";
     public UUID golemConnected;
@@ -44,10 +43,10 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
         }
     }
 
-    @Override
+  /*  @Override
     public String getType() {
         return "tt_golemconnector";
-    }
+    }*/
 
 
     public Object[] getGolemDecorations() throws Exception {
@@ -116,7 +115,7 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
 
     }
 
-    @Override
+   /* @Override
     public String[] getMethodNames() {
         return new String[]{"getDecorations", "getPosition", "getType", "getHealth", "getCore", "getHome", "setHome", "getMarkers", "setMarkers", "newMarker", "addMarker", "saveMarker", "deleteMarker", "getMarker", "getMarkerCount"};
     }
@@ -257,10 +256,10 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
         return getMarkers();
     }
 
-    /**
+    *//**
      * @param markerMap
      * @return
-     */
+     *//*
     private Marker toMarker(HashMap<String, Object> markerMap) {
         double posX = (Double) markerMap.get("posX");
         double posY = (Double) markerMap.get("posY");
@@ -285,10 +284,10 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
         return new Object[]{luaMarkers};
     }
 
-    /**
+    *//**
      * @param mark
      * @return
-     */
+     *//*
     private HashMap<String, Object> fromMarker(Marker mark) {
         HashMap<String, Object> luaMarker = new HashMap<String, Object>();
 
@@ -362,5 +361,5 @@ public class TileGolemConnector extends TileCamo implements IPeripheral {
     public void detach(IComputerAccess computer) {
         // TODO Auto-generated method stub
 
-    }
+    }*/
 }

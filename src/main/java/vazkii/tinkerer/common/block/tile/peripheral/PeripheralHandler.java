@@ -11,7 +11,8 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [13 Sep 2013, 00:56:19 (GMT)]
- */
+ *//*
+
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 import net.minecraft.tileentity.TileEntity;
@@ -50,3 +51,4 @@ public final class PeripheralHandler implements IPeripheralHandler {
 	}
 
 }
+*/

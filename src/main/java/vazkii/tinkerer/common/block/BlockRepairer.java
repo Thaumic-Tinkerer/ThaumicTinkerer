@@ -14,8 +14,9 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Random;
-
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,10 +31,8 @@ import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
-import vazkii.tinkerer.common.compat.TinkersConstructCompat;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockRepairer extends BlockModContainer {
 
@@ -60,7 +59,7 @@ public class BlockRepairer extends BlockModContainer {
 				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 
-				repairer.onInventoryChanged();
+				repairer.markDirty();
 				return true;
 			}
 		} else {
@@ -68,7 +67,7 @@ public class BlockRepairer extends BlockModContainer {
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			repairer.setInventorySlotContents(0, null);
-			repairer.onInventoryChanged();
+			repairer.markDirty();
 			return true;
 		}
 
@@ -118,11 +117,11 @@ public class BlockRepairer extends BlockModContainer {
 						int dmg;
 						if(Loader.isModLoaded("TConstruct"))
 						{
-							if(TinkersConstructCompat.isTConstructTool(itemstack))
+							/*if(TinkersConstructCompat.isTConstructTool(itemstack))
 							{
 								dmg=TinkersConstructCompat.getDamage(itemstack);
 							}
-							else
+							else*/
 								dmg=itemstack.getItemDamage();
 						}
 						else

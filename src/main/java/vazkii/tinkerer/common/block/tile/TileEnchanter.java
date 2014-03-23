@@ -15,21 +15,14 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
-import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
@@ -138,7 +131,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 				enchantments.clear();
 				levels.clear();
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "thaumcraft:wand", 1F, 1F);
-				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 				return;
 			}
 
@@ -180,11 +173,12 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 	}
 
 	@Override
-	public void onInventoryChanged() {
+	public void markDirty() {
+        super.markDirty();
 		if(!worldObj.isRemote && !working) {
 			enchantments.clear();
 			levels.clear();
-			PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+            worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 		}
 	}
 
@@ -408,7 +402,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     }
 
     @Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
         return new S35PacketUpdateTileEntity(xCoord,yCoord,zCoord,-999,nbttagcompound);
