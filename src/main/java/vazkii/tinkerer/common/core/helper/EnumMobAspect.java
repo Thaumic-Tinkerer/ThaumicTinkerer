@@ -31,7 +31,7 @@ public enum EnumMobAspect {
     BrainyZombie(EntityBrainyZombie.class, new Aspect[]{Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH}),
 	Firebat(EntityFireBat.class, new Aspect[]{Aspect.FLIGHT, Aspect.FIRE, Aspect.MAGIC},1.9f,-0.3f),
 	CaveSpider(EntityCaveSpider.class, new Aspect[]{Aspect.BEAST, Aspect.POISON, Aspect.POISON}),
-	Chicken(EntityChicken.class, new Aspect[]{Aspect.SEED, Aspect.FLIGHT, Aspect.BEAST}),
+	Chicken(EntityChicken.class, new Aspect[]{Aspect.CROP, Aspect.FLIGHT, Aspect.BEAST}),
 	Cow(EntityCow.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.BEAST}),
 	Creeper(EntityCreeper.class, new Aspect[]{Aspect.MAGIC, Aspect.BEAST, Aspect.ELDRITCH}),
 	Enderman(EntityEnderman.class, new Aspect[]{Aspect.ELDRITCH, Aspect.ELDRITCH, Aspect.MAN},0.3f,0.0f),
@@ -44,7 +44,7 @@ public enum EnumMobAspect {
             return setSlimeSize(super.createEntity(), 1);
         }
     },
-	MushroomCow(EntityMooshroom.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.SEED}),
+	MushroomCow(EntityMooshroom.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.CROP}),
 	Ozelot(EntityOcelot.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.ELDRITCH}),
 	Pig(EntityPig.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.TRAVEL}),
 	PigZombie(EntityPigZombie.class, new Aspect[]{Aspect.UNDEAD, Aspect.FLESH, Aspect.FIRE}),
@@ -76,12 +76,12 @@ public enum EnumMobAspect {
     }
 
     private static Entity setSlimeSize(Entity entity, int size) {
-        try {
-            vazkii.tinkerer.common.core.helper.ReflectionHelper.call(entity,LibObfuscation.SET_SLINE_SIZE,new Integer(1));
-        } catch (Exception e) {
-            FMLCommonHandler.instance().getFMLLogger().warning("Could not set slime size : ");
-            e.printStackTrace();;
+
+        if(entity instanceof EntitySlime){
+            //TODO: Get nekosune to make an access transformer for this
+            ((EntitySlime)entity).setSlimeSize(1);
         }
+
         return entity;
     }
     public static Map<EnumMobAspect, Entity> entityCache = Maps.newHashMap();

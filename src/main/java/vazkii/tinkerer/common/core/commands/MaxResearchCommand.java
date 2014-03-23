@@ -1,5 +1,6 @@
 package vazkii.tinkerer.common.core.commands;
 
+import net.minecraft.util.ChatComponentText;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
@@ -28,7 +29,7 @@ public class MaxResearchCommand extends CommandBase {
 		{
 			Thaumcraft.proxy.getResearchManager().completeAspect(player, as, (short) 99);
 		}
-		player.addChatMessage("Added 99 research to all aspects");
+		player.addChatComponentMessage(new ChatComponentText("Added 99 research to all aspects"));
 		}
 		
 

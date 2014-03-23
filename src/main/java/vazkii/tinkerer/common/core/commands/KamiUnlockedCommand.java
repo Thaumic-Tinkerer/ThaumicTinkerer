@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatComponentText;
 import org.apache.commons.lang3.StringUtils;
 import thaumcraft.common.entities.monster.EntityFireBat;
 import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
@@ -39,14 +40,14 @@ public class KamiUnlockedCommand extends CommandBase {
         List<String> parents= Arrays.asList(ModResearch.kamiResearch.parentsHidden);
         List<String> unlocked= ResearchManager.getResearchForPlayer(icommandsender.getCommandSenderName());
         if(unlocked.containsAll(parents))
-            ((EntityPlayer)icommandsender).addChatMessage("Yes");
+            ((EntityPlayer)icommandsender).addChatComponentMessage(new ChatComponentText("Yes"));
         else
         {
-            ((EntityPlayer)icommandsender).addChatMessage("No");
+            ((EntityPlayer)icommandsender).addChatComponentMessage(new ChatComponentText("No"));
             List<String> leftover=new ArrayList<String>();
             List<String> list = new ArrayList<String> (parents);
             list.removeAll(unlocked);
-            ((EntityPlayer)icommandsender).addChatMessage("Remaining: "+StringUtils.join(list,','));
+            ((EntityPlayer)icommandsender).addChatComponentMessage(new ChatComponentText("Remaining: " + StringUtils.join(list, ',')));
             //EntityPlayer player=(EntityPlayer)icommandsender;
             //EntityGiantBrainyZombie bat=new EntityGiantBrainyZombie(player.worldObj);
             //bat.setPositionAndRotation(player.posX,player.posY,player.posZ,1,1);

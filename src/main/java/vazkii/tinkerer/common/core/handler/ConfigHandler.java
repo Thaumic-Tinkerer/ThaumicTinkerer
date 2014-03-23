@@ -15,9 +15,9 @@
 package vazkii.tinkerer.common.core.handler;
 
 import cpw.mods.fml.common.Loader;
-import net.minecraftforge.common.ConfigCategory;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.Property;
+import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 import thaumcraft.common.config.Config;
 import vazkii.tinkerer.common.dim.OreClusterGenerator;
 import vazkii.tinkerer.common.lib.*;
@@ -125,81 +125,6 @@ public final class ConfigHandler {
 			endDimensionID = propEndID.getInt(1);
 		}
 
-		LibBlockIDs.idDarkQuartz = loadBlock(LibBlockNames.DARK_QUARTZ, LibBlockIDs.idDarkQuartz);
-		LibBlockIDs.idDarkQuartzSlab = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB, LibBlockIDs.idDarkQuartzSlab);
-		LibBlockIDs.idDarkQuartzSlabFull = loadBlock(LibBlockNames.DARK_QUARTZ_SLAB_FULL, LibBlockIDs.idDarkQuartzSlabFull);
-		LibBlockIDs.idDarkQuartzStairs = loadBlock(LibBlockNames.DARK_QUARTZ_STAIRS, LibBlockIDs.idDarkQuartzStairs);
-		LibBlockIDs.idInterface = loadBlock(LibBlockNames.INTERFACE, LibBlockIDs.idInterface);
-		LibBlockIDs.idGaseousLight = loadBlock(LibBlockNames.GASEOUS_LIGHT, LibBlockIDs.idGaseousLight);
-		LibBlockIDs.idGaseousShadow = loadBlock(LibBlockNames.GASEOUS_SHADOW, LibBlockIDs.idGaseousShadow);
-		LibBlockIDs.idAnimationTablet = loadBlock(LibBlockNames.ANIMATION_TABLET, LibBlockIDs.idAnimationTablet);
-		LibBlockIDs.idNitorGas = loadBlock(LibBlockNames.NITOR_GAS, LibBlockIDs.idNitorGas);
-		LibBlockIDs.idMagnet = loadBlock(LibBlockNames.MAGNET, LibBlockIDs.idMagnet);
-		LibBlockIDs.idEnchanter = loadBlock(LibBlockNames.ENCHANTER, LibBlockIDs.idEnchanter);
-		LibBlockIDs.idFunnel = loadBlock(LibBlockNames.FUNNEL, LibBlockIDs.idFunnel);
-		LibBlockIDs.idDislocator = loadBlock(LibBlockNames.DISLOCATOR, LibBlockIDs.idDislocator);
-		LibBlockIDs.idRepairer = loadBlock(LibBlockNames.REPAIRER, LibBlockIDs.idRepairer);
-		LibBlockIDs.idAspectAnalyzer = loadBlock(LibBlockNames.ASPECT_ANALYZER, LibBlockIDs.idAspectAnalyzer);
-		LibBlockIDs.idPlatform = loadBlock(LibBlockNames.PLATFORM, LibBlockIDs.idPlatform);
-
-		LibBlockIDs.idWarpGate = loadBlock(LibBlockNames.WARP_GATE, LibBlockIDs.idWarpGate);
-
-		LibBlockIDs.idPortal = loadBlock(LibBlockNames.PORTAL, LibBlockIDs.idPortal);
-
-		LibBlockIDs.idMobilizer= loadBlock(LibBlockNames.MOBILIZER, LibBlockIDs.idMobilizer);
-
-		LibBlockIDs.idMobilizerRelay= loadBlock(LibBlockNames.MOBILIZER_RELAY, LibBlockIDs.idMobilizerRelay);
-		LibBlockIDs.idGolemConnector= loadBlock(LibBlockNames.GOLEMCONNECTOR, LibBlockIDs.idGolemConnector);
-
-		LibItemIDs.idDarkQuartz = loadItem(LibItemNames.DARK_QUARTZ, LibItemIDs.idDarkQuartz);
-		LibItemIDs.idConnector = loadItem(LibItemNames.CONNECTOR, LibItemIDs.idConnector);
-		LibItemIDs.idGaseousLight = loadItem(LibItemNames.GASEOUS_LIGHT, LibItemIDs.idGaseousLight);
-		LibItemIDs.idGaseousShadow = loadItem(LibItemNames.GASEOUS_SHADOW, LibItemIDs.idGaseousShadow);
-		LibItemIDs.idGasRemover = loadItem(LibItemNames.GAS_REMOVER, LibItemIDs.idGasRemover);
-		LibItemIDs.idSpellCloth = loadItem(LibItemNames.SPELL_CLOTH, LibItemIDs.idSpellCloth);
-		LibItemIDs.idFocusFlight = loadItem(LibItemNames.FOCUS_FLIGHT, LibItemIDs.idFocusFlight);
-		LibItemIDs.idFocusDislocation = loadItem(LibItemNames.FOCUS_DISLOCATION, LibItemIDs.idFocusDislocation);
-		LibItemIDs.idCleansingTalisman = loadItem(LibItemNames.CLEANSING_TALISMAN, LibItemIDs.idCleansingTalisman);
-		LibItemIDs.idFocusTelekinesis = loadItem(LibItemNames.FOCUS_TELEKINESIS, LibItemIDs.idFocusTelekinesis);
-		LibItemIDs.idBrightNitor = loadItem(LibItemNames.BRIGHT_NTIOR, LibItemIDs.idBrightNitor);
-		LibItemIDs.idSoulMould = loadItem(LibItemNames.SOUL_MOULD, LibItemIDs.idSoulMould);
-		LibItemIDs.idXPTalisman = loadItem(LibItemNames.XP_TALISMAN, LibItemIDs.idXPTalisman);
-		LibItemIDs.idFocusSmelt = loadItem(LibItemNames.FOCUS_SMELT, LibItemIDs.idFocusSmelt);
-		LibItemIDs.idFocusHeal = loadItem(LibItemNames.FOCUS_HEAL, LibItemIDs.idFocusHeal);
-		LibItemIDs.idFocusEnderChest = loadItem(LibItemNames.FOCUS_ENDER_CHEST, LibItemIDs.idFocusEnderChest);
-		LibItemIDs.idBloodSword = loadItem(LibItemNames.BLOOD_SWORD, LibItemIDs.idBloodSword);
-		LibItemIDs.idRevealingHelm = loadItem(LibItemNames.REVEALING_HELM, LibItemIDs.idRevealingHelm);
-		LibItemIDs.idInfusedInkwell = loadItem(LibItemNames.INFUSED_INKWELL, LibItemIDs.idInfusedInkwell);
-		LibItemIDs.idFocusDeflect = loadItem(LibItemNames.FOCUS_DEFLECT, LibItemIDs.idFocusDeflect);
-		LibItemIDs.idShareBook = loadItem(LibItemNames.SHARE_BOOK, LibItemIDs.idShareBook);
-
-		LibItemIDs.idKamiResource = loadKamiItem(LibItemNames.KAMI_RESOURCE, LibItemIDs.idKamiResource);
-		LibItemIDs.idIchorHelm = loadKamiItem(LibItemNames.ICHOR_HELM, LibItemIDs.idIchorHelm);
-		LibItemIDs.idIchorChest = loadKamiItem(LibItemNames.ICHOR_CHEST, LibItemIDs.idIchorChest);
-		LibItemIDs.idIchorLegs = loadKamiItem(LibItemNames.ICHOR_LEGS, LibItemIDs.idIchorLegs);
-		LibItemIDs.idIchorBoots = loadKamiItem(LibItemNames.ICHOR_BOOTS, LibItemIDs.idIchorBoots);
-		LibItemIDs.idIchorHelmGem = loadKamiItem(LibItemNames.ICHOR_HELM_GEM, LibItemIDs.idIchorHelmGem);
-		LibItemIDs.idIchorChestGem = loadKamiItem(LibItemNames.ICHOR_CHEST_GEM, LibItemIDs.idIchorChestGem);
-		LibItemIDs.idIchorLegsGem = loadKamiItem(LibItemNames.ICHOR_LEGS_GEM, LibItemIDs.idIchorLegsGem);
-		LibItemIDs.idIchorBootsGem = loadKamiItem(LibItemNames.ICHOR_BOOTS_GEM, LibItemIDs.idIchorBootsGem);
-		LibItemIDs.idCatAmulet = loadKamiItem(LibItemNames.CAT_AMULET, LibItemIDs.idCatAmulet);
-		LibItemIDs.idIchorPick = loadKamiItem(LibItemNames.ICHOR_PICK, LibItemIDs.idIchorPick);
-		LibItemIDs.idIchorShovel = loadKamiItem(LibItemNames.ICHOR_SHOVEL, LibItemIDs.idIchorShovel);
-		LibItemIDs.idIchorAxe = loadKamiItem(LibItemNames.ICHOR_AXE, LibItemIDs.idIchorAxe);
-		LibItemIDs.idIchorSword = loadKamiItem(LibItemNames.ICHOR_SWORD, LibItemIDs.idIchorSword);
-		LibItemIDs.idIchorPickGem = loadKamiItem(LibItemNames.ICHOR_PICK_GEM, LibItemIDs.idIchorPickGem);
-		LibItemIDs.idIchorShovelGem = loadKamiItem(LibItemNames.ICHOR_SHOVEL_GEM, LibItemIDs.idIchorShovelGem);
-		LibItemIDs.idIchorAxeGem = loadKamiItem(LibItemNames.ICHOR_AXE_GEM, LibItemIDs.idIchorAxeGem);
-		LibItemIDs.idIchorSwordGem = loadKamiItem(LibItemNames.ICHOR_SWORD_GEM, LibItemIDs.idIchorSwordGem);
-		LibItemIDs.idIchorPouch = loadKamiItem(LibItemNames.ICHOR_POUCH, LibItemIDs.idIchorPouch);
-		LibItemIDs.idBlockTalisman = loadKamiItem(LibItemNames.BLOCK_TALISMAN, LibItemIDs.idBlockTalisman);
-		LibItemIDs.idPlacementMirror = loadKamiItem(LibItemNames.PLACEMENT_MIRROR, LibItemIDs.idPlacementMirror);
-		LibItemIDs.idFocusShadowbeam = loadKamiItem(LibItemNames.FOCUS_SHADOWBEAM, LibItemIDs.idFocusShadowbeam);
-		LibItemIDs.idFocusXPDrain = loadKamiItem(LibItemNames.FOCUS_XP_DRAIN, LibItemIDs.idFocusXPDrain);
-		LibItemIDs.idProtoclay = loadKamiItem(LibItemNames.PROTOCLAY, LibItemIDs.idProtoclay);
-		LibItemIDs.idSkyPearl = loadKamiItem(LibItemNames.SKY_PEARL, LibItemIDs.idSkyPearl);
-		LibItemIDs.idFocusRecall = loadKamiItem(LibItemNames.FOCUS_RECALL, LibItemIDs.idFocusRecall);
-
 		LibEnchantIDs.idAscentBoost = loadEnchant(LibEnchantNames.ASCENT_BOOST, LibEnchantIDs.idAscentBoost);
 		LibEnchantIDs.idSlowFall = loadEnchant(LibEnchantNames.SLOW_FALL, LibEnchantIDs.idSlowFall);
 		LibEnchantIDs.idAutoSmelt = loadEnchant(LibEnchantNames.AUTO_SMELT, LibEnchantIDs.idAutoSmelt);
@@ -220,18 +145,6 @@ public final class ConfigHandler {
 
 
 		config.save();
-	}
-
-	private static int loadItem(String label, int defaultID) {
-		return config.getItem("id_item." + label, defaultID).getInt(defaultID);
-	}
-
-	private static int loadKamiItem(String label, int defaultID) {
-		return config.getItem(CATEGORY_KAMI_ITEMS, "id_item." + label, defaultID).getInt(defaultID);
-	}
-
-	private static int loadBlock(String label, int defaultID) {
-		return config.getBlock("id_tile." + label, defaultID).getInt(defaultID);
 	}
 
 	private static int loadEnchant(String label, int deafultID) {

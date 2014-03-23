@@ -79,7 +79,7 @@ public class TTCommonProxy {
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
-		NetworkRegistry.instance().registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
         RegisterPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
 

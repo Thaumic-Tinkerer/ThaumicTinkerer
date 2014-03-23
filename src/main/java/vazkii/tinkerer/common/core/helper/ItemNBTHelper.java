@@ -77,11 +77,11 @@ public final class ItemNBTHelper {
 
 	public static void setCompound(ItemStack stack, String tag, NBTTagCompound cmp) {
 		if(!tag.equalsIgnoreCase("ench")) // not override the enchantments
-			getNBT(stack).setCompoundTag(tag, cmp);
+			getNBT(stack).setTag(tag, cmp);
 	}
 
 	public static void setCompound(ItemStack stack, NBTTagCompound cmp) {
-		setCompound(stack, cmp.getName(), cmp);
+		setCompound(stack, cmp.getName, cmp);
 	}
 
 	public static void setString(ItemStack stack, String tag, String s) {
