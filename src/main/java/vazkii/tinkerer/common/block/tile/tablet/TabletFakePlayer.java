@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block.tile.tablet;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 import thaumcraft.common.lib.FakeThaumcraftPlayer;
 
@@ -25,7 +26,7 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) { //,String name) {
-		super(tablet.getWorldObj(), new GameProfile("","[ThaumcraftTablet]"));
+		super(tablet.getWorldObj(), "[ThaumcraftTablet]");
 		this.tablet = tablet;
 	}
     @Override
@@ -75,7 +76,12 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 		}
 	}
 
-	@Override
+    @Override
+    public void addChatMessage(IChatComponent var1) {
+
+    }
+
+    @Override
 	public ChunkCoordinates getPlayerCoordinates() {
 		return new ChunkCoordinates(tablet.xCoord, tablet.yCoord, tablet.zCoord);
 	}

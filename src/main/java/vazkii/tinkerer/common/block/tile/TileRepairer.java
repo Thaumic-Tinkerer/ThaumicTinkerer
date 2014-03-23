@@ -338,7 +338,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public void setSuction(Aspect paramAspect, int paramInt) { }
-	
+
 	@Override
 	public int takeVis(Aspect paramAspect, int paramInt) {
 		return 0;

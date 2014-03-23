@@ -142,7 +142,6 @@ public class BlockFunnel extends BlockModContainer {
 				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 
-				funnel.onInventoryChanged();
 				return true;
 			}
 		} else {
@@ -150,7 +149,6 @@ public class BlockFunnel extends BlockModContainer {
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			funnel.setInventorySlotContents(0, null);
-			funnel.onInventoryChanged();
 			return true;
 		}
 
