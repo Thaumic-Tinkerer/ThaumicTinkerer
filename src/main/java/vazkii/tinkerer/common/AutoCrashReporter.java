@@ -20,7 +20,7 @@ import java.util.logging.LogRecord;
 public class AutoCrashReporter extends Handler {
 
 	public AutoCrashReporter() {
-		FMLLog.getLogger().addHandler(this);
+		//FMLLog.getLogger().addHandler(this);
 	}
 
 	public static String readFileToString(File f) throws FileNotFoundException, IOException {

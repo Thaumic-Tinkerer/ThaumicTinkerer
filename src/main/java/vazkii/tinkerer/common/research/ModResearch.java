@@ -15,6 +15,7 @@
 package vazkii.tinkerer.common.research;
 
 import cpw.mods.fml.common.Loader;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -133,13 +134,13 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_POUNCE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.AIR, 3).add(Aspect.ORDER, 3).add(Aspect.ARMOR, 3).add(Aspect.MAGIC, 2), 7, 0, 2, new ResourceLocation(LibResources.ENCHANT_POUNCE)).setParents(LibResearch.KEY_ENCHANT_ASCENT_BOOST).registerResearchItem();
 		research.setPages(new ResearchPage("0")).setSecondary();
 
-		research = new TTResearchItem(LibResearch.KEY_ENCHANT_SHATTER, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.STONE, 3).add(Aspect.ENTROPY, 3).add(Aspect.TOOL, 1).add(Aspect.MAGIC, 2), 5, 8, 2, new ResourceLocation(LibResources.ENCHANT_SHATTER)).setParents(LibResearch.KEY_ENCHANT_DESINTEGRATE).registerResearchItem();
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_SHATTER, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.EARTH, 3).add(Aspect.ENTROPY, 3).add(Aspect.TOOL, 1).add(Aspect.MAGIC, 2), 5, 8, 2, new ResourceLocation(LibResources.ENCHANT_SHATTER)).setParents(LibResearch.KEY_ENCHANT_DESINTEGRATE).registerResearchItem();
 		research.setPages(new ResearchPage("0")).setSecondary();
 
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_SHOCKWAVE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.AIR, 3).add(Aspect.ENTROPY, 3).add(Aspect.ARMOR, 1).add(Aspect.MAGIC, 2), 9, 2, 2, new ResourceLocation(LibResources.ENCHANT_SHOCKWAVE)).setParents(LibResearch.KEY_ENCHANT_SLOW_FALL).registerResearchItem();
 		research.setPages(new ResearchPage("0")).setSecondary();
 
-		research = new TTResearchItem(LibResearch.KEY_ENCHANT_TUNNEL, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.STONE, 3).add(Aspect.ORDER, 3).add(Aspect.TOOL, 1).add(Aspect.MAGIC, 2), 9, 6, 2, new ResourceLocation(LibResources.ENCHANT_TUNNEL)).setParents(LibResearch.KEY_ENCHANT_AUTO_SMELT).registerResearchItem();
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_TUNNEL, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.EARTH, 3).add(Aspect.ORDER, 3).add(Aspect.TOOL, 1).add(Aspect.MAGIC, 2), 9, 6, 2, new ResourceLocation(LibResources.ENCHANT_TUNNEL)).setParents(LibResearch.KEY_ENCHANT_AUTO_SMELT).registerResearchItem();
 		research.setPages(new ResearchPage("0")).setSecondary();
 
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_VALIANCE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.WEAPON, 3).add(Aspect.HEAL, 3).add(Aspect.MAGIC, 2), 1, 4, 2, new ResourceLocation(LibResources.ENCHANT_VALIANCE)).setParents(LibResearch.KEY_ENCHANT_VAMPIRISM).registerResearchItem();
@@ -202,7 +203,7 @@ public final class ModResearch {
 
 		// Peripheral documentation research
 		if(Loader.isModLoaded("ComputerCraft")) {
-			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), -1, 0, 0, new ItemStack(Item.redstone)).setAutoUnlock().setRound().registerResearchItem();
+			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), -1, 0, 0, new ItemStack(Items.redstone)).setAutoUnlock().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"));
 
 			research = new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 0, 1, 2, new ItemStack(ModBlocks.aspectAnalyzer)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound().registerResearchItem();
@@ -251,13 +252,13 @@ public final class ModResearch {
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_TOOLS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.WEAPON, 1).add(Aspect.METAL, 1).add(Aspect.CRAFT, 1), 13, 12, 5, new ItemStack(ModItems.ichorPick)).setConcealed().setParents(LibResearch.KEY_ICHORIUM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_PICK), arcaneRecipePage(LibResearch.KEY_ICHOR_SHOVEL), arcaneRecipePage(LibResearch.KEY_ICHOR_AXE), arcaneRecipePage(LibResearch.KEY_ICHOR_SWORD));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.STONE, 1), 13, 15, 5, new ItemStack(ModItems.ichorPickGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 13, 15, 5, new ItemStack(ModItems.ichorPickGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_PICK_GEM), new ResearchPage("1"));
 
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SHOVEL_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.EARTH, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 15, 15, 5, new ItemStack(ModItems.ichorShovelGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_SHOVEL_GEM));
 
-			research = new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.SEED, 1), 16, 14, 5, new ItemStack(ModItems.ichorAxeGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
+			research = new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.CROP, 1), 16, 14, 5, new ItemStack(ModItems.ichorAxeGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR_AXE_GEM));
 
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_SWORD_GEM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AIR, 2).add(Aspect.WEAPON, 1).add(Aspect.SOUL, 1).add(Aspect.HUNGER, 1), 16, 12, 5, new ItemStack(ModItems.ichorSwordGem)).setParents(LibResearch.KEY_ICHOR_TOOLS).registerResearchItem();
