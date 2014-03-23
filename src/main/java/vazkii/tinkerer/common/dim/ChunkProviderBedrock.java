@@ -1,6 +1,8 @@
 package vazkii.tinkerer.common.dim;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
@@ -12,6 +14,7 @@ import net.minecraft.world.gen.FlatLayerInfo;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenStructure;
+import vazkii.tinkerer.common.block.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,10 +39,10 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		this.random = new Random(par2);
 		generator = new OreClusterGenerator();
 
-		FlatLayerInfo flatlayerinfo = new FlatLayerInfo(256, 7);
+		FlatLayerInfo flatlayerinfo = new FlatLayerInfo(256, ModBlocks.bedrock);
 
 		for (int j = flatlayerinfo.getMinY(); j < flatlayerinfo.getMinY() + flatlayerinfo.getLayerCount(); ++j) {
-			this.cachedBlockIDs[j] = (byte) (flatlayerinfo.getFillBlock() & 255);
+			this.cachedBlockIDs[j] = (byte) (Block.getIdFromBlock(flatlayerinfo.func_151536_b()) & 255);
 			this.cachedBlockMetadata[j] = (byte) flatlayerinfo.getFillBlockMeta();
 		}
 
@@ -70,7 +73,7 @@ public class ChunkProviderBedrock implements IChunkProvider {
 
 			for (int i1 = 0; i1 < 16; ++i1) {
 				for (int j1 = 0; j1 < 16; ++j1) {
-					extendedblockstorage.setExtBlockID(i1, k & 15, j1, this.cachedBlockIDs[k] & 255);
+					extendedblockstorage.func_150818_a(i1, k & 15, j1, Block.getBlockById(this.cachedBlockIDs[k] & 255));
 					extendedblockstorage.setExtBlockMetadata(i1, k & 15, j1, this.cachedBlockMetadata[k]);
 				}
 			}
@@ -88,7 +91,9 @@ public class ChunkProviderBedrock implements IChunkProvider {
 
 		while (iterator.hasNext()) {
 			MapGenStructure mapgenstructure = (MapGenStructure) iterator.next();
-			mapgenstructure.generate(this, this.worldObj, par1, par2, (byte[]) null);
+            mapgenstructure.func_151539_a(this, this.worldObj, par1, par2, new Block[]{
+                    Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air
+            });
 		}
 
 		chunk.generateSkylightMap();
@@ -172,18 +177,16 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		return biomegenbase == null ? null : biomegenbase.getSpawnableList(par1EnumCreatureType);
 	}
 
-	/**
-	 * Returns the location of the closest structure of the specified type. If not found returns null.
-	 */
-	public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5) {
-		if ("Stronghold".equals(par2Str)) {
+    @Override
+    public ChunkPosition func_147416_a(World var1, String var2, int var3, int var4, int var5) {
+		if ("Stronghold".equals(var2)) {
 			Iterator iterator = this.structureGenerators.iterator();
 
 			while (iterator.hasNext()) {
 				MapGenStructure mapgenstructure = (MapGenStructure) iterator.next();
 
 				if (mapgenstructure instanceof MapGenStronghold) {
-					return mapgenstructure.getNearestInstance(par1World, par3, par4, par5);
+                    return mapgenstructure.func_151545_a(var1, var3, var4, var5);
 				}
 			}
 		}
@@ -200,7 +203,9 @@ public class ChunkProviderBedrock implements IChunkProvider {
 
 		while (iterator.hasNext()) {
 			MapGenStructure mapgenstructure = (MapGenStructure) iterator.next();
-			mapgenstructure.generate(this, this.worldObj, par1, par2, (byte[]) null);
+            mapgenstructure.func_151539_a(this, this.worldObj, par1, par2, new Block[]{
+                    Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air
+            });
 		}
 	}
 
