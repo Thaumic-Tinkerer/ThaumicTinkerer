@@ -1,3 +1,4 @@
+/*
 package vazkii.tinkerer.common.compat;
 
 import java.util.List;
@@ -82,3 +83,4 @@ public class MagnetProvider implements IWailaDataProvider {
 	}
 
 }
+*/

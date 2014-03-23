@@ -11,7 +11,8 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [13 Sep 2013, 00:58:21 (GMT)]
- */
+ *//*
+
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 import dan200.computer.api.IComputerAccess;
@@ -113,4 +114,4 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
         // NO-OP
     }
 
-}
+}*/

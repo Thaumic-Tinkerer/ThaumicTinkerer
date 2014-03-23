@@ -15,27 +15,16 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
-import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class TileAspectAnalyzer extends TileEntity implements IInventory, IPeripheral, IMovableTile {
+public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -146,7 +135,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 		return true;
 	}
 
-	@Override
+	/*@Override
 	public String getType() {
 		return "tt_aspectanalyzer";
 	}
@@ -205,7 +194,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	@Override
 	public void detach(IComputerAccess computer) {
 		// NO-OP
-	}
+	}*/
 	@Override
 	public boolean prepareToMove() {
 		return true;

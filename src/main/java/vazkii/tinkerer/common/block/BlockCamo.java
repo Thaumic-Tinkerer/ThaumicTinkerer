@@ -14,9 +14,8 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Arrays;
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
@@ -28,8 +27,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.tile.TileCamo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
@@ -71,16 +71,16 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
             boolean doChange = true;
             Block block = null;
-            checkChange : {
-                if(currentStack.getItem() != Item.getItemFromBlock(Block.getBlockFromName("air"))) {
-                    //Commented out for 1.7 update
-                    //if(currentStack.itemID >= 4096) {
-                    doChange = false;
-                    break checkChange;
-                    //}
+            checkChange :
+            {
+                if (currentStack.getItem() != Item.getItemFromBlock(Block.getBlockFromName("air"))) {
+                    if (Item.getIdFromItem(currentStack.getItem()) == 0) {
+                        doChange = false;
+                        break checkChange;
+                    }
 
                     block = Block.getBlockFromItem(currentStack.getItem());
-                    if(block == null || !isValidRenderType(block.getRenderType()) || block instanceof BlockCamo || block.getMaterial() == Material.air)
+                    if (block == null || !isValidRenderType(block.getRenderType()) || block instanceof BlockCamo || block.getMaterial() == Material.air)
                         doChange = false;
                 }
             }
@@ -108,7 +108,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
                 }
                 camo.camo = Block.getBlockFromItem(currentStack.getItem());
                 camo.camoMeta = metadata;
-                PacketDispatcher.sendPacketToAllInDimension(camo.getDescriptionPacket(), par1World.provider.dimensionId);
+                par1World.markBlockForUpdate(par2,par3,par4);
 
                 return true;
             }

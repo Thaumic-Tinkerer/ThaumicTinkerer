@@ -1,3 +1,4 @@
+/*
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 import dan200.computer.api.IComputerAccess;
@@ -9,9 +10,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.aspects.IEssentiaTransport;
 
+*/
 /**
  * Created by Katrina on 03/03/14.
- */
+ *//*
+
 public class PeripheralEssentiaTransport implements IHostedPeripheral {
 
     IEssentiaTransport pipe;
@@ -93,3 +96,4 @@ public static int GetDirection(Object obj) {
 
     }
 }
+*/

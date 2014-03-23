@@ -114,7 +114,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 			if (player.getHeldItem() != null && player.getHeldItem().isItemEqual(pouch))
 				player.setCurrentItemOrArmor(0, pouch);
 
-			player.inventory.onInventoryChanged();
+			player.inventory.markDirty();
 		}
 	}
 

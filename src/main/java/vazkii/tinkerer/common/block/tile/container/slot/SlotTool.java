@@ -15,8 +15,8 @@
 package vazkii.tinkerer.common.block.tile.container.slot;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 
@@ -31,7 +31,7 @@ public class SlotTool extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return !enchanter.working && par1ItemStack.itemID != Item.book.itemID && par1ItemStack.getItem().isItemTool(par1ItemStack);
+		return !enchanter.working && par1ItemStack.getItem() != Items.book&& par1ItemStack.getItem().isItemTool(par1ItemStack);
 	}
 
 	@Override

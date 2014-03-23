@@ -11,7 +11,8 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [Dec 11, 2013, 9:36:45 PM (GMT)]
- */
+ *//*
+
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -74,3 +75,4 @@ public class PeripheralBrainInAJar implements IHostedPeripheral {
 	}
 
 }
+*/

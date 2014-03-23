@@ -1,3 +1,4 @@
+/*
 package vazkii.tinkerer.common.compat;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -54,3 +55,4 @@ public class FumePeripheral implements IHostedPeripheral {
 	}
 
 }
+*/

@@ -4,7 +4,8 @@
  *
  * Check out his mod, ExtraUtilities:
  * http://www.minecraftforum.net/topic/1776056-
- */
+ *//*
+
 package vazkii.tinkerer.common.block.multipart;
 
 import net.minecraft.block.Block;
@@ -87,3 +88,4 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 		return null;
 	}
 }
+*/

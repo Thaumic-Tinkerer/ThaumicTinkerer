@@ -16,15 +16,13 @@ package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -34,12 +32,13 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.compat.TinkersConstructCompat;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.HashMap;
 import java.util.Map;
+
+/*import vazkii.tinkerer.common.compat.TinkersConstructCompat;*/
 
 public class TileRepairer extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport, IMovableTile {
 
@@ -63,7 +62,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 			{
 				if(inventorySlots[0] != null)
 				{
-					if(TinkersConstructCompat.isTConstructTool(inventorySlots[0]))
+					/*if(TinkersConstructCompat.isTConstructTool(inventorySlots[0]))
 					{
 						int dmg=TinkersConstructCompat.getDamage(inventorySlots[0]);
 						if( dmg > 0) {
@@ -77,14 +76,14 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 						} else tookLastTick=false;
 						dmgLastTick = inventorySlots[0] == null ? 0 : TinkersConstructCompat.getDamage(inventorySlots[0]);
 						return ;
-					}
+					}*/
 				}
 			}
 			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
 				int essentia = drawEssentia();
 				int dmg = inventorySlots[0].getItemDamage();
 				inventorySlots[0].setItemDamage(Math.max(0, dmg - essentia));
-				onInventoryChanged();
+				markDirty();
 
 				if(dmgLastTick != 0 && dmgLastTick != dmg) {
 					ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
@@ -211,21 +210,22 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	@Override
-	public Packet getDescriptionPacket() {
+	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager manager, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.data);
+		readCustomNBT(packet.func_148857_g());
 	}
 
 	@Override
-	public void onInventoryChanged() {
-		PacketDispatcher.sendPacketToAllInDimension(getDescriptionPacket(), worldObj.provider.dimensionId);
+	public void markDirty() {
+		super.markDirty();
+        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 	}
 
 	@Override
@@ -235,13 +235,13 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
+		/*if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
 		{
 			if(TinkersConstructCompat.isTConstructTool(itemstack))
 			{
 				return itemstack!=null;
 			}
-		}
+		}*/
 		return itemstack != null && itemstack.getItem().isRepairable();
 	}
 
@@ -251,8 +251,8 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	int drawEssentia() {
-		ForgeDirection orientation = getOrientation();
-		TileEntity te = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
+        ForgeDirection orientation = getOrientation();
+		TileEntity te = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord,orientation);
 		if (te != null) {
 			IEssentiaTransport ic = (IEssentiaTransport)te;
 			if (!ic.canOutputTo(orientation.getOpposite())) 
@@ -265,7 +265,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		return 0;
 	}
 
-	ForgeDirection getOrientation() {
+    ForgeDirection getOrientation() {
 		return ForgeDirection.getOrientation(getBlockMetadata());
 	}
 
@@ -274,11 +274,11 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		ItemStack stack = inventorySlots[0];
 		if(stack == null)
 			return null;
-		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
+		/*if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
 		{
 			if(TinkersConstructCompat.isTConstructTool(stack))
 				return new AspectList().add(Aspect.ENTROPY, TinkersConstructCompat.getDamage(stack));
-		}
+		}*/
 		return new AspectList().add(Aspect.ENTROPY, stack.getItemDamage());
 	}
 

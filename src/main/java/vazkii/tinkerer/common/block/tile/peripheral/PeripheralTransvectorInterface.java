@@ -11,7 +11,8 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [Dec 11, 2013, 9:49:46 PM (GMT)]
- */
+ *//*
+
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 import ic2.api.energy.tile.IEnergySink;
@@ -66,3 +67,4 @@ public class PeripheralTransvectorInterface extends PeripheralAspectContainer {
 	}
 
 }
+*/
