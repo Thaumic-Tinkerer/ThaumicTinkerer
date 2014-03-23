@@ -1,3 +1,10 @@
+**Build 138**
+* Made OpenPeripheral compatibility changes **Warning: Jar and Other Aspect containers computer craft API has changed, please check wiki**
+* Fixed Bedrock Dimension being inaccesible when Galacticraft is installed.
+* Fixed WAILA bug showing Warp gates incomming teleports inverted
+* Made Kami default on **Warning: config change for kami has changed, to allow for the change**
+*Baring any major bugs, this will be the last 1.6.4 release*
+
 **Build 137**
 * Fixed Kami requiring Researches AT has not implemented.
 
