@@ -35,7 +35,7 @@ public final class ConfigHandler {
 	private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
 	private static final String CATEGORY_KAMI_GENERAL = "general.kami";
 
-	public static boolean enableKami = false;
+	public static boolean enableKami = true;
 	public static boolean useTootlipIndicators = true;
 	public static boolean enableSurvivalShareTome = true;
 	public static boolean enableEasymodeResearch = false;
@@ -63,9 +63,9 @@ public final class ConfigHandler {
 
 		config.load();
 
-		Property propEnableKami=config.get(Configuration.CATEGORY_GENERAL, "kami.forceenabled", false);
+		Property propEnableKami=config.get(Configuration.CATEGORY_GENERAL, "kami.enabled", true);
 		propEnableKami.comment = "Set to true to enable all kami stuff (note, either this OR the kami mod file will work)";
-		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(false);
+		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(true);
 
 
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);

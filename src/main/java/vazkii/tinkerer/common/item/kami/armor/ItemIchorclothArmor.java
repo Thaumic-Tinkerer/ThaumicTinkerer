@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.item.kami.armor;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,14 +29,13 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.IVisDiscountGear;
-import thaumcraft.api.IVisDiscounter;
 import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, ISpecialArmor {
 
