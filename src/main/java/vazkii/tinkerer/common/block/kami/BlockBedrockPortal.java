@@ -5,22 +5,24 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Facing;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
@@ -33,19 +35,19 @@ import java.util.Random;
 public class BlockBedrockPortal extends Block {
 
 	public BlockBedrockPortal(int id) {
-		super(id, Material.portal);
-		setStepSound(soundStoneFootstep);
+		super(Material.portal);
+		setStepSound(Block.soundTypeStone);
 		setResistance(6000000.0F);
 		disableStats();
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
 	@SideOnly(Side.CLIENT)
-	private Icon icon;
+	private IIcon icon;
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
+	public void registerBlockIcons(IIconRegister iconRegister) {
 
 		icon = IconHelper.forName(iconRegister, "portal");
 
@@ -53,7 +55,7 @@ public class BlockBedrockPortal extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int meta) {
+	public IIcon getIcon(int par1, int meta) {
 		return icon;
 	}
 
@@ -105,16 +107,16 @@ public class BlockBedrockPortal extends Block {
 
 				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, ConfigHandler.bedrockDimensionID, new TeleporterBedrock((WorldServer) par1World));
 
-				if(entity.worldObj.getBlockId(par2, 251, par4) == 7){
-					entity.worldObj.setBlock(par2, 251, par4, 0);
+				if(entity.worldObj.getBlock(par2, 251, par4) == Blocks.bedrock){
+					entity.worldObj.setBlock(par2, 251, par4, Blocks.air);
 				}
-				if(entity.worldObj.getBlockId(par2, 252, par4) == 7){
-					entity.worldObj.setBlock(par2, 252, par4, 0);
+				if(entity.worldObj.getBlock(par2, 252, par4) == Blocks.bedrock){
+					entity.worldObj.setBlock(par2, 252, par4, Blocks.air);
 				}
-				if(entity.worldObj.getBlockId(par2, 253, par4) == 7){
-					entity.worldObj.setBlock(par2, 253, par4, 0);
-				}if(entity.worldObj.getBlockId(par2, 254, par4) == 7){
-					entity.worldObj.setBlock(par2, 254, par4, LibBlockIDs.idPortal);
+				if(entity.worldObj.getBlock(par2, 253, par4) == Blocks.bedrock){
+					entity.worldObj.setBlock(par2, 253, par4, Blocks.air);
+				}if(entity.worldObj.getBlock(par2, 254, par4) == Blocks.bedrock){
+					entity.worldObj.setBlock(par2, 254, par4, ModBlocks.portal);
 				}
 				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, 252, par4 + 0.5, 0, 0);
 			}
@@ -133,7 +135,7 @@ public class BlockBedrockPortal extends Block {
 
 				int y=120;
 
-				while(entity.worldObj.getBlockId(x, y, z) == 0 || Block.blocksList[entity.worldObj.getBlockId(x, y, z)].isAirBlock(par1World, x, y, z)){
+				while(entity.worldObj.getBlock(x, y, z) == Blocks.air || entity.worldObj.getBlock(x, y, z).isAir(par1World, x, y, z)){
 					y--;
 				}
 

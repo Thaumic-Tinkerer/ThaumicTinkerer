@@ -101,6 +101,7 @@ public final class ModBlocks {
 
 			warpGate = new BlockWarpGate().setBlockName(LibBlockNames.WARP_GATE);
 			if(ConfigHandler.bedrockDimensionID != 0) {
+				/*
 				Block.blocksList[7]=null;
 				bedrock = new BlockBedrockKAMI();
 
@@ -120,6 +121,7 @@ public final class ModBlocks {
 					e.printStackTrace();
 				}
 				portal = new BlockBedrockPortal().setBlockName(LibBlockNames.PORTAL);
+                */
 			}
 		}
 
