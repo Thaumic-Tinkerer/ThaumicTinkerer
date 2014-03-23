@@ -19,26 +19,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import dan200.computer.api.ComputerCraftAPI;
-import dan200.computer.api.IPeripheralHandler;
-import dan200.turtle.api.TurtleAPI;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import thaumcraft.api.aspects.IEssentiaTransport;
-import thaumcraft.common.entities.golems.EnumGolemType;
-import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.block.tile.TileFunnel;
-import vazkii.tinkerer.common.block.tile.TileRepairer;
-import vazkii.tinkerer.common.block.tile.peripheral.PeripheralHandler;
-import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
-import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
@@ -60,8 +44,6 @@ import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
-
-import java.lang.reflect.Field;
 
 public class TTCommonProxy {
 
@@ -107,7 +89,7 @@ public class TTCommonProxy {
 	}
 
 	protected void initCCPeripherals() {
-		IPeripheralHandler handler = new PeripheralHandler();
+		/*IPeripheralHandler handler = new PeripheralHandler();
 
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
@@ -119,7 +101,7 @@ public class TTCommonProxy {
         for(Class clazz : peripheralClasses)
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
 			
-		TurtleAPI.registerUpgrade(new FumeTool());
+		TurtleAPI.registerUpgrade(new FumeTool());*/
 	}
 
 	public boolean isClient() {
