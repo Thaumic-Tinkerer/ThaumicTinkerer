@@ -1,5 +1,7 @@
 package vazkii.tinkerer.common.block.tile;
 
+import appeng.api.AEApi;
+import appeng.api.IAppEngApi;
 import appeng.api.movable.IMovableTile;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
