@@ -117,7 +117,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 		if(event.entityLiving instanceof EntityPlayer && handle) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack itemInUse = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
+			ItemStack itemInUse = player.itemInUse;
 			if(itemInUse != null && itemInUse.getItem()==this) {
 				
 				event.setCanceled(true);

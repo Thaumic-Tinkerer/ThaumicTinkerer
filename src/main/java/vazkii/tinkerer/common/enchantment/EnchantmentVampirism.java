@@ -32,7 +32,7 @@ public class EnchantmentVampirism extends EnchantmentMod {
 
 	@Override
 	public boolean canApply(ItemStack par1ItemStack) {
-		return super.canApply(par1ItemStack) && par1ItemStack.itemID != ModItems.bloodSword.itemID;
+		return super.canApply(par1ItemStack) && par1ItemStack.getItem() != ModItems.bloodSword;
 	}
 
 }
