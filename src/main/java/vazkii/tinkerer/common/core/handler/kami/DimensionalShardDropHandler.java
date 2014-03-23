@@ -19,14 +19,13 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ModItems;
 
 public class DimensionalShardDropHandler {
 
-	@ForgeSubscribe
+	@cpw.mods.fml.common.eventhandler.SubscribeEvent
     public void onEntityLivingDrops(LivingDropsEvent event) {
         if(event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
         	if(event.entityLiving instanceof EntityEnderman && event.entityLiving.dimension == ConfigHandler.endDimensionID && Math.random() <= 1D / 32D)

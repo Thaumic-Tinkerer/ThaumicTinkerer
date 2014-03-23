@@ -47,7 +47,15 @@ public class ModCreativeTab extends CreativeTabs {
 		return displayItem;
 	}
 
-	@Override
+    @Override
+    public Item getTabIconItem() {
+        if(displayItem == null)
+            addWand();
+
+        return ModItems.kamiResource;
+    }
+
+    @Override
 	public void displayAllReleventItems(List list) {
 		this.list = list;
 
@@ -159,11 +167,11 @@ public class ModCreativeTab extends CreativeTabs {
 	}
 
 	private void addItem(Item item) {
-		item.getSubItems(item.itemID, this, list);
+		item.getSubItems(item, this, list);
 	}
 
 	private void addBlock(Block block) {
-		block.getSubBlocks(block.blockID, this, list);
+		block.getSubBlocks(Item.getItemFromBlock(block), this, list);
 	}
 
 }
