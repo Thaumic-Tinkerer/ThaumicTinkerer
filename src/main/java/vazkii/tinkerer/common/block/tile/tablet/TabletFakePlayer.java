@@ -26,7 +26,7 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) { //,String name) {
-		super(tablet.getWorldObj(), "[ThaumcraftTablet]");
+		super(tablet.getWorldObj(), new GameProfile("","[ThaumcraftTablet]"));
 		this.tablet = tablet;
 	}
     @Override
