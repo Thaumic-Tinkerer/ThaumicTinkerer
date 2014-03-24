@@ -1,5 +1,6 @@
 package appeng.api.parts.layers;
 
+import ic2.api.Direction;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergyTile;
 import net.minecraft.tileentity.TileEntity;
@@ -10,7 +11,6 @@ import appeng.api.parts.IPart;
 import appeng.api.parts.IPartHost;
 import appeng.api.parts.LayerBase;
 import appeng.api.parts.LayerFlags;
-import appeng.util.Platform;
 
 public class LayerIEnergySink extends LayerBase implements IEnergySink
 {
@@ -39,7 +39,7 @@ public class LayerIEnergySink extends LayerBase implements IEnergySink
 		// re-add
 		removeFromENet();
 
-		if ( !isInIC2() && Platform.isServer() )
+		if ( !isInIC2() )
 		{
 			getLayerFlags().add( LayerFlags.IC2_ENET );
 			MinecraftForge.EVENT_BUS.post( new ic2.api.energy.event.EnergyTileLoadEvent( (IEnergySink) getEnergySinkTile() ) );
@@ -51,7 +51,7 @@ public class LayerIEnergySink extends LayerBase implements IEnergySink
 		if ( getEnergySinkWorld() == null )
 			return;
 
-		if ( isInIC2() && Platform.isServer() )
+		if ( isInIC2()  )
 		{
 			getLayerFlags().remove( LayerFlags.IC2_ENET );
 			MinecraftForge.EVENT_BUS.post( new ic2.api.energy.event.EnergyTileUnloadEvent( (IEnergySink) getEnergySinkTile() ) );
@@ -84,19 +84,19 @@ public class LayerIEnergySink extends LayerBase implements IEnergySink
 	}
 
 	@Override
-	public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction)
+	public boolean acceptsEnergyFrom(TileEntity emitter, Direction direction)
 	{
 		if ( !isInIC2() )
 			return false;
 
-		IPart part = getPart( direction );
+		IPart part = getPart(ForgeDirection.getOrientation(direction.toSideValue()));
 		if ( part instanceof IEnergySink )
 			return ((IEnergySink) part).acceptsEnergyFrom( emitter, direction );
 		return false;
 	}
 
 	@Override
-	public double demandedEnergyUnits()
+	public int demandsEnergy()
 	{
 		if ( !isInIC2() )
 			return 0;
@@ -109,7 +109,7 @@ public class LayerIEnergySink extends LayerBase implements IEnergySink
 			if ( part instanceof IEnergySink )
 			{
 				// use lower number cause ic2 deletes power it sends that isn't recieved.
-				return ((IEnergySink) part).demandedEnergyUnits();
+				return ((IEnergySink) part).demandsEnergy();
 			}
 		}
 
@@ -117,7 +117,7 @@ public class LayerIEnergySink extends LayerBase implements IEnergySink
 	}
 
 	@Override
-	public double injectEnergyUnits(ForgeDirection directionFrom, double amount)
+	public int injectEnergy(Direction directionFrom, int amount)
 	{
 		if ( !isInIC2() )
 			return amount;
@@ -127,17 +127,22 @@ public class LayerIEnergySink extends LayerBase implements IEnergySink
 			IPart part = getPart( dir );
 			if ( part instanceof IEnergySink )
 			{
-				return ((IEnergySink) part).injectEnergyUnits( directionFrom, amount );
+				return ((IEnergySink) part).injectEnergy(directionFrom, amount);
 			}
 		}
 
 		return amount;
 	}
 
-	@Override
+    @Override
 	public int getMaxSafeInput()
 	{
 		return Integer.MAX_VALUE; // no real options here...
 	}
 
+
+    @Override
+    public boolean isAddedToEnergyNet() {
+        return isInIC2();
+    }
 }

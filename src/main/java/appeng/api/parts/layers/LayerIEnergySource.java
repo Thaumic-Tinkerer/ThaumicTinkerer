@@ -1,5 +1,10 @@
 package appeng.api.parts.layers;
 
+import appeng.api.parts.IPart;
+import appeng.api.parts.IPartHost;
+import appeng.api.parts.LayerBase;
+import appeng.api.parts.LayerFlags;
+import ic2.api.Direction;
 import ic2.api.energy.tile.IEnergyEmitter;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.api.energy.tile.IEnergySource;
@@ -8,11 +13,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
-import appeng.api.parts.IPart;
-import appeng.api.parts.IPartHost;
-import appeng.api.parts.LayerBase;
-import appeng.api.parts.LayerFlags;
-import appeng.util.Platform;
 
 public class LayerIEnergySource extends LayerBase implements IEnergySource
 {
@@ -41,7 +41,7 @@ public class LayerIEnergySource extends LayerBase implements IEnergySource
 		// re-add
 		removeFromENet();
 
-		if ( !isInIC2() && Platform.isServer() )
+		if ( !isInIC2()  )
 		{
 			getLayerFlags().add( LayerFlags.IC2_ENET );
 			MinecraftForge.EVENT_BUS.post( new ic2.api.energy.event.EnergyTileLoadEvent( (IEnergySink) getEnergySourceTile() ) );
@@ -53,7 +53,7 @@ public class LayerIEnergySource extends LayerBase implements IEnergySource
 		if ( getEnergySourceWorld() == null )
 			return;
 
-		if ( isInIC2() && Platform.isServer() )
+		if ( isInIC2()  )
 		{
 			getLayerFlags().remove( LayerFlags.IC2_ENET );
 			MinecraftForge.EVENT_BUS.post( new ic2.api.energy.event.EnergyTileUnloadEvent( (IEnergySink) getEnergySourceTile() ) );
@@ -86,19 +86,19 @@ public class LayerIEnergySource extends LayerBase implements IEnergySource
 	}
 
 	@Override
-	public boolean emitsEnergyTo(TileEntity receiver, ForgeDirection direction)
+	public boolean emitsEnergyTo(TileEntity receiver, Direction direction)
 	{
 		if ( !isInIC2() )
 			return false;
 
-		IPart part = getPart( direction );
+		IPart part = getPart( ForgeDirection.getOrientation(direction.toSideValue()) );
 		if ( part instanceof IEnergySink )
 			return ((IEnergyEmitter) part).emitsEnergyTo( receiver, direction );
 		return false;
 	}
 
-	@Override
-	public double getOfferedEnergy()
+
+	public int getOfferedEnergy()
 	{
 		if ( !isInIC2() )
 			return 0;
@@ -111,15 +111,15 @@ public class LayerIEnergySource extends LayerBase implements IEnergySource
 			if ( part instanceof IEnergySource )
 			{
 				// use lower number cause ic2 deletes power it sends that isn't recieved.
-				return ((IEnergySource) part).getOfferedEnergy();
+				return ((IEnergySource) part).getMaxEnergyOutput();
 			}
 		}
 
 		return 0;
 	}
 
-	@Override
-	public void drawEnergy(double amount)
+
+	public void drawEnergy(int amount)
 	{
 		// this is a flawed implementation, that requires a change to the IC2 API.
 
@@ -128,10 +128,20 @@ public class LayerIEnergySource extends LayerBase implements IEnergySource
 			IPart part = getPart( dir );
 			if ( part instanceof IEnergySource )
 			{
-				((IEnergySource) part).drawEnergy( amount );
+                //TODO: fix when this is officially released
+				((IEnergySource) part).emitsEnergyTo(null,null);
 				return;
 			}
 		}
 	}
 
+    @Override
+    public int getMaxEnergyOutput() {
+        return 0;
+    }
+
+    @Override
+    public boolean isAddedToEnergyNet() {
+        return isInIC2();
+    }
 }

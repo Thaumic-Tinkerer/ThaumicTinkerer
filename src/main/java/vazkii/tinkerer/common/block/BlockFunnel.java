@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -30,8 +30,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockFunnel extends BlockModContainer {
 
@@ -141,7 +141,7 @@ public class BlockFunnel extends BlockModContainer {
 
 				if(playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-
+                funnel.markDirty();
 				return true;
 			}
 		} else {
@@ -149,6 +149,7 @@ public class BlockFunnel extends BlockModContainer {
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			funnel.setInventorySlotContents(0, null);
+            funnel.markDirty();
 			return true;
 		}
 
