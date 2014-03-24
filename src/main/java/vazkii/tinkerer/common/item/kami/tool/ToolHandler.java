@@ -61,7 +61,7 @@ public final class ToolHandler {
 	}
 
 	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, Block block, Material[] materialsListing, boolean silk, int fortune) {
-        float blockHardness = block.getBlockHardness(world, x, y, z);
+        float blockHardness = (block==null)?1.0f:  block.getBlockHardness(world, x, y, z);
 		for(int x1 = xs; x1 < xe; x1++){
 			for(int y1 = ys; y1 < ye; y1++){
 				for(int z1 = zs; z1 < ze; z1++){
@@ -85,21 +85,21 @@ public final class ToolHandler {
 
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlock(x, y, z).getMaterial();
-		if(block != null && !block.isAir(world, x, y, z) && (block.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)) {
+		if(blk != null && !blk.isAir(world, x, y, z) && (blk.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)) {
 			List<ItemStack> items = new ArrayList();
 
-			if(!block.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
+			if(!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
 			if(ConfigHandler.bedrockDimensionID != 0 && block== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
 				world.setBlock(x, y, z, ModBlocks.portal);
 			}
             if (!player.capabilities.isCreativeMode) {
                 int localMeta = world.getBlockMetadata(x, y, z);
-                if (block.removedByPlayer(world, player, x, y, z)) {
-                    block.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
+                if (blk.removedByPlayer(world, player, x, y, z)) {
+                    blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
                 }
-                block.harvestBlock(world, player, x, y, z, localMeta);
-                block.onBlockHarvested(world, x, y, z, localMeta, player);
+                blk.harvestBlock(world, player, x, y, z, localMeta);
+                blk.onBlockHarvested(world, x, y, z, localMeta, player);
             }
             else
             {

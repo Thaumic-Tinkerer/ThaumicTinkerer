@@ -20,6 +20,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -63,7 +64,8 @@ public class TTClientProxy extends TTCommonProxy {
         //Temporarly disabled for 1.7
 		//MinecraftForge.EVENT_BUS.register(new FumeTool());
 		if(ConfigHandler.enableKami)
-			kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
+			//kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
+            kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}},EnumRarity.class,"KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
 	}
 
 	@Override
