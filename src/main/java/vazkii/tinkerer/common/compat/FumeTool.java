@@ -2,6 +2,9 @@ package vazkii.tinkerer.common.compat;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computercraft.api.turtle.*;
+import net.minecraft.util.ChunkCoordinates;
 import vazkii.tinkerer.common.block.BlockGas;
 import vazkii.tinkerer.common.item.ModItems;
 import net.minecraft.block.Block;
@@ -11,12 +14,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.turtle.api.ITurtleAccess;
-import dan200.turtle.api.ITurtleUpgrade;
-import dan200.turtle.api.TurtleSide;
-import dan200.turtle.api.TurtleUpgradeType;
-import dan200.turtle.api.TurtleVerb;
+
 
 public class FumeTool implements ITurtleUpgrade {
 
@@ -42,26 +40,23 @@ public class FumeTool implements ITurtleUpgrade {
 		return new ItemStack(ModItems.gasRemover);
 	}
 
-	@Override
-	public boolean isSecret() {
-		return false;
-	}
+    @Override
+    public IPeripheral createPeripheral(ITurtleAccess turtle, TurtleSide side) {
+        return null;
+    }
+
+
+
 
 	@Override
-	public IHostedPeripheral createPeripheral(ITurtleAccess turtle,
-			TurtleSide side) {
-		return new FumePeripheral();
-	}
-
-	@Override
-	public boolean useTool(ITurtleAccess turtle, TurtleSide side,
+	public TurtleCommandResult useTool(ITurtleAccess turtle, TurtleSide side,
 			TurtleVerb verb, int direction) {
 		if(verb==TurtleVerb.Dig)
 		{
-		Vec3 pos=turtle.getPosition();
-		int xs = (int) pos.xCoord;
-		int ys = (int) pos.yCoord;
-		int zs = (int) pos.zCoord;
+		ChunkCoordinates pos=turtle.getPosition();
+		int xs = (int) pos.posX;
+		int ys = (int) pos.posY;
+		int zs = (int) pos.posZ;
 
 		for(int x = xs - 3; x < xs + 3; x++)
 			for(int y = ys - 3; y < ys + 3; y++)
@@ -75,9 +70,9 @@ public class FumeTool implements ITurtleUpgrade {
 				}
 
 		//turtle.getWorld().playSoundAtEntity(turtle., "thaumcraft.wand", 0.2F, 1F);
-		return true;
+		return TurtleCommandResult.success();
 		}
-		return false;
+		return TurtleCommandResult.failure();
 	}
 
 	@Override
@@ -85,7 +80,13 @@ public class FumeTool implements ITurtleUpgrade {
 	public Icon getIcon(ITurtleAccess turtle, TurtleSide side) {
 		return icon;
 	}
-	@ForgeSubscribe
+
+    @Override
+    public void update(ITurtleAccess turtle, TurtleSide side) {
+
+    }
+
+    @ForgeSubscribe
 	public void registerIcons(TextureStitchEvent evt) {
 		if (evt.map.getTextureType() == 1) icon = evt.map.registerIcon("ttinkerer:gasRemover");
 	}

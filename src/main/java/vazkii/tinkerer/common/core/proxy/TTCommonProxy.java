@@ -19,17 +19,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import dan200.computer.api.ComputerCraftAPI;
-import dan200.computer.api.IPeripheralHandler;
-import dan200.turtle.api.TurtleAPI;
+import dan200.computercraft.api.ComputerCraftAPI;
+import dan200.computercraft.api.peripheral.IPeripheralProvider;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import thaumcraft.common.entities.golems.EnumGolemType;
 import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -51,9 +46,6 @@ import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
-
-import java.lang.reflect.Field;
-
 public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
@@ -86,7 +78,7 @@ public class TTCommonProxy {
 	}
 
 	protected void initCCPeripherals() {
-		IPeripheralHandler handler = new PeripheralHandler();
+		IPeripheralProvider handler = new PeripheralHandler();
 
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
@@ -96,9 +88,10 @@ public class TTCommonProxy {
 		};
         // DUMMY CHANGE
         for(Class clazz : peripheralClasses)
-			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
+            ComputerCraftAPI.registerPeripheralProvider(handler);
 			
-		TurtleAPI.registerUpgrade(new FumeTool());
+		//TurtleAPI.registerUpgrade(new FumeTool());
+        ComputerCraftAPI.registerUpgrade(new FumeTool());
 	}
 
 	public boolean isClient() {

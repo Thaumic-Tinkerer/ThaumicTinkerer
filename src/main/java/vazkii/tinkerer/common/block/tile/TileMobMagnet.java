@@ -15,6 +15,8 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -31,8 +33,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import cpw.mods.fml.common.network.PacketDispatcher;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
+
 
 public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTile {
 

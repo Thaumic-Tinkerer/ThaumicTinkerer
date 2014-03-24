@@ -14,13 +14,14 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.common.tiles.TileDeconstructionTable;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
 
-public class PeripheralDeconstructor implements IHostedPeripheral {
+
+public class PeripheralDeconstructor implements IPeripheral {
 
 	TileDeconstructionTable deconstructor;
 
@@ -50,11 +51,6 @@ public class PeripheralDeconstructor implements IHostedPeripheral {
 	}
 
 	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
-
-	@Override
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
@@ -64,19 +60,11 @@ public class PeripheralDeconstructor implements IHostedPeripheral {
 		// NO-OP
 	}
 
-	@Override
-	public void update() {
-		// NO-OP
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
 }
