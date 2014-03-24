@@ -179,7 +179,7 @@ public class ItemPlacementMirror extends ItemMod {
 	}
 
 	private void setBlock(ItemStack stack, Block block, int meta) {
-		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, block.getUnlocalizedName());
+		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, Block.blockRegistry.getNameForObject(block));
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 	}
 
