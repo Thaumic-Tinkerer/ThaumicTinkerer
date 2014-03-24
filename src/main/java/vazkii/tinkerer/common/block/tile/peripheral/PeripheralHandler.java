@@ -14,27 +14,18 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import dan200.computercraft.api.peripheral.IPeripheral;
-import dan200.computercraft.api.peripheral.IPeripheralProvider;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import dan200.computer.api.IHostedPeripheral;
+import dan200.computer.api.IPeripheralHandler;
 
-
-public final class PeripheralHandler implements IPeripheralProvider{
+public final class PeripheralHandler implements IPeripheralHandler {
 
 	@Override
-	public IPeripheral getPeripheral(World world,
-                                     int x,
-                                     int y,
-                                     int z,
-                                     int side) {
-        TileEntity tile=world.getBlockTileEntity(x,y,z);
-        if(tile==null)
-            return null;
+	public IHostedPeripheral getPeripheral(TileEntity tile) {
 		if(tile instanceof TileTransvectorInterface)
 			return new PeripheralTransvectorInterface((TileTransvectorInterface) tile);
 

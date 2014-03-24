@@ -14,17 +14,17 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.common.items.equipment.ItemElementalPickaxe;
 import thaumcraft.common.tiles.TileArcaneBore;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.IHostedPeripheral;
+import dan200.computer.api.ILuaContext;
 
-
-public class PeripheralArcaneBore implements IPeripheral {
+public class PeripheralArcaneBore implements IHostedPeripheral {
 
 	TileArcaneBore bore;
 
@@ -42,8 +42,7 @@ public class PeripheralArcaneBore implements IPeripheral {
 		return new String[] { "hasPickaxe", "hasFocus", "isPickaxeBroken", "isWorking", "getRadius", "getSpeed", "hasNativeClusters", "getFortune", "hasSilkTouch" };
 	}
 
-
-    @Override
+	@Override
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		ItemStack pickaxe = bore.getStackInSlot(1);
 		boolean nearBroken = pickaxe != null && pickaxe.getItemDamage() + 1 == pickaxe.getMaxDamage();
@@ -63,7 +62,10 @@ public class PeripheralArcaneBore implements IPeripheral {
 		return null;
 	}
 
-
+	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -75,11 +77,19 @@ public class PeripheralArcaneBore implements IPeripheral {
 		// NO-OP
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
+	@Override
+	public void update() {
+		// NO-OP
+	}
 
+	@Override
+	public void readFromNBT(NBTTagCompound nbttagcompound) {
+		// NO-OP
+	}
 
+	@Override
+	public void writeToNBT(NBTTagCompound nbttagcompound) {
+		// NO-OP
+	}
 
 }

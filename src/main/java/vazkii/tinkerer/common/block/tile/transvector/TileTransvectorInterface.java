@@ -18,9 +18,9 @@ import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 import cofh.api.energy.IEnergyHandler;
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
@@ -430,6 +430,10 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).callMethod(computer, context, method, arguments) : new Object[0];
 	}
 
+	@Override
+	public boolean canAttachToSide(int side) {
+		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).canAttachToSide(side) : false;
+	}
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -444,12 +448,4 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 			((IPeripheral) getTile()).detach(computer);
 		}
 	}
-
-    @Override
-    public boolean equals(IPeripheral other) {
-        if(getTile() instanceof  IPeripheral) {
-            ((IPeripheral) getTile()).equals(other);
-        }
-        return false;
-    }
 }

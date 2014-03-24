@@ -15,9 +15,9 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -190,6 +190,11 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	}
 
 	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
+
+	@Override
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
@@ -198,13 +203,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IPerip
 	public void detach(IComputerAccess computer) {
 		// NO-OP
 	}
-
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
-
-    @Override
+	@Override
 	public boolean prepareToMove() {
 		return true;
 	}

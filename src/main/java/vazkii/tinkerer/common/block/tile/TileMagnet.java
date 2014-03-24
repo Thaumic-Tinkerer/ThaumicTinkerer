@@ -15,9 +15,9 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -109,6 +109,10 @@ public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile 
 		return null;
 	}
 
+	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -120,12 +124,7 @@ public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile 
 		// NO-OP
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
-
-    @Override
+	@Override
 	public boolean prepareToMove() {
 		return true;
 	}

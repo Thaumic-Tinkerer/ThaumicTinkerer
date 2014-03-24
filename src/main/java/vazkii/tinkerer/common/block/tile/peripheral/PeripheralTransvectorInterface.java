@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
 import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -26,7 +24,8 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import buildcraft.api.power.IPowerReceptor;
 import cofh.api.energy.IEnergyHandler;
-
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
 
 public class PeripheralTransvectorInterface extends PeripheralAspectContainer {
 

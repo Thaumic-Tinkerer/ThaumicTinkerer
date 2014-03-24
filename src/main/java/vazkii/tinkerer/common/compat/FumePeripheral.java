@@ -1,12 +1,12 @@
 package vazkii.tinkerer.common.compat;
 
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.nbt.NBTTagCompound;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.IHostedPeripheral;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 
-
-public class FumePeripheral implements IPeripheral {
+public class FumePeripheral implements IHostedPeripheral {
 
 	@Override
 	public String getType() {
@@ -24,7 +24,10 @@ public class FumePeripheral implements IPeripheral {
 		return new Object[] {};
 	}
 
-
+	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -35,10 +38,19 @@ public class FumePeripheral implements IPeripheral {
 	public void detach(IComputerAccess computer) {
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
+	@Override
+	public void update() {
+		
+	}
 
+	@Override
+	public void readFromNBT(NBTTagCompound nbttagcompound) {
+		
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound nbttagcompound) {
+		
+	}
 
 }

@@ -1,9 +1,10 @@
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.IHostedPeripheral;
+import dan200.computer.api.ILuaContext;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import thaumcraft.api.aspects.IEssentiaTransport;
@@ -11,7 +12,7 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 /**
  * Created by Katrina on 03/03/14.
  */
-public class PeripheralEssentiaTransport implements IPeripheral {
+public class PeripheralEssentiaTransport implements IHostedPeripheral {
 
     IEssentiaTransport pipe;
     public PeripheralEssentiaTransport(IEssentiaTransport input)
@@ -25,9 +26,22 @@ public static int GetDirection(Object obj) {
 }
 
 
+    @Override
+    public void update() {
+
+    }
 
 
+    @Override
+    public void readFromNBT(NBTTagCompound nbttagcompound) {
 
+    }
+
+
+    @Override
+    public void writeToNBT(NBTTagCompound nbttagcompound) {
+
+    }
 
     @Override
     public String getType() {
@@ -63,6 +77,10 @@ public static int GetDirection(Object obj) {
         return new Object[0];
     }
 
+    @Override
+    public boolean canAttachToSide(int side) {
+        return true;
+    }
 
 
     @Override
@@ -73,10 +91,5 @@ public static int GetDirection(Object obj) {
     @Override
     public void detach(IComputerAccess computer) {
 
-    }
-
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
     }
 }

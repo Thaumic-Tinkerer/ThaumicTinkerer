@@ -14,17 +14,19 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.IHostedPeripheral;
+import dan200.computer.api.ILuaContext;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.common.tiles.TileJarFillable;
-import java.util.HashMap;
 
-public class PeripheralAspectContainer implements IPeripheral {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class PeripheralAspectContainer implements IHostedPeripheral {
 
     IAspectContainer container;
 
@@ -82,6 +84,11 @@ public class PeripheralAspectContainer implements IPeripheral {
     }
 
     @Override
+    public boolean canAttachToSide(int side) {
+        return true;
+    }
+
+    @Override
     public void attach(IComputerAccess computer) {
         // NO-OP
     }
@@ -92,8 +99,18 @@ public class PeripheralAspectContainer implements IPeripheral {
     }
 
     @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
+    public void update() {
+        // NO-OP
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound nbttagcompound) {
+        // NO-OP
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound nbttagcompound) {
+        // NO-OP
     }
 
 }

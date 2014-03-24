@@ -16,9 +16,9 @@ package vazkii.tinkerer.common.block.tile.tablet;
 
 import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.network.PacketDispatcher;
-import dan200.computercraft.api.lua.ILuaContext;
-import dan200.computercraft.api.peripheral.IComputerAccess;
-import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
 import net.minecraft.block.Block;
 import net.minecraft.command.PlayerSelector;
 import net.minecraft.entity.Entity;
@@ -571,6 +571,10 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		return null;
 	}
 
+	@Override
+	public boolean canAttachToSide(int side) {
+		return true;
+	}
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -582,12 +586,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IPeri
 		// NO-OP
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
-
-    @Override
+	@Override
 	public boolean prepareToMove() {
 		stopBreaking();
 		return true;
