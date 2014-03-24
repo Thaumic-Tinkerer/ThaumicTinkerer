@@ -16,10 +16,8 @@ package vazkii.tinkerer.common.research;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -36,6 +34,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
 
@@ -266,7 +265,7 @@ public final class ModRecipes {
 
 
 
-		for(int i=0;i<16;i++){
+		for(int i=0;i< NumericAspectHelper.values.size();i++){
 			ItemStack input=new ItemStack(ModItems.mobAspect, 1, i+20);
 			registerResearchItemI(LibResearch.KEY_SUMMON, new ItemStack(ModItems.mobAspect, 1, i + 40), 4,
 					new AspectList().add(ModItems.mobAspect.getAspect(new ItemStack(ModItems.mobAspect, 1, i)), 10), input,
