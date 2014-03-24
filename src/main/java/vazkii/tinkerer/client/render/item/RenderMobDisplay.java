@@ -32,7 +32,7 @@ public class RenderMobDisplay implements IItemRenderer {
         float f1=0.4f;
         float verticalOffset=0.0f;
         if(aspect!=null) {
-            entity = EnumMobAspect.getEntityFromCache(aspect);
+            entity = EnumMobAspect.getEntityFromCache(aspect, null);
             f1 = aspect.getScale();
             verticalOffset=aspect.getVerticalOffset();
         }

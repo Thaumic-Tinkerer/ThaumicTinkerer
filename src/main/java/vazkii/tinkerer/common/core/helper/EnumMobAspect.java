@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
@@ -40,8 +41,8 @@ public enum EnumMobAspect {
     VillagerGolem(EntityIronGolem.class, new Aspect[]{Aspect.METAL, Aspect.METAL, Aspect.MAN},0.3f,0.0f),
 	LavaSlime(EntityMagmaCube.class, new Aspect[]{Aspect.FIRE, Aspect.SLIME, Aspect.SLIME},0.6f,0.0f){
         @Override
-        protected Entity createEntity() {
-            return setSlimeSize(super.createEntity(), 1);
+        protected Entity createEntity(World worldObj) {
+            return setSlimeSize(super.createEntity(worldObj), 1);
         }
     },
 	MushroomCow(EntityMooshroom.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.CROP}),
@@ -53,8 +54,8 @@ public enum EnumMobAspect {
 	Skeleton(EntitySkeleton.class, new Aspect[]{Aspect.UNDEAD, Aspect.MAN, Aspect.UNDEAD}),
 	Slime(EntitySlime.class, new Aspect[]{Aspect.SLIME, Aspect.SLIME, Aspect.BEAST},0.6f,0.0f){
         @Override
-        protected Entity createEntity() {
-            return setSlimeSize(super.createEntity(), 1);
+        protected Entity createEntity(World worldObj) {
+            return setSlimeSize(super.createEntity(worldObj), 1);
         }
     },
 	Spider(EntitySpider.class, new Aspect[]{Aspect.BEAST, Aspect.UNDEAD, Aspect.UNDEAD}),
@@ -66,10 +67,10 @@ public enum EnumMobAspect {
 
 	;
 
-    public static Entity getEntityFromCache(EnumMobAspect ent) {
+    public static Entity getEntityFromCache(EnumMobAspect ent, World worldObj) {
         Entity entity = entityCache.get(ent);
         if (entity == null) {
-            entity = ent.createEntity();
+            entity = ent.createEntity(worldObj);
             entityCache.put(ent, entity);
         }
         return entity;
@@ -116,11 +117,11 @@ public enum EnumMobAspect {
         return entity;
     }
 
-    public Entity getEntity() {
-        return getEntityFromCache(this);
+    public Entity getEntity(World worldObj) {
+        return getEntityFromCache(this, worldObj);
     }
-    protected Entity createEntity() {
-        return EntityList.createEntityByName(toString(), (Minecraft.getMinecraft() != null) ? Minecraft.getMinecraft().theWorld : null);
+    protected Entity createEntity(World worldObj) {
+        return EntityList.createEntityByName(toString(), worldObj);
     }
 	public static Aspect[] getAspectsForEntity(Entity e){
 		return getAspectsForEntity(e.getClass());
