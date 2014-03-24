@@ -173,7 +173,7 @@ public class ItemBlockTalisman extends ItemMod {
 
 	private boolean setBlock(ItemStack stack, Block block, int meta) {
 		if(getBlock(stack) == Blocks.air || getBlockCount(stack) == 0) {
-			ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, block.getUnlocalizedName());
+			ItemNBTHelper.setString(stack, TAG_BLOCK_NAME,Block.blockRegistry.getNameForObject(block));
 			ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 			return true;
 		}
