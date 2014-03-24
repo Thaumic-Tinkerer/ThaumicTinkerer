@@ -32,9 +32,6 @@ public final class LibObfuscation {
 	/** EntityCreeper **/
 	public static final String[] TIME_SINCE_IGNITED = new String[] {  "timeSinceIgnited", "field_70833_d" , "bq" };
 
-    /** EntitySlime **/
-    public static final String[] SET_SLINE_SIZE=new String[] { "setSlimeSize","func_70799_a",};
-
 	/** Block **/
 	public static final String[] BEDROCK = new String[] {  "bedrock", "field_71986_z" , "E" };
 }
