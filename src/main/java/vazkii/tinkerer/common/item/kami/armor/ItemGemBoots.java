@@ -58,7 +58,7 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 		int x = (int) player.posX;
         int y = (int) player.posY - 1;
         int z = (int) player.posZ;
-        if(player.worldObj.getBlock(x, y, z) == Blocks.dirt)
+        if(player.worldObj.getBlock(x, y, z) == Blocks.dirt && player.worldObj.getBlockMetadata(x, y, z) == 0)
                 player.worldObj.setBlock(x, y, z, Blocks.grass, 0, 2);
 	}
 
