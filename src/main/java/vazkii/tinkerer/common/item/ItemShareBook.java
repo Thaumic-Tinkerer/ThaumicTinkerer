@@ -96,7 +96,7 @@ public class ItemShareBook extends ItemMod {
 		String name = getPlayerName(par1ItemStack);
 		par3List.add(name.equals(NON_ASIGNED) ? StatCollector.translateToLocal("ttmisc.shareTome.noAssign") : String.format(StatCollector.translateToLocal("ttmisc.shareTome.playerName"), name));
         if(isOfflineShare(par1ItemStack))
-            par3List.add(new ChatComponentTranslation("ttmisc.shareTomb.offlineshare"));
+            par3List.add(StatCollector.translateToLocal("ttmisc.shareTomb.offlineshare"));
 	}
 
     @Override
