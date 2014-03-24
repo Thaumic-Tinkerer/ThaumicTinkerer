@@ -14,7 +14,10 @@
  */
 package vazkii.tinkerer.client.core.proxy;
 
-import com.sun.security.ntlm.Client;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.world.World;
@@ -37,11 +40,7 @@ import vazkii.tinkerer.client.render.block.kami.RenderWarpGate;
 import vazkii.tinkerer.client.render.item.RenderMobAspect;
 import vazkii.tinkerer.client.render.item.RenderMobDisplay;
 import vazkii.tinkerer.client.render.item.kami.RenderPlacementMirror;
-import vazkii.tinkerer.client.render.tile.RenderTileAnimationTablet;
-import vazkii.tinkerer.client.render.tile.RenderTileEnchanter;
-import vazkii.tinkerer.client.render.tile.RenderTileFunnel;
-import vazkii.tinkerer.client.render.tile.RenderTileMagnet;
-import vazkii.tinkerer.client.render.tile.RenderTileRepairer;
+import vazkii.tinkerer.client.render.tile.*;
 import vazkii.tinkerer.client.render.tile.kami.RenderTileWarpGate;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
@@ -53,11 +52,6 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.relauncher.Side;
 
 public class TTClientProxy extends TTCommonProxy {
 
@@ -79,6 +73,7 @@ public class TTClientProxy extends TTCommonProxy {
 		LocalizationHandler.loadLocalizations();
 		MinecraftForge.EVENT_BUS.register(new HUDHandler());
         MinecraftForge.EVENT_BUS.register(new ClientTickHandler());
+        MinecraftForge.EVENT_BUS.register(new GemArmorKeyHandler());
 		registerTiles();
 		registerRenderIDs();
 
