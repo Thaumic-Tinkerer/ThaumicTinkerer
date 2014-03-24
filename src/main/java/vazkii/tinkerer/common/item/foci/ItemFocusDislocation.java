@@ -20,6 +20,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -70,7 +71,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 		TileEntity tile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
 
-		if(player.canPlayerEdit(mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, itemstack)) {
+    		if(player.canPlayerEdit(mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, itemstack)) {
 			ItemStack stack = getPickedBlock(itemstack);
 			if(stack != null) {
 	            if (mop.sideHit == 0)
@@ -165,7 +166,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 		{
 			focus=stack;
 		}
-		return focus.hasTagCompound() && focus.getTagCompound().hasKey(TAG_AVAILABLE) && focus.getTagCompound().getBoolean(TAG_AVAILABLE) ? getPickedBlockStack(stack) : null;
+		return (ItemNBTHelper.getBoolean(focus,TAG_AVAILABLE,false)) ? getPickedBlockStack(stack) : null;
 	}
 
 	public ItemStack getPickedBlockStack(ItemStack stack) {
@@ -206,7 +207,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	private void storePickedBlock(ItemStack stack,Block block, short meta, TileEntity tile) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
-		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, block.getUnlocalizedName());
+		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, block.getN);
 		ItemNBTHelper.setInt(focus, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
 		if(tile != null)

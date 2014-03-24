@@ -16,7 +16,7 @@ public class PacketToggleArmor extends AbstractPacket {
     {
         armorStatus=status;
     }
-
+    public PacketToggleArmor(){}
 
     @Override
     public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
