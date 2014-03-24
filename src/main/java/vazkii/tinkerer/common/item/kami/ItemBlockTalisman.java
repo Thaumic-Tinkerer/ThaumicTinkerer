@@ -118,7 +118,7 @@ public class ItemBlockTalisman extends ItemMod {
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		Block block=getBlock(par1ItemStack);
-		if(/*!par2World.isRemote && */par1ItemStack.getItemDamage() == 1 && block!=Blocks.air && par3Entity instanceof EntityPlayer) {
+		if(!par2World.isRemote && par1ItemStack.getItemDamage() == 1 && block!=Blocks.air && par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
 			int meta = getBlockMeta(par1ItemStack);
 

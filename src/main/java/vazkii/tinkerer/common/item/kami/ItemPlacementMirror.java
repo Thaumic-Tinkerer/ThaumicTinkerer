@@ -240,7 +240,7 @@ public class ItemPlacementMirror extends ItemMod {
 		int size = getSize(par1ItemStack);
 
 		par3List.add(size + " x " + size);
-        if(block!=Blocks.air)
+        if(block!=null && block!=Blocks.air)
 			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
 	}
 
