@@ -207,7 +207,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	private void storePickedBlock(ItemStack stack,Block block, short meta, TileEntity tile) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
-		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, block.getN);
+		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, block.unlocalizedName);
 		ItemNBTHelper.setInt(focus, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
 		if(tile != null)
