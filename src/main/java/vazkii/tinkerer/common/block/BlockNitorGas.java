@@ -66,7 +66,12 @@ public class BlockNitorGas extends BlockGas {
 		}
 	}
 
-	@Override
+    @Override
+    public int getLightValue() {
+        return 15;
+    }
+
+    @Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		return world.getBlockMetadata(x, y, z) == 1 ? 15 : 12;
 	}
