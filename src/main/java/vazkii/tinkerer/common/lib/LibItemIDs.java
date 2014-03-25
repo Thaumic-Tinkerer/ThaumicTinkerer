@@ -38,6 +38,10 @@ public final class LibItemIDs {
 	public static int idFocusDeflect = 22169;
 	public static int idShareBook = 22170;
 
+    public static int idMobAspect = 22171;
+    public static int idMobSword = 22172;
+    public static int idMobDisplay = 22173;
+
 	public static int idKamiResource = 23150;
 	public static int idIchorHelm = 23151;
 	public static int idIchorChest = 23152;

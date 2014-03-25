@@ -108,7 +108,9 @@ public final class ModItems {
 	public static Item protoclay;
 	public static Item skyPearl;
 	public static Item focusRecall;
-	
+	public static ItemMobAspect mobAspect;
+	public static Item mobSword;
+    public static Item mobDisplay;
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
 
@@ -137,6 +139,8 @@ public final class ModItems {
 		infusedInkwell = new ItemInfusedInkwell(LibItemIDs.idInfusedInkwell).setUnlocalizedName(LibItemNames.INFUSED_INKWELL);
 		focusDeflect = new ItemFocusDeflect(LibItemIDs.idFocusDeflect).setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
 		shareBook = new ItemShareBook(LibItemIDs.idShareBook).setUnlocalizedName(LibItemNames.SHARE_BOOK);
+		mobAspect = (ItemMobAspect) new ItemMobAspect(LibItemIDs.idMobAspect).setUnlocalizedName(LibItemNames.MOB_ASPECT);
+        mobDisplay=new ItemMobDisplay(LibItemIDs.idMobDisplay).setUnlocalizedName(LibItemNames.MOB_DISPLAY);
 		if(ConfigHandler.enableKami) {
 			toolMatIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 
@@ -208,6 +212,8 @@ public final class ModItems {
 		GameRegistry.registerItem(infusedInkwell,LibItemNames.INFUSED_INKWELL);
 		GameRegistry.registerItem(focusDeflect,LibItemNames.FOCUS_DEFLECT);
 		GameRegistry.registerItem(shareBook,LibItemNames.SHARE_BOOK);
+        GameRegistry.registerItem(mobAspect,LibItemNames.MOB_ASPECT);
+        GameRegistry.registerItem(mobDisplay,LibItemNames.MOB_DISPLAY);
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerItem(kamiResource,LibItemNames.KAMI_RESOURCE);
 			GameRegistry.registerItem(ichorHelm,LibItemNames.ICHOR_HELM);

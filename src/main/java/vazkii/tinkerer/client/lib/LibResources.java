@@ -99,4 +99,13 @@ public final class LibResources {
 		"en_US", "de_DE", "zh_CN", "ru_RU"
 	};
 
+	public static final String ENCHANT_FOCUSED_STRIKE = PREFIX_ENCHANTS + "focusedStrikes.png";
+	public static final String ENCHANT_DISPERSED_STRIKE = PREFIX_ENCHANTS + "dispersedStrikes.png";
+	public static final String ENCHANT_VALIANCE = PREFIX_ENCHANTS + "valiance.png";
+	public static final String ENCHANT_FINAL_STRIKE = PREFIX_ENCHANTS + "finalStrike.png";
+	public static final String ENCHANT_TUNNEL=PREFIX_ENCHANTS + "tunnel.png";
+
+	public static final String ENCHANT_SHATTER=PREFIX_ENCHANTS + "shatter.png";
+	public static final String ENCHANT_SHOCKWAVE=PREFIX_ENCHANTS + "shockwave.png";
+	public static final String ENCHANT_POUNCE=PREFIX_ENCHANTS + "pounce.png";
 }

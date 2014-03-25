@@ -118,6 +118,30 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_VAMPIRISM, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.HUNGER, 1).add(Aspect.WEAPON, 1).add(Aspect.MAGIC, 2), 3, 5, 2, new ResourceLocation(LibResources.ENCHANT_VAMPIRISM)).setParents(LibResearch.KEY_ENCHANTER).registerResearchItem();
 		research.setPages(new ResearchPage("0")).setSecondary();
 
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_FOCUSED_STRIKE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.ORDER, 1).add(Aspect.WEAPON, 1).add(Aspect.MAGIC, 2), 2, 7, 2, new ResourceLocation(LibResources.ENCHANT_FOCUSED_STRIKE)).setParents(LibResearch.KEY_ENCHANT_VAMPIRISM).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_DISPERSED_STRIKE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.WEAPON, 1).add(Aspect.MAGIC, 2), 1, 6, 2, new ResourceLocation(LibResources.ENCHANT_DISPERSED_STRIKE)).setParents(LibResearch.KEY_ENCHANT_VAMPIRISM).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_FINAL_STRIKE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.ENTROPY, 3).add(Aspect.ORDER, 3).add(Aspect.WEAPON, 3).add(Aspect.MAGIC, 2), 0, 8, 2, new ResourceLocation(LibResources.ENCHANT_FINAL_STRIKE)).setParents(LibResearch.KEY_ENCHANT_FOCUSED_STRIKE, LibResearch.KEY_ENCHANT_DISPERSED_STRIKE).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_POUNCE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.AIR, 3).add(Aspect.ORDER, 3).add(Aspect.ARMOR, 3).add(Aspect.MAGIC, 2), 7, 0, 2, new ResourceLocation(LibResources.ENCHANT_POUNCE)).setParents(LibResearch.KEY_ENCHANT_ASCENT_BOOST).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_SHATTER, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.STONE, 3).add(Aspect.ENTROPY, 3).add(Aspect.TOOL, 1).add(Aspect.MAGIC, 2), 5, 8, 2, new ResourceLocation(LibResources.ENCHANT_SHATTER)).setParents(LibResearch.KEY_ENCHANT_DESINTEGRATE).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_SHOCKWAVE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.AIR, 3).add(Aspect.ENTROPY, 3).add(Aspect.ARMOR, 1).add(Aspect.MAGIC, 2), 9, 2, 2, new ResourceLocation(LibResources.ENCHANT_SHOCKWAVE)).setParents(LibResearch.KEY_ENCHANT_SLOW_FALL).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_TUNNEL, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.STONE, 3).add(Aspect.ORDER, 3).add(Aspect.TOOL, 1).add(Aspect.MAGIC, 2), 9, 6, 2, new ResourceLocation(LibResources.ENCHANT_TUNNEL)).setParents(LibResearch.KEY_ENCHANT_AUTO_SMELT).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_ENCHANT_VALIANCE, LibResearch.CATEGORY_ENCHANTING, new AspectList().add(Aspect.WEAPON, 3).add(Aspect.HEAL, 3).add(Aspect.MAGIC, 2), 1, 4, 2, new ResourceLocation(LibResources.ENCHANT_VALIANCE)).setParents(LibResearch.KEY_ENCHANT_VAMPIRISM).registerResearchItem();
+		research.setPages(new ResearchPage("0")).setSecondary();
+
 		research = new TTResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.ENERGY, 1).add(Aspect.MAGIC, 1), -2, -2, 2, new ItemStack(ModItems.focusSmelt)).setParents("FOCUSEXCAVATION").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_SMELT));
 
@@ -143,7 +167,10 @@ public final class ModResearch {
 		}
 
 		research = new TTResearchItem(LibResearch.KEY_BLOOD_SWORD, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.WEAPON, 1).add(Aspect.FLESH, 1).add(Aspect.SOUL, 1), -4, 6, 3, new ItemStack(ModItems.bloodSword)).setParents(LibResearch.KEY_CLEANSING_TALISMAN).registerResearchItem();
-		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOOD_SWORD)).setParents("INFUSION").setSecondary();
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_BLOOD_SWORD), new ResearchPage("1")).setSecondary();
+
+		research = new TTResearchItem(LibResearch.KEY_SUMMON, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ModBlocks.spawner)).setParents(LibResearch.KEY_BLOOD_SWORD).registerResearchItem();
+		research.setPages(new ResearchPage("0") ,recipePage(LibResearch.KEY_SUMMON+"0"),recipePage(LibResearch.KEY_SUMMON+"1"), infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
 
         research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
         research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));

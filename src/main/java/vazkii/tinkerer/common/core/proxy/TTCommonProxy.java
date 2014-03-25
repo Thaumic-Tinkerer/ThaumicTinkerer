@@ -45,6 +45,7 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
+import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.ModItems;
@@ -63,7 +64,7 @@ public class TTCommonProxy {
 
 		ModBlocks.initBlocks();
 		ModItems.initItems();
-
+        NumericAspectHelper.init();
         initCCPeripherals();
 	}
 
