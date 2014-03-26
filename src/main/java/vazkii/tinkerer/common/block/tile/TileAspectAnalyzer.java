@@ -15,6 +15,14 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.Optional;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
+import li.cil.oc.api.network.Arguments;
+import li.cil.oc.api.network.Callback;
+import li.cil.oc.api.network.Context;
+import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -22,9 +30,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovableTile {
+import java.util.ArrayList;
+import java.util.List;
+
+@Optional.Interface(iface = "SimpleComponent", modid = "OpenComputers")
+public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleComponent,  IPeripheral,IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -135,7 +150,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovab
 		return true;
 	}
 
-	/*@Override
+	@Override
 	public String getType() {
 		return "tt_aspectanalyzer";
 	}
@@ -150,7 +165,8 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovab
 		ItemStack stack = getStackInSlot(0);
 		AspectList aspects = null;
 		if(stack != null) {
-			aspects = ThaumcraftCraftingManager.getObjectTags(stack);
+
+            aspects = ThaumcraftCraftingManager.getObjectTags(stack);
 			aspects = ThaumcraftCraftingManager.getBonusTags(stack, aspects);
 		}
 
@@ -194,7 +210,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovab
 	@Override
 	public void detach(IComputerAccess computer) {
 		// NO-OP
-	}*/
+	}
 	@Override
 	public boolean prepareToMove() {
 		return true;
@@ -205,4 +221,15 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, IMovab
 
 	}
 
+
+    @Override
+    public String getComponentName() {
+        return getType();
+    }
+
+    @Callback
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] greet(Context context, Arguments args) {
+        return new Object[]{String.format("Hello, %s!", args.checkString(0))};
+    }
 }
