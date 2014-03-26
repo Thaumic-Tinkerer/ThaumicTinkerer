@@ -25,8 +25,8 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import buildcraft.api.power.IPowerReceptor;
 import cofh.api.energy.IEnergyHandler;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
+import IComputerAccess;
+import ILuaContext;
 
 public class PeripheralTransvectorInterface extends PeripheralAspectContainer {
 

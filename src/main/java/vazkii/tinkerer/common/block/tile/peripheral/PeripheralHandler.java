@@ -20,8 +20,8 @@ import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.IPeripheralHandler;
+import IHostedPeripheral;
+import IPeripheralHandler;
 
 public final class PeripheralHandler implements IPeripheralHandler {
 

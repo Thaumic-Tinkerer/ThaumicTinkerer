@@ -21,9 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.common.items.equipment.ItemElementalPickaxe;
 import thaumcraft.common.tiles.TileArcaneBore;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
+import IComputerAccess;
+import IHostedPeripheral;
+import ILuaContext;
 
 public class PeripheralArcaneBore implements IHostedPeripheral {
 

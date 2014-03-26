@@ -12,12 +12,12 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.turtle.api.ITurtleAccess;
-import dan200.turtle.api.ITurtleUpgrade;
-import dan200.turtle.api.TurtleSide;
-import dan200.turtle.api.TurtleUpgradeType;
-import dan200.turtle.api.TurtleVerb;
+import IHostedPeripheral;
+import ITurtleAccess;
+import ITurtleUpgrade;
+import TurtleSide;
+import TurtleUpgradeType;
+import TurtleVerb;
 
 public class FumeTool implements ITurtleUpgrade {
 

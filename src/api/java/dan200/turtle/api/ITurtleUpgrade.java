@@ -6,7 +6,6 @@
 
 package dan200.turtle.api;
 import net.minecraft.util.IIcon;
-import dan200.computer.api.*;
 
 /**
  * The primary interface for defining an upgrade for Turtles. A turtle upgrade
