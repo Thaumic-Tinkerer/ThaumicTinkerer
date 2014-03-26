@@ -36,6 +36,7 @@ import vazkii.tinkerer.common.item.kami.ItemBlockWarpGate;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibItemNames;
 
 public final class ModBlocks {
 
@@ -128,6 +129,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 		GameRegistry.registerBlock(interfase, LibBlockNames.INTERFACE);
+        GameRegistry.registerBlock(nitorGas, LibBlockNames.NITOR_GAS);
 		GameRegistry.registerBlock(gaseousLight, LibBlockNames.GASEOUS_LIGHT);
 		GameRegistry.registerBlock(gaseousShadow, LibBlockNames.GASEOUS_SHADOW);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
