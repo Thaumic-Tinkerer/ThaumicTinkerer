@@ -50,7 +50,7 @@ public class TileCamo extends TileEntity implements IMovableTile {
 
 	public void writeCustomNBT(NBTTagCompound cmp) {
         if(camo!=null){
-		    cmp.setString(TAG_CAMO, camo.getUnlocalizedName());
+		    cmp.setString(TAG_CAMO, Block.blockRegistry.getNameForObject(camo));
 		    cmp.setInteger(TAG_CAMO_META, camoMeta);
         }
 	}
