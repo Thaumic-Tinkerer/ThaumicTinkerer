@@ -15,9 +15,9 @@
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
+import IComputerAccess;
+import IHostedPeripheral;
+import ILuaContext;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IAspectContainer;

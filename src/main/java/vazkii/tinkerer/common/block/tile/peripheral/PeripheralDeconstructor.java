@@ -17,9 +17,9 @@ package vazkii.tinkerer.common.block.tile.peripheral;
 
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.common.tiles.TileDeconstructionTable;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
+import IComputerAccess;
+import IHostedPeripheral;
+import ILuaContext;
 
 public class PeripheralDeconstructor implements IHostedPeripheral {
 

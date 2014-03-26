@@ -2,10 +2,10 @@
 package vazkii.tinkerer.common.compat;
 
 import net.minecraft.nbt.NBTTagCompound;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
+import IComputerAccess;
+import IHostedPeripheral;
+import ILuaContext;
+import IPeripheral;
 
 public class FumePeripheral implements IHostedPeripheral {
 
