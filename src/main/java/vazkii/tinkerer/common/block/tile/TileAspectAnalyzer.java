@@ -38,7 +38,10 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 import java.util.ArrayList;
 import java.util.List;
 
-@Optional.Interface(iface = "SimpleComponent", modid = "OpenComputers")
+@Optional.InterfaceList({
+        @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
+        @Optional.Interface(iface = "import dan200.computer.api.IPeripheral", modid = "ComputerCraft")
+})
 public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleComponent,  IPeripheral,IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
@@ -161,6 +164,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		ItemStack stack = getStackInSlot(0);
 		AspectList aspects = null;
@@ -203,11 +207,13 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public void detach(IComputerAccess computer) {
 		// NO-OP
 	}

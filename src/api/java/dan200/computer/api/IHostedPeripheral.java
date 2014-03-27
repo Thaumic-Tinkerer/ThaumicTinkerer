@@ -5,6 +5,7 @@
  */
 
 package dan200.computer.api;
+import dan200.computer.api.IPeripheral;
 
 /**
  * A subclass of IPeripheral specifically for peripherals
@@ -30,7 +31,7 @@ public interface IHostedPeripheral extends IPeripheral
 	 * reading data you want to stay with the peripheral.
 	 * @param nbttagcompound	The peripheral's NBTTag
 	 */
-	public void readFromNBT(net.minecraft.nbt.NBTTagCompound nbttagcompound);
+	public void readFromNBT( net.minecraft.nbt.NBTTagCompound nbttagcompound );
 	
 	/**
 	 * A method called whenever data is written to the Turtle's NBTTag,
@@ -39,5 +40,5 @@ public interface IHostedPeripheral extends IPeripheral
 	 * @param nbttagcompound	The peripheral's NBTTag.
 	 * @param ID				The turtle's ID.
 	 */
-	public void writeToNBT(net.minecraft.nbt.NBTTagCompound nbttagcompound);
+	public void writeToNBT( net.minecraft.nbt.NBTTagCompound nbttagcompound );
 }

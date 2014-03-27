@@ -13,5 +13,5 @@ import net.minecraft.tileentity.TileEntity;
  */
 public interface IPeripheralHandler 
 {
-	public IHostedPeripheral getPeripheral(TileEntity tile);
+	public IHostedPeripheral getPeripheral( TileEntity tile );
 }

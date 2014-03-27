@@ -57,7 +57,7 @@ public interface IPeripheral
 	 *						arguments are supplied to your method.
 	 * @see 	#getMethodNames
 	 */
-    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception;
+    public Object[] callMethod( IComputerAccess computer, ILuaContext context, int method, Object[] arguments ) throws Exception;
     
 	/**
 	 * Is called before the computer attempts to attach to the peripheral, and should return whether to allow
@@ -69,7 +69,7 @@ public interface IPeripheral
 	 * @return	Whether to allow the attachment, as a boolean.
 	 * @see 	#attach
 	 */
-    public boolean canAttachToSide(int side);
+    public boolean canAttachToSide( int side );
 
 	/**
 	 * Is called when canAttachToSide has returned true, and a computer is attaching to the peripheral.
@@ -86,7 +86,7 @@ public interface IPeripheral
 	 * @see		#canAttachToSide
 	 * @see		#detach
 	 */
-    public void attach(IComputerAccess computer);
+    public void attach( IComputerAccess computer );
 
 	/**
 	 * Is called when a computer is detaching from the peripheral.
@@ -102,5 +102,5 @@ public interface IPeripheral
 	 * @see		#canAttachToSide
 	 * @see		#detach
 	 */
-    public void detach(IComputerAccess computer);
+    public void detach( IComputerAccess computer );
 }
