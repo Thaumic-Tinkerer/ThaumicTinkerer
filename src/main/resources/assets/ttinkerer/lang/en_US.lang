@@ -1,7 +1,7 @@
 # MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Location Set!
-ttmusc.keyCategory=Thaumic Tinkerer
+ttmisc.keyCategory=Thaumic Tinkerer
 ttmisc.connector.complete=Binding Complete!
 ttmisc.connector.notinterf=Not a Transvector Block.
 ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
