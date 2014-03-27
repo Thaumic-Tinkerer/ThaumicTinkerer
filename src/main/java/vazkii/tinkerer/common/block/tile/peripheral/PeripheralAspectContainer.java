@@ -14,22 +14,44 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import dan200.computer.api.IComputerAccess;
 import dan200.computer.api.IHostedPeripheral;
 import dan200.computer.api.ILuaContext;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.common.tiles.TileJarFillable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PeripheralAspectContainer implements IHostedPeripheral {
 
     IAspectContainer container;
+    public static Map<Double,Map<String, Object>> aspectsToMap(IAspectContainer container) {
+        Map<Double,Map<String, Object>> aspects = Maps.newHashMap();
+        AspectList aspectList = container.getAspects();
+        if (aspectList == null) return aspects;
+        int i=1;
+        for (Aspect aspect : aspectList.getAspects()) {
+            if (aspect == null) continue;
+            appendAspectEntry(aspects,i++, aspect, aspectList.getAmount(aspect));
+        }
+        return aspects;
+    }
 
+    public static void appendAspectEntry(Map<Double,Map<String, Object>> result,int count, Aspect aspect, int quantity) {
+        Map<String, Object> aspectDetails = Maps.newHashMap();
+        aspectDetails.put("name", aspect.getName());
+        aspectDetails.put("quantity", new Double(quantity));
+        result.put(new Double(count),aspectDetails);
+    }
     public PeripheralAspectContainer(IAspectContainer container) {
         this.container = container;
     }
@@ -41,7 +63,10 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 
     @Override
     public String[] getMethodNames() {
-        return new String[]{"getAspects", "getAspectCount"};
+        if(container instanceof TileJarFillable)
+            return new String[]{"getAspects", "getAspectCount","getAspectsSum","getAspectFilter"};
+        else
+            return new String[]{"getAspects", "getAspectCount","getAspectsSum"};
     }
 
     @Override
@@ -59,28 +84,38 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
 
                 return new Object[]{container.getAspects().getAmount(aspect)};
             }
+            case 2:
+            {
+                    AspectList aspectList = container.getAspects();
+                    if (aspectList == null) return null;
+                    Map<String, Integer> result = Maps.newHashMap();
+                    for (Aspect aspect : aspectList.getAspects()) {
+                        if (aspect == null) continue;
+                        String name = aspect.getName();
+                        int amount = Objects.firstNonNull(result.get(name), 0);
+                        result.put(name, amount + aspectList.getAmount(aspect));
+                    }
+                    return new Object[]{result};
+            }
+            case 3:
+                if(!(container instanceof  TileJarFillable))
+                    return null;
+                TileJarFillable jar=(TileJarFillable)container;
+                return new Object[]{jar.aspectFilter!=null?jar.aspectFilter.getName():""};
         }
 
         return null;
     }
-
     public Object[] getAspects() {
-        HashMap<Double,String> returnStuff = new HashMap<Double,String>();
-        boolean jar=false;
-        double i=1;
-        if(container instanceof TileJarFillable && ((TileJarFillable)container).aspectFilter!=null)
-        {
-            jar=true;
-            returnStuff.put(i++,((TileJarFillable)container).aspectFilter.getTag());
-            return new Object[]{returnStuff};
+        if(!(container instanceof  TileJarFillable))
+            return null;
+        TileJarFillable jar=(TileJarFillable)container;
+        Map<Double,Map<String, Object>> result = aspectsToMap(container);
+        if (result.isEmpty()) {
+            Aspect filter = jar.aspectFilter;
+            if (filter != null) appendAspectEntry(result, 1,filter, 0);
         }
-        if (container.getAspects() == null || container.getAspects().size() == 0)
-            return new Object[]{returnStuff};
-
-        for (Aspect aspect : container.getAspects().getAspectsSorted())
-            returnStuff.put(i++, aspect.getTag());
-
-        return new Object[]{returnStuff};
+        return new Object[]{result};
     }
 
     @Override

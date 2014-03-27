@@ -26,9 +26,10 @@ public class ItemMobDisplay extends ItemMod {
     }
 
 
-    public EnumMobAspect getEntityType(ItemStack stack)
+
+    public String getEntityType(ItemStack stack)
     {
-        return EnumMobAspect.getMobAspectForType(ItemNBTHelper.getString(stack, TAG_TYPE, ""));
+        return ItemNBTHelper.getString(stack, TAG_TYPE, "");
     }
     public void setEntityType(ItemStack stack,String type)
     {
@@ -39,7 +40,7 @@ public class ItemMobDisplay extends ItemMod {
         super.getSubItems(par1, par2CreativeTabs, list);
         for(EnumMobAspect aspect:EnumMobAspect.values())
         {
-            Class aspClass=aspect.getEntityClass();
+            Class aspClass=aspect.getEntity();
             String name= (String) EntityList.classToStringMapping.get(aspClass);
             ItemStack item=new ItemStack(this);
             this.setEntityType(item,name);

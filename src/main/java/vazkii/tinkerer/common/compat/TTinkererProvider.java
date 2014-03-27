@@ -100,7 +100,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 		if(accessor.getBlock()==ModBlocks.warpGate)
 		{
 			TileWarpGate tileWarp=(TileWarpGate)accessor.getTileEntity();
-			if(tileWarp.locked)
+			if(!tileWarp.locked)
 				currenttip.add(StatCollector.translateToLocal("ttwaila.allowIncoming"));
 			else
 				currenttip.add(StatCollector.translateToLocal("ttwaila.disallowIncoming"));
