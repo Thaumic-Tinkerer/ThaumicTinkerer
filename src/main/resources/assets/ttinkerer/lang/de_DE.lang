@@ -1,6 +1,7 @@
 ﻿# MISC
 itemGroup.ThaumicTinkerer=Thaumic Tinkerer
 ttmisc.connector.set=Position eingestellt!
+ttmisc.keyCategory=Thaumic Tinkerer
 ttmisc.connector.complete=Erfolgreich gebunden!
 ttmisc.connector.notinterf=Das ist kein Transvektorblock.
 ttmisc.connector.interffail=Du kannst keine Transvektor-Schnittstelle mit einer anderen verbinden.
@@ -35,6 +36,7 @@ ttmisc.notAbsorbing=Nicht Absorbierend
 ttmisc.absorbing=Absorbierend
 ttmisc.shareTome.write=Forschung niedergeschrieben!
 ttmisc.shareTome.notOnline=Der Spieler, dem diese Forschung gehört, ist nicht online.
+ttmisc.shareTomb.offlineshare=Offline teilen
 ttmisc.shareTome.sync=Forschung erlangt.
 ttmisc.shareTome.noAssign=Nicht zugewiesen
 ttmisc.shareTome.playerName=Gebunden an die Forschung von %s.
@@ -151,8 +153,8 @@ tile.ttinkerer:aspectAnalyzer.name=Aspektanalysierer
 tile.ttinkerer:platform.name=Ätherische Plattform
 tile.ttinkerer:spawner.name=Nekromantentafel
 tile.ttinkerer:portal.name=Bedrock-Portal
-tile.ttinkerer:Mobilization Levitator.name=Levitationslokomotive
-tile.ttinkerer:Mobilization Levitator Relay.name=Levitationslokomotivrelais
+tile.ttinkerer:Levitational Locomotive.name=Levitationslokomotive
+tile.ttinkerer:Levitational Locomotive Relay.name=Levitationslokomotivrelais
 tile.ttinkerer:golemConnector.name=Golemkonnektor
 
 # KAMI BLOCK NAMES
