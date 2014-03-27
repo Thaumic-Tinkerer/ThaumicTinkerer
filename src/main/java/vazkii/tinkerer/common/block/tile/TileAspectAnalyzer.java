@@ -258,26 +258,26 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
         return new Object[]{String.format("Hello, %s!", args.checkString(0))};
     }
 
-    @Callback
+    @Callback(doc ="function():boolean -- Whether this inventory contains an item")
     @Optional.Method(modid = "OpenComputers")
     public Object[] hasItem(Context context, Arguments args)
     {
         return hasItemMethod();
     }
 
-    @Callback
+    @Callback(doc ="function():boolean -- Whether the item contains aspects")
     @Optional.Method(modid = "OpenComputers")
     public Object[] itemHasAspects(Context context, Arguments args)
     {
         return itemHasAspectsMethod();
     }
-    @Callback
+    @Callback(doc ="function():table -- Returns a list of all available aspects")
     @Optional.Method(modid = "OpenComputers")
     public Object[] getAspects(Context context, Arguments args)
     {
         return getAspectsMethod();
     }
-    @Callback
+    @Callback(doc ="function():table -- returns a mapping of all aspect counts")
     @Optional.Method(modid = "OpenComputers")
     public Object[] getAspectCount(Context context, Arguments args)
     {

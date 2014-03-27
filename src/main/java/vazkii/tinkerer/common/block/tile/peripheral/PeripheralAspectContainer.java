@@ -11,21 +11,17 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [13 Sep 2013, 00:58:21 (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import IComputerAccess;
-import IHostedPeripheral;
-import ILuaContext;
-import net.minecraft.nbt.NBTTagCompound;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.IAspectContainer;
-import thaumcraft.common.tiles.TileJarFillable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.IHostedPeripheral;
+import dan200.computer.api.ILuaContext;
+import net.minecraft.nbt.NBTTagCompound;
+import thaumcraft.api.aspects.IAspectContainer;
+import vazkii.tinkerer.common.block.tile.peripheral.implementation.IAspectContainerImplementation;
 
 public class PeripheralAspectContainer implements IHostedPeripheral {
 
@@ -49,39 +45,15 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
     public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
         switch (method) {
             case 0: {
-                return getAspects();
+                return IAspectContainerImplementation.getAspects(container);
             }
             case 1: {
                 String aspectName = (String) arguments[0];
-                Aspect aspect = Aspect.getAspect(aspectName);
-
-                if (container.getAspects() == null)
-                    return new Object[]{0};
-
-                return new Object[]{container.getAspects().getAmount(aspect)};
+                return IAspectContainerImplementation.getAspectCount(container,aspectName);
             }
         }
 
         return null;
-    }
-
-    public Object[] getAspects() {
-        HashMap<Double,String> returnStuff = new HashMap<Double,String>();
-        boolean jar=false;
-        double i=1;
-        if(container instanceof TileJarFillable && ((TileJarFillable)container).aspectFilter!=null)
-        {
-            jar=true;
-            returnStuff.put(i++,((TileJarFillable)container).aspectFilter.getTag());
-            return new Object[]{returnStuff};
-        }
-        if (container.getAspects() == null || container.getAspects().size() == 0)
-            return new Object[]{returnStuff};
-
-        for (Aspect aspect : container.getAspects().getAspectsSorted())
-            returnStuff.put(i++, aspect.getTag());
-
-        return new Object[]{returnStuff};
     }
 
     @Override
@@ -114,4 +86,4 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
         // NO-OP
     }
 
-}*/
+}

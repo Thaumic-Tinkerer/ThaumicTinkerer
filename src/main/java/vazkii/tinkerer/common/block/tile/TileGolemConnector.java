@@ -1,19 +1,26 @@
 package vazkii.tinkerer.common.block.tile;
 
 
+import cpw.mods.fml.common.Optional;
+import dan200.computer.api.IComputerAccess;
+import dan200.computer.api.ILuaContext;
+import dan200.computer.api.IPeripheral;
+import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.StatCollector;
 import thaumcraft.common.entities.golems.EntityGolemBase;
+import thaumcraft.common.entities.golems.Marker;
 import vazkii.tinkerer.common.core.golems.EnumGolemCores;
 import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-
-public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
+import java.util.*;
+@Optional.InterfaceList({
+        @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
+        @Optional.Interface(iface = "import dan200.computer.api.IPeripheral", modid = "ComputerCraft")
+})
+public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleComponent {
     private static final String TAG_UUID_MOST = "UUIDMost";
     private static final String TAG_UUID_LEAST = "UUIDLeast";
     public UUID golemConnected;
@@ -43,13 +50,13 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
         }
     }
 
-  /*  @Override
+    @Override
     public String getType() {
         return "tt_golemconnector";
-    }*/
+    }
 
 
-    public Object[] getGolemDecorations() throws Exception {
+    public Object[] getGolemDecorationsImplementation() throws Exception {
         if (golem == null || golem.decoration == null || golem.decoration.length() == 0)
             return new String[]{};
         HashMap<Double, String> decorations = new HashMap<Double, String>();
@@ -64,7 +71,7 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
 
     }
 
-    public String[] getGolemCore() throws Exception {
+    public String[] getGolemCoreImplementation() throws Exception {
         if (golem == null)
             return new String[]{};
         if (golem.getCore() == -1)
@@ -115,54 +122,67 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
 
     }
 
-   /* @Override
+    @Override
     public String[] getMethodNames() {
         return new String[]{"getDecorations", "getPosition", "getType", "getHealth", "getCore", "getHome", "setHome", "getMarkers", "setMarkers", "newMarker", "addMarker", "saveMarker", "deleteMarker", "getMarker", "getMarkerCount"};
     }
 
     @Override
+    @Optional.Method(modid = "ComputerCraft")
     public Object[] callMethod(IComputerAccess computer, ILuaContext context,
                                int method, Object[] arguments) throws Exception {
         switch (method) {
             case 0:
-                return getGolemDecorations();
+                return getGolemDecorationsImplementation();
             case 1:
                 if (golem == null)
                     return new Integer[]{};
                 return new Integer[]{(int) golem.posX, (int) golem.posY, (int) golem.posZ};
             case 2:
-                return getGolemType();
+                return getGolemTypeImplementation();
             case 3:
                 if (golem == null)
                     return new Float[]{};
                 return new Float[]{golem.getHealth()};
             case 4:
-                return getGolemCore();
+                return getGolemCoreImplementation();
             case 5:
-                return getHome();
+                return getHomeImplementation();
             case 6:
-                return setHome(arguments);
+                if (arguments.length != 4)
+                    throw new Exception("Invalid arguments");
+                return setHomeImplementation(arguments);
             case 7:
-                return getMarkers();
+                return getMarkersImplementation();
             case 8:
-                return setMarkers(arguments);
+                if (arguments.length != 1)
+                    throw new Exception("setMarkers takes 1 argument");
+                return setMarkersImplementation(arguments);
             case 9:
-                return newMarker();
+                return newMarkerImplementation();
             case 10:
-                return addMarker(arguments);
+                if (arguments.length != 1)
+                    throw new Exception("addMarker must have 1 argument");
+                return addMarkerImplementation(arguments);
             case 11:
-                return saveMarker(arguments);
+                if (arguments.length != 2)
+                    throw new Exception("saveMarker must have 2 arguments");
+                return saveMarkerImplementation(arguments);
             case 12:
-                return deleteMarker(arguments);
+                if (arguments.length != 1)
+                    throw new Exception("deleteMarker must have 1 argument");
+                return deleteMarkerImplementation(arguments);
             case 13:
-                return getMarker(arguments);
+                if (arguments.length != 1)
+                    throw new Exception("getMarker must have 1 argument");
+                return getMarkerImplementation(arguments);
             case 14:
-                return getMarkerCount();
+                return getMarkerCountImplementation();
         }
         return null;
     }
 
-    private Object[] getMarkerCount() {
+    private Object[] getMarkerCountImplementation() {
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
@@ -171,24 +191,20 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
         return new Object[]{(double) markers.size()};
     }
 
-    private Object[] getMarker(Object[] arguments) throws Exception {
+    private Object[] getMarkerImplementation(Object[] arguments) throws Exception {
         if (golem == null)
             return new String[]{};
-        if (arguments.length != 1)
-            throw new Exception("getMarker must have 1 argument");
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null || markers.size() <= (Double) arguments[0])
             throw new Exception("marker " + (int) (double) (Double) arguments[0] + " does not exist");
         Marker mark = markers.get((int) (double) (Double) arguments[0]);
 
-        return new Object[]{fromMarker(mark)};
+        return new Object[]{fromMarkerImplementation(mark)};
     }
 
-    private Object[] deleteMarker(Object[] arguments) throws Exception {
+    private Object[] deleteMarkerImplementation(Object[] arguments) throws Exception {
         if (golem == null)
             return new String[]{};
-        if (arguments.length != 1)
-            throw new Exception("deleteMarker must have 1 argument");
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null || markers.size() <= (Double) arguments[0])
             throw new Exception("marker " + (int) (double) (Double) arguments[0] + " does not exist");
@@ -197,36 +213,32 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
         return new String[]{};
     }
 
-    private Object[] saveMarker(Object[] arguments) throws Exception {
+    private Object[] saveMarkerImplementation(Object[] arguments) throws Exception {
         if (golem == null)
             return new String[]{};
-        if (arguments.length != 2)
-            throw new Exception("saveMarker must have 2 arguments");
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null || markers.size() <= (Double) arguments[0])
             throw new Exception("marker " + (int) (double) (Double) arguments[0] + " does not exist");
-        Marker mark = toMarker((HashMap<String, Object>) arguments[1]);
+        Marker mark = toMarkerImplementation((HashMap<String, Object>) arguments[1]);
         markers.set((int) (double) (Double) arguments[0], mark);
         golem.setMarkers(markers);
-        return getMarker(new Object[]{arguments[0]});
+        return getMarkerImplementation(new Object[]{arguments[0]});
     }
 
     @SuppressWarnings("unchecked")
-    private Object[] addMarker(Object[] arguments) throws Exception {
+    private Object[] addMarkerImplementation(Object[] arguments) throws Exception {
         if (golem == null)
             return new String[]{};
-        if (arguments.length != 1)
-            throw new Exception("addMarker must have 1 argument");
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null)
             markers = new ArrayList<Marker>();
-        Marker mark = toMarker((HashMap<String, Object>) arguments[0]);
+        Marker mark = toMarkerImplementation((HashMap<String, Object>) arguments[0]);
         markers.add(mark);
         golem.setMarkers(markers);
-        return getMarker(new Double[]{(double) (markers.size() - 1)});
+        return getMarkerImplementation(new Double[]{(double) (markers.size() - 1)});
     }
 
-    private Object[] newMarker() {
+    private Object[] newMarkerImplementation() {
         HashMap<String, Object> mark = new HashMap<String, Object>();
         mark.put("posX", xCoord);
         mark.put("posY", yCoord);
@@ -238,29 +250,28 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
     }
 
     @SuppressWarnings("unchecked")
-    private Object[] setMarkers(Object[] arguments) throws Exception {
+    private Object[] setMarkersImplementation(Object[] arguments) throws Exception {
         if (golem == null)
             return new String[]{};
-        if (arguments.length != 1)
-            throw new Exception("setMarkers takes 1 argument");
+
         ArrayList<Marker> arrList = new ArrayList<Marker>();
 
         HashMap<Double, HashMap<String, Object>> markersToSet = (HashMap<Double, HashMap<String, Object>>) arguments[0];
         for (HashMap<String, Object> map : markersToSet.values()) {
-            Marker mark = toMarker(map);
+            Marker mark = toMarkerImplementation(map);
 
             arrList.add(mark);
 
         }
         golem.setMarkers(arrList);
-        return getMarkers();
+        return getMarkersImplementation();
     }
 
-    *//**
+    /**
      * @param markerMap
      * @return
-     *//*
-    private Marker toMarker(HashMap<String, Object> markerMap) {
+     */
+    private Marker toMarkerImplementation(HashMap<String, Object> markerMap) {
         double posX = (Double) markerMap.get("posX");
         double posY = (Double) markerMap.get("posY");
         double posZ = (Double) markerMap.get("posZ");
@@ -271,24 +282,24 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
         return mark;
     }
 
-    private Object[] getMarkers() {
+    private Object[] getMarkersImplementation() {
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
         HashMap<Integer, HashMap<String, Object>> luaMarkers = new HashMap<Integer, HashMap<String, Object>>();
         int i = 1;
         for (Marker mark : markers) {
-            HashMap<String, Object> luaMarker = fromMarker(mark);
+            HashMap<String, Object> luaMarker = fromMarkerImplementation(mark);
             luaMarkers.put(i++, luaMarker);
         }
         return new Object[]{luaMarkers};
     }
 
-    *//**
+    /**
      * @param mark
      * @return
-     *//*
-    private HashMap<String, Object> fromMarker(Marker mark) {
+     */
+    private HashMap<String, Object> fromMarkerImplementation(Marker mark) {
         HashMap<String, Object> luaMarker = new HashMap<String, Object>();
 
         luaMarker.put("posX", mark.x);
@@ -300,28 +311,27 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
         return luaMarker;
     }
 
-    private Object[] setHome(Object[] arguments) throws Exception {
+    private Object[] setHomeImplementation(Object[] arguments) throws Exception {
         if (golem == null)
             return new String[]{};
-        if (arguments.length != 4)
-            throw new Exception("Invalid arguments");
+
         double x = (Double) arguments[0];
         double y = (Double) arguments[1];
         double z = (Double) arguments[2];
         double facing = (Double) arguments[3];
         golem.setHomeArea((int) x, (int) y, (int) z, (int) 35);
         golem.homeFacing = (int) facing;
-        return getHome();
+        return getHomeImplementation();
     }
 
-    private Object[] getHome() {
+    private Object[] getHomeImplementation() {
         if (golem == null)
             return new String[]{};
         ChunkCoordinates home = golem.getHomePosition();
         return new Integer[]{home.posX, home.posY, home.posZ, golem.homeFacing};
     }
 
-    private String[] getGolemType() throws Exception {
+    private String[] getGolemTypeImplementation() throws Exception {
         if (golem == null)
             return new String[]{};
         switch (golem.getGolemType()) {
@@ -352,14 +362,21 @@ public class TileGolemConnector extends TileCamo /* implements IPeripheral */{
     }
 
     @Override
+    @Optional.Method(modid = "ComputerCraft")
     public void attach(IComputerAccess computer) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
+    @Optional.Method(modid = "ComputerCraft")
     public void detach(IComputerAccess computer) {
         // TODO Auto-generated method stub
 
-    }*/
+    }
+
+    @Override
+    public String getComponentName() {
+        return getType();
+    }
 }

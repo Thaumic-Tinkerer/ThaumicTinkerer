@@ -15,14 +15,18 @@
 package vazkii.tinkerer.common.core.proxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.DriverIAspectContainer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
@@ -70,6 +74,10 @@ public class TTCommonProxy {
             FMLCommonHandler.instance().bus().register(new DimensionalShardDropHandler());
             FMLCommonHandler.instance().bus().register(new SoulHeartHandler());
 		}
+        if(Loader.isModLoaded("OpenComputers"))
+        {
+            initOpenCDrivers();
+        }
 	}
 
     private void RegisterPackets() {
@@ -103,7 +111,11 @@ public class TTCommonProxy {
 			
 		TurtleAPI.registerUpgrade(new FumeTool());*/
 	}
-
+    @Optional.Method(modid="OpenComputers")
+    public void initOpenCDrivers()
+    {
+        Driver.add(new DriverIAspectContainer());
+    }
 	public boolean isClient() {
 		return false;
 	}
