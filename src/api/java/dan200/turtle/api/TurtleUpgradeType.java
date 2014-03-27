@@ -9,7 +9,7 @@ package dan200.turtle.api;
 /**
  * An enum representing the two different types of upgrades that an ITurtleUpgrade
  * implementation can add to a turtle.
- * @see dan200.turtle.api.ITurtleUpgrade
+ * @see ITurtleUpgrade
  */
 public enum TurtleUpgradeType
 {

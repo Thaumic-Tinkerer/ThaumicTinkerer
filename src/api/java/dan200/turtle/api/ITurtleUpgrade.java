@@ -5,12 +5,14 @@
  */
 
 package dan200.turtle.api;
+
+import dan200.computer.api.IHostedPeripheral;
 import net.minecraft.util.IIcon;
 
 /**
  * The primary interface for defining an upgrade for Turtles. A turtle upgrade
  * can either be a new tool, or a new peripheral.
- * @see dan200.turtle.api.TurtleAPI#registerUpgrade( dan200.turtle.api.ITurtleUpgrade )
+ * @see TurtleAPI#registerUpgrade( ITurtleUpgrade )
  */
 public interface ITurtleUpgrade
 {
@@ -21,7 +23,7 @@ public interface ITurtleUpgrade
 	 * The ID must be in the range 64 to 255, as the ID is stored as an 8-bit value,
 	 * and 0-64 is reserved for future use by ComputerCraft. The upgrade will
 	 * fail registration if an already used ID is specified.
-	 * @see dan200.turtle.api.TurtleAPI#registerUpgrade( dan200.turtle.api.ITurtleUpgrade )
+	 * @see TurtleAPI#registerUpgrade( ITurtleUpgrade )
 	 */
 	public int getUpgradeID();
 	
@@ -61,7 +63,7 @@ public interface ITurtleUpgrade
 	 * @returns The newly created peripheral. You may return null if this upgrade is a Tool
 	 * and this method is not expected to be called.
 	 */		
-	public IHostedPeripheral createPeripheral(ITurtleAccess turtle, TurtleSide side);
+	public IHostedPeripheral createPeripheral( ITurtleAccess turtle, TurtleSide side );
 
 	/**
 	 * Will only be called for Tool upgrades. Called when turtle.dig() or turtle.attack() is called
@@ -77,7 +79,7 @@ public interface ITurtleUpgrade
 	 * a swinging animation. You may return false if this upgrade is a Peripheral
 	 * and this method is not expected to be called.
 	 */
-	public boolean useTool(ITurtleAccess turtle, TurtleSide side, TurtleVerb verb, int direction);
+	public boolean useTool( ITurtleAccess turtle, TurtleSide side, TurtleVerb verb, int direction );
 
 	/**
 	 * Called to obtain the Icon to be used when rendering a turtle peripheral. Needs to be a "block" 
@@ -87,5 +89,5 @@ public interface ITurtleUpgrade
 	 * @param side Which side of the turtle (left or right) the peripheral resides on.
 	 * @return The Icon that you wish to be used to render your turtle peripheral.
 	 */
-	public IIcon getIcon(ITurtleAccess turtle, TurtleSide side);
+	public IIcon getIcon( ITurtleAccess turtle, TurtleSide side );
 }

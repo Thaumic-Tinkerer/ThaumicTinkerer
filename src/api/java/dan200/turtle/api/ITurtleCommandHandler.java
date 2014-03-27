@@ -8,7 +8,7 @@ package dan200.turtle.api;
 
 /**
  * An interface for objects executing custom turtle commands, used with ITurtleAccess.issueCommand
- * @see dan200.turtle.api.ITurtleAccess#issueCommand( dan200.turtle.api.ITurtleCommandHandler )
+ * @see ITurtleAccess#issueCommand( ITurtleCommandHandler )
  */
 public interface ITurtleCommandHandler
 {
@@ -19,7 +19,7 @@ public interface ITurtleCommandHandler
 	 * @param turtle access to the turtle for whom the command was issued
 	 * @return true for success, false for failure. If true is returned, the turtle will wait 0.4 seconds
 	 * before executing the next command in its queue, as it does for the standard turtle commands.
- 	 * @see dan200.turtle.api.ITurtleAccess#issueCommand( dan200.turtle.api.ITurtleCommandHandler )
+ 	 * @see ITurtleAccess#issueCommand( ITurtleCommandHandler )
 	 */
-	public boolean handleCommand(ITurtleAccess turtle);
+	public boolean handleCommand( ITurtleAccess turtle );
 }

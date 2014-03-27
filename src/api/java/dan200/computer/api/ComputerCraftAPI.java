@@ -22,7 +22,7 @@ public class ComputerCraftAPI
 	 * @param parentSubPath The folder path within the save directory where the new directory should be created. eg: "computer/disk"
 	 * @return The numerical value of the name of the new folder, or -1 if the folder could not be created for some reason.<br>
 	 * eg: if createUniqueNumberedSaveDir( world, "computer/disk" ) was called returns 42, then "computer/disk/42" is now available for writing.
-	 * @see #createSaveDirMount(net.minecraft.world.World, String)
+	 * @see #createSaveDirMount(World, String)
 	 */
 	public static int createUniqueNumberedSaveDir( World world, String parentSubPath )
 	{
@@ -48,10 +48,10 @@ public class ComputerCraftAPI
 	 * @param capacity The ammount of data that can be stored in the directory before it fills up, in bytes.
 	 * @return The mount, or null if it could be created for some reason. Use IComputerAccess.mount() or IComputerAccess.mountWritable()
 	 * to mount this on a Computers' file system.
-	 * @see #createUniqueNumberedSaveDir(net.minecraft.world.World, String)
-	 * @see dan200.computer.api.IComputerAccess#mount(String, dan200.computer.api.IMount)
-	 * @see dan200.computer.api.IComputerAccess#mountWritable(String, dan200.computer.api.IWritableMount)
-	 * @see dan200.computer.api.IMount
+	 * @see #createUniqueNumberedSaveDir(World, String)
+	 * @see IComputerAccess#mount(String, IMount)
+	 * @see IComputerAccess#mountWritable(String, IWritableMount)
+	 * @see IMount
 	 * @see IMountWritable
 	 */
 	public static IWritableMount createSaveDirMount( World world, String subPath, long capacity )
@@ -77,9 +77,9 @@ public class ComputerCraftAPI
 	 * @param subPath The domain under which to look for resources. eg: "mymod/lua/myfiles"
 	 * @return The mount, or null if it could be created for some reason. Use IComputerAccess.mount() or IComputerAccess.mountWritable()
 	 * to mount this on a Computers' file system.
-	 * @see dan200.computer.api.IComputerAccess#mount(String, dan200.computer.api.IMount)
-	 * @see dan200.computer.api.IComputerAccess#mountWritable(String, IMountWritable)
-	 * @see dan200.computer.api.IMount
+	 * @see IComputerAccess#mount(String, IMount)
+	 * @see IComputerAccess#mountWritable(String, IMountWritable)
+	 * @see IMount
 	 */
 	public static IMount createResourceMount( Class modClass, String domain, String subPath )
 	{
@@ -99,7 +99,7 @@ public class ComputerCraftAPI
 	 * Registers a peripheral handler for a TileEntity that you do not have access to. Only
 	 * use this if you want to expose IPeripheral on a TileEntity from another mod. For your own
 	 * mod, just implement IPeripheral on the TileEntity directly.
-	 * @see dan200.computer.api.IPeripheral
+	 * @see IPeripheral
 	 * @see IPeripheralHandler
 	 */
 	public static void registerExternalPeripheral( Class <? extends net.minecraft.tileentity.TileEntity> clazz, IPeripheralHandler handler )
