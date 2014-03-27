@@ -35,8 +35,8 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Optional.InterfaceList({
         @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
@@ -166,41 +166,60 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
 	@Override
     @Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		ItemStack stack = getStackInSlot(0);
-		AspectList aspects = null;
-		if(stack != null) {
-
-            aspects = ThaumcraftCraftingManager.getObjectTags(stack);
-			aspects = ThaumcraftCraftingManager.getBonusTags(stack, aspects);
-		}
-
-		switch(method) {
-			case 0 : return new Object[] { stack != null };
-			case 1 : return new Object[] { aspects != null && aspects.size() > 0 };
-			case 2 : {
-				List returnStuff = new ArrayList();
-				if(aspects == null)
-					return new String[0];
-
-				for(Aspect aspect : aspects.getAspectsSorted())
-					returnStuff.add(aspect.getTag());
-
-				return returnStuff.toArray();
-			}
-			case 3 : {
-				String aspectName = (String) arguments[0];
-				Aspect aspect = Aspect.getAspect(aspectName);
-
-				if(aspects == null)
-					return new Object[] { 0 };
-
-				return new Object[] { aspects.getAmount(aspect) };
-			}
+    	switch(method) {
+			case 0 : return hasItemMethod();
+			case 1 : return itemHasAspectsMethod();
+			case 2 : return getAspectsMethod();
+			case 3 : return getAspectsAmountsMethod();
  		}
 
 		return null;
 	}
 
+    public Object[] hasItemMethod()
+    {
+        ItemStack stack = getStackInSlot(0);
+        return new Object[] {stack != null};
+    }
+    public AspectList getAspectList()
+    {
+        ItemStack stack = getStackInSlot(0);
+        AspectList aspects = null;
+        if(stack != null) {
+
+            aspects = ThaumcraftCraftingManager.getObjectTags(stack);
+            aspects = ThaumcraftCraftingManager.getBonusTags(stack, aspects);
+        }
+
+        return aspects;
+    }
+    public Object[] itemHasAspectsMethod()
+    {
+        AspectList aspects=getAspectList();
+        return new Object[] { aspects != null && aspects.size() > 0 };
+    }
+    public Object[] getAspectsMethod()
+    {
+        AspectList aspects=getAspectList();
+        Map<Double,String> retVals=new HashMap<Double, String>();
+        if(aspects == null)
+            return new Object[] {retVals};
+        double i=1;
+        for(Aspect aspect : aspects.getAspectsSorted())
+            retVals.put(i++,aspect.getTag());
+        return new Object[]{retVals};
+    }
+
+    public Object[] getAspectsAmountsMethod()
+    {
+        AspectList aspects=getAspectList();
+        Map<String,Double> retVals=new HashMap<String,Double>();
+        if(aspects == null)
+            return new Object[] {retVals};
+        for(Aspect aspect : aspects.getAspectsSorted())
+            retVals.put(aspect.getTag(),(double)aspects.getAmount(aspect));
+        return new Object[]{retVals};
+    }
 	@Override
 	public boolean canAttachToSide(int side) {
 		return true;
@@ -237,5 +256,31 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
     @Optional.Method(modid = "OpenComputers")
     public Object[] greet(Context context, Arguments args) {
         return new Object[]{String.format("Hello, %s!", args.checkString(0))};
+    }
+
+    @Callback
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] hasItem(Context context, Arguments args)
+    {
+        return hasItemMethod();
+    }
+
+    @Callback
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] itemHasAspects(Context context, Arguments args)
+    {
+        return itemHasAspectsMethod();
+    }
+    @Callback
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getAspects(Context context, Arguments args)
+    {
+        return getAspectsMethod();
+    }
+    @Callback
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getAspectCount(Context context, Arguments args)
+    {
+        return getAspectsAmountsMethod();
     }
 }
