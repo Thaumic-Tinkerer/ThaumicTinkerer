@@ -23,11 +23,11 @@ public class GuiButtonAT extends GuiButton {
 
 	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ANIMATION_TABLET);
 
-	public boolean enabled = false;
+	public boolean buttonEnabled = false;
 
-	public GuiButtonAT(int par1, int par2, int par3, boolean enabled) {
+	public GuiButtonAT(int par1, int par2, int par3, boolean buttonEnabled) {
 		super(par1, par2, par3, 13, 13, "");
-		this.enabled = enabled;
+		this.buttonEnabled = buttonEnabled;
 	}
 
 	@Override

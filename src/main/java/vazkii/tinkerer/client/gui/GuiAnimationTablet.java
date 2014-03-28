@@ -69,10 +69,10 @@ public class GuiAnimationTablet extends GuiContainer {
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if(par1GuiButton instanceof IRadioButton)
 			((IRadioButton) par1GuiButton).enableFromClick();
-		else buttonListAT.get(0).enabled = !buttonListAT.get(0).enabled;
+		else buttonListAT.get(0).buttonEnabled = !buttonListAT.get(0).buttonEnabled;
 
-		tablet.leftClick = buttonListAT.get(1).enabled;
-		tablet.redstone = buttonListAT.get(0).enabled;
+		tablet.leftClick = buttonListAT.get(1).buttonEnabled;
+		tablet.redstone = buttonListAT.get(0).buttonEnabled;
 
         ThaumicTinkerer.packetPipeline.sendToServer(new PacketTabletButton(tablet));
 	}

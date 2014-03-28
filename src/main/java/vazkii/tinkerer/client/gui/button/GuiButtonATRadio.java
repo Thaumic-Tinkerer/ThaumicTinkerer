@@ -41,11 +41,11 @@ public class GuiButtonATRadio extends GuiButtonAT implements IRadioButton {
 
 	@Override
 	public boolean isEnabled() {
-		return enabled;
+		return buttonEnabled;
 	}
 
 	@Override
 	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+		this.buttonEnabled = enabled;
 	}
 }
