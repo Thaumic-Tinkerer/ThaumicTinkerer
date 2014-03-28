@@ -25,6 +25,10 @@ public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> {
 	private static final long serialVersionUID = 2247241734524685744L;
 	int index;
 
+    public PacketWarpGateTeleport(){
+        super();
+    }
+
 	public PacketWarpGateTeleport(TileWarpGate tile, int index) {
 		super(tile);
 		this.index = index;

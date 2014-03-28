@@ -18,6 +18,10 @@ import vazkii.tinkerer.common.block.tile.TileEnchanter;
 
 public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> {
 
+    public PacketEnchanterStartWorking(){
+        super();
+    }
+
 	private static final long serialVersionUID = -9086252088394185376L;
 
 	public PacketEnchanterStartWorking(TileEnchanter tile) {

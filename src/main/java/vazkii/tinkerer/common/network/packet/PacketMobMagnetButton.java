@@ -23,6 +23,10 @@ public class PacketMobMagnetButton extends PacketTile<TileMobMagnet> {
 	private static final long serialVersionUID = 7613980953987386713L;
 	boolean adult;
 
+    public PacketMobMagnetButton(){
+        super();
+    }
+
 	public PacketMobMagnetButton(TileMobMagnet tile) {
 		super(tile);
 

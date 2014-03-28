@@ -30,7 +30,7 @@ public class PacketSoulHearts extends AbstractPacket {
 	}
     public PacketSoulHearts()
     {
-
+        super();
     }
     @Override
     public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {

@@ -27,6 +27,10 @@ import vazkii.tinkerer.common.network.AbstractPacket;
 
 public abstract class PacketTile<T extends TileEntity> extends AbstractPacket {
 
+    public PacketTile(){
+        super();
+    }
+
 	private static final long serialVersionUID = -1447633008013055477L;
 
 	protected int dim, x, y, z;

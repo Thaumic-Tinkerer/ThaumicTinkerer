@@ -23,10 +23,13 @@ import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 
 public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 
+    public PacketEnchanterAddEnchant(){
+        super();
+    }
+
 	private static final long serialVersionUID = -2182522429849764376L;
 	int enchant;
 	int level;
-
 	public PacketEnchanterAddEnchant(TileEnchanter tile, int enchant, int level) {
 		super(tile);
 		this.enchant = enchant;

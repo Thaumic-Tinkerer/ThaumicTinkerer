@@ -24,6 +24,10 @@ public class PacketWarpGateButton extends PacketTile<TileWarpGate> {
 	private static final long serialVersionUID = 1497188581985763661L;
 	boolean locked;
 
+    public PacketWarpGateButton(){
+        super();
+    }
+
 	public PacketWarpGateButton(TileWarpGate tile) {
 		super(tile);
 		locked = tile.locked;

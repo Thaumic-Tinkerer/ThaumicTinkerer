@@ -23,6 +23,10 @@ public class PacketTabletButton extends PacketTile<TileAnimationTablet> {
 	private static final long serialVersionUID = -6507755382924554527L;
 	boolean leftClick, redstone;
 
+    public PacketTabletButton(){
+        super();
+    }
+
 	public PacketTabletButton(TileAnimationTablet tile) {
 		super(tile);
 		leftClick = tile.leftClick;
