@@ -72,7 +72,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 
 		readCustomNBT(par1NBTTagCompound);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_LIST);
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
 			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);

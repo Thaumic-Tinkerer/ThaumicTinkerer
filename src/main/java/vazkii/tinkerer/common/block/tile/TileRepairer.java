@@ -110,7 +110,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_LIST);
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         inventorySlots = new ItemStack[1];
         
         if(nbttaglist.tagCount()>0)
