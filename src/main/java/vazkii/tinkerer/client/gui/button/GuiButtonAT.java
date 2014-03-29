@@ -34,7 +34,7 @@ public class GuiButtonAT extends GuiButton {
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
 		if(enabled) {
 			par1Minecraft.renderEngine.bindTexture(gui);
-			int y = enabled ? 13 : 0;
+			int y = buttonEnabled ? 13 : 0;
 			drawTexturedModalRect(xPosition, yPosition, 176, y, width, height);
 		}
 	}
