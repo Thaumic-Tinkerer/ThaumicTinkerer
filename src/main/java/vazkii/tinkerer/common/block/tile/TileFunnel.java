@@ -60,7 +60,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 							TileJarFillable jar1 = (TileJarFillable) tile1;
 							boolean voidJar=tile1 instanceof TileJarFillableVoid;
 							AspectList aspectList1 = jar1.getAspects();
-							if(aspectList1 != null && aspectList1.size() == 0 || aspectList1.getAspects()[0] == aspect && (aspectList1.getAmount(aspectList1.getAspects()[0]) < 64 || voidJar)) {
+							if(aspectList1 != null && (( aspectList1.size() == 0 || jar1.aspectFilter==aspect)) || aspectList1.getAspects()[0] == aspect && (aspectList1.getAmount(aspectList1.getAspects()[0]) < 64 || voidJar)) {
 								jar1.addToContainer(aspect, 1);
 								item.setAspects(jar, aspectList.remove(aspect, 1));
 							}
