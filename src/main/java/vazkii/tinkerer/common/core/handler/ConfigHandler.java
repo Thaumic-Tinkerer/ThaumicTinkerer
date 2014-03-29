@@ -42,6 +42,7 @@ public final class ConfigHandler {
 	public static boolean enableDebugCommands=false;
 	public static boolean useOreDictMetal = true;
 	public static boolean repairTConTools = false;
+    public static boolean giveWayToOP=true;
 	
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
@@ -71,6 +72,10 @@ public final class ConfigHandler {
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
 		useTootlipIndicators = propEnableTooltips.getBoolean(true);
+
+        Property propGiveWay = config.get(Configuration.CATEGORY_GENERAL, "giveway.enabled", true);
+        propGiveWay.comment = "Set to false to use Default TT Computer craft Integration even when Open Peripherals is not installed.";
+        giveWayToOP = propGiveWay.getBoolean(true);
 
 		Property propEnableSurvivalShareTome = config.get(Configuration.CATEGORY_GENERAL, "shareTome.survival.enabled", true);
 		propEnableSurvivalShareTome.comment = "Set to false to disable the crafting recipe for the Tome of Research Sharing.";
