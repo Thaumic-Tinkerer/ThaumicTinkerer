@@ -292,9 +292,9 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 	}
 
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-        par1NBTTagCompound.setIntArray(TAG_LEVELS, ArrayUtils.toPrimitive((Integer[]) levels.toArray()));
+        par1NBTTagCompound.setIntArray(TAG_LEVELS, ArrayUtils.toPrimitive(levels.toArray(new Integer[levels.size()])));
 
-        par1NBTTagCompound.setIntArray(TAG_ENCHANTS, ArrayUtils.toPrimitive((Integer[]) enchantments.toArray()));
+        par1NBTTagCompound.setIntArray(TAG_ENCHANTS, ArrayUtils.toPrimitive(enchantments.toArray(new Integer[enchantments.size()])));
 
 
     	NBTTagCompound totalAspectsCmp = new NBTTagCompound();
