@@ -27,7 +27,7 @@ public class EnchantmentVampirism extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId != Enchantment.fireAspect.effectId;
+		return par1Enchantment.effectId != Enchantment.fireAspect.effectId && par1Enchantment.effectId!=Enchantment.knockback.effectId;
 	}
 
 	@Override
