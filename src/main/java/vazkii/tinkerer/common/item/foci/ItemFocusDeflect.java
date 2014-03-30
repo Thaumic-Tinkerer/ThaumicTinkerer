@@ -41,7 +41,7 @@ public class ItemFocusDeflect extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int ticks) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(wand.consumeAllVis(stack, p, getVisCost(), true))
+		if(wand.consumeAllVis(stack, p, getVisCost(), true,false))
 			protectFromProjectiles(p);
 	}
 

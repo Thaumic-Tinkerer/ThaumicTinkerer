@@ -47,7 +47,7 @@ public class ItemFocusEnderChest extends ItemModFocus {
 		}
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(wand.consumeAllVis(stack, p, visUsage, true)) {
+		if(wand.consumeAllVis(stack, p, visUsage, true,false)) {
 			p.displayGUIChest(p.getInventoryEnderChest());
 			world.playSoundAtEntity(p, "mob.endermen.portal", 1F, 1F);
 		}

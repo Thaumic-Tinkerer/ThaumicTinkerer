@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.core.handler.kami;
 
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityPigZombie;
@@ -25,7 +27,7 @@ import vazkii.tinkerer.common.item.ModItems;
 
 public class DimensionalShardDropHandler {
 
-	@cpw.mods.fml.common.eventhandler.SubscribeEvent
+	@SubscribeEvent
     public void onEntityLivingDrops(LivingDropsEvent event) {
         if(event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
         	if(event.entityLiving instanceof EntityEnderman && event.entityLiving.dimension == ConfigHandler.endDimensionID && Math.random() <= 1D / 32D)

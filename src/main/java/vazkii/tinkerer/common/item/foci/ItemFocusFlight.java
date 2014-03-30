@@ -39,7 +39,7 @@ public class ItemFocusFlight extends ItemModFocus {
         {
             return itemstack;
         }
-		if (wand.consumeAllVis(itemstack, p, getVisCost(), true)) {
+		if (wand.consumeAllVis(itemstack, p, getVisCost(), true,false)) {
 			Vec3 vec = p.getLookVec();
 			double force = 1 / 1.5 * (1 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(itemstack)) * 0.2);
 			p.motionX = vec.xCoord * force;

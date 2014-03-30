@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.List;
-
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,6 +26,8 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
+
+import java.util.List;
 
 public class ItemFocusTelekinesis extends ItemModFocus {
 
@@ -48,7 +48,7 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 		List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
 
-		if(!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(), true)) {
+		if(!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(), true,false)) {
 			for(EntityItem item : entities) {
 				MiscHelper.setEntityMotionFromVector(item, target, 0.3333F);
 				ThaumicTinkerer.tcProxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 0);

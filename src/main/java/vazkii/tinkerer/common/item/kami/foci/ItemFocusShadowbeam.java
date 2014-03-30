@@ -37,7 +37,7 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true)) {
+		if(!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true,false)) {
 			int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 
 			if(player.worldObj.rand.nextInt(10) == 0)

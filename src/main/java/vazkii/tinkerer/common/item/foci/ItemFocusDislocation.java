@@ -109,7 +109,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 					}
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
-			} else if(!BlackList.contains(block.getUnlocalizedName()) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true)) {
+			} else if(!BlackList.contains(block.getUnlocalizedName()) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true,false)) {
 				if(!world.isRemote) {
 					world.removeTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Blocks.air, 0, 1 | 2);

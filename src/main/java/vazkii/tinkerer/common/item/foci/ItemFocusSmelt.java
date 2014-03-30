@@ -49,7 +49,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int time) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		if(!wand.consumeAllVis(stack, p, visUsage, false))
+		if(!wand.consumeAllVis(stack, p, visUsage, false,false))
 			return;
 
 		MovingObjectPosition pos = Utils.getTargetBlock(p.worldObj, p, false);
@@ -76,7 +76,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 								p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
 								p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
 
-								wand.consumeAllVis(stack, p, visUsage, true);
+								wand.consumeAllVis(stack, p, visUsage, true,false);
 								playerData.remove(p.getGameProfile().getName());
 								decremented = false;
 							}

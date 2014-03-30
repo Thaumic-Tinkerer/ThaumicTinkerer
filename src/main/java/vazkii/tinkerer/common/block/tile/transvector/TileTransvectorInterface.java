@@ -381,9 +381,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
     @Override
-	public int takeVis(Aspect paramAspect, int paramInt) {
+	public int takeEssentia(Aspect paramAspect, int paramInt,ForgeDirection forgeDirection) {
 		TileEntity tile = getTile();
-		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).takeVis(paramAspect, paramInt) : 0;
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).takeEssentia(paramAspect, paramInt,forgeDirection) : 0;
 	}
 
 	@Override
@@ -398,19 +398,22 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
-	public int addVis(Aspect arg0, int arg1) {
+	public int addEssentia(Aspect arg0, int arg1,ForgeDirection forgeDirection) {
 		TileEntity tile = getTile();
-		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).addVis(arg0, arg1) : 0;
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).addEssentia(arg0, arg1,forgeDirection) : 0;
 	}
 
     @Override
     public Aspect getEssentiaType(ForgeDirection forgeDirection) {
-        return null;
+
+        TileEntity tile = getTile();
+        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaType(forgeDirection) : null;
     }
 
     @Override
     public int getEssentiaAmount(ForgeDirection forgeDirection) {
-        return 0;
+        TileEntity tile = getTile();
+        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaAmount(forgeDirection) : 0;
     }
 
 

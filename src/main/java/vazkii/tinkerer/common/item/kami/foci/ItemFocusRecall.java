@@ -17,8 +17,6 @@ package vazkii.tinkerer.common.item.kami.foci;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -65,8 +63,8 @@ public class ItemFocusRecall extends ItemModFocus {
 					int y = ItemSkyPearl.getY(stackToCount);
 					int z = ItemSkyPearl.getZ(stackToCount);
 
-					if(wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
-						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true);
+					if(wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), false,false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
+						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true,false);
 				}
 			}
 

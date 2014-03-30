@@ -259,7 +259,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 				return 0;
 
 			for(Aspect aspect : repairValues.keySet())
-				if(ic.getSuctionType(orientation.getOpposite()) == aspect && ic.getSuctionAmount(orientation.getOpposite()) < getSuctionAmount(orientation) && ic.takeVis(aspect, 1) == 1)
+				if(ic.getSuctionType(orientation.getOpposite()) == aspect && ic.getSuctionAmount(orientation.getOpposite()) < getSuctionAmount(orientation) && ic.takeEssentia(aspect, 1,orientation.getOpposite()) == 1)
 					return repairValues.get(aspect);
 		}
 		return 0;
@@ -340,7 +340,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	public void setSuction(Aspect paramAspect, int paramInt) { }
 
 	@Override
-	public int takeVis(Aspect paramAspect, int paramInt) {
+	public int takeEssentia(Aspect paramAspect, int paramInt,ForgeDirection direction) {
 		return 0;
 	}
 
@@ -355,7 +355,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 	
 	@Override
-	public int addVis(Aspect arg0, int arg1) {
+	public int addEssentia(Aspect arg0, int arg1,ForgeDirection direction) {
 		return 0;
 	}
 
