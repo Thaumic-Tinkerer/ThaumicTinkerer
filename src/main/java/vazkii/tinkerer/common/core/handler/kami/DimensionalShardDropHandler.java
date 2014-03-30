@@ -34,6 +34,9 @@ public class DimensionalShardDropHandler {
 
         	if(event.entityLiving instanceof EntityPigZombie && event.entityLiving.dimension == ConfigHandler.netherDimensionID && Math.random() <= 1D / 16D)
         		event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ModItems.kamiResource, 1, 6)));
+
+
+
         }
     }
 }
