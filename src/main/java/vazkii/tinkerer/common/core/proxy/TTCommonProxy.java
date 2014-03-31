@@ -24,12 +24,14 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.DriverIAspectContainer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
+import vazkii.tinkerer.common.core.handler.kami.KamiDimensionHandler;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
@@ -71,8 +73,9 @@ public class TTCommonProxy {
 
 
 		if(ConfigHandler.enableKami) {
-            FMLCommonHandler.instance().bus().register(new DimensionalShardDropHandler());
-            FMLCommonHandler.instance().bus().register(new SoulHeartHandler());
+            MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
+            MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
+            MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
 		}
         if(Loader.isModLoaded("OpenComputers"))
         {

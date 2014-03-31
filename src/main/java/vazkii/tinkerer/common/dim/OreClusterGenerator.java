@@ -2,13 +2,13 @@ package vazkii.tinkerer.common.dim;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.oredict.OreDictionary;
-import vazkii.tinkerer.common.block.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +32,7 @@ public class OreClusterGenerator implements IWorldGenerator{
 				ItemStack itemStack = oreIds.get(random.nextInt(oreIds.size()));
 				for(int l=0; l<200; l++){
 					int firstBlockYCoord = random.nextInt(245)+6;
-					WorldGenMinable mineable = new WorldGenMinable(Block.getBlockFromItem(itemStack.getItem()),itemStack.getItemDamage(), random.nextInt(20), ModBlocks.bedrock);
+					WorldGenMinable mineable = new WorldGenMinable(Block.getBlockFromItem(itemStack.getItem()),itemStack.getItemDamage(), random.nextInt(20), Blocks.bedrock);
 					mineable.generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
 				}
 			}

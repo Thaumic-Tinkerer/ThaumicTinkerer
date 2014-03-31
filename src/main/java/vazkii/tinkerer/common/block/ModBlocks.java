@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
@@ -36,7 +37,6 @@ import vazkii.tinkerer.common.item.kami.ItemBlockWarpGate;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import vazkii.tinkerer.common.lib.LibItemNames;
 
 public final class ModBlocks {
 
@@ -63,7 +63,7 @@ public final class ModBlocks {
 
 	public static Block mobilizer;
 
-	public static Block bedrock;
+	//public static Block bedrock;
 
 
 	public static Block portal;
@@ -115,7 +115,7 @@ public final class ModBlocks {
 					e.printStackTrace();
 				}
 				*/
-				//portal = new BlockBedrockPortal().setBlockName(LibBlockNames.PORTAL);
+				portal = new BlockBedrockPortal().setBlockName(LibBlockNames.PORTAL);
 			}
 		}
 
@@ -153,7 +153,7 @@ public final class ModBlocks {
 			//if(ConfigHandler.bedrockDimensionID != 0) {
 			//	GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
 
-			//	GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
+				GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
 			//}
 		}
 	}

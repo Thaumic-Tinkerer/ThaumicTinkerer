@@ -27,6 +27,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 
 import java.util.List;
 
@@ -61,7 +64,22 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		return par1ItemStack;
 	}
 
-	@Override
+    @Override
+    public float func_150893_a(ItemStack p_150893_1_, Block p_150893_2_) {
+        return (p_150893_2_==Blocks.bedrock)?Float.MAX_VALUE: super.func_150893_a(p_150893_1_, p_150893_2_);
+    }
+
+    @Override
+    public float getDigSpeed(ItemStack stack, Block block, int meta) {
+        return (block==Blocks.bedrock)?Float.MAX_VALUE:super.getDigSpeed(stack, block, meta);
+    }
+
+    @Override
+    public boolean func_150897_b(Block p_150897_1_) {
+        return ( p_150897_1_==Blocks.bedrock)?true: super.func_150897_b(p_150897_1_);
+    }
+
+    @Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
 		Material mat = world.getBlock(x, y, z).getMaterial();
@@ -77,7 +95,14 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		ForgeDirection direction = ForgeDirection.getOrientation(block.sideHit);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
-
+        if(ConfigHandler.bedrockDimensionID != 0 && blk== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock)))
+        {
+            world.setBlock(x,y,z, ModBlocks.portal);
+        }
+        if(ConfigHandler.bedrockDimensionID!=0 && blk==Blocks.bedrock && (y<=253 && world.provider instanceof WorldProviderBedrock))
+        {
+            world.setBlock(x,y,z,Blocks.air);
+        }
 		switch(ToolHandler.getMode(stack)) {
 			case 0 : break;
 			case 1 : {
@@ -86,9 +111,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 				boolean doZ = direction.offsetZ == 0;
 
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, null, ToolHandler.materialsPick, silk, fortune);
-				if(blk== Blocks.bedrock){
-					world.setBlock(x, y, z, Blocks.bedrock);
-				}
+
 				break;
 			}
 			case 2 : {
@@ -97,9 +120,6 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 				int zo = -direction.offsetZ;
 
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, xo >= 0 ? 0 : -10, yo >= 0 ? 0 : -10, zo >= 0 ? 0 : -10, xo > 0 ? 10 : 1, yo > 0 ? 10 : 1, zo > 0 ? 10 : 1, null, ToolHandler.materialsPick, silk, fortune);
-                if(blk== Blocks.bedrock){
-                    world.setBlock(x, y, z, Blocks.bedrock);
-                }
 				break;
 			}
 		}

@@ -14,7 +14,6 @@ import net.minecraft.world.gen.FlatLayerInfo;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenStructure;
-import vazkii.tinkerer.common.block.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,7 +38,7 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		this.random = new Random(par2);
 		generator = new OreClusterGenerator();
 
-		FlatLayerInfo flatlayerinfo = new FlatLayerInfo(256, ModBlocks.bedrock);
+		FlatLayerInfo flatlayerinfo = new FlatLayerInfo(256, Blocks.bedrock);
 
 		for (int j = flatlayerinfo.getMinY(); j < flatlayerinfo.getMinY() + flatlayerinfo.getLayerCount(); ++j) {
 			this.cachedBlockIDs[j] = (byte) (Block.getIdFromBlock(flatlayerinfo.func_151536_b()) & 255);

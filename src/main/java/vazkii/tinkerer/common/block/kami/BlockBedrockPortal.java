@@ -21,20 +21,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import vazkii.tinkerer.client.core.helper.IconHelper;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.dim.TeleporterBedrock;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
-import vazkii.tinkerer.common.lib.LibBlockIDs;
 
 import java.util.Random;
 
 public class BlockBedrockPortal extends Block {
 
-	public BlockBedrockPortal(int id) {
+	public BlockBedrockPortal() {
 		super(Material.portal);
 		setStepSound(Block.soundTypeStone);
 		setResistance(6000000.0F);

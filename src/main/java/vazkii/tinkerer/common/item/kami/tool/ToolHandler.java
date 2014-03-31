@@ -85,7 +85,7 @@ public final class ToolHandler {
 
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlock(x, y, z).getMaterial();
-		if(blk != null && !blk.isAir(world, x, y, z) && (blk.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)) {
+		if(blk != null && !blk.isAir(world, x, y, z) && ((blk.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0 || (blk==Blocks.bedrock && (y<=253 && world.provider instanceof WorldProviderBedrock)) ))) {
 			List<ItemStack> items = new ArrayList();
 
 			if(!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
@@ -93,7 +93,11 @@ public final class ToolHandler {
 			if(ConfigHandler.bedrockDimensionID != 0 && block== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
 				world.setBlock(x, y, z, ModBlocks.portal);
 			}
-            if (!player.capabilities.isCreativeMode) {
+            if(ConfigHandler.bedrockDimensionID != 0 && world.provider.dimensionId==ConfigHandler.bedrockDimensionID&& blk==Blocks.bedrock && y<=253)
+            {
+                world.setBlock(x,y,z,Blocks.air);
+            }
+            if (!player.capabilities.isCreativeMode && blk!=Blocks.bedrock) {
                 int localMeta = world.getBlockMetadata(x, y, z);
                 if (blk.removedByPlayer(world, player, x, y, z)) {
                     blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
