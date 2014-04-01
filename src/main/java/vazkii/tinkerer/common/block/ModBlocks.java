@@ -16,10 +16,7 @@ package vazkii.tinkerer.common.block;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.Block;
-import vazkii.tinkerer.common.block.kami.BlockBedrockKAMI;
 import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
@@ -41,10 +38,6 @@ import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockIDs;
 import vazkii.tinkerer.common.lib.LibBlockNames;
-import vazkii.tinkerer.common.lib.LibObfuscation;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 
 public final class ModBlocks {
 
@@ -70,10 +63,6 @@ public final class ModBlocks {
 	public static Block mobilizerRelay;
 
 	public static Block mobilizer;
-
-	public static Block bedrock;
-
-
 	public static Block portal;
 	public static Block golemConnector;
 	public static void initBlocks() {
@@ -102,24 +91,6 @@ public final class ModBlocks {
 
 			warpGate = new BlockWarpGate(LibBlockIDs.idWarpGate).setUnlocalizedName(LibBlockNames.WARP_GATE);
 			if(ConfigHandler.bedrockDimensionID != 0) {
-				Block.blocksList[7]=null;
-				bedrock = new BlockBedrockKAMI();
-
-				try {
-					ReflectionHelper.findField(Block.class, LibObfuscation.BEDROCK);
-					Field bedrockField=ReflectionHelper.findField(Block.class, LibObfuscation.BEDROCK);
-					bedrockField.setAccessible(true);
-					Field modifiersField = Field.class.getDeclaredField("modifiers");
-					modifiersField.setAccessible(true);
-					int modifiers = modifiersField.getInt(bedrockField);
-					modifiers &= ~Modifier.FINAL;
-					modifiersField.setInt(bedrockField, modifiers);
-					bedrockField.set(null, bedrock);
-				} catch (NoSuchFieldException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
 				portal = new BlockBedrockPortal(LibBlockIDs.idPortal).setUnlocalizedName(LibBlockNames.PORTAL);
 			}
 		}
@@ -154,8 +125,6 @@ public final class ModBlocks {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
 			if(ConfigHandler.bedrockDimensionID != 0) {
-				GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
-
 				GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
 			}
 		}
