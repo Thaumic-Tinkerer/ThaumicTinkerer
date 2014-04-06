@@ -15,6 +15,10 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.Optional;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -26,8 +30,8 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 
 import java.util.List;
-
-public class TileMagnet extends TileEntity implements /*IPeripheral,*/ IMovableTile {
+@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
+public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile {
 
 	@Override
 	public void updateEntity() {
@@ -73,7 +77,7 @@ public class TileMagnet extends TileEntity implements /*IPeripheral,*/ IMovableT
 		};
 	}
 
-	/*@Override
+	@Override
 	public String getType() {
 		return "tt_magnet";
 	}
@@ -84,6 +88,7 @@ public class TileMagnet extends TileEntity implements /*IPeripheral,*/ IMovableT
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		switch(method) {
 			case 0 : return new Object[] { (getBlockMetadata() & 1) == 0 };
@@ -107,21 +112,24 @@ public class TileMagnet extends TileEntity implements /*IPeripheral,*/ IMovableT
 	}
 
 	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
-
-	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public void detach(IComputerAccess computer) {
 		// NO-OP
-	}*/
+	}
 
-	@Override
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
+
+    @Override
 	public boolean prepareToMove() {
 		return true;
 	}

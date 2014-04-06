@@ -2,9 +2,9 @@ package vazkii.tinkerer.common.block.tile;
 
 
 import cpw.mods.fml.common.Optional;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -18,7 +18,7 @@ import vazkii.tinkerer.common.core.golems.EnumGolemDecorations;
 import java.util.*;
 @Optional.InterfaceList({
         @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
-        @Optional.Interface(iface = "import dan200.computer.api.IPeripheral", modid = "ComputerCraft")
+        @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
 })
 public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleComponent {
     private static final String TAG_UUID_MOST = "UUIDMost";
@@ -358,10 +358,6 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         }
     }
 
-    @Override
-    public boolean canAttachToSide(int side) {
-        return true;
-    }
 
     @Override
     @Optional.Method(modid = "ComputerCraft")
@@ -374,6 +370,13 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
     @Optional.Method(modid = "ComputerCraft")
     public void detach(IComputerAccess computer) {
         // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
 
     }
 

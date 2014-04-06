@@ -15,7 +15,11 @@
 package vazkii.tinkerer.common.block.tile.tablet;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.eventhandler.Event;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -46,8 +50,8 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class TileAnimationTablet extends TileEntity implements IInventory ,IMovableTile{
+@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
+public class TileAnimationTablet extends TileEntity implements IInventory ,IMovableTile,IPeripheral {
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
@@ -512,7 +516,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		readCustomNBT(packet.func_148857_g());
 	}
 
-	/*@Override
+	@Override
 	public String getType() {
 		return "tt_animationTablet";
 	}
@@ -520,23 +524,24 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	@Override
 	public String[] getMethodNames() {
 		return new String[]{ "getRedstone", "setRedstone", "getLeftClick", "setLeftClick", "getRotation", "setRotation", "hasItem", "trigger" };
-	}*/
+	}
 
-	/*@Override
+	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		switch(method) {
 			case 0 : return new Object[]{ redstone };
 			case 1 : {
 				boolean redstone = (Boolean) arguments[0];
 				this.redstone = redstone;
-				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+				worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
 				return null;
 			}
 			case 2 : return new Object[]{ leftClick };
 			case 3 : {
 				boolean leftClick = (Boolean) arguments[0];
 				this.leftClick = leftClick;
-				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				return null;
 			}
 			case 4 : return new Object[] { getBlockMetadata() - 2 };
@@ -556,30 +561,33 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 
 				findEntities(getTargetLoc());
 				initiateSwing();
-				worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet.blockID, 0, 0);
+				worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
 
 				return new Object[] { true };
 			}
 		}
 		return null;
-	}*/
-
-	//@Override
-	//public boolean canAttachToSide(int side) {
-	//	return true;
-	//}
-
-	//@Override
-	//public void attach(IComputerAccess computer) {
-	//	// NO-OP
-	//}
-
-	//@Override
-	//public void detach(IComputerAccess computer) {
-	//	// NO-OP
-	//}
+	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
+	public void attach(IComputerAccess computer) {
+		// NO-OP
+	}
+
+	@Override
+    @Optional.Method(modid = "ComputerCraft")
+	public void detach(IComputerAccess computer) {
+		// NO-OP
+	}
+
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
+
+    @Override
 	public boolean prepareToMove() {
 		stopBreaking();
 		return true;

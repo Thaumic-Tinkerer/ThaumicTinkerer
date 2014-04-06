@@ -16,9 +16,9 @@ package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Optional;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.ILuaContext;
-import dan200.computer.api.IPeripheral;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import li.cil.oc.api.network.Arguments;
 import li.cil.oc.api.network.Callback;
 import li.cil.oc.api.network.Context;
@@ -40,9 +40,9 @@ import java.util.Map;
 
 @Optional.InterfaceList({
         @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
-        @Optional.Interface(iface = "import dan200.computer.api.IPeripheral", modid = "ComputerCraft")
+        @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
 })
-public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleComponent,  IPeripheral,IMovableTile {
+public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleComponent, IPeripheral,IMovableTile {
 
 	ItemStack[] inventorySlots = new ItemStack[1];
 
@@ -220,10 +220,6 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
             retVals.put(aspect.getTag(),(double)aspects.getAmount(aspect));
         return new Object[]{retVals};
     }
-	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
 
 	@Override
     @Optional.Method(modid = "ComputerCraft")
@@ -236,7 +232,14 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory,SimpleC
 	public void detach(IComputerAccess computer) {
 		// NO-OP
 	}
-	@Override
+
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
+
+    @Override
 	public boolean prepareToMove() {
 		return true;
 	}

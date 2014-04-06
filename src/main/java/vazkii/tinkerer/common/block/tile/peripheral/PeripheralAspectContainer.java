@@ -16,14 +16,14 @@
 package vazkii.tinkerer.common.block.tile.peripheral;
 
 
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
-import net.minecraft.nbt.NBTTagCompound;
+import cpw.mods.fml.common.Optional;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.api.aspects.IAspectContainer;
 import vazkii.tinkerer.common.block.tile.peripheral.implementation.IAspectContainerImplementation;
 
-public class PeripheralAspectContainer implements IHostedPeripheral {
+public class PeripheralAspectContainer implements IPeripheral {
 
     IAspectContainer container;
 
@@ -42,6 +42,7 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
     }
 
     @Override
+    @Optional.Method(modid = "ComputerCraft")
     public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
         switch (method) {
             case 0: {
@@ -56,34 +57,24 @@ public class PeripheralAspectContainer implements IHostedPeripheral {
         return null;
     }
 
-    @Override
-    public boolean canAttachToSide(int side) {
-        return true;
-    }
+
 
     @Override
+    @Optional.Method(modid = "ComputerCraft")
     public void attach(IComputerAccess computer) {
         // NO-OP
     }
 
     @Override
+    @Optional.Method(modid = "ComputerCraft")
     public void detach(IComputerAccess computer) {
         // NO-OP
     }
 
     @Override
-    public void update() {
-        // NO-OP
-    }
-
-    @Override
-    public void readFromNBT(NBTTagCompound nbttagcompound) {
-        // NO-OP
-    }
-
-    @Override
-    public void writeToNBT(NBTTagCompound nbttagcompound) {
-        // NO-OP
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
     }
 
 }

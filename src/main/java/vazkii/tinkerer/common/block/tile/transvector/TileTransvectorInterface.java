@@ -17,6 +17,10 @@ package vazkii.tinkerer.common.block.tile.transvector;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
+import cpw.mods.fml.common.Optional;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -30,8 +34,8 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibFeatures;
-
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport /*, IPeripheral */{
+@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport, IPeripheral {
 
 	private boolean addedToICEnergyNet = false;
 
@@ -417,7 +421,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
-	/*@Override
+	@Override
 	public String getType() {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getType() : "Transvector Interface Unconnected Peripherad";
 	}
@@ -432,12 +436,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).callMethod(computer, context, method, arguments) : new Object[0];
 	}
 
-	@Override
-	public boolean canAttachToSide(int side) {
-		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).canAttachToSide(side) : false;
-	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public void attach(IComputerAccess computer) {
 		if(getTile() instanceof  IPeripheral){
 			((IPeripheral) getTile()).attach(computer);
@@ -445,9 +446,16 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public void detach(IComputerAccess computer) {
 		if(getTile() instanceof  IPeripheral){
 			((IPeripheral) getTile()).detach(computer);
 		}
-	}*/
+	}
+
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
 }
