@@ -37,6 +37,10 @@ repositories {
           name 'MinecraftS3'
           url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
      }
+    maven {
+        name 'SlimeKnights Maven FS'
+        url 'http://aeon.sunstrike.io'
+    }
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 apply plugin: 'gradle-curse'
@@ -99,9 +103,10 @@ minecraft {
 dependencies {
     compile files (
             'TCDEOBF.jar',
-            'mods/mods/TConstruct-1.7.2-1.6.0.jenkins438-deobf.jar'
     )
     compile 'javax.mail:mail:1.4'
+    compile "mantle:Mantle:c676c6:dev"
+    compile "tconstruct:TConstruct:e40f37:dev"
 }
 
 processResources
