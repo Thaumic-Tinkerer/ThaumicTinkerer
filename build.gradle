@@ -38,8 +38,8 @@ repositories {
           url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
      }
     maven {
-        name 'SlimeKnights Maven FS'
-        url 'http://aeon.sunstrike.io'
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
     }
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
@@ -105,8 +105,8 @@ dependencies {
             'TCDEOBF.jar',
     )
     compile 'javax.mail:mail:1.4'
-    compile "mantle:Mantle:c676c6:dev"
-    compile "tconstruct:TConstruct:e40f37:dev"
+    compile "mantle:Mantle:1.7.2-109.be29b7d:deobf"
+    compile "tconstruct:TConstruct:1.7.2-1.6.0.jenkins413:deobf"
 }
 
 processResources
