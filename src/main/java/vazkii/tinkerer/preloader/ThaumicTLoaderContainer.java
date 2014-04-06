@@ -67,7 +67,7 @@ public class ThaumicTLoaderContainer extends DummyModContainer implements IFMLLo
 
     @Override
     public String getModContainerClass() {
-        return "vazkii.tinkerer.preloader.ThaummicTLoaderContainer";
+        return "vazkii.tinkerer.preloader.ThaumicTLoaderContainer";
     }
 
     @Override
