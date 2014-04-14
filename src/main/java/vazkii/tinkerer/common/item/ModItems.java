@@ -111,9 +111,12 @@ public final class ModItems {
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
 
+    public static Item infusedSeeds;
+
 	public static Item.ToolMaterial toolMatIchor;
 	public static boolean Registered=false;
 	public static void initItems() {
+        infusedSeeds = new ItemInfusedSeeds()
 		gaseousLight = new ItemGas(ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
 		darkQuartz = new ItemMod().setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector().setUnlocalizedName(LibItemNames.CONNECTOR);

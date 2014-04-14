@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
@@ -63,6 +64,13 @@ public final class ModBlocks {
 
 	public static Block mobilizer;
 
+    public static Block grainFire;
+    public static Block grainWater;
+    public static Block grainEarth;
+    public static Block grainAir;
+    public static Block grainChaos;
+    public static Block grainOrder;
+
 	//public static Block bedrock;
 
 
@@ -91,7 +99,14 @@ public final class ModBlocks {
 		golemConnector=new BlockGolemConnector().setBlockName(LibBlockNames.GOLEMCONNECTOR);
 
 		spawner = new BlockSummon().setBlockName(LibBlockNames.SPAWNER);
-		if(ConfigHandler.enableKami) {
+
+        grainAir = new BlockInfusedGrain(Aspect.AIR).setBlockName(LibBlockNames.INFUSED_GRAIN_AIR);
+        grainFire = new BlockInfusedGrain(Aspect.FIRE).setBlockName(LibBlockNames.INFUSED_GRAIN_FIRE);
+        grainWater = new BlockInfusedGrain(Aspect.WATER).setBlockName(LibBlockNames.INFUSED_GRAIN_WATER);
+        grainEarth = new BlockInfusedGrain(Aspect.EARTH).setBlockName(LibBlockNames.INFUSED_GRAIN_EARTH);
+        grainOrder = new BlockInfusedGrain(Aspect.ORDER).setBlockName(LibBlockNames.INFUSED_GRAIN_ORDER);
+        grainChaos = new BlockInfusedGrain(Aspect.ENTROPY).setBlockName(LibBlockNames.INFUSED_GRAIN_CHAOS);
+        if(ConfigHandler.enableKami) {
 
 			warpGate = new BlockWarpGate().setBlockName(LibBlockNames.WARP_GATE);
 			if(ConfigHandler.bedrockDimensionID != 0) {
@@ -124,6 +139,15 @@ public final class ModBlocks {
 	}
 
 	private static void registerBlocks() {
+
+
+        GameRegistry.registerBlock(grainAir, LibBlockNames.INFUSED_GRAIN_AIR);
+        GameRegistry.registerBlock(grainEarth, LibBlockNames.INFUSED_GRAIN_EARTH);
+        GameRegistry.registerBlock(grainOrder, LibBlockNames.INFUSED_GRAIN_ORDER);
+        GameRegistry.registerBlock(grainChaos, LibBlockNames.INFUSED_GRAIN_CHAOS);
+        GameRegistry.registerBlock(grainWater, LibBlockNames.INFUSED_GRAIN_WATER);
+        GameRegistry.registerBlock(grainFire, LibBlockNames.INFUSED_GRAIN_FIRE);
+
 		GameRegistry.registerBlock(darkQuartz, ItemDarkQuartzBlock.class, LibBlockNames.DARK_QUARTZ);
 		GameRegistry.registerBlock(darkQuartzStairs, LibBlockNames.DARK_QUARTZ_STAIRS);
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
