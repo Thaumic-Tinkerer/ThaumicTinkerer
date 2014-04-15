@@ -53,6 +53,8 @@ public class KamiResearchItem extends TTResearchItem {
                         if(tag.startsWith(black)) {
                             found=true;
                         }
+                    if(tag.endsWith("KAMI"))
+                        found=true;
                     if(found)
                         continue;
 					requirements.add(tag);
