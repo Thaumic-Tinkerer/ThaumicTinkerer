@@ -1,3 +1,11 @@
+**Build 139**
+* Added ability to set OpenPeripheral mode in configs
+* Made funnels respect jars labels
+* Removed custom bedrock 
+* Added ability for other mods to remove research from KAMI
+* Added Aliquo to research blacklist
+
+
 **Build 138**
 * Made OpenPeripheral compatibility changes **Warning: Jar and Other Aspect containers computer craft API has changed, please check wiki**
 * Fixed Bedrock Dimension being inaccesible when Galacticraft is installed.
