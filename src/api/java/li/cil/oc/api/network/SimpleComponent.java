@@ -2,7 +2,7 @@ package li.cil.oc.api.network;
 
 /**
  * This interface can be used to easily convert tile entities to components,
- * without having to implement {@link Environment}
+ * without having to implement {@link li.cil.oc.api.network.Environment}
  * themselves. The simple implementation will provide no access to OC's internal
  * component network, since you won't have access to the node representing the
  * tile entity. Use this only for simple cases, where you want to expose a
@@ -18,7 +18,7 @@ package li.cil.oc.api.network;
  * interface have to created using a class transformer. If any of the methods
  * already exist, this will fail! If things don't work, check your logs, first.
  * <p/>
- * To expose methods to OC, tag them with {@link Callback}
+ * To expose methods to OC, tag them with {@link li.cil.oc.api.network.Callback}
  * and have them use the according signature (see the documentation on the
  * <tt>Callback</tt> annotation).
  * <p/>

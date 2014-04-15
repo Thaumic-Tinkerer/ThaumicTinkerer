@@ -95,26 +95,7 @@ public final class ModBlocks {
 
 			warpGate = new BlockWarpGate().setBlockName(LibBlockNames.WARP_GATE);
 			if(ConfigHandler.bedrockDimensionID != 0) {
-				/*
-				Block.blocksList[7]=null;
-				bedrock = new BlockBedrockKAMI();
 
-				try {
-					ReflectionHelper.findField(Block.class, LibObfuscation.BEDROCK);
-					Field bedrockField=ReflectionHelper.findField(Block.class, LibObfuscation.BEDROCK);
-					bedrockField.setAccessible(true);
-					Field modifiersField = Field.class.getDeclaredField("modifiers");
-					modifiersField.setAccessible(true);
-					int modifiers = modifiersField.getInt(bedrockField);
-					modifiers &= ~Modifier.FINAL;
-					modifiersField.setInt(bedrockField, modifiers);
-					bedrockField.set(null, bedrock);
-				} catch (NoSuchFieldException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				}
-				*/
 				portal = new BlockBedrockPortal().setBlockName(LibBlockNames.PORTAL);
 			}
 		}

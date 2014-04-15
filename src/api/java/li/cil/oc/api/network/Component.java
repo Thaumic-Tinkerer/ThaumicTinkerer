@@ -10,7 +10,7 @@ package li.cil.oc.api.network;
  * be able to communicate across the whole network, but computers should only
  * "see" the cards installed directly in them).
  * <p/>
- * Unlike the {@link li.cil.oc.api.network.Node}'s network reachability, this is a dynamic value and
+ * Unlike the {@link Node}'s network reachability, this is a dynamic value and
  * can be changed at any time. For example, this is used to hide multi-block
  * screen parts that are not the origin from computers in the network.
  * <p/>
@@ -42,7 +42,7 @@ public interface Component extends Node {
      * Note that this cannot be higher / more visible than the reachability of
      * the node. Trying to set it to a higher value will generate an exception.
      *
-     * @throws IllegalArgumentException if the specified value is
+     * @throws java.lang.IllegalArgumentException if the specified value is
      *                                            more visible than the node's
      *                                            reachability.
      */

@@ -29,7 +29,7 @@ public final class Network {
      * Tries to add a tile entity's network node(s) at the specified coordinates
      * to adjacent networks.
      * <p/>
-     * If the tile entity implements {@link li.cil.oc.api.network.Environment} its one node will be
+     * If the tile entity implements {@link Environment} its one node will be
      * connected to any existing adjacent tile entity nodes. If none exist a
      * new network with the specified tile entity's node as its sole entry.
      * <p/>
@@ -66,7 +66,7 @@ public final class Network {
      * Makes a wireless endpoint join the wireless network defined by the mod.
      * <p/>
      * OpenComputers tracks endpoints to which to send wireless packets sent
-     * via the {@link #sendWirelessPacket(li.cil.oc.api.network.WirelessEndpoint, double, li.cil.oc.api.network.Packet)}
+     * via the {@link #sendWirelessPacket(WirelessEndpoint, double, Packet)}
      * method. The packets will <em>only</em> be sent to endpoints registered
      * with the network.
      * <p/>

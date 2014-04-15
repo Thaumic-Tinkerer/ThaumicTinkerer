@@ -35,7 +35,7 @@ public interface MachineAPI {
      *                     to allow for deterministic loading/saving of the
      *                     file system (open file handles). This value must be
      *                     unique for each file system in the resource set.
-     * @throws IllegalArgumentException if the name is not unique or
+     * @throws java.lang.IllegalArgumentException if the name is not unique or
      *                                            the architecture is invalid.
      */
     void addRomResource(Class<? extends Architecture> architecture, Callable<FileSystem> resource, String name);

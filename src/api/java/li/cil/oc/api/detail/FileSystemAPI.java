@@ -1,8 +1,6 @@
 package li.cil.oc.api.detail;
 
 import cpw.mods.fml.common.Optional;
-import dan200.computercraft.api.filesystem.IMount;
-import dan200.computercraft.api.filesystem.IWritableMount;
 import li.cil.oc.api.fs.FileSystem;
 import li.cil.oc.api.fs.Label;
 import li.cil.oc.api.network.ManagedEnvironment;
@@ -77,7 +75,7 @@ public interface FileSystemAPI {
      * @return a file system wrapping the specified mount.
      */
     @Optional.Method(modid = "ComputerCraft")
-    FileSystem fromComputerCraft(IMount mount);
+    FileSystem fromComputerCraft(dan200.computercraft.api.filesystem.IMount mount);
 
     /**
      * Creates a new file system based on a read-write ComputerCraft mount.
@@ -86,7 +84,7 @@ public interface FileSystemAPI {
      * @return a file system wrapping the specified mount.
      */
     @Optional.Method(modid = "ComputerCraft")
-    FileSystem fromComputerCraft(IWritableMount mount);
+    FileSystem fromComputerCraft(dan200.computercraft.api.filesystem.IWritableMount mount);
 
     /**
      * Creates a network node that makes the specified file system available via
@@ -113,7 +111,7 @@ public interface FileSystemAPI {
     ManagedEnvironment asManagedEnvironment(FileSystem fileSystem, Label label, TileEntity container);
 
     /**
-     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, li.cil.oc.api.fs.Label, net.minecraft.tileentity.TileEntity)},
+     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, Label, TileEntity)},
      * but creates a read-only label initialized to the specified value.
      *
      * @param fileSystem the file system to wrap.
@@ -123,7 +121,7 @@ public interface FileSystemAPI {
     ManagedEnvironment asManagedEnvironment(FileSystem fileSystem, String label, TileEntity container);
 
     /**
-     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, li.cil.oc.api.fs.Label, net.minecraft.tileentity.TileEntity)},
+     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, Label, TileEntity)},
      * but does not provide a container.
      *
      * @param fileSystem the file system to wrap.
@@ -133,7 +131,7 @@ public interface FileSystemAPI {
     ManagedEnvironment asManagedEnvironment(FileSystem fileSystem, Label label);
 
     /**
-     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, li.cil.oc.api.fs.Label)},
+     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, Label)},
      * but creates a read-only label initialized to the specified value.
      *
      * @param fileSystem the file system to wrap.
@@ -143,7 +141,7 @@ public interface FileSystemAPI {
     ManagedEnvironment asManagedEnvironment(FileSystem fileSystem, String label);
 
     /**
-     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, li.cil.oc.api.fs.Label)},
+     * Like {@link #asManagedEnvironment(li.cil.oc.api.fs.FileSystem, Label)},
      * but creates an unlabeled file system (i.e. the label can neither be read
      * nor written).
      *

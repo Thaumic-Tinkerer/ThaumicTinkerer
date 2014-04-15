@@ -5,6 +5,9 @@ import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import li.cil.oc.api.network.Arguments;
+import li.cil.oc.api.network.Callback;
+import li.cil.oc.api.network.Context;
 import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -383,5 +386,13 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
     @Override
     public String getComponentName() {
         return getType();
+    }
+
+    // TODO return new String[]{"getDecorations", "getPosition", "getType", "getHealth", "getCore", "getHome", "setHome", "getMarkers", "setMarkers", "newMarker", "addMarker", "saveMarker", "deleteMarker", "getMarker", "getMarkerCount"};
+
+    @Callback(doc ="function():table -- Returns table of current decorations on golem")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getDecorations(Context context, Arguments args) throws Exception {
+        return getGolemDecorationsImplementation();
     }
 }

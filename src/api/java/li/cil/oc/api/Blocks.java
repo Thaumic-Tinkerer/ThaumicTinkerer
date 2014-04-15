@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Item stacks for all blocks OpenComputers defines.
  * </p>
- * The underlying items of those are all of type {@link net.minecraft.item.ItemBlock}, so you can
+ * The underlying items of those are all of type {@link ItemBlock}, so you can
  * use that to get the block ID if required.
  */
 public final class Blocks {
