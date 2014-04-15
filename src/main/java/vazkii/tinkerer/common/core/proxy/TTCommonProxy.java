@@ -20,19 +20,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.versioning.ArtifactVersion;
 import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import dan200.computer.api.ComputerCraftAPI;
 import dan200.computer.api.IPeripheralHandler;
 import dan200.turtle.api.TurtleAPI;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import thaumcraft.common.entities.golems.EnumGolemType;
 import thaumcraft.common.tiles.*;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
@@ -44,6 +39,7 @@ import vazkii.tinkerer.common.compat.FumeTool;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
+import vazkii.tinkerer.common.core.handler.kami.KamiDimensionHandler;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
@@ -53,8 +49,6 @@ import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
-
-import java.lang.reflect.Field;
 
 public class TTCommonProxy {
 
@@ -79,6 +73,7 @@ public class TTCommonProxy {
 		if(ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
 			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
+            MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
 		}
 	}
 
@@ -97,7 +92,7 @@ public class TTCommonProxy {
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class,IEssentiaTransport.class
 		};
         boolean loadMod=true;
-       if(Loader.isModLoaded("OpenPeripheralCore") ) {
+       if(Loader.isModLoaded("OpenPeripheralCore")  && ConfigHandler.giveWayToOP) {
            int ver=Loader.instance().getIndexedModList().get("OpenPeripheralCore").getProcessedVersion().compareTo(new DefaultArtifactVersion("0.3.3"));
            if(ver<0) {
                System.out.println("Open Peripherals not detected, loading own classes");

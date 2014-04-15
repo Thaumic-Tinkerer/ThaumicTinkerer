@@ -21,10 +21,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
@@ -74,6 +71,12 @@ public final class ToolHandler {
 				}
 			}
 		}
+        List list=world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x+xs,y+ys,z+zs,x+xe,y+ye,z+ze));
+        for(Object entity:list)
+        {
+            EntityItem item=(EntityItem)entity;
+            item.setPosition(player.posX,player.posY+1,player.posZ);
+        }
 	}
 
 	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, int lockID, Material[] materialsListing, boolean silk, int fortune,float blockHardness) {
@@ -88,7 +91,7 @@ public final class ToolHandler {
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlockMaterial(x, y, z);
 		Block block = Block.blocksList[id];
-		if(block != null && !block.isAirBlock(world, x, y, z) && (block.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)) {
+		if(block != null && !block.isAirBlock(world, x, y, z) && ((block.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0)|| (id==Block.bedrock.blockID && (y<=253 && world.provider instanceof WorldProviderBedrock)) )) {
 			List<ItemStack> items = new ArrayList();
 
 			if(!block.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
@@ -96,7 +99,11 @@ public final class ToolHandler {
 			if(ConfigHandler.bedrockDimensionID != 0 && id==7 && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
 				world.setBlock(x, y, z, LibBlockIDs.idPortal);
 			}
-            if (!player.capabilities.isCreativeMode) {
+            if(ConfigHandler.bedrockDimensionID != 0 && world.provider.dimensionId==ConfigHandler.bedrockDimensionID&& id==Block.bedrock.blockID && y<=253)
+                {
+                world.setBlock(x,y,z,0);
+            }
+            if (!player.capabilities.isCreativeMode && id!=Block.bedrock.blockID) {
                 int localMeta = world.getBlockMetadata(x, y, z);
                 if (block.removeBlockByPlayer(world, player, x, y, z)) {
                     block.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
