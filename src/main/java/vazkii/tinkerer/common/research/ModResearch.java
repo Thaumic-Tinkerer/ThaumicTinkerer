@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.research;
 
 import cpw.mods.fml.common.Loader;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -35,7 +34,6 @@ import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
 
@@ -181,9 +179,9 @@ public final class ModResearch {
         list.add(recipePage(LibResearch.KEY_SUMMON+"1"));
         list.add(infusionPage(LibResearch.KEY_SUMMON));
         list.add(new ResearchPage("1"));
-        for(EnumMobAspect aspect:EnumMobAspect.values()) {
-            list.add(aspect.GetRecepiePage());
-        }
+        //for(EnumMobAspect aspect:EnumMobAspect.values()) {
+        //    list.add(aspect.GetRecepiePage());
+        //}
         ResearchPage[] pages=new ResearchPage[list.size()];
         int i=0;
         for(ResearchPage page:list)

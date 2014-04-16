@@ -20,7 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import thaumcraft.client.codechicken.core.vec.Vector3;
+import thaumcraft.codechicken.lib.vec.Vector3;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.ModItems;

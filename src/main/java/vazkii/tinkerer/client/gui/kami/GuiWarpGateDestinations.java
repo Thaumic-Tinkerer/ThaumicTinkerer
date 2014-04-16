@@ -14,10 +14,6 @@
  */
 package vazkii.tinkerer.client.gui.kami;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
@@ -27,18 +23,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
-
-import thaumcraft.client.codechicken.core.vec.Vector3;
+import thaumcraft.codechicken.lib.vec.Vector3;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
-import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiWarpGateDestinations extends GuiScreen {
 

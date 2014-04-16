@@ -24,7 +24,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.client.codechicken.core.vec.Vector3;
+import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibFeatures;

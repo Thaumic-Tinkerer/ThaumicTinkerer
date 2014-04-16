@@ -19,7 +19,7 @@ public class KamiDimensionHandler {
             ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
             if(event.entityPlayer.worldObj.getBlock(event.x,event.y,event.z)== Blocks.bedrock)
             {
-                if(stack.getItem() instanceof ItemIchorPickAdv)
+                if(stack!=null && stack.getItem() instanceof ItemIchorPickAdv)
                 {
                     ((ItemIchorPickAdv)stack.getItem()).onBlockStartBreak(stack,event.x,event.y,event.z,event.entityPlayer);
 
