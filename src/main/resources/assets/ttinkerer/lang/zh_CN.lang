@@ -1,25 +1,26 @@
-#zh_CN
-
 # MISC
 itemGroup.ThaumicTinkerer=神秘工匠
-
-# MESSAGES
 ttmisc.connector.set=位置已设置!
 ttmisc.connector.complete=已绑定!
 ttmisc.connector.notinterf=并非矢量变换接口
 ttmisc.connector.interffail=不能将矢量变换接口绑定到矢量变换接口上去
+ttmisc.connector.dislfail=Can't bind a Transvector Dislocator to another.
 ttmisc.connector.notpresent=该矢量变换接口已经不存在了
 ttmisc.connector.toofar=原来的矢量变换接口太远了
+ttmisc.golemconnector.set=Connector Set!
+ttmisc.golemconnector.complete=Binding Complete!
+ttmisc.golemconnector.notinterf=The connector is not linked to a Golem Connector Block
+ttmisc.golemconnector.notpresent=The Golem Connector Block isn't present.
 ttmisc.leftClick=左击
 ttmisc.rightClick=右击
 ttmisc.redstoneControl=红石控制
 ttmisc.animationTablet.notRotatable=你不能旋转已经激活的桌子.
 ttmisc.focusDislocation.tooltip=当前转移目标:%s
 ttmisc.focusDislocation.tooltipExtra=额外内容
-ttmisc.inactive=§c未激活
-ttmisc.active=§a已激活
-ttmisc.soulMould.nonAssigned=§6无模板
-ttmisc.soulMould.pattern=§6当前模板: %s
+ttmisc.inactive=未激活
+ttmisc.active=已激活
+ttmisc.soulMould.nonAssigned=无模板
+ttmisc.soulMould.pattern=当前模板: %s
 ttmisc.all=全部
 ttmisc.none=无
 ttmisc.child=幼体
@@ -30,7 +31,43 @@ ttmisc.startEnchant=开始附魔
 ttmisc.full=§c已满
 ttmisc.notAbsorbing=§c关闭吸引模式
 ttmisc.absorbing=§a开启吸引模式
+ttmisc.shareTome.write=Research Written!
+ttmisc.shareTome.notOnline=The player who this research belongs to is not online.
+ttmisc.shareTome.sync=Research Acquired.
+ttmisc.shareTome.noAssign=Not Assigned
+ttmisc.shareTome.playerName=Bound to %s's research.
+ttmisc.toggleArmor=Toggle Awakened Armor
 
+# KAMI MISC
+ttmisc.mode.pick.0=Block Mode
+ttmisc.mode.pick.1=Square Mode
+ttmisc.mode.pick.2=Line Mode
+ttmisc.mode.shovel.0=Block Mode
+ttmisc.mode.shovel.1=Square Mode
+ttmisc.mode.shovel.2=Column Mode
+ttmisc.mode.axe.0=Block Mode
+ttmisc.mode.axe.1=Square Mode
+ttmisc.mode.axe.2=Tree Mode
+ttmisc.mode.sword.0=Single Mode
+ttmisc.mode.sword.1=Area Mode
+ttmisc.mode.sword.2=Soul Mode
+ttmisc.experience=Experience
+ttmisc.light0=Light Enabled
+ttmisc.light1=Light Disabled
+ttmisc.awakenedArmor0=Armor Piece Enabled
+ttmisc.awakenedArmor1=Armor Piece Disabled
+ttmisc.differentDim=Different Dimension
+ttmisc.distance=Distance
+ttmisc.lockedGate=Allow incoming teleports
+ttmisc.destination=Unnamed Destination
+ttmisc.entrancePoint=Entrance Point
+ttmisc.numberKeys=Use the number keys to quickly jump between destinations.
+ttmisc.spaceToReset=Press SPACE to return to Entrance Point.
+ttmisc.destinationInd=(Destination %s)
+ttmisc.clickToTeleport=Shift + Left Click to Teleport
+ttmisc.destinations=Destinations:
+ttmisc.noDest=There's no Celestial Gateway in the destination.
+ttmisc.noTeleport=The Celestial Gateway in the destination does not accept incoming teleports.
 
 # ITEM NAMES
 item.ttinkerer:darkQuartz.name=烟黑石英
@@ -53,6 +90,43 @@ item.ttinkerer:bloodSword.name=咒灵之剑
 item.ttinkerer:revealingHelm.name=揭示之头盔
 item.ttinkerer:infusedInkwell.name=注魔笔与墨
 item.ttinkerer:focusDeflect.name=法杖核心:扭曲
+item.ttinkerer:shareBook.name=知识共享之书
+
+# KAMI ITEM NAMES
+item.ttinkerer:kamiResource.name=Kami Resource
+item.ttinkerer:ichor.name=Ichor
+item.ttinkerer:ichorCloth.name=Ichorcloth
+item.ttinkerer:ichorium.name=Ichorium
+item.ttinkerer:ichorNugget.name=Ichorium Nugget
+item.ttinkerer:ichorCap.name=Ichorium Cap
+item.ttinkerer:ichorclothRod.name=Ichorcloth Strapped Silverwood Wand Core
+item.ttinkerer:netherShard.name=Nether Shard
+item.ttinkerer:enderShard.name=Ender Shard
+item.ttinkerer:ichorclothHelm.name=Ichorcloth Cowl
+item.ttinkerer:ichorclothChest.name=Ichorcloth Robe
+item.ttinkerer:ichorclothLegs.name=Ichorcloth Leggings
+item.ttinkerer:ichorclothBoots.name=Ichorcloth Boots
+item.ttinkerer:ichorclothHelmGem.name=Cowl of the Abyssal Depths
+item.ttinkerer:ichorclothChestGem.name=Robes of the Stratosphere
+item.ttinkerer:ichorclothLegsGem.name=Leggings of the Burning Mantle
+item.ttinkerer:ichorclothBootsGem.name=Boots of the Horizontal Shield
+item.ttinkerer:catAmulet.name=Feline Amulet
+item.ttinkerer:ichorPick.name=Ichorium Pickaxe
+item.ttinkerer:ichorShovel.name=Ichorium Shovel
+item.ttinkerer:ichorAxe.name=Ichorium Axe
+item.ttinkerer:ichorSword.name=Ichorium Sword
+item.ttinkerer:ichorPickGem.name=Awakened Ichorium Pickaxe
+item.ttinkerer:ichorShovelGem.name=Awakened Ichorium Shovel
+item.ttinkerer:ichorAxeGem.name=Awakened Ichorium Axe
+item.ttinkerer:ichorSwordGem.name=Awakened Ichorium Sword
+item.ttinkerer:ichorPouch.name=Bottomless Pouch
+item.ttinkerer:blockTalisman.name=Black Hole Talisman
+item.ttinkerer:placementMirror.name=Worldshaper's Looking Glass
+item.ttinkerer:focusShadowbeam.name=Wand Focus: Shadowbeam
+item.ttinkerer:focusXPDrain.name=Wand Focus: Experience Drain
+item.ttinkerer:protoclay.name=Protoclay
+item.ttinkerer:skyPearl.name=Celestial Pearl
+item.ttinkerer:focusRecall.name=Wand Focus: Celestial Recall
 
 # BLOCK NAMES
 tile.ttinkerer:darkQuartz.name=烟黑石英块
@@ -69,6 +143,15 @@ tile.ttinkerer:funnel.name=要素漏斗
 tile.ttinkerer:dislocator.name=矢量转位仪
 tile.ttinkerer:repairer.name=奥法修复台
 tile.ttinkerer:aspectAnalyzer.name=要素分析仪
+tile.ttinkerer:platform.name=Ethereal Platform
+
+tile.ttinkerer:portal.name=Bedrock Portal
+tile.ttinkerer:Levitational Locomotive.name=Levitational Locomotive
+tile.ttinkerer:Levitational Locomotive Relay.name=Levitational Locomotive Relay
+tile.ttinkerer:golemConnector.name=Golem Connector
+
+# KAMI BLOCK NAMES
+tile.ttinkerer:warpGate.name=Celestial Gateway
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=腾迅
@@ -78,9 +161,15 @@ enchantment.ttinkerer:desintegrate=解离
 enchantment.ttinkerer:quickDraw=即时备战
 enchantment.ttinkerer:vampirism=吸血
 
+# WAND COMPONENTS
+item.Wand.ICHOR.cap=Ichorium Adorned
+item.Wand.ICHORCLOTH.rod=Ichorcloth Strapped Silverwood
+
 # RESEARCH
-ttresearch.prefix=[TT] 
+ttresearch.prefix=[TT]
+ttresearch.prefix.kami=[TT神道]  
 tc.research_category.TT_ENCHANTING=[TT]附魔
+tc.research_category.TT_CATEGORY=神秘工匠
 
 # -- COMPUTERCRAFT PERIPHERALS
 ttresearch.name.PERIPHERALS=电脑外设
@@ -88,7 +177,8 @@ ttresearch.lore.PERIPHERALS=当科学遇见魔法
 ttresearch.page.PERIPHERALS.0=神秘工匠让其添加的某些方块以及神秘时代添加的一些方块可以作为电脑外设(ComputerCraft的外设)使用.<BR><BR>为方便起见,使用这些外设的文档放置在网上以供查询.按下回车可以访问对应的页面.
 # Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
 # link to it and the short URL (see above) you want for it on my website and I'll add it. 
-ttresearch.webpage.peripherals=http://tab.mcmod.cn/knowledge.php?id=57
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+ttcomputer.dissipator=Dissipating
 
 # -- ASPECT ANALYZER
 ttresearch.name.ASPECT_ANALYZER=要素分析仪
@@ -100,11 +190,24 @@ ttresearch.name.DARK_QUARTZ=烟黑石英
 ttresearch.lore.DARK_QUARTZ=暗影之日
 ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英,但性状相反.石英为材料的方块都能用烟黑石英做,但是看起来是黑色的.<BR><BR>烟黑使用可以用煤炭或者木炭以及普通下界石英制成.
 
+# -- TOME OF KNOWLEDGE SHARING
+ttresearch.name.SHARE_TOME=知识分享之书
+ttresearch.lore.SHARE_TOME=A Goldfish's Diary
+ttresearch.page.SHARE_TOME.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else while you're logged on to the server, they'll get all the research you've discovered so far.<BR><BR>(Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)
+
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=矢量变换接口
 ttresearch.lore.INTERFACE=并不属于妮悠
 ttresearch.page.INTERFACE.0=“事实就是,1个方块只有6个面…”——Direwolf20如是说.<BR><BR>神秘等于化不可能为可能!你最新制作的这台设备能够与附近的方块绑定,之后它的面会变成你选中的方块的面的样子,并且你能够用这个面与选中的方块互动.它能够作为能量(BuildCraft(建筑)与IC2(工业)的能量)输入接口以及物品,源质,流体的输入输出接口.<BR>[continued]
 ttresearch.page.INTERFACE.1=为了将接口与其他方块绑定,你需要制作一个被称作矢量变换接口绑定器的特殊工具.<BR><BR>右击目标方块之后右击接口就能完成绑定操作.(注意：建筑模组的管道需要在绑定后拆掉再装才能有效)
+
+# -- GOLEM CONNECTOR
+ttresearch.name.GOLEM_CONNECTOR=傀儡连接器
+ttresearch.lore.GOLEM_CONNECTOR=老实说,无关傀儡心灵控制!
+ttresearch.page.GOLEM_CONNECTOR.0=By exploring what you can do with motion, tools, and a little bit of order, you have discovered how to make those golems just a tiny bit more obedient! You discover a block, that when you place a computer by it, can read the mind of golems nearby, and 'convince' them to do as the computer asks
+ttresearch.page.GOLEM_CONNECTOR.1=In order to bind a Connector to a golem, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the Connector followed by shift-right clicking on the target golem, these two get bound and ready for operation. The limit is quite long, 30 blocks away!
+ttresearch.page.GOLEM_CONNECTOR.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
+ttresearch.page.GOLEM_CONNECTOR.3=<BR><BR>For convenience sake, the method documentation for this block is in an external webpage. Pressing ENTER right now will take you to it.<BR><BR>Sadly, this does not work on some systems. If that is the case, type in "vazkii.us/tt/docs.php" in your browser.
 
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=光明安瓿
@@ -182,7 +285,7 @@ ttresearch.page.FUNNEL.0=你对用安瓿来倒腾罐子里的要素烦透了,因
 
 # -- ENCHANTMENT: ASCENT BOOST
 ttresearch.name.TTENCH_ASCENT_BOOST=附魔:腾迅
-ttresearch.lore.TTENCH_ASCENT_BOOST=比巨人更高
+ttresearch.lore.TTENCH_ASCENT_BOOST=高过玛利亚之墙
 ttresearch.page.TTENCH_ASCENT_BOOST.0=你研究出一种能够赋予你卓越弹跳能力的附魔.<BR><BR>这种附魔能够被施加在腿部装备上,穿戴该装备后你就能够比一般情况跳得高得多了.
 
 # -- ENCHANTMENT: SLOW FALL
@@ -213,7 +316,7 @@ ttresearch.page.TTENCH_VAMPIRISM.0=你研究出一种能够吸取敌人生命值
 # -- WAND FOCUS: FOCUS_SMELT
 ttresearch.name.FOCUS_SMELT=法杖核心:伊夫利特之辉
 ttresearch.lore.FOCUS_SMELT=丝带并没让它与众不同
-ttresearch.page.lore.FOCUS_SMELT.0=向采掘法杖核心灌注烈焰的力量能得到一种兼具两者能力的新型法杖核心.<BR><BR>安装该核心的法杖能够向指向的方块发出采掘之杖那样的光束,并如果将其放入熔炉那样冶炼成其他物品.
+ttresearch.page.lore.FOCUS_SMELT.0=向采掘法杖核心灌注烈焰的力量能得到一种兼具两者能力的新型法杖核心.<BR><BR>安装该核心的法杖能够向指向的方块发出采掘之杖那样的光束,并如同将其放入熔炉那样冶炼成其他物品.
 
 # -- WAND FOCUS: MENDING
 ttresearch.name.FOCUS_HEAL=法杖核心：愈合
@@ -222,7 +325,7 @@ ttresearch.page.FOCUS_HEAL.0=你知道岩精携有一种能够诱发瘟病的核
 
 # -- WAND FOCUS: ENDER RIFT
 ttresearch.name.FOCUS_ENDER_CHEST=法杖核心: 末影裂痕
-ttresearch.lore.FOCUS_ENDER_CHEST=对第四维度打包
+ttresearch.lore.FOCUS_ENDER_CHEST=对第四维度的打包
 ttresearch.page.FOCUS_ENDER_CHEST.0=将便携式洞穴与魔力手镜融合,你做出一种能够用末影力量撕裂空间的法杖核心,使得你能够随时远距离打开自己的末影箱子.
 
 # -- CURSED SPIRIT'S BLADE
@@ -254,3 +357,170 @@ ttresearch.page.REPAIRER.0=你制造出一台能够修复破损工具的新设�
 ttresearch.name.FOCUS_DEFLECT=法杖核心:扭曲
 ttresearch.lore.FOCUS_DEFLECT=我不是天使
 ttresearch.page.FOCUS_DEFLECT.0=你制造出一种法杖核心,能够防护你免遭来袭的火球伤害.<BR><BR>这种核心在使用时会持续抽取其插入的法杖内的魔力,以在施法者附近召唤出一道防护的幕墙,使得穿过它们的寻常炮弹变得毫无伤害.<BR><BR>此处寻常炮弹包括箭矢,雪球以及药水.但似乎这种防护并不足以抵御一些更强力的攻击,比如火球或者凋灵头颅.
+
+# -- LEVITATOR
+ttresearch.name.LEVITATOR=悬浮机车
+ttresearch.lore.LEVITATOR=一会儿向左,一会儿往右
+ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them. A visual effect will be shown if particles are enabled.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
+
+# -- ETHEREAL PLATFORM
+ttresearch.name.PLATFORM=天域平台
+ttresearch.lore.PLATFORM=隐藏于溴化钡
+ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
+
+# KAMI RESEARCH
+
+# -- DIMENSIONAL SHARDS
+ttresearch.name.DIMENSION_SHARDS=次元裂片
+ttresearch.lore.DIMENSION_SHARDS=自新世界的珍奇
+ttresearch.page.DIMENSION_SHARDS.0=Similarly to the overworld, the Nether and the End also have their specific shards, these are rarely held by either Zombie Pigmen living in the Nether or Endermen living in the End. They might be useful for something later on, although you're not quite sure how.<BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
+
+# -- ICHOR
+ttresearch.name.ICHOR=Ichor
+ttresearch.lore.ICHOR=神之血
+ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy you have discovered a substance that is what you consider to be the next step in your endeavours.<BR><BR>This extremely powerful substance, which you call "Ichor" contains the raw awakened power of a nether star. You are sure you will be able to put it to use for countless devices in the future.
+
+# -- ICHORCLOTH
+ttresearch.name.ICHOR_CLOTH=Ichorcloth
+ttresearch.lore.ICHOR_CLOTH=Life Fiber Synchronization
+ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funnily enough, this process does not require the typical infusion procedure, as the Ichor easily absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
+
+# -- ICHORIUM
+ttresearch.name.ICHORIUM=Ichorium
+ttresearch.lore.ICHORIUM=并非来自第55层
+ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal its property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+
+# -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
+ttresearch.name.ROD_ICHORCLOTH=Ichorcloth Strapped Silverwood Wand Core
+ttresearch.lore.ROD_ICHORCLOTH=That's a mouthful
+ttresearch.page.ROD_ICHORCLOTH.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
+
+# -- ICHORIUM WAND CAPS
+ttresearch.name.CAP_ICHOR=Ichorium Wand Caps
+ttresearch.lore.CAP_ICHOR=类似Steam游戏平台的玩意儿
+ttresearch.page.CAP_ICHOR.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+
+# -- ICHORCLOTH ARMOR
+ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
+ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... wait
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave Ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
+
+# -- COWL OF THE ABYSSAL DEPTHS
+ttresearch.name.ICHORCLOTH_HELM_GEM=Cowl of the Abyssal Depths
+ttresearch.lore.ICHORCLOTH_HELM_GEM=Just friendly crustaceans
+ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case.
+
+# -- ROBES OF THE STRATOSPHERE
+ttresearch.name.ICHORCLOTH_CHEST_GEM=Robes of the Stratosphere
+ttresearch.lore.ICHORCLOTH_CHEST_GEM=Guys can wear these too
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorcloth Robes into a more powerful form.<BR><BR>Starting off, by simply wearing these robes, the wearer is blessed with the power of eternal flight (wings that don't burn after 5 minutes included), as well as having all fall damage negated.<BR>The robes also passively protect the wearer from any incoming simple projectiles, akin to the focus of Distortion.
+
+# -- LEGGINGS OF THE BURNING MANTLE
+ttresearch.name.ICHORCLOTH_LEGS_GEM=Leggings of the Burning Mantle
+ttresearch.lore.ICHORCLOTH_LEGS_GEM=A warm feeling
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevails given the creator's existence in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Case you find yourself wanting to be in the darkness for whatever reason, Shift-right clicking with these leggings will toggle on or off the light feature.
+
+# -- BOOTS OF THE HORIZONTAL SHIELD
+ttresearch.name.ICHORCLOTH_BOOTS_GEM=Boots of the Horizontal Shield
+ttresearch.lore.ICHORCLOTH_BOOTS_GEM=From Winterfell to King's Landing in a breeze
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Boots into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage.
+
+# -- FELINE AMULET
+ttresearch.name.CAT_AMULET=Feline Amulet
+ttresearch.lore.CAT_AMULET=No fighting with cats in the cafeteria
+ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great.
+
+# -- ICHORIUM TOOLS
+ttresearch.name.ICHOR_TOOLS=Ichorium Tools
+ttresearch.lore.ICHOR_TOOLS=The top tier of rat... tools
+ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium. These tools are extremely powerful, even more so than diamond, furthermore, they never break.<BR><BR>For the creation of these tools, mundane sticks aren't enough, you decided to use Silverwood rods in replacement.
+
+# -- AWAKENED ICHORIUM PICKAXE
+ttresearch.name.ICHOR_PICK_GEM=Awakened Ichorium Pickaxe
+ttresearch.lore.ICHOR_PICK_GEM=Who needs a quarry?
+ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken. The area is offset, to allow for easy mining<BR><BR>On Line Mode (Blue)
+ttresearch.page.ICHOR_PICK_GEM.1=It'll break a 10 block long line starting on the original block. It can also break bedrock, taking you deeper into the the heart of the earth. You believe digging there might prove to be more fruitful.
+
+
+# -- AWAKENED ICHORIUM SHOVEL
+ttresearch.name.ICHOR_SHOVEL_GEM=Awakened Ichorium Shovel
+ttresearch.lore.ICHOR_SHOVEL_GEM=Gravel no more!
+ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel. This shovel contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+
+# -- AWAKENED ICHORIUM AXE
+ttresearch.name.ICHOR_AXE_GEM=Awakened Ichorium Axe
+ttresearch.lore.ICHOR_AXE_GEM=Cut you like a Clover
+ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe. This axe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
+
+# -- AWAKENED ICHORIUM SWORD
+ttresearch.name.ICHOR_SWORD_GEM=Awakened Ichorium Sword
+ttresearch.lore.ICHOR_SWORD_GEM=Mom's knife
+ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword. This sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs of the same type in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
+ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existent. They block damage their wielder would take, but disappear in the process.
+
+# -- BOTTOMLESS POUCH
+ttresearch.name.ICHOR_POUCH=无底袋
+ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
+ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can not only carry more than four chests, but it also doubles as a standard Focus Pouch, allowing any foci within it to be inserted in a wand like normally. You can kiss your inventory problems goodbye.
+
+# -- BLACK HOLE TALISMAN
+ttresearch.name.BLOCK_TALISMAN=黑洞护身符
+ttresearch.lore.BLOCK_TALISMAN=More pascal than your mind can take
+ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the talisman is empty, it can be shift right clicked into another block to change its binding.
+
+# -- WORLDSHAPER'S LOOKING GLASS
+ttresearch.name.PLACEMENT_MIRROR=Worldshaper's Looking Glass
+ttresearch.lore.PLACEMENT_MIRROR=Eye of Mercury
+ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Talismans that contain the required block.
+
+# -- WAND FOCUS: SHADOWBEAM
+ttresearch.name.FOCUS_SHADOWBEAM=Wand Focus: Shadowbeam
+ttresearch.lore.FOCUS_SHADOWBEAM=Guarded by an Old Man
+ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in its path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.
+
+# -- WAND FOCUS: EXPERIENCE DRAIN
+ttresearch.name.FOCUS_XP_DRAIN=Wand Focus: Experience Drain
+ttresearch.lore.FOCUS_XP_DRAIN=Environmentally friendly Vis
+ttresearch.page.FOCUS_XP_DRAIN.0=After creating a wand that can have an insane amount of vis, you got to the conclusion that you need an alternate source of vis.<BR><BR>To that end, you created a focus that draws from your Experience pool, turning it into vis at a fast, but not very efficient rate.
+
+# -- PROTOCLAY
+ttresearch.name.PROTOCLAY=Protoclay
+ttresearch.lore.PROTOCLAY=Stolen from the Creation
+ttresearch.page.PROTOCLAY.0=You grew tired of having to constantly swap your tools.<BR><BR>This mixture will, by melding with the Ichorium, switch any Awakened Ichorium tools being held by the one used for the block being pointed at, case one tries to break it with the wrong tool.<BR><BR>As an example, trying to break a dirt block with an Awakened Ichorium Pickaxe while a Shovel is present elsewhere in the inventory will swap the two, and allow for fast disposal of the dirt block.
+
+# -- CELESTIAL GATEWAY
+ttresearch.name.WARP_GATE=Celestial Gateway
+ttresearch.lore.WARP_GATE=EM Wave Change
+ttresearch.page.WARP_GATE.0=You devised a complex mechanism that allows to displace your own position in the world. This block, when containing Celestial Pearls (see next page), will allow for teleportation to various spots in the world.<BR><BR>A grand total of 10 spots can be set. You can prevent other Gateways from connecting to this one by toggling it in the block's GUI (accessible by right click).<BR><BR>To acccess the list of possible destinations, sneak above the block.
+ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, they must be marked with Celestial Pearls. These items can be shift-right clicked into a Celestial Gateway to mark its location (note, shift-right click on air to clear the location).<BR><BR>Placing the pearls inside a Celestial Gateway opens access to teleport to the one it's bound to. This teleport is one way, and two pearls must be used for a 2 way transport.<BR><BR>Naming these pearls with use of an Anvil will make the names appear in the Gateway's GUI, for easy labeling.
+
+# -- WAND FOCUS: RECALL
+ttresearch.name.FOCUS_RECALL=Wand Focus: Celestial Recall
+ttresearch.lore.FOCUS_RECALL=Home is where the Hearthstone is
+ttresearch.page.FOCUS_RECALL.0=While using Celestial Gateways for teleportation is all well and good, you decided to take it a step further and create a focus that allows you to do just that, but from anywhere.<BR><BR>This focus, in the presence of a properly bound Celestial Pearl in the caster's hotbar, will, after a short cast time, teleport the caster to that position, just as if they had used a Celestial Gateway. Of course, this comes at a vis cost.
+
+# -- WAILA
+ttwaila.nothing=Nothing
+ttwaila.currentTool=Current Tool: %s
+ttwaila.leftClick=Left Click
+ttwaila.rightClick=Right Click
+ttwaila.redstone=Redstone Activated
+ttwaila.autonomous=Autonomous
+ttwaila.connected=Connected to: %s
+ttwaila.repairing=Repairing: %s
+ttwaila.finishedRepairing=Finished repairing: %s
+ttwaila.allowIncoming=Allows incoming teleports
+ttwaila.disallowIncoming=Doesn't allow incoming teleports
+ttwaila.pushingMode=Mode: Pushing
+ttwaila.pullingMode=Mode: Pulling
+ttwaila.pushing=Pushing
+ttwaila.pulling=Pulling
+ttwaila.pullingAdult=Pulling: Adults
+ttwaila.pullingChild=Pulling: Children
+ttwaila.pushingAdult=Pushing: Adults
+ttwaila.pushingChild=Pushing: Children
+ttwaila.pullingAdultType=Pulling: Adult %s
+ttwaila.pullingChildType=Pulling: Child %s
+ttwaila.pushingAdultType=Pushing: Adult %s
+ttwaila.pushingChildType=Pushing: Child %s
