@@ -9,7 +9,10 @@ public enum EnumGolemCores {
 	CoreDecanting((byte)5,"item.ItemGolemCore.5.name"),
 	CoreAlcemy((byte)6,"item.ItemGolemCore.6.name"),
 	CoreChop((byte)7,"item.ItemGolemCore.7.name"),
-	CoreUse((byte)8,"item.ItemGolemCore.8.name"),
+    CoreUse((byte)8,"item.ItemGolemCore.8.name"),
+    CoreButcher((byte)9,"item.ItemGolemCore.9.name"),
+    CoreSorting((byte)10,"item.ItemGolemCore.10.name"),
+    CoreFishing((byte)11,"item.ItemGolemCore.11.name"),
 	CoreBlank((byte)100,"item.ItemGolemCore.100.name"),;
 	
 	
@@ -51,6 +54,12 @@ public enum EnumGolemCores {
 			return CoreChop;
 		case 8:
 			return CoreUse;
+        case 9:
+            return CoreButcher;
+        case 10:
+            return CoreSorting;
+        case 11:
+            return CoreFishing;
 		case 100:
 			return CoreBlank;
 		default:

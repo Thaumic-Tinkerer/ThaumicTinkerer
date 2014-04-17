@@ -130,7 +130,6 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         return new String[]{"getDecorations", "getPosition", "getType", "getHealth", "getCore", "getHome", "setHome", "getMarkers", "setMarkers", "newMarker", "addMarker", "saveMarker", "deleteMarker", "getMarker", "getMarkerCount"};
     }
 
-    
 
     @Override
     @Optional.Method(modid = "ComputerCraft")
@@ -156,31 +155,35 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
             case 6:
                 if (arguments.length != 4)
                     throw new Exception("Invalid arguments");
-                return setHomeImplementation(arguments);
+                double x=(Double)arguments[0];
+                double y=(Double)arguments[0];
+                double z=(Double)arguments[0];
+                double facing=(Double)arguments[0];
+                return setHomeImplementation(x,y,z,facing);
             case 7:
                 return getMarkersImplementation();
             case 8:
                 if (arguments.length != 1)
                     throw new Exception("setMarkers takes 1 argument");
-                return setMarkersImplementation(arguments);
+                return setMarkersImplementation((HashMap<Double, HashMap<String, Object>>) arguments[0]);
             case 9:
                 return newMarkerImplementation();
             case 10:
                 if (arguments.length != 1)
                     throw new Exception("addMarker must have 1 argument");
-                return addMarkerImplementation(arguments);
+                return addMarkerImplementation((Map)arguments[0]);
             case 11:
                 if (arguments.length != 2)
                     throw new Exception("saveMarker must have 2 arguments");
-                return saveMarkerImplementation(arguments);
+                return saveMarkerImplementation((Double)arguments[0],(Map)arguments[1]);
             case 12:
                 if (arguments.length != 1)
                     throw new Exception("deleteMarker must have 1 argument");
-                return deleteMarkerImplementation(arguments);
+                return deleteMarkerImplementation((Double) arguments[0]);
             case 13:
                 if (arguments.length != 1)
                     throw new Exception("getMarker must have 1 argument");
-                return getMarkerImplementation(arguments);
+                return getMarkerImplementation((Double)arguments[0]);
             case 14:
                 return getMarkerCountImplementation();
         }
@@ -196,51 +199,51 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         return new Object[]{(double) markers.size()};
     }
 
-    private Object[] getMarkerImplementation(Object[] arguments) throws Exception {
+    private Object[] getMarkerImplementation(Double arguments) throws Exception {
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
-        if (markers == null || markers.size() <= (Double) arguments[0])
-            throw new Exception("marker " + (int) (double) (Double) arguments[0] + " does not exist");
-        Marker mark = markers.get((int) (double) (Double) arguments[0]);
+        if (markers == null || markers.size() <= (Double) arguments)
+            throw new Exception("marker " + (int) (double) (Double) arguments + " does not exist");
+        Marker mark = markers.get((int) (double) (Double) arguments);
 
         return new Object[]{fromMarkerImplementation(mark)};
     }
 
-    private Object[] deleteMarkerImplementation(Object[] arguments) throws Exception {
+    private Object[] deleteMarkerImplementation(double arguments) throws Exception {
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
-        if (markers == null || markers.size() <= (Double) arguments[0])
-            throw new Exception("marker " + (int) (double) (Double) arguments[0] + " does not exist");
-        markers.remove((int) (double) (Double) arguments[0]);
+        if (markers == null || markers.size() <= (Double) arguments)
+            throw new Exception("marker " + (int) (double) (Double) arguments + " does not exist");
+        markers.remove((int) (double) (Double) arguments);
         golem.setMarkers(markers);
         return new String[]{};
     }
 
-    private Object[] saveMarkerImplementation(Object[] arguments) throws Exception {
+    private Object[] saveMarkerImplementation(double markerNum,Map markerArg) throws Exception {
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
-        if (markers == null || markers.size() <= (Double) arguments[0])
-            throw new Exception("marker " + (int) (double) (Double) arguments[0] + " does not exist");
-        Marker mark = toMarkerImplementation((HashMap<String, Object>) arguments[1]);
-        markers.set((int) (double) (Double) arguments[0], mark);
+        if (markers == null || markers.size() <= markerNum)
+            throw new Exception("marker " + (int) (double) (Double) markerNum + " does not exist");
+        Marker mark = toMarkerImplementation(markerArg);
+        markers.set((int) (double) markerNum, mark);
         golem.setMarkers(markers);
-        return getMarkerImplementation(new Object[]{arguments[0]});
+        return getMarkerImplementation(markerNum);
     }
 
     @SuppressWarnings("unchecked")
-    private Object[] addMarkerImplementation(Object[] arguments) throws Exception {
+    private Object[] addMarkerImplementation(Map arguments) throws Exception {
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null)
             markers = new ArrayList<Marker>();
-        Marker mark = toMarkerImplementation((HashMap<String, Object>) arguments[0]);
+        Marker mark = toMarkerImplementation(arguments);
         markers.add(mark);
         golem.setMarkers(markers);
-        return getMarkerImplementation(new Double[]{(double) (markers.size() - 1)});
+        return getMarkerImplementation((double)(markers.size() - 1));
     }
 
     private Object[] newMarkerImplementation() {
@@ -255,15 +258,15 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
     }
 
     @SuppressWarnings("unchecked")
-    private Object[] setMarkersImplementation(Object[] arguments) throws Exception {
+    private Object[] setMarkersImplementation(Map arguments) throws Exception {
         if (golem == null)
             return new String[]{};
 
         ArrayList<Marker> arrList = new ArrayList<Marker>();
 
-        HashMap<Double, HashMap<String, Object>> markersToSet = (HashMap<Double, HashMap<String, Object>>) arguments[0];
-        for (HashMap<String, Object> map : markersToSet.values()) {
-            Marker mark = toMarkerImplementation(map);
+        Map markersToSet =  arguments;
+        for (Object map : markersToSet.values()) {
+            Marker mark = toMarkerImplementation((Map) map);
 
             arrList.add(mark);
 
@@ -276,7 +279,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
      * @param markerMap
      * @return
      */
-    private Marker toMarkerImplementation(HashMap<String, Object> markerMap) {
+    private Marker toMarkerImplementation(Map markerMap) {
         double posX = (Double) markerMap.get("posX");
         double posY = (Double) markerMap.get("posY");
         double posZ = (Double) markerMap.get("posZ");
@@ -316,14 +319,10 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         return luaMarker;
     }
 
-    private Object[] setHomeImplementation(Object[] arguments) throws Exception {
+    private Object[] setHomeImplementation(double x,double y,double z,double facing) throws Exception {
         if (golem == null)
             return new String[]{};
 
-        double x = (Double) arguments[0];
-        double y = (Double) arguments[1];
-        double z = (Double) arguments[2];
-        double facing = (Double) arguments[3];
         golem.setHomeArea((int) x, (int) y, (int) z, (int) 35);
         golem.homeFacing = (int) facing;
         return getHomeImplementation();
@@ -379,7 +378,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
     @Override
     @Optional.Method(modid = "ComputerCraft")
     public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
+        return this.equals((Object) other);
 
     }
 
@@ -388,11 +387,101 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         return getType();
     }
 
-    // TODO return new String[]{"getDecorations", "getPosition", "getType", "getHealth", "getCore", "getHome", "setHome", "getMarkers", "setMarkers", "newMarker", "addMarker", "saveMarker", "deleteMarker", "getMarker", "getMarkerCount"};
 
-    @Callback(doc ="function():table -- Returns table of current decorations on golem")
+    @Callback(doc = "function():table -- Returns table of current decorations on golem")
     @Optional.Method(modid = "OpenComputers")
     public Object[] getDecorations(Context context, Arguments args) throws Exception {
         return getGolemDecorationsImplementation();
     }
-}
+
+
+    @Callback(doc = "function():x:number,y:number,z:number -- Returns The golems current position")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getPosition(Context context, Arguments args) {
+        return new Double[]{golem.posX, golem.posY, golem.posZ};
+    }
+
+
+    @Callback(doc = "function():string -- Returns The golems type")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getType(Context context, Arguments args) throws Exception {
+        return getGolemTypeImplementation();
+    }
+
+
+
+    @Callback(doc = "function():number -- Returns The golems health")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getHealth(Context context, Arguments args) throws Exception {
+        return new Float[]{golem.getHealth()};
+    }
+
+    @Callback(doc = "function():string -- Returns The golems core")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getCore(Context context, Arguments args) throws Exception {
+        return getGolemCoreImplementation();
+    }
+
+
+    @Callback(doc = "function():x:number,y:number,z:number,facing:number -- Returns The golems home position")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getHome(Context context, Arguments args) throws Exception {
+        return getHomeImplementation();
+    }
+    @Callback(doc = "function(x:number,y:number,z:number,facing:number):nill -- Sets The golems home position")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setHome(Context context, Arguments args) throws Exception {
+        return setHomeImplementation(args.checkDouble(0),args.checkDouble(1),args.checkDouble(2),args.checkDouble(3));
+    }
+
+
+    @Callback(doc = "function():table -- Gets list of markers")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getMarkers(Context context, Arguments args) throws Exception {
+        return getMarkersImplementation();
+    }
+
+    @Callback(doc = "function(list:table):table -- Sets list of markers")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setMarkers(Context context, Arguments args) throws Exception {
+        return setMarkersImplementation(args.checkTable(0));
+    }
+
+    @Callback(doc = "function():table -- Returns a blank marker with sensible defaults")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] newMarker(Context context, Arguments args) throws Exception {
+        return newMarkerImplementation();
+    }
+
+    @Callback(doc = "function(marker:table):table -- Adds the marker to the end of the marker list")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] addMarker(Context context, Arguments args) throws Exception {
+        return addMarkerImplementation(args.checkTable(0));
+    }
+
+    @Callback(doc = "function(markerNum:number,marker:table):table -- saves current marker")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] saveMarker(Context context, Arguments args) throws Exception {
+        return saveMarkerImplementation((double)args.checkInteger(0),args.checkTable(0));
+    }
+
+    // TODO return new String[]{"getMarker", "getMarkerCount"};
+    @Callback(doc = "function(markerNum:number):table -- Deletes marker number")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] deleteMarker(Context context, Arguments args) throws Exception {
+        return deleteMarkerImplementation((double)args.checkInteger(0));
+    }
+
+    @Callback(doc = "function(markerNum:number):table -- gets a specific marker")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getMarker(Context context, Arguments args) throws Exception {
+        return getMarkerImplementation((double)args.checkInteger(0));
+    }
+
+    @Callback(doc = "function():number -- Returns number of markers")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getMarkerCount(Context context, Arguments args) throws Exception {
+        return getMarkerCountImplementation();
+    }
+
+    }
