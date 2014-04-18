@@ -70,7 +70,6 @@ public class ItemInfusedSeeds extends ItemSeeds {
 
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List l) {
-        super.getSubItems(item, tab, l);
         for(PRIMAL_ASPECT_ENUM primal:PRIMAL_ASPECT_ENUM.values()){
             l.add(new ItemStack(item, 1, primal.ordinal()));
         }
@@ -112,5 +111,7 @@ public class ItemInfusedSeeds extends ItemSeeds {
             return false;
         }
     }
+
+
 
 }
