@@ -1,3 +1,6 @@
+**Build 140**
+* Added SkyMatrix to blacklist, another broken research to avoid.
+
 **Build 139**
 * Added ability to set OpenPeripheral mode in configs
 * Made funnels respect jars labels
