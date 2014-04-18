@@ -115,7 +115,7 @@ public interface Architecture {
 
     /**
      * Restores the state of this architecture as previously saved in
-     * {@link #save(net.minecraft.nbt.NBTTagCompound)}. The architecture should be in the same
+     * {@link #save(NBTTagCompound)}. The architecture should be in the same
      * state it was when it was saved after this, so it can be resumed from
      * whatever state the owning machine was in when it was saved.
      *

@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * arguments will generate an exception, requesting information and the lookup
  * of said information failing should not.
  *
- * @see li.cil.oc.api.network.Context
+ * @see Context
  * @see Arguments
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -49,7 +49,7 @@ public @interface Callback {
      * This is mainly intended to allow functions to perform faster than when
      * called 'synchronously' (where the call takes at least one server tick).
      * <p/>
-     * Keep in mind that the node {@link li.cil.oc.api.network.Network} is <em>not</em> thread safe!
+     * Keep in mind that the node {@link Network} is <em>not</em> thread safe!
      * Be sure you know what you're doing if you're working with a node's
      * network in a direct callback.
      */
@@ -70,7 +70,7 @@ public @interface Callback {
      * manner.
      * <p/>
      * Note that the limit does <em>not</em> apply when the method is invoked
-     * via a direct call to {@link Component#invoke(String, li.cil.oc.api.network.Context, Object...)}
+     * via a direct call to {@link Component#invoke(String, Context, Object...)}
      * from the host side. Also, this limit is per-computer, so the method may
      * be invoked more often than this per tick, if different computers call it.
      * <p/>

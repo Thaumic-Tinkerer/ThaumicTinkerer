@@ -21,7 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import thaumcraft.client.codechicken.core.vec.Vector3;
+import thaumcraft.codechicken.lib.vec.Vector3;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;

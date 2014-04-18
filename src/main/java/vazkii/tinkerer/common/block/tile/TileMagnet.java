@@ -25,7 +25,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
-import thaumcraft.client.codechicken.core.vec.Vector3;
+import thaumcraft.codechicken.lib.vec.Vector3;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 

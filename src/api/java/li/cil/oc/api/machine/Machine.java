@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * This interface allows interacting with a Machine obtained via the factory
- * method {@link li.cil.oc.api.Machine#create(li.cil.oc.api.machine.Owner, Class)}. It is primarily
+ * method {@link li.cil.oc.api.Machine#create(Owner, Class)}. It is primarily
  * intended to be used by custom {@link Architecture}
  * implementations.
  */

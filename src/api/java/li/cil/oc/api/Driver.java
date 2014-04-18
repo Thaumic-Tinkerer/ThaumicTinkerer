@@ -15,8 +15,8 @@ import li.cil.oc.api.driver.Item;
  * needed in that case.
  *
  * @see Network
- * @see li.cil.oc.api.driver.Block
- * @see li.cil.oc.api.driver.Item
+ * @see Block
+ * @see Item
  */
 public final class Driver {
     /**

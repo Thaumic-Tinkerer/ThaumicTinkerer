@@ -55,7 +55,7 @@ public final class Machine {
      *                     to allow for deterministic loading/saving of the
      *                     file system (open file handles). This value must be
      *                     unique for each file system in the resource set.
-     * @throws IllegalArgumentException if the name is not unique.
+     * @throws java.lang.IllegalArgumentException if the name is not unique.
      */
     public static void addRomResource(Class<? extends Architecture> architecture, Callable<li.cil.oc.api.fs.FileSystem> resource, String name) {
         if (instance != null)

@@ -18,7 +18,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.server.MinecraftServer;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.client.codechicken.core.vec.Vector3;
+import thaumcraft.codechicken.lib.vec.Vector3;
 
 public final class MiscHelper {
 

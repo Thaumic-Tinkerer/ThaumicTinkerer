@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 /**
  * This is no longer used nor provided to callbacks. The context in a callback
  * will always be the one of a machine. To get access to a robot either use
- * its tile entity where possible (which implements {@link li.cil.oc.api.machine.Robot}) or use
+ * its tile entity where possible (which implements {@link Robot}) or use
  * <tt>(Robot)((Machine)context).owner()</tt>.
  */
 @Deprecated

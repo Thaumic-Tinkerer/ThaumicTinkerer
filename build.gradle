@@ -90,7 +90,7 @@ group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-con
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.2-10.12.0.1054"
+    version = "1.7.2-10.12.0.1059"
     assetDir = "eclipse/assets"
     replace '${version}', project.version
 
@@ -106,7 +106,7 @@ dependencies {
     )
     compile 'javax.mail:mail:1.4'
     compile "mantle:Mantle:1.7.2-109.be29b7d:deobf"
-    compile "tconstruct:TConstruct:1.7.2-1.6.0.jenkins413:deobf"
+    compile "tconstruct:TConstruct:1.7.2-1.6.0.jenkins466:deobf"
 }
 
 processResources

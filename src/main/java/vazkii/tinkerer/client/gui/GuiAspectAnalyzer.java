@@ -64,10 +64,10 @@ public class GuiAspectAnalyzer extends GuiContainer {
 
 		ItemStack stack = analyzer.getStackInSlot(0);
 		if(stack != null) {
-			String h = ScanManager.generateItemHash(stack.getItem(), stack.getItemDamage());
+			int h = ScanManager.generateItemHash(stack.getItem(), stack.getItemDamage());
 
 			List<String> list = Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().getGameProfile().getName());
-			if (h != null && list != null && (list.contains("@" + h) || list.contains("#" + h))) {
+			if ( list != null && (list.contains("@" + h) || list.contains("#" + h))) {
 				AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
 				tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);
 				if (tags != null) {

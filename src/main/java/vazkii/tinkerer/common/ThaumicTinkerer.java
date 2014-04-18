@@ -26,6 +26,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
+import vazkii.tinkerer.api.InterModCommsOperations;
 import vazkii.tinkerer.common.core.commands.KamiUnlockedCommand;
 import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
@@ -33,6 +34,7 @@ import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketPipeline;
+import vazkii.tinkerer.common.research.KamiResearchItem;
 
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
@@ -66,6 +68,14 @@ public class ThaumicTinkerer {
 	         manager.registerCommand(new MaxResearchCommand());
             manager.registerCommand(new KamiUnlockedCommand());
 	}
+    @EventHandler
+    public void HandleIMCMessages(FMLInterModComms.IMCEvent messages) {
+        for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
+            if (message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST)) {
+                KamiResearchItem.Blacklist.add(message.getStringValue());
+            }
+        }
+    }
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
         packetPipeline.initialise();
