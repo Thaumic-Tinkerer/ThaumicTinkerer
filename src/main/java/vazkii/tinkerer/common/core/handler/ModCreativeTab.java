@@ -61,6 +61,8 @@ public class ModCreativeTab extends CreativeTabs {
 
 		addWand();
 
+        addItem(ModItems.infusedSeeds);
+
 		addItem(ModItems.darkQuartz);
 		addBlock(ModBlocks.darkQuartz);
 		addBlock(ModBlocks.darkQuartzStairs);

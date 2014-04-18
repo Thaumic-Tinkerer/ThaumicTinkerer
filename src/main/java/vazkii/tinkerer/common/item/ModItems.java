@@ -116,7 +116,7 @@ public final class ModItems {
 	public static Item.ToolMaterial toolMatIchor;
 	public static boolean Registered=false;
 	public static void initItems() {
-        infusedSeeds = new ItemInfusedSeeds();
+        infusedSeeds = new ItemInfusedSeeds().setUnlocalizedName(LibItemNames.INFUSED_SEEDS);
 		gaseousLight = new ItemGas(ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
 		darkQuartz = new ItemMod().setUnlocalizedName(LibItemNames.DARK_QUARTZ);
 		connector = new ItemConnector().setUnlocalizedName(LibItemNames.CONNECTOR);
@@ -183,6 +183,7 @@ public final class ModItems {
 	{
 		if(!Registered)
 		{
+        GameRegistry.registerItem(infusedSeeds, LibItemNames.INFUSED_SEEDS);
 		GameRegistry.registerItem(gaseousLight,LibItemNames.GASEOUS_LIGHT);
 		GameRegistry.registerItem(darkQuartz,LibItemNames.DARK_QUARTZ);
 		GameRegistry.registerItem(connector, LibItemNames.CONNECTOR);

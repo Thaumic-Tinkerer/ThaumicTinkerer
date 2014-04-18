@@ -68,6 +68,8 @@ public final class LibItemNames {
 	public static final String FOCUS_RECALL = LibResources.PREFIX_MOD + "focusRecall";
     public static final String SWORD = LibResources.PREFIX_MOD + "mobSword";
     public static final String MOB_ASPECT = LibResources.PREFIX_MOD + "mobAspect";
+
+    public static final String INFUSED_SEEDS = LibResources.PREFIX_MOD + "infusedSeeds";
     public static final String MOB_DISPLAY = LibResources.PREFIX_MOD + "mobDisplay";
 	public static final String[] KAMI_RESOURCE_NAMES = new String[] {
 		LibResources.PREFIX_MOD + "ichor",

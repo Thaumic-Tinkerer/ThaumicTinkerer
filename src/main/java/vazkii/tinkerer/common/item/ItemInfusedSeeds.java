@@ -23,6 +23,21 @@ public class ItemInfusedSeeds extends ItemSeeds {
         super(Blocks.wheat, Blocks.farmland);
     }
 
+    @Override
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+        super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
+        par3List.add(getAspect(par1ItemStack).getName());
+    }
+
+    public static int getMetaForAspect(Aspect aspect){
+        for(PRIMAL_ASPECT_ENUM e:PRIMAL_ASPECT_ENUM.values()){
+            if(aspect==e.aspect){
+                return e.ordinal();
+            }
+        }
+        return 0;
+    }
+
     public Aspect getAspect(ItemStack stack){
         return PRIMAL_ASPECT_ENUM.values()[stack.getItemDamage()].aspect;
     }
