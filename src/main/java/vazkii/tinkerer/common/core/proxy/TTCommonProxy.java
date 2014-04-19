@@ -58,9 +58,11 @@ public class TTCommonProxy {
 
 		ModBlocks.initBlocks();
 		ModItems.initItems();
+        ModPotions.initPotions();
         NumericAspectHelper.init();
         initCCPeripherals();
 	}
+
 
 	public void init(FMLInitializationEvent event) {
 		ModEnchantments.initEnchantments();

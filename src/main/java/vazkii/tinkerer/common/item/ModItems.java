@@ -110,12 +110,14 @@ public final class ModItems {
     public static Item mobDisplay;
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
+    public static Item infusedPotion;
 
     public static Item infusedSeeds;
 
 	public static Item.ToolMaterial toolMatIchor;
 	public static boolean Registered=false;
 	public static void initItems() {
+        infusedPotion = new ItemInfusedPotion().setUnlocalizedName(LibItemNames.INFUSED_POTION);
         infusedSeeds = new ItemInfusedSeeds().setUnlocalizedName(LibItemNames.INFUSED_SEEDS);
 		gaseousLight = new ItemGas(ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
 		darkQuartz = new ItemMod().setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -183,6 +185,7 @@ public final class ModItems {
 	{
 		if(!Registered)
 		{
+        GameRegistry.registerItem(infusedPotion, LibItemNames.INFUSED_POTION);
         GameRegistry.registerItem(infusedSeeds, LibItemNames.INFUSED_SEEDS);
 		GameRegistry.registerItem(gaseousLight,LibItemNames.GASEOUS_LIGHT);
 		GameRegistry.registerItem(darkQuartz,LibItemNames.DARK_QUARTZ);

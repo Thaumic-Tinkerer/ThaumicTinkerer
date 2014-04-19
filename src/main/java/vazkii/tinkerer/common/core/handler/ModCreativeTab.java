@@ -90,6 +90,8 @@ public class ModCreativeTab extends CreativeTabs {
 			addBlock(ModBlocks.warpGate);
 		}
 
+
+        addItem(ModItems.infusedPotion);
 		addItem(ModItems.gaseousLight);
 		addItem(ModItems.gaseousShadow);
 		addItem(ModItems.gasRemover);
