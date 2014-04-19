@@ -27,10 +27,10 @@ public final class ModPotions {
     public static Potion potionAir;
 
 
-    public static int potionFireId;
-    public static int potionWaterId;
-    public static int potionEarthId;
-    public static int potionAirId;
+    public static int potionFireId=126;
+    public static int potionWaterId=127;
+    public static int potionEarthId=128;
+    public static int potionAirId=129;
 
 
 	public static void initPotions() {

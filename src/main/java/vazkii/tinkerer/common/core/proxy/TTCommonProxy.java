@@ -74,7 +74,10 @@ public class TTCommonProxy {
         RegisterPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
 
-        MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
+        PotionEffectHandler handler=new PotionEffectHandler();
+
+        MinecraftForge.EVENT_BUS.register(handler);
+        FMLCommonHandler.instance().bus().register(handler);
 		if(ConfigHandler.enableKami) {
             MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
             MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
