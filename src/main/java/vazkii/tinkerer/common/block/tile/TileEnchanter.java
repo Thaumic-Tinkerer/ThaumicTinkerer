@@ -39,8 +39,8 @@ import vazkii.tinkerer.common.lib.LibFeatures;
 
 import java.util.ArrayList;
 import java.util.List;
-public class TileEnchanter extends TileEntity implements ISidedInventory, IMovableTile {
 
+public class TileEnchanter extends TileEntity implements ISidedInventory, IMovableTile {
 	private static final String TAG_ENCHANTS = "enchants";
 	private static final String TAG_LEVELS = "levels";
 	private static final String TAG_TOTAL_ASPECTS = "totalAspects";
@@ -55,7 +55,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
 	public boolean working = false;
 
-	private List<Tuple4Int> pillars = new ArrayList();
+	public List<Tuple4Int> pillars = new ArrayList();
 
 	ItemStack[] inventorySlots = new ItemStack[2];
 
