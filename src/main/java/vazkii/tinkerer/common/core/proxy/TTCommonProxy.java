@@ -48,6 +48,7 @@ import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import vazkii.tinkerer.common.potion.ModPotions;
+import vazkii.tinkerer.common.potion.PotionEffectHandler;
 import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ModResearch;
 
@@ -73,7 +74,7 @@ public class TTCommonProxy {
         RegisterPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
 
-
+        MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
 		if(ConfigHandler.enableKami) {
             MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
             MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
