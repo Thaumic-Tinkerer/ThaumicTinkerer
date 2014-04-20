@@ -38,6 +38,8 @@ import vazkii.tinkerer.common.item.kami.ItemBlockWarpGate;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.potion.BlockForcefield;
+import vazkii.tinkerer.common.potion.TileForcefield;
 
 public final class ModBlocks {
 
@@ -71,12 +73,15 @@ public final class ModBlocks {
     public static Block grainChaos;
     public static Block grainOrder;
 
+    public static Block forcefield;
+
 	//public static Block bedrock;
 
 
 	public static Block portal;
 	public static Block golemConnector;
 	public static void initBlocks() {
+        forcefield = new BlockForcefield().setBlockName(LibBlockNames.FORCEFIELD);
 		darkQuartz = new BlockDarkQuartz().setBlockName(LibBlockNames.DARK_QUARTZ);
 		darkQuartzSlab = new BlockDarkQuartzSlab(false).setBlockName(LibBlockNames.DARK_QUARTZ_SLAB);
 		darkQuartzSlabFull = new BlockDarkQuartzSlab(true).setBlockName(LibBlockNames.DARK_QUARTZ_SLAB);
@@ -121,6 +126,8 @@ public final class ModBlocks {
 
 	private static void registerBlocks() {
 
+
+        GameRegistry.registerBlock(forcefield, LibBlockNames.FORCEFIELD);
 
         GameRegistry.registerBlock(grainAir, LibBlockNames.INFUSED_GRAIN_AIR);
         GameRegistry.registerBlock(grainEarth, LibBlockNames.INFUSED_GRAIN_EARTH);
@@ -176,6 +183,8 @@ public final class ModBlocks {
 
 
 	public static void initTileEntities() {
+
+        GameRegistry.registerTileEntity(TileForcefield.class, LibBlockNames.FORCEFIELD);
 		GameRegistry.registerTileEntity(TileTransvectorInterface.class, LibBlockNames.INTERFACE);
 		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
 		GameRegistry.registerTileEntity(TileMagnet.class, LibBlockNames.MAGNET);

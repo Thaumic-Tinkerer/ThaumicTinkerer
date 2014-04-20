@@ -69,4 +69,6 @@ public final class LibBlockNames {
 
     public static final String INFUSED_GRAIN_EARTH=INFUSED_GRAIN_BASE + "Earth";
 
+    public static final String FORCEFIELD = LibResources.PREFIX_MOD + "forcefield";
+
 }

@@ -12,6 +12,7 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.ModBlocks;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,7 +26,6 @@ public class PotionEffectHandler {
     public static HashMap<Entity, Long> airPotionHit = new HashMap<Entity, Long>();
     public static HashMap<Entity, Long> firePotionHit = new HashMap<Entity, Long>();
     public static HashMap<Entity, Long> waterPotionHit = new HashMap<Entity, Long>();
-    public static HashMap<Entity, Long> earthPotionHit = new HashMap<Entity, Long>();
 
 
 
@@ -38,6 +38,32 @@ public class PotionEffectHandler {
             }
             if(p.isPotionActive(ModPotions.potionFire) && !p.worldObj.isRemote){
                 firePotionHit.put(e.entity, e.entity.worldObj.getTotalWorldTime());
+            }
+            if(p.isPotionActive(ModPotions.potionEarth) && !p.worldObj.isRemote){
+                boolean xAxis = Math.abs(e.entity.posZ-p.posZ) < Math.abs(e.entity.posX-p.posX);
+                int centerX= (int) ((e.entity.posX+p.posX)/2);
+
+                int centerY= (int) (p.posY+2);
+                int centerZ= (int) ((e.entity.posZ+p.posZ)/2);
+
+                for(int i=-2; i<3;i++){
+                    for(int j=-2; j<3;j++){
+                        if(xAxis){
+                            if(p.worldObj.isAirBlock(centerX, centerY+i, centerZ+j)){
+                                p.worldObj.setBlock(centerX, centerY+i, centerZ+j, ModBlocks.forcefield);
+                                ThaumicTinkerer.tcProxy.blockSparkle(p.worldObj, centerX, centerY+i, centerZ+j, 100, 100);
+                            }
+                        }else{
+                            if(p.worldObj.isAirBlock(centerX+j, centerY+i, centerZ)){
+                                p.worldObj.setBlock(centerX+j, centerY+i, centerZ, ModBlocks.forcefield);
+
+                                ThaumicTinkerer.tcProxy.blockSparkle(p.worldObj, centerX+j, centerY+i, centerZ, 100, 100);
+                            }
+                        }
+                    }
+
+                }
+
             }
         }
 
@@ -53,8 +79,6 @@ public class PotionEffectHandler {
                 if(target.worldObj.getTotalWorldTime()%5==0){
                     Random rand=new Random();
                     target.setVelocity(rand.nextFloat()-.5, rand.nextFloat(), rand.nextFloat()-.5);
-
-                    ThaumicTinkerer.tcProxy.burst(target.worldObj, target.posX, target.posY, target.posZ, .5F);
 
                 }
             }
@@ -76,7 +100,6 @@ public class PotionEffectHandler {
                         double theta=rand.nextFloat() * 2 * Math.PI;
 
                         double phi=rand.nextFloat() * 2 * Math.PI;
-
                         double r=2.5;
 
                         double x=r*Math.sin(theta)*Math.cos(phi);
