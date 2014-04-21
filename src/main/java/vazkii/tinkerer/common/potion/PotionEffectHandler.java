@@ -74,12 +74,11 @@ public class PotionEffectHandler {
         Iterator iter=airPotionHit.keySet().iterator();
         while(iter.hasNext()){
             Entity target= (Entity) iter.next();
-            System.out.println(FMLCommonHandler.instance().getEffectiveSide());
             if(target.isEntityAlive()){
                 if(target.worldObj.getTotalWorldTime()%5==0){
                     Random rand=new Random();
                     target.setVelocity(rand.nextFloat()-.5, rand.nextFloat(), rand.nextFloat()-.5);
-
+                    ThaumicTinkerer.tcProxy.burst(target.worldObj, target.posX, target.posY, target.posZ, .5F);
                 }
             }
             if(target.worldObj.getTotalWorldTime() > airPotionHit.get(target) + 62){
@@ -113,7 +112,7 @@ public class PotionEffectHandler {
 
                 }
             }
-            if(target.worldObj.getTotalWorldTime() > firePotionHit.get(target) + 602){
+            if(target.worldObj.getTotalWorldTime() > firePotionHit.get(target) + 6000){
                 iter.remove();
             }
         }
