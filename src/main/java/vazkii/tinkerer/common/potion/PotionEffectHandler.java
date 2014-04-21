@@ -7,6 +7,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -25,7 +26,6 @@ public class PotionEffectHandler {
 
     public static HashMap<Entity, Long> airPotionHit = new HashMap<Entity, Long>();
     public static HashMap<Entity, Long> firePotionHit = new HashMap<Entity, Long>();
-    public static HashMap<Entity, Long> waterPotionHit = new HashMap<Entity, Long>();
 
 
 
@@ -70,7 +70,26 @@ public class PotionEffectHandler {
     }
 
     @SubscribeEvent
+    public void onPlayerTick(TickEvent.PlayerTickEvent e){
+        if(e.player.isPotionActive(ModPotions.potionWater)){
+            for(int x= (int) (e.player.posX-2); x<e.player.posX+2; x++){
+                for(int y= (int) (e.player.posY-2); y<e.player.posY+2; y++){
+                    for(int z= (int) (e.player.posZ-2); z<e.player.posZ+2; z++){
+                        if(e.player.worldObj.getBlock(x, y, z)== Blocks.lava || e.player.worldObj.getBlock(x, y, z)==Blocks.flowing_lava){
+                            e.player.worldObj.setBlock(x, y, z, Blocks.obsidian);
+                            ThaumicTinkerer.tcProxy.burst(e.player.worldObj ,x+.5, y+.5, z+.5, 1.2F);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
     public void onTick(TickEvent.ServerTickEvent e){
+
+
         Iterator iter=airPotionHit.keySet().iterator();
         while(iter.hasNext()){
             Entity target= (Entity) iter.next();
