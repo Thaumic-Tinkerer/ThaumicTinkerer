@@ -464,8 +464,6 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
     public Object[] saveMarker(Context context, Arguments args) throws Exception {
         return saveMarkerImplementation((double)args.checkInteger(0),args.checkTable(0));
     }
-
-    // TODO return new String[]{"getMarker", "getMarkerCount"};
     @Callback(doc = "function(markerNum:number):table -- Deletes marker number")
     @Optional.Method(modid = "OpenComputers")
     public Object[] deleteMarker(Context context, Arguments args) throws Exception {

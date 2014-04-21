@@ -20,6 +20,10 @@ import cpw.mods.fml.common.eventhandler.Event;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import li.cil.oc.api.network.Arguments;
+import li.cil.oc.api.network.Callback;
+import li.cil.oc.api.network.Context;
+import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -50,8 +54,11 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
 import java.util.List;
-@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
-public class TileAnimationTablet extends TileEntity implements IInventory ,IMovableTile,IPeripheral {
+@Optional.InterfaceList({
+        @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
+        @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
+})
+public class TileAnimationTablet extends TileEntity implements IInventory ,IMovableTile,IPeripheral,SimpleComponent {
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
@@ -531,45 +538,57 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		switch(method) {
 			case 0 : return new Object[]{ redstone };
-			case 1 : {
-				boolean redstone = (Boolean) arguments[0];
-				this.redstone = redstone;
-				worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
-				return null;
-			}
-			case 2 : return new Object[]{ leftClick };
-			case 3 : {
-				boolean leftClick = (Boolean) arguments[0];
-				this.leftClick = leftClick;
-                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-				return null;
-			}
-			case 4 : return new Object[] { getBlockMetadata() - 2 };
-			case 5 : {
-				int rotation = (int) ((Double) arguments[0]).doubleValue();
-
-				if(rotation > 3)
-					throw new Exception("Invalid value: " + rotation + ".");
-
-				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, rotation + 2, 1 | 2);
-				return null;
-			}
-			case 6 : return new Object[] { getStackInSlot(0) != null };
-			case 7 : {
-				if(swingProgress != 0)
-					return new Object[] { false };
-
-				findEntities(getTargetLoc());
-				initiateSwing();
-				worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
-
-				return new Object[] { true };
-			}
-		}
+			case 1 :
+                return setRedstoneImplementation((Boolean)arguments[0]);
+            case 2 : return new Object[]{ leftClick };
+			case 3 :
+                return setLeftClickImplementation((Boolean)arguments[0]);
+            case 4 : return new Object[] { getBlockMetadata() - 2 };
+			case 5 :
+                return setRotationImplementation((Double)arguments[0]);
+            case 6 : return new Object[] { getStackInSlot(0) != null };
+			case 7 :
+                return triggerImplementation();
+        }
 		return null;
 	}
 
-	@Override
+    private Object[] triggerImplementation() {
+        if(swingProgress != 0)
+            return new Object[] { false };
+
+        findEntities(getTargetLoc());
+        initiateSwing();
+        worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
+
+        return new Object[] { true };
+    }
+
+    private Object[] setRotationImplementation(Double argument) throws Exception {
+        int rotation = (int) argument.doubleValue();
+
+        if(rotation > 3)
+            throw new Exception("Invalid value: " + rotation + ".");
+
+        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, rotation + 2, 1 | 2);
+        return null;
+    }
+
+    private Object[] setLeftClickImplementation(Boolean argument) {
+        boolean leftClick = argument;
+        this.leftClick = leftClick;
+        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        return null;
+    }
+
+    private Object[] setRedstoneImplementation(Boolean argument) {
+        boolean redstone = argument;
+        this.redstone = redstone;
+        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+        return null;
+    }
+
+    @Override
     @Optional.Method(modid = "ComputerCraft")
 	public void attach(IComputerAccess computer) {
 		// NO-OP
@@ -597,4 +616,61 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	public void doneMoving() {
 
 	}
+
+    @Override
+    public String getComponentName() {
+        return getType();
+    }
+
+
+    @Callback(doc = "function():boolean -- Returns Whether tablet is redstone activated")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getRedstone(Context context, Arguments args) throws Exception {
+        return new Object[]{redstone};
+    }
+
+    @Callback(doc = "function(boolean):Nil -- Sets Whether tablet is redstone activated")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setRedstone(Context context, Arguments args) throws Exception {
+        setRedstoneImplementation(args.checkBoolean(0));
+        return new Object[]{redstone};
+    }
+
+    @Callback(doc = "function():boolean -- Returns Whether tablet Left clicks")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getLeftClick(Context context, Arguments args) throws Exception {
+        return new Object[]{leftClick};
+    }
+
+    @Callback(doc = "function(boolean):Nil -- Sets Whether tablet Left Clicks")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setLeftClick(Context context, Arguments args) throws Exception {
+        setLeftClickImplementation(args.checkBoolean(0));
+        return new Object[]{leftClick};
+    }
+    // TODO {"hasItem", "trigger" };
+    @Callback(doc = "function():number -- Returns tablet Rotation")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getRotation(Context context, Arguments args) throws Exception {
+        return new Object[]{getBlockMetadata() - 2};
+    }
+
+    @Callback(doc = "function(number):Nil -- Sets tablet rotation")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setRotation(Context context, Arguments args) throws Exception {
+        setRotationImplementation((double)args.checkInteger(0));
+        return new Object[]{getBlockMetadata() - 2};
+    }
+
+    @Callback(doc = "function():boolean -- Returns wether tablet has an item or not")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] hasItem(Context context, Arguments args) throws Exception {
+        return new Object[]{getStackInSlot(0) != null };
+    }
+
+    @Callback(doc = "function():Nil -- Triggers tablets swing")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] trigger(Context context, Arguments args) throws Exception {
+        return triggerImplementation();
+    }
 }

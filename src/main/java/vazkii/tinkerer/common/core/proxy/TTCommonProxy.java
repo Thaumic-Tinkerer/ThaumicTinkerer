@@ -27,6 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.DriverArcaneEar;
 import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.DriverIAspectContainer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
@@ -118,6 +119,8 @@ public class TTCommonProxy {
     public void initOpenCDrivers()
     {
         Driver.add(new DriverIAspectContainer());
+        Driver.add(new DriverArcaneEar());
+
     }
 	public boolean isClient() {
 		return false;

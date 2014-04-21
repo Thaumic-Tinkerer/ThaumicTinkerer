@@ -15,6 +15,12 @@
 package vazkii.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.Optional;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import li.cil.oc.api.network.Arguments;
+import li.cil.oc.api.network.Callback;
+import li.cil.oc.api.network.Context;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -31,7 +37,7 @@ import net.minecraftforge.common.util.Constants;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTile {
+public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTile {
 
 	private static final String TAG_ADULT = "adultCheck";
 
@@ -183,29 +189,42 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 		return true;
 	}
 
-	/*@Override
+	@Override
 	public String[] getMethodNames() {
 		return new String[] { "isPulling", "setPulling", "getSignal", "getAdultSearch", "setAdultSearch" };
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		switch(method) {
 			case 3 : return new Object[] { adult };
-			case 4 : {
-				boolean adult = (Boolean) arguments[0];
-
-				this.adult = adult;
-				PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
-				return null;
-
-			}
-		}
+			case 4 :
+                return setAdultSearchImplementation((Boolean) arguments[0]);
+        }
 		return super.callMethod(computer, context, method, arguments);
-	}*/
+	}
 
+    private Object[] setAdultSearchImplementation(boolean argument) {
+        boolean adult = argument;
 
-	@Override
+        this.adult = adult;
+        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+        return null;
+    }
+    @Callback(doc = "function():boolean -- Gets Whether magnet is searching for adults")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getAdultSearch(Context context, Arguments args) throws Exception {
+        return new Object[]{adult};
+    }
+
+    @Callback(doc = "function(boolean):nil -- Sets Whether magnet is searching for adults")
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setAdultSearch(Context context, Arguments args) throws Exception {
+        setAdultSearchImplementation(args.checkBoolean(0));
+        return new Object[]{};
+    }
+    @Override
 	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
