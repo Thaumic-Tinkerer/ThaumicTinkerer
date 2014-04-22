@@ -31,6 +31,7 @@ import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.compat.TinkersConstructCompat;
 
 import java.util.Random;
 
@@ -117,11 +118,11 @@ public class BlockRepairer extends BlockModContainer {
 						int dmg;
 						if(Loader.isModLoaded("TConstruct"))
 						{
-							/*if(TinkersConstructCompat.isTConstructTool(itemstack))
+							if(TinkersConstructCompat.isTConstructTool(itemstack))
 							{
-								dmg=TinkersConstructCompat.getDamage(itemstack);
+								dmg= TinkersConstructCompat.getDamage(itemstack);
 							}
-							else*/
+							else
 								dmg=itemstack.getItemDamage();
 						}
 						else

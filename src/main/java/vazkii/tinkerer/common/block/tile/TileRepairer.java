@@ -32,6 +32,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.compat.TinkersConstructCompat;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
@@ -62,13 +63,13 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 			{
 				if(inventorySlots[0] != null)
 				{
-					/*if(TinkersConstructCompat.isTConstructTool(inventorySlots[0]))
+					if(TinkersConstructCompat.isTConstructTool(inventorySlots[0]))
 					{
 						int dmg=TinkersConstructCompat.getDamage(inventorySlots[0]);
 						if( dmg > 0) {
 							int essentia = drawEssentia();
 							TinkersConstructCompat.fixDamage(inventorySlots[0], essentia);
-							onInventoryChanged();
+							markDirty();
 							if(dmgLastTick != 0 && dmgLastTick != dmg) {
 								ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
 								tookLastTick = true;
@@ -76,7 +77,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 						} else tookLastTick=false;
 						dmgLastTick = inventorySlots[0] == null ? 0 : TinkersConstructCompat.getDamage(inventorySlots[0]);
 						return ;
-					}*/
+					}
 				}
 			}
 			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
@@ -235,13 +236,13 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		/*if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
+		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
 		{
 			if(TinkersConstructCompat.isTConstructTool(itemstack))
 			{
 				return itemstack!=null;
 			}
-		}*/
+		}
 		return itemstack != null && itemstack.getItem().isRepairable();
 	}
 
@@ -274,11 +275,11 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		ItemStack stack = inventorySlots[0];
 		if(stack == null)
 			return null;
-		/*if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
+		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
 		{
 			if(TinkersConstructCompat.isTConstructTool(stack))
 				return new AspectList().add(Aspect.ENTROPY, TinkersConstructCompat.getDamage(stack));
-		}*/
+		}
 		return new AspectList().add(Aspect.ENTROPY, stack.getItemDamage());
 	}
 
