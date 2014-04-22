@@ -70,8 +70,6 @@ public final class ModBlocks {
     public static Block grainWater;
     public static Block grainEarth;
     public static Block grainAir;
-    public static Block grainChaos;
-    public static Block grainOrder;
 
     public static Block forcefield;
 
@@ -109,8 +107,6 @@ public final class ModBlocks {
         grainFire = new BlockInfusedGrain(Aspect.FIRE).setBlockName(LibBlockNames.INFUSED_GRAIN_FIRE);
         grainWater = new BlockInfusedGrain(Aspect.WATER).setBlockName(LibBlockNames.INFUSED_GRAIN_WATER);
         grainEarth = new BlockInfusedGrain(Aspect.EARTH).setBlockName(LibBlockNames.INFUSED_GRAIN_EARTH);
-        grainOrder = new BlockInfusedGrain(Aspect.ORDER).setBlockName(LibBlockNames.INFUSED_GRAIN_ORDER);
-        grainChaos = new BlockInfusedGrain(Aspect.ENTROPY).setBlockName(LibBlockNames.INFUSED_GRAIN_CHAOS);
         if(ConfigHandler.enableKami) {
 
 			warpGate = new BlockWarpGate().setBlockName(LibBlockNames.WARP_GATE);
@@ -131,8 +127,6 @@ public final class ModBlocks {
 
         GameRegistry.registerBlock(grainAir, LibBlockNames.INFUSED_GRAIN_AIR);
         GameRegistry.registerBlock(grainEarth, LibBlockNames.INFUSED_GRAIN_EARTH);
-        GameRegistry.registerBlock(grainOrder, LibBlockNames.INFUSED_GRAIN_ORDER);
-        GameRegistry.registerBlock(grainChaos, LibBlockNames.INFUSED_GRAIN_CHAOS);
         GameRegistry.registerBlock(grainWater, LibBlockNames.INFUSED_GRAIN_WATER);
         GameRegistry.registerBlock(grainFire, LibBlockNames.INFUSED_GRAIN_FIRE);
 

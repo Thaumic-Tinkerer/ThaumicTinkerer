@@ -82,4 +82,5 @@ public final class LibItemNames {
 		LibResources.PREFIX_MOD + "enderShard"
 	};
     public static final String INFUSED_POTION = LibResources.PREFIX_MOD + "infusedPotion";
+    public static final String INFUSED_GRAIN = LibResources.PREFIX_MOD + "infusedGrain";
 }

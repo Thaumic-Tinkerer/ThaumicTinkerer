@@ -113,10 +113,11 @@ public final class ModItems {
     public static Item infusedPotion;
 
     public static Item infusedSeeds;
-
+    public static Item infusedGrain;
 	public static Item.ToolMaterial toolMatIchor;
 	public static boolean Registered=false;
 	public static void initItems() {
+        infusedGrain = new ItemInfusedGrain().setUnlocalizedName(LibItemNames.INFUSED_GRAIN);
         infusedPotion = new ItemInfusedPotion().setUnlocalizedName(LibItemNames.INFUSED_POTION);
         infusedSeeds = new ItemInfusedSeeds().setUnlocalizedName(LibItemNames.INFUSED_SEEDS);
 		gaseousLight = new ItemGas(ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
@@ -185,6 +186,7 @@ public final class ModItems {
 	{
 		if(!Registered)
 		{
+        GameRegistry.registerItem(infusedGrain, LibItemNames.INFUSED_GRAIN);
         GameRegistry.registerItem(infusedPotion, LibItemNames.INFUSED_POTION);
         GameRegistry.registerItem(infusedSeeds, LibItemNames.INFUSED_SEEDS);
 		GameRegistry.registerItem(gaseousLight,LibItemNames.GASEOUS_LIGHT);

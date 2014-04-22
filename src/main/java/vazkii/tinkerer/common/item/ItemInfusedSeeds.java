@@ -53,13 +53,7 @@ public class ItemInfusedSeeds extends ItemSeeds {
         if (a==Aspect.EARTH){
             return ModBlocks.grainEarth;
         }
-        if (a==Aspect.AIR){
-            return ModBlocks.grainAir;
-        }
-        if (a==Aspect.ORDER){
-            return ModBlocks.grainOrder;
-        }
-        return ModBlocks.grainChaos;
+        return ModBlocks.grainAir;
 
     }
 
@@ -79,9 +73,7 @@ public class ItemInfusedSeeds extends ItemSeeds {
         AIR(Aspect.AIR),
         FIRE(Aspect.FIRE),
         EARTH(Aspect.EARTH),
-        WATER(Aspect.WATER),
-        ORDER(Aspect.ORDER),
-        CHAOS(Aspect.ENTROPY);
+        WATER(Aspect.WATER);
         Aspect aspect;
         PRIMAL_ASPECT_ENUM(Aspect a){
             this.aspect=a;
