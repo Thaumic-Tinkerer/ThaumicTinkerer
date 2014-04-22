@@ -91,7 +91,7 @@ group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-con
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.2-10.12.1.1060"
+    version = "1.7.2-10.12.1.1061"
     assetDir = "eclipse/assets"
     replace '${version}', project.version
 
@@ -103,8 +103,8 @@ minecraft {
 
 dependencies {
     compile files (
-            'TCDEOBF.jar',
-            'mods/Waila-deBon.jar'
+            'TCDEOBF.jar'
+            //'mods/Waila-deBon.jar',
     )
     compile 'javax.mail:mail:1.4'
     compile "mantle:Mantle:1.7.2-130.6247733:deobf"

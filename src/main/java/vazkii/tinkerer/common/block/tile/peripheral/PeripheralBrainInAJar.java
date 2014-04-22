@@ -11,17 +11,17 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [Dec 11, 2013, 9:36:45 PM (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import net.minecraft.nbt.NBTTagCompound;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.common.tiles.TileJarBrain;
-import IComputerAccess;
-import IHostedPeripheral;
-import ILuaContext;
 
-public class PeripheralBrainInAJar implements IHostedPeripheral {
+
+public class PeripheralBrainInAJar implements IPeripheral {
 
 	TileJarBrain jar;
 
@@ -45,11 +45,6 @@ public class PeripheralBrainInAJar implements IHostedPeripheral {
 	}
 
 	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
-
-	@Override
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
@@ -59,20 +54,11 @@ public class PeripheralBrainInAJar implements IHostedPeripheral {
 		// NO-OP
 	}
 
-	@Override
-	public void update() {
-		// NO-OP
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
 }
-*/
+

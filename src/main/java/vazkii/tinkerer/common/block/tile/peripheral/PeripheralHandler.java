@@ -11,24 +11,25 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [13 Sep 2013, 00:56:19 (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
+import dan200.computercraft.api.peripheral.IPeripheral;
+import dan200.computercraft.api.peripheral.IPeripheralProvider;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import thaumcraft.common.tiles.*;
-import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
-import IHostedPeripheral;
-import IPeripheralHandler;
+import thaumcraft.common.tiles.TileArcaneBore;
+import thaumcraft.common.tiles.TileDeconstructionTable;
+import thaumcraft.common.tiles.TileJarBrain;
+import thaumcraft.common.tiles.TileSensor;
 
-public final class PeripheralHandler implements IPeripheralHandler {
 
-	@Override
-	public IHostedPeripheral getPeripheral(TileEntity tile) {
-		if(tile instanceof TileTransvectorInterface)
-			return new PeripheralTransvectorInterface((TileTransvectorInterface) tile);
+public final class PeripheralHandler implements IPeripheralProvider {
+
+	public IPeripheral getPeripheral(TileEntity tile) {
 
 		if(tile instanceof IAspectContainer)
 			return new PeripheralAspectContainer((IAspectContainer) tile);
@@ -50,5 +51,12 @@ public final class PeripheralHandler implements IPeripheralHandler {
 		return null;
 	}
 
+    @Override
+    public IPeripheral getPeripheral(World world, int x, int y, int z, int side) {
+        TileEntity te=world.getTileEntity(x,y,z);
+        if(te!=null)
+            return getPeripheral(te);
+        return null;
+    }
 }
-*/
+

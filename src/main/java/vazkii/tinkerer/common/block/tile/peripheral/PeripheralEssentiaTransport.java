@@ -1,49 +1,29 @@
-/*
+
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import IComputerAccess;
-import IHostedPeripheral;
-import ILuaContext;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.ForgeDirection;
+
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.IEssentiaTransport;
 
-*/
+
 /**
  * Created by Katrina on 03/03/14.
- *//*
+ */
 
-public class PeripheralEssentiaTransport implements IHostedPeripheral {
+public class PeripheralEssentiaTransport implements IPeripheral {
 
     IEssentiaTransport pipe;
-    public PeripheralEssentiaTransport(IEssentiaTransport input)
-    {
-        pipe=input;
+
+    public PeripheralEssentiaTransport(IEssentiaTransport input) {
+        pipe = input;
     }
 
-public static int GetDirection(Object obj) {
-    Double num = (Double) obj;
-    return (int) num.intValue();
-}
-
-
-    @Override
-    public void update() {
-
-    }
-
-
-    @Override
-    public void readFromNBT(NBTTagCompound nbttagcompound) {
-
-    }
-
-
-    @Override
-    public void writeToNBT(NBTTagCompound nbttagcompound) {
-
+    public static int GetDirection(Object obj) {
+        Double num = (Double) obj;
+        return (int) num.intValue();
     }
 
     @Override
@@ -58,8 +38,7 @@ public static int GetDirection(Object obj) {
 
     @Override
     public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-        switch(method)
-        {
+        switch (method) {
             case 0:
                 return new Object[]{pipe.isConnectable(ForgeDirection.getOrientation(GetDirection(arguments[0])))};
             case 1:
@@ -80,10 +59,7 @@ public static int GetDirection(Object obj) {
         return new Object[0];
     }
 
-    @Override
-    public boolean canAttachToSide(int side) {
-        return true;
-    }
+
 
 
     @Override
@@ -95,5 +71,9 @@ public static int GetDirection(Object obj) {
     public void detach(IComputerAccess computer) {
 
     }
+
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
 }
-*/

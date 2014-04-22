@@ -11,17 +11,17 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [Dec 11, 2013, 9:41:49 PM (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-import net.minecraft.nbt.NBTTagCompound;
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.common.tiles.TileSensor;
-import IComputerAccess;
-import IHostedPeripheral;
-import ILuaContext;
 
-public class PeripheralArcaneEar implements IHostedPeripheral {
+
+public class PeripheralArcaneEar implements IPeripheral {
 
 	TileSensor ear;
 
@@ -50,10 +50,7 @@ public class PeripheralArcaneEar implements IHostedPeripheral {
 		}
 	}
 
-	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
+
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -65,20 +62,12 @@ public class PeripheralArcaneEar implements IHostedPeripheral {
 		// NO-OP
 	}
 
-	@Override
-	public void update() {
-		// NO-OP
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
+        return this.equals((Object)other);
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
 }
-*/
+

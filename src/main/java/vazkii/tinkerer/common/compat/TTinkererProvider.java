@@ -1,23 +1,25 @@
-/*
+
 package vazkii.tinkerer.common.compat;
 
-import java.util.List;
-
-import thaumcraft.common.Thaumcraft;
-import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.block.tile.TileRepairer;
-import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
-import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
-import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StatCollector;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StatCollector;
+import vazkii.tinkerer.common.block.BlockAnimationTablet;
+import vazkii.tinkerer.common.block.BlockMagnet;
+import vazkii.tinkerer.common.block.BlockRepairer;
+import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.kami.BlockWarpGate;
+import vazkii.tinkerer.common.block.tile.TileRepairer;
+import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
+import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import vazkii.tinkerer.common.block.transvector.BlockTransvectorInterface;
+
+import java.util.List;
 
 public class TTinkererProvider implements IWailaDataProvider {
 
@@ -118,11 +120,12 @@ public class TTinkererProvider implements IWailaDataProvider {
 	}
 	
 	public static void callbackRegister(IWailaRegistrar registrar) {
-		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.animationTablet.blockID);
-		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.interfase.blockID);
-		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.repairer.blockID);
-		registrar.registerBodyProvider(new TTinkererProvider(),ModBlocks.warpGate.blockID);
-		registrar.registerBodyProvider(new MagnetProvider(), ModBlocks.magnet.blockID);
+		registrar.registerBodyProvider(new TTinkererProvider(),BlockAnimationTablet.class);
+		registrar.registerBodyProvider(new TTinkererProvider(),BlockTransvectorInterface.class);
+		registrar.registerBodyProvider(new TTinkererProvider(), BlockRepairer.class);
+		registrar.registerBodyProvider(new TTinkererProvider(), BlockWarpGate.class);
+		registrar.registerBodyProvider(new MagnetProvider(), BlockMagnet.class);
 }
 
-}*/
+}
+

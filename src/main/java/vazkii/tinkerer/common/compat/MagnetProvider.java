@@ -1,17 +1,16 @@
-/*
+
 package vazkii.tinkerer.common.compat;
 
-import java.util.List;
-
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
+import java.util.List;
 
 public class MagnetProvider implements IWailaDataProvider {
 
@@ -83,4 +82,3 @@ public class MagnetProvider implements IWailaDataProvider {
 	}
 
 }
-*/

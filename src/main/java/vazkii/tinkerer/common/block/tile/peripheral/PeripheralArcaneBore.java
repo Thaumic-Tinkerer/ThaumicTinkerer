@@ -11,21 +11,21 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [Dec 11, 2013, 10:03:09 PM (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.common.items.equipment.ItemElementalPickaxe;
 import thaumcraft.common.tiles.TileArcaneBore;
-import IComputerAccess;
-import IHostedPeripheral;
-import ILuaContext;
 
-public class PeripheralArcaneBore implements IHostedPeripheral {
+
+public class PeripheralArcaneBore implements IPeripheral {
 
 	TileArcaneBore bore;
 
@@ -64,11 +64,6 @@ public class PeripheralArcaneBore implements IHostedPeripheral {
 	}
 
 	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
-
-	@Override
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
@@ -78,20 +73,10 @@ public class PeripheralArcaneBore implements IHostedPeripheral {
 		// NO-OP
 	}
 
-	@Override
-	public void update() {
-		// NO-OP
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
 }
-*/
