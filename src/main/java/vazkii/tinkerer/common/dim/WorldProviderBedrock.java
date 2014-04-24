@@ -27,7 +27,7 @@ public class WorldProviderBedrock extends WorldProvider {
 	}
 	public int getAverageGroundLevel()
 	{
-		return 0;
+		return 1;
 	}
 	@Override
 	public boolean doesXZShowFog(int par1, int par2)
