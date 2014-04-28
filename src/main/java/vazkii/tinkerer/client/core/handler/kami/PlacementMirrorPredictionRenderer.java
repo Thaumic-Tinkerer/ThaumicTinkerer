@@ -1,7 +1,5 @@
 package vazkii.tinkerer.client.core.handler.kami;
 
-import java.util.List;
-
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -9,15 +7,16 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
+
+import java.util.List;
 
 public final class PlacementMirrorPredictionRenderer {
 
@@ -25,12 +24,14 @@ public final class PlacementMirrorPredictionRenderer {
 
 	@SubscribeEvent
 	public void onWorldRenderLast(RenderWorldLastEvent event) {
+
 		World world = Minecraft.getMinecraft().theWorld;
 		List<EntityPlayer> playerEntities = world.playerEntities;
 		for(EntityPlayer player : playerEntities) {
 			ItemStack currentStack = player.getCurrentEquippedItem();
-			if(currentStack != null && currentStack.getItem() == ModItems.placementMirror && ItemPlacementMirror.getBlockID(currentStack) != 0)
-				renderPlayerLook(player, currentStack);
+			if(currentStack != null && currentStack.getItem() == ModItems.placementMirror && ItemPlacementMirror.getBlock(currentStack)!= Blocks.air) {
+                renderPlayerLook(player, currentStack);
+            }
 		}
 	}
 

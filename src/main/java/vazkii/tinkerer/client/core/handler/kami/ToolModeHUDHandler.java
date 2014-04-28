@@ -55,7 +55,7 @@ public final class ToolModeHUDHandler {
 				GL11.glPushMatrix();
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				int color = Color.getHSBColor((float) Math.cos(ClientTickHandler.elapsedTicks / 25D), 0.6F, 1F).getRGB();
+				int color = Color.getHSBColor((float) Math.cos(ClientTickHandler.elapsedTicks / 250D), 0.6F, 1F).getRGB();
 				var8.drawStringWithShadow(currentTooltip, tooltipStartX, tooltipStartY, color + (opacity << 24));
 				GL11.glDisable(GL11.GL_BLEND);
 				GL11.glPopMatrix();
@@ -66,7 +66,7 @@ public final class ToolModeHUDHandler {
 	public static void setTooltip(String tooltip) {
 		if(!tooltip.equals(currentTooltip)) {
 			currentTooltip = tooltip;
-			tooltipDisplayTicks = 20;
+			tooltipDisplayTicks = 400;
 		}
 	}
 

@@ -16,6 +16,7 @@ package vazkii.tinkerer.client.core.proxy;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.entity.player.EntityPlayer;
@@ -74,7 +75,9 @@ public class TTClientProxy extends TTCommonProxy {
 
 		LocalizationHandler.loadLocalizations();
 		MinecraftForge.EVENT_BUS.register(new HUDHandler());
-        MinecraftForge.EVENT_BUS.register(new ClientTickHandler());
+        ClientTickHandler cthandler=new ClientTickHandler();
+        FMLCommonHandler.instance().bus().register(cthandler);
+        MinecraftForge.EVENT_BUS.register(cthandler);
         MinecraftForge.EVENT_BUS.register(new GemArmorKeyHandler());
 		registerTiles();
 		registerRenderIDs();
