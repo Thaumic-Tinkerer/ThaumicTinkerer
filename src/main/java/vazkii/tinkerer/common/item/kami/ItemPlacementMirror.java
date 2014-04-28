@@ -77,6 +77,8 @@ public class ItemPlacementMirror extends ItemMod {
 	}
 
 	private void placeBlockAndConsume(EntityPlayer player, ItemStack blockToPlace, ChunkCoordinates coords) {
+        if(blockToPlace.getItem()==null)
+            return;
         player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.getBlockFromItem(blockToPlace.getItem()), blockToPlace.getItemDamage(), 1 | 2);
 
         if (player.capabilities.isCreativeMode)
