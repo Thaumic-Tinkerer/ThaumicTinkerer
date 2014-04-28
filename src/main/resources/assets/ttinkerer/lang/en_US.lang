@@ -366,7 +366,7 @@ ttresearch.page.TTENCH_SHATTER.0=You have formulated an enchantment that enables
 # -- ENCHANTMENT: SHOCKWAVE
 ttresearch.name.TTENCH_SHOCKWAVE=Enchantment: Shockwave
 ttresearch.lore.TTENCH_SHOCKWAVE=Mini Earthquakes
-ttresearch.page.TTENCH_SHOCKWAVE.0=You have formulated an enchantment that enables you to become to kill enemies while falling.<BR><BR>This enchantment can be applied on boots. When done so, whenever the wearer falls, damage will be dealt to surrounding mobs or players.
+ttresearch.page.TTENCH_SHOCKWAVE.0=You have formulated an enchantment that enables you to become to kill enemies while falling.<BR><BR>This enchantment can be applied on boots. When done so, whenever the wearer falls, damage will be dealt to surrounding mobs or players.<BR><BR>Unfortunatly Magics of all types that make the player lighter, so to prevent damage from falling, will make the player too light to damage entities. You feel there may be ways to stop this at a later time, once you know the magic better.
 
 # -- ENCHANTMENT: POUNCE
 ttresearch.name.TTENCH_POUNCE=Enchantment: Pounce

@@ -212,7 +212,7 @@ public class ModEnchantmentHandler {
 				float oldDir=heldItem.stackTagCompound.getFloat(NBTTunnelDirection);
 				float dif =Math.abs(oldDir-dir);
 				if(dif < 50){
-					event.newSpeed*=(1+(.4*tunnel));
+					event.newSpeed*=(1+(.2*tunnel));
 				}else{
 					event.newSpeed*=.3;
 				}
