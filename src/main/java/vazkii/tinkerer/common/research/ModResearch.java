@@ -19,6 +19,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import tconstruct.items.blocks.LavaTankItemBlock;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
@@ -147,6 +148,12 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.ENERGY, 1).add(Aspect.MAGIC, 1), -2, -2, 2, new ItemStack(ModItems.focusSmelt)).setParents("FOCUSEXCAVATION").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_SMELT));
 
+
+        research = new TTResearchItem(LibResearch.KEY_POTIONS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.CROP, 5), 3, -9, 3, new ItemStack(ModItems.infusedPotion)).setParents(LibResearch.KEY_POTIONS).registerResearchItem();
+        research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_POTIONS));
+
+        research = new TTResearchItem(LibResearch.KEY_POTION_CROPS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.CROP, 5), 3, -9, 3, new ItemStack(ModItems.infusedPotion)).setParents(LibResearch.KEY_POTIONS).registerResearchItem();
+        research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_POTION_CROPS));
 
         if(Config.allowMirrors) {
             research = new TTResearchItem(LibResearch.KEY_FOCUS_HEAL, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.HEAL, 2).add(Aspect.SOUL, 1).add(Aspect.MAGIC, 1), -6, -4, 2, new ItemStack(ModItems.focusHeal)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed().registerResearchItem();

@@ -12,6 +12,8 @@ import net.minecraft.potion.PotionHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.common.config.ConfigAspects;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.potion.ModPotions;
 
