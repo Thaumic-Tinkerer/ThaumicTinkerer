@@ -9,16 +9,15 @@ package dan200.computercraft.api.peripheral;
 import net.minecraft.world.World;
 
 /**
- * This interface is used to create peripheral implementations for TileEntities without
- * making the TileEntity implement IPeripheral.
- * @see dan200.computercraft.api.ComputerCraftAPI#registerPeripheralProvider(dan200.computercraft.api.peripheral.IPeripheralProvider)
+ * This interface is used to create peripheral implementations for blocks
+ * @see dan200.computercraft.api.ComputerCraftAPI#registerPeripheralProvider(IPeripheralProvider)
  */
 public interface IPeripheralProvider
 {
     /**
      * Produce an peripheral implementation from a block location.
-     * @see dan200.computercraft.api.ComputerCraftAPI#registerPeripheralProvider(dan200.computercraft.api.peripheral.IPeripheralProvider)
+     * @see dan200.computercraft.api.ComputerCraftAPI#registerPeripheralProvider(IPeripheralProvider)
      * @return a peripheral, or null if there is not a peripheral here you'd like to handle.
      */
-	public IPeripheral getPeripheral(World world, int x, int y, int z, int side);
+	public IPeripheral getPeripheral( World world, int x, int y, int z, int side );
 }

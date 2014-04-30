@@ -27,7 +27,7 @@ public interface IComputerAccess
 	 * @see #unmount(String)
 	 * @see dan200.computercraft.api.filesystem.IMount
 	 */
-	public String mount(String desiredLocation, IMount mount);
+	public String mount( String desiredLocation, IMount mount );
 	
 	/**
 	 * Mount a mount onto the computers' file system in a writable mode.<br>
@@ -36,11 +36,11 @@ public interface IComputerAccess
 	 * @return The location on the computercraft's file system where you the mount mounted, or null if there was already a file in the desired location. Store this value if you wish to unmount the mount later.
 	 * @see dan200.computercraft.api.ComputerCraftAPI#createSaveDirMount(World, String)
 	 * @see dan200.computercraft.api.ComputerCraftAPI#createResourceMount(Class, String, String)
-	 * @see #mount(String, dan200.computercraft.api.filesystem.IMount)
+	 * @see #mount(String, IMount)
 	 * @see #unmount(String)
-	 * @see dan200.computercraft.api.filesystem.IMount
+	 * @see IMount
 	 */
-	public String mountWritable(String desiredLocation, IWritableMount mount);
+	public String mountWritable( String desiredLocation, IWritableMount mount );
 	
 	/**
 	 * Unmounts a directory previously mounted onto the computers file system by mount() or mountWritable().<br>
@@ -50,10 +50,10 @@ public interface IComputerAccess
 	 * @param location	The desired location in the computers file system of the directory to unmount.
 	 *					This must be the location of a directory previously mounted by mount() or mountWritable(), as
 	 *					indicated by their return value.
-	 * @see	#mount(String, dan200.computercraft.api.filesystem.IMount)
-	 * @see	#mountWritable(String, dan200.computercraft.api.filesystem.IWritableMount)
+	 * @see	#mount(String, IMount)
+	 * @see	#mountWritable(String, IWritableMount)
 	 */
-	public void unmount(String location);
+	public void unmount( String location );
 	
 	/**
 	 * Returns the numerical ID of this computercraft.<br>
@@ -76,9 +76,9 @@ public interface IComputerAccess
 	 *					be supplied as extra return values to os.pullEvent(). Objects in the array will be converted
 	 *					to lua data types in the same fashion as the return values of IPeripheral.callMethod().<br>
 	 *					You may supply null to indicate that no arguments are to be supplied.
-	 * @see IPeripheral#callMethod
+	 * @see dan200.computercraft.api.peripheral.IPeripheral#callMethod
 	 */
-	public void queueEvent(String event, Object[] arguments);
+	public void queueEvent( String event, Object[] arguments );
 
 	/**
 	 * Get a string, unique to the computercraft, by which the computercraft refers to this peripheral.
