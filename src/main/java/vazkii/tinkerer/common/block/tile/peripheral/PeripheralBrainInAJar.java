@@ -14,13 +14,14 @@
  */
 package vazkii.tinkerer.common.block.tile.peripheral;
 
+import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.peripheral.IComputerAccess;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.nbt.NBTTagCompound;
 import thaumcraft.common.tiles.TileJarBrain;
-import dan200.computer.api.IComputerAccess;
-import dan200.computer.api.IHostedPeripheral;
-import dan200.computer.api.ILuaContext;
 
-public class PeripheralBrainInAJar implements IHostedPeripheral {
+
+public class PeripheralBrainInAJar implements IPeripheral {
 
 	TileJarBrain jar;
 
@@ -43,10 +44,6 @@ public class PeripheralBrainInAJar implements IHostedPeripheral {
 		return new Object[] { jar.xp };
 	}
 
-	@Override
-	public boolean canAttachToSide(int side) {
-		return true;
-	}
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -58,19 +55,11 @@ public class PeripheralBrainInAJar implements IHostedPeripheral {
 		// NO-OP
 	}
 
-	@Override
-	public void update() {
-		// NO-OP
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object)other);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbttagcompound) {
-		// NO-OP
-	}
 
 }
