@@ -14,11 +14,13 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -39,7 +41,7 @@ import vazkii.tinkerer.common.item.ItemMod;
 import java.util.Arrays;
 import java.util.List;
 
-public class ItemBlockTalisman extends ItemMod {
+public class ItemBlockTalisman extends ItemMod implements IBauble{
     @Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
     private static final String TAG_BLOCK_NAME = "blockName";
@@ -113,62 +115,6 @@ public class ItemBlockTalisman extends ItemMod {
 		par2EntityPlayer.setCurrentItemOrArmor(0, par1ItemStack);
 
 		return set;
-	}
-
-	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		Block block=getBlock(par1ItemStack);
-		if(!par2World.isRemote && par1ItemStack.getItemDamage() == 1 && block!=Blocks.air && par3Entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) par3Entity;
-			int meta = getBlockMeta(par1ItemStack);
-
-			int highest = -1;
-			boolean hasFreeSlot = false;
-			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
-			Arrays.fill(counts, 0);
-
-			for(int i = 0; i < counts.length; i++) {
-				ItemStack stack = player.inventory.getStackInSlot(i);
-				if(stack == null) {
-					hasFreeSlot = true;
-					continue;
-				}
-
-				if(Item.getItemFromBlock(block) == stack.getItem() && stack.getItemDamage() == meta) {
-					counts[i] = stack.stackSize;
-					if(highest == -1)
-						highest = i;
-					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
-				}
-			}
-
-			if(highest == -1) {
-				ItemStack heldItem = player.inventory.getItemStack();
-				if(hasFreeSlot && (heldItem == null || Item.getItemFromBlock(block) == heldItem.getItem() || heldItem.getItemDamage() != meta)) {
-					ItemStack stack = new ItemStack(block, remove(par1ItemStack, 64), meta);
-					if(stack.stackSize != 0)
-						player.inventory.addItemStackToInventory(stack);
-				}
-			} else {
-				for(int i = 0; i < counts.length; i++) {
-					int count = counts[i];
-
-					if(i == highest || count == 0)
-						continue;
-
-					add(par1ItemStack, count);
-					player.inventory.setInventorySlotContents(i, null);
-				}
-
-				int countInHighest = counts[highest];
-				int maxSize = new ItemStack(block, 1, meta).getMaxStackSize();
-				if(countInHighest < maxSize) {
-					int missing = maxSize - countInHighest;
-					ItemStack stackInHighest = player.inventory.getStackInSlot(highest);
-					stackInHighest.stackSize += remove(par1ItemStack, missing);
-				}
-			}
-		}
 	}
 
 	private boolean setBlock(ItemStack stack, Block block, int meta) {
@@ -253,4 +199,84 @@ public class ItemBlockTalisman extends ItemMod {
 		return TTClientProxy.kamiRarity;
 	}
 
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return BaubleType.RING;
+    }
+
+    @Override
+    public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
+        Block block=getBlock(itemstack);
+        if(!entity.worldObj.isRemote && itemstack.getItemDamage() == 1 && block!=Blocks.air && entity instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entity;
+            int meta = getBlockMeta(itemstack);
+
+            int highest = -1;
+            boolean hasFreeSlot = false;
+            int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
+            Arrays.fill(counts, 0);
+
+            for(int i = 0; i < counts.length; i++) {
+                ItemStack stack = player.inventory.getStackInSlot(i);
+                if(stack == null) {
+                    hasFreeSlot = true;
+                    continue;
+                }
+
+                if(Item.getItemFromBlock(block) == stack.getItem() && stack.getItemDamage() == meta) {
+                    counts[i] = stack.stackSize;
+                    if(highest == -1)
+                        highest = i;
+                    else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
+                }
+            }
+
+            if(highest == -1) {
+                ItemStack heldItem = player.inventory.getItemStack();
+                if(hasFreeSlot && (heldItem == null || Item.getItemFromBlock(block) == heldItem.getItem() || heldItem.getItemDamage() != meta)) {
+                    ItemStack stack = new ItemStack(block, remove(itemstack, 64), meta);
+                    if(stack.stackSize != 0)
+                        player.inventory.addItemStackToInventory(stack);
+                }
+            } else {
+                for(int i = 0; i < counts.length; i++) {
+                    int count = counts[i];
+
+                    if(i == highest || count == 0)
+                        continue;
+
+                    add(itemstack, count);
+                    player.inventory.setInventorySlotContents(i, null);
+                }
+
+                int countInHighest = counts[highest];
+                int maxSize = new ItemStack(block, 1, meta).getMaxStackSize();
+                if(countInHighest < maxSize) {
+                    int missing = maxSize - countInHighest;
+                    ItemStack stackInHighest = player.inventory.getStackInSlot(highest);
+                    stackInHighest.stackSize += remove(itemstack, missing);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
+
+    @Override
+    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
 }

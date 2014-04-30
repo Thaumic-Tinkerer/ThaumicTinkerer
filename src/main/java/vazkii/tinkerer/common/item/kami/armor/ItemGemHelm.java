@@ -54,7 +54,7 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 
 			if(effect != null && effect.duration <= 202)
                 effect.duration=202;
-			else player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 202, 0));
+			else player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 202, 0,true));
 		}
 		if(player.isInsideOfMaterial(Material.lava) && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0) {
 			player.setAir(300);
@@ -62,7 +62,7 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 
 			if(effect != null && effect.duration <= 202)
                 effect.duration=202;
-			else player.addPotionEffect(new PotionEffect(Potion.blindness.id, 202, 0));
+			else player.addPotionEffect(new PotionEffect(Potion.blindness.id, 202, 0,true));
 		}
 		int food = player.getFoodStats().getFoodLevel();
 		if(food > 0 && food < 18 && player.shouldHeal() && player.ticksExisted % 80 == 0)

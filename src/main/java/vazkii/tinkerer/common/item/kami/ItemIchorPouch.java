@@ -14,9 +14,12 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -32,7 +35,7 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
 
-public class ItemIchorPouch extends ItemFocusPouch {
+public class ItemIchorPouch extends ItemFocusPouch implements IBauble {
 
 	public ItemIchorPouch() {
 		super();
@@ -77,4 +80,33 @@ public class ItemIchorPouch extends ItemFocusPouch {
 		return stackList;
 	}
 
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return BaubleType.BELT;
+    }
+
+    @Override
+    public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
+
+    @Override
+    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
 }
