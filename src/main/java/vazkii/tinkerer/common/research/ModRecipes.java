@@ -236,18 +236,18 @@ public final class ModRecipes {
     }
 
     private static void initInfusionRecipes() {
-        registerResearchItemI(LibResearch.KEY_POTION_CROPS, new ItemStack(ModItems.infusedSeeds, 1, 0), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.AIR, 5), new ItemStack(Items.wheat_seeds),
+        registerResearchItemI(LibResearch.KEY_POTION_CROPS+"0", new ItemStack(ModItems.infusedSeeds, 1, 0), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.AIR, 5), new ItemStack(Items.wheat_seeds),
                 new ItemStack(Items.bucket), new ItemStack(Items.bucket), new ItemStack(Items.bucket), new ItemStack(Items.bucket));
-        registerResearchItemI(LibResearch.KEY_POTION_CROPS, new ItemStack(ModItems.infusedSeeds, 1, 1), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.FIRE, 5), new ItemStack(Items.wheat_seeds),
+        registerResearchItemI(LibResearch.KEY_POTION_CROPS+"1", new ItemStack(ModItems.infusedSeeds, 1, 3), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.FIRE, 5), new ItemStack(Items.wheat_seeds),
                 new ItemStack(Items.water_bucket), new ItemStack(Items.water_bucket), new ItemStack(Items.water_bucket), new ItemStack(Items.water_bucket));
-        registerResearchItemI(LibResearch.KEY_POTION_CROPS, new ItemStack(ModItems.infusedSeeds, 1, 2), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.EARTH, 5), new ItemStack(Items.wheat_seeds),
-                new ItemStack(Items.egg), new ItemStack(Items.egg), new ItemStack(Items.egg), new ItemStack(Items.egg));
-        registerResearchItemI(LibResearch.KEY_POTION_CROPS, new ItemStack(ModItems.infusedSeeds, 1, 3), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.WATER, 5), new ItemStack(Items.wheat_seeds),
+        registerResearchItemI(LibResearch.KEY_POTION_CROPS+"2", new ItemStack(ModItems.infusedSeeds, 1, 2), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.EARTH, 5), new ItemStack(Items.wheat_seeds),
+                new ItemStack(Items.milk_bucket), new ItemStack(Items.milk_bucket), new ItemStack(Items.milk_bucket), new ItemStack(Items.milk_bucket));
+        registerResearchItemI(LibResearch.KEY_POTION_CROPS+"3", new ItemStack(ModItems.infusedSeeds, 1, 1), 3, new AspectList().add(Aspect.CROP, 5).add(Aspect.WATER, 5), new ItemStack(Items.wheat_seeds),
                 new ItemStack(Items.lava_bucket), new ItemStack(Items.lava_bucket), new ItemStack(Items.lava_bucket), new ItemStack(Items.lava_bucket));
 
         for(int i=0;i<4;i++){
-            registerResearchItemI(LibResearch.KEY_POTIONS, new ItemStack(ModItems.infusedPotion, 1, i), 8, new AspectList().add(Aspect.CROP, 40).add(Aspect.MAGIC, 10),
-                    new ItemStack(ModItems.infusedSeeds, 1, i), new ItemStack(ModItems.infusedSeeds, 1, i), new ItemStack(ModItems.infusedSeeds, 1, i), new ItemStack(ModItems.infusedSeeds, 1, i));
+            registerResearchItemI(LibResearch.KEY_POTIONS+i, new ItemStack(ModItems.infusedPotion, 1, i), 8, new AspectList().add(Aspect.CROP, 40).add(Aspect.MAGIC, 10),
+                    new ItemStack(ModItems.infusedGrain, 1, i), new ItemStack(ModItems.infusedGrain, 1, i), new ItemStack(ModItems.infusedGrain, 1, i), new ItemStack(ModItems.infusedGrain, 1, i));
         }
 
         registerResearchItemI(LibResearch.KEY_FOCUS_FLIGHT, new ItemStack(ModItems.focusFlight), 3, new AspectList().add(Aspect.AIR, 15).add(Aspect.MOTION, 20).add(Aspect.TRAVEL, 10), new ItemStack(Items.ender_pearl),
