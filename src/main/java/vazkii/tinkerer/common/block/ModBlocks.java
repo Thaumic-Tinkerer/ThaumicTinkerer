@@ -131,11 +131,11 @@ public final class ModBlocks {
 		if(ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
-			//if(ConfigHandler.bedrockDimensionID != 0) {
+			if(ConfigHandler.bedrockDimensionID != 0) {
 			//	GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
 
 				GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
-			//}
+			}
 		}
 	}
 
