@@ -34,7 +34,8 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibFeatures;
-@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
+@Optional.InterfaceList({@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
+        @Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy")})
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport, IPeripheral {
 
 	private boolean addedToICEnergyNet = false;
@@ -221,12 +222,14 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
+    @Optional.Method(modid = "BuildCraft|Energy")
 	public PowerReceiver getPowerReceiver(ForgeDirection side) {
 		TileEntity tile = getTile();
 		return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).getPowerReceiver(side) : null;
 	}
 
 	@Override
+    @Optional.Method(modid = "BuildCraft|Energy")
 	public void doWork(PowerHandler workProvider) {
 		TileEntity tile = getTile();
 		if (tile instanceof IPowerReceptor)
@@ -422,23 +425,26 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public String getType() {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getType() : "Transvector Interface Unconnected Peripherad";
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public String[] getMethodNames() {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getMethodNames() : new String[0];
 	}
 
 	@Override
+    @Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).callMethod(computer, context, method, arguments) : new Object[0];
 	}
 
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+
 	public void attach(IComputerAccess computer) {
 		if(getTile() instanceof  IPeripheral){
 			((IPeripheral) getTile()).attach(computer);
