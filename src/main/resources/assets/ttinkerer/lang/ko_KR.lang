@@ -16,8 +16,8 @@ ttmisc.leftClick=좌클릭
 ttmisc.rightClick=우클릭
 ttmisc.redstoneControl=레드스톤 제어
 ttmisc.animationTablet.notRotatable=태블릿이 작동중일 땐 회전시킬 수 없습니다.
-ttmisc.bloodSword.activateEssentiaHarvest=Activated Essentia Harvesting
-ttmisc.bloodSword.deactivateEssentiaHarvest=Deactivated Essentia Harvesting
+ttmisc.bloodSword.activateEssentiaHarvest=에센시아 채집 활성화
+ttmisc.bloodSword.deactivateEssentiaHarvest=에센시아 채집 비활성화
 ttmisc.focusDislocation.tooltip=현재 전이중
 ttmisc.focusDislocation.tooltipExtra=추가 코스트
 ttmisc.inactive=비활성화
@@ -36,7 +36,7 @@ ttmisc.notAbsorbing=비활성화
 ttmisc.absorbing=활성화
 ttmisc.shareTome.write=연구 현황이 작성되었습니다.
 ttmisc.shareTome.notOnline=이 연구 현황의 주인이 현재 접속중이 아닙니다.
-ttmisc.shareTomb.offlineshare=Offline share
+ttmisc.shareTomb.offlineshare=오프라인 공유
 ttmisc.shareTome.sync=연구 현황을 동기화하였습니다.
 ttmisc.shareTome.noAssign=활성화되지 않았습니다.
 ttmisc.shareTome.playerName=%s의 연구 현황에 연결되어있습니다.
@@ -95,9 +95,9 @@ item.ttinkerer:revealingHelm.name=발견의 헬멧
 item.ttinkerer:infusedInkwell.name=공간확장 필기도구 (NYI)
 item.ttinkerer:focusDeflect.name=완드 포커스: 왜곡
 item.ttinkerer:shareBook.name=지식 공유의 책
-item.ttinkerer:mobAspect.name=Soul Aspect
-item.ttinkerer:mobAspect.condensed.name=Condensed Soul Aspect
-item.ttinkerer:mobAspect.infused.name=Infused Soul Aspect
+item.ttinkerer:mobAspect.name=영혼 위상
+item.ttinkerer:mobAspect.condensed.name=응축된 영혼 위상
+item.ttinkerer:mobAspect.infused.name=농축된 영혼 위상
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=신의 물질
@@ -151,7 +151,7 @@ tile.ttinkerer:dislocator.name=트랜스벡터 전이장치
 tile.ttinkerer:repairer.name=사우믹 재구성장치
 tile.ttinkerer:aspectAnalyzer.name=위상 분석장치
 tile.ttinkerer:platform.name=반투과성 플랫폼
-
+tile.ttinkerer:spawner.name=강령술 석판
 tile.ttinkerer:portal.name=기저 포탈
 tile.ttinkerer:Levitational Locomotive.name=부양 추진체
 tile.ttinkerer:Levitational Locomotive Relay.name=부양 추진체 중계기
@@ -168,14 +168,14 @@ enchantment.ttinkerer:desintegrate=분해
 enchantment.ttinkerer:quickDraw=빠른 장전
 enchantment.ttinkerer:vampirism=흡혈
 
-enchantment.ttinkerer:dispersedStrike=Dispersed Strike
-enchantment.ttinkerer:focusedStrike=Focused Strike
-enchantment.ttinkerer:tunnel=Tunnel
-enchantment.ttinkerer:finalStrike=Final Strike
-enchantment.ttinkerer:pounce=Pounce
-enchantment.ttinkerer:shatter=Shatter
-enchantment.ttinkerer:shockwave=Shockwave
-enchantment.ttinkerer:valiance=Valiance
+enchantment.ttinkerer:dispersedStrike=분산 타격
+enchantment.ttinkerer:focusedStrike=집중 타격
+enchantment.ttinkerer:tunnel=터널
+enchantment.ttinkerer:finalStrike=최후의 일격
+enchantment.ttinkerer:pounce=덮치기
+enchantment.ttinkerer:shatter=산산조각
+enchantment.ttinkerer:shockwave=충격파
+enchantment.ttinkerer:valiance=용맹
 
 
 # WAND COMPONENTS
@@ -310,7 +310,7 @@ ttresearch.page.TTENCH_ASCENT_BOOST.0=좀 더 높이 뛸 수 있게 해 주는 �
 # -- ENCHANTMENT: SLOW FALL
 ttresearch.name.TTENCH_SLOW_FALL=인챈트: 부드러운 하강
 ttresearch.lore.TTENCH_SLOW_FALL=M.A.G.E.
-ttresearch.page.TTENCH_SLOW_FALL.0=천천히 떨어지게 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 발 방어구에 적용할 수 있습니다. 이 인챈트가 부여된 방어구의 착용자는 천천히 떨어지게 되며 낙하 데미지를 입지 않거나 아주 적게 입습니다.<BR><BR>Shift를 누른 동안에는 인챈트의 효과가 적용되지 않습니다.
+ttresearch.page.TTENCH_SLOW_FALL.0=천천히 떨어지게 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 발 방어구에 적용할 수 있습니다. 이 인챈트가 적용된 방어구의 착용자는 천천히 떨어지게 되며 낙하 데미지를 입지 않거나 아주 적게 입습니다.<BR><BR>Shift를 누른 동안에는 인챈트의 효과가 적용되지 않습니다.
 
 # -- ENCHANTMENT: FLAMING TOUCH
 ttresearch.name.TTENCH_AUTO_SMELT=인챈트: 화염의 손길
@@ -325,53 +325,53 @@ ttresearch.page.TTENCH_DESINTEGRATE.0=부드러운 물질이라면 엄청난 속
 # -- ENCHANTMENT: QUICK DRAW
 ttresearch.name.TTENCH_QUICK_DRAW=인챈트: 빠른 장전
 ttresearch.lore.TTENCH_QUICK_DRAW=속사포처럼
-ttresearch.page.TTENCH_QUICK_DRAW.0=활시위를 빠르게 당길 수 있도록 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 활에 적용 가능하며, 이 인챈트가 적용된 활은 활시위를 최대로 당기는 속도가 빨리집니다.
+ttresearch.page.TTENCH_QUICK_DRAW.0=활시위를 빠르게 당길 수 있도록 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 활에 적용 가능하며, 적용된 활은 활시위를 최대로 당기는 속도가 빨리집니다.
 
 # -- ENCHANTMENT: VAMPIRISM
 ttresearch.name.TTENCH_VAMPIRISM=인챈트: 흡혈
 ttresearch.lore.TTENCH_VAMPIRISM=이건 내가 가져가겠어
-ttresearch.page.TTENCH_VAMPIRISM.0=공격한 대상의 체력을 빼앗아 오는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 검에 적용 가능하며, 이 인챈트가 적용된 검으로 상대를 공격할 경우, 가한 데미지의 일정량을 사용자의 체력으로 흡수합니다.
+ttresearch.page.TTENCH_VAMPIRISM.0=공격한 대상의 체력을 빼앗아 오는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 검에 적용 가능하며, 적용된 검으로 상대를 공격할 경우, 가한 데미지의 일정량을 사용자의 체력으로 흡수합니다.
 
 # -- ENCHANTMENT: DISPERSED_STRIKES
-ttresearch.name.TTENCH_DISPERSED=Enchantment: Dispersed Strikes
-ttresearch.lore.TTENCH_DISPERSED=Kill ALL the mobs
-ttresearch.page.TTENCH_DISPERSED.0=You have formulated an enchantment that allows you to fight many mobs at once.<BR><BR>This enchantment can be applied on swords. When done so, the damage to a mob on the first hit will be multiplied, but the damage on successive strikes to the same mob will be decreased.
+ttresearch.name.TTENCH_DISPERSED=인챈트: 분산 타격
+ttresearch.lore.TTENCH_DISPERSED=대량학살
+ttresearch.page.TTENCH_DISPERSED.0=1대 다(多)의 상황에 유용한 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 검에 적용 가능하며, 적용된 검은 어떤 대상에 대해 첫 번째 공격은 두 배의 데미지를 가하지만, 한 대상을 연속적으로 공격할 경우 데미지가 점차 감소합니다.
 
 # -- ENCHANTMENT: FOCUSED_STRIKES
-ttresearch.name.TTENCH_FOCUSED=Enchantment: Focused Strikes
-ttresearch.lore.TTENCH_FOCUSED=Kill ONE OF the mobs
-ttresearch.page.TTENCH_FOCUSED.0=You have formulated an enchantment that enables you to become proficient at fighting a single mob.<BR><BR>This enchantment can be applied on swords. When done so, the damage to a mob on the first hit will be decreased, but the damage on successive strikes to the same mob will be increased.
+ttresearch.name.TTENCH_FOCUSED=인챈트: 집중 타격
+ttresearch.lore.TTENCH_FOCUSED=몬스터와의 일기투
+ttresearch.page.TTENCH_FOCUSED.0=1대 1의 상황에 유용한 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 검에 적용 가능하며, 적용된 검은 어떤 대상을 공격할 경우, 첫 번째 공격의 데미지는 그다지 강력하지 않지만, 한 대상을 연속적으로 공격할 경우 데미지가 점차 증가합니다.
 
 # -- ENCHANTMENT: FINAL_STRIKE
-ttresearch.name.TTENCH_FINAL=Enchantment: Final Strike
-ttresearch.lore.TTENCH_FINAL=Go for the head!
-ttresearch.page.TTENCH_FINAL.0=You have formulated an enchantment that enables you to occasionally score critical hits.<BR><BR>This enchantment can be applied on swords. When done so, there is a chance that a hit will do triple damage.
+ttresearch.name.TTENCH_FINAL=인챈트: 최후의 일격
+ttresearch.lore.TTENCH_FINAL=일격필살!
+ttresearch.page.TTENCH_FINAL.0=가끔씩 치명적인 일격을 가할 수 있게 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 검에 적용 가능하며, 적용된 검으로 공격할 경우 가끔씩 치명타를 가하며, 이 치명타에는 3배의 데미지가 들어갑니다.
 
 # -- ENCHANTMENT: VALIANCE
-ttresearch.name.TTENCH_VALIANCE=Enchantment: Valiance
-ttresearch.lore.TTENCH_VALIANCE=Back from the edge
-ttresearch.page.TTENCH_VALIANCE.0=You have formulated an enchantment that enables you to fight better when at low health.<BR><BR>This enchantment can be applied on swords. When done so, damage done with the sword will be increased when the weilder is at low health.
+ttresearch.name.TTENCH_VALIANCE=인챈트: 용맹
+ttresearch.lore.TTENCH_VALIANCE=남자의 인챈트
+ttresearch.page.TTENCH_VALIANCE.0=자신의 체력이 낮을 수록 더 강한 공격력을 발휘하게 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 검에 적용 가능하며, 적용된 검은 주인의 체력이 낮을수록 더 강한 공격력을 발휘합니다.
 
 
 # -- ENCHANTMENT: TUNNEL
-ttresearch.name.TTENCH_TUNNEL=Enchantment: Tunnel
-ttresearch.lore.TTENCH_TUNNEL=Mining is boring
-ttresearch.page.TTENCH_TUNNEL.0=You have formulated an enchantment that enables you to become more efficient at digging straight lines.<BR><BR>This enchantment can be applied on tools. When done so, digging multiple blocks in a straight line will increase your digging speed.
+ttresearch.name.TTENCH_TUNNEL=인챈트: 터널
+ttresearch.lore.TTENCH_TUNNEL=땅파는건 지루해...
+ttresearch.page.TTENCH_TUNNEL.0=직선굴을 팔 때 유용한 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 도구에 적용 가능하며, 직선으로 채굴하는 속도를 매우 빠르게 해 줍니다.
 
 # -- ENCHANTMENT: SHATTER
-ttresearch.name.TTENCH_SHATTER=Enchantment: Shatter
-ttresearch.lore.TTENCH_SHATTER=Who needs obsidian
-ttresearch.page.TTENCH_SHATTER.0=You have formulated an enchantment that enables you to become more efficient at destroying strong blocks.<BR><BR>This enchantment can be applied on tools. When done so, digging speed will be greatly increased on strong blocks.
+ttresearch.name.TTENCH_SHATTER=인챈트: 산산조각
+ttresearch.lore.TTENCH_SHATTER=옵시디언 필요한 사람?
+ttresearch.page.TTENCH_SHATTER.0=부수려는 블럭이 단단할 수록 더 강한 힘을 끌어내 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 도구에 적용 가능하며, 부수려는 블럭이 단단하면 단단할 수록 채굴 속도가 증가합니다.
 
 # -- ENCHANTMENT: SHOCKWAVE
-ttresearch.name.TTENCH_SHOCKWAVE=Enchantment: Shockwave
-ttresearch.lore.TTENCH_SHOCKWAVE=Mini Earthquakes
-ttresearch.page.TTENCH_SHOCKWAVE.0=You have formulated an enchantment that enables you to become to kill enemies while falling.<BR><BR>This enchantment can be applied on boots. When done so, whenever the wearer falls, damage will be dealt to surrounding mobs or players.<BR><BR>Unfortunatly Magics of all types that make the player lighter, so to prevent damage from falling, will make the player too light to damage entities. You feel there may be ways to stop this at a later time, once you know the magic better.
+ttresearch.name.TTENCH_SHOCKWAVE=인챈트: 충격파
+ttresearch.lore.TTENCH_SHOCKWAVE=작은 지진
+ttresearch.page.TTENCH_SHOCKWAVE.0=낙하할 때의 충격으로 적들을 공격할 수 있게 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 발 방어구에 적용이 가능합니다. 충격파가 적용된 방어구의 착용자가 낙하할 경우, 낙하지점 주변의 몬스터들에게도 데미지를 가합니다.<BR><BR>하지만, 낙하데미지를 무효화 해 주는 다른 인챈트, 혹은 도구들을 갖고 있을 경우엔 몬스터들에게 데미지를 가하기에 너무 가벼워질 수 있습니다. 나중에, 이 인챈트에 대해 더 알게 된다면, 이 문제를 해결할 수 있을지도 모릅니다.
 
 # -- ENCHANTMENT: POUNCE
-ttresearch.name.TTENCH_POUNCE=Enchantment: Pounce
-ttresearch.lore.TTENCH_POUNCE=Like a kitty-cat
-ttresearch.page.TTENCH_POUNCE.0=You have formulated an enchantment that enables you to to leap on your foes.<BR><BR>This enchantment can be applied on leggings. When done so, your attacks will be more powerful while you are in the air.
+ttresearch.name.TTENCH_POUNCE=인챈트: 덮치기
+ttresearch.lore.TTENCH_POUNCE=사나운 고양이처럼
+ttresearch.page.TTENCH_POUNCE.0=적을 향해 도약할 수 있게 해 주는 새로운 인챈트 공식을 고안하였습니다.<BR><BR>이 인챈트는 다리 방어구에 적용 가능하며, 허공에서의 공격력을 더 강하게 해 줍니다.
 
 
 # -- WAND FOCUS: EFREET'S FLAME
@@ -394,13 +394,13 @@ ttresearch.page.FOCUS_ENDER_CHEST.ES=손거울과 포터블 홀을 조합해서 
 ttresearch.name.BLOOD_SWORD=저주받은 영혼의 검
 ttresearch.lore.BLOOD_SWORD=굉장히 불쾌하군
 ttresearch.page.BLOOD_SWORD.0=이 검은 그 어떤 검보다도 강력한 힘으로 적을 베어버립니다. 하지만 검이 이러한 힘을 발휘하기 위해서는 주인의 피가 필요합니다.<BR><BR>이 검으로 무엇인가를 베면, 주인 역시 2의 데미지를 입으며, 방어하는 데 사용할 경우 가해진 공격의 세기에 상관없이 3의 데미지만을 입습니다.<BR><BR>또한 이 검을 들고 있는 것 만으로도 이동 속도가 상승합니다.
-ttresearch.page.BLOOD_SWORD.1=You have also discovered that the sword can reap the souls of mobs instead of normal drops. This ability is activated via a shift-right click. These souls are rich in essentia, but you suspect that they might have other uses.
+ttresearch.page.BLOOD_SWORD.1=또한, 이 검에는 몬스터의 영혼을 뽑아낼 수 있는 능력이 있습니다. 이 능력은 Shift 우클릭으로 활성화시킬 수 있습니다. 뽑아낸 영혼은 에센시아도 풍부하지만, 더 유용한 사용처가 있으리라 생각됩니다.
 
-# -- Mob Summoning
-ttresearch.name.SUMMON=Mob Summoning
-ttresearch.lore.SUMMON=Almost necromancy
-ttresearch.page.SUMMON.0=You are able to use the souls gained from a Cursed spirits blade in order to summon mobs. Place three pedestals around a Tablet of Necromancy. On the pedestals, place three soul aspects. Different types of soul aspects give different types of mobs. Every mob has a different composition.
-ttresearch.page.SUMMON.1=By creating Infused Soul Aspects, you are able to summon mobs without consuming Soul Aspects. Summoning using Infused Soul Aspects is much slower than normal.
+# -- MOB SUMMONING
+ttresearch.name.SUMMON=몬스터 소환
+ttresearch.lore.SUMMON=강령술
+ttresearch.page.SUMMON.0=저주받은 영혼의 검으로 뽑아낸 몬스터들의 영혼을 이용해서 그 몬스터를 소환해 내는 방법을 알아내었습니다. 몬스터의 소환을 위해선, 우선 강령술 석판 주위에 세 개의 아케인 주각을 배치시킵니다. 그 다음 각각의 주각 위에 영혼 위상을 올려놓습니다. 서로 다른 종류의 영혼 위상들은 서로 다른 몬스터를 소환합니다. 몬스터들은 각각의 위상의 조합식이 모두 다릅니다.
+ttresearch.page.SUMMON.1=농축된 영혼 위상을 사용하면 영혼 위상의 소모 없이 몬스터를 소환할 수 있습니다. 이 농축된 영혼 위상을 사용하게 되면 일반적인 영혼 위상을 사용할 때에 비해서 소환 시간이 오래 걸립니다.
 
 # -- TRANSVECTOR DISLOCATOR
 ttresearch.name.DISLOCATOR=트랜스벡터 전이장치
