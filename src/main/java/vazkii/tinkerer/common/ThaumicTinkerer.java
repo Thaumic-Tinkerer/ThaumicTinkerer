@@ -73,7 +73,7 @@ public class ThaumicTinkerer {
         for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
              if(message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST))
             {
-            	String[] values=message.getStringValue().split(',');
+            	String[] values=message.getStringValue().split(",");
                 for(String value:values)
                 {
                 	KamiResearchItem.Blacklist.add(value);
