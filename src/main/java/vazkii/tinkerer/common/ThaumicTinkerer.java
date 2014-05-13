@@ -71,8 +71,13 @@ public class ThaumicTinkerer {
     @EventHandler
     public void HandleIMCMessages(FMLInterModComms.IMCEvent messages) {
         for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
-            if (message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST)) {
-                KamiResearchItem.Blacklist.add(message.getStringValue());
+             if(message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST))
+            {
+            	String[] values=message.getStringValue().split(',');
+                for(String value:values)
+                {
+                	KamiResearchItem.Blacklist.add(value);
+                }
             }
         }
     }
