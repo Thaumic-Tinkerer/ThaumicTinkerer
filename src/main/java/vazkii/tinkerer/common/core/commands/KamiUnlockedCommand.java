@@ -28,7 +28,12 @@ public class KamiUnlockedCommand extends CommandBase {
     public String getCommandUsage(ICommandSender icommandsender) {
         return "iskamiunlocked";
     }
-
+    @Override
+    public boolean canCommandSenderUseCommand(ICommandSender par1ICommandSender)
+    {
+        return true;
+    }
+    
     @Override
     public int getRequiredPermissionLevel() {
         return 0;
