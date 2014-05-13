@@ -77,8 +77,11 @@ public class ThaumicTinkerer {
         {
             if(message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST))
             {
-                
-                KamiResearchItem.Blacklist.add(message.getStringValue());
+            	String[] values=message.getStringValue().split(',');
+                for(String value:values)
+                {
+                	KamiResearchItem.Blacklist.add(value);
+                }
             }
         }
     }
