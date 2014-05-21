@@ -54,7 +54,9 @@ public final class PlacementMirrorPredictionRenderer {
 	}
 
 	private void renderBlockAt(ItemStack block, ChunkCoordinates pos, ChunkCoordinates last) {
-		GL11.glPushMatrix();
+		if(block.getItem()==null)
+		return;
+			GL11.glPushMatrix();
         GL11.glTranslated(pos.posX + 0.5 - RenderManager.renderPosX, pos.posY + 0.5 - RenderManager.renderPosY, pos.posZ + 0.5 - RenderManager.renderPosZ);
 
 		GL11.glColor4f(1F, 1F, 1F, 0.6F);
