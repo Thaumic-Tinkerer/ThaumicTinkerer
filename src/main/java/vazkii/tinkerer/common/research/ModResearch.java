@@ -176,8 +176,8 @@ public final class ModResearch {
         List<ResearchPage> list=new ArrayList<ResearchPage>();
         list.add(new ResearchPage("0"));
         list.add(recipePage(LibResearch.KEY_SUMMON+"0"));
-        list.add(recipePage(LibResearch.KEY_SUMMON+"1"));
-        list.add(infusionPage(LibResearch.KEY_SUMMON));
+        //list.add(recipePage(LibResearch.KEY_SUMMON+"1"));
+        //list.add(infusionPage(LibResearch.KEY_SUMMON));
         list.add(new ResearchPage("1"));
         //for(EnumMobAspect aspect:EnumMobAspect.values()) {
         //    list.add(aspect.GetRecepiePage());

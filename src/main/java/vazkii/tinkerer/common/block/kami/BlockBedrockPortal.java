@@ -78,7 +78,12 @@ public class BlockBedrockPortal extends Block {
 		return new TileBedrockPortal();
 	}
 
-	@Override
+    @Override
+    public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity entity) {
+        return false;
+    }
+
+    @Override
 	public boolean isOpaqueCube() {
 		return false;
 	}

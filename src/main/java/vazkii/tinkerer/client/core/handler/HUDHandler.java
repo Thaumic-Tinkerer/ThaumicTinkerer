@@ -18,6 +18,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
@@ -69,8 +70,8 @@ public final class HUDHandler {
 							font.drawStringWithShadow(content, xpos + 20, ypos + 9, 0xFFAA00);
 						}
 
-						if(pickedBlock.getItem() != null)
-							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, pickedBlock, xpos, ypos);
+						if(new ItemStack(((ItemBlock)pickedBlock.getItem()).field_150939_a).getItem() != null)
+							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(((ItemBlock)pickedBlock.getItem()).field_150939_a), xpos, ypos);
 						font.setUnicodeFlag(unicode);
 					}
 				}

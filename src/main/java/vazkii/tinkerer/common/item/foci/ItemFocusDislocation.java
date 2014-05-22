@@ -20,6 +20,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -88,7 +89,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 				if(block.canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit)) {
 					if(!world.isRemote) {
-						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1 | 2);
+						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, ((ItemBlock)stack.getItem()).field_150939_a, stack.getItemDamage(), 1 | 2);
 						block.onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
 						NBTTagCompound tileCmp = getStackTileEntity(itemstack);
 						if(tileCmp != null && !tileCmp.hasNoTags()) {
@@ -186,7 +187,13 @@ public class ItemFocusDislocation extends ItemModFocus {
             block = Block.getBlockById(id);
         }
 		int meta = ItemNBTHelper.getInt(focus, TAG_BLOCK_META, 0);
-		return new ItemStack(block, 1, meta);
+        ItemStack stck;
+        //if(block instanceof BlockReed)
+        //{
+        //   stck=new ItemStack(Items.reeds,1,meta);
+        //}
+        stck=new ItemStack(new ItemBlock(block),1,meta);
+		return stck;
 	}
 
 	public NBTTagCompound getStackTileEntity(ItemStack stack) {
@@ -206,7 +213,8 @@ public class ItemFocusDislocation extends ItemModFocus {
 	private void storePickedBlock(ItemStack stack,Block block, short meta, TileEntity tile) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
-		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, Block.blockRegistry.getNameForObject(block));
+        String blockName=Block.blockRegistry.getNameForObject(block);
+		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, blockName);
 		ItemNBTHelper.setInt(focus, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
 		if(tile != null)
