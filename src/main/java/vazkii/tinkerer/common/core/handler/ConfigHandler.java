@@ -64,9 +64,9 @@ public final class ConfigHandler {
 
 		config.load();
 
-		Property propEnableKami=config.get(Configuration.CATEGORY_GENERAL, "kami.forceenabled", false);
-		propEnableKami.comment = "Set to true to enable all kami stuff (note, either this OR the kami mod file will work)";
-		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(false);
+		Property propEnableKami=config.get(Configuration.CATEGORY_GENERAL, "kami.forceenabled", true);
+		propEnableKami.comment = "Set to true to enable all kami stuff";
+		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(true);
 
 
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
