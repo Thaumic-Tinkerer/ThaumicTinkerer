@@ -1,6 +1,6 @@
 package cofh.api.tileentity;
 
-import codechicken.lib.raytracer.IndexedCuboid6;
+import thaumcraft.codechicken.lib.raytracer.IndexedCuboid6;
 
 import java.util.List;
 
