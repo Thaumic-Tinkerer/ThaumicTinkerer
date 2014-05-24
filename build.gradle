@@ -5,10 +5,6 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            name = "shadow-repo"
-            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
-        }
 		maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
@@ -19,7 +15,6 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-        classpath 'org.gradle.plugins:shadow:0.7.4'
         classpath group: 'net.monofraps', name: 'GradleCurse', version: '1.0-SNAPSHOT'
     }
 }
@@ -68,15 +63,6 @@ curseDeploy {
                         gameVersions=[326]
                     }
         }
-apply plugin: 'shadow'
-
-shadow
-        {
-            include 'javax/mail/**'
-            include 'com/sun/activation/**'
-            include 'javax/activation/**'
-            include 'com/sun/mail/**'
-        }
 
 apply plugin: 'forge'
 version = "2.3-DEV"
@@ -101,14 +87,21 @@ minecraft {
 
 }
 
+
+
+apply plugin: 'eclipse'
+
+apply plugin: 'war'
+
 dependencies {
     compile files (
             'TCDEOBF.jar'
-            //'mods/Waila-deBon.jar',
     )
-    compile 'javax.mail:mail:1.4'
-    compile "mantle:Mantle:1.7.2-130.6247733:deobf"
-    compile "tconstruct:TConstruct:1.7.2-1.6.0.jenkins469:deobf"
+    providedCompile files (
+            'mods/Waila-deBon.jar'
+    )
+    providedCompile "mantle:Mantle:1.7.2-130.6247733:deobf"
+    providedCompile "tconstruct:TConstruct:1.7.2-1.6.0.jenkins494:deobf"
 }
 
 processResources

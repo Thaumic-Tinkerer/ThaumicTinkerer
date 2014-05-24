@@ -25,7 +25,6 @@ import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import thaumcraft.common.CommonProxy;
-import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.api.InterModCommsOperations;
 import vazkii.tinkerer.common.core.commands.KamiUnlockedCommand;
 import vazkii.tinkerer.common.core.commands.MaxResearchCommand;
@@ -50,10 +49,6 @@ public class ThaumicTinkerer {
     public static final PacketPipeline packetPipeline = new PacketPipeline();
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		new AutoCrashReporter();
-		tcProxy = Thaumcraft.proxy;
-			System.out.println("Registering Thaumic Tinkerer's automatic crash reporter");
-			
 		proxy.preInit(event);
 		if(Loader.isModLoaded("Waila")) {
 			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");
