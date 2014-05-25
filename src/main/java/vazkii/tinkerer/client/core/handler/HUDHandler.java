@@ -18,6 +18,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -72,6 +74,10 @@ public final class HUDHandler {
 
 						if(new ItemStack(((ItemBlock)pickedBlock.getItem()).field_150939_a).getItem() != null)
 							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(((ItemBlock)pickedBlock.getItem()).field_150939_a), xpos, ypos);
+                        else {
+                            if (((ItemBlock)pickedBlock.getItem()).field_150939_a== Blocks.reeds)
+                                renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(Items.reeds), xpos, ypos);
+                        }
 						font.setUnicodeFlag(unicode);
 					}
 				}
