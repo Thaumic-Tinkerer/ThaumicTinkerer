@@ -100,14 +100,14 @@ public final class ModRecipes {
 
 	private static void initArcaneRecipes() {
 
-		registerResearchItem(LibResearch.KEY_SUMMON+"0", new ItemStack(ModBlocks.spawner), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
+		registerResearchItem(LibResearch.KEY_SUMMON+"0", LibResearch.KEY_SUMMON, new ItemStack(ModBlocks.spawner), new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid,1,1));
 		registerResearchItem(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ModBlocks.interfase), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
 				"BRB", "LEL", "BRB",
 				'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
 				'E', new ItemStack(Items.ender_pearl),
 				'L', new ItemStack(Items.dye, 1, 4),
 				'R', new ItemStack(Items.redstone));
-		registerResearchItem(LibResearch.KEY_CONNECTOR, LibResearch.KEY_PERIPHERALS,  new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2),
+		registerResearchItem(LibResearch.KEY_INTERFACE+"1", LibResearch.KEY_INTERFACE, new ItemStack(ModItems.connector), new AspectList().add(Aspect.ORDER, 2),
 				" I ", " WI", "S  ",
 				'I', new ItemStack(Items.iron_ingot),
 				'W', new ItemStack(Items.stick),
