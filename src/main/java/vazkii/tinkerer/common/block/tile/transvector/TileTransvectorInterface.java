@@ -36,7 +36,7 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibFeatures;
 @Optional.InterfaceList({@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
         @Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy")})
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport, IPeripheral {
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport, IPeripheral{
 
 	private boolean addedToICEnergyNet = false;
 
@@ -162,7 +162,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		TileEntity tile = getTile();
-		return tile instanceof IFluidTank ? ((IFluidHandler) tile).fill(from, resource, doFill) : 0;
+		return tile instanceof IFluidHandler ? ((IFluidHandler) tile).fill(from, resource, doFill) : 0;
 	}
 
 	@Override
