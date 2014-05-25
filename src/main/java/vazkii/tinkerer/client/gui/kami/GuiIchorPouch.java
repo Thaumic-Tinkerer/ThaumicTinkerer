@@ -17,12 +17,10 @@ package vazkii.tinkerer.client.gui.kami;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.lib.LibResources;
 
-public class GuiIchorPouch extends GuiContainer {
+public class GuiIchorPouch extends GuiContainer{
 
 	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ICHOR_POUCH);
 
@@ -30,6 +28,16 @@ public class GuiIchorPouch extends GuiContainer {
 
 	public GuiIchorPouch(Container par1Container) {
 		super(par1Container);
+	}
+
+	//Overridden to prevent a dupe
+	//See issue 367
+	protected boolean checkHotbarKeys(int slot){
+		if (this.mc.gameSettings.keyBindsHotbar[this.mc.thePlayer.inventory.currentItem].getKeyCode()!=slot){
+			super.checkHotbarKeys(slot);
+		}
+
+		return false;
 	}
 
 	@Override
