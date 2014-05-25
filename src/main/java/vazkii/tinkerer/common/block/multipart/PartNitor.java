@@ -11,7 +11,7 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [25 Oct 2013, 19:11:44 (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.multipart;
 
@@ -63,4 +63,4 @@ public class PartNitor extends McMetaPart {
 		return getBlock().getUnlocalizedName();
 	}
 
-}*/
+}

@@ -11,7 +11,7 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [29 Oct 2013, 14:23:16 (GMT)]
- *//*
+ */
 
 package vazkii.tinkerer.common.block.multipart;
 
@@ -47,4 +47,4 @@ public class MultipartHandler {
 		MicroMaterialRegistry.registerMaterial(new BlockMicroMaterial(block, meta), block.getUnlocalizedName() + (meta == 0 ? "" : "_" + meta));
 	}
 
-}*/
+}
