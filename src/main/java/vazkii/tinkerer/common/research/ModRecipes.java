@@ -89,7 +89,7 @@ public final class ModRecipes {
 				'P', new ItemStack(Items.paper));
 		}
 
-		for(int i=0;i<16;i++){
+		for(int i=0;i<NumericAspectHelper.values.size();i++){
 			registerResearchItem(LibResearch.KEY_SUMMON+"1",new ItemStack(ModItems.mobAspect, 1, i+20), "XXX", "XXX", "XXX", 'X', new ItemStack(ModItems.mobAspect, 1, i));
 		}
 
