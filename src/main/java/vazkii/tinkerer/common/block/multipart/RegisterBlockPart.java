@@ -4,17 +4,21 @@
  *
  * Check out his mod, ExtraUtilities:
  * http://www.minecraftforum.net/topic/1776056-
- *//*
+ */
 
 package vazkii.tinkerer.common.block.multipart;
 
-import net.minecraft.block.Block;
-import net.minecraft.world.World;
+
 import codechicken.lib.vec.BlockCoord;
 import codechicken.multipart.MultiPartRegistry;
 import codechicken.multipart.MultiPartRegistry.IPartConverter;
 import codechicken.multipart.MultiPartRegistry.IPartFactory;
 import codechicken.multipart.TMultiPart;
+import com.google.common.collect.Lists;
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+
+import java.util.List;
 
 // This class is used by FMP to recreate a part during loading and to convert already existing non-mutlipart blocks into multiparts.
 
@@ -61,16 +65,17 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 		MultiPartRegistry.registerParts(this, new String[] { name });
 	}
 
-	@Override
-	public boolean canConvert(int blockID) {
-		return blockID == block.blockID;
-	}
 
-	@Override
+    @Override
+    public Iterable<Block> blockTypes() {
+        return Lists.newArrayList(block);
+    }
+
+    @Override
 	public TMultiPart convert(World world, BlockCoord pos) {
-		int id = world.getBlockId(pos.x, pos.y, pos.z);
+		Block blockInQuestion = world.getBlock(pos.x, pos.y, pos.z);
 		int meta = world.getBlockMetadata(pos.x, pos.y, pos.z);
-		if (id == block.blockID) {
+		if (blockInQuestion == block) {
 			try {
 				if(part.getName().equals("vazkii.tinkerer.common.block.multipart.PartNitor") && meta != 1)
 					return null;
@@ -88,4 +93,4 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 		return null;
 	}
 }
-*/
+

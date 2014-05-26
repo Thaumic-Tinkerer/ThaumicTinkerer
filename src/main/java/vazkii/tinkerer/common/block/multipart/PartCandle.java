@@ -12,7 +12,7 @@
  * (http://www.minecraftforum.net/topic/1585216-)
  *
  * File Created @ [25 Oct 2013, 17:26:07 (GMT)]
-
+*/
 
 package vazkii.tinkerer.common.block.multipart;
 
@@ -62,4 +62,3 @@ public class PartCandle extends McMetaPart implements IRandomDisplayTick {
 	}
 
 }
-*/
