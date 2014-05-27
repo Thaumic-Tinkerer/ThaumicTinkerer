@@ -58,7 +58,7 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(getBlockID(par1ItemStack) != 0 && par3EntityPlayer.isSneaking()) {
+		if((getBlock(par1ItemStack) != Blocks.air || getBlockID(par1ItemStack) != 0 ) && par3EntityPlayer.isSneaking()) {
 			int dmg = par1ItemStack.getItemDamage();
 			par1ItemStack.setItemDamage(~dmg & 1);
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);

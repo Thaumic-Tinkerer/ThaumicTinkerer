@@ -16,9 +16,10 @@ buildscript {
         maven {
             url 'https://oss.sonatype.org/content/groups/public'
         }
+        mavenLocal()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.3.7-SNAPSHOT'
         classpath 'org.gradle.plugins:shadow:0.7.4'
         classpath group: 'net.monofraps', name: 'GradleCurse', version: '1.0-SNAPSHOT'
     }
@@ -85,7 +86,7 @@ minecraft {
     version = "1.7.2-10.12.1.1091"
     assetDir = "eclipse/assets"
     replace '${version}', project.version
-
+    //coreMod("tconstruct.preloader.TConstructLoaderContainer")
     if (project.hasProperty("pass"))
         replace "INSERTPASSWORDHERE", project.pass
 
