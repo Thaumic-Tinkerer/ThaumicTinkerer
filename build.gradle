@@ -6,10 +6,6 @@ buildscript {
             url = "http://files.minecraftforge.net/maven"
         }
         maven {
-            name = "shadow-repo"
-            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
-        }
-        maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
@@ -44,6 +40,7 @@ repositories {
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 apply plugin: 'forge'
+apply plugin: "curseforge"
 minecraft {
     version = "1.7.2-10.12.1.1091"
     assetDir = "eclipse/assets"
