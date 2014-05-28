@@ -40,9 +40,13 @@ repositories {
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 apply plugin: 'forge'
-apply plugin: "curseforge"
+//apply plugin: "curseforge"
+
+version = "2.3-DEV"
+
 minecraft {
     version = "1.7.2-10.12.1.1091"
+    minecraftVersion="1.7.2"
     assetDir = "eclipse/assets"
     replace '${version}', project.version
     //coreMod("tconstruct.preloader.TConstructLoaderContainer")
@@ -51,17 +55,17 @@ minecraft {
 
 
 }
-curse {
-    projectId='75598'
-    if(project.hasProperty("apiKey"))
-        apiKey=project.apiKey
-    changelog=new URL(changelogLoc).getText()
-    if(project.hasProperty("releaseType"))
-        releaseType=project.releaseType
-}
+//curse {
+//    projectId='75598'
+//    if(project.hasProperty("apiKey"))
+//        apiKey=project.apiKey
+ //   changelog=new URL(changelogLoc).getText()
+ //   if(project.hasProperty("releaseType"))
+ //       releaseType=project.releaseType
+//}
 
 
-version = "2.3-DEV"
+
 
 if (project.hasProperty("buildnum"))
     version = "2.3-"+project.buildnum
