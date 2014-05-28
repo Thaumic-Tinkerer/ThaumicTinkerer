@@ -14,11 +14,14 @@
  */
 package vazkii.tinkerer.common.item;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -34,7 +37,7 @@ import vazkii.tinkerer.common.lib.LibFeatures;
 import java.util.Collection;
 import java.util.List;
 
-public class ItemCleansingTalisman extends ItemMod {
+public class ItemCleansingTalisman extends ItemMod implements IBauble {
 
 	private static final String TAG_ENABLED = "enabled";
 
@@ -55,36 +58,6 @@ public class ItemCleansingTalisman extends ItemMod {
 		return par1ItemStack;
 	}
 
-	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		if(isEnabled(par1ItemStack) && !par2World.isRemote) {
-			if(par3Entity.ticksExisted % 20 == 0) {
-				if (par3Entity instanceof EntityPlayer) {
-					EntityPlayer player = (EntityPlayer)par3Entity;
-					boolean removed = false;
-
-					Collection<PotionEffect> potions = player.getActivePotionEffects();
-
-					if(player.isBurning()) {
-						player.extinguish();
-						removed = true;
-					} else for(PotionEffect potion : potions) {
-						int id = potion.getPotionID();
-						if(Potion.potionTypes[id].isBadEffect()) {
-							player.removePotionEffect(id);
-							removed = true;
-							break;
-						}
-					}
-
-					if(removed) {
-						par1ItemStack.damageItem(1, player);
-						par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
-					}
-				}
-			}
-		}
-	}
 
 	public static boolean isEnabled(ItemStack stack) {
 		return ItemNBTHelper.getBoolean(stack, TAG_ENABLED, false);
@@ -119,4 +92,62 @@ public class ItemCleansingTalisman extends ItemMod {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}
+
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return BaubleType.AMULET;
+    }
+
+    @Override
+    public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
+        World par2World=player.worldObj;
+        if(isEnabled(par1ItemStack) && !par2World.isRemote) {
+            if(player.ticksExisted % 20 == 0) {
+                if (player instanceof EntityPlayer) {
+                    boolean removed = false;
+
+                    Collection<PotionEffect> potions = player.getActivePotionEffects();
+
+                    if(player.isBurning()) {
+                        player.extinguish();
+                        removed = true;
+                    } else for(PotionEffect potion : potions) {
+                        int id = potion.getPotionID();
+                        boolean badEffect=false;
+                        badEffect=ReflectionHelper.getPrivateValue(Potion.class,Potion.potionTypes[id],new String[]{"isBadEffect"});
+                        if(badEffect) {
+                            player.removePotionEffect(id);
+                            removed = true;
+                            break;
+                        }
+                    }
+
+                    if(removed) {
+                        par1ItemStack.damageItem(1, player);
+                        par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
+
+    @Override
+    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
 }
