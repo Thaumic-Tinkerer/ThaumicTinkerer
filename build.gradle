@@ -20,8 +20,6 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-        classpath 'org.gradle.plugins:shadow:0.7.4'
-        classpath group: 'net.monofraps', name: 'GradleCurse', version: '1.0-SNAPSHOT'
     }
 }
 repositories {
@@ -45,7 +43,7 @@ repositories {
     }
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
-
+apply plugin: 'forge'
 curse {
     projectId='75598'
     if(project.hasProperty("apiKey"))
@@ -55,7 +53,7 @@ curse {
         releaseType=project.releaseType
 }
 
-apply plugin: 'forge'
+
 version = "2.3-DEV"
 
 if (project.hasProperty("buildnum"))
