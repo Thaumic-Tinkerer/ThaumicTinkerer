@@ -44,6 +44,16 @@ repositories {
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 apply plugin: 'forge'
+minecraft {
+    version = "1.7.2-10.12.1.1091"
+    assetDir = "eclipse/assets"
+    replace '${version}', project.version
+    //coreMod("tconstruct.preloader.TConstructLoaderContainer")
+    if (project.hasProperty("pass"))
+        replace "INSERTPASSWORDHERE", project.pass
+
+
+}
 curse {
     projectId='75598'
     if(project.hasProperty("apiKey"))
@@ -65,16 +75,7 @@ if(project.hasProperty("releaseType"))
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
-minecraft {
-    version = "1.7.2-10.12.1.1091"
-    assetDir = "eclipse/assets"
-    replace '${version}', project.version
-    //coreMod("tconstruct.preloader.TConstructLoaderContainer")
-    if (project.hasProperty("pass"))
-        replace "INSERTPASSWORDHERE", project.pass
 
-
-}
 
 dependencies {
     compile files (
