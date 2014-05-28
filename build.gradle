@@ -45,30 +45,15 @@ repositories {
     }
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
-apply plugin: 'gradle-curse'
 
-curseDeploy {
-    gameHandle = 'minecraft'
-    def version = "2.3-DEV"
-
-    if (project.hasProperty("buildnum"))
-        version = "2.3-"+project.buildnum
+curse {
+    projectId='75598'
+    if(project.hasProperty("apiKey"))
+        apiKey=project.apiKey
+    changelog=new URL(changelogLoc).getText()
     if(project.hasProperty("releaseType"))
-        if (project.releaseType=="ALPHA")
-            version="alpha-"+version
-    deployment {
-                        curseProjectName='thaumic-tinkerer'
-                        if(project.hasProperty("apiKey"))
-                            apiKey=project.apiKey
-                        uploadFileName='ThaumicTinkerer-'+version+'.jar'
-                        changeLog=new URL(changelogLoc).getText()
-                        changeLogMarkup='CREOLE'
-                        file='art/ThaumicTinkerer-'+version+'.jar'
-                        if(project.hasProperty("releaseType"))
-                            fileType=project.releaseType
-                        gameVersions=[326]
-                    }
-        }
+        releaseType=project.releaseType
+}
 
 apply plugin: 'forge'
 version = "2.3-DEV"
