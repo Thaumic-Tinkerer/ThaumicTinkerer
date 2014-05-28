@@ -39,8 +39,9 @@ repositories {
     }
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
+apply plugin: "curseforge"
 apply plugin: 'forge'
-//apply plugin: "curseforge"
+
 
 version = "2.3-DEV"
 
@@ -55,14 +56,14 @@ minecraft {
 
 
 }
-//curse {
-//    projectId='75598'
-//    if(project.hasProperty("apiKey"))
-//        apiKey=project.apiKey
- //   changelog=new URL(changelogLoc).getText()
- //   if(project.hasProperty("releaseType"))
- //       releaseType=project.releaseType
-//}
+curse {
+    projectId='75598'
+    if(project.hasProperty("apiKey"))
+        apiKey=project.apiKey
+   changelog=new URL(changelogLoc).getText()
+   if(project.hasProperty("releaseType"))
+       releaseType=project.releaseType
+}
 
 
 
