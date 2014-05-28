@@ -14,10 +14,13 @@
  */
 package vazkii.tinkerer.common.item;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -34,7 +37,7 @@ import vazkii.tinkerer.common.lib.LibFeatures;
 
 import java.util.List;
 
-public class ItemXPTalisman extends ItemMod {
+public class ItemXPTalisman extends ItemMod implements IBauble{
 
 	private static final String TAG_XP = "xp";
 	IIcon enabledIcon;
@@ -68,39 +71,6 @@ public class ItemXPTalisman extends ItemMod {
 		return par1ItemStack;
 	}
 
-	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		if(par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
-			int r = LibFeatures.XP_TALISMAN_RANGE;
-			int currentXP = getXP(par1ItemStack);
-			int xpToAdd = 0;
-			int maxXP = LibFeatures.XP_TALISMAN_MAX_XP - currentXP; // Max, to prevent overflow.
-			if(maxXP <= 0) {
-				par1ItemStack.setItemDamage(0);
-				return; // Can't take any XP.
-			}
-
-			AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(par3Entity.posX - r, par3Entity.posY - r, par3Entity.posZ - r, par3Entity.posX + r, par3Entity.posY + r, par3Entity.posZ + r);
-			List<EntityXPOrb> orbs = par2World.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
-
-			for(EntityXPOrb orb : orbs) {
-				if(!orb.isDead) {
-					int xp = orb.getXpValue();
-					if(xpToAdd + xp <= maxXP) {
-						xpToAdd += xp;
-						consumeXPOrb(orb);
-					}
-
-					maxXP -= xpToAdd;
-
-					if(maxXP <= 0)
-						break;
-				}
-			}
-
-			setXP(par1ItemStack, Math.min(LibFeatures.XP_TALISMAN_MAX_XP, currentXP + xpToAdd));
-		}
-	}
 
 	private void consumeXPOrb(EntityXPOrb orb) {
 		orb.setDead();
@@ -155,4 +125,63 @@ public class ItemXPTalisman extends ItemMod {
 		ItemNBTHelper.setInt(stack, TAG_XP, xp);
 	}
 
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return BaubleType.AMULET;
+    }
+
+    @Override
+    public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
+        World par2World=player.worldObj;
+        if(par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
+            int r = LibFeatures.XP_TALISMAN_RANGE;
+            int currentXP = getXP(par1ItemStack);
+            int xpToAdd = 0;
+            int maxXP = LibFeatures.XP_TALISMAN_MAX_XP - currentXP; // Max, to prevent overflow.
+            if(maxXP <= 0) {
+                par1ItemStack.setItemDamage(0);
+                return; // Can't take any XP.
+            }
+
+            AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(player.posX - r, player.posY - r, player.posZ - r, player.posX + r, player.posY + r, player.posZ + r);
+            List<EntityXPOrb> orbs = par2World.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
+
+            for(EntityXPOrb orb : orbs) {
+                if(!orb.isDead) {
+                    int xp = orb.getXpValue();
+                    if(xpToAdd + xp <= maxXP) {
+                        xpToAdd += xp;
+                        consumeXPOrb(orb);
+                    }
+
+                    maxXP -= xpToAdd;
+
+                    if(maxXP <= 0)
+                        break;
+                }
+            }
+
+            setXP(par1ItemStack, Math.min(LibFeatures.XP_TALISMAN_MAX_XP, currentXP + xpToAdd));
+        }
+    }
+
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+
+    }
+
+    @Override
+    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
+
+    @Override
+    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
 }

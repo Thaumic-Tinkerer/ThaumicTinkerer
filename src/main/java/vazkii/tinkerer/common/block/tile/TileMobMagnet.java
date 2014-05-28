@@ -78,14 +78,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 		readCustomNBT(par1NBTTagCompound);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-		inventorySlots = new ItemStack[getSizeInventory()];
-		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
-			byte var5 = var4.getByte("Slot");
-			if (var5 >= 0 && var5 < inventorySlots.length)
-				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
-		}
+
 	}
 
 	@Override
@@ -94,24 +87,33 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 		writeCustomNBT(par1NBTTagCompound);
 
-		NBTTagList var2 = new NBTTagList();
-		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
-			if (inventorySlots[var3] != null) {
-				NBTTagCompound var4 = new NBTTagCompound();
-				var4.setByte("Slot", (byte)var3);
-				inventorySlots[var3].writeToNBT(var4);
-				var2.appendTag(var4);
-			}
-		}
-		par1NBTTagCompound.setTag("Items", var2);
+
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		adult = par1NBTTagCompound.getBoolean(TAG_ADULT);
+        NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+        inventorySlots = new ItemStack[getSizeInventory()];
+        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
+            NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
+            byte var5 = var4.getByte("Slot");
+            if (var5 >= 0 && var5 < inventorySlots.length)
+                inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
+        }
 	}
 
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		par1NBTTagCompound.setBoolean(TAG_ADULT, adult);
+        NBTTagList var2 = new NBTTagList();
+        for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
+            if (inventorySlots[var3] != null) {
+                NBTTagCompound var4 = new NBTTagCompound();
+                var4.setByte("Slot", (byte)var3);
+                inventorySlots[var3].writeToNBT(var4);
+                var2.appendTag(var4);
+            }
+        }
+        par1NBTTagCompound.setTag("Items", var2);
     }
 
 	@Override
@@ -124,7 +126,13 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 		return inventorySlots[i];
 	}
 
-	@Override
+    @Override
+    public void validate() {
+        super.validate();
+        //markDirty();
+    }
+
+    @Override
 	public ItemStack decrStackSize(int i, int j) {
 		if (inventorySlots[i] != null) {
 			ItemStack stackAt;
@@ -132,13 +140,14 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 			if (inventorySlots[i].stackSize <= j) {
 				stackAt = inventorySlots[i];
 				inventorySlots[i] = null;
+                markDirty();
 				return stackAt;
 			} else {
 				stackAt = inventorySlots[i].splitStack(j);
 
 				if (inventorySlots[i].stackSize == 0)
 					inventorySlots[i] = null;
-
+                markDirty();
 				return stackAt;
 			}
 		}
@@ -154,6 +163,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventorySlots[i] = itemstack;
+        markDirty();
 	}
 
     @Override
