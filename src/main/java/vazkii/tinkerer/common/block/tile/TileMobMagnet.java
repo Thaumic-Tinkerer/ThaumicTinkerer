@@ -214,9 +214,8 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 	}
 
     private Object[] setAdultSearchImplementation(boolean argument) {
-        boolean adult = argument;
 
-        this.adult = adult;
+        this.adult = argument;
         worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
         return null;
     }

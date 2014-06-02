@@ -61,8 +61,7 @@ public abstract class PacketTile<T extends TileEntity> extends AbstractPacket {
 
             TileEntity tile = world.getTileEntity(x,y,z);
             if(tile != null) {
-                T castedTile = (T) tile;
-                this.tile = castedTile;
+                this.tile = (T) tile;
                 handle();
             }
         }

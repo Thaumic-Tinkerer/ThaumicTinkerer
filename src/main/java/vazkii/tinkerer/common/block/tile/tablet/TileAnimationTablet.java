@@ -579,15 +579,13 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
     }
 
     private Object[] setLeftClickImplementation(Boolean argument) {
-        boolean leftClick = argument;
-        this.leftClick = leftClick;
+        this.leftClick = argument;
         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         return null;
     }
 
     private Object[] setRedstoneImplementation(Boolean argument) {
-        boolean redstone = argument;
-        this.redstone = redstone;
+        this.redstone = argument;
         worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
         return null;
     }

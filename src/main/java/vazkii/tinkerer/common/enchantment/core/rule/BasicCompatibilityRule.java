@@ -28,8 +28,8 @@ public class BasicCompatibilityRule implements IEnchantmentRule {
 	}
 
 	@Override
-	public boolean canApplyAlongside(List<Integer> enchantments) {
-		return !enchantments.contains(illegal.effectId);
+	public boolean cantApplyAlongside(List<Integer> enchantments) {
+		return enchantments.contains(illegal.effectId);
 	}
 
 }

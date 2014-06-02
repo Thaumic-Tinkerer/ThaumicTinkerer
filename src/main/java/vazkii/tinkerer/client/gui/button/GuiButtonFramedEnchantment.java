@@ -31,7 +31,7 @@ public class GuiButtonFramedEnchantment extends GuiButtonEnchantment {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(!canRender() || parent.enchanter.enchantments.isEmpty() || parent.enchanter.levels.isEmpty())
+		if(dontRender() || parent.enchanter.enchantments.isEmpty() || parent.enchanter.levels.isEmpty())
 			return;
 
 		ClientHelper.minecraft().renderEngine.bindTexture(gui);

@@ -101,7 +101,7 @@ public final class EnchantmentManager {
 			return false;
 
 		for(IEnchantmentRule rule : rules.get(enchant.effectId))
-			if(!rule.canApplyAlongside(currentEnchants))
+			if(rule.cantApplyAlongside(currentEnchants))
 				return false;
 
 		return true;

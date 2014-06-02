@@ -117,8 +117,7 @@ public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile,
     }
 
     private Object[] setPullingImplementation(boolean argument) {
-        boolean pull = argument;
-        int meta = (getBlockMetadata() & 2) + (pull ? 0 : 1);
+        int meta = (getBlockMetadata() & 2) + (argument ? 0 : 1);
 
         worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, meta, 1 | 2);
         return null;

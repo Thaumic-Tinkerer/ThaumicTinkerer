@@ -264,8 +264,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
 
         ArrayList<Marker> arrList = new ArrayList<Marker>();
 
-        Map markersToSet =  arguments;
-        for (Object map : markersToSet.values()) {
+        for (Object map : arguments.values()) {
             Marker mark = toMarkerImplementation((Map) map);
 
             arrList.add(mark);
@@ -286,8 +285,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         double dim = (Double) markerMap.get("dim");
         double side = (Double) markerMap.get("side");
         double color = (Double) markerMap.get("color");
-        Marker mark = new Marker((int) posX, (int) posY, (int) posZ, (int) dim, (byte) side, (byte) color);
-        return mark;
+        return new Marker((int) posX, (int) posY, (int) posZ, (int) dim, (byte) side, (byte) color);
     }
 
     private Object[] getMarkersImplementation() {

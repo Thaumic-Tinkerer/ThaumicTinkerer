@@ -318,7 +318,7 @@ public final class ModResearch {
 	}
 	private static ResearchPage LeviationaryHelp()
 	{
-		ResearchPage page=new ResearchPage(Arrays.asList((new AspectList()),5,1,1,Arrays.asList(new ItemStack(ModBlocks.mobilizerRelay),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizer),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizerRelay))));
-		return page;
+		return new ResearchPage(Arrays.asList((new AspectList()),5,1,1,Arrays.asList(new ItemStack(ModBlocks.mobilizerRelay),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizer),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizerRelay))));
+
 	}
 }

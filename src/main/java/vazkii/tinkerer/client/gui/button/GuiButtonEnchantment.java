@@ -14,23 +14,21 @@
  */
 package vazkii.tinkerer.client.gui.button;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.opengl.GL11;
-
 import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.GuiEnchanting;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentData;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiButtonEnchantment extends GuiButton {
 
@@ -42,15 +40,15 @@ public class GuiButtonEnchantment extends GuiButton {
 		this.parent = parent;
 	}
 
-	boolean canRender() {
+	boolean dontRender() {
 		if(enchant == null || !enabled || !EnchantmentManager.enchantmentData.containsKey(enchant.effectId))
-			return false;
-		return true;
+			return true;
+		return false;
 	}
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(!canRender())
+		if(dontRender())
 			return;
 
 		EnchantmentData data = EnchantmentManager.enchantmentData.get(enchant.effectId).get(1);
