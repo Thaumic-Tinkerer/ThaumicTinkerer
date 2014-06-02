@@ -114,7 +114,7 @@ public class ItemCleansingTalisman extends ItemMod implements IBauble {
                     } else for(PotionEffect potion : potions) {
                         int id = potion.getPotionID();
                         boolean badEffect=false;
-                        badEffect=ReflectionHelper.getPrivateValue(Potion.class,Potion.potionTypes[id],new String[]{"isBadEffect"});
+                        badEffect=ReflectionHelper.getPrivateValue(Potion.class,Potion.potionTypes[id],new String[]{"isBadEffect","field_76418_K"});
                         if(badEffect) {
                             player.removePotionEffect(id);
                             removed = true;

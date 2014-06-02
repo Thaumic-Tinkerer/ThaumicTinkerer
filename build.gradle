@@ -39,35 +39,12 @@ repositories {
     }
 }
 String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
-apply plugin: "curseforge"
+
+//apply plugin: 'curseforge'
 apply plugin: 'forge'
 
 
 version = "2.3-DEV"
-
-minecraft {
-    version = "1.7.2-10.12.1.1091"
-    minecraftVersion="1.7.2"
-    assetDir = "eclipse/assets"
-    replace '${version}', project.version
-    //coreMod("tconstruct.preloader.TConstructLoaderContainer")
-    if (project.hasProperty("pass"))
-        replace "INSERTPASSWORDHERE", project.pass
-
-
-}
-curse {
-    projectId='75598'
-    if(project.hasProperty("apiKey"))
-        apiKey=project.apiKey
-   changelog=new URL(changelogLoc).getText()
-   if(project.hasProperty("releaseType"))
-       releaseType=project.releaseType
-}
-
-
-
-
 if (project.hasProperty("buildnum"))
     version = "2.3-"+project.buildnum
 if(project.hasProperty("releaseType"))
@@ -76,6 +53,30 @@ if(project.hasProperty("releaseType"))
 
 group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
+
+minecraft {
+    version = "1.7.2-10.12.1.1091"
+    //minecraftVersion="1.7.2"
+    assetDir = "eclipse/assets"
+    replace '${version}', project.version
+    //coreMod("tconstruct.preloader.TConstructLoaderContainer")
+    if (project.hasProperty("pass"))
+        replace "INSERTPASSWORDHERE", project.pass
+
+
+}
+//curse {
+//    projectId="75598"
+//    if(project.hasProperty("apiKey"))
+//        apiKey=project.apiKey
+//   changelog="test"
+//   if(project.hasProperty("releaseType"))
+//       releaseType=project.releaseType
+//}
+
+
+
+
 
 
 
@@ -93,20 +94,19 @@ dependencies {
 }
 
 processResources
-        {
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
+{
+	// replace stuff in mcmod.info, nothing else
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		// replace version and mcversion
+		expand 'version':project.version, 'MCversion':project.minecraft.version
+	}
 
-                // replace version and mcversion
-                expand 'version':project.version, 'MCversion':project.minecraft.version
-            }
-
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
+	// copy everything else, thats not the mcmod.info
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}
+}
 jar {
     manifest {
         attributes 'FMLCorePlugin': 'vazkii.tinkerer.preloader.ThaumicTLoaderContainer'
