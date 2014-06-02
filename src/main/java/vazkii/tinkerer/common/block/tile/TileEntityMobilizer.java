@@ -19,7 +19,7 @@ public class TileEntityMobilizer extends TileEntity {
 
 	public int firstRelayZ;
 	public int secondRelayZ;
-	public boolean dead=false;;
+	public boolean dead=false;
 
 	public ForgeDirection movementDirection;
 
