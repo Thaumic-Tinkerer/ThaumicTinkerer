@@ -38,9 +38,7 @@ public class MaxResearchCommand extends CommandBase {
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender par1iCommandSender) {
-		if(ConfigHandler.enableDebugCommands)
-			return true;
-		return false;
+		return ConfigHandler.enableDebugCommands;
 	}
 
 	@Override

@@ -123,7 +123,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     @Override
     public boolean hasCustomInventoryName() {
         TileEntity tile = getTile();
-        return tile instanceof IInventory ? ((IInventory) tile).hasCustomInventoryName():false;
+        return tile instanceof IInventory && ((IInventory) tile).hasCustomInventoryName();
     }
 
 	@Override
@@ -135,7 +135,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
         TileEntity tile = getTile();
-        return tile instanceof IInventory ? ((IInventory) tile).isUseableByPlayer(entityplayer):false;
+        return tile instanceof IInventory && ((IInventory) tile).isUseableByPlayer(entityplayer);
 	}
 
     @Override
@@ -156,7 +156,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     @Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		TileEntity tile = getTile();
-		return tile instanceof IInventory ? ((IInventory) tile).isItemValidForSlot(i, itemstack) : false;
+		return tile instanceof IInventory && ((IInventory) tile).isItemValidForSlot(i, itemstack);
 	}
 
 	@Override
@@ -180,13 +180,13 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid) {
 		TileEntity tile = getTile();
-		return tile instanceof IFluidHandler ? ((IFluidHandler) tile).canFill(from, fluid) : false;
+		return tile instanceof IFluidHandler && ((IFluidHandler) tile).canFill(from, fluid);
 	}
 
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
 		TileEntity tile = getTile();
-		return tile instanceof IFluidHandler ? ((IFluidHandler) tile).canDrain(from, fluid) : false;
+		return tile instanceof IFluidHandler && ((IFluidHandler) tile).canDrain(from, fluid);
 	}
 
 	@Override
@@ -312,7 +312,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public boolean doesContainerAccept(Aspect paramAspect) {
 		TileEntity tile = getTile();
-		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).doesContainerAccept(paramAspect) : false;
+		return tile instanceof IAspectContainer && ((IAspectContainer) tile).doesContainerAccept(paramAspect);
 	}
 
 	@Override
@@ -324,25 +324,25 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public boolean takeFromContainer(Aspect paramAspect, int paramInt) {
 		TileEntity tile = getTile();
-		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).takeFromContainer(paramAspect, paramInt) : false;
+		return tile instanceof IAspectContainer && ((IAspectContainer) tile).takeFromContainer(paramAspect, paramInt);
 	}
 
 	@Override
 	public boolean takeFromContainer(AspectList paramAspectList) {
 		TileEntity tile = getTile();
-		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).takeFromContainer(paramAspectList) : false;
+		return tile instanceof IAspectContainer && ((IAspectContainer) tile).takeFromContainer(paramAspectList);
 	}
 
 	@Override
 	public boolean doesContainerContainAmount(Aspect paramAspect, int paramInt) {
 		TileEntity tile = getTile();
-		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).doesContainerContainAmount(paramAspect, paramInt) : false;
+		return tile instanceof IAspectContainer && ((IAspectContainer) tile).doesContainerContainAmount(paramAspect, paramInt);
 	}
 
 	@Override
 	public boolean doesContainerContain(AspectList paramAspectList) {
 		TileEntity tile = getTile();
-		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).doesContainerContain(paramAspectList) : false;
+		return tile instanceof IAspectContainer && ((IAspectContainer) tile).doesContainerContain(paramAspectList);
 	}
 
 	@Override
@@ -355,19 +355,19 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     @Override
     public boolean isConnectable(ForgeDirection forgeDirection) {
         TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).isConnectable(forgeDirection):false;
+        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
     }
 
     @Override
     public boolean canInputFrom(ForgeDirection forgeDirection) {
         TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).canInputFrom(forgeDirection):false;
+        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).canInputFrom(forgeDirection);
     }
 
     @Override
     public boolean canOutputTo(ForgeDirection forgeDirection) {
         TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).canOutputTo(forgeDirection):false;
+        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).canOutputTo(forgeDirection);
     }
 
     @Override

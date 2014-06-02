@@ -76,7 +76,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
     @Override
     public boolean func_150897_b(Block p_150897_1_) {
-        return ( p_150897_1_==Blocks.bedrock)?true: super.func_150897_b(p_150897_1_);
+        return (p_150897_1_ == Blocks.bedrock) || super.func_150897_b(p_150897_1_);
     }
 
     @Override

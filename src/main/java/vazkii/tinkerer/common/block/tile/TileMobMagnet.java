@@ -62,9 +62,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 				if(can && inventorySlots[0] != null) {
 					String pattern = ItemSoulMould.getPatternName(inventorySlots[0]);
 					String name = EntityList.getEntityString(entity);
-					if(name != null && name.equals(pattern))
-						return true;
-					else return false;
+					return name != null && name.equals(pattern);
 				}
 
 				return can;
@@ -182,7 +180,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
     @Override

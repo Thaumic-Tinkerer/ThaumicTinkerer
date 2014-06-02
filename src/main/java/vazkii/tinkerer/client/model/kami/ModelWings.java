@@ -60,7 +60,7 @@ public class ModelWings extends ModelBiped {
     @Override
     public void setRotationAngles(float v1, float v2, float v3, float v4, float v5, float v6, Entity entity) {
         EntityLivingBase living = (EntityLivingBase) entity;
-    	isSneak = living != null ? living.isSneaking() : false;
+    	isSneak = living != null && living.isSneaking();
         if(living != null && living instanceof EntityPlayer) {
         	EntityPlayer player = (EntityPlayer) living;
 

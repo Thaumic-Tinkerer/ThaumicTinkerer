@@ -166,7 +166,6 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 							worldObj.playSoundEffect(p.i1, p.i2, p.i3, "thaumcraft:brain", 0.5F, 1F);
 					}
 
-					return;
 				}
 			}
 		}
@@ -377,7 +376,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
     @Override

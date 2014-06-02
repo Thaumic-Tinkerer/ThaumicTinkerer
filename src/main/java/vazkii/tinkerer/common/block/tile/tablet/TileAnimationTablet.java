@@ -185,7 +185,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 			try {
 				ForgeEventFactory.onPlayerInteract(player, Action.RIGHT_CLICK_AIR, coords.posX, coords.posY, coords.posZ, side);
 				Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
-				done = entity != null && entity instanceof EntityLiving && (item.itemInteractionForEntity(stack, player, (EntityLivingBase) entity) || (entity instanceof EntityAnimal ? ((EntityAnimal) entity).interact(player) : true));
+				done = entity != null && entity instanceof EntityLiving && (item.itemInteractionForEntity(stack, player, (EntityLivingBase) entity) || (!(entity instanceof EntityAnimal) || ((EntityAnimal) entity).interact(player)));
 
 				if(!done)
 					item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
@@ -500,7 +500,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) != this ? false : entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
     @Override

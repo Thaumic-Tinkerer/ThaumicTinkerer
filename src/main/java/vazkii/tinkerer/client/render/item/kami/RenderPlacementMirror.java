@@ -24,9 +24,7 @@ public class RenderPlacementMirror implements IItemRenderer {
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-        if(type==ItemRenderType.ENTITY || type==ItemRenderType.INVENTORY)
-            return true;
-		return false;
+		return type == ItemRenderType.ENTITY || type == ItemRenderType.INVENTORY;
 	}
 
 	@Override

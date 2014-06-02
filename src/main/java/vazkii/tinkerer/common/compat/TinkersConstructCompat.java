@@ -26,9 +26,7 @@ public class TinkersConstructCompat {
 		
 		if(item instanceof ToolCore)
 		{
-			if(ItemNBTHelper.verifyExistance(stack, TAG_ENERGY) || ItemNBTHelper.verifyExistance(stack, TAG_CHARGE))
-				return false;
-			return true;
+			return !(ItemNBTHelper.verifyExistance(stack, TAG_ENERGY) || ItemNBTHelper.verifyExistance(stack, TAG_CHARGE));
 		}
 		else
 			return false;

@@ -23,7 +23,7 @@ public class KamiArmorHandler {
 
     public static boolean getArmorStatus(EntityPlayer player) {
         NBTTagCompound cmp = getCompoundToSet(player);
-        return cmp.hasKey(TAG_STATUS) ? cmp.getBoolean(TAG_STATUS) : true;
+        return !cmp.hasKey(TAG_STATUS) || cmp.getBoolean(TAG_STATUS);
     }
 
     public static void setArmorStatus(EntityPlayer player, boolean status) {
