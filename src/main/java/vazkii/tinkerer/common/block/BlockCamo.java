@@ -96,7 +96,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
                             metadata = metadata & 12 | 2;
                             break;
                         case 3:
-                            metadata = metadata & 12 | 0;
+                            metadata = metadata & 12;
                             break;
                         case 4:
                             metadata = metadata & 12 | 1;
