@@ -14,14 +14,17 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 
-public class PacketMobMagnetButton extends PacketTile<TileMobMagnet> {
+public class PacketMobMagnetButton extends PacketTile<TileMobMagnet> implements IMessageHandler<PacketMobMagnetButton,IMessage> {
 
 	private static final long serialVersionUID = 7613980953987386713L;
-	boolean adult;
+	public boolean adult;
 
     public PacketMobMagnetButton(){
         super();
@@ -33,21 +36,25 @@ public class PacketMobMagnetButton extends PacketTile<TileMobMagnet> {
 		adult = tile.adult;
 	}
 
-	@Override
-	public void handle() {
-		tile.adult = adult;
-	}
 
     @Override
-    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        super.encodeInto(channelHandlerContext, byteBuf);
+    public void toBytes(ByteBuf byteBuf) {
+        super.toBytes(byteBuf);
         byteBuf.writeBoolean(adult);
     }
 
     @Override
-    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        super.decodeInto(channelHandlerContext, byteBuf);
+    public void fromBytes(ByteBuf byteBuf) {
+        super.fromBytes(byteBuf);
         adult=byteBuf.readBoolean();
     }
 
+    @Override
+    public IMessage onMessage(PacketMobMagnetButton message, MessageContext ctx) {
+        super.onMessage(message, ctx);
+        if(!ctx.side.isServer())
+            throw new IllegalStateException("received PacketTabletbutton " + message + "on client side!");
+        message.tile.adult=message.adult;
+        return null;
+    }
 }

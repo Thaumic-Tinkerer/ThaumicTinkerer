@@ -14,6 +14,9 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.enchantment.Enchantment;
@@ -21,7 +24,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 
-public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
+public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> implements IMessageHandler<PacketEnchanterAddEnchant,IMessage>{
 
     public PacketEnchanterAddEnchant(){
         super();
@@ -37,41 +40,50 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 	}
 
     @Override
-    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        super.encodeInto(channelHandlerContext, byteBuf);
+    public void toBytes(ByteBuf byteBuf) {
+        super.toBytes(byteBuf);
         byteBuf.writeInt(enchant);
         byteBuf.writeInt(level);
     }
 
     @Override
-    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        super.decodeInto(channelHandlerContext, byteBuf);
+    public void fromBytes(ByteBuf byteBuf) {
+        super.fromBytes(byteBuf);
         enchant=byteBuf.readInt();
         level=byteBuf.readInt();
     }
 
-    @Override
+
 	public void handle() {
-		if(tile.working)
-			return;
 
-		if(level == -1) {
-			int index = tile.enchantments.indexOf(enchant);
-			tile.removeLevel(index);
-			tile.removeEnchant(index);
-		} else {
-			if(!tile.enchantments.contains(enchant)){
-				if(player != null && EnchantmentManager.canApply(tile.getStackInSlot(0), Enchantment.enchantmentsList[enchant], tile.enchantments)&& EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) player).getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
-					tile.appendEnchant(enchant);
-					tile.appendLevel(1);
-				}
-			} else {
-				int maxLevel = Enchantment.enchantmentsList[enchant].getMaxLevel();
-				tile.setLevel(tile.enchantments.indexOf(enchant), Math.max(1, Math.min(maxLevel, level)));
-			}
-		}
-		tile.updateAspectList();
-
-        tile.getWorldObj().markBlockForUpdate(tile.xCoord,tile.yCoord,tile.zCoord);
 	}
+
+    @Override
+    public IMessage onMessage(PacketEnchanterAddEnchant message, MessageContext ctx) {
+        super.onMessage(message,ctx);
+        if(!ctx.side.isServer())
+            throw new IllegalStateException("received PacketEnchanterAddEnchant " + message + "on client side!");
+        if(message.tile.working)
+            return null;
+
+        if(message.level == -1) {
+            int index = message.tile.enchantments.indexOf(message.enchant);
+            message.tile.removeLevel(index);
+            message.tile.removeEnchant(index);
+        } else {
+            if(!message.tile.enchantments.contains(message.enchant)){
+                if(message.player != null && EnchantmentManager.canApply(message.tile.getStackInSlot(0), Enchantment.enchantmentsList[message.enchant], message.tile.enchantments)&& EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) message.player).getGameProfile().getName(), Enchantment.enchantmentsList[message.enchant])) {
+                    message.tile.appendEnchant(message.enchant);
+                    message.tile.appendLevel(1);
+                }
+            } else {
+                int maxLevel = Enchantment.enchantmentsList[message.enchant].getMaxLevel();
+                message.tile.setLevel(message.tile.enchantments.indexOf(message.enchant), Math.max(1, Math.min(maxLevel, message.level)));
+            }
+        }
+        message.tile.updateAspectList();
+
+        message.tile.getWorldObj().markBlockForUpdate(message.tile.xCoord,message.tile.yCoord,message.tile.zCoord);
+        return null;
+    }
 }

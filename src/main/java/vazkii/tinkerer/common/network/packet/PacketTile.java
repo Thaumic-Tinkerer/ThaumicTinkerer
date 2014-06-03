@@ -15,8 +15,14 @@
 package vazkii.tinkerer.common.network.packet;
 
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
@@ -25,13 +31,29 @@ import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.network.AbstractPacket;
 
 
-public abstract class PacketTile<T extends TileEntity> extends AbstractPacket {
+public abstract class PacketTile<T extends TileEntity> implements IMessage {
 
     public PacketTile(){
-        super();
+
     }
 
-	private static final long serialVersionUID = -1447633008013055477L;
+    @Override
+    public void toBytes(ByteBuf byteBuf) {
+        byteBuf.writeInt(x);
+        byteBuf.writeInt(y);
+        byteBuf.writeInt(z);
+        byteBuf.writeInt(dim);
+    }
+
+    @Override
+    public void fromBytes(ByteBuf byteBuf) {
+        x=byteBuf.readInt();
+        y=byteBuf.readInt();
+        z=byteBuf.readInt();
+        dim=byteBuf.readInt();
+    }
+
+    private static final long serialVersionUID = -1447633008013055477L;
 
 	protected int dim, x, y, z;
 
@@ -47,52 +69,32 @@ public abstract class PacketTile<T extends TileEntity> extends AbstractPacket {
 		this.dim = tile.getWorldObj().provider.dimensionId;
 	}
 
-	private void handle(EntityPlayer player) {
+    public IMessage onMessage(PacketTile message, MessageContext ctx)
+    {
         MinecraftServer server = MiscHelper.server();
-        this.player = player;
-
+        if(ctx.side.isClient())
+            message.player=this.getClientPlayer();
+        else
+        {
+            message.player=ctx.getServerHandler().playerEntity;
+        }
         if(server != null) {
-            World world = server.worldServerForDimension(dim);
+            World world = server.worldServerForDimension(message.dim);
 
             if(world == null) {
-                MiscHelper.printCurrentStackTrace("No world found for dimension " + dim + "!");
-                return;
+                MiscHelper.printCurrentStackTrace("No world found for dimension " + message.dim + "!");
+                return null;
             }
 
-            TileEntity tile = world.getTileEntity(x,y,z);
+            TileEntity tile = world.getTileEntity(message.x,message.y,message.z);
             if(tile != null) {
-                this.tile = (T) tile;
-                handle();
+                message.tile = (T) tile;
             }
         }
-	}
-
-	public abstract void handle();
-
-    @Override
-    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        byteBuf.writeInt(x);
-        byteBuf.writeInt(y);
-        byteBuf.writeInt(z);
-        byteBuf.writeInt(dim);
+        return null;
     }
-
-    @Override
-    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        x=byteBuf.readInt();
-        y=byteBuf.readInt();
-        z=byteBuf.readInt();
-        dim=byteBuf.readInt();
-
-    }
-
-    @Override
-    public void handleClientSide(EntityPlayer entityPlayer) {
-        handle(entityPlayer);
-    }
-
-    @Override
-    public void handleServerSide(EntityPlayer entityPlayer) {
-        handle(entityPlayer);
+    @SideOnly(Side.CLIENT)
+    public static  EntityPlayer getClientPlayer() {
+        return Minecraft.getMinecraft().thePlayer;
     }
 }

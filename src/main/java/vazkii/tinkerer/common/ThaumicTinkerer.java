@@ -20,6 +20,8 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
@@ -33,7 +35,6 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibMisc;
-import vazkii.tinkerer.common.network.PacketPipeline;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 
 
@@ -47,7 +48,7 @@ public class ThaumicTinkerer {
 	public static TTCommonProxy proxy;
 
 	public static CommonProxy tcProxy;
-    public static final PacketPipeline packetPipeline = new PacketPipeline();
+    public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		tcProxy= Thaumcraft.proxy;
@@ -80,7 +81,6 @@ public class ThaumicTinkerer {
     }
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-        packetPipeline.initialise();
 		proxy.init(event);
 
 
@@ -93,7 +93,6 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
-        packetPipeline.postInitialise();
 		
 	}
 }

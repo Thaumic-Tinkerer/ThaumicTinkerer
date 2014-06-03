@@ -14,13 +14,16 @@
  */
 package vazkii.tinkerer.common.network.packet.kami;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.network.packet.PacketTile;
 
-public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> {
+public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> implements IMessageHandler<PacketWarpGateTeleport,IMessage>{
 
 	private static final long serialVersionUID = 2247241734524685744L;
 	int index;
@@ -34,22 +37,29 @@ public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> {
 		this.index = index;
 	}
 
-	@Override
 	public void handle() {
-		if(player instanceof EntityPlayer)
-			tile.teleportPlayer((EntityPlayer) player, index);
+
 	}
 
     @Override
-    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        super.encodeInto(channelHandlerContext, byteBuf);
+    public void toBytes(ByteBuf byteBuf) {
+        super.toBytes(byteBuf);
         byteBuf.writeInt(index);
     }
 
     @Override
-    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        super.decodeInto(channelHandlerContext, byteBuf);
+    public void fromBytes(ByteBuf byteBuf) {
+        super.fromBytes(byteBuf);
         index=byteBuf.readInt();
     }
 
+    @Override
+    public IMessage onMessage(PacketWarpGateTeleport message, MessageContext ctx) {
+        super.onMessage(message,ctx);
+        if(!ctx.side.isServer())
+            throw new IllegalStateException("received PacketTabletbutton " + message + "on client side!");
+        if(message.player instanceof EntityPlayer)
+            message.tile.teleportPlayer((EntityPlayer) message.player, message.index);
+        return null;
+    }
 }

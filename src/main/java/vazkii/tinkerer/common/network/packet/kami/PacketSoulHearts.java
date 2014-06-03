@@ -14,13 +14,15 @@
  */
 package vazkii.tinkerer.common.network.packet.kami;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
-import vazkii.tinkerer.common.network.AbstractPacket;
 
-public class PacketSoulHearts extends AbstractPacket {
+public class PacketSoulHearts implements IMessage,IMessageHandler<PacketSoulHearts,IMessage> {
 
 	private static final long serialVersionUID = 8044672277674872323L;
 	int hearts;
@@ -32,23 +34,23 @@ public class PacketSoulHearts extends AbstractPacket {
     {
         super();
     }
-    @Override
-    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        byteBuf.writeInt(hearts);
-    }
+
 
     @Override
-    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+    public void fromBytes(ByteBuf byteBuf) {
         hearts=byteBuf.readInt();
     }
 
     @Override
-    public void handleClientSide(EntityPlayer entityPlayer) {
-        SoulHeartClientHandler.clientPlayerHP=hearts;
+    public void toBytes(ByteBuf byteBuf) {
+        byteBuf.writeInt(hearts);
     }
 
     @Override
-    public void handleServerSide(EntityPlayer entityPlayer) {
-
+    public IMessage onMessage(PacketSoulHearts message, MessageContext ctx) {
+        if(!ctx.side.isClient())
+            throw new IllegalStateException("received PacketSoulHearts " + message + "on server side!");
+        SoulHeartClientHandler.clientPlayerHP=message.hearts;
+        return null;
     }
 }

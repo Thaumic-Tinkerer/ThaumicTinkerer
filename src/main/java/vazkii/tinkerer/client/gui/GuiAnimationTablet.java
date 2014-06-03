@@ -74,7 +74,7 @@ public class GuiAnimationTablet extends GuiContainer {
 		tablet.leftClick = buttonListAT.get(1).buttonEnabled;
 		tablet.redstone = buttonListAT.get(0).buttonEnabled;
 
-        ThaumicTinkerer.packetPipeline.sendToServer(new PacketTabletButton(tablet));
+        ThaumicTinkerer.netHandler.sendToServer(new PacketTabletButton(tablet));
 	}
 
 	@Override

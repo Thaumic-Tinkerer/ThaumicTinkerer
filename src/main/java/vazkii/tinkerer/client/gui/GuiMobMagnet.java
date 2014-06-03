@@ -76,7 +76,7 @@ public class GuiMobMagnet extends GuiContainer {
 
 		mobMagnet.adult = buttonListMM.get(0).enabled;
 
-        ThaumicTinkerer.packetPipeline.sendToServer(new PacketMobMagnetButton(mobMagnet));
+        ThaumicTinkerer.netHandler.sendToServer(new PacketMobMagnetButton(mobMagnet));
 	}
 
 	@Override

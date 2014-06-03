@@ -196,7 +196,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 			}
 
 			if(Mouse.isButtonDown(0) && isShiftKeyDown() && stack != null) {
-                ThaumicTinkerer.packetPipeline.sendToServer(new PacketWarpGateTeleport(warpGate,index));
+                ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateTeleport(warpGate,index));
 				mc.displayGuiScreen(null);
 			}
 		}

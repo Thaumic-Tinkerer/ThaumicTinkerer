@@ -21,6 +21,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -84,14 +85,15 @@ public class TTCommonProxy {
 	}
 
     private void RegisterPackets() {
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketSoulHearts.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketToggleArmor.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketWarpGateButton.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketWarpGateTeleport.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketEnchanterAddEnchant.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketEnchanterStartWorking.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketMobMagnetButton.class);
-        ThaumicTinkerer.packetPipeline.registerPacket(PacketTabletButton.class);
+        ThaumicTinkerer.netHandler.registerMessage(PacketSoulHearts.class,PacketSoulHearts.class,142+0, Side.CLIENT);
+        ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class,PacketToggleArmor.class,142+1, Side.CLIENT);
+        ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class,PacketToggleArmor.class,142+2, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateButton.class,PacketWarpGateButton.class,142+3, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateTeleport.class,PacketWarpGateTeleport.class,142+4, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterAddEnchant.class,PacketEnchanterAddEnchant.class,142+5, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class,PacketEnchanterStartWorking.class,142+6, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class,PacketMobMagnetButton.class,142+7, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class,PacketTabletButton.class,142+8, Side.SERVER);
     }
 
     public void postInit(FMLPostInitializationEvent event) {

@@ -86,7 +86,7 @@ public class SoulHeartHandler {
 
 	public static void updateClient(EntityPlayer player) {
 		if(player instanceof EntityPlayerMP && ((EntityPlayerMP) player).playerNetServerHandler!=null){
-            ThaumicTinkerer.packetPipeline.sendTo(new PacketSoulHearts(getHP(player)), (EntityPlayerMP) player);
+            ThaumicTinkerer.netHandler.sendTo(new PacketSoulHearts(getHP(player)), (EntityPlayerMP) player);
 		}
 	}
 

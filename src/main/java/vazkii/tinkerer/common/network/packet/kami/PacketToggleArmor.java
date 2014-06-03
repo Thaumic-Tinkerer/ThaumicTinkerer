@@ -1,15 +1,18 @@
 package vazkii.tinkerer.common.network.packet.kami;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.network.AbstractPacket;
+import vazkii.tinkerer.common.network.packet.PacketTile;
 
 /**
  * Created by Katrina on 28/02/14.
  */
-public class PacketToggleArmor extends AbstractPacket {
+public class PacketToggleArmor implements IMessage,IMessageHandler<PacketToggleArmor,IMessage> {
     private static final long serialVersionUID = -1247633508013055777L;
     public boolean armorStatus;
     public PacketToggleArmor(boolean status)
@@ -20,33 +23,34 @@ public class PacketToggleArmor extends AbstractPacket {
         super();
     }
 
-    @Override
-    public void encodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        byteBuf.writeBoolean(armorStatus);
-    }
+
+
 
     @Override
-    public void decodeInto(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
+    public void fromBytes(ByteBuf byteBuf) {
         armorStatus=byteBuf.readBoolean();
     }
 
     @Override
-    public void handleClientSide(EntityPlayer entityPlayer) {
-        if(entityPlayer instanceof EntityPlayer)
-        {
-
-            ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);
-
-        }
+    public void toBytes(ByteBuf byteBuf) {
+        byteBuf.writeBoolean(armorStatus);
     }
 
     @Override
-    public void handleServerSide(EntityPlayer entityPlayer) {
-        if(entityPlayer instanceof EntityPlayer)
+    public IMessage onMessage(PacketToggleArmor message, MessageContext ctx) {
+        EntityPlayer player;
+        if(ctx.side.isClient())
+            player= PacketTile.getClientPlayer();
+        else
+        {
+            player=ctx.getServerHandler().playerEntity;
+        }
+        if(player instanceof EntityPlayer)
         {
 
-            ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);
+            ThaumicTinkerer.proxy.setArmor(player,armorStatus);
 
         }
+        return null;
     }
 }

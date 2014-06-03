@@ -22,7 +22,7 @@ public class KamiArmorClientHandler {
             else
                 ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.disableAllArmor"));
             ArmorEnabled=status;
-            ThaumicTinkerer.packetPipeline.sendToServer(new PacketToggleArmor(status));
+            ThaumicTinkerer.netHandler.sendToServer(new PacketToggleArmor(status));
         }
     }
 }

@@ -14,9 +14,12 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 
-public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> {
+public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> implements IMessageHandler<PacketEnchanterStartWorking,IMessage> {
 
     public PacketEnchanterStartWorking(){
         super();
@@ -28,12 +31,20 @@ public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> {
 		super(tile);
 	}
 
-	@Override
+
 	public void handle() {
-		if(!tile.working && !tile.enchantments.isEmpty() && !tile.levels.isEmpty()) {
-			tile.working = true;
-			tile.getWorldObj().markBlockForUpdate(tile.xCoord,tile.yCoord,tile.zCoord);
-		}
+
 	}
 
+    @Override
+    public IMessage onMessage(PacketEnchanterStartWorking message, MessageContext ctx) {
+        super.onMessage(message,ctx);
+        if(!ctx.side.isServer())
+            throw new IllegalStateException("received PacketEnchanterStartWorking " + message + "on client side!");
+        if(!message.tile.working && !message.tile.enchantments.isEmpty() && !message.tile.levels.isEmpty()) {
+            message.tile.working = true;
+            message.tile.getWorldObj().markBlockForUpdate(message.tile.xCoord,message.tile.yCoord,message.tile.zCoord);
+        }
+        return null;
+    }
 }
