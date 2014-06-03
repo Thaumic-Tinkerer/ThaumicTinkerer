@@ -61,7 +61,7 @@ public class KamiResearchItem extends TTResearchItem {
 				}
 			}
 
-		parentsHidden = requirements.toArray(new String[0]);
+		parentsHidden = requirements.toArray(new String[requirements.size()]);
 
 		return super.setPages(par);
 	}

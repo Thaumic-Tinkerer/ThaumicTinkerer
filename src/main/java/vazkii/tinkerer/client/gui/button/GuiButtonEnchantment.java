@@ -73,10 +73,10 @@ public class GuiButtonEnchantment extends GuiButton {
         float f1 = 1F / 16F;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(par1 + 0, par2 + par6, zLevel, (par3 + 0) * f, (par4 + par6) * f1);
+        tessellator.addVertexWithUV(par1, par2 + par6, zLevel, (par3) * f, (par4 + par6) * f1);
         tessellator.addVertexWithUV(par1 + par5, par2 + par6, zLevel, (par3 + par5) * f, (par4 + par6) * f1);
-        tessellator.addVertexWithUV(par1 + par5, par2 + 0, zLevel, (par3 + par5) * f, (par4 + 0) * f1);
-        tessellator.addVertexWithUV(par1 + 0, par2 + 0, zLevel, (par3 + 0) * f, (par4 + 0) * f1);
+        tessellator.addVertexWithUV(par1 + par5, par2, zLevel, (par3 + par5) * f, (par4) * f1);
+        tessellator.addVertexWithUV(par1, par2, zLevel, (par3) * f, (par4) * f1);
         tessellator.draw();
     }
 

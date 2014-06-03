@@ -67,6 +67,7 @@ public class TTResearchItem extends ResearchItem {
 				else {
 					String[] newParents = new String[parentsHidden.length + 1];
 					newParents[0] = "INFUSION";
+					//noinspection ManualArrayCopy
 					for(int i = 0; i < parentsHidden.length; i++)
 						newParents[i + 1] = parentsHidden[i];
 					parentsHidden = newParents;

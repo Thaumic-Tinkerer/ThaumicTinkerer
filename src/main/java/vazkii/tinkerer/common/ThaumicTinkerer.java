@@ -36,6 +36,7 @@ import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.PacketPipeline;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 
+import java.util.Arrays;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 public class ThaumicTinkerer {
@@ -71,10 +72,7 @@ public class ThaumicTinkerer {
              if(message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST))
             {
             	String[] values=message.getStringValue().split(",");
-                for(String value:values)
-                {
-                	KamiResearchItem.Blacklist.add(value);
-                }
+	            KamiResearchItem.Blacklist.addAll(Arrays.asList(values));
             }
         }
     }
