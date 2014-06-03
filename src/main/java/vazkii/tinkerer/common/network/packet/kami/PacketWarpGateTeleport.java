@@ -37,7 +37,7 @@ public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> {
 	@Override
 	public void handle() {
 		if(player instanceof EntityPlayer)
-			tile.teleportPlayer((EntityPlayer) player, index);
+			tile.teleportPlayer(player, index);
 	}
 
     @Override

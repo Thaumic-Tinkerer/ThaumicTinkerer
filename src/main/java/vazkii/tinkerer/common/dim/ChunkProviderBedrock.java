@@ -79,7 +79,7 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		}
 
 		chunk.generateSkylightMap();
-		BiomeGenBase[] abiomegenbase = this.worldObj.getWorldChunkManager().loadBlockGeneratorData((BiomeGenBase[]) null, par1 * 16, par2 * 16, 16, 16);
+		BiomeGenBase[] abiomegenbase = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(null, par1 * 16, par2 * 16, 16, 16);
 		byte[] abyte = chunk.getBiomeArray();
 
 		for (int k1 = 0; k1 < abyte.length; ++k1) {

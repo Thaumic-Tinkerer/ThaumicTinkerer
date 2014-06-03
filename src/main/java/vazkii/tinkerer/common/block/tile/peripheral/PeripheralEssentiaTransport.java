@@ -23,7 +23,7 @@ public class PeripheralEssentiaTransport implements IPeripheral {
 
     public static int GetDirection(Object obj) {
         Double num = (Double) obj;
-        return (int) num.intValue();
+        return num.intValue();
     }
 
     @Override

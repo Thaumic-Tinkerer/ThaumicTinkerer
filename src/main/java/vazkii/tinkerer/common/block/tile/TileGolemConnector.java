@@ -195,7 +195,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null)
-            return new Object[]{(int) 0};
+            return new Object[]{ 0 };
         return new Object[]{(double) markers.size()};
     }
 
@@ -203,9 +203,9 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
-        if (markers == null || markers.size() <= (Double) arguments)
-            throw new Exception("marker " + (int) (double) (Double) arguments + " does not exist");
-        Marker mark = markers.get((int) (double) (Double) arguments);
+        if (markers == null || markers.size() <= arguments)
+            throw new Exception("marker " + (int) (double) arguments + " does not exist");
+        Marker mark = markers.get((int) (double) arguments);
 
         return new Object[]{fromMarkerImplementation(mark)};
     }
@@ -214,9 +214,9 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         if (golem == null)
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
-        if (markers == null || markers.size() <= (Double) arguments)
-            throw new Exception("marker " + (int) (double) (Double) arguments + " does not exist");
-        markers.remove((int) (double) (Double) arguments);
+        if (markers == null || markers.size() <= arguments)
+            throw new Exception("marker " + (int) (double) arguments + " does not exist");
+        markers.remove((int) (double) arguments);
         golem.setMarkers(markers);
         return new String[]{};
     }
@@ -226,7 +226,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
             return new String[]{};
         ArrayList<Marker> markers = golem.getMarkers();
         if (markers == null || markers.size() <= markerNum)
-            throw new Exception("marker " + (int) (double) (Double) markerNum + " does not exist");
+            throw new Exception("marker " + (int) (double) markerNum + " does not exist");
         Marker mark = toMarkerImplementation(markerArg);
         markers.set((int) (double) markerNum, mark);
         golem.setMarkers(markers);
@@ -321,7 +321,7 @@ public class TileGolemConnector extends TileCamo  implements IPeripheral,SimpleC
         if (golem == null)
             return new String[]{};
 
-        golem.setHomeArea((int) x, (int) y, (int) z, (int) 35);
+        golem.setHomeArea((int) x, (int) y, (int) z, 35);
         golem.homeFacing = (int) facing;
         return getHomeImplementation();
     }

@@ -98,7 +98,7 @@ public class TinkersConstructCompat {
 		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         int damage = tags.getInteger("Damage");
         int dur = tags.getInteger("BaseDurability");
-        int increase = (int) amount*2;
+        int increase = amount *2;
 
         int modifiers = tags.getInteger("Modifiers");
         float mods = 1.0f;

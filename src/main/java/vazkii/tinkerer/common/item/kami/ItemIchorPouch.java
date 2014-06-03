@@ -70,7 +70,7 @@ public class ItemIchorPouch extends ItemFocusPouch implements IBauble {
 		if (item.hasTagCompound()) {
 			NBTTagList var2 = item.stackTagCompound.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
 			for (int var3 = 0; var3 < var2.tagCount(); var3++) {
-				NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
+				NBTTagCompound var4 = var2.getCompoundTagAt(var3);
 				int var5 = var4.getByte("Slot") & 0xFF;
 				if (var5 >= 0 && var5 < stackList.length)
 					stackList[var5] = ItemStack.loadItemStackFromNBT(var4);

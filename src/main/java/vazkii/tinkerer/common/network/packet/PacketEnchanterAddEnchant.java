@@ -61,7 +61,7 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> {
 			tile.removeEnchant(index);
 		} else {
 			if(!tile.enchantments.contains(enchant)){
-				if(player != null && EnchantmentManager.canApply(tile.getStackInSlot(0), Enchantment.enchantmentsList[enchant], tile.enchantments)&& EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) player).getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
+				if(player != null && EnchantmentManager.canApply(tile.getStackInSlot(0), Enchantment.enchantmentsList[enchant], tile.enchantments)&& EnchantmentManager.canEnchantmentBeUsed(player.getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
 					tile.appendEnchant(enchant);
 					tile.appendLevel(1);
 				}

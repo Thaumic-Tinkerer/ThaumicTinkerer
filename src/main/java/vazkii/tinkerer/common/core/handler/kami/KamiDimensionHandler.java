@@ -21,7 +21,7 @@ public class KamiDimensionHandler {
             {
                 if(stack!=null && stack.getItem() instanceof ItemIchorPickAdv)
                 {
-                    ((ItemIchorPickAdv)stack.getItem()).onBlockStartBreak(stack,event.x,event.y,event.z,event.entityPlayer);
+                    stack.getItem().onBlockStartBreak(stack, event.x, event.y, event.z, event.entityPlayer);
 
                 }
             }
