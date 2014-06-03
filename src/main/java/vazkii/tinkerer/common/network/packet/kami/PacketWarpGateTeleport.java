@@ -16,7 +16,6 @@ package vazkii.tinkerer.common.network.packet.kami;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.network.packet.PacketTile;
 
@@ -36,7 +35,7 @@ public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> {
 
 	@Override
 	public void handle() {
-		if(player instanceof EntityPlayer)
+		if(player != null)
 			tile.teleportPlayer(player, index);
 	}
 

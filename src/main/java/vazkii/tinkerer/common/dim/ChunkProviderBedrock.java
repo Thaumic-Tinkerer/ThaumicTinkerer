@@ -11,12 +11,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.FlatLayerInfo;
-import net.minecraft.world.gen.feature.WorldGenLakes;
-import net.minecraft.world.gen.structure.MapGenStronghold;
-import net.minecraft.world.gen.structure.MapGenStructure;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -27,9 +22,6 @@ public class ChunkProviderBedrock implements IChunkProvider {
 	private Random random;
 	private final byte[] cachedBlockIDs = new byte[256];
 	private final byte[] cachedBlockMetadata = new byte[256];
-	private final List structureGenerators = new ArrayList();
-	private WorldGenLakes waterLakeGenerator;
-	private WorldGenLakes lavaLakeGenerator;
 
 	private OreClusterGenerator generator;
 
@@ -85,16 +77,6 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		for (int k1 = 0; k1 < abyte.length; ++k1) {
 			abyte[k1] = (byte) abiomegenbase[k1].biomeID;
 		}
-
-		Iterator iterator = this.structureGenerators.iterator();
-
-		while (iterator.hasNext()) {
-			MapGenStructure mapgenstructure = (MapGenStructure) iterator.next();
-            mapgenstructure.func_151539_a(this, this.worldObj, par1, par2, new Block[]{
-                    Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air
-            });
-		}
-
 		chunk.generateSkylightMap();
 		return chunk;
 	}
@@ -178,18 +160,6 @@ public class ChunkProviderBedrock implements IChunkProvider {
 
     @Override
     public ChunkPosition func_147416_a(World var1, String var2, int var3, int var4, int var5) {
-		if ("Stronghold".equals(var2)) {
-			Iterator iterator = this.structureGenerators.iterator();
-
-			while (iterator.hasNext()) {
-				MapGenStructure mapgenstructure = (MapGenStructure) iterator.next();
-
-				if (mapgenstructure instanceof MapGenStronghold) {
-                    return mapgenstructure.func_151545_a(var1, var3, var4, var5);
-				}
-			}
-		}
-
 		return null;
 	}
 
@@ -197,15 +167,6 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		return 0;
 	}
 
-	public void recreateStructures(int par1, int par2) {
-		Iterator iterator = this.structureGenerators.iterator();
-
-		while (iterator.hasNext()) {
-			MapGenStructure mapgenstructure = (MapGenStructure) iterator.next();
-            mapgenstructure.func_151539_a(this, this.worldObj, par1, par2, new Block[]{
-                    Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air, Blocks.air
-            });
-		}
-	}
+	public void recreateStructures(int par1, int par2) {}
 
 }

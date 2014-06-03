@@ -58,7 +58,7 @@ public class DriverArcaneBore extends DriverTileEntity {
         {
             ItemStack pickaxe = tileEntity.getStackInSlot(1);
             boolean nearBroken = pickaxe != null && pickaxe.getItemDamage() + 1 == pickaxe.getMaxDamage();
-            return new Object[] { this.tileEntity.gettingPower() && this.tileEntity.hasFocus && this.tileEntity.hasPickaxe && pickaxe.isItemStackDamageable() && !nearBroken  };
+	        return new Object[] { this.tileEntity.gettingPower() && this.tileEntity.hasFocus && this.tileEntity.hasPickaxe && pickaxe.isItemStackDamageable() && !nearBroken  };
         }
 
         @Callback(doc="function():number -- Gets bore's radius")

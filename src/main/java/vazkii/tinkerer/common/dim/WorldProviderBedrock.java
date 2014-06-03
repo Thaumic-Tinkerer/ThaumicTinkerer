@@ -112,6 +112,7 @@ public class WorldProviderBedrock extends WorldProvider {
 		{
 			float f5 = (f3 - f4) / f2 * 0.5F + 0.5F;
 			float f6 = 1.0F - (1.0F - MathHelper.sin(f5 * 3.141593F)) * 0.99F;
+			//noinspection UnusedAssignment
 			f6 *= f6;
 			this.colorsSunriseSunset[0] = (f5 * 0.3F + 0.7F);
 			this.colorsSunriseSunset[1] = (f5 * f5 * 0.7F + 0.2F);

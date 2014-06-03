@@ -30,9 +30,6 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class ToolHandler {
 
 	public static Material[] materialsPick = new Material[] { Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil };
@@ -86,8 +83,6 @@ public final class ToolHandler {
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlock(x, y, z).getMaterial();
 		if(blk != null && !blk.isAir(world, x, y, z) && ((blk.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0 || (blk==Blocks.bedrock && (y<=253 && world.provider instanceof WorldProviderBedrock)) ))) {
-			List<ItemStack> items = new ArrayList();
-
 			if(!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
 			if(ConfigHandler.bedrockDimensionID != 0 && block== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){

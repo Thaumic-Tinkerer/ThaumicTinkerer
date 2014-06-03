@@ -194,7 +194,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 				if(!done)
 					done = item.onItemUse(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done) {
-					stack = item.onItemRightClick(stack, worldObj, player);
+					item.onItemRightClick(stack, worldObj, player);
 					done = true;
 				}
 
@@ -299,7 +299,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
         Block block =worldObj.getBlock(par1, par2, par3);
         int var5 = worldObj.getBlockMetadata(par1, par2, par3);
         //worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
-        boolean var6 = false;
+        boolean var6;
 
         boolean var8 = false;
         if (block != null)

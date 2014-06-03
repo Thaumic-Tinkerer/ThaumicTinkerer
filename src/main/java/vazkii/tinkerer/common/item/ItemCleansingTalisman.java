@@ -20,7 +20,6 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -113,7 +112,7 @@ public class ItemCleansingTalisman extends ItemMod implements IBauble {
                         removed = true;
                     } else for(PotionEffect potion : potions) {
                         int id = potion.getPotionID();
-                        boolean badEffect=false;
+                        boolean badEffect;
                         badEffect=ReflectionHelper.getPrivateValue(Potion.class,Potion.potionTypes[id],new String[]{"isBadEffect","field_76418_K"});
                         if(badEffect) {
                             player.removePotionEffect(id);

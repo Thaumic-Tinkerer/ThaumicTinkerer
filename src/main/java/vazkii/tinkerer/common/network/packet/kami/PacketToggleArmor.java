@@ -32,7 +32,7 @@ public class PacketToggleArmor extends AbstractPacket {
 
     @Override
     public void handleClientSide(EntityPlayer entityPlayer) {
-        if(entityPlayer instanceof EntityPlayer)
+        if(entityPlayer !=null)
         {
 
             ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);
@@ -42,7 +42,7 @@ public class PacketToggleArmor extends AbstractPacket {
 
     @Override
     public void handleServerSide(EntityPlayer entityPlayer) {
-        if(entityPlayer instanceof EntityPlayer)
+        if(entityPlayer != null)
         {
 
             ThaumicTinkerer.proxy.setArmor(entityPlayer,armorStatus);

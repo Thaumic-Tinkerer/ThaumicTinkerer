@@ -50,7 +50,7 @@ public class ItemFocusFlight extends ItemModFocus {
                 ((EntityPlayerMP)p).playerNetServerHandler.floatingTickCount = 0;
             }
 			for(int i = 0; i < 5; i++)
-				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) Math.random() * 360, (int) p.posY);
+				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) (Math.random() * 360), (int) p.posY);
 			world.playSoundAtEntity(p, "thaumcraft:wind", 0.4F, 1F);
 		}
 

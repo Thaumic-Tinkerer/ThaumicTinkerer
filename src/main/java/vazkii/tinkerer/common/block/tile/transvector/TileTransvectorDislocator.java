@@ -54,7 +54,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 				NBTTagCompound cmp = new NBTTagCompound();
 				tile.writeToNBT(cmp);
 				this.tile = cmp;
-			} else tile = null;
+			};
 
 			this.coords = coords;
 		}

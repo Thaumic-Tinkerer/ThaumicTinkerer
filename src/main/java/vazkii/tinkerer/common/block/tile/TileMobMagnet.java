@@ -51,7 +51,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 			@Override
 			public boolean isEntityApplicable(Entity entity) {
-				if(!(entity instanceof EntityLivingBase) || entity == null || entity instanceof EntityPlayer)
+				if(!(entity instanceof EntityLivingBase) || entity instanceof EntityPlayer)
 					return false;
 
 				boolean can = false;

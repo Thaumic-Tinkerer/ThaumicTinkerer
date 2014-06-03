@@ -13,11 +13,9 @@ public  class IAspectContainerImplementation {
         public static Object[] getAspects(IAspectContainer container)
         {
             HashMap<Double,String> returnStuff = new HashMap<Double,String>();
-            boolean jar=false;
             double i=1;
             if(container instanceof TileJarFillable && ((TileJarFillable)container).aspectFilter!=null)
             {
-                jar=true;
                 returnStuff.put(i++,((TileJarFillable)container).aspectFilter.getTag());
                 return new Object[]{returnStuff};
             }
