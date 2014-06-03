@@ -183,7 +183,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
 	public boolean checkPillars() {
 		if(pillars.isEmpty()) {
-			if(!assignPillars()) {
+			if(assignPillars()) {
 				working = false;
 				currentAspects = new AspectList();
 				return false;
@@ -213,11 +213,11 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 					pillars.add(new Tuple4Int(x, y, z, height));
 
 				if(pillars.size() == 6)
-					return true;
+					return false;
 			}
 
 		pillars.clear();
-		return false;
+		return true;
 	}
 
 	public int findPillar(int x, int y, int z) {

@@ -41,9 +41,7 @@ public class GuiButtonEnchantment extends GuiButton {
 	}
 
 	boolean dontRender() {
-		if(enchant == null || !enabled || !EnchantmentManager.enchantmentData.containsKey(enchant.effectId))
-			return true;
-		return false;
+		return enchant == null || !enabled || !EnchantmentManager.enchantmentData.containsKey(enchant.effectId);
 	}
 
 	@Override

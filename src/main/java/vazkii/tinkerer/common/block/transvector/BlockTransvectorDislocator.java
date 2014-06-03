@@ -110,8 +110,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 	@Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		int orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
-		((TileTransvectorDislocator) tile).orientation = orientation;
+		((TileTransvectorDislocator) tile).orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
 		par1World.markBlockForUpdate(par2,par3,par4);
     }
 
