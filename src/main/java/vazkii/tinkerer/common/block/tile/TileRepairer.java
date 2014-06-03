@@ -116,7 +116,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
         
         if(nbttaglist.tagCount()>0)
         {
-            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.getCompoundTagAt(0);
+            NBTTagCompound tagList = nbttaglist.getCompoundTagAt(0);
                 inventorySlots[0] = ItemStack.loadItemStackFromNBT(tagList);
         }
 	}

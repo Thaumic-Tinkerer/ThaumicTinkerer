@@ -52,7 +52,8 @@ public class PeripheralArcaneBore implements IPeripheral {
 			case 0 : return new Object[] { bore.hasPickaxe };
 			case 1 : return new Object[] { bore.hasFocus };
 			case 2 : return new Object[] { nearBroken };
-			case 3 : return new Object[] { bore.gettingPower() && bore.hasFocus && bore.hasPickaxe && pickaxe.isItemStackDamageable() && !nearBroken };
+			case 3 : //noinspection ConstantConditions
+				return new Object[] { bore.gettingPower() && bore.hasFocus && bore.hasPickaxe && pickaxe.isItemStackDamageable() && !nearBroken };
 			case 4 : return new Object[] { 1 + (bore.area + bore.maxRadius) * 2 };
 			case 5 : return new Object[] { bore.speed };
 			case 6 : return new Object[] { pickaxe != null && pickaxe.getItem() instanceof ItemElementalPickaxe };

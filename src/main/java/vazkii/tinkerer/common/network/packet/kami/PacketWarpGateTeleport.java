@@ -37,9 +37,7 @@ public class PacketWarpGateTeleport extends PacketTile<TileWarpGate> implements 
 		this.index = index;
 	}
 
-	public void handle() {
 
-	}
 
     @Override
     public void toBytes(ByteBuf byteBuf) {

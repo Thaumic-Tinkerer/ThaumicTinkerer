@@ -14,25 +14,17 @@
  */
 package vazkii.tinkerer.client.render.tile;
 
-import java.awt.Color;
-
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
@@ -85,7 +77,6 @@ public class RenderTileAnimationTablet extends TileEntitySpecialRenderer {
 
 	private void renderItem(TileAnimationTablet tablet) {
 		ItemStack stack = tablet.getStackInSlot(0);
-		Minecraft mc = ClientHelper.minecraft();
 		if(stack != null) {
             EntityItem entityitem = new EntityItem(tablet.getWorldObj(), 0.0D, 0.0D, 0.0D, stack);
             entityitem.getEntityItem().stackSize = 1;

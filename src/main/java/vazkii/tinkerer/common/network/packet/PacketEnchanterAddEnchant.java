@@ -54,9 +54,7 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> impleme
     }
 
 
-	public void handle() {
 
-	}
 
     @Override
     public IMessage onMessage(PacketEnchanterAddEnchant message, MessageContext ctx) {

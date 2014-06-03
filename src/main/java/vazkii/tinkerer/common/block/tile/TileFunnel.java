@@ -59,6 +59,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 							TileJarFillable jar1 = (TileJarFillable) tile1;
 							boolean voidJar=tile1 instanceof TileJarFillableVoid;
 							AspectList aspectList1 = jar1.getAspects();
+							//noinspection ConstantConditions
 							if(aspectList1 != null && aspectList1.size() == 0  && (jar1.aspectFilter==null || jar1.aspectFilter==aspect) || aspectList1.getAspects()[0] == aspect && (aspectList1.getAmount(aspectList1.getAspects()[0]) < 64 || voidJar)) {
 								jar1.addToContainer(aspect, 1);
 								item.setAspects(jar, aspectList.remove(aspect, 1));
@@ -99,7 +100,7 @@ public class TileFunnel extends TileEntity implements ISidedInventory, IAspectCo
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
+			NBTTagCompound var4 = var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);

@@ -50,7 +50,8 @@ public class ContainerEnchanter extends ContainerPlayerInv {
 
         	boolean wand = ((Slot) inventorySlots.get(1)).isItemValid(var5);
 
-            var3 = var5.copy();
+	        //noinspection ConstantConditions
+	        var3 = var5.copy();
 
             if (par2 < 2) {
             	if(!mergeItemStack(var5, 2, 38, false))
@@ -59,7 +60,7 @@ public class ContainerEnchanter extends ContainerPlayerInv {
             	return null;
 
             if (var5.stackSize == 0)
-                var4.putStack((ItemStack)null);
+                var4.putStack(null);
             else
                 var4.onSlotChanged();
 

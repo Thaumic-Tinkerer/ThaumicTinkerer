@@ -1,13 +1,10 @@
 package vazkii.tinkerer.common.core.commands;
 
-import com.google.common.collect.Lists;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import org.apache.commons.lang3.StringUtils;
-import thaumcraft.common.entities.monster.EntityFireBat;
-import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
 import thaumcraft.common.lib.research.ResearchManager;
 import vazkii.tinkerer.common.research.ModResearch;
 
@@ -49,7 +46,6 @@ public class KamiUnlockedCommand extends CommandBase {
         else
         {
             ((EntityPlayer)icommandsender).addChatComponentMessage(new ChatComponentText("No"));
-            List<String> leftover=new ArrayList<String>();
             List<String> list = new ArrayList<String> (parents);
             list.removeAll(unlocked);
             ((EntityPlayer)icommandsender).addChatComponentMessage(new ChatComponentText("Remaining: " + StringUtils.join(list, ',')));

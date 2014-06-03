@@ -14,11 +14,10 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.audio.SoundList;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -26,7 +25,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -34,8 +35,8 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockAnimationTablet extends BlockModContainer {
 
@@ -81,7 +82,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 			b0 = 4;
 
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
-        TileAnimationTablet tablet = (TileAnimationTablet) par1World.getTileEntity(par2, par3, par4);
+        //TileAnimationTablet tablet = (TileAnimationTablet) par1World.getTileEntity(par2, par3, par4);
         //if(par5EntityLiving instanceof  EntityPlayer) {
         //    tablet.Owner = ((EntityPlayer) par5EntityLiving).username;
         //}
@@ -93,7 +94,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 
         if (tablet != null) {
         	if(tablet.getIsBreaking()) {
-        		ChunkCoordinates coords = tablet.getTargetLoc();
+        		//ChunkCoordinates coords = tablet.getTargetLoc();
         		//par1World.destroyBlockInWorldPartially(tablet.getFakePlayer().entityId, coords.posX, coords.posY, coords.posZ, -1);
         	}
 

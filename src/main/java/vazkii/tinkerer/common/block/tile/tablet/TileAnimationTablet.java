@@ -194,7 +194,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 				if(!done)
 					done = item.onItemUse(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
 				if(!done) {
-					stack = item.onItemRightClick(stack, worldObj, player);
+					item.onItemRightClick(stack, worldObj, player);
 					done = true;
 				}
 
@@ -299,7 +299,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
         Block block =worldObj.getBlock(par1, par2, par3);
         int var5 = worldObj.getBlockMetadata(par1, par2, par3);
         //worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
-        boolean var6 = false;
+        boolean var6;
 
         boolean var8 = false;
         if (block != null)
@@ -403,7 +403,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
 		inventorySlots = new ItemStack[getSizeInventory()];
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
+			NBTTagCompound var4 = var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 			if (var5 >= 0 && var5 < inventorySlots.length)
 				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);

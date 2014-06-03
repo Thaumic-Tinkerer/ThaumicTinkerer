@@ -43,7 +43,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 		if(accessor.getBlock()==ModBlocks.animationTablet)
 		{
 			TileAnimationTablet tileAn=(TileAnimationTablet)accessor.getTileEntity();
-			String currentTool="";
+			String currentTool;
 			ItemStack stack=tileAn.getStackInSlot(0);
 			if(stack==null)
 			{
@@ -75,7 +75,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 		if(accessor.getBlock()==ModBlocks.interfase)
 		{
 			TileTransvectorInterface tileTrans=(TileTransvectorInterface)accessor.getTileEntity();
-			String currentBlock="";
+			String currentBlock;
 			TileEntity tile = tileTrans.getTile();
 			if(tile == null)
 				currentBlock=StatCollector.translateToLocal("ttwaila.nothing");

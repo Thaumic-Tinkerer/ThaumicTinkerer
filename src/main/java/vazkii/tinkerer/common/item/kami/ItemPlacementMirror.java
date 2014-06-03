@@ -177,7 +177,7 @@ public class ItemPlacementMirror extends ItemMod {
 
 		}
 
-		return coords.toArray(new ChunkCoordinates[0]);
+		return coords.toArray(new ChunkCoordinates[coords.size()]);
 	}
 
 	private void setBlock(ItemStack stack, Block block, int meta) {

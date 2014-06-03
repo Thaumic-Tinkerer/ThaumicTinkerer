@@ -47,7 +47,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 	private static final String TAG_BLOCK_ID = "blockID";
     private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
-	private static ArrayList<Block> BlackList=new ArrayList<Block>();
+	private static ArrayList<Block> blacklist =new ArrayList<Block>();
 	private IIcon ornament;
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500).add(Aspect.EARTH, 100);
@@ -110,7 +110,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 					}
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
-			} else if(!BlackList.contains(block.getUnlocalizedName()) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true,false)) {
+			} else if(!blacklist.contains(block) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true,false)) {
 				if(!world.isRemote) {
 					world.removeTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Blocks.air, 0, 1 | 2);
@@ -252,8 +252,8 @@ public class ItemFocusDislocation extends ItemModFocus {
 	}
 	static
 	{
-		BlackList.add(Blocks.piston_extension);
-		BlackList.add(Blocks.piston_head);
+		blacklist.add(Blocks.piston_extension);
+		blacklist.add(Blocks.piston_head);
 
 	}
 }

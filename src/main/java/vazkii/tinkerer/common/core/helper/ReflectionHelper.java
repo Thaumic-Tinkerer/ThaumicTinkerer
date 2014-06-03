@@ -22,10 +22,6 @@ public class ReflectionHelper {
         Method m = getMethod(klazz, methodNames, args);
         Preconditions.checkNotNull(m, "Method %s not found", Arrays.toString(methodNames));
 
-        for (int i = 0; i < args.length; i++) {
-            final Object arg = args[i];
-        }
-
         m.setAccessible(true);
         try {
             return (T)m.invoke(instance, args);
