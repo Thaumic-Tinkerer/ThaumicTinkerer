@@ -44,7 +44,7 @@ String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/c
 apply plugin: 'forge'
 
 
-version = "2.4-BETA"
+version = "2.4-DEVBUILD"
 if (project.hasProperty("buildnum"))
     version = "2.4-" + project.buildnum
 if (project.hasProperty("releaseType"))
