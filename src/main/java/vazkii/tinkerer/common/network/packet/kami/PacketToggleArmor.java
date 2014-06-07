@@ -22,12 +22,9 @@ public class PacketToggleArmor implements IMessage,IMessageHandler<PacketToggleA
 		super();
 	}
 
-
-
-
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
-		armorStatus=byteBuf.readBoolean();
+		armorStatus=byteBuf.getBoolean(0);
 	}
 
 	@Override

@@ -19,6 +19,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.EnumChatFormatting;
@@ -54,6 +55,7 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
+
 
 public class TTClientProxy extends TTCommonProxy {
 
@@ -152,7 +154,9 @@ public class TTClientProxy extends TTCommonProxy {
     public void setArmor(EntityPlayer player,boolean status)
     {
         super.setArmor(player,status);
-        KamiArmorClientHandler.ArmorEnabled=status;
+	    if(FMLCommonHandler.instance().getEffectiveSide()== Side.CLIENT){
+            KamiArmorClientHandler.ArmorEnabled=status;
+	    }
     }
 
     @Override
