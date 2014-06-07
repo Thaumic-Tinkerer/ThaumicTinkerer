@@ -2,10 +2,8 @@ package vazkii.tinkerer.common.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -36,19 +34,13 @@ public class ItemShareBook extends ItemMod {
 		String name = getPlayerName(par1ItemStack);
 		if (name.endsWith(NON_ASIGNED)) {
 			setPlayerName(par1ItemStack, par3EntityPlayer.getGameProfile().getName());
-			if (isOfflineShare(par1ItemStack))
-				setPlayerResearch(par1ItemStack, par3EntityPlayer.getGameProfile().getName());
+			setPlayerResearch(par1ItemStack, par3EntityPlayer.getGameProfile().getName());
 			if (!par2World.isRemote)
 				par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.write"));
 		} else sync:{
 			List<String> researchesDone = ResearchManager.getResearchForPlayer(name);
 
-			if (researchesDone == null && !isOfflineShare(par1ItemStack)) {
-				if (!par2World.isRemote)
-					par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.notOnline"));
-				break sync;
-			}
-			if (researchesDone == null && isOfflineShare(par1ItemStack)) {
+			if (researchesDone == null) {
 				if (par2World.isRemote)
 					researchesDone = getPlayerResearch(par1ItemStack);
 				else {
@@ -92,24 +84,10 @@ public class ItemShareBook extends ItemMod {
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		String name = getPlayerName(par1ItemStack);
 		par3List.add(name.equals(NON_ASIGNED) ? StatCollector.translateToLocal("ttmisc.shareTome.noAssign") : String.format(StatCollector.translateToLocal("ttmisc.shareTome.playerName"), name));
-		if (isOfflineShare(par1ItemStack))
-			par3List.add(StatCollector.translateToLocal("ttmisc.shareTomb.offlineshare"));
 	}
-
-	@Override
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for (int i = 0; i < 2; i++) {
-			par3List.add(new ItemStack(this, 1, i));
-		}
-	}
-
 	@Override
 	public boolean getShareTag() {
 		return true;
-	}
-
-	public boolean isOfflineShare(ItemStack itemStack) {
-		return itemStack.getItemDamage() == 1;
 	}
 
 	private String getPlayerName(ItemStack stack) {
