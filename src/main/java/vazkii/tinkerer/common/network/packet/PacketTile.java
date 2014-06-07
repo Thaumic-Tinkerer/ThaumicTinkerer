@@ -16,19 +16,16 @@ package vazkii.tinkerer.common.network.packet;
 
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
-import vazkii.tinkerer.common.network.AbstractPacket;
 
 
 public abstract class PacketTile<T extends TileEntity> implements IMessage {
@@ -51,6 +48,7 @@ public abstract class PacketTile<T extends TileEntity> implements IMessage {
         y=byteBuf.readInt();
         z=byteBuf.readInt();
         dim=byteBuf.readInt();
+	    tile= (T) MiscHelper.server().worldServerForDimension(dim).getTileEntity(x, y, z);
     }
 
     private static final long serialVersionUID = -1447633008013055477L;
