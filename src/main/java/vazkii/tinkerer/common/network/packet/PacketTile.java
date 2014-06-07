@@ -46,7 +46,6 @@ public abstract class PacketTile<T extends TileEntity> implements IMessage {
 		y = byteBuf.readInt();
 		z = byteBuf.readInt();
 		dim = byteBuf.readInt();
-		tile = (T) MiscHelper.server().worldServerForDimension(dim).getTileEntity(x, y, z);
 	}
 
 	private static final long serialVersionUID = -1447633008013055477L;
