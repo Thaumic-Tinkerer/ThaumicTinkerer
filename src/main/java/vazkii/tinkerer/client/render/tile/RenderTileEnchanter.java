@@ -41,7 +41,7 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 		GL11.glTranslated(d0, d1 + 0.75, d2);
 
 		ItemStack item = enchanter.getStackInSlot(0);
-		if(item != null) {
+		if (item != null) {
 			GL11.glPushMatrix();
 			GL11.glRotatef(90F, 1F, 0F, 0F);
 			final float scale = 0.7F;
@@ -53,24 +53,24 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
 			int renderPass = 0;
 			do {
-            	IIcon icon = item.getItem().getIcon(item, renderPass);
-            	if(icon != null) {
-            		 Color color = new Color(item.getItem().getColorFromItemStack(item, renderPass));
-            		 GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
-            		 float f = icon.getMinU();
-                     float f1 = icon.getMaxU();
-                     float f2 = icon.getMinV();
-                     float f3 = icon.getMaxV();
-                     ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
-                     GL11.glColor3f(1F, 1F, 1F);
-            	}
-            	renderPass++;
-        	} while(renderPass < item.getItem().getRenderPasses(item.getItemDamage()));
+				IIcon icon = item.getItem().getIcon(item, renderPass);
+				if (icon != null) {
+					Color color = new Color(item.getItem().getColorFromItemStack(item, renderPass));
+					GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
+					float f = icon.getMinU();
+					float f1 = icon.getMaxU();
+					float f2 = icon.getMinV();
+					float f3 = icon.getMaxV();
+					ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
+					GL11.glColor3f(1F, 1F, 1F);
+				}
+				renderPass++;
+			} while (renderPass < item.getItem().getRenderPasses(item.getItemDamage()));
 			GL11.glPopMatrix();
 		}
 
 		item = enchanter.getStackInSlot(1);
-		if(item != null) {
+		if (item != null) {
 			GL11.glPushMatrix();
 			GL11.glRotatef(90F, 1F, 0F, 0F);
 			final float scale = 0.5F;

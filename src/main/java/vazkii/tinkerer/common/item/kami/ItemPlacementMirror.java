@@ -25,10 +25,10 @@ import java.util.List;
 
 public class ItemPlacementMirror extends ItemMod {
 
-    @Deprecated
+	@Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
 
-    private static final String TAG_BLOCK_NAME = "blockName";
+	private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static final String TAG_SIZE = "size";
 
@@ -44,8 +44,8 @@ public class ItemPlacementMirror extends ItemMod {
 		Block block = par3World.getBlock(par4, par5, par6);
 		int meta = par3World.getBlockMetadata(par4, par5, par6);
 
-		if(par2EntityPlayer.isSneaking()) {
-			if(block != null && block.getRenderType() == 0)
+		if (par2EntityPlayer.isSneaking()) {
+			if (block != null && block.getRenderType() == 0)
 				setBlock(par1ItemStack, block, meta);
 		} else placeAllBlocks(par1ItemStack, par2EntityPlayer);
 
@@ -54,7 +54,7 @@ public class ItemPlacementMirror extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
+		if (par3EntityPlayer.isSneaking()) {
 			int size = getSize(par1ItemStack);
 			int newSize = size == 11 ? 3 : size + 2;
 			setSize(par1ItemStack, newSize);
@@ -67,76 +67,76 @@ public class ItemPlacementMirror extends ItemMod {
 
 	public void placeAllBlocks(ItemStack stack, EntityPlayer player) {
 		ChunkCoordinates[] blocksToPlace = getBlocksToPlace(stack, player);
-		if(!hasBlocks(stack, player, blocksToPlace))
+		if (!hasBlocks(stack, player, blocksToPlace))
 			return;
 
 		ItemStack stackToPlace = new ItemStack(getBlock(stack), 1, getBlockMeta(stack));
-		for(ChunkCoordinates coords : blocksToPlace)
+		for (ChunkCoordinates coords : blocksToPlace)
 			placeBlockAndConsume(player, stackToPlace, coords);
 		player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
 	}
 
 	private void placeBlockAndConsume(EntityPlayer player, ItemStack blockToPlace, ChunkCoordinates coords) {
-        if(blockToPlace.getItem()==null)
-            return;
-        player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.getBlockFromItem(blockToPlace.getItem()), blockToPlace.getItemDamage(), 1 | 2);
+		if (blockToPlace.getItem() == null)
+			return;
+		player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.getBlockFromItem(blockToPlace.getItem()), blockToPlace.getItemDamage(), 1 | 2);
 
-        if (player.capabilities.isCreativeMode)
-            return;
+		if (player.capabilities.isCreativeMode)
+			return;
 
-        List<ItemStack> talismansToCheck = new ArrayList();
-        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-            ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-            if (stackInSlot != null && stackInSlot.getItem() == blockToPlace.getItem() && stackInSlot.getItemDamage() == blockToPlace.getItemDamage()) {
-                stackInSlot.stackSize--;
-                if (stackInSlot.stackSize == 0)
-                    player.inventory.setInventorySlotContents(i, null);
+		List<ItemStack> talismansToCheck = new ArrayList();
+		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+			ItemStack stackInSlot = player.inventory.getStackInSlot(i);
+			if (stackInSlot != null && stackInSlot.getItem() == blockToPlace.getItem() && stackInSlot.getItemDamage() == blockToPlace.getItemDamage()) {
+				stackInSlot.stackSize--;
+				if (stackInSlot.stackSize == 0)
+					player.inventory.setInventorySlotContents(i, null);
 
-                return;
-            }
+				return;
+			}
 
-            if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
-                talismansToCheck.add(stackInSlot);
-        }
+			if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
+				talismansToCheck.add(stackInSlot);
+		}
 
-        for (ItemStack talisman : talismansToCheck) {
-            Block block = ItemBlockTalisman.getBlock(talisman);
-            int meta = ItemBlockTalisman.getBlockMeta(talisman);
+		for (ItemStack talisman : talismansToCheck) {
+			Block block = ItemBlockTalisman.getBlock(talisman);
+			int meta = ItemBlockTalisman.getBlockMeta(talisman);
 
-            if (Item.getItemFromBlock(block) == blockToPlace.getItem() && meta == blockToPlace.getItemDamage()) {
-                ItemBlockTalisman.remove(talisman, 1);
-                return;
-            }
-        }
-    }
+			if (Item.getItemFromBlock(block) == blockToPlace.getItem() && meta == blockToPlace.getItemDamage()) {
+				ItemBlockTalisman.remove(talisman, 1);
+				return;
+			}
+		}
+	}
 
 	public static boolean hasBlocks(ItemStack stack, EntityPlayer player, ChunkCoordinates[] blocks) {
-		if(player.capabilities.isCreativeMode)
+		if (player.capabilities.isCreativeMode)
 			return true;
 
 		int required = blocks.length;
 		int current = 0;
 		ItemStack reqStack = new ItemStack(getBlock(stack), 1, getBlockMeta(stack));
 		List<ItemStack> talismansToCheck = new ArrayList();
-		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
+		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-			if(stackInSlot != null && stackInSlot.getItem()== reqStack.getItem() && stackInSlot.getItemDamage() == reqStack.getItemDamage()) {
+			if (stackInSlot != null && stackInSlot.getItem() == reqStack.getItem() && stackInSlot.getItemDamage() == reqStack.getItemDamage()) {
 				current += stackInSlot.stackSize;
-				if(current >= required)
+				if (current >= required)
 					return true;
 			}
-			if(stackInSlot != null && stackInSlot.getItem()== ModItems.blockTalisman)
+			if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
 				talismansToCheck.add(stackInSlot);
 		}
 
-		for(ItemStack talisman : talismansToCheck) {
+		for (ItemStack talisman : talismansToCheck) {
 			Block block = ItemBlockTalisman.getBlock(talisman);
 			int meta = ItemBlockTalisman.getBlockMeta(talisman);
 
-			if(Item.getItemFromBlock(block) == reqStack.getItem() && meta == reqStack.getItemDamage()) {
+			if (Item.getItemFromBlock(block) == reqStack.getItem() && meta == reqStack.getItemDamage()) {
 				current += ItemBlockTalisman.getBlockCount(talisman);
 
-				if(current >= required)
+				if (current >= required)
 					return true;
 			}
 		}
@@ -147,13 +147,13 @@ public class ItemPlacementMirror extends ItemMod {
 	public static ChunkCoordinates[] getBlocksToPlace(ItemStack stack, EntityPlayer player) {
 		List<ChunkCoordinates> coords = new ArrayList();
 		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(player.worldObj, player, true, 5);
-		if(pos != null) {
-            Block block=player.worldObj.getBlock(pos.blockX,pos.blockY,pos.blockZ);
-			if(block != null && block.isReplaceable(player.worldObj,pos.blockX,pos.blockY,pos.blockZ))
+		if (pos != null) {
+			Block block = player.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
+			if (block != null && block.isReplaceable(player.worldObj, pos.blockX, pos.blockY, pos.blockZ))
 				pos.blockY--;
 
 			ForgeDirection dir = ForgeDirection.getOrientation(pos.sideHit);
-            int rotation = MathHelper.floor_double(player.rotationYaw * 4F / 360F + 0.5D) & 3;
+			int rotation = MathHelper.floor_double(player.rotationYaw * 4F / 360F + 0.5D) & 3;
 			int range = (getSize(stack) ^ 1) / 2;
 
 			boolean topOrBottom = dir == ForgeDirection.UP || dir == ForgeDirection.DOWN;
@@ -162,16 +162,16 @@ public class ItemPlacementMirror extends ItemMod {
 			int yOff = topOrBottom ? player.rotationPitch > 75 ? 0 : range : range;
 			int zOff = !(dir == ForgeDirection.SOUTH || dir == ForgeDirection.NORTH) ? topOrBottom ? player.rotationPitch > 75 || (rotation & 1) == 1 ? range : 0 : range : 0;
 
-			for(int x = -xOff; x < xOff + 1; x++)
-				for(int y = 0; y < yOff * 2 + 1; y++) {
-					for(int z = -zOff; z < zOff + 1; z++) {
+			for (int x = -xOff; x < xOff + 1; x++)
+				for (int y = 0; y < yOff * 2 + 1; y++) {
+					for (int z = -zOff; z < zOff + 1; z++) {
 						int xp = pos.blockX + x + dir.offsetX;
 						int yp = pos.blockY + y + dir.offsetY;
-						int zp =  pos.blockZ + z + dir.offsetZ;
+						int zp = pos.blockZ + z + dir.offsetZ;
 
 						Block block1 = player.worldObj.getBlock(xp, yp, zp);
-						if(block1 == null || block1.isAir(player.worldObj, xp, yp, zp) || block1.isReplaceable(player.worldObj, xp, yp, zp))
-							coords.add(new ChunkCoordinates(xp, yp,zp));
+						if (block1 == null || block1.isAir(player.worldObj, xp, yp, zp) || block1.isReplaceable(player.worldObj, xp, yp, zp))
+							coords.add(new ChunkCoordinates(xp, yp, zp));
 					}
 				}
 
@@ -193,22 +193,23 @@ public class ItemPlacementMirror extends ItemMod {
 		return ItemNBTHelper.getInt(stack, TAG_SIZE, 3) | 1;
 	}
 
-    @Deprecated
-	public static  int getBlockID(ItemStack stack) {
+	@Deprecated
+	public static int getBlockID(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
-    public static Block getBlock(ItemStack stack)
-    {
-        Block block=Block.getBlockFromName(getBlockName(stack));
-        if(block==Blocks.air)
-            block=Block.getBlockById(getBlockID(stack));
 
-        return block;
-    }
-    public static String getBlockName(ItemStack stack)
-    {
-        return ItemNBTHelper.getString(stack,TAG_BLOCK_NAME,"");
-    }
+	public static Block getBlock(ItemStack stack) {
+		Block block = Block.getBlockFromName(getBlockName(stack));
+		if (block == Blocks.air)
+			block = Block.getBlockById(getBlockID(stack));
+
+		return block;
+	}
+
+	public static String getBlockName(ItemStack stack) {
+		return ItemNBTHelper.getString(stack, TAG_BLOCK_NAME, "");
+	}
+
 	public static int getBlockMeta(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
 	}
@@ -218,7 +219,6 @@ public class ItemPlacementMirror extends ItemMod {
 		icons[0] = IconHelper.forItem(par1IconRegister, this, 0);
 		icons[1] = IconHelper.forItem(par1IconRegister, this, 1);
 	}
-
 
 	@Override
 	public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
@@ -238,11 +238,11 @@ public class ItemPlacementMirror extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-        Block block=getBlock(par1ItemStack);
+		Block block = getBlock(par1ItemStack);
 		int size = getSize(par1ItemStack);
 
 		par3List.add(size + " x " + size);
-        if(block!=null && block!=Blocks.air)
+		if (block != null && block != Blocks.air)
 			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
 	}
 

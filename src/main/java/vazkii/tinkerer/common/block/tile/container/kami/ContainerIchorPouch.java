@@ -57,15 +57,16 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 		pouch = player.getCurrentEquippedItem();
 		blockSlot = player.inventory.currentItem + 27 + 13 * 9;
 
-		for(int y = 0; y < 9; y++)
-			for(int x = 0; x < 13; x++)
+		for (int y = 0; y < 9; y++)
+			for (int x = 0; x < 13; x++)
 				addSlotToContainer(new SlotNoPouches(inv, y * 13 + x, 12 + x * 18, 8 + y * 18));
 		initPlayerInv();
 
 		if (!player.worldObj.isRemote)
-			try{
+			try {
 				((InventoryIchorPouch) inv).stackList = ((ItemFocusPouch) pouch.getItem()).getInventory(pouch);
-			} catch (Exception e) { }
+			} catch (Exception e) {
+			}
 	}
 
 	@Override
@@ -81,8 +82,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 			if (slot < 13 * 9) {
 				if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 13 * 9, inventorySlots.size(), true))
 					return null;
-			}
-			else if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 0, 13 * 9, false)) {
+			} else if (!inv.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 0, 13 * 9, false)) {
 				return null;
 			}
 			if (stackInSlot.stackSize == 0)
@@ -93,10 +93,8 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 		return stack;
 	}
 
-
 	@Override
-	public ItemStack slotClick(int par1, int par2, int par3, EntityPlayer par4EntityPlayer)
-	{
+	public ItemStack slotClick(int par1, int par2, int par3, EntityPlayer par4EntityPlayer) {
 		if (par1 == blockSlot) {
 			return null;
 		}
@@ -104,8 +102,7 @@ public class ContainerIchorPouch extends ContainerPlayerInv {
 	}
 
 	@Override
-	public void onContainerClosed(EntityPlayer par1EntityPlayer)
-	{
+	public void onContainerClosed(EntityPlayer par1EntityPlayer) {
 		super.onContainerClosed(par1EntityPlayer);
 		if (!player.worldObj.isRemote) {
 			((ItemFocusPouch) pouch.getItem()).setInventory(pouch, ((InventoryIchorPouch) inv).stackList);

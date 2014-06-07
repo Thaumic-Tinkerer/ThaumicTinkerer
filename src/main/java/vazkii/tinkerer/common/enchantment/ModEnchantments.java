@@ -49,11 +49,9 @@ public final class ModEnchantments {
 
 		dispersedStrikes = new EnchantmentDispersedStrikes(LibEnchantIDs.dispersedStrikes).setName(LibEnchantNames.dispersedStrikes);
 
-
 		finalStrike = new EnchantmentFinalStrike(LibEnchantIDs.finalStrike).setName(LibEnchantNames.finalStrike);
 
 		focusedStrike = new EnchantmentFocusedStrikes(LibEnchantIDs.focusedStrike).setName(LibEnchantNames.focusedStrike);
-
 
 		pounce = new EnchantmentPounce(LibEnchantIDs.pounce).setName(LibEnchantNames.pounce);
 		shatter = new EnchantmentShatter(LibEnchantIDs.shatter).setName(LibEnchantNames.shatter);
@@ -63,7 +61,6 @@ public final class ModEnchantments {
 		tunnel = new EnchantmentTunnel(LibEnchantIDs.tunnel).setName(LibEnchantNames.tunnel);
 
 		valiance = new EnchantmentValiance(LibEnchantIDs.valiance).setName(LibEnchantNames.valiance);
-		
 
 		MinecraftForge.EVENT_BUS.register(new ModEnchantmentHandler());
 	}

@@ -19,7 +19,6 @@ import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +36,7 @@ import vazkii.tinkerer.common.lib.LibFeatures;
 
 import java.util.List;
 
-public class ItemXPTalisman extends ItemMod implements IBauble{
+public class ItemXPTalisman extends ItemMod implements IBauble {
 
 	private static final String TAG_XP = "xp";
 	IIcon enabledIcon;
@@ -49,28 +48,27 @@ public class ItemXPTalisman extends ItemMod implements IBauble{
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
-			if(getXP(par1ItemStack) < LibFeatures.XP_TALISMAN_MAX_XP) {
-	 			int dmg = par1ItemStack.getItemDamage();
+		if (par3EntityPlayer.isSneaking()) {
+			if (getXP(par1ItemStack) < LibFeatures.XP_TALISMAN_MAX_XP) {
+				int dmg = par1ItemStack.getItemDamage();
 				par1ItemStack.setItemDamage(~dmg & 1);
 				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 			}
-		} else if(getXP(par1ItemStack) >= LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST) {
+		} else if (getXP(par1ItemStack) >= LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST) {
 			boolean has = par3EntityPlayer.inventory.consumeInventoryItem(Items.glass_bottle);
-			if(has) {
-				if(!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.experience_bottle, 1)) && !par2World.isRemote)
+			if (has) {
+				if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.experience_bottle, 1)) && !par2World.isRemote)
 					par3EntityPlayer.dropItem(Items.experience_bottle, 1);
 				int xp = getXP(par1ItemStack);
 				setXP(par1ItemStack, xp - LibFeatures.XP_TALISMAN_ENCHANTING_BOTTLE_COST);
 				par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.1F, (float) (0.1F + Math.random() / 2F));
-				for(int i = 0; par2World.isRemote && i < 6; i++)
+				for (int i = 0; par2World.isRemote && i < 6; i++)
 					ThaumicTinkerer.tcProxy.sparkle((float) (par3EntityPlayer.posX + (Math.random() - 0.5)), (float) (par3EntityPlayer.posY + Math.random() - 0.5), (float) (par3EntityPlayer.posZ + (Math.random() - 0.5)), 3);
 			}
 		}
 
 		return par1ItemStack;
 	}
-
 
 	private void consumeXPOrb(EntityXPOrb orb) {
 		orb.setDead();
@@ -84,12 +82,12 @@ public class ItemXPTalisman extends ItemMod implements IBauble{
 	}
 
 	@Override
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		par3List.add("XP: " + getXP(par1ItemStack));
-		if(getXP(par1ItemStack) >= LibFeatures.XP_TALISMAN_MAX_XP)
+		if (getXP(par1ItemStack) >= LibFeatures.XP_TALISMAN_MAX_XP)
 			par3List.add(StatCollector.translateToLocal("ttmisc.full"));
-		else if(par1ItemStack.getItemDamage() == 0)
+		else if (par1ItemStack.getItemDamage() == 0)
 			par3List.add(StatCollector.translateToLocal("ttmisc.notAbsorbing"));
 		else par3List.add(StatCollector.translateToLocal("ttmisc.absorbing"));
 	}
@@ -125,63 +123,63 @@ public class ItemXPTalisman extends ItemMod implements IBauble{
 		ItemNBTHelper.setInt(stack, TAG_XP, xp);
 	}
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.AMULET;
-    }
+	@Override
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		return BaubleType.AMULET;
+	}
 
-    @Override
-    public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
-        World par2World=player.worldObj;
-        if(par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
-            int r = LibFeatures.XP_TALISMAN_RANGE;
-            int currentXP = getXP(par1ItemStack);
-            int xpToAdd = 0;
-            int maxXP = LibFeatures.XP_TALISMAN_MAX_XP - currentXP; // Max, to prevent overflow.
-            if(maxXP <= 0) {
-                par1ItemStack.setItemDamage(0);
-                return; // Can't take any XP.
-            }
+	@Override
+	public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
+		World par2World = player.worldObj;
+		if (par1ItemStack.getItemDamage() == 1 && !par2World.isRemote) {
+			int r = LibFeatures.XP_TALISMAN_RANGE;
+			int currentXP = getXP(par1ItemStack);
+			int xpToAdd = 0;
+			int maxXP = LibFeatures.XP_TALISMAN_MAX_XP - currentXP; // Max, to prevent overflow.
+			if (maxXP <= 0) {
+				par1ItemStack.setItemDamage(0);
+				return; // Can't take any XP.
+			}
 
-            AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(player.posX - r, player.posY - r, player.posZ - r, player.posX + r, player.posY + r, player.posZ + r);
-            List<EntityXPOrb> orbs = par2World.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
+			AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(player.posX - r, player.posY - r, player.posZ - r, player.posX + r, player.posY + r, player.posZ + r);
+			List<EntityXPOrb> orbs = par2World.getEntitiesWithinAABB(EntityXPOrb.class, boundingBox);
 
-            for(EntityXPOrb orb : orbs) {
-                if(!orb.isDead) {
-                    int xp = orb.getXpValue();
-                    if(xpToAdd + xp <= maxXP) {
-                        xpToAdd += xp;
-                        consumeXPOrb(orb);
-                    }
+			for (EntityXPOrb orb : orbs) {
+				if (!orb.isDead) {
+					int xp = orb.getXpValue();
+					if (xpToAdd + xp <= maxXP) {
+						xpToAdd += xp;
+						consumeXPOrb(orb);
+					}
 
-                    maxXP -= xpToAdd;
+					maxXP -= xpToAdd;
 
-                    if(maxXP <= 0)
-                        break;
-                }
-            }
+					if (maxXP <= 0)
+						break;
+				}
+			}
 
-            setXP(par1ItemStack, Math.min(LibFeatures.XP_TALISMAN_MAX_XP, currentXP + xpToAdd));
-        }
-    }
+			setXP(par1ItemStack, Math.min(LibFeatures.XP_TALISMAN_MAX_XP, currentXP + xpToAdd));
+		}
+	}
 
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 
-    @Override
-    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 }

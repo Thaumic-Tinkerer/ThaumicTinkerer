@@ -64,19 +64,19 @@ public class GuiMobMagnet extends GuiContainer {
 
 	private void addButton(GuiButtonMM button) {
 		buttonListMM.add(button);
-		if(button instanceof IRadioButton)
+		if (button instanceof IRadioButton)
 			radioButtons.add((IRadioButton) button);
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton instanceof IRadioButton)
+		if (par1GuiButton instanceof IRadioButton)
 			((IRadioButton) par1GuiButton).enableFromClick();
 		else buttonListMM.get(0).enabled = !buttonListMM.get(0).enabled;
 
 		mobMagnet.adult = buttonListMM.get(0).enabled;
 
-        ThaumicTinkerer.netHandler.sendToServer(new PacketMobMagnetButton(mobMagnet));
+		ThaumicTinkerer.netHandler.sendToServer(new PacketMobMagnetButton(mobMagnet));
 	}
 
 	@Override
@@ -90,16 +90,16 @@ public class GuiMobMagnet extends GuiContainer {
 
 		String filter;
 
-		if(stack != null) {
+		if (stack != null) {
 			String name = ItemSoulMould.getPatternName(stack);
-			if(name.isEmpty())
+			if (name.isEmpty())
 				filter = StatCollector.translateToLocal("ttmisc.none");
 			else filter = StatCollector.translateToLocal("entity." + name + ".name");
 		} else filter = StatCollector.translateToLocal("ttmisc.all");
 
-        fontRendererObj.drawString(filter, x + xSize / 2 - fontRendererObj.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
-        fontRendererObj.drawString(adult, x + 120, y + 30, 0x999999);
-        fontRendererObj.drawString(child, x + 120, y + 50, 0x999999);
+		fontRendererObj.drawString(filter, x + xSize / 2 - fontRendererObj.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
+		fontRendererObj.drawString(adult, x + 120, y + 30, 0x999999);
+		fontRendererObj.drawString(child, x + 120, y + 50, 0x999999);
 		GL11.glColor3f(1F, 1F, 1F);
 	}
 

@@ -26,21 +26,21 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) { //,String name) {
-		super(tablet.getWorldObj(), new GameProfile("","[ThaumcraftTablet]"));
-        //super(tablet.getWorldObj(),"[ThaumcraftTablet]");
+		super(tablet.getWorldObj(), new GameProfile("", "[ThaumcraftTablet]"));
+		//super(tablet.getWorldObj(),"[ThaumcraftTablet]");
 		this.tablet = tablet;
 	}
-    @Override
-    public void setDead() {
-        inventory.clearInventory(null, -1);
-        super.setDead();
-    }
+
+	@Override
+	public void setDead() {
+		inventory.clearInventory(null, -1);
+		super.setDead();
+	}
+
 	@Override
 	public void openGui(Object mod, int modGuiId, World world, int x, int y, int z) {
 		// NO-OP
 	}
-	
-
 
 	@Override
 	public void onUpdate() {
@@ -50,9 +50,9 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 		posY = tablet.yCoord + 1.6;
 		posZ = tablet.zCoord + 0.5;
 
-		if(riddenByEntity != null)
+		if (riddenByEntity != null)
 			riddenByEntity.ridingEntity = null;
-		if(ridingEntity != null)
+		if (ridingEntity != null)
 			ridingEntity.riddenByEntity = null;
 		riddenByEntity = null;
 		ridingEntity = null;
@@ -66,23 +66,23 @@ public class TabletFakePlayer extends FakeThaumcraftPlayer {
 		rotationYaw = rotationYawHead = rotation;
 		rotationPitch = -15;
 
-		for(int i = 0; i < inventory.getSizeInventory(); i++) {
-			if(i != inventory.currentItem) {
+		for (int i = 0; i < inventory.getSizeInventory(); i++) {
+			if (i != inventory.currentItem) {
 				ItemStack stack = inventory.getStackInSlot(i);
-				if(stack != null) {
-                    entityDropItem(stack,1.0f);
+				if (stack != null) {
+					entityDropItem(stack, 1.0f);
 					inventory.setInventorySlotContents(i, null);
 				}
 			}
 		}
 	}
 
-    @Override
-    public void addChatMessage(IChatComponent var1) {
+	@Override
+	public void addChatMessage(IChatComponent var1) {
 
-    }
+	}
 
-    @Override
+	@Override
 	public ChunkCoordinates getPlayerCoordinates() {
 		return new ChunkCoordinates(tablet.xCoord, tablet.yCoord, tablet.zCoord);
 	}

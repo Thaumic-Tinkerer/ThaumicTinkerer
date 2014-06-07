@@ -32,7 +32,7 @@ public class GuiButtonEnchanterLevel extends GuiButton {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(!enabled)
+		if (!enabled)
 			return;
 
 		int x = 218 + (plus ? 7 : 0);

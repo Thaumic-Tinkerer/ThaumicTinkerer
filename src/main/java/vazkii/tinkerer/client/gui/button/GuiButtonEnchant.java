@@ -14,9 +14,6 @@
  */
 package vazkii.tinkerer.client.gui.button;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.EnumChatFormatting;
@@ -26,6 +23,9 @@ import vazkii.tinkerer.client.core.helper.ClientHelper;
 import vazkii.tinkerer.client.gui.GuiEnchanting;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiButtonEnchant extends GuiButton {
 
@@ -41,7 +41,7 @@ public class GuiButtonEnchant extends GuiButton {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(!enabled)
+		if (!enabled)
 			return;
 
 		final int x = 176;
@@ -50,7 +50,7 @@ public class GuiButtonEnchant extends GuiButton {
 		ClientHelper.minecraft().renderEngine.bindTexture(gui);
 		drawTexturedModalRect(xPosition, yPosition, x, y, 15, 15);
 
-		if(par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15 && !enchanter.working) {
+		if (par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15 && !enchanter.working) {
 			List<String> tooltip = new ArrayList();
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal("ttmisc.startEnchant"));
 			parent.tooltip = tooltip;

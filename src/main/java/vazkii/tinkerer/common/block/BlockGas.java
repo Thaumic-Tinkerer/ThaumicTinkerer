@@ -14,9 +14,8 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.ArrayList;
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -26,8 +25,9 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class BlockGas extends BlockMod {
 
@@ -51,7 +51,7 @@ public abstract class BlockGas extends BlockMod {
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if(meta != 0) {
+		if (meta != 0) {
 			setAt(par1World, par2 - 1, par3, par4, meta - 1);
 			setAt(par1World, par2 + 1, par3, par4, meta - 1);
 
@@ -73,8 +73,8 @@ public abstract class BlockGas extends BlockMod {
 	}
 
 	private void setAt(World world, int x, int y, int z, int meta) {
-		if(world.isAirBlock(x, y, z) && world.getBlock(x, y, z) != this) {
-			if(!world.isRemote)
+		if (world.isAirBlock(x, y, z) && world.getBlock(x, y, z) != this) {
+			if (!world.isRemote)
 				world.setBlock(x, y, z, this, meta, 2);
 			world.scheduleBlockUpdate(x, y, z, this, 10);
 		}
@@ -89,7 +89,6 @@ public abstract class BlockGas extends BlockMod {
 	public boolean isOpaqueCube() {
 		return false;
 	}
-
 
 	@Override
 	public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity e) {
@@ -111,7 +110,7 @@ public abstract class BlockGas extends BlockMod {
 		return false;
 	}
 
-    @Override
+	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		return new ArrayList(); // Empty List
 	}
@@ -120,7 +119,6 @@ public abstract class BlockGas extends BlockMod {
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		return null;
 	}
-
 
 	@Override
 	public boolean isAir(IBlockAccess world, int x, int y, int z) {

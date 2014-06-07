@@ -11,8 +11,7 @@ public class EnchantmentFocusedStrikes extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == ThaumcraftApi.enchantRepair||par1Enchantment.effectId==Enchantment.knockback.effectId || par1Enchantment.effectId == Enchantment.looting.effectId;
+		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == ThaumcraftApi.enchantRepair || par1Enchantment.effectId == Enchantment.knockback.effectId || par1Enchantment.effectId == Enchantment.looting.effectId;
 	}
-
 
 }

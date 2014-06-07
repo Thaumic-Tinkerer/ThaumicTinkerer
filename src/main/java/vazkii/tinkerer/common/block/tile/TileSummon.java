@@ -17,26 +17,26 @@ import java.util.Arrays;
 public class TileSummon extends TileEntity {
 
 	@Override
-	public void updateEntity(){
-		if(worldObj.getTotalWorldTime()%300==0){
+	public void updateEntity() {
+		if (worldObj.getTotalWorldTime() % 300 == 0) {
 			ArrayList<TileEntity> pedestals = new ArrayList<TileEntity>();
-			for(int x=xCoord-5;x<xCoord+5;x++){
-				for(int z=zCoord-5;z<zCoord+5;z++){
+			for (int x = xCoord - 5; x < xCoord + 5; x++) {
+				for (int z = zCoord - 5; z < zCoord + 5; z++) {
 					TileEntity tile = worldObj.getTileEntity(x, yCoord, z);
-					if(tile instanceof TilePedestal && ((TilePedestal) tile).getStackInSlot(0) != null && ((TilePedestal) tile).getStackInSlot(0).getItem() instanceof ItemMobAspect){
+					if (tile instanceof TilePedestal && ((TilePedestal) tile).getStackInSlot(0) != null && ((TilePedestal) tile).getStackInSlot(0).getItem() instanceof ItemMobAspect) {
 						pedestals.add(tile);
 					}
 				}
 			}
 
-			for(int i=0;i<pedestals.size();i++){
-				for(int j=0;j<pedestals.size();j++){
-					for(int k=0;k<pedestals.size();k++){
-						TilePedestal ped1= (TilePedestal) pedestals.get(i);
-						TilePedestal ped2= (TilePedestal) pedestals.get(j);
-						TilePedestal ped3= (TilePedestal) pedestals.get(k);
+			for (int i = 0; i < pedestals.size(); i++) {
+				for (int j = 0; j < pedestals.size(); j++) {
+					for (int k = 0; k < pedestals.size(); k++) {
+						TilePedestal ped1 = (TilePedestal) pedestals.get(i);
+						TilePedestal ped2 = (TilePedestal) pedestals.get(j);
+						TilePedestal ped3 = (TilePedestal) pedestals.get(k);
 
-						if((ped1!=ped2) && (ped2!=ped3) && (ped1!=ped3)){
+						if ((ped1 != ped2) && (ped2 != ped3) && (ped1 != ped3)) {
 							ArrayList<Aspect> aspects = new ArrayList<Aspect>();
 							aspects.add(ModItems.mobAspect.getAspect(ped1.getStackInSlot(0)));
 
@@ -44,27 +44,27 @@ public class TileSummon extends TileEntity {
 
 							aspects.add(ModItems.mobAspect.getAspect(ped3.getStackInSlot(0)));
 
-							for(EnumMobAspect recipe:EnumMobAspect.values()){
-								if(Arrays.asList(recipe.aspects).containsAll(aspects) && aspects.containsAll(Arrays.asList(recipe.aspects))){
+							for (EnumMobAspect recipe : EnumMobAspect.values()) {
+								if (Arrays.asList(recipe.aspects).containsAll(aspects) && aspects.containsAll(Arrays.asList(recipe.aspects))) {
 
-									boolean isInfused=ModItems.mobAspect.isInfused(ped1.getStackInSlot(0)) &&
+									boolean isInfused = ModItems.mobAspect.isInfused(ped1.getStackInSlot(0)) &&
 											ModItems.mobAspect.isInfused(ped2.getStackInSlot(0)) &&
 											ModItems.mobAspect.isInfused(ped3.getStackInSlot(0));
 
-									if(isInfused && worldObj.getTotalWorldTime()%1200!=0){
+									if (isInfused && worldObj.getTotalWorldTime() % 1200 != 0) {
 										return;
 									}
 
-									if(!isInfused){
+									if (!isInfused) {
 										ped1.setInventorySlotContents(0, null);
 										ped2.setInventorySlotContents(0, null);
 										ped3.setInventorySlotContents(0, null);
 									}
 
 									try {
-										if(!worldObj.isRemote){
+										if (!worldObj.isRemote) {
 											Entity spawn = (Entity) recipe.entity.getDeclaredConstructor(World.class).newInstance(worldObj);
-											spawn.setLocationAndAngles(xCoord+.5, yCoord+1, zCoord+.5, 0, 0);
+											spawn.setLocationAndAngles(xCoord + .5, yCoord + 1, zCoord + .5, 0, 0);
 											worldObj.spawnEntityInWorld(spawn);
 										}
 
@@ -82,13 +82,10 @@ public class TileSummon extends TileEntity {
 										e.printStackTrace();
 									}
 
-
 									return;
 
 								}
 							}
-
-
 
 						}
 
@@ -98,6 +95,5 @@ public class TileSummon extends TileEntity {
 
 		}
 	}
-
 
 }

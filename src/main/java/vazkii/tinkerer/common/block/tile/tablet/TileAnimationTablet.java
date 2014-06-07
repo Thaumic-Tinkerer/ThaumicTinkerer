@@ -54,30 +54,31 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Optional.InterfaceList({
-        @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
-        @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
+		@Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers"),
+		@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft")
 })
-public class TileAnimationTablet extends TileEntity implements IInventory ,IMovableTile,IPeripheral,SimpleComponent {
+public class TileAnimationTablet extends TileEntity implements IInventory, IMovableTile, IPeripheral, SimpleComponent {
 
 	private static final String TAG_LEFT_CLICK = "leftClick";
 	private static final String TAG_REDSTONE = "redstone";
 	private static final String TAG_PROGRESS = "progress";
 	private static final String TAG_MOD = "mod";
-    private static final String TAG_OWNER = "owner";
+	private static final String TAG_OWNER = "owner";
 
-	private static final int[][] LOC_INCREASES = new int[][] {
-		{ 0, -1 },
-		{ 0, +1 },
-		{ -1, 0 },
-		{ +1, 0 }
+	private static final int[][] LOC_INCREASES = new int[][]{
+			{ 0, -1 },
+			{ 0, +1 },
+			{ -1, 0 },
+			{ +1, 0 }
 	};
 
-	private static final ForgeDirection[] SIDES = new ForgeDirection[] {
-		ForgeDirection.NORTH,
-		ForgeDirection.SOUTH,
-		ForgeDirection.WEST,
-		ForgeDirection.EAST
+	private static final ForgeDirection[] SIDES = new ForgeDirection[]{
+			ForgeDirection.NORTH,
+			ForgeDirection.SOUTH,
+			ForgeDirection.WEST,
+			ForgeDirection.EAST
 	};
 
 	private static final int SWING_SPEED = 3;
@@ -98,12 +99,12 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	private int initialDamage = 0;
 	private int curblockDamage = 0;
 	private int durabilityRemainingOnBlock;
-    //public String Owner;
+	//public String Owner;
 	FakeThaumcraftPlayer player;
 
 	@Override
 	public void updateEntity() {
-			player = new TabletFakePlayer(this);//,Owner);
+		player = new TabletFakePlayer(this);//,Owner);
 
 		player.onUpdate();
 
@@ -111,30 +112,30 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 
 		ItemStack stack = getStackInSlot(0);
 
-		if(stack != null) {
-			if(swingProgress >= MAX_DEGREE)
+		if (stack != null) {
+			if (swingProgress >= MAX_DEGREE)
 				swingHit();
 
 			swingMod = swingProgress <= 0 ? 0 : swingProgress >= MAX_DEGREE ? -SWING_SPEED : swingMod;
 			swingProgress += swingMod;
-			if(swingProgress < 0)
+			if (swingProgress < 0)
 				swingProgress = 0;
 		} else {
 			swingMod = 0;
 			swingProgress = 0;
 
-			if(isBreaking)
+			if (isBreaking)
 				stopBreaking();
 		}
 
 		boolean detect = detect();
-		if(!detect)
+		if (!detect)
 			stopBreaking();
 
-		if(detect && isBreaking)
+		if (detect && isBreaking)
 			continueBreaking();
 
-		if((!redstone || isBreaking) && detect && swingProgress == 0) {
+		if ((!redstone || isBreaking) && detect && swingProgress == 0) {
 			initiateSwing();
 			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
 		}
@@ -152,22 +153,22 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		Block block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
 
 		player.setCurrentItemOrArmor(0, stack);
-        //EntityPlayer realPlayer=MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(Owner);
-        //NBTTagCompound data=realPlayer.getEntityData().getCompoundTag("PlayerPersisted");
-        //player.getEntityData().setCompoundTag("PlayerPersisted",data);
-        //NBTTagCompound cmp=player.getEntityData().getCompoundTag("PlayerPersisted");
-        //System.out.println(cmp.getCompoundTag("TCResearch").getTagList("TCResearchList").tagCount());
+		//EntityPlayer realPlayer=MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(Owner);
+		//NBTTagCompound data=realPlayer.getEntityData().getCompoundTag("PlayerPersisted");
+		//player.getEntityData().setCompoundTag("PlayerPersisted",data);
+		//NBTTagCompound cmp=player.getEntityData().getCompoundTag("PlayerPersisted");
+		//System.out.println(cmp.getCompoundTag("TCResearch").getTagList("TCResearchList").tagCount());
 
 		boolean done = false;
 
-		if(leftClick) {
+		if (leftClick) {
 			Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
-			if(entity != null) {
+			if (entity != null) {
 				player.getAttributeMap().applyAttributeModifiers(stack.getAttributeModifiers()); // Set attack strenght
 				player.attackTargetEntityWithCurrentItem(entity);
 				done = true;
-			} else if(!isBreaking){
-				if(block!=Blocks.air && !block.isAir(worldObj, coords.posX, coords.posY, coords.posZ) && block.getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) >= 0) {
+			} else if (!isBreaking) {
+				if (block != Blocks.air && !block.isAir(worldObj, coords.posX, coords.posY, coords.posZ) && block.getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) >= 0) {
 					isBreaking = true;
 					startBreaking(block, worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ));
 					done = true;
@@ -176,7 +177,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		} else {
 			int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
 
-			if(!(block!=Blocks.air && !block.isAir(worldObj, coords.posX, coords.posY, coords.posZ))) {
+			if (!(block != Blocks.air && !block.isAir(worldObj, coords.posX, coords.posY, coords.posZ))) {
 				coords.posY -= 1;
 				side = ForgeDirection.UP.ordinal();
 				block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
@@ -187,36 +188,35 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 				Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
 				done = entity != null && entity instanceof EntityLiving && (item.itemInteractionForEntity(stack, player, (EntityLivingBase) entity) || (!(entity instanceof EntityAnimal) || ((EntityAnimal) entity).interact(player)));
 
-				if(!done)
+				if (!done)
 					item.onItemUseFirst(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
-				if(!done)
+				if (!done)
 					done = block != null && block.onBlockActivated(worldObj, coords.posX, coords.posY, coords.posZ, player, side, 0F, 0F, 0F);
-				if(!done)
+				if (!done)
 					done = item.onItemUse(stack, player, worldObj, coords.posX, coords.posY, coords.posZ, side, 0F, 0F, 0F);
-				if(!done) {
+				if (!done) {
 					item.onItemRightClick(stack, worldObj, player);
 					done = true;
 				}
 
-			} catch(Throwable e) {
+			} catch (Throwable e) {
 				e.printStackTrace();
-                List list=worldObj.getEntitiesWithinAABB(EntityPlayer.class,AxisAlignedBB.getBoundingBox(xCoord-8,yCoord-8,zCoord-8,xCoord+8,yCoord+8,zCoord+8));
-                for(Object player:list)
-                {
-                    ((EntityPlayer)player).addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log."));
-                    ((EntityPlayer)player).addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage()));
-                }
-            }
+				List list = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord - 8, yCoord - 8, zCoord - 8, xCoord + 8, yCoord + 8, zCoord + 8));
+				for (Object player : list) {
+					((EntityPlayer) player).addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "Something went wrong with a Tool Dynamism Tablet! Check your FML log."));
+					((EntityPlayer) player).addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + e.getMessage()));
+				}
+			}
 		}
 
-		if(done) {
+		if (done) {
 			stack = player.getCurrentEquippedItem();
-			if(stack == null || stack.stackSize == 0)
+			if (stack == null || stack.stackSize == 0)
 				setInventorySlotContents(0, null);
 
-            worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
-        }
-        markDirty();
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		}
+		markDirty();
 	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
@@ -228,109 +228,109 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 
 	// Copied from ItemInWorldManager, seems to do the trick.
 	private void startBreaking(Block block, int meta) {
-		int side = 	SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
+		int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
 		ChunkCoordinates coords = getTargetLoc();
 
 		PlayerInteractEvent event = ForgeEventFactory.onPlayerInteract(player, Action.LEFT_CLICK_BLOCK, coords.posX, coords.posY, coords.posZ, side);
-        if (event.isCanceled()) {
-        	stopBreaking();
-            return;
-        }
+		if (event.isCanceled()) {
+			stopBreaking();
+			return;
+		}
 
 		initialDamage = curblockDamage;
-        float var5 = 1F;
+		float var5 = 1F;
 
-        if (block != null) {
-            if (event.useBlock != Event.Result.DENY)
-                block.onBlockClicked(worldObj, coords.posX, coords.posY, coords.posZ, player);
-            var5 = block.getPlayerRelativeBlockHardness(player, worldObj, coords.posX, coords.posY, coords.posZ);
-        }
+		if (block != null) {
+			if (event.useBlock != Event.Result.DENY)
+				block.onBlockClicked(worldObj, coords.posX, coords.posY, coords.posZ, player);
+			var5 = block.getPlayerRelativeBlockHardness(player, worldObj, coords.posX, coords.posY, coords.posZ);
+		}
 
-        if (event.useItem == Event.Result.DENY) {
-        	stopBreaking();
-            return;
-        }
+		if (event.useItem == Event.Result.DENY) {
+			stopBreaking();
+			return;
+		}
 
-        if(var5 >= 1F) {
-            tryHarvestBlock(coords.posX, coords.posY, coords.posZ);
-            stopBreaking();
-        } else {
-            int var7 = (int) (var5 * 10);
-            worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, var7);
-            durabilityRemainingOnBlock = var7;
-        }
+		if (var5 >= 1F) {
+			tryHarvestBlock(coords.posX, coords.posY, coords.posZ);
+			stopBreaking();
+		} else {
+			int var7 = (int) (var5 * 10);
+			worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, var7);
+			durabilityRemainingOnBlock = var7;
+		}
 	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
 	private void continueBreaking() {
 		++curblockDamage;
-        int var1;
-        float var4;
-        int var5;
+		int var1;
+		float var4;
+		int var5;
 		ChunkCoordinates coords = getTargetLoc();
 
-        var1 = curblockDamage - initialDamage;
-        Block block= worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
+		var1 = curblockDamage - initialDamage;
+		Block block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
 
-        if (block== Blocks.air)
-        	stopBreaking();
-        else {
-            var4 = block.getPlayerRelativeBlockHardness(player, worldObj,coords.posX, coords.posY, coords.posZ) * var1;
-            var5 = (int) (var4 * 10);
+		if (block == Blocks.air)
+			stopBreaking();
+		else {
+			var4 = block.getPlayerRelativeBlockHardness(player, worldObj, coords.posX, coords.posY, coords.posZ) * var1;
+			var5 = (int) (var4 * 10);
 
-            if (var5 != durabilityRemainingOnBlock) {
-                worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, var5);
-                durabilityRemainingOnBlock = var5;
-            }
+			if (var5 != durabilityRemainingOnBlock) {
+				worldObj.destroyBlockInWorldPartially(player.getEntityId(), coords.posX, coords.posY, coords.posZ, var5);
+				durabilityRemainingOnBlock = var5;
+			}
 
-            if (var4 >= 1F) {
-                tryHarvestBlock(coords.posX, coords.posY, coords.posZ);
-                stopBreaking();
-            }
-        }
+			if (var4 >= 1F) {
+				tryHarvestBlock(coords.posX, coords.posY, coords.posZ);
+				stopBreaking();
+			}
+		}
 	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
-    public boolean tryHarvestBlock(int par1, int par2, int par3) {
-        ItemStack stack = getStackInSlot(0);
-        if (stack != null && stack.getItem().onBlockStartBreak(stack, par1, par2, par3, player))
-        	return false;
+	public boolean tryHarvestBlock(int par1, int par2, int par3) {
+		ItemStack stack = getStackInSlot(0);
+		if (stack != null && stack.getItem().onBlockStartBreak(stack, par1, par2, par3, player))
+			return false;
 
-        Block block =worldObj.getBlock(par1, par2, par3);
-        int var5 = worldObj.getBlockMetadata(par1, par2, par3);
-        //worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
-        boolean var6;
+		Block block = worldObj.getBlock(par1, par2, par3);
+		int var5 = worldObj.getBlockMetadata(par1, par2, par3);
+		//worldObj.playAuxSFXAtEntity(player, 2001, par1, par2, par3, var4 + (var5 << 12));
+		boolean var6;
 
-        boolean var8 = false;
-        if (block != null)
-            var8 = block.canHarvestBlock(player, var5);
+		boolean var8 = false;
+		if (block != null)
+			var8 = block.canHarvestBlock(player, var5);
 
-        worldObj.loadedEntityList.size();
-        if (stack != null)
-            stack.getItem().onBlockDestroyed(stack, worldObj, block, par1, par2, par3, player);
+		worldObj.loadedEntityList.size();
+		if (stack != null)
+			stack.getItem().onBlockDestroyed(stack, worldObj, block, par1, par2, par3, player);
 
-        var6 = removeBlock(par1, par2, par3);
-        if (var6 && var8)
-        	block.harvestBlock(worldObj, player, par1, par2, par3, var5);
+		var6 = removeBlock(par1, par2, par3);
+		if (var6 && var8)
+			block.harvestBlock(worldObj, player, par1, par2, par3, var5);
 
-        return var6;
-    }
+		return var6;
+	}
 
 	// Copied from ItemInWorldManager, seems to do the trick.
-    private boolean removeBlock(int par1, int par2, int par3) {
-        Block var4 = worldObj.getBlock(par1, par2, par3);
-        int var5 = worldObj.getBlockMetadata(par1, par2, par3);
+	private boolean removeBlock(int par1, int par2, int par3) {
+		Block var4 = worldObj.getBlock(par1, par2, par3);
+		int var5 = worldObj.getBlockMetadata(par1, par2, par3);
 
-        if (var4 != null)
-            var4.onBlockHarvested(worldObj, par1, par2, par3, var5, player);
+		if (var4 != null)
+			var4.onBlockHarvested(worldObj, par1, par2, par3, var5, player);
 
-        boolean var6 = var4 != null && var4.removedByPlayer(worldObj, player, par1, par2, par3);
+		boolean var6 = var4 != null && var4.removedByPlayer(worldObj, player, par1, par2, par3);
 
-        if (var4 != null && var6)
-            var4.onBlockDestroyedByPlayer(worldObj, par1, par2, par3, var5);
+		if (var4 != null && var6)
+			var4.onBlockDestroyedByPlayer(worldObj, par1, par2, par3, var5);
 
-        return var6;
-    }
+		return var6;
+	}
 
 	public boolean detect() {
 		ChunkCoordinates coords = getTargetLoc();
@@ -347,7 +347,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		ChunkCoordinates coords = new ChunkCoordinates(xCoord, yCoord, zCoord);
 
 		int meta = getBlockMetadata();
-		if(meta==0){
+		if (meta == 0) {
 			System.out.println("Metadata of a Tool Dynamism tablet is in an invalid state. This is a critical error.");
 			return coords;
 		}
@@ -362,10 +362,9 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		return isBreaking;
 	}
 
-
 	@Override
 	public boolean receiveClientEvent(int par1, int par2) {
-		if(par1 == 0) {
+		if (par1 == 0) {
 			initiateSwing();
 			return true;
 		}
@@ -379,10 +378,10 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 
 		swingProgress = par1NBTTagCompound.getInteger(TAG_PROGRESS);
 
-        //if(par1NBTTagCompound.hasKey(TAG_OWNER))
-        //    Owner=par1NBTTagCompound.getString(TAG_OWNER);
-        //else
-        //    Owner="";
+		//if(par1NBTTagCompound.hasKey(TAG_OWNER))
+		//    Owner=par1NBTTagCompound.getString(TAG_OWNER);
+		//else
+		//    Owner="";
 		readCustomNBT(par1NBTTagCompound);
 	}
 
@@ -390,10 +389,10 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
 		super.writeToNBT(par1NBTTagCompound);
 
-        par1NBTTagCompound.setInteger(TAG_PROGRESS, swingProgress);
-        par1NBTTagCompound.setInteger(TAG_MOD, swingMod);
-        //par1NBTTagCompound.setString(TAG_OWNER,Owner);
-        writeCustomNBT(par1NBTTagCompound);
+		par1NBTTagCompound.setInteger(TAG_PROGRESS, swingProgress);
+		par1NBTTagCompound.setInteger(TAG_MOD, swingMod);
+		//par1NBTTagCompound.setString(TAG_OWNER,Owner);
+		writeCustomNBT(par1NBTTagCompound);
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
@@ -410,21 +409,21 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		}
 	}
 
-    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-        par1NBTTagCompound.setBoolean(TAG_LEFT_CLICK, leftClick);
-        par1NBTTagCompound.setBoolean(TAG_REDSTONE, redstone);
+	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
+		par1NBTTagCompound.setBoolean(TAG_LEFT_CLICK, leftClick);
+		par1NBTTagCompound.setBoolean(TAG_REDSTONE, redstone);
 
-    	NBTTagList var2 = new NBTTagList();
-        for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
-            if (inventorySlots[var3] != null) {
-                NBTTagCompound var4 = new NBTTagCompound();
-                var4.setByte("Slot", (byte)var3);
-                inventorySlots[var3].writeToNBT(var4);
-                var2.appendTag(var4);
-            }
-        }
-        par1NBTTagCompound.setTag("Items", var2);
-    }
+		NBTTagList var2 = new NBTTagList();
+		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
+			if (inventorySlots[var3] != null) {
+				NBTTagCompound var4 = new NBTTagCompound();
+				var4.setByte("Slot", (byte) var3);
+				inventorySlots[var3].writeToNBT(var4);
+				var2.appendTag(var4);
+			}
+		}
+		par1NBTTagCompound.setTag("Items", var2);
+	}
 
 	@Override
 	public int getSizeInventory() {
@@ -439,30 +438,30 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	@Override
 	public ItemStack decrStackSize(int par1, int par2) {
 		if (inventorySlots[par1] != null) {
-            ItemStack stackAt;
+			ItemStack stackAt;
 
-            if (inventorySlots[par1].stackSize <= par2) {
-                stackAt = inventorySlots[par1];
-                inventorySlots[par1] = null;
+			if (inventorySlots[par1].stackSize <= par2) {
+				stackAt = inventorySlots[par1];
+				inventorySlots[par1] = null;
 
-        		if(!worldObj.isRemote)
-                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				if (!worldObj.isRemote)
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 
-                return stackAt;
-            } else {
-                stackAt = inventorySlots[par1].splitStack(par2);
+				return stackAt;
+			} else {
+				stackAt = inventorySlots[par1].splitStack(par2);
 
-                if (inventorySlots[par1].stackSize == 0)
-                    inventorySlots[par1] = null;
+				if (inventorySlots[par1].stackSize == 0)
+					inventorySlots[par1] = null;
 
-        		if(!worldObj.isRemote)
-        			worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+				if (!worldObj.isRemote)
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 
-                return stackAt;
-            }
-        }
+				return stackAt;
+			}
+		}
 
-        return null;
+		return null;
 	}
 
 	@Override
@@ -474,19 +473,19 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventorySlots[i] = itemstack;
 
-		if(!worldObj.isRemote)
-			worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+		if (!worldObj.isRemote)
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
-    @Override
-    public String getInventoryName() {
-        return LibBlockNames.ANIMATION_TABLET;
-    }
+	@Override
+	public String getInventoryName() {
+		return LibBlockNames.ANIMATION_TABLET;
+	}
 
-    @Override
-    public boolean hasCustomInventoryName() {
-        return false;
-    }
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -503,16 +502,15 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-    @Override
-    public void openInventory() {
+	@Override
+	public void openInventory() {
 
-    }
+	}
 
-    @Override
-    public void closeInventory() {
+	@Override
+	public void closeInventory() {
 
-    }
-
+	}
 
 	@Override
 	public S35PacketUpdateTileEntity getDescriptionPacket() {
@@ -538,77 +536,81 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		switch(method) {
-			case 0 : return new Object[]{ redstone };
-			case 1 :
-                return setRedstoneImplementation((Boolean)arguments[0]);
-            case 2 : return new Object[]{ leftClick };
-			case 3 :
-                return setLeftClickImplementation((Boolean)arguments[0]);
-            case 4 : return new Object[] { getBlockMetadata() - 2 };
-			case 5 :
-                return setRotationImplementation((Double)arguments[0]);
-            case 6 : return new Object[] { getStackInSlot(0) != null };
-			case 7 :
-                return triggerImplementation();
-        }
+		switch (method) {
+			case 0:
+				return new Object[]{ redstone };
+			case 1:
+				return setRedstoneImplementation((Boolean) arguments[0]);
+			case 2:
+				return new Object[]{ leftClick };
+			case 3:
+				return setLeftClickImplementation((Boolean) arguments[0]);
+			case 4:
+				return new Object[]{ getBlockMetadata() - 2 };
+			case 5:
+				return setRotationImplementation((Double) arguments[0]);
+			case 6:
+				return new Object[]{ getStackInSlot(0) != null };
+			case 7:
+				return triggerImplementation();
+		}
 		return null;
 	}
 
-    private Object[] triggerImplementation() {
-        if(swingProgress != 0)
-            return new Object[] { false };
+	private Object[] triggerImplementation() {
+		if (swingProgress != 0)
+			return new Object[]{ false };
 
-        findEntities(getTargetLoc());
-        initiateSwing();
-        worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
+		findEntities(getTargetLoc());
+		initiateSwing();
+		worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
 
-        return new Object[] { true };
-    }
+		return new Object[]{ true };
+	}
 
-    private Object[] setRotationImplementation(Double argument) throws Exception {
-        int rotation = (int) argument.doubleValue();
+	private Object[] setRotationImplementation(Double argument) throws Exception {
+		int rotation = (int) argument.doubleValue();
 
-        if(rotation > 3)
-            throw new Exception("Invalid value: " + rotation + ".");
+		if (rotation > 3)
+			throw new Exception("Invalid value: " + rotation + ".");
 
-        worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, rotation + 2, 1 | 2);
-        return null;
-    }
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, rotation + 2, 1 | 2);
+		return null;
+	}
 
-    private Object[] setLeftClickImplementation(Boolean argument) {
-        this.leftClick = argument;
-        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-        return null;
-    }
+	private Object[] setLeftClickImplementation(Boolean argument) {
+		this.leftClick = argument;
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		return null;
+	}
 
-    private Object[] setRedstoneImplementation(Boolean argument) {
-        this.redstone = argument;
-        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
-        return null;
-    }
+	private Object[] setRedstoneImplementation(Boolean argument) {
+		this.redstone = argument;
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		return null;
+	}
 
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
 	public void attach(IComputerAccess computer) {
 		// NO-OP
 	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Optional.Method(modid = "ComputerCraft")
 	public void detach(IComputerAccess computer) {
 		// NO-OP
 	}
 
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
+	public boolean equals(IPeripheral other) {
+		return this.equals((Object) other);
+	}
 
-    @Override
+	@Override
 	public boolean prepareToMove() {
 		stopBreaking();
 		return true;
@@ -619,60 +621,60 @@ public class TileAnimationTablet extends TileEntity implements IInventory ,IMova
 
 	}
 
-    @Override
-    public String getComponentName() {
-        return getType();
-    }
+	@Override
+	public String getComponentName() {
+		return getType();
+	}
 
+	@Callback(doc = "function():boolean -- Returns Whether tablet is redstone activated")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] getRedstone(Context context, Arguments args) throws Exception {
+		return new Object[]{ redstone };
+	}
 
-    @Callback(doc = "function():boolean -- Returns Whether tablet is redstone activated")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] getRedstone(Context context, Arguments args) throws Exception {
-        return new Object[]{redstone};
-    }
+	@Callback(doc = "function(boolean):Nil -- Sets Whether tablet is redstone activated")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] setRedstone(Context context, Arguments args) throws Exception {
+		setRedstoneImplementation(args.checkBoolean(0));
+		return new Object[]{ redstone };
+	}
 
-    @Callback(doc = "function(boolean):Nil -- Sets Whether tablet is redstone activated")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] setRedstone(Context context, Arguments args) throws Exception {
-        setRedstoneImplementation(args.checkBoolean(0));
-        return new Object[]{redstone};
-    }
+	@Callback(doc = "function():boolean -- Returns Whether tablet Left clicks")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] getLeftClick(Context context, Arguments args) throws Exception {
+		return new Object[]{ leftClick };
+	}
 
-    @Callback(doc = "function():boolean -- Returns Whether tablet Left clicks")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] getLeftClick(Context context, Arguments args) throws Exception {
-        return new Object[]{leftClick};
-    }
+	@Callback(doc = "function(boolean):Nil -- Sets Whether tablet Left Clicks")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] setLeftClick(Context context, Arguments args) throws Exception {
+		setLeftClickImplementation(args.checkBoolean(0));
+		return new Object[]{ leftClick };
+	}
 
-    @Callback(doc = "function(boolean):Nil -- Sets Whether tablet Left Clicks")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] setLeftClick(Context context, Arguments args) throws Exception {
-        setLeftClickImplementation(args.checkBoolean(0));
-        return new Object[]{leftClick};
-    }
-    // TODO {"hasItem", "trigger" };
-    @Callback(doc = "function():number -- Returns tablet Rotation")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] getRotation(Context context, Arguments args) throws Exception {
-        return new Object[]{getBlockMetadata() - 2};
-    }
+	// TODO {"hasItem", "trigger" };
+	@Callback(doc = "function():number -- Returns tablet Rotation")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] getRotation(Context context, Arguments args) throws Exception {
+		return new Object[]{ getBlockMetadata() - 2 };
+	}
 
-    @Callback(doc = "function(number):Nil -- Sets tablet rotation")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] setRotation(Context context, Arguments args) throws Exception {
-        setRotationImplementation((double)args.checkInteger(0));
-        return new Object[]{getBlockMetadata() - 2};
-    }
+	@Callback(doc = "function(number):Nil -- Sets tablet rotation")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] setRotation(Context context, Arguments args) throws Exception {
+		setRotationImplementation((double) args.checkInteger(0));
+		return new Object[]{ getBlockMetadata() - 2 };
+	}
 
-    @Callback(doc = "function():boolean -- Returns wether tablet has an item or not")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] hasItem(Context context, Arguments args) throws Exception {
-        return new Object[]{getStackInSlot(0) != null };
-    }
+	@Callback(doc = "function():boolean -- Returns wether tablet has an item or not")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] hasItem(Context context, Arguments args) throws Exception {
+		return new Object[]{ getStackInSlot(0) != null };
+	}
 
-    @Callback(doc = "function():Nil -- Triggers tablets swing")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] trigger(Context context, Arguments args) throws Exception {
-        return triggerImplementation();
-    }
+	@Callback(doc = "function():Nil -- Triggers tablets swing")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] trigger(Context context, Arguments args) throws Exception {
+		return triggerImplementation();
+	}
 }

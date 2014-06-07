@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.core.handler.kami;
 
-
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -28,13 +27,13 @@ import vazkii.tinkerer.common.item.ModItems;
 public class DimensionalShardDropHandler {
 
 	@SubscribeEvent
-    public void onEntityLivingDrops(LivingDropsEvent event) {
-        if(event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
-        	if(event.entityLiving instanceof EntityEnderman && event.entityLiving.dimension == ConfigHandler.endDimensionID && Math.random() <= 1D / 32D)
-        		event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ModItems.kamiResource, 1, 7)));
+	public void onEntityLivingDrops(LivingDropsEvent event) {
+		if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
+			if (event.entityLiving instanceof EntityEnderman && event.entityLiving.dimension == ConfigHandler.endDimensionID && Math.random() <= 1D / 32D)
+				event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ModItems.kamiResource, 1, 7)));
 
-        	if(event.entityLiving instanceof EntityPigZombie && event.entityLiving.dimension == ConfigHandler.netherDimensionID && Math.random() <= 1D / 16D)
-        		event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ModItems.kamiResource, 1, 6)));
-        }
-    }
+			if (event.entityLiving instanceof EntityPigZombie && event.entityLiving.dimension == ConfigHandler.netherDimensionID && Math.random() <= 1D / 16D)
+				event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ModItems.kamiResource, 1, 6)));
+		}
+	}
 }

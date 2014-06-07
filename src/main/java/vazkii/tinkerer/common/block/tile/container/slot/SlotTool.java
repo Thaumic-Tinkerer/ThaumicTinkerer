@@ -31,7 +31,7 @@ public class SlotTool extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return !enchanter.working && par1ItemStack.getItem() != Items.book&& par1ItemStack.getItem().isItemTool(par1ItemStack);
+		return !enchanter.working && par1ItemStack.getItem() != Items.book && par1ItemStack.getItem().isItemTool(par1ItemStack);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class ItemIchorAxe extends ItemAxe {
 	public ItemIchorAxe() {
 		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
-        setHarvestLevel("axe", 4);
+		setHarvestLevel("axe", 4);
 	}
 
 	@Override

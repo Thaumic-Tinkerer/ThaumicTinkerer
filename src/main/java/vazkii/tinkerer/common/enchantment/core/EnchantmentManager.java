@@ -91,24 +91,23 @@ public final class EnchantmentManager {
 		registerExponentialCostData(ModEnchantments.shockwave, LibResources.ENCHANT_SHOCKWAVE, false, new AspectList().add(Aspect.EARTH, 16).add(Aspect.AIR, 16), LibResearch.KEY_ENCHANT_VAMPIRISM);
 		registerExponentialCostData(ModEnchantments.pounce, LibResources.ENCHANT_POUNCE, false, new AspectList().add(Aspect.EARTH, 16).add(Aspect.AIR, 16), LibResearch.KEY_ENCHANT_VAMPIRISM);
 
-
 		registerCompatibilityRules();
 		registerExtraRules();
 	}
 
 	public static boolean canApply(ItemStack stack, Enchantment enchant, List<Integer> currentEnchants) {
-		if(!enchant.canApply(stack) || !enchant.type.canEnchantItem(stack.getItem()) || currentEnchants.contains(enchant.effectId))
+		if (!enchant.canApply(stack) || !enchant.type.canEnchantItem(stack.getItem()) || currentEnchants.contains(enchant.effectId))
 			return false;
 
-		for(IEnchantmentRule rule : rules.get(enchant.effectId))
-			if(rule.cantApplyAlongside(currentEnchants))
+		for (IEnchantmentRule rule : rules.get(enchant.effectId))
+			if (rule.cantApplyAlongside(currentEnchants))
 				return false;
 
 		return true;
 	}
 
 	public static boolean canEnchantmentBeUsed(String player, Enchantment enchant) {
-		if(!enchantmentData.containsKey(enchant.effectId))
+		if (!enchantmentData.containsKey(enchant.effectId))
 			return false;
 
 		EnchantmentData data = enchantmentData.get(enchant.effectId).get(1);
@@ -120,27 +119,27 @@ public final class EnchantmentManager {
 	}
 
 	public static void registerExponentialCostData(Enchantment enchantment, String texture, boolean vanilla, AspectList level1Aspects, String research) {
-		for(double i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
+		for (double i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++) {
 			EnchantmentData data = new EnchantmentData(texture, vanilla, MiscHelper.multiplyAspectList(level1Aspects, i * (1D + i * 0.2)), research);
 			registerData(enchantment.effectId, (int) i, data);
 		}
 	}
 
 	private static void registerData(int enchantment, int level, EnchantmentData data) {
-		if(!enchantmentData.containsKey(enchantment))
+		if (!enchantmentData.containsKey(enchantment))
 			enchantmentData.put(enchantment, new HashMap());
 
 		enchantmentData.get(enchantment).put(level, data);
 	}
 
 	private static void registerCompatibilityRules() {
-		for(Enchantment ench : Enchantment.enchantmentsList) {
-			if(ench != null)
-				for(Enchantment ench1 : Enchantment.enchantmentsList) {
-					if(ench1 == null || ench == ench1)
+		for (Enchantment ench : Enchantment.enchantmentsList) {
+			if (ench != null)
+				for (Enchantment ench1 : Enchantment.enchantmentsList) {
+					if (ench1 == null || ench == ench1)
 						continue;
 
-					if(!ench.canApplyTogether(ench1) || !ench1.canApplyTogether(ench))
+					if (!ench.canApplyTogether(ench1) || !ench1.canApplyTogether(ench))
 						rules.put(ench.effectId, new BasicCompatibilityRule(ench1));
 				}
 		}

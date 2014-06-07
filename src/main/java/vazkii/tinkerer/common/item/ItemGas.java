@@ -35,13 +35,13 @@ public class ItemGas extends ItemMod {
 		int z = (int) par3EntityPlayer.posZ;
 		boolean air = par2World.isAirBlock(x, y, z);
 
-        if (!par3EntityPlayer.capabilities.isCreativeMode)
-        	par1ItemStack.stackSize--;
+		if (!par3EntityPlayer.capabilities.isCreativeMode)
+			par1ItemStack.stackSize--;
 
-        par2World.playSoundAtEntity(par3EntityPlayer, "random.pop", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		par2World.playSoundAtEntity(par3EntityPlayer, "random.pop", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-		if(air) {
-			if(!par2World.isRemote)
+		if (air) {
+			if (!par2World.isRemote)
 				par2World.setBlock(x, y, z, setBlock, 4, 2);
 			else par3EntityPlayer.swingItem();
 			par2World.scheduleBlockUpdate(x, y, z, setBlock, 10);

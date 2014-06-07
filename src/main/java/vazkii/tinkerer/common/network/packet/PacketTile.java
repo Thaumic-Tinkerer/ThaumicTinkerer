@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.network.packet;
 
-
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
@@ -27,31 +26,30 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 
-
 public abstract class PacketTile<T extends TileEntity> implements IMessage {
 
-    public PacketTile(){
+	public PacketTile() {
 
-    }
+	}
 
-    @Override
-    public void toBytes(ByteBuf byteBuf) {
-        byteBuf.writeInt(x);
-        byteBuf.writeInt(y);
-        byteBuf.writeInt(z);
-        byteBuf.writeInt(dim);
-    }
+	@Override
+	public void toBytes(ByteBuf byteBuf) {
+		byteBuf.writeInt(x);
+		byteBuf.writeInt(y);
+		byteBuf.writeInt(z);
+		byteBuf.writeInt(dim);
+	}
 
-    @Override
-    public void fromBytes(ByteBuf byteBuf) {
-        x=byteBuf.readInt();
-        y=byteBuf.readInt();
-        z=byteBuf.readInt();
-        dim=byteBuf.readInt();
-	    tile= (T) MiscHelper.server().worldServerForDimension(dim).getTileEntity(x, y, z);
-    }
+	@Override
+	public void fromBytes(ByteBuf byteBuf) {
+		x = byteBuf.readInt();
+		y = byteBuf.readInt();
+		z = byteBuf.readInt();
+		dim = byteBuf.readInt();
+		tile = (T) MiscHelper.server().worldServerForDimension(dim).getTileEntity(x, y, z);
+	}
 
-    private static final long serialVersionUID = -1447633008013055477L;
+	private static final long serialVersionUID = -1447633008013055477L;
 
 	protected int dim, x, y, z;
 
@@ -67,32 +65,31 @@ public abstract class PacketTile<T extends TileEntity> implements IMessage {
 		this.dim = tile.getWorldObj().provider.dimensionId;
 	}
 
-    public IMessage onMessage(PacketTile message, MessageContext ctx)
-    {
-        MinecraftServer server = MiscHelper.server();
-        if(ctx.side.isClient())
-            message.player=this.getClientPlayer();
-        else
-        {
-            message.player=ctx.getServerHandler().playerEntity;
-        }
-        if(server != null) {
-            World world = server.worldServerForDimension(message.dim);
+	public IMessage onMessage(PacketTile message, MessageContext ctx) {
+		MinecraftServer server = MiscHelper.server();
+		if (ctx.side.isClient())
+			message.player = this.getClientPlayer();
+		else {
+			message.player = ctx.getServerHandler().playerEntity;
+		}
+		if (server != null) {
+			World world = server.worldServerForDimension(message.dim);
 
-            if(world == null) {
-                MiscHelper.printCurrentStackTrace("No world found for dimension " + message.dim + "!");
-                return null;
-            }
+			if (world == null) {
+				MiscHelper.printCurrentStackTrace("No world found for dimension " + message.dim + "!");
+				return null;
+			}
 
-            TileEntity tile = world.getTileEntity(message.x,message.y,message.z);
-            if(tile != null) {
-                message.tile = (T) tile;
-            }
-        }
-        return null;
-    }
-    @SideOnly(Side.CLIENT)
-    public static  EntityPlayer getClientPlayer() {
-        return Minecraft.getMinecraft().thePlayer;
-    }
+			TileEntity tile = world.getTileEntity(message.x, message.y, message.z);
+			if (tile != null) {
+				message.tile = (T) tile;
+			}
+		}
+		return null;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static EntityPlayer getClientPlayer() {
+		return Minecraft.getMinecraft().thePlayer;
+	}
 }

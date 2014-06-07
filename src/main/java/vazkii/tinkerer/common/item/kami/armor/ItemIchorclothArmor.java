@@ -38,7 +38,7 @@ import java.util.List;
 
 public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, ISpecialArmor {
 
-	static ItemArmor.ArmorMaterial material = EnumHelper.addArmorMaterial("ICHOR", 0, new int[]{3, 8, 6, 3}, 20);
+	static ItemArmor.ArmorMaterial material = EnumHelper.addArmorMaterial("ICHOR", 0, new int[]{ 3, 8, 6, 3 }, 20);
 
 	public ItemIchorclothArmor(int par2) {
 		super(material, 0, par2);
@@ -56,8 +56,6 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, 
 		return slot == 2 ? LibResources.MODEL_ARMOR_ICHOR_2 : LibResources.MODEL_ARMOR_ICHOR_1;
 	}
 
-	
-
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
 		list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + (armorType == 3 ? 3 : 4) + "%");
@@ -74,7 +72,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, 
 	}
 
 	@Override
-	public ArmorProperties getProperties(EntityLivingBase player,ItemStack armor, DamageSource source, double damage, int slot) {
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		return new ArmorProperties(0, getArmorMaterial().getDamageReductionAmount(slot) * 0.0425, Integer.MAX_VALUE);
 	}
 

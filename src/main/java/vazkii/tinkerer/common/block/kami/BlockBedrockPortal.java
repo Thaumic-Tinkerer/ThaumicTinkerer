@@ -57,7 +57,6 @@ public class BlockBedrockPortal extends Block {
 		return icon;
 	}
 
-
 	@Override
 	public float getBlockHardness(World par1World, int par2, int par3, int par4) {
 		return -1;
@@ -78,12 +77,12 @@ public class BlockBedrockPortal extends Block {
 		return new TileBedrockPortal();
 	}
 
-    @Override
-    public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity entity) {
-        return false;
-    }
+	@Override
+	public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity entity) {
+		return false;
+	}
 
-    @Override
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
@@ -104,27 +103,28 @@ public class BlockBedrockPortal extends Block {
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity entity) {
 		super.onEntityCollidedWithBlock(par1World, par2, par3, par4, entity);
 
-		if(entity.worldObj.provider.isSurfaceWorld()){
+		if (entity.worldObj.provider.isSurfaceWorld()) {
 
-			if(entity instanceof EntityPlayer && !par1World.isRemote){
+			if (entity instanceof EntityPlayer && !par1World.isRemote) {
 
 				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, ConfigHandler.bedrockDimensionID, new TeleporterBedrock((WorldServer) par1World));
 
-				if(entity.worldObj.getBlock(par2, 251, par4) == Blocks.bedrock){
+				if (entity.worldObj.getBlock(par2, 251, par4) == Blocks.bedrock) {
 					entity.worldObj.setBlock(par2, 251, par4, Blocks.air);
 				}
-				if(entity.worldObj.getBlock(par2, 252, par4) == Blocks.bedrock){
+				if (entity.worldObj.getBlock(par2, 252, par4) == Blocks.bedrock) {
 					entity.worldObj.setBlock(par2, 252, par4, Blocks.air);
 				}
-				if(entity.worldObj.getBlock(par2, 253, par4) == Blocks.bedrock){
+				if (entity.worldObj.getBlock(par2, 253, par4) == Blocks.bedrock) {
 					entity.worldObj.setBlock(par2, 253, par4, Blocks.air);
-				}if(entity.worldObj.getBlock(par2, 254, par4) == Blocks.bedrock){
+				}
+				if (entity.worldObj.getBlock(par2, 254, par4) == Blocks.bedrock) {
 					entity.worldObj.setBlock(par2, 254, par4, ModBlocks.portal);
 				}
 				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, 252, par4 + 0.5, 0, 0);
 			}
-		}else if(entity.worldObj.provider instanceof WorldProviderBedrock){
-			if(entity instanceof EntityPlayer && !par1World.isRemote){
+		} else if (entity.worldObj.provider instanceof WorldProviderBedrock) {
+			if (entity instanceof EntityPlayer && !par1World.isRemote) {
 
 				FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, 0, new TeleporterBedrock((WorldServer) par1World));
 
@@ -133,28 +133,23 @@ public class BlockBedrockPortal extends Block {
 				int x = (int) entity.posX + rand.nextInt(100);
 				int z = (int) entity.posZ + rand.nextInt(100);
 
-				x-=50;
-				z-=50;
+				x -= 50;
+				z -= 50;
 
-				int y=120;
+				int y = 120;
 
-				while(entity.worldObj.getBlock(x, y, z) == Blocks.air || entity.worldObj.getBlock(x, y, z).isAir(par1World, x, y, z)){
+				while (entity.worldObj.getBlock(x, y, z) == Blocks.air || entity.worldObj.getBlock(x, y, z).isAir(par1World, x, y, z)) {
 					y--;
 				}
-
 
 				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 3, z + 0.5, 0, 0);
 			}
 		}
 
-
-
 	}
 
-	public void travelToDimension(int par1, Entity e)
-	{
-		if (!e.worldObj.isRemote && !e.isDead)
-		{
+	public void travelToDimension(int par1, Entity e) {
+		if (!e.worldObj.isRemote && !e.isDead) {
 			e.worldObj.theProfiler.startSection("changeDimension");
 			MinecraftServer minecraftserver = MinecraftServer.getServer();
 			int j = e.dimension;
@@ -162,8 +157,7 @@ public class BlockBedrockPortal extends Block {
 			WorldServer worldserver1 = minecraftserver.worldServerForDimension(par1);
 			e.dimension = par1;
 
-			if (j == 1 && par1 == 1)
-			{
+			if (j == 1 && par1 == 1) {
 				worldserver1 = minecraftserver.worldServerForDimension(0);
 				e.dimension = 0;
 			}
@@ -175,15 +169,13 @@ public class BlockBedrockPortal extends Block {
 			e.worldObj.theProfiler.endStartSection("reloading");
 			Entity entity = EntityList.createEntityByName(EntityList.getEntityString(e), worldserver1);
 
-			if (entity != null)
-			{
+			if (entity != null) {
 				entity.copyDataFrom(e, true);
 
-				if (j == 1 && par1 == 1)
-				{
+				if (j == 1 && par1 == 1) {
 					ChunkCoordinates chunkcoordinates = worldserver1.getSpawnPoint();
 					chunkcoordinates.posY = e.worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ);
-					entity.setLocationAndAngles((double)chunkcoordinates.posX, (double)chunkcoordinates.posY, (double)chunkcoordinates.posZ, entity.rotationYaw, entity.rotationPitch);
+					entity.setLocationAndAngles((double) chunkcoordinates.posX, (double) chunkcoordinates.posY, (double) chunkcoordinates.posZ, entity.rotationYaw, entity.rotationPitch);
 				}
 
 				worldserver1.spawnEntityInWorld(entity);
@@ -196,8 +188,5 @@ public class BlockBedrockPortal extends Block {
 			e.worldObj.theProfiler.endSection();
 		}
 	}
-
-
-
 
 }

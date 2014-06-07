@@ -21,36 +21,13 @@ import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
-import vazkii.tinkerer.common.item.foci.ItemFocusDislocation;
-import vazkii.tinkerer.common.item.foci.ItemFocusEnderChest;
-import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
-import vazkii.tinkerer.common.item.foci.ItemFocusHeal;
-import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
-import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
-import vazkii.tinkerer.common.item.kami.ItemBlockTalisman;
-import vazkii.tinkerer.common.item.kami.ItemCatAmulet;
-import vazkii.tinkerer.common.item.kami.ItemIchorPouch;
-import vazkii.tinkerer.common.item.kami.ItemKamiResource;
-import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
-import vazkii.tinkerer.common.item.kami.ItemProtoclay;
-import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
-import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
-import vazkii.tinkerer.common.item.kami.armor.ItemGemChest;
-import vazkii.tinkerer.common.item.kami.armor.ItemGemHelm;
-import vazkii.tinkerer.common.item.kami.armor.ItemGemLegs;
-import vazkii.tinkerer.common.item.kami.armor.ItemIchorclothArmor;
+import vazkii.tinkerer.common.item.foci.*;
+import vazkii.tinkerer.common.item.kami.*;
+import vazkii.tinkerer.common.item.kami.armor.*;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusRecall;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusXPDrain;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorAxe;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorAxeAdv;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorPick;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorPickAdv;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorShovel;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorShovelAdv;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorSword;
-import vazkii.tinkerer.common.item.kami.tool.ItemIchorSwordAdv;
+import vazkii.tinkerer.common.item.kami.tool.*;
 import vazkii.tinkerer.common.item.kami.wand.CapIchor;
 import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
 import vazkii.tinkerer.common.lib.LibItemNames;
@@ -107,12 +84,13 @@ public final class ModItems {
 	public static Item focusRecall;
 	public static ItemMobAspect mobAspect;
 	public static Item mobSword;
-    public static Item mobDisplay;
+	public static Item mobDisplay;
 	public static WandCap capIchor;
 	public static WandRod rodIchorcloth;
 
 	public static Item.ToolMaterial toolMatIchor;
-	public static boolean Registered=false;
+	public static boolean Registered = false;
+
 	public static void initItems() {
 		gaseousLight = new ItemGas(ModBlocks.gaseousLight).setUnlocalizedName(LibItemNames.GASEOUS_LIGHT);
 		darkQuartz = new ItemMod().setUnlocalizedName(LibItemNames.DARK_QUARTZ);
@@ -136,8 +114,8 @@ public final class ModItems {
 		focusDeflect = new ItemFocusDeflect().setUnlocalizedName(LibItemNames.FOCUS_DEFLECT);
 		shareBook = new ItemShareBook().setUnlocalizedName(LibItemNames.SHARE_BOOK);
 		mobAspect = (ItemMobAspect) new ItemMobAspect().setUnlocalizedName(LibItemNames.MOB_ASPECT);
-        mobDisplay=new ItemMobDisplay().setUnlocalizedName(LibItemNames.MOB_DISPLAY);
-		if(ConfigHandler.enableKami) {
+		mobDisplay = new ItemMobDisplay().setUnlocalizedName(LibItemNames.MOB_DISPLAY);
+		if (ConfigHandler.enableKami) {
 			toolMatIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 
 			kamiResource = new ItemKamiResource().setUnlocalizedName(LibItemNames.KAMI_RESOURCE);
@@ -174,65 +152,64 @@ public final class ModItems {
 			rodIchorcloth = new RodIchorcloth();
 		}
 		registerItems();
-		
+
 	}
-	private static void registerItems()
-	{
-		if(!Registered)
-		{
-		GameRegistry.registerItem(gaseousLight,LibItemNames.GASEOUS_LIGHT);
-		GameRegistry.registerItem(darkQuartz,LibItemNames.DARK_QUARTZ);
-		GameRegistry.registerItem(connector, LibItemNames.CONNECTOR);
-		GameRegistry.registerItem(gaseousShadow,LibItemNames.GASEOUS_SHADOW);
-		GameRegistry.registerItem(gasRemover,LibItemNames.GAS_REMOVER);
-		GameRegistry.registerItem(spellCloth,LibItemNames.SPELL_CLOTH);
-		GameRegistry.registerItem(focusFlight,LibItemNames.FOCUS_FLIGHT);
-		GameRegistry.registerItem(focusDislocation,LibItemNames.FOCUS_DISLOCATION);
-		GameRegistry.registerItem(cleansingTalisman,LibItemNames.CLEANSING_TALISMAN);
-		GameRegistry.registerItem(brightNitor,LibItemNames.BRIGHT_NTIOR);
-		GameRegistry.registerItem(focusTelekinesis,LibItemNames.FOCUS_TELEKINESIS);
-		GameRegistry.registerItem(soulMould,LibItemNames.SOUL_MOULD);
-		GameRegistry.registerItem(xpTalisman,LibItemNames.XP_TALISMAN);
-		GameRegistry.registerItem(focusSmelt,LibItemNames.FOCUS_SMELT);
-		GameRegistry.registerItem(focusHeal,LibItemNames.FOCUS_HEAL);
-		GameRegistry.registerItem(focusEnderChest,LibItemNames.FOCUS_ENDER_CHEST);
-		GameRegistry.registerItem(bloodSword,LibItemNames.BLOOD_SWORD);
-		GameRegistry.registerItem(revealingHelm,LibItemNames.REVEALING_HELM);
-		GameRegistry.registerItem(infusedInkwell,LibItemNames.INFUSED_INKWELL);
-		GameRegistry.registerItem(focusDeflect,LibItemNames.FOCUS_DEFLECT);
-		GameRegistry.registerItem(shareBook,LibItemNames.SHARE_BOOK);
-        GameRegistry.registerItem(mobAspect,LibItemNames.MOB_ASPECT);
-        GameRegistry.registerItem(mobDisplay,LibItemNames.MOB_DISPLAY);
-		if(ConfigHandler.enableKami) {
-			GameRegistry.registerItem(kamiResource,LibItemNames.KAMI_RESOURCE);
-			GameRegistry.registerItem(ichorHelm,LibItemNames.ICHOR_HELM);
-			GameRegistry.registerItem(ichorChest,LibItemNames.ICHOR_CHEST);
-			GameRegistry.registerItem(ichorLegs,LibItemNames.ICHOR_LEGS);
-			GameRegistry.registerItem(ichorBoots,LibItemNames.ICHOR_BOOTS);
-			GameRegistry.registerItem(ichorHelmGem,LibItemNames.ICHOR_HELM_GEM);
-			GameRegistry.registerItem(ichorChestGem,LibItemNames.ICHOR_CHEST_GEM);
-			GameRegistry.registerItem(ichorLegsGem,LibItemNames.ICHOR_LEGS_GEM);
-			GameRegistry.registerItem(ichorBootsGem,LibItemNames.ICHOR_BOOTS_GEM);
-			GameRegistry.registerItem(catAmulet,LibItemNames.CAT_AMULET);
-			GameRegistry.registerItem(ichorPick,LibItemNames.ICHOR_PICK);
-			GameRegistry.registerItem(ichorShovel,LibItemNames.ICHOR_SHOVEL);
-			GameRegistry.registerItem(ichorAxe,LibItemNames.ICHOR_AXE);
-			GameRegistry.registerItem(ichorSword,LibItemNames.ICHOR_SWORD);
-			GameRegistry.registerItem(ichorPickGem,LibItemNames.ICHOR_PICK_GEM);
-			GameRegistry.registerItem(ichorShovelGem,LibItemNames.ICHOR_SHOVEL_GEM);
-			GameRegistry.registerItem(ichorAxeGem,LibItemNames.ICHOR_AXE_GEM);
-			GameRegistry.registerItem(ichorSwordGem,LibItemNames.ICHOR_SWORD_GEM);
-			GameRegistry.registerItem(ichorPouch,LibItemNames.ICHOR_POUCH);
-			GameRegistry.registerItem(blockTalisman,LibItemNames.BLOCK_TALISMAN);
-			GameRegistry.registerItem(placementMirror,LibItemNames.PLACEMENT_MIRROR);
-			GameRegistry.registerItem(focusShadowbeam,LibItemNames.FOCUS_SHADOWBEAM);
-			GameRegistry.registerItem(focusXPDrain,LibItemNames.FOCUS_XP_DRAIN);
-			GameRegistry.registerItem(protoclay,LibItemNames.PROTOCLAY);
-			GameRegistry.registerItem(skyPearl,LibItemNames.SKY_PEARL);
-			GameRegistry.registerItem(focusRecall,LibItemNames.FOCUS_RECALL);
-			
-		}
-		Registered=true;
+
+	private static void registerItems() {
+		if (!Registered) {
+			GameRegistry.registerItem(gaseousLight, LibItemNames.GASEOUS_LIGHT);
+			GameRegistry.registerItem(darkQuartz, LibItemNames.DARK_QUARTZ);
+			GameRegistry.registerItem(connector, LibItemNames.CONNECTOR);
+			GameRegistry.registerItem(gaseousShadow, LibItemNames.GASEOUS_SHADOW);
+			GameRegistry.registerItem(gasRemover, LibItemNames.GAS_REMOVER);
+			GameRegistry.registerItem(spellCloth, LibItemNames.SPELL_CLOTH);
+			GameRegistry.registerItem(focusFlight, LibItemNames.FOCUS_FLIGHT);
+			GameRegistry.registerItem(focusDislocation, LibItemNames.FOCUS_DISLOCATION);
+			GameRegistry.registerItem(cleansingTalisman, LibItemNames.CLEANSING_TALISMAN);
+			GameRegistry.registerItem(brightNitor, LibItemNames.BRIGHT_NTIOR);
+			GameRegistry.registerItem(focusTelekinesis, LibItemNames.FOCUS_TELEKINESIS);
+			GameRegistry.registerItem(soulMould, LibItemNames.SOUL_MOULD);
+			GameRegistry.registerItem(xpTalisman, LibItemNames.XP_TALISMAN);
+			GameRegistry.registerItem(focusSmelt, LibItemNames.FOCUS_SMELT);
+			GameRegistry.registerItem(focusHeal, LibItemNames.FOCUS_HEAL);
+			GameRegistry.registerItem(focusEnderChest, LibItemNames.FOCUS_ENDER_CHEST);
+			GameRegistry.registerItem(bloodSword, LibItemNames.BLOOD_SWORD);
+			GameRegistry.registerItem(revealingHelm, LibItemNames.REVEALING_HELM);
+			GameRegistry.registerItem(infusedInkwell, LibItemNames.INFUSED_INKWELL);
+			GameRegistry.registerItem(focusDeflect, LibItemNames.FOCUS_DEFLECT);
+			GameRegistry.registerItem(shareBook, LibItemNames.SHARE_BOOK);
+			GameRegistry.registerItem(mobAspect, LibItemNames.MOB_ASPECT);
+			GameRegistry.registerItem(mobDisplay, LibItemNames.MOB_DISPLAY);
+			if (ConfigHandler.enableKami) {
+				GameRegistry.registerItem(kamiResource, LibItemNames.KAMI_RESOURCE);
+				GameRegistry.registerItem(ichorHelm, LibItemNames.ICHOR_HELM);
+				GameRegistry.registerItem(ichorChest, LibItemNames.ICHOR_CHEST);
+				GameRegistry.registerItem(ichorLegs, LibItemNames.ICHOR_LEGS);
+				GameRegistry.registerItem(ichorBoots, LibItemNames.ICHOR_BOOTS);
+				GameRegistry.registerItem(ichorHelmGem, LibItemNames.ICHOR_HELM_GEM);
+				GameRegistry.registerItem(ichorChestGem, LibItemNames.ICHOR_CHEST_GEM);
+				GameRegistry.registerItem(ichorLegsGem, LibItemNames.ICHOR_LEGS_GEM);
+				GameRegistry.registerItem(ichorBootsGem, LibItemNames.ICHOR_BOOTS_GEM);
+				GameRegistry.registerItem(catAmulet, LibItemNames.CAT_AMULET);
+				GameRegistry.registerItem(ichorPick, LibItemNames.ICHOR_PICK);
+				GameRegistry.registerItem(ichorShovel, LibItemNames.ICHOR_SHOVEL);
+				GameRegistry.registerItem(ichorAxe, LibItemNames.ICHOR_AXE);
+				GameRegistry.registerItem(ichorSword, LibItemNames.ICHOR_SWORD);
+				GameRegistry.registerItem(ichorPickGem, LibItemNames.ICHOR_PICK_GEM);
+				GameRegistry.registerItem(ichorShovelGem, LibItemNames.ICHOR_SHOVEL_GEM);
+				GameRegistry.registerItem(ichorAxeGem, LibItemNames.ICHOR_AXE_GEM);
+				GameRegistry.registerItem(ichorSwordGem, LibItemNames.ICHOR_SWORD_GEM);
+				GameRegistry.registerItem(ichorPouch, LibItemNames.ICHOR_POUCH);
+				GameRegistry.registerItem(blockTalisman, LibItemNames.BLOCK_TALISMAN);
+				GameRegistry.registerItem(placementMirror, LibItemNames.PLACEMENT_MIRROR);
+				GameRegistry.registerItem(focusShadowbeam, LibItemNames.FOCUS_SHADOWBEAM);
+				GameRegistry.registerItem(focusXPDrain, LibItemNames.FOCUS_XP_DRAIN);
+				GameRegistry.registerItem(protoclay, LibItemNames.PROTOCLAY);
+				GameRegistry.registerItem(skyPearl, LibItemNames.SKY_PEARL);
+				GameRegistry.registerItem(focusRecall, LibItemNames.FOCUS_RECALL);
+
+			}
+			Registered = true;
 		}
 	}
 }

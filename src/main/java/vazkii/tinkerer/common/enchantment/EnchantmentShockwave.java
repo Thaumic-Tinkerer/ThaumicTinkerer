@@ -10,6 +10,6 @@ public class EnchantmentShockwave extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-        return par1Enchantment.effectId!=Enchantment.featherFalling.effectId &&  par1Enchantment.effectId!=ModEnchantments.slowFall.effectId && super.canApplyTogether(par1Enchantment);
+		return par1Enchantment.effectId != Enchantment.featherFalling.effectId && par1Enchantment.effectId != ModEnchantments.slowFall.effectId && super.canApplyTogether(par1Enchantment);
 	}
 }

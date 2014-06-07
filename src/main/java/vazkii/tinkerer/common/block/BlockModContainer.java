@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.block;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,14 +23,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
 
 	protected BlockModContainer(Material par2Material) {
 		super(par2Material);
-		if(registerInCreative())
+		if (registerInCreative())
 			setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
@@ -38,12 +38,14 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
-	/** Does the block register in the creative inv? **/
+	/**
+	 * Does the block register in the creative inv? *
+	 */
 	boolean registerInCreative() {
 		return true;
-    }
+	}
 
-    @Override
+	@Override
 	public abstract T createNewTileEntity(World world, int var2);
 
 }

@@ -33,13 +33,13 @@ public class SpellClothRecipe implements IRecipe {
 	public boolean matches(InventoryCrafting var1, World var2) {
 		boolean foundCloth = false;
 		boolean foundEnchanted = false;
-		for(int i = 0; i < var1.getSizeInventory(); i++) {
+		for (int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
-			if(stack != null) {
-				if(stack.isItemEnchanted() && !(stack.getItem() instanceof INoRemoveEnchant) && !foundEnchanted)
+			if (stack != null) {
+				if (stack.isItemEnchanted() && !(stack.getItem() instanceof INoRemoveEnchant) && !foundEnchanted)
 					foundEnchanted = true;
 
-				else if(stack.getItem() == item && !foundCloth)
+				else if (stack.getItem() == item && !foundCloth)
 					foundCloth = true;
 
 				else return false; // Found an invalid item, breaking the recipe
@@ -52,15 +52,15 @@ public class SpellClothRecipe implements IRecipe {
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting var1) {
 		ItemStack stackToDisenchant = null;
-		for(int i = 0; i < var1.getSizeInventory(); i++) {
+		for (int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
-			if(stack != null && stack.isItemEnchanted()) {
+			if (stack != null && stack.isItemEnchanted()) {
 				stackToDisenchant = stack.copy();
 				break;
 			}
 		}
 
-		if(stackToDisenchant == null)
+		if (stackToDisenchant == null)
 			return null;
 
 		NBTTagCompound cmp = (NBTTagCompound) stackToDisenchant.getTagCompound().copy();
@@ -71,12 +71,12 @@ public class SpellClothRecipe implements IRecipe {
 	}
 
 	@Override
-    public int getRecipeSize() {
-        return 10;
-    }
+	public int getRecipeSize() {
+		return 10;
+	}
 
 	@Override
-    public ItemStack getRecipeOutput() {
-        return null;
-    }
+	public ItemStack getRecipeOutput() {
+		return null;
+	}
 }

@@ -14,24 +14,24 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Random;
-
-import net.minecraft.world.World;
-import vazkii.tinkerer.common.ThaumicTinkerer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.world.World;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+
+import java.util.Random;
 
 public class BlockGaseousLight extends BlockGas {
 
 	public BlockGaseousLight() {
-        super();
+		super();
 		setLightLevel(0.85F);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		if(par5Random.nextFloat() < 0.0075F)
+		if (par5Random.nextFloat() < 0.0075F)
 			ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1F, 1, par5Random.nextFloat() / 2);
 	}
 

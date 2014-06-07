@@ -56,28 +56,28 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		if(hasOrnament())
+		if (hasOrnament())
 			ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
-		if(hasDepth())
+		if (hasDepth())
 			depth = IconHelper.forItem(par1IconRegister, this, "Depth");
 	}
 
 	@Override
-	public boolean isItemTool(ItemStack par1ItemStack){
+	public boolean isItemTool(ItemStack par1ItemStack) {
 		return true;
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		AspectList cost = getVisCost();
-		if(cost != null) {
+		if (cost != null) {
 			list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
 			addVisCostTooltip(cost, stack, player, list, par4);
 		}
 	}
 
 	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		for(Aspect aspect : cost.getAspectsSorted()) {
+		for (Aspect aspect : cost.getAspectsSorted()) {
 			float amount = cost.getAmount(aspect) / 100.0F;
 			list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
 		}
@@ -119,7 +119,7 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 
 	@Override
 	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-		if(isUseItem())
+		if (isUseItem())
 			paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
 
 		return paramItemStack;

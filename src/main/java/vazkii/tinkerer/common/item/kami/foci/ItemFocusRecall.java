@@ -46,25 +46,25 @@ public class ItemFocusRecall extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
 		ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
 
-		if(Integer.MAX_VALUE - paramInt > 60) {
+		if (Integer.MAX_VALUE - paramInt > 60) {
 			ItemStack stackToCount = null;
-			for(int i = 0; i < 9; i++) {
+			for (int i = 0; i < 9; i++) {
 				ItemStack stackInSlot = paramEntityPlayer.inventory.getStackInSlot(i);
-				if(stackInSlot != null && stackInSlot.getItem() instanceof ItemSkyPearl && ItemSkyPearl.isAttuned(stackInSlot)) {
+				if (stackInSlot != null && stackInSlot.getItem() instanceof ItemSkyPearl && ItemSkyPearl.isAttuned(stackInSlot)) {
 					stackToCount = stackInSlot;
 					break;
 				}
 			}
 
-			if(stackToCount != null) {
+			if (stackToCount != null) {
 				int dim = ItemSkyPearl.getDim(stackToCount);
-				if(dim == paramEntityPlayer.dimension) {
+				if (dim == paramEntityPlayer.dimension) {
 					int x = ItemSkyPearl.getX(stackToCount);
 					int y = ItemSkyPearl.getY(stackToCount);
 					int z = ItemSkyPearl.getZ(stackToCount);
 
-					if(wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), false,false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
-						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true,false);
+					if (wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), false, false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
+						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true, false);
 				}
 			}
 

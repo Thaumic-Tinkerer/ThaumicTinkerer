@@ -11,6 +11,6 @@ public class EnchantmentValiance extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == ThaumcraftApi.enchantRepair || par1Enchantment.effectId==Enchantment.sharpness.effectId || par1Enchantment.effectId == Enchantment.smite.effectId || par1Enchantment.effectId == Enchantment.smite.effectId;
+		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == ThaumcraftApi.enchantRepair || par1Enchantment.effectId == Enchantment.sharpness.effectId || par1Enchantment.effectId == Enchantment.smite.effectId || par1Enchantment.effectId == Enchantment.smite.effectId;
 	}
 }

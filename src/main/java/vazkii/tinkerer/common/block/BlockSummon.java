@@ -44,6 +44,7 @@ public class BlockSummon extends Block {
 
 		random = new Random();
 	}
+
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;

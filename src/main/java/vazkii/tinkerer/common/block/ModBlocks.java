@@ -56,7 +56,7 @@ public final class ModBlocks {
 	public static Block repairer;
 	public static Block aspectAnalyzer;
 	public static Block platform;
-    public static Block spawner;
+	public static Block spawner;
 	public static Block warpGate;
 
 	public static Block mobilizerRelay;
@@ -65,9 +65,9 @@ public final class ModBlocks {
 
 	//public static Block bedrock;
 
-
 	public static Block portal;
 	public static Block golemConnector;
+
 	public static void initBlocks() {
 		darkQuartz = new BlockDarkQuartz().setBlockName(LibBlockNames.DARK_QUARTZ);
 		darkQuartzSlab = new BlockDarkQuartzSlab(false).setBlockName(LibBlockNames.DARK_QUARTZ_SLAB);
@@ -88,13 +88,13 @@ public final class ModBlocks {
 
 		mobilizerRelay = new BlockMobilizerRelay().setBlockName(LibBlockNames.MOBILIZER_RELAY);
 		mobilizer = new BlockMobilizer().setBlockName(LibBlockNames.MOBILIZER);
-		golemConnector=new BlockGolemConnector().setBlockName(LibBlockNames.GOLEMCONNECTOR);
+		golemConnector = new BlockGolemConnector().setBlockName(LibBlockNames.GOLEMCONNECTOR);
 
 		spawner = new BlockSummon().setBlockName(LibBlockNames.SPAWNER);
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 
 			warpGate = new BlockWarpGate().setBlockName(LibBlockNames.WARP_GATE);
-			if(ConfigHandler.bedrockDimensionID != 0) {
+			if (ConfigHandler.bedrockDimensionID != 0) {
 
 				portal = new BlockBedrockPortal().setBlockName(LibBlockNames.PORTAL);
 			}
@@ -110,7 +110,7 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB);
 		GameRegistry.registerBlock(darkQuartzSlabFull, ItemDarkQuartzSlab.class, LibBlockNames.DARK_QUARTZ_SLAB_FULL);
 		GameRegistry.registerBlock(interfase, LibBlockNames.INTERFACE);
-        GameRegistry.registerBlock(nitorGas, LibBlockNames.NITOR_GAS);
+		GameRegistry.registerBlock(nitorGas, LibBlockNames.NITOR_GAS);
 		GameRegistry.registerBlock(gaseousLight, LibBlockNames.GASEOUS_LIGHT);
 		GameRegistry.registerBlock(gaseousShadow, LibBlockNames.GASEOUS_SHADOW);
 		GameRegistry.registerBlock(animationTablet, LibBlockNames.ANIMATION_TABLET);
@@ -128,11 +128,11 @@ public final class ModBlocks {
 		GameRegistry.registerBlock(golemConnector, LibBlockNames.GOLEMCONNECTOR);
 
 		GameRegistry.registerBlock(spawner, LibBlockNames.SPAWNER);
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			GameRegistry.registerBlock(warpGate, ItemBlockWarpGate.class, LibBlockNames.WARP_GATE);
 
-			if(ConfigHandler.bedrockDimensionID != 0) {
-			//	GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
+			if (ConfigHandler.bedrockDimensionID != 0) {
+				//	GameRegistry.registerBlock(bedrock, LanguageRegistry.instance().getStringLocalization("bedrock"));
 
 				GameRegistry.registerBlock(portal, LibBlockNames.PORTAL);
 			}
@@ -140,16 +140,15 @@ public final class ModBlocks {
 	}
 
 	private static void registerMultiparts() {
-		if(Loader.isModLoaded("ForgeMultipart")) {
+		if (Loader.isModLoaded("ForgeMultipart")) {
 			try {
 				Class clazz = Class.forName("vazkii.tinkerer.common.block.multipart.MultipartHandler");
 				clazz.newInstance();
-			} catch(Throwable e) {
+			} catch (Throwable e) {
 				e.printStackTrace();
 			}
 		}
 	}
-
 
 	public static void initTileEntities() {
 		GameRegistry.registerTileEntity(TileTransvectorInterface.class, LibBlockNames.INTERFACE);
@@ -163,14 +162,13 @@ public final class ModBlocks {
 		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
 		GameRegistry.registerTileEntity(TileCamo.class, LibBlockNames.CAMO);
 
-
 		GameRegistry.registerTileEntity(TileEntityMobilizer.class, LibBlockNames.MOBILIZER);
 
 		GameRegistry.registerTileEntity(TileEntityRelay.class, LibBlockNames.MOBILIZER_RELAY);
 		GameRegistry.registerTileEntity(TileGolemConnector.class, LibBlockNames.GOLEMCONNECTOR);
 
 		GameRegistry.registerTileEntity(TileSummon.class, LibBlockNames.SPAWNER);
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
 		}
 	}

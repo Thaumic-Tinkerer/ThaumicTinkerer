@@ -27,10 +27,12 @@ import java.util.List;
 
 public class KamiResearchItem extends TTResearchItem {
 
-    public static List<String> Blacklist=new ArrayList<String>();
-    static {
-        Blacklist.add("MINILITH");
-    }
+	public static List<String> Blacklist = new ArrayList<String>();
+
+	static {
+		Blacklist.add("MINILITH");
+	}
+
 	public KamiResearchItem(String par1, String par2, AspectList tags, int par3, int par4, int par5, ItemStack icon) {
 		super(par1, par2, tags, par3, par4, par5, icon);
 		setConcealed();
@@ -40,23 +42,23 @@ public class KamiResearchItem extends TTResearchItem {
 	public ResearchItem setPages(ResearchPage... par) {
 		List<String> requirements = parentsHidden == null || parentsHidden.length == 0 ? new ArrayList() : new ArrayList(Arrays.asList(parentsHidden));
 
-		if(!isAutoUnlock())
-			for(String categoryStr : ResearchCategories.researchCategories.keySet()) {
+		if (!isAutoUnlock())
+			for (String categoryStr : ResearchCategories.researchCategories.keySet()) {
 				ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
-				for(String tag : category.research.keySet()) {
+				for (String tag : category.research.keySet()) {
 					ResearchItem research = category.research.get(tag);
 
-					if(research.isLost() || (research.parentsHidden==null && research.parents==null)|| research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
+					if (research.isLost() || (research.parentsHidden == null && research.parents == null) || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
 						continue;
-                    boolean found=false;
-                    for(String black:Blacklist)
-                        if(tag.startsWith(black)) {
-                            found=true;
-                        }
-                    if(tag.endsWith("KAMI"))
-                        found=true;
-                    if(found)
-                        continue;
+					boolean found = false;
+					for (String black : Blacklist)
+						if (tag.startsWith(black)) {
+							found = true;
+						}
+					if (tag.endsWith("KAMI"))
+						found = true;
+					if (found)
+						continue;
 					requirements.add(tag);
 				}
 			}

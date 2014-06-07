@@ -59,8 +59,8 @@ public class TTCommonProxy {
 
 		ModBlocks.initBlocks();
 		ModItems.initItems();
-        NumericAspectHelper.init();
-        initCCPeripherals();
+		NumericAspectHelper.init();
+		initCCPeripherals();
 	}
 
 	public void init(FMLInitializationEvent event) {
@@ -69,34 +69,32 @@ public class TTCommonProxy {
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
-        RegisterPackets();
-        FMLCommonHandler.instance().bus().register(new PlayerTracker());
+		RegisterPackets();
+		FMLCommonHandler.instance().bus().register(new PlayerTracker());
 
-
-		if(ConfigHandler.enableKami) {
-            MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
-            MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
-            MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
+		if (ConfigHandler.enableKami) {
+			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
+			MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
+			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
 		}
-        if(Loader.isModLoaded("OpenComputers"))
-        {
-            initOpenCDrivers();
-        }
+		if (Loader.isModLoaded("OpenComputers")) {
+			initOpenCDrivers();
+		}
 	}
 
-    private void RegisterPackets() {
-        ThaumicTinkerer.netHandler.registerMessage(PacketSoulHearts.class,PacketSoulHearts.class,142+0, Side.CLIENT);
-        ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class,PacketToggleArmor.class,142+1, Side.CLIENT);
-        ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class,PacketToggleArmor.class,142+2, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateButton.class,PacketWarpGateButton.class,142+3, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateTeleport.class,PacketWarpGateTeleport.class,142+4, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterAddEnchant.class,PacketEnchanterAddEnchant.class,142+5, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class,PacketEnchanterStartWorking.class,142+6, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class,PacketMobMagnetButton.class,142+7, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class,PacketTabletButton.class,142+8, Side.SERVER);
-    }
+	private void RegisterPackets() {
+		ThaumicTinkerer.netHandler.registerMessage(PacketSoulHearts.class, PacketSoulHearts.class, 142 + 0, Side.CLIENT);
+		ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 1, Side.CLIENT);
+		ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 2, Side.SERVER);
+		ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateButton.class, PacketWarpGateButton.class, 142 + 3, Side.SERVER);
+		ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateTeleport.class, PacketWarpGateTeleport.class, 142 + 4, Side.SERVER);
+		ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterAddEnchant.class, PacketEnchanterAddEnchant.class, 142 + 5, Side.SERVER);
+		ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class, PacketEnchanterStartWorking.class, 142 + 6, Side.SERVER);
+		ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class, PacketMobMagnetButton.class, 142 + 7, Side.SERVER);
+		ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class, PacketTabletButton.class, 142 + 8, Side.SERVER);
+	}
 
-    public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.initRecipes();
 		ModResearch.initResearch();
 	}
@@ -116,30 +114,30 @@ public class TTCommonProxy {
 			
 		TurtleAPI.registerUpgrade(new FumeTool());*/
 	}
-    @Optional.Method(modid="OpenComputers")
-    public void initOpenCDrivers()
-    {
-        Driver.add(new DriverIAspectContainer());
-        Driver.add(new DriverArcaneEar());
-        Driver.add(new DriverBrainInAJar());
-        Driver.add(new DriverDeconstructor());
-        Driver.add(new DriverEssentiaTransport());
-        Driver.add(new DriverArcaneBore());
 
-    }
+	@Optional.Method(modid = "OpenComputers")
+	public void initOpenCDrivers() {
+		Driver.add(new DriverIAspectContainer());
+		Driver.add(new DriverArcaneEar());
+		Driver.add(new DriverBrainInAJar());
+		Driver.add(new DriverDeconstructor());
+		Driver.add(new DriverEssentiaTransport());
+		Driver.add(new DriverArcaneBore());
+
+	}
+
 	public boolean isClient() {
 		return false;
 	}
 
-    public boolean armorStatus(EntityPlayer player)
-    {
-        return KamiArmorHandler.getArmorStatus(player);
-    }
+	public boolean armorStatus(EntityPlayer player) {
+		return KamiArmorHandler.getArmorStatus(player);
+	}
 
-    public void setArmor(EntityPlayer player,boolean status)
-    {
-        KamiArmorHandler.setArmorStatus(player,status);
-    }
+	public void setArmor(EntityPlayer player, boolean status) {
+		KamiArmorHandler.setArmorStatus(player, status);
+	}
+
 	public EntityPlayer getClientPlayer() {
 		return null;
 	}

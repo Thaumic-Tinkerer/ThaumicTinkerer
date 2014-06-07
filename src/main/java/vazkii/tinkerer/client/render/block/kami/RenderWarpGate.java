@@ -64,10 +64,10 @@ public class RenderWarpGate extends BlockRenderer implements ISimpleBlockRenderi
 		return true;
 	}
 
-    @Override
-    public boolean shouldRender3DInInventory(int modelId) {
-        return true;
-    }
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
+		return true;
+	}
 
 	@Override
 	public int getRenderId() {

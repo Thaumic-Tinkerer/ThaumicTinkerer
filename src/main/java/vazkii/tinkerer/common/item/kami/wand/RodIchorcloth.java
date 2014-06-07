@@ -28,8 +28,9 @@ public class RodIchorcloth extends WandRod {
 		super("ICHORCLOTH", 1000, new ItemStack(ModItems.kamiResource, 1, 5), 10);
 		setGlowing(true);
 	}
+
 	//Used as patch for changing the name
-	public RodIchorcloth(String s){
+	public RodIchorcloth(String s) {
 		super(s, 1000, new ItemStack(ModItems.kamiResource, 1, 9), 10);
 		setGlowing(true);
 	}

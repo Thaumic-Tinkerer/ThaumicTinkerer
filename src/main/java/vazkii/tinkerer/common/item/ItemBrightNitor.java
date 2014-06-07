@@ -39,7 +39,7 @@ public class ItemBrightNitor extends ItemMod {
 	}
 
 	public static void setBlock(int x, int y, int z, World world) {
-		if((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ModBlocks.nitorGas) && !world.isRemote)
+		if ((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ModBlocks.nitorGas) && !world.isRemote)
 			world.setBlock(x, y, z, ModBlocks.nitorGas, meta, 2);
 	}
 }

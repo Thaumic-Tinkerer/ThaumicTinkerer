@@ -44,18 +44,18 @@ public class ContainerMobMagnet extends ContainerPlayerInv {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack var3 = null;
-		Slot var4 = (Slot)inventorySlots.get(par2);
+		Slot var4 = (Slot) inventorySlots.get(par2);
 
 		if (var4 != null && var4.getHasStack()) {
 			ItemStack var5 = var4.getStack();
 
-			if(var5.getItem() instanceof ItemSoulMould) {
+			if (var5.getItem() instanceof ItemSoulMould) {
 				var3 = var5.copy();
 
 				if (par2 < 1) {
-					if(!mergeItemStack(var5, 1, 37, false))
+					if (!mergeItemStack(var5, 1, 37, false))
 						return null;
-				} else if(!mergeItemStack(var5, 0, 1, false))
+				} else if (!mergeItemStack(var5, 0, 1, false))
 					return null;
 
 				if (var5.stackSize == 0)

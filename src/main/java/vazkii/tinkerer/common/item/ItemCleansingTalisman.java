@@ -49,14 +49,13 @@ public class ItemCleansingTalisman extends ItemMod implements IBauble {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
+		if (par3EntityPlayer.isSneaking()) {
 			flipEnabled(par1ItemStack);
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 		}
 
 		return par1ItemStack;
 	}
-
 
 	public static boolean isEnabled(ItemStack stack) {
 		return ItemNBTHelper.getBoolean(stack, TAG_ENABLED, false);
@@ -76,7 +75,7 @@ public class ItemCleansingTalisman extends ItemMod implements IBauble {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if(isEnabled(par1ItemStack))
+		if (isEnabled(par1ItemStack))
 			par3List.add(StatCollector.translateToLocal("ttmisc.active"));
 		else par3List.add(StatCollector.translateToLocal("ttmisc.inactive"));
 	}
@@ -92,61 +91,61 @@ public class ItemCleansingTalisman extends ItemMod implements IBauble {
 		return EnumRarity.uncommon;
 	}
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.AMULET;
-    }
+	@Override
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		return BaubleType.AMULET;
+	}
 
-    @Override
-    public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
-        World par2World=player.worldObj;
-        if(isEnabled(par1ItemStack) && !par2World.isRemote) {
-            if(player.ticksExisted % 20 == 0) {
-                if (player instanceof EntityPlayer) {
-                    boolean removed = false;
+	@Override
+	public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
+		World par2World = player.worldObj;
+		if (isEnabled(par1ItemStack) && !par2World.isRemote) {
+			if (player.ticksExisted % 20 == 0) {
+				if (player instanceof EntityPlayer) {
+					boolean removed = false;
 
-                    Collection<PotionEffect> potions = player.getActivePotionEffects();
+					Collection<PotionEffect> potions = player.getActivePotionEffects();
 
-                    if(player.isBurning()) {
-                        player.extinguish();
-                        removed = true;
-                    } else for(PotionEffect potion : potions) {
-                        int id = potion.getPotionID();
-                        boolean badEffect;
-                        badEffect=ReflectionHelper.getPrivateValue(Potion.class,Potion.potionTypes[id],new String[]{"isBadEffect","field_76418_K"});
-                        if(badEffect) {
-                            player.removePotionEffect(id);
-                            removed = true;
-                            break;
-                        }
-                    }
+					if (player.isBurning()) {
+						player.extinguish();
+						removed = true;
+					} else for (PotionEffect potion : potions) {
+						int id = potion.getPotionID();
+						boolean badEffect;
+						badEffect = ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], new String[]{ "isBadEffect", "field_76418_K" });
+						if (badEffect) {
+							player.removePotionEffect(id);
+							removed = true;
+							break;
+						}
+					}
 
-                    if(removed) {
-                        par1ItemStack.damageItem(1, player);
-                        par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
-                    }
-                }
-            }
-        }
-    }
+					if (removed) {
+						par1ItemStack.damageItem(1, player);
+						par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
+					}
+				}
+			}
+		}
+	}
 
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 
-    @Override
-    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 }

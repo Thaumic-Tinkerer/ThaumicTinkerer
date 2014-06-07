@@ -20,7 +20,6 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 
-
 public class PeripheralDeconstructor implements IPeripheral {
 
 	TileDeconstructionTable deconstructor;
@@ -36,20 +35,22 @@ public class PeripheralDeconstructor implements IPeripheral {
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[] { "hasAspect", "hasItem", "getAspect" };
+		return new String[]{ "hasAspect", "hasItem", "getAspect" };
 	}
 
 	@Override
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		switch(method) {
-			case 0 : return new Object[] { deconstructor.aspect != null };
-			case 1 : return new Object[] { deconstructor.getStackInSlot(0) != null };
-			case 2 : return deconstructor.aspect == null ? null : new Object[] { deconstructor.aspect.getTag() };
+		switch (method) {
+			case 0:
+				return new Object[]{ deconstructor.aspect != null };
+			case 1:
+				return new Object[]{ deconstructor.getStackInSlot(0) != null };
+			case 2:
+				return deconstructor.aspect == null ? null : new Object[]{ deconstructor.aspect.getTag() };
 		}
 
 		return null;
 	}
-
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -61,10 +62,9 @@ public class PeripheralDeconstructor implements IPeripheral {
 		// NO-OP
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
-
+	@Override
+	public boolean equals(IPeripheral other) {
+		return this.equals((Object) other);
+	}
 
 }

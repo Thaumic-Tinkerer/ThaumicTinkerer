@@ -22,17 +22,14 @@ import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
 public class BlockTransvectorInterface extends BlockCamo {
 
-    public BlockTransvectorInterface() {
-        super(Material.iron);
-        setHardness(3F);
-        setResistance(10F);
-    }
+	public BlockTransvectorInterface() {
+		super(Material.iron);
+		setHardness(3F);
+		setResistance(10F);
+	}
 
-
-
-
-    @Override
-    public TileTransvector createNewTileEntity(World var1, int var2) {
-        return new TileTransvectorInterface();
-    }
+	@Override
+	public TileTransvector createNewTileEntity(World var1, int var2) {
+		return new TileTransvectorInterface();
+	}
 }

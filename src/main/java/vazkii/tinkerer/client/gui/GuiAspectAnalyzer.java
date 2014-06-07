@@ -63,21 +63,21 @@ public class GuiAspectAnalyzer extends GuiContainer {
 		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
 		ItemStack stack = analyzer.getStackInSlot(0);
-		if(stack != null) {
+		if (stack != null) {
 			int h = ScanManager.generateItemHash(stack.getItem(), stack.getItemDamage());
 
 			List<String> list = Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().getGameProfile().getName());
-			if ( list != null && (list.contains("@" + h) || list.contains("#" + h))) {
+			if (list != null && (list.contains("@" + h) || list.contains("#" + h))) {
 				AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
 				tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);
 				if (tags != null) {
 					int i = 0;
-					for(Aspect aspect : tags.getAspectsSortedAmount()) {
+					for (Aspect aspect : tags.getAspectsSortedAmount()) {
 						int x = this.x + 20 + i * 18;
 						int y = this.y + 58;
 						UtilsFX.drawTag(x, y, aspect, tags.getAmount(aspect), 0, zLevel);
 
-						if(mx > x && mx < x + 16 && my > y && my < y + 16)
+						if (mx > x && mx < x + 16 && my > y && my < y + 16)
 							aspectHovered = aspect;
 
 						i++;
@@ -89,7 +89,7 @@ public class GuiAspectAnalyzer extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mx, int my) {
-		if(aspectHovered != null)
+		if (aspectHovered != null)
 			ClientHelper.renderTooltip(mx - x, my - y, Arrays.asList(EnumChatFormatting.AQUA + aspectHovered.getName(), EnumChatFormatting.GRAY + aspectHovered.getLocalizedDescription()));
 
 		super.drawGuiContainerForegroundLayer(mx, my);

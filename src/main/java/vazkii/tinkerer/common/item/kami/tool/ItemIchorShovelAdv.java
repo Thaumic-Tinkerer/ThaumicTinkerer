@@ -41,7 +41,7 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		for(int i = 0; i < specialIcons.length; i++)
+		for (int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
@@ -52,7 +52,7 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
+		if (par3EntityPlayer.isSneaking()) {
 			ToolHandler.changeMode(par1ItemStack);
 			ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
 		}
@@ -64,19 +64,20 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
 		Material mat = world.getBlock(x, y, z).getMaterial();
-		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
+		if (!ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
 			return false;
 		MovingObjectPosition block = ToolHandler.raytraceFromEntity(world, player, true, 4.5);
-		if(block == null)
+		if (block == null)
 			return false;
 
 		ForgeDirection direction = ForgeDirection.getOrientation(block.sideHit);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
 
-		switch(ToolHandler.getMode(stack)) {
-			case 0 : break;
-			case 1 : {
+		switch (ToolHandler.getMode(stack)) {
+			case 0:
+				break;
+			case 1: {
 				boolean doX = direction.offsetX == 0;
 				boolean doY = direction.offsetY == 0;
 				boolean doZ = direction.offsetZ == 0;
@@ -84,16 +85,14 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, null, ToolHandler.materialsShovel, silk, fortune);
 				break;
 			}
-			case 2 : {
-				Block blk= world.getBlock(x, y, z);
+			case 2: {
+				Block blk = world.getBlock(x, y, z);
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, 0, -8, 0, 1, 8, 1, blk, ToolHandler.materialsShovel, silk, fortune);
 				break;
 			}
 		}
 		return false;
 	}
-
-
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

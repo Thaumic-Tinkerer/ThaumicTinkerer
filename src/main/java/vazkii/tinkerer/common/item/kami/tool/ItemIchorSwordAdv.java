@@ -42,13 +42,13 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		for(int i = 0; i < specialIcons.length; i++)
+		for (int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
+		if (par3EntityPlayer.isSneaking()) {
 			ToolHandler.changeMode(par1ItemStack);
 			ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
 
@@ -60,20 +60,21 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-		if(!ignoreLeftClick && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).hurtTime == 0 && !((EntityLivingBase) entity).isDead)
-			switch(ToolHandler.getMode(stack)) {
-				case 0 : break;
-				case 1 : {
+		if (!ignoreLeftClick && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).hurtTime == 0 && !((EntityLivingBase) entity).isDead)
+			switch (ToolHandler.getMode(stack)) {
+				case 0:
+					break;
+				case 1: {
 					int range = 3;
 					List<Entity> entities = player.worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range));
 					ignoreLeftClick = true;
-					for(Entity entity_ : entities)
+					for (Entity entity_ : entities)
 						player.attackTargetEntityWithCurrentItem(entity_);
 					ignoreLeftClick = false;
 
 					break;
 				}
-				case 2 : {
+				case 2: {
 					EntityLivingBase living = (EntityLivingBase) entity;
 					PotionEffect effect = new PotionEffect(Potion.resistance.id, 1, 1);
 					living.addPotionEffect(effect);

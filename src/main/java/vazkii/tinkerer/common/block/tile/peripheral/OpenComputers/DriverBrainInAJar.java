@@ -12,28 +12,26 @@ import thaumcraft.common.tiles.TileJarBrain;
  * Created by Katrina on 22/04/14.
  */
 public class DriverBrainInAJar extends DriverTileEntity {
-    @Override
-    public Class<?> getTileEntityClass() {
-        return TileJarBrain.class;
-    }
+	@Override
+	public Class<?> getTileEntityClass() {
+		return TileJarBrain.class;
+	}
 
-    @Override
-    public ManagedEnvironment createEnvironment(World world, int x, int y, int z) {
-        return new Enviroment((TileJarBrain)world.getTileEntity(x,y,z));
-    }
-    public static final class Enviroment extends ManagedTileEntityEnvironment<TileJarBrain>
-    {
+	@Override
+	public ManagedEnvironment createEnvironment(World world, int x, int y, int z) {
+		return new Enviroment((TileJarBrain) world.getTileEntity(x, y, z));
+	}
 
-        public Enviroment(TileJarBrain tileEntity) {
-            super(tileEntity,"brainjar");
-        }
+	public static final class Enviroment extends ManagedTileEntityEnvironment<TileJarBrain> {
 
+		public Enviroment(TileJarBrain tileEntity) {
+			super(tileEntity, "brainjar");
+		}
 
-        @Callback(doc="function():number -- returns the amount of XP in this jar")
-        public Object[] getXP(final Context context,final Arguments arguments)
-        {
-            return new Object[] { this.tileEntity.xp };
-        }
+		@Callback(doc = "function():number -- returns the amount of XP in this jar")
+		public Object[] getXP(final Context context, final Arguments arguments) {
+			return new Object[]{ this.tileEntity.xp };
+		}
 
-    }
+	}
 }

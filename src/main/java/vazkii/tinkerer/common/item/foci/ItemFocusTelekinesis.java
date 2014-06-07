@@ -41,15 +41,15 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 		final int range = 6 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 		final double distance = range - 1;
-		if(!player.isSneaking())
+		if (!player.isSneaking())
 			target.add(new Vector3(player.getLookVec()).multiply(distance));
 
 		target.y += 0.5;
 
 		List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
 
-		if(!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(), true,false)) {
-			for(EntityItem item : entities) {
+		if (!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(), true, false)) {
+			for (EntityItem item : entities) {
 				MiscHelper.setEntityMotionFromVector(item, target, 0.3333F);
 				ThaumicTinkerer.tcProxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 0);
 			}

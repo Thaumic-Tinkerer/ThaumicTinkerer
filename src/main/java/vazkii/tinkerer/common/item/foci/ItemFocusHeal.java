@@ -40,24 +40,23 @@ public class ItemFocusHeal extends ItemModFocus {
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int time) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		if(!wand.consumeAllVis(stack, p, visUsage, false,false) || !p.shouldHeal())
+		if (!wand.consumeAllVis(stack, p, visUsage, false, false) || !p.shouldHeal())
 			return;
 
 		int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 
-
-		if(!playerHealData.containsKey(p.getGameProfile().getName()))
+		if (!playerHealData.containsKey(p.getGameProfile().getName()))
 			playerHealData.put(p.getGameProfile().getName(), 0);
 
 		int progress = playerHealData.get(p.getGameProfile().getName()) + 1;
 		playerHealData.put(p.getGameProfile().getName(), progress);
 
-		ThaumicTinkerer.tcProxy.sparkle((float)p.posX + p.worldObj.rand.nextFloat() - 0.5F, (float)p.posY + p.worldObj.rand.nextFloat(), (float)p.posZ + p.worldObj.rand.nextFloat() - 0.5F, 0);
+		ThaumicTinkerer.tcProxy.sparkle((float) p.posX + p.worldObj.rand.nextFloat() - 0.5F, (float) p.posY + p.worldObj.rand.nextFloat(), (float) p.posZ + p.worldObj.rand.nextFloat() - 0.5F, 0);
 
-		if(progress >= 30 - potency * 10 / 3) {
+		if (progress >= 30 - potency * 10 / 3) {
 			playerHealData.put(p.getGameProfile().getName(), 0);
 
-			wand.consumeAllVis(stack, p, visUsage, true,false);
+			wand.consumeAllVis(stack, p, visUsage, true, false);
 			p.heal(1);
 			p.worldObj.playSoundAtEntity(p, "thaumcraft:wand", 0.5F, 1F);
 		}

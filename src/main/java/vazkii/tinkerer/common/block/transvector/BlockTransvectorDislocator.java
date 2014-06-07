@@ -38,32 +38,32 @@ public class BlockTransvectorDislocator extends BlockCamo {
 
 	public BlockTransvectorDislocator() {
 		super(Material.iron);
-        setHardness(3F);
-        setResistance(10F);
+		setHardness(3F);
+		setResistance(10F);
 	}
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
-    	TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
-    	ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
+		TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
+		ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
-    	if(currentStack != null && currentStack.getItem()== ConfigItems.itemWandCasting) {
-    		dislocator.orientation = par6;
+		if (currentStack != null && currentStack.getItem() == ConfigItems.itemWandCasting) {
+			dislocator.orientation = par6;
 			par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
 
-    		par1World.markBlockForUpdate(par2,par3,par4);
+			par1World.markBlockForUpdate(par2, par3, par4);
 
-    		return true;
-    	}
+			return true;
+		}
 
 		return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
 	}
 
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
-		if(par1World.isRemote)
+		if (par1World.isRemote)
 			return;
 
 		boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
@@ -85,7 +85,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		if(tile != null && tile instanceof TileTransvectorDislocator) {
+		if (tile != null && tile instanceof TileTransvectorDislocator) {
 			TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
 			dislocator.receiveRedstonePulse();
 		}
@@ -108,15 +108,14 @@ public class BlockTransvectorDislocator extends BlockCamo {
 	}
 
 	@Override
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
+	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		((TileTransvectorDislocator) tile).orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
-		par1World.markBlockForUpdate(par2,par3,par4);
-    }
+		par1World.markBlockForUpdate(par2, par3, par4);
+	}
 
-
-    @Override
-    public TileCamo createNewTileEntity(World world, int var2) {
-        return new TileTransvectorDislocator();
-    }
+	@Override
+	public TileCamo createNewTileEntity(World world, int var2) {
+		return new TileTransvectorDislocator();
+	}
 }

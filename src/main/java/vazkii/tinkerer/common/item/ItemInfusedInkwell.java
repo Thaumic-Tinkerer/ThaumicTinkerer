@@ -1,6 +1,5 @@
 package vazkii.tinkerer.common.item;
 
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
@@ -22,8 +21,7 @@ public class ItemInfusedInkwell extends ItemMod implements IScribeTools {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int par1)
-	{
+	public IIcon getIconFromDamage(int par1) {
 		return ConfigItems.itemInkwell.getIconFromDamage(par1);
 	}
 

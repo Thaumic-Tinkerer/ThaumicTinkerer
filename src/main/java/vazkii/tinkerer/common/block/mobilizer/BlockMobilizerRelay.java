@@ -12,7 +12,7 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockMod;
 import vazkii.tinkerer.common.block.tile.TileEntityRelay;
 
-public class BlockMobilizerRelay  extends BlockMod {
+public class BlockMobilizerRelay extends BlockMod {
 
 	public BlockMobilizerRelay() {
 		super(Material.iron);
@@ -22,7 +22,6 @@ public class BlockMobilizerRelay  extends BlockMod {
 	public boolean hasTileEntity(int metadata) {
 		return true;
 	}
-
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
@@ -49,6 +48,5 @@ public class BlockMobilizerRelay  extends BlockMod {
 	public IIcon getIcon(int par1, int meta) {
 		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? iconBottom : iconSide;
 	}
-
 
 }

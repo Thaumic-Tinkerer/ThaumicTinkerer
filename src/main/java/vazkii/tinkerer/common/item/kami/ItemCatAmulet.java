@@ -54,66 +54,66 @@ public class ItemCatAmulet extends ItemMod implements IBauble {
 	}
 
 	private boolean messWithRunAwayAI(EntityAIAvoidEntity aiEntry) {
-		if(aiEntry.targetEntityClass== EntityOcelot.class) {
-			aiEntry.targetEntityClass=EntityPlayer.class;
+		if (aiEntry.targetEntityClass == EntityOcelot.class) {
+			aiEntry.targetEntityClass = EntityPlayer.class;
 			return true;
 		}
 		return false;
 	}
 
 	private void messWithGetTargetAI(EntityAINearestAttackableTarget aiEntry) {
-		if( aiEntry.targetClass== EntityPlayer.class)
-			aiEntry.targetClass=EntityEnderCrystal.class; // Something random that won't be around
+		if (aiEntry.targetClass == EntityPlayer.class)
+			aiEntry.targetClass = EntityEnderCrystal.class; // Something random that won't be around
 	}
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.AMULET;
-    }
+	@Override
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		return BaubleType.AMULET;
+	}
 
-    @Override
-    public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-        int range = 10;
-        int rangeY = 4;
-        List<EntityLiving> entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - rangeY, player.posZ - range, player.posX + range, player.posY + rangeY, player.posZ + range));
+	@Override
+	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+		int range = 10;
+		int rangeY = 4;
+		List<EntityLiving> entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - rangeY, player.posZ - range, player.posX + range, player.posY + rangeY, player.posZ + range));
 
-        for(EntityLiving entity : entities) {
-            List<EntityAITasks.EntityAITaskEntry> entries = new ArrayList(entity.tasks.taskEntries);
-            entries.addAll(new ArrayList(entity.targetTasks.taskEntries));
+		for (EntityLiving entity : entities) {
+			List<EntityAITasks.EntityAITaskEntry> entries = new ArrayList(entity.tasks.taskEntries);
+			entries.addAll(new ArrayList(entity.targetTasks.taskEntries));
 
-            boolean avoidsOcelots = false;
-            for(EntityAITasks.EntityAITaskEntry entry : entries) {
-                if(entry.action instanceof EntityAIAvoidEntity)
-                    avoidsOcelots = messWithRunAwayAI((EntityAIAvoidEntity) entry.action) || avoidsOcelots;
+			boolean avoidsOcelots = false;
+			for (EntityAITasks.EntityAITaskEntry entry : entries) {
+				if (entry.action instanceof EntityAIAvoidEntity)
+					avoidsOcelots = messWithRunAwayAI((EntityAIAvoidEntity) entry.action) || avoidsOcelots;
 
-                if(entry.action instanceof EntityAINearestAttackableTarget)
-                    messWithGetTargetAI((EntityAINearestAttackableTarget) entry.action);
-            }
+				if (entry.action instanceof EntityAINearestAttackableTarget)
+					messWithGetTargetAI((EntityAINearestAttackableTarget) entry.action);
+			}
 
-            if(entity instanceof EntityCreeper) {
-                ((EntityCreeper)entity).timeSinceIgnited=2;
-                entity.setAttackTarget(null);
-            }
-        }
-    }
+			if (entity instanceof EntityCreeper) {
+				((EntityCreeper) entity).timeSinceIgnited = 2;
+				entity.setAttackTarget(null);
+			}
+		}
+	}
 
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 
-    @Override
-    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 }

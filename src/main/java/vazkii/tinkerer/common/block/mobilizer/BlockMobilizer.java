@@ -14,16 +14,13 @@ import vazkii.tinkerer.common.block.tile.TileEntityMobilizer;
 
 public class BlockMobilizer extends BlockMod {
 
-
-
 	@Override
 	public void onBlockPreDestroy(World par1World, int par2, int par3,
-			int par4, int par5) {
-		TileEntity tile=par1World.getTileEntity(par2, par3, par4);
-		if(tile!=null&& tile instanceof TileEntityMobilizer)
-		{
-		
-			((TileEntityMobilizer)tile).dead=true;
+	                              int par4, int par5) {
+		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+		if (tile != null && tile instanceof TileEntityMobilizer) {
+
+			((TileEntityMobilizer) tile).dead = true;
 		}
 		super.onBlockPreDestroy(par1World, par2, par3, par4, par5);
 	}
@@ -41,6 +38,7 @@ public class BlockMobilizer extends BlockMod {
 	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityMobilizer();
 	}
+
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
 	@SideOnly(Side.CLIENT)

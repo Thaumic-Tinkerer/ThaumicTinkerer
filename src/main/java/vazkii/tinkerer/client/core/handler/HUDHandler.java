@@ -38,20 +38,20 @@ public final class HUDHandler {
 
 	@SubscribeEvent
 	public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
-		if(event.type == ElementType.HOTBAR && ClientHelper.minecraft().currentScreen == null) {
+		if (event.type == ElementType.HOTBAR && ClientHelper.minecraft().currentScreen == null) {
 			boolean up = !Config.dialBottom;
 			int xpos = 4;
 			int ypos = up ? 50 : event.resolution.getScaledHeight() - 70;
 
 			ItemStack item = ClientHelper.clientPlayer().getCurrentEquippedItem();
-			if(item != null && item.getItem() instanceof ItemWandCasting) {
+			if (item != null && item.getItem() instanceof ItemWandCasting) {
 				ItemWandCasting wand = (ItemWandCasting) item.getItem();
 				wand.getFocusItem(item);
 				IWandFocus focus = wand.getFocus(item);
 
-				if(focus != null && focus instanceof ItemFocusDislocation) {
+				if (focus != null && focus instanceof ItemFocusDislocation) {
 					ItemStack pickedBlock = ((ItemFocusDislocation) focus).getPickedBlock(item);
-					if(pickedBlock != null) {
+					if (pickedBlock != null) {
 						Gui.drawRect(xpos - 1, ypos - 1, xpos + 18, ypos + 18, 0x66000000);
 
 						FontRenderer font = ClientHelper.fontRenderer();
@@ -64,7 +64,7 @@ public final class HUDHandler {
 						font.drawStringWithShadow(name, xpos + 20, ypos, 0xFFAA00);
 
 						NBTTagCompound cmp = ((ItemFocusDislocation) focus).getStackTileEntity(item);
-						if(cmp != null && !cmp.hasNoTags()) {
+						if (cmp != null && !cmp.hasNoTags()) {
 							String content = StatCollector.translateToLocal("ttmisc.focusDislocation.tooltipExtra");
 							font.getStringWidth(content);
 
@@ -72,12 +72,12 @@ public final class HUDHandler {
 							font.drawStringWithShadow(content, xpos + 20, ypos + 9, 0xFFAA00);
 						}
 
-						if(new ItemStack(((ItemBlock)pickedBlock.getItem()).field_150939_a).getItem() != null)
-							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(((ItemBlock)pickedBlock.getItem()).field_150939_a), xpos, ypos);
-                        else {
-                            if (((ItemBlock)pickedBlock.getItem()).field_150939_a== Blocks.reeds)
-                                renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(Items.reeds), xpos, ypos);
-                        }
+						if (new ItemStack(((ItemBlock) pickedBlock.getItem()).field_150939_a).getItem() != null)
+							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(((ItemBlock) pickedBlock.getItem()).field_150939_a), xpos, ypos);
+						else {
+							if (((ItemBlock) pickedBlock.getItem()).field_150939_a == Blocks.reeds)
+								renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(Items.reeds), xpos, ypos);
+						}
 						font.setUnicodeFlag(unicode);
 					}
 				}

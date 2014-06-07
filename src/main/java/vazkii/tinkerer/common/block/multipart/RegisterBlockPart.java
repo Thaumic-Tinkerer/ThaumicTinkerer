@@ -8,7 +8,6 @@
 
 package vazkii.tinkerer.common.block.multipart;
 
-
 import codechicken.lib.vec.BlockCoord;
 import codechicken.multipart.MultiPartRegistry;
 import codechicken.multipart.MultiPartRegistry.IPartConverter;
@@ -17,8 +16,6 @@ import codechicken.multipart.TMultiPart;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 // This class is used by FMP to recreate a part during loading and to convert already existing non-mutlipart blocks into multiparts.
 
@@ -32,7 +29,7 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 	public RegisterBlockPart(Block block, Class<? extends TMultiPart> part) {
 		//Autoloads the multi-parts name
 		try {
-			name = part.getConstructor().newInstance(new Object[] {}).getType();
+			name = part.getConstructor().newInstance(new Object[]{ }).getType();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,25 +59,24 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 			return;
 
 		MultiPartRegistry.registerConverter(this);
-		MultiPartRegistry.registerParts(this, new String[] { name });
+		MultiPartRegistry.registerParts(this, new String[]{ name });
 	}
 
+	@Override
+	public Iterable<Block> blockTypes() {
+		return Lists.newArrayList(block);
+	}
 
-    @Override
-    public Iterable<Block> blockTypes() {
-        return Lists.newArrayList(block);
-    }
-
-    @Override
+	@Override
 	public TMultiPart convert(World world, BlockCoord pos) {
 		Block blockInQuestion = world.getBlock(pos.x, pos.y, pos.z);
 		int meta = world.getBlockMetadata(pos.x, pos.y, pos.z);
 		if (blockInQuestion == block) {
 			try {
-				if(part.getName().equals("vazkii.tinkerer.common.block.multipart.PartNitor") && meta != 1)
+				if (part.getName().equals("vazkii.tinkerer.common.block.multipart.PartNitor") && meta != 1)
 					return null;
 
-				if(part.getDeclaredConstructor(int.class) != null)
+				if (part.getDeclaredConstructor(int.class) != null)
 					return part.getDeclaredConstructor(int.class).newInstance(meta);
 
 				return part.getConstructor().newInstance();

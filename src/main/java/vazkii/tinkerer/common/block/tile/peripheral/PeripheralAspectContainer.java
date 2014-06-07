@@ -15,7 +15,6 @@
 
 package vazkii.tinkerer.common.block.tile.peripheral;
 
-
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -25,56 +24,54 @@ import vazkii.tinkerer.common.block.tile.peripheral.implementation.IAspectContai
 
 public class PeripheralAspectContainer implements IPeripheral {
 
-    IAspectContainer container;
+	IAspectContainer container;
 
-    public PeripheralAspectContainer(IAspectContainer container) {
-        this.container = container;
-    }
+	public PeripheralAspectContainer(IAspectContainer container) {
+		this.container = container;
+	}
 
-    @Override
-    public String getType() {
-        return "tt_aspectContainer";
-    }
+	@Override
+	public String getType() {
+		return "tt_aspectContainer";
+	}
 
-    @Override
-    public String[] getMethodNames() {
-        return new String[]{"getAspects", "getAspectCount"};
-    }
+	@Override
+	public String[] getMethodNames() {
+		return new String[]{ "getAspects", "getAspectCount" };
+	}
 
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
-    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-        switch (method) {
-            case 0: {
-                return IAspectContainerImplementation.getAspects(container);
-            }
-            case 1: {
-                String aspectName = (String) arguments[0];
-                return IAspectContainerImplementation.getAspectCount(container,aspectName);
-            }
-        }
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+		switch (method) {
+			case 0: {
+				return IAspectContainerImplementation.getAspects(container);
+			}
+			case 1: {
+				String aspectName = (String) arguments[0];
+				return IAspectContainerImplementation.getAspectCount(container, aspectName);
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
+	public void attach(IComputerAccess computer) {
+		// NO-OP
+	}
 
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
+	public void detach(IComputerAccess computer) {
+		// NO-OP
+	}
 
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
-    public void attach(IComputerAccess computer) {
-        // NO-OP
-    }
-
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
-    public void detach(IComputerAccess computer) {
-        // NO-OP
-    }
-
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
+	public boolean equals(IPeripheral other) {
+		return this.equals((Object) other);
+	}
 
 }

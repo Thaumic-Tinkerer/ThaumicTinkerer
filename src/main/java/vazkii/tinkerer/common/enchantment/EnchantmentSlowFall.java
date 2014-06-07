@@ -14,10 +14,10 @@
  */
 package vazkii.tinkerer.common.enchantment;
 
-import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
+import vazkii.tinkerer.common.item.kami.armor.ItemGemBoots;
 
 public class EnchantmentSlowFall extends EnchantmentMod {
 

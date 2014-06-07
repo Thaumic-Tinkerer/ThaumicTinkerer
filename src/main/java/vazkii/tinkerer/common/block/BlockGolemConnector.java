@@ -7,8 +7,6 @@ import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 
 public class BlockGolemConnector extends BlockCamo {
 
-	
-	
 	protected BlockGolemConnector() {
 		super(Material.wood);
 	}
@@ -18,6 +16,7 @@ public class BlockGolemConnector extends BlockCamo {
 		// TODO Auto-generated method stub
 		return new TileGolemConnector();
 	}
+
 	@Override
 	public boolean isOpaqueCube() {
 		return true;

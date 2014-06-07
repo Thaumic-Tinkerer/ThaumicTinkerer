@@ -158,8 +158,8 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		return biomegenbase == null ? null : biomegenbase.getSpawnableList(par1EnumCreatureType);
 	}
 
-    @Override
-    public ChunkPosition func_147416_a(World var1, String var2, int var3, int var4, int var5) {
+	@Override
+	public ChunkPosition func_147416_a(World var1, String var2, int var3, int var4, int var5) {
 		return null;
 	}
 
@@ -167,6 +167,7 @@ public class ChunkProviderBedrock implements IChunkProvider {
 		return 0;
 	}
 
-	public void recreateStructures(int par1, int par2) {}
+	public void recreateStructures(int par1, int par2) {
+	}
 
 }

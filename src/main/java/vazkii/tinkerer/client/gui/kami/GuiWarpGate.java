@@ -44,7 +44,7 @@ public class GuiWarpGate extends GuiContainer {
 		((GuiButtonWG) par1GuiButton).enabled = !((GuiButtonWG) par1GuiButton).enabled;
 		warpGate.locked = ((GuiButtonWG) par1GuiButton).enabled;
 
-        ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateButton(warpGate));
+		ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateButton(warpGate));
 	}
 
 	@Override
@@ -60,9 +60,9 @@ public class GuiWarpGate extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(gui);
-        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-        fontRendererObj.drawStringWithShadow(StatCollector.translateToLocal("ttmisc.lockedGate"), x + 20, y + 7, 0x999999);
+		mc.renderEngine.bindTexture(gui);
+		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		fontRendererObj.drawStringWithShadow(StatCollector.translateToLocal("ttmisc.lockedGate"), x + 20, y + 7, 0x999999);
 	}
 
 }

@@ -38,28 +38,28 @@ import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
 
-public class GuiHandler  implements IGuiHandler {
+public class GuiHandler implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		switch(ID) {
-			case LibGuiIDs.GUI_ID_TABLET :
+		switch (ID) {
+			case LibGuiIDs.GUI_ID_TABLET:
 				return new ContainerAnimationTablet((TileAnimationTablet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_MOB_MAGNET :
+			case LibGuiIDs.GUI_ID_MOB_MAGNET:
 				return new ContainerMobMagnet((TileMobMagnet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ENCHANTER :
+			case LibGuiIDs.GUI_ID_ENCHANTER:
 				return new ContainerEnchanter((TileEnchanter) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER :
+			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER:
 				return new ContainerAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
+			case LibGuiIDs.GUI_ID_ICHOR_POUCH:
 				return new ContainerIchorPouch(player);
 
-			case LibGuiIDs.GUI_ID_WARP_GATE :
+			case LibGuiIDs.GUI_ID_WARP_GATE:
 				return new ContainerWarpGate((TileWarpGate) tile, player.inventory);
 		}
 		return null;
@@ -68,26 +68,26 @@ public class GuiHandler  implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		switch(ID) {
-			case LibGuiIDs.GUI_ID_TABLET :
+		switch (ID) {
+			case LibGuiIDs.GUI_ID_TABLET:
 				return new GuiAnimationTablet((TileAnimationTablet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_MOB_MAGNET :
+			case LibGuiIDs.GUI_ID_MOB_MAGNET:
 				return new GuiMobMagnet((TileMobMagnet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ENCHANTER :
+			case LibGuiIDs.GUI_ID_ENCHANTER:
 				return new GuiEnchanting((TileEnchanter) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER :
+			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER:
 				return new GuiAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ICHOR_POUCH :
+			case LibGuiIDs.GUI_ID_ICHOR_POUCH:
 				return new GuiIchorPouch(new ContainerIchorPouch(player));
 
-			case LibGuiIDs.GUI_ID_WARP_GATE :
+			case LibGuiIDs.GUI_ID_WARP_GATE:
 				return new GuiWarpGate((TileWarpGate) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS :
+			case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS:
 				return new GuiWarpGateDestinations((TileWarpGate) tile);
 		}
 		return null;

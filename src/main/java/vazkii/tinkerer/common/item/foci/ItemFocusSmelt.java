@@ -49,39 +49,39 @@ public class ItemFocusSmelt extends ItemModFocus {
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int time) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		if(!wand.consumeAllVis(stack, p, visUsage, false,false))
+		if (!wand.consumeAllVis(stack, p, visUsage, false, false))
 			return;
 
 		MovingObjectPosition pos = Utils.getTargetBlock(p.worldObj, p, false);
 
-		if(pos != null) {
+		if (pos != null) {
 			Block block = p.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 			int meta = p.worldObj.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
 
 			ItemStack blockStack = new ItemStack(block, 1, meta);
 			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(blockStack);
 
-			if(result != null && result.getItem() instanceof ItemBlock) {
+			if (result != null && result.getItem() instanceof ItemBlock) {
 				boolean decremented = false;
 
-				if(playerData.containsKey(p.getGameProfile().getName())) {
+				if (playerData.containsKey(p.getGameProfile().getName())) {
 					SmeltData data = playerData.get(p.getGameProfile().getName());
 
-					if(data.equalPos(pos)) {
+					if (data.equalPos(pos)) {
 						data.progress--;
 						decremented = true;
-						if(data.progress <= 0) {
-							if(!p.worldObj.isRemote) {
+						if (data.progress <= 0) {
+							if (!p.worldObj.isRemote) {
 								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Block.getBlockFromItem(result.getItem()), result.getItemDamage(), 1 | 2);
 								p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
 								p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
 
-								wand.consumeAllVis(stack, p, visUsage, true,false);
+								wand.consumeAllVis(stack, p, visUsage, true, false);
 								playerData.remove(p.getGameProfile().getName());
 								decremented = false;
 							}
 
-							for(int i = 0; i < 25; i++) {
+							for (int i = 0; i < 25; i++) {
 								double x = pos.blockX + Math.random();
 								double y = pos.blockY + Math.random();
 								double z = pos.blockZ + Math.random();
@@ -92,10 +92,10 @@ public class ItemFocusSmelt extends ItemModFocus {
 					}
 				}
 
-				if(!decremented) {
+				if (!decremented) {
 					int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 					playerData.put(p.getGameProfile().getName(), new SmeltData(pos, 20 - Math.min(3, potency) * 5));
-				} else for(int i = 0; i < 2; i++) {
+				} else for (int i = 0; i < 2; i++) {
 					double x = pos.blockX + Math.random();
 					double y = pos.blockY + Math.random();
 					double z = pos.blockZ + Math.random();
@@ -104,7 +104,7 @@ public class ItemFocusSmelt extends ItemModFocus {
 					ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, (float) -Math.random() / 10F);
 				}
 
-				if(p.worldObj.isRemote)
+				if (p.worldObj.isRemote)
 					ThaumicTinkerer.tcProxy.beamCont(p.worldObj, p, pos.blockX + 0.5, pos.blockY + 0.5, pos.blockZ + 0.5, 2, 0xFF0000, true, 0F, null, 1);
 			}
 		}

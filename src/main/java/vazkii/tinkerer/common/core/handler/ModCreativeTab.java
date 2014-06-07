@@ -41,21 +41,21 @@ public class ModCreativeTab extends CreativeTabs {
 
 	@Override
 	public ItemStack getIconItemStack() {
-		if(displayItem == null)
+		if (displayItem == null)
 			addWand();
 
 		return displayItem;
 	}
 
-    @Override
-    public Item getTabIconItem() {
-        if(displayItem == null)
-            addWand();
+	@Override
+	public Item getTabIconItem() {
+		if (displayItem == null)
+			addWand();
 
-        return ModItems.kamiResource;
-    }
+		return ModItems.kamiResource;
+	}
 
-    @Override
+	@Override
 	public void displayAllReleventItems(List list) {
 		this.list = list;
 
@@ -77,14 +77,14 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.platform);
 		addBlock(ModBlocks.repairer);
 		addBlock(ModBlocks.magnet);
-        //addBlock(ModBlocks.portal);
+		//addBlock(ModBlocks.portal);
 		addItem(ModItems.soulMould);
 		addBlock(ModBlocks.animationTablet);
 
-		if(Loader.isModLoaded("ComputerCraft"))
+		if (Loader.isModLoaded("ComputerCraft"))
 			addBlock(ModBlocks.aspectAnalyzer);
 
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			addBlock(ModBlocks.warpGate);
 		}
 
@@ -111,9 +111,9 @@ public class ModCreativeTab extends CreativeTabs {
 
 		addItem(ModItems.mobAspect);
 		addBlock(ModBlocks.spawner);
-        // TODO: Add Different heads here maybe?
-        //addItem(ModItems.mobDisplay);
-		if(ConfigHandler.enableKami) {
+		// TODO: Add Different heads here maybe?
+		//addItem(ModItems.mobDisplay);
+		if (ConfigHandler.enableKami) {
 			addItem(ModItems.kamiResource);
 
 			addItem(ModItems.ichorHelm);
@@ -152,16 +152,16 @@ public class ModCreativeTab extends CreativeTabs {
 		((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
 		((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
 		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
-		if(list != null)
+		if (list != null)
 			list.add(wand);
 		displayItem = wand;
 
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
 			((ItemWandCasting) wand1.getItem()).setRod(wand1, ModItems.rodIchorcloth);
 			((ItemWandCasting) wand1.getItem()).setCap(wand1, ModItems.capIchor);
 			((ItemWandCasting) wand1.getItem()).storeAllVis(wand1, new AspectList().add(Aspect.AIR, 100000).add(Aspect.EARTH, 100000).add(Aspect.FIRE, 100000).add(Aspect.WATER, 100000).add(Aspect.ORDER, 100000).add(Aspect.ENTROPY, 100000));
-			if(list != null)
+			if (list != null)
 				list.add(wand1);
 			displayItem = wand1;
 		}

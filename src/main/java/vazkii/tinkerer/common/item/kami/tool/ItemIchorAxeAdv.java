@@ -46,21 +46,22 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	@Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
-		Material mat = world.getBlock(x,y,z).getMaterial();
-		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
+		Material mat = world.getBlock(x, y, z).getMaterial();
+		if (!ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
 			return false;
 
 		MovingObjectPosition block = ToolHandler.raytraceFromEntity(world, player, true, 4.5);
-		if(block == null)
+		if (block == null)
 			return false;
 
 		ForgeDirection direction = ForgeDirection.getOrientation(block.sideHit);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
 
-		switch(ToolHandler.getMode(stack)) {
-			case 0 : break;
-			case 1 : {
+		switch (ToolHandler.getMode(stack)) {
+			case 0:
+				break;
+			case 1: {
 				boolean doX = direction.offsetX == 0;
 				boolean doY = direction.offsetY == 0;
 				boolean doZ = direction.offsetZ == 0;
@@ -68,16 +69,16 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 				ToolHandler.removeBlocksInIteration(player, world, x, y, z, doX ? -2 : 0, doY ? -1 : 0, doZ ? -2 : 0, doX ? 3 : 1, doY ? 4 : 1, doZ ? 3 : 1, null, ToolHandler.materialsAxe, silk, fortune);
 				break;
 			}
-			case 2 : {
+			case 2: {
 				Block blck = world.getBlock(x, y, z);
-				if(Utils.isWoodLog(world, x, y, z)) {
-					while(blck != Blocks.air) {
+				if (Utils.isWoodLog(world, x, y, z)) {
+					while (blck != Blocks.air) {
 						Utils.breakFurthestBlock(world, x, y, z, blck, player);
-                        blck = world.getBlock(x, y, z);
+						blck = world.getBlock(x, y, z);
 					}
 
 					List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x - 5, y - 1, z - 5, x + 5, y + 64, z + 5));
-					for(EntityItem item : items) {
+					for (EntityItem item : items) {
 						item.setPosition(x + 0.5, y + 0.5, z + 0.5);
 						item.ticksExisted += 20;
 					}
@@ -98,7 +99,7 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		for(int i = 0; i < specialIcons.length; i++)
+		for (int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
@@ -109,15 +110,13 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
+		if (par3EntityPlayer.isSneaking()) {
 			ToolHandler.changeMode(par1ItemStack);
 			ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
 		}
 
 		return par1ItemStack;
 	}
-
-
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

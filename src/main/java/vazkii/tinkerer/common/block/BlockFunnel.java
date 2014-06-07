@@ -85,7 +85,7 @@ public class BlockFunnel extends BlockModContainer {
 
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
-		if(par1World.getBlock(par2, par3 - 1, par4) != Block.getBlockFromName("hopper")) {
+		if (par1World.getBlock(par2, par3 - 1, par4) != Block.getBlockFromName("hopper")) {
 			dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
 			par1World.setBlockToAir(par2, par3, par4);
 		}
@@ -113,12 +113,12 @@ public class BlockFunnel extends BlockModContainer {
 						itemstack.stackSize -= k1;
 						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 						float f3 = 0.05F;
-						entityitem.motionX = (float)random.nextGaussian() * f3;
-						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float)random.nextGaussian() * f3;
+						entityitem.motionX = (float) random.nextGaussian() * f3;
+						entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+						entityitem.motionZ = (float) random.nextGaussian() * f3;
 
 						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
+							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 					}
 				}
 			}
@@ -134,22 +134,22 @@ public class BlockFunnel extends BlockModContainer {
 		TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
 		ItemStack stack = funnel.getStackInSlot(0);
 
-		if(stack == null) {
+		if (stack == null) {
 			ItemStack playerStack = par5EntityPlayer.getCurrentEquippedItem();
-			if(funnel.canInsertItem(0, playerStack, 1)) {
+			if (funnel.canInsertItem(0, playerStack, 1)) {
 				funnel.setInventorySlotContents(0, playerStack.splitStack(1));
 
-				if(playerStack.stackSize <= 0)
+				if (playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-                funnel.markDirty();
+				funnel.markDirty();
 				return true;
 			}
 		} else {
-			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
+			if (!par5EntityPlayer.inventory.addItemStackToInventory(stack))
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			funnel.setInventorySlotContents(0, null);
-            funnel.markDirty();
+			funnel.markDirty();
 			return true;
 		}
 

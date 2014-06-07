@@ -17,7 +17,6 @@ package vazkii.tinkerer.common.item;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -49,7 +48,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		
+
 		return super.getItemUseAction(par1ItemStack);
 	}
 
@@ -68,15 +67,14 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	}
 
 	@Override
-    public Multimap getItemAttributeModifiers() {
-        Multimap multimap = HashMultimap.create();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", DAMAGE, 0));
-        multimap.put(SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 0.25, 1));
-        return multimap;
-    }
+	public Multimap getItemAttributeModifiers() {
+		Multimap multimap = HashMultimap.create();
+		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", DAMAGE, 0));
+		multimap.put(SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", 0.25, 1));
+		return multimap;
+	}
 
 	static int handleNext = 0;
-
 
 	public void addDrops(LivingDropsEvent event, ItemStack dropStack) {
 		EntityItem entityitem = new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, dropStack);
@@ -85,20 +83,20 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 	}
 
 	@SubscribeEvent
-	public void onDrops(LivingDropsEvent event){
+	public void onDrops(LivingDropsEvent event) {
 		if (event.source.damageType.equals("player")) {
 
 			EntityPlayer player = (EntityPlayer) event.source.getEntity();
 			ItemStack stack = player.getCurrentEquippedItem();
-			if (stack != null && stack.getItem() == this  && stack.stackTagCompound!=null && stack.stackTagCompound.getInteger("Activated")==1) {
+			if (stack != null && stack.getItem() == this && stack.stackTagCompound != null && stack.stackTagCompound.getInteger("Activated") == 1) {
 				Aspect[] aspects = EnumMobAspect.getAspectsForEntity(event.entity);
-                //ScanResult sr=new ScanResult((byte)2,0,0,event.entity,"");
-                //AspectList as=ScanManager.getScanAspects(sr,event.entity.worldObj);
+				//ScanResult sr=new ScanResult((byte)2,0,0,event.entity,"");
+				//AspectList as=ScanManager.getScanAspects(sr,event.entity.worldObj);
 				//if(as!=null && as.size()!=0){
-                if(aspects!=null){
+				if (aspects != null) {
 					event.drops.removeAll(event.drops);
 					//for(Aspect a:as.getAspects()){
-                    for(Aspect a:aspects){
+					for (Aspect a : aspects) {
 						addDrops(event, ItemMobAspect.getStackFromAspect(a));
 					}
 				}
@@ -108,52 +106,52 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 
 	@SubscribeEvent
 	public void onDamageTaken(LivingAttackEvent event) {
-		if(event.entity.worldObj.isRemote)
+		if (event.entity.worldObj.isRemote)
 			return;
 
 		boolean handle = handleNext == 0;
-		if(!handle)
+		if (!handle)
 			handleNext--;
 
-		if(event.entityLiving instanceof EntityPlayer && handle) {
+		if (event.entityLiving instanceof EntityPlayer && handle) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			ItemStack itemInUse = player.itemInUse;
-			if(itemInUse != null && itemInUse.getItem()==this) {
-				
+			if (itemInUse != null && itemInUse.getItem() == this) {
+
 				event.setCanceled(true);
 				handleNext = 3;
 				player.attackEntityFrom(DamageSource.magic, 3);
 			}
 		}
 
-		if(handle) {
+		if (handle) {
 			Entity source = event.source.getSourceOfDamage();
-			if(source != null && source instanceof EntityLivingBase) {
+			if (source != null && source instanceof EntityLivingBase) {
 				EntityLivingBase attacker = (EntityLivingBase) source;
 				ItemStack itemInUse = attacker.getHeldItem();
-				if(itemInUse != null && itemInUse.getItem()==this)
+				if (itemInUse != null && itemInUse.getItem() == this)
 					attacker.attackEntityFrom(DamageSource.magic, 2);
 			}
 		}
 	}
 
-    @Override
-    public ItemStack onItemRightClick(ItemStack stack, World par2World,
-                                      EntityPlayer par3EntityPlayer) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World par2World,
+	                                  EntityPlayer par3EntityPlayer) {
 
-        ItemStack cache=super.onItemRightClick(stack, par2World, par3EntityPlayer);
-        if(par3EntityPlayer.isSneaking() && !par2World.isRemote){
-            if(stack.stackTagCompound ==null){
-                stack.stackTagCompound = new NBTTagCompound();
-            }
-            if(stack.stackTagCompound.getInteger("Activated")==0){
-                par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.bloodSword.activateEssentiaHarvest"));
-                stack.stackTagCompound.setInteger("Activated",1);
-            }else{
-                par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.bloodSword.deactivateEssentiaHarvest"));
-                stack.stackTagCompound.setInteger("Activated",0);
-            }
-        }
-        return cache;
-    }
+		ItemStack cache = super.onItemRightClick(stack, par2World, par3EntityPlayer);
+		if (par3EntityPlayer.isSneaking() && !par2World.isRemote) {
+			if (stack.stackTagCompound == null) {
+				stack.stackTagCompound = new NBTTagCompound();
+			}
+			if (stack.stackTagCompound.getInteger("Activated") == 0) {
+				par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.bloodSword.activateEssentiaHarvest"));
+				stack.stackTagCompound.setInteger("Activated", 1);
+			} else {
+				par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.bloodSword.deactivateEssentiaHarvest"));
+				stack.stackTagCompound.setInteger("Activated", 0);
+			}
+		}
+		return cache;
+	}
 }

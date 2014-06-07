@@ -41,10 +41,10 @@ public class BlockRepairer extends BlockModContainer {
 
 	protected BlockRepairer() {
 		super(Material.iron);
-        setHardness(5F);
-        setResistance(10F);
+		setHardness(5F);
+		setResistance(10F);
 
-        random = new Random();
+		random = new Random();
 	}
 
 	@Override
@@ -52,19 +52,19 @@ public class BlockRepairer extends BlockModContainer {
 		TileRepairer repairer = (TileRepairer) par1World.getTileEntity(par2, par3, par4);
 		ItemStack stack = repairer.getStackInSlot(0);
 
-		if(stack == null) {
+		if (stack == null) {
 			ItemStack playerStack = par5EntityPlayer.getCurrentEquippedItem();
-			if(repairer.canInsertItem(0, playerStack, 1)) {
+			if (repairer.canInsertItem(0, playerStack, 1)) {
 				repairer.setInventorySlotContents(0, playerStack.splitStack(1));
 
-				if(playerStack.stackSize <= 0)
+				if (playerStack.stackSize <= 0)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 
 				repairer.markDirty();
 				return true;
 			}
 		} else {
-			if(!par5EntityPlayer.inventory.addItemStackToInventory(stack))
+			if (!par5EntityPlayer.inventory.addItemStackToInventory(stack))
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
 			repairer.setInventorySlotContents(0, null);
@@ -116,25 +116,21 @@ public class BlockRepairer extends BlockModContainer {
 
 						itemstack.stackSize -= k1;
 						int dmg;
-						if(Loader.isModLoaded("TConstruct"))
-						{
-							if(TinkersConstructCompat.isTConstructTool(itemstack))
-							{
-								dmg= TinkersConstructCompat.getDamage(itemstack);
-							}
-							else
-								dmg=itemstack.getItemDamage();
-						}
-						else
-							dmg=itemstack.getItemDamage();
+						if (Loader.isModLoaded("TConstruct")) {
+							if (TinkersConstructCompat.isTConstructTool(itemstack)) {
+								dmg = TinkersConstructCompat.getDamage(itemstack);
+							} else
+								dmg = itemstack.getItemDamage();
+						} else
+							dmg = itemstack.getItemDamage();
 						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, dmg));
 						float f3 = 0.05F;
-						entityitem.motionX = (float)random.nextGaussian() * f3;
-						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float)random.nextGaussian() * f3;
+						entityitem.motionX = (float) random.nextGaussian() * f3;
+						entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+						entityitem.motionZ = (float) random.nextGaussian() * f3;
 
 						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
+							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 					}
 				}
 			}
@@ -144,7 +140,6 @@ public class BlockRepairer extends BlockModContainer {
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
-
 
 	@Override
 	@SideOnly(Side.CLIENT)

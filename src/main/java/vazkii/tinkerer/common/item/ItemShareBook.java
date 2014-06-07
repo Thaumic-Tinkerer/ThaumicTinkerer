@@ -34,57 +34,54 @@ public class ItemShareBook extends ItemMod {
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		String name = getPlayerName(par1ItemStack);
-		if(name.endsWith(NON_ASIGNED)) {
+		if (name.endsWith(NON_ASIGNED)) {
 			setPlayerName(par1ItemStack, par3EntityPlayer.getGameProfile().getName());
-            if(isOfflineShare(par1ItemStack))
-                setPlayerResearch(par1ItemStack,par3EntityPlayer.getGameProfile().getName());
-			if(!par2World.isRemote)
+			if (isOfflineShare(par1ItemStack))
+				setPlayerResearch(par1ItemStack, par3EntityPlayer.getGameProfile().getName());
+			if (!par2World.isRemote)
 				par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.write"));
-		} else sync : {
+		} else sync:{
 			List<String> researchesDone = ResearchManager.getResearchForPlayer(name);
 
-			if(researchesDone == null && ! isOfflineShare(par1ItemStack)) {
-				if(!par2World.isRemote)
+			if (researchesDone == null && !isOfflineShare(par1ItemStack)) {
+				if (!par2World.isRemote)
 					par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.notOnline"));
 				break sync;
 			}
-            if(researchesDone==null && isOfflineShare(par1ItemStack))
-            {
-                if(par2World.isRemote)
-                    researchesDone=getPlayerResearch(par1ItemStack);
-                else {
-                    par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.sync"));
-                    break sync;
+			if (researchesDone == null && isOfflineShare(par1ItemStack)) {
+				if (par2World.isRemote)
+					researchesDone = getPlayerResearch(par1ItemStack);
+				else {
+					par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.sync"));
+					break sync;
 
-                }
-            }
+				}
+			}
 
-			for(String key : researchesDone)
+			for (String key : researchesDone)
 				ThaumicTinkerer.tcProxy.getResearchManager().completeResearch(par3EntityPlayer, key);
 
-			if(!par2World.isRemote)
+			if (!par2World.isRemote)
 				par3EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.shareTome.sync"));
 		}
-
 
 		return par1ItemStack;
 	}
 
-    private List<String> getPlayerResearch(ItemStack par1ItemStack) {
-        List<String> retVals=new ArrayList<String>();
-        NBTTagCompound cmp=ItemNBTHelper.getNBT(par1ItemStack);
-        if(!cmp.hasKey("research"))
-            return retVals;
-        NBTTagList list=cmp.getTagList("research", Constants.NBT.TAG_STRING);
-        for(int i=0;i<list.tagCount();i++)
-        {
+	private List<String> getPlayerResearch(ItemStack par1ItemStack) {
+		List<String> retVals = new ArrayList<String>();
+		NBTTagCompound cmp = ItemNBTHelper.getNBT(par1ItemStack);
+		if (!cmp.hasKey("research"))
+			return retVals;
+		NBTTagList list = cmp.getTagList("research", Constants.NBT.TAG_STRING);
+		for (int i = 0; i < list.tagCount(); i++) {
 
-            retVals.add(list.getStringTagAt(i));
-        }
-        return retVals;
-    }
+			retVals.add(list.getStringTagAt(i));
+		}
+		return retVals;
+	}
 
-    @Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.epic;
@@ -95,27 +92,26 @@ public class ItemShareBook extends ItemMod {
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		String name = getPlayerName(par1ItemStack);
 		par3List.add(name.equals(NON_ASIGNED) ? StatCollector.translateToLocal("ttmisc.shareTome.noAssign") : String.format(StatCollector.translateToLocal("ttmisc.shareTome.playerName"), name));
-        if(isOfflineShare(par1ItemStack))
-            par3List.add(StatCollector.translateToLocal("ttmisc.shareTomb.offlineshare"));
+		if (isOfflineShare(par1ItemStack))
+			par3List.add(StatCollector.translateToLocal("ttmisc.shareTomb.offlineshare"));
 	}
 
-    @Override
-    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
-        for(int i=0;i<2;i++)
-        {
-            par3List.add(new ItemStack(this,1,i));
-        }
-    }
+	@Override
+	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+		for (int i = 0; i < 2; i++) {
+			par3List.add(new ItemStack(this, 1, i));
+		}
+	}
 
-    @Override
+	@Override
 	public boolean getShareTag() {
 		return true;
 	}
 
-    public boolean isOfflineShare(ItemStack itemStack)
-    {
-        return itemStack.getItemDamage()==1;
-    }
+	public boolean isOfflineShare(ItemStack itemStack) {
+		return itemStack.getItemDamage() == 1;
+	}
+
 	private String getPlayerName(ItemStack stack) {
 		return ItemNBTHelper.getString(stack, TAG_PLAYER, NON_ASIGNED);
 	}
@@ -124,17 +120,14 @@ public class ItemShareBook extends ItemMod {
 		ItemNBTHelper.setString(stack, TAG_PLAYER, playerName);
 	}
 
-    private void setPlayerResearch(ItemStack stack,String playername)
-    {
-        List<String> researchesDone = ResearchManager.getResearchForPlayer(playername);
-        NBTTagCompound cmp=ItemNBTHelper.getNBT(stack);
-        NBTTagList list=new NBTTagList();
-        for(String tag:researchesDone)
-        {
-            list.appendTag(new NBTTagString(tag));
-        }
-        cmp.setTag("research",list);
+	private void setPlayerResearch(ItemStack stack, String playername) {
+		List<String> researchesDone = ResearchManager.getResearchForPlayer(playername);
+		NBTTagCompound cmp = ItemNBTHelper.getNBT(stack);
+		NBTTagList list = new NBTTagList();
+		for (String tag : researchesDone) {
+			list.appendTag(new NBTTagString(tag));
+		}
+		cmp.setTag("research", list);
 
-
-    }
+	}
 }

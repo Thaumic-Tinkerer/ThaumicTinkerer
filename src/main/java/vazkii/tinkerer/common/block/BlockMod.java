@@ -14,23 +14,21 @@
  */
 package vazkii.tinkerer.common.block;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMod extends Block {
 
 	public BlockMod(Material par2Material) {
 		super(par2Material);
-		if(registerInCreative())
+		if (registerInCreative())
 			setCreativeTab(ModCreativeTab.INSTANCE);
 	}
-
-
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -41,6 +39,5 @@ public class BlockMod extends Block {
 	boolean registerInCreative() {
 		return true;
 	}
-
 
 }

@@ -52,34 +52,34 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	@Override
 	void tickPlayer(EntityPlayer player) {
-        ItemStack armor = player.getCurrentArmor(2);
-        if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
-            return;
+		ItemStack armor = player.getCurrentArmor(2);
+		if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
+			return;
 
-        ItemFocusDeflect.protectFromProjectiles(player);
+		ItemFocusDeflect.protectFromProjectiles(player);
 	}
 
 	@SubscribeEvent
 	public void updatePlayerFlyStatus(LivingUpdateEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
+		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 
 			ItemStack armor = player.getCurrentArmor(3 - armorType);
-			if(armor != null && armor.getItem() == this)
+			if (armor != null && armor.getItem() == this)
 				tickPlayer(player);
 
-			if(playersWithFlight.contains(playerStr(player))) {
-				if(shouldPlayerHaveFlight(player))
+			if (playersWithFlight.contains(playerStr(player))) {
+				if (shouldPlayerHaveFlight(player))
 					player.capabilities.allowFlying = true;
 				else {
-					if(!player.capabilities.isCreativeMode) {
+					if (!player.capabilities.isCreativeMode) {
 						player.capabilities.allowFlying = false;
 						player.capabilities.isFlying = false;
 						player.capabilities.disableDamage = false;
 					}
 					playersWithFlight.remove(playerStr(player));
 				}
-			} else if(shouldPlayerHaveFlight(player)) {
+			} else if (shouldPlayerHaveFlight(player)) {
 				playersWithFlight.add(playerStr(player));
 				player.capabilities.allowFlying = true;
 			}
@@ -92,7 +92,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(2);
-		return armor != null && armor.getItem() == ModItems.ichorChestGem&& ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage()==0 && ConfigHandler.enableFlight;
+		return armor != null && armor.getItem() == ModItems.ichorChestGem && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage() == 0 && ConfigHandler.enableFlight;
 	}
 
 }

@@ -45,7 +45,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		for(int i = 0; i < specialIcons.length; i++)
+		for (int i = 0; i < specialIcons.length; i++)
 			specialIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
@@ -56,7 +56,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking()) {
+		if (par3EntityPlayer.isSneaking()) {
 			ToolHandler.changeMode(par1ItemStack);
 			ToolModeHUDHandler.setTooltip(ToolHandler.getToolModeStr(this, par1ItemStack));
 		}
@@ -64,48 +64,47 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		return par1ItemStack;
 	}
 
-    @Override
-    public float func_150893_a(ItemStack p_150893_1_, Block p_150893_2_) {
-        return (p_150893_2_==Blocks.bedrock)?Float.MAX_VALUE: super.func_150893_a(p_150893_1_, p_150893_2_);
-    }
+	@Override
+	public float func_150893_a(ItemStack p_150893_1_, Block p_150893_2_) {
+		return (p_150893_2_ == Blocks.bedrock) ? Float.MAX_VALUE : super.func_150893_a(p_150893_1_, p_150893_2_);
+	}
 
-    @Override
-    public float getDigSpeed(ItemStack stack, Block block, int meta) {
-        return (block==Blocks.bedrock)?Float.MAX_VALUE:super.getDigSpeed(stack, block, meta);
-    }
+	@Override
+	public float getDigSpeed(ItemStack stack, Block block, int meta) {
+		return (block == Blocks.bedrock) ? Float.MAX_VALUE : super.getDigSpeed(stack, block, meta);
+	}
 
-    @Override
-    public boolean func_150897_b(Block p_150897_1_) {
-        return (p_150897_1_ == Blocks.bedrock) || super.func_150897_b(p_150897_1_);
-    }
+	@Override
+	public boolean func_150897_b(Block p_150897_1_) {
+		return (p_150897_1_ == Blocks.bedrock) || super.func_150897_b(p_150897_1_);
+	}
 
-    @Override
+	@Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
 		Material mat = world.getBlock(x, y, z).getMaterial();
-		if(!ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
+		if (!ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
 			return false;
 
 		MovingObjectPosition block = ToolHandler.raytraceFromEntity(world, player, true, 4.5);
-		if(block == null)
+		if (block == null)
 			return false;
 
-		Block blk=world.getBlock(x, y, z);
+		Block blk = world.getBlock(x, y, z);
 
 		ForgeDirection direction = ForgeDirection.getOrientation(block.sideHit);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
-        if(ConfigHandler.bedrockDimensionID != 0 && blk== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock)))
-        {
-            world.setBlock(x,y,z, ModBlocks.portal);
-        }
-        if(ConfigHandler.bedrockDimensionID!=0 && blk==Blocks.bedrock && (y<=253 && world.provider instanceof WorldProviderBedrock))
-        {
-            world.setBlock(x,y,z,Blocks.air);
-        }
-		switch(ToolHandler.getMode(stack)) {
-			case 0 : break;
-			case 1 : {
+		if (ConfigHandler.bedrockDimensionID != 0 && blk == Blocks.bedrock && ((world.provider.isSurfaceWorld() && y < 5) || (y > 253 && world.provider instanceof WorldProviderBedrock))) {
+			world.setBlock(x, y, z, ModBlocks.portal);
+		}
+		if (ConfigHandler.bedrockDimensionID != 0 && blk == Blocks.bedrock && (y <= 253 && world.provider instanceof WorldProviderBedrock)) {
+			world.setBlock(x, y, z, Blocks.air);
+		}
+		switch (ToolHandler.getMode(stack)) {
+			case 0:
+				break;
+			case 1: {
 				boolean doX = direction.offsetX == 0;
 				boolean doY = direction.offsetY == 0;
 				boolean doZ = direction.offsetZ == 0;
@@ -114,7 +113,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
 				break;
 			}
-			case 2 : {
+			case 2: {
 				int xo = -direction.offsetX;
 				int yo = -direction.offsetY;
 				int zo = -direction.offsetZ;
@@ -125,8 +124,6 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		}
 		return false;
 	}
-
-
 
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

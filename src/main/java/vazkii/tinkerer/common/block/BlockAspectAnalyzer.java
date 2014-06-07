@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -30,6 +28,8 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
+
+import java.util.Random;
 
 public class BlockAspectAnalyzer extends BlockModContainer {
 
@@ -47,9 +47,9 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if(!par1World.isRemote) {
+		if (!par1World.isRemote) {
 			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-			if(tile != null)
+			if (tile != null)
 				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ASPECT_ANALYZER, par1World, par2, par3, par4);
 		}
 
@@ -57,46 +57,46 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	}
 
 	@Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
-        TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+		TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
 
-        if (analyzer != null) {
-            for (int j1 = 0; j1 < analyzer.getSizeInventory(); ++j1) {
-                ItemStack itemstack = analyzer.getStackInSlot(j1);
+		if (analyzer != null) {
+			for (int j1 = 0; j1 < analyzer.getSizeInventory(); ++j1) {
+				ItemStack itemstack = analyzer.getStackInSlot(j1);
 
-                if (itemstack != null) {
-                    float f = random.nextFloat() * 0.8F + 0.1F;
-                    float f1 = random.nextFloat() * 0.8F + 0.1F;
-                    EntityItem entityitem;
+				if (itemstack != null) {
+					float f = random.nextFloat() * 0.8F + 0.1F;
+					float f1 = random.nextFloat() * 0.8F + 0.1F;
+					EntityItem entityitem;
 
-                    for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
-                        int k1 = random.nextInt(21) + 10;
+					for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
+						int k1 = random.nextInt(21) + 10;
 
-                        if (k1 > itemstack.stackSize)
-                            k1 = itemstack.stackSize;
+						if (k1 > itemstack.stackSize)
+							k1 = itemstack.stackSize;
 
-                        itemstack.stackSize -= k1;
-                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-                        float f3 = 0.05F;
-                        entityitem.motionX = (float)random.nextGaussian() * f3;
-                        entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-                        entityitem.motionZ = (float)random.nextGaussian() * f3;
+						itemstack.stackSize -= k1;
+						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
+						float f3 = 0.05F;
+						entityitem.motionX = (float) random.nextGaussian() * f3;
+						entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+						entityitem.motionZ = (float) random.nextGaussian() * f3;
 
-                        if (itemstack.hasTagCompound())
-                            entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-                    }
-                }
-            }
+						if (itemstack.hasTagCompound())
+							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
+					}
+				}
+			}
 
-            par1World.func_147453_f(par2, par3, par4, par5);
-        }
+			par1World.func_147453_f(par2, par3, par4, par5);
+		}
 
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
-    }
+		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+	}
 
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		for(int i = 0; i < 5; i++)
+		for (int i = 0; i < 5; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 

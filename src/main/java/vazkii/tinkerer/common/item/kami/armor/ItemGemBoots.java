@@ -43,48 +43,48 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
 	@Override
 	void tickPlayer(EntityPlayer player) {
-        ItemStack armor = player.getCurrentArmor(0);
-        if(!ThaumicTinkerer.proxy.armorStatus(player) || armor.getItemDamage() == 1)
-            return;
+		ItemStack armor = player.getCurrentArmor(0);
+		if (!ThaumicTinkerer.proxy.armorStatus(player) || armor.getItemDamage() == 1)
+			return;
 		player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2, 1, true));
 
-		if(player.worldObj.isRemote)
+		if (player.worldObj.isRemote)
 			player.stepHeight = player.isSneaking() ? 0.5F : 1F;
-		if((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F)
+		if ((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F)
 			player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.075F : 0.15F);
 		player.jumpMovementFactor = player.isSprinting() ? 0.05F : 0.04F;
 		player.fallDistance = 0F;
 
 		int x = (int) player.posX;
-        int y = (int) player.posY - 1;
-        int z = (int) player.posZ;
-        if(player.worldObj.getBlock(x, y, z) == Blocks.dirt && player.worldObj.getBlockMetadata(x, y, z) == 0)
-                player.worldObj.setBlock(x, y, z, Blocks.grass, 0, 2);
+		int y = (int) player.posY - 1;
+		int z = (int) player.posZ;
+		if (player.worldObj.getBlock(x, y, z) == Blocks.dirt && player.worldObj.getBlockMetadata(x, y, z) == 0)
+			player.worldObj.setBlock(x, y, z, Blocks.grass, 0, 2);
 	}
 
 	@SubscribeEvent
 	public void onPlayerJump(LivingJumpEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
+		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).getItem()== this;
+			boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).getItem() == this;
 
-			if(hasArmor && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0)
-				 player.motionY += 0.3;
+			if (hasArmor && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage() == 0)
+				player.motionY += 0.3;
 		}
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onLivingUpdate(LivingUpdateEvent event) {
-		if(event.entityLiving instanceof EntityPlayer && event.entityLiving.worldObj.isRemote) {
+		if (event.entityLiving instanceof EntityPlayer && event.entityLiving.worldObj.isRemote) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 
 			boolean highStepListed = playersWith1Step.contains(player.getGameProfile().getName());
 			boolean hasHighStep = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).getItem() == this;
 
-			if( !highStepListed && (hasHighStep && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage()==0))
+			if (!highStepListed && (hasHighStep && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage() == 0))
 				playersWith1Step.add(player.getGameProfile().getName());
 
-			if((!hasHighStep || !ThaumicTinkerer.proxy.armorStatus(player) || player.getCurrentArmor(0).getItemDamage()==1)&& highStepListed) {
+			if ((!hasHighStep || !ThaumicTinkerer.proxy.armorStatus(player) || player.getCurrentArmor(0).getItemDamage() == 1) && highStepListed) {
 				playersWith1Step.remove(player.getGameProfile().getName());
 				player.stepHeight = 0.5F;
 			}

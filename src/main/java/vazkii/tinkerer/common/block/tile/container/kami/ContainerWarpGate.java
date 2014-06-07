@@ -31,8 +31,8 @@ public class ContainerWarpGate extends ContainerPlayerInv {
 		super(playerInv);
 		this.gate = gate;
 
-		for(int y = 0; y < 2; y++)
-			for(int x = 0; x < 5; x++)
+		for (int y = 0; y < 2; y++)
+			for (int x = 0; x < 5; x++)
 				addSlotToContainer(new SlotSkyPearl(gate, y * 5 + x, 30 + x * 25, 27 + y * 25));
 
 		initPlayerInv();
@@ -51,13 +51,13 @@ public class ContainerWarpGate extends ContainerPlayerInv {
 		if (var4 != null && var4.getHasStack()) {
 			ItemStack var5 = var4.getStack();
 
-			if(par2 < 10 || var5 != null) {
+			if (par2 < 10 || var5 != null) {
 				var3 = var5.copy();
 
 				if (par2 < 10) {
-					if(!mergeItemStack(var5, 10, 36, false))
+					if (!mergeItemStack(var5, 10, 36, false))
 						return null;
-				} else if(var3.getItem() == ModItems.skyPearl&& !mergeItemStack(var5, 0, 10, false))
+				} else if (var3.getItem() == ModItems.skyPearl && !mergeItemStack(var5, 0, 10, false))
 					return null;
 
 				if (var5.stackSize == 0)

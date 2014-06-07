@@ -34,27 +34,26 @@ public class ItemFocusFlight extends ItemModFocus {
 
 	@Override
 	public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer p, MovingObjectPosition movingobjectposition) {
-		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-        if(!ConfigHandler.enableFlight)
-        {
-            return itemstack;
-        }
-		if (wand.consumeAllVis(itemstack, p, getVisCost(), true,false)) {
+		ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
+		if (!ConfigHandler.enableFlight) {
+			return itemstack;
+		}
+		if (wand.consumeAllVis(itemstack, p, getVisCost(), true, false)) {
 			Vec3 vec = p.getLookVec();
 			double force = 1 / 1.5 * (1 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(itemstack)) * 0.2);
 			p.motionX = vec.xCoord * force;
 			p.motionY = vec.yCoord * force;
 			p.motionZ = vec.zCoord * force;
 			p.fallDistance = 0F;
-            if(p instanceof EntityPlayerMP){
-                ((EntityPlayerMP)p).playerNetServerHandler.floatingTickCount = 0;
-            }
-			for(int i = 0; i < 5; i++)
+			if (p instanceof EntityPlayerMP) {
+				((EntityPlayerMP) p).playerNetServerHandler.floatingTickCount = 0;
+			}
+			for (int i = 0; i < 5; i++)
 				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) (Math.random() * 360), (int) p.posY);
 			world.playSoundAtEntity(p, "thaumcraft:wind", 0.4F, 1F);
 		}
 
-		if(world.isRemote)
+		if (world.isRemote)
 			p.swingItem();
 
 		return itemstack;

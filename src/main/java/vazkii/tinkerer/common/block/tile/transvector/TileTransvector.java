@@ -55,12 +55,12 @@ public abstract class TileTransvector extends TileCamo {
 	}
 
 	public final TileEntity getTile() {
-		if(!worldObj.blockExists(x, y, z))
+		if (!worldObj.blockExists(x, y, z))
 			return null;
 
 		TileEntity tile = worldObj.getTileEntity(x, y, z);
 
-		if(tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
+		if (tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
 			y = -1;
 			return null;
 		}

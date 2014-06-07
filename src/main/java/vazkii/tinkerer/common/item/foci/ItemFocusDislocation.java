@@ -43,11 +43,11 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	private static final String TAG_AVAILABLE = "available";
 	private static final String TAG_TILE_CMP = "tileCmp";
-    @Deprecated
+	@Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
-    private static final String TAG_BLOCK_NAME = "blockName";
+	private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
-	private static ArrayList<Block> blacklist =new ArrayList<Block>();
+	private static ArrayList<Block> blacklist = new ArrayList<Block>();
 	private IIcon ornament;
 
 	private static final AspectList visUsage = new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500).add(Aspect.EARTH, 100);
@@ -63,36 +63,36 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	@Override
 	public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
-		if(mop == null)
+		if (mop == null)
 			return itemstack;
 
-		Block block= world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
+		Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 		int meta = world.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ);
 		TileEntity tile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-		ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
+		ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
 
-    		if(player.canPlayerEdit(mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, itemstack)) {
+		if (player.canPlayerEdit(mop.blockX, mop.blockY, mop.blockZ, mop.sideHit, itemstack)) {
 			ItemStack stack = getPickedBlock(itemstack);
-			if(stack != null) {
-	            if (mop.sideHit == 0)
-	                --mop.blockY;
-	            if (mop.sideHit == 1)
-	                ++mop.blockY;
-	            if (mop.sideHit == 2)
-	                --mop.blockZ;
-	            if (mop.sideHit == 3)
-	                ++mop.blockZ;
-	            if (mop.sideHit == 4)
-	                --mop.blockX;
-	            if (mop.sideHit == 5)
-	                ++mop.blockX;
+			if (stack != null) {
+				if (mop.sideHit == 0)
+					--mop.blockY;
+				if (mop.sideHit == 1)
+					++mop.blockY;
+				if (mop.sideHit == 2)
+					--mop.blockZ;
+				if (mop.sideHit == 3)
+					++mop.blockZ;
+				if (mop.sideHit == 4)
+					--mop.blockX;
+				if (mop.sideHit == 5)
+					++mop.blockX;
 
-				if(block.canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit)) {
-					if(!world.isRemote) {
-						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, ((ItemBlock)stack.getItem()).field_150939_a, stack.getItemDamage(), 1 | 2);
+				if (block.canPlaceBlockOnSide(world, mop.blockX, mop.blockY, mop.blockZ, mop.sideHit)) {
+					if (!world.isRemote) {
+						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, ((ItemBlock) stack.getItem()).field_150939_a, stack.getItemDamage(), 1 | 2);
 						block.onBlockPlacedBy(world, mop.blockX, mop.blockY, mop.blockZ, player, itemstack);
 						NBTTagCompound tileCmp = getStackTileEntity(itemstack);
-						if(tileCmp != null && !tileCmp.hasNoTags()) {
+						if (tileCmp != null && !tileCmp.hasNoTags()) {
 							TileEntity tile1 = TileEntity.createAndLoadEntity(tileCmp);
 							tile1.xCoord = mop.blockX;
 							tile1.yCoord = mop.blockY;
@@ -102,7 +102,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 					} else player.swingItem();
 					clearPickedBlock(itemstack);
 
-					for(int i = 0; i < 8; i++) {
+					for (int i = 0; i < 8; i++) {
 						float x = (float) (mop.blockX + Math.random());
 						float y = (float) (mop.blockY + Math.random()) + 0.65F;
 						float z = (float) (mop.blockZ + Math.random());
@@ -110,14 +110,14 @@ public class ItemFocusDislocation extends ItemModFocus {
 					}
 					world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 				}
-			} else if(!blacklist.contains(block) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true,false)) {
-				if(!world.isRemote) {
+			} else if (!blacklist.contains(block) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true, false)) {
+				if (!world.isRemote) {
 					world.removeTileEntity(mop.blockX, mop.blockY, mop.blockZ);
 					world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Blocks.air, 0, 1 | 2);
 					storePickedBlock(itemstack, block, (short) meta, tile);
 				}
 
-				for(int i = 0; i < 8; i++) {
+				for (int i = 0; i < 8; i++) {
 					float x = (float) (mop.blockX + Math.random());
 					float y = (float) (mop.blockY + Math.random());
 					float z = (float) (mop.blockZ + Math.random());
@@ -126,7 +126,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 				world.playSoundAtEntity(player, block.stepSound.getBreakSound(), 1F, 1F);
 				world.playSoundAtEntity(player, "thaumcraft:wand", 0.5F, 1F);
 
-				if(world.isRemote)
+				if (world.isRemote)
 					player.swingItem();
 			}
 		}
@@ -140,84 +140,75 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	@Override
 	public String getSortingHelper(ItemStack itemstack) {
-		return "DISLOCATION"+getUniqueKey(itemstack);
+		return "DISLOCATION" + getUniqueKey(itemstack);
 	}
-	public String getUniqueKey(ItemStack itemstack)
-	{
-		ItemStack stack=getPickedBlock(itemstack);
-		if(stack==null)
+
+	public String getUniqueKey(ItemStack itemstack) {
+		ItemStack stack = getPickedBlock(itemstack);
+		if (stack == null)
 			return "";
-		String name=stack.getUnlocalizedName();
-		int datahash=0;
-		if(stack.getTagCompound()!=null)
-		{
-			datahash=stack.getTagCompound().hashCode();
+		String name = stack.getUnlocalizedName();
+		int datahash = 0;
+		if (stack.getTagCompound() != null) {
+			datahash = stack.getTagCompound().hashCode();
 		}
-		return String.format("%s-%d", name,datahash);
+		return String.format("%s-%d", name, datahash);
 	}
+
 	public ItemStack getPickedBlock(ItemStack stack) {
 		ItemStack focus;
-		if(stack.getItem() instanceof ItemWandCasting)
-		{
+		if (stack.getItem() instanceof ItemWandCasting) {
 			ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-			focus=wand.getFocusItem(stack);
+			focus = wand.getFocusItem(stack);
+		} else {
+			focus = stack;
 		}
-		else
-		{
-			focus=stack;
-		}
-		return (ItemNBTHelper.getBoolean(focus,TAG_AVAILABLE,false)) ? getPickedBlockStack(stack) : null;
+		return (ItemNBTHelper.getBoolean(focus, TAG_AVAILABLE, false)) ? getPickedBlockStack(stack) : null;
 	}
 
 	public ItemStack getPickedBlockStack(ItemStack stack) {
 		ItemStack focus;
-		if(stack.getItem() instanceof ItemWandCasting)
-		{
+		if (stack.getItem() instanceof ItemWandCasting) {
 			ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-			focus=wand.getFocusItem(stack);
+			focus = wand.getFocusItem(stack);
+		} else {
+			focus = stack;
 		}
-		else
-		{
-			focus=stack;
+		String name = ItemNBTHelper.getString(focus, TAG_BLOCK_NAME, "");
+		Block block = Block.getBlockFromName(name);
+		if (block == Blocks.air) {
+			int id = ItemNBTHelper.getInt(focus, TAG_BLOCK_ID, 0);
+			block = Block.getBlockById(id);
 		}
-        String name=ItemNBTHelper.getString(focus,TAG_BLOCK_NAME,"");
-        Block block=Block.getBlockFromName(name);
-        if(block== Blocks.air) {
-            int id = ItemNBTHelper.getInt(focus, TAG_BLOCK_ID, 0);
-            block = Block.getBlockById(id);
-        }
 		int meta = ItemNBTHelper.getInt(focus, TAG_BLOCK_META, 0);
-        ItemStack stck;
-        //if(block instanceof BlockReed)
-        //{
-        //   stck=new ItemStack(Items.reeds,1,meta);
-        //}
-        stck=new ItemStack(new ItemBlock(block),1,meta);
+		ItemStack stck;
+		//if(block instanceof BlockReed)
+		//{
+		//   stck=new ItemStack(Items.reeds,1,meta);
+		//}
+		stck = new ItemStack(new ItemBlock(block), 1, meta);
 		return stck;
 	}
 
 	public NBTTagCompound getStackTileEntity(ItemStack stack) {
 		ItemStack focus;
-		if(stack.getItem() instanceof ItemWandCasting)
-		{
+		if (stack.getItem() instanceof ItemWandCasting) {
 			ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-			focus=wand.getFocusItem(stack);
-		}
-		else
-		{
-			focus=stack;
+			focus = wand.getFocusItem(stack);
+		} else {
+			focus = stack;
 		}
 		return ItemNBTHelper.getCompound(focus, TAG_TILE_CMP, true);
 	}
 
-	private void storePickedBlock(ItemStack stack,Block block, short meta, TileEntity tile) {
+	private void storePickedBlock(ItemStack stack, Block block, short meta, TileEntity tile) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		ItemStack focus=wand.getFocusItem(stack);
-        String blockName=Block.blockRegistry.getNameForObject(block);
+		ItemStack focus = wand.getFocusItem(stack);
+		String blockName = Block.blockRegistry.getNameForObject(block);
 		ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, blockName);
 		ItemNBTHelper.setInt(focus, TAG_BLOCK_META, meta);
 		NBTTagCompound cmp = new NBTTagCompound();
-		if(tile != null)
+		if (tile != null)
 			tile.writeToNBT(cmp);
 		ItemNBTHelper.setCompound(focus, TAG_TILE_CMP, cmp);
 		ItemNBTHelper.setBoolean(focus, TAG_AVAILABLE, true);
@@ -226,7 +217,7 @@ public class ItemFocusDislocation extends ItemModFocus {
 
 	private void clearPickedBlock(ItemStack stack) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
-		ItemStack focus=wand.getFocusItem(stack);
+		ItemStack focus = wand.getFocusItem(stack);
 		ItemNBTHelper.setBoolean(focus, TAG_AVAILABLE, false);
 		wand.setFocus(stack, focus);
 	}
@@ -250,8 +241,8 @@ public class ItemFocusDislocation extends ItemModFocus {
 	public boolean acceptsEnchant(int paramInt) {
 		return super.acceptsEnchant(paramInt) && paramInt != Config.enchPotency.effectId;
 	}
-	static
-	{
+
+	static {
 		blacklist.add(Blocks.piston_extension);
 		blacklist.add(Blocks.piston_head);
 

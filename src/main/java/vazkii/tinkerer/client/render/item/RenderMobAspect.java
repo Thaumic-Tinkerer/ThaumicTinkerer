@@ -27,17 +27,15 @@ public class RenderMobAspect implements IItemRenderer {
 
 		GL11.glPushMatrix();
 
-
-		if(ItemMobAspect.isCondensed(item)){
+		if (ItemMobAspect.isCondensed(item)) {
 			GL11.glColor3f(.5F, .5F, .5F);
 		}
-		if(ItemMobAspect.isInfused(item)){
+		if (ItemMobAspect.isInfused(item)) {
 			GL11.glColor3f(.7F, 0F, .7F);
 		}
 
-
-		switch(type) {
-			case ENTITY : {
+		switch (type) {
+			case ENTITY: {
 				GL11.glPushMatrix();
 				GL11.glTranslatef(-0.5F, 0F, 0F);
 				renderItem(ItemRenderType.EQUIPPED, item, data);
@@ -46,15 +44,15 @@ public class RenderMobAspect implements IItemRenderer {
 			}
 			case INVENTORY: {
 
-				IIcon icon = ItemMobAspect.aspectIcons[item.getItemDamage()%ItemMobAspect.aspectCount];
+				IIcon icon = ItemMobAspect.aspectIcons[item.getItemDamage() % ItemMobAspect.aspectCount];
 				renderItem.renderIcon(0, 0, icon, 16, 16);
 			}
-			case EQUIPPED : {
+			case EQUIPPED: {
 
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-				IIcon icon = ItemMobAspect.aspectIcons[item.getItemDamage()%ItemMobAspect.aspectCount];
+				IIcon icon = ItemMobAspect.aspectIcons[item.getItemDamage() % ItemMobAspect.aspectCount];
 				float f = icon.getMinU();
 				float f1 = icon.getMaxU();
 				float f2 = icon.getMinV();
@@ -64,11 +62,12 @@ public class RenderMobAspect implements IItemRenderer {
 				GL11.glDisable(GL11.GL_BLEND);
 				break;
 			}
-			case EQUIPPED_FIRST_PERSON : {
+			case EQUIPPED_FIRST_PERSON: {
 				renderItem(ItemRenderType.EQUIPPED, item, data);
 				break;
 			}
-			default : break;
+			default:
+				break;
 		}
 		GL11.glPopMatrix();
 	}

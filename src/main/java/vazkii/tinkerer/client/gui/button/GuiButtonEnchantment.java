@@ -46,7 +46,7 @@ public class GuiButtonEnchantment extends GuiButton {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(dontRender())
+		if (dontRender())
 			return;
 
 		EnchantmentData data = EnchantmentManager.enchantmentData.get(enchant.effectId).get(1);
@@ -55,29 +55,28 @@ public class GuiButtonEnchantment extends GuiButton {
 		drawTexturedModalRect16(xPosition, yPosition, 0, 0, 16, 16);
 		GL11.glDisable(GL11.GL_BLEND);
 
-		if(par2 >= xPosition && par2 < xPosition + 16 && par3 >= yPosition && par3 < yPosition + 16) {
+		if (par2 >= xPosition && par2 < xPosition + 16 && par3 >= yPosition && par3 < yPosition + 16) {
 			List<String> tooltip = new ArrayList();
 			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(enchant.getName()));
-			for(Aspect aspect : data.aspects.getAspectsSorted())
+			for (Aspect aspect : data.aspects.getAspectsSorted())
 				tooltip.add(" \u00a7" + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + data.aspects.getAmount(aspect) + " " + StatCollector.translateToLocal("ttmisc.baseCost"));
-			if(this instanceof GuiButtonFramedEnchantment && !parent.enchanter.working)
+			if (this instanceof GuiButtonFramedEnchantment && !parent.enchanter.working)
 				tooltip.add(EnumChatFormatting.GRAY + "" + EnumChatFormatting.ITALIC + " " + StatCollector.translateToLocal("ttmisc.clickToRemove"));
 
 			parent.tooltip = tooltip;
 		}
 	}
 
-    public void drawTexturedModalRect16(int par1, int par2, int par3, int par4, int par5, int par6)
-    {
-        float f = 1F / 16F;
-        float f1 = 1F / 16F;
-        Tessellator tessellator = Tessellator.instance;
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(par1, par2 + par6, zLevel, (par3) * f, (par4 + par6) * f1);
-        tessellator.addVertexWithUV(par1 + par5, par2 + par6, zLevel, (par3 + par5) * f, (par4 + par6) * f1);
-        tessellator.addVertexWithUV(par1 + par5, par2, zLevel, (par3 + par5) * f, (par4) * f1);
-        tessellator.addVertexWithUV(par1, par2, zLevel, (par3) * f, (par4) * f1);
-        tessellator.draw();
-    }
+	public void drawTexturedModalRect16(int par1, int par2, int par3, int par4, int par5, int par6) {
+		float f = 1F / 16F;
+		float f1 = 1F / 16F;
+		Tessellator tessellator = Tessellator.instance;
+		tessellator.startDrawingQuads();
+		tessellator.addVertexWithUV(par1, par2 + par6, zLevel, (par3) * f, (par4 + par6) * f1);
+		tessellator.addVertexWithUV(par1 + par5, par2 + par6, zLevel, (par3 + par5) * f, (par4 + par6) * f1);
+		tessellator.addVertexWithUV(par1 + par5, par2, zLevel, (par3 + par5) * f, (par4) * f1);
+		tessellator.addVertexWithUV(par1, par2, zLevel, (par3) * f, (par4) * f1);
+		tessellator.draw();
+	}
 
 }

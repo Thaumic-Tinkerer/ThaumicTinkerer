@@ -11,20 +11,21 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 /**
  * Created by Katrina on 28/02/14.
  */
-public class PacketToggleArmor implements IMessage,IMessageHandler<PacketToggleArmor,IMessage> {
+public class PacketToggleArmor implements IMessage, IMessageHandler<PacketToggleArmor, IMessage> {
 	private static final long serialVersionUID = -1247633508013055777L;
 	public boolean armorStatus;
-	public PacketToggleArmor(boolean status)
-	{
-		armorStatus=status;
+
+	public PacketToggleArmor(boolean status) {
+		armorStatus = status;
 	}
-	public PacketToggleArmor(){
+
+	public PacketToggleArmor() {
 		super();
 	}
 
 	@Override
 	public void fromBytes(ByteBuf byteBuf) {
-		armorStatus=byteBuf.getBoolean(0);
+		armorStatus = byteBuf.getBoolean(0);
 	}
 
 	@Override
@@ -35,16 +36,14 @@ public class PacketToggleArmor implements IMessage,IMessageHandler<PacketToggleA
 	@Override
 	public IMessage onMessage(PacketToggleArmor message, MessageContext ctx) {
 		EntityPlayer player;
-		if(ctx.side.isClient())
-			player= Minecraft.getMinecraft().thePlayer;
-		else
-		{
-			player=ctx.getServerHandler().playerEntity;
+		if (ctx.side.isClient())
+			player = Minecraft.getMinecraft().thePlayer;
+		else {
+			player = ctx.getServerHandler().playerEntity;
 		}
-		if(player instanceof EntityPlayer)
-		{
+		if (player instanceof EntityPlayer) {
 
-			ThaumicTinkerer.proxy.setArmor(player,armorStatus);
+			ThaumicTinkerer.proxy.setArmor(player, armorStatus);
 
 		}
 		return null;

@@ -50,11 +50,12 @@ public class TileTransvectorDislocator extends TileTransvector {
 			this.block = block;
 			this.meta = meta;
 
-			if(tile != null) {
+			if (tile != null) {
 				NBTTagCompound cmp = new NBTTagCompound();
 				tile.writeToNBT(cmp);
 				this.tile = cmp;
-			};
+			}
+			;
 
 			this.coords = coords;
 		}
@@ -64,7 +65,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 		}
 
 		public void clearTileEntityAt() {
-			if(block != null) {
+			if (block != null) {
 				TileEntity tileToSet = block.createTileEntity(worldObj, meta);
 				worldObj.setTileEntity(coords.posX, coords.posY, coords.posZ, tileToSet);
 			}
@@ -77,18 +78,17 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 			worldObj.setTileEntity(coords.posX, coords.posY, coords.posZ, tile);
 
-			if(tile != null) {
+			if (tile != null) {
 				tile.xCoord = coords.posX;
 				tile.yCoord = coords.posY;
 				tile.zCoord = coords.posZ;
 				tile.updateContainingBlockInfo();
 			}
 
-			if(block != null)
+			if (block != null)
 				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ModBlocks.dislocator);
 
 			worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 3);
-
 
 		}
 	}
@@ -98,7 +98,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 		super.updateEntity();
 
 		cooldown = Math.max(0, cooldown - 1);
-		if(cooldown == 0 && pulseStored) {
+		if (cooldown == 0 && pulseStored) {
 			pulseStored = false;
 			receiveRedstonePulse();
 		}
@@ -107,10 +107,10 @@ public class TileTransvectorDislocator extends TileTransvector {
 	public void receiveRedstonePulse() {
 		getTile(); // sanity check
 
-		if(y < 0)
+		if (y < 0)
 			return;
 
-		if(cooldown > 0) {
+		if (cooldown > 0) {
 			pulseStored = true;
 			return;
 		}
@@ -118,11 +118,11 @@ public class TileTransvectorDislocator extends TileTransvector {
 		ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
 		ChunkCoordinates targetCoords = getBlockTarget();
 
-		if(worldObj.blockExists(x, y, z)) {
+		if (worldObj.blockExists(x, y, z)) {
 			BlockData endData = new BlockData(endCoords);
 			BlockData targetData = new BlockData(targetCoords);
 
-			if(checkBlock(targetCoords) && checkBlock(endCoords)) {
+			if (checkBlock(targetCoords) && checkBlock(endCoords)) {
 				endData.clearTileEntityAt();
 				targetData.clearTileEntityAt();
 
@@ -137,9 +137,9 @@ public class TileTransvectorDislocator extends TileTransvector {
 		Vector3 targetToEnd = asVector(targetCoords, endCoords);
 		Vector3 endToTarget = asVector(endCoords, targetCoords);
 
-		for(Entity entity : entitiesAtEnd)
+		for (Entity entity : entitiesAtEnd)
 			moveEntity(entity, endToTarget);
-		for(Entity entity : entitiesAtTarget)
+		for (Entity entity : entitiesAtTarget)
 			moveEntity(entity, targetToEnd);
 
 		cooldown = 10;
@@ -161,7 +161,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 	}
 
 	private void moveEntity(Entity entity, Vector3 vec) {
-		if(entity instanceof EntityPlayerMP) {
+		if (entity instanceof EntityPlayerMP) {
 			EntityPlayerMP player = (EntityPlayerMP) entity;
 			player.playerNetServerHandler.setPlayerLocation(entity.posX + vec.x, entity.posY + vec.y, entity.posZ + vec.z, player.rotationYaw, player.rotationPitch);
 		} else entity.setPosition(entity.posX + vec.x, entity.posY + vec.y, entity.posZ + vec.z);

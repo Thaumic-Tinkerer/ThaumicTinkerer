@@ -14,8 +14,8 @@
  */
 package vazkii.tinkerer.common.item;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,8 +23,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemSoulMould extends ItemMod {
 
@@ -35,8 +35,8 @@ public class ItemSoulMould extends ItemMod {
 	}
 
 	@Override
-    public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
-		if(par2EntityPlayer != null)
+	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
+		if (par2EntityPlayer != null)
 			setPattern(par2EntityPlayer.getCurrentEquippedItem(), par3EntityLivingBase);
 		else setPattern(par1ItemStack, par3EntityLivingBase);
 		return true;
@@ -44,7 +44,7 @@ public class ItemSoulMould extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking())
+		if (par3EntityPlayer.isSneaking())
 			clearPattern(par1ItemStack);
 
 		return par1ItemStack;
@@ -55,9 +55,10 @@ public class ItemSoulMould extends ItemMod {
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		String name = getPatternName(par1ItemStack);
 
-		if(name.isEmpty())
+		if (name.isEmpty())
 			par3List.add(StatCollector.translateToLocal("ttmisc.soulMould.nonAssigned"));
-		else par3List.add(String.format(StatCollector.translateToLocal("ttmisc.soulMould.pattern"), StatCollector.translateToLocal("entity." + name + ".name")));
+		else
+			par3List.add(String.format(StatCollector.translateToLocal("ttmisc.soulMould.pattern"), StatCollector.translateToLocal("entity." + name + ".name")));
 	}
 
 	private static void setPattern(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving) {

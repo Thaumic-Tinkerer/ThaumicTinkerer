@@ -64,7 +64,7 @@ public final class ToolModeHUDHandler {
 	}
 
 	public static void setTooltip(String tooltip) {
-		if(!tooltip.equals(currentTooltip)) {
+		if (!tooltip.equals(currentTooltip)) {
 			currentTooltip = tooltip;
 			tooltipDisplayTicks = 400;
 		}
@@ -72,7 +72,7 @@ public final class ToolModeHUDHandler {
 
 	@SideOnly(Side.CLIENT)
 	public static void clientTick() {
-		if(tooltipDisplayTicks > 0)
+		if (tooltipDisplayTicks > 0)
 			--tooltipDisplayTicks;
 	}
 

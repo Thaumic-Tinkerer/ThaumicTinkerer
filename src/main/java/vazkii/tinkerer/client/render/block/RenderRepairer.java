@@ -38,10 +38,10 @@ public class RenderRepairer implements ISimpleBlockRenderingHandler {
 		return false;
 	}
 
-    @Override
-    public boolean shouldRender3DInInventory(int modelId) {
-        return true;
-    }
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
+		return true;
+	}
 
 	@Override
 	public int getRenderId() {

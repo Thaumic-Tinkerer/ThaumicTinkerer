@@ -69,7 +69,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		int mx = Mouse.getX() * i / mc.displayWidth;
 		int my = j - Mouse.getY() * j / mc.displayHeight - 1;
 
-		if(Mouse.isButtonDown(0)) {
+		if (Mouse.isButtonDown(0)) {
 			int deltaX = mx - lastMouseX;
 			int deltaY = my - lastMouseY;
 			x -= deltaX;
@@ -84,15 +84,15 @@ public class GuiWarpGateDestinations extends GuiScreen {
 	protected void keyTyped(char par1, int par2) {
 		super.keyTyped(par1, par2);
 
-		if(par2 == 57) { // space
+		if (par2 == 57) { // space
 			x = warpGate.xCoord - width / 2;
 			y = warpGate.zCoord - height / 2;
 			return;
 		}
-		if(par2 >= 2 && par2 < 12) {
+		if (par2 >= 2 && par2 < 12) {
 			int num = par2 - 2;
 			ItemStack stack = warpGate.getStackInSlot(num);
-			if(stack != null && ItemSkyPearl.isAttuned(stack) && ItemSkyPearl.getDim(stack) == warpGate.getWorldObj().provider.dimensionId) {
+			if (stack != null && ItemSkyPearl.isAttuned(stack) && ItemSkyPearl.getDim(stack) == warpGate.getWorldObj().provider.dimensionId) {
 				int x = ItemSkyPearl.getX(stack);
 				int z = ItemSkyPearl.getZ(stack);
 
@@ -117,19 +117,19 @@ public class GuiWarpGateDestinations extends GuiScreen {
 
 		List<Object[]> coords = new ArrayList();
 
-		for(int i = 0; i < warpGate.getSizeInventory(); i++) {
+		for (int i = 0; i < warpGate.getSizeInventory(); i++) {
 			ItemStack stack = warpGate.getStackInSlot(i);
-			if(stack != null && ItemSkyPearl.isAttuned(stack)) {
+			if (stack != null && ItemSkyPearl.isAttuned(stack)) {
 				int dim = ItemSkyPearl.getDim(stack);
-				if(warpGate.getWorldObj().provider.dimensionId != dim)
+				if (warpGate.getWorldObj().provider.dimensionId != dim)
 					continue;
 
 				int x = ItemSkyPearl.getX(stack);
 				int y = ItemSkyPearl.getY(stack);
 				int z = ItemSkyPearl.getZ(stack);
 
-				if(y != -1)
-					coords.add(new Object[] { x - this.x, z - this.y, stack, i});
+				if (y != -1)
+					coords.add(new Object[]{ x - this.x, z - this.y, stack, i });
 			}
 		}
 
@@ -138,7 +138,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glColor4f(1F, 1F, 1F, (float) ((Math.sin(ticks / 10D) + 1F) / 4F + 0.25F));
 		GL11.glLineWidth(2F);
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		for(Object[] coords_ : coords) {
+		for (Object[] coords_ : coords) {
 			int x = (Integer) coords_[0];
 			int y = (Integer) coords_[1];
 
@@ -153,12 +153,12 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		fontRendererObj.drawStringWithShadow(EnumChatFormatting.UNDERLINE + StatCollector.translateToLocal("ttmisc.destinations"), 3, 40, 0xFFFFFF);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		drawPearlAt(0, null, gateX, gateY, par1, par2);
-		for(Object[] coords_ : coords)
+		for (Object[] coords_ : coords)
 			drawPearlAt((Integer) coords_[3], (ItemStack) coords_[2], (Integer) coords_[0], (Integer) coords_[1], par1, par2);
 
-		if(!tooltip.isEmpty())
+		if (!tooltip.isEmpty())
 			ClientHelper.renderTooltip(par1, par2, tooltip);
-		
+
 		drawCenteredString(fontRendererObj, StatCollector.translateToLocal("ttmisc.numberKeys"), width / 2, 5, 0xFFFFFF);
 		drawCenteredString(fontRendererObj, StatCollector.translateToLocal("ttmisc.spaceToReset"), width / 2, 16, 0xFFFFFF);
 	}
@@ -166,7 +166,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 	public void drawPearlAt(int index, ItemStack stack, int xp, int yp, int mx, int my) {
 		int x = xp + this.x;
 		int y = yp + this.y;
-		
+
 		String destName;
 
 		mc.renderEngine.bindTexture(TextureMap.locationItemsTexture);
@@ -175,28 +175,28 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glScalef(0.5F, 0.5F, 1F);
 		render.renderIcon(-8, -8, ModItems.skyPearl.getIconFromDamage(0), 16, 16);
 		GL11.glPopMatrix();
-		
+
 		String destNum = " " + EnumChatFormatting.ITALIC + String.format(StatCollector.translateToLocal("ttmisc.destinationInd"), index + 1);
-		if(stack != null && stack.hasDisplayName())
+		if (stack != null && stack.hasDisplayName())
 			destName = stack.getDisplayName();
 		else destName = StatCollector.translateToLocal(stack == null ? "ttmisc.entrancePoint" : "ttmisc.destination");
-		
-		if(stack != null)
+
+		if (stack != null)
 			fontRendererObj.drawString((index + 1) + ": " + destName, 5, 54 + index * 11, 0xFFFFFF);
 
-		if(mx >= xp - 4 && mx <= xp + 4 && my >= yp - 4 && my < yp + 4) {
+		if (mx >= xp - 4 && mx <= xp + 4 && my >= yp - 4 && my < yp + 4) {
 			tooltip.add(EnumChatFormatting.AQUA + destName + destNum);
-			
-			if(stack != null) {
+
+			if (stack != null) {
 				ItemSkyPearl.addInfo(stack, warpGate.getWorldObj().provider.dimensionId, Vector3.fromTileEntity(warpGate), tooltip, true);
-				tooltip.add(StatCollector.translateToLocal("ttmisc.clickToTeleport"));				
+				tooltip.add(StatCollector.translateToLocal("ttmisc.clickToTeleport"));
 			} else {
 				tooltip.add("X: " + x);
 				tooltip.add("Z: " + y);
 			}
 
-			if(Mouse.isButtonDown(0) && isShiftKeyDown() && stack != null) {
-                ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateTeleport(warpGate,index));
+			if (Mouse.isButtonDown(0) && isShiftKeyDown() && stack != null) {
+				ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateTeleport(warpGate, index));
 				mc.displayGuiScreen(null);
 			}
 		}

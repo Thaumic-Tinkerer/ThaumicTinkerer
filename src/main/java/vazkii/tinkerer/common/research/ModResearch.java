@@ -43,7 +43,8 @@ import java.util.List;
 
 public final class ModResearch {
 
-    public static ResearchItem kamiResearch;
+	public static ResearchItem kamiResearch;
+
 	public static void initResearch() {
 		registerResearchPages();
 
@@ -52,13 +53,13 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_DARK_QUARTZ, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), -2, 2, 0, new ItemStack(ModItems.darkQuartz)).setStub().setAutoUnlock().setRound().registerResearchItem();
 		research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_DARK_QUARTZ + 0), recipePage(LibResearch.KEY_DARK_QUARTZ + 1), recipePage(LibResearch.KEY_DARK_QUARTZ + 2), recipePage(LibResearch.KEY_DARK_QUARTZ + 3), recipePage(LibResearch.KEY_DARK_QUARTZ + 4), recipePage(LibResearch.KEY_DARK_QUARTZ + 5));
 
-        research = new TTResearchItem(LibResearch.KEY_SHARE_TOME, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), 0, -1, 0, new ItemStack(ModItems.shareBook)).setStub().setAutoUnlock().setRound().registerResearchItem();
-        if(ConfigHandler.enableSurvivalShareTome)
+		research = new TTResearchItem(LibResearch.KEY_SHARE_TOME, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), 0, -1, 0, new ItemStack(ModItems.shareBook)).setStub().setAutoUnlock().setRound().registerResearchItem();
+		if (ConfigHandler.enableSurvivalShareTome)
 			research.setPages(new ResearchPage("0"), recipePage(LibResearch.KEY_SHARE_TOME));
 		else research.setPages(new ResearchPage("0"));
 
 		research = new TTResearchItem(LibResearch.KEY_INTERFACE, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), -4, 2, 1, new ItemStack(ModBlocks.interfase)).setParents(LibResearch.KEY_DARK_QUARTZ).registerResearchItem();
-		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_INTERFACE+"1"), new ResearchPage("2"));
+		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"));
 
 		research = new TTResearchItem(LibResearch.KEY_GASEOUS_LIGHT, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.LIGHT, 2).add(Aspect.AIR, 1), 0, -3, 1, new ItemStack(ModItems.gaseousLight)).setParents("NITOR").registerResearchItem();
 		research.setPages(new ResearchPage("0"), cruciblePage(LibResearch.KEY_GASEOUS_LIGHT));
@@ -147,17 +148,13 @@ public final class ModResearch {
 		research = new TTResearchItem(LibResearch.KEY_FOCUS_SMELT, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.FIRE, 2).add(Aspect.ENERGY, 1).add(Aspect.MAGIC, 1), -2, -2, 2, new ItemStack(ModItems.focusSmelt)).setParents("FOCUSEXCAVATION").setConcealed().registerResearchItem();
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_SMELT));
 
-
-        if(Config.allowMirrors) {
-            research = new TTResearchItem(LibResearch.KEY_FOCUS_HEAL, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.HEAL, 2).add(Aspect.SOUL, 1).add(Aspect.MAGIC, 1), -6, -4, 2, new ItemStack(ModItems.focusHeal)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed().registerResearchItem();
-            research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_HEAL)).setSecondary();
-            research = new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), -6, -2, 2, new ItemStack(ModItems.focusEnderChest)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed().registerResearchItem();
-			if(Loader.isModLoaded("EnderStorage"))
-			{
+		if (Config.allowMirrors) {
+			research = new TTResearchItem(LibResearch.KEY_FOCUS_HEAL, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.HEAL, 2).add(Aspect.SOUL, 1).add(Aspect.MAGIC, 1), -6, -4, 2, new ItemStack(ModItems.focusHeal)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed().registerResearchItem();
+			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_FOCUS_HEAL)).setSecondary();
+			research = new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), -6, -2, 2, new ItemStack(ModItems.focusEnderChest)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed().registerResearchItem();
+			if (Loader.isModLoaded("EnderStorage")) {
 				research.setPages(new ResearchPage("ES"), arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
-			}
-			else
-			{
+			} else {
 				research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
 			}
 
@@ -173,22 +170,22 @@ public final class ModResearch {
 
 		research = new TTResearchItem(LibResearch.KEY_SUMMON, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ModBlocks.spawner)).setParents(LibResearch.KEY_BLOOD_SWORD).registerResearchItem();
 		//research.setPages(new ResearchPage("0") ,recipePage(LibResearch.KEY_SUMMON+"0"),recipePage(LibResearch.KEY_SUMMON+"1"), infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
-        List<ResearchPage> list=new ArrayList<ResearchPage>();
-        list.add(new ResearchPage("0"));
-        list.add(arcaneRecipePage(LibResearch.KEY_SUMMON+"0"));
-        list.add(recipePage(LibResearch.KEY_SUMMON+"1"));
-        list.add(infusionPage(LibResearch.KEY_SUMMON));
-        list.add(new ResearchPage("1"));
-        //for(EnumMobAspect aspect:EnumMobAspect.values()) {
-        //    list.add(aspect.GetRecepiePage());
-        //}
-        ResearchPage[] pages=new ResearchPage[list.size()];
-        int i=0;
-        for(ResearchPage page:list)
-            pages[i++]=page;
-        research.setPages(pages);
-        research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
-        research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
+		List<ResearchPage> list = new ArrayList<ResearchPage>();
+		list.add(new ResearchPage("0"));
+		list.add(arcaneRecipePage(LibResearch.KEY_SUMMON + "0"));
+		list.add(recipePage(LibResearch.KEY_SUMMON + "1"));
+		list.add(infusionPage(LibResearch.KEY_SUMMON));
+		list.add(new ResearchPage("1"));
+		//for(EnumMobAspect aspect:EnumMobAspect.values()) {
+		//    list.add(aspect.GetRecepiePage());
+		//}
+		ResearchPage[] pages = new ResearchPage[list.size()];
+		int i = 0;
+		for (ResearchPage page : list)
+			pages[i++] = page;
+		research.setPages(pages);
+		research = new TTResearchItem(LibResearch.KEY_REVEALING_HELM, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(ModItems.revealingHelm)).setParents("GOGGLES").setParentsHidden("THAUMIUM").registerResearchItem();
+		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
 
 		research = new TTResearchItem(LibResearch.KEY_REPAIRER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CRAFT, 1).add(Aspect.ORDER, 1).add(Aspect.MAGIC, 1), -1, -9, 3, new ItemStack(ModBlocks.repairer)).setConcealed().setParents(LibResearch.KEY_FUNNEL).setParentsHidden("THAUMIUM", "ENCHFABRIC").registerResearchItem();
 		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_REPAIRER));
@@ -197,25 +194,25 @@ public final class ModResearch {
 		research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_PLATFORM)).setSecondary();
 
 		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -7, 5, 3, new ItemStack(ModBlocks.mobilizer)).setParents(LibResearch.KEY_MAGNETS).registerResearchItem();
-		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_MOBILIZER),arcaneRecipePage(LibResearch.KEY_RELAY)).setSecondary();
+		research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_MOBILIZER), arcaneRecipePage(LibResearch.KEY_RELAY)).setSecondary();
 
 		// Peripheral documentation research
-		if(Loader.isModLoaded("ComputerCraft")) {
+		if (Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), -1, 0, 0, new ItemStack(Items.redstone)).setAutoUnlock().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"));
 
 			research = new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 0, 1, 2, new ItemStack(ModBlocks.aspectAnalyzer)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ASPECT_ANALYZER));
-			research=new TTResearchItem(LibResearch.KEY_GOLEMCONNECTOR, LibResearch.CATEGORY_THAUMICTINKERER,new AspectList().add(Aspect.ORDER, 1).add(Aspect.TRAVEL, 2).add(Aspect.TOOL, 1), 1, 0 ,0,new ItemStack(ModBlocks.golemConnector)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOLEMBELL").setConcealed().setRound().registerResearchItem();
-			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_GOLEMCONNECTOR), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_INTERFACE+"1"), new ResearchPage("2"),new ResearchPage("3"));
+			research = new TTResearchItem(LibResearch.KEY_GOLEMCONNECTOR, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.ORDER, 1).add(Aspect.TRAVEL, 2).add(Aspect.TOOL, 1), 1, 0, 0, new ItemStack(ModBlocks.golemConnector)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOLEMBELL").setConcealed().setRound().registerResearchItem();
+			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_GOLEMCONNECTOR), new ResearchPage("1"), arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"), new ResearchPage("3"));
 		}
 
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			research = new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList(), 7, 8, 0, new ItemStack(ModItems.kamiResource, 1, 7)).setStub().setAutoUnlock().setRound().registerResearchItem();
 			research.setPages(new ResearchPage("0"));
 
-            kamiResearch = new KamiResearchItem(LibResearch.KEY_ICHOR, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 9, 8, 5, new ItemStack(ModItems.kamiResource, 1, 0)).registerResearchItem();
-            kamiResearch.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR));
+			kamiResearch = new KamiResearchItem(LibResearch.KEY_ICHOR, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 9, 8, 5, new ItemStack(ModItems.kamiResource, 1, 0)).registerResearchItem();
+			kamiResearch.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_ICHOR));
 
 			research = new KamiResearchItem(LibResearch.KEY_ICHOR_CLOTH, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.CLOTH, 2).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1).add(Aspect.SENSES, 1), 11, 7, 5, new ItemStack(ModItems.kamiResource, 1, 1)).setConcealed().setParents(LibResearch.KEY_ICHOR).registerResearchItem();
 			research.setPages(new ResearchPage("0"), arcaneRecipePage(LibResearch.KEY_ICHOR_CLOTH));
@@ -280,7 +277,7 @@ public final class ModResearch {
 			research = new KamiResearchItem(LibResearch.KEY_PROTOCLAY, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.MINE, 1).add(Aspect.MAN, 1).add(Aspect.MECHANISM, 1), 12, 17, 5, new ItemStack(ModItems.protoclay)).setParents(LibResearch.KEY_ICHOR_PICK_GEM).setParentsHidden(LibResearch.KEY_ICHOR_SHOVEL_GEM).registerResearchItem();
 			research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_PROTOCLAY));
 
-			if(Config.allowMirrors) {
+			if (Config.allowMirrors) {
 				research = new KamiResearchItem(LibResearch.KEY_WARP_GATE, LibResearch.CATEGORY_THAUMICTINKERER, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MECHANISM, 1), 19, 6, 5, new ItemStack(ModBlocks.warpGate)).setParents(LibResearch.KEY_ICHORCLOTH_CHEST_GEM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM).registerResearchItem();
 				research.setPages(new ResearchPage("0"), infusionPage(LibResearch.KEY_WARP_GATE), new ResearchPage("1"), infusionPage(LibResearch.KEY_SKY_PEARL));
 
@@ -316,9 +313,9 @@ public final class ModResearch {
 	private static ResearchPage cruciblePage(String name) {
 		return new ResearchPage((CrucibleRecipe) ConfigResearch.recipes.get(name));
 	}
-	private static ResearchPage LeviationaryHelp()
-	{
-		return new ResearchPage(Arrays.asList((new AspectList()),5,1,1,Arrays.asList(new ItemStack(ModBlocks.mobilizerRelay),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizer),new ItemStack(ConfigBlocks.blockHole,1,15),new ItemStack(ModBlocks.mobilizerRelay))));
+
+	private static ResearchPage LeviationaryHelp() {
+		return new ResearchPage(Arrays.asList((new AspectList()), 5, 1, 1, Arrays.asList(new ItemStack(ModBlocks.mobilizerRelay), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ModBlocks.mobilizer), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ModBlocks.mobilizerRelay))));
 
 	}
 }

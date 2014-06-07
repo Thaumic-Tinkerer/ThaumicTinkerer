@@ -41,10 +41,10 @@ import vazkii.tinkerer.common.item.ItemMod;
 import java.util.Arrays;
 import java.util.List;
 
-public class ItemBlockTalisman extends ItemMod implements IBauble{
-    @Deprecated
+public class ItemBlockTalisman extends ItemMod implements IBauble {
+	@Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
-    private static final String TAG_BLOCK_NAME = "blockName";
+	private static final String TAG_BLOCK_NAME = "blockName";
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static final String TAG_BLOCK_COUNT = "blockCount";
 
@@ -58,7 +58,7 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if((getBlock(par1ItemStack) != Blocks.air || getBlockID(par1ItemStack) != 0 ) && par3EntityPlayer.isSneaking()) {
+		if ((getBlock(par1ItemStack) != Blocks.air || getBlockID(par1ItemStack) != 0) && par3EntityPlayer.isSneaking()) {
 			int dmg = par1ItemStack.getItemDamage();
 			par1ItemStack.setItemDamage(~dmg & 1);
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
@@ -72,40 +72,40 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 		int meta = par3World.getBlockMetadata(par4, par5, par6);
 		boolean set = setBlock(par1ItemStack, block, meta);
 
-		if(!set) {
+		if (!set) {
 			Block bBlock = getBlock(par1ItemStack);
 			int bmeta = getBlockMeta(par1ItemStack);
 
 			TileEntity tile = par3World.getTileEntity(par4, par5, par6);
-			if(tile != null && tile instanceof IInventory) {
+			if (tile != null && tile instanceof IInventory) {
 				IInventory inv = (IInventory) tile;
 				int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getAccessibleSlotsFromSide(par7) : TileTransvectorInterface.buildSlotsForLinearInventory(inv);
-				for(int slot : slots) {
+				for (int slot : slots) {
 					ItemStack stackInSlot = inv.getStackInSlot(slot);
-					if(stackInSlot == null) {
+					if (stackInSlot == null) {
 						ItemStack stack = new ItemStack(bBlock, 1, bmeta);
 						int maxSize = stack.getMaxStackSize();
 						stack.stackSize = remove(par1ItemStack, maxSize);
-						if(stack.stackSize != 0) {
-							if(inv.isItemValidForSlot(slot, stack) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stack, par7))) {
+						if (stack.stackSize != 0) {
+							if (inv.isItemValidForSlot(slot, stack) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stack, par7))) {
 								inv.setInventorySlotContents(slot, stack);
 								inv.markDirty();
 								set = true;
 							}
 						}
-					} else if(stackInSlot.getItem()== Item.getItemFromBlock(bBlock) && stackInSlot.getItemDamage() == bmeta) {
+					} else if (stackInSlot.getItem() == Item.getItemFromBlock(bBlock) && stackInSlot.getItemDamage() == bmeta) {
 						int maxSize = stackInSlot.getMaxStackSize();
 						int missing = maxSize - stackInSlot.stackSize;
-						if(inv.isItemValidForSlot(slot, stackInSlot) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stackInSlot, par7))) {
+						if (inv.isItemValidForSlot(slot, stackInSlot) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stackInSlot, par7))) {
 							stackInSlot.stackSize += remove(par1ItemStack, missing);
-                            inv.markDirty();
+							inv.markDirty();
 							set = true;
 						}
 					}
 				}
 			} else {
 				int remove = remove(par1ItemStack, 1);
-				if(remove > 0) {
+				if (remove > 0) {
 					Item.getItemFromBlock(bBlock).onItemUse(new ItemStack(bBlock, 1, bmeta), par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
 					set = true;
 				}
@@ -118,8 +118,8 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 	}
 
 	private boolean setBlock(ItemStack stack, Block block, int meta) {
-		if(getBlock(stack) == Blocks.air || getBlockCount(stack) == 0) {
-			ItemNBTHelper.setString(stack, TAG_BLOCK_NAME,Block.blockRegistry.getNameForObject(block));
+		if (getBlock(stack) == Blocks.air || getBlockCount(stack) == 0) {
+			ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, Block.blockRegistry.getNameForObject(block));
 			ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 			return true;
 		}
@@ -141,24 +141,24 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 
 		return Math.min(current, count);
 	}
-    @Deprecated
+
+	@Deprecated
 	public static int getBlockID(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_ID, 0);
 	}
 
-    public static String getBlockName(ItemStack stack)
-    {
-        return ItemNBTHelper.getString(stack,TAG_BLOCK_NAME,"");
-    }
+	public static String getBlockName(ItemStack stack) {
+		return ItemNBTHelper.getString(stack, TAG_BLOCK_NAME, "");
+	}
 
-    public static Block getBlock(ItemStack stack)
-    {
-        Block block=Block.getBlockFromName(getBlockName(stack));
-        if(block== Blocks.air)
-            block=Block.getBlockById(getBlockID(stack));
+	public static Block getBlock(ItemStack stack) {
+		Block block = Block.getBlockFromName(getBlockName(stack));
+		if (block == Blocks.air)
+			block = Block.getBlockById(getBlockID(stack));
 
-        return block;
-    }
+		return block;
+	}
+
 	public static int getBlockMeta(ItemStack stack) {
 		return ItemNBTHelper.getInt(stack, TAG_BLOCK_META, 0);
 	}
@@ -183,13 +183,13 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		Block block=getBlock(par1ItemStack);
-		if(block!=null && block!=Blocks.air) {
+		Block block = getBlock(par1ItemStack);
+		if (block != null && block != Blocks.air) {
 			int count = getBlockCount(par1ItemStack);
 			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name") + " (x" + count + ")");
 		}
 
-		if(par1ItemStack.getItemDamage() == 1)
+		if (par1ItemStack.getItemDamage() == 1)
 			par3List.add(StatCollector.translateToLocal("ttmisc.active"));
 		else par3List.add(StatCollector.translateToLocal("ttmisc.inactive"));
 	}
@@ -199,84 +199,84 @@ public class ItemBlockTalisman extends ItemMod implements IBauble{
 		return TTClientProxy.kamiRarity;
 	}
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.RING;
-    }
+	@Override
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		return BaubleType.RING;
+	}
 
-    @Override
-    public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
-        Block block=getBlock(itemstack);
-        if(!entity.worldObj.isRemote && itemstack.getItemDamage() == 1 && block!=Blocks.air && entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            int meta = getBlockMeta(itemstack);
+	@Override
+	public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
+		Block block = getBlock(itemstack);
+		if (!entity.worldObj.isRemote && itemstack.getItemDamage() == 1 && block != Blocks.air && entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+			int meta = getBlockMeta(itemstack);
 
-            int highest = -1;
-            boolean hasFreeSlot = false;
-            int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
-            Arrays.fill(counts, 0);
+			int highest = -1;
+			boolean hasFreeSlot = false;
+			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
+			Arrays.fill(counts, 0);
 
-            for(int i = 0; i < counts.length; i++) {
-                ItemStack stack = player.inventory.getStackInSlot(i);
-                if(stack == null) {
-                    hasFreeSlot = true;
-                    continue;
-                }
+			for (int i = 0; i < counts.length; i++) {
+				ItemStack stack = player.inventory.getStackInSlot(i);
+				if (stack == null) {
+					hasFreeSlot = true;
+					continue;
+				}
 
-                if(Item.getItemFromBlock(block) == stack.getItem() && stack.getItemDamage() == meta) {
-                    counts[i] = stack.stackSize;
-                    if(highest == -1)
-                        highest = i;
-                    else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
-                }
-            }
+				if (Item.getItemFromBlock(block) == stack.getItem() && stack.getItemDamage() == meta) {
+					counts[i] = stack.stackSize;
+					if (highest == -1)
+						highest = i;
+					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
+				}
+			}
 
-            if(highest == -1) {
-                ItemStack heldItem = player.inventory.getItemStack();
-                if(hasFreeSlot && (heldItem == null || Item.getItemFromBlock(block) == heldItem.getItem() || heldItem.getItemDamage() != meta)) {
-                    ItemStack stack = new ItemStack(block, remove(itemstack, 64), meta);
-                    if(stack.stackSize != 0)
-                        player.inventory.addItemStackToInventory(stack);
-                }
-            } else {
-                for(int i = 0; i < counts.length; i++) {
-                    int count = counts[i];
+			if (highest == -1) {
+				ItemStack heldItem = player.inventory.getItemStack();
+				if (hasFreeSlot && (heldItem == null || Item.getItemFromBlock(block) == heldItem.getItem() || heldItem.getItemDamage() != meta)) {
+					ItemStack stack = new ItemStack(block, remove(itemstack, 64), meta);
+					if (stack.stackSize != 0)
+						player.inventory.addItemStackToInventory(stack);
+				}
+			} else {
+				for (int i = 0; i < counts.length; i++) {
+					int count = counts[i];
 
-                    if(i == highest || count == 0)
-                        continue;
+					if (i == highest || count == 0)
+						continue;
 
-                    add(itemstack, count);
-                    player.inventory.setInventorySlotContents(i, null);
-                }
+					add(itemstack, count);
+					player.inventory.setInventorySlotContents(i, null);
+				}
 
-                int countInHighest = counts[highest];
-                int maxSize = new ItemStack(block, 1, meta).getMaxStackSize();
-                if(countInHighest < maxSize) {
-                    int missing = maxSize - countInHighest;
-                    ItemStack stackInHighest = player.inventory.getStackInSlot(highest);
-                    stackInHighest.stackSize += remove(itemstack, missing);
-                }
-            }
-        }
-    }
+				int countInHighest = counts[highest];
+				int maxSize = new ItemStack(block, 1, meta).getMaxStackSize();
+				if (countInHighest < maxSize) {
+					int missing = maxSize - countInHighest;
+					ItemStack stackInHighest = player.inventory.getStackInSlot(highest);
+					stackInHighest.stackSize += remove(itemstack, missing);
+				}
+			}
+		}
+	}
 
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 
-    @Override
-    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 }

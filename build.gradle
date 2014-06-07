@@ -38,7 +38,7 @@ repositories {
         url 'http://dvs1.progwml6.com/files/maven'
     }
 }
-String changelogLoc='https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
+String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
 //apply plugin: 'curseforge'
 apply plugin: 'forge'
@@ -46,12 +46,12 @@ apply plugin: 'forge'
 
 version = "2.3-DEV"
 if (project.hasProperty("buildnum"))
-    version = "2.3-"+project.buildnum
-if(project.hasProperty("releaseType"))
-    if (project.releaseType=="ALPHA")
-        version="alpha-"+version
+    version = "2.3-" + project.buildnum
+if (project.hasProperty("releaseType"))
+    if (project.releaseType == "ALPHA")
+        version = "alpha-" + version
 
-group= "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
@@ -75,38 +75,33 @@ minecraft {
 //}
 
 
-
-
-
-
-
 dependencies {
-    compile files (
+    compile files(
             'TCDEOBF.jar'
     )
     compile 'javax.mail:mail:1.4'
     compile "mantle:Mantle:1.7.2-145.3a637c2:deobf"
-    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins494:deobf"){
-                exclude module: 'CodeChickenCore'
-                exclude module: 'Waila'
-                exclude module: 'NotEnoughItems'
-            }
+    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins494:deobf") {
+        exclude module: 'CodeChickenCore'
+        exclude module: 'Waila'
+        exclude module: 'NotEnoughItems'
+    }
 }
 
 processResources
-{
-	// replace stuff in mcmod.info, nothing else
-	from(sourceSets.main.resources.srcDirs) {
-		include 'mcmod.info'
-		// replace version and mcversion
-		expand 'version':project.version, 'MCversion':project.minecraft.version
-	}
+        {
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+                // replace version and mcversion
+                expand 'version': project.version, 'MCversion': project.minecraft.version
+            }
 
-	// copy everything else, thats not the mcmod.info
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'mcmod.info'
-	}
-}
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
 jar {
     manifest {
         attributes 'FMLCorePlugin': 'vazkii.tinkerer.preloader.ThaumicTLoaderContainer'

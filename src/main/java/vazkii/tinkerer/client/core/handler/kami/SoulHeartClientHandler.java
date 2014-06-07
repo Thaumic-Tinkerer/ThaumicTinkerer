@@ -15,18 +15,15 @@
 package vazkii.tinkerer.client.core.handler.kami;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.lib.LibResources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public final class SoulHeartClientHandler {
 
@@ -39,8 +36,8 @@ public final class SoulHeartClientHandler {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void renderHealthBar(RenderGameOverlayEvent event) {
-		if(event.type == ElementType.FOOD && clientPlayerHP > 0) {
-			if(event instanceof RenderGameOverlayEvent.Post) {
+		if (event.type == ElementType.FOOD && clientPlayerHP > 0) {
+			if (event instanceof RenderGameOverlayEvent.Post) {
 				Minecraft mc = Minecraft.getMinecraft();
 
 				int x = event.resolution.getScaledWidth() / 2 + 10;
@@ -49,9 +46,9 @@ public final class SoulHeartClientHandler {
 				GL11.glTranslatef(0F, 10F, 0F);
 				mc.renderEngine.bindTexture(heartsResource);
 				int it = 0;
-				for(int i = 0; i < clientPlayerHP; i++) {
+				for (int i = 0; i < clientPlayerHP; i++) {
 					boolean half = i == clientPlayerHP - 1 && clientPlayerHP % 2 != 0;
-					if(half || i % 2 == 0) {
+					if (half || i % 2 == 0) {
 						renderHeart(x + it * 8, y, !half);
 						it++;
 					}
@@ -63,7 +60,7 @@ public final class SoulHeartClientHandler {
 			GL11.glTranslatef(0F, -10F, 0F);
 		}
 
-		if(event.type == ElementType.AIR && event instanceof RenderGameOverlayEvent.Post && clientPlayerHP > 0)
+		if (event.type == ElementType.AIR && event instanceof RenderGameOverlayEvent.Post && clientPlayerHP > 0)
 			GL11.glTranslatef(0F, 10F, 0F);
 	}
 

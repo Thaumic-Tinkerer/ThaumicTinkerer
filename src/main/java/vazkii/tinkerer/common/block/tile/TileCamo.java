@@ -49,10 +49,10 @@ public class TileCamo extends TileEntity implements IMovableTile {
 	}
 
 	public void writeCustomNBT(NBTTagCompound cmp) {
-        if(camo!=null){
-		    cmp.setString(TAG_CAMO, Block.blockRegistry.getNameForObject(camo));
-		    cmp.setInteger(TAG_CAMO_META, camoMeta);
-        }
+		if (camo != null) {
+			cmp.setString(TAG_CAMO, Block.blockRegistry.getNameForObject(camo));
+			cmp.setInteger(TAG_CAMO_META, camoMeta);
+		}
 	}
 
 	public void readCustomNBT(NBTTagCompound cmp) {
@@ -71,7 +71,7 @@ public class TileCamo extends TileEntity implements IMovableTile {
 	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
 		super.onDataPacket(manager, packet);
 		readCustomNBT(packet.func_148857_g());
-		worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
+		worldObj.markBlockRangeForRenderUpdate(xCoord, yCoord, zCoord, xCoord, yCoord, zCoord);
 	}
 
 	@Override

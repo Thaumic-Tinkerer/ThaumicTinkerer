@@ -14,10 +14,10 @@
  */
 package vazkii.tinkerer.common.enchantment.core.rule;
 
-import java.util.List;
-
 import net.minecraft.enchantment.Enchantment;
 import vazkii.tinkerer.common.enchantment.core.IEnchantmentRule;
+
+import java.util.List;
 
 public class BasicCompatibilityRule implements IEnchantmentRule {
 

@@ -15,11 +15,11 @@
 
 package vazkii.tinkerer.common.block.multipart;
 
+import codechicken.lib.vec.Cuboid6;
+import codechicken.multipart.minecraft.McMetaPart;
 import net.minecraft.block.Block;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import codechicken.lib.vec.Cuboid6;
-import codechicken.multipart.minecraft.McMetaPart;
 
 public class PartNitor extends McMetaPart {
 
@@ -44,7 +44,7 @@ public class PartNitor extends McMetaPart {
 				ThaumicTinkerer.tcProxy.wispFX3(world(), x() + 0.5F, y() + 0.5F, z() + 0.5F, x() + 0.3F + world().rand.nextFloat() * 0.4F, y() + 0.5F, z() + 0.3F + world().rand.nextFloat() * 0.4F, 0.5F, 4, true, -0.025F);
 
 			if (world().rand.nextInt(15 - ThaumicTinkerer.tcProxy.particleCount(5)) == 0)
-				ThaumicTinkerer.tcProxy.wispFX3(world(), x() + 0.5F, y()+ 0.5F, z() + 0.5F, x() + 0.4F + world().rand.nextFloat() * 0.2F, y() + 0.5F, z() + 0.4F + world().rand.nextFloat() * 0.2F, 0.25F, 1, true, -0.02F);
+				ThaumicTinkerer.tcProxy.wispFX3(world(), x() + 0.5F, y() + 0.5F, z() + 0.5F, x() + 0.4F + world().rand.nextFloat() * 0.2F, y() + 0.5F, z() + 0.4F + world().rand.nextFloat() * 0.2F, 0.25F, 1, true, -0.02F);
 		}
 	}
 

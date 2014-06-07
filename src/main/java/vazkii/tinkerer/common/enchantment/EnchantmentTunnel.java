@@ -10,6 +10,6 @@ public class EnchantmentTunnel extends EnchantmentMod {
 
 	@Override
 	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment!=ModEnchantments.shatter && par1Enchantment!=Enchantment.efficiency;
+		return par1Enchantment != ModEnchantments.shatter && par1Enchantment != Enchantment.efficiency;
 	}
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class EnderStorageFunctions {
 	public static ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
 		return stack;
-        /*ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		/*ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
 		if(world.isRemote)
 			return stack;
@@ -65,20 +65,20 @@ public class EnderStorageFunctions {
 		return stack.hasTagCompound() ? stack.getTagCompound().getString("owner") : "global";
 	}
 
-	public static  void addFocusInformation(ItemStack stack, EntityPlayer player, List list,
-			boolean par4) {
-		if(stack.hasTagCompound() && !stack.getTagCompound().getString("owner").equals("global"))
+	public static void addFocusInformation(ItemStack stack, EntityPlayer player, List list,
+	                                       boolean par4) {
+		if (stack.hasTagCompound() && !stack.getTagCompound().getString("owner").equals("global"))
 			list.add(stack.getTagCompound().getString("owner"));
 	}
 
 	public static String getSortingHelper(ItemStack focus) {
-		String base="ENDERCHEST";
-		if(!focus.hasTagCompound())
-			return base+"-VANILLA";
-		boolean vanilla=!focus.getTagCompound().getBoolean("ender");
-		if(vanilla)
-			return base+"-VANILLA";
-		int freq=focus.getTagCompound().getInteger("freq");
-		return base+Integer.toString(freq)+getOwner(focus);
+		String base = "ENDERCHEST";
+		if (!focus.hasTagCompound())
+			return base + "-VANILLA";
+		boolean vanilla = !focus.getTagCompound().getBoolean("ender");
+		if (vanilla)
+			return base + "-VANILLA";
+		int freq = focus.getTagCompound().getInteger("freq");
+		return base + Integer.toString(freq) + getOwner(focus);
 	}
 }

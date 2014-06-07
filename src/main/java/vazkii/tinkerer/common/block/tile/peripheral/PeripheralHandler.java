@@ -26,37 +26,36 @@ import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileJarBrain;
 import thaumcraft.common.tiles.TileSensor;
 
-
 public final class PeripheralHandler implements IPeripheralProvider {
 
 	public IPeripheral getPeripheral(TileEntity tile) {
 
-		if(tile instanceof IAspectContainer)
+		if (tile instanceof IAspectContainer)
 			return new PeripheralAspectContainer((IAspectContainer) tile);
 
-		if(tile instanceof TileDeconstructionTable)
+		if (tile instanceof TileDeconstructionTable)
 			return new PeripheralDeconstructor((TileDeconstructionTable) tile);
 
-		if(tile instanceof TileJarBrain)
+		if (tile instanceof TileJarBrain)
 			return new PeripheralBrainInAJar((TileJarBrain) tile);
 
-		if(tile instanceof TileSensor)
+		if (tile instanceof TileSensor)
 			return new PeripheralArcaneEar((TileSensor) tile);
 
-		if(tile instanceof TileArcaneBore)
+		if (tile instanceof TileArcaneBore)
 			return new PeripheralArcaneBore((TileArcaneBore) tile);
 
-        if(tile instanceof IEssentiaTransport)
-            return new PeripheralEssentiaTransport((IEssentiaTransport)tile);
+		if (tile instanceof IEssentiaTransport)
+			return new PeripheralEssentiaTransport((IEssentiaTransport) tile);
 		return null;
 	}
 
-    @Override
-    public IPeripheral getPeripheral(World world, int x, int y, int z, int side) {
-        TileEntity te=world.getTileEntity(x,y,z);
-        if(te!=null)
-            return getPeripheral(te);
-        return null;
-    }
+	@Override
+	public IPeripheral getPeripheral(World world, int x, int y, int z, int side) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if (te != null)
+			return getPeripheral(te);
+		return null;
+	}
 }
 

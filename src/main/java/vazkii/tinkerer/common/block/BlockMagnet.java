@@ -14,9 +14,8 @@
  */
 package vazkii.tinkerer.common.block;
 
-import java.util.List;
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -34,8 +33,9 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockMagnet extends BlockModContainer {
 
@@ -53,12 +53,12 @@ public class BlockMagnet extends BlockModContainer {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if(par5EntityPlayer.getCurrentEquippedItem() != null) {
-			if(par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
+		if (par5EntityPlayer.getCurrentEquippedItem() != null) {
+			if (par5EntityPlayer.getCurrentEquippedItem().getItem() instanceof ItemWandCasting) {
 				TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-				if(tile != null && tile instanceof TileMobMagnet) {
+				if (tile != null && tile instanceof TileMobMagnet) {
 					par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_MOB_MAGNET, par1World, par2, par3, par4);
-					if(!par1World.isRemote) {
+					if (!par1World.isRemote) {
 						par1World.playSoundEffect(par2, par3, par4, "thaumcraft:key", 1F, 0.5F);
 					}
 				}
@@ -68,7 +68,7 @@ public class BlockMagnet extends BlockModContainer {
 
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, (meta & 1) == 0 ? meta + 1 : meta - 1, 2);
-		if(!par1World.isRemote) {
+		if (!par1World.isRemote) {
 			par1World.playSoundEffect(par2, par3, par4, "random.click", 1F, 0.5F);
 		}
 		return true;
@@ -97,12 +97,12 @@ public class BlockMagnet extends BlockModContainer {
 						itemstack.stackSize -= k1;
 						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 						float f3 = 0.05F;
-						entityitem.motionX = (float)random.nextGaussian() * f3;
-						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float)random.nextGaussian() * f3;
+						entityitem.motionX = (float) random.nextGaussian() * f3;
+						entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+						entityitem.motionZ = (float) random.nextGaussian() * f3;
 
 						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
+							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 					}
 				}
 			}
@@ -115,15 +115,15 @@ public class BlockMagnet extends BlockModContainer {
 
 	@Override
 	public int damageDropped(int par1) {
-		switch(par1) {
-		case 1:
-			return 0;
-		case 2:
-			return 1;
-		case 3:
-			return 1;
-		default:
-			return 0;
+		switch (par1) {
+			case 1:
+				return 0;
+			case 2:
+				return 1;
+			case 3:
+				return 1;
+			default:
+				return 0;
 		}
 	}
 

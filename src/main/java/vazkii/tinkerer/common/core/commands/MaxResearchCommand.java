@@ -1,12 +1,12 @@
 package vazkii.tinkerer.common.core.commands;
 
+import net.minecraft.command.CommandBase;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
 
 public class MaxResearchCommand extends CommandBase {
 
@@ -22,19 +22,15 @@ public class MaxResearchCommand extends CommandBase {
 
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring) {
-		if(icommandsender instanceof EntityPlayer)
-		{
-			EntityPlayer player=(EntityPlayer)icommandsender;
-		for(Aspect as:Aspect.aspects.values())
-		{
-			Thaumcraft.proxy.getResearchManager().completeAspect(player, as, (short) 99);
+		if (icommandsender instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) icommandsender;
+			for (Aspect as : Aspect.aspects.values()) {
+				Thaumcraft.proxy.getResearchManager().completeAspect(player, as, (short) 99);
+			}
+			player.addChatComponentMessage(new ChatComponentText("Added 99 research to all aspects"));
 		}
-		player.addChatComponentMessage(new ChatComponentText("Added 99 research to all aspects"));
-		}
-		
 
 	}
-
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender par1iCommandSender) {
@@ -45,7 +41,5 @@ public class MaxResearchCommand extends CommandBase {
 	public int compareTo(Object o) {
 		return 0;
 	}
-
-	
 
 }

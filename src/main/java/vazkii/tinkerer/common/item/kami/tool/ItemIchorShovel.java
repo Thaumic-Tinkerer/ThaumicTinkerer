@@ -30,7 +30,7 @@ public class ItemIchorShovel extends ItemSpade {
 	public ItemIchorShovel() {
 		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
-        setHarvestLevel("shovel", 4);
+		setHarvestLevel("shovel", 4);
 	}
 
 	@Override

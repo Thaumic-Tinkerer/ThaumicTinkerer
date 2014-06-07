@@ -32,9 +32,9 @@ import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 
 public final class ToolHandler {
 
-	public static Material[] materialsPick = new Material[] { Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil };
-    public static Material[] materialsShovel = new Material[] { Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow, Material.clay };
-    public static Material[] materialsAxe = new Material[] { Material.coral, Material.leaves, Material.plants, Material.wood };
+	public static Material[] materialsPick = new Material[]{ Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil };
+	public static Material[] materialsShovel = new Material[]{ Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow, Material.clay };
+	public static Material[] materialsAxe = new Material[]{ Material.coral, Material.leaves, Material.plants, Material.wood };
 
 	public static int getMode(ItemStack tool) {
 		return tool.getItemDamage();
@@ -50,20 +50,20 @@ public final class ToolHandler {
 	}
 
 	public static boolean isRightMaterial(Material material, Material[] materialsListing) {
-		for(Material mat : materialsListing)
-			if(material == mat)
+		for (Material mat : materialsListing)
+			if (material == mat)
 				return true;
 
 		return false;
 	}
 
 	public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, Block block, Material[] materialsListing, boolean silk, int fortune) {
-        float blockHardness = (block==null)?1.0f:  block.getBlockHardness(world, x, y, z);
-		for(int x1 = xs; x1 < xe; x1++){
-			for(int y1 = ys; y1 < ye; y1++){
-				for(int z1 = zs; z1 < ze; z1++){
-					if(x != x1 && y != y1 && z != z1){
-						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune,blockHardness);
+		float blockHardness = (block == null) ? 1.0f : block.getBlockHardness(world, x, y, z);
+		for (int x1 = xs; x1 < xe; x1++) {
+			for (int y1 = ys; y1 < ye; y1++) {
+				for (int z1 = zs; z1 < ze; z1++) {
+					if (x != x1 && y != y1 && z != z1) {
+						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune, blockHardness);
 
 					}
 				}
@@ -71,39 +71,36 @@ public final class ToolHandler {
 		}
 	}
 
-	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune,float blockHardness) {
-		if(!world.blockExists(x, y, z))
+	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune, float blockHardness) {
+		if (!world.blockExists(x, y, z))
 			return;
 
 		Block blk = world.getBlock(x, y, z);
 
-		if(block != null && blk != block)
+		if (block != null && blk != block)
 			return;
 
 		int meta = world.getBlockMetadata(x, y, z);
 		Material mat = world.getBlock(x, y, z).getMaterial();
-		if(blk != null && !blk.isAir(world, x, y, z) && ((blk.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0 || (blk==Blocks.bedrock && (y<=253 && world.provider instanceof WorldProviderBedrock)) ))) {
-			if(!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
+		if (blk != null && !blk.isAir(world, x, y, z) && ((blk.getPlayerRelativeBlockHardness(player, world, x, y, z) != 0 || (blk == Blocks.bedrock && (y <= 253 && world.provider instanceof WorldProviderBedrock))))) {
+			if (!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
-			if(ConfigHandler.bedrockDimensionID != 0 && block== Blocks.bedrock && ((world.provider.isSurfaceWorld() && y<5) || (y>253 && world.provider instanceof WorldProviderBedrock))){
+			if (ConfigHandler.bedrockDimensionID != 0 && block == Blocks.bedrock && ((world.provider.isSurfaceWorld() && y < 5) || (y > 253 && world.provider instanceof WorldProviderBedrock))) {
 				world.setBlock(x, y, z, ModBlocks.portal);
 			}
-            if(ConfigHandler.bedrockDimensionID != 0 && world.provider.dimensionId==ConfigHandler.bedrockDimensionID&& blk==Blocks.bedrock && y<=253)
-            {
-                world.setBlock(x,y,z,Blocks.air);
-            }
-            if (!player.capabilities.isCreativeMode && blk!=Blocks.bedrock) {
-                int localMeta = world.getBlockMetadata(x, y, z);
-                if (blk.removedByPlayer(world, player, x, y, z)) {
-                    blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
-                }
-                blk.harvestBlock(world, player, x, y, z, localMeta);
-                blk.onBlockHarvested(world, x, y, z, localMeta, player);
-            }
-            else
-            {
-                world.setBlockToAir(x, y, z);
-            }
+			if (ConfigHandler.bedrockDimensionID != 0 && world.provider.dimensionId == ConfigHandler.bedrockDimensionID && blk == Blocks.bedrock && y <= 253) {
+				world.setBlock(x, y, z, Blocks.air);
+			}
+			if (!player.capabilities.isCreativeMode && blk != Blocks.bedrock) {
+				int localMeta = world.getBlockMetadata(x, y, z);
+				if (blk.removedByPlayer(world, player, x, y, z)) {
+					blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
+				}
+				blk.harvestBlock(world, player, x, y, z, localMeta);
+				blk.onBlockHarvested(world, x, y, z, localMeta, player);
+			} else {
+				world.setBlockToAir(x, y, z);
+			}
 		}
 	}
 
@@ -134,7 +131,7 @@ public final class ToolHandler {
 		if (player instanceof EntityPlayerMP)
 			d3 = ((EntityPlayerMP) player).theItemInWorldManager.getBlockReachDistance();
 		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
-        return world.rayTraceBlocks(vec3, vec31, par3);
+		return world.rayTraceBlocks(vec3, vec31, par3);
 	}
 
 }

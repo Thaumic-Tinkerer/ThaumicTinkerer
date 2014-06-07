@@ -37,7 +37,7 @@ import net.minecraftforge.common.util.Constants;
 import vazkii.tinkerer.common.item.ItemSoulMould;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
-public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTile {
+public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTile {
 
 	private static final String TAG_ADULT = "adultCheck";
 
@@ -51,15 +51,15 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 			@Override
 			public boolean isEntityApplicable(Entity entity) {
-				if(!(entity instanceof EntityLivingBase) || entity instanceof EntityPlayer)
+				if (!(entity instanceof EntityLivingBase) || entity instanceof EntityPlayer)
 					return false;
 
 				boolean can = false;
-				if(entity instanceof EntityAgeable)
+				if (entity instanceof EntityAgeable)
 					can = adult != ((EntityAgeable) entity).isChild();
 				else can = true;
 
-				if(can && inventorySlots[0] != null) {
+				if (can && inventorySlots[0] != null) {
 					String pattern = ItemSoulMould.getPatternName(inventorySlots[0]);
 					String name = EntityList.getEntityString(entity);
 					return name != null && name.equals(pattern);
@@ -76,7 +76,6 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 		readCustomNBT(par1NBTTagCompound);
 
-
 	}
 
 	@Override
@@ -85,34 +84,33 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 		writeCustomNBT(par1NBTTagCompound);
 
-
 	}
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		adult = par1NBTTagCompound.getBoolean(TAG_ADULT);
-        NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-        inventorySlots = new ItemStack[getSizeInventory()];
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-            NBTTagCompound var4 = var2.getCompoundTagAt(var3);
-            byte var5 = var4.getByte("Slot");
-            if (var5 >= 0 && var5 < inventorySlots.length)
-                inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
-        }
+		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+		inventorySlots = new ItemStack[getSizeInventory()];
+		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
+			NBTTagCompound var4 = var2.getCompoundTagAt(var3);
+			byte var5 = var4.getByte("Slot");
+			if (var5 >= 0 && var5 < inventorySlots.length)
+				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
+		}
 	}
 
-    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
+	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		par1NBTTagCompound.setBoolean(TAG_ADULT, adult);
-        NBTTagList var2 = new NBTTagList();
-        for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
-            if (inventorySlots[var3] != null) {
-                NBTTagCompound var4 = new NBTTagCompound();
-                var4.setByte("Slot", (byte)var3);
-                inventorySlots[var3].writeToNBT(var4);
-                var2.appendTag(var4);
-            }
-        }
-        par1NBTTagCompound.setTag("Items", var2);
-    }
+		NBTTagList var2 = new NBTTagList();
+		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
+			if (inventorySlots[var3] != null) {
+				NBTTagCompound var4 = new NBTTagCompound();
+				var4.setByte("Slot", (byte) var3);
+				inventorySlots[var3].writeToNBT(var4);
+				var2.appendTag(var4);
+			}
+		}
+		par1NBTTagCompound.setTag("Items", var2);
+	}
 
 	@Override
 	public int getSizeInventory() {
@@ -124,13 +122,13 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 		return inventorySlots[i];
 	}
 
-    @Override
-    public void validate() {
-        super.validate();
-        //markDirty();
-    }
+	@Override
+	public void validate() {
+		super.validate();
+		//markDirty();
+	}
 
-    @Override
+	@Override
 	public ItemStack decrStackSize(int i, int j) {
 		if (inventorySlots[i] != null) {
 			ItemStack stackAt;
@@ -138,14 +136,14 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 			if (inventorySlots[i].stackSize <= j) {
 				stackAt = inventorySlots[i];
 				inventorySlots[i] = null;
-                markDirty();
+				markDirty();
 				return stackAt;
 			} else {
 				stackAt = inventorySlots[i].splitStack(j);
 
 				if (inventorySlots[i].stackSize == 0)
 					inventorySlots[i] = null;
-                markDirty();
+				markDirty();
 				return stackAt;
 			}
 		}
@@ -161,18 +159,19 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventorySlots[i] = itemstack;
-        markDirty();
+		markDirty();
 	}
 
-    @Override
-    public String getInventoryName() {
-        return LibBlockNames.MAGNET;
-    }
+	@Override
+	public String getInventoryName() {
+		return LibBlockNames.MAGNET;
+	}
 
-    @Override
-    public boolean hasCustomInventoryName() {
-        return false;
-    }
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
+
 	@Override
 	public int getInventoryStackLimit() {
 		return 1;
@@ -183,15 +182,16 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-    @Override
-    public void openInventory() {
+	@Override
+	public void openInventory() {
 
-    }
+	}
 
-    @Override
-    public void closeInventory() {
+	@Override
+	public void closeInventory() {
 
-    }
+	}
+
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		return true;
@@ -199,39 +199,42 @@ public class TileMobMagnet extends TileMagnet implements IInventory,  IMovableTi
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[] { "isPulling", "setPulling", "getSignal", "getAdultSearch", "setAdultSearch" };
+		return new String[]{ "isPulling", "setPulling", "getSignal", "getAdultSearch", "setAdultSearch" };
 	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		switch(method) {
-			case 3 : return new Object[] { adult };
-			case 4 :
-                return setAdultSearchImplementation((Boolean) arguments[0]);
-        }
+		switch (method) {
+			case 3:
+				return new Object[]{ adult };
+			case 4:
+				return setAdultSearchImplementation((Boolean) arguments[0]);
+		}
 		return super.callMethod(computer, context, method, arguments);
 	}
 
-    private Object[] setAdultSearchImplementation(boolean argument) {
+	private Object[] setAdultSearchImplementation(boolean argument) {
 
-        this.adult = argument;
-        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
-        return null;
-    }
-    @Callback(doc = "function():boolean -- Gets Whether magnet is searching for adults")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] getAdultSearch(Context context, Arguments args) throws Exception {
-        return new Object[]{adult};
-    }
+		this.adult = argument;
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		return null;
+	}
 
-    @Callback(doc = "function(boolean):nil -- Sets Whether magnet is searching for adults")
-    @Optional.Method(modid = "OpenComputers")
-    public Object[] setAdultSearch(Context context, Arguments args) throws Exception {
-        setAdultSearchImplementation(args.checkBoolean(0));
-        return new Object[]{};
-    }
-    @Override
+	@Callback(doc = "function():boolean -- Gets Whether magnet is searching for adults")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] getAdultSearch(Context context, Arguments args) throws Exception {
+		return new Object[]{ adult };
+	}
+
+	@Callback(doc = "function(boolean):nil -- Sets Whether magnet is searching for adults")
+	@Optional.Method(modid = "OpenComputers")
+	public Object[] setAdultSearch(Context context, Arguments args) throws Exception {
+		setAdultSearchImplementation(args.checkBoolean(0));
+		return new Object[]{ };
+	}
+
+	@Override
 	public S35PacketUpdateTileEntity getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);

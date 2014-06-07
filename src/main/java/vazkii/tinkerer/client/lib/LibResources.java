@@ -43,7 +43,6 @@ public final class LibResources {
 	public static final String MISC_REPAIR = PREFIX_MISC + "repair.png";
 	public static final String MISC_REPAIR_OFF = PREFIX_MISC + "repairOff.png";
 
-
 	public static final String MODEL_RELAY_TEXTURE = PREFIX_MODEL + "relay.png";
 	public static final String MODEL_MAGNET_N = PREFIX_MODEL + "magnetN.png";
 	public static final String MODEL_MAGNET_S = PREFIX_MODEL + "magnetS.png";
@@ -96,16 +95,16 @@ public final class LibResources {
 	public static final String ENCHANT_QUICK_DRAW = PREFIX_ENCHANTS + "quickDraw.png";
 
 	public static final String[] LANGS = {
-		"en_US", "de_DE", "zh_CN", "ru_RU", "ko_KR"
+			"en_US", "de_DE", "zh_CN", "ru_RU", "ko_KR"
 	};
 
 	public static final String ENCHANT_FOCUSED_STRIKE = PREFIX_ENCHANTS + "focusedStrikes.png";
 	public static final String ENCHANT_DISPERSED_STRIKE = PREFIX_ENCHANTS + "dispersedStrikes.png";
 	public static final String ENCHANT_VALIANCE = PREFIX_ENCHANTS + "valiance.png";
 	public static final String ENCHANT_FINAL_STRIKE = PREFIX_ENCHANTS + "finalStrike.png";
-	public static final String ENCHANT_TUNNEL=PREFIX_ENCHANTS + "tunnel.png";
+	public static final String ENCHANT_TUNNEL = PREFIX_ENCHANTS + "tunnel.png";
 
-	public static final String ENCHANT_SHATTER=PREFIX_ENCHANTS + "shatter.png";
-	public static final String ENCHANT_SHOCKWAVE=PREFIX_ENCHANTS + "shockwave.png";
-	public static final String ENCHANT_POUNCE=PREFIX_ENCHANTS + "pounce.png";
+	public static final String ENCHANT_SHATTER = PREFIX_ENCHANTS + "shatter.png";
+	public static final String ENCHANT_SHOCKWAVE = PREFIX_ENCHANTS + "shockwave.png";
+	public static final String ENCHANT_POUNCE = PREFIX_ENCHANTS + "pounce.png";
 }

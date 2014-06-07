@@ -36,43 +36,43 @@ public class ItemProtoclay extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		if(!(par3Entity instanceof EntityPlayer))
+		if (!(par3Entity instanceof EntityPlayer))
 			return;
 
 		EntityPlayer player = (EntityPlayer) par3Entity;
 		ItemStack currentStack = player.getCurrentEquippedItem();
-		if(currentStack == null || !(currentStack.getItem() instanceof IAdvancedTool))
+		if (currentStack == null || !(currentStack.getItem() instanceof IAdvancedTool))
 			return;
 		IAdvancedTool tool = (IAdvancedTool) currentStack.getItem();
 
-		if(tool.getType().equals("sword"))
+		if (tool.getType().equals("sword"))
 			return;
 
 		MovingObjectPosition pos = ToolHandler.raytraceFromEntity(par2World, par3Entity, true, 4.5F);
 		String typeToFind = "";
 
-		if(player.isSwingInProgress && pos != null) {
+		if (player.isSwingInProgress && pos != null) {
 			Block block = par2World.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
-			if(block != null) {
+			if (block != null) {
 				Material mat = block.getMaterial();
-				if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
+				if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
 					typeToFind = "pick";
-				else if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
+				else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
 					typeToFind = "shovel";
-				else if(ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
+				else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
 					typeToFind = "axe";
 			}
 		}
 
-		if(tool.getType().equals(typeToFind) || typeToFind.isEmpty())
+		if (tool.getType().equals(typeToFind) || typeToFind.isEmpty())
 			return;
 
-		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
+		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-			if(stackInSlot != null && stackInSlot.getItem() instanceof IAdvancedTool && stackInSlot != currentStack) {
+			if (stackInSlot != null && stackInSlot.getItem() instanceof IAdvancedTool && stackInSlot != currentStack) {
 				IAdvancedTool toolInSlot = (IAdvancedTool) stackInSlot.getItem();
-				if(toolInSlot.getType().equals(typeToFind)) {
+				if (toolInSlot.getType().equals(typeToFind)) {
 					player.inventory.setInventorySlotContents(player.inventory.currentItem, stackInSlot);
 					player.inventory.setInventorySlotContents(i, currentStack);
 					break;

@@ -28,14 +28,14 @@ public class GuiButtonATRadio extends GuiButtonAT implements IRadioButton {
 	@Override
 	public void enableFromClick() {
 		setEnabled(true);
-		for(IRadioButton button : linkedButtons)
-			if(button != this)
+		for (IRadioButton button : linkedButtons)
+			if (button != this)
 				button.updateStatus(this);
 	}
 
 	@Override
 	public void updateStatus(IRadioButton otherButton) {
-		if(otherButton.isEnabled())
+		if (otherButton.isEnabled())
 			setEnabled(false);
 	}
 

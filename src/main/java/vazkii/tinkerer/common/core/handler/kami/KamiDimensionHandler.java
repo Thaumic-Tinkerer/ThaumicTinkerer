@@ -11,20 +11,16 @@ import vazkii.tinkerer.common.item.kami.tool.ItemIchorPickAdv;
  */
 public class KamiDimensionHandler {
 
+	@SubscribeEvent
+	public void onInteract(PlayerInteractEvent event) {
+		if (event.action == PlayerInteractEvent.Action.LEFT_CLICK_BLOCK) {
+			ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
+			if (event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.bedrock) {
+				if (stack != null && stack.getItem() instanceof ItemIchorPickAdv) {
+					stack.getItem().onBlockStartBreak(stack, event.x, event.y, event.z, event.entityPlayer);
 
-    @SubscribeEvent
-    public void onInteract(PlayerInteractEvent event)
-    {
-        if(event.action== PlayerInteractEvent.Action.LEFT_CLICK_BLOCK) {
-            ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
-            if(event.entityPlayer.worldObj.getBlock(event.x,event.y,event.z)== Blocks.bedrock)
-            {
-                if(stack!=null && stack.getItem() instanceof ItemIchorPickAdv)
-                {
-                    stack.getItem().onBlockStartBreak(stack, event.x, event.y, event.z, event.entityPlayer);
-
-                }
-            }
-        }
-    }
+				}
+			}
+		}
+	}
 }

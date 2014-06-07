@@ -32,7 +32,6 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	}
 
-
 	@Override
 	boolean ticks() {
 		return true;
@@ -41,7 +40,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	@Override
 	void tickPlayer(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(1);
-		if(armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
+		if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
 			return;
 
 		ItemBrightNitor.meta = 1;
@@ -52,24 +51,24 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 		int y = (int) player.posY + 1;
 		int z = (int) Math.floor(player.posZ);
 
-        float yaw =  MathHelper.wrapAngleTo180_float(player.rotationYaw + 90F) * (float) Math.PI / 180F;
-        Vector3 lookVector = new Vector3(Math.cos(yaw), Math.sin(yaw), 0).normalize();
-        Vector3 newVector = new Vector3(lookVector.x, lookVector.y, 0);
+		float yaw = MathHelper.wrapAngleTo180_float(player.rotationYaw + 90F) * (float) Math.PI / 180F;
+		Vector3 lookVector = new Vector3(Math.cos(yaw), Math.sin(yaw), 0).normalize();
+		Vector3 newVector = new Vector3(lookVector.x, lookVector.y, 0);
 
-        for(int i = 0; i < 5; i++) {
-        	newVector = newVector.add(lookVector);
+		for (int i = 0; i < 5; i++) {
+			newVector = newVector.add(lookVector);
 
-    		int x1 = x + (int) newVector.x;
-    		int z1 = z + (int) newVector.y;
-    		ItemBrightNitor.setBlock(x1, y, z1, player.worldObj);
-        }
+			int x1 = x + (int) newVector.x;
+			int z1 = z + (int) newVector.y;
+			ItemBrightNitor.setBlock(x1, y, z1, player.worldObj);
+		}
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onDamageTaken(LivingHurtEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
+		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if(player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
+			if (player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
 				event.setCanceled(true);
 				player.heal(event.ammount);
 			}

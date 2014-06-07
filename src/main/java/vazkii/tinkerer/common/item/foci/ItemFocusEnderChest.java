@@ -14,8 +14,6 @@
  */
 package vazkii.tinkerer.common.item.foci;
 
-import java.util.List;
-
 import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -27,13 +25,15 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.compat.EnderStorageFunctions;
 
+import java.util.List;
+
 public class ItemFocusEnderChest extends ItemModFocus {
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list,
-			boolean par4) {
+	                           boolean par4) {
 		super.addInformation(stack, player, list, par4);
-		if(Loader.isModLoaded("EnderStorage")) {
+		if (Loader.isModLoaded("EnderStorage")) {
 			EnderStorageFunctions.addFocusInformation(stack, player, list, par4);
 		}
 	}
@@ -42,12 +42,12 @@ public class ItemFocusEnderChest extends ItemModFocus {
 
 	@Override
 	public ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
-		if(Loader.isModLoaded("EnderStorage")) {
+		if (Loader.isModLoaded("EnderStorage")) {
 			return EnderStorageFunctions.onFocusRightClick(stack, world, p, pos);
 		}
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(wand.consumeAllVis(stack, p, visUsage, true,false)) {
+		if (wand.consumeAllVis(stack, p, visUsage, true, false)) {
 			p.displayGUIChest(p.getInventoryEnderChest());
 			world.playSoundAtEntity(p, "mob.endermen.portal", 1F, 1F);
 		}
@@ -72,7 +72,7 @@ public class ItemFocusEnderChest extends ItemModFocus {
 
 	@Override
 	public String getSortingHelper(ItemStack paramItemStack) {
-		if(Loader.isModLoaded("EnderStorage")) {
+		if (Loader.isModLoaded("EnderStorage")) {
 			return EnderStorageFunctions.getSortingHelper(paramItemStack);
 		}
 		return "ENDERCHEST";

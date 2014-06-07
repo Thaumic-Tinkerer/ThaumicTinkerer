@@ -39,7 +39,7 @@ public class ItemKamiResource extends ItemMod {
 
 	@Override
 	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for(int i = 0; i < subtypes; i++)
+		for (int i = 0; i < subtypes; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
@@ -47,7 +47,7 @@ public class ItemKamiResource extends ItemMod {
 	public void registerIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[subtypes];
 
-		for(int i = 0; i < icons.length; i++)
+		for (int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forNameRaw(par1IconRegister, LibItemNames.KAMI_RESOURCE_NAMES[i]);
 	}
 

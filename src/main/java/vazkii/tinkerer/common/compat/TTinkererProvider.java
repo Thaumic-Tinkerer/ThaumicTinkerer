@@ -25,85 +25,72 @@ public class TTinkererProvider implements IWailaDataProvider {
 
 	@Override
 	public ItemStack getWailaStack(IWailaDataAccessor accessor,
-			IWailaConfigHandler config) {
+	                               IWailaConfigHandler config) {
 		return null;
 	}
 
 	@Override
 	public List<String> getWailaHead(ItemStack itemStack,
-			List<String> currenttip, IWailaDataAccessor accessor,
-			IWailaConfigHandler config) {
+	                                 List<String> currenttip, IWailaDataAccessor accessor,
+	                                 IWailaConfigHandler config) {
 		return currenttip;
 	}
 
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack,
-			List<String> currenttip, IWailaDataAccessor accessor,
-			IWailaConfigHandler config) {
-		if(accessor.getBlock()==ModBlocks.animationTablet)
-		{
-			TileAnimationTablet tileAn=(TileAnimationTablet)accessor.getTileEntity();
+	                                 List<String> currenttip, IWailaDataAccessor accessor,
+	                                 IWailaConfigHandler config) {
+		if (accessor.getBlock() == ModBlocks.animationTablet) {
+			TileAnimationTablet tileAn = (TileAnimationTablet) accessor.getTileEntity();
 			String currentTool;
-			ItemStack stack=tileAn.getStackInSlot(0);
-			if(stack==null)
-			{
-				currentTool=StatCollector.translateToLocal("ttwaila.nothing");
+			ItemStack stack = tileAn.getStackInSlot(0);
+			if (stack == null) {
+				currentTool = StatCollector.translateToLocal("ttwaila.nothing");
+			} else {
+				currentTool = stack.getDisplayName();
 			}
-			else
-			{
-				currentTool=stack.getDisplayName();
-			}
-			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.currentTool",currentTool));
+			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.currentTool", currentTool));
 
-			if(stack!=null)
-			{
-				if(tileAn.leftClick)
-				{
+			if (stack != null) {
+				if (tileAn.leftClick) {
 					currenttip.add(StatCollector.translateToLocal("ttwaila.leftClick"));
-				}
-				else
-				{
+				} else {
 					currenttip.add(StatCollector.translateToLocal("ttwaila.rightClick"));
 				}
-				if(tileAn.redstone)
+				if (tileAn.redstone)
 					currenttip.add(StatCollector.translateToLocal("ttwaila.redstone"));
 				else
 					currenttip.add(StatCollector.translateToLocal("ttwaila.autonomous"));
 			}
-            //currenttip.add("Owned by: "+tileAn.Owner);
+			//currenttip.add("Owned by: "+tileAn.Owner);
 		}
-		if(accessor.getBlock()==ModBlocks.interfase)
-		{
-			TileTransvectorInterface tileTrans=(TileTransvectorInterface)accessor.getTileEntity();
+		if (accessor.getBlock() == ModBlocks.interfase) {
+			TileTransvectorInterface tileTrans = (TileTransvectorInterface) accessor.getTileEntity();
 			String currentBlock;
 			TileEntity tile = tileTrans.getTile();
-			if(tile == null)
-				currentBlock=StatCollector.translateToLocal("ttwaila.nothing");
-			else
-			{
-				currentBlock=tile.getBlockType().getLocalizedName();
+			if (tile == null)
+				currentBlock = StatCollector.translateToLocal("ttwaila.nothing");
+			else {
+				currentBlock = tile.getBlockType().getLocalizedName();
 			}
 			currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.connected", currentBlock));
-			if(tile!=null)
-				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord,tile.yCoord,tile.zCoord));
+			if (tile != null)
+				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord, tile.yCoord, tile.zCoord));
 		}
-		if(accessor.getBlock()==ModBlocks.repairer)
-		{
-			TileRepairer tileRepair=(TileRepairer)accessor.getTileEntity();
-			ItemStack item=tileRepair.getStackInSlot(0);
-			if(item!=null)
-			{
-				if(item.getItemDamage()>0)
-					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.repairing",item.getDisplayName()));
+		if (accessor.getBlock() == ModBlocks.repairer) {
+			TileRepairer tileRepair = (TileRepairer) accessor.getTileEntity();
+			ItemStack item = tileRepair.getStackInSlot(0);
+			if (item != null) {
+				if (item.getItemDamage() > 0)
+					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.repairing", item.getDisplayName()));
 				else
-					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.finishedRepairing",item.getDisplayName()));
+					currenttip.add(StatCollector.translateToLocalFormatted("ttwaila.finishedRepairing", item.getDisplayName()));
 			}
-			
+
 		}
-		if(accessor.getBlock()==ModBlocks.warpGate)
-		{
-			TileWarpGate tileWarp=(TileWarpGate)accessor.getTileEntity();
-			if(tileWarp.locked)
+		if (accessor.getBlock() == ModBlocks.warpGate) {
+			TileWarpGate tileWarp = (TileWarpGate) accessor.getTileEntity();
+			if (tileWarp.locked)
 				currenttip.add(StatCollector.translateToLocal("ttwaila.allowIncoming"));
 			else
 				currenttip.add(StatCollector.translateToLocal("ttwaila.disallowIncoming"));
@@ -113,19 +100,19 @@ public class TTinkererProvider implements IWailaDataProvider {
 
 	@Override
 	public List<String> getWailaTail(ItemStack itemStack,
-			List<String> currenttip, IWailaDataAccessor accessor,
-			IWailaConfigHandler config) {
+	                                 List<String> currenttip, IWailaDataAccessor accessor,
+	                                 IWailaConfigHandler config) {
 		// TODO Auto-generated method stub
 		return currenttip;
 	}
-	
+
 	public static void callbackRegister(IWailaRegistrar registrar) {
-		registrar.registerBodyProvider(new TTinkererProvider(),BlockAnimationTablet.class);
-		registrar.registerBodyProvider(new TTinkererProvider(),BlockTransvectorInterface.class);
+		registrar.registerBodyProvider(new TTinkererProvider(), BlockAnimationTablet.class);
+		registrar.registerBodyProvider(new TTinkererProvider(), BlockTransvectorInterface.class);
 		registrar.registerBodyProvider(new TTinkererProvider(), BlockRepairer.class);
 		registrar.registerBodyProvider(new TTinkererProvider(), BlockWarpGate.class);
 		registrar.registerBodyProvider(new MagnetProvider(), BlockMagnet.class);
-}
+	}
 
 }
 

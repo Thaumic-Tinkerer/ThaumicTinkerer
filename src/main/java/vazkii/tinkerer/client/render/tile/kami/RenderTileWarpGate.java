@@ -16,9 +16,7 @@ package vazkii.tinkerer.client.render.tile.kami;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-
 import org.lwjgl.opengl.GL11;
-
 import vazkii.tinkerer.client.model.kami.ModelSpinningCubes;
 
 public class RenderTileWarpGate extends TileEntitySpecialRenderer {

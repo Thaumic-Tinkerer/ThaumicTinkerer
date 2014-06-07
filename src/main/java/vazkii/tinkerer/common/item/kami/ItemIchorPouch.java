@@ -80,33 +80,33 @@ public class ItemIchorPouch extends ItemFocusPouch implements IBauble {
 		return stackList;
 	}
 
-    @Override
-    public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.BELT;
-    }
+	@Override
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		return BaubleType.BELT;
+	}
 
-    @Override
-    public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
-    }
+	}
 
-    @Override
-    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 
-    @Override
-    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-        return true;
-    }
+	@Override
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		return true;
+	}
 }

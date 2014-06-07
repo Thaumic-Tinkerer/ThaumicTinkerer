@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.network;
 
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
@@ -34,16 +33,16 @@ public class PlayerTracker {
 	@SubscribeEvent
 	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
 
-        if(FMLCommonHandler.instance().getEffectiveSide()== Side.SERVER) {
-            ItemFocusHeal.playerHealData.put(event.player.getGameProfile().getName(), 0);
-            ThaumicTinkerer.netHandler.sendTo(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(event.player)),(EntityPlayerMP) event.player);
-        }
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
+			ItemFocusHeal.playerHealData.put(event.player.getGameProfile().getName(), 0);
+			ThaumicTinkerer.netHandler.sendTo(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(event.player)), (EntityPlayerMP) event.player);
+		}
 	}
 
-    @SubscribeEvent
+	@SubscribeEvent
 	public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-        EntityPlayer player=event.player;
-        String username=player.getGameProfile().getName();
+		EntityPlayer player = event.player;
+		String username = player.getGameProfile().getName();
 		ItemFocusSmelt.playerData.remove(username);
 		ItemFocusHeal.playerHealData.remove(username);
 

@@ -34,7 +34,7 @@ public final class MiscHelper {
 		Vector3 entityVector = Vector3.fromEntityCenter(entity);
 		Vector3 finalVector = originalPosVector.copy().subtract(entityVector);
 
-		if(finalVector.mag() > 1)
+		if (finalVector.mag() > 1)
 			finalVector.normalize();
 
 		entity.motionX = finalVector.x * modifier;
@@ -44,20 +44,20 @@ public final class MiscHelper {
 
 	public static AspectList multiplyAspectList(AspectList list, double multiplier) {
 		AspectList newList = list.copy();
-		if(multiplier == 1)
+		if (multiplier == 1)
 			return newList;
 
-		for(Aspect aspect : newList.aspects.keySet())
+		for (Aspect aspect : newList.aspects.keySet())
 			newList.aspects.put(aspect, (int) ((double) newList.aspects.get(aspect) * multiplier));
 
 		return newList;
 	}
 
 	public static void printCurrentStackTrace(String message) {
-		if(message != null)
+		if (message != null)
 			System.out.println(message);
 
-		for(StackTraceElement element : Thread.currentThread().getStackTrace())
+		for (StackTraceElement element : Thread.currentThread().getStackTrace())
 			System.out.println(element);
 	}
 

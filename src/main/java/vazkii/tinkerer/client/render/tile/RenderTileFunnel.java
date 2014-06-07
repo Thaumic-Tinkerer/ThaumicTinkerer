@@ -32,7 +32,7 @@ public class RenderTileFunnel extends TileEntitySpecialRenderer {
 	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float f) {
 		TileFunnel funnel = (TileFunnel) tileentity;
 		ItemStack stack = funnel.getStackInSlot(0);
-		if(stack != null) {
+		if (stack != null) {
 			GL11.glPushMatrix();
 			GL11.glTranslated(d0 + 0.5, d1 + 0.365, d2 + 0.5);
 			//if(Block.getBlockFromItem(stack.getItem())== ConfigBlocks.blockJar) {

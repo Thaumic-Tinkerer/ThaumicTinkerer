@@ -46,28 +46,28 @@ public class TileWarpGate extends TileEntity implements IInventory {
 	@Override
 	public void updateEntity() {
 		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 1.5, zCoord + 1));
-		
+
 		EntityPlayer clientPlayer = ThaumicTinkerer.proxy.getClientPlayer();
-		for(EntityPlayer player : players)
-				if(player != null && player == clientPlayer && player.isSneaking()) {
-					player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
-					break;
-				}
-			
+		for (EntityPlayer player : players)
+			if (player != null && player == clientPlayer && player.isSneaking()) {
+				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
+				break;
+			}
+
 		teleportedThisTick = false;
 	}
 
 	public void teleportPlayer(EntityPlayer player, int index) {
-		if(teleportedThisTick)
+		if (teleportedThisTick)
 			return;
 
 		ItemStack stack = index < getSizeInventory() ? getStackInSlot(index) : null;
-		if(stack != null && ItemSkyPearl.isAttuned(stack)) {
+		if (stack != null && ItemSkyPearl.isAttuned(stack)) {
 			int x = ItemSkyPearl.getX(stack);
 			int y = ItemSkyPearl.getY(stack);
 			int z = ItemSkyPearl.getZ(stack);
 
-			if(teleportPlayer(player, new ChunkCoordinates(x, y, z)))
+			if (teleportPlayer(player, new ChunkCoordinates(x, y, z)))
 				teleportedThisTick = true;
 		}
 	}
@@ -78,26 +78,26 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		int z = coords.posZ;
 
 		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
-		if(tile != null && tile instanceof TileWarpGate) {
+		if (tile != null && tile instanceof TileWarpGate) {
 			TileWarpGate destGate = (TileWarpGate) tile;
-			if(!destGate.locked) {
+			if (!destGate.locked) {
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
 
-				for(int i = 0; i < 20; i++)
-					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
+				for (int i = 0; i < 20; i++)
+					ThaumicTinkerer.tcProxy.sparkle((float) player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float) player.posY + player.worldObj.rand.nextFloat(), (float) player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
 
 				player.mountEntity(null);
-				if(player instanceof EntityPlayerMP)
+				if (player instanceof EntityPlayerMP)
 					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
 
-				for(int i = 0; i < 20; i++)
-					ThaumicTinkerer.tcProxy.sparkle((float)player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float)player.posY + player.worldObj.rand.nextFloat(), (float)player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
+				for (int i = 0; i < 20; i++)
+					ThaumicTinkerer.tcProxy.sparkle((float) player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float) player.posY + player.worldObj.rand.nextFloat(), (float) player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
 
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
 				return true;
-			} else if(!player.worldObj.isRemote)
+			} else if (!player.worldObj.isRemote)
 				player.addChatMessage(new ChatComponentTranslation("ttmisc.noTeleport"));
-		} else if(!player.worldObj.isRemote)
+		} else if (!player.worldObj.isRemote)
 			player.addChatMessage(new ChatComponentTranslation("ttmisc.noDest"));
 
 		return false;
@@ -130,20 +130,20 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		}
 	}
 
-    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-    	par1NBTTagCompound.setBoolean(TAG_LOCKED, locked);
+	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
+		par1NBTTagCompound.setBoolean(TAG_LOCKED, locked);
 
 		NBTTagList var2 = new NBTTagList();
 		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
 			if (inventorySlots[var3] != null) {
 				NBTTagCompound var4 = new NBTTagCompound();
-				var4.setByte("Slot", (byte)var3);
+				var4.setByte("Slot", (byte) var3);
 				inventorySlots[var3].writeToNBT(var4);
 				var2.appendTag(var4);
 			}
 		}
 		par1NBTTagCompound.setTag("Items", var2);
-    }
+	}
 
 	@Override
 	public int getSizeInventory() {
@@ -187,15 +187,15 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		inventorySlots[i] = itemstack;
 	}
 
-    @Override
-    public String getInventoryName() {
-        return LibBlockNames.WARP_GATE;
-    }
+	@Override
+	public String getInventoryName() {
+		return LibBlockNames.WARP_GATE;
+	}
 
-    @Override
-    public boolean hasCustomInventoryName() {
-        return false;
-    }
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -207,17 +207,15 @@ public class TileWarpGate extends TileEntity implements IInventory {
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-    @Override
-    public void openInventory() {
+	@Override
+	public void openInventory() {
 
-    }
+	}
 
-    @Override
-    public void closeInventory() {
+	@Override
+	public void closeInventory() {
 
-    }
-
-
+	}
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {

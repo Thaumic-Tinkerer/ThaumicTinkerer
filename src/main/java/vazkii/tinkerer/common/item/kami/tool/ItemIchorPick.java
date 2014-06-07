@@ -31,7 +31,7 @@ public class ItemIchorPick extends ItemPickaxe {
 		super(ModItems.toolMatIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 
-        setHarvestLevel("pickaxe", 4);
+		setHarvestLevel("pickaxe", 4);
 	}
 
 	@Override

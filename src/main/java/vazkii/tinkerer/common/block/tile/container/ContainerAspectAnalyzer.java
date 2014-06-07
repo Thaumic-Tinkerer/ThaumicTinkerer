@@ -49,13 +49,13 @@ public class ContainerAspectAnalyzer extends ContainerPlayerInv {
 		if (var4 != null && var4.getHasStack()) {
 			ItemStack var5 = var4.getStack();
 
-			if(par2 == 0 || var5 != null && slot.isItemValid(var5)) {
+			if (par2 == 0 || var5 != null && slot.isItemValid(var5)) {
 				var3 = var5.copy();
 
 				if (par2 < 1) {
-					if(!mergeItemStack(var5, 1, 37, false))
+					if (!mergeItemStack(var5, 1, 37, false))
 						return null;
-				} else if(!mergeItemStack(var5, 0, 1, false))
+				} else if (!mergeItemStack(var5, 0, 1, false))
 					return null;
 
 				if (var5.stackSize == 0)

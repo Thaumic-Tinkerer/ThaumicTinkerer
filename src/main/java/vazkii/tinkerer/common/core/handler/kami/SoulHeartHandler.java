@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.core.handler.kami;
 
-import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -36,7 +35,7 @@ public class SoulHeartHandler {
 
 	@SubscribeEvent
 	public void onPlayerDamage(LivingHurtEvent event) {
-		if(event.entityLiving instanceof EntityPlayer && event.ammount > 0) {
+		if (event.entityLiving instanceof EntityPlayer && event.ammount > 0) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			event.ammount = removeHP(player, (int) event.ammount);
 			updateClient(player);
@@ -50,7 +49,7 @@ public class SoulHeartHandler {
 
 	public static boolean addHP(EntityPlayer player, int hp) {
 		int current = getHP(player);
-		if(current >= MAX_HP)
+		if (current >= MAX_HP)
 			return false;
 
 		setHP(player, Math.min(MAX_HP, current + hp));
@@ -78,15 +77,15 @@ public class SoulHeartHandler {
 
 	private static NBTTagCompound getCompoundToSet(EntityPlayer player) {
 		NBTTagCompound cmp = player.getEntityData();
-		if(!cmp.hasKey(COMPOUND))
+		if (!cmp.hasKey(COMPOUND))
 			cmp.setTag(COMPOUND, new NBTTagCompound());
 
 		return cmp.getCompoundTag(COMPOUND);
 	}
 
 	public static void updateClient(EntityPlayer player) {
-		if(player instanceof EntityPlayerMP && ((EntityPlayerMP) player).playerNetServerHandler!=null){
-            ThaumicTinkerer.netHandler.sendTo(new PacketSoulHearts(getHP(player)), (EntityPlayerMP) player);
+		if (player instanceof EntityPlayerMP && ((EntityPlayerMP) player).playerNetServerHandler != null) {
+			ThaumicTinkerer.netHandler.sendTo(new PacketSoulHearts(getHP(player)), (EntityPlayerMP) player);
 		}
 	}
 

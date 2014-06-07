@@ -56,7 +56,6 @@ import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 
-
 public class TTClientProxy extends TTCommonProxy {
 
 	public static EnumRarity kamiRarity;
@@ -64,11 +63,11 @@ public class TTClientProxy extends TTCommonProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-        //Temporarly disabled for 1.7
+		//Temporarly disabled for 1.7
 		//MinecraftForge.EVENT_BUS.register(new FumeTool());
-		if(ConfigHandler.enableKami)
+		if (ConfigHandler.enableKami)
 			//kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
-            kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}},EnumRarity.class,"KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
+			kamiRarity = EnumHelperClient.addEnum(new Class[][]{ { EnumRarity.class, EnumChatFormatting.class, String.class } }, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
 	}
 
 	@Override
@@ -77,17 +76,17 @@ public class TTClientProxy extends TTCommonProxy {
 
 		LocalizationHandler.loadLocalizations();
 		MinecraftForge.EVENT_BUS.register(new HUDHandler());
-        ClientTickHandler cthandler=new ClientTickHandler();
-        FMLCommonHandler.instance().bus().register(cthandler);
-        MinecraftForge.EVENT_BUS.register(cthandler);
-        MinecraftForge.EVENT_BUS.register(new GemArmorKeyHandler());
+		ClientTickHandler cthandler = new ClientTickHandler();
+		FMLCommonHandler.instance().bus().register(cthandler);
+		MinecraftForge.EVENT_BUS.register(cthandler);
+		MinecraftForge.EVENT_BUS.register(new GemArmorKeyHandler());
 		registerTiles();
 		registerRenderIDs();
 
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
 			MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());
-			if(ConfigHandler.showPlacementMirrorBlocks)
+			if (ConfigHandler.showPlacementMirrorBlocks)
 				MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
 		}
 	}
@@ -99,8 +98,7 @@ public class TTClientProxy extends TTCommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
 
-
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
 		}
 	}
@@ -112,15 +110,15 @@ public class TTClientProxy extends TTCommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
 
 		MinecraftForgeClient.registerItemRenderer(ModItems.mobAspect, new RenderMobAspect());
-        MinecraftForgeClient.registerItemRenderer(ModItems.mobDisplay,new RenderMobDisplay());
+		MinecraftForgeClient.registerItemRenderer(ModItems.mobDisplay, new RenderMobDisplay());
 
-		if(ConfigHandler.enableKami) {
+		if (ConfigHandler.enableKami) {
 			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror, new RenderPlacementMirror());
 
 			LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
 
 			RenderingRegistry.registerBlockHandler(new RenderWarpGate());
-            //KeyBindingRegistry.registerKeyBinding(new GemArmorKeyHandler());
+			//KeyBindingRegistry.registerKeyBinding(new GemArmorKeyHandler());
 		}
 	}
 
@@ -134,7 +132,7 @@ public class TTClientProxy extends TTCommonProxy {
 	protected void initCCPeripherals() {
 		try {
 			super.initCCPeripherals();
-		} catch(Throwable e) {
+		} catch (Throwable e) {
 			System.out.println("Thaumic Tinkerer: ComputerCraft not found.");
 		}
 	}
@@ -143,23 +141,22 @@ public class TTClientProxy extends TTCommonProxy {
 	public boolean isClient() {
 		return true;
 	}
-    @Override
-    public boolean armorStatus(EntityPlayer player)
-    {
-            return KamiArmorClientHandler.ArmorEnabled;
 
-    }
+	@Override
+	public boolean armorStatus(EntityPlayer player) {
+		return KamiArmorClientHandler.ArmorEnabled;
 
-    @Override
-    public void setArmor(EntityPlayer player,boolean status)
-    {
-        super.setArmor(player,status);
-	    if(FMLCommonHandler.instance().getEffectiveSide()== Side.CLIENT){
-            KamiArmorClientHandler.ArmorEnabled=status;
-	    }
-    }
+	}
 
-    @Override
+	@Override
+	public void setArmor(EntityPlayer player, boolean status) {
+		super.setArmor(player, status);
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+			KamiArmorClientHandler.ArmorEnabled = status;
+		}
+	}
+
+	@Override
 	public EntityPlayer getClientPlayer() {
 		return ClientHelper.clientPlayer();
 	}

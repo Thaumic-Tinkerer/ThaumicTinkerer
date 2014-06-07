@@ -49,40 +49,41 @@ public class ThaumicTinkerer {
 	public static TTCommonProxy proxy;
 
 	public static CommonProxy tcProxy;
-    public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
+	public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		tcProxy= Thaumcraft.proxy;
+		tcProxy = Thaumcraft.proxy;
 		proxy.preInit(event);
-		if(Loader.isModLoaded("Waila")) {
+		if (Loader.isModLoaded("Waila")) {
 			FMLInterModComms.sendMessage("Waila", "register", "vazkii.tinkerer.common.compat.TTinkererProvider.callbackRegister");
 		}
 	}
+
 	@EventHandler
-	public void serverStart(FMLServerStartingEvent event)
-	{
-	         MinecraftServer server = MinecraftServer.getServer();
-	         ICommandManager command=server.getCommandManager();
-	         ServerCommandManager manager = (ServerCommandManager) command;
-	         manager.registerCommand(new MaxResearchCommand());
-            manager.registerCommand(new KamiUnlockedCommand());
+	public void serverStart(FMLServerStartingEvent event) {
+		MinecraftServer server = MinecraftServer.getServer();
+		ICommandManager command = server.getCommandManager();
+		ServerCommandManager manager = (ServerCommandManager) command;
+		manager.registerCommand(new MaxResearchCommand());
+		manager.registerCommand(new KamiUnlockedCommand());
 	}
-    @EventHandler
-    public void HandleIMCMessages(FMLInterModComms.IMCEvent messages) {
-        for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
-             if(message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST))
-            {
-            	String[] values=message.getStringValue().split(",");
-	            KamiResearchItem.Blacklist.addAll(Arrays.asList(values));
-            }
-        }
-    }
+
+	@EventHandler
+	public void HandleIMCMessages(FMLInterModComms.IMCEvent messages) {
+		for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
+			if (message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST)) {
+				String[] values = message.getStringValue().split(",");
+				KamiResearchItem.Blacklist.addAll(Arrays.asList(values));
+			}
+		}
+	}
+
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
 
-
-		if(ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0){
+		if (ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0) {
 			DimensionManager.registerProviderType(ConfigHandler.bedrockDimensionID, WorldProviderBedrock.class, false);
 			DimensionManager.registerDimension(ConfigHandler.bedrockDimensionID, ConfigHandler.bedrockDimensionID);
 		}
@@ -91,6 +92,6 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit(event);
-		
+
 	}
 }

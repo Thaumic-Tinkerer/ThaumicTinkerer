@@ -20,7 +20,6 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.common.tiles.TileJarBrain;
 
-
 public class PeripheralBrainInAJar implements IPeripheral {
 
 	TileJarBrain jar;
@@ -36,12 +35,12 @@ public class PeripheralBrainInAJar implements IPeripheral {
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[] { "getXP" };
+		return new String[]{ "getXP" };
 	}
 
 	@Override
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		return new Object[] { jar.xp };
+		return new Object[]{ jar.xp };
 	}
 
 	@Override
@@ -54,11 +53,10 @@ public class PeripheralBrainInAJar implements IPeripheral {
 		// NO-OP
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
-
+	@Override
+	public boolean equals(IPeripheral other) {
+		return this.equals((Object) other);
+	}
 
 }
 

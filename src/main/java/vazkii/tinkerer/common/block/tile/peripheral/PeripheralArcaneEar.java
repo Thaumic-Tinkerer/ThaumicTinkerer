@@ -20,7 +20,6 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.common.tiles.TileSensor;
 
-
 public class PeripheralArcaneEar implements IPeripheral {
 
 	TileSensor ear;
@@ -36,12 +35,12 @@ public class PeripheralArcaneEar implements IPeripheral {
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[] { "getNote", "setNote" };
+		return new String[]{ "getNote", "setNote" };
 	}
 
 	@Override
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		if(method == 0) {
+		if (method == 0) {
 			return new Object[]{ ear.note };
 		} else {
 			ear.note = (byte) ((Double) arguments[0]).doubleValue();
@@ -49,8 +48,6 @@ public class PeripheralArcaneEar implements IPeripheral {
 			return null;
 		}
 	}
-
-
 
 	@Override
 	public void attach(IComputerAccess computer) {
@@ -62,12 +59,11 @@ public class PeripheralArcaneEar implements IPeripheral {
 		// NO-OP
 	}
 
-    @Override
-    public boolean equals(IPeripheral other) {
+	@Override
+	public boolean equals(IPeripheral other) {
 
-        return this.equals((Object)other);
-    }
-
+		return this.equals((Object) other);
+	}
 
 }
 

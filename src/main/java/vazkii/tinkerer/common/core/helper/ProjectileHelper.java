@@ -1,13 +1,13 @@
 package vazkii.tinkerer.common.core.helper;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
-
 import com.google.common.base.Function;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityThrowable;
 import thaumcraft.common.entities.projectile.EntityFrostShard;
+
+import java.util.IdentityHashMap;
+import java.util.Map;
 
 public final class ProjectileHelper {
 	private static Map<Class<? extends Entity>, Function<Entity, Entity>> ownerGetters =
@@ -15,13 +15,13 @@ public final class ProjectileHelper {
 
 	public static Entity getOwner(Entity projectile) {
 		Function<Entity, Entity> ownerGetterForClass = ownerGetters.get(projectile.getClass());
-		if(ownerGetterForClass != null) {
+		if (ownerGetterForClass != null) {
 			return ownerGetterForClass.apply(projectile);
 		}
 
 		// Check if we have owner getter for any of the superclasses
-		for(Map.Entry<Class<? extends Entity>, Function<Entity, Entity>> ownerGetter : ownerGetters.entrySet()) {
-			if(ownerGetter.getKey().isAssignableFrom(projectile.getClass())) {
+		for (Map.Entry<Class<? extends Entity>, Function<Entity, Entity>> ownerGetter : ownerGetters.entrySet()) {
+			if (ownerGetter.getKey().isAssignableFrom(projectile.getClass())) {
 				return ownerGetter.getValue().apply(projectile);
 			}
 		}
@@ -37,22 +37,22 @@ public final class ProjectileHelper {
 	public static class VanillaArrowOwnerGetter implements Function<Entity, Entity> {
 		@Override
 		public Entity apply(Entity e) {
-			return ((EntityArrow)e).shootingEntity;
+			return ((EntityArrow) e).shootingEntity;
 		}
 	}
 
 	public static class VanillaThrowableOwnerGetter implements Function<Entity, Entity> {
 		@Override
 		public Entity apply(Entity e) {
-			return ((EntityThrowable)e).getThrower();
+			return ((EntityThrowable) e).getThrower();
 		}
 	}
 
 	public static class ThaumcraftFrostShardOwnerGetter implements Function<Entity, Entity> {
 		@Override
 		public Entity apply(Entity e) {
-			Entity owner = ((EntityFrostShard)e).shootingEntity;
-			return owner != null ? owner : e.worldObj.getEntityByID(((EntityFrostShard)e).shootingEntityId);
+			Entity owner = ((EntityFrostShard) e).shootingEntity;
+			return owner != null ? owner : e.worldObj.getEntityByID(((EntityFrostShard) e).shootingEntityId);
 		}
 	}
 

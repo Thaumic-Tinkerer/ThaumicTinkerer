@@ -1,5 +1,5 @@
 /**
-x * This class was created by <Vazkii>. It's distributed as
+ x * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
  *
  * ThaumicTinkerer is Open Source and distributed under a
@@ -58,35 +58,32 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	@Override
 	public void updateEntity() {
-		if(++ticksExisted % 10 == 0) {
-			if(Loader.isModLoaded("TConstruct") && ConfigHandler.repairTConTools)
-			{
-				if(inventorySlots[0] != null)
-				{
-					if(TinkersConstructCompat.isTConstructTool(inventorySlots[0]))
-					{
-						int dmg=TinkersConstructCompat.getDamage(inventorySlots[0]);
-						if( dmg > 0) {
+		if (++ticksExisted % 10 == 0) {
+			if (Loader.isModLoaded("TConstruct") && ConfigHandler.repairTConTools) {
+				if (inventorySlots[0] != null) {
+					if (TinkersConstructCompat.isTConstructTool(inventorySlots[0])) {
+						int dmg = TinkersConstructCompat.getDamage(inventorySlots[0]);
+						if (dmg > 0) {
 							int essentia = drawEssentia();
 							TinkersConstructCompat.fixDamage(inventorySlots[0], essentia);
 							markDirty();
-							if(dmgLastTick != 0 && dmgLastTick != dmg) {
+							if (dmgLastTick != 0 && dmgLastTick != dmg) {
 								ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
 								tookLastTick = true;
 							} else tookLastTick = false;
-						} else tookLastTick=false;
+						} else tookLastTick = false;
 						dmgLastTick = inventorySlots[0] == null ? 0 : TinkersConstructCompat.getDamage(inventorySlots[0]);
-						return ;
+						return;
 					}
 				}
 			}
-			if(inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
+			if (inventorySlots[0] != null && inventorySlots[0].getItemDamage() > 0) {
 				int essentia = drawEssentia();
 				int dmg = inventorySlots[0].getItemDamage();
 				inventorySlots[0].setItemDamage(Math.max(0, dmg - essentia));
 				markDirty();
 
-				if(dmgLastTick != 0 && dmgLastTick != dmg) {
+				if (dmgLastTick != 0 && dmgLastTick != dmg) {
 					ThaumicTinkerer.tcProxy.sparkle((float) (xCoord + 0.25 + Math.random() / 2F), (float) (yCoord + 1 + Math.random() / 2F), (float) (zCoord + 0.25 + Math.random() / 2F), 0);
 					tookLastTick = true;
 				} else tookLastTick = false;
@@ -112,25 +109,23 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 
 	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
 		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-        inventorySlots = new ItemStack[1];
-        
-        if(nbttaglist.tagCount()>0)
-        {
-            NBTTagCompound tagList = nbttaglist.getCompoundTagAt(0);
-                inventorySlots[0] = ItemStack.loadItemStackFromNBT(tagList);
-        }
+		inventorySlots = new ItemStack[1];
+
+		if (nbttaglist.tagCount() > 0) {
+			NBTTagCompound tagList = nbttaglist.getCompoundTagAt(0);
+			inventorySlots[0] = ItemStack.loadItemStackFromNBT(tagList);
+		}
 	}
 
 	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		 NBTTagList nbttaglist = new NBTTagList();
-	            if (inventorySlots[0] != null)
-	            {
-	                NBTTagCompound tagList = new NBTTagCompound();
-	                tagList.setByte("Slot", (byte) 0);
-	                inventorySlots[0].writeToNBT(tagList);
-	                nbttaglist.appendTag(tagList);
-	        }
-	        par1NBTTagCompound.setTag("Items", nbttaglist);
+		NBTTagList nbttaglist = new NBTTagList();
+		if (inventorySlots[0] != null) {
+			NBTTagCompound tagList = new NBTTagCompound();
+			tagList.setByte("Slot", (byte) 0);
+			inventorySlots[0].writeToNBT(tagList);
+			nbttaglist.appendTag(tagList);
+		}
+		par1NBTTagCompound.setTag("Items", nbttaglist);
 	}
 
 	@Override
@@ -175,15 +170,15 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		inventorySlots[i] = itemstack;
 	}
 
-    @Override
-    public String getInventoryName() {
-        return LibBlockNames.REPAIRER;
-    }
+	@Override
+	public String getInventoryName() {
+		return LibBlockNames.REPAIRER;
+	}
 
-    @Override
-    public boolean hasCustomInventoryName() {
-        return false;
-    }
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -195,15 +190,15 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
 	}
 
-    @Override
-    public void openInventory() {
+	@Override
+	public void openInventory() {
 
-    }
+	}
 
-    @Override
-    public void closeInventory() {
+	@Override
+	public void closeInventory() {
 
-    }
+	}
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
@@ -226,21 +221,19 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	@Override
 	public void markDirty() {
 		super.markDirty();
-        worldObj.markBlockForUpdate(xCoord,yCoord,zCoord);
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int var1) {
-		return new int[] { 0 };
+		return new int[]{ 0 };
 	}
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
-		{
-			if(TinkersConstructCompat.isTConstructTool(itemstack))
-			{
-				return itemstack!=null;
+		if (Loader.isModLoaded("TConstruct") && ConfigHandler.repairTConTools) {
+			if (TinkersConstructCompat.isTConstructTool(itemstack)) {
+				return itemstack != null;
 			}
 		}
 		return itemstack != null && itemstack.getItem().isRepairable();
@@ -252,39 +245,39 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	int drawEssentia() {
-        ForgeDirection orientation = getOrientation();
-		TileEntity te = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord,orientation);
+		ForgeDirection orientation = getOrientation();
+		TileEntity te = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
 		if (te != null) {
-			IEssentiaTransport ic = (IEssentiaTransport)te;
-			if (!ic.canOutputTo(orientation.getOpposite())) 
+			IEssentiaTransport ic = (IEssentiaTransport) te;
+			if (!ic.canOutputTo(orientation.getOpposite()))
 				return 0;
 
-			for(Aspect aspect : repairValues.keySet())
-				if(ic.getSuctionType(orientation.getOpposite()) == aspect && ic.getSuctionAmount(orientation.getOpposite()) < getSuctionAmount(orientation) && ic.takeEssentia(aspect, 1,orientation.getOpposite()) == 1)
+			for (Aspect aspect : repairValues.keySet())
+				if (ic.getSuctionType(orientation.getOpposite()) == aspect && ic.getSuctionAmount(orientation.getOpposite()) < getSuctionAmount(orientation) && ic.takeEssentia(aspect, 1, orientation.getOpposite()) == 1)
 					return repairValues.get(aspect);
 		}
 		return 0;
 	}
 
-    ForgeDirection getOrientation() {
+	ForgeDirection getOrientation() {
 		return ForgeDirection.getOrientation(getBlockMetadata());
 	}
 
 	@Override
 	public AspectList getAspects() {
 		ItemStack stack = inventorySlots[0];
-		if(stack == null)
+		if (stack == null)
 			return null;
-		if(Loader.isModLoaded("TConstruct")&& ConfigHandler.repairTConTools)
-		{
-			if(TinkersConstructCompat.isTConstructTool(stack))
+		if (Loader.isModLoaded("TConstruct") && ConfigHandler.repairTConTools) {
+			if (TinkersConstructCompat.isTConstructTool(stack))
 				return new AspectList().add(Aspect.ENTROPY, TinkersConstructCompat.getDamage(stack));
 		}
 		return new AspectList().add(Aspect.ENTROPY, stack.getItemDamage());
 	}
 
 	@Override
-	public void setAspects(AspectList paramAspectList) { }
+	public void setAspects(AspectList paramAspectList) {
+	}
 
 	@Override
 	public boolean doesContainerAccept(Aspect paramAspect) {
@@ -338,10 +331,11 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	}
 
 	@Override
-	public void setSuction(Aspect paramAspect, int paramInt) { }
+	public void setSuction(Aspect paramAspect, int paramInt) {
+	}
 
 	@Override
-	public int takeEssentia(Aspect paramAspect, int paramInt,ForgeDirection direction) {
+	public int takeEssentia(Aspect paramAspect, int paramInt, ForgeDirection direction) {
 		return 0;
 	}
 
@@ -354,9 +348,9 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
 	public boolean renderExtendedTube() {
 		return false;
 	}
-	
+
 	@Override
-	public int addEssentia(Aspect arg0, int arg1,ForgeDirection direction) {
+	public int addEssentia(Aspect arg0, int arg1, ForgeDirection direction) {
 		return 0;
 	}
 

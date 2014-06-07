@@ -61,34 +61,34 @@ public class GuiAnimationTablet extends GuiContainer {
 
 	private void addButton(GuiButtonAT button) {
 		buttonListAT.add(button);
-		if(button instanceof IRadioButton)
+		if (button instanceof IRadioButton)
 			radioButtons.add((IRadioButton) button);
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton instanceof IRadioButton)
+		if (par1GuiButton instanceof IRadioButton)
 			((IRadioButton) par1GuiButton).enableFromClick();
 		else buttonListAT.get(0).buttonEnabled = !buttonListAT.get(0).buttonEnabled;
 
 		tablet.leftClick = buttonListAT.get(1).buttonEnabled;
 		tablet.redstone = buttonListAT.get(0).buttonEnabled;
 
-        ThaumicTinkerer.netHandler.sendToServer(new PacketTabletButton(tablet));
+		ThaumicTinkerer.netHandler.sendToServer(new PacketTabletButton(tablet));
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(gui);
-        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-        String left = StatCollector.translateToLocal("ttmisc.leftClick");
-        String right = StatCollector.translateToLocal("ttmisc.rightClick");
-        String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		mc.renderEngine.bindTexture(gui);
+		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+		String left = StatCollector.translateToLocal("ttmisc.leftClick");
+		String right = StatCollector.translateToLocal("ttmisc.rightClick");
+		String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
 
-        fontRendererObj.drawString(left, x + 48 - fontRendererObj.getStringWidth(left), y + 18, 0x999999);
-        fontRendererObj.drawString(right, x + 128, y + 18, 0x999999);
-        fontRendererObj.drawString(redstone, x + xSize / 2 - fontRendererObj.getStringWidth(redstone) / 2, y + 50, 0x999999);
-        GL11.glColor3f(1F, 1F, 1F);
+		fontRendererObj.drawString(left, x + 48 - fontRendererObj.getStringWidth(left), y + 18, 0x999999);
+		fontRendererObj.drawString(right, x + 128, y + 18, 0x999999);
+		fontRendererObj.drawString(redstone, x + xSize / 2 - fontRendererObj.getStringWidth(redstone) / 2, y + 50, 0x999999);
+		GL11.glColor3f(1F, 1F, 1F);
 	}
 }

@@ -1,8 +1,5 @@
 package vazkii.tinkerer.common.item.kami.foci;
 
-import java.awt.Color;
-import java.util.List;
-
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -18,6 +15,9 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ExperienceHelper;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
 
+import java.awt.*;
+import java.util.List;
+
 public class ItemFocusXPDrain extends ItemModFocus {
 
 	AspectList cost = new AspectList();
@@ -30,7 +30,7 @@ public class ItemFocusXPDrain extends ItemModFocus {
 
 	@Override
 	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
-		if(paramEntityPlayer.worldObj.isRemote)
+		if (paramEntityPlayer.worldObj.isRemote)
 			return;
 
 		ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
@@ -39,20 +39,20 @@ public class ItemFocusXPDrain extends ItemModFocus {
 		Aspect aspectToAdd = null;
 		int takes = 0;
 
-		while(aspectToAdd == null && takes < 7) {
+		while (aspectToAdd == null && takes < 7) {
 			lastGiven = lastGiven == 5 ? 0 : lastGiven + 1;
 
 			Aspect aspect = Aspect.getPrimalAspects().get(lastGiven);
 
-			if(aspects.getAmount(aspect) < wand.getMaxVis(paramItemStack))
+			if (aspects.getAmount(aspect) < wand.getMaxVis(paramItemStack))
 				aspectToAdd = aspect;
 
 			++takes;
 		}
 
-		if(aspectToAdd != null) {
+		if (aspectToAdd != null) {
 			int xpUse = getXpUse(paramItemStack);
-			if(paramEntityPlayer.experienceTotal >= xpUse) {
+			if (paramEntityPlayer.experienceTotal >= xpUse) {
 				ExperienceHelper.drainPlayerXP(paramEntityPlayer, xpUse);
 				wand.storeVis(paramItemStack, aspectToAdd, Math.min(wand.getMaxVis(paramItemStack), wand.getVis(paramItemStack, aspectToAdd) + 500));
 			}
@@ -76,7 +76,7 @@ public class ItemFocusXPDrain extends ItemModFocus {
 
 	@Override
 	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		list.add(" " + EnumChatFormatting.GREEN + StatCollector.translateToLocal("ttmisc.experience") +  EnumChatFormatting.WHITE + " x " +  getXpUse(stack));
+		list.add(" " + EnumChatFormatting.GREEN + StatCollector.translateToLocal("ttmisc.experience") + EnumChatFormatting.WHITE + " x " + getXpUse(stack));
 	}
 
 	@Override

@@ -15,11 +15,11 @@
 
 package vazkii.tinkerer.common.block.multipart;
 
+import codechicken.microblock.BlockMicroMaterial;
+import codechicken.microblock.MicroMaterialRegistry;
 import net.minecraft.block.Block;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.common.block.ModBlocks;
-import codechicken.microblock.BlockMicroMaterial;
-import codechicken.microblock.MicroMaterialRegistry;
 
 public class MultipartHandler {
 
@@ -39,7 +39,7 @@ public class MultipartHandler {
 	}
 
 	private static void registerMultipartMetadataLine(Block block, int maxMeta) {
-		for(int i = 0; i < maxMeta; i++)
+		for (int i = 0; i < maxMeta; i++)
 			registerMultipart(block, i);
 	}
 

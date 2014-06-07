@@ -37,10 +37,10 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if(!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true,false)) {
+		if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true, false)) {
 			int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
 
-			if(player.worldObj.rand.nextInt(10) == 0)
+			if (player.worldObj.rand.nextInt(10) == 0)
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
 
 			Beam beam = new Beam(player.worldObj, player, potency);
@@ -83,7 +83,7 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 		@Override
 		public void onUpdate() {
 			super.onUpdate();
-			if(particleAge > 1)
+			if (particleAge > 1)
 				setDead();
 		}
 	}
@@ -110,8 +110,8 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 
 			if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
 				float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
-				this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
-				this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(par3, (double)f) * 180.0D / Math.PI);
+				this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(par1, par5) * 180.0D / Math.PI);
+				this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(par3, (double) f) * 180.0D / Math.PI);
 			}
 		}
 
@@ -135,11 +135,11 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 
 		@Override
 		protected void onImpact(MovingObjectPosition movingobjectposition) {
-			if(movingobjectposition == null)
+			if (movingobjectposition == null)
 				return;
 
-			if(movingobjectposition.entityHit != null) {
-				if((MinecraftServer.getServer().isPVPEnabled() || !(movingobjectposition.entityHit instanceof EntityPlayer)) && movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
+			if (movingobjectposition.entityHit != null) {
+				if ((MinecraftServer.getServer().isPVPEnabled() || !(movingobjectposition.entityHit instanceof EntityPlayer)) && movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
 					movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 8 + potency);
 				return;
 			}
@@ -163,16 +163,16 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 
 			super.onUpdate();
 
-			if(ticksExisted > 2)
+			if (ticksExisted > 2)
 				ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
 
 			++ticksExisted;
-			if(ticksExisted >= maxTicks)
+			if (ticksExisted >= maxTicks)
 				setDead();
 		}
 
 		public void updateUntilDead() {
-			while(!isDead)
+			while (!isDead)
 				onUpdate();
 		}
 

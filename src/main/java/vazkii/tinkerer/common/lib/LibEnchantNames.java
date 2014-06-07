@@ -25,14 +25,13 @@ public final class LibEnchantNames {
 	public static final String QUICK_DRAW = LibResources.PREFIX_MOD + "quickDraw";
 	public static final String VAMPIRISM = LibResources.PREFIX_MOD + "vampirism";
 
-
-	public static final String dispersedStrikes= LibResources.PREFIX_MOD + "dispersedStrike";
-	public static final String finalStrike= LibResources.PREFIX_MOD + "finalStrike";
-	public static final String focusedStrike= LibResources.PREFIX_MOD + "focusedStrike";
-	public static final String pounce= LibResources.PREFIX_MOD + "pounce";
-	public static final String shatter= LibResources.PREFIX_MOD + "shatter";
-	public static final String shockwave= LibResources.PREFIX_MOD + "shockwave";
-	public static final String tunnel= LibResources.PREFIX_MOD + "tunnel";
-	public static final String valiance= LibResources.PREFIX_MOD + "valiance";
+	public static final String dispersedStrikes = LibResources.PREFIX_MOD + "dispersedStrike";
+	public static final String finalStrike = LibResources.PREFIX_MOD + "finalStrike";
+	public static final String focusedStrike = LibResources.PREFIX_MOD + "focusedStrike";
+	public static final String pounce = LibResources.PREFIX_MOD + "pounce";
+	public static final String shatter = LibResources.PREFIX_MOD + "shatter";
+	public static final String shockwave = LibResources.PREFIX_MOD + "shockwave";
+	public static final String tunnel = LibResources.PREFIX_MOD + "tunnel";
+	public static final String valiance = LibResources.PREFIX_MOD + "valiance";
 
 }

@@ -22,7 +22,7 @@ import vazkii.tinkerer.common.block.ModBlocks;
 public class ItemDarkQuartzSlab extends ItemSlab {
 
 	public ItemDarkQuartzSlab(Block par1) {
-        super(par1, (BlockSlab) ModBlocks.darkQuartzSlab, (BlockSlab) ModBlocks.darkQuartzSlabFull, false);
+		super(par1, (BlockSlab) ModBlocks.darkQuartzSlab, (BlockSlab) ModBlocks.darkQuartzSlabFull, false);
 	}
 
 }

@@ -19,11 +19,11 @@ import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 
-public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> implements IMessageHandler<PacketEnchanterStartWorking,IMessage> {
+public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> implements IMessageHandler<PacketEnchanterStartWorking, IMessage> {
 
-    public PacketEnchanterStartWorking(){
-        super();
-    }
+	public PacketEnchanterStartWorking() {
+		super();
+	}
 
 	private static final long serialVersionUID = -9086252088394185376L;
 
@@ -31,20 +31,19 @@ public class PacketEnchanterStartWorking extends PacketTile<TileEnchanter> imple
 		super(tile);
 	}
 
-
 	public void handle() {
 
 	}
 
-    @Override
-    public IMessage onMessage(PacketEnchanterStartWorking message, MessageContext ctx) {
-        super.onMessage(message,ctx);
-        if(!ctx.side.isServer())
-            throw new IllegalStateException("received PacketEnchanterStartWorking " + message + "on client side!");
-        if(!message.tile.working && !message.tile.enchantments.isEmpty() && !message.tile.levels.isEmpty()) {
-            message.tile.working = true;
-            message.tile.getWorldObj().markBlockForUpdate(message.tile.xCoord,message.tile.yCoord,message.tile.zCoord);
-        }
-        return null;
-    }
+	@Override
+	public IMessage onMessage(PacketEnchanterStartWorking message, MessageContext ctx) {
+		super.onMessage(message, ctx);
+		if (!ctx.side.isServer())
+			throw new IllegalStateException("received PacketEnchanterStartWorking " + message + "on client side!");
+		if (!message.tile.working && !message.tile.enchantments.isEmpty() && !message.tile.levels.isEmpty()) {
+			message.tile.working = true;
+			message.tile.getWorldObj().markBlockForUpdate(message.tile.xCoord, message.tile.yCoord, message.tile.zCoord);
+		}
+		return null;
+	}
 }

@@ -14,6 +14,8 @@
  */
 package vazkii.tinkerer.common.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,15 +27,14 @@ import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemConnector extends ItemMod {
 
 	private static final String TAG_POS_X = "posx";
 	private static final String TAG_POS_Y = "posy";
 	private static final String TAG_POS_Z = "posz";
-	private static final String TAG_CONNECTING_GOLEM="ConnectingGolem";
+	private static final String TAG_CONNECTING_GOLEM = "ConnectingGolem";
+
 	public ItemConnector() {
 		super();
 
@@ -53,11 +54,11 @@ public class ItemConnector extends ItemMod {
 				setY(par1ItemStack, par5);
 				setZ(par1ItemStack, par6);
 
-				if(par3World.isRemote)
+				if (par3World.isRemote)
 					par2EntityPlayer.swingItem();
 
 				playSound(par3World, par4, par5, par6);
-				if(tile instanceof TileTransvector)
+				if (tile instanceof TileTransvector)
 					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.set"));
 				else
 					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.set"));
@@ -81,7 +82,7 @@ public class ItemConnector extends ItemMod {
 					return true;
 				}
 
-				if(Math.abs(x - par4) > trans.getMaxDistance() || Math.abs(y - par5) > trans.getMaxDistance() || Math.abs(z - par6) > trans.getMaxDistance()) {
+				if (Math.abs(x - par4) > trans.getMaxDistance() || Math.abs(y - par5) > trans.getMaxDistance() || Math.abs(z - par6) > trans.getMaxDistance()) {
 					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.toofar"));
 					return true;
 				}
@@ -94,7 +95,7 @@ public class ItemConnector extends ItemMod {
 
 				playSound(par3World, par4, par5, par6);
 				par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.connector.complete"));
-                par3World.markBlockForUpdate(trans.x,trans.y,trans.z);
+				par3World.markBlockForUpdate(trans.x, trans.y, trans.z);
 			}
 		}
 
@@ -103,18 +104,14 @@ public class ItemConnector extends ItemMod {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack,
-			EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
-		par1ItemStack=par2EntityPlayer.getCurrentEquippedItem();
-		if(par2EntityPlayer.isSneaking())
-		{
+	                                        EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
+		par1ItemStack = par2EntityPlayer.getCurrentEquippedItem();
+		if (par2EntityPlayer.isSneaking()) {
 
-			if(par3EntityLivingBase instanceof EntityGolemBase)
-			{
+			if (par3EntityLivingBase instanceof EntityGolemBase) {
 
-				if(getY(par1ItemStack)==-1)
-				{
-					if(par3EntityLivingBase.worldObj.isRemote)
-					{
+				if (getY(par1ItemStack) == -1) {
+					if (par3EntityLivingBase.worldObj.isRemote) {
 						return false;
 					}
 					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.notinterf"));
@@ -126,30 +123,25 @@ public class ItemConnector extends ItemMod {
 				TileEntity tile1 = par2EntityPlayer.worldObj.getTileEntity(x, y, z);
 				if (tile1 == null || !(tile1 instanceof TileGolemConnector)) {
 					setY(par1ItemStack, -1);
-					if(par3EntityLivingBase.worldObj.isRemote)
-					{
+					if (par3EntityLivingBase.worldObj.isRemote) {
 						return false;
 					}
 					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.notpresent"));
 					return false;
 				} else {
-					if(par3EntityLivingBase.worldObj.isRemote)
-					{
+					if (par3EntityLivingBase.worldObj.isRemote) {
 						par2EntityPlayer.swingItem();
 						return false;
 					}
 					TileGolemConnector trans = (TileGolemConnector) tile1;
 
-
 					trans.ConnectGolem(par3EntityLivingBase.getUniqueID());
 
 					setY(par1ItemStack, -1);
 
-
-
-					playSound(par3EntityLivingBase.worldObj, (int)par3EntityLivingBase.posX, (int)par3EntityLivingBase.posY, (int)par3EntityLivingBase.posZ);
+					playSound(par3EntityLivingBase.worldObj, (int) par3EntityLivingBase.posX, (int) par3EntityLivingBase.posY, (int) par3EntityLivingBase.posZ);
 					par2EntityPlayer.addChatMessage(new ChatComponentTranslation("ttmisc.golemconnector.complete"));
-                    par2EntityPlayer.worldObj.markBlockForUpdate(trans.xCoord,trans.yCoord,trans.zCoord);
+					par2EntityPlayer.worldObj.markBlockForUpdate(trans.xCoord, trans.yCoord, trans.zCoord);
 				}
 				return true;
 			}
@@ -158,22 +150,18 @@ public class ItemConnector extends ItemMod {
 	}
 
 	private void playSound(World world, int x, int y, int z) {
-		if(!world.isRemote)
+		if (!world.isRemote)
 			world.playSoundEffect(x, y, z, "random.orb", 0.8F, 1F);
 	}
 
-
-
-	public static boolean getConnectingGolem(ItemStack stack)
-	{
+	public static boolean getConnectingGolem(ItemStack stack) {
 		return ItemNBTHelper.getBoolean(stack, TAG_CONNECTING_GOLEM, false);
 	}
 
-
-	public static void setConnectingGolem(ItemStack stack,boolean connecting)
-	{
+	public static void setConnectingGolem(ItemStack stack, boolean connecting) {
 		ItemNBTHelper.setBoolean(stack, TAG_CONNECTING_GOLEM, connecting);
 	}
+
 	public static void setX(ItemStack stack, int x) {
 		ItemNBTHelper.setInt(stack, TAG_POS_X, x);
 	}

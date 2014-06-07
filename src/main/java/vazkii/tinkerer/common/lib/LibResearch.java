@@ -53,7 +53,6 @@ public final class LibResearch {
 	public static final String KEY_ENCHANT_QUICK_DRAW = "TTENCH_QUICK_DRAW";
 	public static final String KEY_ENCHANT_VAMPIRISM = "TTENCH_VAMPIRISM";
 
-
 	public static final String KEY_ENCHANT_DISPERSED_STRIKE = "TTENCH_DISPERSED";
 	public static final String KEY_ENCHANT_FINAL_STRIKE = "TTENCH_FINAL";
 	public static final String KEY_ENCHANT_FOCUSED_STRIKE = "TTENCH_FOCUSED";
@@ -62,7 +61,6 @@ public final class LibResearch {
 	public static final String KEY_ENCHANT_SHOCKWAVE = "TTENCH_SHOCKWAVE";
 	public static final String KEY_ENCHANT_SHATTER = "TTENCH_SHATTER";
 	public static final String KEY_ENCHANT_VALIANCE = "TTENCH_VALIANCE";
-
 
 	public static final String KEY_FOCUS_SMELT = "FOCUS_SMELT";
 	public static final String KEY_FOCUS_HEAL = "FOCUS_HEAL";
@@ -78,7 +76,6 @@ public final class LibResearch {
 	public static final String KEY_SHARE_TOME = "SHARE_TOME";
 
 	public static final String KEY_SUMMON = "SUMMON";
-
 
 	public static final String KEY_DIMENSION_SHARDS = "DIMENSION_SHARDS";
 	public static final String KEY_ICHOR = "ICHOR";

@@ -63,8 +63,8 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
-        list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + 5 + "%");
-    }
+		list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + 5 + "%");
+	}
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
@@ -81,9 +81,9 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 		return par2ItemStack.isItemEqual(new ItemStack(ConfigItems.itemResource, 1, 2)) || super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 
-    @Override
-    public int getVisDiscount(ItemStack Itemstack, EntityPlayer Player, Aspect Aspect) {
-        return 5;
+	@Override
+	public int getVisDiscount(ItemStack Itemstack, EntityPlayer Player, Aspect Aspect) {
+		return 5;
 	}
 
 }

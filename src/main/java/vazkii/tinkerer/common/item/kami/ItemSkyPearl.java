@@ -46,8 +46,8 @@ public class ItemSkyPearl extends ItemMod {
 
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-        Block block=par3World.getBlock(par4, par5, par6);
-		if(block == ModBlocks.warpGate && !isAttuned(par1ItemStack)) {
+		Block block = par3World.getBlock(par4, par5, par6);
+		if (block == ModBlocks.warpGate && !isAttuned(par1ItemStack)) {
 			setValues(par1ItemStack, par4, par5, par6, par2EntityPlayer.dimension);
 			par3World.playSoundAtEntity(par2EntityPlayer, "random.orb", 0.3F, 0.1F);
 		}
@@ -57,7 +57,7 @@ public class ItemSkyPearl extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.isSneaking() && isAttuned(par1ItemStack)) {
+		if (par3EntityPlayer.isSneaking() && isAttuned(par1ItemStack)) {
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 			ItemNBTHelper.setInt(par1ItemStack, TAG_Y, -1);
 		}
@@ -71,18 +71,19 @@ public class ItemSkyPearl extends ItemMod {
 	}
 
 	public static void addInfo(ItemStack stack, int dim, Vector3 pos, List<String> list, boolean simpleMode) {
-		if(isAttuned(stack)) {
+		if (isAttuned(stack)) {
 			int x = getX(stack);
 			int y = getY(stack);
 			int z = getZ(stack);
 			list.add("X: " + x);
-			if(!simpleMode)
+			if (!simpleMode)
 				list.add("Y: " + y);
 			list.add("Z: " + z);
-			if(getDim(stack) != dim) {
-				if(!simpleMode)
+			if (getDim(stack) != dim) {
+				if (!simpleMode)
 					list.add(EnumChatFormatting.RED + StatCollector.translateToLocal("ttmisc.differentDim"));
-			} else list.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, simpleMode ? 0 : y, z, pos.x, simpleMode ? 0 : pos.y, pos.z)).setScale(2, RoundingMode.UP).toString() + "m");
+			} else
+				list.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, simpleMode ? 0 : y, z, pos.x, simpleMode ? 0 : pos.y, pos.z)).setScale(2, RoundingMode.UP).toString() + "m");
 		}
 	}
 
@@ -103,28 +104,28 @@ public class ItemSkyPearl extends ItemMod {
 	}
 
 	public static int getX(ItemStack stack) {
-		if(!isAttuned(stack))
+		if (!isAttuned(stack))
 			return 0;
 
 		return ItemNBTHelper.getInt(stack, TAG_X, 0);
 	}
 
 	public static int getY(ItemStack stack) {
-		if(!isAttuned(stack))
+		if (!isAttuned(stack))
 			return 0;
 
 		return ItemNBTHelper.getInt(stack, TAG_Y, 0);
 	}
 
 	public static int getZ(ItemStack stack) {
-		if(!isAttuned(stack))
+		if (!isAttuned(stack))
 			return 0;
 
 		return ItemNBTHelper.getInt(stack, TAG_Z, 0);
 	}
 
 	public static int getDim(ItemStack stack) {
-		if(!isAttuned(stack))
+		if (!isAttuned(stack))
 			return 0;
 
 		return ItemNBTHelper.getInt(stack, TAG_DIM, 0);

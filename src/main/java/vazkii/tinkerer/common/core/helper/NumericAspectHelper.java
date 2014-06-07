@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class NumericAspectHelper {
 
-	public static void init(){
+	public static void init() {
 
 		new NumericAspectHelper(Aspect.WATER);
 		new NumericAspectHelper(Aspect.MAN);
@@ -24,23 +24,22 @@ public class NumericAspectHelper {
 		new NumericAspectHelper(Aspect.METAL);
 		new NumericAspectHelper(Aspect.SLIME);
 
-
 	}
 
 	private Aspect aspect;
 	public int num;
 
-	private static int nextNum=0;
+	private static int nextNum = 0;
 
 	public static ArrayList<NumericAspectHelper> values = new ArrayList<NumericAspectHelper>();
 
-	public Aspect getAspect(){
+	public Aspect getAspect() {
 		return aspect;
 	}
 
-	public static int getNumber(Aspect aspect){
-		for(NumericAspectHelper e: NumericAspectHelper.values){
-			if(e.getAspect().equals(aspect)){
+	public static int getNumber(Aspect aspect) {
+		for (NumericAspectHelper e : NumericAspectHelper.values) {
+			if (e.getAspect().equals(aspect)) {
 				return e.num;
 			}
 		}
@@ -48,13 +47,13 @@ public class NumericAspectHelper {
 		return -1;
 	}
 
-	public static Aspect getAspect(int i){
+	public static Aspect getAspect(int i) {
 		return NumericAspectHelper.values.get(i).getAspect();
 	}
 
-	NumericAspectHelper(Aspect aspect){
+	NumericAspectHelper(Aspect aspect) {
 		this.aspect = aspect;
-		this.num=nextNum;
+		this.num = nextNum;
 		nextNum++;
 		values.add(this);
 	}

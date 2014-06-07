@@ -28,22 +28,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidHandler;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import vazkii.tinkerer.common.lib.LibFeatures;
-@Optional.InterfaceList({@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
-        @Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy")})
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport, IPeripheral{
+
+@Optional.InterfaceList({ @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
+		@Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy") })
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink, IEnergyHandler,*/ IAspectContainer, IEssentiaTransport, IPeripheral {
 
 	private boolean addedToICEnergyNet = false;
 
 	@Override
 	public void updateEntity() {
-     /*   if(worldObj.getTotalWorldTime()%100==0)
-        {
+	 /*   if(worldObj.getTotalWorldTime()%100==0)
+	    {
             worldObj.notifyBlockChange(xCoord,yCoord,zCoord,worldObj.getBlockId(xCoord,yCoord,zCoord));
         }
 		if(!addedToICEnergyNet && !worldObj.isRemote) {
@@ -77,9 +81,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 	@Override
 	public void markDirty() {
-        super.markDirty();
+		super.markDirty();
 		TileEntity tile = getTile();
-		if(tile != null)
+		if (tile != null)
 			tile.markDirty();
 	}
 
@@ -120,11 +124,11 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return tile instanceof IInventory ? ((IInventory) tile).getInventoryName() : "";
 	}
 
-    @Override
-    public boolean hasCustomInventoryName() {
-        TileEntity tile = getTile();
-        return tile instanceof IInventory && ((IInventory) tile).hasCustomInventoryName();
-    }
+	@Override
+	public boolean hasCustomInventoryName() {
+		TileEntity tile = getTile();
+		return tile instanceof IInventory && ((IInventory) tile).hasCustomInventoryName();
+	}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -134,26 +138,25 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-        TileEntity tile = getTile();
-        return tile instanceof IInventory && ((IInventory) tile).isUseableByPlayer(entityplayer);
+		TileEntity tile = getTile();
+		return tile instanceof IInventory && ((IInventory) tile).isUseableByPlayer(entityplayer);
 	}
 
-    @Override
-    public void openInventory() {
-        TileEntity tile = getTile();
-        if(tile instanceof IInventory )
-            ((IInventory) tile).openInventory();
-    }
+	@Override
+	public void openInventory() {
+		TileEntity tile = getTile();
+		if (tile instanceof IInventory)
+			((IInventory) tile).openInventory();
+	}
 
-    @Override
-    public void closeInventory() {
-        TileEntity tile = getTile();
-        if(tile instanceof IInventory )
-            ((IInventory) tile).closeInventory();
-    }
+	@Override
+	public void closeInventory() {
+		TileEntity tile = getTile();
+		if (tile instanceof IInventory)
+			((IInventory) tile).closeInventory();
+	}
 
-
-    @Override
+	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		TileEntity tile = getTile();
 		return tile instanceof IInventory && ((IInventory) tile).isItemValidForSlot(i, itemstack);
@@ -222,14 +225,14 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
-    @Optional.Method(modid = "BuildCraft|Energy")
+	@Optional.Method(modid = "BuildCraft|Energy")
 	public PowerReceiver getPowerReceiver(ForgeDirection side) {
 		TileEntity tile = getTile();
 		return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).getPowerReceiver(side) : null;
 	}
 
 	@Override
-    @Optional.Method(modid = "BuildCraft|Energy")
+	@Optional.Method(modid = "BuildCraft|Energy")
 	public void doWork(PowerHandler workProvider) {
 		TileEntity tile = getTile();
 		if (tile instanceof IPowerReceptor)
@@ -305,7 +308,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public void setAspects(AspectList paramAspectList) {
 		TileEntity tile = getTile();
-		if(tile != null)
+		if (tile != null)
 			((IAspectContainer) tile).setAspects(paramAspectList);
 	}
 
@@ -351,46 +354,45 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return tile instanceof IAspectContainer ? ((IAspectContainer) tile).containerContains(paramAspect) : 0;
 	}
 
+	@Override
+	public boolean isConnectable(ForgeDirection forgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
+	}
 
-    @Override
-    public boolean isConnectable(ForgeDirection forgeDirection) {
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
-    }
+	@Override
+	public boolean canInputFrom(ForgeDirection forgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).canInputFrom(forgeDirection);
+	}
 
-    @Override
-    public boolean canInputFrom(ForgeDirection forgeDirection) {
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).canInputFrom(forgeDirection);
-    }
+	@Override
+	public boolean canOutputTo(ForgeDirection forgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).canOutputTo(forgeDirection);
+	}
 
-    @Override
-    public boolean canOutputTo(ForgeDirection forgeDirection) {
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).canOutputTo(forgeDirection);
-    }
-
-    @Override
+	@Override
 	public void setSuction(Aspect paramAspect, int paramInt) {
 		TileEntity tile = getTile();
-		if(tile instanceof IEssentiaTransport)
+		if (tile instanceof IEssentiaTransport)
 			((IEssentiaTransport) tile).setSuction(paramAspect, paramInt);
 	}
 
-    @Override
-    public Aspect getSuctionType(ForgeDirection forgeDirection) {
-        return null;
-    }
+	@Override
+	public Aspect getSuctionType(ForgeDirection forgeDirection) {
+		return null;
+	}
 
-    @Override
-    public int getSuctionAmount(ForgeDirection forgeDirection) {
-        return 0;
-    }
+	@Override
+	public int getSuctionAmount(ForgeDirection forgeDirection) {
+		return 0;
+	}
 
-    @Override
-	public int takeEssentia(Aspect paramAspect, int paramInt,ForgeDirection forgeDirection) {
+	@Override
+	public int takeEssentia(Aspect paramAspect, int paramInt, ForgeDirection forgeDirection) {
 		TileEntity tile = getTile();
-		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).takeEssentia(paramAspect, paramInt,forgeDirection) : 0;
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).takeEssentia(paramAspect, paramInt, forgeDirection) : 0;
 	}
 
 	@Override
@@ -405,63 +407,61 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 	@Override
-	public int addEssentia(Aspect arg0, int arg1,ForgeDirection forgeDirection) {
+	public int addEssentia(Aspect arg0, int arg1, ForgeDirection forgeDirection) {
 		TileEntity tile = getTile();
-		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).addEssentia(arg0, arg1,forgeDirection) : 0;
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).addEssentia(arg0, arg1, forgeDirection) : 0;
 	}
 
-    @Override
-    public Aspect getEssentiaType(ForgeDirection forgeDirection) {
+	@Override
+	public Aspect getEssentiaType(ForgeDirection forgeDirection) {
 
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaType(forgeDirection) : null;
-    }
-
-    @Override
-    public int getEssentiaAmount(ForgeDirection forgeDirection) {
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaAmount(forgeDirection) : 0;
-    }
-
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaType(forgeDirection) : null;
+	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	public int getEssentiaAmount(ForgeDirection forgeDirection) {
+		TileEntity tile = getTile();
+		return tile instanceof IEssentiaTransport ? ((IEssentiaTransport) tile).getEssentiaAmount(forgeDirection) : 0;
+	}
+
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
 	public String getType() {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getType() : "Transvector Interface Unconnected Peripherad";
 	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Optional.Method(modid = "ComputerCraft")
 	public String[] getMethodNames() {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).getMethodNames() : new String[0];
 	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Optional.Method(modid = "ComputerCraft")
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
 		return getTile() instanceof IPeripheral ? ((IPeripheral) getTile()).callMethod(computer, context, method, arguments) : new Object[0];
 	}
 
-
 	@Override
 
 	public void attach(IComputerAccess computer) {
-		if(getTile() instanceof  IPeripheral){
+		if (getTile() instanceof IPeripheral) {
 			((IPeripheral) getTile()).attach(computer);
 		}
 	}
 
 	@Override
-    @Optional.Method(modid = "ComputerCraft")
+	@Optional.Method(modid = "ComputerCraft")
 	public void detach(IComputerAccess computer) {
-		if(getTile() instanceof  IPeripheral){
+		if (getTile() instanceof IPeripheral) {
 			((IPeripheral) getTile()).detach(computer);
 		}
 	}
 
-    @Override
-    @Optional.Method(modid = "ComputerCraft")
-    public boolean equals(IPeripheral other) {
-        return this.equals((Object)other);
-    }
+	@Override
+	@Optional.Method(modid = "ComputerCraft")
+	public boolean equals(IPeripheral other) {
+		return this.equals((Object) other);
+	}
 }
