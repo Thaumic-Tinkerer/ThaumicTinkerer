@@ -4,8 +4,8 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 
 /**
@@ -37,7 +37,7 @@ public class PacketToggleArmor implements IMessage, IMessageHandler<PacketToggle
 	public IMessage onMessage(PacketToggleArmor message, MessageContext ctx) {
 		EntityPlayer player;
 		if (ctx.side.isClient())
-			player = Minecraft.getMinecraft().thePlayer;
+			player = TTClientProxy.getPlayer();
 		else {
 			player = ctx.getServerHandler().playerEntity;
 		}

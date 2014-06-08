@@ -20,6 +20,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.EnumChatFormatting;
@@ -45,6 +46,7 @@ import vazkii.tinkerer.client.render.item.RenderMobDisplay;
 import vazkii.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import vazkii.tinkerer.client.render.tile.*;
 import vazkii.tinkerer.client.render.tile.kami.RenderTileWarpGate;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
@@ -55,6 +57,7 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
+import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 
 public class TTClientProxy extends TTCommonProxy {
 
@@ -68,6 +71,10 @@ public class TTClientProxy extends TTCommonProxy {
 		if (ConfigHandler.enableKami)
 			//kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
 			kamiRarity = EnumHelperClient.addEnum(new Class[][]{ { EnumRarity.class, EnumChatFormatting.class, String.class } }, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
+	}
+
+	public static EntityPlayer getPlayer() {
+		return Minecraft.getMinecraft().thePlayer;
 	}
 
 	@Override
@@ -101,6 +108,12 @@ public class TTClientProxy extends TTCommonProxy {
 		if (ConfigHandler.enableKami) {
 			ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
 		}
+	}
+
+	@Override
+	protected void registerPackets() {
+		super.registerPackets();
+		ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 1, Side.CLIENT);
 	}
 
 	private void registerRenderIDs() {
