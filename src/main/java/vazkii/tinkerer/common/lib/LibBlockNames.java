@@ -14,43 +14,41 @@
  */
 package vazkii.tinkerer.common.lib;
 
-import vazkii.tinkerer.client.lib.LibResources;
-
 public final class LibBlockNames {
 
-	public static final String DARK_QUARTZ = LibResources.PREFIX_MOD + "darkQuartz";
-	public static final String DARK_QUARTZ_SLAB = LibResources.PREFIX_MOD + "darkQuartzSlab";
-	public static final String DARK_QUARTZ_SLAB_FULL = LibResources.PREFIX_MOD + "darkQuartzSlabFull";
-	public static final String DARK_QUARTZ_STAIRS = LibResources.PREFIX_MOD + "darkQuartzStairs";
-	public static final String INTERFACE = LibResources.PREFIX_MOD + "interface";
-	public static final String GASEOUS_LIGHT = LibResources.PREFIX_MOD + "gaseousLight";
-	public static final String GASEOUS_SHADOW = LibResources.PREFIX_MOD + "gaseousShadow";
-	public static final String ANIMATION_TABLET = LibResources.PREFIX_MOD + "animationTablet";
-	public static final String NITOR_GAS = LibResources.PREFIX_MOD + "nitorGas";
-	public static final String MAGNET = LibResources.PREFIX_MOD + "magnet";
-	public static final String MOB_MAGNET = LibResources.PREFIX_MOD + "mobMagnet";
-	public static final String ENCHANTER = LibResources.PREFIX_MOD + "enchanter";
-	public static final String FUNNEL = LibResources.PREFIX_MOD + "funnel";
-	public static final String DISLOCATOR = LibResources.PREFIX_MOD + "dislocator";
-	public static final String REPAIRER = LibResources.PREFIX_MOD + "repairer";
-	public static final String ASPECT_ANALYZER = LibResources.PREFIX_MOD + "aspectAnalyzer";
-	public static final String PLATFORM = LibResources.PREFIX_MOD + "platform";
+	public static final String DARK_QUARTZ = "darkQuartz";
+	public static final String DARK_QUARTZ_SLAB = "darkQuartzSlab";
+	public static final String DARK_QUARTZ_SLAB_FULL = "darkQuartzSlabFull";
+	public static final String DARK_QUARTZ_STAIRS = "darkQuartzStairs";
+	public static final String INTERFACE = "interface";
+	public static final String GASEOUS_LIGHT = "gaseousLight";
+	public static final String GASEOUS_SHADOW = "gaseousShadow";
+	public static final String ANIMATION_TABLET = "animationTablet";
+	public static final String NITOR_GAS = "nitorGas";
+	public static final String MAGNET = "magnet";
+	public static final String MOB_MAGNET = "mobMagnet";
+	public static final String ENCHANTER = "enchanter";
+	public static final String FUNNEL = "funnel";
+	public static final String DISLOCATOR = "dislocator";
+	public static final String REPAIRER = "repairer";
+	public static final String ASPECT_ANALYZER = "aspectAnalyzer";
+	public static final String PLATFORM = "platform";
 
-	public static final String WARP_GATE = LibResources.PREFIX_MOD + "warpGate";
+	public static final String WARP_GATE = "warpGate";
 
-	public static final String CAMO = LibResources.PREFIX_MOD + "camo";
+	public static final String CAMO = "camo";
 
-	public static final String PORTAL = LibResources.PREFIX_MOD + "portal";
+	public static final String PORTAL = "bedrockPortal";
 
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
 			"tile." + DARK_QUARTZ,
-			"tile." + LibResources.PREFIX_MOD + "darkQuartzChiseled",
-			"tile." + LibResources.PREFIX_MOD + "darkQuartzPillar"
+			"tile." + "darkQuartzChiseled",
+			"tile." + "darkQuartzPillar"
 	};
 
-	public static final String MOBILIZER_RELAY = LibResources.PREFIX_MOD + "Levitational Locomotive Relay";
-	public static final String SPAWNER = LibResources.PREFIX_MOD + "spawner";
-	public static final String MOBILIZER = LibResources.PREFIX_MOD + "Levitational Locomotive";
-	public static final String GOLEMCONNECTOR = LibResources.PREFIX_MOD + "golemConnector";
+	public static final String MOBILIZER_RELAY = "Levitational Locomotive Relay";
+	public static final String SPAWNER = "spawner";
+	public static final String MOBILIZER = "Levitational Locomotive";
+	public static final String GOLEMCONNECTOR = "golemConnector";
 
 }

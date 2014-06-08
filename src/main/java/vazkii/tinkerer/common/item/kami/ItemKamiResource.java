@@ -48,7 +48,7 @@ public class ItemKamiResource extends ItemMod {
 		icons = new IIcon[subtypes];
 
 		for (int i = 0; i < icons.length; i++)
-			icons[i] = IconHelper.forNameRaw(par1IconRegister, LibItemNames.KAMI_RESOURCE_NAMES[i]);
+			icons[i] = IconHelper.forName(par1IconRegister, LibItemNames.KAMI_RESOURCE_NAMES[i]);
 	}
 
 	@Override
