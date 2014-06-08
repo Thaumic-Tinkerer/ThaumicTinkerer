@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.block;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
@@ -151,25 +152,25 @@ public final class ModBlocks {
 	}
 
 	public static void initTileEntities() {
-		GameRegistry.registerTileEntity(TileTransvectorInterface.class, LibBlockNames.INTERFACE);
-		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
-		GameRegistry.registerTileEntity(TileMagnet.class, LibBlockNames.MAGNET);
-		GameRegistry.registerTileEntity(TileMobMagnet.class, LibBlockNames.MOB_MAGNET);
-		GameRegistry.registerTileEntity(TileEnchanter.class, LibBlockNames.ENCHANTER);
-		GameRegistry.registerTileEntity(TileFunnel.class, LibBlockNames.FUNNEL);
-		GameRegistry.registerTileEntity(TileTransvectorDislocator.class, LibBlockNames.DISLOCATOR);
-		GameRegistry.registerTileEntity(TileRepairer.class, LibBlockNames.REPAIRER);
-		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibBlockNames.ASPECT_ANALYZER);
-		GameRegistry.registerTileEntity(TileCamo.class, LibBlockNames.CAMO);
+		GameRegistry.registerTileEntity(TileTransvectorInterface.class, LibResources.PREFIX_MOD + LibBlockNames.INTERFACE);
+		GameRegistry.registerTileEntity(TileAnimationTablet.class, LibResources.PREFIX_MOD + LibBlockNames.ANIMATION_TABLET);
+		GameRegistry.registerTileEntity(TileMagnet.class, LibResources.PREFIX_MOD + LibBlockNames.MAGNET);
+		GameRegistry.registerTileEntity(TileMobMagnet.class, LibResources.PREFIX_MOD + LibBlockNames.MOB_MAGNET);
+		GameRegistry.registerTileEntity(TileEnchanter.class, LibResources.PREFIX_MOD + LibBlockNames.ENCHANTER);
+		GameRegistry.registerTileEntity(TileFunnel.class, LibResources.PREFIX_MOD + LibBlockNames.FUNNEL);
+		GameRegistry.registerTileEntity(TileTransvectorDislocator.class, LibResources.PREFIX_MOD + LibBlockNames.DISLOCATOR);
+		GameRegistry.registerTileEntity(TileRepairer.class, LibResources.PREFIX_MOD + LibBlockNames.REPAIRER);
+		GameRegistry.registerTileEntity(TileAspectAnalyzer.class, LibResources.PREFIX_MOD + LibBlockNames.ASPECT_ANALYZER);
+		GameRegistry.registerTileEntity(TileCamo.class, LibResources.PREFIX_MOD + LibBlockNames.CAMO);
 
-		GameRegistry.registerTileEntity(TileEntityMobilizer.class, LibBlockNames.MOBILIZER);
+		GameRegistry.registerTileEntity(TileEntityMobilizer.class, LibResources.PREFIX_MOD + LibBlockNames.MOBILIZER);
 
-		GameRegistry.registerTileEntity(TileEntityRelay.class, LibBlockNames.MOBILIZER_RELAY);
-		GameRegistry.registerTileEntity(TileGolemConnector.class, LibBlockNames.GOLEMCONNECTOR);
+		GameRegistry.registerTileEntity(TileEntityRelay.class, LibResources.PREFIX_MOD + LibBlockNames.MOBILIZER_RELAY);
+		GameRegistry.registerTileEntity(TileGolemConnector.class, LibResources.PREFIX_MOD + LibBlockNames.GOLEMCONNECTOR);
 
-		GameRegistry.registerTileEntity(TileSummon.class, LibBlockNames.SPAWNER);
+		GameRegistry.registerTileEntity(TileSummon.class, LibResources.PREFIX_MOD + LibBlockNames.SPAWNER);
 		if (ConfigHandler.enableKami) {
-			GameRegistry.registerTileEntity(TileWarpGate.class, LibBlockNames.WARP_GATE);
+			GameRegistry.registerTileEntity(TileWarpGate.class, LibResources.PREFIX_MOD + LibBlockNames.WARP_GATE);
 		}
 	}
 
