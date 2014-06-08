@@ -33,42 +33,42 @@ ttmisc.absorbing=§a开启吸引模式
 
 
 # ITEM NAMES
-item.ttinkerer:darkQuartz.name=烟黑石英
-item.ttinkerer:connector.name=矢量变换绑定器
-item.ttinkerer:gaseousLight.name=光明气瓶
-item.ttinkerer:gaseousShadow.name=暗影气瓶
-item.ttinkerer:gasRemover.name=烟雾驱散器
-item.ttinkerer:spellCloth.name=魅惑之布
-item.ttinkerer:focusFlight.name=法杖核心：升腾
-item.ttinkerer:focusDislocation.name=法杖核心：转移
-item.ttinkerer:cleansingTalisman.name=防身护身符
-item.ttinkerer:brightNitor.name=超能闪耀之光
-item.ttinkerer:focusTelekinesis.name=法杖核心：念力
-item.ttinkerer:soulMould.name=灵魂模具
-item.ttinkerer:xpTalisman.name=汇魔护身符
-item.ttinkerer:focusSmelt.name=法杖核心：伊夫利特之辉
-item.ttinkerer:focusHeal.name=法杖核心：愈合
-item.ttinkerer:focusEnderChest.name=法杖核心: 末影裂痕
-item.ttinkerer:bloodSword.name=咒灵之剑
-item.ttinkerer:revealingHelm.name=揭示之头盔
-item.ttinkerer:infusedInkwell.name=注魔笔与墨
-item.ttinkerer:focusDeflect.name=法杖核心:扭曲
+item.darkQuartz.name=烟黑石英
+item.connector.name=矢量变换绑定器
+item.gaseousLight.name=光明气瓶
+item.gaseousShadow.name=暗影气瓶
+item.gasRemover.name=烟雾驱散器
+item.spellCloth.name=魅惑之布
+item.focusFlight.name=法杖核心：升腾
+item.focusDislocation.name=法杖核心：转移
+item.cleansingTalisman.name=防身护身符
+item.brightNitor.name=超能闪耀之光
+item.focusTelekinesis.name=法杖核心：念力
+item.soulMould.name=灵魂模具
+item.xpTalisman.name=汇魔护身符
+item.focusSmelt.name=法杖核心：伊夫利特之辉
+item.focusHeal.name=法杖核心：愈合
+item.focusEnderChest.name=法杖核心: 末影裂痕
+item.bloodSword.name=咒灵之剑
+item.revealingHelm.name=揭示之头盔
+item.infusedInkwell.name=注魔笔与墨
+item.focusDeflect.name=法杖核心:扭曲
 
 # BLOCK NAMES
-tile.ttinkerer:darkQuartz.name=烟黑石英块
-tile.ttinkerer:darkQuartzChiseled.name=雕琢烟黑石英块
-tile.ttinkerer:darkQuartzPillar.name=柱状烟黑石英块
-tile.ttinkerer:darkQuartzSlab.name=烟黑石英台阶
-tile.ttinkerer:darkQuartzStairs.name=烟黑石英楼梯
-tile.ttinkerer:interface.name=矢量变换接口
-tile.ttinkerer:animationTablet.name=活化工具台
-tile.ttinkerer:magnet.name=奥术念力磁铁
-tile.ttinkerer:mobMagnet.name=奥术生物磁铁
-tile.ttinkerer:enchanter.name=渗透附魔台
-tile.ttinkerer:funnel.name=要素漏斗
-tile.ttinkerer:dislocator.name=矢量转位仪
-tile.ttinkerer:repairer.name=奥法修复台
-tile.ttinkerer:aspectAnalyzer.name=要素分析仪
+tile.darkQuartz.name=烟黑石英块
+tile.darkQuartzChiseled.name=雕琢烟黑石英块
+tile.darkQuartzPillar.name=柱状烟黑石英块
+tile.darkQuartzSlab.name=烟黑石英台阶
+tile.darkQuartzStairs.name=烟黑石英楼梯
+tile.interface.name=矢量变换接口
+tile.animationTablet.name=活化工具台
+tile.magnet.name=奥术念力磁铁
+tile.mobMagnet.name=奥术生物磁铁
+tile.enchanter.name=渗透附魔台
+tile.funnel.name=要素漏斗
+tile.dislocator.name=矢量转位仪
+tile.repairer.name=奥法修复台
+tile.aspectAnalyzer.name=要素分析仪
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=腾迅

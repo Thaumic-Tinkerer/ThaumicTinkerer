@@ -16,14 +16,12 @@ package vazkii.tinkerer.common.network.packet;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 
 public abstract class PacketTile<T extends TileEntity> implements IMessage {
@@ -67,7 +65,7 @@ public abstract class PacketTile<T extends TileEntity> implements IMessage {
 	public IMessage onMessage(PacketTile message, MessageContext ctx) {
 		MinecraftServer server = MiscHelper.server();
 		if (ctx.side.isClient())
-			message.player = this.getClientPlayer();
+			message.player = TTClientProxy.getPlayer();
 		else {
 			message.player = ctx.getServerHandler().playerEntity;
 		}
@@ -85,10 +83,5 @@ public abstract class PacketTile<T extends TileEntity> implements IMessage {
 			}
 		}
 		return null;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static EntityPlayer getClientPlayer() {
-		return Minecraft.getMinecraft().thePlayer;
 	}
 }

@@ -90,6 +90,8 @@ public final class ModRecipes {
 		}
 
 		for (int i = 0; i < NumericAspectHelper.values.size(); i++) {
+
+			ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.mobAspect, 1, i), new int[]{ i }, new AspectList().add(NumericAspectHelper.getAspect(i), 8));
 			registerResearchItem(LibResearch.KEY_SUMMON + "1", new ItemStack(ModItems.mobAspect, 1, i + 20), "XXX", "XXX", "XXX", 'X', new ItemStack(ModItems.mobAspect, 1, i));
 		}
 
