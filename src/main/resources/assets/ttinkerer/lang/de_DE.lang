@@ -60,6 +60,8 @@ ttmisc.light0=Licht aktiviert
 ttmisc.light1=Licht deaktiviert
 ttmisc.awakenedArmor0=Rüstungsteil aktiviert
 ttmisc.awakenedArmor1=Rüstungsteil deaktiviert
+ttmisc.disableAllArmor=Kami-Rüstung deaktiviert
+ttmisc.enableAllArmor=Kami-Rüstung aktiviert
 ttmisc.differentDim=Andere Dimension
 ttmisc.distance=Entfernung
 ttmisc.lockedGate=Erlaube Teleports hierher
@@ -127,7 +129,7 @@ item.ttinkerer:ichorShovelGem.name=Erweckte Ichoriumschaufel
 item.ttinkerer:ichorAxeGem.name=Erweckte Ichoriumaxt
 item.ttinkerer:ichorSwordGem.name=Erwecktes Ichoriumschwert
 item.ttinkerer:ichorPouch.name=Bodenloser Beutel
-item.ttinkerer:blockTalisman.name=Schwarzloch-Talisman
+item.ttinkerer:blockTalisman.name=Schwarzloch-Ring
 item.ttinkerer:placementMirror.name=Sichtglas des Weltenformers
 item.ttinkerer:focusShadowbeam.name=Stabfokus: Dunkelstrahl
 item.ttinkerer:focusXPDrain.name=Stabfokus: Erfahrungsabsorption
@@ -209,7 +211,7 @@ ttresearch.page.DARK_QUARTZ.0=Rauchiger Quarz ist ziemlich genau Quarz, nur nega
 # -- TOME OF KNOWLEDGE SHARING
 ttresearch.name.SHARE_TOME=Buch des Wissensteilens
 ttresearch.lore.SHARE_TOME=Tagebuch eines Goldfischs
-ttresearch.page.SHARE_TOME.0=Wenn du möchtest, dein Wissen mit dem Rest der Welt zu teilen, ist dieses Item etwas für dich.<BR><BR>Wenn du dieses Buch einfach rechtsklickst und es einem anderen gibst, wird er, wenn du online bist, all die Forschung, die du bisher entdeckt hast, erhalten.<BR><BR>(Anmerkung: In dem Fall, dass hier kein Rezept zu sehen ist, wurde es deaktiviert und das Buch kann nur durch das Kreativ-Menü erhalten werden)
+ttresearch.page.SHARE_TOME.0=Wenn du möchtest, dein Wissen mit dem Rest der Welt zu teilen, ist dieses Item etwas für dich.<BR><BR>Wenn du dieses Buch einfach rechtsklickst und es einem anderen gibst, wird er all die Forschung, die du bisher entdeckt hast, erhalten.<BR><BR>(Anmerkung: In dem Fall, dass hier kein Rezept zu sehen ist, wurde es deaktiviert und das Buch kann nur durch das Kreativ-Menü erhalten werden)
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=Transvektor-Schnittstelle
@@ -367,7 +369,7 @@ ttresearch.page.TTENCH_SHATTER.0=Du hast eine Verzauberung formuliert, die dich 
 # -- ENCHANTMENT: SHOCKWAVE
 ttresearch.name.TTENCH_SHOCKWAVE=Verzauberung: Schockwelle
 ttresearch.lore.TTENCH_SHOCKWAVE=Mini-Erdebeben
-ttresearch.page.TTENCH_SHOCKWAVE.0=Du hast eine Verzauberung formuliert, die dir das Töten von Monstern im Fall erleichtert.<BR><BR>Diese Verzauberung kann auf Stiefel gelegt werden. Wenn getan, wird, wenn der Träger fällt, allen Monstern und Spielern in der Umgebung Schaden zugefügt.
+ttresearch.page.TTENCH_SHOCKWAVE.0=Du hast eine Verzauberung formuliert, die dir das Töten von Monstern im Fall erleichtert.<BR><BR>Diese Verzauberung kann auf Stiefel gelegt werden. Wenn getan, wird, wenn der Träger fällt, allen Monstern und Spielern in der Umgebung Schaden zugefügt.<BR><BR>Leider macht jegliche Art von Magie, die den Spieler leichter macht, zum Beipiel, um Fallschaden zu verhindern, den Spieler zu leicht, um Schaden zu verursachen. Du glaubst, dass es später Wege geben könnte, um dies zu verhindern, sobald du dich mehr mit der Magie auseinandersetzt.
 
 # -- ENCHANTMENT: POUNCE
 ttresearch.name.TTENCH_POUNCE=Verzauberung: Niederstoßen
@@ -528,15 +530,15 @@ ttresearch.name.ICHOR_POUCH=Bodenloser Beutel
 ttresearch.lore.ICHOR_POUCH=Haha, he said bottom
 ttresearch.page.ICHOR_POUCH.0=Indem du einen Fokusbeutel mit Items wie dem Tragbaren Loch versetzt hast, hast du es nicht nur geschafft, ihm zu ermöglichen, anderes als Foki zu halten, sondern auch, seine Speichergröße massiv zu erweitern.<BR><BR>Dieser Beutel kann nicht nur mehr halten als vier Truhen, er dient auch immer noch als gewöhnlicher Fokusbeutel, was es Foki in ihm ermöglicht, sich wie gewohnt auf den Stab aufzusetzen. Sag deinen Inventarproblemen Auf Wiedersehen.
 
-# -- BLACK HOLE TALISMAN
-ttresearch.name.BLOCK_TALISMAN=Schwarzloch-Talisman
+# -- BLACK HOLE RING
+ttresearch.name.BLOCK_TALISMAN=Schwarzloch-Ring
 ttresearch.lore.BLOCK_TALISMAN=Mehr Pascal als dein Hirn aushält
-ttresearch.page.BLOCK_TALISMAN.0=Dieser Talisman kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet. Durch Rechtsklick kann der Inhalt in einem anderen Inventar platziert werden, oder wie ein normaler Block.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein kein Problem mehr sein. Wenn der Talisman leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.
+ttresearch.page.BLOCK_TALISMAN.0=Dieser Ring kann jeglichen Block kompensieren, rechtsklicke einfach mit ihm auf den Blocktypen, auf den du ihn einstellen möchtest, wenn via Rechtsklick aktiviert, wird er allen Überschuss (mehr als 1 Stapel) an diesem Block aus deinem Inventar absorbieren, und sichergehen, dass sich immer mindestens ein Stapel dort befindet. Durch Rechtsklick kann der Inhalt in einem anderen Inventar platziert werden, oder wie ein normaler Block.<BR><BR>Er kann über 2 Billionen Blöcke des selben Typs speichern. Anscheinend wird inventarverstopfender Pflasterstein nun kein Problem mehr sein. Wenn der Ring leer ist, kann mit Rechtsklick auf einen anderen Block seine Bindung verändert werden.
 
 # -- WORLDSHAPER'S LOOKING GLASS
 ttresearch.name.PLACEMENT_MIRROR=Sichtglas des Weltenformers
 ttresearch.lore.PLACEMENT_MIRROR=Quecksilberauge
-ttresearch.page.PLACEMENT_MIRROR.0=Durch das Studieren der Welt hast du ein Glas konstruiert, das dir erlaubt, allein durch Gedankenkraft eine große Menge an Blöcken in der Welt zu platzieren.<BR><BR>Um den zu platzierenden Block einzustellen, würdest du mit dem Glas auf den Block Shift-rechtsklicken. Das Shift-Rechtsklicken des Items in der Luft ändert die Menge an Blöcken, die platziert werden.<BR><BR>Wenn Blöcke in der Welt platziert werden, wird eine Phantom-Version, die zeigt, wie die Blöcke platziert werden würden, erscheinen. Mit Rechtsklick werden die Blöcke verbraucht und platziert, entweder vom Inventar oder einem Schwarzloch-Talisman, der den benötigten Block enthält.
+ttresearch.page.PLACEMENT_MIRROR.0=Durch das Studieren der Welt hast du ein Glas konstruiert, das dir erlaubt, allein durch Gedankenkraft eine große Menge an Blöcken in der Welt zu platzieren.<BR><BR>Um den zu platzierenden Block einzustellen, würdest du mit dem Glas auf den Block Shift-rechtsklicken. Das Shift-Rechtsklicken des Items in der Luft ändert die Menge an Blöcken, die platziert werden.<BR><BR>Wenn Blöcke in der Welt platziert werden, wird eine Phantom-Version, die zeigt, wie die Blöcke platziert werden würden, erscheinen. Mit Rechtsklick werden die Blöcke verbraucht und platziert, entweder vom Inventar oder einem Schwarzloch-Ring, der den benötigten Block enthält.
 
 # -- WAND FOCUS: SHADOWBEAM
 ttresearch.name.FOCUS_SHADOWBEAM=Stabfokus: Dunkelstrahl
