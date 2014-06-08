@@ -1,3 +1,9 @@
+**Build 145**
+* Fixed crash on servers
+* Updated German translation
+* Changed Ichor textures
+* Removed 'ttinkerer:' prefix. This fixes console spam on startup.
+
 **Build 144**
 * Updated to 1.7!
 * Added new enchantments
