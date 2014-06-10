@@ -23,7 +23,8 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
@@ -44,7 +45,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 			return;
 
 		ItemBrightNitor.meta = 1;
-		ModItems.brightNitor.onUpdate(null, player.worldObj, player, 0, false);
+		ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemBrightNitor.class).onUpdate(null, player.worldObj, player, 0, false);
 		ItemBrightNitor.meta = 0;
 
 		int x = (int) Math.floor(player.posX);
@@ -62,6 +63,16 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 			int z1 = z + (int) newVector.y;
 			ItemBrightNitor.setBlock(x1, y, z1, player.worldObj);
 		}
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_LEGS_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)

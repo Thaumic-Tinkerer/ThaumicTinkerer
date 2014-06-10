@@ -12,7 +12,7 @@
  *
  * File Created @ [8 Sep 2013, 15:44:29 (GMT)]
  */
-package vazkii.tinkerer.common.item;
+package vazkii.tinkerer.common.registry;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,9 +21,11 @@ import net.minecraft.item.Item;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 
-public class ItemMod extends Item {
+import java.util.ArrayList;
 
-	public ItemMod() {
+public abstract class ItemBase extends Item implements ITTinkererItem {
+
+	public ItemBase() {
 		super();
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
@@ -32,5 +34,20 @@ public class ItemMod extends Item {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
 	}
 }

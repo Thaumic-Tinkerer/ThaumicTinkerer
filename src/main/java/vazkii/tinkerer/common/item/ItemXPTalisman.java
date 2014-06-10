@@ -33,10 +33,13 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibFeatures;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
-public class ItemXPTalisman extends ItemMod implements IBauble {
+public class ItemXPTalisman extends ItemBase implements IBauble {
 
 	private static final String TAG_XP = "xp";
 	IIcon enabledIcon;
@@ -97,6 +100,16 @@ public class ItemXPTalisman extends ItemMod implements IBauble {
 	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -181,5 +194,10 @@ public class ItemXPTalisman extends ItemMod implements IBauble {
 	@Override
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		return true;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.XP_TALISMAN;
 	}
 }

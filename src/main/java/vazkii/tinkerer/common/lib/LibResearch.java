@@ -16,19 +16,11 @@ package vazkii.tinkerer.common.lib;
 
 public final class LibResearch {
 
-	public static final String CATEGORY_BASICS = "BASICS";
-	public static final String CATEGORY_THAUMATURGY = "THAUMATURGY";
-	public static final String CATEGORY_ALCHEMY = "ALCHEMY";
-	public static final String CATEGORY_ARTIFICE = "ARTIFICE";
-	public static final String CATEGORY_GOLEMANCY = "GOLEMANCY";
-
-	public static final String CATEGORY_ENCHANTING = "TT_CATEGORY";
 	public static final String CATEGORY_THAUMICTINKERER = "TT_CATEGORY";
 
 	public static final String KEY_MOBILIZER = "LEVITATOR";
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
 	public static final String KEY_INTERFACE = "INTERFACE";
-	public static final String KEY_CONNECTOR = "CONNECTOR";
 	public static final String KEY_GASEOUS_LIGHT = "GASEOUS_LIGHT";
 	public static final String KEY_GASEOUS_SHADOW = "GASEOUS_SHADOW";
 	public static final String KEY_GAS_REMOVER = "GAS_REMOVER";

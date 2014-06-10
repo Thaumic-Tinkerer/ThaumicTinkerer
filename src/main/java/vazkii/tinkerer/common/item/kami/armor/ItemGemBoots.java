@@ -24,6 +24,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,16 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 		int z = (int) player.posZ;
 		if (player.worldObj.getBlock(x, y, z) == Blocks.dirt && player.worldObj.getBlockMetadata(x, y, z) == 0)
 			player.worldObj.setBlock(x, y, z, Blocks.grass, 0, 2);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_BOOTS_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@SubscribeEvent

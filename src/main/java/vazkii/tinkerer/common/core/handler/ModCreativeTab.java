@@ -23,8 +23,9 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibMisc;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class ModCreativeTab extends CreativeTabs {
 		if (displayItem == null)
 			addWand();
 
-		return ModItems.kamiResource;
+		return ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class);
 	}
 
 	@Override
@@ -61,7 +62,6 @@ public class ModCreativeTab extends CreativeTabs {
 
 		addWand();
 
-		addItem(ModItems.darkQuartz);
 		addBlock(ModBlocks.darkQuartz);
 		addBlock(ModBlocks.darkQuartzStairs);
 		addBlock(ModBlocks.darkQuartzSlab);
@@ -69,7 +69,6 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.mobilizer);
 		addBlock(ModBlocks.mobilizerRelay);
 		addBlock(ModBlocks.golemConnector);
-		addItem(ModItems.connector);
 		addBlock(ModBlocks.interfase);
 		addBlock(ModBlocks.dislocator);
 
@@ -78,7 +77,6 @@ public class ModCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.repairer);
 		addBlock(ModBlocks.magnet);
 		//addBlock(ModBlocks.portal);
-		addItem(ModItems.soulMould);
 		addBlock(ModBlocks.animationTablet);
 
 		if (Loader.isModLoaded("ComputerCraft"))
@@ -86,64 +84,6 @@ public class ModCreativeTab extends CreativeTabs {
 
 		if (ConfigHandler.enableKami) {
 			addBlock(ModBlocks.warpGate);
-		}
-
-		addItem(ModItems.gaseousLight);
-		addItem(ModItems.gaseousShadow);
-		addItem(ModItems.gasRemover);
-
-		addItem(ModItems.revealingHelm);
-		addItem(ModItems.cleansingTalisman);
-		addItem(ModItems.bloodSword);
-		addItem(ModItems.brightNitor);
-		addItem(ModItems.shareBook);
-		addItem(ModItems.focusFlight);
-		addItem(ModItems.focusDislocation);
-		addItem(ModItems.focusTelekinesis);
-		addItem(ModItems.focusDeflect);
-		addItem(ModItems.focusSmelt);
-		addItem(ModItems.focusHeal);
-		addItem(ModItems.focusEnderChest);
-
-		addBlock(ModBlocks.enchanter);
-		addItem(ModItems.xpTalisman);
-		addItem(ModItems.spellCloth);
-
-		addItem(ModItems.mobAspect);
-		addBlock(ModBlocks.spawner);
-		// TODO: Add Different heads here maybe?
-		//addItem(ModItems.mobDisplay);
-		if (ConfigHandler.enableKami) {
-			addItem(ModItems.kamiResource);
-
-			addItem(ModItems.ichorHelm);
-			addItem(ModItems.ichorHelmGem);
-			addItem(ModItems.ichorChest);
-			addItem(ModItems.ichorChestGem);
-			addItem(ModItems.ichorLegs);
-			addItem(ModItems.ichorLegsGem);
-			addItem(ModItems.ichorBoots);
-			addItem(ModItems.ichorBootsGem);
-
-			addItem(ModItems.ichorPick);
-			addItem(ModItems.ichorPickGem);
-			addItem(ModItems.ichorShovel);
-			addItem(ModItems.ichorShovelGem);
-			addItem(ModItems.ichorAxe);
-			addItem(ModItems.ichorAxeGem);
-			addItem(ModItems.ichorSword);
-			addItem(ModItems.ichorSwordGem);
-
-			addItem(ModItems.focusShadowbeam);
-			addItem(ModItems.focusXPDrain);
-			addItem(ModItems.focusRecall);
-
-			addItem(ModItems.ichorPouch);
-			addItem(ModItems.catAmulet);
-			addItem(ModItems.blockTalisman);
-			addItem(ModItems.placementMirror);
-			addItem(ModItems.protoclay);
-			addItem(ModItems.skyPearl);
 		}
 	}
 
@@ -158,8 +98,8 @@ public class ModCreativeTab extends CreativeTabs {
 
 		if (ConfigHandler.enableKami) {
 			ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
-			((ItemWandCasting) wand1.getItem()).setRod(wand1, ModItems.rodIchorcloth);
-			((ItemWandCasting) wand1.getItem()).setCap(wand1, ModItems.capIchor);
+			((ItemWandCasting) wand1.getItem()).setRod(wand1, ThaumicTinkerer.proxy.rodIchor);
+			((ItemWandCasting) wand1.getItem()).setCap(wand1, ThaumicTinkerer.proxy.capIchor);
 			((ItemWandCasting) wand1.getItem()).storeAllVis(wand1, new AspectList().add(Aspect.AIR, 100000).add(Aspect.EARTH, 100000).add(Aspect.FIRE, 100000).add(Aspect.WATER, 100000).add(Aspect.ORDER, 100000).add(Aspect.ENTROPY, 100000));
 			if (list != null)
 				list.add(wand1);

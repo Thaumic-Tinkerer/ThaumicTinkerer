@@ -14,10 +14,10 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.entities.monster.EntityBrainyZombie;
 import thaumcraft.common.entities.monster.EntityFireBat;
 import thaumcraft.common.entities.monster.EntityWisp;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.ItemMobAspect;
 import vazkii.tinkerer.common.item.ItemMobDisplay;
-import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.lib.LibResearch;
 
 import java.util.Map;
@@ -148,7 +148,7 @@ public enum EnumMobAspect {
 	}
 
 	public ResearchPage GetRecepiePage() {
-		ItemStack output = new ItemStack(ModItems.mobDisplay);
+		ItemStack output = new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemMobAspect.class));
 		((ItemMobDisplay) output.getItem()).setEntityType(output, toString());
 		ItemStack[] inputs = new ItemStack[this.aspects.length];
 		int i = 0;

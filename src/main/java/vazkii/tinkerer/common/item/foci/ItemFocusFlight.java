@@ -27,6 +27,8 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 public class ItemFocusFlight extends ItemModFocus {
 
@@ -77,5 +79,15 @@ public class ItemFocusFlight extends ItemModFocus {
 	@Override
 	public AspectList getVisCost() {
 		return visUsage;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_FLIGHT;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

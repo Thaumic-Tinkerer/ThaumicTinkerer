@@ -43,8 +43,13 @@ import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemBloodSword extends ItemSword implements IRepairable {
+import java.util.ArrayList;
+
+public class ItemBloodSword extends ItemSword implements IRepairable, ITTinkererItem {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
@@ -153,5 +158,30 @@ public class ItemBloodSword extends ItemSword implements IRepairable {
 			}
 		}
 		return cache;
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.BLOOD_SWORD;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

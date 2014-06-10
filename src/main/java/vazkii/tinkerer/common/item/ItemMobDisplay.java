@@ -6,19 +6,32 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
 /**
  * Created by Katrina on 11/03/14.
  */
-public class ItemMobDisplay extends ItemMod {
+public class ItemMobDisplay extends ItemBase {
 	public static final String TAG_TYPE = "type";
 
 	public ItemMobDisplay() {
 		super();
 		setHasSubtypes(true); // This allows the item to be marked as a metadata item.
 		setMaxDamage(0); // This makes it so your item doesn't have the damage bar at the bottom of its icon, when "damaged" similar to the Tools.
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	public EnumMobAspect getEntityType(ItemStack stack) {
@@ -40,5 +53,10 @@ public class ItemMobDisplay extends ItemMod {
 			list.add(item);
 
 		}
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.MOB_DISPLAY;
 	}
 }

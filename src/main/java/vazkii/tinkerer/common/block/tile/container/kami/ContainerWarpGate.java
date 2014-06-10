@@ -18,10 +18,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.container.ContainerPlayerInv;
 import vazkii.tinkerer.common.block.tile.container.slot.kami.SlotSkyPearl;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 
 public class ContainerWarpGate extends ContainerPlayerInv {
 
@@ -57,7 +58,7 @@ public class ContainerWarpGate extends ContainerPlayerInv {
 				if (par2 < 10) {
 					if (!mergeItemStack(var5, 10, 36, false))
 						return null;
-				} else if (var3.getItem() == ModItems.skyPearl && !mergeItemStack(var5, 0, 10, false))
+				} else if (var3.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class) && !mergeItemStack(var5, 0, 10, false))
 					return null;
 
 				if (var5.stackSize == 0)

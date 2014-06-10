@@ -27,6 +27,8 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -101,6 +103,16 @@ public class ItemIchorSwordAdv extends ItemIchorSword implements IAdvancedTool {
 	@Override
 	public String getType() {
 		return "sword";
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_SWORD_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 }

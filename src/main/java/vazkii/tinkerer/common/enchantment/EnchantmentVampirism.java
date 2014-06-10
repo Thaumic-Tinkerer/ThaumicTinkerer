@@ -18,7 +18,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.ItemBloodSword;
 
 public class EnchantmentVampirism extends EnchantmentMod {
 
@@ -33,7 +33,7 @@ public class EnchantmentVampirism extends EnchantmentMod {
 
 	@Override
 	public boolean canApply(ItemStack par1ItemStack) {
-		return super.canApply(par1ItemStack) && par1ItemStack.getItem() != ModItems.bloodSword;
+		return super.canApply(par1ItemStack) && par1ItemStack.getItem().getClass() != ItemBloodSword.class;
 	}
 
 }

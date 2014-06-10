@@ -14,6 +14,8 @@ import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ExperienceHelper;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.awt.*;
 import java.util.List;
@@ -99,4 +101,13 @@ public class ItemFocusXPDrain extends ItemModFocus {
 		return "XPDRAIN";
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_XP_DRAIN;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

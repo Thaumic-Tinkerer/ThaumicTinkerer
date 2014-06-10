@@ -22,6 +22,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 public class ItemFocusShadowbeam extends ItemModFocus {
 
@@ -71,6 +73,16 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_SHADOWBEAM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	public static class Particle extends FXSparkle {

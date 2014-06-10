@@ -6,8 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import thaumcraft.api.IScribeTools;
 import thaumcraft.common.config.ConfigItems;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemInfusedInkwell extends ItemMod implements IScribeTools {
+public class ItemInfusedInkwell extends ItemBase implements IScribeTools {
 
 	public ItemInfusedInkwell() {
 		super();
@@ -17,6 +20,16 @@ public class ItemInfusedInkwell extends ItemMod implements IScribeTools {
 		canRepair = true;
 		setHasSubtypes(false);
 
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -31,4 +44,8 @@ public class ItemInfusedInkwell extends ItemMod implements IScribeTools {
 		return true;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.INFUSED_INKWELL;
+	}
 }

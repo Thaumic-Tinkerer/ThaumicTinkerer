@@ -36,12 +36,14 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import vazkii.tinkerer.common.item.ItemMod;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ItemBlockTalisman extends ItemMod implements IBauble {
+public class ItemBlockTalisman extends ItemKamiBase implements IBauble {
 	@Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
 	private static final String TAG_BLOCK_NAME = "blockName";
@@ -278,5 +280,15 @@ public class ItemBlockTalisman extends ItemMod implements IBauble {
 	@Override
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		return true;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.BLOCK_TALISMAN;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

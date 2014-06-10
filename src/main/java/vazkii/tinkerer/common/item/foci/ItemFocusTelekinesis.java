@@ -26,6 +26,8 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -81,4 +83,13 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 		return true;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_TELEKINESIS;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

@@ -27,6 +27,8 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ProjectileHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.Arrays;
 import java.util.List;
@@ -86,4 +88,13 @@ public class ItemFocusDeflect extends ItemModFocus {
 		return visUsage;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_DEFLECT;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

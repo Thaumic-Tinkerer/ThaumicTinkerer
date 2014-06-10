@@ -23,6 +23,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 public class ItemFocusRecall extends ItemModFocus {
 
@@ -87,4 +89,13 @@ public class ItemFocusRecall extends ItemModFocus {
 		return "RECALL";
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_RECALL;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

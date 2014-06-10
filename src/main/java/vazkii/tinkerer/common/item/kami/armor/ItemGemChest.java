@@ -25,8 +25,9 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.model.kami.ModelWings;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,16 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 			return;
 
 		ItemFocusDeflect.protectFromProjectiles(player);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_LEGS_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@SubscribeEvent
@@ -92,7 +103,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
 		ItemStack armor = player.getCurrentArmor(2);
-		return armor != null && armor.getItem() == ModItems.ichorChestGem && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage() == 0 && ConfigHandler.enableFlight;
+		return armor != null && armor.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemGemChest.class) && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage() == 0 && ConfigHandler.enableFlight;
 	}
 
 }

@@ -32,10 +32,16 @@ import thaumcraft.common.items.wands.ItemFocusPouch;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemIchorPouch extends ItemFocusPouch implements IBauble {
+import java.util.ArrayList;
+
+public class ItemIchorPouch extends ItemFocusPouch implements IBauble, ITTinkererItem {
 
 	public ItemIchorPouch() {
 		super();
@@ -108,5 +114,30 @@ public class ItemIchorPouch extends ItemFocusPouch implements IBauble {
 	@Override
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		return true;
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_POUCH;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return ConfigHandler.enableKami;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

@@ -8,7 +8,6 @@ import thaumcraft.common.tiles.TilePedestal;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.item.ItemMobAspect;
-import vazkii.tinkerer.common.item.ModItems;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ public class TileSummon extends TileEntity {
 
 	@Override
 	public void updateEntity() {
+
 		if (worldObj.getTotalWorldTime() % 300 == 0) {
 			ArrayList<TileEntity> pedestals = new ArrayList<TileEntity>();
 			for (int x = xCoord - 5; x < xCoord + 5; x++) {
@@ -38,18 +38,18 @@ public class TileSummon extends TileEntity {
 
 						if ((ped1 != ped2) && (ped2 != ped3) && (ped1 != ped3)) {
 							ArrayList<Aspect> aspects = new ArrayList<Aspect>();
-							aspects.add(ModItems.mobAspect.getAspect(ped1.getStackInSlot(0)));
+							aspects.add(ItemMobAspect.getAspect(ped1.getStackInSlot(0)));
 
-							aspects.add(ModItems.mobAspect.getAspect(ped2.getStackInSlot(0)));
+							aspects.add(ItemMobAspect.getAspect(ped2.getStackInSlot(0)));
 
-							aspects.add(ModItems.mobAspect.getAspect(ped3.getStackInSlot(0)));
+							aspects.add(ItemMobAspect.getAspect(ped3.getStackInSlot(0)));
 
 							for (EnumMobAspect recipe : EnumMobAspect.values()) {
 								if (Arrays.asList(recipe.aspects).containsAll(aspects) && aspects.containsAll(Arrays.asList(recipe.aspects))) {
 
-									boolean isInfused = ModItems.mobAspect.isInfused(ped1.getStackInSlot(0)) &&
-											ModItems.mobAspect.isInfused(ped2.getStackInSlot(0)) &&
-											ModItems.mobAspect.isInfused(ped3.getStackInSlot(0));
+									boolean isInfused = ItemMobAspect.isInfused(ped1.getStackInSlot(0)) &&
+											ItemMobAspect.isInfused(ped2.getStackInSlot(0)) &&
+											ItemMobAspect.isInfused(ped3.getStackInSlot(0));
 
 									if (isInfused && worldObj.getTotalWorldTime() % 1200 != 0) {
 										return;

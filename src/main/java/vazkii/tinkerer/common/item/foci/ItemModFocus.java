@@ -29,11 +29,12 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.IWandFocus;
 import thaumcraft.common.config.Config;
 import vazkii.tinkerer.client.core.helper.IconHelper;
-import vazkii.tinkerer.common.item.ItemMod;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
-public abstract class ItemModFocus extends ItemMod implements IWandFocus {
+public abstract class ItemModFocus extends ItemBase implements IWandFocus {
 
 	private IIcon ornament, depth;
 
@@ -60,6 +61,16 @@ public abstract class ItemModFocus extends ItemMod implements IWandFocus {
 			ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
 		if (hasDepth())
 			depth = IconHelper.forItem(par1IconRegister, this, "Depth");
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override

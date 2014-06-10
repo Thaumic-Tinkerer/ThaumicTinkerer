@@ -23,11 +23,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
-import vazkii.tinkerer.common.item.ItemMod;
 import vazkii.tinkerer.common.item.kami.tool.IAdvancedTool;
 import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemProtoclay extends ItemMod {
+public class ItemProtoclay extends ItemKamiBase {
 
 	public ItemProtoclay() {
 		super();
@@ -84,5 +86,15 @@ public class ItemProtoclay extends ItemMod {
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.PROTOCLAY;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

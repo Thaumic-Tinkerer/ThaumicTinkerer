@@ -18,18 +18,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.wands.WandCap;
 import vazkii.tinkerer.client.lib.LibResources;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 
 public class CapIchor extends WandCap {
 
 	ResourceLocation res = new ResourceLocation(LibResources.MODEL_CAP_ICHOR);
 
 	public CapIchor() {
-		super("ICHOR", 0.8F, new ItemStack(ModItems.kamiResource, 1, 4), 10);
+		super("ICHOR", 0.8F, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 4), 10);
 	}
 
 	public CapIchor(String s) {
-		super(s, 0.8F, new ItemStack(ModItems.kamiResource, 1, 10), 10);
+		super(s, 0.8F, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 10), 10);
 	}
 
 	@Override

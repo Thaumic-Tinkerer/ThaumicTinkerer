@@ -31,12 +31,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
-import vazkii.tinkerer.common.item.ItemMod;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemCatAmulet extends ItemMod implements IBauble {
+public class ItemCatAmulet extends ItemKamiBase implements IBauble {
 
 	public ItemCatAmulet() {
 		super();
@@ -115,5 +117,15 @@ public class ItemCatAmulet extends ItemMod implements IBauble {
 	@Override
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		return true;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.CAT_AMULET;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

@@ -12,14 +12,22 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.lib.research.ResearchManager;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.ResearchHelper;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemShareBook extends ItemMod {
+public class ItemShareBook extends ItemBase {
 
 	private static final String TAG_PLAYER = "player";
 	private static final String NON_ASIGNED = "[none]";
@@ -27,6 +35,20 @@ public class ItemShareBook extends ItemMod {
 	public ItemShareBook() {
 		super();
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SHARE_TOME, new AspectList(), 0, -1, 0, new ItemStack(this)).setStub().setAutoUnlock().setRound();
+		if (ConfigHandler.enableSurvivalShareTome)
+			research.setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_SHARE_TOME));
+		else research.setPages(new ResearchPage("0"));
+		return research;
 	}
 
 	@Override
@@ -85,6 +107,7 @@ public class ItemShareBook extends ItemMod {
 		String name = getPlayerName(par1ItemStack);
 		par3List.add(name.equals(NON_ASIGNED) ? StatCollector.translateToLocal("ttmisc.shareTome.noAssign") : String.format(StatCollector.translateToLocal("ttmisc.shareTome.playerName"), name));
 	}
+
 	@Override
 	public boolean getShareTag() {
 		return true;
@@ -108,4 +131,10 @@ public class ItemShareBook extends ItemMod {
 		cmp.setTag("research", list);
 
 	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.SHARE_BOOK;
+	}
+
 }

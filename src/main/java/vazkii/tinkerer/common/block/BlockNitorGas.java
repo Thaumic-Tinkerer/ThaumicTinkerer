@@ -21,7 +21,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.item.ItemBrightNitor;
+import vazkii.tinkerer.common.item.kami.armor.ItemGemLegs;
 
 import java.util.List;
 import java.util.Random;
@@ -54,7 +56,7 @@ public class BlockNitorGas extends BlockGas {
 			else {
 				boolean has = false;
 				for (EntityPlayer player : players)
-					if (player.inventory.hasItem(ModItems.brightNitor) || ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ModItems.ichorLegsGem) {
+					if (player.inventory.hasItem(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemBrightNitor.class)) || (ConfigHandler.enableKami && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemGemLegs.class))) {
 						has = true;
 						break;
 					}

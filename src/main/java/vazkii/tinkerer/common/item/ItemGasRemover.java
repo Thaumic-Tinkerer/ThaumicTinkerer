@@ -23,12 +23,25 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.BlockGas;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemGasRemover extends ItemMod {
+public class ItemGasRemover extends ItemBase {
 
 	public ItemGasRemover() {
 		super();
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -59,5 +72,10 @@ public class ItemGasRemover extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.GAS_REMOVER;
 	}
 }

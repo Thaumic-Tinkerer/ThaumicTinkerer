@@ -22,13 +22,19 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemIchorAxe extends ItemAxe {
+import java.util.ArrayList;
+
+public class ItemIchorAxe extends ItemAxe implements ITTinkererItem {
 
 	public ItemIchorAxe() {
-		super(ModItems.toolMatIchor);
+		super(ThaumicTinkerer.proxy.toolMaterialIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 		setHarvestLevel("axe", 4);
 	}
@@ -49,4 +55,28 @@ public class ItemIchorAxe extends ItemAxe {
 		return true;
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_AXE;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return ConfigHandler.enableKami;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

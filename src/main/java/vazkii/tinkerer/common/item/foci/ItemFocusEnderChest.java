@@ -24,6 +24,8 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.compat.EnderStorageFunctions;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -83,4 +85,13 @@ public class ItemFocusEnderChest extends ItemModFocus {
 		return visUsage;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_ENDER_CHEST;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

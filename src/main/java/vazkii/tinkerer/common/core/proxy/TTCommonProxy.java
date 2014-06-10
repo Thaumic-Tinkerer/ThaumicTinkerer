@@ -24,8 +24,12 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
+import thaumcraft.api.wands.WandCap;
+import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.*;
@@ -37,7 +41,8 @@ import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.wand.CapIchor;
+import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
 import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.network.packet.PacketEnchanterAddEnchant;
@@ -50,7 +55,7 @@ import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import vazkii.tinkerer.common.potion.ModPotions;
 import vazkii.tinkerer.common.research.ModRecipes;
-import vazkii.tinkerer.common.research.ModResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class TTCommonProxy {
 
@@ -58,16 +63,26 @@ public class TTCommonProxy {
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 
 		ModBlocks.initBlocks();
-		ModItems.initItems();
+		//ModItems.initItems();
+		ThaumicTinkerer.registryItems.preInit();
 		NumericAspectHelper.init();
 		initCCPeripherals();
 	}
 
+	public WandCap capIchor;
+	public WandRod rodIchor;
+	public Item.ToolMaterial toolMaterialIchor;
+
 	public void init(FMLInitializationEvent event) {
+		capIchor = new CapIchor();
+		rodIchor = new RodIchorcloth();
+		EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
+
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
+		ThaumicTinkerer.registryItems.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		registerPackets();
 		FMLCommonHandler.instance().bus().register(new PlayerTracker());
@@ -96,7 +111,7 @@ public class TTCommonProxy {
 
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.initRecipes();
-		ModResearch.initResearch();
+		ResearchHelper.initResearch();
 	}
 
 	protected void initCCPeripherals() {

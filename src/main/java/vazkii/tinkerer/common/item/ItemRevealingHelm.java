@@ -29,15 +29,23 @@ import thaumcraft.api.IRepairable;
 import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.nodes.IRevealer;
+import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscountGear {
+public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscountGear, ITTinkererItem {
 
 	public ItemRevealingHelm() {
 		super(ThaumcraftApi.armorMatThaumium, 2, 0);
@@ -86,4 +94,31 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 		return 5;
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.REVEALING_HELM;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		TTResearchItem research;
+		research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_REVEALING_HELM, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(this)).setParents("GOGGLES").setParentsHidden("THAUMIUM");
+		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
+		return research;
+	}
 }

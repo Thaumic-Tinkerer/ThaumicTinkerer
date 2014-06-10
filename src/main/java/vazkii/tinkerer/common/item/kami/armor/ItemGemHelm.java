@@ -23,6 +23,8 @@ import net.minecraft.potion.PotionEffect;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRevealer {
 
@@ -67,6 +69,16 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 		int food = player.getFoodStats().getFoodLevel();
 		if (food > 0 && food < 18 && player.shouldHeal() && player.ticksExisted % 80 == 0)
 			player.heal(1F);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_HELM_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 }

@@ -26,6 +26,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -102,6 +104,16 @@ public class ItemIchorShovelAdv extends ItemIchorShovel implements IAdvancedTool
 	@Override
 	public String getType() {
 		return "shovel";
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_SHOVEL_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 }

@@ -26,13 +26,15 @@ import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
-import vazkii.tinkerer.common.item.ItemMod;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class ItemSkyPearl extends ItemMod {
+public class ItemSkyPearl extends ItemKamiBase {
 
 	public static final String TAG_X = "x";
 	public static final String TAG_Y = "y";
@@ -134,5 +136,15 @@ public class ItemSkyPearl extends ItemMod {
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return TTClientProxy.kamiRarity;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.SKY_PEARL;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

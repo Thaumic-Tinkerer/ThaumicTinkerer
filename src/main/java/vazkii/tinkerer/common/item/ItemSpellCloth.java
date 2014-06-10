@@ -20,10 +20,13 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import vazkii.tinkerer.common.lib.LibFeatures;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.awt.*;
 
-public class ItemSpellCloth extends ItemMod {
+public class ItemSpellCloth extends ItemBase {
 
 	public ItemSpellCloth() {
 		super();
@@ -32,6 +35,16 @@ public class ItemSpellCloth extends ItemMod {
 		setNoRepair();
 
 		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe(this));
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -66,5 +79,10 @@ public class ItemSpellCloth extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.SPELL_CLOTH;
 	}
 }

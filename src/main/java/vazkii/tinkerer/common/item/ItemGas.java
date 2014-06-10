@@ -18,14 +18,61 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
+import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.ResearchHelper;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemGas extends ItemMod {
+import java.util.ArrayList;
+
+public class ItemGas extends ItemBase {
 
 	private Block setBlock;
 
 	public ItemGas(Block setBlock) {
 		super();
 		this.setBlock = setBlock;
+	}
+
+	public ItemGas() {
+		this(ModBlocks.gaseousShadow);
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		ArrayList<Object> result = new ArrayList<Object>();
+		result.add(ModBlocks.gaseousShadow);
+		return result;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		if (setBlock == ModBlocks.gaseousShadow) {
+			TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_SHADOW, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.AIR, 1).add(Aspect.MOTION, 4), -1, -5, 2, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_GASEOUS_LIGHT);
+			research.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_SHADOW));
+			return research;
+		}
+		if (setBlock == ModBlocks.gaseousLight) {
+			TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_LIGHT, new AspectList().add(Aspect.LIGHT, 2).add(Aspect.AIR, 1), 0, -3, 1, new ItemStack(this)).setParents("NITOR");
+			research.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_LIGHT));
+			return research;
+		}
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return setBlock == ModBlocks.gaseousShadow ? LibItemNames.GASEOUS_SHADOW : LibItemNames.GASEOUS_LIGHT;
 	}
 
 	@Override

@@ -24,16 +24,21 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
-public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
+public abstract class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
 	public ItemIchorclothArmorAdv(int par2) {
 		super(par2);
 		setHasSubtypes(true);
 		if (ticks())
 			MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	public ItemIchorclothArmorAdv() {
+		this(0);
 	}
 
 	@Override
@@ -82,4 +87,11 @@ public class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 		// NO-OP
 	}
 
+	@Override
+	public abstract String getItemName();
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

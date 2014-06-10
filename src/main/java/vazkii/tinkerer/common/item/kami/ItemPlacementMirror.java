@@ -15,15 +15,17 @@ import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import vazkii.tinkerer.common.item.ItemMod;
-import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemPlacementMirror extends ItemMod {
+public class ItemPlacementMirror extends ItemKamiBase {
 
 	@Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
@@ -95,7 +97,7 @@ public class ItemPlacementMirror extends ItemMod {
 				return;
 			}
 
-			if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
+			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemBlockTalisman.class))
 				talismansToCheck.add(stackInSlot);
 		}
 
@@ -125,7 +127,7 @@ public class ItemPlacementMirror extends ItemMod {
 				if (current >= required)
 					return true;
 			}
-			if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
+			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemBlockTalisman.class))
 				talismansToCheck.add(stackInSlot);
 		}
 
@@ -246,4 +248,13 @@ public class ItemPlacementMirror extends ItemMod {
 			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.PLACEMENT_MIRROR;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

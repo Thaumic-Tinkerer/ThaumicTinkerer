@@ -22,12 +22,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
-import vazkii.tinkerer.common.item.ItemMod;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
-public class ItemKamiResource extends ItemMod {
+public class ItemKamiResource extends ItemKamiBase {
 
 	final int subtypes = 8;
 	IIcon[] icons;
@@ -64,5 +65,15 @@ public class ItemKamiResource extends ItemMod {
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return par1ItemStack.getItemDamage() != 7 && par1ItemStack.getItemDamage() != 6 ? TTClientProxy.kamiRarity : super.getRarity(par1ItemStack);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.KAMI_RESOURCE;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

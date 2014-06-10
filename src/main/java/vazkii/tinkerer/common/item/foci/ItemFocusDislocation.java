@@ -36,6 +36,8 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
 
@@ -246,5 +248,15 @@ public class ItemFocusDislocation extends ItemModFocus {
 		blacklist.add(Blocks.piston_extension);
 		blacklist.add(Blocks.piston_head);
 
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_DISLOCATION;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

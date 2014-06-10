@@ -23,15 +23,28 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
-public class ItemSoulMould extends ItemMod {
+public class ItemSoulMould extends ItemBase {
 
 	private static final String TAG_PATTERN = "pattern";
 
 	public ItemSoulMould() {
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -71,5 +84,10 @@ public class ItemSoulMould extends ItemMod {
 
 	private static void clearPattern(ItemStack par1ItemStack) {
 		ItemNBTHelper.getNBT(par1ItemStack).removeTag(TAG_PATTERN);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.SOUL_MOULD;
 	}
 }

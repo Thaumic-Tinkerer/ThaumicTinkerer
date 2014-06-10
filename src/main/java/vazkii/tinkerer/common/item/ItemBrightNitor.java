@@ -19,12 +19,25 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemBrightNitor extends ItemMod {
+public class ItemBrightNitor extends ItemBase {
 
 	public ItemBrightNitor() {
 		super();
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	public static int meta = 0;
@@ -41,5 +54,10 @@ public class ItemBrightNitor extends ItemMod {
 	public static void setBlock(int x, int y, int z, World world) {
 		if ((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ModBlocks.nitorGas) && !world.isRemote)
 			world.setBlock(x, y, z, ModBlocks.nitorGas, meta, 2);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.BRIGHT_NTIOR;
 	}
 }

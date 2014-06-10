@@ -32,17 +32,26 @@ import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, ISpecialArmor {
+public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, ISpecialArmor, ITTinkererItem {
 
 	static ItemArmor.ArmorMaterial material = EnumHelper.addArmorMaterial("ICHOR", 0, new int[]{ 3, 8, 6, 3 }, 20);
 
 	public ItemIchorclothArmor(int par2) {
 		super(material, 0, par2);
 		setCreativeTab(ModCreativeTab.INSTANCE);
+	}
+
+	public ItemIchorclothArmor() {
+		this(0);
 	}
 
 	@Override
@@ -91,4 +100,43 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, 
 		return armorType == 3 ? 3 : 4;
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		ArrayList<Object> result = new ArrayList<Object>();
+		result.add(1);
+		result.add(2);
+		result.add(3);
+		return result;
+	}
+
+	@Override
+	public String getItemName() {
+		switch (armorType) {
+			case 0:
+				return LibItemNames.ICHOR_BOOTS;
+			case 1:
+				return LibItemNames.ICHOR_LEGS;
+			case 2:
+				return LibItemNames.ICHOR_CHEST;
+			case 3:
+				return LibItemNames.ICHOR_HELM;
+			default:
+				return "INVAlID ARMOR TYPE";
+		}
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return ConfigHandler.enableKami;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

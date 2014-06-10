@@ -17,7 +17,8 @@ package vazkii.tinkerer.common.block.tile.container.slot.kami;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 
 public class SlotSkyPearl extends Slot {
 
@@ -27,7 +28,7 @@ public class SlotSkyPearl extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() == ModItems.skyPearl;
+		return par1ItemStack.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class);
 	}
 
 	@Override

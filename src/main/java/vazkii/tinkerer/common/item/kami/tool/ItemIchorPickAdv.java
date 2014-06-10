@@ -30,6 +30,8 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -135,4 +137,13 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		return "pick";
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_PICK_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 }

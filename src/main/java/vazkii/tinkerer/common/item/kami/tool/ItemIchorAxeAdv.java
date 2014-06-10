@@ -31,6 +31,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.common.lib.Utils;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -126,5 +128,15 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	@Override
 	public String getType() {
 		return "axe";
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_AXE_GEM;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 }

@@ -35,6 +35,7 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibMisc;
+import vazkii.tinkerer.common.registry.RegistryItems;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 
 import java.util.Arrays;
@@ -50,6 +51,8 @@ public class ThaumicTinkerer {
 
 	public static CommonProxy tcProxy;
 	public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
+
+	public static RegistryItems registryItems = new RegistryItems();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -82,7 +85,6 @@ public class ThaumicTinkerer {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-
 		if (ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0) {
 			DimensionManager.registerProviderType(ConfigHandler.bedrockDimensionID, WorldProviderBedrock.class, false);
 			DimensionManager.registerDimension(ConfigHandler.bedrockDimensionID, ConfigHandler.bedrockDimensionID);

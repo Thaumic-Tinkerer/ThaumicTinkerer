@@ -27,8 +27,11 @@ import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
-public class ItemConnector extends ItemMod {
+public class ItemConnector extends ItemBase {
 
 	private static final String TAG_POS_X = "posx";
 	private static final String TAG_POS_Y = "posy";
@@ -39,6 +42,16 @@ public class ItemConnector extends ItemMod {
 		super();
 
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -192,4 +205,8 @@ public class ItemConnector extends ItemMod {
 		return true;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.CONNECTOR;
+	}
 }

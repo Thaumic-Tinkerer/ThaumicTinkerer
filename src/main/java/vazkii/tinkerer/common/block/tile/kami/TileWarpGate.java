@@ -28,7 +28,6 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.common.util.Constants;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
@@ -219,7 +218,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return itemstack.getItem() == ModItems.skyPearl;
+		return itemstack.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class);
 	}
 
 	@Override

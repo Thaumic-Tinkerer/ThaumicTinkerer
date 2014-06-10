@@ -13,6 +13,8 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.Utils;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +22,16 @@ import java.util.Map;
 public class ItemFocusSmelt extends ItemModFocus {
 
 	public static Map<String, SmeltData> playerData = new HashMap();
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_SMELT;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
+	}
 
 	static class SmeltData {
 		public MovingObjectPosition pos;

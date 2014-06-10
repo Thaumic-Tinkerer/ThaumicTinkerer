@@ -8,11 +8,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
-public class ItemMobAspect extends Item {
+public class ItemMobAspect extends ItemBase {
 
 	//Real value is 16
 	//Padding room inclued
@@ -38,6 +42,16 @@ public class ItemMobAspect extends Item {
 		for (NumericAspectHelper aspect : NumericAspectHelper.values) {
 			aspectIcons[aspect.num] = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + aspect.getAspect().getName().toLowerCase());
 		}
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public TTResearchItem getResearchItem() {
+		return null;
 	}
 
 	@Override
@@ -68,7 +82,7 @@ public class ItemMobAspect extends Item {
 		list.add(getAspect(itemStack).getName());
 	}
 
-	public Aspect getAspect(ItemStack item) {
+	public static Aspect getAspect(ItemStack item) {
 		if (item == null) {
 			return null;
 		}
@@ -76,7 +90,7 @@ public class ItemMobAspect extends Item {
 	}
 
 	public static ItemStack getStackFromAspect(Aspect a) {
-		ItemStack result = new ItemStack(ModItems.mobAspect);
+		ItemStack result = new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemMobAspect.class));
 		result.setItemDamage(NumericAspectHelper.getNumber(a));
 		return result;
 	}
@@ -89,4 +103,8 @@ public class ItemMobAspect extends Item {
 		return item.getItemDamage() >= aspectCount * 2;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.MOB_ASPECT;
+	}
 }
