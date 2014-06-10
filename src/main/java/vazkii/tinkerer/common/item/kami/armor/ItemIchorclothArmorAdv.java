@@ -24,7 +24,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.lib.LibResources;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
 
@@ -91,7 +91,7 @@ public abstract class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 	public abstract String getItemName();
 
 	@Override
-	public TTResearchItem getResearchItem() {
+	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
 }

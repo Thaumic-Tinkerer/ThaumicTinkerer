@@ -12,6 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
@@ -19,8 +22,11 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemKamiBase;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.KamiResearchItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -254,7 +260,9 @@ public class ItemPlacementMirror extends ItemKamiBase {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_PLACEMENT_MIRROR, new AspectList().add(Aspect.CRAFT, 2).add(Aspect.CRYSTAL, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MIND, 1), 17, 16, 5, new ItemStack(this)).setParents(LibResearch.KEY_BLOCK_TALISMAN)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_PLACEMENT_MIRROR));
+
 	}
 }

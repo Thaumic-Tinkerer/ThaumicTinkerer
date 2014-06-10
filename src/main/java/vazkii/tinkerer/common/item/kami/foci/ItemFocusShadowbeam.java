@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import thaumcraft.client.fx.FXSparkle;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
@@ -23,7 +24,10 @@ import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
 import vazkii.tinkerer.common.lib.LibItemNames;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.KamiResearchItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class ItemFocusShadowbeam extends ItemModFocus {
 
@@ -81,8 +85,10 @@ public class ItemFocusShadowbeam extends ItemModFocus {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_SHADOWBEAM, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.MAGIC, 1).add(Aspect.ELDRITCH, 1).add(Aspect.TAINT, 1), 14, 4, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ROD)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_SHADOWBEAM));
+
 	}
 
 	public static class Particle extends FXSparkle {

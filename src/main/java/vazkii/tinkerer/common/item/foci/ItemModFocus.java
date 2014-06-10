@@ -30,7 +30,7 @@ import thaumcraft.api.wands.IWandFocus;
 import thaumcraft.common.config.Config;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.registry.ItemBase;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public abstract class ItemModFocus extends ItemBase implements IWandFocus {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
+	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
 

@@ -1,6 +1,6 @@
 package vazkii.tinkerer.common.registry;
 
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,6 @@ public interface ITTinkererItem {
 
 	public boolean shouldDisplayInTab();
 
-	public TTResearchItem getResearchItem();
+	public IRegisterableResearch getResearchItem();
 
 }

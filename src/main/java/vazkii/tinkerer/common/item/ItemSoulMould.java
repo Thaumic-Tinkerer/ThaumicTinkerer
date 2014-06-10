@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.registry.ItemBase;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class ItemSoulMould extends ItemBase {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
+	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
 

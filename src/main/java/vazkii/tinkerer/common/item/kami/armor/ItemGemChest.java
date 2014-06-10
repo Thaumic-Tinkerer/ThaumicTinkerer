@@ -22,12 +22,18 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.model.kami.ModelWings;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
 import vazkii.tinkerer.common.lib.LibItemNames;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.KamiResearchItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,8 +72,10 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 17, 7, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_CHEST_GEM));
+
 	}
 
 	@SubscribeEvent

@@ -39,6 +39,7 @@ import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
@@ -115,10 +116,11 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		TTResearchItem research;
+	public IRegisterableResearch getResearchItem() {
+		IRegisterableResearch research;
 		research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_REVEALING_HELM, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(this)).setParents("GOGGLES").setParentsHidden("THAUMIUM");
 		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
 		return research;
+
 	}
 }

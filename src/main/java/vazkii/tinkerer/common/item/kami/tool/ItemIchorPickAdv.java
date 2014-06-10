@@ -25,13 +25,19 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.lib.LibItemNames;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.KamiResearchItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 import java.util.List;
 
@@ -143,7 +149,9 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 13, 15, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHOR_TOOLS)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR_PICK_GEM), new ResearchPage("1"));
+
 	}
 }

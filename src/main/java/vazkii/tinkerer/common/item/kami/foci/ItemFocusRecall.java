@@ -19,12 +19,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
 import vazkii.tinkerer.common.item.kami.ItemSkyPearl;
 import vazkii.tinkerer.common.lib.LibItemNames;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.KamiResearchItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class ItemFocusRecall extends ItemModFocus {
 
@@ -95,7 +100,11 @@ public class ItemFocusRecall extends ItemModFocus {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		if (!Config.allowMirrors) {
+			return null;
+		}
+		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_RECALL, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 1), 20, 8, 5, new ItemStack(this)).setParents(LibResearch.KEY_WARP_GATE).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_RECALL));
 	}
 }

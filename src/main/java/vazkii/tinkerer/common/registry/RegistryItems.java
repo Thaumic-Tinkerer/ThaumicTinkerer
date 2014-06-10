@@ -3,6 +3,7 @@ package vazkii.tinkerer.common.registry;
 import com.google.common.reflect.ClassPath;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -27,6 +28,13 @@ public class RegistryItems {
 		}
 	}
 
+	public void registerResearch(ITTinkererItem nextItem) {
+		IRegisterableResearch registerableResearch = nextItem.getResearchItem();
+		if (registerableResearch != null) {
+			registerableResearch.registerResearch();
+		}
+	}
+
 	public void preInit() {
 		registerClasses();
 
@@ -37,10 +45,12 @@ public class RegistryItems {
 					newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
 					ArrayList<Item> itemList = new ArrayList<Item>();
 					itemList.add(newItem);
+					registerResearch((ITTinkererItem) newItem);
 					for (Object param : ((ITTinkererItem) newItem).getSpecialParameters()) {
 						Item nextItem = (Item) clazz.getConstructor(param.getClass()).newInstance(param);
 						nextItem.setUnlocalizedName(((ITTinkererItem) nextItem).getItemName());
 						itemList.add(nextItem);
+						registerResearch((ITTinkererItem) nextItem);
 					}
 					itemRegistry.put(clazz, itemList);
 				}

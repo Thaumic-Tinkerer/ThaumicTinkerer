@@ -26,7 +26,7 @@ import thaumcraft.api.research.ResearchPage.PageType;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibResearch;
 
-public class TTResearchItem extends ResearchItem {
+public class TTResearchItem extends ResearchItem implements IRegisterableResearch {
 
 	public TTResearchItem(String par1) {
 		super(par1, LibResearch.CATEGORY_THAUMICTINKERER);
@@ -83,5 +83,10 @@ public class TTResearchItem extends ResearchItem {
 
 	boolean checkInfusion() {
 		return true;
+	}
+
+	@Override
+	public void registerResearch() {
+		registerResearchItem();
 	}
 }

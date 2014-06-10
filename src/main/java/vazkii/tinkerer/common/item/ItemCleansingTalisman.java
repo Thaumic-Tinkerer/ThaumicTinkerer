@@ -29,11 +29,17 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.Collection;
@@ -81,8 +87,10 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_CLEANSING_TALISMAN, new AspectList().add(Aspect.HEAL, 2).add(Aspect.ORDER, 1).add(Aspect.POISON, 1), -3, 4, 3, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_DARK_QUARTZ)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_CLEANSING_TALISMAN));
+
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package vazkii.tinkerer.common.registry;
 
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 public abstract class ItemKamiBase extends ItemBase {
 	@Override
@@ -15,7 +15,7 @@ public abstract class ItemKamiBase extends ItemBase {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
+	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
 }

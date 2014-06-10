@@ -27,7 +27,7 @@ import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.ArrayList;
 
@@ -75,7 +75,7 @@ public class ItemIchorSword extends ItemSword implements ITTinkererItem {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
+	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
 }

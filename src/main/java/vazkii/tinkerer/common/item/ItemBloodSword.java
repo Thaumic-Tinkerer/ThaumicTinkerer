@@ -40,11 +40,16 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
@@ -181,7 +186,9 @@ public class ItemBloodSword extends ItemSword implements IRepairable, ITTinkerer
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_BLOOD_SWORD, new AspectList().add(Aspect.HUNGER, 2).add(Aspect.WEAPON, 1).add(Aspect.FLESH, 1).add(Aspect.SOUL, 1), -4, 6, 3, new ItemStack(this)).setParents(LibResearch.KEY_CLEANSING_TALISMAN)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_BLOOD_SWORD), new ResearchPage("1")).setSecondary();
+
 	}
 }

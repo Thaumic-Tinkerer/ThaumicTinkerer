@@ -22,9 +22,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.common.block.BlockGas;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
 public class ItemGasRemover extends ItemBase {
@@ -40,8 +46,11 @@ public class ItemGasRemover extends ItemBase {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+
+		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GAS_REMOVER, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.LIGHT, 2), -2, -7, 0, new ItemStack(this)).setRound();
+		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_GAS_REMOVER)).setParents(LibResearch.KEY_GASEOUS_SHADOW);
+		return research;
 	}
 
 	@Override

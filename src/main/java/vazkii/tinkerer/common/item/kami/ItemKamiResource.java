@@ -20,11 +20,16 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemKamiBase;
-import vazkii.tinkerer.common.research.TTResearchItem;
+import vazkii.tinkerer.common.research.*;
 
 import java.util.List;
 
@@ -73,7 +78,38 @@ public class ItemKamiResource extends ItemKamiBase {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		return null;
+	public IRegisterableResearch getResearchItem() {
+
+		TTResearchItem research;
+		TTResearchItemMulti researchItemMulti = new TTResearchItemMulti();
+
+		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, new AspectList(), 7, 8, 0, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 7)).setStub().setAutoUnlock().setRound();
+		research.setPages(new ResearchPage("0"));
+		researchItemMulti.addResearch(research);
+
+		research = new KamiResearchItem(LibResearch.KEY_ICHOR, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 9, 8, 5, new ItemStack(this, 1, 0));
+		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR));
+		ResearchHelper.kamiResearch = research;
+
+		researchItemMulti.addResearch(research);
+
+		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHOR_CLOTH, new AspectList().add(Aspect.CLOTH, 2).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1).add(Aspect.SENSES, 1), 11, 7, 5, new ItemStack(this, 1, 1)).setConcealed().setParents(LibResearch.KEY_ICHOR);
+		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHOR_CLOTH));
+		researchItemMulti.addResearch(research);
+
+		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHORIUM, new AspectList().add(Aspect.METAL, 2).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1).add(Aspect.TOOL, 1), 11, 9, 5, new ItemStack(this, 1, 2)).setConcealed().setParents(LibResearch.KEY_ICHOR).setParentsHidden(LibResearch.KEY_ICHOR_CLOTH);
+		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHORIUM));
+		researchItemMulti.addResearch(research);
+
+		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHOR_CAP, new AspectList().add(Aspect.TOOL, 2).add(Aspect.METAL, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 11, 11, 5, new ItemStack(this, 1, 4)).setConcealed().setParents(LibResearch.KEY_ICHORIUM);
+		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHOR_CAP));
+		researchItemMulti.addResearch(research);
+
+		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 14, 2, 5, new ItemStack(this, 1, 5)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP);
+		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
+		researchItemMulti.addResearch(research);
+
+		return researchItemMulti;
+
 	}
 }

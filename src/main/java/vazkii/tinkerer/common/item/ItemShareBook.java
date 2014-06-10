@@ -21,6 +21,7 @@ import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
@@ -43,8 +44,8 @@ public class ItemShareBook extends ItemBase {
 	}
 
 	@Override
-	public TTResearchItem getResearchItem() {
-		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SHARE_TOME, new AspectList(), 0, -1, 0, new ItemStack(this)).setStub().setAutoUnlock().setRound();
+	public IRegisterableResearch getResearchItem() {
+		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SHARE_TOME, new AspectList(), 0, -1, 0, new ItemStack(this)).setStub().setAutoUnlock().setRound();
 		if (ConfigHandler.enableSurvivalShareTome)
 			research.setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_SHARE_TOME));
 		else research.setPages(new ResearchPage("0"));
