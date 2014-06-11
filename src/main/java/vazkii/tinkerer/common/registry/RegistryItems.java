@@ -35,6 +35,13 @@ public class RegistryItems {
 		}
 	}
 
+	public void registerRecipe(ITTinkererItem nextItem) {
+		ThaumicTinkererRecipe thaumicTinkererRecipe = nextItem.getRecipeItem();
+		if (thaumicTinkererRecipe != null) {
+			thaumicTinkererRecipe.registerRecipe();
+		}
+	}
+
 	public void preInit() {
 		registerClasses();
 

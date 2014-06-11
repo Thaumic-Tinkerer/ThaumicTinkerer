@@ -8,7 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
 
 public class RenderPlacementMirror implements IItemRenderer {
 
@@ -39,7 +40,7 @@ public class RenderPlacementMirror implements IItemRenderer {
 			}
 			case EQUIPPED: {
 				for (int i = 1; i >= 0; i--) {
-					IIcon icon = ModItems.placementMirror.getIconFromDamageForRenderPass(0, i);
+					IIcon icon = ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemPlacementMirror.class).getIconFromDamageForRenderPass(0, i);
 					if (i == 0) {
 						GL11.glEnable(GL11.GL_BLEND);
 						GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
