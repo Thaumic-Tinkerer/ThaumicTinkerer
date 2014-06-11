@@ -8,6 +8,7 @@ import vazkii.tinkerer.common.core.helper.EnumMobAspect;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
@@ -31,6 +32,11 @@ public class ItemMobDisplay extends ItemBase {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
 		return null;
 	}
 

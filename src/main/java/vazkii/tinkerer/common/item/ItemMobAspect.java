@@ -6,12 +6,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
-import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.*;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
@@ -52,6 +55,23 @@ public class ItemMobAspect extends ItemBase {
 	@Override
 	public IRegisterableResearch getResearchItem() {
 		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		ThaumicTinkererRecipeMulti recipeMulti = new ThaumicTinkererRecipeMulti();
+		for (int i = 0; i < NumericAspectHelper.values.size(); i++) {
+
+			ThaumcraftApi.registerObjectTag(new ItemStack(this, 1, i), new int[]{ i }, new AspectList().add(NumericAspectHelper.getAspect(i), 8));
+			recipeMulti.addRecipe(new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SUMMON + "1", new ItemStack(this, 1, i + 20), "XXX", "XXX", "XXX", 'X', new ItemStack(this, 1, i)));
+
+			ItemStack input = new ItemStack(this, 1, i + 20);
+			recipeMulti.addRecipe(new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SUMMON, new ItemStack(this, 1, i + 40), 4,
+					new AspectList().add(getAspect(new ItemStack(this, 1, i)), 10), input,
+					new ItemStack[]{ input, input, input, input, input, input, input, input }));
+
+		}
+		return recipeMulti;
 	}
 
 	@Override

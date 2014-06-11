@@ -50,4 +50,9 @@ public abstract class ItemBase extends Item implements ITTinkererItem {
 	public boolean shouldDisplayInTab() {
 		return true;
 	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
+	}
 }

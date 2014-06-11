@@ -22,6 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -32,12 +33,17 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.item.quartz.ItemDarkQuartz;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
@@ -90,6 +96,13 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 	public IRegisterableResearch getResearchItem() {
 		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_CLEANSING_TALISMAN, new AspectList().add(Aspect.HEAL, 2).add(Aspect.ORDER, 1).add(Aspect.POISON, 1), -3, 4, 3, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_DARK_QUARTZ)
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_CLEANSING_TALISMAN));
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(this), 5, new AspectList().add(Aspect.HEAL, 10).add(Aspect.TOOL, 10).add(Aspect.MAN, 20).add(Aspect.LIFE, 10), new ItemStack(Items.ender_pearl),
+				new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 1));
 
 	}
 

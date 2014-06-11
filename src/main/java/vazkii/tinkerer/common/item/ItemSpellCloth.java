@@ -22,10 +22,13 @@ import net.minecraft.item.crafting.CraftingManager;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
@@ -51,9 +54,15 @@ public class ItemSpellCloth extends ItemBase {
 	@Override
 	public IRegisterableResearch getResearchItem() {
 
-		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SPELL_CLOTH, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.CLOTH, 1), 3, 2, 2, new ItemStack(this)).setParentsHidden("ENCHFABRIC");
-		research.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_SPELL_CLOTH));
+		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SPELL_CLOTH, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.CLOTH, 1), 3, 2, 2, new ItemStack(this)).setParentsHidden("ENCHFABRIC")
+				.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_SPELL_CLOTH));
 		return research;
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_SPELL_CLOTH, new ItemStack(this), new ItemStack(ConfigItems.itemResource, 0, 7), new AspectList().add(Aspect.MAGIC, 10).add(Aspect.ENTROPY, 6).add(Aspect.EXCHANGE, 4));
 
 	}
 

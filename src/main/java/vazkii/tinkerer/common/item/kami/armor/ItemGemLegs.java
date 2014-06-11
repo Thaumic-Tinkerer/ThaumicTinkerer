@@ -17,6 +17,7 @@ package vazkii.tinkerer.common.item.kami.armor;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -24,10 +25,15 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.codechicken.lib.vec.Vector3;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
+import vazkii.tinkerer.common.item.foci.ItemFocusSmelt;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -80,6 +86,13 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 17, 9, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_LEGS_GEM), new ResearchPage("1"));
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.FIRE, 50).add(Aspect.ARMOR, 32).add(Aspect.HEAL, 32).add(Aspect.ENERGY, 32).add(Aspect.LIGHT, 64).add(Aspect.GREED, 16).add(Aspect.ELDRITCH, 16), new ItemStack(ThaumicTinkerer.registryItems.getItemFromClass(ItemIchorclothArmor.class).get(2)),
+				new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Items.golden_chestplate), new ItemStack(Items.potionitem, 1, 8195), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemFocusSmelt.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemBrightNitor.class)), new ItemStack(Items.lava_bucket), new ItemStack(Items.fire_charge), new ItemStack(Items.blaze_rod));
 
 	}
 

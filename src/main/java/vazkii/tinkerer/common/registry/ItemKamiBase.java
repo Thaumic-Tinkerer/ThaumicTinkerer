@@ -18,4 +18,9 @@ public abstract class ItemKamiBase extends ItemBase {
 	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
+	}
 }

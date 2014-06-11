@@ -2,6 +2,8 @@ package vazkii.tinkerer.common.item.kami.foci;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -14,9 +16,13 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ExperienceHelper;
+import vazkii.tinkerer.common.item.ItemXPTalisman;
 import vazkii.tinkerer.common.item.foci.ItemModFocus;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -114,6 +120,13 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_XP_DRAIN, new AspectList().add(Aspect.MIND, 2).add(Aspect.MAGIC, 1).add(Aspect.AURA, 1).add(Aspect.MAN, 1), 12, 3, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ROD)
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_XP_DRAIN));
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_XP_DRAIN, new ItemStack(this), 12, new AspectList().add(Aspect.MIND, 65).add(Aspect.TAINT, 16).add(Aspect.MAGIC, 50).add(Aspect.AURA, 32), new ItemStack(Items.ender_pearl),
+				new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.experience_bottle), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemXPTalisman.class)), new ItemStack(Blocks.enchanting_table), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)));
 
 	}
 }

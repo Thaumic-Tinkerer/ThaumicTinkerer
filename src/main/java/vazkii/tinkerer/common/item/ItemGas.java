@@ -21,10 +21,13 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
@@ -59,14 +62,25 @@ public class ItemGas extends ItemBase {
 	@Override
 	public IRegisterableResearch getResearchItem() {
 		if (setBlock == ModBlocks.gaseousShadow) {
-			IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_SHADOW, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.AIR, 1).add(Aspect.MOTION, 4), -1, -5, 2, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_GASEOUS_LIGHT);
-			research.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_SHADOW));
+			IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_SHADOW, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.AIR, 1).add(Aspect.MOTION, 4), -1, -5, 2, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_GASEOUS_LIGHT)
+					.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_SHADOW));
 			return research;
 		}
 		if (setBlock == ModBlocks.gaseousLight) {
-			IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_LIGHT, new AspectList().add(Aspect.LIGHT, 2).add(Aspect.AIR, 1), 0, -3, 1, new ItemStack(this)).setParents("NITOR");
-			research.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_LIGHT));
+			IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_LIGHT, new AspectList().add(Aspect.LIGHT, 2).add(Aspect.AIR, 1), 0, -3, 1, new ItemStack(this)).setParents("NITOR")
+					.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_LIGHT));
 			return research;
+		}
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		if (setBlock == ModBlocks.gaseousLight) {
+			new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_LIGHT, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.LIGHT, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
+		}
+		if (setBlock == ModBlocks.gaseousShadow) {
+			new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_SHADOW, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		}
 		return null;
 	}

@@ -21,6 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,6 +32,8 @@ import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemFocusPouch;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
@@ -41,6 +44,8 @@ import vazkii.tinkerer.common.lib.LibGuiIDs;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -146,6 +151,13 @@ public class ItemIchorPouch extends ItemFocusPouch implements IBauble, ITTinkere
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHOR_POUCH, new AspectList().add(Aspect.VOID, 2).add(Aspect.CLOTH, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAN, 1), 13, 6, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHOR_CLOTH)
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR_POUCH));
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHOR_POUCH, new ItemStack(this), 9, new AspectList().add(Aspect.VOID, 64).add(Aspect.MAN, 32).add(Aspect.CLOTH, 32).add(Aspect.ELDRITCH, 32).add(Aspect.AIR, 64), new ItemStack(ConfigItems.itemFocusPouch),
+				new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 
 	}
 }

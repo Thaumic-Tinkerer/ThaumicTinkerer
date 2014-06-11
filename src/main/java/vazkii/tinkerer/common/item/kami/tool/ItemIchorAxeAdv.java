@@ -31,11 +31,16 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.Utils;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -145,5 +150,11 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.CROP, 1), 16, 14, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHOR_TOOLS)
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR_AXE_GEM));
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHOR_AXE_GEM, new ItemStack(this), 15, new AspectList().add(Aspect.WATER, 50).add(Aspect.MINE, 64).add(Aspect.TOOL, 32).add(Aspect.TREE, 32).add(Aspect.HARVEST, 32).add(Aspect.CROP, 16).add(Aspect.SENSES, 16), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemIchorAxe.class)),
+				new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 2), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemAxeElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Blocks.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Items.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemAxeElemental), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1));
 	}
 }

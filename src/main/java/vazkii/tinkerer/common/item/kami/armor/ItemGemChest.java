@@ -20,17 +20,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.model.kami.ModelWings;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.foci.ItemFocusDeflect;
+import vazkii.tinkerer.common.item.foci.ItemFocusFlight;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -75,6 +81,13 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 17, 7, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_CHEST_GEM));
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.AIR, 50).add(Aspect.ARMOR, 32).add(Aspect.FLIGHT, 32).add(Aspect.ORDER, 32).add(Aspect.LIGHT, 64).add(Aspect.ELDRITCH, 16).add(Aspect.SENSES, 16), new ItemStack(ThaumicTinkerer.registryItems.getItemFromClass(ItemIchorclothArmor.class).get(1)),
+				new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Items.golden_chestplate), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemFocusFlight.class)), new ItemStack(ConfigItems.itemHoverHarness), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemFocusDeflect.class)), new ItemStack(Items.feather), new ItemStack(Items.fireworks), new ItemStack(Items.arrow));
 
 	}
 

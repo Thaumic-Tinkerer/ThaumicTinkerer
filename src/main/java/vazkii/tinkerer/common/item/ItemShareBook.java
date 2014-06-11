@@ -3,6 +3,7 @@ package vazkii.tinkerer.common.item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.research.ResearchManager;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
@@ -21,6 +23,8 @@ import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCraftingBenchRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
@@ -47,9 +51,21 @@ public class ItemShareBook extends ItemBase {
 	public IRegisterableResearch getResearchItem() {
 		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SHARE_TOME, new AspectList(), 0, -1, 0, new ItemStack(this)).setStub().setAutoUnlock().setRound();
 		if (ConfigHandler.enableSurvivalShareTome)
-			research.setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_SHARE_TOME));
-		else research.setPages(new ResearchPage("0"));
+			((TTResearchItem) research).setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_SHARE_TOME));
+		else ((TTResearchItem) research).setPages(new ResearchPage("0"));
 		return research;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		if (ConfigHandler.enableSurvivalShareTome) {
+			new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SHARE_TOME, new ItemStack(this),
+					" S ", "PTP", " P ",
+					'S', new ItemStack(ConfigItems.itemInkwell),
+					'T', new ItemStack(ConfigItems.itemThaumonomicon),
+					'P', new ItemStack(Items.paper));
+		}
+		return null;
 	}
 
 	@Override

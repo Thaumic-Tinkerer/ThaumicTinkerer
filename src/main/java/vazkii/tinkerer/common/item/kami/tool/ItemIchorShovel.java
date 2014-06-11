@@ -20,13 +20,20 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.ArrayList;
@@ -78,5 +85,13 @@ public class ItemIchorShovel extends ItemSpade implements ITTinkererItem {
 	@Override
 	public IRegisterableResearch getResearchItem() {
 		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SHOVEL, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.EARTH, 75),
+				" I ", " R ", " R ",
+				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+				'I', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
 	}
 }

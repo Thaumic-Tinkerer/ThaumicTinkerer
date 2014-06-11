@@ -14,8 +14,10 @@
  */
 package vazkii.tinkerer.common.item.kami;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,12 +25,13 @@ import net.minecraft.util.IIcon;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
-import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.registry.*;
 import vazkii.tinkerer.common.research.*;
 
 import java.util.List;
@@ -111,5 +114,32 @@ public class ItemKamiResource extends ItemKamiBase {
 
 		return researchItemMulti;
 
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		GameRegistry.addShapelessRecipe(new ItemStack(this, 9, 3), new ItemStack(this, 1, 2));
+		return new ThaumicTinkererRecipeMulti(
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_CLOTH, LibResearch.KEY_ICHOR_CLOTH, new ItemStack(this, 3, 1), new AspectList().add(Aspect.FIRE, 125).add(Aspect.EARTH, 125).add(Aspect.WATER, 125).add(Aspect.AIR, 125).add(Aspect.ORDER, 125).add(Aspect.ENTROPY, 125),
+						"CCC", "III", "DDD",
+						'C', new ItemStack(ConfigItems.itemResource, 1, 7),
+						'I', new ItemStack(this, 1, 0),
+						'D', new ItemStack(Items.diamond)),
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORIUM, LibResearch.KEY_ICHORIUM, new ItemStack(this, 1, 2), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100),
+						" T ", "IDI", " I ",
+						'T', new ItemStack(ConfigItems.itemResource, 1, 2),
+						'I', new ItemStack(this, 1, 0),
+						'D', new ItemStack(Items.diamond)),
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_CAP, LibResearch.KEY_ICHOR_CAP, new ItemStack(this, 2, 4), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100),
+						"ICI", " M ", "ICI",
+						'M', new ItemStack(this, 1, 2),
+						'I', new ItemStack(this, 1, 0),
+						'C', new ItemStack(ConfigItems.itemWandCap, 1, 2)),
+
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHOR, new ItemStack(this, 8, 0), 7, new AspectList().add(Aspect.MAN, 32).add(Aspect.LIGHT, 32).add(Aspect.SOUL, 64), new ItemStack(Items.nether_star),
+						new ItemStack(Items.diamond), new ItemStack(this, 8, 7), new ItemStack(Items.ender_eye), new ItemStack(this, 8, 6)),
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_ROD, new ItemStack(this, 1, 5), 9, new AspectList().add(Aspect.MAGIC, 100).add(Aspect.LIGHT, 32).add(Aspect.TOOL, 32), new ItemStack(ConfigItems.itemWandRod, 1, 2),
+						new ItemStack(this), new ItemStack(this, 1, 1), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(this, 1, 1))
+		);
 	}
 }

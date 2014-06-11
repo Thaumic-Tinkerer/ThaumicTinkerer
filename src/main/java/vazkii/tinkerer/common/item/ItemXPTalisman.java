@@ -32,13 +32,17 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.item.quartz.ItemDarkQuartz;
 import vazkii.tinkerer.common.lib.LibFeatures;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
@@ -118,6 +122,12 @@ public class ItemXPTalisman extends ItemBase implements IBauble {
 		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_XP_TALISMAN, new AspectList().add(Aspect.GREED, 1).add(Aspect.MAGIC, 1).add(Aspect.MAN, 1), 4, -1, 2, new ItemStack(this, 1, 1)).setParents("JARBRAIN", LibResearch.KEY_SPELL_CLOTH).setConcealed()
 				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_XP_TALISMAN)).setSecondary();
 
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_XP_TALISMAN, new ItemStack(this), 6, new AspectList().add(Aspect.GREED, 20).add(Aspect.EXCHANGE, 10).add(Aspect.BEAST, 10).add(Aspect.MECHANISM, 5), new ItemStack(Items.gold_ingot),
+				new ItemStack(Items.quartz), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ConfigItems.itemResource, 1, 5), new ItemStack(Items.diamond));
 	}
 
 	@Override

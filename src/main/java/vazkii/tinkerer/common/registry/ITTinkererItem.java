@@ -19,4 +19,6 @@ public interface ITTinkererItem {
 
 	public IRegisterableResearch getResearchItem();
 
+	public ThaumicTinkererRecipe getRecipeItem();
+
 }

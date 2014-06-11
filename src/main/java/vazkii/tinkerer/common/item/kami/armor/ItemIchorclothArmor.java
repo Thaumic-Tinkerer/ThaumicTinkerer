@@ -34,11 +34,16 @@ import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipeMulti;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.KamiResearchItem;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -145,5 +150,23 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, 
 		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ARMOR, new AspectList().add(Aspect.ARMOR, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1), 17, 5, 5, new ItemStack(this)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH)
 				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_HELM), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_CHEST), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_LEGS), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHORCLOTH_BOOTS));
 
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererRecipeMulti(
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_HELM, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this), new AspectList().add(Aspect.WATER, 75),
+						"CCC", "C C",
+						'C', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1)),
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_CHEST, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this), new AspectList().add(Aspect.AIR, 75),
+						"C C", "CCC", "CCC",
+						'C', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1)),
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_LEGS, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this), new AspectList().add(Aspect.FIRE, 75),
+						"CCC", "C C", "C C",
+						'C', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1)),
+				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_BOOTS, LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this), new AspectList().add(Aspect.EARTH, 75),
+						"C C", "C C",
+						'C', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 1))
+		);
 	}
 }

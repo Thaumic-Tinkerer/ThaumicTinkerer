@@ -39,6 +39,8 @@ import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
@@ -119,8 +121,16 @@ public class ItemRevealingHelm extends ItemArmor implements IRepairable, IReveal
 	public IRegisterableResearch getResearchItem() {
 		IRegisterableResearch research;
 		research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_REVEALING_HELM, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(this)).setParents("GOGGLES").setParentsHidden("THAUMIUM");
-		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
+		((TTResearchItem) research).setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
 		return research;
 
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(this), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
+				"GH",
+				'G', new ItemStack(ConfigItems.itemGoggles),
+				'H', new ItemStack(ConfigItems.itemHelmetThaumium));
 	}
 }
