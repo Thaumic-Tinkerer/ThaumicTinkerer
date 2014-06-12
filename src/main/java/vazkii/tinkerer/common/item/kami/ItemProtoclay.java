@@ -115,7 +115,7 @@ public class ItemProtoclay extends ItemKamiBase {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_PROTOCLAY, new ItemStack(this), 4, new AspectList().add(Aspect.MINE, 16).add(Aspect.TOOL, 16), new ItemStack(Items.clay_ball),
 
-				new ItemStack(Blocks.dirt), new ItemStack(Blocks.stone), new ItemStack(Blocks.log), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 7));
+				new ItemStack(Blocks.dirt), new ItemStack(Blocks.stone), new ItemStack(Blocks.log), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 7));
 
 	}
 }

@@ -91,6 +91,6 @@ public class ItemIchorSword extends ItemSword implements ITTinkererItem {
 		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SWORD, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.AIR, 75),
 				" I ", " I ", " R ",
 				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				'I', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+				'I', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
 	}
 }

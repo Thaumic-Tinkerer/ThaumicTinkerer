@@ -92,6 +92,6 @@ public class ItemIchorShovel extends ItemSpade implements ITTinkererItem {
 		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SHOVEL, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.EARTH, 75),
 				" I ", " R ", " R ",
 				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				'I', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+				'I', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
 	}
 }

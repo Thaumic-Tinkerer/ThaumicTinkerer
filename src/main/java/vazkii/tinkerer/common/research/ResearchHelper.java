@@ -36,9 +36,7 @@ import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibResearch;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public final class ResearchHelper {
 
@@ -48,21 +46,6 @@ public final class ResearchHelper {
 		registerResearchPages();
 
 		ResearchItem research;
-
-		research = new TTResearchItem(LibResearch.KEY_INTERFACE, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), -4, 2, 1, new ItemStack(ModBlocks.interfase)).setParents(LibResearch.KEY_DARK_QUARTZ);
-		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"));
-
-		research = new TTResearchItem(LibResearch.KEY_ANIMATION_TABLET, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.METAL, 1).add(Aspect.MOTION, 1).add(Aspect.ENERGY, 1), -8, 2, 4, new ItemStack(ModBlocks.animationTablet)).setParents(LibResearch.KEY_MAGNETS);
-		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ANIMATION_TABLET));
-
-		research = new TTResearchItem(LibResearch.KEY_MAGNETS, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.MOTION, 1).add(Aspect.SENSES, 1), -6, 3, 3, new ItemStack(ModBlocks.magnet)).setParents(LibResearch.KEY_INTERFACE).setConcealed();
-		research.setPages(new ResearchPage("0"), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_MAGNET), ResearchHelper.arcaneRecipePage(LibResearch.KEY_MOB_MAGNET), ResearchHelper.crucibleRecipePage(LibResearch.KEY_MAGNETS));
-
-		research = new TTResearchItem(LibResearch.KEY_ENCHANTER, new AspectList().add(Aspect.MAGIC, 2).add(Aspect.AURA, 1).add(Aspect.ELDRITCH, 1).add(Aspect.DARKNESS, 1).add(Aspect.MIND, 1), 5, 4, 5, new ItemStack(ModBlocks.enchanter)).setParents(LibResearch.KEY_SPELL_CLOTH);
-		research.setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"), ResearchHelper.infusionPage(LibResearch.KEY_ENCHANTER));
-
-		research = new TTResearchItem(LibResearch.KEY_FUNNEL, new AspectList().add(Aspect.TOOL, 1).add(Aspect.TRAVEL, 2), 0, -7, 1, new ItemStack(ModBlocks.funnel)).setParentsHidden("DISTILESSENTIA").setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed();
-		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FUNNEL)).setSecondary();
 
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_ASCENT_BOOST, new AspectList().add(Aspect.AIR, 1).add(Aspect.MOTION, 1).add(Aspect.MAGIC, 2), 6, 2, 2, new ResourceLocation(LibResources.ENCHANT_ASCENT_BOOST)).setParents(LibResearch.KEY_ENCHANTER);
 		research.setPages(new ResearchPage("0")).setSecondary();
@@ -107,32 +90,7 @@ public final class ResearchHelper {
 		research.setPages(new ResearchPage("0")).setSecondary();
 
 		if (Config.allowMirrors) {
-			research = new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(ModBlocks.dislocator)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR");
-			research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_DISLOCATOR)).setSecondary();
 		}
-
-		research = new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ModBlocks.spawner)).setParents(LibResearch.KEY_BLOOD_SWORD);
-		//research.setPages(new ResearchPage("0") ,ResearchHelper.recipePage(LibResearch.KEY_SUMMON+"0"),ResearchHelper.recipePage(LibResearch.KEY_SUMMON+"1"), ResearchHelper.infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
-		List<ResearchPage> list = new ArrayList<ResearchPage>();
-		list.add(new ResearchPage("0"));
-		list.add(ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"));
-		list.add(ResearchHelper.recipePage(LibResearch.KEY_SUMMON + "1"));
-		list.add(ResearchHelper.infusionPage(LibResearch.KEY_SUMMON));
-		list.add(new ResearchPage("1"));
-		//for(EnumMobAspect aspect:EnumMobAspect.values()) {
-		//    list.add(aspect.GetRecepiePage());
-		//}
-		ResearchPage[] pages = new ResearchPage[list.size()];
-		int i = 0;
-		for (ResearchPage page : list)
-			pages[i++] = page;
-		research.setPages(pages);
-
-		research = new TTResearchItem(LibResearch.KEY_REPAIRER, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CRAFT, 1).add(Aspect.ORDER, 1).add(Aspect.MAGIC, 1), -1, -9, 3, new ItemStack(ModBlocks.repairer)).setConcealed().setParents(LibResearch.KEY_FUNNEL).setParentsHidden("THAUMIUM", "ENCHFABRIC");
-		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_REPAIRER));
-
-		research = new TTResearchItem(LibResearch.KEY_PLATFORM, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, 6, 3, new ItemStack(ModBlocks.platform)).setConcealed().setParents(LibResearch.KEY_CLEANSING_TALISMAN);
-		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_PLATFORM)).setSecondary();
 
 		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -7, 5, 3, new ItemStack(ModBlocks.mobilizer)).setParents(LibResearch.KEY_MAGNETS);
 		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_MOBILIZER), ResearchHelper.arcaneRecipePage(LibResearch.KEY_RELAY)).setSecondary();
@@ -141,11 +99,6 @@ public final class ResearchHelper {
 		if (Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, new AspectList(), -1, 0, 0, new ItemStack(Items.redstone)).setAutoUnlock().setRound();
 			research.setPages(new ResearchPage("0"));
-
-			research = new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 0, 1, 2, new ItemStack(ModBlocks.aspectAnalyzer)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound();
-			research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ASPECT_ANALYZER));
-			research = new TTResearchItem(LibResearch.KEY_GOLEMCONNECTOR, new AspectList().add(Aspect.ORDER, 1).add(Aspect.TRAVEL, 2).add(Aspect.TOOL, 1), 1, 0, 0, new ItemStack(ModBlocks.golemConnector)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOLEMBELL").setConcealed().setRound();
-			research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_GOLEMCONNECTOR), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"), new ResearchPage("3"));
 		}
 
 		if (ConfigHandler.enableKami) {

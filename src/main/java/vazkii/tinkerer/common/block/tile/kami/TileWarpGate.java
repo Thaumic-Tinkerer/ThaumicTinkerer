@@ -218,7 +218,7 @@ public class TileWarpGate extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return itemstack.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class);
+		return itemstack.getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemSkyPearl.class);
 	}
 
 	@Override

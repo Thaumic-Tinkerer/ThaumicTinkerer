@@ -62,9 +62,9 @@ public class ItemGasRemover extends ItemBase {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_GAS_REMOVER, LibResearch.KEY_GAS_REMOVER, new ItemStack(this), new AspectList().add(Aspect.AIR, 2).add(Aspect.ORDER, 2),
 				"DDD", "T G", "QQQ",
-				'D', new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)),
-				'T', new ItemStack(ThaumicTinkerer.registryItems.getItemFromClass(ItemGas.class).get(0)),
-				'G', new ItemStack(ThaumicTinkerer.registryItems.getItemFromClass(ItemGas.class).get(1)),
+				'D', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)),
+				'T', new ItemStack(ThaumicTinkerer.TTRegistry.getItemFromClass(ItemGas.class).get(0)),
+				'G', new ItemStack(ThaumicTinkerer.TTRegistry.getItemFromClass(ItemGas.class).get(1)),
 				'Q', new ItemStack(Items.quartz));
 	}
 

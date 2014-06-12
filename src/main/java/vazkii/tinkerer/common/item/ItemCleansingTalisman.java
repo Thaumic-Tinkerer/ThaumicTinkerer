@@ -102,7 +102,7 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(this), 5, new AspectList().add(Aspect.HEAL, 10).add(Aspect.TOOL, 10).add(Aspect.MAN, 20).add(Aspect.LIFE, 10), new ItemStack(Items.ender_pearl),
-				new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 1));
+				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 1));
 
 	}
 

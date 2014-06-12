@@ -25,11 +25,14 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class BlockGas extends BlockMod {
+public abstract class BlockGas extends BlockMod implements ITTinkererBlock {
 
 	public BlockGas() {
 		super(Material.air);
@@ -127,6 +130,40 @@ public abstract class BlockGas extends BlockMod {
 
 	@Override
 	boolean registerInCreative() {
+		return false;
+	}
+
+	public BlockGas(Material par2Material) {
+		super(par2Material);
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean func_149730_j() {
+		return super.func_149730_j();
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
 		return false;
 	}
 }

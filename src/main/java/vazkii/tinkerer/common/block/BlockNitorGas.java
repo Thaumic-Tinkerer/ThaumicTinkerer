@@ -56,7 +56,7 @@ public class BlockNitorGas extends BlockGas {
 			else {
 				boolean has = false;
 				for (EntityPlayer player : players)
-					if (player.inventory.hasItem(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemBrightNitor.class)) || (ConfigHandler.enableKami && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemGemLegs.class))) {
+					if (player.inventory.hasItem(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemBrightNitor.class)) || (ConfigHandler.enableKami && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemGemLegs.class))) {
 						has = true;
 						break;
 					}

@@ -28,7 +28,7 @@ public class SlotSkyPearl extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class);
+		return par1ItemStack.getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemSkyPearl.class);
 	}
 
 	@Override

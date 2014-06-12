@@ -86,7 +86,7 @@ public class ItemKamiResource extends ItemKamiBase {
 		TTResearchItem research;
 		TTResearchItemMulti researchItemMulti = new TTResearchItemMulti();
 
-		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, new AspectList(), 7, 8, 0, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 7)).setStub().setAutoUnlock().setRound();
+		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_DIMENSION_SHARDS, new AspectList(), 7, 8, 0, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 7)).setStub().setAutoUnlock().setRound();
 		research.setPages(new ResearchPage("0"));
 		researchItemMulti.addResearch(research);
 

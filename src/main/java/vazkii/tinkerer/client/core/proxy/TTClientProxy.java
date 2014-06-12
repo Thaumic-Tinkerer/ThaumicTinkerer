@@ -117,11 +117,11 @@ public class TTClientProxy extends TTCommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
 
-		MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemMobAspect.class), new RenderMobAspect());
-		MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemMobDisplay.class), new RenderMobDisplay());
+		MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemMobAspect.class), new RenderMobAspect());
+		MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemMobDisplay.class), new RenderMobDisplay());
 
 		if (ConfigHandler.enableKami) {
-			MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemPlacementMirror.class), new RenderPlacementMirror());
+			MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemPlacementMirror.class), new RenderPlacementMirror());
 
 			LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
 

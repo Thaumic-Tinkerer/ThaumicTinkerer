@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RegistryItems {
+public class TTRegistry {
 
 	private ArrayList<Class> itemClasses = new ArrayList<Class>();
 	private HashMap<Class, ArrayList<Item>> itemRegistry = new HashMap<Class, ArrayList<Item>>();
@@ -57,6 +57,7 @@ public class RegistryItems {
 						Item nextItem = (Item) clazz.getConstructor(param.getClass()).newInstance(param);
 						nextItem.setUnlocalizedName(((ITTinkererItem) nextItem).getItemName());
 						itemList.add(nextItem);
+						registerRecipe((ITTinkererItem) nextItem);
 						registerResearch((ITTinkererItem) nextItem);
 					}
 					itemRegistry.put(clazz, itemList);

@@ -117,8 +117,8 @@ public class ItemFocusRecall extends ItemModFocus {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_RECALL, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemFocusRecall.class)), 10, new AspectList().add(Aspect.TRAVEL, 100).add(Aspect.ELDRITCH, 64).add(Aspect.MAGIC, 50), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class)),
-				new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.ender_pearl), new ItemStack(Items.diamond), new ItemStack(ConfigBlocks.blockMirror), new ItemStack(ConfigItems.itemFocusPortableHole));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_RECALL, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemFocusRecall.class)), 10, new AspectList().add(Aspect.TRAVEL, 100).add(Aspect.ELDRITCH, 64).add(Aspect.MAGIC, 50), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemSkyPearl.class)),
+				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.ender_pearl), new ItemStack(Items.diamond), new ItemStack(ConfigBlocks.blockMirror), new ItemStack(ConfigItems.itemFocusPortableHole));
 
 	}
 }

@@ -21,8 +21,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
 
-public class BlockMod extends Block {
+public abstract class BlockMod extends Block implements ITTinkererBlock {
 
 	public BlockMod(Material par2Material) {
 		super(par2Material);

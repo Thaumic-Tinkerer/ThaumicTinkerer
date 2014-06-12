@@ -18,6 +18,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.Random;
 
@@ -38,5 +39,10 @@ public class BlockGaseousLight extends BlockGas {
 	@Override
 	public void placeParticle(World world, int par2, int par3, int par4) {
 		ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1);
+	}
+
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.GASEOUS_LIGHT;
 	}
 }

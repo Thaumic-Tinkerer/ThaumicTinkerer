@@ -17,11 +17,46 @@ package vazkii.tinkerer.common.block.quartz;
 import net.minecraft.block.BlockStairs;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
-public class BlockDarkQuartzStairs extends BlockStairs {
+import java.util.ArrayList;
+
+public class BlockDarkQuartzStairs extends BlockStairs implements ITTinkererBlock {
 
 	public BlockDarkQuartzStairs() {
 		super(ModBlocks.darkQuartz, 0);
 		setCreativeTab(ModCreativeTab.INSTANCE);
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getBlockName() {
+		return null;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return false;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
 	}
 }

@@ -23,8 +23,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
 
-public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
+public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer implements ITTinkererBlock {
 
 	protected BlockModContainer(Material par2Material) {
 		super(par2Material);

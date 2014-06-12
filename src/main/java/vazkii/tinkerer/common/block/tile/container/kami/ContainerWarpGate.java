@@ -58,7 +58,7 @@ public class ContainerWarpGate extends ContainerPlayerInv {
 				if (par2 < 10) {
 					if (!mergeItemStack(var5, 10, 36, false))
 						return null;
-				} else if (var3.getItem() == ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemSkyPearl.class) && !mergeItemStack(var5, 0, 10, false))
+				} else if (var3.getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemSkyPearl.class) && !mergeItemStack(var5, 0, 10, false))
 					return null;
 
 				if (var5.stackSize == 0)

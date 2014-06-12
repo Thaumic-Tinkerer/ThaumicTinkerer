@@ -96,8 +96,8 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRe
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_HELM_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.WATER, 50).add(Aspect.ARMOR, 32).add(Aspect.HUNGER, 32).add(Aspect.AURA, 32).add(Aspect.LIGHT, 64).add(Aspect.FLESH, 16).add(Aspect.MIND, 16), new ItemStack(ThaumicTinkerer.registryItems.getItemFromClass(ItemIchorclothArmor.class).get(0)),
-				new ItemStack(Items.diamond, 1), new ItemStack(this), new ItemStack(this), new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Items.golden_helmet), new ItemStack(Items.potionitem, 1, 8198), new ItemStack(ConfigItems.itemGoggles), new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemCleansingTalisman.class)), new ItemStack(Items.fish), new ItemStack(Items.cake), new ItemStack(Items.ender_eye));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_HELM_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.WATER, 50).add(Aspect.ARMOR, 32).add(Aspect.HUNGER, 32).add(Aspect.AURA, 32).add(Aspect.LIGHT, 64).add(Aspect.FLESH, 16).add(Aspect.MIND, 16), new ItemStack(ThaumicTinkerer.TTRegistry.getItemFromClass(ItemIchorclothArmor.class).get(0)),
+				new ItemStack(Items.diamond, 1), new ItemStack(this), new ItemStack(this), new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Items.golden_helmet), new ItemStack(Items.potionitem, 1, 8198), new ItemStack(ConfigItems.itemGoggles), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemCleansingTalisman.class)), new ItemStack(Items.fish), new ItemStack(Items.cake), new ItemStack(Items.ender_eye));
 	}
 
 }

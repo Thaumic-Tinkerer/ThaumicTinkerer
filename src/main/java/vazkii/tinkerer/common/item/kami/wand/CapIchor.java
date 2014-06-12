@@ -26,11 +26,11 @@ public class CapIchor extends WandCap {
 	ResourceLocation res = new ResourceLocation(LibResources.MODEL_CAP_ICHOR);
 
 	public CapIchor() {
-		super("ICHOR", 0.8F, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 4), 10);
+		super("ICHOR", 0.8F, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 4), 10);
 	}
 
 	public CapIchor(String s) {
-		super(s, 0.8F, new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class), 1, 10), 10);
+		super(s, 0.8F, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 10), 10);
 	}
 
 	@Override

@@ -148,7 +148,7 @@ public enum EnumMobAspect {
 	}
 
 	public ResearchPage GetRecepiePage() {
-		ItemStack output = new ItemStack(ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemMobAspect.class));
+		ItemStack output = new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemMobAspect.class));
 		((ItemMobDisplay) output.getItem()).setEntityType(output, toString());
 		ItemStack[] inputs = new ItemStack[this.aspects.length];
 		int i = 0;

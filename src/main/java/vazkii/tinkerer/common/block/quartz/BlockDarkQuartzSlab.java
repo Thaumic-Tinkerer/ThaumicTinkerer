@@ -25,10 +25,16 @@ import net.minecraft.util.IIcon;
 import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCraftingBenchRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockDarkQuartzSlab extends BlockSlab {
+public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	public BlockDarkQuartzSlab(boolean par2) {
 		super(par2, Material.rock);
@@ -70,5 +76,38 @@ public class BlockDarkQuartzSlab extends BlockSlab {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		// NO-OP
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.DARK_QUARTZ_SLAB;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+
+		return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 2, new ItemStack(ModBlocks.darkQuartzSlab, 6),
+				"QQQ",
+				'Q', ModBlocks.darkQuartz);
 	}
 }

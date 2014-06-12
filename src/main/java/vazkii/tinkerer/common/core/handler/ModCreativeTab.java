@@ -53,7 +53,7 @@ public class ModCreativeTab extends CreativeTabs {
 		if (displayItem == null)
 			addWand();
 
-		return ThaumicTinkerer.registryItems.getFirstItemFromClass(ItemKamiResource.class);
+		return ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class);
 	}
 
 	@Override

@@ -64,7 +64,7 @@ public class TTCommonProxy {
 
 		ModBlocks.initBlocks();
 		//ModItems.initItems();
-		ThaumicTinkerer.registryItems.preInit();
+		ThaumicTinkerer.TTRegistry.preInit();
 		NumericAspectHelper.init();
 		initCCPeripherals();
 	}
@@ -82,7 +82,7 @@ public class TTCommonProxy {
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
 		ModBlocks.initTileEntities();
-		ThaumicTinkerer.registryItems.init();
+		ThaumicTinkerer.TTRegistry.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		registerPackets();
 		FMLCommonHandler.instance().bus().register(new PlayerTracker());
