@@ -5,10 +5,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,14 +25,17 @@ public class TTRegistry {
 	public void registerClasses() {
 		try {
 			ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
-			for (ClassPath.ClassInfo classInfo : classPath.getTopLevelClassesRecursive("vazkii.tinkerer")) {
-				if (ITTinkererItem.class.isAssignableFrom(classInfo.getClass())) {
-					itemClasses.add(classInfo.getClass());
-				}
-				if (ITTinkererBlock.class.isAssignableFrom(classInfo.getClass())) {
+			for (ClassPath.ClassInfo classInfo : classPath.getTopLevelClassesRecursive("vazkii.tinkerer.common.block")) {
+				if (ITTinkererBlock.class.isAssignableFrom(classInfo.load()) && !Modifier.isAbstract(classInfo.load().getModifiers())) {
 					blockClasses.add(classInfo.getClass());
 				}
 			}
+			for (ClassPath.ClassInfo classInfo : classPath.getTopLevelClassesRecursive("vazkii.tinkerer.common.item")) {
+				if (ITTinkererItem.class.isAssignableFrom(classInfo.load()) && !Modifier.isAbstract(classInfo.load().getModifiers())) {
+					itemClasses.add(classInfo.getClass());
+				}
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,6 +66,8 @@ public class TTRegistry {
 					ArrayList<Item> itemList = new ArrayList<Item>();
 					itemList.add(newItem);
 					registerResearch((ITTinkererItem) newItem);
+
+					ModCreativeTab.INSTANCE.addItem(newItem);
 					for (Object param : ((ITTinkererItem) newItem).getSpecialParameters()) {
 						Item nextItem = (Item) clazz.getConstructor(param.getClass()).newInstance(param);
 						nextItem.setUnlocalizedName(((ITTinkererItem) nextItem).getItemName());
@@ -92,8 +99,8 @@ public class TTRegistry {
 						newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
 						ArrayList<Item> itemList = new ArrayList<Item>();
 						itemList.add(newItem);
-					}
 
+					}
 					registerRecipe((ITTinkererRegisterable) newBlock);
 					registerResearch((ITTinkererRegisterable) newBlock);
 					for (Object param : ((ITTinkererBlock) newBlock).getSpecialParameters()) {
@@ -138,6 +145,10 @@ public class TTRegistry {
 		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
 			for (Item item : itemArrayList) {
 				GameRegistry.registerItem(item, ((ITTinkererItem) item).getItemName());
+
+				if (((ITTinkererItem) item).shouldDisplayInTab()) {
+					ModCreativeTab.INSTANCE.addItem(item);
+				}
 			}
 		}
 		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
@@ -149,6 +160,9 @@ public class TTRegistry {
 				}
 				if (((ITTinkererBlock) block).getTileEntity() != null) {
 					GameRegistry.registerTileEntity(((ITTinkererBlock) block).getTileEntity(), LibResources.PREFIX_MOD + ((ITTinkererBlock) block).getBlockName());
+				}
+				if (((ITTinkererBlock) block).shouldDisplayInTab()) {
+					ModCreativeTab.INSTANCE.addBlock(block);
 				}
 			}
 		}

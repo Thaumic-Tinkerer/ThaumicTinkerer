@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ModCreativeTab extends CreativeTabs {
 
-	public static ModCreativeTab INSTANCE = new ModCreativeTab();
+	public static ModCreativeTab INSTANCE;
 	ItemStack displayItem;
 	List list;
 
@@ -81,11 +81,11 @@ public class ModCreativeTab extends CreativeTabs {
 		}
 	}
 
-	private void addItem(Item item) {
+	public void addItem(Item item) {
 		item.getSubItems(item, this, list);
 	}
 
-	private void addBlock(Block block) {
+	public void addBlock(Block block) {
 		block.getSubBlocks(Item.getItemFromBlock(block), this, list);
 	}
 

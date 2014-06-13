@@ -13,7 +13,7 @@
  * File Created @ [29 Oct 2013, 14:23:16 (GMT)]
  */
 
-package vazkii.tinkerer.common.block.multipart;
+package vazkii.tinkerer.common.multipart;
 
 import codechicken.microblock.BlockMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;

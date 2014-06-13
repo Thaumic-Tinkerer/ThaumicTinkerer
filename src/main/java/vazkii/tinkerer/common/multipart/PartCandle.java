@@ -14,7 +14,7 @@
  * File Created @ [25 Oct 2013, 17:26:07 (GMT)]
 */
 
-package vazkii.tinkerer.common.block.multipart;
+package vazkii.tinkerer.common.multipart;
 
 import codechicken.lib.vec.Cuboid6;
 import codechicken.multipart.IRandomDisplayTick;

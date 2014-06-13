@@ -6,7 +6,7 @@
  * http://www.minecraftforum.net/topic/1776056-
  */
 
-package vazkii.tinkerer.common.block.multipart;
+package vazkii.tinkerer.common.multipart;
 
 import codechicken.lib.vec.BlockCoord;
 import codechicken.multipart.MultiPartRegistry;
@@ -73,7 +73,7 @@ public class RegisterBlockPart implements IPartFactory, IPartConverter {
 		int meta = world.getBlockMetadata(pos.x, pos.y, pos.z);
 		if (blockInQuestion == block) {
 			try {
-				if (part.getName().equals("vazkii.tinkerer.common.block.multipart.PartNitor") && meta != 1)
+				if (part.getName().equals("vazkii.tinkerer.common.multipart.PartNitor") && meta != 1)
 					return null;
 
 				if (part.getDeclaredConstructor(int.class) != null)

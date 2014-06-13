@@ -33,6 +33,7 @@ import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.*;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiDimensionHandler;
@@ -59,6 +60,7 @@ import vazkii.tinkerer.common.research.ResearchHelper;
 public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
+		ModCreativeTab.INSTANCE = new ModCreativeTab();
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 		//ModItems.initItems();
 		ThaumicTinkerer.registry.preInit();
@@ -95,7 +97,7 @@ public class TTCommonProxy {
 
 		if (Loader.isModLoaded("ForgeMultipart")) {
 			try {
-				Class clazz = Class.forName("vazkii.tinkerer.common.block.multipart.MultipartHandler");
+				Class clazz = Class.forName("vazkii.tinkerer.common.multipart.MultipartHandler");
 				clazz.newInstance();
 			} catch (Throwable e) {
 				e.printStackTrace();
