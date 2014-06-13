@@ -22,7 +22,9 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.BlockNitorGas;
+import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ItemBase;
@@ -68,8 +70,8 @@ public class ItemBrightNitor extends ItemBase {
 	}
 
 	public static void setBlock(int x, int y, int z, World world) {
-		if ((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ModBlocks.nitorGas) && !world.isRemote)
-			world.setBlock(x, y, z, ModBlocks.nitorGas, meta, 2);
+		if ((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockNitorGas.class)) && !world.isRemote)
+			world.setBlock(x, y, z, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizer.class), meta, 2);
 	}
 
 	@Override

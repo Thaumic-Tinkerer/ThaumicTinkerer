@@ -85,14 +85,14 @@ public class BlockPlatform extends BlockCamo {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_PLATFORM, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, 6, 3, new ItemStack(ModBlocks.platform)).setConcealed().setParents(LibResearch.KEY_CLEANSING_TALISMAN)
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_PLATFORM, new AspectList().add(Aspect.SENSES, 2).add(Aspect.TREE, 1).add(Aspect.MOTION, 1), -2, 6, 3, new ItemStack(this)).setConcealed().setParents(LibResearch.KEY_CLEANSING_TALISMAN)
 				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_PLATFORM)).setSecondary();
 
 	}
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_PLATFORM, LibResearch.KEY_PLATFORM, new ItemStack(ModBlocks.platform, 2), new AspectList().add(Aspect.AIR, 2).add(Aspect.ENTROPY, 4),
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_PLATFORM, LibResearch.KEY_PLATFORM, new ItemStack(this, 2), new AspectList().add(Aspect.AIR, 2).add(Aspect.ENTROPY, 4),
 				" S ", "G G",
 				'G', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
 				'S', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 7));

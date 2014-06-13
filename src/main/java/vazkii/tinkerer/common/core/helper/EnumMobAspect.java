@@ -15,7 +15,7 @@ import thaumcraft.common.entities.monster.EntityBrainyZombie;
 import thaumcraft.common.entities.monster.EntityFireBat;
 import thaumcraft.common.entities.monster.EntityWisp;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.BlockSummon;
 import vazkii.tinkerer.common.item.ItemMobAspect;
 import vazkii.tinkerer.common.item.ItemMobDisplay;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -155,7 +155,7 @@ public enum EnumMobAspect {
 		for (Aspect a : this.aspects) {
 			inputs[i++] = ItemMobAspect.getStackFromAspect(a);
 		}
-		InfusionRecipe recepie = new InfusionRecipe(LibResearch.KEY_SUMMON, output, 0, new AspectList(), new ItemStack(ModBlocks.spawner), inputs);
+		InfusionRecipe recepie = new InfusionRecipe(LibResearch.KEY_SUMMON, output, 0, new AspectList(), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockSummon.class)), inputs);
 		return new ResearchPage(recepie);
 	}
 

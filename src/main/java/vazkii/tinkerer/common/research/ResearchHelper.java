@@ -32,7 +32,9 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.client.lib.LibResources;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
+import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibResearch;
 
@@ -92,9 +94,6 @@ public final class ResearchHelper {
 		if (Config.allowMirrors) {
 		}
 
-		research = new TTResearchItem(LibResearch.KEY_MOBILIZER, new AspectList().add(Aspect.MOTION, 2).add(Aspect.ORDER, 2), -7, 5, 3, new ItemStack(ModBlocks.mobilizer)).setParents(LibResearch.KEY_MAGNETS);
-		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_MOBILIZER), ResearchHelper.arcaneRecipePage(LibResearch.KEY_RELAY)).setSecondary();
-
 		// Peripheral documentation research
 		if (Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, new AspectList(), -1, 0, 0, new ItemStack(Items.redstone)).setAutoUnlock().setRound();
@@ -103,8 +102,6 @@ public final class ResearchHelper {
 
 		if (ConfigHandler.enableKami) {
 			if (Config.allowMirrors) {
-				research = new KamiResearchItem(LibResearch.KEY_WARP_GATE, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MECHANISM, 1), 19, 6, 5, new ItemStack(ModBlocks.warpGate)).setParents(LibResearch.KEY_ICHORCLOTH_CHEST_GEM).setParentsHidden(LibResearch.KEY_ICHORCLOTH_BOOTS_GEM);
-				research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_WARP_GATE), new ResearchPage("1"), ResearchHelper.infusionPage(LibResearch.KEY_SKY_PEARL));
 			}
 		}
 	}
@@ -135,7 +132,7 @@ public final class ResearchHelper {
 	}
 
 	public static ResearchPage LeviationaryHelp() {
-		return new ResearchPage(Arrays.asList((new AspectList()), 5, 1, 1, Arrays.asList(new ItemStack(ModBlocks.mobilizerRelay), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ModBlocks.mobilizer), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ModBlocks.mobilizerRelay))));
+		return new ResearchPage(Arrays.asList((new AspectList()), 5, 1, 1, Arrays.asList(new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizerRelay.class)), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizer.class)), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizerRelay.class)))));
 
 	}
 }

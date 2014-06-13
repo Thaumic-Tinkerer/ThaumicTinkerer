@@ -31,7 +31,6 @@ import net.minecraftforge.common.util.EnumHelper;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.*;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
@@ -61,8 +60,6 @@ public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
-
-		ModBlocks.initBlocks();
 		//ModItems.initItems();
 		ThaumicTinkerer.TTRegistry.preInit();
 		NumericAspectHelper.init();
@@ -81,7 +78,6 @@ public class TTCommonProxy {
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
-		ModBlocks.initTileEntities();
 		ThaumicTinkerer.TTRegistry.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		registerPackets();
@@ -94,6 +90,15 @@ public class TTCommonProxy {
 		}
 		if (Loader.isModLoaded("OpenComputers")) {
 			initOpenCDrivers();
+		}
+
+		if (Loader.isModLoaded("ForgeMultipart")) {
+			try {
+				Class clazz = Class.forName("vazkii.tinkerer.common.block.multipart.MultipartHandler");
+				clazz.newInstance();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

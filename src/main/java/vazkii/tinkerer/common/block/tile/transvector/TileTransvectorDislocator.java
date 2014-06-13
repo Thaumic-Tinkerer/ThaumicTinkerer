@@ -26,7 +26,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.transvector.BlockTransvectorDislocator;
 import vazkii.tinkerer.common.lib.LibFeatures;
 
 import java.util.List;
@@ -86,7 +87,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 			}
 
 			if (block != null)
-				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ModBlocks.dislocator);
+				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockTransvectorDislocator.class));
 
 			worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 3);
 

@@ -33,7 +33,7 @@ import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.kami.BlockBedrockPortal;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
@@ -110,7 +110,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
 		if (ConfigHandler.bedrockDimensionID != 0 && blk == Blocks.bedrock && ((world.provider.isSurfaceWorld() && y < 5) || (y > 253 && world.provider instanceof WorldProviderBedrock))) {
-			world.setBlock(x, y, z, ModBlocks.portal);
+			world.setBlock(x, y, z, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockBedrockPortal.class));
 		}
 		if (ConfigHandler.bedrockDimensionID != 0 && blk == Blocks.bedrock && (y <= 253 && world.provider instanceof WorldProviderBedrock)) {
 			world.setBlock(x, y, z, Blocks.air);

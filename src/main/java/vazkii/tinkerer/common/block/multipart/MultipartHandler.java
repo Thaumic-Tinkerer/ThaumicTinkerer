@@ -19,7 +19,8 @@ import codechicken.microblock.BlockMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;
 import net.minecraft.block.Block;
 import thaumcraft.common.config.ConfigBlocks;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.quartz.BlockDarkQuartz;
 
 public class MultipartHandler {
 
@@ -32,7 +33,7 @@ public class MultipartHandler {
 		registerMultipartMetadataLine(ConfigBlocks.blockMagicalLeaves, 1);
 		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticOpaque, 1);
 		registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
-		registerMultipartMetadataLine(ModBlocks.darkQuartz, 2);
+		registerMultipartMetadataLine(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), 2);
 
 		new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName()).init();
 		//(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();

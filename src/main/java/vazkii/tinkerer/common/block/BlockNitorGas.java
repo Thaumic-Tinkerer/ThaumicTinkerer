@@ -24,6 +24,7 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.item.kami.armor.ItemGemLegs;
+import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.List;
 import java.util.Random;
@@ -84,4 +85,8 @@ public class BlockNitorGas extends BlockGas {
 			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
 	}
 
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.NITOR_GAS;
+	}
 }

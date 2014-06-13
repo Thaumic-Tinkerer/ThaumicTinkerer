@@ -19,6 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -27,10 +28,14 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigBlocks;
 import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileSummon;
+import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererBlock;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 import vazkii.tinkerer.common.research.ResearchHelper;
@@ -97,7 +102,7 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 
 	@Override
 	public String getBlockName() {
-		return null;
+		return LibBlockNames.SPAWNER;
 	}
 
 	@Override
@@ -112,7 +117,7 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ModBlocks.spawner)).setParents(LibResearch.KEY_BLOOD_SWORD);
+		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockSummon.class))).setParents(LibResearch.KEY_BLOOD_SWORD);
 		List<ResearchPage> list = new ArrayList<ResearchPage>();
 		list.add(new ResearchPage("0"));
 		list.add(ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"));
@@ -126,6 +131,6 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SUMMON + "0", LibResearch.KEY_SUMMON, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockSummon.class)), new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1));
 	}
 }

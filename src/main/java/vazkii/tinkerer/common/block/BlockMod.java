@@ -23,6 +23,8 @@ import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.registry.ITTinkererBlock;
 
+import java.util.ArrayList;
+
 public abstract class BlockMod extends Block implements ITTinkererBlock {
 
 	public BlockMod(Material par2Material) {
@@ -41,4 +43,18 @@ public abstract class BlockMod extends Block implements ITTinkererBlock {
 		return true;
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
 }

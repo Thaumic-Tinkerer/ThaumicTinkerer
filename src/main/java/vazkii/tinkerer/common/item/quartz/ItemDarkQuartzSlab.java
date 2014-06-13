@@ -17,12 +17,13 @@ package vazkii.tinkerer.common.item.quartz;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.item.ItemSlab;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 
 public class ItemDarkQuartzSlab extends ItemSlab {
 
 	public ItemDarkQuartzSlab(Block par1) {
-		super(par1, (BlockSlab) ModBlocks.darkQuartzSlab, (BlockSlab) ModBlocks.darkQuartzSlabFull, false);
+		super(par1, (BlockSlab) ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), (BlockSlab) ThaumicTinkerer.TTRegistry.getBlockFromClass(BlockDarkQuartzSlab.class).get(1), false);
 	}
 
 }

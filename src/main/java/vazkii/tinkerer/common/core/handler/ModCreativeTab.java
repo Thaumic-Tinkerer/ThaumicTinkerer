@@ -14,7 +14,6 @@
  */
 package vazkii.tinkerer.common.core.handler;
 
-import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -24,7 +23,6 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibMisc;
 
@@ -61,30 +59,6 @@ public class ModCreativeTab extends CreativeTabs {
 		this.list = list;
 
 		addWand();
-
-		addBlock(ModBlocks.darkQuartz);
-		addBlock(ModBlocks.darkQuartzStairs);
-		addBlock(ModBlocks.darkQuartzSlab);
-
-		addBlock(ModBlocks.mobilizer);
-		addBlock(ModBlocks.mobilizerRelay);
-		addBlock(ModBlocks.golemConnector);
-		addBlock(ModBlocks.interfase);
-		addBlock(ModBlocks.dislocator);
-
-		addBlock(ModBlocks.funnel);
-		addBlock(ModBlocks.platform);
-		addBlock(ModBlocks.repairer);
-		addBlock(ModBlocks.magnet);
-		//addBlock(ModBlocks.portal);
-		addBlock(ModBlocks.animationTablet);
-
-		if (Loader.isModLoaded("ComputerCraft"))
-			addBlock(ModBlocks.aspectAnalyzer);
-
-		if (ConfigHandler.enableKami) {
-			addBlock(ModBlocks.warpGate);
-		}
 	}
 
 	private void addWand() {

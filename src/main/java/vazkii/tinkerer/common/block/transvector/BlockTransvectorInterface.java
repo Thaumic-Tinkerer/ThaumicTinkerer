@@ -22,8 +22,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.BlockCamo;
-import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.lib.LibBlockNames;
@@ -71,14 +71,14 @@ public class BlockTransvectorInterface extends BlockCamo {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_INTERFACE, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), -4, 2, 1, new ItemStack(ModBlocks.interfase)).setParents(LibResearch.KEY_DARK_QUARTZ)
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_INTERFACE, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), -4, 2, 1, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockTransvectorInterface.class))).setParents(LibResearch.KEY_DARK_QUARTZ)
 				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"));
 
 	}
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ModBlocks.interfase), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockTransvectorInterface.class)), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
 				"BRB", "LEL", "BRB",
 				'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
 				'E', new ItemStack(Items.ender_pearl),

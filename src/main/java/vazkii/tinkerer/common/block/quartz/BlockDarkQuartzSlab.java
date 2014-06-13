@@ -22,7 +22,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -46,25 +46,29 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 		}
 	}
 
+	public BlockDarkQuartzSlab() {
+		this(false);
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2) {
-		return ModBlocks.darkQuartz.getBlockTextureFromSide(par1);
+		return ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class).getBlockTextureFromSide(par1);
 	}
 
 	@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Item.getItemFromBlock(ModBlocks.darkQuartzSlab);
+		return Item.getItemFromBlock(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class));
 	}
 
 	//@Override
 	//public int idDropped(int par1, Random par2Random, int par3) {
-	//	return ModBlocks.darkQuartzSlab.blockID;
+	//	return ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class).blockID;
 	//}
 
 	@Override
 	public ItemStack createStackedBlock(int par1) {
-		return new ItemStack(ModBlocks.darkQuartzSlab);
+		return new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class));
 	}
 
 	@Override
@@ -80,7 +84,9 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	@Override
 	public ArrayList<Object> getSpecialParameters() {
-		return null;
+		ArrayList result = new ArrayList();
+		result.add(true);
+		return result;
 	}
 
 	@Override
@@ -105,9 +111,11 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-
-		return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 2, new ItemStack(ModBlocks.darkQuartzSlab, 6),
+		if (isOpaqueCube()) {
+			return null;
+		}
+		return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 2, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), 6),
 				"QQQ",
-				'Q', ModBlocks.darkQuartz);
+				'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class));
 	}
 }

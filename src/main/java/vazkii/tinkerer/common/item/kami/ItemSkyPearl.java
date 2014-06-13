@@ -28,7 +28,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
 import vazkii.tinkerer.common.core.helper.MiscHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
@@ -57,7 +57,7 @@ public class ItemSkyPearl extends ItemKamiBase {
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		Block block = par3World.getBlock(par4, par5, par6);
-		if (block == ModBlocks.warpGate && !isAttuned(par1ItemStack)) {
+		if (block == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockWarpGate.class) && !isAttuned(par1ItemStack)) {
 			setValues(par1ItemStack, par4, par5, par6, par2EntityPlayer.dimension);
 			par3World.playSoundAtEntity(par2EntityPlayer, "random.orb", 0.3F, 0.1F);
 		}

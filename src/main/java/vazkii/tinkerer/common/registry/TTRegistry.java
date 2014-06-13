@@ -2,6 +2,7 @@ package vazkii.tinkerer.common.registry;
 
 import com.google.common.reflect.ClassPath;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
@@ -14,6 +15,9 @@ public class TTRegistry {
 
 	private ArrayList<Class> itemClasses = new ArrayList<Class>();
 	private HashMap<Class, ArrayList<Item>> itemRegistry = new HashMap<Class, ArrayList<Item>>();
+
+	private ArrayList<Class> blockClasses = new ArrayList<Class>();
+	private HashMap<Class, ArrayList<Block>> blockRegistry = new HashMap<Class, ArrayList<Block>>();
 
 	public void registerClasses() {
 		try {
@@ -80,6 +84,14 @@ public class TTRegistry {
 
 	public Item getFirstItemFromClass(Class clazz) {
 		return itemRegistry.get(clazz) != null ? itemRegistry.get(clazz).get(0) : null;
+	}
+
+	public ArrayList<Block> getBlockFromClass(Class clazz) {
+		return blockRegistry.get(clazz);
+	}
+
+	public Block getFirstBlockFromClass(Class clazz) {
+		return blockRegistry.get(clazz) != null ? blockRegistry.get(clazz).get(0) : null;
 	}
 
 	public void init() {

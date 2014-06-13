@@ -174,7 +174,7 @@ public class BlockAnimationTablet extends BlockModContainer {
 			if (tablet.redstone && tablet.swingProgress == 0) {
 				tablet.findEntities(tablet.getTargetLoc());
 				tablet.initiateSwing();
-				par1World.addBlockEvent(par2, par3, par4, ModBlocks.animationTablet, 0, 0);
+				par1World.addBlockEvent(par2, par3, par4, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
 			}
 		}
 	}
@@ -250,14 +250,14 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_ANIMATION_TABLET, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.METAL, 1).add(Aspect.MOTION, 1).add(Aspect.ENERGY, 1), -8, 2, 4, new ItemStack(ModBlocks.animationTablet)).setParents(LibResearch.KEY_MAGNETS)
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_ANIMATION_TABLET, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.METAL, 1).add(Aspect.MOTION, 1).add(Aspect.ENERGY, 1), -8, 2, 4, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockAnimationTablet.class))).setParents(LibResearch.KEY_MAGNETS)
 				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ANIMATION_TABLET));
 
 	}
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ANIMATION_TABLET, LibResearch.KEY_ANIMATION_TABLET, new ItemStack(ModBlocks.animationTablet), new AspectList().add(Aspect.AIR, 25).add(Aspect.ORDER, 15).add(Aspect.FIRE, 10),
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ANIMATION_TABLET, LibResearch.KEY_ANIMATION_TABLET, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockAnimationTablet.class)), new AspectList().add(Aspect.AIR, 25).add(Aspect.ORDER, 15).add(Aspect.FIRE, 10),
 				"GIG", "ICI",
 				'G', new ItemStack(Items.gold_ingot),
 				'I', new ItemStack(Items.iron_ingot),

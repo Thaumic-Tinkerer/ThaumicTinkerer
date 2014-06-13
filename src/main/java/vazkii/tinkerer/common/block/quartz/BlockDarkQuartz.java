@@ -26,7 +26,6 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.BlockMod;
-import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.item.quartz.ItemDarkQuartz;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -159,15 +158,15 @@ public class BlockDarkQuartz extends BlockMod {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererRecipeMulti(
 
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 1, new ItemStack(ModBlocks.darkQuartz),
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 1, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class)),
 						"QQ", "QQ",
 						'Q', ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)),
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 3, new ItemStack(ModBlocks.darkQuartz, 2, 2),
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 3, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), 2, 2),
 						"Q", "Q",
-						'Q', ModBlocks.darkQuartz),
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 4, new ItemStack(ModBlocks.darkQuartz, 1, 1),
+						'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class)),
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 4, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), 1, 1),
 						"Q", "Q",
-						'Q', ModBlocks.darkQuartzSlab)
+						'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class))
 		);
 	}
 }
