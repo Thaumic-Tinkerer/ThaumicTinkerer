@@ -4,6 +4,7 @@ import com.google.common.reflect.ClassPath;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.io.IOException;
@@ -86,13 +87,21 @@ public class TTRegistry {
 					newBlock.setBlockName(((ITTinkererBlock) newBlock).getBlockName());
 					ArrayList<Block> blockList = new ArrayList<Block>();
 					blockList.add(newBlock);
-					registerResearch((ITTinkererBlock) newBlock);
+					if (((ITTinkererBlock) newBlock).getItemBlock() != null) {
+						Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().newInstance();
+						newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
+						ArrayList<Item> itemList = new ArrayList<Item>();
+						itemList.add(newItem);
+					}
+
+					registerRecipe((ITTinkererRegisterable) newBlock);
+					registerResearch((ITTinkererRegisterable) newBlock);
 					for (Object param : ((ITTinkererBlock) newBlock).getSpecialParameters()) {
 						Block nextBlock = (Block) clazz.getConstructor(param.getClass()).newInstance(param);
 						nextBlock.setBlockName(((ITTinkererBlock) nextBlock).getBlockName());
 						blockList.add(nextBlock);
-						registerRecipe((ITTinkererBlock) nextBlock);
-						registerResearch((ITTinkererBlock) nextBlock);
+						registerRecipe((ITTinkererRegisterable) nextBlock);
+						registerResearch((ITTinkererRegisterable) nextBlock);
 					}
 					blockRegistry.put(clazz, blockList);
 				}
@@ -129,6 +138,18 @@ public class TTRegistry {
 		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
 			for (Item item : itemArrayList) {
 				GameRegistry.registerItem(item, ((ITTinkererItem) item).getItemName());
+			}
+		}
+		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
+			for (Block block : blockArrayList) {
+				if (((ITTinkererBlock) block).getItemBlock() != null) {
+					GameRegistry.registerBlock(block, ((ITTinkererBlock) block).getItemBlock(), ((ITTinkererBlock) block).getBlockName());
+				} else {
+					GameRegistry.registerBlock(block, ((ITTinkererBlock) block).getBlockName());
+				}
+				if (((ITTinkererBlock) block).getTileEntity() != null) {
+					GameRegistry.registerTileEntity(((ITTinkererBlock) block).getTileEntity(), LibResources.PREFIX_MOD + ((ITTinkererBlock) block).getBlockName());
+				}
 			}
 		}
 	}

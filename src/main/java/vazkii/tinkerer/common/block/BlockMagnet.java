@@ -14,6 +14,7 @@
  */
 package vazkii.tinkerer.common.block;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -36,6 +37,7 @@ import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.client.lib.LibRenderIDs;
+import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
@@ -206,6 +208,7 @@ public class BlockMagnet extends BlockModContainer {
 
 	@Override
 	public Class<? extends TileEntity> getTileEntity() {
+		GameRegistry.registerTileEntity(TileMobMagnet.class, LibResources.PREFIX_MOD + LibBlockNames.MOB_MAGNET);
 		return TileMagnet.class;
 	}
 

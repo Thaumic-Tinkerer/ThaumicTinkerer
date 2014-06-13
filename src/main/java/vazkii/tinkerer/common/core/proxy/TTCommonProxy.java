@@ -88,6 +88,7 @@ public class TTCommonProxy {
 			MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
 			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
 		}
+
 		if (Loader.isModLoaded("OpenComputers")) {
 			initOpenCDrivers();
 		}
