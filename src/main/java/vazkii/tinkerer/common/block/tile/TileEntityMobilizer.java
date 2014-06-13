@@ -87,7 +87,7 @@ public class TileEntityMobilizer extends TileEntity {
 			int targetX = xCoord + movementDirection.offsetX;
 			int targetZ = zCoord + movementDirection.offsetZ;
 			//Check for abandoned TEs
-			if (worldObj.getBlock(xCoord, yCoord, zCoord) != ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizer.class)) {
+			if (worldObj.getBlock(xCoord, yCoord, zCoord) != ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizer.class)) {
 				return;
 			}
 			//Check if the space the mobilizer will move into is empty
@@ -160,7 +160,7 @@ public class TileEntityMobilizer extends TileEntity {
 					this.invalidate();
 					worldObj.removeTileEntity(xCoord, yCoord, zCoord);
 					worldObj.setBlock(xCoord, yCoord, zCoord, Block.getBlockFromName("air"), 0, 2);
-					worldObj.setBlock(targetX, yCoord, targetZ, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizer.class));
+					worldObj.setBlock(targetX, yCoord, targetZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizer.class));
 
 					int oldX = xCoord;
 					int oldZ = zCoord;

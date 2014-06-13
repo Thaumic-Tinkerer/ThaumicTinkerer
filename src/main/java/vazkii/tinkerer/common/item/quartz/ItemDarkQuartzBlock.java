@@ -25,7 +25,7 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
 public class ItemDarkQuartzBlock extends ItemMultiTexture {
 
 	public ItemDarkQuartzBlock(Block par1) {
-		super(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), new String[]{ "" });
+		super(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), new String[]{ "" });
 	}
 
 	@Override

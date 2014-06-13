@@ -21,6 +21,7 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -145,4 +146,13 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 		return blockIcon;
 	}
 
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
 }

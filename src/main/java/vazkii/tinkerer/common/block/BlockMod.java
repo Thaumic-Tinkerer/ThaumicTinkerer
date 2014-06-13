@@ -19,6 +19,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.registry.ITTinkererBlock;
@@ -56,5 +58,15 @@ public abstract class BlockMod extends Block implements ITTinkererBlock {
 	@Override
 	public boolean shouldDisplayInTab() {
 		return true;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
 	}
 }

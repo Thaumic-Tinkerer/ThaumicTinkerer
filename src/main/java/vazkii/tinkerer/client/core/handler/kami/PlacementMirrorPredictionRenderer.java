@@ -29,7 +29,7 @@ public final class PlacementMirrorPredictionRenderer {
 		List<EntityPlayer> playerEntities = world.playerEntities;
 		for (EntityPlayer player : playerEntities) {
 			ItemStack currentStack = player.getCurrentEquippedItem();
-			if (currentStack != null && currentStack.getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemPlacementMirror.class) && ItemPlacementMirror.getBlock(currentStack) != Blocks.air) {
+			if (currentStack != null && currentStack.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemPlacementMirror.class) && ItemPlacementMirror.getBlock(currentStack) != Blocks.air) {
 				renderPlayerLook(player, currentStack);
 			}
 		}

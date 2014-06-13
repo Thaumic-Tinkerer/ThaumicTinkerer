@@ -20,7 +20,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
@@ -150,6 +152,16 @@ public class BlockDarkQuartz extends BlockMod {
 	}
 
 	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
+
+	@Override
 	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
@@ -158,15 +170,15 @@ public class BlockDarkQuartz extends BlockMod {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererRecipeMulti(
 
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 1, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class)),
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 1, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class)),
 						"QQ", "QQ",
-						'Q', ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemDarkQuartz.class)),
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 3, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), 2, 2),
+						'Q', ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)),
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 2, 2),
 						"Q", "Q",
-						'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class)),
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 4, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), 1, 1),
+						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class)),
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 4, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 1, 1),
 						"Q", "Q",
-						'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class))
+						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class))
 		);
 	}
 }

@@ -4,7 +4,9 @@ import cpw.mods.fml.common.Loader;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -63,6 +65,16 @@ public class BlockGolemConnector extends BlockCamo {
 	@Override
 	public boolean shouldDisplayInTab() {
 		return true;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileGolemConnector.class;
 	}
 
 	@Override

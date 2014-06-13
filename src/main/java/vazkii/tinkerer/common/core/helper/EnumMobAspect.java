@@ -148,14 +148,14 @@ public enum EnumMobAspect {
 	}
 
 	public ResearchPage GetRecepiePage() {
-		ItemStack output = new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemMobAspect.class));
+		ItemStack output = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
 		((ItemMobDisplay) output.getItem()).setEntityType(output, toString());
 		ItemStack[] inputs = new ItemStack[this.aspects.length];
 		int i = 0;
 		for (Aspect a : this.aspects) {
 			inputs[i++] = ItemMobAspect.getStackFromAspect(a);
 		}
-		InfusionRecipe recepie = new InfusionRecipe(LibResearch.KEY_SUMMON, output, 0, new AspectList(), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockSummon.class)), inputs);
+		InfusionRecipe recepie = new InfusionRecipe(LibResearch.KEY_SUMMON, output, 0, new AspectList(), new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class)), inputs);
 		return new ResearchPage(recepie);
 	}
 

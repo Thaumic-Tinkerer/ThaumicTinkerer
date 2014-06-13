@@ -138,7 +138,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 		if ((!redstone || isBreaking) && detect && swingProgress == 0) {
 			initiateSwing();
-			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
 		}
 	}
 
@@ -566,7 +566,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 		findEntities(getTargetLoc());
 		initiateSwing();
-		worldObj.addBlockEvent(xCoord, yCoord, zCoord, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
+		worldObj.addBlockEvent(xCoord, yCoord, zCoord, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
 
 		return new Object[]{ true };
 	}

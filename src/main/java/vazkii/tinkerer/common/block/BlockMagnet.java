@@ -23,6 +23,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -38,6 +39,7 @@ import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
+import vazkii.tinkerer.common.item.ItemBlockMagnet;
 import vazkii.tinkerer.common.item.foci.ItemFocusTelekinesis;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
@@ -198,6 +200,16 @@ public class BlockMagnet extends BlockModContainer {
 	}
 
 	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return ItemBlockMagnet.class;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileMagnet.class;
+	}
+
+	@Override
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_MAGNETS, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.MOTION, 1).add(Aspect.SENSES, 1), -6, 3, 3, new ItemStack(this)).setParents(LibResearch.KEY_INTERFACE).setConcealed()
 				.setPages(new ResearchPage("0"), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_MAGNET), ResearchHelper.arcaneRecipePage(LibResearch.KEY_MOB_MAGNET), ResearchHelper.crucibleRecipePage(LibResearch.KEY_MAGNETS));
@@ -214,14 +226,14 @@ public class BlockMagnet extends BlockModContainer {
 						's', new ItemStack(ConfigItems.itemShard, 1, 3),
 						'S', new ItemStack(ConfigItems.itemShard),
 						'W', new ItemStack(ConfigBlocks.blockMagicalLog),
-						'F', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemFocusTelekinesis.class))),
+						'F', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusTelekinesis.class))),
 				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_MOB_MAGNET, LibResearch.KEY_MAGNETS, new ItemStack(this, 1, 1), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),
 						" G ", "SGs", "WFW",
 						'G', ModRecipes.oreDictOrStack(new ItemStack(Items.gold_ingot), "ingotCopper"),
 						's', new ItemStack(ConfigItems.itemShard, 1, 3),
 						'S', new ItemStack(ConfigItems.itemShard),
 						'W', new ItemStack(ConfigBlocks.blockMagicalLog),
-						'F', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemFocusTelekinesis.class)))
+						'F', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusTelekinesis.class)))
 
 		);
 	}

@@ -98,6 +98,6 @@ public class ItemIchorPick extends ItemPickaxe implements ITTinkererItem {
 		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_PICK, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.FIRE, 75),
 				"III", " R ", " R ",
 				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				'I', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+				'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
 	}
 }

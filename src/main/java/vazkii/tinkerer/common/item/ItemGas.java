@@ -46,13 +46,13 @@ public class ItemGas extends ItemBase {
 	}
 
 	public ItemGas() {
-		this(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousShadow.class));
+		this(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousShadow.class));
 	}
 
 	@Override
 	public ArrayList<Object> getSpecialParameters() {
 		ArrayList<Object> result = new ArrayList<Object>();
-		result.add(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousLight.class));
+		result.add(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousLight.class));
 		return result;
 	}
 
@@ -63,12 +63,12 @@ public class ItemGas extends ItemBase {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		if (setBlock == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousShadow.class)) {
+		if (setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousShadow.class)) {
 			IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_SHADOW, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.AIR, 1).add(Aspect.MOTION, 4), -1, -5, 2, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_GASEOUS_LIGHT)
 					.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_SHADOW));
 			return research;
 		}
-		if (setBlock == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousLight.class)) {
+		if (setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousLight.class)) {
 			IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_GASEOUS_LIGHT, new AspectList().add(Aspect.LIGHT, 2).add(Aspect.AIR, 1), 0, -3, 1, new ItemStack(this)).setParents("NITOR")
 					.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_GASEOUS_LIGHT));
 			return research;
@@ -78,10 +78,10 @@ public class ItemGas extends ItemBase {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		if (setBlock == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousLight.class)) {
+		if (setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousLight.class)) {
 			new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_LIGHT, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.LIGHT, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		}
-		if (setBlock == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousShadow.class)) {
+		if (setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousShadow.class)) {
 			new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_SHADOW, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		}
 		return null;
@@ -89,7 +89,7 @@ public class ItemGas extends ItemBase {
 
 	@Override
 	public String getItemName() {
-		return setBlock == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockGaseousShadow.class) ? LibItemNames.GASEOUS_SHADOW : LibItemNames.GASEOUS_LIGHT;
+		return setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousShadow.class) ? LibItemNames.GASEOUS_SHADOW : LibItemNames.GASEOUS_LIGHT;
 	}
 
 	@Override

@@ -19,7 +19,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
@@ -165,5 +167,15 @@ public abstract class BlockGas extends BlockMod implements ITTinkererBlock {
 	@Override
 	public boolean shouldDisplayInTab() {
 		return false;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
 	}
 }

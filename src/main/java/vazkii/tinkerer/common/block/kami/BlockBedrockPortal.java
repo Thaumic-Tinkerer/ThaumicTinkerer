@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -195,6 +196,16 @@ public class BlockBedrockPortal extends BlockMod {
 	@Override
 	public String getBlockName() {
 		return LibBlockNames.PORTAL;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileBedrockPortal.class;
 	}
 
 	@Override

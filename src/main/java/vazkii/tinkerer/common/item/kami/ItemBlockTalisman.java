@@ -309,7 +309,7 @@ public class ItemBlockTalisman extends ItemKamiBase implements IBauble {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_BLOCK_TALISMAN, new ItemStack(this), 9, new AspectList().add(Aspect.VOID, 65).add(Aspect.DARKNESS, 32).add(Aspect.MAGIC, 50).add(Aspect.ELDRITCH, 32), new ItemStack(ConfigItems.itemFocusPortableHole),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Blocks.ender_chest), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockJar, 1, 3));
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Blocks.ender_chest), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemResource, 1, 11), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 
 	}
 }

@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -155,12 +156,22 @@ public class BlockTransvectorDislocator extends BlockCamo {
 	}
 
 	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileTransvectorDislocator.class;
+	}
+
+	@Override
 	public IRegisterableResearch getResearchItem() {
 		if (!Config.allowMirrors) {
 			return null;
 		}
 
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class))).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR")
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class))).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR")
 				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_DISLOCATOR)).setSecondary();
 	}
 
@@ -169,10 +180,10 @@ public class BlockTransvectorDislocator extends BlockCamo {
 		if (!Config.allowMirrors) {
 			return null;
 		}
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
 				" M ", " I ", " C ",
 				'M', new ItemStack(ConfigItems.itemResource, 1, 10),
-				'I', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockTransvectorInterface.class)),
+				'I', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)),
 				'C', new ItemStack(Items.comparator));
 	}
 }

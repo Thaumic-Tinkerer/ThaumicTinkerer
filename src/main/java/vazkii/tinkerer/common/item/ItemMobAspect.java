@@ -110,7 +110,7 @@ public class ItemMobAspect extends ItemBase {
 	}
 
 	public static ItemStack getStackFromAspect(Aspect a) {
-		ItemStack result = new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemMobAspect.class));
+		ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
 		result.setItemDamage(NumericAspectHelper.getNumber(a));
 		return result;
 	}

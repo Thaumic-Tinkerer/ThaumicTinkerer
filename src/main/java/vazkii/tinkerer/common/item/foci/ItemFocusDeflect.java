@@ -113,7 +113,7 @@ public class ItemFocusDeflect extends ItemModFocus {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(this), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemFocusFlight.class)),
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_DEFLECT, new ItemStack(this), 5, new AspectList().add(Aspect.AIR, 15).add(Aspect.ARMOR, 5).add(Aspect.ORDER, 20), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusFlight.class)),
 				new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigItems.itemResource, 1, 10), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 4));
 
 	}

@@ -126,7 +126,7 @@ public class ItemFocusXPDrain extends ItemModFocus {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_XP_DRAIN, new ItemStack(this), 12, new AspectList().add(Aspect.MIND, 65).add(Aspect.TAINT, 16).add(Aspect.MAGIC, 50).add(Aspect.AURA, 32), new ItemStack(Items.ender_pearl),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.experience_bottle), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemXPTalisman.class)), new ItemStack(Blocks.enchanting_table), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)));
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.experience_bottle), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemXPTalisman.class)), new ItemStack(Blocks.enchanting_table), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)));
 
 	}
 }

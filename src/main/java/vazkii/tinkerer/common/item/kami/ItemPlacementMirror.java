@@ -106,7 +106,7 @@ public class ItemPlacementMirror extends ItemKamiBase {
 				return;
 			}
 
-			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemBlockTalisman.class))
+			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemBlockTalisman.class))
 				talismansToCheck.add(stackInSlot);
 		}
 
@@ -136,7 +136,7 @@ public class ItemPlacementMirror extends ItemKamiBase {
 				if (current >= required)
 					return true;
 			}
-			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemBlockTalisman.class))
+			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemBlockTalisman.class))
 				talismansToCheck.add(stackInSlot);
 		}
 
@@ -271,8 +271,8 @@ public class ItemPlacementMirror extends ItemKamiBase {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_PLACEMENT_MIRROR, new ItemStack(this), 12, new AspectList().add(Aspect.CRAFT, 65).add(Aspect.CRYSTAL, 32).add(Aspect.MAGIC, 50).add(Aspect.MIND, 32), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemBlockTalisman.class)),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Blocks.dropper), new ItemStack(Items.diamond), new ItemStack(Blocks.glass), new ItemStack(Items.blaze_powder), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_PLACEMENT_MIRROR, new ItemStack(this), 12, new AspectList().add(Aspect.CRAFT, 65).add(Aspect.CRYSTAL, 32).add(Aspect.MAGIC, 50).add(Aspect.MIND, 32), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBlockTalisman.class)),
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Blocks.dropper), new ItemStack(Items.diamond), new ItemStack(Blocks.glass), new ItemStack(Items.blaze_powder), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)));
 
 	}
 }

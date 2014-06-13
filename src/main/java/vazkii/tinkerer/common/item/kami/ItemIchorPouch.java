@@ -157,7 +157,7 @@ public class ItemIchorPouch extends ItemFocusPouch implements IBauble, ITTinkere
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHOR_POUCH, new ItemStack(this), 9, new AspectList().add(Aspect.VOID, 64).add(Aspect.MAN, 32).add(Aspect.CLOTH, 32).add(Aspect.ELDRITCH, 32).add(Aspect.AIR, 64), new ItemStack(ConfigItems.itemFocusPouch),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 1), new ItemStack(ConfigItems.itemFocusPortableHole), new ItemStack(Items.diamond), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 1), new ItemStack(ConfigBlocks.blockChestHungry), new ItemStack(ConfigBlocks.blockJar, 1, 3));
 
 	}
 }

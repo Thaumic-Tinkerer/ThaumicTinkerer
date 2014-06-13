@@ -20,6 +20,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -116,8 +117,18 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 	}
 
 	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileSummon.class;
+	}
+
+	@Override
 	public IRegisterableResearch getResearchItem() {
-		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockSummon.class))).setParents(LibResearch.KEY_BLOOD_SWORD);
+		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class))).setParents(LibResearch.KEY_BLOOD_SWORD);
 		List<ResearchPage> list = new ArrayList<ResearchPage>();
 		list.add(new ResearchPage("0"));
 		list.add(ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"));
@@ -131,6 +142,6 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SUMMON + "0", LibResearch.KEY_SUMMON, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockSummon.class)), new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1));
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SUMMON + "0", LibResearch.KEY_SUMMON, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class)), new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1));
 	}
 }

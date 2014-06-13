@@ -40,7 +40,7 @@ public class RenderPlacementMirror implements IItemRenderer {
 			}
 			case EQUIPPED: {
 				for (int i = 1; i >= 0; i--) {
-					IIcon icon = ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemPlacementMirror.class).getIconFromDamageForRenderPass(0, i);
+					IIcon icon = ThaumicTinkerer.registry.getFirstItemFromClass(ItemPlacementMirror.class).getIconFromDamageForRenderPass(0, i);
 					if (i == 0) {
 						GL11.glEnable(GL11.GL_BLEND);
 						GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

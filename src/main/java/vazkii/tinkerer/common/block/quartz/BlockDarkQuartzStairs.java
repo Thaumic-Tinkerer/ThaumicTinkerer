@@ -15,7 +15,9 @@
 package vazkii.tinkerer.common.block.quartz;
 
 import net.minecraft.block.BlockStairs;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 public class BlockDarkQuartzStairs extends BlockStairs implements ITTinkererBlock {
 
 	public BlockDarkQuartzStairs() {
-		super(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class), 0);
+		super(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 0);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
@@ -56,6 +58,16 @@ public class BlockDarkQuartzStairs extends BlockStairs implements ITTinkererBloc
 	}
 
 	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
+
+	@Override
 	public IRegisterableResearch getResearchItem() {
 		return null;
 	}
@@ -65,10 +77,10 @@ public class BlockDarkQuartzStairs extends BlockStairs implements ITTinkererBloc
 		return new ThaumicTinkererRecipeMulti(
 				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 5, new ItemStack(this, 4),
 						"  Q", " QQ", "QQQ",
-						'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class)),
+						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class)),
 				new ThaumicTinkererCraftingBenchRecipe("", new ItemStack(this, 4),
 						"Q  ", "QQ ", "QQQ",
-						'Q', ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartz.class))
+						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class))
 		);
 	}
 }

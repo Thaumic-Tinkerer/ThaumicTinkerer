@@ -20,6 +20,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -33,6 +34,7 @@ import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
+import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -142,6 +144,16 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	@Override
 	public boolean shouldDisplayInTab() {
 		return true;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileBedrockPortal.class;
 	}
 
 	@Override

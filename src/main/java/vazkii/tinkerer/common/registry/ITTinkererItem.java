@@ -1,13 +1,11 @@
 package vazkii.tinkerer.common.registry;
 
-import vazkii.tinkerer.common.research.IRegisterableResearch;
-
 import java.util.ArrayList;
 
 /**
  * Created by localmacaccount on 6/9/14.
  */
-public interface ITTinkererItem {
+public interface ITTinkererItem extends ITTinkererRegisterable {
 
 	public ArrayList<Object> getSpecialParameters();
 
@@ -16,9 +14,5 @@ public interface ITTinkererItem {
 	public boolean shouldRegister();
 
 	public boolean shouldDisplayInTab();
-
-	public IRegisterableResearch getResearchItem();
-
-	public ThaumicTinkererRecipe getRecipeItem();
 
 }

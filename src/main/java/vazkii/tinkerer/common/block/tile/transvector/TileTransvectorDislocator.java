@@ -87,7 +87,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 			}
 
 			if (block != null)
-				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockTransvectorDislocator.class));
+				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorDislocator.class));
 
 			worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 3);
 

@@ -1,13 +1,14 @@
 package vazkii.tinkerer.common.registry;
 
-import vazkii.tinkerer.common.research.IRegisterableResearch;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 
 import java.util.ArrayList;
 
 /**
  * Created by localmacaccount on 6/11/14.
  */
-public interface ITTinkererBlock {
+public interface ITTinkererBlock extends ITTinkererRegisterable {
 
 	public ArrayList<Object> getSpecialParameters();
 
@@ -17,8 +18,8 @@ public interface ITTinkererBlock {
 
 	public boolean shouldDisplayInTab();
 
-	public IRegisterableResearch getResearchItem();
+	public Class<? extends ItemBlock> getItemBlock();
 
-	public ThaumicTinkererRecipe getRecipeItem();
+	public Class<? extends TileEntity> getTileEntity();
 
 }

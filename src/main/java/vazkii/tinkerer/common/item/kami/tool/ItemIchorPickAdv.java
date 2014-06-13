@@ -110,7 +110,7 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
 		if (ConfigHandler.bedrockDimensionID != 0 && blk == Blocks.bedrock && ((world.provider.isSurfaceWorld() && y < 5) || (y > 253 && world.provider instanceof WorldProviderBedrock))) {
-			world.setBlock(x, y, z, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockBedrockPortal.class));
+			world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockBedrockPortal.class));
 		}
 		if (ConfigHandler.bedrockDimensionID != 0 && blk == Blocks.bedrock && (y <= 253 && world.provider instanceof WorldProviderBedrock)) {
 			world.setBlock(x, y, z, Blocks.air);
@@ -163,8 +163,8 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHOR_PICK_GEM, new ItemStack(this), 15, new AspectList().add(Aspect.FIRE, 50).add(Aspect.MINE, 64).add(Aspect.METAL, 32).add(Aspect.EARTH, 32).add(Aspect.HARVEST, 32).add(Aspect.GREED, 16).add(Aspect.SENSES, 16), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemIchorPick.class)),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 2), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemPickElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Blocks.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Items.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemPickElemental), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 1));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHOR_PICK_GEM, new ItemStack(this), 15, new AspectList().add(Aspect.FIRE, 50).add(Aspect.MINE, 64).add(Aspect.METAL, 32).add(Aspect.EARTH, 32).add(Aspect.HARVEST, 32).add(Aspect.GREED, 16).add(Aspect.SENSES, 16), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemIchorPick.class)),
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemPickElemental), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(Blocks.tnt), new ItemStack(ConfigItems.itemNugget, 1, 21), new ItemStack(ConfigItems.itemNugget, 1, 16), new ItemStack(ConfigItems.itemNugget, 1, 31), new ItemStack(Items.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ConfigItems.itemPickElemental), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 1));
 
 	}
 }

@@ -57,7 +57,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 			return;
 
 		ItemBrightNitor.meta = 1;
-		ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemBrightNitor.class).onUpdate(null, player.worldObj, player, 0, false);
+		ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class).onUpdate(null, player.worldObj, player, 0, false);
 		ItemBrightNitor.meta = 0;
 
 		int x = (int) Math.floor(player.posX);
@@ -91,8 +91,8 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.FIRE, 50).add(Aspect.ARMOR, 32).add(Aspect.HEAL, 32).add(Aspect.ENERGY, 32).add(Aspect.LIGHT, 64).add(Aspect.GREED, 16).add(Aspect.ELDRITCH, 16), new ItemStack(ThaumicTinkerer.TTRegistry.getItemFromClass(ItemIchorclothArmor.class).get(2)),
-				new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Items.golden_chestplate), new ItemStack(Items.potionitem, 1, 8195), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemFocusSmelt.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemBrightNitor.class)), new ItemStack(Items.lava_bucket), new ItemStack(Items.fire_charge), new ItemStack(Items.blaze_rod));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.FIRE, 50).add(Aspect.ARMOR, 32).add(Aspect.HEAL, 32).add(Aspect.ENERGY, 32).add(Aspect.LIGHT, 64).add(Aspect.GREED, 16).add(Aspect.ELDRITCH, 16), new ItemStack(ThaumicTinkerer.registry.getItemFromClass(ItemIchorclothArmor.class).get(2)),
+				new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemManaBean), new ItemStack(ConfigItems.itemWispEssence), new ItemStack(Items.golden_chestplate), new ItemStack(Items.potionitem, 1, 8195), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusSmelt.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)), new ItemStack(Items.lava_bucket), new ItemStack(Items.fire_charge), new ItemStack(Items.blaze_rod));
 
 	}
 

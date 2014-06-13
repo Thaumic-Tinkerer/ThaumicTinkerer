@@ -52,7 +52,7 @@ public class ThaumicTinkerer {
 	public static CommonProxy tcProxy;
 	public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
 
-	public static TTRegistry TTRegistry = new TTRegistry();
+	public static TTRegistry registry = new TTRegistry();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

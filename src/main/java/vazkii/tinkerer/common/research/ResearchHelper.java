@@ -132,7 +132,7 @@ public final class ResearchHelper {
 	}
 
 	public static ResearchPage LeviationaryHelp() {
-		return new ResearchPage(Arrays.asList((new AspectList()), 5, 1, 1, Arrays.asList(new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizerRelay.class)), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizer.class)), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockMobilizerRelay.class)))));
+		return new ResearchPage(Arrays.asList((new AspectList()), 5, 1, 1, Arrays.asList(new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizerRelay.class)), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizer.class)), new ItemStack(ConfigBlocks.blockHole, 1, 15), new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizerRelay.class)))));
 
 	}
 }

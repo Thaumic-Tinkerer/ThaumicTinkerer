@@ -92,6 +92,6 @@ public class ItemIchorAxe extends ItemAxe implements ITTinkererItem {
 		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_AXE, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.WATER, 75),
 				"II ", "IR ", " R ",
 				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				'I', new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+				'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
 	}
 }

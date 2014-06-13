@@ -23,7 +23,7 @@ import vazkii.tinkerer.common.block.quartz.BlockDarkQuartzSlab;
 public class ItemDarkQuartzSlab extends ItemSlab {
 
 	public ItemDarkQuartzSlab(Block par1) {
-		super(par1, (BlockSlab) ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), (BlockSlab) ThaumicTinkerer.TTRegistry.getBlockFromClass(BlockDarkQuartzSlab.class).get(1), false);
+		super(par1, (BlockSlab) ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), (BlockSlab) ThaumicTinkerer.registry.getBlockFromClass(BlockDarkQuartzSlab.class).get(1), false);
 	}
 
 }

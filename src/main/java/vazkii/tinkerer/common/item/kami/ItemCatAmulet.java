@@ -145,7 +145,7 @@ public class ItemCatAmulet extends ItemKamiBase implements IBauble {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_CAT_AMULET, new ItemStack(this), 8, new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.ORDER, 32).add(Aspect.MIND, 16), new ItemStack(Blocks.quartz_block),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.gold_ingot), new ItemStack(Items.gold_ingot), new ItemStack(Items.dye, 1, 3), new ItemStack(Blocks.leaves, 1, 3), new ItemStack(Items.fish));
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.gold_ingot), new ItemStack(Items.gold_ingot), new ItemStack(Items.dye, 1, 3), new ItemStack(Blocks.leaves, 1, 3), new ItemStack(Items.fish));
 
 	}
 }

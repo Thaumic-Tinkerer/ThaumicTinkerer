@@ -87,7 +87,7 @@ public final class ToolHandler {
 			if (!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
 				return;
 			if (ConfigHandler.bedrockDimensionID != 0 && block == Blocks.bedrock && ((world.provider.isSurfaceWorld() && y < 5) || (y > 253 && world.provider instanceof WorldProviderBedrock))) {
-				world.setBlock(x, y, z, ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockBedrockPortal.class));
+				world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockBedrockPortal.class));
 			}
 			if (ConfigHandler.bedrockDimensionID != 0 && world.provider.dimensionId == ConfigHandler.bedrockDimensionID && blk == Blocks.bedrock && y <= 253) {
 				world.setBlock(x, y, z, Blocks.air);

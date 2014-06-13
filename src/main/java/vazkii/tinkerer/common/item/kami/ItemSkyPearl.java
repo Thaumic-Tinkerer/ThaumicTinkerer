@@ -57,7 +57,7 @@ public class ItemSkyPearl extends ItemKamiBase {
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		Block block = par3World.getBlock(par4, par5, par6);
-		if (block == ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockWarpGate.class) && !isAttuned(par1ItemStack)) {
+		if (block == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockWarpGate.class) && !isAttuned(par1ItemStack)) {
 			setValues(par1ItemStack, par4, par5, par6, par2EntityPlayer.dimension);
 			par3World.playSoundAtEntity(par2EntityPlayer, "random.orb", 0.3F, 0.1F);
 		}
@@ -158,8 +158,8 @@ public class ItemSkyPearl extends ItemKamiBase {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemSkyPearl.class), 2), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Items.ender_pearl),
-				new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 7), new ItemStack(Blocks.lapis_block), new ItemStack(Items.diamond));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class), 2), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Items.ender_pearl),
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7), new ItemStack(Blocks.lapis_block), new ItemStack(Items.diamond));
 
 	}
 }

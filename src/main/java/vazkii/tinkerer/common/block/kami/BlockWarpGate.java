@@ -20,6 +20,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -37,6 +38,7 @@ import vazkii.tinkerer.common.block.BlockModContainer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.transvector.BlockTransvectorDislocator;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.item.kami.ItemBlockWarpGate;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibGuiIDs;
@@ -167,6 +169,16 @@ public class BlockWarpGate extends BlockModContainer {
 	}
 
 	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return ItemBlockWarpGate.class;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileWarpGate.class;
+	}
+
+	@Override
 	public IRegisterableResearch getResearchItem() {
 		if (!Config.allowMirrors) {
 			return null;
@@ -181,7 +193,7 @@ public class BlockWarpGate extends BlockModContainer {
 		if (!Config.allowMirrors) {
 			return null;
 		}
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_WARP_GATE, new ItemStack(this), 8, new AspectList().add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 50).add(Aspect.FLIGHT, 50), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 7), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstBlockFromClass(BlockTransvectorDislocator.class)), new ItemStack(ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemKamiResource.class), 1, 6), new ItemStack(Items.diamond), new ItemStack(Items.feather));
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_WARP_GATE, new ItemStack(this), 8, new AspectList().add(Aspect.TRAVEL, 64).add(Aspect.ELDRITCH, 50).add(Aspect.FLIGHT, 50), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7), new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorDislocator.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 6), new ItemStack(Items.diamond), new ItemStack(Items.feather));
 
 	}
 }

@@ -172,7 +172,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(xp, yp, 0);
 		GL11.glScalef(0.5F, 0.5F, 1F);
-		render.renderIcon(-8, -8, ThaumicTinkerer.TTRegistry.getFirstItemFromClass(ItemSkyPearl.class).getIconFromDamage(0), 16, 16);
+		render.renderIcon(-8, -8, ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class).getIconFromDamage(0), 16, 16);
 		GL11.glPopMatrix();
 
 		String destNum = " " + EnumChatFormatting.ITALIC + String.format(StatCollector.translateToLocal("ttmisc.destinationInd"), index + 1);

@@ -26,20 +26,23 @@ public class TTRegistry {
 				if (ITTinkererItem.class.isAssignableFrom(classInfo.getClass())) {
 					itemClasses.add(classInfo.getClass());
 				}
+				if (ITTinkererBlock.class.isAssignableFrom(classInfo.getClass())) {
+					blockClasses.add(classInfo.getClass());
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void registerResearch(ITTinkererItem nextItem) {
+	public void registerResearch(ITTinkererRegisterable nextItem) {
 		IRegisterableResearch registerableResearch = nextItem.getResearchItem();
 		if (registerableResearch != null) {
 			registerableResearch.registerResearch();
 		}
 	}
 
-	public void registerRecipe(ITTinkererItem nextItem) {
+	public void registerRecipe(ITTinkererRegisterable nextItem) {
 		ThaumicTinkererRecipe thaumicTinkererRecipe = nextItem.getRecipeItem();
 		if (thaumicTinkererRecipe != null) {
 			thaumicTinkererRecipe.registerRecipe();
@@ -65,6 +68,33 @@ public class TTRegistry {
 						registerResearch((ITTinkererItem) nextItem);
 					}
 					itemRegistry.put(clazz, itemList);
+				}
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+		}
+		for (Class clazz : blockClasses) {
+			try {
+				Block newBlock = (Block) clazz.newInstance();
+				if (((ITTinkererBlock) newBlock).shouldRegister()) {
+					newBlock.setBlockName(((ITTinkererBlock) newBlock).getBlockName());
+					ArrayList<Block> blockList = new ArrayList<Block>();
+					blockList.add(newBlock);
+					registerResearch((ITTinkererBlock) newBlock);
+					for (Object param : ((ITTinkererBlock) newBlock).getSpecialParameters()) {
+						Block nextBlock = (Block) clazz.getConstructor(param.getClass()).newInstance(param);
+						nextBlock.setBlockName(((ITTinkererBlock) nextBlock).getBlockName());
+						blockList.add(nextBlock);
+						registerRecipe((ITTinkererBlock) nextBlock);
+						registerResearch((ITTinkererBlock) nextBlock);
+					}
+					blockRegistry.put(clazz, blockList);
 				}
 			} catch (InstantiationException e) {
 				e.printStackTrace();
