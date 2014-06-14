@@ -142,6 +142,8 @@ tile.darkQuartz.name=Block of Smokey Quartz
 tile.darkQuartzChiseled.name=Chiseled Smokey Quartz Block
 tile.darkQuartzPillar.name=Pillar Smokey Quartz Block
 tile.darkQuartzSlab.name=Smokey Quartz Slab
+
+tile.darkQuartzSlabFull.name=Smokey Quartz Slab
 tile.darkQuartzStairs.name=Smokey Quartz Stairs
 tile.interface.name=Transvector Interface
 tile.animationTablet.name=Dynamism Tablet

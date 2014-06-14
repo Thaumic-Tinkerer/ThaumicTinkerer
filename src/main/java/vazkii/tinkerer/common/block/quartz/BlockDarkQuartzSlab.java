@@ -107,7 +107,7 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+		return !field_150004_a;
 	}
 
 	@Override
