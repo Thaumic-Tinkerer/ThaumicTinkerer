@@ -28,14 +28,12 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigResearch;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 import vazkii.tinkerer.common.block.mobilizer.BlockMobilizerRelay;
-import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.lib.LibResearch;
 
 import java.util.Arrays;
@@ -90,19 +88,10 @@ public final class ResearchHelper {
 
 		research = new TTResearchItem(LibResearch.KEY_ENCHANT_VALIANCE, new AspectList().add(Aspect.WEAPON, 3).add(Aspect.HEAL, 3).add(Aspect.MAGIC, 2), 1, 4, 2, new ResourceLocation(LibResources.ENCHANT_VALIANCE)).setParents(LibResearch.KEY_ENCHANT_VAMPIRISM);
 		research.setPages(new ResearchPage("0")).setSecondary();
-
-		if (Config.allowMirrors) {
-		}
-
 		// Peripheral documentation research
 		if (Loader.isModLoaded("ComputerCraft")) {
 			research = new TTResearchItem(LibResearch.KEY_PERIPHERALS, new AspectList(), -1, 0, 0, new ItemStack(Items.redstone)).setAutoUnlock().setRound();
 			research.setPages(new ResearchPage("0"));
-		}
-
-		if (ConfigHandler.enableKami) {
-			if (Config.allowMirrors) {
-			}
 		}
 	}
 

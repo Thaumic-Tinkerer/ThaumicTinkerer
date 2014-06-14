@@ -18,8 +18,13 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
-public class ItemBlockMagnet extends ItemBlock {
+import java.util.ArrayList;
+
+public class ItemBlockMagnet extends ItemBlock implements ITTinkererItem {
 
 	public ItemBlockMagnet(Block block) {
 		super(block);
@@ -36,4 +41,33 @@ public class ItemBlockMagnet extends ItemBlock {
 		return "tile." + (par1ItemStack.getItemDamage() == 0 ? LibBlockNames.MAGNET : LibBlockNames.MOB_MAGNET);
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibBlockNames.MAGNET;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
+	}
 }

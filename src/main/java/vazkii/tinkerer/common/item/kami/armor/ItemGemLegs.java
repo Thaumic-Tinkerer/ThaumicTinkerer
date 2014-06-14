@@ -40,8 +40,8 @@ import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
-	public ItemGemLegs(int par2) {
-		super(par2);
+	public ItemGemLegs() {
+		super(2);
 
 	}
 

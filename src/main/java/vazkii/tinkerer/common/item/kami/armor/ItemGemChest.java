@@ -48,8 +48,8 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	public static List<String> playersWithFlight = new ArrayList();
 
-	public ItemGemChest(int par2) {
-		super(par2);
+	public ItemGemChest() {
+		super(1);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class ItemGemChest extends ItemIchorclothArmorAdv {
 
 	@Override
 	public String getItemName() {
-		return LibItemNames.ICHOR_LEGS_GEM;
+		return LibItemNames.ICHOR_CHEST_GEM;
 	}
 
 	@Override

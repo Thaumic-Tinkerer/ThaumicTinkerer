@@ -26,13 +26,14 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibMisc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModCreativeTab extends CreativeTabs {
 
 	public static ModCreativeTab INSTANCE;
 	ItemStack displayItem;
-	List list;
+	List list = new ArrayList();
 
 	public ModCreativeTab() {
 		super(LibMisc.MOD_ID);
@@ -56,9 +57,10 @@ public class ModCreativeTab extends CreativeTabs {
 
 	@Override
 	public void displayAllReleventItems(List list) {
-		this.list = list;
 
 		addWand();
+		list.addAll(this.list);
+
 	}
 
 	private void addWand() {

@@ -4,11 +4,13 @@ import com.google.common.reflect.ClassPath;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -27,12 +29,12 @@ public class TTRegistry {
 			ClassPath classPath = ClassPath.from(this.getClass().getClassLoader());
 			for (ClassPath.ClassInfo classInfo : classPath.getTopLevelClassesRecursive("vazkii.tinkerer.common.block")) {
 				if (ITTinkererBlock.class.isAssignableFrom(classInfo.load()) && !Modifier.isAbstract(classInfo.load().getModifiers())) {
-					blockClasses.add(classInfo.getClass());
+					blockClasses.add(classInfo.load());
 				}
 			}
 			for (ClassPath.ClassInfo classInfo : classPath.getTopLevelClassesRecursive("vazkii.tinkerer.common.item")) {
-				if (ITTinkererItem.class.isAssignableFrom(classInfo.load()) && !Modifier.isAbstract(classInfo.load().getModifiers())) {
-					itemClasses.add(classInfo.getClass());
+				if (ITTinkererItem.class.isAssignableFrom(classInfo.load()) && !ItemBlock.class.isAssignableFrom(classInfo.load()) && !Modifier.isAbstract(classInfo.load().getModifiers())) {
+					itemClasses.add(classInfo.load());
 				}
 			}
 
@@ -57,36 +59,6 @@ public class TTRegistry {
 
 	public void preInit() {
 		registerClasses();
-
-		for (Class clazz : itemClasses) {
-			try {
-				Item newItem = (Item) clazz.newInstance();
-				if (((ITTinkererItem) newItem).shouldRegister()) {
-					newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
-					ArrayList<Item> itemList = new ArrayList<Item>();
-					itemList.add(newItem);
-					registerResearch((ITTinkererItem) newItem);
-
-					ModCreativeTab.INSTANCE.addItem(newItem);
-					for (Object param : ((ITTinkererItem) newItem).getSpecialParameters()) {
-						Item nextItem = (Item) clazz.getConstructor(param.getClass()).newInstance(param);
-						nextItem.setUnlocalizedName(((ITTinkererItem) nextItem).getItemName());
-						itemList.add(nextItem);
-						registerRecipe((ITTinkererItem) nextItem);
-						registerResearch((ITTinkererItem) nextItem);
-					}
-					itemRegistry.put(clazz, itemList);
-				}
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		}
 		for (Class clazz : blockClasses) {
 			try {
 				Block newBlock = (Block) clazz.newInstance();
@@ -95,20 +67,30 @@ public class TTRegistry {
 					ArrayList<Block> blockList = new ArrayList<Block>();
 					blockList.add(newBlock);
 					if (((ITTinkererBlock) newBlock).getItemBlock() != null) {
-						Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().newInstance();
+						Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().getConstructor(Block.class).newInstance(newBlock);
 						newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
 						ArrayList<Item> itemList = new ArrayList<Item>();
 						itemList.add(newItem);
+						itemRegistry.put(((ITTinkererBlock) newBlock).getItemBlock(), itemList);
 
 					}
-					registerRecipe((ITTinkererRegisterable) newBlock);
-					registerResearch((ITTinkererRegisterable) newBlock);
-					for (Object param : ((ITTinkererBlock) newBlock).getSpecialParameters()) {
-						Block nextBlock = (Block) clazz.getConstructor(param.getClass()).newInstance(param);
-						nextBlock.setBlockName(((ITTinkererBlock) nextBlock).getBlockName());
-						blockList.add(nextBlock);
-						registerRecipe((ITTinkererRegisterable) nextBlock);
-						registerResearch((ITTinkererRegisterable) nextBlock);
+					if (newBlock == null) {
+						System.out.println(clazz.getName() + " Returned a null block upon registration");
+						continue;
+					}
+
+					if (((ITTinkererBlock) newBlock).getSpecialParameters() != null) {
+						for (Object param : ((ITTinkererBlock) newBlock).getSpecialParameters()) {
+
+							for (Constructor constructor : clazz.getConstructors()) {
+								if (constructor.getParameterTypes().length > 0 && constructor.getParameterTypes()[0].isAssignableFrom(param.getClass())) {
+									Block nextBlock = (Block) clazz.getConstructor(param.getClass()).newInstance(param);
+									nextBlock.setBlockName(((ITTinkererBlock) nextBlock).getBlockName());
+									blockList.add(nextBlock);
+									break;
+								}
+							}
+						}
 					}
 					blockRegistry.put(clazz, blockList);
 				}
@@ -122,6 +104,40 @@ public class TTRegistry {
 				e.printStackTrace();
 			}
 		}
+		for (Class clazz : itemClasses) {
+			try {
+				Item newItem = (Item) clazz.newInstance();
+				if (((ITTinkererItem) newItem).shouldRegister()) {
+					newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
+					ArrayList<Item> itemList = new ArrayList<Item>();
+					itemList.add(newItem);
+					if (newItem == null) {
+						System.out.println(clazz.getName() + " Returned a null item upon registration");
+						continue;
+					}
+					if (((ITTinkererItem) newItem).getSpecialParameters() != null) {
+						for (Object param : ((ITTinkererItem) newItem).getSpecialParameters()) {
+							for (Constructor constructor : clazz.getConstructors()) {
+								if (constructor.getParameterTypes().length > 0 && constructor.getParameterTypes()[0].isAssignableFrom(param.getClass())) {
+									Item nextItem = (Item) constructor.newInstance(param);
+									nextItem.setUnlocalizedName(((ITTinkererItem) nextItem).getItemName());
+									itemList.add(nextItem);
+									break;
+								}
+							}
+						}
+					}
+					itemRegistry.put(clazz, itemList);
+				}
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	public ArrayList<Item> getItemFromClass(Class clazz) {
@@ -144,10 +160,38 @@ public class TTRegistry {
 
 		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
 			for (Item item : itemArrayList) {
-				GameRegistry.registerItem(item, ((ITTinkererItem) item).getItemName());
+				registerRecipe((ITTinkererRegisterable) item);
+				ModCreativeTab.INSTANCE.addItem(item);
+			}
+		}
 
-				if (((ITTinkererItem) item).shouldDisplayInTab()) {
-					ModCreativeTab.INSTANCE.addItem(item);
+		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
+			for (Block block : blockArrayList) {
+				registerRecipe((ITTinkererRegisterable) block);
+
+				if (((ITTinkererBlock) block).shouldDisplayInTab()) {
+					ModCreativeTab.INSTANCE.addBlock(block);
+				}
+			}
+		}
+		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
+			for (Item item : itemArrayList) {
+				registerResearch((ITTinkererRegisterable) item);
+			}
+		}
+		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
+			for (Block block : blockArrayList) {
+				registerResearch((ITTinkererRegisterable) block);
+			}
+		}
+		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
+			for (Item item : itemArrayList) {
+				if (!(item instanceof ItemBlock)) {
+					GameRegistry.registerItem(item, ((ITTinkererItem) item).getItemName());
+
+					if (((ITTinkererItem) item).shouldDisplayInTab()) {
+						ModCreativeTab.INSTANCE.addItem(item);
+					}
 				}
 			}
 		}

@@ -60,6 +60,10 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear, 
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
+	public ItemIchorclothArmor(Integer par2) {
+		this(par2.intValue());
+	}
+
 	public ItemIchorclothArmor() {
 		this(0);
 	}

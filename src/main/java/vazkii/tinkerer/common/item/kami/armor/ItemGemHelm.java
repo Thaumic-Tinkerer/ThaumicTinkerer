@@ -39,8 +39,8 @@ import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles, IRevealer {
 
-	public ItemGemHelm(int par2) {
-		super(par2);
+	public ItemGemHelm() {
+		super(0);
 	}
 
 	@Override

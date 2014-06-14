@@ -68,7 +68,7 @@ public class ItemIchorSword extends ItemSword implements ITTinkererItem {
 
 	@Override
 	public String getItemName() {
-		return LibItemNames.ICHOR_SWORD_GEM;
+		return LibItemNames.ICHOR_SWORD;
 	}
 
 	@Override

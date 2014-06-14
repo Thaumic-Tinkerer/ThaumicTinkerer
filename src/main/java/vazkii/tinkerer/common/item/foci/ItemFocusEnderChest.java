@@ -117,7 +117,7 @@ public class ItemFocusEnderChest extends ItemModFocus {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		if (Config.allowMirrors) {
-			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(this), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
+			return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(this), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
 					"M", "E", "P",
 					'M', new ItemStack(ConfigBlocks.blockMirror),
 					'E', new ItemStack(Items.ender_eye),

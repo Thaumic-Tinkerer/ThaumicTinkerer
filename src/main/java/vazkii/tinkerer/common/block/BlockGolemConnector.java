@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class BlockGolemConnector extends BlockCamo {
 
-	protected BlockGolemConnector() {
+	public BlockGolemConnector() {
 		super(Material.wood);
 	}
 

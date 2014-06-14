@@ -54,7 +54,7 @@ public class BlockRepairer extends BlockModContainer {
 
 	Random random;
 
-	protected BlockRepairer() {
+	public BlockRepairer() {
 		super(Material.iron);
 		setHardness(5F);
 		setResistance(10F);

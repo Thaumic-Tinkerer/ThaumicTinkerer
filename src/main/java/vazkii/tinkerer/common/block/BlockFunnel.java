@@ -53,7 +53,7 @@ public class BlockFunnel extends BlockModContainer {
 
 	Random random;
 
-	protected BlockFunnel() {
+	public BlockFunnel() {
 		super(Material.rock);
 		setHardness(3.0F);
 		setResistance(8.0F);

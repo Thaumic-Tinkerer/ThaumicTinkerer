@@ -52,7 +52,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	IIcon[] icons = new IIcon[5];
 	Random random;
 
-	protected BlockAspectAnalyzer() {
+	public BlockAspectAnalyzer() {
 		super(Material.wood);
 		setHardness(1.7F);
 		setResistance(1F);

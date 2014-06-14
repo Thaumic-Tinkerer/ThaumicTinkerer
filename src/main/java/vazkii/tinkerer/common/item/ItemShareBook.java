@@ -59,7 +59,7 @@ public class ItemShareBook extends ItemBase {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		if (ConfigHandler.enableSurvivalShareTome) {
-			new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SHARE_TOME, new ItemStack(this),
+			return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SHARE_TOME, new ItemStack(this),
 					" S ", "PTP", " P ",
 					'S', new ItemStack(ConfigItems.itemInkwell),
 					'T', new ItemStack(ConfigItems.itemThaumonomicon),

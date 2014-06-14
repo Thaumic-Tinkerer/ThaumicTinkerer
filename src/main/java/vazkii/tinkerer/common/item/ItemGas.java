@@ -79,10 +79,10 @@ public class ItemGas extends ItemBase {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		if (setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousLight.class)) {
-			new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_LIGHT, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.LIGHT, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
+			return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_LIGHT, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.LIGHT, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		}
 		if (setBlock == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockGaseousShadow.class)) {
-			new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_SHADOW, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
+			return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_GASEOUS_SHADOW, new ItemStack(this), new ItemStack(ConfigItems.itemEssence, 1, 0), new AspectList().add(Aspect.DARKNESS, 16).add(Aspect.AIR, 10).add(Aspect.MOTION, 8));
 		}
 		return null;
 	}

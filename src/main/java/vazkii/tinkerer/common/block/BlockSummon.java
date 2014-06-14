@@ -43,7 +43,6 @@ import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class BlockSummon extends Block implements ITTinkererBlock {
@@ -128,16 +127,9 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		TTResearchItem research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class))).setParents(LibResearch.KEY_BLOOD_SWORD);
-		List<ResearchPage> list = new ArrayList<ResearchPage>();
-		list.add(new ResearchPage("0"));
-		list.add(ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"));
-		list.add(ResearchHelper.recipePage(LibResearch.KEY_SUMMON + "1"));
-		list.add(ResearchHelper.infusionPage(LibResearch.KEY_SUMMON));
-		list.add(new ResearchPage("1"));
-		ResearchPage[] pages = (ResearchPage[]) list.toArray();
-		research.setPages(pages);
-		return research;
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class))).setParents(LibResearch.KEY_BLOOD_SWORD)
+				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"), ResearchHelper.recipePage(LibResearch.KEY_SUMMON + "1"), ResearchHelper.infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
+
 	}
 
 	@Override

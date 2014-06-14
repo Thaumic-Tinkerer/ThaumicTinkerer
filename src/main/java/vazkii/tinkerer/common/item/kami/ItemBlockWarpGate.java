@@ -19,8 +19,14 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
-public class ItemBlockWarpGate extends ItemBlock {
+import java.util.ArrayList;
+
+public class ItemBlockWarpGate extends ItemBlock implements ITTinkererItem {
 
 	public ItemBlockWarpGate(Block par1) {
 		super(par1);
@@ -31,4 +37,33 @@ public class ItemBlockWarpGate extends ItemBlock {
 		return TTClientProxy.kamiRarity;
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibBlockNames.WARP_GATE;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
+	}
 }

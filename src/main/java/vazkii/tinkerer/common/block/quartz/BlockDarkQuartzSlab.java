@@ -48,6 +48,10 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 		}
 	}
 
+	public BlockDarkQuartzSlab(Boolean par2) {
+		this(par2.booleanValue());
+	}
+
 	public BlockDarkQuartzSlab() {
 		this(false);
 	}
@@ -93,7 +97,7 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	@Override
 	public String getBlockName() {
-		return LibBlockNames.DARK_QUARTZ_SLAB;
+		return field_150004_a ? LibBlockNames.DARK_QUARTZ_SLAB_FULL : LibBlockNames.DARK_QUARTZ_SLAB;
 	}
 
 	@Override

@@ -27,7 +27,12 @@ public class ItemMobDisplay extends ItemBase {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+		return false;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return false;
 	}
 
 	@Override

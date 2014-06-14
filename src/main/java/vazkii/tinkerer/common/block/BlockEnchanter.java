@@ -58,7 +58,7 @@ public class BlockEnchanter extends BlockModContainer {
 	IIcon iconTop;
 	IIcon iconSides;
 
-	protected BlockEnchanter() {
+	public BlockEnchanter() {
 		super(Material.rock);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
 		setHardness(5.0F);

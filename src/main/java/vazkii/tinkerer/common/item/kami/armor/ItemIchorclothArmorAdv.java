@@ -27,6 +27,7 @@ import vazkii.tinkerer.client.lib.LibResources;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
@@ -40,6 +41,11 @@ public abstract class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
 	public ItemIchorclothArmorAdv() {
 		this(0);
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
 	}
 
 	@Override

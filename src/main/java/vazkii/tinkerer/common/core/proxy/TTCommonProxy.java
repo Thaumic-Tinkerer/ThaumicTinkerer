@@ -60,6 +60,7 @@ import vazkii.tinkerer.common.research.ResearchHelper;
 public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
+		toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 		ModCreativeTab.INSTANCE = new ModCreativeTab();
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 		//ModItems.initItems();
@@ -75,7 +76,6 @@ public class TTCommonProxy {
 	public void init(FMLInitializationEvent event) {
 		capIchor = new CapIchor();
 		rodIchor = new RodIchorcloth();
-		EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();
