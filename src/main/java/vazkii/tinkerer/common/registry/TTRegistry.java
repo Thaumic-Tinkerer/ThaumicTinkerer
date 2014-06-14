@@ -161,7 +161,6 @@ public class TTRegistry {
 		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
 			for (Item item : itemArrayList) {
 				registerRecipe((ITTinkererRegisterable) item);
-				ModCreativeTab.INSTANCE.addItem(item);
 			}
 		}
 
@@ -169,9 +168,6 @@ public class TTRegistry {
 			for (Block block : blockArrayList) {
 				registerRecipe((ITTinkererRegisterable) block);
 
-				if (((ITTinkererBlock) block).shouldDisplayInTab()) {
-					ModCreativeTab.INSTANCE.addBlock(block);
-				}
 			}
 		}
 		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {

@@ -61,6 +61,9 @@ public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
+
+		capIchor = new CapIchor();
+		rodIchor = new RodIchorcloth();
 		ModCreativeTab.INSTANCE = new ModCreativeTab();
 		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 		//ModItems.initItems();
@@ -74,8 +77,6 @@ public class TTCommonProxy {
 	public Item.ToolMaterial toolMaterialIchor;
 
 	public void init(FMLInitializationEvent event) {
-		capIchor = new CapIchor();
-		rodIchor = new RodIchorcloth();
 
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();

@@ -37,30 +37,24 @@ public class ModCreativeTab extends CreativeTabs {
 
 	public ModCreativeTab() {
 		super(LibMisc.MOD_ID);
+		addWand();
 	}
 
 	@Override
 	public ItemStack getIconItemStack() {
-		if (displayItem == null)
-			addWand();
 
 		return displayItem;
 	}
 
 	@Override
 	public Item getTabIconItem() {
-		if (displayItem == null)
-			addWand();
 
 		return ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class);
 	}
 
 	@Override
 	public void displayAllReleventItems(List list) {
-
-		addWand();
 		list.addAll(this.list);
-
 	}
 
 	private void addWand() {

@@ -29,7 +29,7 @@ public class ItemInfusedInkwell extends ItemBase implements IScribeTools {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+		return false;
 	}
 
 	@Override
