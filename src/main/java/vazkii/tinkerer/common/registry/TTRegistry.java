@@ -172,16 +172,6 @@ public class TTRegistry {
 		}
 		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
 			for (Item item : itemArrayList) {
-				registerResearch((ITTinkererRegisterable) item);
-			}
-		}
-		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
-			for (Block block : blockArrayList) {
-				registerResearch((ITTinkererRegisterable) block);
-			}
-		}
-		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
-			for (Item item : itemArrayList) {
 				if (!(item instanceof ItemBlock)) {
 					GameRegistry.registerItem(item, ((ITTinkererItem) item).getItemName());
 
@@ -209,7 +199,16 @@ public class TTRegistry {
 	}
 
 	public void postInit() {
-
+		for (ArrayList<Item> itemArrayList : itemRegistry.values()) {
+			for (Item item : itemArrayList) {
+				registerResearch((ITTinkererRegisterable) item);
+			}
+		}
+		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
+			for (Block block : blockArrayList) {
+				registerResearch((ITTinkererRegisterable) block);
+			}
+		}
 	}
 
 }

@@ -121,6 +121,7 @@ public class TTCommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		ModRecipes.initRecipes();
 		ResearchHelper.initResearch();
+		ThaumicTinkerer.registry.postInit();
 	}
 
 	protected void initCCPeripherals() {
