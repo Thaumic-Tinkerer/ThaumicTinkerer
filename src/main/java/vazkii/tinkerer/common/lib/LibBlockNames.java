@@ -33,6 +33,17 @@ public final class LibBlockNames {
 	public static final String REPAIRER = "repairer";
 	public static final String ASPECT_ANALYZER = "aspectAnalyzer";
 	public static final String PLATFORM = "platform";
+	public static final String BLOCK_FIRE_WATER = "fireWater";
+
+	public static final String BLOCK_FIRE_CHAOS = "fireChaos";
+
+	public static final String BLOCK_FIRE_ORDER = "fireOrder";
+
+	public static final String BLOCK_FIRE_FIRE = "fireFire";
+
+	public static final String BLOCK_FIRE_AIR = "fireAir";
+
+	public static final String BLOCK_FIRE_EARTH = "fireEarth";
 
 	public static final String WARP_GATE = "warpGate";
 

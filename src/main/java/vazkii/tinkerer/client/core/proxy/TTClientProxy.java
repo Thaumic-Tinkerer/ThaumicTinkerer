@@ -114,6 +114,7 @@ public class TTClientProxy extends TTCommonProxy {
 	private void registerRenderIDs() {
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idRepairer = RenderingRegistry.getNextAvailableRenderId();
+		LibRenderIDs.idFire = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
 
