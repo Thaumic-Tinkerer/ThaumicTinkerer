@@ -45,6 +45,10 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 		return null;
 	}
 
+	public int getDecayChance() {
+		return 1;
+	}
+
 	public boolean isOpaqueCube() {
 		return false;
 	}
@@ -62,11 +66,12 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 	}
 
 	public int tickRate(World p_149738_1_) {
-		return 25;
+		return 200;
 	}
 
 	public void setBlockWithTransmutationTarget(World world, int x, int y, int z, int meta, Block block) {
-		if (isTransmutationTarget(world.getBlock(x, z, y))) {
+		Random random = new Random();
+		if (isTransmutationTarget(world.getBlock(x, z, y)) && random.nextInt(getDecayChance()) == 0) {
 			world.setBlock(x, z, y, getBlockTransformation().get(world.getBlock(x, z, y)));
 		} else {
 			world.setBlock(x, z, y, block, meta, 3);
@@ -86,7 +91,12 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 					if (isNeighborTarget(world, x, y, z)) {
 						for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
 							if (isTransmutationTarget(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ))) {
-								world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, getBlockTransformation().get(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)));
+								Random random = new Random();
+								if (random.nextInt(getDecayChance()) == 0) {
+									world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, getBlockTransformation().get(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)));
+								} else {
+									world.setBlockToAir(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+								}
 							}
 						}
 					}
