@@ -23,7 +23,7 @@ import java.util.List;
 public class ItemInfusedPotion extends ItemPotion implements ITTinkererItem {
 
 	public String getItemStackDisplayName(ItemStack par1ItemStack) {
-		String s = "thaumictinkerer.item.infusedPotion." + getAspect(par1ItemStack).getName();
+		String s = "item.infusedPotion." + getAspect(par1ItemStack).getName() + ".name";
 		return StatCollector.translateToLocal(s).trim();
 	}
 

@@ -101,10 +101,10 @@ item.mobAspect.name=Soul Aspect
 item.mobAspect.condensed.name=Condensed Soul Aspect
 item.mobAspect.infused.name=Infused Soul Aspect
 item.infusedSeeds.name=Infused Seeds
-item.infusedPotion.Aer=Potion of Aer
-item.infusedPotion.Ignis=Potion of Ignis
-item.infusedPotion.Terra=Potion of Terra
-item.infusedPotion.Aqua=Potion of Aqua
+item.infusedPotion.Aer.name=Potion of Aer
+item.infusedPotion.Ignis.name=Potion of Ignis
+item.infusedPotion.Terra.name=Potion of Terra
+item.infusedPotion.Aqua.name=Potion of Aqua
 item.infusedGrain.name=Imbued Grain
 # KAMI ITEM NAMES
 item.kamiResource.name=Kami Resource
@@ -160,7 +160,7 @@ tile.fireFire.name=Ignis Imbued Fire
 
 tile.fireEarth.name=Terra Imbued Fire
 
-tile.fireAie.name=Aer Imbued Fire
+tile.fireAir.name=Aer Imbued Fire
 
 
 tile.darkQuartzSlabFull.name=Smokey Quartz Slab
