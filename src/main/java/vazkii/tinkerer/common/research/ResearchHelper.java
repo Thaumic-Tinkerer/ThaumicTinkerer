@@ -96,7 +96,7 @@ public final class ResearchHelper {
 	}
 
 	private static void registerResearchPages() {
-		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
+		ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/guiresearchback.png");
 		ResearchCategories.registerCategory(LibResearch.CATEGORY_THAUMICTINKERER, new ResourceLocation(LibResources.MISC_R_ENCHANTING), background);
 	}
 
