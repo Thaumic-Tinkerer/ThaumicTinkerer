@@ -37,7 +37,7 @@ public class BlockFireChaos extends BlockFireBase {
 		result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireAir.class), Blocks.fire);
 		result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireWater.class), Blocks.fire);
 		result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireEarth.class), Blocks.fire);
-		result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireFire.class), Blocks.fire);
+		result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireIgnis.class), Blocks.fire);
 		result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireOrder.class), Blocks.fire);
 
 		return result;
