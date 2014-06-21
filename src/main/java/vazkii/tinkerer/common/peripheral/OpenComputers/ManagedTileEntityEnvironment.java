@@ -1,4 +1,4 @@
-package vazkii.tinkerer.common.block.tile.peripheral.OpenComputers;
+package vazkii.tinkerer.common.peripheral.OpenComputers;
 
 import li.cil.oc.api.Network;
 import li.cil.oc.api.network.Visibility;

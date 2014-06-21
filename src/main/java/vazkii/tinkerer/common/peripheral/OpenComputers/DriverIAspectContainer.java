@@ -1,4 +1,4 @@
-package vazkii.tinkerer.common.block.tile.peripheral.OpenComputers;
+package vazkii.tinkerer.common.peripheral.OpenComputers;
 
 import li.cil.oc.api.network.Arguments;
 import li.cil.oc.api.network.Callback;
@@ -7,7 +7,7 @@ import li.cil.oc.api.network.ManagedEnvironment;
 import li.cil.oc.api.prefab.DriverTileEntity;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.IAspectContainer;
-import vazkii.tinkerer.common.block.tile.peripheral.implementation.IAspectContainerImplementation;
+import vazkii.tinkerer.common.peripheral.implementation.IAspectContainerImplementation;
 
 /**
  * Created by Katrina on 27/03/14.

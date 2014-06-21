@@ -13,7 +13,7 @@
  * File Created @ [Dec 11, 2013, 9:49:46 PM (GMT)]
  *//*
 
-package vazkii.tinkerer.common.block.tile.peripheral;
+package vazkii.tinkerer.common.peripheral;
 
 import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.inventory.IInventory;
