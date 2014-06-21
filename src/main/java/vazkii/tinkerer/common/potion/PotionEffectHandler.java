@@ -7,7 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.BlockForcefield;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -42,12 +42,12 @@ public class PotionEffectHandler {
 					for (int j = -2; j < 3; j++) {
 						if (xAxis) {
 							if (p.worldObj.isAirBlock(centerX, centerY + i, centerZ + j)) {
-								p.worldObj.setBlock(centerX, centerY + i, centerZ + j, ModBlocks.forcefield);
+								p.worldObj.setBlock(centerX, centerY + i, centerZ + j, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockForcefield.class));
 								ThaumicTinkerer.tcProxy.blockSparkle(p.worldObj, centerX, centerY + i, centerZ + j, 100, 100);
 							}
 						} else {
 							if (p.worldObj.isAirBlock(centerX + j, centerY + i, centerZ)) {
-								p.worldObj.setBlock(centerX + j, centerY + i, centerZ, ModBlocks.forcefield);
+								p.worldObj.setBlock(centerX + j, centerY + i, centerZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockForcefield.class));
 
 								ThaumicTinkerer.tcProxy.blockSparkle(p.worldObj, centerX + j, centerY + i, centerZ, 100, 100);
 							}
