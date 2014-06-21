@@ -36,7 +36,6 @@ import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.BlockCamo;
 import vazkii.tinkerer.common.block.tile.TileCamo;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorDislocator;
-import vazkii.tinkerer.common.item.kami.ItemKamiResource;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
@@ -171,7 +170,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 			return null;
 		}
 
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class))).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR")
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(this)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR")
 				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_DISLOCATOR)).setSecondary();
 	}
 
@@ -180,7 +179,7 @@ public class BlockTransvectorDislocator extends BlockCamo {
 		if (!Config.allowMirrors) {
 			return null;
 		}
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(this), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
 				" M ", " I ", " C ",
 				'M', new ItemStack(ConfigItems.itemResource, 1, 10),
 				'I', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)),
