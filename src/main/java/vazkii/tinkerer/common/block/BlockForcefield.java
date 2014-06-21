@@ -50,4 +50,9 @@ public class BlockForcefield extends BlockMod {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return null;
 	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return false;
+	}
 }
