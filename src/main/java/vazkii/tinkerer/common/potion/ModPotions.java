@@ -14,7 +14,9 @@
  */
 package vazkii.tinkerer.common.potion;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.potion.Potion;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -32,6 +34,9 @@ public final class ModPotions {
 	public static int potionAirId = 90;
 
 	public static void initPotions() {
+		MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
+		FMLCommonHandler.instance().bus().register(new PotionEffectHandler());
+
 		//Code based on potion code from WayOfTime
 		Potion[] potionTypes = null;
 
