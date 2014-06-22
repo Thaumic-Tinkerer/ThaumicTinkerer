@@ -16,42 +16,10 @@ package vazkii.tinkerer.common.research;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import thaumcraft.common.config.Config;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 
-public final class ModRecipes {
+public final class RecipeHelper {
 
-	public static void initRecipes() {
-		initCraftingRecipes();
-		initArcaneRecipes();
-		initInfusionRecipes();
-		initCrucibleRecipes();
-	}
-
-	private static void initCraftingRecipes() {
-
-	}
-
-	private static void initArcaneRecipes() {
-
-		if (Config.allowMirrors) {
-
-		}
-	}
-
-	private static void initInfusionRecipes() {
-
-		if (ConfigHandler.enableKami) {
-
-			if (Config.allowMirrors) {
-
-			}
-		}
-	}
-
-	private static void initCrucibleRecipes() {
-
-	}
 
 	public static Object oreDictOrStack(ItemStack stack, String oreDict) {
 		return OreDictionary.getOres(oreDict).isEmpty() && ConfigHandler.useOreDictMetal ? stack : oreDict;

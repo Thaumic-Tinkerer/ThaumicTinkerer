@@ -48,7 +48,7 @@ import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipeMulti;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
-import vazkii.tinkerer.common.research.ModRecipes;
+import vazkii.tinkerer.common.research.RecipeHelper;
 import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
@@ -230,7 +230,7 @@ public class BlockMagnet extends BlockModContainer {
 						'F', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusTelekinesis.class))),
 				new ThaumicTinkererArcaneRecipe(LibResearch.KEY_MOB_MAGNET, LibResearch.KEY_MAGNETS, new ItemStack(this, 1, 1), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),
 						" G ", "SGs", "WFW",
-						'G', ModRecipes.oreDictOrStack(new ItemStack(Items.gold_ingot), "ingotCopper"),
+						'G', RecipeHelper.oreDictOrStack(new ItemStack(Items.gold_ingot), "ingotCopper"),
 						's', new ItemStack(ConfigItems.itemShard, 1, 3),
 						'S', new ItemStack(ConfigItems.itemShard),
 						'W', new ItemStack(ConfigBlocks.blockMagicalLog),

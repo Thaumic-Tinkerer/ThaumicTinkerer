@@ -54,7 +54,6 @@ import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import vazkii.tinkerer.common.peripheral.OpenComputers.*;
 import vazkii.tinkerer.common.potion.ModPotions;
-import vazkii.tinkerer.common.research.ModRecipes;
 import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class TTCommonProxy {
@@ -119,7 +118,6 @@ public class TTCommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
-		ModRecipes.initRecipes();
 		ResearchHelper.initResearch();
 		ThaumicTinkerer.registry.postInit();
 	}
