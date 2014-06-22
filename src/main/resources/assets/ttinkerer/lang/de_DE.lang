@@ -100,7 +100,12 @@ item.shareBook.name=Buch des Wissensteilens
 item.mobAspect.name=Seelenaspekt
 item.mobAspect.condensed.name=Verdichteter Seelenaspekt
 item.mobAspect.infused.name=Infundierter Seelenaspekt
-
+item.infusedSeeds.name=Infundierte Saat
+item.infusedPotion.Aer.name=Aer-Trank
+item.infusedPotion.Ignis.name=Ignis-Trank
+item.infusedPotion.Terra.name=Terra-Trank
+item.infusedPotion.Aqua.name=Aqua-Trank
+item.infusedGrain.name=Erfülltes Korn
 # KAMI ITEM NAMES
 item.kamiResource.name=Kami-Ressource
 item.ichor.name=Ichor
@@ -142,6 +147,23 @@ tile.darkQuartz.name=Rauchiger Quarzblock
 tile.darkQuartzChiseled.name=Gemeißelter Rauchiger Quarzblock
 tile.darkQuartzPillar.name=Rauchige Quarzsäule
 tile.darkQuartzSlab.name=Rauchige Quarzstufe
+tile.forcefield.name=Kraftfeld
+
+# Fire
+tile.fireWater.name=Mit Aqua erfülltes Feuer
+
+tile.fireOrder.name=Mit Ordo erfülltes Feuer
+
+tile.fireChaos.name=Mit Perditio erfülltes Feuer
+
+tile.fireFire.name=Mit Ignis erfülltes Feuer
+
+tile.fireEarth.name=Mit Terra erfülltes Feuer
+
+tile.fireAir.name=Mit Aer erfülltes Feuer
+
+
+tile.darkQuartzSlabFull.name=Rauchige Quarzstufe
 tile.darkQuartzStairs.name=Rauchige Quarztreppe
 tile.interface.name=Transvektor-Schnittstelle
 tile.animationTablet.name=Dynamiktablett
