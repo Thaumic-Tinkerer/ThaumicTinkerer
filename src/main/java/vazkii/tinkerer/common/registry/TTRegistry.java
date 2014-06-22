@@ -137,6 +137,21 @@ public class TTRegistry {
 				e.printStackTrace();
 			}
 		}
+		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
+			for (Block block : blockArrayList) {
+				if (((ITTinkererBlock) block).getItemBlock() != null) {
+					GameRegistry.registerBlock(block, ((ITTinkererBlock) block).getItemBlock(), ((ITTinkererBlock) block).getBlockName());
+				} else {
+					GameRegistry.registerBlock(block, ((ITTinkererBlock) block).getBlockName());
+				}
+				if (((ITTinkererBlock) block).getTileEntity() != null) {
+					GameRegistry.registerTileEntity(((ITTinkererBlock) block).getTileEntity(), LibResources.PREFIX_MOD + ((ITTinkererBlock) block).getBlockName());
+				}
+				if (((ITTinkererBlock) block).shouldDisplayInTab()) {
+					ModCreativeTab.INSTANCE.addBlock(block);
+				}
+			}
+		}
 
 	}
 
@@ -181,21 +196,7 @@ public class TTRegistry {
 				}
 			}
 		}
-		for (ArrayList<Block> blockArrayList : blockRegistry.values()) {
-			for (Block block : blockArrayList) {
-				if (((ITTinkererBlock) block).getItemBlock() != null) {
-					GameRegistry.registerBlock(block, ((ITTinkererBlock) block).getItemBlock(), ((ITTinkererBlock) block).getBlockName());
-				} else {
-					GameRegistry.registerBlock(block, ((ITTinkererBlock) block).getBlockName());
-				}
-				if (((ITTinkererBlock) block).getTileEntity() != null) {
-					GameRegistry.registerTileEntity(((ITTinkererBlock) block).getTileEntity(), LibResources.PREFIX_MOD + ((ITTinkererBlock) block).getBlockName());
-				}
-				if (((ITTinkererBlock) block).shouldDisplayInTab()) {
-					ModCreativeTab.INSTANCE.addBlock(block);
-				}
-			}
-		}
+
 	}
 
 	public void postInit() {
