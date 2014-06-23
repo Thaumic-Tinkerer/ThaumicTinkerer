@@ -53,7 +53,7 @@ ttmisc.mode.axe.0=Block Mode
 ttmisc.mode.axe.1=Square Mode
 ttmisc.mode.axe.2=Tree Mode
 ttmisc.mode.sword.0=Single Mode
-ttmisc.mode.sword.1=Area Mode
+ttmisc.mode.sword.1=Area Modeaer
 ttmisc.mode.sword.2=Soul Mode
 ttmisc.experience=Experience
 ttmisc.light0=Light Enabled
@@ -587,6 +587,31 @@ ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, the
 ttresearch.name.FOCUS_RECALL=Wand Focus: Celestial Recall
 ttresearch.lore.FOCUS_RECALL=Home is where the Hearthstone is
 ttresearch.page.FOCUS_RECALL.0=While using Celestial Gateways for teleportation is all well and good, you decided to take it a step further and create a focus that allows you to do just that, but from anywhere.<BR><BR>This focus, in the presence of a properly bound Celestial Pearl in the caster's hotbar, will, after a short cast time, teleport the caster to that position, just as if they had used a Celestial Gateway. Of course, this comes at a vis cost.
+
+# -- FIRE
+ttresearch.name.FIRE_IGNIS=Elemental Fire: Ignis
+ttresearch.lore.FIRE_IGNIS=Fire infused with.....more fire!
+ttresearch.page.FIRE_IGNIS.0=You have managed to enhance the destructive powers of hyperenergetic nitor. By letting this fire loose on the surface of the world, you can transmute blocks into their equivalent forms in the nether.
+
+ttresearch.name.FIRE_AQUA=Elemental Fire: Aqua
+ttresearch.lore.FIRE_AQUA=Water plus Fire. This should end well.
+ttresearch.page.FIRE_AQUA.0=You have managed to totally invert the destructive power of fire. This fire, when let loose in the nether, will turn it into your own personal winter wonderland.
+
+ttresearch.name.FIRE_AER=Elemental Fire: Aer
+ttresearch.lore.FIRE_AER=Suspension of disbelief is a useful skill
+ttresearch.page.FIRE_AER.0=Everyone likes desserts, right? Well, this fire, when let loose on the world, turns everything into a desert. That is almost like a dessert. Good enough?
+
+ttresearch.name.FIRE_TERRA=Elemental Fire: Terra
+ttresearch.lore.FIRE_TERRA=Enough dirt to ... do whatever one does with dirt
+ttresearch.page.FIRE_TERRA.0=This fire will turn a wide variety of blocks into dirt. Just about the least useful thing ever. Seriously. This is just about the least useful item ever.
+
+ttresearch.name.FIRE_ORDO=Elemental Fire: Ordo
+ttresearch.lore.FIRE_ORDO=More ingots for your ore
+ttresearch.page.FIRE_ORDO.0=This fire, when let loose on a mountain of ores, will help you to process the ores into useful blocks of metal. While most of the ores will be consumed in the volatile fire, you will get thrice the amount of metal of mundane means of smelting.
+
+ttresearch.name.FIRE_PERDITIO=Elemental Fire: Perditio
+ttresearch.lore.FIRE_PERDITIO=Cleanup time
+ttresearch.page.FIRE_ORDO.0=This fire acts like an antidote of sorts. If your elemental fires have gotten out of your control, you can set loose this specially designed flame. It will rip the magic out of elemental fire, returning it to a mundane form.
 
 # -- WAILA
 ttwaila.nothing=Nothing

@@ -106,4 +106,16 @@ public final class LibResearch {
 	public static final String KEY_RELAY = "LEVITATOR_RELAY";
 	public static final String KEY_GOLEMCONNECTOR = "GOLEM_CONNECTOR";
 
+	public static final String KEY_FIRE_IGNIS = "FIRE_IGNIS";
+
+	public static final String KEY_FIRE_AQUA = "FIRE_AQUA";
+
+	public static final String KEY_FIRE_TERRA = "FIRE_TERRA";
+
+	public static final String KEY_FIRE_AER = "FIRE_AER";
+
+	public static final String KEY_FIRE_ORDO = "FIRE_ORDO";
+
+	public static final String KEY_FIRE_PERDITIO = "FIRE_PERDITIO";
+
 }

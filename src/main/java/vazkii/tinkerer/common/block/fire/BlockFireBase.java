@@ -5,10 +5,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.MapColor;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -379,5 +381,25 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 			this.flammibility = flammibility;
 			this.encouragement = encouragement;
 		}
+	}
+
+	private IIcon[] icons;
+
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister p_149651_1_) {
+		this.icons = new IIcon[]{ p_149651_1_.registerIcon(this.getTextureName() + "_layer_0"), p_149651_1_.registerIcon(this.getTextureName() + "_layer_1") };
+	}
+
+	@SideOnly(Side.CLIENT)
+	public IIcon getFireIcon(int p_149840_1_) {
+		return this.icons[p_149840_1_];
+	}
+
+	/**
+	 * Gets the block's texture. Args: side, meta
+	 */
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+		return this.icons[0];
 	}
 }

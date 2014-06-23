@@ -2,9 +2,19 @@ package vazkii.tinkerer.common.block.fire;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.item.ItemBrightNitor;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.HashMap;
 
@@ -20,12 +30,13 @@ public class BlockFireEarth extends BlockFireBase {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return null;
+		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FIRE_TERRA, new AspectList().add(Aspect.FIRE, 5).add(Aspect.EARTH, 5), 4, -6, 2, new ItemStack(this)).setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
+				.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_FIRE_TERRA)).setSecondary();
 	}
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
+		return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_TERRA, new ItemStack(this), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.EARTH, 5));
 	}
 
 	@Override
@@ -38,8 +49,17 @@ public class BlockFireEarth extends BlockFireBase {
 		result.put(Blocks.nether_brick_stairs, Blocks.oak_stairs);
 		result.put(Blocks.cactus, Blocks.log);
 		result.put(Blocks.snow_layer, Blocks.tallgrass);
-		result.put(Blocks.stone, Blocks.monster_egg);
+		result.put(Blocks.stone, Blocks.dirt);
 		result.put(Blocks.mob_spawner, Blocks.iron_block);
+		result.put(Blocks.log, Blocks.dirt);
+
+		result.put(Blocks.log2, Blocks.dirt);
+
+		result.put(Blocks.leaves, Blocks.dirt);
+		result.put(Blocks.leaves2, Blocks.dirt);
+		result.put(Blocks.cobblestone, Blocks.dirt);
+		result.put(Blocks.planks, Blocks.dirt);
+		result.put(Blocks.glass, Blocks.dirt);
 		return result;
 	}
 }
