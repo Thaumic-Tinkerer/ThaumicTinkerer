@@ -47,5 +47,6 @@ public class BlockFireAir extends BlockFireBase {
 		result.put(Blocks.dirt, Blocks.sand);
 		return result;
 	}
+
 }
 

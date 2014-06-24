@@ -14,6 +14,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.item.ItemBlockFire;
 import vazkii.tinkerer.common.registry.ITTinkererBlock;
 
 import java.util.ArrayList;
@@ -370,7 +372,7 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
+		return ItemBlockFire.class;
 	}
 
 	private static class FireInfo {
@@ -384,10 +386,33 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 	}
 
 	private IIcon[] icons;
+	private IIcon itemIcon;
 
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
-		this.icons = new IIcon[]{ p_149651_1_.registerIcon(this.getTextureName() + "_layer_0"), p_149651_1_.registerIcon(this.getTextureName() + "_layer_1") };
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		this.icons = new IIcon[]{ IconHelper.forName(iconRegister, this.unlocalizedName + "_layer_0"), IconHelper.forName(iconRegister, this.unlocalizedName + "_layer_1") };
+
+		String s = "";
+		if (this instanceof BlockFireAir) {
+			s = "aer";
+		}
+		if (this instanceof BlockFireEarth) {
+			s = "terra";
+		}
+		if (this instanceof BlockFireWater) {
+			s = "aqua";
+		}
+		if (this instanceof BlockFireIgnis) {
+			s = "ignis";
+		}
+		if (this instanceof BlockFireOrder) {
+			s = "ordo";
+		}
+		if (this instanceof BlockFireChaos) {
+			s = "perditio";
+		}
+		s += "Fire";
+		itemIcon = IconHelper.forName(iconRegister, s);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -400,6 +425,6 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 	 */
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-		return this.icons[0];
+		return itemIcon;
 	}
 }
