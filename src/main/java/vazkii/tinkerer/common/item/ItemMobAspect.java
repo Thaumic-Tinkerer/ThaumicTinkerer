@@ -9,7 +9,7 @@ import net.minecraft.util.IIcon;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import vazkii.tinkerer.client.lib.LibResources;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
@@ -36,15 +36,24 @@ public class ItemMobAspect extends ItemBase {
 		return true;
 	}
 
-	public static IIcon[] aspectIcons = new IIcon[aspectCount];
+	public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 
 		for (NumericAspectHelper aspect : NumericAspectHelper.values) {
-			aspectIcons[aspect.num] = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + aspect.getAspect().getName().toLowerCase());
+			aspectIcons[aspect.num] = IconHelper.forName(par1IconRegister, aspect.getAspect().getName().toLowerCase());
+			aspectIcons[aspect.num + aspectCount] = IconHelper.forName(par1IconRegister, aspect.getAspect().getName().toLowerCase() + "_condensed");
+
+			aspectIcons[aspect.num + 2 * aspectCount] = IconHelper.forName(par1IconRegister, aspect.getAspect().getName().toLowerCase());
+
 		}
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+		return isInfused(par1ItemStack);
 	}
 
 	@Override
@@ -82,8 +91,8 @@ public class ItemMobAspect extends ItemBase {
 	}
 
 	@Override
-	public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
-		return aspectIcons[par1 % aspectCount];
+	public IIcon getIconFromDamage(int par1) {
+		return aspectIcons[par1];
 	}
 
 	@Override

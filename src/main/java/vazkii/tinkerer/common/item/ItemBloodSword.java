@@ -33,6 +33,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -74,10 +75,18 @@ public class ItemBloodSword extends ItemSword implements IRepairable, ITTinkerer
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
+	private IIcon activeIcon;
+
+	@Override
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+		return stack.stackTagCompound.getInteger("Activated") == 1 ? activeIcon : itemIcon;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = IconHelper.forItem(par1IconRegister, this);
+		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
+		activeIcon = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
