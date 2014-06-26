@@ -112,6 +112,17 @@ public final class ResearchHelper {
 		return new ResearchPage((InfusionRecipe) ConfigResearch.recipes.get(name));
 	}
 
+	public static ResearchPage infusionPage(String name, int count) {
+
+		InfusionRecipe[] recipes = new InfusionRecipe[count];
+
+		for (int i = 0; i < count; i++) {
+			recipes[i] = (InfusionRecipe) ConfigResearch.recipes.get(name + i);
+		}
+
+		return new ResearchPage(recipes);
+	}
+
 	public static ResearchPage enchantPage(String name) {
 		return new ResearchPage((InfusionEnchantmentRecipe) ConfigResearch.recipes.get(name));
 	}

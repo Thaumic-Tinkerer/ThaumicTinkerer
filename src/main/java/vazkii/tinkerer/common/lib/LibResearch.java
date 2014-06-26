@@ -117,5 +117,6 @@ public final class LibResearch {
 	public static final String KEY_FIRE_ORDO = "FIRE_ORDO";
 
 	public static final String KEY_FIRE_PERDITIO = "FIRE_PERDITIO";
+	public static final String KEY_POTIONS = "INFUSED_POTIONS";
 
 }

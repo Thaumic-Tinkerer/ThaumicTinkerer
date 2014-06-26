@@ -26,7 +26,7 @@ public class BlockFireAir extends BlockFireBase {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FIRE_AER, new AspectList().add(Aspect.FIRE, 5).add(Aspect.AIR, 5), 2, -8, 2, new ItemStack(this)).setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
+		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FIRE_AER, new AspectList().add(Aspect.FIRE, 5).add(Aspect.AIR, 5), 3, -7, 2, new ItemStack(this)).setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
 				.setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_FIRE_AER)).setSecondary();
 	}
 

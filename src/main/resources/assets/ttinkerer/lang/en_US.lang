@@ -611,7 +611,12 @@ ttresearch.page.FIRE_ORDO.0=This fire, when let loose on a mountain of ores, wil
 
 ttresearch.name.FIRE_PERDITIO=Elemental Fire: Perditio
 ttresearch.lore.FIRE_PERDITIO=Cleanup time
-ttresearch.page.FIRE_ORDO.0=This fire acts like an antidote of sorts. If your elemental fires have gotten out of your control, you can set loose this specially designed flame. It will rip the magic out of elemental fire, returning it to a mundane form.
+ttresearch.page.FIRE_PERDITIO.0=This fire acts like an antidote of sorts. If your elemental fires have gotten out of your control, you can set loose this specially designed flame. It will rip the magic out of elemental fire, returning it to a mundane form.
+
+ttresearch.name.INFUSED_POTIONS=Infused Potions
+ttresearch.lore.INFUSED_POTIONS=Whats this? I don't know . . .better drink itt
+ttresearch.page.INFUSED_POTIONS.0=You are able to create a new form of plant by infusing mundane seeds with magical shards. These seeds have several magical properties, most importantly they make several powerful potions.
+ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <br> Fire infused potions trap your enemies in a sphere of fire. <br> Air infused potions send your enemies up in the air. <br> Water infused potions chill surrounding lava.
 
 # -- WAILA
 ttwaila.nothing=Nothing

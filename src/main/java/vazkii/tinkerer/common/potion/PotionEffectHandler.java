@@ -91,7 +91,7 @@ public class PotionEffectHandler {
 					ThaumicTinkerer.tcProxy.burst(target.worldObj, target.posX, target.posY, target.posZ, .5F);
 				}
 			}
-			if (target.worldObj.getTotalWorldTime() > airPotionHit.get(target) + 62) {
+			if (target.worldObj.getTotalWorldTime() > airPotionHit.get(target) + 20) {
 				iter.remove();
 			}
 		}

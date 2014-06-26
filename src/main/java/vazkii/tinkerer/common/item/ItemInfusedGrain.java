@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
@@ -50,6 +51,11 @@ public class ItemInfusedGrain extends ItemBase {
 	@Override
 	public String getItemName() {
 		return LibItemNames.INFUSED_GRAIN;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
 	}
 
 	@Override

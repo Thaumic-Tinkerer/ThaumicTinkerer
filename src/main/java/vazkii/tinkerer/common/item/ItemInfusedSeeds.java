@@ -4,16 +4,22 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.common.block.BlockInfusedGrain;
 import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
 import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipeMulti;
 import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.ArrayList;
@@ -91,7 +97,15 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
+		return new ThaumicTinkererRecipeMulti(
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 0, new ItemStack(this, 1, 0), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0)),
+
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 1, new ItemStack(this, 1, 1), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1)),
+
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 2, new ItemStack(this, 1, 2), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3)),
+
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 3, new ItemStack(this, 1, 3), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2))
+		);
 	}
 
 	private enum PRIMAL_ASPECT_ENUM {
