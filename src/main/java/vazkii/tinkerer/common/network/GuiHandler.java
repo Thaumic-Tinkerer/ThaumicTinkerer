@@ -18,20 +18,15 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import vazkii.tinkerer.client.gui.GuiAnimationTablet;
-import vazkii.tinkerer.client.gui.GuiAspectAnalyzer;
-import vazkii.tinkerer.client.gui.GuiEnchanting;
-import vazkii.tinkerer.client.gui.GuiMobMagnet;
+import vazkii.tinkerer.client.gui.*;
 import vazkii.tinkerer.client.gui.kami.GuiIchorPouch;
 import vazkii.tinkerer.client.gui.kami.GuiWarpGate;
 import vazkii.tinkerer.client.gui.kami.GuiWarpGateDestinations;
 import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileMobMagnet;
-import vazkii.tinkerer.common.block.tile.container.ContainerAnimationTablet;
-import vazkii.tinkerer.common.block.tile.container.ContainerAspectAnalyzer;
-import vazkii.tinkerer.common.block.tile.container.ContainerEnchanter;
-import vazkii.tinkerer.common.block.tile.container.ContainerMobMagnet;
+import vazkii.tinkerer.common.block.tile.TileRPlacer;
+import vazkii.tinkerer.common.block.tile.container.*;
 import vazkii.tinkerer.common.block.tile.container.kami.ContainerIchorPouch;
 import vazkii.tinkerer.common.block.tile.container.kami.ContainerWarpGate;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
@@ -61,6 +56,8 @@ public class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_WARP_GATE:
 				return new ContainerWarpGate((TileWarpGate) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_REMOTE_PLACER:
+                return new ContainerRemotePlacer((TileRPlacer)tile,player.inventory);
 		}
 		return null;
 	}
@@ -89,6 +86,8 @@ public class GuiHandler implements IGuiHandler {
 
 			case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS:
 				return new GuiWarpGateDestinations((TileWarpGate) tile);
+            case LibGuiIDs.GUI_ID_REMOTE_PLACER:
+                return new GuiRemotePlacer((TileRPlacer)tile,player.inventory);
 		}
 		return null;
 	}

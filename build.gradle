@@ -76,8 +76,11 @@ minecraft {
 
 
 dependencies {
-    compile "mantle:Mantle:1.7.2-149-5b27d20:deobf"
-    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins501:deobf") {
+	compile files(
+		'TCDEOBF.jar'
+	)    
+	compile "mantle:Mantle:1.7.2-145.3a637c2:deobf"
+    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins494:deobf") {
         exclude module: 'CodeChickenCore'
         exclude module: 'Waila'
         exclude module: 'NotEnoughItems'

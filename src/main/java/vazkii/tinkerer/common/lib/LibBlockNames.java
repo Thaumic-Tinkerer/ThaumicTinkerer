@@ -35,6 +35,7 @@ public final class LibBlockNames {
 	public static final String PLATFORM = "platform";
 
 	public static final String WARP_GATE = "warpGate";
+    public static final String REMOTE_PLACER = "remotePlacer";
 
 	public static final String CAMO = "camo";
 
