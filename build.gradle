@@ -55,7 +55,7 @@ group = "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-co
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.2-10.12.1.1112"
+    version = "1.7.2-10.12.2.1121"
     //minecraftVersion="1.7.2"
     assetDir = "eclipse/assets"
     replace '${version}', project.version
@@ -79,8 +79,8 @@ dependencies {
     compile files(
             'TCDEOBF.jar'
     )
-    compile "mantle:Mantle:1.7.2-145.3a637c2:deobf"
-    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins494:deobf") {
+    compile "mantle:Mantle:1.7.2-149.5b27d20:deobf"
+    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins501:deobf") {
         exclude module: 'CodeChickenCore'
         exclude module: 'Waila'
         exclude module: 'NotEnoughItems'
