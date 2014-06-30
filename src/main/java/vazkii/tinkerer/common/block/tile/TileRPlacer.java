@@ -1,13 +1,22 @@
 package vazkii.tinkerer.common.block.tile;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.common.util.ForgeDirection;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 /**
@@ -15,14 +24,17 @@ import vazkii.tinkerer.common.lib.LibBlockNames;
  */
 public class TileRPlacer extends TileCamo implements IInventory{
     private static final String TAG_ORIENTATION = "orientation";
+    private static final String TAG_BLOCKS = "blocks";
     public int orientation;
     ItemStack[] inventorySlots = new ItemStack[1];
+    public int blocks=1;
 
     @Override
     public void readCustomNBT(NBTTagCompound cmp) {
         super.readCustomNBT(cmp);
 
         orientation = cmp.getInteger(TAG_ORIENTATION);
+        blocks=cmp.getInteger(TAG_BLOCKS);
         NBTTagList var2 = cmp.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         inventorySlots = new ItemStack[getSizeInventory()];
         for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -48,6 +60,7 @@ public class TileRPlacer extends TileCamo implements IInventory{
         super.writeCustomNBT(cmp);
 
         cmp.setInteger(TAG_ORIENTATION, orientation);
+        cmp.setInteger(TAG_BLOCKS,blocks);
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
             if (inventorySlots[var3] != null) {
@@ -144,7 +157,7 @@ public class TileRPlacer extends TileCamo implements IInventory{
 
     @Override
     public boolean isItemValidForSlot(int var1, ItemStack var2) {
-        return true;
+        return var2.getItem() instanceof ItemBlock;
     }
     @Override
     public S35PacketUpdateTileEntity getDescriptionPacket() {
@@ -157,5 +170,72 @@ public class TileRPlacer extends TileCamo implements IInventory{
     public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
         super.onDataPacket(manager, packet);
         readCustomNBT(packet.func_148857_g());
+    }
+
+    public void receiveRedstonePulse() {
+        if(worldObj.isRemote)
+            return;
+        if(this.inventorySlots[0]!=null)
+        {
+            int x,y,z=0;
+            x=0;
+            y=0;
+            switch(orientation)
+            {
+                case 0:
+                    x=this.xCoord;
+                    y=this.yCoord-this.blocks;
+                    z=this.zCoord;
+                    break;
+                case 1:
+                    x=this.xCoord;
+                    y=this.yCoord+this.blocks;
+                    z=this.zCoord;
+                    break;
+                case 2:
+                    x=this.xCoord;
+                    y=this.yCoord;
+                    z=this.zCoord-this.blocks;
+                    break;
+                case 3:
+                    x=this.xCoord;
+                    y=this.yCoord;
+                    z=this.zCoord+this.blocks;
+                    break;
+                case 4:
+                    x=this.xCoord-this.blocks;
+                    y=this.yCoord;
+                    z=this.zCoord;
+                    break;
+                case 5:
+                    x=this.xCoord-this.blocks;
+                    y=this.yCoord;
+                    z=this.zCoord;
+                    break;
+            }
+            //if(this.inventorySlots[0].getItem() instanceof ItemBlock) {
+                if (this.worldObj.getBlock(x, y, z) == Blocks.air) {
+                    //if (this.worldObj.setBlock(x, y, z, ((ItemBlock) this.inventorySlots[0].getItem()).field_150939_a, this.inventorySlots[0].getItemDamage(), 1 | 2)) {
+                      //  this.decrStackSize(0, 1);
+                       // markDirty();
+                    //Block block = worldObj.getBlock(x, y, z);
+                    boolean done=false;
+                    FakePlayer player=FakePlayerFactory.getMinecraft((WorldServer)worldObj);
+                    Item item=inventorySlots[0].getItem();
+                    ItemStack stack=inventorySlots[0];
+                    if (!done)
+                        item.onItemUseFirst(stack, player, worldObj, x, y, z, ForgeDirection.OPPOSITES[orientation], 0F, 0F, 0F);
+                    if (!done)
+                        done = item.onItemUse(stack, player, worldObj, x, y, z, ForgeDirection.OPPOSITES[orientation], 0F, 0F, 0F);
+                    if (!done) {
+                        item.onItemRightClick(stack, worldObj, player);
+                        done = true;
+                    }
+
+                    }
+                //}
+            //}
+
+        }
     }
 }

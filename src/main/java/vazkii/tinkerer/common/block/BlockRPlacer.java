@@ -1,6 +1,7 @@
 package vazkii.tinkerer.common.block;
 
 import mcp.mobius.waila.addons.secretrooms.HUDTileEntityCamo;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,6 +12,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -33,6 +35,7 @@ import vazkii.tinkerer.common.research.ResearchHelper;
 import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by nekosune on 28/06/14.
@@ -150,5 +153,41 @@ public class BlockRPlacer extends  BlockCamo implements IWandable{
     @Override
     public void onWandStoppedUsing(ItemStack itemStack, World world, EntityPlayer entityPlayer, int i) {
 
+    }
+
+
+    @Override
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
+        if (par1World.isRemote)
+            return;
+
+        boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
+        int meta = par1World.getBlockMetadata(par2, par3, par4);
+        boolean on = meta != 0;
+
+        if (power && !on) {
+            par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 4);
+        } else if (!power && on)
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
+    }
+
+    @Override
+    public int tickRate(World par1World) {
+        return 1;
+    }
+
+    @Override
+    public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side) {
+        return true;
+    }
+
+    @Override
+    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+        if (tile != null && tile instanceof TileRPlacer) {
+            TileRPlacer placer = (TileRPlacer) tile;
+            placer.receiveRedstonePulse();
+        }
     }
 }

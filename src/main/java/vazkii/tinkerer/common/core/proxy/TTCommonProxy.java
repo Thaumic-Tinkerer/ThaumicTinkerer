@@ -45,10 +45,7 @@ import vazkii.tinkerer.common.item.kami.wand.CapIchor;
 import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
 import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.network.PlayerTracker;
-import vazkii.tinkerer.common.network.packet.PacketEnchanterAddEnchant;
-import vazkii.tinkerer.common.network.packet.PacketEnchanterStartWorking;
-import vazkii.tinkerer.common.network.packet.PacketMobMagnetButton;
-import vazkii.tinkerer.common.network.packet.PacketTabletButton;
+import vazkii.tinkerer.common.network.packet.*;
 import vazkii.tinkerer.common.network.packet.kami.PacketSoulHearts;
 import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
@@ -116,6 +113,7 @@ public class TTCommonProxy {
 		ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class, PacketEnchanterStartWorking.class, 142 + 6, Side.SERVER);
 		ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class, PacketMobMagnetButton.class, 142 + 7, Side.SERVER);
 		ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class, PacketTabletButton.class, 142 + 8, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketPlacerButton.class, PacketPlacerButton.class, 142 + 9, Side.SERVER);
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {

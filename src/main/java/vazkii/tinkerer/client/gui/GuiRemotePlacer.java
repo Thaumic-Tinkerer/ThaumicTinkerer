@@ -21,6 +21,7 @@ import vazkii.tinkerer.common.block.tile.TileAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.TileRPlacer;
 import vazkii.tinkerer.common.block.tile.container.ContainerAspectAnalyzer;
 import vazkii.tinkerer.common.block.tile.container.ContainerRemotePlacer;
+import vazkii.tinkerer.common.network.packet.PacketPlacerButton;
 import vazkii.tinkerer.common.network.packet.PacketTabletButton;
 
 import java.util.ArrayList;
@@ -50,10 +51,10 @@ public class GuiRemotePlacer extends GuiContainer {
         x = (width - xSize) / 2;
         y = (height - ySize) / 2;
         buttonListRP.clear();
-        addButton(new GuiButtonRPRadio(0, x + 100, y + 0, true, radioButtons));
-        addButton(new GuiButtonRPRadio(1, x + 100, y + 13, false, radioButtons));
-        addButton(new GuiButtonRPRadio(2, x + 100, y + 26, false, radioButtons));
-        addButton(new GuiButtonRPRadio(3, x + 100, y + 39, false, radioButtons));
+        addButton(new GuiButtonRPRadio(0, x + 100, y + 0, placer.blocks==1, radioButtons));
+        addButton(new GuiButtonRPRadio(1, x + 100, y + 13, placer.blocks==2, radioButtons));
+        addButton(new GuiButtonRPRadio(2, x + 100, y + 26, placer.blocks==3, radioButtons));
+        addButton(new GuiButtonRPRadio(3, x + 100, y + 39, placer.blocks==4, radioButtons));
         buttonList = buttonListRP;
 
     }
@@ -69,10 +70,9 @@ public class GuiRemotePlacer extends GuiContainer {
             ((IRadioButton) par1GuiButton).enableFromClick();
         else buttonListRP.get(0).buttonEnabled = !buttonListRP.get(0).buttonEnabled;
 
-        //tablet.leftClick = buttonListAT.get(1).buttonEnabled;
-        //tablet.redstone = buttonListAT.get(0).buttonEnabled;
+        placer.blocks= par1GuiButton.id+1;
 
-        //ThaumicTinkerer.netHandler.sendToServer(new PacketTabletButton(tablet));
+        ThaumicTinkerer.netHandler.sendToServer(new PacketPlacerButton(placer));
     }
     @Override
     protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
