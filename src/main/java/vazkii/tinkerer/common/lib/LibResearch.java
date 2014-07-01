@@ -105,6 +105,7 @@ public final class LibResearch {
 	public static final String KEY_FOCUS_RECALL = "FOCUS_RECALL";
 	public static final String KEY_RELAY = "LEVITATOR_RELAY";
 	public static final String KEY_GOLEMCONNECTOR = "GOLEM_CONNECTOR";
+    public static final String KEY_REMOTE_PLACER = "REMOTE_PLACER";
 
 	public static final String KEY_FIRE_IGNIS = "FIRE_IGNIS";
 
