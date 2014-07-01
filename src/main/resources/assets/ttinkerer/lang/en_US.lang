@@ -180,6 +180,7 @@ tile.bedrockPortal.name=Bedrock Portal
 tile.Levitational Locomotive.name=Levitational Locomotive
 tile.Levitational Locomotive Relay.name=Levitational Locomotive Relay
 tile.golemConnector.name=Golem Connector
+tile.remotePlacer.name=Remote Placer
 
 # KAMI BLOCK NAMES
 tile.warpGate.name=Celestial Gateway

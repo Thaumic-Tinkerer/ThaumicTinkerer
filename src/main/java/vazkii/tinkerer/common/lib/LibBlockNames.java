@@ -46,6 +46,7 @@ public final class LibBlockNames {
 	public static final String BLOCK_FIRE_EARTH = "fireEarth";
 
 	public static final String WARP_GATE = "warpGate";
+    public static final String REMOTE_PLACER = "remotePlacer";
 
 	public static final String CAMO = "camo";
 
