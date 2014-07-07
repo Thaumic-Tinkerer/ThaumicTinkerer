@@ -185,39 +185,35 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 	public ThaumicTinkererRecipe getRecipeItem() {
 		switch (armorType) {
 		case 0:
-			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_HELM,
+			return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_HELM,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
 					new AspectList().add(Aspect.WATER, 75), "CCC", "C C", 'C',
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
-			break;
 		case 1:
-			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_CHEST,
+			return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_CHEST,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
 					new AspectList().add(Aspect.AIR, 75), "C C", "CCC", "CCC",
 					'C',
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
-			break;
 		case 2:
-			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_LEGS,
+			return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_LEGS,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
 					new AspectList().add(Aspect.FIRE, 75), "CCC", "C C", "C C",
 					'C',
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
-			break;
 		case 3:
-			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_BOOTS,
+			return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_BOOTS,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
 					new AspectList().add(Aspect.EARTH, 75), "C C", "C C", 'C',
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
-			break;
 
 		}
 		return null;
