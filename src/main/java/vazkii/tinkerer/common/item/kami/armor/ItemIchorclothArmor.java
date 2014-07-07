@@ -191,6 +191,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
+			break;
 		case 1:
 			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_CHEST,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
@@ -199,6 +200,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
+			break;
 		case 2:
 			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_LEGS,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
@@ -207,6 +209,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
+			break;
 		case 3:
 			new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHORCLOTH_BOOTS,
 					LibResearch.KEY_ICHORCLOTH_ARMOR, new ItemStack(this),
@@ -214,6 +217,7 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 					new ItemStack(ThaumicTinkerer.registry
 							.getFirstItemFromClass(ItemKamiResource.class), 1,
 							1));
+			break;
 
 		}
 		return null;
