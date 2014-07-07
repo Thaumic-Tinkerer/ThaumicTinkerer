@@ -1,7 +1,10 @@
 package vazkii.tinkerer.common.registry;
 
 import com.google.common.reflect.ClassPath;
+
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -147,7 +150,7 @@ public class TTRegistry {
 				if (((ITTinkererBlock) block).getTileEntity() != null) {
 					GameRegistry.registerTileEntity(((ITTinkererBlock) block).getTileEntity(), LibResources.PREFIX_MOD + ((ITTinkererBlock) block).getBlockName());
 				}
-				if (((ITTinkererBlock) block).shouldDisplayInTab()) {
+				if (((ITTinkererBlock) block).shouldDisplayInTab() && FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 					ModCreativeTab.INSTANCE.addBlock(block);
 				}
 			}
@@ -190,7 +193,7 @@ public class TTRegistry {
 				if (!(item instanceof ItemBlock)) {
 					GameRegistry.registerItem(item, ((ITTinkererItem) item).getItemName());
 
-					if (((ITTinkererItem) item).shouldDisplayInTab()) {
+					if (((ITTinkererItem) item).shouldDisplayInTab() && FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 						ModCreativeTab.INSTANCE.addItem(item);
 					}
 				}
