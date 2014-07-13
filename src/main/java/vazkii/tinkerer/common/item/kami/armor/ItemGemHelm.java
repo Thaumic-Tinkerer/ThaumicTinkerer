@@ -131,8 +131,8 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles,
 						.getFirstItemFromClass(ItemKamiResource.class)),
 				new ItemStack(ThaumicTinkerer.registry
 						.getFirstItemFromClass(ItemKamiResource.class)),
-				new ItemStack(ConfigItems.itemManaBean), new ItemStack(
-						ConfigItems.itemWispEssence), new ItemStack(
+				new ItemStack(ConfigItems.itemAmuletVis), new ItemStack(
+						ConfigItems.itemFocusPrimal), new ItemStack(
 						Items.golden_helmet), new ItemStack(Items.potionitem,
 						1, 8198), new ItemStack(ConfigItems.itemGoggles),
 				new ItemStack(ThaumicTinkerer.registry
