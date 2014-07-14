@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.ItemInfusedSeeds;
 import vazkii.tinkerer.common.lib.LibBlockNames;
@@ -38,8 +39,6 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		this(Aspect.FIRE);
 	}
 
-	private IIcon[] icons;
-
 	//Code based off vanilla potato code
 	@Override
 	public IIcon getIcon(int side, int meta) {
@@ -53,6 +52,18 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		}
 	}
 
+    private IIcon[] icons;
+
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        icons = new IIcon[4];
+        for(int i=0; i<4; i++) {
+            icons[i] = IconHelper.forName(par1IconRegister, "crop_"+aspect.getName()+"_" + i);
+        }
+    }
+
+
+
 	public static BlockInfusedGrain getBlockFromAspect(Aspect aspect) {
 		for (Block block : ThaumicTinkerer.registry.getBlockFromClass(BlockInfusedGrain.class)) {
 			if (((BlockInfusedGrain) block).aspect == aspect) {
@@ -62,14 +73,6 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		return null;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
-		this.icons = new IIcon[4];
-
-		for (int i = 0; i < this.icons.length; ++i) {
-			this.icons[i] = p_149651_1_.registerIcon("potatoes" + "_stage_" + i);
-		}
-	}
 
 	@Override
 	public int damageDropped(int p_149692_1_) {

@@ -1,6 +1,7 @@
 package vazkii.tinkerer.common.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -8,11 +9,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.block.BlockInfusedGrain;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -69,6 +72,21 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 			l.add(new ItemStack(item, 1, primal.ordinal()));
 		}
 	}
+    private IIcon[] icons;
+
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister) {
+        icons = new IIcon[4];
+        icons[0] = IconHelper.forName(par1IconRegister, "seed_aer");
+        icons[1] = IconHelper.forName(par1IconRegister, "seed_ignis");
+        icons[2] = IconHelper.forName(par1IconRegister, "seed_terra");
+        icons[3] = IconHelper.forName(par1IconRegister, "seed_aqua");
+    }
+
+    @Override
+    public IIcon getIconFromDamage(int par1) {
+        return icons[par1];
+    }
 
 	@Override
 	public ArrayList<Object> getSpecialParameters() {

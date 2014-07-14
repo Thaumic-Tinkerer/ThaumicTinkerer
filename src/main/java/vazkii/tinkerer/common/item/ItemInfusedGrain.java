@@ -1,10 +1,13 @@
 package vazkii.tinkerer.common.item;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import thaumcraft.api.aspects.Aspect;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.registry.ItemBase;
 import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
@@ -47,6 +50,21 @@ public class ItemInfusedGrain extends ItemBase {
 			l.add(new ItemStack(item, 1, primal.ordinal()));
 		}
 	}
+    private IIcon[] icons;
+
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister) {
+        icons = new IIcon[4];
+        icons[0] = IconHelper.forName(par1IconRegister, "fruit_aer");
+        icons[1] = IconHelper.forName(par1IconRegister, "fruit_ignis");
+        icons[2] = IconHelper.forName(par1IconRegister, "fruit_terra");
+        icons[3] = IconHelper.forName(par1IconRegister, "fruit_aqua");
+    }
+
+    @Override
+    public IIcon getIconFromDamage(int par1) {
+        return icons[par1];
+    }
 
 	@Override
 	public String getItemName() {

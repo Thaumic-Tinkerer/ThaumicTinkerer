@@ -1,15 +1,18 @@
 package vazkii.tinkerer.common.item;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.lib.LibItemNames;
 import vazkii.tinkerer.common.lib.LibResearch;
@@ -64,7 +67,29 @@ public class ItemInfusedPotion extends ItemPotion implements ITTinkererItem {
 		return r;
 	}
 
-	@Override
+    private IIcon[] icons;
+
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister) {
+        icons = new IIcon[4];
+        icons[0] = IconHelper.forName(par1IconRegister, "potion_aer");
+        icons[1] = IconHelper.forName(par1IconRegister, "potion_ignis");
+        icons[2] = IconHelper.forName(par1IconRegister, "potion_terra");
+        icons[3] = IconHelper.forName(par1IconRegister, "potion_aqua");
+    }
+
+    @Override
+    public IIcon getIconFromDamage(int par1) {
+        return icons[par1];
+    }
+
+    @Override
+    public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+        //Override default potion overlay behavior
+        return icons[par1];
+    }
+
+    @Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		par3List.add(getAspect(par1ItemStack).getName());
 	}
