@@ -166,6 +166,30 @@ public class TTRegistry {
 		return itemRegistry.get(clazz) != null ? itemRegistry.get(clazz).get(0) : null;
 	}
 
+    public Item getItemFromClassAndName(Class clazz, String s) {
+        if (itemRegistry.get(clazz) == null){
+            return null;
+        }
+        for(Item i: getItemFromClass(clazz)){
+            if(((ITTinkererItem)i).getItemName().equals(s)){
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public Block getBlockFromClassAndName(Class clazz, String s) {
+        if (blockRegistry.get(clazz) == null){
+            return null;
+        }
+        for(Block i: getBlockFromClass(clazz)){
+            if(((ITTinkererBlock)i).getBlockName().equals(s)){
+                return i;
+            }
+        }
+        return null;
+    }
+
 	public ArrayList<Block> getBlockFromClass(Class clazz) {
 		return blockRegistry.get(clazz);
 	}

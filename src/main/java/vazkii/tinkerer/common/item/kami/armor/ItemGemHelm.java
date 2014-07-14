@@ -123,15 +123,13 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles,
 				new AspectList().add(Aspect.WATER, 50).add(Aspect.ARMOR, 32)
 						.add(Aspect.HUNGER, 32).add(Aspect.AURA, 32)
 						.add(Aspect.LIGHT, 64).add(Aspect.FLESH, 16)
-						.add(Aspect.MIND, 16), new ItemStack(
-						ThaumicTinkerer.registry.getItemFromClass(
-								ItemIchorclothArmor.class).get(0)),
+						.add(Aspect.MIND, 16), new ItemStack(ThaumicTinkerer.registry.getItemFromClassAndName(ItemIchorclothArmor.class, LibItemNames.ICHOR_HELM)),
 				new ItemStack(Items.diamond, 1),
 				new ItemStack(ThaumicTinkerer.registry
 						.getFirstItemFromClass(ItemKamiResource.class)),
 				new ItemStack(ThaumicTinkerer.registry
 						.getFirstItemFromClass(ItemKamiResource.class)),
-				new ItemStack(ConfigItems.itemAmuletVis), new ItemStack(
+                new ItemStack(ConfigItems.itemThaumonomicon), new ItemStack(
 						ConfigItems.itemFocusPrimal), new ItemStack(
 						Items.golden_helmet), new ItemStack(Items.potionitem,
 						1, 8198), new ItemStack(ConfigItems.itemGoggles),
