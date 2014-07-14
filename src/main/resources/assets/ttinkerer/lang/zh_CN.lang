@@ -1,6 +1,7 @@
 # MISC
 itemGroup.ThaumicTinkerer=神秘工匠
 ttmisc.connector.set=位置已设置!
+ttmisc.keyCategory=神秘工匠
 ttmisc.connector.complete=已绑定!
 ttmisc.connector.notinterf=并非矢量变换接口
 ttmisc.connector.interffail=不能将矢量变换接口绑定到矢量变换接口上去
@@ -14,7 +15,9 @@ ttmisc.golemconnector.notpresent=傀儡链接方块当前损坏.
 ttmisc.leftClick=左击
 ttmisc.rightClick=右击
 ttmisc.redstoneControl=红石控制
-ttmisc.animationTablet.notRotatable=你不能旋转已经激活的桌子.
+ttmisc.animationTablet.notRotatable=你不能旋转已激活的祭坛.
+ttmisc.bloodSword.activateEssentiaHarvest=开启灵魂之核掉落
+ttmisc.bloodSword.deactivateEssentiaHarvest=关闭灵魂之核掉落
 ttmisc.focusDislocation.tooltip=当前转移目标:%s
 ttmisc.focusDislocation.tooltipExtra=额外内容
 ttmisc.inactive=未激活
@@ -33,6 +36,7 @@ ttmisc.notAbsorbing=§c关闭吸引模式
 ttmisc.absorbing=§a开启吸引模式
 ttmisc.shareTome.write=研究已写入!
 ttmisc.shareTome.notOnline=拥有这项研究的玩家当前不在线.
+ttmisc.shareTomb.offlineshare=离线分享
 ttmisc.shareTome.sync=已获得研究.
 ttmisc.shareTome.noAssign=未分配
 ttmisc.shareTome.playerName=绑定到%s的研究上.
@@ -56,6 +60,8 @@ ttmisc.light0=开启照明
 ttmisc.light1=关闭照明
 ttmisc.awakenedArmor0=护甲觉醒
 ttmisc.awakenedArmor1=护甲休眠
+ttmisc.disableAllArmor=神道护甲觉醒
+ttmisc.enableAllArmor=神道护甲休眠
 ttmisc.differentDim=异次元
 ttmisc.distance=距离
 ttmisc.lockedGate=允许传入
@@ -91,6 +97,9 @@ item.ttinkerer:revealingHelm.name=揭示之头盔
 item.ttinkerer:infusedInkwell.name=注魔笔与墨
 item.ttinkerer:focusDeflect.name=法杖核心:扭曲
 item.ttinkerer:shareBook.name=知识共享之书
+item.mobAspect.name=灵魂之核
+item.mobAspect.condensed.name=稠密灵魂之核
+item.mobAspect.infused.name=注魔灵魂之核
 
 # KAMI ITEM NAMES
 item.ttinkerer:kamiResource.name=神道资源
@@ -144,11 +153,11 @@ tile.ttinkerer:dislocator.name=矢量转位仪
 tile.ttinkerer:repairer.name=奥法修复台
 tile.ttinkerer:aspectAnalyzer.name=要素分析仪
 tile.ttinkerer:platform.name=仙域平台
-
+tile.spawner.name=死灵祭坛
 tile.ttinkerer:portal.name=基岩传送门
-tile.ttinkerer:Levitational Locomotive.name=悬浮机车
-tile.ttinkerer:Levitational Locomotive Relay.name=悬浮机车中继
-tile.ttinkerer:golemConnector.name=傀儡链接器
+tile.ttinkerer:Levitational Locomotive.name=悬浮平台
+tile.ttinkerer:Levitational Locomotive Relay.name=悬浮平台中继
+tile.ttinkerer:golemConnector.name=傀儡连接器
 
 # KAMI BLOCK NAMES
 tile.ttinkerer:warpGate.name=仙域之门
@@ -160,6 +169,15 @@ enchantment.ttinkerer:autoSmelt=燃烧之触
 enchantment.ttinkerer:desintegrate=解离
 enchantment.ttinkerer:quickDraw=即时备战
 enchantment.ttinkerer:vampirism=吸血
+
+enchantment.ttinkerer:dispersedStrike=群战
+enchantment.ttinkerer:focusedStrike=单杀
+enchantment.ttinkerer:tunnel=隧道
+enchantment.ttinkerer:finalStrike=致命一击
+enchantment.ttinkerer:pounce=猫爪
+enchantment.ttinkerer:shatter=碎裂
+enchantment.ttinkerer:shockwave=震荡波
+enchantment.ttinkerer:valiance=英勇
 
 # WAND COMPONENTS
 item.Wand.ICHOR.cap=灵宝杖端
@@ -183,7 +201,7 @@ ttcomputer.dissipator=耗散中
 # -- ASPECT ANALYZER
 ttresearch.name.ASPECT_ANALYZER=要素分析仪
 ttresearch.lore.ASPECT_ANALYZER=电脑扫描
-ttresearch.page.ASPECT_ANALYZER.0=你制造出一台可以使用电脑来扫描出物品蕴含什么要素的设备.<BR><BR>这台设备类似一个包含物品栏的普通容器,但任何放入其内的物品都可以使用电脑扫描.访问电脑外设文档条目以获取更多信息.
+ttresearch.page.ASPECT_ANALYZER.0=你制造出一台可以使用电脑来扫描出物品蕴含何种要素的设备.<BR><BR>这台设备类似一个包含物品栏的普通容器,但任何放入其内的物品都可以使用电脑扫描.访问电脑外设文档条目以获取更多信息.
 
 # -- SMOKEY QUARTZ
 ttresearch.name.DARK_QUARTZ=烟黑石英
@@ -193,7 +211,7 @@ ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英,但性状相反.
 # -- TOME OF KNOWLEDGE SHARING
 ttresearch.name.SHARE_TOME=知识分享之书
 ttresearch.lore.SHARE_TOME=金鱼的日记
-ttresearch.page.SHARE_TOME.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else while you're logged on to the server, they'll get all the research you've discovered so far.<BR><BR>(Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)
+ttresearch.page.SHARE_TOME.0=假如有朝一日,你碰巧想要将你的知识分享给这世界上其他的人,那么这本书将正合你用.<BR><BR>右击本书,当你在线时将它交给其他人阅读,他们便能学会迄今为止你所研究出的一切知识.<BR><BR>(注意: 如若右侧未曾显示合成表,则说明当前合成方法禁用,此时该物品仅在创造模式下有效.)
 
 # -- TRANSVECTOR INTERFACE
 ttresearch.name.INTERFACE=矢量变换接口
@@ -204,10 +222,10 @@ ttresearch.page.INTERFACE.1=为了将接口与其他方块绑定,你需要制作
 # -- GOLEM CONNECTOR
 ttresearch.name.GOLEM_CONNECTOR=傀儡连接器
 ttresearch.lore.GOLEM_CONNECTOR=老实说,无关傀儡心灵控制!
-ttresearch.page.GOLEM_CONNECTOR.0=By exploring what you can do with motion, tools, and a little bit of order, you have discovered how to make those golems just a tiny bit more obedient! You discover a block, that when you place a computer by it, can read the mind of golems nearby, and 'convince' them to do as the computer asks
-ttresearch.page.GOLEM_CONNECTOR.1=In order to bind a Connector to a golem, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the Connector followed by shift-right clicking on the target golem, these two get bound and ready for operation. The limit is quite long, 30 blocks away!
-ttresearch.page.GOLEM_CONNECTOR.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
-ttresearch.page.GOLEM_CONNECTOR.3=<BR><BR>For convenience sake, the method documentation for this block is in an external webpage. Pressing ENTER right now will take you to it.<BR><BR>Sadly, this does not work on some systems. If that is the case, type in "vazkii.us/tt/docs.php" in your browser.
+ttresearch.page.GOLEM_CONNECTOR.0=运动,工具,以及一点点秩序要素能够做些什么呢?经过你的一番研究,你发现你能够利用它们让傀儡变得更加驯服一点!你研究出一种方块,当连接电脑以后,它将能够读出附近傀儡的意识,并“说服”傀儡们按照电脑的命令行事.
+ttresearch.page.GOLEM_CONNECTOR.1=为了让连接器绑定傀儡,你需要制造一种特殊的工具.你称其为矢量变换绑定器.<BR><BR>手持该工具右击连接器,跟着按住shift右击目标傀儡,两者就会相互绑定,能够进行接下来的操作.傀儡受到控制的范围相当远,足有三十格!
+ttresearch.page.GOLEM_CONNECTOR.2=如拿着其他方块右击连接器,则会将它伪装成所持方块的样子.空手再次右击就能移除伪装.
+ttresearch.page.GOLEM_CONNECTOR.3=<BR><BR>以方便故,该方块所涉及之电脑模组操作函数皆列诸外置网页.按下回车即可带你进入相关页面.<BR><BR>不幸的是,某些操作系统下超链接功能可能失效.若是,则请在浏览器中键入"vazkii.us/tt/docs.php"来进行访问相关页面.
 
 # -- GASEOUS ILLUMINAE
 ttresearch.name.GASEOUS_LIGHT=光明安瓿
@@ -313,13 +331,53 @@ ttresearch.name.TTENCH_VAMPIRISM=附魔:吸血
 ttresearch.lore.TTENCH_VAMPIRISM=我将夺走那些
 ttresearch.page.TTENCH_VAMPIRISM.0=你研究出一种能够吸取敌人生命值为己用的附魔.<BR><BR>这种附魔能够被施加在剑上.当附魔后的剑对敌人造成伤害时,会将伤害数值的一部分作为生命值返回给使用者.
 
+# -- ENCHANTMENT: DISPERSED_STRIKES
+ttresearch.name.TTENCH_DISPERSED=附魔:群战
+ttresearch.lore.TTENCH_DISPERSED=大杀四方
+ttresearch.page.TTENCH_DISPERSED.0=你研究出一种能让你同时挑战许多怪物的附魔.<BR><BR>这种附魔能够被施加在剑上.附魔后的剑在首次命中敌人时威力会翻倍,但命中击打过的目标威力会下降.
+
+# -- ENCHANTMENT: FOCUSED_STRIKES
+ttresearch.name.TTENCH_FOCUSED=附魔:单杀
+ttresearch.lore.TTENCH_FOCUSED=杀死他们中的一个
+ttresearch.page.TTENCH_FOCUSED.0=你研究出一种能让你变得擅长猎杀单个怪物的附魔.<BR><BR>这种附魔能够被施加在剑上.附魔后的剑首次命中敌人威力会下降,但多次攻击同一目标威力会上升.
+
+# -- ENCHANTMENT: FINAL_STRIKE
+ttresearch.name.TTENCH_FINAL=附魔:致命一击
+ttresearch.lore.TTENCH_FINAL=断头之斩！
+ttresearch.page.TTENCH_FINAL.0=你研究出一种能让你偶尔打出暴击的附魔.<BR><BR>这种附魔能够被施加在剑上.附魔后的剑有几率打出三倍伤害.
+
+# -- ENCHANTMENT: VALIANCE
+ttresearch.name.TTENCH_VALIANCE=附魔:英勇
+ttresearch.lore.TTENCH_VALIANCE=临渊而退
+ttresearch.page.TTENCH_VALIANCE.0=你研究出一种能让你在生命濒危时爆发出更强战力的附魔.<BR><BR>这种附魔能够被施加在剑上.附魔后的剑在佩戴者生命垂危时威力会上升.
+
+# -- ENCHANTMENT: TUNNEL
+ttresearch.name.TTENCH_TUNNEL=附魔:隧道
+ttresearch.lore.TTENCH_TUNNEL=挖啊挖的真烦人
+ttresearch.page.TTENCH_TUNNEL.0=你研究出一种能让你更轻松地沿着直线挖掘的附魔.<BR><BR>这种附魔能够被施加在工具上.附魔后的工具,沿着直线挖掘多个方块效率会加快.
+
+# -- ENCHANTMENT: SHATTER
+ttresearch.name.TTENCH_SHATTER=附魔:碎裂
+ttresearch.lore.TTENCH_SHATTER=谁还需要黑曜石
+ttresearch.page.TTENCH_SHATTER.0=你研究出一种能让你更高效地挖掘坚硬方块的附魔.<BR><BR>这种附魔能够被施加在工具上.附魔后的工具在挖掘坚硬方块时速度会显著提升.
+
+# -- ENCHANTMENT: SHOCKWAVE
+ttresearch.name.TTENCH_SHOCKWAVE=附魔:震荡波
+ttresearch.lore.TTENCH_SHOCKWAVE=迷你地震
+ttresearch.page.TTENCH_SHOCKWAVE.0=你研究出一种能让你利用落地的振荡杀敌的附魔.<BR><BR>这种附魔能够被施加在靴子上.穿上附魔后的靴子落地时,会发出震荡波杀死附近的怪物或玩家.<BR><BR>不幸的是各种类型的魔法都会让玩家变得更加轻盈,这会削弱震荡波的伤害效果.你觉得今后当你更加了解魔法你应该能找到解决这个问题的方法.
+
+# -- ENCHANTMENT: POUNCE
+ttresearch.name.TTENCH_POUNCE=附魔:猫爪
+ttresearch.lore.TTENCH_POUNCE=像只凯蒂猫
+ttresearch.page.TTENCH_POUNCE.0=你研究出一种能让你骑到敌人身上的附魔.<BR><BR>这种附魔能够被施加在护腿上.穿戴上附魔的护腿后,处于空中时你的攻击会变得更加强大.
+
 # -- WAND FOCUS: FOCUS_SMELT
 ttresearch.name.FOCUS_SMELT=法杖核心:伊夫利特之辉
 ttresearch.lore.FOCUS_SMELT=丝带并没让它与众不同
 ttresearch.page.lore.FOCUS_SMELT.0=向采掘法杖核心灌注烈焰的力量能得到一种兼具两者能力的新型法杖核心.<BR><BR>安装该核心的法杖能够向指向的方块发出采掘之杖那样的光束,并如同将其放入熔炉那样冶炼成其他物品.
 
 # -- WAND FOCUS: MENDING
-ttresearch.name.FOCUS_HEAL=法杖核心：愈合
+ttresearch.name.FOCUS_HEAL=法杖核心:愈合
 ttresearch.lore.FOCUS_HEAL=绷带,空洞和感觉
 ttresearch.page.FOCUS_HEAL.0=你知道岩精携有一种能够诱发瘟病的核心.你研究出一种方法来利用它获取好处.<BR><BR>装有这种法杖核心的法杖在挥舞时会抽取法杖中魔力缓慢治疗施法者的伤口.
 
@@ -332,6 +390,12 @@ ttresearch.page.FOCUS_ENDER_CHEST.0=将便携式洞穴与魔力手镜融合,你�
 ttresearch.name.BLOOD_SWORD=咒灵之剑
 ttresearch.lore.BLOOD_SWORD=你并不快乐
 ttresearch.page.BLOOD_SWORD.0=你打造出一柄威力无双的魔剑.然而要发挥这种威力必须以执剑者的鲜血饲之.<BR><BR>只要挥剑斩中任何东西,剑身都会抽取执剑者一颗心的生命值.而使用该剑格挡则无论受到多大程度的伤害总是固定丢失1.5颗心的伤害.<BR><BR>此外,只要手持该剑就能加持一个恒定光环来增加移动速度.
+
+# -- Mob Summoning
+ttresearch.name.SUMMON=怪物召唤
+ttresearch.lore.SUMMON=近乎死灵法师
+ttresearch.page.SUMMON.0=如今你已能够利用咒灵芝剑捕获的灵魂召唤出怪物.在死灵祭坛附近放置三个基座.于基座上放置三个灵魂之核.不同类型的灵魂之核对应不同类型的怪物.每种怪物的构成都不相同.
+ttresearch.page.SUMMON.1=通过制造注魔灵魂之核,无需消耗灵魂之核就能召唤出怪物.但使用注魔灵魂之核进行召唤,仪式会比平时更加缓慢.
 
 # -- TRANSVECTOR DISLOCATOR
 ttresearch.name.DISLOCATOR=矢量转位仪
@@ -359,146 +423,146 @@ ttresearch.lore.FOCUS_DEFLECT=我不是天使
 ttresearch.page.FOCUS_DEFLECT.0=你制造出一种法杖核心,能够防护你免遭来袭的火球伤害.<BR><BR>这种核心在使用时会持续抽取其插入的法杖内的魔力,以在施法者附近召唤出一道防护的幕墙,使得穿过它们的寻常炮弹变得毫无伤害.<BR><BR>此处寻常炮弹包括箭矢,雪球以及药水.但似乎这种防护并不足以抵御一些更强力的攻击,比如火球或者凋灵头颅.
 
 # -- LEVITATOR
-ttresearch.name.LEVITATOR=悬浮机车
-ttresearch.lore.LEVITATOR=一会儿向左,一会儿往右
-ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them. A visual effect will be shown if particles are enabled.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
+ttresearch.name.LEVITATOR=悬浮平台
+ttresearch.lore.LEVITATOR=忽左忽右
+ttresearch.page.LEVITATOR.0=你制造出一台将东西移来移去的巧妙设备.将两个悬浮平台中继呈直线放置,它们之间会发出一道力场光束.如若粒子效果开启能显示出炫酷的视觉效果.<BR><BR> 将悬浮平台放置于它们所发出的光束上.悬浮平台会连同放置于其上的方块，沿着直线来回移动.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=天域平台
 ttresearch.lore.PLATFORM=隐藏于溴化钡显影术
-ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
+ttresearch.page.PLATFORM.0=你设计出一种方块,仅对伫立于其上的人才实在存在.如若未站立于上,或者处于潜行,则该方块对他们不会有碰撞体积.<BR><BR>拿着其他方块右击能够对这种方块的样子进行伪装.<BR><BR>你觉得配合奥术悬浮台你能够达成许多有趣的效果.
 
 # KAMI RESEARCH
 
 # -- DIMENSIONAL SHARDS
 ttresearch.name.DIMENSION_SHARDS=次元裂片
 ttresearch.lore.DIMENSION_SHARDS=自新世界的珍奇
-ttresearch.page.DIMENSION_SHARDS.0=Similarly to the overworld, the Nether and the End also have their specific shards, these are rarely held by either Zombie Pigmen living in the Nether or Endermen living in the End. They might be useful for something later on, although you're not quite sure how.<BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
+ttresearch.page.DIMENSION_SHARDS.0=类似主世界,下界和末地同样也有独特的水晶碎片,有时候它们会极少见地出现在原住民,比如下界的僵尸猪人或者末地的末影人,手中.或许它们在今后的某些研究里能派得上用场,尽管你还不能非常确定. <BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
 
 # -- ICHOR
 ttresearch.name.ICHOR=灵液
 ttresearch.lore.ICHOR=神之血
-ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy you have discovered a substance that is what you consider to be the next step in your endeavours.<BR><BR>This extremely powerful substance, which you call "Ichor" contains the raw awakened power of a nether star. You are sure you will be able to put it to use for countless devices in the future.
+ttresearch.page.ICHOR.0=涉猎神秘学的全部科类,进行广泛的研究,你发现了一种物质,你认为它将是你今后竭力研究的对象.<BR><BR>这种极端强大的物质,你名之为"灵液",蕴含着来自下界之星的天然觉醒之力.你确信今后它将会被广泛应用于不计其数的设备.
 
 # -- ICHORCLOTH
 ttresearch.name.ICHOR_CLOTH=灵布
 ttresearch.lore.ICHOR_CLOTH=生命纤维同步
-ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funnily enough, this process does not require the typical infusion procedure, as the Ichor easily absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
+ttresearch.page.ICHOR_CLOTH.0=你研究出一种方法,能够向魔力布匹灌入你新近的研究品灵液.有趣的是,灌注过程无需传统的注魔台,只需让灵液吸收掉钻石,浸入布匹即可.<BR><BR>然而,要想顺利完成该步骤,你不仅需要手持完全充能的你之前研究出的最好的法杖,并且还必须身着全套神秘使法袍,只有如此才能提高足够的能量完成注魔.<BR><BR>你觉得是时候考虑设计新的法杖了.
 
 # -- ICHORIUM
 ttresearch.name.ICHORIUM=灵宝
 ttresearch.lore.ICHORIUM=并非来自第55层
-ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal its property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+ttresearch.page.ICHORIUM.0=对灵液更加深入的研究揭示其具有与凡俗物质混合的能力.将灵液与多数凡俗物质混合通常得不到什么好的结果,但你曾经将它与钻石和布匹混合得出成功,而这一次,你尝试了神秘锭.<BR><BR>新得到的这种合金强度极高,韧性极佳,凡俗的材料从未达到过如此卓绝的指标.你目前尚未研究出它的具体应用,但你知道这应该花不了太长时间.
 
 # -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
 ttresearch.name.ROD_ICHORCLOTH=灵布包层银树杖柄
 ttresearch.lore.ROD_ICHORCLOTH=塞满嘴
-ttresearch.page.ROD_ICHORCLOTH.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
+ttresearch.page.ROD_ICHORCLOTH.0=干得漂亮.用灵布对银树杖芯注魔,你设法制造出了一支终极杖柄.<BR><BR>这支杖柄对各种魔力的容量都高达1000点.用于加工各种昂贵的奥术材料都绰绰有余,毫无压力.现在摆在你面前的问题反而是,上哪弄那么多魔力充满它呢? 
 
 # -- ICHORIUM WAND CAPS
 ttresearch.name.CAP_ICHOR=灵宝杖端
 ttresearch.lore.CAP_ICHOR=类似Steam游戏平台的玩意儿
-ttresearch.page.CAP_ICHOR.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+ttresearch.page.CAP_ICHOR.0=你将灵宝锭投入了它的第一项应用,用于设计一支能够减免各种魔力消耗20%的杖端.现在你能拿这玩意儿做出一堆能够储存更多魔力的法杖了.
 
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=灵布法袍
 ttresearch.lore.ICHORCLOTH_ARMOR=神威千古…等等
-ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave Ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
+ttresearch.page.ICHORCLOTH_ARMOR.0=你研究出如何将灵布编织成衣服.<BR><BR>这些新织就的服饰皆具有凡俗钻石套抵御伤害之效用.不仅如此,这套衣服没有耐久一说,永远都不会刮擦磨损.
 
 # -- COWL OF THE ABYSSAL DEPTHS
 ttresearch.name.ICHORCLOTH_HELM_GEM=无尽深渊之帽
 ttresearch.lore.ICHORCLOTH_HELM_GEM=只是些友好的甲壳动物
-ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case.
+ttresearch.page.ICHORCLOTH_HELM_GEM.0=你研究出一种方法,能够改造灵布头巾,让它变得更加强大.<BR><BR>首先,它兼具揭示之护目镜的法用.<BR>其次,穿戴者将会获得水下呼吸的能力,水下视野也将如水晶般澄澈.<BR>最后,戴上这顶头巾的人会发现即使饿着肚子,生命值也依旧会自动回复,就像不戴头巾但饱腹度却满着时那样.
 
 # -- ROBES OF THE STRATOSPHERE
 ttresearch.name.ICHORCLOTH_CHEST_GEM=云霄塔法袍
 ttresearch.lore.ICHORCLOTH_CHEST_GEM=人们也可以穿着这个
-ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorcloth Robes into a more powerful form.<BR><BR>Starting off, by simply wearing these robes, the wearer is blessed with the power of eternal flight (wings that don't burn after 5 minutes included), as well as having all fall damage negated.<BR>The robes also passively protect the wearer from any incoming simple projectiles, akin to the focus of Distortion.
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=你研究出一种方法,能够改造灵布法袍,让它变得更加强大.<BR><BR>首先,穿戴上这种法袍会受到飞行能量的护佑,背后生长出燃烧的羽翼,能够让你在短时间内(5分钟内)飞上天任意遨游,并且无视掉落伤害.<BR>不仅如此,类似扭曲法杖核心的威能,穿戴这件法袍后还能抵御箭矢火球等抛射物的袭击.
 
 # -- LEGGINGS OF THE BURNING MANTLE
 ttresearch.name.ICHORCLOTH_LEGS_GEM=熔岩地幔之护腿
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=暖意
-ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevails given the creator's existence in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing.
-ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Case you find yourself wanting to be in the darkness for whatever reason, Shift-right clicking with these leggings will toggle on or off the light feature.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=你研究出一种方法,能够改造灵布护腿,让它变得更加强大.<BR><BR>这种护腿被灌入了灵魂的烈焰。<BR>首先,它能散发出亮度犹胜超能闪耀之光的光芒,不但能让穿戴者犹如手持着电筒般视野开阔,还能让他犹如暗夜里的萤火虫般广受瞩目.<BR>其次,这种护腿不但能抵御火焰伤害,还能将其转换为治愈效果.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.1=如你出于某种原因宁可静默于黑暗,只须拿着护腿按住shift右击即可关闭它的照明功能.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
 ttresearch.name.ICHORCLOTH_BOOTS_GEM=地平线盾牌之靴
-ttresearch.lore.ICHORCLOTH_BOOTS_GEM=弹指间就离开临冬城来到君临城From Winterfell to King's Landing in a breeze
-ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Boots into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage.
+ttresearch.lore.ICHORCLOTH_BOOTS_GEM=离开临冬城来到君临城亦犹如微风迎面
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=你研究出一种方法,能够改造灵布靴子,让它变得更加强大.<BR><BR>类似旅行者之靴，这双靴子也能赋予穿戴者卓绝顺畅的运动能力,让穿戴者更更快,更更高,更更远,让运动变得犹如微风迎面般容易.穿戴者将能直接跨过一格高的台阶,除非处于潜行状态.<BR>穿戴后还自带获得急迫II的buff效果,并且会让走过的泥土发芽变成草地,无视一切掉落伤害.
 
 # -- FELINE AMULET
 ttresearch.name.CAT_AMULET=猫神护身符
 ttresearch.lore.CAT_AMULET=别在自助餐厅和猫打架
-ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great.
+ttresearch.page.CAT_AMULET.0=没费多久功夫,你就想出法子让那些你憎恶的爬行者再也无法近身.<BR><BR>最终,利用爬行者畏惧猫的知识,你设计出了一枚能让爬行者避之如虎的护身符.不仅如此,这些可怜的家伙吓得发愣,都聚集不起火力自爆了.赞耶!
 
 # -- ICHORIUM TOOLS
 ttresearch.name.ICHOR_TOOLS=灵宝工具
 ttresearch.lore.ICHOR_TOOLS=最顶级的耗子…工具
-ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium. These tools are extremely powerful, even more so than diamond, furthermore, they never break.<BR><BR>For the creation of these tools, mundane sticks aren't enough, you decided to use Silverwood rods in replacement.
+ttresearch.page.ICHOR_TOOLS.0=你发现了如何利用灵宝制作工具.这些工具非常强大,比钻石做的还了不起,更了不起的是,还不用坏.<BR><BR>要制作这样了不起的工具,木棍当手柄就不太合适了,你决定换成银树杖芯来代替.
 
 # -- AWAKENED ICHORIUM PICKAXE
 ttresearch.name.ICHOR_PICK_GEM=觉醒灵宝镐
 ttresearch.lore.ICHOR_PICK_GEM=谁还会需要采石场?
-ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken. The area is offset, to allow for easy mining<BR><BR>On Line Mode (Blue)
-ttresearch.page.ICHOR_PICK_GEM.1=It'll break a 10 block long line starting on the original block. It can also break bedrock, taking you deeper into the the heart of the earth. You believe digging there might prove to be more fruitful.
+ttresearch.page.ICHOR_PICK_GEM.0=你唤醒了灵宝镐真正的力量.这柄镐子不仅将保留沉睡状态下具有的一应能力,还获得了模式切换功能,只需要按住shift右击即可.<BR><BR>在方块模式(绿色)下它按正常方式挖掘.<BR><BR>在正方模式(红色)下它会一次挖出5x5的区域,为方便故,该区域位置会相对挖掘起始位置有所偏移.<BR><BR>在线型模式(蓝色)下
+ttresearch.page.ICHOR_PICK_GEM.1=它会从起始方块开始呈直线挖下10格方块.甚至能破开基岩,让你进入大地之核.你相信在那里挖掘收获会更加丰硕.
 
 
 # -- AWAKENED ICHORIUM SHOVEL
 ttresearch.name.ICHOR_SHOVEL_GEM=觉醒灵宝铲
 ttresearch.lore.ICHOR_SHOVEL_GEM=再也不要沙砾!
-ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel. This shovel contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+ttresearch.page.ICHOR_SHOVEL_GEM.0=你唤醒了灵宝铲真正的力量.这柄铲子不仅将保留沉睡状态下具有的一应能力,还获得了模式切换功能,只需要按住shift右击即可.<BR><BR>在方块模式(绿色)下它按正常方式挖掘.<BR><BR>在正方模式(红色)下它会在起始方块周围一次挖出5x5的区域.<BR><BR>在柱型模式(蓝色)下它会呈柱形在上下各8格的范围内挖掘与起始方块同类型的方块.
 
 # -- AWAKENED ICHORIUM AXE
 ttresearch.name.ICHOR_AXE_GEM=觉醒灵宝斧
 ttresearch.lore.ICHOR_AXE_GEM=杀人如割草
-ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe. This axe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
+ttresearch.page.ICHOR_AXE_GEM.0=你唤醒了灵宝斧真正的力量.这柄斧头不仅将保留沉睡状态下具有的一应能力,还获得了模式切换功能,只需要按住shift右击即可.<BR><BR>在方块模式(绿色)下它按正常方式伐木.<BR><BR>在正方模式(红色)下它能同时伐掉起始木材周围的方块.<BR><BR>在伐木模式(蓝色)下它能伐掉起始木材所在的整棵树.<BR><BR>此外,这柄斧头也非常适合用来收割植物的生命.
 
 # -- AWAKENED ICHORIUM SWORD
 ttresearch.name.ICHOR_SWORD_GEM=觉醒灵宝剑
-ttresearch.lore.ICHOR_SWORD_GEM=妈刀
-ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword. This sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs of the same type in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
-ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existent. They block damage their wielder would take, but disappear in the process.
+ttresearch.lore.ICHOR_SWORD_GEM=以撒的妈刀
+ttresearch.page.ICHOR_SWORD_GEM.0=你唤醒了灵宝剑真正的力量.这柄剑不仅将保留沉睡状态下具有的一应能力,还获得了模式切换功能,只需要按住shift右击即可.<BR><BR>在单杀模式(绿色)下它按正常方式进行攻击.<BR><BR>在区域模式(红色)下它将会伤害到被击中目标三格范围的所有生物.<BR><BR>在狩魂模式(蓝色)下它的威力将会略微减小,但每一击都能使得持剑者增加一颗魂心. <BR>[下页]
+ttresearch.page.ICHOR_SWORD_GEM.1=魂心相当于一次性的生命值.如角色拥有魂心,魂心条将会显示在饱腹度上方,状如金属.它们能够代替玩家承受伤害,而它们受到伤害后会随之消失.
 
 # -- BOTTOMLESS POUCH
 ttresearch.name.ICHOR_POUCH=无底袋
 ttresearch.lore.ICHOR_POUCH=哈哈,他说袋子底
-ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can not only carry more than four chests, but it also doubles as a standard Focus Pouch, allowing any foci within it to be inserted in a wand like normally. You can kiss your inventory problems goodbye.
+ttresearch.page.ICHOR_POUCH.0=向核心手袋灌注便携式洞穴核心的魔力,你设法让它不仅能够容纳更多核心,还能提供极大的额外储物空间.<BR><BR>无底袋内部不仅能容纳超过4个箱子的物品,还具有普通核心手袋两倍的核心容纳空间,允许装入其内的核心参与核心切换操作.现在你可以和那些装不下之类问题吻别了.
 
 # -- BLACK HOLE TALISMAN
 ttresearch.name.BLOCK_TALISMAN=黑洞护身符
 ttresearch.lore.BLOCK_TALISMAN=头脑所不能承受之压
-ttresearch.page.BLOCK_TALISMAN.0=This talisman can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the talisman is empty, it can be shift right clicked into another block to change its binding.
+ttresearch.page.BLOCK_TALISMAN.0=这枚护身符能够被用来压缩放置任意类型的方块.手持它拿着某种方块右击即可建立绑定关系,此后按住右键就能将物品栏中的数量超过一个堆叠的同类方块收诸其内,并会保留至少一个堆叠于物品栏.收入的物品通过右击可以放回物品栏,也可以直接放置在地上.<BR><BR>它最多能容纳超过2百万同类型的方块,这下子不会存在圆石没地方搁的问题了吧.护身符空置时按住shift右击可以切换绑定对象.
 
 # -- WORLDSHAPER'S LOOKING GLASS
 ttresearch.name.PLACEMENT_MIRROR=世界塑造者的观察镜
 ttresearch.lore.PLACEMENT_MIRROR=水银之眼
-ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Talismans that contain the required block.
+ttresearch.page.PLACEMENT_MIRROR.0=通过研究这个世界,你制造出一枚透镜,能够让你使用意念将大量的方块放置到大地上.<BR><BR>拿着这枚透镜右击某种方块就能将其设置成指定方块.对着空气按住shift右击就能切换要放置的方块数量.<BR><BR>放置前会生成预览幻象,右击则会消耗方块将其放置出来,方块的来源既可以是物品栏,也可以是黑洞护身符,只要装有足够数量的指定方块即可.
 
 # -- WAND FOCUS: SHADOWBEAM
 ttresearch.name.FOCUS_SHADOWBEAM=法杖核心:阴影之束
 ttresearch.lore.FOCUS_SHADOWBEAM=老人看守
-ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in its path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.
+ttresearch.page.FOCUS_SHADOWBEAM.0=你制造出一种法杖核心,能够发出一道能量束,灼伤它所扫过路径上的所有生物.<BR><BR>能量束射程相当远,并且能够在镜面方块上进行反射.
 
 # -- WAND FOCUS: EXPERIENCE DRAIN
 ttresearch.name.FOCUS_XP_DRAIN=法杖核心:经验抽取
 ttresearch.lore.FOCUS_XP_DRAIN=环保魔力
-ttresearch.page.FOCUS_XP_DRAIN.0=After creating a wand that can have an insane amount of vis, you got to the conclusion that you need an alternate source of vis.<BR><BR>To that end, you created a focus that draws from your Experience pool, turning it into vis at a fast, but not very efficient rate.
+ttresearch.page.FOCUS_XP_DRAIN.0=自从制造出蕴含着疯狂数量的魔力的法杖,你就打定主意想要研究出魔力的替代资源.<BR><BR>最终,你制造出一种能够抽取经验池,将其快速地转换成魔力的法杖核心,可惜效率并不是非常高.
 
 # -- PROTOCLAY
 ttresearch.name.PROTOCLAY=息壤
 ttresearch.lore.PROTOCLAY=从造物主那偷来的
-ttresearch.page.PROTOCLAY.0=You grew tired of having to constantly swap your tools.<BR><BR>This mixture will, by melding with the Ichorium, switch any Awakened Ichorium tools being held by the one used for the block being pointed at, case one tries to break it with the wrong tool.<BR><BR>As an example, trying to break a dirt block with an Awakened Ichorium Pickaxe while a Shovel is present elsewhere in the inventory will swap the two, and allow for fast disposal of the dirt block.
+ttresearch.page.PROTOCLAY.0=你厌倦了总是要轮换工具的日子.<BR><BR>这团混有灵宝的物质,能够在你使用错误工具进行操作时自动将手持工具切换为合适的觉醒灵宝工具.<BR><BR>例如,一旦你试图用觉醒灵宝镐挖土,而物品栏里却有觉醒灵宝铲时,手持工具会马上自动替换成觉醒灵宝铲,以便让你更快速地挖下泥土.
 
 # -- CELESTIAL GATEWAY
 ttresearch.name.WARP_GATE=仙域之门
 ttresearch.lore.WARP_GATE=电波变换
-ttresearch.page.WARP_GATE.0=You devised a complex mechanism that allows to displace your own position in the world. This block, when containing Celestial Pearls (see next page), will allow for teleportation to various spots in the world.<BR><BR>A grand total of 10 spots can be set. You can prevent other Gateways from connecting to this one by toggling it in the block's GUI (accessible by right click).<BR><BR>To acccess the list of possible destinations, sneak above the block.
-ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, they must be marked with Celestial Pearls. These items can be shift-right clicked into a Celestial Gateway to mark its location (note, shift-right click on air to clear the location).<BR><BR>Placing the pearls inside a Celestial Gateway opens access to teleport to the one it's bound to. This teleport is one way, and two pearls must be used for a 2 way transport.<BR><BR>Naming these pearls with use of an Anvil will make the names appear in the Gateway's GUI, for easy labeling.
+ttresearch.page.WARP_GATE.0=你设计出一种能够让你传送到其他位置的复杂装置.将仙域珍珠(参见下页)放入这台设备中,它将允许玩家传送到世界上的许多其他位置.<BR><BR>一共可以设置10个位置.在设备的图形界面(右击开启)中你可以禁止其他仙域之门与之相连.<BR><BR>要查看能够前去的可能位置列表,在设备上方潜行即可.
+ttresearch.page.WARP_GATE.1=为方便仙域之门定位,需要用仙域珍珠进行标记.手持它们按住shift右击仙域之门即可标记其位置(注意,对着空气按住shift右击会清楚地珍珠所保持之坐标).<BR><BR>将仙域珍珠嵌入开启的仙域之门,即可传送到它标记的那扇仙域之门.传送是单向的,双向传送需要两颗珍珠.<BR><BR>为方便区分珍珠在仙域之门界面列表重点名字,可以利用铁砧为它们重命名.
 
 # -- WAND FOCUS: RECALL
 ttresearch.name.FOCUS_RECALL=法杖核心:仙域召唤
 ttresearch.lore.FOCUS_RECALL=炉石居处即家园
-ttresearch.page.FOCUS_RECALL.0=While using Celestial Gateways for teleportation is all well and good, you decided to take it a step further and create a focus that allows you to do just that, but from anywhere.<BR><BR>This focus, in the presence of a properly bound Celestial Pearl in the caster's hotbar, will, after a short cast time, teleport the caster to that position, just as if they had used a Celestial Gateway. Of course, this comes at a vis cost.
+ttresearch.page.FOCUS_RECALL.0=使用仙域之门传送固然很好,但你决心更进一步,制作一种用于传送的核心,让你无论身处何地都能进行传送.<BR><BR>如事先将绑定好后的仙域珍珠放入施法者的快捷栏内,经过短暂的吟唱后,就能够将施法者传送到绑定位置,犹如踏入仙域之门一般.当然,传送是以消耗魔力为代价的.
 
 # -- WAILA
 ttwaila.nothing=空无一物
