@@ -76,91 +76,91 @@ ttmisc.noDest=目的地处无仙域之门.
 ttmisc.noTeleport=目的地处的仙域之门不接受传入.
 
 # ITEM NAMES
-item.ttinkerer:darkQuartz.name=烟黑石英
-item.ttinkerer:connector.name=矢量变换绑定器
-item.ttinkerer:gaseousLight.name=光明气瓶
-item.ttinkerer:gaseousShadow.name=暗影气瓶
-item.ttinkerer:gasRemover.name=烟雾驱散器
-item.ttinkerer:spellCloth.name=魅惑之布
-item.ttinkerer:focusFlight.name=法杖核心：升腾
-item.ttinkerer:focusDislocation.name=法杖核心：转移
-item.ttinkerer:cleansingTalisman.name=防身护身符
-item.ttinkerer:brightNitor.name=超能闪耀之光
-item.ttinkerer:focusTelekinesis.name=法杖核心：念力
-item.ttinkerer:soulMould.name=灵魂模具
-item.ttinkerer:xpTalisman.name=汇魔护身符
-item.ttinkerer:focusSmelt.name=法杖核心：伊夫利特之辉
-item.ttinkerer:focusHeal.name=法杖核心：愈合
-item.ttinkerer:focusEnderChest.name=法杖核心: 末影裂痕
-item.ttinkerer:bloodSword.name=咒灵之剑
-item.ttinkerer:revealingHelm.name=揭示之头盔
-item.ttinkerer:infusedInkwell.name=注魔笔与墨
-item.ttinkerer:focusDeflect.name=法杖核心:扭曲
-item.ttinkerer:shareBook.name=知识共享之书
-item.mobAspect.name=灵魂之核
-item.mobAspect.condensed.name=稠密灵魂之核
-item.mobAspect.infused.name=注魔灵魂之核
+item.darkQuartzItem.name=烟黑石英
+item.connector.name=矢量变换绑定器
+item.gaseousLightItem.name=光明气瓶
+item.gaseousShadowItem.name=暗影气瓶
+item.gasRemover.name=烟雾驱散器
+item.spellCloth.name=魅惑之布
+item.focusFlight.name=法杖核心：升腾
+item.focusDislocation.name=法杖核心：转移
+item.cleansingTalisman.name=防身护身符
+item.brightNitor.name=超能闪耀之光
+item.focusTelekinesis.name=法杖核心：念力
+item.soulMould.name=灵魂模具
+item.xpTalisman.name=汇魔护身符
+item.focusSmelt.name=法杖核心：伊夫利特之辉
+item.focusHeal.name=法杖核心：愈合
+item.focusEnderChest.name=法杖核心: 末影裂痕
+item.bloodSword.name=咒灵之剑
+item.revealingHelm.name=揭示之头盔
+item.infusedInkwell.name=注魔笔与墨(NYI)
+item.focusDeflect.name=法杖核心:扭曲
+item.shareBook.name=知识共享之书
+item.mobAspect.name=灵魂要素
+item.mobAspect.condensed.name=稠密灵魂要素
+item.mobAspect.infused.name=注魔灵魂要素
 
 # KAMI ITEM NAMES
-item.ttinkerer:kamiResource.name=神道资源
-item.ttinkerer:ichor.name=灵液
-item.ttinkerer:ichorCloth.name=灵布
-item.ttinkerer:ichorium.name=灵宝
-item.ttinkerer:ichorNugget.name=灵宝粒
-item.ttinkerer:ichorCap.name=灵宝杖端
-item.ttinkerer:ichorclothRod.name=灵布包层银树杖柄
-item.ttinkerer:netherShard.name=下界碎片
-item.ttinkerer:enderShard.name=末影碎片
-item.ttinkerer:ichorclothHelm.name=灵布头巾
-item.ttinkerer:ichorclothChest.name=灵布法袍
-item.ttinkerer:ichorclothLegs.name=灵布护腿
-item.ttinkerer:ichorclothBoots.name=灵布靴子
-item.ttinkerer:ichorclothHelmGem.name=无尽深渊之帽
-item.ttinkerer:ichorclothChestGem.name=云霄塔之法袍
-item.ttinkerer:ichorclothLegsGem.name=熔岩地幔之护腿
-item.ttinkerer:ichorclothBootsGem.name=地平线盾牌之靴
-item.ttinkerer:catAmulet.name=猫神护身符
-item.ttinkerer:ichorPick.name=灵宝镐
-item.ttinkerer:ichorShovel.name=灵宝铲
-item.ttinkerer:ichorAxe.name=灵宝斧
-item.ttinkerer:ichorSword.name=灵宝剑
-item.ttinkerer:ichorPickGem.name=觉醒灵宝镐
-item.ttinkerer:ichorShovelGem.name=觉醒灵宝铲
-item.ttinkerer:ichorAxeGem.name=觉醒灵宝斧
-item.ttinkerer:ichorSwordGem.name=觉醒灵宝剑
-item.ttinkerer:ichorPouch.name=无底袋
-item.ttinkerer:blockTalisman.name=黑洞护身符
-item.ttinkerer:placementMirror.name=世界塑造者的观察镜
-item.ttinkerer:focusShadowbeam.name=法杖核心:阴影之束
-item.ttinkerer:focusXPDrain.name=法杖核心:经验抽取
-item.ttinkerer:protoclay.name=息壤
-item.ttinkerer:skyPearl.name=仙域珍珠
-item.ttinkerer:focusRecall.name=法杖核心:仙域召唤
+item.kamiResource.name=神道资源
+item.ichor.name=灵液
+item.ichorCloth.name=灵布
+item.ichorium.name=灵宝
+item.ichorNugget.name=灵宝粒
+item.ichorCap.name=灵宝杖端
+item.ichorclothRod.name=灵布包层银树杖柄
+item.netherShard.name=下界碎片
+item.enderShard.name=末影碎片
+item.ichorclothHelm.name=灵布头巾
+item.ichorclothChest.name=灵布法袍
+item.ichorclothLegs.name=灵布护腿
+item.ichorclothBoots.name=灵布靴子
+item.ichorclothHelmGem.name=无尽深渊之帽
+item.ichorclothChestGem.name=云霄塔之法袍
+item.ichorclothLegsGem.name=熔岩地幔之护腿
+item.ichorclothBootsGem.name=地平线盾牌之靴
+item.catAmulet.name=猫神护身符
+item.ichorPick.name=灵宝镐
+item.ichorShovel.name=灵宝铲
+item.ichorAxe.name=灵宝斧
+item.ichorSword.name=灵宝剑
+item.ichorPickGem.name=觉醒灵宝镐
+item.ichorShovelGem.name=觉醒灵宝铲
+item.ichorAxeGem.name=觉醒灵宝斧
+item.ichorSwordGem.name=觉醒灵宝剑
+item.ichorPouch.name=无底袋
+item.blockTalisman.name=黑洞指环
+item.placementMirror.name=世界塑造者的观察镜
+item.focusShadowbeam.name=法杖核心:阴影之束
+item.focusXPDrain.name=法杖核心:经验抽取
+item.protoclay.name=息壤
+item.skyPearl.name=仙域珍珠
+item.focusRecall.name=法杖核心:仙域召唤
 
 # BLOCK NAMES
-tile.ttinkerer:darkQuartz.name=烟黑石英块
-tile.ttinkerer:darkQuartzChiseled.name=雕琢烟黑石英块
-tile.ttinkerer:darkQuartzPillar.name=柱状烟黑石英块
-tile.ttinkerer:darkQuartzSlab.name=烟黑石英台阶
-tile.ttinkerer:darkQuartzStairs.name=烟黑石英楼梯
-tile.ttinkerer:interface.name=矢量变换接口
-tile.ttinkerer:animationTablet.name=活化工具台
-tile.ttinkerer:magnet.name=奥术念力磁铁
-tile.ttinkerer:mobMagnet.name=奥术生物磁铁
-tile.ttinkerer:enchanter.name=渗透附魔台
-tile.ttinkerer:funnel.name=要素漏斗
-tile.ttinkerer:dislocator.name=矢量转位仪
-tile.ttinkerer:repairer.name=奥法修复台
-tile.ttinkerer:aspectAnalyzer.name=要素分析仪
-tile.ttinkerer:platform.name=仙域平台
+tile.darkQuartz.name=烟黑石英块
+tile.darkQuartzChiseled.name=雕琢烟黑石英块
+tile.darkQuartzPillar.name=柱状烟黑石英块
+tile.darkQuartzSlab.name=烟黑石英台阶
+tile.darkQuartzStairs.name=烟黑石英楼梯
+tile.interface.name=矢量变换接口
+tile.animationTablet.name=活化工具台
+tile.magnet.name=奥术念力磁铁
+tile.mobMagnet.name=奥术生物磁铁
+tile.enchanter.name=渗透附魔台
+tile.funnel.name=要素漏斗
+tile.dislocator.name=矢量转位仪
+tile.repairer.name=奥法修复台
+tile.aspectAnalyzer.name=要素分析仪
+tile.platform.name=仙域平台
 tile.spawner.name=死灵祭坛
-tile.ttinkerer:portal.name=基岩传送门
-tile.ttinkerer:Levitational Locomotive.name=悬浮平台
-tile.ttinkerer:Levitational Locomotive Relay.name=悬浮平台中继
-tile.ttinkerer:golemConnector.name=傀儡连接器
+tile.bedrockPortal.name=基岩传送门
+tile.Levitational Locomotive.name=悬浮平台
+tile.Levitational Locomotive Relay.name=悬浮平台中继
+tile.golemConnector.name=傀儡连接器
 
 # KAMI BLOCK NAMES
-tile.ttinkerer:warpGate.name=仙域之门
+tile.warpGate.name=仙域之门
 
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=腾迅
@@ -394,8 +394,8 @@ ttresearch.page.BLOOD_SWORD.0=你打造出一柄威力无双的魔剑.然而要�
 # -- Mob Summoning
 ttresearch.name.SUMMON=怪物召唤
 ttresearch.lore.SUMMON=近乎死灵法师
-ttresearch.page.SUMMON.0=如今你已能够利用咒灵芝剑捕获的灵魂召唤出怪物.在死灵祭坛附近放置三个基座.于基座上放置三个灵魂之核.不同类型的灵魂之核对应不同类型的怪物.每种怪物的构成都不相同.
-ttresearch.page.SUMMON.1=通过制造注魔灵魂之核,无需消耗灵魂之核就能召唤出怪物.但使用注魔灵魂之核进行召唤,仪式会比平时更加缓慢.
+ttresearch.page.SUMMON.0=如今你已能够利用咒灵之剑捕获的灵魂召唤出怪物.在死灵祭坛附近放置三个基座.于基座上放置三个灵魂要素.不同类型的灵魂要素对应不同类型的怪物.每种怪物的构成都不相同.
+ttresearch.page.SUMMON.1=通过制造注魔灵魂要素,无需消耗灵魂要素就能召唤出怪物.但使用注魔灵魂要素进行召唤,仪式会比平时更加缓慢.
 
 # -- TRANSVECTOR DISLOCATOR
 ttresearch.name.DISLOCATOR=矢量转位仪
@@ -446,7 +446,7 @@ ttresearch.page.ICHOR.0=涉猎神秘学的全部科类,进行广泛的研究,你
 
 # -- ICHORCLOTH
 ttresearch.name.ICHOR_CLOTH=灵布
-ttresearch.lore.ICHOR_CLOTH=生命纤维同步
+ttresearch.lore.ICHOR_CLOTH=战维同步
 ttresearch.page.ICHOR_CLOTH.0=你研究出一种方法,能够向魔力布匹灌入你新近的研究品灵液.有趣的是,灌注过程无需传统的注魔台,只需让灵液吸收掉钻石,浸入布匹即可.<BR><BR>然而,要想顺利完成该步骤,你不仅需要手持完全充能的你之前研究出的最好的法杖,并且还必须身着全套神秘使法袍,只有如此才能提高足够的能量完成注魔.<BR><BR>你觉得是时候考虑设计新的法杖了.
 
 # -- ICHORIUM
@@ -461,7 +461,7 @@ ttresearch.page.ROD_ICHORCLOTH.0=干得漂亮.用灵布对银树杖芯注魔,你
 
 # -- ICHORIUM WAND CAPS
 ttresearch.name.CAP_ICHOR=灵宝杖端
-ttresearch.lore.CAP_ICHOR=类似Steam游戏平台的玩意儿
+ttresearch.lore.CAP_ICHOR=类似Steam平台折扣
 ttresearch.page.CAP_ICHOR.0=你将灵宝锭投入了它的第一项应用,用于设计一支能够减免各种魔力消耗20%的杖端.现在你能拿这玩意儿做出一堆能够储存更多魔力的法杖了.
 
 # -- ICHORCLOTH ARMOR
@@ -476,7 +476,7 @@ ttresearch.page.ICHORCLOTH_HELM_GEM.0=你研究出一种方法,能够改造灵�
 
 # -- ROBES OF THE STRATOSPHERE
 ttresearch.name.ICHORCLOTH_CHEST_GEM=云霄塔法袍
-ttresearch.lore.ICHORCLOTH_CHEST_GEM=人们也可以穿着这个
+ttresearch.lore.ICHORCLOTH_CHEST_GEM=人们也可以穿穿这个
 ttresearch.page.ICHORCLOTH_CHEST_GEM.0=你研究出一种方法,能够改造灵布法袍,让它变得更加强大.<BR><BR>首先,穿戴上这种法袍会受到飞行能量的护佑,背后生长出燃烧的羽翼,能够让你在短时间内(5分钟内)飞上天任意遨游,并且无视掉落伤害.<BR>不仅如此,类似扭曲法杖核心的威能,穿戴这件法袍后还能抵御箭矢火球等抛射物的袭击.
 
 # -- LEGGINGS OF THE BURNING MANTLE
@@ -492,7 +492,7 @@ ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=你研究出一种方法,能够改造灵�
 
 # -- FELINE AMULET
 ttresearch.name.CAT_AMULET=猫神护身符
-ttresearch.lore.CAT_AMULET=别在自助餐厅和猫打架
+ttresearch.lore.CAT_AMULET=别在茶餐厅和猫打架
 ttresearch.page.CAT_AMULET.0=没费多久功夫,你就想出法子让那些你憎恶的爬行者再也无法近身.<BR><BR>最终,利用爬行者畏惧猫的知识,你设计出了一枚能让爬行者避之如虎的护身符.不仅如此,这些可怜的家伙吓得发愣,都聚集不起火力自爆了.赞耶!
 
 # -- ICHORIUM TOOLS
@@ -529,9 +529,9 @@ ttresearch.lore.ICHOR_POUCH=哈哈,他说袋子底
 ttresearch.page.ICHOR_POUCH.0=向核心手袋灌注便携式洞穴核心的魔力,你设法让它不仅能够容纳更多核心,还能提供极大的额外储物空间.<BR><BR>无底袋内部不仅能容纳超过4个箱子的物品,还具有普通核心手袋两倍的核心容纳空间,允许装入其内的核心参与核心切换操作.现在你可以和那些装不下之类问题吻别了.
 
 # -- BLACK HOLE TALISMAN
-ttresearch.name.BLOCK_TALISMAN=黑洞护身符
+ttresearch.name.BLOCK_TALISMAN=黑洞指环
 ttresearch.lore.BLOCK_TALISMAN=头脑所不能承受之压
-ttresearch.page.BLOCK_TALISMAN.0=这枚护身符能够被用来压缩放置任意类型的方块.手持它拿着某种方块右击即可建立绑定关系,此后按住右键就能将物品栏中的数量超过一个堆叠的同类方块收诸其内,并会保留至少一个堆叠于物品栏.收入的物品通过右击可以放回物品栏,也可以直接放置在地上.<BR><BR>它最多能容纳超过2百万同类型的方块,这下子不会存在圆石没地方搁的问题了吧.护身符空置时按住shift右击可以切换绑定对象.
+ttresearch.page.BLOCK_TALISMAN.0=这枚指环能够被用来压缩放置任意类型的方块.手持它拿着某种方块右击即可建立绑定关系,此后按住右键就能将物品栏中的数量超过一个堆叠的同类方块收诸其内,并会保留至少一个堆叠于物品栏.收入的物品通过右击可以放回物品栏,也可以直接放置在地上.<BR><BR>它最多能容纳超过2百万同类型的方块,这下子不会存在圆石没地方搁的问题了吧.护身符空置时按住shift右击可以切换绑定对象.
 
 # -- WORLDSHAPER'S LOOKING GLASS
 ttresearch.name.PLACEMENT_MIRROR=世界塑造者的观察镜
