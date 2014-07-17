@@ -55,7 +55,7 @@ group = "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-co
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.2-10.12.1.1112"
+    version = "1.7.2-10.12.2.1147"
     //minecraftVersion="1.7.2"
     assetDir = "eclipse/assets"
     replace '${version}', project.version
