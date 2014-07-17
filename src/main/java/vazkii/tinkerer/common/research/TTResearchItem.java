@@ -24,19 +24,22 @@ import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.research.ResearchPage.PageType;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.lib.LibResearch;
 
-public class TTResearchItem extends ResearchItem {
+public class TTResearchItem extends ResearchItem implements IRegisterableResearch {
 
-	public TTResearchItem(String par1, String par2) {
-		super(par1, par2);
+	public TTResearchItem(String par1) {
+		super(par1, LibResearch.CATEGORY_THAUMICTINKERER);
 	}
 
-	public TTResearchItem(String par1, String par2, AspectList tags, int par3, int par4, int par5, ItemStack icon) {
-		super(par1, par2, tags, par3, par4, par5, icon);
+	public TTResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ItemStack icon, ResearchPage... pages) {
+		super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
+		setPages(pages);
 	}
 
-	public TTResearchItem(String par1, String par2, AspectList tags, int par3, int par4, int par5, ResourceLocation icon) {
-		super(par1, par2, tags, par3, par4, par5, icon);
+	public TTResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ResourceLocation icon, ResearchPage... pages) {
+		super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
+		setPages(pages);
 	}
 
 	@Override
@@ -80,5 +83,10 @@ public class TTResearchItem extends ResearchItem {
 
 	boolean checkInfusion() {
 		return true;
+	}
+
+	@Override
+	public void registerResearch() {
+		registerResearchItem();
 	}
 }

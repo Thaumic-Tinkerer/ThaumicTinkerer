@@ -16,8 +16,11 @@ package vazkii.tinkerer.common.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.Random;
 
@@ -38,5 +41,20 @@ public class BlockGaseousShadow extends BlockGas {
 	@Override
 	public void placeParticle(World world, int par2, int par3, int par4) {
 		ThaumicTinkerer.tcProxy.wispFX2(world, par2 + 0.5, par3 + 0.5, par4 + 0.5, 0.125F, 5, true, -0.02F);
+	}
+
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.GASEOUS_SHADOW;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
 	}
 }

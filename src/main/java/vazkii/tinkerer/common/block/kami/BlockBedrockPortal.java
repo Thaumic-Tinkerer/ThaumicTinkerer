@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -21,16 +22,19 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import vazkii.tinkerer.client.core.helper.IconHelper;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.block.BlockMod;
 import vazkii.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.dim.TeleporterBedrock;
 import vazkii.tinkerer.common.dim.WorldProviderBedrock;
+import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.Random;
 
-public class BlockBedrockPortal extends Block {
+public class BlockBedrockPortal extends BlockMod {
 
 	public BlockBedrockPortal() {
 		super(Material.portal);
@@ -119,7 +123,7 @@ public class BlockBedrockPortal extends Block {
 					entity.worldObj.setBlock(par2, 253, par4, Blocks.air);
 				}
 				if (entity.worldObj.getBlock(par2, 254, par4) == Blocks.bedrock) {
-					entity.worldObj.setBlock(par2, 254, par4, ModBlocks.portal);
+					entity.worldObj.setBlock(par2, 254, par4, this);
 				}
 				((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, 252, par4 + 0.5, 0, 0);
 			}
@@ -189,4 +193,28 @@ public class BlockBedrockPortal extends Block {
 		}
 	}
 
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.PORTAL;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return TileBedrockPortal.class;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return null;
+	}
 }

@@ -20,15 +20,28 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigItems;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.ItemKamiResource;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ITTinkererItem;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
-public class ItemIchorAxe extends ItemAxe {
+import java.util.ArrayList;
+
+public class ItemIchorAxe extends ItemAxe implements ITTinkererItem {
 
 	public ItemIchorAxe() {
-		super(ModItems.toolMatIchor);
+		super(ThaumicTinkerer.proxy.toolMaterialIchor);
 		setCreativeTab(ModCreativeTab.INSTANCE);
 		setHarvestLevel("axe", 4);
 	}
@@ -49,4 +62,36 @@ public class ItemIchorAxe extends ItemAxe {
 		return true;
 	}
 
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.ICHOR_AXE;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return ConfigHandler.enableKami;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_AXE, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.WATER, 75),
+				"II ", "IR ", " R ",
+				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+				'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+	}
 }

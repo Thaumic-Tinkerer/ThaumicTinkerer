@@ -41,11 +41,11 @@ import vazkii.tinkerer.client.lib.LibRenderIDs;
 import vazkii.tinkerer.client.render.block.RenderMagnet;
 import vazkii.tinkerer.client.render.block.RenderRepairer;
 import vazkii.tinkerer.client.render.block.kami.RenderWarpGate;
-import vazkii.tinkerer.client.render.item.RenderMobAspect;
 import vazkii.tinkerer.client.render.item.RenderMobDisplay;
 import vazkii.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import vazkii.tinkerer.client.render.tile.*;
 import vazkii.tinkerer.client.render.tile.kami.RenderTileWarpGate;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.tile.TileEnchanter;
 import vazkii.tinkerer.common.block.tile.TileFunnel;
 import vazkii.tinkerer.common.block.tile.TileMagnet;
@@ -54,7 +54,8 @@ import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
 import vazkii.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.proxy.TTCommonProxy;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.ItemMobDisplay;
+import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
 import vazkii.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 
 public class TTClientProxy extends TTCommonProxy {
@@ -111,14 +112,14 @@ public class TTClientProxy extends TTCommonProxy {
 	private void registerRenderIDs() {
 		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idRepairer = RenderingRegistry.getNextAvailableRenderId();
+		LibRenderIDs.idFire = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderMagnet());
 		RenderingRegistry.registerBlockHandler(new RenderRepairer());
 
-		MinecraftForgeClient.registerItemRenderer(ModItems.mobAspect, new RenderMobAspect());
-		MinecraftForgeClient.registerItemRenderer(ModItems.mobDisplay, new RenderMobDisplay());
+		MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobDisplay.class), new RenderMobDisplay());
 
 		if (ConfigHandler.enableKami) {
-			MinecraftForgeClient.registerItemRenderer(ModItems.placementMirror, new RenderPlacementMirror());
+			MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemPlacementMirror.class), new RenderPlacementMirror());
 
 			LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
 

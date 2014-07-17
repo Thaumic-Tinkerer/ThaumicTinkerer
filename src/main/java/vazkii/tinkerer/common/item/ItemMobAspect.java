@@ -6,13 +6,20 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import vazkii.tinkerer.client.lib.LibResources;
+import thaumcraft.api.aspects.AspectList;
+import vazkii.tinkerer.client.core.helper.IconHelper;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.*;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
 
-public class ItemMobAspect extends Item {
+public class ItemMobAspect extends ItemBase {
 
 	//Real value is 16
 	//Padding room inclued
@@ -29,15 +36,51 @@ public class ItemMobAspect extends Item {
 		return true;
 	}
 
-	public static IIcon[] aspectIcons = new IIcon[aspectCount];
+	public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
 	@Override
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 
 		for (NumericAspectHelper aspect : NumericAspectHelper.values) {
-			aspectIcons[aspect.num] = par1IconRegister.registerIcon(LibResources.PREFIX_MOD + aspect.getAspect().getName().toLowerCase());
+			aspectIcons[aspect.num] = IconHelper.forName(par1IconRegister, aspect.getAspect().getName().toLowerCase());
+			aspectIcons[aspect.num + aspectCount] = IconHelper.forName(par1IconRegister, aspect.getAspect().getName().toLowerCase() + "_condensed");
+
+			aspectIcons[aspect.num + 2 * aspectCount] = IconHelper.forName(par1IconRegister, aspect.getAspect().getName().toLowerCase());
+
 		}
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+		return isInfused(par1ItemStack);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		ThaumicTinkererRecipeMulti recipeMulti = new ThaumicTinkererRecipeMulti();
+		for (int i = 0; i < NumericAspectHelper.values.size(); i++) {
+
+			ThaumcraftApi.registerObjectTag(new ItemStack(this, 1, i), new int[]{ i }, new AspectList().add(NumericAspectHelper.getAspect(i), 8));
+			recipeMulti.addRecipe(new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SUMMON + "1", new ItemStack(this, 1, i + 20), "XXX", "XXX", "XXX", 'X', new ItemStack(this, 1, i)));
+
+			ItemStack input = new ItemStack(this, 1, i + 20);
+			recipeMulti.addRecipe(new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SUMMON, new ItemStack(this, 1, i + 40), 4,
+					new AspectList().add(getAspect(new ItemStack(this, 1, i)), 10), input,
+					new ItemStack[]{ input, input, input, input, input, input, input, input }));
+
+		}
+		return recipeMulti;
 	}
 
 	@Override
@@ -48,8 +91,8 @@ public class ItemMobAspect extends Item {
 	}
 
 	@Override
-	public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
-		return aspectIcons[par1 % aspectCount];
+	public IIcon getIconFromDamage(int par1) {
+		return aspectIcons[par1];
 	}
 
 	@Override
@@ -68,7 +111,7 @@ public class ItemMobAspect extends Item {
 		list.add(getAspect(itemStack).getName());
 	}
 
-	public Aspect getAspect(ItemStack item) {
+	public static Aspect getAspect(ItemStack item) {
 		if (item == null) {
 			return null;
 		}
@@ -76,7 +119,7 @@ public class ItemMobAspect extends Item {
 	}
 
 	public static ItemStack getStackFromAspect(Aspect a) {
-		ItemStack result = new ItemStack(ModItems.mobAspect);
+		ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
 		result.setItemDamage(NumericAspectHelper.getNumber(a));
 		return result;
 	}
@@ -89,4 +132,8 @@ public class ItemMobAspect extends Item {
 		return item.getItemDamage() >= aspectCount * 2;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.MOB_ASPECT;
+	}
 }

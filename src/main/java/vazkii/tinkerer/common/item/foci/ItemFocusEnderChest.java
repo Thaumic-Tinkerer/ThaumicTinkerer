@@ -16,14 +16,25 @@ package vazkii.tinkerer.common.item.foci;
 
 import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.Config;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.tinkerer.common.compat.EnderStorageFunctions;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
+import vazkii.tinkerer.common.research.TTResearchItem;
 
 import java.util.List;
 
@@ -83,4 +94,35 @@ public class ItemFocusEnderChest extends ItemModFocus {
 		return visUsage;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.FOCUS_ENDER_CHEST;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+
+		if (!Config.allowMirrors) {
+			return null;
+		}
+		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), -6, -2, 2, new ItemStack(this)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed();
+		if (Loader.isModLoaded("EnderStorage")) {
+			((TTResearchItem) research).setPages(new ResearchPage("ES"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
+		} else {
+			((TTResearchItem) research).setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
+		}
+		return research;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		if (Config.allowMirrors) {
+			return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_FOCUS_ENDER_CHEST, LibResearch.KEY_FOCUS_ENDER_CHEST, new ItemStack(this), new AspectList().add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
+					"M", "E", "P",
+					'M', new ItemStack(ConfigBlocks.blockMirror),
+					'E', new ItemStack(Items.ender_eye),
+					'P', new ItemStack(ConfigItems.itemFocusPortableHole));
+		}
+		return null;
+	}
 }

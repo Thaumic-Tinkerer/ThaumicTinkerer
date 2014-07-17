@@ -18,17 +18,27 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.entities.golems.EntityGolemBase;
 import vazkii.tinkerer.common.block.tile.TileGolemConnector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvector;
 import vazkii.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
-public class ItemConnector extends ItemMod {
+public class ItemConnector extends ItemBase {
 
 	private static final String TAG_POS_X = "posx";
 	private static final String TAG_POS_Y = "posy";
@@ -39,6 +49,26 @@ public class ItemConnector extends ItemMod {
 		super();
 
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_INTERFACE + "1", LibResearch.KEY_INTERFACE, new ItemStack(this), new AspectList().add(Aspect.ORDER, 2),
+				" I ", " WI", "S  ",
+				'I', new ItemStack(Items.iron_ingot),
+				'W', new ItemStack(Items.stick),
+				'S', new ItemStack(ConfigItems.itemShard, 1, 4));
 	}
 
 	@Override
@@ -192,4 +222,8 @@ public class ItemConnector extends ItemMod {
 		return true;
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.CONNECTOR;
+	}
 }

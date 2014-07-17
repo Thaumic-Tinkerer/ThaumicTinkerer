@@ -19,19 +19,43 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ItemBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.List;
 
-public class ItemSoulMould extends ItemMod {
+public class ItemSoulMould extends ItemBase {
 
 	private static final String TAG_PATTERN = "pattern";
 
 	public ItemSoulMould() {
 		setMaxStackSize(1);
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_MAGNETS, new ItemStack(this), new ItemStack(Items.ender_pearl), new AspectList().add(Aspect.BEAST, 4).add(Aspect.MIND, 8).add(Aspect.SENSES, 8));
 	}
 
 	@Override
@@ -71,5 +95,10 @@ public class ItemSoulMould extends ItemMod {
 
 	private static void clearPattern(ItemStack par1ItemStack) {
 		ItemNBTHelper.getNBT(par1ItemStack).removeTag(TAG_PATTERN);
+	}
+
+	@Override
+	public String getItemName() {
+		return LibItemNames.SOUL_MOULD;
 	}
 }

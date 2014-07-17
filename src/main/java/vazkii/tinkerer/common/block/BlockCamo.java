@@ -20,7 +20,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -67,13 +69,13 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 			ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
 			if (currentStack == null)
-				currentStack = new ItemStack(Block.getBlockFromName("air"), 1, 0);
+				currentStack = new ItemStack(Blocks.air, 1, 0);
 
 			boolean doChange = true;
 			Block block = null;
 			checkChange:
 			{
-				if (currentStack.getItem() != Item.getItemFromBlock(Block.getBlockFromName("air"))) {
+				if (currentStack.getItem() != Item.getItemFromBlock(Blocks.air)) {
 					if (Item.getIdFromItem(currentStack.getItem()) == 0) {
 						doChange = false;
 						break checkChange;
@@ -145,4 +147,13 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 		return blockIcon;
 	}
 
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
 }

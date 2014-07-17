@@ -77,4 +77,9 @@ public final class LibItemNames {
 			"netherShard",
 			"enderShard"
 	};
+
+	public static final String INFUSED_POTION = "infusedPotion";
+	public static final String INFUSED_GRAIN = "infusedGrain";
+
+	public static final String INFUSED_SEEDS = "infusedSeeds";
 }

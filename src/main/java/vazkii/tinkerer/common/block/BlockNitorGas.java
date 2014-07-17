@@ -17,11 +17,16 @@ package vazkii.tinkerer.common.block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.item.ItemBrightNitor;
+import vazkii.tinkerer.common.item.kami.armor.ItemGemLegs;
+import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.List;
 import java.util.Random;
@@ -54,7 +59,7 @@ public class BlockNitorGas extends BlockGas {
 			else {
 				boolean has = false;
 				for (EntityPlayer player : players)
-					if (player.inventory.hasItem(ModItems.brightNitor) || ModItems.ichorLegsGem != null && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ModItems.ichorLegsGem) {
+					if (player.inventory.hasItem(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)) || (ConfigHandler.enableKami && player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemGemLegs.class))) {
 						has = true;
 						break;
 					}
@@ -82,4 +87,18 @@ public class BlockNitorGas extends BlockGas {
 			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
 	}
 
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.NITOR_GAS;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
 }

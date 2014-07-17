@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+FMLCorePlugin: tconstruct.preloader.TConstructLoaderContainer
+FMLCorePluginContainsFMLMod: true
+
+

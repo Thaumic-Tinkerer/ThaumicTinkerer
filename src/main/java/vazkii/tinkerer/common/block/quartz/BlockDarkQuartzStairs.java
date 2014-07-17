@@ -15,13 +15,72 @@
 package vazkii.tinkerer.common.block.quartz;
 
 import net.minecraft.block.BlockStairs;
-import vazkii.tinkerer.common.block.ModBlocks;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCraftingBenchRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipeMulti;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
-public class BlockDarkQuartzStairs extends BlockStairs {
+import java.util.ArrayList;
+
+public class BlockDarkQuartzStairs extends BlockStairs implements ITTinkererBlock {
 
 	public BlockDarkQuartzStairs() {
-		super(ModBlocks.darkQuartz, 0);
+		super(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 0);
 		setCreativeTab(ModCreativeTab.INSTANCE);
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
+	@Override
+	public String getBlockName() {
+		return LibBlockNames.DARK_QUARTZ_STAIRS;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return true;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererRecipeMulti(
+				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 5, new ItemStack(this, 4),
+						"  Q", " QQ", "QQQ",
+						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class)),
+				new ThaumicTinkererCraftingBenchRecipe("", new ItemStack(this, 4),
+						"Q  ", "QQ ", "QQQ",
+						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class))
+		);
 	}
 }

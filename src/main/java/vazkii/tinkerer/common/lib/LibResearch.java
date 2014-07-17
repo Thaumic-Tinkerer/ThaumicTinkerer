@@ -16,19 +16,11 @@ package vazkii.tinkerer.common.lib;
 
 public final class LibResearch {
 
-	public static final String CATEGORY_BASICS = "BASICS";
-	public static final String CATEGORY_THAUMATURGY = "THAUMATURGY";
-	public static final String CATEGORY_ALCHEMY = "ALCHEMY";
-	public static final String CATEGORY_ARTIFICE = "ARTIFICE";
-	public static final String CATEGORY_GOLEMANCY = "GOLEMANCY";
-
-	public static final String CATEGORY_ENCHANTING = "TT_CATEGORY";
 	public static final String CATEGORY_THAUMICTINKERER = "TT_CATEGORY";
 
 	public static final String KEY_MOBILIZER = "LEVITATOR";
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
 	public static final String KEY_INTERFACE = "INTERFACE";
-	public static final String KEY_CONNECTOR = "CONNECTOR";
 	public static final String KEY_GASEOUS_LIGHT = "GASEOUS_LIGHT";
 	public static final String KEY_GASEOUS_SHADOW = "GASEOUS_SHADOW";
 	public static final String KEY_GAS_REMOVER = "GAS_REMOVER";
@@ -113,5 +105,19 @@ public final class LibResearch {
 	public static final String KEY_FOCUS_RECALL = "FOCUS_RECALL";
 	public static final String KEY_RELAY = "LEVITATOR_RELAY";
 	public static final String KEY_GOLEMCONNECTOR = "GOLEM_CONNECTOR";
+    public static final String KEY_REMOTE_PLACER = "REMOTE_PLACER";
+
+	public static final String KEY_FIRE_IGNIS = "FIRE_IGNIS";
+
+	public static final String KEY_FIRE_AQUA = "FIRE_AQUA";
+
+	public static final String KEY_FIRE_TERRA = "FIRE_TERRA";
+
+	public static final String KEY_FIRE_AER = "FIRE_AER";
+
+	public static final String KEY_FIRE_ORDO = "FIRE_ORDO";
+
+	public static final String KEY_FIRE_PERDITIO = "FIRE_PERDITIO";
+	public static final String KEY_POTIONS = "INFUSED_POTIONS";
 
 }

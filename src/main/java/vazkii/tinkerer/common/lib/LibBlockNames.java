@@ -33,8 +33,20 @@ public final class LibBlockNames {
 	public static final String REPAIRER = "repairer";
 	public static final String ASPECT_ANALYZER = "aspectAnalyzer";
 	public static final String PLATFORM = "platform";
+	public static final String BLOCK_FIRE_WATER = "fireWater";
+
+	public static final String BLOCK_FIRE_CHAOS = "fireChaos";
+
+	public static final String BLOCK_FIRE_ORDER = "fireOrder";
+
+	public static final String BLOCK_FIRE_FIRE = "fireFire";
+
+	public static final String BLOCK_FIRE_AIR = "fireAir";
+
+	public static final String BLOCK_FIRE_EARTH = "fireEarth";
 
 	public static final String WARP_GATE = "warpGate";
+    public static final String REMOTE_PLACER = "remotePlacer";
 
 	public static final String CAMO = "camo";
 
@@ -50,5 +62,21 @@ public final class LibBlockNames {
 	public static final String SPAWNER = "spawner";
 	public static final String MOBILIZER = "Levitational Locomotive";
 	public static final String GOLEMCONNECTOR = "golemConnector";
+
+	public static final String INFUSED_GRAIN_BASE = "infusedGrain";
+
+	public static final String INFUSED_GRAIN_FIRE = INFUSED_GRAIN_BASE + "Fire";
+
+	public static final String INFUSED_GRAIN_WATER = INFUSED_GRAIN_BASE + "Water";
+
+	public static final String INFUSED_GRAIN_ORDER = INFUSED_GRAIN_BASE + "Order";
+
+	public static final String INFUSED_GRAIN_CHAOS = INFUSED_GRAIN_BASE + "Chaos";
+
+	public static final String INFUSED_GRAIN_AIR = INFUSED_GRAIN_BASE + "Air";
+
+	public static final String INFUSED_GRAIN_EARTH = INFUSED_GRAIN_BASE + "Earth";
+
+	public static final String FORCEFIELD = "forcefield";
 
 }

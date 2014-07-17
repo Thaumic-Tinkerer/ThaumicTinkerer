@@ -13,7 +13,7 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import org.lwjgl.opengl.GL11;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.item.kami.ItemPlacementMirror;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public final class PlacementMirrorPredictionRenderer {
 		List<EntityPlayer> playerEntities = world.playerEntities;
 		for (EntityPlayer player : playerEntities) {
 			ItemStack currentStack = player.getCurrentEquippedItem();
-			if (currentStack != null && currentStack.getItem() == ModItems.placementMirror && ItemPlacementMirror.getBlock(currentStack) != Blocks.air) {
+			if (currentStack != null && currentStack.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemPlacementMirror.class) && ItemPlacementMirror.getBlock(currentStack) != Blocks.air) {
 				renderPlayerLook(player, currentStack);
 			}
 		}

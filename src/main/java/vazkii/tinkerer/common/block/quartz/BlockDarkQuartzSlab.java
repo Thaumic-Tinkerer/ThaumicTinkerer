@@ -20,15 +20,23 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.lib.LibBlockNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
+import vazkii.tinkerer.common.registry.ThaumicTinkererCraftingBenchRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockDarkQuartzSlab extends BlockSlab {
+public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	public BlockDarkQuartzSlab(boolean par2) {
 		super(par2, Material.rock);
@@ -40,25 +48,33 @@ public class BlockDarkQuartzSlab extends BlockSlab {
 		}
 	}
 
+	public BlockDarkQuartzSlab(Boolean par2) {
+		this(par2.booleanValue());
+	}
+
+	public BlockDarkQuartzSlab() {
+		this(false);
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2) {
-		return ModBlocks.darkQuartz.getBlockTextureFromSide(par1);
+		return ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class).getBlockTextureFromSide(par1);
 	}
 
 	@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Item.getItemFromBlock(ModBlocks.darkQuartzSlab);
+		return Item.getItemFromBlock(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class));
 	}
 
 	//@Override
 	//public int idDropped(int par1, Random par2Random, int par3) {
-	//	return ModBlocks.darkQuartzSlab.blockID;
+	//	return ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class).blockID;
 	//}
 
 	@Override
 	public ItemStack createStackedBlock(int par1) {
-		return new ItemStack(ModBlocks.darkQuartzSlab);
+		return new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class));
 	}
 
 	@Override
@@ -70,5 +86,52 @@ public class BlockDarkQuartzSlab extends BlockSlab {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		// NO-OP
+	}
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		ArrayList result = new ArrayList();
+		result.add(true);
+		return result;
+	}
+
+	@Override
+	public String getBlockName() {
+		return field_150004_a ? LibBlockNames.DARK_QUARTZ_SLAB_FULL : LibBlockNames.DARK_QUARTZ_SLAB;
+	}
+
+	@Override
+	public boolean shouldRegister() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldDisplayInTab() {
+		return !field_150004_a;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return null;
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		if (isOpaqueCube()) {
+			return null;
+		}
+		return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 2, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), 6),
+				"QQQ",
+				'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class));
 	}
 }

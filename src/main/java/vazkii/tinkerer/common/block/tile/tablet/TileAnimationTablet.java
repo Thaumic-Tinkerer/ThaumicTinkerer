@@ -49,7 +49,8 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import thaumcraft.common.lib.FakeThaumcraftPlayer;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.BlockAnimationTablet;
 import vazkii.tinkerer.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
@@ -137,7 +138,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 		if ((!redstone || isBreaking) && detect && swingProgress == 0) {
 			initiateSwing();
-			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
 		}
 	}
 
@@ -565,7 +566,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 		findEntities(getTargetLoc());
 		initiateSwing();
-		worldObj.addBlockEvent(xCoord, yCoord, zCoord, ModBlocks.animationTablet, 0, 0);
+		worldObj.addBlockEvent(xCoord, yCoord, zCoord, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class), 0, 0);
 
 		return new Object[]{ true };
 	}

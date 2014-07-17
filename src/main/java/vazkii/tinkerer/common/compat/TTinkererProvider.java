@@ -8,10 +8,10 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.block.BlockAnimationTablet;
 import vazkii.tinkerer.common.block.BlockMagnet;
 import vazkii.tinkerer.common.block.BlockRepairer;
-import vazkii.tinkerer.common.block.ModBlocks;
 import vazkii.tinkerer.common.block.kami.BlockWarpGate;
 import vazkii.tinkerer.common.block.tile.TileRepairer;
 import vazkii.tinkerer.common.block.tile.kami.TileWarpGate;
@@ -40,7 +40,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 	public List<String> getWailaBody(ItemStack itemStack,
 	                                 List<String> currenttip, IWailaDataAccessor accessor,
 	                                 IWailaConfigHandler config) {
-		if (accessor.getBlock() == ModBlocks.animationTablet) {
+		if (accessor.getBlock() == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class)) {
 			TileAnimationTablet tileAn = (TileAnimationTablet) accessor.getTileEntity();
 			String currentTool;
 			ItemStack stack = tileAn.getStackInSlot(0);
@@ -64,7 +64,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 			}
 			//currenttip.add("Owned by: "+tileAn.Owner);
 		}
-		if (accessor.getBlock() == ModBlocks.interfase) {
+		if (accessor.getBlock() == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)) {
 			TileTransvectorInterface tileTrans = (TileTransvectorInterface) accessor.getTileEntity();
 			String currentBlock;
 			TileEntity tile = tileTrans.getTile();
@@ -77,7 +77,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 			if (tile != null)
 				currenttip.add(String.format("x: %d y: %d z: %d", tile.xCoord, tile.yCoord, tile.zCoord));
 		}
-		if (accessor.getBlock() == ModBlocks.repairer) {
+		if (accessor.getBlock() == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockRepairer.class)) {
 			TileRepairer tileRepair = (TileRepairer) accessor.getTileEntity();
 			ItemStack item = tileRepair.getStackInSlot(0);
 			if (item != null) {
@@ -88,7 +88,7 @@ public class TTinkererProvider implements IWailaDataProvider {
 			}
 
 		}
-		if (accessor.getBlock() == ModBlocks.warpGate) {
+		if (accessor.getBlock() == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockWarpGate.class)) {
 			TileWarpGate tileWarp = (TileWarpGate) accessor.getTileEntity();
 			if (tileWarp.locked)
 				currenttip.add(StatCollector.translateToLocal("ttwaila.allowIncoming"));

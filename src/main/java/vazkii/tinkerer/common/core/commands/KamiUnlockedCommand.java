@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import org.apache.commons.lang3.StringUtils;
 import thaumcraft.common.lib.research.ResearchManager;
-import vazkii.tinkerer.common.research.ModResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +39,7 @@ public class KamiUnlockedCommand extends CommandBase {
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring) {
 
-		List<String> parents = Arrays.asList(ModResearch.kamiResearch.parentsHidden);
+		List<String> parents = Arrays.asList(ResearchHelper.kamiResearch.parentsHidden);
 		List<String> unlocked = ResearchManager.getResearchForPlayer(icommandsender.getCommandSenderName());
 		if (unlocked.containsAll(parents))
 			((EntityPlayer) icommandsender).addChatComponentMessage(new ChatComponentText("Yes"));

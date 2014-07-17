@@ -19,12 +19,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
+import vazkii.tinkerer.common.registry.ITTinkererBlock;
 
-public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
+public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer implements ITTinkererBlock {
 
 	protected BlockModContainer(Material par2Material) {
 		super(par2Material);
@@ -48,4 +50,13 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	@Override
 	public abstract T createNewTileEntity(World world, int var2);
 
+	@Override
+	public Class<? extends ItemBlock> getItemBlock() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends TileEntity> getTileEntity() {
+		return null;
+	}
 }

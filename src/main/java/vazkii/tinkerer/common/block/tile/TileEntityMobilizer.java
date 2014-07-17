@@ -8,7 +8,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
-import vazkii.tinkerer.common.block.ModBlocks;
+import vazkii.tinkerer.common.ThaumicTinkerer;
+import vazkii.tinkerer.common.block.mobilizer.BlockMobilizer;
 
 public class TileEntityMobilizer extends TileEntity {
 
@@ -86,7 +87,7 @@ public class TileEntityMobilizer extends TileEntity {
 			int targetX = xCoord + movementDirection.offsetX;
 			int targetZ = zCoord + movementDirection.offsetZ;
 			//Check for abandoned TEs
-			if (worldObj.getBlock(xCoord, yCoord, zCoord) != ModBlocks.mobilizer) {
+			if (worldObj.getBlock(xCoord, yCoord, zCoord) != ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizer.class)) {
 				return;
 			}
 			//Check if the space the mobilizer will move into is empty
@@ -159,7 +160,7 @@ public class TileEntityMobilizer extends TileEntity {
 					this.invalidate();
 					worldObj.removeTileEntity(xCoord, yCoord, zCoord);
 					worldObj.setBlock(xCoord, yCoord, zCoord, Block.getBlockFromName("air"), 0, 2);
-					worldObj.setBlock(targetX, yCoord, targetZ, ModBlocks.mobilizer);
+					worldObj.setBlock(targetX, yCoord, targetZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizer.class));
 
 					int oldX = xCoord;
 					int oldZ = zCoord;

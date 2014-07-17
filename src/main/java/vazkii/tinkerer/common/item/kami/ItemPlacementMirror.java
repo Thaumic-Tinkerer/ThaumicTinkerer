@@ -6,24 +6,35 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchPage;
 import vazkii.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import vazkii.tinkerer.client.core.helper.IconHelper;
 import vazkii.tinkerer.client.core.proxy.TTClientProxy;
+import vazkii.tinkerer.common.ThaumicTinkerer;
 import vazkii.tinkerer.common.core.helper.ItemNBTHelper;
-import vazkii.tinkerer.common.item.ItemMod;
-import vazkii.tinkerer.common.item.ModItems;
 import vazkii.tinkerer.common.item.kami.tool.ToolHandler;
+import vazkii.tinkerer.common.lib.LibItemNames;
+import vazkii.tinkerer.common.lib.LibResearch;
+import vazkii.tinkerer.common.registry.ItemKamiBase;
+import vazkii.tinkerer.common.registry.ThaumicTinkererInfusionRecipe;
+import vazkii.tinkerer.common.registry.ThaumicTinkererRecipe;
+import vazkii.tinkerer.common.research.IRegisterableResearch;
+import vazkii.tinkerer.common.research.KamiResearchItem;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemPlacementMirror extends ItemMod {
+public class ItemPlacementMirror extends ItemKamiBase {
 
 	@Deprecated
 	private static final String TAG_BLOCK_ID = "blockID";
@@ -95,7 +106,7 @@ public class ItemPlacementMirror extends ItemMod {
 				return;
 			}
 
-			if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
+			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemBlockTalisman.class))
 				talismansToCheck.add(stackInSlot);
 		}
 
@@ -125,7 +136,7 @@ public class ItemPlacementMirror extends ItemMod {
 				if (current >= required)
 					return true;
 			}
-			if (stackInSlot != null && stackInSlot.getItem() == ModItems.blockTalisman)
+			if (stackInSlot != null && stackInSlot.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemBlockTalisman.class))
 				talismansToCheck.add(stackInSlot);
 		}
 
@@ -246,4 +257,22 @@ public class ItemPlacementMirror extends ItemMod {
 			par3List.add(StatCollector.translateToLocal(new ItemStack(block, 1, getBlockMeta(par1ItemStack)).getUnlocalizedName() + ".name"));
 	}
 
+	@Override
+	public String getItemName() {
+		return LibItemNames.PLACEMENT_MIRROR;
+	}
+
+	@Override
+	public IRegisterableResearch getResearchItem() {
+		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_PLACEMENT_MIRROR, new AspectList().add(Aspect.CRAFT, 2).add(Aspect.CRYSTAL, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MIND, 1), 17, 16, 5, new ItemStack(this)).setParents(LibResearch.KEY_BLOCK_TALISMAN)
+				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_PLACEMENT_MIRROR));
+
+	}
+
+	@Override
+	public ThaumicTinkererRecipe getRecipeItem() {
+		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_PLACEMENT_MIRROR, new ItemStack(this), 12, new AspectList().add(Aspect.CRAFT, 65).add(Aspect.CRYSTAL, 32).add(Aspect.MAGIC, 50).add(Aspect.MIND, 32), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBlockTalisman.class)),
+				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Blocks.dropper), new ItemStack(Items.diamond), new ItemStack(Blocks.glass), new ItemStack(Items.blaze_powder), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)));
+
+	}
 }

@@ -18,18 +18,23 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
+import thaumcraft.api.wands.WandCap;
+import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.ModBlocks;
-import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.*;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
+import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import vazkii.tinkerer.common.core.handler.kami.KamiDimensionHandler;
@@ -37,37 +42,45 @@ import vazkii.tinkerer.common.core.handler.kami.SoulHeartHandler;
 import vazkii.tinkerer.common.core.helper.NumericAspectHelper;
 import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
-import vazkii.tinkerer.common.item.ModItems;
+import vazkii.tinkerer.common.item.kami.wand.CapIchor;
+import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
+import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.network.PlayerTracker;
-import vazkii.tinkerer.common.network.packet.PacketEnchanterAddEnchant;
-import vazkii.tinkerer.common.network.packet.PacketEnchanterStartWorking;
-import vazkii.tinkerer.common.network.packet.PacketMobMagnetButton;
-import vazkii.tinkerer.common.network.packet.PacketTabletButton;
+import vazkii.tinkerer.common.network.packet.*;
 import vazkii.tinkerer.common.network.packet.kami.PacketSoulHearts;
 import vazkii.tinkerer.common.network.packet.kami.PacketToggleArmor;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import vazkii.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
+import vazkii.tinkerer.common.peripheral.OpenComputers.*;
 import vazkii.tinkerer.common.potion.ModPotions;
-import vazkii.tinkerer.common.research.ModRecipes;
-import vazkii.tinkerer.common.research.ModResearch;
+import vazkii.tinkerer.common.research.ResearchHelper;
 
 public class TTCommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
-		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
+		toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
 
-		ModBlocks.initBlocks();
-		ModItems.initItems();
+		capIchor = new CapIchor();
+		rodIchor = new RodIchorcloth();
+		ModCreativeTab.INSTANCE = new ModCreativeTab();
+		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
+		//ModItems.initItems();
+		ThaumicTinkerer.registry.preInit();
 		NumericAspectHelper.init();
 		initCCPeripherals();
 	}
 
+	public WandCap capIchor;
+	public WandRod rodIchor;
+	public Item.ToolMaterial toolMaterialIchor;
+
 	public void init(FMLInitializationEvent event) {
+        registerVersionChecker();
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
-		ModBlocks.initTileEntities();
+		ThaumicTinkerer.registry.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		registerPackets();
 		FMLCommonHandler.instance().bus().register(new PlayerTracker());
@@ -77,8 +90,18 @@ public class TTCommonProxy {
 			MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
 			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
 		}
+
 		if (Loader.isModLoaded("OpenComputers")) {
 			initOpenCDrivers();
+		}
+
+		if (Loader.isModLoaded("ForgeMultipart")) {
+			try {
+				Class clazz = Class.forName("vazkii.tinkerer.common.multipart.MultipartHandler");
+				clazz.newInstance();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -92,11 +115,20 @@ public class TTCommonProxy {
 		ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class, PacketEnchanterStartWorking.class, 142 + 6, Side.SERVER);
 		ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class, PacketMobMagnetButton.class, 142 + 7, Side.SERVER);
 		ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class, PacketTabletButton.class, 142 + 8, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketPlacerButton.class, PacketPlacerButton.class, 142 + 9, Side.SERVER);
 	}
 
+    public void registerVersionChecker(){
+        NBTTagCompound compound = new NBTTagCompound();
+        compound.setString("curseProjectName", "75598-thaumic-tinkerer");
+        compound.setString("curseFilenameParser", "ThaumicTinkerer-[].jar");
+        compound.setString("modDisplayName", "Thaumic Tinkerer");
+        FMLInterModComms.sendRuntimeMessage(LibMisc.MOD_ID, "VersionChecker", "addUpdate", compound);
+    }
+
 	public void postInit(FMLPostInitializationEvent event) {
-		ModRecipes.initRecipes();
-		ModResearch.initResearch();
+		ResearchHelper.initResearch();
+		ThaumicTinkerer.registry.postInit();
 	}
 
 	protected void initCCPeripherals() {
