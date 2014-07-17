@@ -26,16 +26,16 @@ public enum EnumMobAspect {
 
 	SnowMan(EntitySnowman.class, new Aspect[]{ Aspect.WATER, Aspect.WATER, Aspect.MAN }),
 	Bat(EntityBat.class, new Aspect[]{ Aspect.AIR, Aspect.AIR, Aspect.FLIGHT }, 1.9f, -0.3f),
-	Blaze(EntityBlaze.class, new Aspect[]{ Aspect.FIRE, Aspect.FLIGHT, Aspect.MAGIC }),
-	BrainyZombie(EntityBrainyZombie.class, new Aspect[]{ Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH }),
+    Blaze(EntityBlaze.class, new Aspect[]{Aspect.FIRE, Aspect.FIRE, Aspect.FIRE}),
+    BrainyZombie(EntityBrainyZombie.class, new Aspect[]{ Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH }),
 	Firebat(EntityFireBat.class, new Aspect[]{ Aspect.FLIGHT, Aspect.FIRE, Aspect.MAGIC }, 1.9f, -0.3f),
 	CaveSpider(EntityCaveSpider.class, new Aspect[]{ Aspect.BEAST, Aspect.POISON, Aspect.POISON }),
 	Chicken(EntityChicken.class, new Aspect[]{ Aspect.CROP, Aspect.FLIGHT, Aspect.BEAST }),
 	Cow(EntityCow.class, new Aspect[]{ Aspect.BEAST, Aspect.EARTH, Aspect.BEAST }),
 	Creeper(EntityCreeper.class, new Aspect[]{ Aspect.MAGIC, Aspect.BEAST, Aspect.ELDRITCH }),
 	Enderman(EntityEnderman.class, new Aspect[]{ Aspect.ELDRITCH, Aspect.ELDRITCH, Aspect.MAN }, 0.3f, 0.0f),
-	Ghast(EntityGhast.class, new Aspect[]{ Aspect.FIRE, Aspect.FLIGHT, Aspect.MAGIC }, 0.1f, 0.2f),
-	Horse(EntityHorse.class, new Aspect[]{ Aspect.BEAST, Aspect.BEAST, Aspect.TRAVEL }),
+    Ghast(EntityGhast.class, new Aspect[]{Aspect.FIRE, Aspect.FLIGHT, Aspect.FLIGHT}, 0.1f, 0.2f),
+    Horse(EntityHorse.class, new Aspect[]{ Aspect.BEAST, Aspect.BEAST, Aspect.TRAVEL }),
 	VillagerGolem(EntityIronGolem.class, new Aspect[]{ Aspect.METAL, Aspect.METAL, Aspect.MAN }, 0.3f, 0.0f),
 	LavaSlime(EntityMagmaCube.class, new Aspect[]{ Aspect.FIRE, Aspect.SLIME, Aspect.SLIME }, 0.6f, 0.0f) {
 		@Override
