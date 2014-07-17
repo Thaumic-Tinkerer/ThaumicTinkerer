@@ -18,6 +18,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -25,6 +26,7 @@ import cpw.mods.fml.relauncher.Side;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -42,6 +44,7 @@ import vazkii.tinkerer.common.enchantment.ModEnchantments;
 import vazkii.tinkerer.common.enchantment.core.EnchantmentManager;
 import vazkii.tinkerer.common.item.kami.wand.CapIchor;
 import vazkii.tinkerer.common.item.kami.wand.RodIchorcloth;
+import vazkii.tinkerer.common.lib.LibMisc;
 import vazkii.tinkerer.common.network.GuiHandler;
 import vazkii.tinkerer.common.network.PlayerTracker;
 import vazkii.tinkerer.common.network.packet.*;
@@ -73,7 +76,7 @@ public class TTCommonProxy {
 	public Item.ToolMaterial toolMaterialIchor;
 
 	public void init(FMLInitializationEvent event) {
-
+        registerVersionChecker();
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
@@ -114,6 +117,14 @@ public class TTCommonProxy {
 		ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class, PacketTabletButton.class, 142 + 8, Side.SERVER);
         ThaumicTinkerer.netHandler.registerMessage(PacketPlacerButton.class, PacketPlacerButton.class, 142 + 9, Side.SERVER);
 	}
+
+    public void registerVersionChecker(){
+        NBTTagCompound compound = new NBTTagCompound();
+        compound.setString("curseProjectName", "75598-thaumic-tinkerer");
+        compound.setString("curseFilenameParser", "ThaumicTinkerer-[].jar");
+        compound.setString("modDisplayName", "Thaumic Tinkerer");
+        FMLInterModComms.sendRuntimeMessage(LibMisc.MOD_ID, "VersionChecker", "addUpdate", compound);
+    }
 
 	public void postInit(FMLPostInitializationEvent event) {
 		ResearchHelper.initResearch();
