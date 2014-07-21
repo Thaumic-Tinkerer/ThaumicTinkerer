@@ -13,7 +13,7 @@
  * File Created @ [Dec 11, 2013, 10:03:09 PM (GMT)]
  */
 
-package vazkii.tinkerer.common.block.tile.peripheral;
+package vazkii.tinkerer.common.peripheral;
 
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;

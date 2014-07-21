@@ -13,14 +13,14 @@
  * File Created @ [13 Sep 2013, 00:58:21 (GMT)]
  */
 
-package vazkii.tinkerer.common.block.tile.peripheral;
+package vazkii.tinkerer.common.peripheral;
 
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import thaumcraft.api.aspects.IAspectContainer;
-import vazkii.tinkerer.common.block.tile.peripheral.implementation.IAspectContainerImplementation;
+import vazkii.tinkerer.common.peripheral.implementation.IAspectContainerImplementation;
 
 public class PeripheralAspectContainer implements IPeripheral {
 

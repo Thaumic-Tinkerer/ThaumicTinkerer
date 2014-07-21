@@ -10,46 +10,43 @@
  * Thaumcraft 4 (c) Azanor 2012
  * (http://www.minecraftforum.net/topic/1585216-)
  *
- * File Created @ [13 Sep 2013, 01:10:52 (GMT)]
+ * File Created @ [Dec 11, 2013, 9:41:49 PM (GMT)]
  */
 
-package vazkii.tinkerer.common.block.tile.peripheral;
+package vazkii.tinkerer.common.peripheral;
 
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import thaumcraft.common.tiles.TileDeconstructionTable;
+import thaumcraft.common.tiles.TileSensor;
 
-public class PeripheralDeconstructor implements IPeripheral {
+public class PeripheralArcaneEar implements IPeripheral {
 
-	TileDeconstructionTable deconstructor;
+	TileSensor ear;
 
-	public PeripheralDeconstructor(TileDeconstructionTable deconstructor) {
-		this.deconstructor = deconstructor;
+	public PeripheralArcaneEar(TileSensor ear) {
+		this.ear = ear;
 	}
 
 	@Override
 	public String getType() {
-		return "tt_deconstructor";
+		return "tt_arcaneear";
 	}
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[]{ "hasAspect", "hasItem", "getAspect" };
+		return new String[]{ "getNote", "setNote" };
 	}
 
 	@Override
 	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
-		switch (method) {
-			case 0:
-				return new Object[]{ deconstructor.aspect != null };
-			case 1:
-				return new Object[]{ deconstructor.getStackInSlot(0) != null };
-			case 2:
-				return deconstructor.aspect == null ? null : new Object[]{ deconstructor.aspect.getTag() };
-		}
+		if (method == 0) {
+			return new Object[]{ ear.note };
+		} else {
+			ear.note = (byte) ((Double) arguments[0]).doubleValue();
 
-		return null;
+			return null;
+		}
 	}
 
 	@Override
@@ -64,7 +61,9 @@ public class PeripheralDeconstructor implements IPeripheral {
 
 	@Override
 	public boolean equals(IPeripheral other) {
+
 		return this.equals((Object) other);
 	}
 
 }
+

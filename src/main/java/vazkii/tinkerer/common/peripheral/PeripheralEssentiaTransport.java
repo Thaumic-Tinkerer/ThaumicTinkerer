@@ -1,5 +1,5 @@
 
-package vazkii.tinkerer.common.block.tile.peripheral;
+package vazkii.tinkerer.common.peripheral;
 
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;

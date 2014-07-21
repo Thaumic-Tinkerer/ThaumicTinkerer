@@ -1,4 +1,4 @@
-package vazkii.tinkerer.common.block.tile.peripheral.OpenComputers;
+package vazkii.tinkerer.common.peripheral.OpenComputers;
 
 import li.cil.oc.api.network.Arguments;
 import li.cil.oc.api.network.Callback;
@@ -7,7 +7,7 @@ import li.cil.oc.api.network.ManagedEnvironment;
 import li.cil.oc.api.prefab.DriverTileEntity;
 import net.minecraft.world.World;
 import thaumcraft.common.tiles.TileSensor;
-import vazkii.tinkerer.common.block.tile.peripheral.implementation.ArcaneEarImplementation;
+import vazkii.tinkerer.common.peripheral.implementation.ArcaneEarImplementation;
 
 /**
  * Created by Katrina on 21/04/14.

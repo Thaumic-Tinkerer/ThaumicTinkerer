@@ -13,7 +13,7 @@
  * File Created @ [13 Sep 2013, 00:56:19 (GMT)]
  */
 
-package vazkii.tinkerer.common.block.tile.peripheral;
+package vazkii.tinkerer.common.peripheral;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralProvider;

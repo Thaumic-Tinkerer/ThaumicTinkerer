@@ -31,7 +31,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import vazkii.tinkerer.common.ThaumicTinkerer;
-import vazkii.tinkerer.common.block.tile.peripheral.OpenComputers.*;
+import vazkii.tinkerer.common.peripheral.OpenComputers.*;
 import vazkii.tinkerer.common.core.handler.ConfigHandler;
 import vazkii.tinkerer.common.core.handler.ModCreativeTab;
 import vazkii.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;

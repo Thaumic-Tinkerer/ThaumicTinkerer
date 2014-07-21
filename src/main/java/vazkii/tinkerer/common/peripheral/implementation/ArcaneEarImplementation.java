@@ -1,4 +1,4 @@
-package vazkii.tinkerer.common.block.tile.peripheral.implementation;
+package vazkii.tinkerer.common.peripheral.implementation;
 
 import thaumcraft.common.tiles.TileSensor;
 

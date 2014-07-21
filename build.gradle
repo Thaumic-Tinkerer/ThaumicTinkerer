@@ -107,3 +107,8 @@ jar {
         attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }
+// because the normal output has been made to be obfuscated
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'dev'
+}
