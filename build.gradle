@@ -51,7 +51,7 @@ if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
 
-group = "vazkii.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
@@ -103,7 +103,7 @@ processResources
         }
 jar {
     manifest {
-        attributes 'FMLCorePlugin': 'vazkii.tinkerer.preloader.ThaumicTLoaderContainer'
+        attributes 'FMLCorePlugin': 'thaumic.tinkerer.preloader.ThaumicTLoaderContainer'
         attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }
