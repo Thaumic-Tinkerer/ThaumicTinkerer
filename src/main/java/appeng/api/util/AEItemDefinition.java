@@ -12,27 +12,27 @@ public interface AEItemDefinition
 {
 
 	/**
-	 * @return the {@link net.minecraft.block.Block} Implementation if applicable
+	 * @return the {@link Block} Implementation if applicable
 	 */
 	Block block();
 
 	/**
-	 * @return the {@link net.minecraft.item.Item} Implementation if applicable
+	 * @return the {@link Item} Implementation if applicable
 	 */
 	Item item();
 
 	/**
-	 * @return the {@link net.minecraft.tileentity.TileEntity} Class if applicable.
+	 * @return the {@link TileEntity} Class if applicable.
 	 */
 	Class<? extends TileEntity> entity();
 
 	/**
-	 * @return an {@link net.minecraft.item.ItemStack} with specified quantity of this item.
+	 * @return an {@link ItemStack} with specified quantity of this item.
 	 */
 	ItemStack stack(int stackSize);
 
 	/**
-	 * Compare {@link net.minecraft.item.ItemStack} with this {@link appeng.api.util.AEItemDefinition}
+	 * Compare {@link ItemStack} with this {@link AEItemDefinition}
 	 * 
 	 * @param comparableItem
 	 * @return true if the item stack is a matching item.

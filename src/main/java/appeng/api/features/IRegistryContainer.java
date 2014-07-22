@@ -47,7 +47,7 @@ public interface IRegistryContainer
 	/**
 	 * get access to the locatable registry
 	 */
-	ILocateableRegistry locateable();
+	ILocatableRegistry locateable();
 
 	/**
 	 * get access to the p2p tunnel registry.

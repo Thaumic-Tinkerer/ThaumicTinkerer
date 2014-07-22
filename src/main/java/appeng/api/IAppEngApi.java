@@ -52,7 +52,7 @@ public interface IAppEngApi
 	Parts parts();
 
 	/**
-	 * create a grid node for your {@link appeng.api.networking.IGridHost}
+	 * create a grid node for your {@link IGridHost}
 	 * 
 	 * @param block
 	 * @return
@@ -60,11 +60,11 @@ public interface IAppEngApi
 	IGridNode createGridNode(IGridBlock block);
 
 	/**
-	 * create a connection between two {@link appeng.api.networking.IGridNode}
+	 * create a connection between two {@link IGridNode}
 	 * 
 	 * @param a
 	 * @param b
-	 * @throws appeng.api.exceptions.FailedConnection
+	 * @throws FailedConnection
 	 */
 	IGridConnection createGridConnection(IGridNode a, IGridNode b) throws FailedConnection;
 

@@ -44,7 +44,7 @@ public interface IPartHelper
 	 * use in use item, to try and place a IBusItem
 	 * 
 	 * @param is
-	 *            ItemStack of an item which implements {@link appeng.api.parts.IPartItem}
+	 *            ItemStack of an item which implements {@link IPartItem}
 	 * @param x
 	 * @param y
 	 * @param z

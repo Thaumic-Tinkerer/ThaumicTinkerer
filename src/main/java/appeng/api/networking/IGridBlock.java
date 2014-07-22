@@ -65,7 +65,7 @@ public interface IGridBlock
 
 	/**
 	 * Determine which sides of the block can be connected too, only used when isWorldAccessable returns true, not used
-	 * for {@link appeng.api.parts.IPart} implementations.
+	 * for {@link IPart} implementations.
 	 */
 	EnumSet<ForgeDirection> getConnectableSides();
 

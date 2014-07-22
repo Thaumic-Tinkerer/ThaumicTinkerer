@@ -7,7 +7,7 @@ import appeng.api.implementations.TransitionResult;
 import appeng.api.util.WorldCoord;
 
 /**
- * Implemented on a {@link net.minecraft.item.Item}
+ * Implemented on a {@link Item}
  */
 public interface ISpatialStorageCell
 {

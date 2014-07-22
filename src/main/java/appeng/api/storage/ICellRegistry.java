@@ -34,7 +34,7 @@ public interface ICellRegistry
 	 * @param is
 	 * @return the handler registered for this item type.
 	 */
-	ICellHandler getHander(ItemStack is);
+	ICellHandler getHandler(ItemStack is);
 
 	/**
 	 * returns an IMEInventoryHandler for the provided item.

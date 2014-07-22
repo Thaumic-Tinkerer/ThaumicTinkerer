@@ -19,7 +19,7 @@ public interface IStorageHelper
 	 * @param is
 	 *            An ItemStack
 	 * 
-	 * @return a new instance of {@link appeng.api.storage.data.IAEItemStack} from a MC {@link net.minecraft.item.ItemStack}
+	 * @return a new instance of {@link IAEItemStack} from a MC {@link ItemStack}
 	 */
 	IAEItemStack createItemStack(ItemStack is);
 
@@ -27,17 +27,17 @@ public interface IStorageHelper
 	 * @param is
 	 *            A FluidStack
 	 * 
-	 * @return a new instance of {@link appeng.api.storage.data.IAEFluidStack} from a Forge {@link net.minecraftforge.fluids.FluidStack}
+	 * @return a new instance of {@link IAEFluidStack} from a Forge {@link FluidStack}
 	 */
 	IAEFluidStack createFluidStack(FluidStack is);
 
 	/**
-	 * @return a new instance of {@link appeng.api.storage.data.IItemList} for items
+	 * @return a new instance of {@link IItemList} for items
 	 */
 	IItemList<IAEItemStack> createItemList();
 
 	/**
-	 * @return a new instance of {@link appeng.api.storage.data.IItemList} for fluids
+	 * @return a new instance of {@link IItemList} for fluids
 	 */
 	IItemList<IAEFluidStack> createFluidList();
 	
@@ -46,7 +46,7 @@ public interface IStorageHelper
 	 * 
 	 * @param input
 	 * @return
-	 * @throws java.io.IOException
+	 * @throws IOException
 	 */
 	IAEItemStack readItemFromPacket(ByteBuf input) throws IOException;
 
@@ -55,7 +55,7 @@ public interface IStorageHelper
 	 * 
 	 * @param input
 	 * @return
-	 * @throws java.io.IOException
+	 * @throws IOException
 	 */
 	IAEFluidStack readFluidFromPacket(ByteBuf input) throws IOException;
 

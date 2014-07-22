@@ -6,7 +6,7 @@ import appeng.api.storage.ITerminalHost;
 import appeng.api.storage.data.IAEItemStack;
 
 /**
- * Obtained via {@link appeng.api.implementations.guiobjects.IGuiItem} getGuiObject
+ * Obtained via {@link IGuiItem} getGuiObject
  */
 public interface IPortableCell extends ITerminalHost, IMEMonitor<IAEItemStack>, IEnergySource, IGuiItemObject
 {

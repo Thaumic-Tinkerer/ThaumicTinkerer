@@ -24,7 +24,7 @@ public interface IPartHost
 	IFacadeContainer getFacadeContainer();
 
 	/**
-	 * Test if you can add a part to the specified side of the Part Host, {@link net.minecraftforge.common.util.ForgeDirection}.UNKNOWN is used to
+	 * Test if you can add a part to the specified side of the Part Host, {@link ForgeDirection}.UNKNOWN is used to
 	 * represent the cable in the middle.
 	 * 
 	 * @param is
@@ -40,12 +40,12 @@ public interface IPartHost
 	 * @param side
 	 * @param owner
 	 * @return null if the item failed to add, the side it was placed on other wise ( may different for cables,
-	 *         {@link net.minecraftforge.common.util.ForgeDirection}.UNKNOWN )
+	 *         {@link ForgeDirection}.UNKNOWN )
 	 */
 	ForgeDirection addPart(ItemStack is, ForgeDirection side, EntityPlayer owner);
 
 	/**
-	 * Get part by side ( center is {@link net.minecraftforge.common.util.ForgeDirection}.UNKNOWN )
+	 * Get part by side ( center is {@link ForgeDirection}.UNKNOWN )
 	 * 
 	 * @param side
 	 * @return the part located on the specified side, or null if there is no part.
@@ -81,7 +81,7 @@ public interface IPartHost
 
 	/**
 	 * @return the color of the host type ( this is determined by the middle cable. ) if no cable is present, it returns
-	 *         {@link appeng.api.util.AEColor} .Transparent other wise it returns the color of the cable in the center.
+	 *         {@link AEColor} .Transparent other wise it returns the color of the cable in the center.
 	 */
 	AEColor getColor();
 
@@ -132,4 +132,21 @@ public interface IPartHost
 	 * @return a mutable list of flags you can adjust to track state.
 	 */
 	Set<LayerFlags> getLayerFlags();
+
+	/**
+	 * remove host from world...
+	 */
+	void cleanup();
+
+	/**
+	 * notify neightbors uf updated status.
+	 */
+	void notifyNeighbors();
+
+	/**
+	 * true if the tile is in the world, other wise false.
+	 * 
+	 * @return
+	 */
+	boolean isInWorld();
 }

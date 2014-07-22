@@ -52,9 +52,9 @@ public interface IMEInventoryHandler<StackType extends IAEStack> extends
 	 * pass back value for blinkCell.
 	 * 
 	 * @return the slot index for the cell that this represents in the storage
-	 *         unit, the method on the {@link appeng.api.storage.ICellContainer} will be called
+	 *         unit, the method on the {@link ICellContainer} will be called
 	 *         with this value, only trust the return value of this mehod if you
-	 *         are the implementor of the {@link appeng.api.storage.IMEInventoryHandler}.
+	 *         are the implementor of the {@link IMEInventoryHandler}.
 	 */
 	public int getSlot();
 }

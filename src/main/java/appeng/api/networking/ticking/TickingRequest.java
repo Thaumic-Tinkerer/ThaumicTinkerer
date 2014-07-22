@@ -39,7 +39,7 @@ public class TickingRequest
 
 	/**
 	 * 
-	 * True only if you call {@link appeng.api.networking.ticking.ITickManager}.alertDevice( IGridNode );
+	 * True only if you call {@link ITickManager}.alertDevice( IGridNode );
 	 * 
 	 */
 	public final boolean canBeAlerted;

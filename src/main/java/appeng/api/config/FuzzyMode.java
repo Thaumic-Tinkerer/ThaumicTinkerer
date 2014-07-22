@@ -6,16 +6,16 @@ public enum FuzzyMode
 	IGNORE_ALL(-1), PERCENT_99(0), PERCENT_75(25), PERCENT_50(50), PERCENT_25(75);
 
 	final public float breakPoint;
-	final public int percentage;
+	final public float percentage;
 
-	private FuzzyMode(int p) {
+	private FuzzyMode(float p) {
 		percentage = p;
-		breakPoint = calculateBreakPoint( 1 );
+		breakPoint = p / 100.0f;
 	}
 
 	public int calculateBreakPoint(int maxDamage)
 	{
-		return (percentage * maxDamage) / 100;
+		return (int) ((percentage * maxDamage) / 100.0f);
 	}
 
 }

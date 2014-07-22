@@ -11,7 +11,7 @@ public interface IFacadeContainer
 {
 
 	/**
-	 * Attempts to add the {@link appeng.api.parts.IFacadePart} to the given side.
+	 * Attempts to add the {@link IFacadePart} to the given side.
 	 * 
 	 * @return true if the facade as successfully added.
 	 */
@@ -23,7 +23,7 @@ public interface IFacadeContainer
 	void removeFacade(IPartHost host, ForgeDirection side);
 
 	/**
-	 * @return the {@link appeng.api.parts.IFacadePart} for a given side, or null.
+	 * @return the {@link IFacadePart} for a given side, or null.
 	 */
 	IFacadePart getFacade(ForgeDirection s);
 

@@ -1,5 +1,7 @@
 package appeng.api.parts;
 
+import java.util.EnumSet;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.util.IIcon;
@@ -148,5 +150,29 @@ public interface IPartRenderHelper
 	 * disables, useSimpliedRendering.
 	 */
 	void normalRendering();
+
+	/**
+	 * render a block using the current renderer state.
+	 * 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param renderer
+	 */
+	void renderBlockCurrentBounds(int x, int y, int z, RenderBlocks renderer);
+
+	/**
+	 * allow you to enable your part to render during the alpha pass or the standard pass.
+	 * 
+	 * @param pass
+	 */
+	void renderForPass(int pass);
+
+	/**
+	 * Set which faces to render, remember to set back to ALL when you are done.
+	 * 
+	 * @param complementOf
+	 */
+	void setFacesToRender(EnumSet<ForgeDirection> complementOf);
 
 }

@@ -136,7 +136,7 @@ public interface IAEStack<StackType extends IAEStack>
 	 * Slower for disk saving, but smaller/more efficient for packets.
 	 * 
 	 * @param data
-	 * @throws java.io.IOException
+	 * @throws IOException
 	 */
 	void writeToPacket(ByteBuf data) throws IOException;
 

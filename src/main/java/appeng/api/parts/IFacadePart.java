@@ -69,4 +69,6 @@ public interface IFacadePart
 
 	void setThinFacades(boolean useThinFacades);
 
+	boolean isTransparent();
+
 }

@@ -19,7 +19,7 @@ public class SelectedPart
 	public final IFacadePart facade;
 
 	/**
-	 * side the part is mounted too, or {@link net.minecraftforge.common.util.ForgeDirection}.UNKNOWN for cables.
+	 * side the part is mounted too, or {@link ForgeDirection}.UNKNOWN for cables.
 	 */
 	public final ForgeDirection side;
 

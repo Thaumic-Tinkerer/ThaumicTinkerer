@@ -3,11 +3,12 @@ package appeng.api.implementations.parts;
 import appeng.api.networking.IGridHost;
 import appeng.api.parts.IPart;
 import appeng.api.storage.data.IAEStack;
+import appeng.api.util.INetworkToolAgent;
 
 /**
- * The Storage monitor is a {@link appeng.api.parts.IPart} located on the sides of a IPartHost
+ * The Storage monitor is a {@link IPart} located on the sides of a IPartHost
  */
-public interface IPartStorageMonitor extends IPartMonitor, IPart, IGridHost
+public interface IPartStorageMonitor extends IPartMonitor, IPart, IGridHost, INetworkToolAgent
 {
 
 	/**

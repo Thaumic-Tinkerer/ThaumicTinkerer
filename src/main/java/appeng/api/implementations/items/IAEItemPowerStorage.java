@@ -5,7 +5,7 @@ import appeng.api.config.AccessRestriction;
 import appeng.api.networking.energy.IAEPowerStorage;
 
 /**
- * Basically the same as {@link appeng.api.networking.energy.IAEPowerStorage}, but for items.
+ * Basically the same as {@link IAEPowerStorage}, but for items.
  */
 public interface IAEItemPowerStorage
 {

@@ -7,7 +7,7 @@ import appeng.api.util.AECableType;
 
 /**
  * 
- * Implement to create a networked {@link net.minecraft.tileentity.TileEntity} or {@link appeng.api.parts.IPart} must
+ * Implement to create a networked {@link TileEntity} or {@link IPart} must
  * be implemented for a part, or tile entity to become part of a grid.
  * 
  */

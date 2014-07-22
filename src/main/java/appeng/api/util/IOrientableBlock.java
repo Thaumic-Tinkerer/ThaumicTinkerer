@@ -7,7 +7,12 @@ import net.minecraft.world.IBlockAccess;
  */
 public interface IOrientableBlock
 {
-	
+
+	/**
+	 * @return if this block uses metadata to store its rotation.
+	 */
+	boolean usesMetadata();
+
 	/**
 	 * @param world
 	 * @param x
@@ -16,5 +21,5 @@ public interface IOrientableBlock
 	 * @return a IOrientable if applicable
 	 */
 	IOrientable getOrientable(IBlockAccess world, int x, int y, int z);
-	
+
 }

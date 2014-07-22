@@ -4,7 +4,7 @@ import net.minecraft.inventory.IInventory;
 import appeng.api.networking.IGridHost;
 
 /**
- * Obtained via {@link appeng.api.implementations.guiobjects.IGuiItem} getGuiObject
+ * Obtained via {@link IGuiItem} getGuiObject
  */
 public interface INetworkTool extends IInventory, IGuiItemObject
 {

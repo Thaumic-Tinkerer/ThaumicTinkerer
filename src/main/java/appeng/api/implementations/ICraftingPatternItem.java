@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import appeng.api.crafting.ICraftingPatternMAC;
 
 /**
- * Implemented on {@link net.minecraft.item.Item}
+ * Implemented on {@link Item}
  */
 public interface ICraftingPatternItem
 {

@@ -4,6 +4,8 @@ import java.util.EnumSet;
 
 import net.minecraft.item.ItemStack;
 import appeng.api.config.SecurityPermissions;
+import appeng.api.features.IPlayerRegistry;
+import appeng.api.networking.security.ISecurityRegister;
 
 public interface IBiometricCard
 {
@@ -47,5 +49,14 @@ public interface IBiometricCard
 	 * @param permission
 	 */
 	void addPermission(ItemStack itemStack, SecurityPermissions permission);
+
+	/**
+	 * lets you handle submission of security values on the card for custom behavior.
+	 * 
+	 * @param register
+	 * @param pr
+	 * @param is
+	 */
+	void registerPermissions(ISecurityRegister register, IPlayerRegistry pr, ItemStack is);
 
 }
