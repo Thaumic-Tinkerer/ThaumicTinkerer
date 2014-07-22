@@ -27,7 +27,7 @@ public enum EnumMobAspect {
 	SnowMan(EntitySnowman.class, new Aspect[]{ Aspect.WATER, Aspect.WATER, Aspect.MAN }),
 	Bat(EntityBat.class, new Aspect[]{ Aspect.AIR, Aspect.AIR, Aspect.FLIGHT }, 1.9f, -0.3f),
     Blaze(EntityBlaze.class, new Aspect[]{Aspect.FIRE, Aspect.FIRE, Aspect.FIRE}),
-    BrainyZombie(EntityBrainyZombie.class, new Aspect[]{ Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH }),
+    BrainyZombie(EntityBrainyZombie.class, new Aspect[]{ Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH }, "Thaumcraft."),
 	Firebat(EntityFireBat.class, new Aspect[]{ Aspect.FLIGHT, Aspect.FIRE, Aspect.MAGIC }, 1.9f, -0.3f),
 	CaveSpider(EntityCaveSpider.class, new Aspect[]{ Aspect.BEAST, Aspect.POISON, Aspect.POISON }),
 	Chicken(EntityChicken.class, new Aspect[]{ Aspect.CROP, Aspect.FLIGHT, Aspect.BEAST }),
@@ -58,7 +58,7 @@ public enum EnumMobAspect {
 	},
 	Spider(EntitySpider.class, new Aspect[]{ Aspect.BEAST, Aspect.UNDEAD, Aspect.UNDEAD }),
 	Squid(EntitySquid.class, new Aspect[]{ Aspect.WATER, Aspect.WATER, Aspect.WATER }, 0.3f, 0.5f),
-	Wisp(EntityWisp.class, new Aspect[]{ Aspect.AIR, Aspect.MAGIC, Aspect.MAGIC }),
+	Wisp(EntityWisp.class, new Aspect[]{ Aspect.AIR, Aspect.MAGIC, Aspect.MAGIC }, "Thaumcraft."),
 	Witch(EntityWitch.class, new Aspect[]{ Aspect.MAGIC, Aspect.UNDEAD, Aspect.ELDRITCH }, 0.35f, 0.0f),
 	Wolf(EntityWolf.class, new Aspect[]{ Aspect.BEAST, Aspect.BEAST, Aspect.BEAST }),
 	Zombie(EntityZombie.class, new Aspect[]{ Aspect.FLESH, Aspect.FLESH, Aspect.UNDEAD });
@@ -82,11 +82,14 @@ public enum EnumMobAspect {
 		return entity;
 	}
 
+
+
 	public static Map<EnumMobAspect, Entity> entityCache = Maps.newHashMap();
 	public Aspect[] aspects;
 	public Class entity;
 	private float scale;
 	private float offset;
+    public String prefix;
 
 	EnumMobAspect(Class entity, Aspect[] aspects, float scale, float offset) {
 		this.aspects = aspects;
@@ -94,6 +97,11 @@ public enum EnumMobAspect {
 		this.scale = scale;
 		this.offset = offset;
 	}
+
+    EnumMobAspect(Class entity, Aspect[] aspects, float scale, float offset, String prefix) {
+        this(entity, aspects, scale, offset);
+        this.prefix=prefix;
+    }
 
 	public float getVerticalOffset() {
 		return offset;
@@ -109,6 +117,11 @@ public enum EnumMobAspect {
 		this.scale = 1.1f;
 		this.offset = 0.0f;
 	}
+
+    EnumMobAspect(Class entity, Aspect[] aspects, String prefix) {
+        this(entity, aspects);
+        this.prefix=prefix;
+    }
 
 	public Class getEntityClass() {
 		return entity;
@@ -159,4 +172,8 @@ public enum EnumMobAspect {
 		return new ResearchPage(recepie);
 	}
 
+    @Override
+    public String toString() {
+        return prefix+super.toString();
+    }
 }
