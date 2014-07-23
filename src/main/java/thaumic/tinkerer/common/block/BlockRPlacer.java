@@ -91,7 +91,7 @@ public class BlockRPlacer extends  BlockCamo implements IWandable{
 
     @Override
     public boolean shouldRegister() {
-        return true;
+        return false;
     }
 
     @Override
