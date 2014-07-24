@@ -55,9 +55,9 @@ group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.2-10.12.2.1147"
+    version = "1.7.10-10.13.0.1187"
     //minecraftVersion="1.7.2"
-    assetDir = "eclipse/assets"
+    runDir = "eclipse"
     replace '${version}', project.version
     //coreMod("tconstruct.preloader.TConstructLoaderContainer")
     if (project.hasProperty("pass"))
@@ -79,8 +79,8 @@ dependencies {
     compile files(
             'TCDEOBF.jar'
     )
-    compile "mantle:Mantle:1.7.2-145.3a637c2:deobf"
-    compile("tconstruct:TConstruct:1.7.2-1.6.0.jenkins494:deobf") {
+    compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
+    compile("tconstruct:TConstruct:1.7.10-1.6.0.jenkins541:deobf") {
         exclude module: 'CodeChickenCore'
         exclude module: 'Waila'
         exclude module: 'NotEnoughItems'
