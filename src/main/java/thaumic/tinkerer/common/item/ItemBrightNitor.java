@@ -71,7 +71,7 @@ public class ItemBrightNitor extends ItemBase {
 
 	public static void setBlock(int x, int y, int z, World world) {
 		if ((world.getBlock(x, y, z) == Blocks.air || world.getBlock(x, y, z) == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockNitorGas.class)) && !world.isRemote)
-			world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockMobilizer.class), meta, 2);
+			world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockNitorGas.class), meta, 2);
 	}
 
 	@Override
