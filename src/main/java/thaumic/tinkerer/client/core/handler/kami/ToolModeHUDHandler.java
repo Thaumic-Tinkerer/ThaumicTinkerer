@@ -38,7 +38,7 @@ public final class ToolModeHUDHandler {
 	public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
 		if (event.type == ElementType.ALL && tooltipDisplayTicks > 0 && !MathHelper.stringNullOrLengthZero(currentTooltip)) {
 			Minecraft mc = Minecraft.getMinecraft();
-			ScaledResolution var5 = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+			ScaledResolution var5 = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 			int var6 = var5.getScaledWidth();
 			int var7 = var5.getScaledHeight();
 			FontRenderer var8 = mc.fontRenderer;

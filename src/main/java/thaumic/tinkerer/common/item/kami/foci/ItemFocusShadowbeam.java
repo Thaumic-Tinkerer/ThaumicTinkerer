@@ -17,7 +17,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.client.fx.FXSparkle;
+import thaumcraft.client.fx.particles.FXSparkle;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;

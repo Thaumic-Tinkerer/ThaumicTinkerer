@@ -21,12 +21,14 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 import thaumcraft.common.lib.FakeThaumcraftPlayer;
 
+import java.util.UUID;
+
 public class TabletFakePlayer extends FakeThaumcraftPlayer {
 
 	TileAnimationTablet tablet;
 
 	public TabletFakePlayer(TileAnimationTablet tablet) { //,String name) {
-		super(tablet.getWorldObj(), new GameProfile("", "[ThaumcraftTablet]"));
+		super(tablet.getWorldObj(), new GameProfile(UUID.fromString("a8f026a0-135b-11e4-9191-0800200c9a66"), "[ThaumcraftTablet]"));
 		//super(tablet.getWorldObj(),"[ThaumcraftTablet]");
 		this.tablet = tablet;
 	}

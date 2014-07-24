@@ -62,7 +62,7 @@ public class GuiWarpGateDestinations extends GuiScreen {
 	public void updateScreen() {
 		++ticks;
 
-		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+		ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 		int i = res.getScaledWidth();
 		int j = res.getScaledHeight();
 		int mx = Mouse.getX() * i / mc.displayWidth;
