@@ -79,7 +79,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable, ITTinkerer
 
 	@Override
 	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
-		return stack.stackTagCompound.getInteger("Activated") == 1 ? activeIcon : itemIcon;
+		return (stack.stackTagCompound != null && stack.stackTagCompound.getInteger("Activated") == 1) ? activeIcon : itemIcon;
 	}
 
 	@Override

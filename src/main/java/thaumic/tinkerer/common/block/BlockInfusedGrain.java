@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by pixlepix on 4/14/14.
  */
-public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
+public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
 	Aspect aspect;
 
@@ -56,7 +56,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     public void registerBlockIcons(IIconRegister par1IconRegister) {
         icons = new IIcon[4];
         for(int i=0; i<4; i++) {
-            icons[i] = IconHelper.forName(par1IconRegister, "crop_"+aspect.getName()+"_" + i);
+            icons[i] = IconHelper.forName(par1IconRegister, "crop_"+aspect.getName().toLowerCase()+"_" + i);
         }
     }
 
