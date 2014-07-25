@@ -9,10 +9,12 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
 import thaumic.tinkerer.common.lib.LibBlockNames;
@@ -27,11 +29,8 @@ import java.util.ArrayList;
  */
 public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
-	Aspect aspect;
-
 	public BlockInfusedGrain(Aspect aspect) {
 		super();
-		this.aspect = aspect;
 	}
 
 	public BlockInfusedGrain() {
@@ -39,7 +38,14 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 	}
 
 	//Code based off vanilla potato code
-	@Override
+
+
+    @Override
+    public IIcon getIcon(IBlockAccess world, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_) {
+        return super.getIcon(world, p_149673_2_, p_149673_3_, p_149673_4_, p_149673_5_);
+    }
+
+    @Override
 	public IIcon getIcon(int side, int meta) {
 		if (meta < 7) {
 			if (meta == 6) {
@@ -51,13 +57,17 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		}
 	}
 
-    private IIcon[] icons;
+    private IIcon[][] icons;
 
     @Override
     public void registerBlockIcons(IIconRegister par1IconRegister) {
-        icons = new IIcon[4];
-        for(int i=0; i<4; i++) {
-            icons[i] = IconHelper.forName(par1IconRegister, "crop_"+aspect.getName().toLowerCase()+"_" + i);
+        icons = new IIcon[7][4];
+        String[] names = {"aer", "ignis", "aqua", "terra", "ordo", "perditio", "generic"};
+        for(int j = 0; j<names.length; j++) {
+            String s = names[j];
+            for (int i = 0; i < 4; i++) {
+                icons[j][i] = IconHelper.forName(par1IconRegister, "crop_" + s + "_" + i);
+            }
         }
     }
 
@@ -110,25 +120,12 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
 	@Override
 	public ArrayList<Object> getSpecialParameters() {
-		ArrayList<Object> result = new ArrayList<Object>();
-		result.add(Aspect.WATER);
-		result.add(Aspect.AIR);
-		result.add(Aspect.EARTH);
-		return result;
+		return null;
 	}
 
 	@Override
 	public String getBlockName() {
-		if (aspect == Aspect.AIR) {
-			return LibBlockNames.INFUSED_GRAIN_AIR;
-		}
-		if (aspect == Aspect.EARTH) {
-			return LibBlockNames.INFUSED_GRAIN_EARTH;
-		}
-		if (aspect == Aspect.WATER) {
-			return LibBlockNames.INFUSED_GRAIN_WATER;
-		}
-		return LibBlockNames.INFUSED_GRAIN_FIRE;
+		return LibBlockNames.INFUSED_GRAIN_BASE;
 	}
 
 	@Override
@@ -160,4 +157,10 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return null;
 	}
+
+    public Aspect getAspect(IBlockAccess world, int x, int y, int z){
+        return ((TileInfusedGrain)world.getTileEntity(x, y, z)).aspect;
+    }
+
+
 }
