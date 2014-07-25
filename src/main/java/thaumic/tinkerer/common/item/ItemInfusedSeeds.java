@@ -76,11 +76,16 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 
     @Override
     public void registerIcons(IIconRegister par1IconRegister) {
-        icons = new IIcon[4];
+        icons = new IIcon[7];
         icons[0] = IconHelper.forName(par1IconRegister, "seed_aer");
         icons[1] = IconHelper.forName(par1IconRegister, "seed_ignis");
         icons[2] = IconHelper.forName(par1IconRegister, "seed_terra");
         icons[3] = IconHelper.forName(par1IconRegister, "seed_aqua");
+
+        icons[4] = IconHelper.forName(par1IconRegister, "seed_ordo");
+        icons[5] = IconHelper.forName(par1IconRegister, "seed_perditio");
+
+        icons[6] = IconHelper.forName(par1IconRegister, "seed_complex");
     }
 
     @Override
@@ -122,7 +127,12 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 
 				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 2, new ItemStack(this, 1, 2), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3)),
 
-				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 3, new ItemStack(this, 1, 3), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2))
+				new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 3, new ItemStack(this, 1, 3), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2)),
+
+
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 4, new ItemStack(this, 1, 4), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4)),
+
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 5, new ItemStack(this, 1, 5), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5))
 		);
 	}
 
@@ -130,7 +140,10 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 		AIR(Aspect.AIR),
 		FIRE(Aspect.FIRE),
 		EARTH(Aspect.EARTH),
-		WATER(Aspect.WATER);
+		WATER(Aspect.WATER),
+        ORDER(Aspect.ORDER),
+        CHAOS(Aspect.ENTROPY);
+
 		Aspect aspect;
 
 		PRIMAL_ASPECT_ENUM(Aspect a) {
