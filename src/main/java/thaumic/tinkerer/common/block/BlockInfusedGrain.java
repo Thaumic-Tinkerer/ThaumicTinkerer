@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.item.ItemInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
@@ -82,7 +83,7 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 	}
 
 	protected Item func_149865_P() {
-		return Items.wheat;
+		return ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class);
 	}
 
 	@Override
