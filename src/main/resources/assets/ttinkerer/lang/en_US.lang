@@ -53,7 +53,7 @@ ttmisc.mode.axe.0=Block Mode
 ttmisc.mode.axe.1=Square Mode
 ttmisc.mode.axe.2=Tree Mode
 ttmisc.mode.sword.0=Single Mode
-ttmisc.mode.sword.1=Area Modeaer
+ttmisc.mode.sword.1=Area Modea
 ttmisc.mode.sword.2=Soul Mode
 ttmisc.experience=Experience
 ttmisc.light0=Light Enabled
@@ -617,7 +617,7 @@ ttresearch.page.FIRE_PERDITIO.0=This fire acts like an antidote of sorts. If you
 ttresearch.name.INFUSED_POTIONS=Infused Potions
 ttresearch.lore.INFUSED_POTIONS=Whats this? I don't know . . .better drink itt
 ttresearch.page.INFUSED_POTIONS.0=You are able to create a new form of plant by infusing mundane seeds with magical shards. These seeds have several magical properties, most importantly they make several powerful potions.
-ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <br> Fire infused potions trap your enemies in a sphere of fire. <br> Air infused potions send your enemies up in the air. <br> Water infused potions chill surrounding lava.
+ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <BR> Fire infused potions trap your enemies in a sphere of fire. <BR> Air infused potions send your enemies up in the air. <BR> Water infused potions chill surrounding lava.
 
 # -- WAILA
 ttwaila.nothing=Nothing
