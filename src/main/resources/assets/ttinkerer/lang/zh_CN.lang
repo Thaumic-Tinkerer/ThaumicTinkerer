@@ -100,6 +100,12 @@ item.shareBook.name=知识共享之书
 item.mobAspect.name=灵魂要素
 item.mobAspect.condensed.name=稠密灵魂要素
 item.mobAspect.infused.name=注魔灵魂要素
+item.infusedSeeds.name=渗透种子
+item.infusedPotion.Aer.name=风元剂
+item.infusedPotion.Ignis.name=火元剂
+item.infusedPotion.Terra.name=地元剂
+item.infusedPotion.Aqua.name=水元剂
+item.infusedGrain.name=浸染谷物
 
 # KAMI ITEM NAMES
 item.kamiResource.name=神道资源
@@ -142,6 +148,7 @@ tile.darkQuartz.name=烟黑石英块
 tile.darkQuartzChiseled.name=雕琢烟黑石英块
 tile.darkQuartzPillar.name=柱状烟黑石英块
 tile.darkQuartzSlab.name=烟黑石英台阶
+tile.darkQuartzSlabFull.name=烟黑石英台阶
 tile.darkQuartzStairs.name=烟黑石英楼梯
 tile.interface.name=矢量变换接口
 tile.animationTablet.name=活化工具台
@@ -158,6 +165,22 @@ tile.bedrockPortal.name=基岩传送门
 tile.Levitational Locomotive.name=悬浮平台
 tile.Levitational Locomotive Relay.name=悬浮平台中继
 tile.golemConnector.name=傀儡连接器
+tile.remotePlacer.name=遥望者
+tile.forcefield.name=力之领域
+
+
+# Fire
+tile.fireWater.name=极寒之焰
+
+tile.fireOrder.name=秩序之焰
+
+tile.fireChaos.name=混沌之焰
+
+tile.fireFire.name=炼狱之焰
+
+tile.fireEarth.name=大地之焰
+
+tile.fireAir.name=鬼风之焰
 
 # KAMI BLOCK NAMES
 tile.warpGate.name=仙域之门
