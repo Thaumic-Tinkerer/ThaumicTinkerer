@@ -320,7 +320,7 @@ ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidia
 # -- TALISMAN OF WITHHOLD
 ttresearch.name.XP_TALISMAN=Talisman of Withhold
 ttresearch.lore.XP_TALISMAN=I'll take your 'time'
-ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting.
+ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting. It must be worn in your amulet slot to take effect.
 
 # -- ESSENTIA FUNNEL
 ttresearch.name.FUNNEL=Essentia Funnel
@@ -518,7 +518,7 @@ ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorclo
 # -- FELINE AMULET
 ttresearch.name.CAT_AMULET=Feline Amulet
 ttresearch.lore.CAT_AMULET=No fighting with cats in the cafeteria
-ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great.
+ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great. It must be worn in your amulet slot to take effect.
 
 # -- ICHORIUM TOOLS
 ttresearch.name.ICHOR_TOOLS=Ichorium Tools
