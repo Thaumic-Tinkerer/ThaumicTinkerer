@@ -69,14 +69,7 @@ public class TTRegistry {
 					newBlock.setBlockName(((ITTinkererBlock) newBlock).getBlockName());
 					ArrayList<Block> blockList = new ArrayList<Block>();
 					blockList.add(newBlock);
-					if (((ITTinkererBlock) newBlock).getItemBlock() != null) {
-						Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().getConstructor(Block.class).newInstance(newBlock);
-						newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
-						ArrayList<Item> itemList = new ArrayList<Item>();
-						itemList.add(newItem);
-						itemRegistry.put(((ITTinkererBlock) newBlock).getItemBlock(), itemList);
 
-					}
 					if (newBlock == null) {
 						System.out.println(clazz.getName() + " Returned a null block upon registration");
 						continue;
@@ -96,6 +89,15 @@ public class TTRegistry {
 						}
 					}
 					blockRegistry.put(clazz, blockList);
+
+                    if (((ITTinkererBlock) newBlock).getItemBlock() != null) {
+                        Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().getConstructor(Block.class).newInstance(newBlock);
+                        newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
+                        ArrayList<Item> itemList = new ArrayList<Item>();
+                        itemList.add(newItem);
+                        itemRegistry.put(((ITTinkererBlock) newBlock).getItemBlock(), itemList);
+
+                    }
 				}
 			} catch (InstantiationException e) {
 				e.printStackTrace();

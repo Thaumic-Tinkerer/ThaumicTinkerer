@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
+import thaumic.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;

@@ -26,6 +26,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
+import thaumic.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
+import thaumic.tinkerer.common.item.quartz.ItemDarkQuartzSlab;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
@@ -112,7 +114,7 @@ public class BlockDarkQuartzSlab extends BlockSlab implements ITTinkererBlock {
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
+		return ItemDarkQuartzSlab.class;
 	}
 
 	@Override
