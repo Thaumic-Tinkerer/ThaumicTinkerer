@@ -29,6 +29,7 @@ import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.BlockMod;
 import thaumic.tinkerer.common.item.quartz.ItemDarkQuartz;
+import thaumic.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ThaumicTinkererCraftingBenchRecipe;
@@ -153,7 +154,7 @@ public class BlockDarkQuartz extends BlockMod {
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
+		return ItemDarkQuartzBlock.class;
 	}
 
 	@Override

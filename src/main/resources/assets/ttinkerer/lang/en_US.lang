@@ -53,7 +53,7 @@ ttmisc.mode.axe.0=Block Mode
 ttmisc.mode.axe.1=Square Mode
 ttmisc.mode.axe.2=Tree Mode
 ttmisc.mode.sword.0=Single Mode
-ttmisc.mode.sword.1=Area Modeaer
+ttmisc.mode.sword.1=Area Modea
 ttmisc.mode.sword.2=Soul Mode
 ttmisc.experience=Experience
 ttmisc.light0=Light Enabled
@@ -292,7 +292,7 @@ ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the bl
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
-ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled.
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
 
 # -- HYPERENERGETIC NITOR
 ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor
@@ -320,7 +320,7 @@ ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidia
 # -- TALISMAN OF WITHHOLD
 ttresearch.name.XP_TALISMAN=Talisman of Withhold
 ttresearch.lore.XP_TALISMAN=I'll take your 'time'
-ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting.
+ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting. It must be worn in your amulet slot to take effect.
 
 # -- ESSENTIA FUNNEL
 ttresearch.name.FUNNEL=Essentia Funnel
@@ -518,7 +518,7 @@ ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorclo
 # -- FELINE AMULET
 ttresearch.name.CAT_AMULET=Feline Amulet
 ttresearch.lore.CAT_AMULET=No fighting with cats in the cafeteria
-ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great.
+ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great. It must be worn in your amulet slot to take effect.
 
 # -- ICHORIUM TOOLS
 ttresearch.name.ICHOR_TOOLS=Ichorium Tools
@@ -617,7 +617,7 @@ ttresearch.page.FIRE_PERDITIO.0=This fire acts like an antidote of sorts. If you
 ttresearch.name.INFUSED_POTIONS=Infused Potions
 ttresearch.lore.INFUSED_POTIONS=Whats this? I don't know . . .better drink itt
 ttresearch.page.INFUSED_POTIONS.0=You are able to create a new form of plant by infusing mundane seeds with magical shards. These seeds have several magical properties, most importantly they make several powerful potions.
-ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <br> Fire infused potions trap your enemies in a sphere of fire. <br> Air infused potions send your enemies up in the air. <br> Water infused potions chill surrounding lava.
+ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <BR> Fire infused potions trap your enemies in a sphere of fire. <BR> Air infused potions send your enemies up in the air. <BR> Water infused potions chill surrounding lava.
 
 # -- WAILA
 ttwaila.nothing=Nothing

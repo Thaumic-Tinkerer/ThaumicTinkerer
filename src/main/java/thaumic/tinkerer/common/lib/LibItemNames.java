@@ -17,6 +17,7 @@ package thaumic.tinkerer.common.lib;
 public final class LibItemNames {
 
 	public static final String DARK_QUARTZ = "darkQuartzItem";
+
 	public static final String CONNECTOR = "connector";
 	public static final String GASEOUS_LIGHT = "gaseousLightItem";
 	public static final String GASEOUS_SHADOW = "gaseousShadowItem";

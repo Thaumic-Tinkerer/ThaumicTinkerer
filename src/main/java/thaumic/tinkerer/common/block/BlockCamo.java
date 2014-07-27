@@ -68,14 +68,11 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 			TileCamo camo = (TileCamo) tile;
 			ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
-			if (currentStack == null)
-				currentStack = new ItemStack(Blocks.air, 1, 0);
-
 			boolean doChange = true;
 			Block block = null;
 			checkChange:
 			{
-				if (currentStack.getItem() != Item.getItemFromBlock(Blocks.air)) {
+				if (currentStack != null) {
 					if (Item.getIdFromItem(currentStack.getItem()) == 0) {
 						doChange = false;
 						break checkChange;
@@ -88,7 +85,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 			}
 
 			if (doChange) {
-				int metadata = currentStack.getItemDamage();
+				int metadata = currentStack == null ? 0 :currentStack.getItemDamage();
 				if (block instanceof BlockDirectional) {
 					switch (par6) {
 						case 0:
@@ -108,7 +105,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 							break;
 					}
 				}
-				camo.camo = Block.getBlockFromItem(currentStack.getItem());
+				camo.camo = currentStack == null ? Blocks.air : Block.getBlockFromItem(currentStack.getItem());
 				camo.camoMeta = metadata;
 				par1World.markBlockForUpdate(par2, par3, par4);
 
