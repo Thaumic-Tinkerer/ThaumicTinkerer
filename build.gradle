@@ -107,3 +107,7 @@ jar {
         attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'dev'
+}
