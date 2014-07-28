@@ -2,6 +2,7 @@ package thaumic.tinkerer.common.block.tile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.tiles.TilePedestal;
@@ -63,6 +64,9 @@ public class TileSummon extends TileEntity {
                                     if (!worldObj.isRemote) {
                                         Entity spawn = EntityList.createEntityByName(recipe.toString(), worldObj);
                                         spawn.setLocationAndAngles(xCoord + .5, yCoord + 1, zCoord + .5, 0, 0);
+                                        if (spawn instanceof EntitySkeleton && worldObj.provider.isHellWorld) {
+                                            ((EntitySkeleton) spawn).setSkeletonType(1);
+                                        }
                                         worldObj.spawnEntityInWorld(spawn);
                                     }
 
