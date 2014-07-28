@@ -150,17 +150,17 @@ tile.darkQuartzSlab.name=烟黑石英台阶
 tile.forcefield.name=力场
 
 # Fire
-tile.fireWater.name=凛冰之焰
+tile.fireWater.name=坎水之焰
 
-tile.fireOrder.name=炼造之焰
+tile.fireOrder.name=秩序之焰
 
-tile.fireChaos.name=解构之焰
+tile.fireChaos.name=混沌之焰
 
-tile.fireFire.name=狱火之焰
+tile.fireFire.name=离火之焰
 
-tile.fireEarth.name=化土之焰
+tile.fireEarth.name=坤地之焰
 
-tile.fireAir.name=漠风之焰
+tile.fireAir.name=巽风之焰
 
 
 tile.darkQuartzSlabFull.name=烟黑石英台阶
@@ -590,34 +590,34 @@ ttresearch.lore.FOCUS_RECALL=炉石居处即家园
 ttresearch.page.FOCUS_RECALL.0=使用仙域之门传送固然很好,但你决心更进一步,制作一种用于传送的核心,让你无论身处何地都能进行传送.<BR><BR>如事先将绑定好后的仙域珍珠放入施法者的快捷栏内,经过短暂的吟唱后,就能够将施法者传送到绑定位置,犹如踏入仙域之门一般.当然,传送是以消耗魔力为代价的.
 
 # -- FIRE
-ttresearch.name.FIRE_IGNIS=元素火焰:火
-ttresearch.lore.FIRE_IGNIS=向火丽里注入.....更多的火!
+ttresearch.name.FIRE_IGNIS=元素之焰:离火
+ttresearch.lore.FIRE_IGNIS=往火里注入.....更多的火!
 ttresearch.page.FIRE_IGNIS.0=你想方设法增强超能闪耀之光的破坏力.当你在地上点燃这种火,它就会将所烧的方块转变为在下界等价的形式.
 
-ttresearch.name.FIRE_AQUA=元素火焰:水
-ttresearch.lore.FIRE_AQUA=火里加入水.这不是应该灭了么.
-ttresearch.page.FIRE_AQUA.0=你已能完全逆转火焰的破坏力.这种火,若在下界燃烧,会将那里变为你的私人冬季乐园.
+ttresearch.name.FIRE_AQUA=元素之焰:坎水
+ttresearch.lore.FIRE_AQUA=火上浇水,该熄了吧
+ttresearch.page.FIRE_AQUA.0=你已能完全逆转火焰的破坏力.这种火,若在下界燃烧,会将那里变为你的私家冬季乐园.
 
-ttresearch.name.FIRE_AER=元素火焰:风
-ttresearch.lore.FIRE_AER=欺骗自己也是个有用的新技能
+ttresearch.name.FIRE_AER=元素之焰:巽风
+ttresearch.lore.FIRE_AER=姑妄信之也是蛮有用的技能
 ttresearch.page.FIRE_AER.0=不是说所有的人都喜欢甜点(desserts)么?那么这种火焰,在燃烧时会将一切变为沙漠(desert).听起来就像是甜点.不是很棒么?
 
-ttresearch.name.FIRE_TERRA=元素火焰:地
-ttresearch.lore.FIRE_TERRA=穷得...只剩下泥土了
-ttresearch.page.FIRE_TERRA.0=这种火焰会将大范围内的方块变为泥土——有史以来最没用的东西.更糟的是.这可能也是有史以来最没用的物品.
+ttresearch.name.FIRE_TERRA=元素之焰:坤地
+ttresearch.lore.FIRE_TERRA=做天底下用泥土能做的玩意儿该都够用了
+ttresearch.page.FIRE_TERRA.0=这种火焰能够将大范围内的方块化为泥土-这种有史以来最没用的玩意儿.是的,我是认真的,就是这种有史以来最没用的玩意儿.
 
-ttresearch.name.FIRE_ORDO=元素火焰:秩序
+ttresearch.name.FIRE_ORDO=元素之焰:秩序
 ttresearch.lore.FIRE_ORDO=从矿物冶炼出更多金属锭
-ttresearch.page.FIRE_ORDO.0=这种火焰在成堆的矿物上燃烧时,会帮你将这些矿物冶炼为有用的金属块.尽管大部分矿物会在这种不稳定的火焰中燃烧殆尽,最终你还是能得到三倍于平常冶炼产量的金属.
+ttresearch.page.FIRE_ORDO.0=这种火焰在成堆的矿物上燃烧时,会帮你将这些矿物冶炼为有用的金属块.尽管多数矿物会在这种不稳定的火焰中燃烧殆尽,但最终你还是能获得三倍于正常冶炼产量的金属.
 
 ttresearch.name.FIRE_PERDITIO=元素火焰:混沌
-ttresearch.lore.FIRE_PERDITIO=清理时间到
-ttresearch.page.FIRE_PERDITIO.0=相对于其他火焰来说它就像是解药.如果你的元素火焰失控了,你可以释放这个特别设计的火焰.它会从元素火焰中移除魔力并将它们变为普通的火焰.
+ttresearch.lore.FIRE_PERDITIO=大扫荡时间到
+ttresearch.page.FIRE_PERDITIO.0=某种宛如解药的火焰.你可以释放这个特别设计的火焰对付失控的元素火焰.它能够祛除元素火焰中的魔力将它们转变为普通火焰.
 
 ttresearch.name.INFUSED_POTIONS=蕴魔药水
-ttresearch.lore.INFUSED_POTIONS=这是什么?我不知道. . .喝一口试试看
-ttresearch.page.INFUSED_POTIONS.0=通过向普通的种子注入元素碎片的力量你就能造出种新的植物.这些种子有些神奇的能力,最重要的是能用来制作一些强力的药水.
-ttresearch.page.INFUSED_POTIONS.1=地元药水会在攻击你的怪物前召唤出障碍物.<BR>火元药水会让你的敌人被包围在火球中灼烧. <BR>风元药水会将你的敌人送上天. <BR>水元药水则会冷却邻近的岩浆.
+ttresearch.lore.INFUSED_POTIONS=这啥?我不知道. . .嘬一口试试看
+ttresearch.page.INFUSED_POTIONS.0=通过往普通种子注入魔力碎片的力量,你就能制造出全新种类的植物.这些种子具有许多神奇的能力,其中最重要的莫过于它们能够用来制作一系列强力的药水.
+ttresearch.page.INFUSED_POTIONS.1=地元药水会在攻击你的怪物和你之间召唤出障碍物.<BR>火元药水会让你的敌人被包围在火球中灼烧. <BR>风元药水会将你的敌人送上天. <BR>水元药水则会凝固邻近的岩浆.
 
 # -- WAILA
 ttwaila.nothing=空无一物
