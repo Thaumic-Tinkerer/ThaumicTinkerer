@@ -22,6 +22,9 @@ public class TileSummon extends TileEntity {
     public void updateEntity() {
 
         if (worldObj.getTotalWorldTime() % 300 == 0) {
+            if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
+                return;
+            }
             ArrayList<TileEntity> pedestals = new ArrayList<TileEntity>();
             for (int x = xCoord - 5; x < xCoord + 5; x++) {
                 for (int z = zCoord - 5; z < zCoord + 5; z++) {
