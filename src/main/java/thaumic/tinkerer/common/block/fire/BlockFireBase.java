@@ -390,7 +390,7 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.icons = new IIcon[]{ IconHelper.forName(iconRegister, this.unlocalizedName + "_layer_0"), IconHelper.forName(iconRegister, this.unlocalizedName + "_layer_1") };
+        this.icons = new IIcon[]{IconHelper.forName(iconRegister, this.getUnlocalizedName() + "_layer_0"), IconHelper.forName(iconRegister, this.getUnlocalizedName() + "_layer_1")};
 
 		String s = "";
 		if (this instanceof BlockFireAir) {
