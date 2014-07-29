@@ -174,6 +174,6 @@ public enum EnumMobAspect {
 
     @Override
     public String toString() {
-        return prefix+super.toString();
+        return prefix == null ? super.toString() : prefix + super.toString();
     }
 }
