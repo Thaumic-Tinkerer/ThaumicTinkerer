@@ -65,8 +65,12 @@ public final class EnchantmentManager {
 		registerExponentialCostData(Enchantment.flame, LibResources.ENCHANT_FLAME, true, new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.FIRE, 20).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Enchantment.infinity, LibResources.ENCHANT_INFINITY, true, new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.ORDER, 40).add(Aspect.EARTH, 10));
 
-		registerExponentialCostData(Config.enchPotency, LibResources.ENCHANT_POTENCY, true, new AspectList().add(Aspect.ORDER, 15));
-		registerExponentialCostData(Config.enchFrugal, LibResources.ENCHANT_FRUGAL, true, new AspectList().add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 10));
+        registerExponentialCostData(Enchantment.field_151369_A, LibResources.ENCHANT_LURE, true, new AspectList().add(Aspect.WATER, 20).add(Aspect.BEAST, 20));
+        registerExponentialCostData(Enchantment.field_151370_z, LibResources.ENCHANT_LUCK_OF_THE_SEA, true, new AspectList().add(Aspect.ENTROPY, 20).add(Aspect.WATER, 20));
+
+
+        registerExponentialCostData(Config.enchPotency, LibResources.ENCHANT_POTENCY, true, new AspectList().add(Aspect.ORDER, 15));
+        registerExponentialCostData(Config.enchFrugal, LibResources.ENCHANT_FRUGAL, true, new AspectList().add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ENTROPY, 10));
 		registerExponentialCostData(Config.enchWandFortune, LibResources.ENCHANT_TREASURE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15));
 		registerExponentialCostData(Config.enchHaste, LibResources.ENCHANT_HASTE, true, new AspectList().add(Aspect.AIR, 10).add(Aspect.ENTROPY, 5).add(Aspect.EARTH, 5));
 		registerExponentialCostData(Config.enchRepair, LibResources.ENCHANT_REPAIR, true, new AspectList().add(Aspect.WATER, 20).add(Aspect.FIRE, 20).add(Aspect.EARTH, 20).add(Aspect.AIR, 20).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 5));
