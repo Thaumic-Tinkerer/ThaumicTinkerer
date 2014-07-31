@@ -3,7 +3,7 @@ package cofh.api.energy;
 /**
  * An energy storage is the unit of interaction with Energy inventories.
  * 
- * A reference implementation can be found at {@link EnergyStorage}.
+ * A reference implementation can be found at {@link cofh.api.energy.EnergyStorage}.
  * 
  * @author King Lemming
  * 

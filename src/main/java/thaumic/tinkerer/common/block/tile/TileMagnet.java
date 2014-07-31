@@ -15,6 +15,7 @@
 package thaumic.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -48,6 +49,7 @@ public class TileMagnet extends TileEntity implements IPeripheral, IMovableTile,
 			redstone = Math.max(redstone, worldObj.getIndirectPowerLevelTo(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir.ordinal()));
 
 		if (redstone > 0) {
+            System.out.println("Side: "+ FMLCommonHandler.instance().getEffectiveSide().toString()+"Pulling");
 			double x1 = xCoord + 0.5;
 			double y1 = yCoord + 0.5;
 			double z1 = zCoord + 0.5;
