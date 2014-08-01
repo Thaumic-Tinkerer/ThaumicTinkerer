@@ -502,18 +502,18 @@ ttresearch.page.ICHORCLOTH_HELM_GEM.0=你研究出一种方法,能够改造灵�
 # -- ROBES OF THE STRATOSPHERE
 ttresearch.name.ICHORCLOTH_CHEST_GEM=云霄塔法袍
 ttresearch.lore.ICHORCLOTH_CHEST_GEM=人们也可以穿穿这个
-ttresearch.page.ICHORCLOTH_CHEST_GEM.0=你研究出一种方法,能够改造灵布法袍,让它变得更加强大.<BR><BR>首先,穿戴上这种法袍会受到飞行能量的护佑,背后生长出燃烧的羽翼,能够让你在短时间内(5分钟内)飞上天任意遨游,并且无视掉落伤害.<BR>不仅如此,类似扭曲法杖核心的威能,穿戴这件法袍后还能抵御箭矢火球等抛射物的袭击.
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=你研究出一种方法,能够改造灵布法袍,让它变得更加强大.<BR><BR>首先,穿戴上这种法袍会受到飞行能量的护佑,背后生长出燃烧的羽翼,能够让你在短时间内(5分钟内)飞上天任意遨游,并且无视掉落伤害.<BR>不仅如此,类似扭曲法杖核心的威能,穿戴这件法袍后还能抵御箭矢火球等抛射物的袭击.U键可以开关它的效果.
 
 # -- LEGGINGS OF THE BURNING MANTLE
 ttresearch.name.ICHORCLOTH_LEGS_GEM=熔岩地幔之护腿
 ttresearch.lore.ICHORCLOTH_LEGS_GEM=暖意
-ttresearch.page.ICHORCLOTH_LEGS_GEM.0=你研究出一种方法,能够改造灵布护腿,让它变得更加强大.<BR><BR>这种护腿被灌入了灵魂的烈焰。<BR>首先,它能散发出亮度犹胜超能闪耀之光的光芒,不但能让穿戴者犹如手持着电筒般视野开阔,还能让他犹如暗夜里的萤火虫般广受瞩目.<BR>其次,这种护腿不但能抵御火焰伤害,还能将其转换为治愈效果.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=你研究出一种方法,能够改造灵布护腿,让它变得更加强大.<BR><BR>这种护腿被灌入了灵魂的烈焰。<BR>首先,它能散发出亮度犹胜超能闪耀之光的光芒,不但能让穿戴者犹如手持着电筒般视野开阔,还能让他犹如暗夜里的萤火虫般广受瞩目.<BR>其次,这种护腿不但能抵御火焰伤害,还能将其转换为治愈效果.U键可以开关它的效果.
 ttresearch.page.ICHORCLOTH_LEGS_GEM.1=如你出于某种原因宁可静默于黑暗,只须拿着护腿按住shift右击即可关闭它的照明功能.
 
 # -- BOOTS OF THE HORIZONTAL SHIELD
 ttresearch.name.ICHORCLOTH_BOOTS_GEM=地平线盾牌之靴
 ttresearch.lore.ICHORCLOTH_BOOTS_GEM=离开临冬城来到君临城亦犹如微风迎面
-ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=你研究出一种方法,能够改造灵布靴子,让它变得更加强大.<BR><BR>类似旅行者之靴，这双靴子也能赋予穿戴者卓绝顺畅的运动能力,让穿戴者更更快,更更高,更更远,让运动变得犹如微风迎面般容易.穿戴者将能直接跨过一格高的台阶,除非处于潜行状态.<BR>穿戴后还自带获得急迫II的buff效果,并且会让走过的泥土发芽变成草地,无视一切掉落伤害.
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=你研究出一种方法,能够改造灵布靴子,让它变得更加强大.<BR><BR>类似旅行者之靴，这双靴子也能赋予穿戴者卓绝顺畅的运动能力,让穿戴者更更快,更更高,更更远,让运动变得犹如微风迎面般容易.穿戴者将能直接跨过一格高的台阶,除非处于潜行状态.<BR>穿戴后还自带获得急迫II的buff效果,并且会让走过的泥土发芽变成草地,无视一切掉落伤害.U键可以开关它的效果.
 
 # -- FELINE AMULET
 ttresearch.name.CAT_AMULET=猫神护身符
