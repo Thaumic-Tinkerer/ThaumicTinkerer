@@ -10,7 +10,7 @@ import java.util.List;
 public class EnderStorageFunctions {
 	public static ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
 		return stack;
-		/*ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
 		if(world.isRemote)
 			return stack;
@@ -58,7 +58,7 @@ public class EnderStorageFunctions {
 			}
 		}
 
-		return stack;*/
+		return stack;
 	}
 
 	private static String getOwner(ItemStack stack) {
