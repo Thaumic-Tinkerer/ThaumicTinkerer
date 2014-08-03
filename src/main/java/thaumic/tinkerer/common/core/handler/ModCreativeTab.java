@@ -14,7 +14,6 @@
  */
 package thaumic.tinkerer.common.core.handler;
 
-import com.sun.javafx.collections.transformation.SortedList;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -32,61 +31,61 @@ import java.util.*;
 
 public class ModCreativeTab extends CreativeTabs {
 
-	public static ModCreativeTab INSTANCE;
-	ItemStack displayItem;
-	List list = new ArrayList();
+    public static ModCreativeTab INSTANCE;
+    ItemStack displayItem;
+    List list = new ArrayList();
 
     //Holds the registered items and blocks before they are sorted
     public ArrayList<ItemStack> creativeTabQueue = new ArrayList<ItemStack>();
 
-	public ModCreativeTab() {
-		super(LibMisc.MOD_ID);
-		addWand();
-	}
+    public ModCreativeTab() {
+        super(LibMisc.MOD_ID);
+        addWand();
+    }
 
-	@Override
-	public ItemStack getIconItemStack() {
+    @Override
+    public ItemStack getIconItemStack() {
 
-		return displayItem;
-	}
+        return displayItem;
+    }
 
-	@Override
-	public Item getTabIconItem() {
+    @Override
+    public Item getTabIconItem() {
 
-		return ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class);
-	}
+        return ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class);
+    }
 
-	@Override
-	public void displayAllReleventItems(List list) {
-		list.addAll(this.list);
+    @Override
+    public void displayAllReleventItems(List list) {
+        list.addAll(this.list);
 
-	}
+    }
 
-	private void addWand() {
-		ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
-		((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
-		((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
-		((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
-		if (list != null)
-			list.add(wand);
-		displayItem = wand;
+    private void addWand() {
+        ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
+        ((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
+        ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
+        ((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.AIR, 10000).add(Aspect.EARTH, 10000).add(Aspect.FIRE, 10000).add(Aspect.WATER, 10000).add(Aspect.ORDER, 10000).add(Aspect.ENTROPY, 10000));
+        if (list != null)
+            list.add(wand);
+        displayItem = wand;
 
-		if (ConfigHandler.enableKami) {
-			ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
-			((ItemWandCasting) wand1.getItem()).setRod(wand1, ThaumicTinkerer.proxy.rodIchor);
-			((ItemWandCasting) wand1.getItem()).setCap(wand1, ThaumicTinkerer.proxy.capIchor);
-			((ItemWandCasting) wand1.getItem()).storeAllVis(wand1, new AspectList().add(Aspect.AIR, 100000).add(Aspect.EARTH, 100000).add(Aspect.FIRE, 100000).add(Aspect.WATER, 100000).add(Aspect.ORDER, 100000).add(Aspect.ENTROPY, 100000));
-			if (list != null)
-				list.add(wand1);
-			displayItem = wand1;
-		}
-	}
+        if (ConfigHandler.enableKami) {
+            ItemStack wand1 = new ItemStack(ConfigItems.itemWandCasting);
+            ((ItemWandCasting) wand1.getItem()).setRod(wand1, ThaumicTinkerer.proxy.rodIchor);
+            ((ItemWandCasting) wand1.getItem()).setCap(wand1, ThaumicTinkerer.proxy.capIchor);
+            ((ItemWandCasting) wand1.getItem()).storeAllVis(wand1, new AspectList().add(Aspect.AIR, 100000).add(Aspect.EARTH, 100000).add(Aspect.FIRE, 100000).add(Aspect.WATER, 100000).add(Aspect.ORDER, 100000).add(Aspect.ENTROPY, 100000));
+            if (list != null)
+                list.add(wand1);
+            displayItem = wand1;
+        }
+    }
 
-	public void addItem(Item item) {
+    public void addItem(Item item) {
         item.getSubItems(item, this, creativeTabQueue);
     }
 
-	public void addBlock(Block block) {
+    public void addBlock(Block block) {
         block.getSubBlocks(Item.getItemFromBlock(block), this, creativeTabQueue);
     }
 
