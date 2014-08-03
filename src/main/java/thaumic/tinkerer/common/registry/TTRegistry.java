@@ -3,6 +3,7 @@ package thaumic.tinkerer.common.registry;
 import com.google.common.reflect.ClassPath;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.block.Block;
@@ -232,6 +233,7 @@ public class TTRegistry {
 				}
 			}
 		}
+        ModCreativeTab.INSTANCE.addAllItemsAndBlocks();
 
 	}
 

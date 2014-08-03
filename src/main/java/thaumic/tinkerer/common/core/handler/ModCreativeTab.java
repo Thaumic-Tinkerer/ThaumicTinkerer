@@ -14,6 +14,7 @@
  */
 package thaumic.tinkerer.common.core.handler;
 
+import com.sun.javafx.collections.transformation.SortedList;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -25,15 +26,18 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 import thaumic.tinkerer.common.lib.LibMisc;
+import thaumic.tinkerer.common.registry.ItemStackCompatator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ModCreativeTab extends CreativeTabs {
 
 	public static ModCreativeTab INSTANCE;
 	ItemStack displayItem;
 	List list = new ArrayList();
+
+    //Holds the registered items and blocks before they are sorted
+    public ArrayList<ItemStack> creativeTabQueue = new ArrayList<ItemStack>();
 
 	public ModCreativeTab() {
 		super(LibMisc.MOD_ID);
@@ -79,11 +83,16 @@ public class ModCreativeTab extends CreativeTabs {
 	}
 
 	public void addItem(Item item) {
-		item.getSubItems(item, this, list);
-	}
+        item.getSubItems(item, this, creativeTabQueue);
+    }
 
 	public void addBlock(Block block) {
-		block.getSubBlocks(Item.getItemFromBlock(block), this, list);
-	}
+        block.getSubBlocks(Item.getItemFromBlock(block), this, creativeTabQueue);
+    }
+
+    public void addAllItemsAndBlocks() {
+        Collections.sort(creativeTabQueue, new ItemStackCompatator());
+        list.addAll(creativeTabQueue);
+    }
 
 }
