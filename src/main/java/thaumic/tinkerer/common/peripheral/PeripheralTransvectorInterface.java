@@ -24,7 +24,7 @@ import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import buildcraft.api.power.IPowerReceptor;
-import cofh.api.energy.IEnergyHandler;
+import api.energy.IEnergyHandler;
 import IComputerAccess;
 import ILuaContext;
 

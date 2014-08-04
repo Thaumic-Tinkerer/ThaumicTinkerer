@@ -17,6 +17,7 @@ package thaumic.tinkerer.common.block.tile.transvector;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
+
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
@@ -40,7 +41,8 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumic.tinkerer.common.lib.LibFeatures;
 
 @Optional.InterfaceList({ @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
-		@Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy") })
+		@Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy"),
+        @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib")})
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink,*/ IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
 	private boolean addedToICEnergyNet = false;
@@ -270,12 +272,14 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 */
 	@Override
+    @Optional.Method(modid = "CoFHLib")
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).receiveEnergy(from, maxReceive, simulate) : 0;
 	}
 
 	@Override
+    @Optional.Method(modid = "CoFHLib")
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).extractEnergy(from, maxExtract, simulate) : 0;
@@ -284,17 +288,20 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 
 	@Override
+    @Optional.Method(modid = "CoFHLib")
 	public int getEnergyStored(ForgeDirection from) {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).getEnergyStored(from) : 0;
 	}
 
 	@Override
+    @Optional.Method(modid = "CoFHLib")
 	public int getMaxEnergyStored(ForgeDirection from) {
 		TileEntity tile = getTile();
 		return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).getMaxEnergyStored(from) : 0;
 	}
     @Override
+    @Optional.Method(modid = "CoFHLib")
     public boolean canConnectEnergy(ForgeDirection from) {
         TileEntity tile = getTile();
         return tile instanceof IEnergyHandler ? ((IEnergyHandler) tile).canConnectEnergy(from) : false;
