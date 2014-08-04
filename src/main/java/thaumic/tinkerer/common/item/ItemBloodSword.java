@@ -138,8 +138,8 @@ public class ItemBloodSword extends ItemSword implements IRepairable, ITTinkerer
 
 		if (event.entityLiving instanceof EntityPlayer && handle) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack itemInUse = player.itemInUse;
-			if (itemInUse != null && itemInUse.getItem() == this) {
+            ItemStack itemInUse = player.getItemInUse();
+            if (itemInUse != null && itemInUse.getItem() == this) {
 
 				event.setCanceled(true);
 				handleNext = 3;

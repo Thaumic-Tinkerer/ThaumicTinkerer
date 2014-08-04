@@ -3,11 +3,13 @@ package thaumic.tinkerer.common.registry;
 import com.google.common.reflect.ClassPath;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import thaumic.tinkerer.client.lib.LibResources;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
@@ -18,6 +20,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TTRegistry {
 
@@ -69,14 +72,7 @@ public class TTRegistry {
 					newBlock.setBlockName(((ITTinkererBlock) newBlock).getBlockName());
 					ArrayList<Block> blockList = new ArrayList<Block>();
 					blockList.add(newBlock);
-					if (((ITTinkererBlock) newBlock).getItemBlock() != null) {
-						Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().getConstructor(Block.class).newInstance(newBlock);
-						newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
-						ArrayList<Item> itemList = new ArrayList<Item>();
-						itemList.add(newItem);
-						itemRegistry.put(((ITTinkererBlock) newBlock).getItemBlock(), itemList);
 
-					}
 					if (newBlock == null) {
 						System.out.println(clazz.getName() + " Returned a null block upon registration");
 						continue;
@@ -96,6 +92,15 @@ public class TTRegistry {
 						}
 					}
 					blockRegistry.put(clazz, blockList);
+
+                    if (((ITTinkererBlock) newBlock).getItemBlock() != null) {
+                        Item newItem = ((ITTinkererBlock) newBlock).getItemBlock().getConstructor(Block.class).newInstance(newBlock);
+                        newItem.setUnlocalizedName(((ITTinkererItem) newItem).getItemName());
+                        ArrayList<Item> itemList = new ArrayList<Item>();
+                        itemList.add(newItem);
+                        itemRegistry.put(((ITTinkererBlock) newBlock).getItemBlock(), itemList);
+
+                    }
 				}
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -150,7 +155,12 @@ public class TTRegistry {
 				if (((ITTinkererBlock) block).getTileEntity() != null) {
 					GameRegistry.registerTileEntity(((ITTinkererBlock) block).getTileEntity(), LibResources.PREFIX_MOD + ((ITTinkererBlock) block).getBlockName());
 				}
-				if (((ITTinkererBlock) block).shouldDisplayInTab() && FMLCommonHandler.instance().getSide() == Side.CLIENT) {
+                if (block instanceof IMultiTileEntityBlock) {
+                    for (Map.Entry<Class<? extends TileEntity>, String> tile : ((IMultiTileEntityBlock) block).getAdditionalTileEntities().entrySet()) {
+                        GameRegistry.registerTileEntity(tile.getKey(), tile.getValue());
+                    }
+                }
+                if (((ITTinkererBlock) block).shouldDisplayInTab() && FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 					ModCreativeTab.INSTANCE.addBlock(block);
 				}
 			}
@@ -223,6 +233,7 @@ public class TTRegistry {
 				}
 			}
 		}
+        ModCreativeTab.INSTANCE.addAllItemsAndBlocks();
 
 	}
 

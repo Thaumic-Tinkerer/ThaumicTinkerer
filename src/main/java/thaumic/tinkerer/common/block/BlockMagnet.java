@@ -44,6 +44,7 @@ import thaumic.tinkerer.common.item.foci.ItemFocusTelekinesis;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibGuiIDs;
 import thaumic.tinkerer.common.lib.LibResearch;
+import thaumic.tinkerer.common.registry.IMultiTileEntityBlock;
 import thaumic.tinkerer.common.registry.ThaumicTinkererArcaneRecipe;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipeMulti;
@@ -53,10 +54,11 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class BlockMagnet extends BlockModContainer {
+public class BlockMagnet extends BlockModContainer implements IMultiTileEntityBlock {
 
 	Random random;
 
@@ -206,7 +208,6 @@ public class BlockMagnet extends BlockModContainer {
 
 	@Override
 	public Class<? extends TileEntity> getTileEntity() {
-		//GameRegistry.registerTileEntity(TileMobMagnet.class, LibResources.PREFIX_MOD + LibBlockNames.MOB_MAGNET);
 		return TileMagnet.class;
 	}
 
@@ -238,4 +239,11 @@ public class BlockMagnet extends BlockModContainer {
 
 		);
 	}
+
+    @Override
+    public HashMap<Class<? extends TileEntity>, String> getAdditionalTileEntities() {
+        HashMap<Class<? extends TileEntity>, String> r = new HashMap<Class<? extends TileEntity>, String>();
+        r.put(TileMobMagnet.class, LibBlockNames.MOB_MAGNET);
+        return r;
+    }
 }
