@@ -12,8 +12,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.lib.research.ResearchManager;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
@@ -21,6 +24,7 @@ import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
+import thaumic.tinkerer.common.research.ResearchHelper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -97,24 +101,52 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
 		int count = quantityDropped(metadata, fortune, world.rand);
 		for (int i = 0; i < count; i++) {
-			Item item = getItemDropped(metadata, world.rand, fortune);
-			if (item != null) {
-				ret.add(new ItemStack(item, 1, damageDropped(metadata)));
-			}
-		}
+            ItemStack seedStack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
+            ItemInfusedSeeds.setAspect(seedStack, getAspectDropped(world, x, y, z, metadata));
+            ferilizeSoil(world, x, y, z, metadata);
+        }
 		if (metadata >= 7) {
 			for (int i = 0; i < 3 + fortune; ++i) {
 				if (world.rand.nextInt(15) <= metadata) {
-					ret.add(new ItemStack(this.func_149866_i(), 1, damageDropped(metadata)));
-				}
+                    //ret.add(new ItemStack(this.func_149866_i(), 1, damageDropped(metadata)));
+                }
 			}
 		}
 
 		return ret;
 	}
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
+    private void ferilizeSoil(World world, int x, int y, int z, int metadata) {
+        if (metadata >= 7) {
+            if (world.getTileEntity(x, y - 1, z) instanceof TileInfusedFarmland) {
+                Aspect currentAspect = getAspect(world, x, y, z);
+                ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList.add(currentAspect, 1);
+            }
+        }
+    }
+
+    public static final int BREEDING_CHANCE = 10;
+
+    public Aspect getAspectDropped(World world, int x, int y, int z, int metadata) {
+        Aspect currentAspect = getAspect(world, x, y, z);
+        if (metadata >= 7 && currentAspect != null) {
+            if (world.getTileEntity(x, y - 1, z) instanceof TileInfusedFarmland) {
+                AspectList farmlandAspectList = ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList;
+                for (Aspect aspect : farmlandAspectList.getAspects()) {
+                    Random rand = new Random();
+                    if (rand.nextInt(BREEDING_CHANCE) < farmlandAspectList.getAmount(aspect) * farmlandAspectList.getAmount(aspect)) {
+                        if (ResearchManager.getCombinationResult(aspect, currentAspect) != null) {
+                            return ResearchManager.getCombinationResult(aspect, currentAspect);
+                        }
+                    }
+                }
+            }
+        }
+        return currentAspect;
+    }
+
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
 		return null;
 	}
 
@@ -143,8 +175,13 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         return TileInfusedGrain.class;
     }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
+    @Override
+    public TileEntity createTileEntity(World world, int metadata) {
+        return new TileInfusedGrain();
+    }
+
+    @Override
+    public IRegisterableResearch getResearchItem() {
 		return null;
 	}
 
@@ -154,11 +191,13 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 	}
 
     public static Aspect getAspect(IBlockAccess world, int x, int y, int z) {
-        return ((TileInfusedGrain)world.getTileEntity(x, y, z)).aspect;
+        return world.getTileEntity(x, y, z) instanceof TileInfusedGrain ? ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect : null;
     }
 
     public static void setAspect(IBlockAccess world, int x, int y, int z, Aspect aspect) {
-        ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect = aspect;
+        if (world.getTileEntity(x, y, z) instanceof TileInfusedGrain) {
+            ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect = aspect;
+        }
     }
 
 }
