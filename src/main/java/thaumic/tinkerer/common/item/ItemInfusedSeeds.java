@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -16,7 +17,9 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.client.core.helper.IconHelper;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.BlockInfusedGrain;
+import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ITTinkererItem;
@@ -53,13 +56,14 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 	}
 
 	public Aspect getAspect(ItemStack stack) {
-		return PRIMAL_ASPECT_ENUM.values()[stack.getItemDamage()].aspect;
-	}
+        AspectList aspectList = new AspectList();
+        if (stack.getTagCompound() == null) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        aspectList.readFromNBT(stack.getTagCompound());
 
-	public Block getCropBlock(ItemStack stack) {
-		return BlockInfusedGrain.getBlockFromAspect(getAspect(stack));
-
-	}
+        return aspectList.size() == 0 ? null : aspectList.getAspects()[0];
+    }
 
 	@Override
 	public boolean getHasSubtypes() {
@@ -68,10 +72,14 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List l) {
-		for (PRIMAL_ASPECT_ENUM primal : PRIMAL_ASPECT_ENUM.values()) {
-			l.add(new ItemStack(item, 1, primal.ordinal()));
-		}
-	}
+        for (Aspect primal : Aspect.getPrimalAspects()) {
+            ItemStack itemStack = new ItemStack(item, 1);
+            itemStack.setTagCompound(new NBTTagCompound());
+            AspectList aspectList = new AspectList().add(primal, 1);
+            aspectList.writeToNBT(itemStack.getTagCompound());
+            l.add(itemStack);
+        }
+    }
     private IIcon[] icons;
 
     @Override
@@ -89,12 +97,12 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
     }
 
     @Override
-    public IIcon getIconFromDamage(int par1) {
-        return icons[par1];
+    public IIcon getIconIndex(ItemStack stack) {
+        return getAspect(stack) == null ? icons[0] : icons[BlockInfusedGrain.getNumberFromAspectForTexture(getAspect(stack))];
     }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
 		return null;
 	}
 
@@ -151,14 +159,15 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 		}
 	}
 
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if (par7 != 1) {
+    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World world, int x, int y, int z, int par7, float par8, float par9, float par10) {
+        if (par7 != 1) {
 			return false;
-		} else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)) {
-			if (par3World.getBlock(par4, par5, par6).canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6)) {
-				par3World.setBlock(par4, par5 + 1, par6, getCropBlock(par1ItemStack));
-				--par1ItemStack.stackSize;
-				return true;
+        } else if (par2EntityPlayer.canPlayerEdit(x, y, z, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(x, y + 1, z, par7, par1ItemStack)) {
+            if (world.getBlock(x, y, z).canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z)) {
+                world.setBlock(x, y + 1, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedGrain.class));
+                BlockInfusedGrain.setAspect(world, x, y, z, getAspect(par1ItemStack));
+                par1ItemStack.stackSize--;
+                return true;
 			} else {
 				return false;
 			}

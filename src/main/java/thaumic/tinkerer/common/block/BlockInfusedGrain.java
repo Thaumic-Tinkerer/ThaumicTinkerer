@@ -23,39 +23,59 @@ import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by pixlepix on 4/14/14.
  */
 public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
-	public BlockInfusedGrain(Aspect aspect) {
-		super();
-	}
 
-	public BlockInfusedGrain() {
-		this(Aspect.FIRE);
-	}
 
 	//Code based off vanilla potato code
 
 
     @Override
-    public IIcon getIcon(IBlockAccess world, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_) {
-        return super.getIcon(world, p_149673_2_, p_149673_3_, p_149673_4_, p_149673_5_);
+    public IIcon getIcon(IBlockAccess world, int x, int y, int z, int meta) {
+        if (meta < 7) {
+            if (meta == 6) {
+                meta = 5;
+            }
+            return this.icons[getNumberFromAspectForTexture(getAspect(world, x, y, z))][meta >> 1];
+        } else {
+            return this.icons[getNumberFromAspectForTexture(getAspect(world, x, y, z))][3];
+        }
     }
 
+    //Override BlockCrop's getIcon to prevent a crash with mods such as WAILA
     @Override
-	public IIcon getIcon(int side, int meta) {
-		if (meta < 7) {
-			if (meta == 6) {
-				meta = 5;
-			}
-			return this.icons[meta >> 1];
-		} else {
-			return this.icons[3];
-		}
-	}
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+        return this.icons[0][0];
+    }
+
+    //Returns 0-5 for primal aspects, or 6 if compound aspect
+    public static int getNumberFromAspectForTexture(Aspect aspect) {
+        if (aspect == Aspect.AIR) {
+            return 0;
+        }
+        if (aspect == Aspect.FIRE) {
+            return 1;
+        }
+        if (aspect == Aspect.WATER) {
+            return 2;
+        }
+        if (aspect == Aspect.EARTH) {
+            return 3;
+        }
+        if (aspect == Aspect.ORDER) {
+            return 4;
+        }
+        if (aspect == Aspect.ENTROPY) {
+            return 5;
+        }
+        return 6;
+    }
+
 
     private IIcon[][] icons;
 
@@ -71,33 +91,8 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         }
     }
 
-
-
-	public static BlockInfusedGrain getBlockFromAspect(Aspect aspect) {
-		for (Block block : ThaumicTinkerer.registry.getBlockFromClass(BlockInfusedGrain.class)) {
-			if (((BlockInfusedGrain) block).aspect == aspect) {
-				return (BlockInfusedGrain) block;
-			}
-		}
-		return null;
-	}
-
-
-	@Override
-	public int damageDropped(int p_149692_1_) {
-		return ItemInfusedSeeds.getMetaForAspect(aspect);
-	}
-
-	protected Item func_149866_i() {
-		return ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class);
-	}
-
-	protected Item func_149865_P() {
-		return ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class);
-	}
-
-	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
 		int count = quantityDropped(metadata, fortune, world.rand);
@@ -125,8 +120,8 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
 	@Override
 	public String getBlockName() {
-		return LibBlockNames.INFUSED_GRAIN_BASE;
-	}
+        return LibBlockNames.INFUSED_GRAIN_BLOCK;
+    }
 
 	@Override
 	public boolean shouldRegister() {
@@ -145,8 +140,8 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
 	@Override
 	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+        return TileInfusedGrain.class;
+    }
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
@@ -158,9 +153,12 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		return null;
 	}
 
-    public Aspect getAspect(IBlockAccess world, int x, int y, int z){
+    public static Aspect getAspect(IBlockAccess world, int x, int y, int z) {
         return ((TileInfusedGrain)world.getTileEntity(x, y, z)).aspect;
     }
 
+    public static void setAspect(IBlockAccess world, int x, int y, int z, Aspect aspect) {
+        ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect = aspect;
+    }
 
 }

@@ -65,18 +65,9 @@ public final class LibBlockNames {
 
 	public static final String INFUSED_GRAIN_BASE = "infusedGrain";
 
-	public static final String INFUSED_GRAIN_FIRE = INFUSED_GRAIN_BASE + "Fire";
+    public static final String INFUSED_GRAIN_BLOCK = INFUSED_GRAIN_BASE + "Block";
 
-	public static final String INFUSED_GRAIN_WATER = INFUSED_GRAIN_BASE + "Water";
 
-	public static final String INFUSED_GRAIN_ORDER = INFUSED_GRAIN_BASE + "Order";
-
-	public static final String INFUSED_GRAIN_CHAOS = INFUSED_GRAIN_BASE + "Chaos";
-
-	public static final String INFUSED_GRAIN_AIR = INFUSED_GRAIN_BASE + "Air";
-
-	public static final String INFUSED_GRAIN_EARTH = INFUSED_GRAIN_BASE + "Earth";
-
-	public static final String FORCEFIELD = "forcefield";
+    public static final String FORCEFIELD = "forcefield";
 
 }
