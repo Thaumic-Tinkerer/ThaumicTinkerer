@@ -24,6 +24,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
@@ -105,6 +106,20 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 				player.motionY += 0.3;
 		}
 	}
+
+    //Attempt at fixing a bug with falling on SMP
+    //In theory, this should be redundant
+    @SubscribeEvent
+    public void onFall(LivingFallEvent event) {
+        if (event.entityLiving instanceof EntityPlayer) {
+
+            EntityPlayer player = (EntityPlayer) event.entityLiving;
+            boolean hasArmor = player.getCurrentArmor(0) != null && player.getCurrentArmor(0).getItem() == this;
+            if (hasArmor) {
+                event.distance = 0;
+            }
+        }
+    }
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onLivingUpdate(LivingUpdateEvent event) {

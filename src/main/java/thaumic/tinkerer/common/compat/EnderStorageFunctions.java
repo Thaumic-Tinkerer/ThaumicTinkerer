@@ -1,16 +1,25 @@
 package thaumic.tinkerer.common.compat;
 
+import codechicken.enderstorage.api.EnderStorageManager;
+import codechicken.enderstorage.storage.item.EnderItemStorage;
+import codechicken.enderstorage.storage.item.TileEnderChest;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityEnderChest;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import thaumcraft.common.items.wands.ItemWandCasting;
+import thaumic.tinkerer.common.item.foci.ItemFocusEnderChest;
 
 import java.util.List;
 
 public class EnderStorageFunctions {
 	public static ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer p, MovingObjectPosition pos) {
-		return stack;
-		/*ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 		ItemStack focus=wand.getFocusItem(stack);
 		if(world.isRemote)
 			return stack;
@@ -20,9 +29,8 @@ public class EnderStorageFunctions {
 		{
 			TileEntity tile = world.getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
 
-			
-			if(tile instanceof TileEnderChest && p.isSneaking())
-			{
+
+            if (tile instanceof TileEntityEnderChest && p.isSneaking()) {
 				TileEnderChest chest = (TileEnderChest)tile;
 
 				focus.getTagCompound().setInteger("freq", chest.freq);
@@ -31,20 +39,19 @@ public class EnderStorageFunctions {
 				wand.setFocus(stack, focus);
 				return stack;
 			}
-			if(world.getBlockId(pos.blockX, pos.blockY, pos.blockZ)==Block.obsidian.blockID && p.isSneaking())
-			{
+            if (world.getBlock(pos.blockX, pos.blockY, pos.blockZ) == Blocks.obsidian && p.isSneaking()) {
 
 				focus.getTagCompound().setInteger("freq", -1);
-				focus.getTagCompound().setString("owner", p.username);
-				focus.getTagCompound().setBoolean("ender", false);
+                focus.getTagCompound().setString("owner", p.getGameProfile().getName());
+                focus.getTagCompound().setBoolean("ender", false);
 				wand.setFocus(stack, focus);
 				return stack;
 			}
 		}
 		boolean vanilla=!focus.getTagCompound().getBoolean("ender");
-		
-		if(wand.consumeAllVis(stack, p, ItemFocusEnderChest.visUsage, true)) {
-			if(vanilla)
+
+        if (wand.consumeAllVis(stack, p, ItemFocusEnderChest.visUsage, true, false)) {
+            if(vanilla)
 			{
 				p.displayGUIChest(p.getInventoryEnderChest());
 				world.playSoundAtEntity(p, "mob.endermen.portal", 1F, 1F);
@@ -58,7 +65,7 @@ public class EnderStorageFunctions {
 			}
 		}
 
-		return stack;*/
+		return stack;
 	}
 
 	private static String getOwner(ItemStack stack) {
