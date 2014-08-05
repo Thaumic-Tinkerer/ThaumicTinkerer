@@ -57,7 +57,7 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
     }
 
     public Block getCropBlock(ItemStack stack) {
-        return BMlockInfusedGrain.getBlockFromAspect(getAspect(stack));
+        return BlockInfusedGrain.getBlockFromAspect(getAspect(stack));
 
     }
 
