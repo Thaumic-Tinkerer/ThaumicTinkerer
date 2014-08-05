@@ -95,6 +95,8 @@ public class TTClientProxy extends TTCommonProxy {
         }
     }
 
+    public static int CROP_RENDER_ID;
+
 
     private void registerTiles() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
@@ -102,7 +104,9 @@ public class TTClientProxy extends TTCommonProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
         ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
         ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileInfusedGrain.class, new RenderInfusedCrops());
+
+        CROP_RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(CROP_RENDER_ID, new RenderInfusedCrops());
 
         if (ConfigHandler.enableKami) {
             ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());

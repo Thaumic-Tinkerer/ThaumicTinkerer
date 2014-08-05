@@ -1,7 +1,9 @@
 package thaumic.tinkerer.common.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -12,6 +14,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.research.ResearchManager;
 import thaumic.tinkerer.client.core.helper.IconHelper;
+import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
@@ -27,11 +30,10 @@ import java.util.Random;
 /**
  * Created by pixlepix on 4/14/14.
  */
-public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
+public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
 
-
-	//Code based off vanilla potato code
+    //Code based off vanilla potato code
 
 
     @Override
@@ -59,17 +61,7 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
     @Override
     public int getRenderType() {
-        return 6;
-    }
-
-    @Override
-    public boolean canRenderInPass(int pass) {
-        return false;
-    }
-
-    @Override
-    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
-        return false;
+        return TTClientProxy.CROP_RENDER_ID;
     }
 
     //Returns 0-5 for primal aspects, or 6 if compound aspect
@@ -102,7 +94,7 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     public void registerBlockIcons(IIconRegister par1IconRegister) {
         icons = new IIcon[7][4];
         String[] names = {"aer", "ignis", "aqua", "terra", "ordo", "perditio", "generic"};
-        for(int j = 0; j<names.length; j++) {
+        for (int j = 0; j < names.length; j++) {
             String s = names[j];
             for (int i = 0; i < 4; i++) {
                 icons[j][i] = IconHelper.forName(par1IconRegister, "crop_" + s + "_" + i);
@@ -111,25 +103,41 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     }
 
     @Override
-    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+    public void breakBlock(World world, int x, int y, int z, Block block, int metadata) {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
-		int count = quantityDropped(metadata, fortune, world.rand);
-		for (int i = 0; i < count; i++) {
+        int count = 1;
+        for (int i = 0; i < count; i++) {
             ItemStack seedStack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
             ItemInfusedSeeds.setAspect(seedStack, getAspectDropped(world, x, y, z, metadata));
+            ret.add(seedStack);
             fertilizeSoil(world, x, y, z, metadata);
         }
-		if (metadata >= 7) {
-			for (int i = 0; i < 3 + fortune; ++i) {
-				if (world.rand.nextInt(15) <= metadata) {
+        if (metadata >= 7) {
+            for (int i = 0; i < 3; ++i) {
+                if (world.rand.nextInt(15) <= metadata) {
                     //ret.add(new ItemStack(this.func_149866_i(), 1, damageDropped(metadata)));
                 }
-			}
-		}
+            }
+        }
+        for (ItemStack item : ret) {
+            float f = 0.7F;
+            double d0 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
+            double d1 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
+            double d2 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
+            EntityItem entityitem = new EntityItem(world, (double) x + d0, (double) y + d1, (double) z + d2, item);
+            entityitem.delayBeforeCanPickup = 10;
+            world.spawnEntityInWorld(entityitem);
+        }
 
-		return ret;
-	}
+        super.breakBlock(world, x, y, z, block, metadata);
+
+    }
+
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+        return new ArrayList<ItemStack>();
+    }
 
     private void fertilizeSoil(World world, int x, int y, int z, int metadata) {
         if (metadata >= 7) {
@@ -139,6 +147,7 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
             }
         }
     }
+
 
     public static final int BREEDING_CHANCE = 10;
 
@@ -162,31 +171,31 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
     @Override
     public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
+    @Override
+    public String getBlockName() {
         return LibBlockNames.INFUSED_GRAIN_BLOCK;
     }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return false;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return false;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
         return TileInfusedGrain.class;
     }
 
@@ -202,13 +211,13 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
     @Override
     public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 
     public static Aspect getAspect(IBlockAccess world, int x, int y, int z) {
         return world.getTileEntity(x, y, z) instanceof TileInfusedGrain ? ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect : null;
