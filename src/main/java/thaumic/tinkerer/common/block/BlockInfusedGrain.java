@@ -1,10 +1,7 @@
 package thaumic.tinkerer.common.block;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -18,13 +15,11 @@ import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
-import thaumic.tinkerer.common.item.ItemInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
-import thaumic.tinkerer.common.research.ResearchHelper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -54,7 +49,27 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     //Override BlockCrop's getIcon to prevent a crash with mods such as WAILA
     @Override
     public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-        return this.icons[0][0];
+        return this.icons[1][0];
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
+
+    @Override
+    public int getRenderType() {
+        return 6;
+    }
+
+    @Override
+    public boolean canRenderInPass(int pass) {
+        return false;
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
+        return false;
     }
 
     //Returns 0-5 for primal aspects, or 6 if compound aspect
@@ -103,7 +118,7 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		for (int i = 0; i < count; i++) {
             ItemStack seedStack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
             ItemInfusedSeeds.setAspect(seedStack, getAspectDropped(world, x, y, z, metadata));
-            ferilizeSoil(world, x, y, z, metadata);
+            fertilizeSoil(world, x, y, z, metadata);
         }
 		if (metadata >= 7) {
 			for (int i = 0; i < 3 + fortune; ++i) {
@@ -116,7 +131,7 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 		return ret;
 	}
 
-    private void ferilizeSoil(World world, int x, int y, int z, int metadata) {
+    private void fertilizeSoil(World world, int x, int y, int z, int metadata) {
         if (metadata >= 7) {
             if (world.getTileEntity(x, y - 1, z) instanceof TileInfusedFarmland) {
                 Aspect currentAspect = getAspect(world, x, y, z);
@@ -178,6 +193,11 @@ public class  BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     @Override
     public TileEntity createTileEntity(World world, int metadata) {
         return new TileInfusedGrain();
+    }
+
+    @Override
+    public boolean hasTileEntity(int metadata) {
+        return true;
     }
 
     @Override

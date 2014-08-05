@@ -1,6 +1,7 @@
 package thaumic.tinkerer.common.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,15 +48,6 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         par3List.add(getAspect(par1ItemStack).getName());
     }
 
-    public static int getMetaForAspect(Aspect aspect) {
-        for (PRIMAL_ASPECT_ENUM e : PRIMAL_ASPECT_ENUM.values()) {
-            if (aspect == e.aspect) {
-                return e.ordinal();
-            }
-        }
-        return 0;
-    }
-
     public static Aspect getAspect(ItemStack stack) {
         AspectList aspectList = new AspectList();
         if (stack.getTagCompound() == null) {
@@ -85,6 +77,7 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
             l.add(itemStack);
         }
     }
+
     private IIcon[] icons;
 
     @Override
@@ -92,8 +85,8 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         icons = new IIcon[7];
         icons[0] = IconHelper.forName(par1IconRegister, "seed_aer");
         icons[1] = IconHelper.forName(par1IconRegister, "seed_ignis");
-        icons[2] = IconHelper.forName(par1IconRegister, "seed_terra");
-        icons[3] = IconHelper.forName(par1IconRegister, "seed_aqua");
+        icons[2] = IconHelper.forName(par1IconRegister, "seed_aqua");
+        icons[3] = IconHelper.forName(par1IconRegister, "seed_terra");
 
         icons[4] = IconHelper.forName(par1IconRegister, "seed_ordo");
         icons[5] = IconHelper.forName(par1IconRegister, "seed_perditio");
@@ -144,30 +137,14 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 
 
                 new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 4, new ItemStack(this, 1, 4), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4)),
-
                 new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 5, new ItemStack(this, 1, 5), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5))
         );
-    }
-
-    private enum PRIMAL_ASPECT_ENUM {
-        AIR(Aspect.AIR),
-        FIRE(Aspect.FIRE),
-        EARTH(Aspect.EARTH),
-        WATER(Aspect.WATER),
-        ORDER(Aspect.ORDER),
-        CHAOS(Aspect.ENTROPY);
-
-        Aspect aspect;
-
-        PRIMAL_ASPECT_ENUM(Aspect a) {
-            this.aspect = a;
-        }
     }
 
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World world, int x, int y, int z, int par7, float par8, float par9, float par10) {
         if (par7 != 1) {
             return false;
-        } else if (par2EntityPlayer.canPlayerEdit(x, y, z, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(x, y + 1, z, par7, par1ItemStack)) {
+        } else if (world.getBlock(x, y, z) instanceof BlockFarmland && par2EntityPlayer.canPlayerEdit(x, y, z, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(x, y + 1, z, par7, par1ItemStack)) {
 
             world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedFarmland.class));
             world.setBlock(x, y + 1, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedGrain.class));
