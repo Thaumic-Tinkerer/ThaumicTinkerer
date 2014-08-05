@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumic.tinkerer.common.lib.LibBlockNames;
-import thaumic.tinkerer.common.potion.TileForcefield;
+import thaumic.tinkerer.common.block.tile.TileForcefield;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 
