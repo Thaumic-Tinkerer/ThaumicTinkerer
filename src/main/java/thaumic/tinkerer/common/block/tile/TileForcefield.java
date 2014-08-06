@@ -1,4 +1,4 @@
-package thaumic.tinkerer.common.potion;
+package thaumic.tinkerer.common.block.tile;
 
 import net.minecraft.tileentity.TileEntity;
 import thaumic.tinkerer.common.ThaumicTinkerer;
