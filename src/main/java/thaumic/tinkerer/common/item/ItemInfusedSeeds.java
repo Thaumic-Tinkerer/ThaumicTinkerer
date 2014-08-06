@@ -91,7 +91,7 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         icons[4] = IconHelper.forName(par1IconRegister, "seed_ordo");
         icons[5] = IconHelper.forName(par1IconRegister, "seed_perditio");
 
-        icons[6] = IconHelper.forName(par1IconRegister, "seed_complex");
+        icons[6] = IconHelper.forName(par1IconRegister, "seed_generic");
     }
 
     @Override
