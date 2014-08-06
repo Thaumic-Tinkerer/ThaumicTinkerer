@@ -68,7 +68,6 @@ public class RenderGenericSeeds implements IItemRenderer {
         Aspect aspect = ItemInfusedSeeds.getAspect(item);
         if (!aspect.isPrimal()) {
             //Hex to RGB code from vanilla tesselator
-            GL11.glEnable(GL11.GL_BLEND);
             float r = (aspect.getColor() >> 16 & 0xFF) / 255.0F;
             float g = (aspect.getColor() >> 8 & 0xFF) / 255.0F;
             float b = (aspect.getColor() & 0xFF) / 255.0F;
@@ -77,6 +76,12 @@ public class RenderGenericSeeds implements IItemRenderer {
 
         if (type == ItemRenderType.INVENTORY) {
             drawAs2D(type, item);
+            if (type == ItemRenderType.ENTITY) {
+                GL11.glPushMatrix();
+                GL11.glTranslatef(-0.5F, 0F, 0F);
+                renderItem(ItemRenderType.EQUIPPED, item, objects);
+                GL11.glPopMatrix();
+            }
         } else {
             drawAsSlice(type, item);
         }
@@ -114,7 +119,7 @@ public class RenderGenericSeeds implements IItemRenderer {
     private void drawAsSlice(ItemRenderType type, ItemStack item) {
         ItemInfusedSeeds seedItem = (ItemInfusedSeeds) ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class);
 
-        final float THICKNESS = 0.0625F;
+        final float THICKNESS = 0.001F;
 
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
@@ -127,6 +132,7 @@ public class RenderGenericSeeds implements IItemRenderer {
                 break; // caller expects us to render over [0,0,0] to [1,1,-THICKNESS], no transformation necessary
             }
             case ENTITY: {
+
                 // translate our coordinates so that [0,0,0] to [1,1,1] translates to the [-0.5, 0.0, 0.0] to [0.5, 1.0, 1.0] expected by the caller.
                 if (RenderItem.renderInFrame) {
                     transformationToBeUndone = TransformationTypes.INFRAME; // must undo the transformation when we're finished rendering
@@ -151,6 +157,13 @@ public class RenderGenericSeeds implements IItemRenderer {
         tessellator.addVertexWithUV(0.0, 1.0, -THICKNESS, (double) icon.getMaxU(), (double) icon.getMinV());
         tessellator.addVertexWithUV(1.0, 1.0, -THICKNESS, (double) icon.getMinU(), (double) icon.getMinV());
         tessellator.addVertexWithUV(1.0, 0.0, -THICKNESS, (double) icon.getMinU(), (double) icon.getMaxV());
+
+
+        tessellator.addVertexWithUV(1.0, 0.0, -THICKNESS, (double) icon.getMaxU(), (double) icon.getMaxV());
+        tessellator.addVertexWithUV(1.0, 1.0, -THICKNESS, (double) icon.getMaxU(), (double) icon.getMinV());
+        tessellator.addVertexWithUV(0.0, 1.0, -THICKNESS, (double) icon.getMinU(), (double) icon.getMinV());
+        tessellator.addVertexWithUV(0.0, 0.0, -THICKNESS, (double) icon.getMinU(), (double) icon.getMaxV());
+
 
         tessellator.draw();
 
