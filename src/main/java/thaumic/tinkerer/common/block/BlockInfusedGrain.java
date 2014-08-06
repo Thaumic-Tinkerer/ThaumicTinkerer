@@ -144,6 +144,8 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
             if (world.getTileEntity(x, y - 1, z) instanceof TileInfusedFarmland) {
                 Aspect currentAspect = getAspect(world, x, y, z);
                 ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList.add(currentAspect, 1);
+                ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).reduceSaturatedAspects();
+                world.markBlockForUpdate(x, y - 1, z);
             }
         }
     }
@@ -218,6 +220,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     public ThaumicTinkererRecipe getRecipeItem() {
         return null;
     }
+
 
     public static Aspect getAspect(IBlockAccess world, int x, int y, int z) {
         return world.getTileEntity(x, y, z) instanceof TileInfusedGrain ? ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect : null;

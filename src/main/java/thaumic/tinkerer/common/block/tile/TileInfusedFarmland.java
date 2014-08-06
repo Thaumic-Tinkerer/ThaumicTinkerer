@@ -1,6 +1,9 @@
 package thaumic.tinkerer.common.block.tile;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -21,13 +24,39 @@ public class TileInfusedFarmland extends TileEntity implements IAspectContainer 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
+        readCustomNBT(nbt);
+    }
+
+
+    public void readCustomNBT(NBTTagCompound nbt) {
+
         aspectList.readFromNBT(nbt.getCompoundTag(NBT_ASPECT_LIST));
     }
 
     @Override
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
-        aspectList.writeToNBT(nbt.getCompoundTag(NBT_ASPECT_LIST));
+        writeCustomNBT(nbt);
+    }
+
+    public void writeCustomNBT(NBTTagCompound nbt) {
+
+        NBTTagCompound compound = new NBTTagCompound();
+
+        aspectList.writeToNBT(compound);
+        nbt.setTag(NBT_ASPECT_LIST, compound);
+    }
+
+    @Override
+    public Packet getDescriptionPacket() {
+        NBTTagCompound nbt = new NBTTagCompound();
+        writeCustomNBT(nbt);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbt);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+        readCustomNBT(pkt.func_148857_g());
     }
 
     //Ensures that the farmland only holds a maximum of 20 aspects
@@ -90,5 +119,10 @@ public class TileInfusedFarmland extends TileEntity implements IAspectContainer 
     @Override
     public int containerContains(Aspect aspect) {
         return 0;
+    }
+
+    @Override
+    public void updateEntity() {
+        System.out.println(worldObj.isRemote);
     }
 }

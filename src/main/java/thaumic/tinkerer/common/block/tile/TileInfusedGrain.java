@@ -2,11 +2,15 @@ package thaumic.tinkerer.common.block.tile;
 
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.BlockInfusedGrain;
 
 /**
@@ -23,18 +27,32 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
     @Override
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
-        new AspectList().add(aspect, 1).writeToNBT(nbt.getCompoundTag(NBT_MAIN_ASPECT));
-        primalTendencies.writeToNBT(nbt.getCompoundTag(NBT_ASPEPCT_TENDENCIES));
+        writeCustomNBT(nbt);
     }
 
     @Override
     public boolean shouldRefresh(Block oldBlock, Block newBlock, int oldMeta, int newMeta, World world, int x, int y, int z) {
-        return !(oldBlock instanceof BlockInfusedGrain && newBlock instanceof BlockInfusedGrain);
+        return !(oldBlock == newBlock);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         super.readFromNBT(nbt);
+        readCustomNBT(nbt);
+    }
+
+    public void writeCustomNBT(NBTTagCompound nbt) {
+        NBTTagCompound aspectCompound = new NBTTagCompound();
+        new AspectList().add(aspect, 1).writeToNBT(aspectCompound);
+        nbt.setTag(NBT_MAIN_ASPECT, aspectCompound);
+
+        NBTTagCompound tendencyCompound = new NBTTagCompound();
+        primalTendencies.writeToNBT(tendencyCompound);
+        nbt.setTag(NBT_ASPEPCT_TENDENCIES, tendencyCompound);
+    }
+
+    public void readCustomNBT(NBTTagCompound nbt) {
+
         AspectList aspectList = new AspectList();
         aspectList.readFromNBT(nbt.getCompoundTag(NBT_MAIN_ASPECT));
         aspect = aspectList.getAspects()[0];
@@ -43,9 +61,23 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
     }
 
     @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+        super.onDataPacket(net, pkt);
+        readCustomNBT(pkt.func_148857_g());
+    }
+
+    @Override
+    public Packet getDescriptionPacket() {
+        NBTTagCompound compound = new NBTTagCompound();
+        writeCustomNBT(compound);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, compound);
+    }
+
+    @Override
     public AspectList getAspects() {
         return aspect != null ? new AspectList().add(aspect, 1) : null;
     }
+
 
     @Override
     public void setAspects(AspectList paramAspectList) {
