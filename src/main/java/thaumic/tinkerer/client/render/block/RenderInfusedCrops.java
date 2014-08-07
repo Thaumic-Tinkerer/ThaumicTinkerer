@@ -37,10 +37,12 @@ public class RenderInfusedCrops implements ISimpleBlockRenderingHandler {
             float g = (aspect.getColor() >> 8 & 0xFF) / 255.0F;
             float b = (aspect.getColor() & 0xFF) / 255.0F;
             GL11.glColor4f(r, g, b, 1F);
-            Tessellator.instance.disableColor();
+            Tessellator.instance.setColorRGBA_I(aspect.getColor(), 255);
         }
         renderer.setOverrideBlockTexture(block.getIcon(world, x, y, z, world.getBlockMetadata(x, y, z)));
-        renderer.renderBlockCrops(block, x, y, z);
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
+        renderer.renderBlockCropsImpl(block, world.getBlockMetadata(x, y, z), x, y - 0.0625F, z);
         renderer.clearOverrideBlockTexture();
         GL11.glPopMatrix();
         return true;
