@@ -120,9 +120,4 @@ public class TileInfusedFarmland extends TileEntity implements IAspectContainer 
     public int containerContains(Aspect aspect) {
         return 0;
     }
-
-    @Override
-    public void updateEntity() {
-        System.out.println(worldObj.isRemote);
-    }
 }
