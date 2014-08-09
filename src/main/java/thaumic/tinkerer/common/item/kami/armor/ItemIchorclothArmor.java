@@ -134,14 +134,14 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 	@Override
 	public String getItemName() {
 		switch (armorType) {
-		case 0:
-			return LibItemNames.ICHOR_BOOTS;
-		case 1:
-			return LibItemNames.ICHOR_LEGS;
+            case 3:
+                return LibItemNames.ICHOR_BOOTS;
 		case 2:
-			return LibItemNames.ICHOR_CHEST;
-		case 3:
-			return LibItemNames.ICHOR_HELM;
+            return LibItemNames.ICHOR_LEGS;
+            case 1:
+                return LibItemNames.ICHOR_CHEST;
+            case 0:
+                return LibItemNames.ICHOR_HELM;
 		default:
 			return "INVAlID ARMOR TYPE";
 		}

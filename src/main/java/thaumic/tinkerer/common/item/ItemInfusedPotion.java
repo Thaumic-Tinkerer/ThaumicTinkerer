@@ -148,14 +148,14 @@ public class ItemInfusedPotion extends ItemPotion implements ITTinkererItem {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererRecipeMulti(
-				new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT0", new ItemStack(this, 1, 0), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 0), new AspectList().add(Aspect.AURA, 5).add(Aspect.AIR, 5)),
+                new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT0", new ItemStack(this, 1, 0), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 1, 0), new AspectList().add(Aspect.AURA, 5).add(Aspect.AIR, 5)),
 
-				new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT1", new ItemStack(this, 1, 1), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 1), new AspectList().add(Aspect.AURA, 5).add(Aspect.FIRE, 5)),
+                new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT1", new ItemStack(this, 1, 1), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 1, 1), new AspectList().add(Aspect.AURA, 5).add(Aspect.FIRE, 5)),
 
-				new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT2", new ItemStack(this, 1, 2), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 2), new AspectList().add(Aspect.AURA, 5).add(Aspect.EARTH, 5)),
+                new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT2", new ItemStack(this, 1, 2), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 1, 2), new AspectList().add(Aspect.AURA, 5).add(Aspect.EARTH, 5)),
 
-				new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT3", new ItemStack(this, 1, 3), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 3), new AspectList().add(Aspect.AURA, 5).add(Aspect.WATER, 5))
-		);
+                new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_POTIONS + "POT3", new ItemStack(this, 1, 3), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class), 1, 3), new AspectList().add(Aspect.AURA, 5).add(Aspect.WATER, 5))
+        );
 	}
 
 	private enum PRIMAL_ASPECT_ENUM {
