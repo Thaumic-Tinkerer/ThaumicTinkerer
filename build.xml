@@ -1,77 +1,305 @@
-<?xml version="1.0" ?>
-<project name="ThaumicTinkerer" default="build">
+<project name="ThaumicTinkerer" default="install" basedir=".">
+    <!-- Buildscript thanks to CoFH -->
+    <property environment="env"/>
+    <!-- Basic directories -->
+    <property name="src.dir" value="src/main/java"/>
+    <property name="api.dir" value="src/api/java"/>
+    <property name="library.dir" value="libs"/>
+    <property name="library.download.dir" value="${library.dir}/downloads"/>
+    <property name="resources.dir" value="src/main/resources"/>
+    <property name="build.dir" value="build"/>
+    <property name="download.dir" value="${build.dir}/downloads"/>
+    <!-- Project information -->
+    <property name="build.name" value="${ant.project.name}"/>
+    <property name="class.pckg" value="thaumic/tinkerer"/>
+    <!-- Version file -->
+    <property name="verclass.dir" value="${src.dir}/${class.pckg}/common/lib"/>
+    <property name="verclass.name" value="LibMisc.java"/>
+    <!-- Forge version -->
+    <property name="mc.version" value="1.7.2"/>
+    <property name="forge.major" value="10"/>
+    <property name="forge.minor" value="12"/>
+    <property name="forge.patch" value="2"/>
+    <property name="forge.build" value="1147"/>
+    <!-- Packaging -->
+    <property name="dist.dir" value="${build.dir}/dist"/>
+    <property name="classes.dir" value="${build.dir}/packaging"/>
+    <property name="apiclasses.dir" value="${build.dir}/api-packaging"/>
+    <!-- Forge paths -->
+    <property name="forge.version" value="${mc.version}-${forge.major}.${forge.minor}.${forge.patch}.${forge.build}"/>
+    <property name="forge.dir" value="${build.dir}/forge"/>
+    <property name="forgebuild.dir" value="${forge.dir}/build"/>
+    <property name="compile.dir" value="${forgebuild.dir}/tmp/compile"/>
+    <property name="lib.dir" value="${forgebuild.dir}/libs"/>
+    <property name="sources.dir" value="${forgebuild.dir}/sources/minecraft"/>
+    <property name="transformers.dir" value="${forge.dir}/src/main/resources/"/>
+    <property name="forge.stsh"
+              value="${build.dir}/.gradle/caches/minecraft/net/minecraftforge/forge/${forge.version}"/>
+    <property name="forge.jar" value="${forge.stsh}/forgeSrc-${forge.version}.jar"/>
+    <property name="reobf.cmd" value="${download.dir}/bon.jar"/>
+    <property name="forge.url"
+              value="http://files.minecraftforge.net/maven/net/minecraftforge/forge/${forge.version}/forge-${forge.version}-src.zip"/>
+    <!-- Classpaths -->
+    <path id="lib.classpath">
+        <pathelement location="${forge.jar}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+            <include name="**/*.jar"/>
+            <exclude name="${reobf.jar}"/>
+        </fileset>
+        <fileset dir="libs">
+            <include name="*.jar"/>
+            <include name="**/*.jar"/>
+        </fileset>
+        <!--fileset dir="${build.dir}/.gradle/caches">
+            <include name="modules*/files*/**/*.jar"/>
 
-    <property file="build.properties" prefix="build"/>
+            <exclude name="commons-io-1.4.jar"/>
+            <exclude name="commons-lang3-3.1.jar"/>
+            <exclude name="modules*/files*/commons-io/commons-io/1.4/**/*.jar"/>
+            <exclude name="modules*/files*/com.google.guava/guava/14*/**/*.jar"/>
+            <exclude name="modules*/files*/com.google.guava/guava/15*/**/*.jar"/>
+        </fileset-->
+    </path>
+    <path id="gson">
+        <!--fileset dir="${build.dir}/.gradle/caches">
+            <include name="modules*/files*/com.google.code.gson/**/*.jar"/>
+        </fileset-->
+    </path>
+    <!-- Task skipping -->
+    <target name="properties">
+        <!-- Enforce some paths -->
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${download.dir}"/>
+        <!-- Set properties -->
+        <available property="has.api" file="${src.dir}/${class.pckg}/api"/>
+        <available property="forge.exists" file="${download.dir}/forge-${forge.version}-src.zip"/>
+        <available property="bon.exists" file="${reobf.cmd}"/>
+        <condition property="forge.already.installed">
+            <available file="${forge.jar}" type="file"/>
+        </condition>
+        <condition property="have.libs">
+            <and>
+                <istrue value="${forge.exists}"/>
+            </and>
+        </condition>
+    </target>
+    <!-- Dependency downloading -->
+    <target name="download-core" depends="properties" unless="forge.exists">
+    </target>
+    <target name="get-dependencies" depends="get-version" unless="have.libs">
+        <delete dir="${library.download.dir}/"/>
+        <mkdir dir="${library.download.dir}/"/>
+        <echo message="Downloading libs"/>
 
+        <get src="http://files.minecraftforge.net/maven/codechicken/ForgeMultipart/1.7.2-1.1.0.268/ForgeMultipart-1.7.2-1.1.0.268-dev.jar"
+             dest="${library.download.dir}/FMP.jar"/>
+        <get src="http://dvs1.progwml6.com/files/maven/tconstruct/TConstruct/1.7.2-1.6.0.jenkins494/TConstruct-1.7.2-1.6.0.jenkins494-deobf.jar"
+             dest="${library.download.dir}/TCONSTRUCT.jar"/>
+        <get src="http://dvs1.progwml6.com/files/maven/mantle/Mantle/1.7.2-145.3a637c2/Mantle-1.7.2-145.3a637c2-deobf.jar"
+             dest="${library.download.dir}/MANTLE.jar"/>
+        <!-- Begin hack -->
+        <delete dir="${compile.dir}" failonerror="false"/>
+        <!-- End hack -->
+    </target>
+    <!-- Building process -->
+    <target name="install" depends="build">
+        <!-- Cleanup -->
+        <delete dir="${apiclasses.dir}"/>
+        <delete dir="${classes.dir}"/>
+        <delete>
+            <fileset dir="${dist.dir}">
+                <exclude name="${build.name}${build.full}${build.number}.jar"/>
+                <exclude name="${build.name}${build.full}dev-${build.number}.jar"/>
+                <exclude name="${build.name}-API${build.full}${build.number}.zip"/>
+            </fileset>
+        </delete>
+    </target>
+    <macrodef name="install-lite">
+        <attribute name="build"/>
+        <attribute name="classes" default="${compile.dir}"/>
+        <sequential>
+            <copy todir="${classes.dir}" preservelastmodified="true">
+                <fileset dir="@{classes}">
+                    <include name="**/*.class"/>
+                </fileset>
+                <fileset dir="${resources.dir}"/>
+            </copy>
+            <update-languages/>
+            <manifest file="${classes.dir}/MANIFEST.MF">
+                <attribute name="FMLCorePlugin" value="cofh.asm.LoadingPlugin"/>
+                <attribute name="FMLCorePluginContainsFMLMod" value="true"/>
+            </manifest>
+            <jar destfile="${dist.dir}/${build.name}${build.full}@{build}.jar"
+                 compress="true" level="9" basedir="${classes.dir}"
+                 manifest="${classes.dir}/MANIFEST.MF">
+                <exclude name="MANIFEST.MF"/>
+            </jar>
+        </sequential>
+    </macrodef>
+    <target name="build" depends="get-dependencies,get-build-number,copy-sources">
+        <!-- Recompile -->
+        <echo message="Compiling..."/>
+        <mkdir dir="${compile.dir}"/>
+        <depend srcdir="${sources.dir}" destdir="${compile.dir}"
+                cache="${forgebuild.dir}/tmp/depcache" closure="true">
+            <include name="**/*.java"/>
+        </depend>
+
+        <!--Print out detailed classpath-->
+        <pathconvert pathsep="${line.separator}|   |-- "
+                     property="echo.path.compile"
+                     refid="lib.classpath">
+        </pathconvert>
+        <echo message="|-- compile classpath"/>
+        <echo message="|   |"/>
+        <echo message="|   |-- ${echo.path.compile}"/>
+
+        <javac srcdir="${sources.dir}" destdir="${compile.dir}" target="1.6" source="1.6"
+               classpathref="lib.classpath" debug="true" debuglevel="lines,source" includeAntRuntime="false">
+            <include name="**/*.java"/>
+        </javac>
+        <!-- Dev jar -->
+        <echo message="Building jar..."/>
+        <local name="build"/>
+        <property name="build" value="dev-${build.number}"/>
+        <install-lite build="${build}"/>
+        <!-- Reobf -->
+        <echo message="Reobfuscating..."/>
+        <java classpath="${reobf.cmd}" classname="immibis.bon.cui.MCPRemap">
+            <arg line="-q -m"/>
+            <arg value="-to SRG"/>
+            <arg value="-from MCP"/>
+            <arg value="-mcp ${forge.stsh}/unpacked"/>
+            <arg value="-in ${dist.dir}/${build.name}${build.full}${build}.jar"/>
+            <arg value="-out ${dist.dir}/${build.name}${build.full}${build.number}.jar"/>
+            <arg value="-ref ${forge.jar}"/>
+            <arg value="-jref ${lib.dir}"/>
+        </java>
+    </target>
+    <target name="copy-sources" depends="package-api">
+        <!-- Copy source -->
+        <mkdir dir="${sources.dir}"/>
+        <sync todir="${sources.dir}">
+            <fileset dir="${src.dir}"/>
+            <fileset dir="${api.dir}"/>
+        </sync>
+    </target>
+    <target name="package-api" depends="get-version" if="has.api">
+        <!-- Copy & package API -->
+        <copy todir="${apiclasses.dir}/${class.pckg}/api">
+            <fileset dir="${src.dir}/${class.pckg}/api"/>
+        </copy>
+        <zip destfile="${dist.dir}/${build.name}-API${build.full}${build.number}.zip" basedir="${apiclasses.dir}"/>
+    </target>
+    <target name="setup-forge" depends="download-forge" unless="forge.already.installed">
+        <delete dir="${forge.dir}" failonerror="false"/>
+        <mkdir dir="${forge.dir}"/>
+        <unzip dest="${forge.dir}">
+            <fileset dir="${download.dir}">
+                <include name="forge-${forge.version}-src.zip"/>
+            </fileset>
+        </unzip>
+        <!-- Cleanup -->
+        <delete>
+            <fileset dir="${forge.dir}">
+                <include name="*.txt"/>
+                <include name="src/**/*.info"/>
+            </fileset>
+        </delete>
+        <delete dir="${forge.dir}/eclipse" failonerror="false"/>
+        <delete dir="${forge.dir}/src/main/java" failonerror="false"/>
+        <delete dir="${build.dir}/.gradle/caches/minecraft/net/minecraftforge/forge/${forge.version}/srgs"
+                failonerror="false"/>
+        <!-- Change executables' permissions -->
+        <chmod file="${forge.dir}/gradlew" perm="+x"/>
+        <copy file="${resources.dir}/ThaumicTinkerer_at.cfg" tofile="${transformers.dir}/ThaumicTinkerer_at.cfg"/>
+        <!-- Install forge -->
+        <exec executable="./gradlew" failonerror="true" dir="${forge.dir}/" vmlauncher="false">
+            <arg line="-g ../.gradle"/>
+            <arg line="extractMinecraftSrc"/>
+            <arg line="eclipseClasspath"/>
+        </exec>
+        <mkdir dir="${compile.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+        <javac srcdir="${forgebuild.dir}/tmp/recompSrc" destdir="${compile.dir}" target="1.6" source="1.6"
+               classpathref="lib.classpath" debug="true" debuglevel="lines,source" includeAntRuntime="false"/>
+        <jar destfile="${forge.jar}" compress="true" level="9" basedir="${compile.dir}"/>
+        <copy file="${forge.jar}" todir="${forgebuild.dir}/dirtyArtifacts/"/>
+        <delete dir="${compile.dir}"/>
+    </target>
+    <target name="download-forge" depends="setup-bon,download-core" unless="forge.exists">
+        <echo message="Downloading forge... "/>
+        <get src="${forge.url}" dest="${download.dir}/forge-${forge.version}-src.zip"/>
+    </target>
+    <target name="setup-bon" depends="properties" unless="bon.exists">
+        <echo message="Downloading BON..."/>
+        <get src="https://github.com/skyboy/bearded-octo-nemesis/releases/download/1.1/BON.jar" dest="${reobf.cmd}"/>
+    </target>
+    <macrodef name="update-languages">
+        <sequential>
+            <script language="javascript"><![CDATA[
+importPackage(java.io);
+var path = "/assets/cofh/language/";
+var languages = new File(project.getProperty("resources.dir") + path);
+if (languages.exists() && languages.isDirectory()) {
+var out = "";
+for each(var i in languages.list()) {
+if (i != null && i.length() > 5 && i.indexOf(".lang") == i.length() - 5) {
+out += i.substring(0, i.length() - 5) + ", ";
+}
+}
+if (out.length > 0) {
+var os = new PrintWriter(project.getProperty("classes.dir") + path + ".languages");
+os.write("["+out.substring(0, out.length - 2)+"]");
+os.flush();
+os.close();
+}
+}
+]]></script>
+        </sequential>
+    </macrodef>
+    <target name="verify-version">
+        <script language="javascript"><![CDATA[
+var name = project.getProperty("build.full");
+if (name == null || name == "") {
+name = project.getProperty("verclass.name");
+if (name == null || name == "") {
+project.setProperty("build.full", "-");
+}
+}
+]]></script>
+    </target>
+    <target name="get-version" depends="verify-version,setup-forge" unless="build.full">
+        <local name="grep.out"/>
+        <local name="mfrv"/>
+        <local name="mcv"/>
+        <!-- Read version out of file -->
+        <property name="version" value="2.4"/>
+        <!-- Split mod&mc version, update mcmod -->
+        <property name="build.full" value="-[${mcv}]${mfrv}-"/>
+    </target>
+    <target name="get-build-number" depends="build-number-there" unless="build.number">
+        <echo message="!! No build number set !!"/>
+        <property name="build.number" value="CUSTOM_BUILD"/>
+    </target>
+    <target name="build-number-there" depends="get-version" if="env.BUILD_NUMBER" unless="build.number">
+        <echo message="Using build number ${env.BUILD_NUMBER}..."/>
+        <property name="build.number" value="${env.BUILD_NUMBER}"/>
+    </target>
     <target name="clean">
-        <delete dir="${build.dir.gradle}\build\classes\main"/>
-        <delete file="${build.dir.gradle}\src\main\java\mcmod.info"/>
-        <delete dir="${build.dir.gradle}\src\main\java\vazkii"/>
-        <delete dir="${build.dir.gradle}\src\main\java\ic2"/>
-        <delete dir="${build.dir.gradle}\src\main\java\uildcraft"/>
-        <delete dir="${build.dir.gradle}\src\main\java\dan200"/>
-        <delete dir="${build.dir.gradle}\src\main\java\cofh"/>
-        <delete dir="${build.dir.temp}"/>
+        <delete dir="${build.dir}"/>
     </target>
-
-    <target name="increment_build_number">
-        <propertyfile file="build.properties">
-            <entry key="build_number" type="int" operation="+" default="1"/>
-        </propertyfile>
+    <target name="rebuild">
+        <delete file="${forge.jar}" failonerror="false"/>
+        <delete dir="${forge.dir}"/>
+        <delete dir="${download.dir}"/>
+        <antcall target="install"/>
     </target>
-
-    <target name="prep">
-        <mkdir dir="${build.dir.temp}"/>
-
-        <copy todir="${build.dir.temp}">
-            <fileset dir="${build.dir.repo}\resources\"/>
-        </copy>
-
-        <copy todir="${build.dir.gradle}\src\main\java">
-            <fileset dir="${build.dir.repo}\MODSRC\"/>
-        </copy>
+    <target name="refresh-deps">
+        <delete dir="${lib.dir}"/>
+        <delete dir="${download.dir}"/>
+        <antcall target="install"/>
     </target>
-
-    <target name="replace_tokens">
-        <replace dir="${build.dir.temp}" token="ANT:VERSION" value="${build.version}"/>
-        <replace dir="${build.dir.temp}" token="ANT:BUILD" value="${build.build_number}"/>
-
-        <replace dir="${build.dir.gradle}\src\main\java" token="ANT:VERSION" value="${build.version}"/>
-        <replace dir="${build.dir.gradle}\src\main\java" token="ANT:BUILD" value="${build.build_number}"/>
-    </target>
-
-    <target name="gradle_build">
-        <copy todir="${build.dir.gradle}" overwrite="true">
-            <fileset file="${build.dir.repo}\build.gradle"/>
-        </copy>
-
-        <exec dir="${build.dir.gradle}" executable="cmd" osfamily="windows">
-            <arg line="/c gradle build"/>
-        </exec>
-
-        <exec dir="${build.dir.gradle}" executable="gradle" osfamily="unix">
-            <arg value="build"/>
-        </exec>
-
-        <move file="${build.dir.gradle}\build\libs\modid-1.0.jar"
-              tofile="${build.dir.output}\${build.mod_name}\${build.mod_name} ${build.version}-${build.build_number}.jar"/>
-    </target>
-
-    <target name="inject_assets">
-        <jar update="true"
-             destfile="${build.dir.output}\${build.mod_name}\${build.mod_name} ${build.version}-${build.build_number}.jar">
-            <fileset dir="${build.dir.temp}" excludes="**/psd/**"/>
-        </jar>
-        <delete dir="${build.dir.temp}"/>
-    </target>
-
-    <target name="build">
-        <antcall target="clean"/>
-        <antcall target="prep"/>
-        <antcall target="replace_tokens"/>
-        <antcall target="gradle_build"/>
-        <antcall target="inject_assets"/>
-        <antcall target="increment_build_number"/>
-        <antcall target="clean"/>
-    </target>
+    <target name="jar" depends="install"/>
 </project>

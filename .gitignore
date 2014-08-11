@@ -13,7 +13,8 @@ remotebuild.py
 ## ForgeGradle
 /run
 /out
-
+/ForgeModule
+/libs/download
 ## idea
 *.iml
 *.ipr
@@ -36,6 +37,7 @@ TCDEOBF*
 *.DS_Store
 _MACOSX
 Thumbs.db
+/forgelibs
 
 ## Ignore unnecessary files
 *.log
