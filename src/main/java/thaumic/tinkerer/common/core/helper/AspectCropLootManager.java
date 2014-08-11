@@ -1,5 +1,6 @@
 package thaumic.tinkerer.common.core.helper;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
@@ -122,7 +123,6 @@ public class AspectCropLootManager {
         addAspectLoot(Aspect.FLESH, new ItemStack(ConfigItems.itemResource, 16, 5), 1);
 
         addAspectLoot(Aspect.UNDEAD, new ItemStack(Items.rotten_flesh, 32));
-        addAspectLoot(Aspect.UNDEAD, new ItemStack(Items.bone, 32));
 
         addAspectLoot(Aspect.CRAFT, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 32));
         addAspectLoot(Aspect.CRAFT, new ItemStack(ConfigBlocks.blockStoneDevice, 16));
@@ -175,7 +175,7 @@ public class AspectCropLootManager {
             }
         }
 
-        //TODO: Iter
+        addAspectLoot(Aspect.TRAVEL, new ItemStack(ConfigBlocks.blockCosmeticSolid, 8, 7));
 
         addAspectLoot(Aspect.SLIME, new ItemStack(Items.slime_ball, 16));
         addAspectLoot(Aspect.SLIME, "slime");
@@ -194,9 +194,13 @@ public class AspectCropLootManager {
         addAspectLoot(Aspect.METAL, new ItemStack(Items.iron_ingot, 4), 100);
         addAspectLoot(Aspect.METAL, "iron");
 
-        //TODO: Mortus
 
-        //TODO: Motus
+        addAspectLoot(Aspect.DEATH, new ItemStack(Items.bone, 32));
+
+        addAspectLoot(Aspect.MOTION, new ItemStack(Blocks.rail), 10);
+
+        addAspectLoot(Aspect.MOTION, new ItemStack(Blocks.activator_rail));
+
 
         addAspectLoot(Aspect.CLOTH, new ItemStack(Blocks.wool, 16), 30);
         addAspectLoot(Aspect.CLOTH, new ItemStack(Items.string, 15), 10);
@@ -211,7 +215,9 @@ public class AspectCropLootManager {
 
         addAspectLoot(Aspect.MAGIC, "shard");
 
-        //TODO: Sano
+        addAspectLoot(Aspect.HEAL, new ItemStack(Items.golden_apple));
+
+        addAspectLoot(Aspect.HEAL, new ItemStack(Blocks.cake));
 
         addAspectLoot(Aspect.SENSES, new ItemStack(Items.dye, 20, 4));
 
@@ -219,7 +225,8 @@ public class AspectCropLootManager {
         addAspectLoot(Aspect.SOUL, new ItemStack(Blocks.netherrack, 64), 2);
         addAspectLoot(Aspect.SOUL, new ItemStack(Blocks.nether_brick));
 
-        //TODO: Tempestas
+        addAspectLoot(Aspect.WEATHER, new ItemStack(Blocks.air));
+        addAspectLoot(Aspect.WEATHER, "cloud", 100);
 
         addAspectLoot(Aspect.DARKNESS, new ItemStack(Blocks.obsidian, 10));
 
@@ -228,11 +235,11 @@ public class AspectCropLootManager {
 
         addAspectLoot(Aspect.POISON, new ItemStack(ConfigItems.itemResource, 16, 3));
 
-        //TODO: Victus
+        addAspectLoot(Aspect.LIFE, new ItemStack(Items.egg, 8));
 
-        //TODO: Vinculum
+        addAspectLoot(Aspect.TRAP, new ItemStack(Blocks.web, 4));
 
-        //TODO: Vitium
+        addAspectLoot(Aspect.TAINT, new ItemStack(ConfigItems.itemResource, 4, 11));
 
         addAspectLoot(Aspect.CRYSTAL, new ItemStack(Items.diamond));
 

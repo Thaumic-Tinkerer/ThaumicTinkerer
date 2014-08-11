@@ -1,7 +1,6 @@
 package thaumic.tinkerer.client.render.block;
 
 import baubles.client.ClientProxy;
-import com.sun.prism.util.tess.Tess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
