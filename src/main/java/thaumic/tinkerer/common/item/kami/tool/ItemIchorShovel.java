@@ -79,7 +79,7 @@ public class ItemIchorShovel extends ItemSpade implements ITTinkererItem {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+        return ConfigHandler.enableKami;
 	}
 
 	@Override

@@ -13,6 +13,8 @@ remotebuild.py
 ## ForgeGradle
 /run
 /out
+/ForgeModule
+/libs/download
 
 ## idea
 *.iml
@@ -31,12 +33,13 @@ remotebuild.py
 /classes/
 ## misc
 /libs/Thaumcraft-deobf*.jar*
-/libs/Ender*
+/libs/*1.7.10*
 TCDEOBF*
 ## Ignore OS cache files
 *.DS_Store
 _MACOSX
 Thumbs.db
+/forgelibs
 
 ## Ignore unnecessary files
 *.log

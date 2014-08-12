@@ -35,7 +35,7 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.KamiResearchItem;
 import thaumic.tinkerer.common.research.ResearchHelper;
 
-public class ItemFocusShadowbeam extends ItemModFocus {
+public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
 	AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
 
