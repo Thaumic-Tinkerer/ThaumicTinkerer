@@ -38,7 +38,7 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.KamiResearchItem;
 import thaumic.tinkerer.common.research.ResearchHelper;
 
-public class ItemFocusRecall extends ItemModFocus {
+public class ItemFocusRecall extends ItemModKamiFocus{
 
 	AspectList cost = new AspectList().add(Aspect.AIR, 4000).add(Aspect.EARTH, 4000).add(Aspect.ORDER, 4000);
 

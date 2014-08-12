@@ -83,7 +83,7 @@ public class ItemIchorPick extends ItemPickaxe implements ITTinkererItem {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+        return ConfigHandler.enableKami;
 	}
 
 	@Override

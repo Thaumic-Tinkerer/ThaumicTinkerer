@@ -11,7 +11,7 @@ public abstract class ItemKamiBase extends ItemBase {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+        return ConfigHandler.enableKami;
 	}
 
 	@Override
