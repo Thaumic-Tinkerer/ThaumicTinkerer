@@ -58,7 +58,7 @@ public enum EnumMobAspect {
 	},
 	Spider(EntitySpider.class, new Aspect[]{ Aspect.BEAST, Aspect.UNDEAD, Aspect.UNDEAD }),
 	Squid(EntitySquid.class, new Aspect[]{ Aspect.WATER, Aspect.WATER, Aspect.WATER }, 0.3f, 0.5f),
-    Villages(EntityVillager.class, new Aspect[]{Aspect.MAN, Aspect.MAN, Aspect.MAN}),
+    Villager(EntityVillager.class, new Aspect[]{Aspect.MAN, Aspect.MAN, Aspect.MAN}),
     Wisp(EntityWisp.class, new Aspect[]{ Aspect.AIR, Aspect.MAGIC, Aspect.MAGIC }, "Thaumcraft."),
 	Witch(EntityWitch.class, new Aspect[]{ Aspect.MAGIC, Aspect.UNDEAD, Aspect.ELDRITCH }, 0.35f, 0.0f),
 	Wolf(EntityWolf.class, new Aspect[]{ Aspect.BEAST, Aspect.BEAST, Aspect.BEAST }),
