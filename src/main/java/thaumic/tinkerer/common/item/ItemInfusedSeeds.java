@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
@@ -122,6 +123,11 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
     @Override
     public IRegisterableResearch getResearchItem() {
         return null;
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return EnumRarity.rare;
     }
 
     @Override

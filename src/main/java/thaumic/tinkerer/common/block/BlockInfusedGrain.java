@@ -18,6 +18,7 @@ import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
+import thaumic.tinkerer.common.core.helper.AspectCropLootManager;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
@@ -116,7 +117,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         if (metadata >= 7) {
             for (int i = 0; i < 3; ++i) {
                 if (world.rand.nextInt(15) <= metadata) {
-                    //ret.add(new ItemStack(this.func_149866_i(), 1, damageDropped(metadata)));
+                    ret.add(AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z)));
                 }
             }
         }
