@@ -44,7 +44,7 @@ public class AspectCropLootManager {
         for (Map.Entry<ItemStack, Integer> pair : aspectHashmap.entrySet()) {
             randInt -= pair.getValue();
             if (randInt <= 0) {
-                return pair.getKey();
+                return pair.getKey().copy();
             }
         }
         return null;

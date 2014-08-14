@@ -23,6 +23,11 @@ import java.util.Random;
  */
 public class BlockInfusedFarmland extends BlockFarmland implements ITTinkererBlock {
 
+    public BlockInfusedFarmland() {
+        super();
+        setHardness(0.6F);
+        setStepSound(soundTypeGravel);
+    }
 
     @Override
     public TileEntity createTileEntity(World world, int metadata) {

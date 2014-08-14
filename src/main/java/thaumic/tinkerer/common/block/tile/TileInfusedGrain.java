@@ -7,11 +7,14 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.BlockInfusedGrain;
+
+import java.util.Random;
 
 /**
  * Created by pixlepix on 7/25/14.
@@ -31,8 +34,65 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
     }
 
     @Override
+    public void updateEntity() {
+        if (worldObj.rand.nextInt(20) == 0 && !aspect.isPrimal()) {
+
+            for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+                TileEntity entity = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
+                if (entity instanceof TileInfusedGrain) {
+                    //Exchange aspects
+                    TileInfusedGrain tileInfusedGrain = (TileInfusedGrain) entity;
+                    Aspect aspect = tileInfusedGrain.aspect;
+                    if (aspect.isPrimal()) {
+                        if (primalTendencies.getAmount(aspect) < 5) {
+                            primalTendencies.add(aspect, 1);
+                            reduceSaturatedAspects();
+
+                            if (worldObj.isRemote) {
+                                ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
+                            }
+                            return;
+                        }
+                    } else {
+                        AspectList targetList = tileInfusedGrain.primalTendencies;
+                        if (targetList.getAspects().length == 0 || targetList.getAspects()[0] == null) {
+                            return;
+                        }
+                        aspect = targetList.getAspects()[worldObj.rand.nextInt(targetList.getAspects().length)];
+                        primalTendencies.add(aspect, 1);
+                        targetList.reduce(aspect, 1);
+                        reduceSaturatedAspects();
+                        if (worldObj.isRemote) {
+                            ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
+                        }
+                        return;
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    @Override
     public boolean shouldRefresh(Block oldBlock, Block newBlock, int oldMeta, int newMeta, World world, int x, int y, int z) {
         return !(oldBlock == newBlock);
+    }
+
+    public void reduceSaturatedAspects() {
+        int sum = 0;
+        for (Integer i : primalTendencies.aspects.values()) {
+            sum += i;
+        }
+        if (sum > 50) {
+            int toRemove = sum - 50;
+            while (toRemove > 0) {
+                Random rand = new Random();
+                Aspect target = primalTendencies.getAspects()[rand.nextInt(primalTendencies.getAspects().length)];
+                primalTendencies.remove(target, 1);
+                toRemove--;
+            }
+        }
     }
 
     @Override

@@ -66,6 +66,7 @@ public class RenderGenericSeeds implements IItemRenderer {
     public void renderItem(ItemRenderType type, ItemStack item, Object... objects) {
         GL11.glPushMatrix();
         Aspect aspect = ItemInfusedSeeds.getAspect(item);
+        GL11.glPushAttrib(GL11.GL_COLOR_BUFFER_BIT);
         if (!aspect.isPrimal()) {
             //Hex to RGB code from vanilla tesselator
             float r = (aspect.getColor() >> 16 & 0xFF) / 255.0F;
@@ -85,7 +86,7 @@ public class RenderGenericSeeds implements IItemRenderer {
         } else {
             drawAsSlice(type, item);
         }
-
+        GL11.glPopAttrib();
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glPopMatrix();
 

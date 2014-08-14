@@ -111,7 +111,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         for (int i = 0; i < count; i++) {
             ItemStack seedStack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
             ItemInfusedSeeds.setAspect(seedStack, getAspectDropped(world, x, y, z, metadata));
-            ItemInfusedSeeds.setAspectTendencies(seedStack, new AspectList());
+            ItemInfusedSeeds.setAspectTendencies(seedStack, ((TileInfusedGrain) world.getTileEntity(x, y, z)).primalTendencies);
             ret.add(seedStack);
             fertilizeSoil(world, x, y, z, metadata);
         }
