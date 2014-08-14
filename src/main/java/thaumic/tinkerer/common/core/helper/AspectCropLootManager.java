@@ -80,7 +80,7 @@ public class AspectCropLootManager {
 
 
     public static void addAspectLoot(Aspect aspect, ItemStack stack, int power) {
-        lootMap.get(aspect).put(stack, 1);
+        lootMap.get(aspect).put(stack, power);
     }
 
     public static void populateLootMap() {

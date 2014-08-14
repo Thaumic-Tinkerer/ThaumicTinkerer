@@ -47,22 +47,57 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
         super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
         par3List.add(getAspect(par1ItemStack).getName());
+        AspectList aspectList = getAspectTendencies(par1ItemStack);
+        if (aspectList != null && aspectList.getAspects()[0] != null) {
+            for (Aspect a : aspectList.getAspects()) {
+                par3List.add(a.getName() + ": " + aspectList.getAmount(a));
+            }
+        }
     }
+
+
+    private static final String NBT_MAIN_ASPECT = "mainAspect";
+    private static final String NBT_ASPEPCT_TENDENCIES = "aspectTendencies";
 
     public static Aspect getAspect(ItemStack stack) {
         AspectList aspectList = new AspectList();
         if (stack.getTagCompound() == null) {
             stack.setTagCompound(new NBTTagCompound());
         }
-        aspectList.readFromNBT(stack.getTagCompound());
+        aspectList.readFromNBT(stack.getTagCompound().getCompoundTag(NBT_MAIN_ASPECT));
 
         return aspectList.size() == 0 ? null : aspectList.getAspects()[0];
     }
 
+
     public static void setAspect(ItemStack stack, Aspect aspect) {
-        stack.setTagCompound(new NBTTagCompound());
+        if (stack.stackTagCompound == null) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
         AspectList aspectList = new AspectList().add(aspect, 1);
-        aspectList.writeToNBT(stack.getTagCompound());
+        NBTTagCompound nbt = new NBTTagCompound();
+        aspectList.writeToNBT(nbt);
+        stack.stackTagCompound.setTag(NBT_MAIN_ASPECT, nbt);
+    }
+
+    public static AspectList getAspectTendencies(ItemStack stack) {
+        AspectList aspectList = new AspectList();
+        if (stack.getTagCompound() == null) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        aspectList.readFromNBT(stack.getTagCompound().getCompoundTag(NBT_ASPEPCT_TENDENCIES));
+
+        return aspectList;
+    }
+
+
+    public static void setAspectTendencies(ItemStack stack, AspectList aspectList) {
+        if (stack.stackTagCompound == null) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        NBTTagCompound nbt = new NBTTagCompound();
+        aspectList.writeToNBT(nbt);
+        stack.stackTagCompound.setTag(NBT_ASPEPCT_TENDENCIES, nbt);
     }
 
     @Override
@@ -75,6 +110,7 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         for (Aspect primal : Aspect.getPrimalAspects()) {
             ItemStack itemStack = new ItemStack(item, 1);
             setAspect(itemStack, primal);
+            setAspectTendencies(itemStack, new AspectList());
             l.add(itemStack);
         }
     }
