@@ -35,7 +35,7 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
 
     @Override
     public void updateEntity() {
-        if (worldObj.rand.nextInt(20) == 0 && !aspect.isPrimal()) {
+        if (worldObj.rand.nextInt(200) == 0 && !aspect.isPrimal()) {
 
             for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
                 TileEntity entity = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);

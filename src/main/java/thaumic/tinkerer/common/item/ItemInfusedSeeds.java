@@ -22,6 +22,7 @@ import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.BlockInfusedFarmland;
 import thaumic.tinkerer.common.block.BlockInfusedGrain;
+import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -191,6 +192,7 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
             world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedFarmland.class));
             world.setBlock(x, y + 1, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedGrain.class));
             BlockInfusedGrain.setAspect(world, x, y + 1, z, getAspect(par1ItemStack));
+            ((TileInfusedGrain) world.getTileEntity(x, y + 1, z)).primalTendencies = getAspectTendencies(par1ItemStack);
             par1ItemStack.stackSize--;
             return true;
         } else {
