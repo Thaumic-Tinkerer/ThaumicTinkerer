@@ -35,7 +35,21 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
 
     @Override
     public void updateEntity() {
-        if (worldObj.rand.nextInt(200) == 0 && !aspect.isPrimal()) {
+
+        //Growth
+        if (worldObj.getBlockLightValue(xCoord, yCoord + 1, zCoord) >= 9) {
+            int l = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+            if (l < 7) {
+
+                if (worldObj.rand.nextInt((((2510 - (int) Math.pow(((TileInfusedGrain) (worldObj.getTileEntity(xCoord, yCoord, zCoord))).primalTendencies.getAmount(Aspect.WATER), 2))) * 6)) == 0) {
+                    ++l;
+                    worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l, 3);
+                }
+            }
+        }
+
+        //Aspect Exchange
+        if (worldObj.rand.nextInt((2550 - ((int) Math.pow(primalTendencies.getAmount(Aspect.AIR), 2))) * 3) == 0 && !aspect.isPrimal()) {
 
             for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
                 TileEntity entity = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
@@ -49,7 +63,9 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
                             reduceSaturatedAspects();
 
                             if (worldObj.isRemote) {
-                                ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
+                                for (int i = 0; i < 50; i++) {
+                                    ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
+                                }
                             }
                             return;
                         }
@@ -58,12 +74,17 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
                         if (targetList.getAspects().length == 0 || targetList.getAspects()[0] == null) {
                             return;
                         }
+
                         aspect = targetList.getAspects()[worldObj.rand.nextInt(targetList.getAspects().length)];
-                        primalTendencies.add(aspect, 1);
-                        targetList.reduce(aspect, 1);
-                        reduceSaturatedAspects();
-                        if (worldObj.isRemote) {
-                            ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
+                        if (targetList.getAmount(aspect) >= primalTendencies.getAmount(aspect)) {
+                            primalTendencies.add(aspect, 1);
+                            targetList.reduce(aspect, 1);
+                            reduceSaturatedAspects();
+                            if (worldObj.isRemote) {
+                                for (int i = 0; i < 50; i++) {
+                                    ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
+                                }
+                            }
                         }
                         return;
                     }

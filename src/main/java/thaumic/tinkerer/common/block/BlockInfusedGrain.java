@@ -149,6 +149,12 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         }
     }
 
+    public void updateTick(World world, int x, int y, int z, Random rand) {
+        //Prevent normal growth from occuring
+        //Growth takes place in the tile entity
+        checkAndDropBlock(world, x, y, z);
+    }
+
 
     public static final int BREEDING_CHANCE = 10;
 
