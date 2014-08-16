@@ -65,6 +65,7 @@ public class RenderGenericSeeds implements IItemRenderer {
     @Override
     public void renderItem(ItemRenderType type, ItemStack item, Object... objects) {
         GL11.glPushMatrix();
+        GL11.glEnable(GL11.GL_BLEND);
         Aspect aspect = ItemInfusedSeeds.getAspect(item);
         GL11.glPushAttrib(GL11.GL_COLOR_BUFFER_BIT);
         if (!aspect.isPrimal()) {
