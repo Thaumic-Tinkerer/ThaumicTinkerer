@@ -40,7 +40,6 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
         if (worldObj.getBlockLightValue(xCoord, yCoord + 1, zCoord) >= 9) {
             int l = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
             if (l < 7) {
-
                 if (worldObj.rand.nextInt((((2510 - (int) Math.pow(((TileInfusedGrain) (worldObj.getTileEntity(xCoord, yCoord, zCoord))).primalTendencies.getAmount(Aspect.WATER), 2))) * 6)) == 0) {
                     ++l;
                     worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l, 3);

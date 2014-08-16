@@ -107,23 +107,26 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     public void breakBlock(World world, int x, int y, int z, Block block, int metadata) {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
+        Random rand = new Random();
         int count = 1;
         for (int i = 0; i < count; i++) {
             ItemStack seedStack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
             ItemInfusedSeeds.setAspect(seedStack, getAspectDropped(world, x, y, z, metadata));
             ItemInfusedSeeds.setAspectTendencies(seedStack, ((TileInfusedGrain) world.getTileEntity(x, y, z)).primalTendencies);
+            while (rand.nextInt(10000) < Math.pow(getPrimalTendencyCount(world, x, y, z, Aspect.ENTROPY), 2)) {
+                seedStack.stackSize++;
+            }
             ret.add(seedStack);
             fertilizeSoil(world, x, y, z, metadata);
         }
         if (metadata >= 7) {
             ret.add(AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z)));
-
         }
         for (ItemStack item : ret) {
             float f = 0.7F;
-            double d0 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-            double d1 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-            double d2 = (double) (world.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
+            double d0 = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
+            double d1 = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
+            double d2 = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
             EntityItem entityitem = new EntityItem(world, (double) x + d0, (double) y + d1, (double) z + d2, item);
             entityitem.delayBeforeCanPickup = 10;
             world.spawnEntityInWorld(entityitem);
@@ -138,14 +141,20 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         return new ArrayList<ItemStack>();
     }
 
+    public int getPrimalTendencyCount(World world, int x, int y, int z, Aspect aspect) {
+        return world.getTileEntity(x, y, z) instanceof TileInfusedGrain ? ((TileInfusedGrain) world.getTileEntity(x, y, z)).primalTendencies.getAmount(aspect) : 0;
+    }
+
     private void fertilizeSoil(World world, int x, int y, int z, int metadata) {
         if (metadata >= 7) {
-            if (world.getTileEntity(x, y - 1, z) instanceof TileInfusedFarmland) {
-                Aspect currentAspect = getAspect(world, x, y, z);
-                ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList.add(currentAspect, 1);
-                ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).reduceSaturatedAspects();
-                world.markBlockForUpdate(x, y - 1, z);
-            }
+            do {
+                if (world.getTileEntity(x, y - 1, z) instanceof TileInfusedFarmland) {
+                    Aspect currentAspect = getAspect(world, x, y, z);
+                    ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList.add(currentAspect, 1);
+                    ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).reduceSaturatedAspects();
+                    world.markBlockForUpdate(x, y - 1, z);
+                }
+            } while (world.rand.nextInt(55) < getPrimalTendencyCount(world, x, y, z, Aspect.EARTH));
         }
     }
 
@@ -165,7 +174,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
                 AspectList farmlandAspectList = ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList;
                 for (Aspect aspect : farmlandAspectList.getAspects()) {
                     Random rand = new Random();
-                    if (rand.nextInt(BREEDING_CHANCE) < farmlandAspectList.getAmount(aspect) * farmlandAspectList.getAmount(aspect)) {
+                    if (rand.nextInt(BREEDING_CHANCE) < (getPrimalTendencyCount(world, x, y, z, Aspect.FIRE) + 1) * farmlandAspectList.getAmount(aspect) * farmlandAspectList.getAmount(aspect)) {
                         if (ResearchManager.getCombinationResult(aspect, currentAspect) != null) {
                             return ResearchManager.getCombinationResult(aspect, currentAspect);
                         }
