@@ -120,7 +120,10 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
             fertilizeSoil(world, x, y, z, metadata);
         }
         if (metadata >= 7) {
+            do {
             ret.add(AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z)));
+
+            } while (world.rand.nextInt(75) < getPrimalTendencyCount(world, x, y, z, Aspect.ORDER));
         }
         for (ItemStack item : ret) {
             float f = 0.7F;
