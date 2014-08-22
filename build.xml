@@ -20,7 +20,7 @@
     <property name="forge.major" value="10"/>
     <property name="forge.minor" value="13"/>
     <property name="forge.patch" value="0"/>
-    <property name="forge.build" value="1180"/>
+    <property name="forge.build" value="1199"/>
     <!-- Packaging -->
     <property name="dist.dir" value="${build.dir}/dist"/>
     <property name="classes.dir" value="${build.dir}/packaging"/>
@@ -80,12 +80,13 @@
         </condition>
         <condition property="have.libs">
             <and>
-                <istrue value="${forge.exists}"/>
+                <istrue value="${
+}"/>
             </and>
         </condition>
     </target>
     <!-- Dependency downloading -->
-    <target name="download-core" depends="properties" unless="forge.exists">
+    <target name="download-core" depends="properties">
     </target>
     <target name="get-dependencies" depends="get-version" unless="have.libs">
         <delete dir="${library.download.dir}/"/>
@@ -228,8 +229,8 @@
         <copy file="${forge.jar}" todir="${forgebuild.dir}/dirtyArtifacts/"/>
         <delete dir="${compile.dir}"/>
     </target>
-    <target name="download-forge" depends="setup-bon,download-core" unless="forge.exists">
-        <echo message="Downloading forge... "/>
+    <target name="download-forge" depends="setup-bon,download-core">
+    <echo message="Downloading forge... "/>
         <get src="${forge.url}" dest="${download.dir}/forge-${forge.version}-src.zip"/>
     </target>
     <target name="setup-bon" depends="properties" unless="bon.exists">
