@@ -19,6 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
@@ -27,6 +28,9 @@ import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.lib.LibResearch;
 
 public class TTResearchItem extends ResearchItem implements IRegisterableResearch {
+
+    public int warp = 0;
+
 
 	public TTResearchItem(String par1) {
 		super(par1, LibResearch.CATEGORY_THAUMICTINKERER);
@@ -41,6 +45,11 @@ public class TTResearchItem extends ResearchItem implements IRegisterableResearc
 		super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
 		setPages(pages);
 	}
+
+    public TTResearchItem setWarp(int warp) {
+        this.warp = warp;
+        return this;
+    }
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -88,5 +97,8 @@ public class TTResearchItem extends ResearchItem implements IRegisterableResearc
 	@Override
 	public void registerResearch() {
 		registerResearchItem();
-	}
+        if (warp != 0) {
+            ThaumcraftApi.addWarpToResearch(key, warp);
+        }
+    }
 }

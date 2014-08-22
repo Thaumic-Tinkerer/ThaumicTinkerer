@@ -90,8 +90,8 @@ public class ItemKamiResource extends ItemKamiBase {
 		research.setPages(new ResearchPage("0"));
 		researchItemMulti.addResearch(research);
 
-		research = new KamiResearchItem(LibResearch.KEY_ICHOR, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 9, 8, 5, new ItemStack(this, 1, 0));
-		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR));
+        research = new KamiResearchItem(LibResearch.KEY_ICHOR, new AspectList().add(Aspect.MAN, 1).add(Aspect.LIGHT, 2).add(Aspect.SOUL, 1).add(Aspect.TAINT, 1), 9, 8, 5, new ItemStack(this, 1, 0)).setWarp(5);
+        research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR));
 		ResearchHelper.kamiResearch = research;
 
 		researchItemMulti.addResearch(research);
@@ -104,12 +104,12 @@ public class ItemKamiResource extends ItemKamiBase {
 		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHORIUM));
 		researchItemMulti.addResearch(research);
 
-		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHOR_CAP, new AspectList().add(Aspect.TOOL, 2).add(Aspect.METAL, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 11, 11, 5, new ItemStack(this, 1, 4)).setConcealed().setParents(LibResearch.KEY_ICHORIUM);
-		research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHOR_CAP));
+        research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHOR_CAP, new AspectList().add(Aspect.TOOL, 2).add(Aspect.METAL, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 11, 11, 5, new ItemStack(this, 1, 4)).setWarp(2).setConcealed().setParents(LibResearch.KEY_ICHORIUM);
+        research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ICHOR_CAP));
 		researchItemMulti.addResearch(research);
 
-		research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 14, 2, 5, new ItemStack(this, 1, 5)).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP);
-		research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
+        research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_ROD, new AspectList().add(Aspect.TOOL, 2).add(Aspect.CLOTH, 1).add(Aspect.LIGHT, 1).add(Aspect.MAGIC, 1), 14, 2, 5, new ItemStack(this, 1, 5)).setWarp(1).setConcealed().setParents(LibResearch.KEY_ICHOR_CLOTH).setParentsHidden(LibResearch.KEY_ICHOR_CAP);
+        research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
 		researchItemMulti.addResearch(research);
 
 		return researchItemMulti;

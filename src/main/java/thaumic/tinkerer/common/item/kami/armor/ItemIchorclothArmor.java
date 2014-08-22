@@ -164,8 +164,8 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 						LibResearch.KEY_ICHORCLOTH_ARMOR, new AspectList()
 								.add(Aspect.ARMOR, 2).add(Aspect.CLOTH, 1)
 								.add(Aspect.LIGHT, 1).add(Aspect.CRAFT, 1), 17,
-						5, 5, new ItemStack(this))
-						.setConcealed()
+                5, 5, new ItemStack(this)).setWarp(4)
+                .setConcealed()
 						.setParents(LibResearch.KEY_ICHOR_CLOTH)
 						.setPages(
 								new ResearchPage("0"),
