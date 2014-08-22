@@ -20,6 +20,8 @@ import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigResearch;
+import thaumic.tinkerer.common.lib.LibResearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,17 +52,22 @@ public class KamiResearchItem extends TTResearchItem {
 
 					if (research.isLost() || (research.parentsHidden == null && research.parents == null) || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
 						continue;
-					boolean found = false;
-					for (String black : Blacklist)
-						if (tag.startsWith(black)) {
-							found = true;
-						}
-					if (tag.endsWith("KAMI"))
-						found = true;
-					if (found)
-						continue;
-					requirements.add(tag);
-				}
+                    if (research.getAspectTriggers() != null || research.getEntityTriggers() != null || research.getItemTriggers() != null) {
+                        continue;
+                    }
+                    if (research.category.equals(LibResearch.CATEGORY_THAUMICTINKERER) || research.category.equals("BASICS") || research.category.equals("GOLEMANCY") || research.category.equals("ARTIFICE") || research.category.equals("ALCHEMY") || research.category.equals("THAUMATURGY")) {
+                        boolean found = false;
+                        for (String black : Blacklist)
+                            if (tag.startsWith(black)) {
+                                found = true;
+                            }
+                        if (tag.endsWith("KAMI"))
+                            found = true;
+                        if (found)
+                            continue;
+                        requirements.add(tag);
+                    }
+                }
 			}
 
 		parentsHidden = requirements.toArray(new String[requirements.size()]);
