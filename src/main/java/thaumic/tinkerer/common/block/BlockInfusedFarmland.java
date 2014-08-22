@@ -1,15 +1,20 @@
 package thaumic.tinkerer.common.block;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFarmland;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
-import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
@@ -23,10 +28,18 @@ import java.util.Random;
  */
 public class BlockInfusedFarmland extends BlockFarmland implements ITTinkererBlock {
 
+
+    @SideOnly(Side.CLIENT)
+    private IIcon iconWet;
+    @SideOnly(Side.CLIENT)
+    private IIcon iconDry;
+
     public BlockInfusedFarmland() {
         super();
         setHardness(0.6F);
         setStepSound(soundTypeGravel);
+
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
     }
 
     @Override
@@ -93,4 +106,16 @@ public class BlockInfusedFarmland extends BlockFarmland implements ITTinkererBlo
     @Override
     public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
     }
+
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+        return p_149691_1_ == 1 ? (p_149691_2_ > 0 ? this.iconWet : this.iconDry) : Blocks.dirt.getBlockTextureFromSide(p_149691_1_);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister p_149651_1_) {
+        this.iconWet = p_149651_1_.registerIcon("farmland_wet");
+        this.iconDry = p_149651_1_.registerIcon("farmland_dry");
+    }
+
 }
