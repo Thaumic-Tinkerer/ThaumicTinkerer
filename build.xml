@@ -16,11 +16,11 @@
     <property name="verclass.dir" value="${src.dir}/${class.pckg}/common/lib"/>
     <property name="verclass.name" value="LibMisc.java"/>
     <!-- Forge version -->
-    <property name="mc.version" value="1.7.2"/>
+    <property name="mc.version" value="1.7.10"/>
     <property name="forge.major" value="10"/>
-    <property name="forge.minor" value="12"/>
-    <property name="forge.patch" value="2"/>
-    <property name="forge.build" value="1147"/>
+    <property name="forge.minor" value="13"/>
+    <property name="forge.patch" value="0"/>
+    <property name="forge.build" value="1180"/>
     <!-- Packaging -->
     <property name="dist.dir" value="${build.dir}/dist"/>
     <property name="classes.dir" value="${build.dir}/packaging"/>
