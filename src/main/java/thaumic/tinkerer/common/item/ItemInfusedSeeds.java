@@ -167,20 +167,26 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         return EnumRarity.rare;
     }
 
+    public ItemStack getStackFromAspect(Aspect a) {
+        ItemStack stack = new ItemStack(this);
+        setAspect(stack, a);
+        return stack;
+    }
+
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
         return new ThaumicTinkererRecipeMulti(
-                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 0, new ItemStack(this, 1, 0), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0)),
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 0, getStackFromAspect(Aspect.AIR), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0), new ItemStack(ConfigItems.itemShard, 1, 0)),
 
-                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 1, new ItemStack(this, 1, 1), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1)),
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 1, getStackFromAspect(Aspect.FIRE), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 1)),
 
-                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 2, new ItemStack(this, 1, 2), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3)),
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 2, getStackFromAspect(Aspect.EARTH), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3), new ItemStack(ConfigItems.itemShard, 1, 3)),
 
-                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 3, new ItemStack(this, 1, 3), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2)),
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 3, getStackFromAspect(Aspect.WATER), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2), new ItemStack(ConfigItems.itemShard, 1, 2)),
 
 
-                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 4, new ItemStack(this, 1, 4), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4)),
-                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 5, new ItemStack(this, 1, 5), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5))
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 4, getStackFromAspect(Aspect.ORDER), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 4)),
+                new ThaumicTinkererInfusionRecipe(LibResearch.KEY_POTIONS + 5, getStackFromAspect(Aspect.ENTROPY), 5, new AspectList().add(Aspect.CROP, 32).add(Aspect.HARVEST, 32), new ItemStack(Items.wheat_seeds), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5), new ItemStack(ConfigItems.itemShard, 1, 5))
         );
     }
 
