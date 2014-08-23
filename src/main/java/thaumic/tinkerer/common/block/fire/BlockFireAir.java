@@ -45,7 +45,8 @@ public class BlockFireAir extends BlockFireBase {
 		result.put(Blocks.ice, Blocks.glass);
 		result.put(Blocks.water, Blocks.cake);
 		result.put(Blocks.dirt, Blocks.sand);
-		return result;
+        result.put(Blocks.grass, Blocks.sand);
+        return result;
 	}
 
 }
