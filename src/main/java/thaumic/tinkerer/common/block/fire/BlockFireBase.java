@@ -15,6 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumic.tinkerer.client.core.helper.IconHelper;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.item.ItemBlockFire;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
 
@@ -83,7 +84,7 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		if (world.getGameRules().getGameRuleBooleanValue("doFireTick")) {
+        if (world.getGameRules().getGameRuleBooleanValue("doFireTick") && ConfigHandler.enableFire) {
 
 			if (world.isRaining() && (world.canLightningStrikeAt(x, y, z) || world.canLightningStrikeAt(x - 1, y, z) || world.canLightningStrikeAt(x + 1, y, z) || world.canLightningStrikeAt(x, y, z - 1) || world.canLightningStrikeAt(x, y, z + 1))) {
 				world.setBlockToAir(x, y, z);

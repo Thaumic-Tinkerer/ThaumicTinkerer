@@ -7,6 +7,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.item.ItemBrightNitor;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -43,7 +44,9 @@ public class BlockFireAir extends BlockFireBase {
         result.put(Blocks.leaves2, Blocks.sandstone);
         result.put(Blocks.log2, Blocks.sand);
         result.put(Blocks.ice, Blocks.glass);
-        result.put(Blocks.water, Blocks.cake);
+        if (ConfigHandler.enableCake) {
+            result.put(Blocks.water, Blocks.cake);
+        }
         result.put(Blocks.dirt, Blocks.sand);
         result.put(Blocks.grass, Blocks.sand);
         return result;

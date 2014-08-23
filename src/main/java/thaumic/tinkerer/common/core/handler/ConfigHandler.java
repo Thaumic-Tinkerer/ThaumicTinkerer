@@ -45,13 +45,16 @@ public final class ConfigHandler {
 	public static boolean useOreDictMetal = true;
 	public static boolean repairTConTools = false;
 
+    public static boolean enableCake = true;
+
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
 	public static int endDimensionID = 1;
 	public static int bedrockDimensionID = 19;
+    public static boolean enableFire = true;
 
-	public static void loadConfig(File configFile) {
-		config = new Configuration(configFile);
+    public static void loadConfig(File configFile) {
+        config = new Configuration(configFile);
 
 		new ConfigCategory(CATEGORY_POTIONS);
 		new ConfigCategory(CATEGORY_ENCHANTMENTS);
@@ -59,16 +62,16 @@ public final class ConfigHandler {
 		new ConfigCategory(CATEGORY_KAMI_BLOCKS);
 		new ConfigCategory(CATEGORY_KAMI_GENERAL);
 
-		String comment = "These will only be used if KAMI is loaded. (KAMI is a separate download you can find in the Thaumic Tinkerer thread)";
-		config.addCustomCategoryComment(CATEGORY_KAMI_ITEMS, comment);
+        String comment = "These will only be used if KAMI is loaded";
+        config.addCustomCategoryComment(CATEGORY_KAMI_ITEMS, comment);
 		config.addCustomCategoryComment(CATEGORY_KAMI_BLOCKS, comment);
 		config.addCustomCategoryComment(CATEGORY_KAMI_GENERAL, comment);
 
 		config.load();
 
 		Property propEnableKami = config.get(Configuration.CATEGORY_GENERAL, "kami.forceenabled", true);
-		propEnableKami.comment = "Set to true to enable all kami stuff (note, either this OR the kami mod file will work)";
-		enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(true);
+        propEnableKami.comment = "Set to true to enable all kami stuff";
+        enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(true);
 
 		Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
 		propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
@@ -98,6 +101,13 @@ public final class ConfigHandler {
 		Property propOreDict = config.get(Configuration.CATEGORY_GENERAL, "oreDictMetal.enabled", true);
 		propOreDict.comment = "Set to false to disable usage of ore dictionary metals (tin and copper).";
 		useOreDictMetal = propOreDict.getBoolean(true);
+
+        Property propImbuedFire = config.get(Configuration.CATEGORY_GENERAL, "imbuedFire.enabled", true);
+        enableFire = propImbuedFire.getBoolean(true);
+
+        Property propImbuedFireCake = config.get(Configuration.CATEGORY_GENERAL, "imbuedFire.cake.enabled", true);
+        propImbuedFireCake.comment = "Set to false to disable imbued fire making cake. For those people who don't like cake";
+        enableCake = propImbuedFireCake.getBoolean(true);
 
 		if (enableKami) {
 			Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -19);
