@@ -30,7 +30,7 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 import java.awt.*;
 import java.util.List;
 
-public class ItemFocusXPDrain extends ItemModFocus {
+public class ItemFocusXPDrain extends ItemModKamiFocus {
 
 	AspectList cost = new AspectList();
 	private int lastGiven = 0;

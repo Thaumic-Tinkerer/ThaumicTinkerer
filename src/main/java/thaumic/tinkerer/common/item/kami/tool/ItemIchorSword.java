@@ -78,7 +78,7 @@ public class ItemIchorSword extends ItemSword implements ITTinkererItem {
 
 	@Override
 	public boolean shouldDisplayInTab() {
-		return true;
+        return ConfigHandler.enableKami;
 	}
 
 	@Override

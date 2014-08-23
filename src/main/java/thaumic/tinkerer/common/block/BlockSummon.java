@@ -127,8 +127,8 @@ public class BlockSummon extends Block implements ITTinkererBlock {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class))).setParents(LibResearch.KEY_BLOOD_SWORD)
-				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"), ResearchHelper.recipePage(LibResearch.KEY_SUMMON + "1"), ResearchHelper.infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class))).setWarp(3).setParents(LibResearch.KEY_BLOOD_SWORD)
+                .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"), ResearchHelper.recipePage(LibResearch.KEY_SUMMON + "1"), ResearchHelper.infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
 
 	}
 

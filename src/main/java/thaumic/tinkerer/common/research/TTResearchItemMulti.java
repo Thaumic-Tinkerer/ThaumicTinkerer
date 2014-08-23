@@ -17,8 +17,8 @@ public class TTResearchItemMulti implements IRegisterableResearch {
 	@Override
 	public void registerResearch() {
 		for (TTResearchItem researchItem : researches) {
-			researchItem.registerResearchItem();
-		}
+            researchItem.registerResearch();
+        }
 	}
 
 	public void addResearch(TTResearchItem researchItem) {

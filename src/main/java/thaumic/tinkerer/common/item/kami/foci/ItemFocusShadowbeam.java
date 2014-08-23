@@ -17,7 +17,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.client.fx.FXSparkle;
+import thaumcraft.client.fx.particles.FXSparkle;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
@@ -35,7 +35,7 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.KamiResearchItem;
 import thaumic.tinkerer.common.research.ResearchHelper;
 
-public class ItemFocusShadowbeam extends ItemModFocus {
+public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
 	AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
 

@@ -261,8 +261,8 @@ public class BlockAnimationTablet extends BlockModContainer {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_ANIMATION_TABLET, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.METAL, 1).add(Aspect.MOTION, 1).add(Aspect.ENERGY, 1), -8, 2, 4, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class))).setParents(LibResearch.KEY_MAGNETS)
-				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ANIMATION_TABLET));
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_ANIMATION_TABLET, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.METAL, 1).add(Aspect.MOTION, 1).add(Aspect.ENERGY, 1), -8, 2, 4, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockAnimationTablet.class))).setWarp(1).setParents(LibResearch.KEY_MAGNETS)
+                .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ANIMATION_TABLET));
 
 	}
 

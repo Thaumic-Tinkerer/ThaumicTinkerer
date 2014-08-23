@@ -105,8 +105,8 @@ public class ItemFocusEnderChest extends ItemModFocus {
 		if (!Config.allowMirrors) {
 			return null;
 		}
-		IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), -6, -2, 2, new ItemStack(this)).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed();
-		if (Loader.isModLoaded("EnderStorage")) {
+        IRegisterableResearch research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_FOCUS_ENDER_CHEST, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.VOID, 1).add(Aspect.MAGIC, 1), -6, -2, 2, new ItemStack(this)).setWarp(1).setParents(LibResearch.KEY_FOCUS_DEFLECT).setConcealed();
+        if (Loader.isModLoaded("EnderStorage")) {
 			((TTResearchItem) research).setPages(new ResearchPage("ES"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
 		} else {
 			((TTResearchItem) research).setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FOCUS_ENDER_CHEST));
