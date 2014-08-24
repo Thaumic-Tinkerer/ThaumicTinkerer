@@ -110,8 +110,8 @@ public final class ConfigHandler {
         enableCake = propImbuedFireCake.getBoolean(true);
 
 		if (enableKami) {
-			Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -19);
-			propDimensionID.comment = "Set to the dimension id wished for bedrock dimension, or 0 to disable";
+            Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -47);
+            propDimensionID.comment = "Set to the dimension id wished for bedrock dimension, or 0 to disable";
 			bedrockDimensionID = propDimensionID.getInt(-19);
 
 			Property oreBlacklist = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension ore Blacklist", new String[]{ "oreFirestone" });
