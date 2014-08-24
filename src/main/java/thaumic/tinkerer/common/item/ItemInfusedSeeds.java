@@ -167,8 +167,8 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         return EnumRarity.rare;
     }
 
-    public ItemStack getStackFromAspect(Aspect a) {
-        ItemStack stack = new ItemStack(this);
+    public static ItemStack getStackFromAspect(Aspect a) {
+        ItemStack stack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
         setAspect(stack, a);
         return stack;
     }
