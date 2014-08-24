@@ -139,43 +139,16 @@ public class AspectCropLootManager {
             addAspectLoot(Aspect.MAN, new ItemStack(ConfigItems.itemGolemCore, i));
         }
 
-        for (Object item : GameData.getItemRegistry().getKeys()) {
-            if (item instanceof ItemArmor) {
-                List<ItemStack> list = new ArrayList<ItemStack>();
-                ((ItemPickaxe) item).getSubItems((Item) item, CreativeTabs.tabAllSearch, list);
-                for (ItemStack stack : list) {
-                    addAspectLoot(Aspect.ARMOR, stack);
-                }
-            }
-            if (item instanceof ItemTool) {
-                if (item instanceof ItemPickaxe) {
-                    List<ItemStack> list = new ArrayList<ItemStack>();
-                    ((ItemPickaxe) item).getSubItems((Item) item, CreativeTabs.tabAllSearch, list);
-                    for (ItemStack stack : list) {
-                        addAspectLoot(Aspect.MINE, stack);
-                    }
-                } else if (item instanceof ItemHoe) {
-                    List<ItemStack> list = new ArrayList<ItemStack>();
-                    ((ItemPickaxe) item).getSubItems((Item) item, CreativeTabs.tabAllSearch, list);
-                    for (ItemStack stack : list) {
-                        addAspectLoot(Aspect.HARVEST, stack);
-                    }
-                } else if (item instanceof ItemSword) {
-                    List<ItemStack> list = new ArrayList<ItemStack>();
-                    ((ItemPickaxe) item).getSubItems((Item) item, CreativeTabs.tabAllSearch, list);
-                    for (ItemStack stack : list) {
-                        addAspectLoot(Aspect.WEAPON, stack);
-                    }
-                } else {
-                    List<ItemStack> list = new ArrayList<ItemStack>();
-                    ((ItemPickaxe) item).getSubItems((Item) item, CreativeTabs.tabAllSearch, list);
-                    for (ItemStack stack : list) {
-                        addAspectLoot(Aspect.TOOL, stack);
-                    }
-                }
-            }
-        }
+        addAspectLoot(Aspect.ARMOR, new ItemStack(Items.diamond_boots));
+        addAspectLoot(Aspect.ARMOR, new ItemStack(Items.diamond_leggings));
+        addAspectLoot(Aspect.ARMOR, new ItemStack(Items.diamond_chestplate));
+        addAspectLoot(Aspect.ARMOR, new ItemStack(Items.diamond_helmet));
 
+        addAspectLoot(Aspect.MINE, new ItemStack(ConfigItems.itemPickThaumium));
+        addAspectLoot(Aspect.HARVEST, new ItemStack(ConfigItems.itemHoeThaumium));
+        addAspectLoot(Aspect.WEAPON, new ItemStack(ConfigItems.itemSwordThaumium));
+        addAspectLoot(Aspect.TOOL, new ItemStack(ConfigItems.itemShovelThaumium));
+        addAspectLoot(Aspect.TOOL, new ItemStack(ConfigItems.itemAxeThaumium));
         addAspectLoot(Aspect.TRAVEL, new ItemStack(ConfigBlocks.blockCosmeticSolid, 8, 7));
 
         addAspectLoot(Aspect.SLIME, new ItemStack(Items.slime_ball, 16));
