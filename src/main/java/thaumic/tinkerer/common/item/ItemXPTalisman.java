@@ -127,7 +127,7 @@ public class ItemXPTalisman extends ItemBase implements IBauble {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_XP_TALISMAN, new ItemStack(this), 6, new AspectList().add(Aspect.GREED, 20).add(Aspect.EXCHANGE, 10).add(Aspect.BEAST, 10).add(Aspect.MECHANISM, 5), new ItemStack(Items.gold_ingot),
-                new ItemStack(Items.quartz), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ConfigItems.itemZombieBrain), new ItemStack(Items.diamond));
+                new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(ConfigItems.itemZombieBrain), new ItemStack(Items.diamond));
     }
 
 	@Override
