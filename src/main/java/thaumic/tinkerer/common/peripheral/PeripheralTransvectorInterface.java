@@ -15,7 +15,7 @@
 
 package thaumic.tinkerer.common.peripheral;
 
-import ic2.api.energy.tile.IEnergySink;
+import IEnergySink;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.tileentity.TileEntity;

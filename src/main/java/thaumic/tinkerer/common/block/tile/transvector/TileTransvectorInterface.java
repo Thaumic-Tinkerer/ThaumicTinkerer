@@ -23,12 +23,16 @@ import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
+import ic2.api.energy.tile.IEnergyAcceptor;
+import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -42,8 +46,11 @@ import thaumic.tinkerer.common.lib.LibFeatures;
 
 @Optional.InterfaceList({ @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
 		@Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy"),
-        @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib")})
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink,*/ IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
+        @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib"),
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")})
+
+
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
 	private boolean addedToICEnergyNet = false;
 
@@ -64,9 +71,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return LibFeatures.INTERFACE_DISTANCE;
 	}
 
-	/*@Override
-	public void invalidate() {
-		removeFromIC2EnergyNet();
+    @Override
+    public void invalidate() {
+        removeFromIC2EnergyNet();
 		super.invalidate();
 	}
 
@@ -77,10 +84,10 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
 	private void removeFromIC2EnergyNet() {
 		if(addedToICEnergyNet && !worldObj.isRemote) {
-			MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
-			addedToICEnergyNet = false;
-		}
-	}*/
+            MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergySink) this));
+            addedToICEnergyNet = false;
+        }
+    }
 
 	@Override
 	public void markDirty() {
@@ -247,31 +254,32 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return worldObj;
 	}
 
-	/*@Override
-	public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
-		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).acceptsEnergyFrom(emitter, direction) : false;
-	}
+    @Optional.Method(modid = "IC2")
+    @Override
+    public double getDemandedEnergy() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergySink ? ((IEnergySink) tile).getDemandedEnergy() : 0;
+    }
 
-	@Override
-	public double demandedEnergyUnits() {
-		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).demandedEnergyUnits() : 0;
-	}
 
-	@Override
-	public double injectEnergyUnits(ForgeDirection directionFrom, double amount) {
-		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).injectEnergyUnits(directionFrom, amount) : 0;
-	}
+    @Optional.Method(modid = "IC2")
+    @Override
+    public double injectEnergy(ForgeDirection directionFrom, double amount, double voltage) {
 
-	@Override
-	public int getMaxSafeInput() {
-		TileEntity tile = getTile();
-		return tile instanceof IEnergySink ? ((IEnergySink) tile).getMaxSafeInput() : 0;
-	}
-*/
-	@Override
+        TileEntity tile = getTile();
+        return tile instanceof IEnergySink ? ((IEnergySink) tile).injectEnergy(directionFrom, amount, voltage) : 0;
+    }
+
+
+    @Optional.Method(modid = "IC2")
+    @Override
+    public int getSinkTier() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergySink ? ((IEnergySink) tile).getSinkTier() : 0;
+    }
+
+
+    @Override
     @Optional.Method(modid = "CoFHLib")
 	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
 		TileEntity tile = getTile();
@@ -474,4 +482,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	}
 
 
+    @Override
+    public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergyAcceptor ? ((IEnergySink) tile).acceptsEnergyFrom(emitter, direction) : false;
+    }
 }
