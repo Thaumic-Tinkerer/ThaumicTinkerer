@@ -59,7 +59,7 @@ public class AspectCropLootManager {
 
         addAspectLoot(aspect, target, 1);
         for (String ore : OreDictionary.getOreNames()) {
-            if (ore.contains(WordUtils.capitalizeFully(target))) {
+            if (ore.contains(WordUtils.capitalizeFully(target)) || ore.contains(target)) {
                 for (ItemStack stack : OreDictionary.getOres(ore)) {
                     addAspectLoot(aspect, stack);
                 }
@@ -69,7 +69,7 @@ public class AspectCropLootManager {
 
     public static void addAspectLoot(Aspect aspect, String target, int count) {
         for (String ore : OreDictionary.getOreNames()) {
-            if (ore.contains(WordUtils.capitalizeFully(target))) {
+            if (ore.contains(WordUtils.capitalizeFully(target)) || ore.contains(target)) {
                 for (ItemStack stack : OreDictionary.getOres(ore)) {
                     ItemStack newStack = stack.copy();
                     newStack.stackSize = count;
