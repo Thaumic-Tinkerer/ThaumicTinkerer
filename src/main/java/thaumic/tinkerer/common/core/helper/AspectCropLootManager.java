@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.commons.lang3.text.WordUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigBlocks;
@@ -58,7 +59,7 @@ public class AspectCropLootManager {
 
         addAspectLoot(aspect, target, 1);
         for (String ore : OreDictionary.getOreNames()) {
-            if (ore.toUpperCase().contains(target.toUpperCase())) {
+            if (ore.contains(WordUtils.capitalizeFully(target))) {
                 for (ItemStack stack : OreDictionary.getOres(ore)) {
                     addAspectLoot(aspect, stack);
                 }
@@ -68,7 +69,7 @@ public class AspectCropLootManager {
 
     public static void addAspectLoot(Aspect aspect, String target, int count) {
         for (String ore : OreDictionary.getOreNames()) {
-            if (ore.toUpperCase().contains(target.toUpperCase())) {
+            if (ore.contains(WordUtils.capitalizeFully(target))) {
                 for (ItemStack stack : OreDictionary.getOres(ore)) {
                     ItemStack newStack = stack.copy();
                     newStack.stackSize = count;
