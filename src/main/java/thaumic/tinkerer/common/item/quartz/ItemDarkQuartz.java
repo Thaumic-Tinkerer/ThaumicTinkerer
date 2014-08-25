@@ -2,6 +2,7 @@ package thaumic.tinkerer.common.item.quartz;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumic.tinkerer.common.lib.LibItemNames;
