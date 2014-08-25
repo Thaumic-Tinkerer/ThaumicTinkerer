@@ -47,7 +47,7 @@ import thaumic.tinkerer.common.lib.LibFeatures;
 @Optional.InterfaceList({ @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
 		@Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib"),
-        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")})
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2API")})
 
 
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
