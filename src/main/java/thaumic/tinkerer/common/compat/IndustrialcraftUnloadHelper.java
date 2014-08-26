@@ -2,7 +2,6 @@ package thaumic.tinkerer.common.compat;
 
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 
