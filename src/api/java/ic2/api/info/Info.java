@@ -6,27 +6,27 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.LoaderState;
 
 public class Info {
-    public static IEnergyValueProvider itemEnergy;
-    public static IFuelValueProvider itemFuel;
-    public static Object ic2ModInstance;
+	public static IEnergyValueProvider itemEnergy;
+	public static IFuelValueProvider itemFuel;
+	public static Object ic2ModInstance;
 
-    /**
-     * Damage Sources used by IC2.
-     * Getting assigned in preload.
-     */
-    public static DamageSource DMG_ELECTRIC, DMG_NUKE_EXPLOSION, DMG_RADIATION;
+	/**
+	 * Damage Sources used by IC2.
+	 * Getting assigned in preload.
+	 */
+	public static DamageSource DMG_ELECTRIC, DMG_NUKE_EXPLOSION, DMG_RADIATION;
 
-    public static boolean isIc2Available() {
-        if (ic2Available != null) return ic2Available;
+	public static boolean isIc2Available() {
+		if (ic2Available != null) return ic2Available;
 
-        boolean loaded = Loader.isModLoaded("IC2");
+		boolean loaded = Loader.isModLoaded("IC2");
 
-        if (Loader.instance().hasReachedState(LoaderState.CONSTRUCTING)) {
-            ic2Available = loaded;
-        }
+		if (Loader.instance().hasReachedState(LoaderState.CONSTRUCTING)) {
+			ic2Available = loaded;
+		}
 
-        return loaded;
-    }
+		return loaded;
+	}
 
-    private static Boolean ic2Available = null;
+	private static Boolean ic2Available = null;
 }

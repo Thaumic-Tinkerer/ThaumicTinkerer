@@ -5,7 +5,7 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 
 public interface IPatternStorage {
-    boolean addPattern(ItemStack itemstack);
+	boolean addPattern(ItemStack itemstack);
 
-    List<ItemStack> getPatterns();
+	List<ItemStack> getPatterns();
 }
