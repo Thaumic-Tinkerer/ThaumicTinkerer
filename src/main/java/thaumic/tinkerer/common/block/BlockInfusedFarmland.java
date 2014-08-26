@@ -14,6 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
@@ -40,6 +41,11 @@ public class BlockInfusedFarmland extends BlockFarmland implements ITTinkererBlo
         setStepSound(soundTypeGravel);
 
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    @Override
+    public boolean getUseNeighborBrightness() {
+        return true;
     }
 
     @Override
@@ -109,13 +115,12 @@ public class BlockInfusedFarmland extends BlockFarmland implements ITTinkererBlo
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-        return p_149691_1_ == 1 ? (p_149691_2_ > 0 ? this.iconWet : this.iconDry) : Blocks.dirt.getBlockTextureFromSide(p_149691_1_);
+        return p_149691_1_ == 1 ? (iconWet) : Blocks.dirt.getBlockTextureFromSide(p_149691_1_);
     }
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_) {
-        this.iconWet = p_149651_1_.registerIcon("farmland_wet");
-        this.iconDry = p_149651_1_.registerIcon("farmland_dry");
+        this.iconWet = IconHelper.forBlock(p_149651_1_, this);
     }
 
 }
