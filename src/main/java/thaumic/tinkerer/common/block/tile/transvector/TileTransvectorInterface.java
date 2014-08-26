@@ -480,6 +480,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
+    @Optional.Method(modid = "IC2API")
     @Override
     public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
         TileEntity tile = getTile();
