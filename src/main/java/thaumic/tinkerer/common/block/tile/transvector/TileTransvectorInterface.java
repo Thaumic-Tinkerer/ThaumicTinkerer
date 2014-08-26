@@ -47,7 +47,7 @@ import thaumic.tinkerer.common.lib.LibFeatures;
 @Optional.InterfaceList({@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
         @Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib"),
-        @Optional.Interface(iface = "IEnergySink", modid = "IC2API")})
+        @Optional.Interface(iface = "IEnergySink", modid = "IC2")})
 
 
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
@@ -73,7 +73,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public void invalidate() {
-        if (Loader.isModLoaded("IC2API")) {
+        if (Loader.isModLoaded("IC2")) {
             IndustrialcraftUnloadHelper.removeFromIC2EnergyNet(this);
         }
         super.invalidate();
@@ -82,7 +82,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     @Override
     public void onChunkUnload() {
 
-        if (Loader.isModLoaded("IC2API")) {
+        if (Loader.isModLoaded("IC2")) {
             IndustrialcraftUnloadHelper.removeFromIC2EnergyNet(this);
         }
     }
@@ -252,7 +252,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
         return worldObj;
     }
 
-    @Optional.Method(modid = "IC2API")
+    @Optional.Method(modid = "IC2")
     @Override
     public double getDemandedEnergy() {
         TileEntity tile = getTile();
@@ -260,7 +260,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
-    @Optional.Method(modid = "IC2API")
+    @Optional.Method(modid = "IC2")
     @Override
     public double injectEnergy(ForgeDirection directionFrom, double amount, double voltage) {
 
@@ -269,7 +269,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
-    @Optional.Method(modid = "IC2API")
+    @Optional.Method(modid = "IC2")
     @Override
     public int getSinkTier() {
         TileEntity tile = getTile();
@@ -480,7 +480,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
-    @Optional.Method(modid = "IC2API")
+    @Optional.Method(modid = "IC2")
     @Override
     public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
         TileEntity tile = getTile();
