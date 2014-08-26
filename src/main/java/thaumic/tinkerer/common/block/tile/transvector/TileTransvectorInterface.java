@@ -75,7 +75,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public void invalidate() {
-        if (Loader.isModLoaded("IC2")) {
+        if (Loader.isModLoaded("IC2API")) {
             IndustrialcraftUnloadHelper.removeFromIC2EnergyNet(this);
         }
         super.invalidate();
@@ -84,7 +84,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 	@Override
 	public void onChunkUnload() {
 
-        if (Loader.isModLoaded("IC2")) {
+        if (Loader.isModLoaded("IC2API")) {
             IndustrialcraftUnloadHelper.removeFromIC2EnergyNet(this);
         }
     }
@@ -254,7 +254,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 		return worldObj;
 	}
 
-    @Optional.Method(modid = "IC2")
+    @Optional.Method(modid = "IC2API")
     @Override
     public double getDemandedEnergy() {
         TileEntity tile = getTile();
@@ -262,7 +262,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
-    @Optional.Method(modid = "IC2")
+    @Optional.Method(modid = "IC2API")
     @Override
     public double injectEnergy(ForgeDirection directionFrom, double amount, double voltage) {
 
@@ -271,7 +271,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     }
 
 
-    @Optional.Method(modid = "IC2")
+    @Optional.Method(modid = "IC2API")
     @Override
     public int getSinkTier() {
         TileEntity tile = getTile();
