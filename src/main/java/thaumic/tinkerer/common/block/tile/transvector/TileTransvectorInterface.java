@@ -19,6 +19,7 @@ import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
 
 import cofh.api.energy.IEnergyHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -73,16 +74,23 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public void invalidate() {
-        removeFromIC2EnergyNet();
-		super.invalidate();
+        if (Loader.isModLoaded("IC2")) {
+            removeFromIC2EnergyNet();
+        }
+        super.invalidate();
 	}
 
 	@Override
 	public void onChunkUnload() {
-		removeFromIC2EnergyNet();
-	}
 
-	private void removeFromIC2EnergyNet() {
+        if (Loader.isModLoaded("IC2")) {
+            removeFromIC2EnergyNet();
+        }
+    }
+
+
+    @Optional.Method(modid = "IC2")
+    private void removeFromIC2EnergyNet() {
 		if(addedToICEnergyNet && !worldObj.isRemote) {
             MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergySink) this));
             addedToICEnergyNet = false;
