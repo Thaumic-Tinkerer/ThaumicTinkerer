@@ -74,28 +74,28 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public void invalidate() {
-        if (Loader.isModLoaded("IC2")) {
-            removeFromIC2EnergyNet();
-        }
+        //if (Loader.isModLoaded("IC2")) {
+        //    removeFromIC2EnergyNet();
+        //}
         super.invalidate();
 	}
 
 	@Override
 	public void onChunkUnload() {
 
-        if (Loader.isModLoaded("IC2")) {
-            removeFromIC2EnergyNet();
-        }
+        //if (Loader.isModLoaded("IC2")) {
+        //    removeFromIC2EnergyNet();
+        //}
     }
 
 
-    @Optional.Method(modid = "IC2")
-    private void removeFromIC2EnergyNet() {
-		if(addedToICEnergyNet && !worldObj.isRemote) {
-            MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergySink) this));
-            addedToICEnergyNet = false;
-        }
-    }
+    //@Optional.Method(modid = "IC2")
+    //private void removeFromIC2EnergyNet() {
+    //	if(addedToICEnergyNet && !worldObj.isRemote) {
+    //        MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergySink) this));
+    //        addedToICEnergyNet = false;
+    //    }
+    //}
 
 	@Override
 	public void markDirty() {
