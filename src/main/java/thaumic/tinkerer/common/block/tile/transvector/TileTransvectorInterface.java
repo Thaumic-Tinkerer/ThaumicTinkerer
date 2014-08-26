@@ -43,6 +43,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
+import thaumic.tinkerer.common.compat.IndustrialcraftUnloadHelper;
 import thaumic.tinkerer.common.lib.LibFeatures;
 
 @Optional.InterfaceList({ @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
@@ -53,7 +54,7 @@ import thaumic.tinkerer.common.lib.LibFeatures;
 
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
-	private boolean addedToICEnergyNet = false;
+    public boolean addedToICEnergyNet = false;
 
 	@Override
 	public void updateEntity() {
@@ -74,28 +75,19 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public void invalidate() {
-        //if (Loader.isModLoaded("IC2")) {
-        //    removeFromIC2EnergyNet();
-        //}
+        if (Loader.isModLoaded("IC2")) {
+            IndustrialcraftUnloadHelper.removeFromIC2EnergyNet(this);
+        }
         super.invalidate();
 	}
 
 	@Override
 	public void onChunkUnload() {
 
-        //if (Loader.isModLoaded("IC2")) {
-        //    removeFromIC2EnergyNet();
-        //}
+        if (Loader.isModLoaded("IC2")) {
+            IndustrialcraftUnloadHelper.removeFromIC2EnergyNet(this);
+        }
     }
-
-
-    //@Optional.Method(modid = "IC2")
-    //private void removeFromIC2EnergyNet() {
-    //	if(addedToICEnergyNet && !worldObj.isRemote) {
-    //        MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergySink) this));
-    //        addedToICEnergyNet = false;
-    //    }
-    //}
 
 	@Override
 	public void markDirty() {
