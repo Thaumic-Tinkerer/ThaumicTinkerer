@@ -131,6 +131,8 @@ public class ItemGemBoots extends ItemIchorclothArmorAdv {
 
 			if (!highStepListed && (hasHighStep && ThaumicTinkerer.proxy.armorStatus(player) && player.getCurrentArmor(0).getItemDamage() == 0))
 				playersWith1Step.add(player.getGameProfile().getName());
+            player.stepHeight = 1F;
+
 
 			if ((!hasHighStep || !ThaumicTinkerer.proxy.armorStatus(player) || player.getCurrentArmor(0).getItemDamage() == 1) && highStepListed) {
 				playersWith1Step.remove(player.getGameProfile().getName());
