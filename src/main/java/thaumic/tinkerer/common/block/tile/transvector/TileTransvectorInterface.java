@@ -24,7 +24,6 @@ import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.tile.IEnergyAcceptor;
 import ic2.api.energy.tile.IEnergySink;
 import net.minecraft.entity.player.EntityPlayer;
