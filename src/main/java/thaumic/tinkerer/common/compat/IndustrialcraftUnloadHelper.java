@@ -1,5 +1,6 @@
 package thaumic.tinkerer.common.compat;
 
+import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,5 +16,9 @@ public class IndustrialcraftUnloadHelper {
             MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent((IEnergySink) tileEntity));
             tileEntity.addedToICEnergyNet = false;
         }
+    }
+
+    public static void addToIC2EnergyNet(TileTransvectorInterface tileTransvectorInterface) {
+        MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(tileTransvectorInterface));
     }
 }
