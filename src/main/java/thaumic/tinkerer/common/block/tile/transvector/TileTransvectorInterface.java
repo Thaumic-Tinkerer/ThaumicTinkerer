@@ -51,7 +51,6 @@ import thaumic.tinkerer.common.lib.LibFeatures;
         @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")})
 
-
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
     public boolean addedToICEnergyNet = false;
@@ -61,7 +60,8 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
         if (worldObj.getTotalWorldTime() % 100 == 0) {
             worldObj.notifyBlockChange(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
         }
-        if (!addedToICEnergyNet && !worldObj.isRemote) {
+        if (!addedToICEnergyNet && !worldObj.isRemote && Loader.isModLoaded("IC2")) {
+
             IndustrialcraftUnloadHelper.addToIC2EnergyNet(this);
             addedToICEnergyNet = true;
         }
