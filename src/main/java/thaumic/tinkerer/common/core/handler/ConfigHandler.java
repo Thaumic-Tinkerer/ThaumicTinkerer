@@ -54,6 +54,8 @@ public final class ConfigHandler {
 
     public static boolean enableFire = true;
 
+    public static boolean cropsAllowBonemeal = true;
+
     public static void loadConfig(File configFile) {
         config = new Configuration(configFile);
 
@@ -105,9 +107,15 @@ public final class ConfigHandler {
 
         Property propImbuedFire = config.get(Configuration.CATEGORY_GENERAL, "imbuedFire.enabled", true);
         enableFire = propImbuedFire.getBoolean(true);
+
         Property propImbuedFireCake = config.get(Configuration.CATEGORY_GENERAL, "imbuedFire.cake.enabled", true);
         propImbuedFireCake.comment = "Set to false to disable imbued fire making cake. For those people who don't like cake";
         enableCake = propImbuedFireCake.getBoolean(true);
+
+        Property propCropsAllowBonemeal = config.get(Configuration.CATEGORY_GENERAL, "cropsAllowBonemeal.enabled", false);
+        propCropsAllowBonemeal.comment = "Allows crops to be grown using bonemeal. Useful for debug purposes.";
+        cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
+
 
         if (enableKami) {
             Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -19);
