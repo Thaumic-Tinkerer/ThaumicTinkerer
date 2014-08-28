@@ -92,8 +92,8 @@ public class BlockPlatform extends BlockCamo {
 
 	@Override
 	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+        return TileCamo.class;
+    }
 
 	@Override
 	public IRegisterableResearch getResearchItem() {

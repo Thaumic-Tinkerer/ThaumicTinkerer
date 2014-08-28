@@ -2,6 +2,7 @@ package thaumic.tinkerer.common.item.quartz;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumic.tinkerer.common.lib.LibItemNames;
@@ -35,13 +36,13 @@ public class ItemDarkQuartz extends ItemBase {
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererRecipeMulti(
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 0, new ItemStack(this, 8),
-						"QQQ", "QCQ", "QQQ",
-						'Q', Items.quartz,
+                new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 0, new ItemStack(this, 4),
+                        "Q Q", " C ", "Q Q",
+                        'Q', Items.quartz,
 						'C', Items.coal),
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 0, new ItemStack(this, 8),
-						"QQQ", "QCQ", "QQQ",
-						'Q', Items.quartz,
+                new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 0, new ItemStack(this, 4),
+                        "Q Q", " C ", "Q Q",
+                        'Q', Items.quartz,
 						'C', new ItemStack(Items.coal, 1, 1))
 		);
 	}

@@ -73,7 +73,7 @@ public class TileTransvectorDislocator extends TileTransvector {
 		}
 
 		public void setTo(ChunkCoordinates coords) {
-			worldObj.setBlock(coords.posX, coords.posY, coords.posZ, block, meta, 1 | 2);
+            worldObj.setBlock(coords.posX, coords.posY, coords.posZ, block, meta, 2);
 
 			TileEntity tile = this.tile == null ? null : TileEntity.createAndLoadEntity(this.tile);
 
@@ -86,13 +86,20 @@ public class TileTransvectorDislocator extends TileTransvector {
 				tile.updateContainingBlockInfo();
 			}
 
-			if (block != null)
-				block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorDislocator.class));
+            //if (block != null)
+            //	block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorDislocator.class));
 
-			worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 3);
+            worldObj.setBlockMetadataWithNotify(coords.posX, coords.posY, coords.posZ, meta, 2);
 
 		}
-	}
+
+        public void notify(ChunkCoordinates coords) {
+
+            if (block != null)
+                block.onNeighborBlockChange(worldObj, coords.posX, coords.posY, coords.posZ, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorDislocator.class));
+
+        }
+    }
 
 	@Override
 	public void updateEntity() {
@@ -129,7 +136,10 @@ public class TileTransvectorDislocator extends TileTransvector {
 
 				endData.setTo(targetCoords);
 				targetData.setTo(endCoords);
-			}
+
+                endData.notify(targetCoords);
+                targetData.notify(endCoords);
+            }
 		}
 
 		List<Entity> entitiesAtEnd = getEntitiesAtPoint(endCoords);

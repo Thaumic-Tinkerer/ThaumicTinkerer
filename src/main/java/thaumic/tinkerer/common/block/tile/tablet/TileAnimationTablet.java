@@ -185,7 +185,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 			}
 
 			try {
-				ForgeEventFactory.onPlayerInteract(player, Action.RIGHT_CLICK_AIR, coords.posX, coords.posY, coords.posZ, side);
+				ForgeEventFactory.onPlayerInteract(player, Action.RIGHT_CLICK_AIR, coords.posX, coords.posY, coords.posZ, side,worldObj);
 				Entity entity = detectedEntities.isEmpty() ? null : detectedEntities.get(worldObj.rand.nextInt(detectedEntities.size()));
 				done = entity != null && entity instanceof EntityLiving && (item.itemInteractionForEntity(stack, player, (EntityLivingBase) entity) || (!(entity instanceof EntityAnimal) || ((EntityAnimal) entity).interact(player)));
 
@@ -214,7 +214,8 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 			stack = player.getCurrentEquippedItem();
 			if (stack == null || stack.stackSize == 0)
 				setInventorySlotContents(0, null);
-
+            if(stack!=getStackInSlot(0))
+                setInventorySlotContents(0,stack);
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		}
 		markDirty();
@@ -232,7 +233,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 		int side = SIDES[(getBlockMetadata() & 7) - 2].getOpposite().ordinal();
 		ChunkCoordinates coords = getTargetLoc();
 
-		PlayerInteractEvent event = ForgeEventFactory.onPlayerInteract(player, Action.LEFT_CLICK_BLOCK, coords.posX, coords.posY, coords.posZ, side);
+		PlayerInteractEvent event = ForgeEventFactory.onPlayerInteract(player, Action.LEFT_CLICK_BLOCK, coords.posX, coords.posY, coords.posZ, side,worldObj);
 		if (event.isCanceled()) {
 			stopBreaking();
 			return;
