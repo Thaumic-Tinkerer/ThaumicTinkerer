@@ -45,6 +45,8 @@ public final class ConfigHandler {
 	public static boolean useOreDictMetal = true;
 	public static boolean repairTConTools = false;
 
+    public static boolean cropsAllowBonemeal = false;
+
 	public static boolean showPlacementMirrorBlocks = true;
 	public static int netherDimensionID = -1;
 	public static int endDimensionID = 1;
@@ -98,6 +100,11 @@ public final class ConfigHandler {
 		Property propOreDict = config.get(Configuration.CATEGORY_GENERAL, "oreDictMetal.enabled", true);
 		propOreDict.comment = "Set to false to disable usage of ore dictionary metals (tin and copper).";
 		useOreDictMetal = propOreDict.getBoolean(true);
+
+
+        Property propCropsAllowBonemeal = config.get(Configuration.CATEGORY_GENERAL, "cropsAllowBonemeal.enabled", false);
+        propCropsAllowBonemeal.comment = "Allows crops to be grown using bonemeal. Useful for debug purposes.";
+        cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
 
 		if (enableKami) {
 			Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -19);
