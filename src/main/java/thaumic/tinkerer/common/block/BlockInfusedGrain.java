@@ -15,6 +15,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.research.ResearchManager;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.client.core.proxy.TTClientProxy;
+import thaumic.tinkerer.client.lib.LibRenderIDs;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
@@ -62,7 +63,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
     @Override
     public int getRenderType() {
-        return TTClientProxy.CROP_RENDER_ID;
+        return LibRenderIDs.idGrain;
     }
 
     //Returns 0-5 for primal aspects, or 6 if compound aspect

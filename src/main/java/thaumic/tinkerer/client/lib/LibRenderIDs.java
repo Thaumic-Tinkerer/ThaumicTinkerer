@@ -22,4 +22,7 @@ public final class LibRenderIDs {
 	public static int idWarpGate = -1;
 
 	public static int idFire = -1;
+
+
+    public static int idGrain = -1;
 }
