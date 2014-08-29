@@ -37,12 +37,13 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
     public void updateEntity() {
 
         //Growth
-        if (worldObj.getBlockLightValue(xCoord, yCoord + 1, zCoord) >= 9) {
+        if (!worldObj.isRemote && worldObj.getBlockLightValue(xCoord, yCoord + 1, zCoord) >= 9) {
             int l = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
             if (l < 7) {
                 if (worldObj.rand.nextInt((((2510 - (int) Math.pow(((TileInfusedGrain) (worldObj.getTileEntity(xCoord, yCoord, zCoord))).primalTendencies.getAmount(Aspect.WATER), 2))) * 6)) == 0) {
                     ++l;
                     worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l, 3);
+                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                 }
             }
         }
@@ -61,6 +62,7 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
                             primalTendencies.add(aspect, 1);
                             reduceSaturatedAspects();
 
+                            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                             if (worldObj.isRemote) {
                                 for (int i = 0; i < 50; i++) {
                                     ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
@@ -84,6 +86,8 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
                                     ThaumicTinkerer.tcProxy.essentiaTrailFx(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, xCoord, yCoord, zCoord, 50, aspect.getColor(), 1F);
                                 }
                             }
+
+                            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                         }
                         return;
                     }
