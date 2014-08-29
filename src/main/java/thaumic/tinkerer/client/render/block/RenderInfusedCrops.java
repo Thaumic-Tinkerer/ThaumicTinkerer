@@ -11,6 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
 import thaumic.tinkerer.client.core.proxy.TTClientProxy;
+import thaumic.tinkerer.client.lib.LibRenderIDs;
 import thaumic.tinkerer.common.block.BlockInfusedGrain;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
 
@@ -59,6 +60,6 @@ public class RenderInfusedCrops implements ISimpleBlockRenderingHandler {
 
     @Override
     public int getRenderId() {
-        return TTClientProxy.CROP_RENDER_ID;
+        return LibRenderIDs.idGrain;
     }
 }
