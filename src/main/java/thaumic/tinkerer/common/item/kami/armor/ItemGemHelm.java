@@ -133,9 +133,8 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles,
 						ConfigItems.itemFocusPrimal), new ItemStack(
 						Items.golden_helmet), new ItemStack(Items.potionitem,
 						1, 8198), new ItemStack(ConfigItems.itemGoggles),
-				new ItemStack(ThaumicTinkerer.registry
-						.getFirstItemFromClass(ItemCleansingTalisman.class)),
-				new ItemStack(Items.fish), new ItemStack(Items.cake),
+                new ItemStack(Items.ghast_tear),
+                new ItemStack(Items.fish), new ItemStack(Items.cake),
 				new ItemStack(Items.ender_eye));
 	}
 
