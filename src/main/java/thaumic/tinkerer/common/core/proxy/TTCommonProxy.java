@@ -94,15 +94,6 @@ public class TTCommonProxy {
 		if (Loader.isModLoaded("OpenComputers")) {
 			initOpenCDrivers();
 		}
-
-		if (Loader.isModLoaded("ForgeMultipart")) {
-			try {
-				Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
-				clazz.newInstance();
-			} catch (Throwable e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	protected void registerPackets() {
@@ -129,7 +120,16 @@ public class TTCommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		ResearchHelper.initResearch();
 		ThaumicTinkerer.registry.postInit();
-	}
+
+        if (Loader.isModLoaded("ForgeMultipart")) {
+            try {
+                Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
+                clazz.newInstance();
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 	protected void initCCPeripherals() {
 		/*IPeripheralHandler handler = new PeripheralHandler();
