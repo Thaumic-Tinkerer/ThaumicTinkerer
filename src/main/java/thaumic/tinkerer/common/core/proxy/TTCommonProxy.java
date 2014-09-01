@@ -128,6 +128,8 @@ public class TTCommonProxy {
             } catch (Throwable e) {
                 e.printStackTrace();
             }
+        } else {
+            System.out.println("Skipping TC Multipart integration");
         }
     }
 
