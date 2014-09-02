@@ -69,14 +69,14 @@ public class TTCommonProxy {
         capIchor = new CapIchor();
         rodIchor = new RodIchorcloth();
         initCCPeripherals();
-	}
+        registerVersionChecker();
+    }
 
 	public WandCap capIchor;
 	public WandRod rodIchor;
 	public Item.ToolMaterial toolMaterialIchor;
 
 	public void init(FMLInitializationEvent event) {
-        registerVersionChecker();
 		ModEnchantments.initEnchantments();
 		EnchantmentManager.initEnchantmentData();
 		ModPotions.initPotions();
