@@ -123,7 +123,7 @@ public class TTCommonProxy {
     public void registerVersionChecker(){
         NBTTagCompound compound = new NBTTagCompound();
         compound.setString("curseProjectName", "75598-thaumic-tinkerer");
-        compound.setString("curseFilenameParser", "ThaumicTinkerer-[].jar");
+        compound.setString("curseFilenameParser", "ThaumicTinkerer-[]-1.7.10-[].jar");
         compound.setString("modDisplayName", "Thaumic Tinkerer");
         FMLInterModComms.sendRuntimeMessage(LibMisc.MOD_ID, "VersionChecker", "addUpdate", compound);
     }
@@ -132,7 +132,21 @@ public class TTCommonProxy {
 		ResearchHelper.initResearch();
 		ThaumicTinkerer.registry.postInit();
 
+<<<<<<< HEAD
 
+=======
+        if (Loader.isModLoaded("ForgeMultipart")) {
+            ThaumicTinkerer.log.trace("Attempting to load Multiparts");
+            try {
+                Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
+                clazz.newInstance();
+            } catch (Throwable e) {
+                ThaumicTinkerer.log.error("Error registering multiparts", e);
+            }
+        } else {
+            ThaumicTinkerer.log.info("Skipping TC Multipart integration");
+        }
+>>>>>>> 57ae35f7bc2ac010353acbf948453f3a0504de7e
     }
 
 	protected void initCCPeripherals() {
