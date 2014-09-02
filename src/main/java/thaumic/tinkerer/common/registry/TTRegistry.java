@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import thaumic.tinkerer.client.lib.LibResources;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 
@@ -74,7 +75,7 @@ public class TTRegistry {
 					blockList.add(newBlock);
 
 					if (newBlock == null) {
-						System.out.println(clazz.getName() + " Returned a null block upon registration");
+                        ThaumicTinkerer.log.debug(clazz.getName() + " Returned a null block upon registration");
 						continue;
 					}
 
@@ -120,7 +121,7 @@ public class TTRegistry {
 					ArrayList<Item> itemList = new ArrayList<Item>();
 					itemList.add(newItem);
 					if (newItem == null) {
-						System.out.println(clazz.getName() + " Returned a null item upon registration");
+                        ThaumicTinkerer.log.debug(clazz.getName() + " Returned a null item upon registration");
 						continue;
 					}
 					if (((ITTinkererItem) newItem).getSpecialParameters() != null) {

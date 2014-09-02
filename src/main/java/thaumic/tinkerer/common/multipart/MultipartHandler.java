@@ -34,7 +34,7 @@ public class MultipartHandler {
         registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
         registerMultipartMetadataLine(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 2);
         //new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName()).init();
-//(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
+        //(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
     }
 
     private static void registerMultipartMetadataLine(Block block, int maxMeta) {

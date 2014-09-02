@@ -126,10 +126,10 @@ public class TTCommonProxy {
                 Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
                 clazz.newInstance();
             } catch (Throwable e) {
-                e.printStackTrace();
+                ThaumicTinkerer.log.error("Error registering multiparts",e);
             }
         } else {
-            System.out.println("Skipping TC Multipart integration");
+            ThaumicTinkerer.log.info("Skipping TC Multipart integration");
         }
     }
 
