@@ -24,6 +24,7 @@ import thaumic.tinkerer.common.block.quartz.BlockDarkQuartz;
 
 public class MultipartHandler {
     public MultipartHandler() {
+        ThaumicTinkerer.log.trace("Loading Multipart Handler class");
         registerMultipart(ConfigBlocks.blockCustomOre, 0);
         registerMultipart(ConfigBlocks.blockCustomOre, 7);
         registerMultipart(ConfigBlocks.blockWoodenDevice, 6);

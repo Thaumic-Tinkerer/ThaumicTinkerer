@@ -122,6 +122,7 @@ public class TTCommonProxy {
 		ThaumicTinkerer.registry.postInit();
 
         if (Loader.isModLoaded("ForgeMultipart")) {
+            ThaumicTinkerer.log.trace("Attempting to load Multiparts");
             try {
                 Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
                 clazz.newInstance();
