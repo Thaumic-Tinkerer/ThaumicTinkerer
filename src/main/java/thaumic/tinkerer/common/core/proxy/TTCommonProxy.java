@@ -112,7 +112,7 @@ public class TTCommonProxy {
     public void registerVersionChecker(){
         NBTTagCompound compound = new NBTTagCompound();
         compound.setString("curseProjectName", "75598-thaumic-tinkerer");
-        compound.setString("curseFilenameParser", "ThaumicTinkerer-[].jar");
+        compound.setString("curseFilenameParser", "ThaumicTinkerer-1.7.10-[].jar");
         compound.setString("modDisplayName", "Thaumic Tinkerer");
         FMLInterModComms.sendRuntimeMessage(LibMisc.MOD_ID, "VersionChecker", "addUpdate", compound);
     }
