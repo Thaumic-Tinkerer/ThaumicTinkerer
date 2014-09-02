@@ -24,6 +24,7 @@ import thaumic.tinkerer.common.block.quartz.BlockDarkQuartz;
 
 public class MultipartHandler {
     public MultipartHandler() {
+        ThaumicTinkerer.log.trace("Loading Multipart Handler class");
         registerMultipart(ConfigBlocks.blockCustomOre, 0);
         registerMultipart(ConfigBlocks.blockCustomOre, 7);
         registerMultipart(ConfigBlocks.blockWoodenDevice, 6);
@@ -34,7 +35,7 @@ public class MultipartHandler {
         registerMultipartMetadataLine(ConfigBlocks.blockCosmeticSolid, 7);
         registerMultipartMetadataLine(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 2);
         //new RegisterBlockPart(ConfigBlocks.blockCandle, PartCandle.class, ConfigBlocks.blockCandle.getUnlocalizedName()).init();
-//(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
+        //(new RegisterBlockPart(ConfigBlocks.blockAiry, PartNitor.class, ConfigBlocks.blockAiry.getUnlocalizedName())).init();
     }
 
     private static void registerMultipartMetadataLine(Block block, int maxMeta) {

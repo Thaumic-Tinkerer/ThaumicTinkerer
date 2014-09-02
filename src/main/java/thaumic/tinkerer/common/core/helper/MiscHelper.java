@@ -19,6 +19,7 @@ import net.minecraft.server.MinecraftServer;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.codechicken.lib.vec.Vector3;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 
 public final class MiscHelper {
 
@@ -55,10 +56,10 @@ public final class MiscHelper {
 
 	public static void printCurrentStackTrace(String message) {
 		if (message != null)
-			System.out.println(message);
+            ThaumicTinkerer.log.info(message);
 
 		for (StackTraceElement element : Thread.currentThread().getStackTrace())
-			System.out.println(element);
+            ThaumicTinkerer.log.info(element);
 	}
 
 }

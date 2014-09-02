@@ -122,14 +122,15 @@ public class TTCommonProxy {
 		ThaumicTinkerer.registry.postInit();
 
         if (Loader.isModLoaded("ForgeMultipart")) {
+            ThaumicTinkerer.log.trace("Attempting to load Multiparts");
             try {
                 Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
                 clazz.newInstance();
             } catch (Throwable e) {
-                e.printStackTrace();
+                ThaumicTinkerer.log.error("Error registering multiparts",e);
             }
         } else {
-            System.out.println("Skipping TC Multipart integration");
+            ThaumicTinkerer.log.info("Skipping TC Multipart integration");
         }
     }
 

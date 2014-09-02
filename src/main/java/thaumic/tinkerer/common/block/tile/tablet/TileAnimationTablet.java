@@ -350,7 +350,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 		int meta = getBlockMetadata();
 		if (meta == 0) {
-			System.out.println("Metadata of a Tool Dynamism tablet is in an invalid state. This is a critical error.");
+            ThaumicTinkerer.log.error("Metadata of a Tool Dynamism tablet is in an invalid state. This is a critical error.");
 			return coords;
 		}
 		int[] increase = LOC_INCREASES[(meta & 7) - 2];

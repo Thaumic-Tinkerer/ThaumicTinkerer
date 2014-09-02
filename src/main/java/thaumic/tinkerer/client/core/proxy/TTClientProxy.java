@@ -139,7 +139,7 @@ public class TTClientProxy extends TTCommonProxy {
 		try {
 			super.initCCPeripherals();
 		} catch (Throwable e) {
-			System.out.println("Thaumic Tinkerer: ComputerCraft not found.");
+			ThaumicTinkerer.log.info("Thaumic Tinkerer: ComputerCraft not found.");
 		}
 	}
 

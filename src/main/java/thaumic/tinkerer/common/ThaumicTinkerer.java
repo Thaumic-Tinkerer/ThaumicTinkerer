@@ -26,6 +26,7 @@ import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
+import org.apache.logging.log4j.Logger;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import thaumic.tinkerer.api.InterModCommsOperations;
@@ -54,8 +55,11 @@ public class ThaumicTinkerer {
 
 	public static TTRegistry registry = new TTRegistry();
 
+    public static Logger log;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+        log=event.getModLog();
 		tcProxy = Thaumcraft.proxy;
 		proxy.preInit(event);
 		if (Loader.isModLoaded("Waila")) {
