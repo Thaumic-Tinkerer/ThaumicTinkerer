@@ -94,6 +94,17 @@ public class TTCommonProxy {
 		if (Loader.isModLoaded("OpenComputers")) {
 			initOpenCDrivers();
 		}
+        if (Loader.isModLoaded("ForgeMultipart")) {
+            ThaumicTinkerer.log.trace("Attempting to load Multiparts");
+            try {
+                Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
+                clazz.newInstance();
+            } catch (Throwable e) {
+                ThaumicTinkerer.log.error("Error registering multiparts",e);
+            }
+        } else {
+            ThaumicTinkerer.log.info("Skipping TC Multipart integration");
+        }
 	}
 
 	protected void registerPackets() {
@@ -120,18 +131,6 @@ public class TTCommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		ResearchHelper.initResearch();
 		ThaumicTinkerer.registry.postInit();
-
-        if (Loader.isModLoaded("ForgeMultipart")) {
-            ThaumicTinkerer.log.trace("Attempting to load Multiparts");
-            try {
-                Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
-                clazz.newInstance();
-            } catch (Throwable e) {
-                ThaumicTinkerer.log.error("Error registering multiparts", e);
-            }
-        } else {
-            ThaumicTinkerer.log.info("Skipping TC Multipart integration");
-        }
     }
 
 	protected void initCCPeripherals() {
