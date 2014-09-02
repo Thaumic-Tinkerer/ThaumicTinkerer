@@ -17,8 +17,8 @@ public class MaxResearchCommand extends CommandBase {
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender) {
-		return "max research adds 99 to all aspects of the player using it";
-	}
+        return "Adds 99 to all aspects of the player using it";
+    }
 
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring) {

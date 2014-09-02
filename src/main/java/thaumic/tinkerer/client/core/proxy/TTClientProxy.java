@@ -38,133 +38,139 @@ import thaumic.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
 import thaumic.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import thaumic.tinkerer.client.core.helper.ClientHelper;
 import thaumic.tinkerer.client.lib.LibRenderIDs;
+import thaumic.tinkerer.client.render.block.RenderInfusedCrops;
 import thaumic.tinkerer.client.render.block.RenderMagnet;
 import thaumic.tinkerer.client.render.block.RenderRepairer;
 import thaumic.tinkerer.client.render.block.kami.RenderWarpGate;
+import thaumic.tinkerer.client.render.item.RenderGenericSeeds;
 import thaumic.tinkerer.client.render.item.RenderMobDisplay;
 import thaumic.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import thaumic.tinkerer.client.render.tile.*;
 import thaumic.tinkerer.client.render.tile.kami.RenderTileWarpGate;
 import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.block.tile.TileEnchanter;
-import thaumic.tinkerer.common.block.tile.TileFunnel;
-import thaumic.tinkerer.common.block.tile.TileMagnet;
-import thaumic.tinkerer.common.block.tile.TileRepairer;
+import thaumic.tinkerer.common.block.tile.*;
 import thaumic.tinkerer.common.block.tile.kami.TileWarpGate;
 import thaumic.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
+import thaumic.tinkerer.common.item.ItemInfusedSeeds;
 import thaumic.tinkerer.common.item.ItemMobDisplay;
 import thaumic.tinkerer.common.item.kami.ItemPlacementMirror;
 import thaumic.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 
 public class TTClientProxy extends TTCommonProxy {
 
-	public static EnumRarity kamiRarity;
+    public static EnumRarity kamiRarity;
 
-	@Override
-	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
-		//Temporarly disabled for 1.7
-		//MinecraftForge.EVENT_BUS.register(new FumeTool());
-		if (ConfigHandler.enableKami)
-			//kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
-			kamiRarity = EnumHelperClient.addEnum(new Class[][]{ { EnumRarity.class, EnumChatFormatting.class, String.class } }, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
-	}
+    @Override
+    public void preInit(FMLPreInitializationEvent event) {
+        super.preInit(event);
+        //Temporarly disabled for 1.7
+        //MinecraftForge.EVENT_BUS.register(new FumeTool());
+        if (ConfigHandler.enableKami)
+            //kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
+            kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
+    }
 
-	public static EntityPlayer getPlayer() {
-		return Minecraft.getMinecraft().thePlayer;
-	}
+    public static EntityPlayer getPlayer() {
+        return Minecraft.getMinecraft().thePlayer;
+    }
 
-	@Override
-	public void init(FMLInitializationEvent event) {
-		super.init(event);
+    @Override
+    public void init(FMLInitializationEvent event) {
+        super.init(event);
 
-		LocalizationHandler.loadLocalizations();
-		MinecraftForge.EVENT_BUS.register(new HUDHandler());
-		ClientTickHandler cthandler = new ClientTickHandler();
-		FMLCommonHandler.instance().bus().register(cthandler);
-		MinecraftForge.EVENT_BUS.register(cthandler);
-		MinecraftForge.EVENT_BUS.register(new GemArmorKeyHandler());
-		registerTiles();
-		registerRenderIDs();
+        LocalizationHandler.loadLocalizations();
+        MinecraftForge.EVENT_BUS.register(new HUDHandler());
+        ClientTickHandler cthandler = new ClientTickHandler();
+        FMLCommonHandler.instance().bus().register(cthandler);
+        MinecraftForge.EVENT_BUS.register(cthandler);
+        MinecraftForge.EVENT_BUS.register(new GemArmorKeyHandler());
+        registerTiles();
+        registerRenderIDs();
 
-		if (ConfigHandler.enableKami) {
-			MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
-			MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());
-			if (ConfigHandler.showPlacementMirrorBlocks)
-				MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
-		}
-	}
+        if (ConfigHandler.enableKami) {
+            MinecraftForge.EVENT_BUS.register(new SoulHeartClientHandler());
+            MinecraftForge.EVENT_BUS.register(new ToolModeHUDHandler());
+            if (ConfigHandler.showPlacementMirrorBlocks)
+                MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
+        }
+    }
 
-	private void registerTiles() {
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileMagnet.class, new RenderTileMagnet());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
 
-		if (ConfigHandler.enableKami) {
-			ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
-		}
-	}
 
-	private void registerRenderIDs() {
-		LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
-		LibRenderIDs.idRepairer = RenderingRegistry.getNextAvailableRenderId();
-		LibRenderIDs.idFire = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(new RenderMagnet());
-		RenderingRegistry.registerBlockHandler(new RenderRepairer());
+    private void registerTiles() {
+        ClientRegistry.bindTileEntitySpecialRenderer(TileAnimationTablet.class, new RenderTileAnimationTablet());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileMagnet.class, new RenderTileMagnet());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
 
-		MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobDisplay.class), new RenderMobDisplay());
+        LibRenderIDs.idGrain = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(LibRenderIDs.idGrain, new RenderInfusedCrops());
 
-		if (ConfigHandler.enableKami) {
-			MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemPlacementMirror.class), new RenderPlacementMirror());
+        if (ConfigHandler.enableKami) {
+            ClientRegistry.bindTileEntitySpecialRenderer(TileWarpGate.class, new RenderTileWarpGate());
+        }
+    }
 
-			LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
+    private void registerRenderIDs() {
+        LibRenderIDs.idMagnet = RenderingRegistry.getNextAvailableRenderId();
+        LibRenderIDs.idRepairer = RenderingRegistry.getNextAvailableRenderId();
+        LibRenderIDs.idFire = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new RenderMagnet());
+        RenderingRegistry.registerBlockHandler(new RenderRepairer());
 
-			RenderingRegistry.registerBlockHandler(new RenderWarpGate());
-			//KeyBindingRegistry.registerKeyBinding(new GemArmorKeyHandler());
-		}
-	}
+        MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobDisplay.class), new RenderMobDisplay());
+        MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class), new RenderGenericSeeds());
 
-	@Override
-	public void shadowSparkle(World world, float x, float y, float z, int size) {
-		ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);
-		ClientHelper.minecraft().effectRenderer.addEffect(particle);
-	}
+        if (ConfigHandler.enableKami) {
+            MinecraftForgeClient.registerItemRenderer(ThaumicTinkerer.registry.getFirstItemFromClass(ItemPlacementMirror.class), new RenderPlacementMirror());
 
-	@Override
-	protected void initCCPeripherals() {
-		try {
-			super.initCCPeripherals();
-		} catch (Throwable e) {
-			ThaumicTinkerer.log.info("Thaumic Tinkerer: ComputerCraft not found.");
-		}
-	}
+            LibRenderIDs.idWarpGate = RenderingRegistry.getNextAvailableRenderId();
 
-	@Override
-	public boolean isClient() {
-		return true;
-	}
+            RenderingRegistry.registerBlockHandler(new RenderWarpGate());
+            //KeyBindingRegistry.registerKeyBinding(new GemArmorKeyHandler());
+        }
+    }
 
-	@Override
-	public boolean armorStatus(EntityPlayer player) {
-		return KamiArmorClientHandler.ArmorEnabled;
+    @Override
+    public void shadowSparkle(World world, float x, float y, float z, int size) {
+        ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);
+        ClientHelper.minecraft().effectRenderer.addEffect(particle);
+    }
 
-	}
+    @Override
+    protected void initCCPeripherals() {
+        try {
+            super.initCCPeripherals();
+        } catch (Throwable e) {
+            ThaumicTinkerer.log.info("Thaumic Tinkerer: ComputerCraft not found.");
+        }
+    }
 
-	@Override
-	public void setArmor(EntityPlayer player, boolean status) {
-		super.setArmor(player, status);
-		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-			KamiArmorClientHandler.ArmorEnabled = status;
-		}
-	}
+    @Override
+    public boolean isClient() {
+        return true;
+    }
 
-	@Override
-	public EntityPlayer getClientPlayer() {
-		return ClientHelper.clientPlayer();
-	}
+    @Override
+    public boolean armorStatus(EntityPlayer player) {
+        return KamiArmorClientHandler.ArmorEnabled;
+
+    }
+
+    @Override
+    public void setArmor(EntityPlayer player, boolean status) {
+        super.setArmor(player, status);
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+            KamiArmorClientHandler.ArmorEnabled = status;
+        }
+    }
+
+    @Override
+    public EntityPlayer getClientPlayer() {
+        return ClientHelper.clientPlayer();
+    }
 
 }

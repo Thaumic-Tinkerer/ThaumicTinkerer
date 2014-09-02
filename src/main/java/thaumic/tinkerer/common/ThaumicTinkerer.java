@@ -32,6 +32,7 @@ import thaumcraft.common.Thaumcraft;
 import thaumic.tinkerer.api.InterModCommsOperations;
 import thaumic.tinkerer.common.core.commands.KamiUnlockedCommand;
 import thaumic.tinkerer.common.core.commands.MaxResearchCommand;
+import thaumic.tinkerer.common.core.commands.SetTendencyCommand;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.dim.WorldProviderBedrock;
@@ -72,7 +73,8 @@ public class ThaumicTinkerer {
 		MinecraftServer server = MinecraftServer.getServer();
 		ICommandManager command = server.getCommandManager();
 		ServerCommandManager manager = (ServerCommandManager) command;
-		manager.registerCommand(new MaxResearchCommand());
+        manager.registerCommand(new SetTendencyCommand());
+        manager.registerCommand(new MaxResearchCommand());
 		manager.registerCommand(new KamiUnlockedCommand());
 	}
 

@@ -39,6 +39,7 @@ import thaumic.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import thaumic.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import thaumic.tinkerer.common.core.handler.kami.KamiDimensionHandler;
 import thaumic.tinkerer.common.core.handler.kami.SoulHeartHandler;
+import thaumic.tinkerer.common.core.helper.BonemealEventHandler;
 import thaumic.tinkerer.common.core.helper.NumericAspectHelper;
 import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
@@ -70,7 +71,7 @@ public class TTCommonProxy {
         rodIchor = new RodIchorcloth();
         initCCPeripherals();
         registerVersionChecker();
-    }
+	}
 
 	public WandCap capIchor;
 	public WandRod rodIchor;
@@ -84,7 +85,8 @@ public class TTCommonProxy {
 		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
 		registerPackets();
 		FMLCommonHandler.instance().bus().register(new PlayerTracker());
-
+        MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
+        
 		if (ConfigHandler.enableKami) {
 			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
 			MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
@@ -94,6 +96,7 @@ public class TTCommonProxy {
 		if (Loader.isModLoaded("OpenComputers")) {
 			initOpenCDrivers();
 		}
+
         if (Loader.isModLoaded("ForgeMultipart")) {
             ThaumicTinkerer.log.trace("Attempting to load Multiparts");
             try {
@@ -131,7 +134,8 @@ public class TTCommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		ResearchHelper.initResearch();
 		ThaumicTinkerer.registry.postInit();
-    }
+        AspectCropLootManager.populateLootMap();
+	}
 
 	protected void initCCPeripherals() {
 		/*IPeripheralHandler handler = new PeripheralHandler();
