@@ -89,6 +89,7 @@ dependencies {
     )
     compile "mcp.mobius.waila:Waila:1.5.3a_1.7.10"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
+    compile "codechicken:EnderStorage:1.7.10-1.4.5.22:dev"
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
     compile("tconstruct:TConstruct:1.7.10-1.6.0.jenkins541:deobf") {
     }
