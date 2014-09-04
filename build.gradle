@@ -37,6 +37,14 @@ repositories {
         name 'DVS1 Maven FS'
         url 'http://dvs1.progwml6.com/files/maven'
     }
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven { // the repo from which to get NEI and stuff
+        name 'CB Repo'
+        url "http://chickenbones.net/maven/"
+    }
 }
 String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
@@ -79,15 +87,25 @@ dependencies {
     compile files(
             'TCDEOBF.jar'
     )
+    compile "mcp.mobius.waila:Waila:1.5.3a_1.7.10"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
     compile("tconstruct:TConstruct:1.7.10-1.6.0.jenkins541:deobf") {
-        exclude module: 'CodeChickenCore'
-        exclude module: 'Waila'
-        exclude module: 'NotEnoughItems'
     }
 }
+// some crazy stuff to make sure the chicken stuff is in the mods folder...
+// because it wont work otherwise...  because FML doesnt laod coremods from the classpath
+task copyChicken(type: Copy, dependsOn: "extractUserDev") {
+    from { configurations.compile }
+    include "**/*Chicken*.jar", "**/*NotEnoughItems*.jar"
+    exclude "**/CodeChickenLib*" // because CCC downloads it anyways.. -_-
+    into file(minecraft.runDir + "/mods")
 
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+tasks.setupDevWorkspace.dependsOn copyChicken
+tasks.setupDecompWorkspace.dependsOn copyChicken
 processResources
         {
             // replace stuff in mcmod.info, nothing else
