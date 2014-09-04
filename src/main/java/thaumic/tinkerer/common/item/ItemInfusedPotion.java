@@ -141,9 +141,9 @@ public class ItemInfusedPotion extends ItemPotion implements ITTinkererItem {
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_POTIONS, new AspectList().add(Aspect.WATER, 5).add(Aspect.ENTROPY, 5), 7, -5, 2, new ItemStack(this)).setParents(LibResearch.KEY_FIRE_PERDITIO, LibResearch.KEY_FIRE_ORDO, LibResearch.KEY_FIRE_IGNIS, LibResearch.KEY_FIRE_TERRA, LibResearch.KEY_FIRE_AER, LibResearch.KEY_FIRE_AQUA).setParentsHidden("INFUSION").setConcealed()
-				.setPages(new ResearchPage("0"), new ResearchPage("1"), ResearchHelper.infusionPage(LibResearch.KEY_POTIONS, 4), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT1"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT2"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT3"));
-	}
+        return (TTResearchItem) new TTResearchItem(LibResearch.KEY_POTIONS, new AspectList().add(Aspect.WATER, 5).add(Aspect.ENTROPY, 5), 7, -5, 2, ItemInfusedSeeds.getStackFromAspect(Aspect.FIRE)).setParents(LibResearch.KEY_FIRE_PERDITIO, LibResearch.KEY_FIRE_ORDO, LibResearch.KEY_FIRE_IGNIS, LibResearch.KEY_FIRE_TERRA, LibResearch.KEY_FIRE_AER, LibResearch.KEY_FIRE_AQUA).setParentsHidden("INFUSION").setConcealed()
+                .setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"), new ResearchPage("3"), new ResearchPage("4"), new ResearchPage("5"), ResearchHelper.infusionPage(LibResearch.KEY_POTIONS, 4), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT1"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT2"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_POTIONS + "POT3"));
+    }
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
