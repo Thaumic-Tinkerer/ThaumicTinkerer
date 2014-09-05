@@ -614,10 +614,14 @@ ttresearch.name.FIRE_PERDITIO=元素火焰:混沌
 ttresearch.lore.FIRE_PERDITIO=大扫荡时间到
 ttresearch.page.FIRE_PERDITIO.0=某种宛如解药的火焰.你可以释放这个特别设计的火焰对付失控的元素火焰.它能够祛除元素火焰中的魔力将它们转变为普通火焰.
 
-ttresearch.name.INFUSED_POTIONS=蕴魔药水
-ttresearch.lore.INFUSED_POTIONS=这啥?我不知道. . .嘬一口试试看
-ttresearch.page.INFUSED_POTIONS.0=通过往普通种子注入魔力碎片的力量,你就能制造出全新种类的植物.这些种子具有许多神奇的能力,其中最重要的莫过于它们能够用来制作一系列强力的药水.
-ttresearch.page.INFUSED_POTIONS.1=地元药水会在攻击你的怪物和你之间召唤出障碍物.<BR>火元药水会让你的敌人被包围在火球中灼烧. <BR>风元药水会将你的敌人送上天. <BR>水元药水则会凝固邻近的岩浆.
+ttresearch.name.INFUSED_POTIONS=蕴魔作物
+ttresearch.lore.INFUSED_POTIONS=谁提起的蜜蜂?没人说过蜜蜂.
+ttresearch.page.INFUSED_POTIONS.0=将魔力碎片注入平凡的作物你便能够创造出全新形式的作物.这些种子生长出的作物能够收获许多种类的物品.每种要素都对应诸多不同类型的物品.
+ttresearch.page.INFUSED_POTIONS.1=你只能直接做出元始要素种子,但其他类型的种子可以通过培育得到.当收获成熟作物时,作物含有的魔法物质会残存于土壤中.在残存大量魔法物质的土壤中种植作物,残存要素与新种植作物所含要素会融合,因而生成新类型的蕴魔种子.
+ttresearch.page.INFUSED_POTIONS.2=培育作物因不同的要素倾向将会受特定效果影响.Terra要素可以增加土壤中魔法物质的残留量.Ignis要素有助于融合要素的形成.Ordo要素增加产量.Perditio要素增加种子掉落量.Aer要素使得作物受其他要素的影响效果更显著.同一株作物受要素影响所产生的倾向不超过50点.
+ttresearch.page.INFUSED_POTIONS.3=有两种方法能够赋予作物元始要素倾向.首先,作物会偶然地受相邻特定要素作物的影响而产生倾向,然而以这种方式同一株植物最多只能增加同种要素倾向5点.
+ttresearch.page.INFUSED_POTIONS.4=其次,作物还会直接抽走临近作物的要素倾向,被抽走要素倾向的作物必须用于相等或更多的要素倾向点.
+ttresearch.page.INFUSED_POTIONS.5=有些作物会产出特殊的谷物,可用于酿造药水.<BR>地元药水会在攻击你的怪物与你之间召唤出障碍物.<BR>火元药水会让你的敌人陷入灼烧火球的包围.<BR>风元药水会让你的敌人一冲飞天.<BR>水元药水则会凝固邻近的岩浆.
 
 # -- WAILA
 ttwaila.nothing=空无一物
