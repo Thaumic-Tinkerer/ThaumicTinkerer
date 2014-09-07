@@ -30,6 +30,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -223,4 +224,18 @@ public class BlockRepairer extends BlockModContainer {
 		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_REPAIRER, new ItemStack(this), 8, new AspectList().add(Aspect.TOOL, 15).add(Aspect.CRAFT, 20).add(Aspect.ORDER, 10).add(Aspect.MAGIC, 15), new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4),
 				new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), new ItemStack(Items.diamond), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.planks), new ItemStack(Items.leather), new ItemStack(ConfigItems.itemResource, 1, 7), new ItemStack(ConfigItems.itemResource, 1, 2));
 	}
+
+    @Override
+    public boolean canProvidePower() {
+        return true;
+    }
+
+    @Override
+    public int isProvidingStrongPower(IBlockAccess world, int x, int y, int z, int meta) {
+        TileRepairer tile = ((TileRepairer) world.getTileEntity(x, y, z));
+        if (tile.getStackInSlot(0) != null && tile.getStackInSlot(0).getItemDamage() != 0) {
+            return 15;
+        }
+        return 0;
+    }
 }
