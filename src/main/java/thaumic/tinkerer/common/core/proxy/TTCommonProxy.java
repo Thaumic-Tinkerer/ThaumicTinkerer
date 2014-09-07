@@ -60,6 +60,7 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 
 public class TTCommonProxy {
 
+
     public void preInit(FMLPreInitializationEvent event) {
         toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
         ModCreativeTab.INSTANCE = new ModCreativeTab();
