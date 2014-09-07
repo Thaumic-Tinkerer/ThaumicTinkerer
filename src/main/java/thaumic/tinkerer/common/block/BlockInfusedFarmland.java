@@ -70,7 +70,7 @@ public class BlockInfusedFarmland extends BlockFarmland implements ITTinkererBlo
 
     @Override
     public boolean shouldDisplayInTab() {
-        return true;
+        return false;
     }
 
     @Override
