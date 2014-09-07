@@ -152,7 +152,7 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 						int id = potion.getPotionID();
 						boolean badEffect;
 						badEffect = ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], new String[]{ "isBadEffect", "field_76418_K" });
-                        if (Potion.potionTypes[potion.getPotionID()] instanceof PotionWarpWard) {
+                        if (Potion.potionTypes[id] instanceof PotionWarpWard) {
                             badEffect = false;
                         }
                         if (badEffect) {
