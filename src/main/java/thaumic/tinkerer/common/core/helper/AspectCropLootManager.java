@@ -101,7 +101,9 @@ public class AspectCropLootManager {
         addAspectLoot(Aspect.ELDRITCH, "bucketEnder");
 
 
-        addAspectLoot(Aspect.TREE, "log");
+        addAspectLoot(Aspect.TREE, "wood");
+
+        addAspectLoot(Aspect.TREE, new ItemStack(Blocks.log));
 
         for (Aspect tag : Aspect.aspects.values()) {
             ItemStack i = new ItemStack(ConfigItems.itemWispEssence, 1, 0);
@@ -134,9 +136,12 @@ public class AspectCropLootManager {
         addAspectLoot(Aspect.COLD, "rodBlizz");
 
         addAspectLoot(Aspect.PLANT, "sapling");
+        for (int i = 0; i < 6; i++) {
+            addAspectLoot(Aspect.PLANT, new ItemStack(Blocks.sapling, 1, i));
+        }
 
         for (int i = 0; i < 12; i++) {
-            addAspectLoot(Aspect.MAN, new ItemStack(ConfigItems.itemGolemCore, i));
+            addAspectLoot(Aspect.MAN, new ItemStack(ConfigItems.itemGolemCore, 1, i));
         }
 
         addAspectLoot(Aspect.ARMOR, new ItemStack(Items.diamond_boots));
