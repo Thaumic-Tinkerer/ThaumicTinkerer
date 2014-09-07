@@ -292,7 +292,7 @@ ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the bl
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
-ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage. It will removed some effects stemming from warp, at an extreme durability cost.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
 
 # -- HYPERENERGETIC NITOR
 ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor

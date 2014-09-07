@@ -30,6 +30,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import org.apache.commons.lang3.ArrayUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
@@ -140,6 +141,7 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 			if (player.ticksExisted % 20 == 0) {
 				if (player instanceof EntityPlayer) {
 					boolean removed = false;
+                    int damage = 1;
 
 					Collection<PotionEffect> potions = player.getActivePotionEffects();
 
@@ -156,13 +158,19 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
                         if (badEffect) {
 							player.removePotionEffect(id);
 							removed = true;
-							break;
+                            int[] warpPotionIDs = new int[]{Config.potionBlurredID, Config.potionDeathGazeID, Config.potionInfVisExhaustID, Config.potionSunScornedID, Config.potionUnHungerID};
+                            if (ArrayUtils.contains(warpPotionIDs, potion.getPotionID())) {
+                                damage = 10;
+                            }
+                            break;
 						}
 					}
 
 					if (removed) {
-						par1ItemStack.damageItem(1, player);
-						par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
+
+
+                        par1ItemStack.damageItem(damage, player);
+                        par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
 					}
 				}
 			}
