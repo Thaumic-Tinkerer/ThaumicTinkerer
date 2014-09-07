@@ -33,7 +33,9 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
+import thaumcraft.common.lib.potions.PotionWarpWard;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.helper.ItemNBTHelper;
@@ -48,6 +50,7 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -147,7 +150,10 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 						int id = potion.getPotionID();
 						boolean badEffect;
 						badEffect = ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], new String[]{ "isBadEffect", "field_76418_K" });
-						if (badEffect) {
+                        if (Potion.potionTypes[potion.getPotionID()] instanceof PotionWarpWard) {
+                            badEffect = false;
+                        }
+                        if (badEffect) {
 							player.removePotionEffect(id);
 							removed = true;
 							break;
