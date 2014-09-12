@@ -29,6 +29,7 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
 
 import thaumic.tinkerer.client.core.helper.IconHelper;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileSynth;
 import thaumic.tinkerer.common.block.BlockFunnel;
 import thaumic.tinkerer.common.lib.LibBlockNames;
@@ -38,7 +39,6 @@ import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
-import thaumic.tinkerer.common.ThaumicTinkerer;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -181,9 +181,7 @@ public class BlockSynth extends BlockModContainer {
 		TileSynth synth = (TileSynth) world.getTileEntity(x_coord, y_coord, z_coord);
 		ItemStack playerStack = player.getCurrentEquippedItem();
 		int blockside = sideOfClick(world, x_coord,y_coord,z_coord, par7, par8, par9); //1 for lhs, 0 for rhs
-		
-		if (playerStack != null) { ThaumicTinkerer.log.debug("[oBA] hit with " + playerStack.getItem().getClass().getName());}
-		
+			
 		if (playerStack != null && synth.canInsertItem(blockside, playerStack,1)) {
 			//go for insert
 			synth.setInventorySlotContents(blockside, playerStack.splitStack(1));

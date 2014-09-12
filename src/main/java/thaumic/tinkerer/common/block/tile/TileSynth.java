@@ -30,9 +30,9 @@ import thaumcraft.common.blocks.ItemJarFilled;
 import thaumcraft.common.tiles.TileJarFillable;
 import thaumcraft.common.tiles.TileJarFillableVoid;
 import thaumic.tinkerer.common.lib.LibBlockNames;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 
-import thaumic.tinkerer.common.ThaumicTinkerer; //For log only
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -118,6 +118,8 @@ public class TileSynth extends TileEntity implements ISidedInventory, IAspectCon
         //Thaumcraft API doesn't provide a mechanism to easily match a pair
         //of aspects to the result, will probably have to do it myself.
         //Build reverse map on init or something.
+		
+		//This is an abomination and will be replaced soon.
 		
 		//Brute force solution for testing.
 		ArrayList<Aspect> allCompoundAspects = Aspect.getCompoundAspects();
@@ -255,6 +257,7 @@ public class TileSynth extends TileEntity implements ISidedInventory, IAspectCon
     
     @Override
     public AspectList getAspects() {
+		//Cleanup if at all possible.  too many nested ifs.
 		AspectList total = new AspectList();	
 		
 		for (ItemStack item : inventory) {
@@ -321,45 +324,4 @@ public class TileSynth extends TileEntity implements ISidedInventory, IAspectCon
 	public int containerContains(Aspect as) {
 		return 0;
 	}
-	/*
-	@Override //IEssentiaTransport
-	public boolean renderExtendedTube() {
-		return false;
-	}
-	@Override //IEssentiaTransport
-	public int getMinimumSuction() {
-		return 0;
-	}
-	@Override //IEssentiaTransport
-	public int getEssentiaAmount(ForgeDirection dir) {
-		return 0;
-	}
-	@Override //IEssentiaTransport
-	public Aspect getEssentiaType(ForgeDirection dir) {
-		return null;
-	}
-	@Override //IEssentiaTransport
-	public int addEssentia(Aspect as, int amount, ForgeDirection dir) {
-		
-		return 0;
-	}
-	@Override //IEssentiaTransport
-	public int takeEssentia(Aspect as, int amount, ForgeDirection dir) {
-		return 0;
-	}
-	@Override //IEssentiaTransport
-	public void setSuction(Aspect as, int amount) {
-		return;
-	}
-	@Override //IEssentiaTransport
-	public boolean canOutputTo(ForgeDirection dir) {
-		return (dir == ForgeDirection.UP);
-	}
-	@Override //IEssentiaTransport
-	public boolean canInputFrom(ForgeDirection dir) {
-		return isConnectable(dir);
-	}
-	
-	*/
-	
 }
