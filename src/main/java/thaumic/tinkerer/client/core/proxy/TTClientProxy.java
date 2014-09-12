@@ -105,6 +105,7 @@ public class TTClientProxy extends TTCommonProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
         ClientRegistry.bindTileEntitySpecialRenderer(TileFunnel.class, new RenderTileFunnel());
         ClientRegistry.bindTileEntitySpecialRenderer(TileRepairer.class, new RenderTileRepairer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileSynth.class, new RenderTileSynth());
 
         LibRenderIDs.idGrain = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(LibRenderIDs.idGrain, new RenderInfusedCrops());
