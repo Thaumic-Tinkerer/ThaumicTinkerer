@@ -294,7 +294,7 @@ ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the bl
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
 ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
-ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage. It will removed some effects stemming from warp, at an extreme durability cost.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
 
 # -- HYPERENERGETIC NITOR
 ttresearch.name.BRIGHT_NITOR=Hyperenergetic Nitor
@@ -442,7 +442,7 @@ ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much prote
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=Thaumic Restorer
 ttresearch.lore.REPAIRER=Less cracks than a potato on a stick
-ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, items is Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is.
+ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, items is Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is. Redstone current will be emitted while an item is being repaired.
 
 # -- WAND FOCUS: DISTORTION
 ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
