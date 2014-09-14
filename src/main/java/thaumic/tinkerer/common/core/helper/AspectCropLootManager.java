@@ -34,6 +34,8 @@ public class AspectCropLootManager {
     public static ItemStack getLootForAspect(Aspect aspect) {
         HashMap<ItemStack, Integer> aspectHashmap = lootMap.get(aspect);
         //Find total value of the possible ItemStacks for the aspect
+        if(aspectHashmap==null)
+            return null;
         int sum = 0;
 
         for (Integer i : aspectHashmap.values()) {
