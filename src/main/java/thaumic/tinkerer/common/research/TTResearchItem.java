@@ -70,7 +70,7 @@ public class TTResearchItem extends ResearchItem implements IRegisterableResearc
 	@Override
 	public ResearchItem setPages(ResearchPage... par) {
 		for (ResearchPage page : par) {
-			if (page.type == PageType.TEXT)
+			if (page.type == PageType.TEXT || page.type == PageType.TEXT_CONCEALED)
 				page.text = "ttresearch.page." + key + "." + page.text;
 
 			if (checkInfusion() && page.type == PageType.INFUSION_CRAFTING) {
