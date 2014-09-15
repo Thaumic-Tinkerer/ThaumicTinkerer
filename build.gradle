@@ -93,7 +93,7 @@ dependencies {
     compile "codechicken:NotEnoughItems:1.7.10-1.0.3.51:dev"
     compile "codechicken:EnderStorage:1.7.10-1.4.5.22:dev"
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
-    compile("tconstruct:TConstruct:1.7.10-1.6.0.build625:deobf") {
+    compile("tconstruct:TConstruct:1.7.10-1.6.0.jenkins541:deobf") {
     }
 }
 // some crazy stuff to make sure the chicken stuff is in the mods folder...
