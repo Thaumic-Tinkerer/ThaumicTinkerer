@@ -71,4 +71,6 @@ public final class LibBlockNames {
 
     public static final String FORCEFIELD = "forcefield";
 
+    public static final String DRINK = "drink";
+
 }
