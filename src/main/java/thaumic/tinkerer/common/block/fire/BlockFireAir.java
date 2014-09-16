@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.item.ItemBrightNitor;
