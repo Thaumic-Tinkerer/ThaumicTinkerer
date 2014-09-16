@@ -33,6 +33,8 @@ import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
+import thaumcraft.common.lib.research.ResearchManager;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 
 import java.util.HashMap;
@@ -74,6 +76,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, Simple
 			}
 		}
 		par1NBTTagCompound.setTag("Items", var2);
+
 	}
 
 	@Override
@@ -145,6 +148,7 @@ public class TileAspectAnalyzer extends TileEntity implements IInventory, Simple
 
 	@Override
 	public void closeInventory() {
+
 
 	}
 

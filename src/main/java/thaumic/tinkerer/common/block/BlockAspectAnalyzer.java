@@ -31,6 +31,8 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
+import thaumcraft.common.lib.research.ResearchManager;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileAspectAnalyzer;
@@ -64,9 +66,10 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if (!par1World.isRemote) {
-			TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-			if (tile != null)
-				par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ASPECT_ANALYZER, par1World, par2, par3, par4);
+			TileAspectAnalyzer tile = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
+			if (tile != null) {
+                par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ASPECT_ANALYZER, par1World, par2, par3, par4);
+            }
 		}
 
 		return true;
@@ -138,7 +141,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 	@Override
 	public boolean shouldRegister() {
-		return Loader.isModLoaded("ComputerCraft");
+		return true;
 	}
 
 	@Override
@@ -153,7 +156,7 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 	@Override
 	public Class<? extends TileEntity> getTileEntity() {
-		return TileBedrockPortal.class;
+		return TileAspectAnalyzer.class;
 	}
 
 	@Override
