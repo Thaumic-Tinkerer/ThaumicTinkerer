@@ -50,7 +50,7 @@ public final class ModPotions {
 					modfield.setAccessible(true);
 					modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
 					potionTypes = (Potion[]) f.get(null);
-                    if (Array.getLength(f) < 256) {
+                    if (potionTypes.length < 256) {
                         final Potion[] newPotionTypes = new Potion[256];
                         System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
                         f.set(null, newPotionTypes);
