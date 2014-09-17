@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.ItemBrightNitor;
 import thaumic.tinkerer.common.lib.LibBlockNames;
@@ -36,8 +37,8 @@ public class BlockFireWater extends BlockFireBase {
 
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_AQUA, new ItemStack(this), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.WATER, 5));
-	}
+        return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_AQUA, new ItemStack(this), new ItemStack(ConfigItems.itemShard, 1, 2), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.WATER, 5));
+    }
 
 	@Override
 	public HashMap<Block, Block> getBlockTransformation() {

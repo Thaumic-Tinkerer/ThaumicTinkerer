@@ -34,7 +34,7 @@ public class BlockFireAir extends BlockFireBase {
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
-        return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_AER, new ItemStack(this), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.AIR, 5));
+        return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_AER, new ItemStack(this), new ItemStack(ConfigItems.itemShard, 1, 0), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.AIR, 5));
     }
 
     @Override
