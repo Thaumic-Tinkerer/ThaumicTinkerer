@@ -53,9 +53,7 @@ public class ModEnchantmentHandler {
 			if (heldItem == null)
 				return;
 
-			if (heldItem.stackTagCompound == null) {
-				heldItem.stackTagCompound = new NBTTagCompound();
-			}
+			
 			if (attacker instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) attacker;
 
@@ -90,6 +88,9 @@ public class ModEnchantmentHandler {
 			int dispersedStrikes = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.dispersedStrikes, heldItem);
 
 			if (focusedStrikes > 0 || dispersedStrikes > 0) {
+				if (heldItem.stackTagCompound == null) {
+					heldItem.stackTagCompound = new NBTTagCompound();
+				}
 				int lastTarget = heldItem.stackTagCompound.getInteger(NBTLastTarget);
 				int successiveStrikes = heldItem.stackTagCompound.getInteger(NBTSuccessiveStrike);
 				int entityId = event.entityLiving.getEntityId();
@@ -182,6 +183,9 @@ public class ModEnchantmentHandler {
 		ItemStack item = event.getPlayer().getCurrentEquippedItem();
 		int tunnel = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, item);
 		if (tunnel > 0) {
+			if (item.stackTagCompound == null) {
+				item.stackTagCompound = new NBTTagCompound();
+			}
 			float dir = event.getPlayer().rotationYaw;
 			item.stackTagCompound.setFloat(NBTTunnelDirection, dir);
 		}
@@ -206,7 +210,7 @@ public class ModEnchantmentHandler {
 		int tunnel = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, heldItem);
 		if (tunnel > 0) {
 			float dir = event.entityPlayer.rotationYaw;
-			if (heldItem.stackTagCompound.hasKey(NBTTunnelDirection)) {
+			if (heldItem.stackTagCompound != null && heldItem.stackTagCompound.hasKey(NBTTunnelDirection)) {
 				float oldDir = heldItem.stackTagCompound.getFloat(NBTTunnelDirection);
 				float dif = Math.abs(oldDir - dir);
 				if (dif < 50) {
