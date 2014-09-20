@@ -487,7 +487,7 @@ ttresearch.page.ROD_ICHORCLOTH.0=You have done it. By infusing a silverwood wand
 # -- ICHORIUM WAND CAPS
 ttresearch.name.CAP_ICHOR=Ichorium Wand Caps
 ttresearch.lore.CAP_ICHOR=Somewhat like a Steam Sale
-ttresearch.page.CAP_ICHOR.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 20% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+ttresearch.page.CAP_ICHOR.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 30% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
 
 # -- ICHORCLOTH ARMOR
 ttresearch.name.ICHORCLOTH_ARMOR=Ichorcloth Robes
