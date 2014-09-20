@@ -183,8 +183,8 @@ public class ModEnchantmentHandler {
 		ItemStack item = event.getPlayer().getCurrentEquippedItem();
 		int tunnel = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, item);
 		if (tunnel > 0) {
-			if (heldItem.stackTagCompound == null) {
-				heldItem.stackTagCompound = new NBTTagCompound();
+			if (item.stackTagCompound == null) {
+				item.stackTagCompound = new NBTTagCompound();
 			}
 			float dir = event.getPlayer().rotationYaw;
 			item.stackTagCompound.setFloat(NBTTunnelDirection, dir);
