@@ -141,8 +141,8 @@ public class BlockAspectAnalyzer extends BlockModContainer {
 
 	@Override
 	public boolean shouldRegister() {
-		return true;
-	}
+        return Loader.isModLoaded("ComputerCraft");
+    }
 
 	@Override
 	public boolean shouldDisplayInTab() {
