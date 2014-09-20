@@ -210,10 +210,7 @@ public class ModEnchantmentHandler {
 		int tunnel = EnchantmentHelper.getEnchantmentLevel(LibEnchantIDs.tunnel, heldItem);
 		if (tunnel > 0) {
 			float dir = event.entityPlayer.rotationYaw;
-			if (heldItem.stackTagCompound == null) {
-				heldItem.stackTagCompound = new NBTTagCompound();
-			}
-			if (heldItem.stackTagCompound.hasKey(NBTTunnelDirection)) {
+			if (heldItem.stackTagCompound != null && heldItem.stackTagCompound.hasKey(NBTTunnelDirection)) {
 				float oldDir = heldItem.stackTagCompound.getFloat(NBTTunnelDirection);
 				float dif = Math.abs(oldDir - dir);
 				if (dif < 50) {
