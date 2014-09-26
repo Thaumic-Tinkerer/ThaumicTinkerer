@@ -53,7 +53,7 @@ public class BlockFireIgnis extends BlockFireBase {
         result.put(Blocks.lapis_ore, Blocks.quartz_ore);
         result.put(Blocks.redstone_ore, Blocks.quartz_ore);
         result.put(Blocks.lit_redstone_ore, Blocks.quartz_ore);
-        result.put(Blocks.lava, Blocks.water);
+        result.put(Blocks.water, Blocks.lava);
         result.put(Blocks.wheat, Blocks.nether_wart);
         result.put(Blocks.potatoes, Blocks.nether_wart);
         result.put(Blocks.carrots, Blocks.nether_wart);
