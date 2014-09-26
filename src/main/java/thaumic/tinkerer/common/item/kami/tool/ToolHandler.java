@@ -63,11 +63,11 @@ public final class ToolHandler {
 		for (int x1 = xs; x1 < xe; x1++) {
 			for (int y1 = ys; y1 < ye; y1++) {
 				for (int z1 = zs; z1 < ze; z1++) {
-					if (x != x1 && y != y1 && z != z1) {
-						ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune, blockHardness);
+                    //if (x != x1 && y != y1 && z != z1) {
+                    ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune, blockHardness);
 
-					}
-				}
+                    //}
+                }
 			}
 		}
 	}
