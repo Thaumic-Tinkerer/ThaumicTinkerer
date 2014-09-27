@@ -51,7 +51,7 @@ public class BlockFireOrder extends BlockFireBase {
             for (String ore : OreDictionary.getOreNames()) {
                 if (ore.startsWith("ore")) {
                     for (String block : OreDictionary.getOreNames()) {
-                        if (block.startsWith("block") && block.regionMatches(5, ore, 3, ore.length()-3)) {
+                            if (block.startsWith("block") && block.substring(5).equalsIgnoreCase(ore.substring(3)) {
                             if (OreDictionary.getOres(block).size() > 0 && OreDictionary.getOres(ore).size() > 0) {
                                 result.put(((ItemBlock) OreDictionary.getOres(ore).get(0).getItem()).field_150939_a, ((ItemBlock) OreDictionary.getOres(block).get(0).getItem()).field_150939_a);
                             }
