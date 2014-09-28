@@ -9,7 +9,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.item.ItemBrightNitor;
+import thaumic.tinkerer.common.core.helper.BlockTuple;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
@@ -43,14 +43,19 @@ public class BlockFireChaos extends BlockFireBase {
     }
 
     @Override
-    public HashMap<Block, Block> getBlockTransformation() {
-        HashMap<Block, Block> result = new HashMap<Block, Block>();
-        result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireAir.class), Blocks.fire);
-        result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireWater.class), Blocks.fire);
-        result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireEarth.class), Blocks.fire);
-        result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireIgnis.class), Blocks.fire);
-        result.put(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireOrder.class), Blocks.fire);
+    public HashMap<BlockTuple, BlockTuple> getBlockTransformation() {
+        HashMap<BlockTuple, BlockTuple> result = new HashMap<BlockTuple, BlockTuple>();
+        result.put(new BlockTuple(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireAir.class)), new BlockTuple(Blocks.fire));
+        result.put(new BlockTuple(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireWater.class)), new BlockTuple(Blocks.fire));
+        result.put(new BlockTuple(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireEarth.class)), new BlockTuple(Blocks.fire));
+        result.put(new BlockTuple(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireIgnis.class)), new BlockTuple(Blocks.fire));
+        result.put(new BlockTuple(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFireOrder.class)), new BlockTuple(Blocks.fire));
 
         return result;
+    }
+
+    @Override
+    public HashMap<thaumic.tinkerer.common.core.helper.BlockTuple, thaumic.tinkerer.common.core.helper.BlockTuple> getBlockTransformation(World w, int x, int y, int z) {
+        return getBlockTransformation();
     }
 }

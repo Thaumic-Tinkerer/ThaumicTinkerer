@@ -1,16 +1,22 @@
 package thaumic.tinkerer.common.block.fire;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
-import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.item.ItemBrightNitor;
+import thaumic.tinkerer.common.core.helper.BlockTuple;
+import thaumic.tinkerer.common.core.helper.FakeContainerCrafting;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
@@ -19,13 +25,26 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BlockFireOrder extends BlockFireBase {
+
+    public BlockFireOrder() {
+        super();
+        fireResults.put(new BlockTuple(Blocks.stone), null);
+        fireResults.put(new BlockTuple(Blocks.glass), null);
+        fireResults.put(new BlockTuple(Blocks.sand), null);
+        fireResults.put(new BlockTuple(Blocks.gravel), null);
+
+    }
+
     @Override
     public String getBlockName() {
         return LibBlockNames.BLOCK_FIRE_ORDER;
     }
+
+    public HashMap<BlockTuple, BlockTuple> fireResults = new HashMap<BlockTuple, BlockTuple>();
 
     @Override
     public IRegisterableResearch getResearchItem() {
@@ -39,7 +58,14 @@ public class BlockFireOrder extends BlockFireBase {
     }
 
     @Override
-    public int getDecayChance() {
+    public int getDecayChance(World world, int x, int y, int z) {
+        int dropSize = world.getBlock(x, y, z).getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0).size();
+        if (dropSize == 2) {
+            return 2;
+        }
+        if (dropSize >= 3) {
+            return 1;
+        }
         return 3;
     }
 
@@ -66,18 +92,70 @@ public class BlockFireOrder extends BlockFireBase {
     }
 
     @Override
-    public HashMap<Block, Block> getBlockTransformation() {
-        HashMap<Block, Block> result = new HashMap<Block, Block>();
-        result.put(Blocks.lit_redstone_ore, Blocks.redstone_block);
-        result.put(Blocks.redstone_ore, Blocks.redstone_block);
-        result.put(Blocks.lapis_ore, Blocks.lapis_block);
-        result.put(Blocks.iron_ore, Blocks.iron_block);
-        result.put(Blocks.emerald_ore, Blocks.emerald_block);
-        result.put(Blocks.diamond_ore, Blocks.diamond_block);
-        result.put(Blocks.coal_ore, Blocks.coal_block);
-        result.put(Blocks.gold_ore, Blocks.gold_block);
-        result.put(Blocks.quartz_ore, Blocks.quartz_block);
-        result.putAll(getOreDictionaryOres());
-        return result;
+    public HashMap<BlockTuple, BlockTuple> getBlockTransformation() {
+        return fireResults;
+    }
+
+    @Override
+    public boolean isTransmutationResult(BlockTuple block, World w, int x, int y, int z) {
+        return getBlockTransformation(w, x, y, z).values().contains(block);
+    }
+
+    public ItemStack getBlockCraftingResult(World w, ItemStack itemStack) {
+        InventoryCrafting blockCraftInventory = new InventoryCrafting(new Container() {
+            @Override
+            public boolean canInteractWith(EntityPlayer entityPlayer) {
+                return false;
+            }
+        }, 3, 3);
+
+        for (int i = 0; i < 9; i++) {
+            blockCraftInventory.setInventorySlotContents(i, itemStack);
+        }
+
+        return CraftingManager.getInstance().findMatchingRecipe(blockCraftInventory, w);
+    }
+
+    private boolean allEqual(ArrayList<ItemStack> list) {
+        for (ItemStack o : list) {
+            if (!o.isItemEqual(list.get(0))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public HashMap<BlockTuple, BlockTuple> getBlockTransformation(World w, int x, int y, int z) {
+
+        Block block = w.getBlock(x, y, z);
+        int meta = w.getBlockMetadata(x, y, z);
+        if (!fireResults.containsKey(new BlockTuple(block, meta))) {
+            Block result = null;
+            int resultMeta = 0;
+
+            ArrayList<ItemStack> drops = block.getDrops(w, x, y, z, meta, 0);
+            if (drops.size() > 0 && (drops.size() == 1 || allEqual(drops))) {
+
+                ItemStack stack = drops.get(0);
+
+                ItemStack blockStack = getBlockCraftingResult(w, stack);
+                if (blockStack == null) {
+                    ItemStack ingotStack = FurnaceRecipes.smelting().getSmeltingResult(stack);
+                    blockStack = getBlockCraftingResult(w, ingotStack);
+                }
+                if (blockStack != null && Block.getBlockFromItem(blockStack.getItem()) != null) {
+                    result = Block.getBlockFromItem(blockStack.getItem());
+                    resultMeta = blockStack.getItemDamage();
+                }
+            }
+
+            fireResults.put(new BlockTuple(block, meta), new BlockTuple(result, resultMeta));
+        }
+        return fireResults;
+    }
+
+    public boolean isTransmutationTarget(BlockTuple block, World w, int x, int y, int z) {
+        return getBlockTransformation(w, x, y, z).keySet().contains(block) && getBlockTransformation().get(block) != null && getBlockTransformation().get(block).block != null;
     }
 }

@@ -3,12 +3,12 @@ package thaumic.tinkerer.common.block.fire;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
-import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.item.ItemBrightNitor;
+import thaumic.tinkerer.common.core.helper.BlockTuple;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
@@ -38,27 +38,32 @@ public class BlockFireIgnis extends BlockFireBase {
     }
 
     @Override
-    public HashMap<Block, Block> getBlockTransformation() {
-        HashMap<Block, Block> result = new HashMap<Block, Block>();
-        result.put(Blocks.grass, Blocks.netherrack);
-        result.put(Blocks.dirt, Blocks.netherrack);
-        result.put(Blocks.sand, Blocks.soul_sand);
-        result.put(Blocks.gravel, Blocks.soul_sand);
-        result.put(Blocks.clay, Blocks.glowstone);
-        result.put(Blocks.coal_ore, Blocks.quartz_ore);
-        result.put(Blocks.iron_ore, Blocks.quartz_ore);
-        result.put(Blocks.diamond_ore, Blocks.quartz_ore);
-        result.put(Blocks.emerald_ore, Blocks.quartz_ore);
-        result.put(Blocks.gold_block, Blocks.quartz_ore);
-        result.put(Blocks.lapis_ore, Blocks.quartz_ore);
-        result.put(Blocks.redstone_ore, Blocks.quartz_ore);
-        result.put(Blocks.lit_redstone_ore, Blocks.quartz_ore);
-        result.put(Blocks.water, Blocks.lava);
-        result.put(Blocks.wheat, Blocks.nether_wart);
-        result.put(Blocks.potatoes, Blocks.nether_wart);
-        result.put(Blocks.carrots, Blocks.nether_wart);
-        result.put(Blocks.red_flower, Blocks.brown_mushroom);
-        result.put(Blocks.yellow_flower, Blocks.yellow_flower);
+    public HashMap<BlockTuple, BlockTuple> getBlockTransformation() {
+        HashMap<BlockTuple, BlockTuple> result = new HashMap<BlockTuple, BlockTuple>();
+        result.put(new BlockTuple(Blocks.grass), new BlockTuple(Blocks.netherrack));
+        result.put(new BlockTuple(Blocks.dirt), new BlockTuple(Blocks.netherrack));
+        result.put(new BlockTuple(Blocks.sand), new BlockTuple(Blocks.soul_sand));
+        result.put(new BlockTuple(Blocks.gravel), new BlockTuple(Blocks.soul_sand));
+        result.put(new BlockTuple(Blocks.clay), new BlockTuple(Blocks.glowstone));
+        result.put(new BlockTuple(Blocks.coal_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.iron_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.diamond_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.emerald_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.gold_block), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.lapis_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.redstone_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.lit_redstone_ore), new BlockTuple(Blocks.quartz_ore));
+        result.put(new BlockTuple(Blocks.water), new BlockTuple(Blocks.lava));
+        result.put(new BlockTuple(Blocks.wheat), new BlockTuple(Blocks.nether_wart));
+        result.put(new BlockTuple(Blocks.potatoes), new BlockTuple(Blocks.nether_wart));
+        result.put(new BlockTuple(Blocks.carrots), new BlockTuple(Blocks.nether_wart));
+        result.put(new BlockTuple(Blocks.red_flower), new BlockTuple(Blocks.brown_mushroom));
+        result.put(new BlockTuple(Blocks.yellow_flower), new BlockTuple(Blocks.yellow_flower));
         return result;
+    }
+
+    @Override
+    public HashMap<thaumic.tinkerer.common.core.helper.BlockTuple, thaumic.tinkerer.common.core.helper.BlockTuple> getBlockTransformation(World w, int x, int y, int z) {
+        return getBlockTransformation();
     }
 }

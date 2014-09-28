@@ -3,13 +3,13 @@ package thaumic.tinkerer.common.block.fire;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
-import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
-import thaumic.tinkerer.common.item.ItemBrightNitor;
+import thaumic.tinkerer.common.core.helper.BlockTuple;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
@@ -38,19 +38,24 @@ public class BlockFireAir extends BlockFireBase {
     }
 
     @Override
-    public HashMap<Block, Block> getBlockTransformation() {
-        HashMap<Block, Block> result = new HashMap<Block, Block>();
-        result.put(Blocks.log, Blocks.sand);
-        result.put(Blocks.leaves, Blocks.sandstone);
-        result.put(Blocks.leaves2, Blocks.sandstone);
-        result.put(Blocks.log2, Blocks.sand);
-        result.put(Blocks.ice, Blocks.glass);
+    public HashMap<BlockTuple, BlockTuple> getBlockTransformation() {
+        HashMap<BlockTuple, BlockTuple> result = new HashMap<BlockTuple, BlockTuple>();
+        result.put(new BlockTuple(Blocks.log), new BlockTuple(Blocks.sand));
+        result.put(new BlockTuple(Blocks.leaves), new BlockTuple(Blocks.sandstone));
+        result.put(new BlockTuple(Blocks.leaves2), new BlockTuple(Blocks.sandstone));
+        result.put(new BlockTuple(Blocks.log2), new BlockTuple(Blocks.sand));
+        result.put(new BlockTuple(Blocks.ice), new BlockTuple(Blocks.glass));
         if (ConfigHandler.enableCake) {
-            result.put(Blocks.water, Blocks.cake);
+            result.put(new BlockTuple(Blocks.water), new BlockTuple(Blocks.cake));
         }
-        result.put(Blocks.dirt, Blocks.sand);
-        result.put(Blocks.grass, Blocks.sand);
+        result.put(new BlockTuple(Blocks.dirt), new BlockTuple(Blocks.sand));
+        result.put(new BlockTuple(Blocks.grass), new BlockTuple(Blocks.sand));
         return result;
+    }
+
+    @Override
+    public HashMap<thaumic.tinkerer.common.core.helper.BlockTuple, thaumic.tinkerer.common.core.helper.BlockTuple> getBlockTransformation(World w, int x, int y, int z) {
+        return getBlockTransformation();
     }
 
 }
