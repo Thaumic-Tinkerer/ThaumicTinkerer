@@ -14,8 +14,15 @@
  */
 package thaumic.tinkerer.common.core.helper;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.codechicken.lib.vec.Vector3;
@@ -26,6 +33,20 @@ public final class MiscHelper {
 	public static double pointDistanceSpace(double x1, double y1, double z1, double x2, double y2, double z2) {
 		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2) + Math.pow(z1 - z2, 2));
 	}
+
+    public static void breakBlockWithCheck(World w, int x, int y, int z, Block block, int meta, int flag, EntityPlayer player) {
+        if (!MinecraftForge.EVENT_BUS.post(new BlockEvent.BreakEvent(x, y, z, w, w.getBlock(x, y, z), meta, player))) {
+            w.setBlock(x, y, z, block, meta, flag);
+        }
+    }
+
+    public static void breakBlockToAirWithCheck(World w, int x, int y, int z, EntityPlayer player) {
+        breakBlockWithCheck(w, x, y, z, Blocks.air, 0, 0, player);
+    }
+
+    public static void breakBlockWithCheck(World w, int x, int y, int z, Block block, EntityPlayer player) {
+        breakBlockWithCheck(w, x, y, z, block, 0, 0, player);
+    }
 
 	public static MinecraftServer server() {
 		return MinecraftServer.getServer();

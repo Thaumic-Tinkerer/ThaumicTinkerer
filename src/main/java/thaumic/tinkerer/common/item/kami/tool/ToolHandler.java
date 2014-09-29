@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.kami.BlockBedrockPortal;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
+import thaumic.tinkerer.common.core.helper.MiscHelper;
 import thaumic.tinkerer.common.dim.WorldProviderBedrock;
 
 public final class ToolHandler {
@@ -94,9 +95,9 @@ public final class ToolHandler {
 			}
 			if (!player.capabilities.isCreativeMode && blk != Blocks.bedrock) {
 				int localMeta = world.getBlockMetadata(x, y, z);
-				if (blk.removedByPlayer(world, player, x, y, z)) {
-					blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
-				}
+                MiscHelper.breakBlockToAirWithCheck(world, x, y, z, player);
+                blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
+
 				blk.harvestBlock(world, player, x, y, z, localMeta);
 				blk.onBlockHarvested(world, x, y, z, localMeta, player);
 			} else {
