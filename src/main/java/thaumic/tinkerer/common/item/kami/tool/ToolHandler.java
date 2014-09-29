@@ -101,11 +101,12 @@ public final class ToolHandler {
 			}
 			if (!player.capabilities.isCreativeMode && blk != Blocks.bedrock) {
 				int localMeta = world.getBlockMetadata(x, y, z);
-                MiscHelper.breakBlockToAirWithCheck(world, x, y, z, player);
-                blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
+                if(MiscHelper.breakBlockToAirWithCheck(world, x, y, z, player)) {
+                    blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
 
-				blk.harvestBlock(world, player, x, y, z, localMeta);
-				blk.onBlockHarvested(world, x, y, z, localMeta, player);
+                    blk.harvestBlock(world, player, x, y, z, localMeta);
+                    blk.onBlockHarvested(world, x, y, z, localMeta, player);
+                }
 			} else {
 				world.setBlockToAir(x, y, z);
 			}
