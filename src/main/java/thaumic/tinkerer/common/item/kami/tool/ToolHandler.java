@@ -17,20 +17,20 @@ package thaumic.tinkerer.common.item.kami.tool;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.kami.BlockBedrockPortal;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.helper.MiscHelper;
 import thaumic.tinkerer.common.dim.WorldProviderBedrock;
+
+import java.util.List;
 
 public final class ToolHandler {
 
@@ -71,6 +71,12 @@ public final class ToolHandler {
                 }
 			}
 		}
+        List list=world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x + xs, y + ys, z + zs, x + xe, y + ye, z + ze));
+        for(Object entity:list)
+        {
+            EntityItem item=(EntityItem)entity;
+            item.setPosition(player.posX,player.posY+1,player.posZ);
+        }
 	}
 
 	public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune, float blockHardness) {
