@@ -13,7 +13,7 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.lib.Utils;
+import thaumcraft.common.lib.utils.BlockUtils;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -82,7 +82,7 @@ public class ItemFocusSmelt extends ItemModFocus {
         if (!wand.consumeAllVis(stack, p, visUsage, false, false))
             return;
 
-        MovingObjectPosition pos = Utils.getTargetBlock(p.worldObj, p, false);
+        MovingObjectPosition pos = BlockUtils.getTargetBlock(p.worldObj, p, false);
 
         if (pos != null) {
             Block block = p.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);

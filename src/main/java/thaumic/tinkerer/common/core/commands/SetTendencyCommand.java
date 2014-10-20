@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MovingObjectPosition;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.common.lib.Utils;
+import thaumcraft.common.lib.utils.BlockUtils;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 
@@ -28,7 +28,7 @@ public class SetTendencyCommand extends CommandBase {
     public void processCommand(ICommandSender sender, String[] args) {
         if (sender instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) sender;
-            MovingObjectPosition pos = Utils.getTargetBlock(player.worldObj, player, true);
+            MovingObjectPosition pos = BlockUtils.getTargetBlock(player.worldObj, player, true);
             if (player.worldObj.getTileEntity(pos.blockX, pos.blockY, pos.blockZ) instanceof TileInfusedGrain) {
                 TileInfusedGrain tile = (TileInfusedGrain) player.worldObj.getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
                 for (Aspect a : Aspect.getPrimalAspects()) {
