@@ -32,7 +32,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.lib.Utils;
+import thaumcraft.common.lib.utils.BlockUtils;
+import thaumcraft.common.lib.utils.Utils;
 import thaumic.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
@@ -86,7 +87,7 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 				Block blck = world.getBlock(x, y, z);
 				if (Utils.isWoodLog(world, x, y, z)) {
 					while (blck != Blocks.air) {
-						Utils.breakFurthestBlock(world, x, y, z, blck, player);
+                        BlockUtils.breakFurthestBlock(world, x, y, z, blck, player);
 						blck = world.getBlock(x, y, z);
 					}
 
