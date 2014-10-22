@@ -1,0 +1,650 @@
+# MISC
+itemGroup.ThaumicTinkerer=Thaumic Tinkerer
+ttmisc.connector.set=Position enregistrée !
+ttmisc.keyCategory=Thaumic Tinkerer
+ttmisc.connector.complete=Lien effectif !
+ttmisc.connector.notinterf=Ce n'est pas un Bloc tranvecteur.
+ttmisc.connector.interffail=Impossible de lier une Interface transvectrice à une autre.
+ttmisc.connector.dislfail=Impossible de lier un Délocalisateur transvecteur à un autre.
+ttmisc.connector.notpresent=Le Bloc transvecteur n'est pas présent.
+ttmisc.connector.toofar=Le Bloc transvecteur d'origine est trop loin.
+ttmisc.golemconnector.set=Connecteur en place !
+ttmisc.golemconnector.complete=Lien effectif !
+ttmisc.golemconnector.notinterf=Le connecteur n'est pas lié à un Bloc connecteur de Golem.
+ttmisc.golemconnector.notpresent=Le Bloc connecteur de Golem n'est pas présent.
+ttmisc.leftClick=Clic gauche
+ttmisc.rightClick=Clic droit
+ttmisc.redstoneControl=Contrôle par redstone
+ttmisc.animationTablet.notRotatable=Impossible de tourner la Tablette tant qu'elle est active.
+ttmisc.bloodSword.activateEssentiaHarvest=Récolte d'Essentia activée
+ttmisc.bloodSword.deactivateEssentiaHarvest=Récolte d'Essentia desactivée
+ttmisc.focusDislocation.tooltip=En train de délocaliser
+ttmisc.focusDislocation.tooltipExtra=Contenu supplémentaire
+ttmisc.inactive=Inactif
+ttmisc.active=Actif
+ttmisc.soulMould.nonAssigned=Aucun Modèle
+ttmisc.soulMould.pattern=Modèle actuel: %s
+ttmisc.all=Tous
+ttmisc.none=Aucun
+ttmisc.child=Enfant
+ttmisc.adult=Adulte
+ttmisc.baseCost=Coût de base
+ttmisc.clickToRemove=Cliquez pour retirer
+ttmisc.startEnchant=Commencer l'enchantement
+ttmisc.full=Plein
+ttmisc.notAbsorbing=Ne pas Absorber
+ttmisc.absorbing=Absorber
+ttmisc.shareTome.write=Recherche écrite !
+ttmisc.shareTome.notOnline=Le joueur à qui appartient cette Recherche n'est pas connecté.
+ttmisc.shareTomb.offlineshare=Partage hors-connexion
+ttmisc.shareTome.sync=Recherche acquise.
+ttmisc.shareTome.noAssign=Non assigné
+ttmisc.shareTome.playerName=Lié aux recherches de %s.
+ttmisc.toggleArmor=Basculer en mode Armure consciente
+
+# KAMI MISC
+ttmisc.mode.pick.0=Mode bloc
+ttmisc.mode.pick.1=Mode carré
+ttmisc.mode.pick.2=Mode ligne
+ttmisc.mode.shovel.0=Mode bloc
+ttmisc.mode.shovel.1=Mode carré
+ttmisc.mode.shovel.2=Mode colonne
+ttmisc.mode.axe.0=Mode bloc
+ttmisc.mode.axe.1=Mode carré
+ttmisc.mode.axe.2=Mode arbre
+ttmisc.mode.sword.0=Mode simple
+ttmisc.mode.sword.1=Mode zone
+ttmisc.mode.sword.2=Mode âme
+ttmisc.experience=Expérience
+ttmisc.light0=Lumière allumée
+ttmisc.light1=Lumière éteinte
+ttmisc.awakenedArmor0=Pièce d'armure activée
+ttmisc.awakenedArmor1=Pièce d'armure désactivée
+ttmisc.disableAllArmor=Armure Kami désactivée
+ttmisc.enableAllArmor=Armure Kami activée
+ttmisc.differentDim=Dimension différente
+ttmisc.distance=Distance
+ttmisc.lockedGate=Autoriser les téléportations entrantes
+ttmisc.destination=Destination sans nom
+ttmisc.entrancePoint=Point d'entrée
+ttmisc.numberKeys=Utilisez le pad numérique pour sauter rapidement entre les destinations.
+ttmisc.spaceToReset=Appuyez sur ESPACE pour revenir au point d'entrée.
+ttmisc.destinationInd=(Destination %s)
+ttmisc.clickToTeleport=Shift + Clic gauche pour se téléporter
+ttmisc.destinations=Destinations :
+ttmisc.noDest=Aucun Portail céleste à la destination.
+ttmisc.noTeleport=Le Portail céleste à la destination refuse les téléportations entrantes.
+
+# ITEM NAMES
+item.darkQuartzItem.name=Quartz fumeux
+item.connector.name=Lieur transvecteur
+item.gaseousLightItem.name=Gaseous Illuminae
+item.gaseousShadowItem.name=Gaseous Tenebrae
+item.gasRemover.name=Dissipateur de fumée
+item.spellCloth.name=Habits envoûtants
+item.focusFlight.name=Foci de baguette: Élévation
+item.focusDislocation.name=Foci de baguette: Délocalisation
+item.cleansingTalisman.name=Talisman du Remède
+item.brightNitor.name=Nitor hyperénergétique
+item.focusTelekinesis.name=Foci de baguette: Télékinésie
+item.soulMould.name=Moule d'âme
+item.xpTalisman.name=Talisman du Maintien
+item.focusSmelt.name=Foci de baguette: Brasier d'Ifrit
+item.focusHeal.name=Foci de baguette: Réparation
+item.focusEnderChest.name=Foci de baguette: Crevasse du Néant
+item.bloodSword.name=Lame de l'Esprit maudit
+item.revealingHelm.name=Casque de révélation
+item.infusedInkwell.name=Outils de Scribe infusés
+item.focusDeflect.name=Foci de baguette: Distortion
+item.shareBook.name=Tome du Savoir partagé
+item.mobAspect.name=Aspect d'âme
+item.mobAspect.condensed.name=Aspect d'âme condensé
+item.mobAspect.infused.name=Aspect d'âme infusé
+item.infusedSeeds.name=Graines infusées
+item.infusedPotion.Aer.name=Potion d'Aer
+item.infusedPotion.Ignis.name=Potion d'Ignis
+item.infusedPotion.Terra.name=Potion de Terra
+item.infusedPotion.Aqua.name=Potion d'Aqua
+item.infusedGrain.name=Grain imprégné
+# KAMI ITEM NAMES
+item.kamiResource.name=Ressource Kamo
+item.ichor.name=Ichor
+item.ichorCloth.name=Tissu d'Ichor
+item.ichorium.name=Ichorium
+item.ichorNugget.name=Pépite d'Ichorium
+item.ichorCap.name=Chapeau d'Ichorium
+item.ichorclothRod.name=Base de bâton en bois d'argent enroulé de tissu d'Ichor
+item.netherShard.name=Éclat du Tréfond
+item.enderShard.name=Éclat des Limbes
+item.ichorclothHelm.name=Chapeau en tissu d'Ichor
+item.ichorclothChest.name=Robe en tissu d'Ichor
+item.ichorclothLegs.name=Jambières en tissu d'Ichor
+item.ichorclothBoots.name=Bottes en tissu d'Ichor
+item.ichorclothHelmGem.name=Capuche des Profondeurs abyssales
+item.ichorclothChestGem.name=Robes de la Stratosphère
+item.ichorclothLegsGem.name=Jambières du Manteau brûlant
+item.ichorclothBootsGem.name=Bottes du Bouclier de l'horizon
+item.catAmulet.name=Amulette féline
+item.ichorPick.name=Pioche d'Ichorium
+item.ichorShovel.name=Pelle d'Ichorium
+item.ichorAxe.name=Hâche d'Ichorium
+item.ichorSword.name=Épée d'Ichorium
+item.ichorPickGem.name=Piche d'Ichorium conscient
+item.ichorShovelGem.name=Pelle d'Ichorium conscient
+item.ichorAxeGem.name=Hâche d'Ichorium conscient
+item.ichorSwordGem.name=Épée d'Ichorium conscient
+item.ichorPouch.name=Poche sans fond
+item.blockTalisman.name=Anneau du trou noir
+item.placementMirror.name=Miroir du Terraformeur
+item.focusShadowbeam.name=Foci de baguette: Laser de l'ombre
+item.focusXPDrain.name=Foci de baguette: Aspirateur d'expérience
+item.protoclay.name=Proto-argile
+item.skyPearl.name=Perle céleste
+item.focusRecall.name=Foci de baguette: Recours céleste
+
+# BLOCK NAMES
+tile.darkQuartz.name=Bloc de Quartz fumeux
+tile.darkQuartzChiseled.name=Bloc de Quartz fumeux ciselé
+tile.darkQuartzPillar.name=Pillier de Quartz fumeux
+tile.darkQuartzSlab.name=Dalle de Quartz fumeux
+tile.forcefield.name=Champ de force
+
+# Fire
+tile.fireWater.name=Aqua imprégné de feu
+
+tile.fireOrder.name=Ordo imprégné de feu
+
+tile.fireChaos.name=Perditio imprégné de feu
+
+tile.fireFire.name=Ignis imprégné de feu
+
+tile.fireEarth.name=Terra imprégné de feu
+
+tile.fireAir.name=Aer imprégné de feu
+
+
+tile.darkQuartzSlabFull.name=Dalle de Quartz fumeux
+tile.darkQuartzStairs.name=Escaliers de Quartz fumeux
+tile.interface.name=Interface transvectrice
+tile.animationTablet.name=Tablette dynamique
+tile.magnet.name=Attracteur cinétique
+tile.mobMagnet.name=Attracteur corporel
+tile.enchanter.name=Enchantement osmotique
+tile.funnel.name=Entennoir à Essentia
+tile.dislocator.name=Délocalisateur transvecteur
+tile.repairer.name=Réparateur thaumique
+tile.aspectAnalyzer.name=Analyspecteur
+tile.platform.name=Plateforme éthérée
+tile.spawner.name=Tablette de Nécromancie
+tile.bedrockPortal.name=Portail de bedrock
+tile.Levitational Locomotive.name=Locomotive lévitationnelle
+tile.Levitational Locomotive Relay.name=Relais de Locomotive lévitationnelle
+tile.golemConnector.name=Connecteur de Golem
+tile.remotePlacer.name=Placeur à distance
+
+# KAMI BLOCK NAMES
+tile.warpGate.name=Portail céleste
+
+# ENCHANTMENT NAMES
+enchantment.ttinkerer:ascentBoost=Bonus d'ascention
+enchantment.ttinkerer:slowFall=Chute douce
+enchantment.ttinkerer:autoSmelt=Cuison minute
+enchantment.ttinkerer:desintegrate=Désintégration
+enchantment.ttinkerer:quickDraw=Corde rapide
+enchantment.ttinkerer:vampirism=Vampirisme
+
+enchantment.ttinkerer:dispersedStrike=Frappe dispersée
+enchantment.ttinkerer:focusedStrike=Frappe précise
+enchantment.ttinkerer:tunnel=Tunnel
+enchantment.ttinkerer:finalStrike=Frappe ultime
+enchantment.ttinkerer:pounce=Rebond
+enchantment.ttinkerer:shatter=Brisure
+enchantment.ttinkerer:shockwave=Séïsme
+enchantment.ttinkerer:valiance=Valliance
+
+
+# WAND COMPONENTS
+item.Wand.ICHOR.cap=ornée d'Ichorium
+item.Wand.ICHORCLOTH.rod=en bois d'argent enroulé de tissu d'Ichor
+
+# RESEARCH
+ttresearch.prefix=[TT] 
+ttresearch.prefix.kami=[TTKami] 
+tc.research_category.TT_ENCHANTING=Enchantement
+tc.research_category.TT_CATEGORY=Thaumic Tinkering
+
+# -- COMPUTERCRAFT PERIPHERALS
+ttresearch.name.PERIPHERALS=Périphérique Computercraft
+ttresearch.lore.PERIPHERALS=Quand la technologie rencontre la magie
+ttresearch.page.PERIPHERALS.0=Thaumic Tinkerer permet à certains blocs qu'il ajoute d'être utilisés comme périphériques ComputerCraft.<BR><BR>Dans un souci de simplicité, toute la documentation est rassemblée sur un page web externe. Appuyer sur ENTRÉE vous amènera à la-dite page.<BR><BR>Si ça ne fonctionne pas, tapez "vazkii.us/tt/docs.php" dans votre navigateur web. (Documentation en anglais.)
+# Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
+# link to it and the short URL (see above) you want for it on my website and I'll add it. 
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+ttcomputer.dissipator=Dissipating
+# -- ASPECT ANALYZER
+ttresearch.name.ASPECT_ANALYZER=Analyspecteur
+ttresearch.lore.ASPECT_ANALYZER=Scan assisté par ordinateur
+ttresearch.page.ASPECT_ANALYZER.0=Vous aveez créé un outil qui permet aux Ordinateurs de connaître les aspects qui composent un objet.<BR><BR>Ce bloc agit comme un coffre normal et tous les objets à l'intérieur pourront être scannés par un Ordinateur. Voir la documentation sur les périphériques pour plus d'informations.
+
+# -- SMOKEY QUARTZ
+ttresearch.name.DARK_QUARTZ=Quartz fumeux
+ttresearch.lore.DARK_QUARTZ=Confusion du jour
+ttresearch.page.DARK_QUARTZ.0=Le Quartz fumeux c'est avant tout du quartz. Quoi que... il est plutôt son opposé. N'importe quel bloc de quartz peut être refait à partir de Quartz fumeux. Ils auront l'air noir !<BR><BR>Le Quartz fumeux en lui-même est composé de charbon pour la couleur et de quelques pièces de quartz du Néther classique.
+
+# -- TOME OF KNOWLEDGE SHARING
+ttresearch.name.SHARE_TOME=Tome du Savoir partagé
+ttresearch.lore.SHARE_TOME=Le Wikipédia immédiat
+ttresearch.page.SHARE_TOME.0=S'il vous est venu un jour à l'idée de vouloir partagé toutes les recherches que vous avez acquises avec le reste du monde, cet objet est pour vous.<BR><BR>Un clic droit sur le Tome et toutes les personnes à qui vous le passerez recevront toutes les recherches que vous avez découvertes.<BR><BR>(Note : Si vous ne voyez pas de recette d'artisanat à droite, c'est que le Tome est désactivé et n'est disponible qu'en créatif.)
+
+# -- TRANSVECTOR INTERFACE
+ttresearch.name.INTERFACE=Interface transvectrice
+ttresearch.lore.INTERFACE=Matrices hermaphrodites
+ttresearch.page.INTERFACE.0=Le fait est qu'il n'y a que six faces à un bloc..." - Direwolf20<BR><BR>Mythe = Anéanti ! Votre dernière construction peut être liée à un bloc des alentours. Ses faces imitent celles du bloc sélectionné et peut fonctionner comme extension. Il acceptera de l'énergie/essentia/objet/liquide de BuildCraft, TE3 et IC2.<BR>[continued]
+ttresearch.page.INTERFACE.1=Pour lier l'interface à un autre bloc, il vous faut un outil spécifique. À savoir, le Lieur transvecteur.<BR><BR>Un clic droit sur l'interface suivi d'un autre sur la cible et les deux seront liés. La distance est courte cependant, quatre blocs maximum. (Note : les tuyaux BuildCraft auront besoin d'être casés puis remis pour fonctionner.)
+ttresearch.page.INTERFACE.2=Il est aussi possible, par un clic droit sur l'interface en tenant un bloc quelconque, d'effectuer un camouflage. Pour retirer ce camouflage, un clic droit avec un main vide fera l'affaire.
+
+# -- GOLEM CONNECTOR
+ttresearch.name.GOLEM_CONNECTOR=Connecteur de Golem
+ttresearch.lore.GOLEM_CONNECTOR=Aucune manipulation d'esprit de Golem, promis !
+ttresearch.page.GOLEM_CONNECTOR.0=By exploring what you can do with motion, tools, and a little bit of order, you have discovered how to make those golems just a tiny bit more obedient! You discover a block, that when you place a computer by it, can read the mind of golems nearby, and 'convince' them to do as the computer asks
+ttresearch.page.GOLEM_CONNECTOR.1=In order to bind a Connector to a golem, you need to create a special tool to do so. What you call the Transvector Binder should get the job done.<BR><BR>By simply right clicking on the Connector followed by shift-right clicking on the target golem, these two get bound and ready for operation. The limit is quite long, 30 blocks away!
+ttresearch.page.GOLEM_CONNECTOR.2=It's also possible, by right clicking this block with any other to camouflage it as the block held. To remove to cover, simply right click on the camouflaged block with an empty hand.
+ttresearch.page.GOLEM_CONNECTOR.3=<BR><BR>For convenience sake, the method documentation for this block is in an external webpage. Pressing ENTER right now will take you to it.<BR><BR>Sadly, this does not work on some systems. If that is the case, type in "vazkii.us/tt/docs.php" in your browser.
+# Note: For people who localize the mod. If you have custom documentation, feel free to include in your PR a
+# link to it and the short URL (see above) you want for it on my website and I'll add it. 
+ttresearch.webpage.peripherals=https://github.com/Vazkii/ThaumicTinkerer/wiki/Peripheral-Documentation
+
+# -- GASEOUS ILLUMINAE
+ttresearch.name.GASEOUS_LIGHT=Gaseous Illuminae
+ttresearch.lore.GASEOUS_LIGHT=Lumière invisible
+ttresearch.page.GASEOUS_LIGHT.0=You have studied the intricacies of the light, and found out a way to create completely invisible light by infusing a phial with the raw light.<BR><BR>This phial contains a concentrated extract of Gaseous Illuminae, that can be released through a right click, and will spread relatively fast in the nearby area, lighting it up.
+
+# -- GASEOUS TENEBRAE
+ttresearch.name.GASEOUS_SHADOW=Gaseous Tenebrae
+ttresearch.lore.GASEOUS_SHADOW=Une boule rouge ?
+ttresearch.page.GASEOUS_SHADOW.0=You have studied the intricacies of the Shadow, and found out a way to create gaseous darkness by infusing a phial with the raw shadow.<BR><BR>This phial contains a concentrated extract of Gaseous Tenebrae, that can be released through a right click, and will spread relatively fast in the nearby area, darkening it.
+
+# -- FUME DISSIPATOR
+ttresearch.name.GAS_REMOVER=Dissipateur de fumée
+ttresearch.lore.GAS_REMOVER=Pour aider Ryuuji
+ttresearch.page.GAS_REMOVER.0=After knowing both the Gaseous Illuminae and Tenebrae, you are thinking it's becoming a hassle to get rid of it. With this item, by shift-right clicking on it, all the nearby gas will get dissipated.
+
+# -- SPELLBINDING CLOTH
+ttresearch.name.SPELL_CLOTH=Habits envoûtants
+ttresearch.lore.SPELL_CLOTH=Rien de plus excitant
+ttresearch.page.SPELL_CLOTH.0=By mixing some Enchanted Fabric with raw magic power, you created a cloth that can be rubbed on an item to wipe it of its enchantments by combining them in a Crafting Recipe.
+
+# -- DYNAMISM TABLET
+ttresearch.name.ANIMATION_TABLET=Tablette dynamique
+ttresearch.lore.ANIMATION_TABLET=Je suis niveau 78...
+ttresearch.page.ANIMATION_TABLET.0=You decided to further discover the uses of Golem Animation Cores, and this is the fruit of that labour.<BR><BR>This tablet can accept an item to animate with mystical energy. Using the left and right buttons in the tablet's interface, you can select to do a left or right click with the item. The button in the bottom controls if the tablet reacts always when it can or just when a redstone signal is applied.<BR><BR>Virtually anything can be animated, including blocks. The type of tool in the tablet also defines how fast something breaks, as expected.
+
+# -- WAND FOCUS: UPRISING
+ttresearch.name.FOCUS_FLIGHT=Foci de baguette: Élévation
+ttresearch.lore.FOCUS_FLIGHT=C'est leviosaaa !
+ttresearch.page.FOCUS_FLIGHT.0=Using the knowledge you got from creating the Sword of the Zephyr of propelling things around with air, you created a wand focus that will propel the holder in the direction that they're looking at.<BR><BR>When someone is propelled through the use of this focus, any accumulated gravitational energy is negated, resetting the fall damage the holder would take.
+
+# -- WAND FOCUS: DISLOCATION
+ttresearch.name.FOCUS_DISLOCATION=Foci de baguette: Délocalisation
+ttresearch.lore.FOCUS_DISLOCATION=Et ici, un petit génarium.
+ttresearch.page.FOCUS_DISLOCATION.0=You created a wand focus based on the focus of equal trade. The difference is that this one not only holds the object's fingerprint, but it holds the object itself, allowing it to be placed elsewhere.<BR><BR>To get a block to transport, right click on it. To place it back, right click somewhere else. This focus can transport pretty much anything, including chests and mob spawners.
+ttresearch.page.FOCUS_DISLOCATION.1=The vis cost in applied in picking up the block. Placing it down is free.<BR><BR>Due to the amount of energy required for the dislocation, blocks with tile entities (such as chests and furnaces) cost 5x the amount of vis as normally. Mob spawners, in particular, cost 20x instead.
+
+# -- TALISMAN OF REMEDIUM
+ttresearch.name.CLEANSING_TALISMAN=Talisman du Rémède
+ttresearch.lore.CLEANSING_TALISMAN=Pas mieux qu'Esuna
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage. It will removed some effects stemming from warp, at an extreme durability cost.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
+
+# -- HYPERENERGETIC NITOR
+ttresearch.name.BRIGHT_NITOR=Nitor hyperénergétique
+ttresearch.lore.BRIGHT_NITOR=Donne des ailes
+ttresearch.page.BRIGHT_NITOR.0=You managed to create a light that will shine even if it's being carried by a player by energizing the everburning flame that is Nitor with powerful energetic aspects such as Potentia and Lux.<BR><BR>The light casted by this will shine closely behind the carrier, it seems to leave a longer trail in the Nether, due to the heat.
+
+# -- WAND FOCUS: TELEKINESIS
+ttresearch.name.FOCUS_TELEKINESIS=Foci de baguette: Télékinésie
+ttresearch.lore.FOCUS_TELEKINESIS=La gravité n'est pas un sujet sérieux
+ttresearch.page.FOCUS_TELEKINESIS.0=You created a wand focus that kinetically moves objects laying on the floor. This focus will move any nearby items to where you're pointing at. Sneaking will bring the items towards you instead.
+
+# -- KINETIC ATTRACTION
+ttresearch.name.MAGNETS=Attraction cinétique
+ttresearch.lore.MAGNETS=e=mc²
+ttresearch.page.MAGNETS.0=Working with the telekinesis focus, you managed to apply this knowledge to create a device to attract items or living beings, like a magnet.<BR><BR>These two blocks have two states, north (red) and south (blue), in north mode it'll push items, or entities away; in south mode it'll pull them in.<BR><BR>The range of the attraction depends on the redstone signal applied to it. A lever next to it will allow for 7.5 blocks, while a current from farther away will make it shorter. In general, the attraction is equal to half the redstone signal's strength in blocks, in every direction.
+ttresearch.page.MAGNETS.1=You designed two devices. The Kinetic and Corporeal Attractors, these, respectively affect items and living beings.<BR><BR>The Corporeal Attractor involves some more complex mechanisms, to which you can access by right clicking it with a casting wand. Using a Soul Mould, you can right click on a mob to save it as a pattern, which you can set in the attractor's interface, as a filter, along with settings for child or adult animals, if available.
+
+# -- OSMOTIC ENCHANTER
+ttresearch.name.ENCHANTER=Echantement osmotique
+ttresearch.lore.ENCHANTER=Osmose de toujour
+ttresearch.page.ENCHANTER.0=You grew tired of getting terrible enchantments for your efforts. To that, you created a new enchantment table that allows you to pick what enchantments you want to apply to an item.<BR><BR>This new contraption requires a wand, each enchantment requires a specific combination of vis from that wand. The price of the enchantment is exponentially proportional to the level you want to apply.<BR><BR>Regular enchantment rules apply, for example, you can't combine Silk Touch with Fortune.
+ttresearch.page.ENCHANTER.1=After you selected the enchantments you want on an item, clicking the red button in the interface will start the enchanting progress. As the item is being enchanted, you can't take it out of the table, nor can you change the enchantments you are putting on it.<BR><BR>The table will slowly drain vis from the wand, until it's done. For this to work, there needs to be 6 pillars in the nearby vicinity (4 blocks), these pillars need to be at the same level of the table.<BR><BR>[continued]
+ttresearch.page.ENCHANTER.2=The pillars need to be made of two to twelve Obsidian Totem blocks stacked on top of each other, with a piece of Nitor on top of them. The enchanter will get flux energy from them, grabbing vis from the wand and combining them to enchant the item.<BR><BR>Lastly, the enchanter will cease to function with iron or copper capped wands, due to them being too rustic and basic for the complex infusions required.
+
+# -- TALISMAN OF WITHHOLD
+ttresearch.name.XP_TALISMAN=Talisman du Maintien
+ttresearch.lore.XP_TALISMAN=On a tout le temps
+ttresearch.page.XP_TALISMAN.0=After knowing that Zombie Brains have the ability to store experience, you have created a talisman that mimics that behaviour, not to a perfect extent though.<BR><BR>To switch the ability to store experience, you need to shift-right-click on the talisman. When the talisman is enabled, it'll absorb any nearby experience orbs, those can be transformed back into usable experience by right clicking with a glass bottle in your inventory, turning that bottle into a Bottle o' Enchanting. It must be worn in your amulet slot to take effect.
+
+# -- ESSENTIA FUNNEL
+ttresearch.name.FUNNEL=Entonnoir à Essentia
+ttresearch.lore.FUNNEL=Glouglouglou
+ttresearch.page.FUNNEL.0=You grew tired of managing your jars with phials, to that, you created this new mechanism to transfer the contents of one into another.<BR><BR>By placing this block above a hopper, and right clicking it with a filled jar, if the hopper is pointing into a jar that's either empty or of the same aspect, the contents of the jar will be transferred over.
+
+# -- ENCHANTMENT: ASCENT BOOST
+ttresearch.name.TTENCH_ASCENT_BOOST=Enchantement: Bonus d'Ascension
+ttresearch.lore.TTENCH_ASCENT_BOOST=Plus de chocolats
+ttresearch.page.TTENCH_ASCENT_BOOST.0=You have formulated an enchantment that allows you to jump higher than you normally can.<BR><BR>This enchantment can be applied on leg armor. When done so, the wearer will be able to jump a lot higher than normal.
+
+# -- ENCHANTMENT: SLOW FALL
+ttresearch.name.TTENCH_SLOW_FALL=Enchantement: Chute douce
+ttresearch.lore.TTENCH_SLOW_FALL=En encaissant les swings
+ttresearch.page.TTENCH_SLOW_FALL.0=You have formulated an enchantment that allows you to fall slowly.<BR><BR>This enchantment can be applied on foot armor. When done so, the wearer will fall at a slower rate, this will also reduce, if not negating the fall damage.<BR><BR>Pressing Shift will temporarily disable this effect allowing you to fall normally.
+
+# -- ENCHANTMENT: FLAMING TOUCH
+ttresearch.name.TTENCH_AUTO_SMELT=Enchantement: Cuisson minute
+ttresearch.lore.TTENCH_AUTO_SMELT=Rekka Shinen !
+ttresearch.page.TTENCH_AUTO_SMELT.0=You have formulated an enchantment that allows you to summon imaginary flames.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break anything wooden with extreme finesse, by use of a flame that softens the wood through the breaking process, but never destroying or damaging it. However, the tool becomes impotent against anything else, and takes double durability damage.
+
+# -- ENCHANTMENT: DISINTEGRATE
+ttresearch.name.TTENCH_DESINTEGRATE=Enchantement: Désintégration
+ttresearch.lore.TTENCH_DESINTEGRATE=Comment l'un devient plusieurs
+ttresearch.page.TTENCH_DESINTEGRATE.0=You have formulated an enchantment that allows you to mine soft materials at incredible speeds.<BR><BR>This enchantment can be applied on tools. When done so, the wielder can break regular blocks (dirt, stone, netherrack, etc.) that the tool is good for with extreme finesse, however, the tool becomes impotent against anything else, and takes double durability damage.
+
+# -- ENCHANTMENT: QUICK DRAW
+ttresearch.name.TTENCH_QUICK_DRAW=Enchantement: Corde rapide
+ttresearch.lore.TTENCH_QUICK_DRAW=Comment bien bander
+ttresearch.page.TTENCH_QUICK_DRAW.0=You have formulated an enchantment that allows you to draw your bow in a quicker fashion.<BR><BR>This enchantment can be applied on bows. When done so, the bow can be fully drawn faster than normally.
+
+# -- ENCHANTMENT: VAMPIRISM
+ttresearch.name.TTENCH_VAMPIRISM=Enchantement: Vampirisme
+ttresearch.lore.TTENCH_VAMPIRISM=Ça va saigner !
+ttresearch.page.TTENCH_VAMPIRISM.0=You have formulated an enchantment that allows you to drain the health of the enemies you attack.<BR><BR>This enchantment can be applied on swords. When done so, a chunk of the damage dealt to a living thing using that sword will be given back to the wielder.
+
+# -- ENCHANTMENT: DISPERSED_STRIKES
+ttresearch.name.TTENCH_DISPERSED=Enchantement: Frappe dispersée
+ttresearch.lore.TTENCH_DISPERSED=Tue TOUS les monstres
+ttresearch.page.TTENCH_DISPERSED.0=You have formulated an enchantment that allows you to fight many mobs at once.<BR><BR>This enchantment can be applied on swords. When done so, the damage to a mob on the first hit will be multiplied, but the damage on successive strikes to the same mob will be decreased.
+
+# -- ENCHANTMENT: FOCUSED_STRIKES
+ttresearch.name.TTENCH_FOCUSED=Enchantement: Frappe précise
+ttresearch.lore.TTENCH_FOCUSED=Tue l'UN des monstres
+ttresearch.page.TTENCH_FOCUSED.0=You have formulated an enchantment that enables you to become proficient at fighting a single mob.<BR><BR>This enchantment can be applied on swords. When done so, the damage to a mob on the first hit will be decreased, but the damage on successive strikes to the same mob will be increased.
+
+# -- ENCHANTMENT: FINAL_STRIKE
+ttresearch.name.TTENCH_FINAL=Enchantement: Frappe ultime
+ttresearch.lore.TTENCH_FINAL=Vise la tête !
+ttresearch.page.TTENCH_FINAL.0=You have formulated an enchantment that enables you to occasionally score critical hits.<BR><BR>This enchantment can be applied on swords. When done so, there is a chance that a hit will do triple damage.
+
+# -- ENCHANTMENT: VALIANCE
+ttresearch.name.TTENCH_VALIANCE=Enchantement: Valliance
+ttresearch.lore.TTENCH_VALIANCE=Et nous voilà repartis !
+ttresearch.page.TTENCH_VALIANCE.0=You have formulated an enchantment that enables you to fight better when at low health.<BR><BR>This enchantment can be applied on swords. When done so, damage done with the sword will be increased when the weilder is at low health.
+
+
+# -- ENCHANTMENT: TUNNEL
+ttresearch.name.TTENCH_TUNNEL=Enchantement: Tunnel
+ttresearch.lore.TTENCH_TUNNEL=Non-minage optimisé
+ttresearch.page.TTENCH_TUNNEL.0=You have formulated an enchantment that enables you to become more efficient at digging straight lines.<BR><BR>This enchantment can be applied on tools. When done so, digging multiple blocks in a straight line will increase your digging speed.
+
+# -- ENCHANTMENT: SHATTER
+ttresearch.name.TTENCH_SHATTER=Enchantement: Brisure
+ttresearch.lore.TTENCH_SHATTER=Qui a besoin d'obsidienne ?
+ttresearch.page.TTENCH_SHATTER.0=You have formulated an enchantment that enables you to become more efficient at destroying strong blocks.<BR><BR>This enchantment can be applied on tools. When done so, digging speed will be greatly increased on strong blocks.
+
+# -- ENCHANTMENT: SHOCKWAVE
+ttresearch.name.TTENCH_SHOCKWAVE=Enchantement: Séïsme
+ttresearch.lore.TTENCH_SHOCKWAVE=Ondes de choc
+ttresearch.page.TTENCH_SHOCKWAVE.0=You have formulated an enchantment that enables you to become to kill enemies while falling.<BR><BR>This enchantment can be applied on boots. When done so, whenever the wearer falls, damage will be dealt to surrounding mobs or players.<BR><BR>Unfortunatly Magics of all types that make the player lighter, so to prevent damage from falling, will make the player too light to damage entities. You feel there may be ways to stop this at a later time, once you know the magic better.
+
+# -- ENCHANTMENT: POUNCE
+ttresearch.name.TTENCH_POUNCE=Enchantement: Rebond
+ttresearch.lore.TTENCH_POUNCE=Comme un chaton !
+ttresearch.page.TTENCH_POUNCE.0=You have formulated an enchantment that enables you to to leap on your foes.<BR><BR>This enchantment can be applied on leggings. When done so, your attacks will be more powerful while you are in the air.
+
+
+# -- WAND FOCUS: EFREET'S FLAME
+ttresearch.name.FOCUS_SMELT=Foci de baguette: Brasier d'Ifrit
+ttresearch.lore.FOCUS_SMELT=Les rubans sont sans effet
+ttresearch.page.FOCUS_SMELT.0=By combining the flame and excavation foci, you made one that has features from both.<BR><BR>This focus will smelt any blocks in the world that the caster is pointing at, akin to the excavation focus' beam. Only blocks that smelt into other blocks in a mundane furnace will be smelted.
+
+# -- WAND FOCUS: MENDING
+ttresearch.name.FOCUS_HEAL=Foci de baguette: Réparation
+ttresearch.lore.FOCUS_HEAL=Pansements etc.
+ttresearch.page.FOCUS_HEAL.0=You know Pech carry powerful foci that can induce diseases, with that, you devised a way to use them to your benefits.<BR><BR>This focus will slowly mend the caster's wounds as they're using it, using vis from the wand in the process.
+
+# -- WAND FOCUS: ENDER RIFT
+ttresearch.name.FOCUS_ENDER_Foci de baguette: Crevasse du Néant
+ttresearch.lore.FOCUS_ENDER_CHEST=Une poche de la quatrième dimension
+ttresearch.page.FOCUS_ENDER_CHEST.0=By combining a Hand Mirror with a portable hole, you managed to construct a focus that tears a rift in the ender, allowing you to access the contents of your Ender Chest remotely.
+ttresearch.page.FOCUS_ENDER_CHEST.ES=By combining a Hand Mirror with a portable hole, you managed to construct a focus that tears a rift in the ender, allowing you to access the contents of your Ender Chests remotely. <BR> Shift right click on an ender chest to set the focus to that colour, or shift right click on a block of obsidian to set the focus to the vanilla ender storage.
+
+# -- CURSED SPIRIT'S BLADE
+ttresearch.name.BLOOD_SWORD=Lame de l'Esprit maudit
+ttresearch.lore.BLOOD_SWORD=Je t'en prie...
+ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled force. However, for this to be the case, the sword feeds on the striker's blood.<BR><BR>Upon damaging anything with this sword, the attacker will take one heart of damage. Blocking with this sword will always deal only 1.5 hearts, regardless of the original damage.<BR><BR>Furthermore, simply holding this sword gives the holder a steadfast aura, making them move faster than normal.
+ttresearch.page.BLOOD_SWORD.1=You have also discovered that the sword can reap the souls of mobs instead of normal drops. This ability is activated via a shift-right click. These souls are rich in essentia, but you suspect that they might have other uses.
+
+# -- Mob Summoning
+ttresearch.name.SUMMON=Invocation
+ttresearch.lore.SUMMON=Quasiment de la nécromentie
+ttresearch.page.SUMMON.0=You are able to use the souls gained from a Cursed spirits blade in order to summon mobs. Place three pedestals around a Tablet of Necromancy. On the pedestals, place three soul aspects. Different types of soul aspects give different types of mobs. Every mob has a different composition.
+ttresearch.page.SUMMON.1=By creating Infused Soul Aspects, you are able to summon mobs without consuming Soul Aspects. Summoning using Infused Soul Aspects is much slower than normal.
+
+# -- TRANSVECTOR DISLOCATOR
+ttresearch.name.DISLOCATOR=Délocalisation transvecteur
+ttresearch.lore.DISLOCATOR=Blood Magic n'est pas requis
+ttresearch.page.DISLOCATOR.0=By studying motion, you managed to create a block that swaps two blocks in space.<BR><BR>This block acts like a Transvector Interface, where it must be bound to another location in space using a Transvector Binder, you can set the direction it's facing using a wand, and when a redstone signal is applied, the dislocator will swap the block in front of it with the block linked to using the binder. It also transports any and all entities in those areas.<BR><BR>It can be camouflaged similarly to the Transvector Interface. It has a longer range than it, 16 blocks.
+
+# -- HELMET OF REVEALING
+ttresearch.name.REVEALING_HELM=Casque de révélation
+ttresearch.lore.REVEALING_HELM=Voilà pourquoi je ne peux pas utiliser photoshop
+ttresearch.page.REVEALING_HELM.0=As it turns out, goggles don't offer much protection from attacking zombies. You think you have a fix for that though. By strapping goggles of revealing onto a thaumium helmet, you can get the benefits of both. Well, it turns out it is a bit more complicated than that. A bit of magic is required to avoid feedback loops, and a bit of magic to keep them from slipping off, but on the whole, it more or less works.
+
+# -- THAUMIC REHABILITATOR
+ttresearch.name.REPAIRER=Réparateur thaumique
+ttresearch.lore.REPAIRER=L'outil du parfait Patrick
+ttresearch.page.REPAIRER.0=You created a new contraption to restore broken tools. By right clicking this block with a broken tool and hooking it to essentia tubes, it'll gather essentia to repair the tool.<BR><BR>The essentia that will repair, items is Instrumentum.<BR><BR>Looking at the block with goggles of revealing also shows how worn down the item in it still is. Redstone current will be emitted while an item is being repaired.
+
+# -- WAND FOCUS: DISTORTION
+ttresearch.name.FOCUS_DEFLECT=Foci de baguette: Distortion
+ttresearch.lore.FOCUS_DEFLECT=Je ne suis pas un ange, merci.
+ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.
+
+# -- LEVITATOR
+ttresearch.name.LEVITATOR=Locomotive lévitationnelle
+ttresearch.lore.LEVITATOR=À gauche, à droite.
+ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them. A visual effect will be shown if particles are enabled.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
+
+# -- ETHEREAL PLATFORM
+ttresearch.name.PLATFORM=Plateforme éthérée
+ttresearch.lore.PLATFORM=Il est bizarre ce sol, il est pas palpable.
+ttresearch.page.PLATFORM.0=You devised a block that is only solid for anyone standing on top of it. This block does not have a collision box for anyone who doesn't meet that criteria, or is sneaking.<BR><BR>You can also camouflage this block as any other by simply clicking on it.<BR><BR>You think you can use this with the Arcane Levitator for some interesting effects.
+
+# KAMI RESEARCH
+
+# -- DIMENSIONAL SHARDS
+ttresearch.name.DIMENSION_SHARDS=Éclats dimensionnels
+ttresearch.lore.DIMENSION_SHARDS=Raretés de l'Autre-monde
+ttresearch.page.DIMENSION_SHARDS.0=Similarly to the overworld, the Nether and the End also have their specific shards, these are rarely held by either Zombie Pigmen living in the Nether or Endermen living in the End. They might be useful for something later on, although you're not quite sure how.<BR><BR><IMG>ttinkerer:textures/items/netherShard.png:0:0:255:255:0.0625</IMG><IMG>ttinkerer:textures/items/enderShard.png:0:0:255:255:0.0625</IMG>
+
+# -- ICHOR
+ttresearch.name.ICHOR=Ichor
+ttresearch.lore.ICHOR=Sang des Dieux
+ttresearch.page.ICHOR.0=Through extensive study in all subjects of thaumaturgy you have discovered a substance that is what you consider to be the next step in your endeavours.<BR><BR>This extremely powerful substance, which you call "Ichor" contains the raw awakened power of a nether star. You are sure you will be able to put it to use for countless devices in the future.
+
+# -- ICHORCLOTH
+ttresearch.name.ICHOR_CLOTH=Tissu d'Ichor
+ttresearch.lore.ICHOR_CLOTH=Toile de la Vie
+ttresearch.page.ICHOR_CLOTH.0=You found a way of infusing Magical Fabric with your latest discovery, Ichor. Funnily enough, this process does not require the typical infusion procedure, as the Ichor easily absorbs the diamond and blends with the fabric.<BR><BR>However, to do this, you require not only the best wand you ever designed to be fully charged, but you must also be wearing a full set of thaumaturge's robes, in order to convey enough energy for the creation.<BR><BR>You think it's time you start designing a new wand.
+
+# -- ICHORIUM
+ttresearch.name.ICHORIUM=Ichorium
+ttresearch.lore.ICHORIUM=Garanti sans arêtes
+ttresearch.page.ICHORIUM.0=More endeavours with Ichor reveal its property to blend with most mundane materials. Most of the blends result in absolutely nothing, however, you have managed to blend it with diamonds and fabric in the past, and this time, with thaumium.<BR><BR>This metal is extremely strong and resilient, to a point where mundane materials could never get. You haven't found any uses for it yet, but you know it shouldn't take you too long.
+
+# -- ICHORCLOTH STRAPPED SILVERWOOD WAND CORE
+ttresearch.name.ROD_ICHORCLOTH=Base de bâton en bois d'argent enroulé de tissu d'Ichor
+ttresearch.lore.ROD_ICHORCLOTH=J'ai pas trouvé de nom plus long
+ttresearch.page.ROD_ICHORCLOTH.0=You have done it. By infusing a silverwood wand core with Ichorcloth, you managed to create the ultimate wand core.<BR><BR>This core holds an insane amount of 1000 of each type of vis. This will definitely make crafting expensive components a bit less stressful. Now the question lies, where will you get all the vis for this?
+
+# -- ICHORIUM WAND CAPS
+ttresearch.name.CAP_ICHOR=Emboûts de baguette en Ichorium
+ttresearch.lore.CAP_ICHOR=On dirait des soldes Steam
+ttresearch.page.CAP_ICHOR.0=You have put Ichorium to its first ever use, by devising wand caps that give you a 30% discount on everything. Now you need to actually put this to any use and create a wand that can store more vis.
+
+# -- ICHORCLOTH ARMOR
+ttresearch.name.ICHORCLOTH_ARMOR=Robes en tissu d'Ichor
+ttresearch.lore.ICHORCLOTH_ARMOR=Kamui Senk... euh...
+ttresearch.page.ICHORCLOTH_ARMOR.0=You have found how to weave Ichorcloth into clothing.<BR><BR>These new clothes are about as effective as mundane diamond armor, when it comes to protecting the wearer from damage. However, this cloth is completely unbreakable and will never sustain as much as a scratch.
+
+# -- COWL OF THE ABYSSAL DEPTHS
+ttresearch.name.ICHORCLOTH_HELM_GEM=Capuche des Profondeurs abyssales
+ttresearch.lore.ICHORCLOTH_HELM_GEM=Une étoile de mer ?
+ttresearch.page.ICHORCLOTH_HELM_GEM.0=You found a way of upgrading the Ichorcloth Cowl into a more powerful form.<BR><BR>First and foremost, the cowl doubles as goggles of revealing.<BR>Second, the wearer is granted unlimited underwater breath as well as crystal clear underwater vision.<BR>Lastly, if one wearing this cowl finds themselves without a full belly, the effects of health restoration will still apply, as if that was the case. Pressing U will toggle this armors effects.
+
+# -- ROBES OF THE STRATOSPHERE
+ttresearch.name.ICHORCLOTH_CHEST_GEM=Robes de la Stratosphère
+ttresearch.lore.ICHORCLOTH_CHEST_GEM=Existe aussi pour les hommes
+ttresearch.page.ICHORCLOTH_CHEST_GEM.0=You found a way of upgrading the Ichorcloth Robes into a more powerful form.<BR><BR>Starting off, by simply wearing these robes, the wearer is blessed with the power of eternal flight (wings that don't burn after 5 minutes included), as well as having all fall damage negated.<BR>The robes also passively protect the wearer from any incoming simple projectiles, akin to the focus of Distortion. Pressing U will toggle this armors effects.
+
+# -- LEGGINGS OF THE BURNING MANTLE
+ttresearch.name.ICHORCLOTH_LEGS_GEM=Jambières du Manteau brûlant
+ttresearch.lore.ICHORCLOTH_LEGS_GEM=Coup de chaud
+ttresearch.page.ICHORCLOTH_LEGS_GEM.0=You found a way of upgrading the Ichorcloth Leggings into a more powerful form.<BR><BR>These leggings are infused with the soul of fire.<BR>For one, they cast a light around the holder, brighter even than that of Hyperenergetic Nitor. This light also expands to where the wearer is looking, akin to a flashlight, and prevails given the creator's existence in a much extended range.<BR>Furthermore, these leggings not only provide fire resistance, but they convert any incoming fire damage into healing. Pressing U will toggle this armors effects.
+ttresearch.page.ICHORCLOTH_LEGS_GEM.1=Case you find yourself wanting to be in the darkness for whatever reason, Shift-right clicking with these leggings will toggle on or off the light feature.
+
+# -- BOOTS OF THE HORIZONTAL SHIELD
+ttresearch.name.ICHORCLOTH_BOOTS_GEM=Bottes du Bouclier de l'horizon
+ttresearch.lore.ICHORCLOTH_BOOTS_GEM=De Winterfell à Port-Réal en un coup de vent
+ttresearch.page.ICHORCLOTH_BOOTS_GEM.0=You found a way of upgrading the Ichorcloth Boots into a more powerful form.<BR><BR>These boots allow for extremely smooth movement, akin to the Boots of the Traveller. The wearer's speed, jump height and jump reach all become magnified by wearing the boots, making movement a breeze. One can also walk on 1 high blocks as if they are slabs, this can be suppressed by sneaking.<BR>Wearing the boots also induces a constant Haste II effect, turns any dirt below them into grass and negates all fall damage. Pressing U will toggle this armors effects.
+
+# -- FELINE AMULET
+ttresearch.name.CAT_AMULET=Amulette féline
+ttresearch.lore.CAT_AMULET=Miaou ?
+ttresearch.page.CAT_AMULET.0=It didn't take you long to come to the conclusion that you hated all those times a creeper snuck up on you.<BR><BR>To that end, using the knowledge you have that creepers run away from cats, you have devised an amulet that by simply being carried on you makes all creepers run in fear of your presence. Not only that, but they'll be petrified to the point of not gathering enough stoke to explode. Great. It must be worn in your amulet slot to take effect.
+
+# -- ICHORIUM TOOLS
+ttresearch.name.ICHOR_TOOLS=Outils d'Ichorium
+ttresearch.lore.ICHOR_TOOLS=Le nec plus ultra des outils
+ttresearch.page.ICHOR_TOOLS.0=You discovered how to create tools out of Ichorium. These tools are extremely powerful, even more so than diamond, furthermore, they never break.<BR><BR>For the creation of these tools, mundane sticks aren't enough, you decided to use Silverwood rods in replacement.
+
+# -- AWAKENED ICHORIUM PICKAXE
+ttresearch.name.ICHOR_PICK_GEM=Pioche d'Ichorium conscient
+ttresearch.lore.ICHOR_PICK_GEM=Qui a besoin d'une carrière pour miner ?
+ttresearch.page.ICHOR_PICK_GEM.0=You awakened the real potential of an Ichorium Pickaxe. This pickaxe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken. The area is offset, to allow for easy mining<BR><BR>On Line Mode (Blue)
+ttresearch.page.ICHOR_PICK_GEM.1=It'll break a 10 block long line starting on the original block. It can also break bedrock, taking you deeper into the the heart of the earth. You believe digging there might prove to be more fruitful.
+
+
+# -- AWAKENED ICHORIUM SHOVEL
+ttresearch.name.ICHOR_SHOVEL_GEM=Pelle d'Ichorium conscient
+ttresearch.lore.ICHOR_SHOVEL_GEM=Plus jamais de gravier !
+ttresearch.page.ICHOR_SHOVEL_GEM.0=You awakened the real potential of an Ichorium Shovel. This shovel contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Column Mode (Blue) it'll break a column of the same type of block as the one originally broken, 8 blocks above and below.
+
+# -- AWAKENED ICHORIUM AXE
+ttresearch.name.ICHOR_AXE_GEM=Hâche d'Ichorium conscient
+ttresearch.lore.ICHOR_AXE_GEM=On coupe à ras ?
+ttresearch.page.ICHOR_AXE_GEM.0=You awakened the real potential of an Ichorium Axe. This axe contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Block Mode (Green) it'll break blocks normally.<BR><BR>On Square Mode (Red) it'll break a 5x5 area around the original block broken.<BR><BR>On Tree Mode (Blue) it'll break entire trees by simply cutting down one of their blocks.<BR><BR>This axe is also extremely proficient at cutting plant life.
+
+# -- AWAKENED ICHORIUM SWORD
+ttresearch.name.ICHOR_SWORD_GEM=Épée d'Ichorium conscient
+ttresearch.lore.ICHOR_SWORD_GEM=Canif de poche
+ttresearch.page.ICHOR_SWORD_GEM.0=You awakened the real potential of an Ichorium Sword. This sword contains all the traits from the regular one, however, by shift right clicking on it, you can change what mode it's on.<BR><BR>On Single Mode (Green) it'll attack mobs normally.<BR><BR>On Area Mode (Red) it'll attack all mobs of the same type in a 3 block radius of the attacked one.<BR><BR>On Soul Mode (Blue) it'll deal less damage than normally, but every hit will bless the attacker with a Soul Heart.<BR>[continued]
+ttresearch.page.ICHOR_SWORD_GEM.1=Soul Hearts are hearts that can only be used once. They show up as metallic hearts below your food bar, when existent. They block damage their wielder would take, but disappear in the process.
+
+# -- BOTTOMLESS POUCH
+ttresearch.name.ICHOR_POUCH=Poche sans fond
+ttresearch.lore.ICHOR_POUCH=Et ton cerveau, il a un fond ?
+ttresearch.page.ICHOR_POUCH.0=By infusing a Focus Pouch with items such as the Portable Hole focus, you managed to allow it to not only store more than Foci, but also to have a very extensive storage space.<BR><BR>This pouch can not only carry more than four chests, but it also doubles as a standard Focus Pouch, allowing any foci within it to be inserted in a wand like normally. You can kiss your inventory problems goodbye.
+
+# -- BLACK HOLE RING
+ttresearch.name.BLOCK_TALISMAN=Anneau de trou noir
+ttresearch.lore.BLOCK_TALISMAN=Ahah, il a dit 'trou'.
+ttresearch.page.BLOCK_TALISMAN.0=This ring can be set to condense any block, by right clicking with it in world in the type of block you want to have it be set to, when enabled via right click will absorb any excess (over 1 stack) of that block in your inventory, and make sure at least one stack stays there. The contents can be stored in any inventory by right clicking it, or placed in world as if they were normal blocks.<BR><BR>It can store over 2 billion of the same block. Guess cobblestone clogging the space isn't an issue. If the ring is empty, it can be shift right clicked into another block to change its binding.
+
+# -- WORLDSHAPER'S LOOKING GLASS
+ttresearch.name.PLACEMENT_MIRROR=Miroir du Terraformeur
+ttresearch.lore.PLACEMENT_MIRROR=Œil de Mercure
+ttresearch.page.PLACEMENT_MIRROR.0=Through studying the world, you constructed a glass that allows you place a large array of blocks in the world using the power of your mind.<BR><BR>To set a block to place, one would shift-right click this glass in that block. Shift-right clicking the item in the air changes the amount of blocks it'll place.<BR><BR>When placing blocks in the world, a phantom visualization of how the blocks will appear is shown. On right click, the blocks will be consumed and placed, either from the inventory, or any Black Hole Rings that contain the required block.
+
+# -- WAND FOCUS: SHADOWBEAM
+ttresearch.name.FOCUS_SHADOWBEAM=Foci de baguette: Laser de l'ombre
+ttresearch.lore.FOCUS_SHADOWBEAM=Et ça rebondit !
+ttresearch.page.FOCUS_SHADOWBEAM.0=You created a focus that shoots a beam of energy, damaging anything in its path while it's being fired.<BR><BR>The beam has a decent range and will reflect off any blocks it hits as if they were mirrors.
+
+# -- WAND FOCUS: EXPERIENCE DRAIN
+ttresearch.name.FOCUS_XP_DRAIN=Foci de baguette: Aspirateur d'expérience
+ttresearch.lore.FOCUS_XP_DRAIN=Vis écologique
+ttresearch.page.FOCUS_XP_DRAIN.0=After creating a wand that can have an insane amount of vis, you got to the conclusion that you need an alternate source of vis.<BR><BR>To that end, you created a focus that draws from your Experience pool, turning it into vis at a fast, but not very efficient rate.
+
+# -- PROTOCLAY
+ttresearch.name.PROTOCLAY=Proto-argile
+ttresearch.lore.PROTOCLAY=Donné par Adam
+ttresearch.page.PROTOCLAY.0=You grew tired of having to constantly swap your tools.<BR><BR>This mixture will, by melding with the Ichorium, switch any Awakened Ichorium tools being held by the one used for the block being pointed at, case one tries to break it with the wrong tool.<BR><BR>As an example, trying to break a dirt block with an Awakened Ichorium Pickaxe while a Shovel is present elsewhere in the inventory will swap the two, and allow for fast disposal of the dirt block.
+
+# -- CELESTIAL GATEWAY
+ttresearch.name.WARP_GATE=Portail céleste
+ttresearch.lore.WARP_GATE=Essuyez-vous bien les pieds avant
+ttresearch.page.WARP_GATE.0=You devised a complex mechanism that allows to displace your own position in the world. This block, when containing Celestial Pearls (see next page), will allow for teleportation to various spots in the world.<BR><BR>A grand total of 10 spots can be set. You can prevent other Gateways from connecting to this one by toggling it in the block's GUI (accessible by right click).<BR><BR>To acccess the list of possible destinations, sneak above the block.
+ttresearch.page.WARP_GATE.1=In order for locations to be set in the Gateway, they must be marked with Celestial Pearls. These items can be shift-right clicked into a Celestial Gateway to mark its location (note, shift-right click on air to clear the location).<BR><BR>Placing the pearls inside a Celestial Gateway opens access to teleport to the one it's bound to. This teleport is one way, and two pearls must be used for a 2 way transport.<BR><BR>Naming these pearls with use of an Anvil will make the names appear in the Gateway's GUI, for easy labeling.
+
+# -- WAND FOCUS: RECALL
+ttresearch.name.FOCUS_RECALL=Foci de baguette: Recours céleste
+ttresearch.lore.FOCUS_RECALL=Allô maman bobo !
+ttresearch.page.FOCUS_RECALL.0=While using Celestial Gateways for teleportation is all well and good, you decided to take it a step further and create a focus that allows you to do just that, but from anywhere.<BR><BR>This focus, in the presence of a properly bound Celestial Pearl in the caster's hotbar, will, after a short cast time, teleport the caster to that position, just as if they had used a Celestial Gateway. Of course, this comes at a vis cost.
+
+# -- FIRE
+ttresearch.name.FIRE_IGNIS=Feu élémentaire: Ignis
+ttresearch.lore.FIRE_IGNIS=Feu infusé de... feu !
+ttresearch.page.FIRE_IGNIS.0=You have managed to enhance the destructive powers of hyperenergetic nitor. By letting this fire loose on the surface of the world, you can transmute blocks into their equivalent forms in the nether.
+
+ttresearch.name.FIRE_AQUA=Feu élémentaire: Aqua
+ttresearch.lore.FIRE_AQUA=Eau + feu. Tout va bien se passer.
+ttresearch.page.FIRE_AQUA.0=You have managed to totally invert the destructive power of fire. This fire, when let loose in the nether, will turn it into your own personal winter wonderland.
+
+ttresearch.name.FIRE_AER=Feu élémentaire: Aer
+ttresearch.lore.FIRE_AER=Ambiance caline au désert
+ttresearch.page.FIRE_AER.0=Everyone likes desserts, right? Well, this fire, when let loose on the world, turns everything into a desert. That is almost like a dessert. Good enough?
+
+ttresearch.name.FIRE_TERRA=Feu élémentaire: Terra
+ttresearch.lore.FIRE_TERRA=Plus de terre pour... ben... faire ce qu'on fait avec de la terre !
+ttresearch.page.FIRE_TERRA.0=This fire will turn a wide variety of blocks into dirt. Just about the least useful thing ever. Seriously. This is just about the least useful item ever.
+
+ttresearch.name.FIRE_ORDO=Feu élémentaire: Ordo
+ttresearch.lore.FIRE_ORDO=Plus de métal pour chaque minérai
+ttresearch.page.FIRE_ORDO.0=This fire, when let loose on a mountain of ores, will help you to process the ores into useful blocks of metal. While most of the ores will be consumed in the volatile fire, you will get thrice the amount of metal of mundane means of smelting.
+
+ttresearch.name.FIRE_PERDITIO=Feu élémentaire: Perditio
+ttresearch.lore.FIRE_PERDITIO=Nettoyage de printemps
+ttresearch.page.FIRE_PERDITIO.0=This fire acts like an antidote of sorts. If your elemental fires have gotten out of your control, you can set loose this specially designed flame. It will rip the magic out of elemental fire, returning it to a mundane form.
+
+ttresearch.name.INFUSED_POTIONS=Récoltes infusées
+ttresearch.lore.INFUSED_POTIONS=Abeilles ? Non, pas d'abeilles...
+ttresearch.page.INFUSED_POTIONS.0=You are able to create a new form of plant by infusing mundane seeds with magical shards. These seeds can create a wide variety of items. Each aspect can create a different type of item.
+ttresearch.page.INFUSED_POTIONS.1=You can only craft primal seeds, all others must be bred. When a fully-grown crop is harvested, it will deposit magical residue into the soil. If a crop is grown in soil containing high magical residue of an appropriate aspect, the two aspects will combine to form a seed of a different aspect.
+ttresearch.page.INFUSED_POTIONS.2=Aspect Tendencies can also be bred into crops to increase certain traits. Terra will increase the magical residue left on the soil. Ignis will aid in the creation of new aspects. Ordo will increase the bounty from a plant. Perditio will increase the seeds dropped. Aer will allow a plant to receive other types of tendencies easier. A single plant can only have a maximum of 50 aspect tendencies.
+ttresearch.page.INFUSED_POTIONS.3=There are two ways to give crops primal tendencies. Crops will occasionally absorb primal tendencies if planted next to plants of the appropriate aspect. However, plants can't receive more than 5 points in a single aspect in this manner.
+ttresearch.page.INFUSED_POTIONS.4=Crops will also drain tendencies from nearby crops. A crop will drain points from an adjacent crop with an equal or greater number of points.
+ttresearch.page.INFUSED_POTIONS.5=Some plants will create special grain, which can be made into potions. <BR> Earth infused potions summons barriers between mobs that attack you. <BR> Fire infused potions trap your enemies in a sphere of fire. <BR> Air infused potions send your enemies up in the air. <BR> Water infused potions chill surrounding lava.
+
+# -- WAILA
+ttwaila.nothing=Rien
+ttwaila.currentTool=Outil courant: %s
+ttwaila.leftClick=Clic gauche
+ttwaila.rightClick=Clic droit
+ttwaila.redstone=Activé par redstone
+ttwaila.autonomous=Autonome
+ttwaila.connected=Connecté à : %s
+ttwaila.repairing=Réparation : %s
+ttwaila.finishedRepairing=Réparation finie : %s
+ttwaila.allowIncoming=Téléportations entrantes autorisées
+ttwaila.disallowIncoming=Téléportation entrantes interdites
+ttwaila.pushingMode=Mode : Poussée
+ttwaila.pullingMode=Mode : Traction
+ttwaila.pushing=Poussée
+ttwaila.pulling=Traction
+ttwaila.pullingAdult=Traction : Adultes
+ttwaila.pullingChild=Traction : Enfants
+ttwaila.pushingAdult=Poussée : Adultes
+ttwaila.pushingChild=Poussée : Enfants
+ttwaila.pullingAdultType=Traction : Adulte %s
+ttwaila.pullingChildType=Traction : Enfant %s
+ttwaila.pushingAdultType=Poussée : Adulte %s
+ttwaila.pushingChildType=Poussée : Enfant %s
