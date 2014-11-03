@@ -87,7 +87,7 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 				Block blck = world.getBlock(x, y, z);
 				if (Utils.isWoodLog(world, x, y, z)) {
 					while (blck != Blocks.air) {
-                        BlockUtils.breakFurthestBlock(world, x, y, z, blck, player);
+						BlockUtils.breakFurthestBlock(world, x, y, z, blck, player);
 						blck = world.getBlock(x, y, z);
 					}
 
