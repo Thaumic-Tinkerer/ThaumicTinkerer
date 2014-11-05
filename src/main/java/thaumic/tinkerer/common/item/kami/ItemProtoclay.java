@@ -27,8 +27,8 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
-import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.item.kami.tool.IAdvancedTool;
 import thaumic.tinkerer.common.item.kami.tool.ToolHandler;
 import thaumic.tinkerer.common.lib.LibItemNames;
@@ -96,7 +96,7 @@ public class ItemProtoclay extends ItemKamiBase {
 
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTClientProxy.kamiRarity;
+		return TTCommonProxy.kamiRarity;
 	}
 
 	@Override

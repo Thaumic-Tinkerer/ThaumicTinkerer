@@ -25,9 +25,12 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import thaumcraft.api.wands.WandCap;
@@ -61,6 +64,8 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 public class TTCommonProxy {
 
 
+    public static EnumRarity kamiRarity;
+
     public void preInit(FMLPreInitializationEvent event) {
         toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
         ModCreativeTab.INSTANCE = new ModCreativeTab();
@@ -73,6 +78,8 @@ public class TTCommonProxy {
         rodIchor = new RodIchorcloth();
         initCCPeripherals();
         registerVersionChecker();
+
+        kamiRarity = EnumHelper.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
     }
 
     public WandCap capIchor;

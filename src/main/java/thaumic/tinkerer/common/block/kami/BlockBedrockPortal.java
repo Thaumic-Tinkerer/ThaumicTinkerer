@@ -44,7 +44,13 @@ public class BlockBedrockPortal extends BlockMod {
 		setCreativeTab(ModCreativeTab.INSTANCE);
 	}
 
-	@SideOnly(Side.CLIENT)
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+        world.setBlock(x, y, z, Blocks.bedrock);
+        return super.onBlockActivated(world, x, y, z, p_149727_5_, p_149727_6_, p_149727_7_, p_149727_8_, p_149727_9_);
+    }
+
+    @SideOnly(Side.CLIENT)
 	private IIcon icon;
 
 	@Override

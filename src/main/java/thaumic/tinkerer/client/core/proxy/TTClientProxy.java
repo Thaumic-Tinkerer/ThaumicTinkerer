@@ -60,8 +60,6 @@ import thaumic.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 
 public class TTClientProxy extends TTCommonProxy {
 
-    public static EnumRarity kamiRarity;
-
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);

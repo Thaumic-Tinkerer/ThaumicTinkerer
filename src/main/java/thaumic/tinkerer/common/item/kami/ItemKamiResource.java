@@ -27,8 +27,8 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.client.core.helper.IconHelper;
-import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.*;
@@ -72,7 +72,7 @@ public class ItemKamiResource extends ItemKamiBase {
 
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return par1ItemStack.getItemDamage() != 7 && par1ItemStack.getItemDamage() != 6 ? TTClientProxy.kamiRarity : super.getRarity(par1ItemStack);
+		return par1ItemStack.getItemDamage() != 7 && par1ItemStack.getItemDamage() != 6 ? TTCommonProxy.kamiRarity : super.getRarity(par1ItemStack);
 	}
 
 	@Override

@@ -26,11 +26,11 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.codechicken.lib.vec.Vector3;
-import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.kami.BlockWarpGate;
 import thaumic.tinkerer.common.core.helper.ItemNBTHelper;
 import thaumic.tinkerer.common.core.helper.MiscHelper;
+import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ItemKamiBase;
@@ -143,7 +143,7 @@ public class ItemSkyPearl extends ItemKamiBase {
 
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTClientProxy.kamiRarity;
+		return TTCommonProxy.kamiRarity;
 	}
 
 	@Override

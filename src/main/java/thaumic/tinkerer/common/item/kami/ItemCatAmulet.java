@@ -35,8 +35,8 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
-import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ItemKamiBase;
@@ -63,7 +63,7 @@ public class ItemCatAmulet extends ItemKamiBase implements IBauble {
 
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTClientProxy.kamiRarity;
+		return TTCommonProxy.kamiRarity;
 	}
 
 	private boolean messWithRunAwayAI(EntityAIAvoidEntity aiEntry) {

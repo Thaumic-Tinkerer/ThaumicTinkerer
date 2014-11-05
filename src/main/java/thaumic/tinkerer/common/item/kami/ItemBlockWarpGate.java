@@ -18,7 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import thaumic.tinkerer.client.core.proxy.TTClientProxy;
+import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.registry.ITTinkererItem;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
@@ -34,7 +34,7 @@ public class ItemBlockWarpGate extends ItemBlock implements ITTinkererItem {
 
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTClientProxy.kamiRarity;
+		return TTCommonProxy.kamiRarity;
 	}
 
 	@Override
