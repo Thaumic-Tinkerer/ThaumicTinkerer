@@ -47,6 +47,12 @@ public final class PeripheralHandler implements IPeripheralProvider {
 
 		if (tile instanceof IEssentiaTransport)
 			return new PeripheralEssentiaTransport((IEssentiaTransport) tile);
+
+        //Hacky
+        //TODO: Fix proper IPeripheral integration in 1.7
+        if(tile instanceof IPeripheral && tile.getClass().getName().contains("thaumic.tinkerer")){
+            return (IPeripheral)tile;
+        }
 		return null;
 	}
 
