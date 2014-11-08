@@ -213,7 +213,7 @@ public class BlockMagnet extends BlockModContainer implements IMultiTileEntityBl
 
 	@Override
 	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_MAGNETS, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.MOTION, 1).add(Aspect.SENSES, 1), -6, 3, 3, new ItemStack(this)).setParents(LibResearch.KEY_INTERFACE).setConcealed()
+		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_MAGNETS, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.MOTION, 1).add(Aspect.SENSES, 1), -6, 3, 3, new ItemStack(this)).setParents(LibResearch.KEY_INTERFACE).setParentsHidden(LibResearch.KEY_FOCUS_TELEKINESIS).setConcealed()
 				.setPages(new ResearchPage("0"), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_MAGNET), ResearchHelper.arcaneRecipePage(LibResearch.KEY_MOB_MAGNET), ResearchHelper.crucibleRecipePage(LibResearch.KEY_MAGNETS));
 
 	}
