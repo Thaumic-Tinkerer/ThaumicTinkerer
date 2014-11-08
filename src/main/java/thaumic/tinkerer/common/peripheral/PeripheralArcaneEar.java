@@ -39,7 +39,7 @@ public class PeripheralArcaneEar implements IPeripheral {
 	}
 
 	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
 		if (method == 0) {
 			return new Object[]{ ear.note };
 		} else {

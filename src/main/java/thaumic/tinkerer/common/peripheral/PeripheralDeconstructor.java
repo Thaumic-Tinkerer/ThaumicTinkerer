@@ -39,7 +39,7 @@ public class PeripheralDeconstructor implements IPeripheral {
 	}
 
 	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
 		switch (method) {
 			case 0:
 				return new Object[]{ deconstructor.aspect != null };

@@ -42,7 +42,7 @@ public class PeripheralAspectContainer implements IPeripheral {
 
 	@Override
 	@Optional.Method(modid = "ComputerCraft")
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
 		switch (method) {
 			case 0: {
 				return IAspectContainerImplementation.getAspects(container);

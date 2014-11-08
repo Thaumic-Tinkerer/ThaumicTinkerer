@@ -23,6 +23,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
+import dan200.computercraft.api.ComputerCraftAPI;
+import dan200.computercraft.api.turtle.TurtleUpgradeType;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -30,12 +32,16 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
+import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
+import thaumcraft.common.tiles.*;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.block.tile.TileFunnel;
+import thaumic.tinkerer.common.block.tile.TileRepairer;
+import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
 import thaumic.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
@@ -58,6 +64,7 @@ import thaumic.tinkerer.common.network.packet.kami.PacketToggleArmor;
 import thaumic.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 import thaumic.tinkerer.common.network.packet.kami.PacketWarpGateTeleport;
 import thaumic.tinkerer.common.peripheral.OpenComputers.*;
+import thaumic.tinkerer.common.peripheral.PeripheralHandler;
 import thaumic.tinkerer.common.potion.ModPotions;
 import thaumic.tinkerer.common.research.ResearchHelper;
 
@@ -147,7 +154,7 @@ public class TTCommonProxy {
     }
 
     protected void initCCPeripherals() {
-        /*IPeripheralHandler handler = new PeripheralHandler();
+        PeripheralHandler handler = new PeripheralHandler();
 
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
@@ -156,10 +163,9 @@ public class TTCommonProxy {
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class,IEssentiaTransport.class
 		};
         // DUMMY CHANGE
-        for(Class clazz : peripheralClasses)
-			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
+        ComputerCraftAPI.registerPeripheralProvider(handler);
 			
-		TurtleAPI.registerUpgrade(new FumeTool());*/
+		//ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
     }
 
     @Optional.Method(modid = "OpenComputers")

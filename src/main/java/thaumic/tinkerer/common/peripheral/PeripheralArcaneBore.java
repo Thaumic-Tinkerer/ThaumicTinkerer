@@ -43,7 +43,7 @@ public class PeripheralArcaneBore implements IPeripheral {
 	}
 
 	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments){
 		ItemStack pickaxe = bore.getStackInSlot(1);
 		boolean nearBroken = pickaxe != null && pickaxe.getItemDamage() + 1 == pickaxe.getMaxDamage();
 

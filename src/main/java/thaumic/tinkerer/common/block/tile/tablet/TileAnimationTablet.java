@@ -18,6 +18,7 @@ import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.eventhandler.Event;
 import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import li.cil.oc.api.network.Arguments;
@@ -539,7 +540,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 	@Override
 	@Optional.Method(modid = "ComputerCraft")
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws LuaException{
 		switch (method) {
 			case 0:
 				return new Object[]{ redstone };
@@ -572,11 +573,11 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 		return new Object[]{ true };
 	}
 
-	private Object[] setRotationImplementation(Double argument) throws Exception {
+	private Object[] setRotationImplementation(Double argument) throws LuaException {
 		int rotation = (int) argument.doubleValue();
 
 		if (rotation > 3)
-			throw new Exception("Invalid value: " + rotation + ".");
+			throw new LuaException("Invalid value: " + rotation + ".");
 
 		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, rotation + 2, 1 | 2);
 		return null;

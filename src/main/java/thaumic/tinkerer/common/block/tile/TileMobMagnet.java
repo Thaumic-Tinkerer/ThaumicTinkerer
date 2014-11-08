@@ -17,6 +17,7 @@ package thaumic.tinkerer.common.block.tile;
 import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
+import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import li.cil.oc.api.network.Arguments;
 import li.cil.oc.api.network.Callback;
@@ -204,7 +205,7 @@ public class TileMobMagnet extends TileMagnet implements IInventory, IMovableTil
 
 	@Override
 	@Optional.Method(modid = "ComputerCraft")
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws Exception {
+	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments){
 		switch (method) {
 			case 3:
 				return new Object[]{ adult };
