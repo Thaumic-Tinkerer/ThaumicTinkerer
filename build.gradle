@@ -74,13 +74,14 @@ if (System.getenv("BUILD_NUMBER")!=null)
 if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
-curse {
-    projectId="75598"
-    if(project.hasProperty("apiKey"))
-        apiKey=project.apiKey
-   changelog=" "
-   releaseType="release"
-}
+//curse {
+//    projectId="75598"
+//    if(project.hasProperty("apiKey"))
+//        apiKey=project.apiKey
+//   changelog="test"
+//   if(project.hasProperty("releaseType"))
+//       releaseType=project.releaseType
+//}
 
 
 dependencies {
