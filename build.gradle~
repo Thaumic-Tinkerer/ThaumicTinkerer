@@ -82,6 +82,7 @@ curse {
 	apiKey=project.apiKey
 	changelog=" "
 	releaseType="release"
+	addGameVersion "{minecraft.version}"
 }
 
 
