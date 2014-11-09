@@ -15,6 +15,7 @@
 
 package thaumic.tinkerer.common.peripheral;
 
+import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralProvider;
 import net.minecraft.tileentity.TileEntity;
@@ -63,5 +64,9 @@ public final class PeripheralHandler implements IPeripheralProvider {
 			return getPeripheral(te);
 		return null;
 	}
+
+    public void registerPeripheralProvider() {
+        ComputerCraftAPI.registerPeripheralProvider(this);
+    }
 }
 

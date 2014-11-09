@@ -23,8 +23,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
-import dan200.computercraft.api.ComputerCraftAPI;
-import dan200.computercraft.api.turtle.TurtleUpgradeType;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -162,8 +160,7 @@ public class TTCommonProxy {
 				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
 				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class,IEssentiaTransport.class
 		};
-        // DUMMY CHANGE
-        ComputerCraftAPI.registerPeripheralProvider(handler);
+        handler.registerPeripheralProvider();
 			
 		//ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
     }
