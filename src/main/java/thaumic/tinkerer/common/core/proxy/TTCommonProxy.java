@@ -81,7 +81,9 @@ public class TTCommonProxy {
         ThaumicTinkerer.registry.preInit();
         capIchor = new CapIchor();
         rodIchor = new RodIchorcloth();
-        initCCPeripherals();
+        if(Loader.isModLoaded("ComputerCraft")) {
+            initCCPeripherals();
+        }
         registerVersionChecker();
 
         kamiRarity = EnumHelper.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
