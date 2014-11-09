@@ -48,7 +48,7 @@ repositories {
 }
 String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
-//apply plugin: 'curseforge'
+apply plugin: 'curseforge'
 apply plugin: 'forge'
 
 
