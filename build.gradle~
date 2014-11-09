@@ -58,7 +58,7 @@ group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.10-10.13.2.1230"
+    version = "1.7.10-10.13.2.1232"
     //minecraftVersion="1.7.2"
     runDir = "eclipse"
     replace '${version}', project.version
@@ -74,14 +74,13 @@ if (System.getenv("BUILD_NUMBER")!=null)
 if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
-//curse {
-//    projectId="75598"
-//    if(project.hasProperty("apiKey"))
-//        apiKey=project.apiKey
-//   changelog="test"
-//   if(project.hasProperty("releaseType"))
-//       releaseType=project.releaseType
-//}
+curse {
+    projectId="75598"
+    if(project.hasProperty("apiKey"))
+        apiKey=project.apiKey
+   changelog=" "
+   releaseType="release"
+}
 
 
 dependencies {
