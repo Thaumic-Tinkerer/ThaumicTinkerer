@@ -572,7 +572,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
 		return new Object[]{ true };
 	}
-
+	@Optional.Method(modid = "ComputerCraft")
 	private Object[] setRotationImplementation(Double argument) throws LuaException {
 		int rotation = (int) argument.doubleValue();
 
