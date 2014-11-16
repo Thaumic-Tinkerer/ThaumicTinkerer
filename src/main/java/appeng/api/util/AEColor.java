@@ -42,7 +42,7 @@ public enum AEColor
 
 	Black("gui.appliedenergistics2.Black", 0x2B2B2B, 0x565656, 0x848484),
 
-	Transparent("gui.appliedenergistics2.Fluix", 0x1B2344, 0x895CA8, 0xDABDEF);
+	Transparent("gui.appliedenergistics2.Fluix", 0x1B2344, 0x895CA8, 0xD7BBEC);
 
 	/**
 	 * Unlocalized name for color.
@@ -76,9 +76,7 @@ public enum AEColor
 	 */
 	public boolean matches(AEColor color)
 	{
-		if ( equals( Transparent ) || color.equals( Transparent ) )
-			return true;
-		return equals( color );
+		return equals(Transparent) || color.equals(Transparent) || equals(color);
 	}
 
 	@Override

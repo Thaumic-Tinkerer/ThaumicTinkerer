@@ -1,5 +1,6 @@
 package appeng.api.definitions;
 
+import appeng.api.util.AEColoredItemDefinition;
 import appeng.api.util.AEItemDefinition;
 
 public class Items
@@ -44,4 +45,10 @@ public class Items
 
 	public AEItemDefinition itemFacade;
 	public AEItemDefinition itemCrystalSeed;
+
+	// rv1
+	public AEItemDefinition itemEncodedPattern;
+	public AEItemDefinition itemColorApplicator;
+	public AEColoredItemDefinition itemPaintBall;
+	public AEColoredItemDefinition itemLumenPaintBall;
 }

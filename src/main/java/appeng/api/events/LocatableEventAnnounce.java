@@ -1,7 +1,7 @@
 package appeng.api.events;
 
-import cpw.mods.fml.common.eventhandler.Event;
 import appeng.api.features.ILocatable;
+import cpw.mods.fml.common.eventhandler.Event;
 
 /**
  * Input Event:
@@ -15,7 +15,7 @@ public class LocatableEventAnnounce extends Event
 	{
 		Register, // Adds the locatable to the registry
 		Unregister // Removes the locatable from the registry
-	};
+	}
 
 	final public ILocatable target;
 	final public LocatableEvent change;

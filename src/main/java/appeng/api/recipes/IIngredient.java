@@ -28,7 +28,7 @@ public interface IIngredient {
 	ItemStack[] getItemStackSet() throws RegistrationError, MissingIngredientError;
 
 	/**
-	 * If you wish to support air, you must test before geting the ItemStack, or ItemStackSet
+	 * If you wish to support air, you must test before getting the ItemStack, or ItemStackSet
 	 * 
 	 * @return true if this slot contains no ItemStack, this is passed as "_"
 	 */
@@ -53,5 +53,12 @@ public interface IIngredient {
 	 * @return The Damage Value of the item. Prefer getItemStack or getItemStackSet 
 	 */
 	public int getQty();
+
+	/**
+	 * Bakes the lists in for faster runtime lookups.
+	 * @throws MissingIngredientError 
+	 * @throws RegistrationError 
+	 */
+	void bake() throws RegistrationError, MissingIngredientError;
 
 }

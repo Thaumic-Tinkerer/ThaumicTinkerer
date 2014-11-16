@@ -6,11 +6,9 @@ public enum Settings
 {
 	LEVEL_EMITTER_MODE(EnumSet.allOf( LevelEmitterMode.class )),
 
-	NETWORK_EMITTER_MODE(EnumSet.allOf( NetworkEmitterMode.class )),
-
 	REDSTONE_EMITTER(EnumSet.of( RedstoneMode.HIGH_SIGNAL, RedstoneMode.LOW_SIGNAL )), REDSTONE_CONTROLLED(EnumSet.allOf( RedstoneMode.class )),
 
-	CONDENSER_OUTPUT(EnumSet.allOf( CondenserOuput.class )),
+	CONDENSER_OUTPUT(EnumSet.allOf( CondenserOutput.class )),
 
 	POWER_UNITS(EnumSet.allOf( PowerUnits.class )), ACCESS(EnumSet.of( AccessRestriction.READ_WRITE, AccessRestriction.READ, AccessRestriction.WRITE )),
 
@@ -20,13 +18,17 @@ public enum Settings
 
 	ACTIONS(EnumSet.allOf( ActionItems.class )), IO_DIRECTION(EnumSet.of( RelativeDirection.LEFT, RelativeDirection.RIGHT )),
 
-	INCLUSION(EnumSet.allOf( IncludeExclude.class )), CRAFT(EnumSet.of( YesNo.YES, YesNo.NO )), BLOCK(EnumSet.of( YesNo.YES, YesNo.NO )),
+	BLOCK(EnumSet.of( YesNo.YES, YesNo.NO )), OPERATION_MODE(EnumSet.allOf( OperationMode.class )),
 
-	OPERATION_MODE(EnumSet.allOf( OperationMode.class )), FULLNESS_MODE(EnumSet.allOf( FullnessMode.class )),
+	FULLNESS_MODE(EnumSet.allOf( FullnessMode.class )), CRAFT_ONLY(EnumSet.of( YesNo.YES, YesNo.NO )),
 
-	TRASH_CATCH(EnumSet.of( YesNo.YES, YesNo.NO )), FUZZY_MODE(EnumSet.allOf( FuzzyMode.class )),
+	FUZZY_MODE(EnumSet.allOf( FuzzyMode.class )), LEVEL_TYPE(EnumSet.allOf( LevelType.class )),
 
-	LEVEL_TYPE(EnumSet.allOf( LevelType.class )), TERMINAL_STYLE(EnumSet.of( TerminalStyle.TALL, TerminalStyle.SMALL ));
+	TERMINAL_STYLE(EnumSet.of( TerminalStyle.TALL, TerminalStyle.SMALL )), COPY_MODE(EnumSet.allOf( CopyMode.class )),
+
+	INTERFACE_TERMINAL(EnumSet.of( YesNo.YES, YesNo.NO )), CRAFT_VIA_REDSTONE(EnumSet.of( YesNo.YES, YesNo.NO )),
+
+	STORAGE_FILTER(EnumSet.allOf( StorageFilter.class ));
 
 	private EnumSet values;
 

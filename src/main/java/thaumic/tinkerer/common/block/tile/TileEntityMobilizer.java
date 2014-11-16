@@ -123,12 +123,12 @@ public class TileEntityMobilizer extends TileEntity {
 							}
 							//If AE is installed, use its handler
 						} else if (api != null) {
-							if (api.registries().moveable().askToMove(passenger)) {
+							if (api.registries().movable().askToMove(passenger)) {
 								worldObj.setBlock(targetX, yCoord + 1, targetZ, worldObj.getBlock(xCoord, yCoord + 1, zCoord), worldObj.getBlockMetadata(xCoord, yCoord + 1, zCoord), 3);
 								passenger.invalidate();
 								worldObj.setBlockToAir(xCoord, yCoord + 1, zCoord);
-								api.registries().moveable().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord + 1, targetZ);
-								api.registries().moveable().doneMoving(passenger);
+								api.registries().movable().getHandler(passenger).moveTile(passenger, worldObj, targetX, yCoord + 1, targetZ);
+								api.registries().movable().doneMoving(passenger);
 								passenger.validate();
 							}
 

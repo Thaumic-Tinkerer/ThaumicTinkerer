@@ -11,9 +11,9 @@ public enum GridFlags
 	REQUIRE_CHANNEL,
 
 	/**
-	 * MAC, and P2P ME tunnels use this setting.
+	 * P2P ME tunnels use this setting.
 	 */
-	DENSE_CHANNEL,
+	COMPRESSED_CHANNEL,
 
 	/**
 	 * cannot carry channels over this node.
@@ -23,16 +23,23 @@ public enum GridFlags
 	/**
 	 * Used by P2P Tunnels to prevent tunnels from tunneling recursively.
 	 */
-	CANNOT_CARRY_DENSE,
+	CANNOT_CARRY_COMPRESSED,
 
 	/**
-	 * This block can transmit 32 signals, this should only apply to Tier2 Cable, P2P Tunnels, and Quantum Network Bridges.
+	 * This node can transmit 32 signals, this should only apply to Tier2 Cable, P2P Tunnels, and Quantum Network
+	 * Bridges.
 	 */
-	TIER_2_CAPACITY,
+	DENSE_CAPACITY,
 
 	/**
-	 * This block is part of a multiblock, used in conjunction with REQUIRE_CANNEL, and {@link IGridMultiblock} see this
+	 * This block is part of a multiblock, used in conjunction with REQUIRE_CHANNEL, and {@link IGridMultiblock} see this
 	 * interface for details.
 	 */
-	MULTIBLOCK
+	MULTIBLOCK,
+
+	/**
+	 * Indicates which path might be preferred, this only matters if two routes of equal length exist, ad only changes
+	 * the order they are processed in.
+	 */
+	PREFERRED
 }

@@ -15,7 +15,7 @@ public class AEApi
 	/**
 	 * API Entry Point.
 	 * 
-	 * @return the {@link IAppEngApi}
+	 * @return the {@link IAppEngApi} or null if the instance could not be retrieved
 	 */
 	public static IAppEngApi instance()
 	{
