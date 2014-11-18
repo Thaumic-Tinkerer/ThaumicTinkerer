@@ -14,6 +14,7 @@
  */
 package thaumic.tinkerer.common.item.foci;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityExpBottle;
@@ -29,6 +30,7 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.helper.ProjectileHelper;
 import thaumic.tinkerer.common.lib.LibItemNames;
@@ -46,6 +48,8 @@ public class ItemFocusDeflect extends ItemModFocus {
 
 	public static List<Class<?>> DeflectBlacklist = Arrays.asList(new Class<?>[]{ EntityExpBottle.class });
 	AspectList visUsage = new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 4);
+
+
 
 	@Override
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int ticks) {
