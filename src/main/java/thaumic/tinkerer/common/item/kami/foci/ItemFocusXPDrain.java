@@ -11,6 +11,7 @@ import net.minecraft.util.StatCollector;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.common.ThaumicTinkerer;
@@ -35,7 +36,7 @@ public class ItemFocusXPDrain extends ItemModKamiFocus {
 	private int lastGiven = 0;
 
 	@Override
-	public boolean isVisCostPerTick() {
+	public boolean isVisCostPerTick(ItemStack stack) {
 		return true;
 	}
 
@@ -72,17 +73,17 @@ public class ItemFocusXPDrain extends ItemModKamiFocus {
 
 	@Override
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
-		return getFocusColor();
+		return getFocusColor(par1ItemStack);
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		EntityPlayer player = ThaumicTinkerer.proxy.getClientPlayer();
 		return player == null ? 0xFFFFFF : Color.HSBtoRGB(player.ticksExisted * 2 % 360 / 360F, 1F, 1F);
 	}
 
 	int getXpUse(ItemStack stack) {
-		return 30 - EnchantmentHelper.getEnchantmentLevel(Config.enchFrugal.effectId, stack) * 3;
+		return 30 ;
 	}
 
 	@Override
@@ -91,8 +92,13 @@ public class ItemFocusXPDrain extends ItemModKamiFocus {
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return cost;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override
@@ -100,10 +106,7 @@ public class ItemFocusXPDrain extends ItemModKamiFocus {
 		return TTCommonProxy.kamiRarity;
 	}
 
-	@Override
-	public boolean acceptsEnchant(int paramInt) {
-		return paramInt == Config.enchFrugal.effectId;
-	}
+
 
 	@Override
 	public String getSortingHelper(ItemStack paramItemStack) {

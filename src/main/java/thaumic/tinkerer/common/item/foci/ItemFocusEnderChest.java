@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
@@ -66,13 +67,10 @@ public class ItemFocusEnderChest extends ItemModFocus {
 		return stack;
 	}
 
-	@Override
-	public boolean acceptsEnchant(int paramInt) {
-		return paramInt == Config.enchFrugal.effectId;
-	}
+
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0x132223;
 	}
 
@@ -90,8 +88,13 @@ public class ItemFocusEnderChest extends ItemModFocus {
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return visUsage;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override

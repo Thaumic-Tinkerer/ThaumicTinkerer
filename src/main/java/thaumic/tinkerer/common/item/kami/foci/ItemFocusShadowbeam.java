@@ -17,6 +17,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.client.fx.particles.FXSparkle;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
@@ -48,8 +49,8 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(), true, false)) {
-			int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
+		if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
+			int potency = 0;
 
 			if (player.worldObj.rand.nextInt(10) == 0)
 				player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
@@ -60,7 +61,7 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 	}
 
 	@Override
-	public boolean isVisCostPerTick() {
+	public boolean isVisCostPerTick(ItemStack stack) {
 		return true;
 	}
 
@@ -70,13 +71,18 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0x4B0053;
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return cost;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override

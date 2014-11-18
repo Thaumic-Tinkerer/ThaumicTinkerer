@@ -33,6 +33,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -233,24 +234,25 @@ public class ItemFocusDislocation extends ItemModFocus {
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0xFFB200;
 	}
 
 	@Override
-	public IIcon getOrnament() {
+	public IIcon getOrnament(ItemStack stack) {
 		return ornament;
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return visUsage;
 	}
 
 	@Override
-	public boolean acceptsEnchant(int paramInt) {
-		return super.acceptsEnchant(paramInt) && paramInt != Config.enchPotency.effectId;
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
+
 
 	static {
 		blacklist.add(Blocks.piston_extension);

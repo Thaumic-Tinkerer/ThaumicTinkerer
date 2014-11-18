@@ -51,8 +51,8 @@ public final class ProjectileHelper {
 	public static class ThaumcraftFrostShardOwnerGetter implements Function<Entity, Entity> {
 		@Override
 		public Entity apply(Entity e) {
-			Entity owner = ((EntityFrostShard) e).shootingEntity;
-			return owner != null ? owner : e.worldObj.getEntityByID(((EntityFrostShard) e).shootingEntityId);
+			Entity owner = ((EntityFrostShard) e).getThrower();
+			return owner;
 		}
 	}
 

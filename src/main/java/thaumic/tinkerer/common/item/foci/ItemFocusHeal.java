@@ -22,6 +22,7 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -53,7 +54,7 @@ public class ItemFocusHeal extends ItemModFocus {
 		if (!wand.consumeAllVis(stack, p, visUsage, false, false) || !p.shouldHeal())
 			return;
 
-		int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
+		int potency = 0;
 
 		if (!playerHealData.containsKey(p.getGameProfile().getName()))
 			playerHealData.put(p.getGameProfile().getName(), 0);
@@ -83,12 +84,12 @@ public class ItemFocusHeal extends ItemModFocus {
 	}
 
 	@Override
-	public boolean isVisCostPerTick() {
+	public boolean isVisCostPerTick(ItemStack stack) {
 		return false;
 	}
 
 	@Override
-	public boolean isUseItem() {
+	public boolean isUseItem(ItemStack stack) {
 		return true;
 	}
 
@@ -98,13 +99,18 @@ public class ItemFocusHeal extends ItemModFocus {
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0xFD00D6;
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return visUsage;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override

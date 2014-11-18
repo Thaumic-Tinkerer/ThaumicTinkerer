@@ -27,6 +27,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.client.core.helper.ClientHelper;
@@ -47,7 +48,7 @@ public final class HUDHandler {
 			if (item != null && item.getItem() instanceof ItemWandCasting) {
 				ItemWandCasting wand = (ItemWandCasting) item.getItem();
 				wand.getFocusItem(item);
-				IWandFocus focus = wand.getFocus(item);
+				ItemFocusBasic focus = wand.getFocus(item);
 
 				if (focus != null && focus instanceof ItemFocusDislocation) {
 					ItemStack pickedBlock = ((ItemFocusDislocation) focus).getPickedBlock(item);

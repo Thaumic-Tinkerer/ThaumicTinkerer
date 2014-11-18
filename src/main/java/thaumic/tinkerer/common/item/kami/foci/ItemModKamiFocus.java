@@ -27,16 +27,19 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraft.common.config.Config;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
+import thaumic.tinkerer.common.registry.ITTinkererItem;
 import thaumic.tinkerer.common.registry.ItemBase;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ItemModKamiFocus extends ItemBase implements IWandFocus {
+public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinkererItem {
 
 	private IIcon ornament, depth;
 
@@ -85,11 +88,18 @@ public abstract class ItemModKamiFocus extends ItemBase implements IWandFocus {
 		return true;
 	}
 
+
+
+	@Override
+	public ArrayList<Object> getSpecialParameters() {
+		return null;
+	}
+
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		AspectList cost = getVisCost();
+		AspectList cost = getVisCost(stack);
 		if (cost != null) {
-			list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
+			list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
 			addVisCostTooltip(cost, stack, player, list, par4);
 		}
 	}
@@ -112,32 +122,32 @@ public abstract class ItemModKamiFocus extends ItemBase implements IWandFocus {
 	}
 
 	@Override
-	public IIcon getOrnament() {
+	public IIcon getOrnament(ItemStack stack) {
 		return ornament;
 	}
 
 	@Override
-	public IIcon getFocusDepthLayerIcon() {
+	public IIcon getFocusDepthLayerIcon(ItemStack stack) {
 		return depth;
 	}
 
 	@Override
-	public WandFocusAnimation getAnimation() {
+	public WandFocusAnimation getAnimation(ItemStack stack) {
 		return WandFocusAnimation.WAVE;
 	}
 
 	@Override
-	public boolean isVisCostPerTick() {
+	public boolean isVisCostPerTick(ItemStack stack) {
 		return false;
 	}
 
-	public boolean isUseItem() {
-		return isVisCostPerTick();
+	public boolean isUseItem(ItemStack stack) {
+		return isVisCostPerTick(stack);
 	}
 
 	@Override
 	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-		if (isUseItem())
+		if (isUseItem(paramItemStack))
 			paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
 
 		return paramItemStack;
@@ -166,9 +176,5 @@ public abstract class ItemModKamiFocus extends ItemBase implements IWandFocus {
 		return false;
 	}
 
-	@Override
-	public boolean acceptsEnchant(int paramInt) {
-		return paramInt != Config.enchWandFortune.effectId;
-	}
 
 }

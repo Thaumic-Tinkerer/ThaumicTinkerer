@@ -23,6 +23,7 @@ import net.minecraft.util.AxisAlignedBB;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
@@ -49,7 +50,7 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 		Vector3 target = Vector3.fromEntityCenter(player);
 
-		final int range = 6 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
+		final int range = 6 ;
 		final double distance = range - 1;
 		if (!player.isSneaking())
 			target.add(new Vector3(player.getLookVec()).multiply(distance));
@@ -58,7 +59,7 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 
 		List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
 
-		if (!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(), true, false)) {
+		if (!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
 			for (EntityItem item : entities) {
 				MiscHelper.setEntityMotionFromVector(item, target, 0.3333F);
 				ThaumicTinkerer.tcProxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 0);
@@ -77,17 +78,22 @@ public class ItemFocusTelekinesis extends ItemModFocus {
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0x9C00BE;
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return visUsage;
 	}
 
 	@Override
-	public boolean isVisCostPerTick() {
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
+	}
+
+	@Override
+	public boolean isVisCostPerTick(ItemStack stack) {
 		return true;
 	}
 

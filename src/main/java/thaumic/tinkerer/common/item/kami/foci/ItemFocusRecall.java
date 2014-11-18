@@ -21,6 +21,7 @@ import net.minecraft.util.ChunkCoordinates;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
@@ -52,7 +53,7 @@ public class ItemFocusRecall extends ItemModKamiFocus{
 	}
 
 	@Override
-	public boolean isUseItem() {
+	public boolean isUseItem(ItemStack stack) {
 		return true;
 	}
 
@@ -77,8 +78,8 @@ public class ItemFocusRecall extends ItemModKamiFocus{
 					int y = ItemSkyPearl.getY(stackToCount);
 					int z = ItemSkyPearl.getZ(stackToCount);
 
-					if (wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), false, false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
-						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(), true, false);
+					if (wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(paramItemStack), false, false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
+						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(paramItemStack), true, false);
 				}
 			}
 
@@ -87,13 +88,18 @@ public class ItemFocusRecall extends ItemModKamiFocus{
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0x9CF8FF;
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return cost;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override

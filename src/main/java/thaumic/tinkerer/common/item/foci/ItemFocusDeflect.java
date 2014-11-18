@@ -23,6 +23,7 @@ import net.minecraft.util.AxisAlignedBB;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
@@ -50,7 +51,7 @@ public class ItemFocusDeflect extends ItemModFocus {
 	public void onUsingFocusTick(ItemStack stack, EntityPlayer p, int ticks) {
 		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if (wand.consumeAllVis(stack, p, getVisCost(), true, false))
+		if (wand.consumeAllVis(stack, p, getVisCost(stack), true, false))
 			protectFromProjectiles(p);
 	}
 
@@ -77,23 +78,25 @@ public class ItemFocusDeflect extends ItemModFocus {
 	}
 
 	@Override
-	public boolean isVisCostPerTick() {
+	public boolean isVisCostPerTick(ItemStack stack) {
 		return true;
 	}
 
-	@Override
-	public boolean acceptsEnchant(int paramInt) {
-		return paramInt == Config.enchFrugal.effectId;
-	}
+
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0xFFFFFF;
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return visUsage;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override

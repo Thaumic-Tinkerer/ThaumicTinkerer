@@ -10,6 +10,7 @@ import net.minecraft.util.MovingObjectPosition;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -72,7 +73,7 @@ public class ItemFocusSmelt extends ItemModFocus {
     }
 
     @Override
-    public boolean isUseItem() {
+    public boolean isUseItem(ItemStack stack) {
         return true;
     }
 
@@ -123,7 +124,7 @@ public class ItemFocusSmelt extends ItemModFocus {
                 }
 
                 if (!decremented) {
-                    int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
+                    int potency = 1;
                     playerData.put(p.getGameProfile().getName(), new SmeltData(pos, 20 - Math.min(3, potency) * 5));
                 } else for (int i = 0; i < 2; i++) {
                     double x = pos.blockX + Math.random();
@@ -151,13 +152,18 @@ public class ItemFocusSmelt extends ItemModFocus {
     }
 
     @Override
-    public int getFocusColor() {
+    public int getFocusColor(ItemStack stack) {
         return 0xFF0000;
     }
 
     @Override
-    public AspectList getVisCost() {
+    public AspectList getVisCost(ItemStack stack) {
         return visUsage;
+    }
+
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[0];
     }
 
 }

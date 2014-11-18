@@ -25,6 +25,7 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -48,9 +49,9 @@ public class ItemFocusFlight extends ItemModFocus {
 		if (!ConfigHandler.enableFlight) {
 			return itemstack;
 		}
-		if (wand.consumeAllVis(itemstack, p, getVisCost(), true, false)) {
+		if (wand.consumeAllVis(itemstack, p, getVisCost(itemstack), true, false)) {
 			Vec3 vec = p.getLookVec();
-			double force = 1 / 1.5 * (1 + EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(itemstack)) * 0.2);
+			double force = 1 / 1.5;
 			p.motionX = vec.xCoord * force;
 			p.motionY = vec.yCoord * force;
 			p.motionZ = vec.zCoord * force;
@@ -59,7 +60,7 @@ public class ItemFocusFlight extends ItemModFocus {
 				((EntityPlayerMP) p).playerNetServerHandler.floatingTickCount = 0;
 			}
 			for (int i = 0; i < 5; i++)
-				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) (Math.random() * 360), (int) p.posY);
+				ThaumicTinkerer.tcProxy.smokeSpiral(world, p.posX, p.posY - p.motionY, p.posZ, 2F, (int) (Math.random() * 360), (int) p.posY,0x9E2FF);
 			world.playSoundAtEntity(p, "thaumcraft:wind", 0.4F, 1F);
 		}
 
@@ -75,7 +76,7 @@ public class ItemFocusFlight extends ItemModFocus {
 	}
 
 	@Override
-	public int getFocusColor() {
+	public int getFocusColor(ItemStack stack) {
 		return 0x9EF2FF;
 	}
 
@@ -85,8 +86,13 @@ public class ItemFocusFlight extends ItemModFocus {
 	}
 
 	@Override
-	public AspectList getVisCost() {
+	public AspectList getVisCost(ItemStack stack) {
 		return visUsage;
+	}
+
+	@Override
+	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+		return new FocusUpgradeType[0];
 	}
 
 	@Override
