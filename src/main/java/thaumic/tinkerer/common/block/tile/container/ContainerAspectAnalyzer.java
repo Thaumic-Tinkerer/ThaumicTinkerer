@@ -23,54 +23,54 @@ import thaumic.tinkerer.common.block.tile.TileAspectAnalyzer;
 
 public class ContainerAspectAnalyzer extends ContainerPlayerInv {
 
-	public TileAspectAnalyzer analyzer;
-	Slot slot;
+    public TileAspectAnalyzer analyzer;
+    Slot slot;
 
-	public ContainerAspectAnalyzer(TileAspectAnalyzer analyzer, InventoryPlayer playerInv) {
-		super(playerInv);
+    public ContainerAspectAnalyzer(TileAspectAnalyzer analyzer, InventoryPlayer playerInv) {
+        super(playerInv);
 
-		this.analyzer = analyzer;
+        this.analyzer = analyzer;
 
-		addSlotToContainer(slot = new SlotLimitedHasAspects(analyzer, 0, 20, 30));
+        addSlotToContainer(slot = new SlotLimitedHasAspects(analyzer, 0, 20, 30));
 
-		initPlayerInv();
-	}
+        initPlayerInv();
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer entityplayer) {
-		return analyzer.isUseableByPlayer(entityplayer);
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer entityplayer) {
+        return analyzer.isUseableByPlayer(entityplayer);
+    }
 
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-		ItemStack var3 = null;
-		Slot var4 = (Slot) inventorySlots.get(par2);
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+        ItemStack var3 = null;
+        Slot var4 = (Slot) inventorySlots.get(par2);
 
-		if (var4 != null && var4.getHasStack()) {
-			ItemStack var5 = var4.getStack();
+        if (var4 != null && var4.getHasStack()) {
+            ItemStack var5 = var4.getStack();
 
-			if (par2 == 0 || var5 != null && slot.isItemValid(var5)) {
-				var3 = var5.copy();
+            if (par2 == 0 || var5 != null && slot.isItemValid(var5)) {
+                var3 = var5.copy();
 
-				if (par2 < 1) {
-					if (!mergeItemStack(var5, 1, 37, false))
-						return null;
-				} else if (!mergeItemStack(var5, 0, 1, false))
-					return null;
+                if (par2 < 1) {
+                    if (!mergeItemStack(var5, 1, 37, false))
+                        return null;
+                } else if (!mergeItemStack(var5, 0, 1, false))
+                    return null;
 
-				if (var5.stackSize == 0)
-					var4.putStack(null);
-				else
-					var4.onSlotChanged();
+                if (var5.stackSize == 0)
+                    var4.putStack(null);
+                else
+                    var4.onSlotChanged();
 
-				if (var5.stackSize == var3.stackSize)
-					return null;
+                if (var5.stackSize == var3.stackSize)
+                    return null;
 
-				var4.onPickupFromSlot(par1EntityPlayer, var5);
-			}
-		}
+                var4.onPickupFromSlot(par1EntityPlayer, var5);
+            }
+        }
 
-		return var3;
-	}
+        return var3;
+    }
 
 }

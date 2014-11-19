@@ -40,61 +40,61 @@ import java.util.ArrayList;
 
 public class BlockTransvectorInterface extends BlockCamo {
 
-	public BlockTransvectorInterface() {
-		super(Material.iron);
-		setHardness(3F);
-		setResistance(10F);
-	}
+    public BlockTransvectorInterface() {
+        super(Material.iron);
+        setHardness(3F);
+        setResistance(10F);
+    }
 
-	@Override
-	public TileTransvector createNewTileEntity(World var1, int var2) {
-		return new TileTransvectorInterface();
-	}
+    @Override
+    public TileTransvector createNewTileEntity(World var1, int var2) {
+        return new TileTransvectorInterface();
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.INTERFACE;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.INTERFACE;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return TileTransvectorInterface.class;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return TileTransvectorInterface.class;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_INTERFACE, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), -4, 2, 1, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class))).setParents(LibResearch.KEY_DARK_QUARTZ)
-				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"));
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_INTERFACE, new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.ORDER, 4), -4, 2, 1, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class))).setParents(LibResearch.KEY_DARK_QUARTZ)
+                .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE), new ResearchPage("1"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_INTERFACE + "1"), new ResearchPage("2"));
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
-				"BRB", "LEL", "BRB",
-				'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
-				'E', new ItemStack(Items.ender_pearl),
-				'L', new ItemStack(Items.dye, 1, 4),
-				'R', new ItemStack(Items.redstone));
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_INTERFACE, LibResearch.KEY_INTERFACE, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)), new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16),
+                "BRB", "LEL", "BRB",
+                'B', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
+                'E', new ItemStack(Items.ender_pearl),
+                'L', new ItemStack(Items.dye, 1, 4),
+                'R', new ItemStack(Items.redstone));
+    }
 }

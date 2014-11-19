@@ -7,12 +7,12 @@ import java.util.ArrayList;
  */
 public interface ITTinkererItem extends ITTinkererRegisterable {
 
-	public ArrayList<Object> getSpecialParameters();
+    public ArrayList<Object> getSpecialParameters();
 
-	public String getItemName();
+    public String getItemName();
 
-	public boolean shouldRegister();
+    public boolean shouldRegister();
 
-	public boolean shouldDisplayInTab();
+    public boolean shouldDisplayInTab();
 
 }

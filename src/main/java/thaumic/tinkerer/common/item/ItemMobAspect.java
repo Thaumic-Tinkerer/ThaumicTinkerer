@@ -27,18 +27,63 @@ public class ItemMobAspect extends ItemBase {
     //Padding room inclued
     //To prevent corruption
     public static final int aspectCount = 20;
+    public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
     public ItemMobAspect() {
         super();
         setMaxStackSize(16);
     }
 
+    public static Aspect getAspect(ItemStack item) {
+        if (item == null) {
+            return null;
+        }
+        return NumericAspectHelper.getAspect(item.getItemDamage() % aspectCount);
+    }
+
+    public static ItemStack getStackFromAspect(Aspect a) {
+        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
+        result.setItemDamage(NumericAspectHelper.getNumber(a));
+        return result;
+    }
+
+    public static ItemStack getInfusedStackFromAspect(Aspect a) {
+        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
+        result.setItemDamage(40 + NumericAspectHelper.getNumber(a));
+        return result;
+    }
+
+    public static boolean isCondensed(ItemStack item) {
+        return item.getItemDamage() >= aspectCount && item.getItemDamage() < aspectCount * 2;
+    }
+
+    public static boolean isInfused(ItemStack item) {
+        return item.getItemDamage() >= aspectCount * 2;
+    }
+
+    public static void markLastUsedTablet(ItemStack stack, TileSummon tablet) {
+        if (stack.stackTagCompound == null) {
+            stack.stackTagCompound = new NBTTagCompound();
+        }
+        stack.stackTagCompound.setInteger("LastX", tablet.xCoord);
+        stack.stackTagCompound.setInteger("LastY", tablet.yCoord);
+        stack.stackTagCompound.setInteger("LastZ", tablet.zCoord);
+    }
+
+    public static boolean lastUsedTabletMatches(ItemStack stack, TileSummon tablet) {
+        if (stack.stackTagCompound == null) {
+            return true;
+        }
+
+        return (stack.stackTagCompound.getInteger("LastX") == tablet.xCoord &&
+                stack.stackTagCompound.getInteger("LastY") == tablet.yCoord &&
+                stack.stackTagCompound.getInteger("LastZ") == tablet.zCoord);
+    }
+
     @Override
     public boolean getHasSubtypes() {
         return true;
     }
-
-    public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
     @Override
     public void registerIcons(IIconRegister par1IconRegister) {
@@ -114,54 +159,8 @@ public class ItemMobAspect extends ItemBase {
         list.add(getAspect(itemStack).getName());
     }
 
-    public static Aspect getAspect(ItemStack item) {
-        if (item == null) {
-            return null;
-        }
-        return NumericAspectHelper.getAspect(item.getItemDamage() % aspectCount);
-    }
-
-    public static ItemStack getStackFromAspect(Aspect a) {
-        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
-        result.setItemDamage(NumericAspectHelper.getNumber(a));
-        return result;
-    }
-
-    public static ItemStack getInfusedStackFromAspect(Aspect a) {
-        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
-        result.setItemDamage(40 + NumericAspectHelper.getNumber(a));
-        return result;
-    }
-
-    public static boolean isCondensed(ItemStack item) {
-        return item.getItemDamage() >= aspectCount && item.getItemDamage() < aspectCount * 2;
-    }
-
-    public static boolean isInfused(ItemStack item) {
-        return item.getItemDamage() >= aspectCount * 2;
-    }
-
     @Override
     public String getItemName() {
         return LibItemNames.MOB_ASPECT;
-    }
-
-    public static void markLastUsedTablet(ItemStack stack, TileSummon tablet) {
-        if (stack.stackTagCompound == null) {
-            stack.stackTagCompound = new NBTTagCompound();
-        }
-        stack.stackTagCompound.setInteger("LastX", tablet.xCoord);
-        stack.stackTagCompound.setInteger("LastY", tablet.yCoord);
-        stack.stackTagCompound.setInteger("LastZ", tablet.zCoord);
-    }
-
-    public static boolean lastUsedTabletMatches(ItemStack stack, TileSummon tablet) {
-        if (stack.stackTagCompound == null) {
-            return true;
-        }
-
-        return (stack.stackTagCompound.getInteger("LastX") == tablet.xCoord &&
-                stack.stackTagCompound.getInteger("LastY") == tablet.yCoord &&
-                stack.stackTagCompound.getInteger("LastZ") == tablet.zCoord);
     }
 }

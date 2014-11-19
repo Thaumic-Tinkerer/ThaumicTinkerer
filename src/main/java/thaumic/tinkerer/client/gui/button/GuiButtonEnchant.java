@@ -29,32 +29,32 @@ import java.util.List;
 
 public class GuiButtonEnchant extends GuiButton {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
-	TileEnchanter enchanter;
-	GuiEnchanting parent;
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
+    TileEnchanter enchanter;
+    GuiEnchanting parent;
 
-	public GuiButtonEnchant(GuiEnchanting parent, TileEnchanter enchanter, int par1, int par2, int par3) {
-		super(par1, par2, par3, 15, 15, "");
-		this.enchanter = enchanter;
-		this.parent = parent;
-	}
+    public GuiButtonEnchant(GuiEnchanting parent, TileEnchanter enchanter, int par1, int par2, int par3) {
+        super(par1, par2, par3, 15, 15, "");
+        this.enchanter = enchanter;
+        this.parent = parent;
+    }
 
-	@Override
-	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if (!enabled)
-			return;
+    @Override
+    public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
+        if (!enabled)
+            return;
 
-		final int x = 176;
-		final int y = enchanter.working ? 39 : 24;
+        final int x = 176;
+        final int y = enchanter.working ? 39 : 24;
 
-		ClientHelper.minecraft().renderEngine.bindTexture(gui);
-		drawTexturedModalRect(xPosition, yPosition, x, y, 15, 15);
+        ClientHelper.minecraft().renderEngine.bindTexture(gui);
+        drawTexturedModalRect(xPosition, yPosition, x, y, 15, 15);
 
-		if (par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15 && !enchanter.working) {
-			List<String> tooltip = new ArrayList();
-			tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal("ttmisc.startEnchant"));
-			parent.tooltip = tooltip;
-		}
-	}
+        if (par2 >= xPosition && par2 < xPosition + 15 && par3 >= yPosition && par3 < yPosition + 15 && !enchanter.working) {
+            List<String> tooltip = new ArrayList();
+            tooltip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal("ttmisc.startEnchant"));
+            parent.tooltip = tooltip;
+        }
+    }
 
 }

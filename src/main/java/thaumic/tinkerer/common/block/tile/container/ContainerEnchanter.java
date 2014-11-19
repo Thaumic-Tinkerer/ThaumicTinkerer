@@ -25,57 +25,57 @@ import thaumic.tinkerer.common.block.tile.container.slot.SlotWand;
 
 public class ContainerEnchanter extends ContainerPlayerInv {
 
-	TileEnchanter enchanter;
+    TileEnchanter enchanter;
 
-	public ContainerEnchanter(TileEnchanter enchanter, InventoryPlayer playerInv) {
-		super(playerInv);
-		this.enchanter = enchanter;
+    public ContainerEnchanter(TileEnchanter enchanter, InventoryPlayer playerInv) {
+        super(playerInv);
+        this.enchanter = enchanter;
 
-		addSlotToContainer(new SlotTool(enchanter, 0, 6, 6));
-		addSlotToContainer(new SlotWand(enchanter, 1, 6, 31));
+        addSlotToContainer(new SlotTool(enchanter, 0, 6, 6));
+        addSlotToContainer(new SlotWand(enchanter, 1, 6, 31));
 
-		initPlayerInv();
-	}
+        initPlayerInv();
+    }
 
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-		ItemStack var3 = null;
-		Slot var4 = (Slot) inventorySlots.get(par2);
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+        ItemStack var3 = null;
+        Slot var4 = (Slot) inventorySlots.get(par2);
 
-		if (var4 != null && var4.getHasStack()) {
-			ItemStack var5 = var4.getStack();
+        if (var4 != null && var4.getHasStack()) {
+            ItemStack var5 = var4.getStack();
 
-			if (var5 != null && var5.getItem() == Items.book)
-				return null;
+            if (var5 != null && var5.getItem() == Items.book)
+                return null;
 
-			boolean wand = ((Slot) inventorySlots.get(1)).isItemValid(var5);
+            boolean wand = ((Slot) inventorySlots.get(1)).isItemValid(var5);
 
-			//noinspection ConstantConditions
-			var3 = var5.copy();
+            //noinspection ConstantConditions
+            var3 = var5.copy();
 
-			if (par2 < 2) {
-				if (!mergeItemStack(var5, 2, 38, false))
-					return null;
-			} else if (wand ? !mergeItemStack(var5, 1, 2, false) : var5.getItem().isItemTool(var5) && !mergeItemStack(var5, 0, 1, false))
-				return null;
+            if (par2 < 2) {
+                if (!mergeItemStack(var5, 2, 38, false))
+                    return null;
+            } else if (wand ? !mergeItemStack(var5, 1, 2, false) : var5.getItem().isItemTool(var5) && !mergeItemStack(var5, 0, 1, false))
+                return null;
 
-			if (var5.stackSize == 0)
-				var4.putStack(null);
-			else
-				var4.onSlotChanged();
+            if (var5.stackSize == 0)
+                var4.putStack(null);
+            else
+                var4.onSlotChanged();
 
-			if (var5.stackSize == var3.stackSize)
-				return null;
+            if (var5.stackSize == var3.stackSize)
+                return null;
 
-			var4.onPickupFromSlot(par1EntityPlayer, var5);
-		}
+            var4.onPickupFromSlot(par1EntityPlayer, var5);
+        }
 
-		return var3;
-	}
+        return var3;
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer entityplayer) {
-		return enchanter.isUseableByPlayer(entityplayer);
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer entityplayer) {
+        return enchanter.isUseableByPlayer(entityplayer);
+    }
 
 }

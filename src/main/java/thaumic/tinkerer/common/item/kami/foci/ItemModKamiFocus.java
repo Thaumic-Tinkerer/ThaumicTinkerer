@@ -26,13 +26,11 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.api.wands.ItemFocusBasic;
-import thaumcraft.common.config.Config;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.registry.ITTinkererItem;
-import thaumic.tinkerer.common.registry.ItemBase;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 
@@ -41,127 +39,127 @@ import java.util.List;
 
 public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinkererItem {
 
-	private IIcon ornament, depth;
+    private IIcon ornament, depth;
 
-	public ItemModKamiFocus() {
-		super();
-		setMaxDamage(1);
-		setNoRepair();
-		setMaxStackSize(1);
-	}
+    public ItemModKamiFocus() {
+        super();
+        setMaxDamage(1);
+        setNoRepair();
+        setMaxStackSize(1);
+    }
 
-	protected boolean hasOrnament() {
-		return false;
-	}
+    protected boolean hasOrnament() {
+        return false;
+    }
 
-	protected boolean hasDepth() {
-		return false;
-	}
+    protected boolean hasDepth() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		super.registerIcons(par1IconRegister);
-		if (hasOrnament())
-			ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
-		if (hasDepth())
-			depth = IconHelper.forItem(par1IconRegister, this, "Depth");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        super.registerIcons(par1IconRegister);
+        this.icon = IconHelper.forItem(par1IconRegister, this);
+        if (hasOrnament())
+            ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
+        if (hasDepth())
+            depth = IconHelper.forItem(par1IconRegister, this, "Depth");
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
+    @Override
+    public boolean shouldDisplayInTab() {
         return ConfigHandler.enableKami;
-	}
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 
-	@Override
-	public boolean isItemTool(ItemStack par1ItemStack) {
-		return true;
-	}
+    @Override
+    public boolean isItemTool(ItemStack par1ItemStack) {
+        return true;
+    }
 
 
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        AspectList cost = getVisCost(stack);
+        if (cost != null) {
+            list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
+            addVisCostTooltip(cost, stack, player, list, par4);
+        }
+    }
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		AspectList cost = getVisCost(stack);
-		if (cost != null) {
-			list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
-			addVisCostTooltip(cost, stack, player, list, par4);
-		}
-	}
+    protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        for (Aspect aspect : cost.getAspectsSorted()) {
+            float amount = cost.getAmount(aspect) / 100.0F;
+            list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
+        }
+    }
 
-	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		for (Aspect aspect : cost.getAspectsSorted()) {
-			float amount = cost.getAmount(aspect) / 100.0F;
-			list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
-		}
-	}
+    @Override
+    public int getItemEnchantability() {
+        return 5;
+    }
 
-	@Override
-	public int getItemEnchantability() {
-		return 5;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack itemstack) {
+        return EnumRarity.rare;
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack itemstack) {
-		return EnumRarity.rare;
-	}
+    @Override
+    public IIcon getOrnament(ItemStack stack) {
+        return ornament;
+    }
 
-	@Override
-	public IIcon getOrnament(ItemStack stack) {
-		return ornament;
-	}
+    @Override
+    public IIcon getFocusDepthLayerIcon(ItemStack stack) {
+        return depth;
+    }
 
-	@Override
-	public IIcon getFocusDepthLayerIcon(ItemStack stack) {
-		return depth;
-	}
+    @Override
+    public WandFocusAnimation getAnimation(ItemStack stack) {
+        return WandFocusAnimation.WAVE;
+    }
 
-	@Override
-	public WandFocusAnimation getAnimation(ItemStack stack) {
-		return WandFocusAnimation.WAVE;
-	}
+    @Override
+    public boolean isVisCostPerTick(ItemStack stack) {
+        return false;
+    }
 
-	@Override
-	public boolean isVisCostPerTick(ItemStack stack) {
-		return false;
-	}
+    public boolean isUseItem(ItemStack stack) {
+        return isVisCostPerTick(stack);
+    }
 
-	public boolean isUseItem(ItemStack stack) {
-		return isVisCostPerTick(stack);
-	}
+    @Override
+    public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
+        if (isUseItem(paramItemStack))
+            paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
 
-	@Override
-	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-		if (isUseItem(paramItemStack))
-			paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
+        return paramItemStack;
+    }
 
-		return paramItemStack;
-	}
+    @Override
+    public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
+        // NO-OP
+    }
 
-	@Override
-	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
-		// NO-OP
-	}
-
-	@Override
-	public void onPlayerStoppedUsingFocus(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
-		// NO-OP
-	}
+    @Override
+    public void onPlayerStoppedUsingFocus(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
+        // NO-OP
+    }
 
     @Override
     public boolean shouldRegister() {
@@ -169,12 +167,16 @@ public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinke
     }
 
     @Override
-	public abstract String getSortingHelper(ItemStack paramItemStack);
+    public abstract String getSortingHelper(ItemStack paramItemStack);
 
-	@Override
-	public boolean onFocusBlockStartBreak(ItemStack paramItemStack, int paramInt1, int paramInt2, int paramInt3, EntityPlayer paramEntityPlayer) {
-		return false;
-	}
+    @Override
+    public boolean onFocusBlockStartBreak(ItemStack paramItemStack, int paramInt1, int paramInt2, int paramInt3, EntityPlayer paramEntityPlayer) {
+        return false;
+    }
 
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[]{FocusUpgradeType.treasure};
+    }
 
 }

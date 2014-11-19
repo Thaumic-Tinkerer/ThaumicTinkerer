@@ -34,61 +34,61 @@ import java.util.List;
 
 public class GuiAnimationTablet extends GuiContainer {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ANIMATION_TABLET);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ANIMATION_TABLET);
 
-	int x, y;
+    int x, y;
 
-	TileAnimationTablet tablet;
-	List<GuiButtonAT> buttonListAT = new ArrayList();
-	List<IRadioButton> radioButtons = new ArrayList();
+    TileAnimationTablet tablet;
+    List<GuiButtonAT> buttonListAT = new ArrayList();
+    List<IRadioButton> radioButtons = new ArrayList();
 
-	public GuiAnimationTablet(TileAnimationTablet tablet, InventoryPlayer playerInv) {
-		super(new ContainerAnimationTablet(tablet, playerInv));
-		this.tablet = tablet;
-	}
+    public GuiAnimationTablet(TileAnimationTablet tablet, InventoryPlayer playerInv) {
+        super(new ContainerAnimationTablet(tablet, playerInv));
+        this.tablet = tablet;
+    }
 
-	@Override
-	public void initGui() {
-		super.initGui();
-		x = (width - xSize) / 2;
-		y = (height - ySize) / 2;
-		buttonListAT.clear();
-		addButton(new GuiButtonAT(0, x + xSize / 2 - 7, y + 60, tablet.redstone));
-		addButton(new GuiButtonATRadio(1, x + 52, y + 15, tablet.leftClick, radioButtons));
-		addButton(new GuiButtonATRadio(2, x + 111, y + 15, !tablet.leftClick, radioButtons));
-		buttonList = buttonListAT;
-	}
+    @Override
+    public void initGui() {
+        super.initGui();
+        x = (width - xSize) / 2;
+        y = (height - ySize) / 2;
+        buttonListAT.clear();
+        addButton(new GuiButtonAT(0, x + xSize / 2 - 7, y + 60, tablet.redstone));
+        addButton(new GuiButtonATRadio(1, x + 52, y + 15, tablet.leftClick, radioButtons));
+        addButton(new GuiButtonATRadio(2, x + 111, y + 15, !tablet.leftClick, radioButtons));
+        buttonList = buttonListAT;
+    }
 
-	private void addButton(GuiButtonAT button) {
-		buttonListAT.add(button);
-		if (button instanceof IRadioButton)
-			radioButtons.add((IRadioButton) button);
-	}
+    private void addButton(GuiButtonAT button) {
+        buttonListAT.add(button);
+        if (button instanceof IRadioButton)
+            radioButtons.add((IRadioButton) button);
+    }
 
-	@Override
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if (par1GuiButton instanceof IRadioButton)
-			((IRadioButton) par1GuiButton).enableFromClick();
-		else buttonListAT.get(0).buttonEnabled = !buttonListAT.get(0).buttonEnabled;
+    @Override
+    protected void actionPerformed(GuiButton par1GuiButton) {
+        if (par1GuiButton instanceof IRadioButton)
+            ((IRadioButton) par1GuiButton).enableFromClick();
+        else buttonListAT.get(0).buttonEnabled = !buttonListAT.get(0).buttonEnabled;
 
-		tablet.leftClick = buttonListAT.get(1).buttonEnabled;
-		tablet.redstone = buttonListAT.get(0).buttonEnabled;
+        tablet.leftClick = buttonListAT.get(1).buttonEnabled;
+        tablet.redstone = buttonListAT.get(0).buttonEnabled;
 
-		ThaumicTinkerer.netHandler.sendToServer(new PacketTabletButton(tablet));
-	}
+        ThaumicTinkerer.netHandler.sendToServer(new PacketTabletButton(tablet));
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.renderEngine.bindTexture(gui);
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		String left = StatCollector.translateToLocal("ttmisc.leftClick");
-		String right = StatCollector.translateToLocal("ttmisc.rightClick");
-		String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        mc.renderEngine.bindTexture(gui);
+        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        String left = StatCollector.translateToLocal("ttmisc.leftClick");
+        String right = StatCollector.translateToLocal("ttmisc.rightClick");
+        String redstone = StatCollector.translateToLocal("ttmisc.redstoneControl");
 
-		fontRendererObj.drawString(left, x + 48 - fontRendererObj.getStringWidth(left), y + 18, 0x999999);
-		fontRendererObj.drawString(right, x + 128, y + 18, 0x999999);
-		fontRendererObj.drawString(redstone, x + xSize / 2 - fontRendererObj.getStringWidth(redstone) / 2, y + 50, 0x999999);
-		GL11.glColor3f(1F, 1F, 1F);
-	}
+        fontRendererObj.drawString(left, x + 48 - fontRendererObj.getStringWidth(left), y + 18, 0x999999);
+        fontRendererObj.drawString(right, x + 128, y + 18, 0x999999);
+        fontRendererObj.drawString(redstone, x + xSize / 2 - fontRendererObj.getStringWidth(redstone) / 2, y + 50, 0x999999);
+        GL11.glColor3f(1F, 1F, 1F);
+    }
 }

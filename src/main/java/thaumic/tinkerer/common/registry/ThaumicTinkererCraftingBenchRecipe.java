@@ -10,23 +10,23 @@ import java.util.List;
 
 public class ThaumicTinkererCraftingBenchRecipe extends ThaumicTinkererRecipe {
 
-	private final String name;
-	private final ItemStack output;
-	private final Object[] stuff;
+    private final String name;
+    private final ItemStack output;
+    private final Object[] stuff;
 
-	public ThaumicTinkererCraftingBenchRecipe(String name, ItemStack output, Object... stuff) {
+    public ThaumicTinkererCraftingBenchRecipe(String name, ItemStack output, Object... stuff) {
 
-		this.name = name;
-		this.output = output;
-		this.stuff = stuff;
-	}
+        this.name = name;
+        this.output = output;
+        this.stuff = stuff;
+    }
 
-	@Override
-	public void registerRecipe() {
+    @Override
+    public void registerRecipe() {
 
-		GameRegistry.addRecipe(output, stuff);
-		List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();
-		if (name != null && name.length() != 0)
-			ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
-	}
+        GameRegistry.addRecipe(output, stuff);
+        List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();
+        if (name != null && name.length() != 0)
+            ConfigResearch.recipes.put(name, recipeList.get(recipeList.size() - 1));
+    }
 }

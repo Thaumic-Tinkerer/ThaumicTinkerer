@@ -40,70 +40,70 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 
 public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
-	public ItemGemLegs() {
-		super(2);
+    public ItemGemLegs() {
+        super(2);
 
-	}
+    }
 
-	@Override
-	boolean ticks() {
-		return true;
-	}
+    @Override
+    boolean ticks() {
+        return true;
+    }
 
-	@Override
-	void tickPlayer(EntityPlayer player) {
-		ItemStack armor = player.getCurrentArmor(1);
-		if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
-			return;
+    @Override
+    void tickPlayer(EntityPlayer player) {
+        ItemStack armor = player.getCurrentArmor(1);
+        if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
+            return;
 
-		ItemBrightNitor.meta = 1;
-		ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class).onUpdate(null, player.worldObj, player, 0, false);
-		ItemBrightNitor.meta = 0;
+        ItemBrightNitor.meta = 1;
+        ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class).onUpdate(null, player.worldObj, player, 0, false);
+        ItemBrightNitor.meta = 0;
 
-		int x = (int) Math.floor(player.posX);
-		int y = (int) player.posY + 1;
-		int z = (int) Math.floor(player.posZ);
+        int x = (int) Math.floor(player.posX);
+        int y = (int) player.posY + 1;
+        int z = (int) Math.floor(player.posZ);
 
-		float yaw = MathHelper.wrapAngleTo180_float(player.rotationYaw + 90F) * (float) Math.PI / 180F;
-		Vector3 lookVector = new Vector3(Math.cos(yaw), Math.sin(yaw), 0).normalize();
-		Vector3 newVector = new Vector3(lookVector.x, lookVector.y, 0);
+        float yaw = MathHelper.wrapAngleTo180_float(player.rotationYaw + 90F) * (float) Math.PI / 180F;
+        Vector3 lookVector = new Vector3(Math.cos(yaw), Math.sin(yaw), 0).normalize();
+        Vector3 newVector = new Vector3(lookVector.x, lookVector.y, 0);
 
-		for (int i = 0; i < 5; i++) {
-			newVector = newVector.add(lookVector);
+        for (int i = 0; i < 5; i++) {
+            newVector = newVector.add(lookVector);
 
-			int x1 = x + (int) newVector.x;
-			int z1 = z + (int) newVector.y;
-			ItemBrightNitor.setBlock(x1, y, z1, player.worldObj);
-		}
-	}
+            int x1 = x + (int) newVector.x;
+            int z1 = z + (int) newVector.y;
+            ItemBrightNitor.setBlock(x1, y, z1, player.worldObj);
+        }
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.ICHOR_LEGS_GEM;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.ICHOR_LEGS_GEM;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 17, 9, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
-				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_LEGS_GEM), new ResearchPage("1"));
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 17, 9, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
+                .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_LEGS_GEM), new ResearchPage("1"));
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.FIRE, 50).add(Aspect.ARMOR, 32).add(Aspect.HEAL, 32).add(Aspect.ENERGY, 32).add(Aspect.LIGHT, 64).add(Aspect.GREED, 16).add(Aspect.ELDRITCH, 16), (new ItemStack(ThaumicTinkerer.registry.getItemFromClassAndName(ItemIchorclothArmor.class, LibItemNames.ICHOR_LEGS))),
-				new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemFocusPrimal), new ItemStack(ConfigItems.itemThaumonomicon), new ItemStack(Items.golden_chestplate), new ItemStack(Items.potionitem, 1, 8195), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusSmelt.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)), new ItemStack(Items.lava_bucket), new ItemStack(Items.fire_charge), new ItemStack(Items.blaze_rod));
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.FIRE, 50).add(Aspect.ARMOR, 32).add(Aspect.HEAL, 32).add(Aspect.ENERGY, 32).add(Aspect.LIGHT, 64).add(Aspect.GREED, 16).add(Aspect.ELDRITCH, 16), (new ItemStack(ThaumicTinkerer.registry.getItemFromClassAndName(ItemIchorclothArmor.class, LibItemNames.ICHOR_LEGS))),
+                new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemFocusPrimal), new ItemStack(ConfigItems.itemThaumonomicon), new ItemStack(Items.golden_chestplate), new ItemStack(Items.potionitem, 1, 8195), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusSmelt.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)), new ItemStack(Items.lava_bucket), new ItemStack(Items.fire_charge), new ItemStack(Items.blaze_rod));
 
-	}
+    }
 
-	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void onDamageTaken(LivingHurtEvent event) {
-		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if (player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
-				event.setCanceled(true);
-				player.heal(event.ammount);
-			}
-		}
-	}
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void onDamageTaken(LivingHurtEvent event) {
+        if (event.entityLiving instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.entityLiving;
+            if (player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
+                event.setCanceled(true);
+                player.heal(event.ammount);
+            }
+        }
+    }
 }

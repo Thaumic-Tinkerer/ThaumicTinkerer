@@ -20,12 +20,12 @@ import thaumcraft.common.config.Config;
 
 public class EnchantmentDesintegrate extends EnchantmentMod {
 
-	protected EnchantmentDesintegrate(int par1) {
-		super(par1, 1, EnumEnchantmentType.digger);
-	}
+    protected EnchantmentDesintegrate(int par1) {
+        super(par1, 1, EnumEnchantmentType.digger);
+    }
 
-	@Override
-	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == Config.enchRepair.effectId;
-	}
+    @Override
+    public boolean canApplyTogether(Enchantment par1Enchantment) {
+        return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == Config.enchRepair.effectId;
+    }
 }

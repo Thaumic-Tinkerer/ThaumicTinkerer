@@ -8,15 +8,15 @@ import thaumic.tinkerer.common.ThaumicTinkerer;
  */
 public class TileForcefield extends TileEntity {
 
-	public int ticks = 60;
+    public int ticks = 60;
 
-	@Override
-	public void updateEntity() {
-		if (ticks < 0) {
-			worldObj.setBlockToAir(xCoord, yCoord, zCoord);
-		}
-		ticks--;
+    @Override
+    public void updateEntity() {
+        if (ticks < 0) {
+            worldObj.setBlockToAir(xCoord, yCoord, zCoord);
+        }
+        ticks--;
 
-		ThaumicTinkerer.tcProxy.blockSparkle(worldObj, xCoord, yCoord, zCoord, 255, 1);
-	}
+        ThaumicTinkerer.tcProxy.blockSparkle(worldObj, xCoord, yCoord, zCoord, 255, 1);
+    }
 }

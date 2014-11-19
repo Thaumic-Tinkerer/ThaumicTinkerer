@@ -20,37 +20,38 @@ import java.util.List;
  */
 public class ItemInfusedGrain extends ItemBase {
 
-	@Override
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
-		par3List.add(getAspect(par1ItemStack).getName());
-	}
-
-	public static int getMetaForAspect(Aspect aspect) {
-		for (PRIMAL_ASPECT_ENUM e : PRIMAL_ASPECT_ENUM.values()) {
-			if (aspect == e.aspect) {
-				return e.ordinal();
-			}
-		}
-		return 0;
-	}
-
-	public Aspect getAspect(ItemStack stack) {
-		return PRIMAL_ASPECT_ENUM.values()[stack.getItemDamage()].aspect;
-	}
-
-	@Override
-	public boolean getHasSubtypes() {
-		return true;
-	}
-
-	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List l) {
-		for (PRIMAL_ASPECT_ENUM primal : PRIMAL_ASPECT_ENUM.values()) {
-			l.add(new ItemStack(item, 1, primal.ordinal()));
-		}
-	}
     private IIcon[] icons;
+
+    public static int getMetaForAspect(Aspect aspect) {
+        for (PRIMAL_ASPECT_ENUM e : PRIMAL_ASPECT_ENUM.values()) {
+            if (aspect == e.aspect) {
+                return e.ordinal();
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+        super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
+        par3List.add(getAspect(par1ItemStack).getName());
+    }
+
+    public Aspect getAspect(ItemStack stack) {
+        return PRIMAL_ASPECT_ENUM.values()[stack.getItemDamage()].aspect;
+    }
+
+    @Override
+    public boolean getHasSubtypes() {
+        return true;
+    }
+
+    @Override
+    public void getSubItems(Item item, CreativeTabs tab, List l) {
+        for (PRIMAL_ASPECT_ENUM primal : PRIMAL_ASPECT_ENUM.values()) {
+            l.add(new ItemStack(item, 1, primal.ordinal()));
+        }
+    }
 
     @Override
     public void registerIcons(IIconRegister par1IconRegister) {
@@ -66,31 +67,31 @@ public class ItemInfusedGrain extends ItemBase {
         return icons[par1];
     }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.INFUSED_GRAIN;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.INFUSED_GRAIN;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	private enum PRIMAL_ASPECT_ENUM {
-		AIR(Aspect.AIR),
-		FIRE(Aspect.FIRE),
-		EARTH(Aspect.EARTH),
-		WATER(Aspect.WATER);
-		Aspect aspect;
+    private enum PRIMAL_ASPECT_ENUM {
+        AIR(Aspect.AIR),
+        FIRE(Aspect.FIRE),
+        EARTH(Aspect.EARTH),
+        WATER(Aspect.WATER);
+        Aspect aspect;
 
-		PRIMAL_ASPECT_ENUM(Aspect a) {
-			this.aspect = a;
-		}
-	}
+        PRIMAL_ASPECT_ENUM(Aspect a) {
+            this.aspect = a;
+        }
+    }
 
 }

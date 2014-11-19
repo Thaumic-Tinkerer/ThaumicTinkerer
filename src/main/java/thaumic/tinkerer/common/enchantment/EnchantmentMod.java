@@ -20,21 +20,21 @@ import net.minecraft.item.ItemStack;
 
 public class EnchantmentMod extends Enchantment {
 
-	int maxLevel;
+    int maxLevel;
 
-	protected EnchantmentMod(int par1, int max, EnumEnchantmentType par3EnumEnchantmentType) {
-		super(par1, 0, par3EnumEnchantmentType);
-		maxLevel = max;
-	}
+    protected EnchantmentMod(int par1, int max, EnumEnchantmentType par3EnumEnchantmentType) {
+        super(par1, 0, par3EnumEnchantmentType);
+        maxLevel = max;
+    }
 
-	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack) {
-		return false;
-	}
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return false;
+    }
 
-	@Override
-	public int getMaxLevel() {
-		return maxLevel;
-	}
+    @Override
+    public int getMaxLevel() {
+        return maxLevel;
+    }
 
 }

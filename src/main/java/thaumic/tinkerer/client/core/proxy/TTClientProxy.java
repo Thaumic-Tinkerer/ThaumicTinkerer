@@ -48,7 +48,10 @@ import thaumic.tinkerer.client.render.item.kami.RenderPlacementMirror;
 import thaumic.tinkerer.client.render.tile.*;
 import thaumic.tinkerer.client.render.tile.kami.RenderTileWarpGate;
 import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.block.tile.*;
+import thaumic.tinkerer.common.block.tile.TileEnchanter;
+import thaumic.tinkerer.common.block.tile.TileFunnel;
+import thaumic.tinkerer.common.block.tile.TileMagnet;
+import thaumic.tinkerer.common.block.tile.TileRepairer;
 import thaumic.tinkerer.common.block.tile.kami.TileWarpGate;
 import thaumic.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
@@ -60,6 +63,10 @@ import thaumic.tinkerer.common.item.kami.foci.ItemFocusShadowbeam;
 
 public class TTClientProxy extends TTCommonProxy {
 
+    public static EntityPlayer getPlayer() {
+        return Minecraft.getMinecraft().thePlayer;
+    }
+
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
@@ -68,10 +75,6 @@ public class TTClientProxy extends TTCommonProxy {
         if (ConfigHandler.enableKami)
             //kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
             kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
-    }
-
-    public static EntityPlayer getPlayer() {
-        return Minecraft.getMinecraft().thePlayer;
     }
 
     @Override
@@ -94,7 +97,6 @@ public class TTClientProxy extends TTCommonProxy {
                 MinecraftForge.EVENT_BUS.register(new PlacementMirrorPredictionRenderer());
         }
     }
-
 
 
     private void registerTiles() {

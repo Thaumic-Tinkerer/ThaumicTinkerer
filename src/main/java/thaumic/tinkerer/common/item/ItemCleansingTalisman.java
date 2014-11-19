@@ -51,154 +51,153 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 public class ItemCleansingTalisman extends ItemBase implements IBauble {
 
-	private static final String TAG_ENABLED = "enabled";
+    private static final String TAG_ENABLED = "enabled";
 
-	private IIcon enabledIcon;
+    private IIcon enabledIcon;
 
-	public ItemCleansingTalisman() {
-		setMaxStackSize(1);
-		setMaxDamage(LibFeatures.CLEANSING_TALISMAN_USES);
-	}
+    public ItemCleansingTalisman() {
+        setMaxStackSize(1);
+        setMaxDamage(LibFeatures.CLEANSING_TALISMAN_USES);
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if (par3EntityPlayer.isSneaking()) {
-			flipEnabled(par1ItemStack);
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
-		}
+    public static boolean isEnabled(ItemStack stack) {
+        return ItemNBTHelper.getBoolean(stack, TAG_ENABLED, false);
+    }
 
-		return par1ItemStack;
-	}
+    public static void flipEnabled(ItemStack stack) {
+        ItemNBTHelper.setBoolean(stack, TAG_ENABLED, !isEnabled(stack));
+    }
 
-	public static boolean isEnabled(ItemStack stack) {
-		return ItemNBTHelper.getBoolean(stack, TAG_ENABLED, false);
-	}
+    @Override
+    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+        if (par3EntityPlayer.isSneaking()) {
+            flipEnabled(par1ItemStack);
+            par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+        }
 
-	public static void flipEnabled(ItemStack stack) {
-		ItemNBTHelper.setBoolean(stack, TAG_ENABLED, !isEnabled(stack));
-	}
+        return par1ItemStack;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
-		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
+        enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_CLEANSING_TALISMAN, new AspectList().add(Aspect.HEAL, 2).add(Aspect.ORDER, 1).add(Aspect.POISON, 1), -3, 4, 3, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_DARK_QUARTZ)
-				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_CLEANSING_TALISMAN));
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (TTResearchItem) new TTResearchItem(LibResearch.KEY_CLEANSING_TALISMAN, new AspectList().add(Aspect.HEAL, 2).add(Aspect.ORDER, 1).add(Aspect.POISON, 1), -3, 4, 3, new ItemStack(this)).setSecondary().setParents(LibResearch.KEY_DARK_QUARTZ)
+                .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_CLEANSING_TALISMAN));
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(this), 5, new AspectList().add(Aspect.HEAL, 10).add(Aspect.TOOL, 10).add(Aspect.MAN, 20).add(Aspect.LIFE, 10), new ItemStack(Items.ender_pearl),
-				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 1));
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_CLEANSING_TALISMAN, new ItemStack(this), 5, new AspectList().add(Aspect.HEAL, 10).add(Aspect.TOOL, 10).add(Aspect.MAN, 20).add(Aspect.LIFE, 10), new ItemStack(Items.ender_pearl),
+                new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemDarkQuartz.class)), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 1));
 
-	}
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if (isEnabled(par1ItemStack))
-			par3List.add(StatCollector.translateToLocal("ttmisc.active"));
-		else par3List.add(StatCollector.translateToLocal("ttmisc.inactive"));
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+        if (isEnabled(par1ItemStack))
+            par3List.add(StatCollector.translateToLocal("ttmisc.active"));
+        else par3List.add(StatCollector.translateToLocal("ttmisc.inactive"));
+    }
 
-	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
-		return isEnabled(stack) ? enabledIcon : itemIcon;
-	}
+    @Override
+    public IIcon getIcon(ItemStack stack, int pass) {
+        return isEnabled(stack) ? enabledIcon : itemIcon;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return EnumRarity.uncommon;
+    }
 
-	@Override
-	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.AMULET;
-	}
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return BaubleType.AMULET;
+    }
 
-	@Override
-	public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
-		World par2World = player.worldObj;
-		if (isEnabled(par1ItemStack) && !par2World.isRemote) {
-			if (player.ticksExisted % 20 == 0) {
-				if (player instanceof EntityPlayer) {
-					boolean removed = false;
+    @Override
+    public void onWornTick(ItemStack par1ItemStack, EntityLivingBase player) {
+        World par2World = player.worldObj;
+        if (isEnabled(par1ItemStack) && !par2World.isRemote) {
+            if (player.ticksExisted % 20 == 0) {
+                if (player instanceof EntityPlayer) {
+                    boolean removed = false;
                     int damage = 1;
 
-					Collection<PotionEffect> potions = player.getActivePotionEffects();
+                    Collection<PotionEffect> potions = player.getActivePotionEffects();
 
-					if (player.isBurning()) {
-						player.extinguish();
-						removed = true;
-					} else for (PotionEffect potion : potions) {
-						int id = potion.getPotionID();
-						boolean badEffect;
-						badEffect = ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], new String[]{ "isBadEffect", "field_76418_K" });
+                    if (player.isBurning()) {
+                        player.extinguish();
+                        removed = true;
+                    } else for (PotionEffect potion : potions) {
+                        int id = potion.getPotionID();
+                        boolean badEffect;
+                        badEffect = ReflectionHelper.getPrivateValue(Potion.class, Potion.potionTypes[id], new String[]{"isBadEffect", "field_76418_K"});
                         if (Potion.potionTypes[id] instanceof PotionWarpWard) {
                             badEffect = false;
                         }
                         if (badEffect) {
-							player.removePotionEffect(id);
-							removed = true;
+                            player.removePotionEffect(id);
+                            removed = true;
                             int[] warpPotionIDs = new int[]{Config.potionBlurredID, Config.potionDeathGazeID, Config.potionInfVisExhaustID, Config.potionSunScornedID, Config.potionUnHungerID};
                             if (ArrayUtils.contains(warpPotionIDs, potion.getPotionID())) {
                                 damage = 10;
                             }
                             break;
-						}
-					}
+                        }
+                    }
 
-					if (removed) {
+                    if (removed) {
 
 
                         par1ItemStack.damageItem(damage, player);
                         par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
-					}
-				}
-			}
-		}
-	}
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+    @Override
+    public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 
-	}
+    }
 
-	@Override
-	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+    @Override
+    public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 
-	}
+    }
 
-	@Override
-	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
+    @Override
+    public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
 
-	@Override
-	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
+    @Override
+    public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+        return true;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.CLEANSING_TALISMAN;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.CLEANSING_TALISMAN;
+    }
 }

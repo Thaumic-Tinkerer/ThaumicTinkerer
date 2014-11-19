@@ -19,9 +19,9 @@ import thaumic.tinkerer.client.lib.LibResources;
 
 public final class LocalizationHandler {
 
-	public static void loadLocalizations() {
-		for (String locale : LibResources.LANGS)
-			LanguageRegistry.instance().loadLocalization(LibResources.PREFIX_LANG + locale + ".lang", locale, false);
-	}
+    public static void loadLocalizations() {
+        for (String locale : LibResources.LANGS)
+            LanguageRegistry.instance().loadLocalization(LibResources.PREFIX_LANG + locale + ".lang", locale, false);
+    }
 
 }

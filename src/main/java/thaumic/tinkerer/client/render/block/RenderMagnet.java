@@ -26,29 +26,29 @@ import thaumic.tinkerer.common.block.tile.TileMagnet;
 
 public class RenderMagnet implements ISimpleBlockRenderingHandler {
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		RenderTileMagnet.mob = metadata == 1;
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+        RenderTileMagnet.mob = metadata == 1;
 
-		GL11.glPushMatrix();
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileMagnet(), 0.0D, 0.0D, 0.0D, 0.0F);
-		GL11.glPopMatrix();
-	}
+        GL11.glPushMatrix();
+        GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+        TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileMagnet(), 0.0D, 0.0D, 0.0D, 0.0F);
+        GL11.glPopMatrix();
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		return false;
-	}
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+        return false;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelId) {
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelId) {
+        return true;
+    }
 
-	@Override
-	public int getRenderId() {
-		return LibRenderIDs.idMagnet;
-	}
+    @Override
+    public int getRenderId() {
+        return LibRenderIDs.idMagnet;
+    }
 
 }

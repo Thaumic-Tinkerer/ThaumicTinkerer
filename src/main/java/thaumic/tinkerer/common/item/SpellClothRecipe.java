@@ -23,60 +23,60 @@ import net.minecraft.world.World;
 
 public class SpellClothRecipe implements IRecipe {
 
-	Item item;
+    Item item;
 
-	public SpellClothRecipe(Item item) {
-		this.item = item;
-	}
+    public SpellClothRecipe(Item item) {
+        this.item = item;
+    }
 
-	@Override
-	public boolean matches(InventoryCrafting var1, World var2) {
-		boolean foundCloth = false;
-		boolean foundEnchanted = false;
-		for (int i = 0; i < var1.getSizeInventory(); i++) {
-			ItemStack stack = var1.getStackInSlot(i);
-			if (stack != null) {
-				if (stack.isItemEnchanted() && !(stack.getItem() instanceof INoRemoveEnchant) && !foundEnchanted)
-					foundEnchanted = true;
+    @Override
+    public boolean matches(InventoryCrafting var1, World var2) {
+        boolean foundCloth = false;
+        boolean foundEnchanted = false;
+        for (int i = 0; i < var1.getSizeInventory(); i++) {
+            ItemStack stack = var1.getStackInSlot(i);
+            if (stack != null) {
+                if (stack.isItemEnchanted() && !(stack.getItem() instanceof INoRemoveEnchant) && !foundEnchanted)
+                    foundEnchanted = true;
 
-				else if (stack.getItem() == item && !foundCloth)
-					foundCloth = true;
+                else if (stack.getItem() == item && !foundCloth)
+                    foundCloth = true;
 
-				else return false; // Found an invalid item, breaking the recipe
-			}
-		}
+                else return false; // Found an invalid item, breaking the recipe
+            }
+        }
 
-		return foundCloth && foundEnchanted;
-	}
+        return foundCloth && foundEnchanted;
+    }
 
-	@Override
-	public ItemStack getCraftingResult(InventoryCrafting var1) {
-		ItemStack stackToDisenchant = null;
-		for (int i = 0; i < var1.getSizeInventory(); i++) {
-			ItemStack stack = var1.getStackInSlot(i);
-			if (stack != null && stack.isItemEnchanted()) {
-				stackToDisenchant = stack.copy();
-				break;
-			}
-		}
+    @Override
+    public ItemStack getCraftingResult(InventoryCrafting var1) {
+        ItemStack stackToDisenchant = null;
+        for (int i = 0; i < var1.getSizeInventory(); i++) {
+            ItemStack stack = var1.getStackInSlot(i);
+            if (stack != null && stack.isItemEnchanted()) {
+                stackToDisenchant = stack.copy();
+                break;
+            }
+        }
 
-		if (stackToDisenchant == null)
-			return null;
+        if (stackToDisenchant == null)
+            return null;
 
-		NBTTagCompound cmp = (NBTTagCompound) stackToDisenchant.getTagCompound().copy();
-		cmp.removeTag("ench"); // Remove enchantments
-		stackToDisenchant.setTagCompound(cmp);
+        NBTTagCompound cmp = (NBTTagCompound) stackToDisenchant.getTagCompound().copy();
+        cmp.removeTag("ench"); // Remove enchantments
+        stackToDisenchant.setTagCompound(cmp);
 
-		return stackToDisenchant;
-	}
+        return stackToDisenchant;
+    }
 
-	@Override
-	public int getRecipeSize() {
-		return 10;
-	}
+    @Override
+    public int getRecipeSize() {
+        return 10;
+    }
 
-	@Override
-	public ItemStack getRecipeOutput() {
-		return null;
-	}
+    @Override
+    public ItemStack getRecipeOutput() {
+        return null;
+    }
 }

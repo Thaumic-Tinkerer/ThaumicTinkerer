@@ -17,6 +17,11 @@ public class PacketPlacerButton extends PacketTile<TileRPlacer> implements IMess
         super();
     }
 
+    public PacketPlacerButton(TileRPlacer tile) {
+        super(tile);
+        blocks = tile.blocks;
+    }
+
     @Override
     public void toBytes(ByteBuf byteBuf) {
         super.toBytes(byteBuf);
@@ -26,19 +31,15 @@ public class PacketPlacerButton extends PacketTile<TileRPlacer> implements IMess
     @Override
     public void fromBytes(ByteBuf byteBuf) {
         super.fromBytes(byteBuf);
-        blocks=byteBuf.readInt();
+        blocks = byteBuf.readInt();
     }
 
-    public PacketPlacerButton(TileRPlacer tile) {
-        super(tile);
-        blocks=tile.blocks;
-    }
     @Override
     public IMessage onMessage(PacketPlacerButton message, MessageContext ctx) {
         super.onMessage(message, ctx);
         if (!ctx.side.isServer())
             throw new IllegalStateException("received PacketPlacerbutton " + message + "on client side!");
-        message.tile.blocks= message.blocks;
+        message.tile.blocks = message.blocks;
         return null;
     }
 }

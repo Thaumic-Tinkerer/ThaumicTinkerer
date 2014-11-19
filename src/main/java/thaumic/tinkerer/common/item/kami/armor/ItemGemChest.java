@@ -46,85 +46,85 @@ import java.util.List;
 
 public class ItemGemChest extends ItemIchorclothArmorAdv {
 
-	public static List<String> playersWithFlight = new ArrayList();
+    public static List<String> playersWithFlight = new ArrayList();
 
-	public ItemGemChest() {
-		super(1);
-	}
+    public ItemGemChest() {
+        super(1);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
-		return new ModelWings();
-	}
+    public static String playerStr(EntityPlayer player) {
+        return player.getGameProfile().getName() + ":" + player.worldObj.isRemote;
+    }
 
-	@Override
-	boolean ticks() {
-		return true;
-	}
+    private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
+        ItemStack armor = player.getCurrentArmor(2);
+        return armor != null && armor.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemGemChest.class) && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage() == 0 && ConfigHandler.enableFlight;
+    }
 
-	@Override
-	void tickPlayer(EntityPlayer player) {
-		ItemStack armor = player.getCurrentArmor(2);
-		if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
-			return;
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
+        return new ModelWings();
+    }
 
-		ItemFocusDeflect.protectFromProjectiles(player);
-	}
+    @Override
+    boolean ticks() {
+        return true;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.ICHOR_CHEST_GEM;
-	}
+    @Override
+    void tickPlayer(EntityPlayer player) {
+        ItemStack armor = player.getCurrentArmor(2);
+        if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
+            return;
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 17, 7, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
-				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_CHEST_GEM));
+        ItemFocusDeflect.protectFromProjectiles(player);
+    }
 
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.ICHOR_CHEST_GEM;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.AIR, 50).add(Aspect.ARMOR, 32).add(Aspect.FLIGHT, 32).add(Aspect.ORDER, 32).add(Aspect.LIGHT, 64).add(Aspect.ELDRITCH, 16).add(Aspect.SENSES, 16), new ItemStack(ThaumicTinkerer.registry.getItemFromClassAndName(ItemIchorclothArmor.class, LibItemNames.ICHOR_CHEST)),
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new AspectList().add(Aspect.AIR, 2).add(Aspect.MOTION, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1), 17, 7, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
+                .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_CHEST_GEM));
+
+    }
+
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_ICHORCLOTH_CHEST_GEM, new ItemStack(this), 13, new AspectList().add(Aspect.AIR, 50).add(Aspect.ARMOR, 32).add(Aspect.FLIGHT, 32).add(Aspect.ORDER, 32).add(Aspect.LIGHT, 64).add(Aspect.ELDRITCH, 16).add(Aspect.SENSES, 16), new ItemStack(ThaumicTinkerer.registry.getItemFromClassAndName(ItemIchorclothArmor.class, LibItemNames.ICHOR_CHEST)),
                 new ItemStack(Items.diamond, 1), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ConfigItems.itemFocusPrimal), new ItemStack(ConfigItems.itemThaumonomicon), new ItemStack(Items.golden_chestplate), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusFlight.class)), new ItemStack(ConfigItems.itemHoverHarness), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusDeflect.class)), new ItemStack(Items.feather), new ItemStack(Items.ghast_tear), new ItemStack(Items.arrow));
 
-	}
+    }
 
-	@SubscribeEvent
-	public void updatePlayerFlyStatus(LivingUpdateEvent event) {
-		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
+    @SubscribeEvent
+    public void updatePlayerFlyStatus(LivingUpdateEvent event) {
+        if (event.entityLiving instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.entityLiving;
 
-			ItemStack armor = player.getCurrentArmor(3 - armorType);
-			if (armor != null && armor.getItem() == this)
-				tickPlayer(player);
+            ItemStack armor = player.getCurrentArmor(3 - armorType);
+            if (armor != null && armor.getItem() == this)
+                tickPlayer(player);
 
-			if (playersWithFlight.contains(playerStr(player))) {
-				if (shouldPlayerHaveFlight(player))
-					player.capabilities.allowFlying = true;
-				else {
-					if (!player.capabilities.isCreativeMode) {
-						player.capabilities.allowFlying = false;
-						player.capabilities.isFlying = false;
-						player.capabilities.disableDamage = false;
-					}
-					playersWithFlight.remove(playerStr(player));
-				}
-			} else if (shouldPlayerHaveFlight(player)) {
-				playersWithFlight.add(playerStr(player));
-				player.capabilities.allowFlying = true;
-			}
-		}
-	}
-
-	public static String playerStr(EntityPlayer player) {
-		return player.getGameProfile().getName() + ":" + player.worldObj.isRemote;
-	}
-
-	private static boolean shouldPlayerHaveFlight(EntityPlayer player) {
-		ItemStack armor = player.getCurrentArmor(2);
-		return armor != null && armor.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemGemChest.class) && ThaumicTinkerer.proxy.armorStatus(player) && armor.getItemDamage() == 0 && ConfigHandler.enableFlight;
-	}
+            if (playersWithFlight.contains(playerStr(player))) {
+                if (shouldPlayerHaveFlight(player))
+                    player.capabilities.allowFlying = true;
+                else {
+                    if (!player.capabilities.isCreativeMode) {
+                        player.capabilities.allowFlying = false;
+                        player.capabilities.isFlying = false;
+                        player.capabilities.disableDamage = false;
+                    }
+                    playersWithFlight.remove(playerStr(player));
+                }
+            } else if (shouldPlayerHaveFlight(player)) {
+                playersWithFlight.add(playerStr(player));
+                player.capabilities.allowFlying = true;
+            }
+        }
+    }
 
 }

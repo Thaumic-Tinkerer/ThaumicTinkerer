@@ -32,71 +32,71 @@ public class TTResearchItem extends ResearchItem implements IRegisterableResearc
     public int warp = 0;
 
 
-	public TTResearchItem(String par1) {
-		super(par1, LibResearch.CATEGORY_THAUMICTINKERER);
-	}
+    public TTResearchItem(String par1) {
+        super(par1, LibResearch.CATEGORY_THAUMICTINKERER);
+    }
 
-	public TTResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ItemStack icon, ResearchPage... pages) {
-		super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
-		setPages(pages);
-	}
+    public TTResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ItemStack icon, ResearchPage... pages) {
+        super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
+        setPages(pages);
+    }
 
-	public TTResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ResourceLocation icon, ResearchPage... pages) {
-		super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
-		setPages(pages);
-	}
+    public TTResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ResourceLocation icon, ResearchPage... pages) {
+        super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
+        setPages(pages);
+    }
 
     public TTResearchItem setWarp(int warp) {
         this.warp = warp;
         return this;
     }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getName() {
-		return StatCollector.translateToLocal("ttresearch.name." + key);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public String getName() {
+        return StatCollector.translateToLocal("ttresearch.name." + key);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getText() {
-		return (ConfigHandler.useTootlipIndicators ? StatCollector.translateToLocal(getPrefix()) : "") + StatCollector.translateToLocal("ttresearch.lore." + key);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public String getText() {
+        return (ConfigHandler.useTootlipIndicators ? StatCollector.translateToLocal(getPrefix()) : "") + StatCollector.translateToLocal("ttresearch.lore." + key);
+    }
 
-	String getPrefix() {
-		return "ttresearch.prefix";
-	}
+    String getPrefix() {
+        return "ttresearch.prefix";
+    }
 
-	@Override
-	public ResearchItem setPages(ResearchPage... par) {
-		for (ResearchPage page : par) {
-			if (page.type == PageType.TEXT)
-				page.text = "ttresearch.page." + key + "." + page.text;
+    @Override
+    public ResearchItem setPages(ResearchPage... par) {
+        for (ResearchPage page : par) {
+            if (page.type == PageType.TEXT)
+                page.text = "ttresearch.page." + key + "." + page.text;
 
-			if (checkInfusion() && page.type == PageType.INFUSION_CRAFTING) {
-				if (parentsHidden == null || parentsHidden.length == 0)
-					parentsHidden = new String[]{ "INFUSION" };
-				else {
-					String[] newParents = new String[parentsHidden.length + 1];
-					newParents[0] = "INFUSION";
-					//noinspection ManualArrayCopy
-					for (int i = 0; i < parentsHidden.length; i++)
-						newParents[i + 1] = parentsHidden[i];
-					parentsHidden = newParents;
-				}
-			}
-		}
+            if (checkInfusion() && page.type == PageType.INFUSION_CRAFTING) {
+                if (parentsHidden == null || parentsHidden.length == 0)
+                    parentsHidden = new String[]{"INFUSION"};
+                else {
+                    String[] newParents = new String[parentsHidden.length + 1];
+                    newParents[0] = "INFUSION";
+                    //noinspection ManualArrayCopy
+                    for (int i = 0; i < parentsHidden.length; i++)
+                        newParents[i + 1] = parentsHidden[i];
+                    parentsHidden = newParents;
+                }
+            }
+        }
 
-		return super.setPages(par);
-	}
+        return super.setPages(par);
+    }
 
-	boolean checkInfusion() {
-		return true;
-	}
+    boolean checkInfusion() {
+        return true;
+    }
 
-	@Override
-	public void registerResearch() {
-		registerResearchItem();
+    @Override
+    public void registerResearch() {
+        registerResearchItem();
         if (warp != 0) {
             ThaumcraftApi.addWarpToResearch(key, warp);
         }

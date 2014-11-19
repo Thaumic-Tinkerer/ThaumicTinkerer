@@ -21,17 +21,17 @@ import thaumic.tinkerer.client.model.kami.ModelSpinningCubes;
 
 public class RenderTileWarpGate extends TileEntitySpecialRenderer {
 
-	ModelSpinningCubes cubes = new ModelSpinningCubes();
+    ModelSpinningCubes cubes = new ModelSpinningCubes();
 
-	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
-		GL11.glPushMatrix();
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		GL11.glTranslated(x + 0.5, y + 2.5, z + 0.5);
-		GL11.glRotatef(180F, 1F, 0F, 1F);
-		int repeat = 5;
-		cubes.renderSpinningCubes(12, repeat, repeat);
-		GL11.glPopMatrix();
-	}
+    @Override
+    public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
+        GL11.glPushMatrix();
+        GL11.glColor4f(1F, 1F, 1F, 1F);
+        GL11.glTranslated(x + 0.5, y + 2.5, z + 0.5);
+        GL11.glRotatef(180F, 1F, 0F, 1F);
+        int repeat = 5;
+        cubes.renderSpinningCubes(12, repeat, repeat);
+        GL11.glPopMatrix();
+    }
 
 }

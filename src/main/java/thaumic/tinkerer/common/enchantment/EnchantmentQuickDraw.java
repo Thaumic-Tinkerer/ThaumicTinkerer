@@ -19,13 +19,13 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 
 public class EnchantmentQuickDraw extends EnchantmentMod {
 
-	protected EnchantmentQuickDraw(int par1) {
-		super(par1, 2, EnumEnchantmentType.bow);
-	}
+    protected EnchantmentQuickDraw(int par1) {
+        super(par1, 2, EnumEnchantmentType.bow);
+    }
 
-	@Override
-	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId != Enchantment.punch.effectId;
-	}
+    @Override
+    public boolean canApplyTogether(Enchantment par1Enchantment) {
+        return par1Enchantment.effectId != Enchantment.punch.effectId;
+    }
 
 }

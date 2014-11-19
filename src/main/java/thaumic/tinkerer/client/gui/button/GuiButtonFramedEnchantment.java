@@ -23,27 +23,27 @@ import thaumic.tinkerer.client.lib.LibResources;
 
 public class GuiButtonFramedEnchantment extends GuiButtonEnchantment {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
 
-	public GuiButtonFramedEnchantment(GuiEnchanting parent, int par1, int par2, int par3) {
-		super(parent, par1, par2, par3);
-	}
+    public GuiButtonFramedEnchantment(GuiEnchanting parent, int par1, int par2, int par3) {
+        super(parent, par1, par2, par3);
+    }
 
-	@Override
-	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if (dontRender() || parent.enchanter.enchantments.isEmpty() || parent.enchanter.levels.isEmpty())
-			return;
+    @Override
+    public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
+        if (dontRender() || parent.enchanter.enchantments.isEmpty() || parent.enchanter.levels.isEmpty())
+            return;
 
-		ClientHelper.minecraft().renderEngine.bindTexture(gui);
-		drawTexturedModalRect(xPosition - 4, yPosition - 4, 176, 0, 24, 24);
+        ClientHelper.minecraft().renderEngine.bindTexture(gui);
+        drawTexturedModalRect(xPosition - 4, yPosition - 4, 176, 0, 24, 24);
 
-		int index = parent.enchanter.enchantments.indexOf(enchant.effectId);
-		if (index != -1) {
-			int level = parent.enchanter.levels.get(index);
-			par1Minecraft.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal("enchantment.level." + level), xPosition + 26, yPosition + 8, 0xFFFFFF);
-		}
+        int index = parent.enchanter.enchantments.indexOf(enchant.effectId);
+        if (index != -1) {
+            int level = parent.enchanter.levels.get(index);
+            par1Minecraft.fontRenderer.drawStringWithShadow(StatCollector.translateToLocal("enchantment.level." + level), xPosition + 26, yPosition + 8, 0xFFFFFF);
+        }
 
-		super.drawButton(par1Minecraft, par2, par3);
-	}
+        super.drawButton(par1Minecraft, par2, par3);
+    }
 
 }

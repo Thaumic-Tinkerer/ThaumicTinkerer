@@ -1,7 +1,6 @@
 package thaumic.tinkerer.client.render.item;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -11,10 +10,7 @@ import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
-import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
-
-import javax.swing.*;
 
 /**
  * Created by pixlepix on 8/6/14.

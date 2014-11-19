@@ -22,26 +22,26 @@ import thaumic.tinkerer.common.block.tile.TileEnchanter;
 
 public class SlotTool extends Slot {
 
-	TileEnchanter enchanter;
+    TileEnchanter enchanter;
 
-	public SlotTool(TileEnchanter enchanter, int par2, int par3, int par4) {
-		super(enchanter, par2, par3, par4);
-		this.enchanter = enchanter;
-	}
+    public SlotTool(TileEnchanter enchanter, int par2, int par3, int par4) {
+        super(enchanter, par2, par3, par4);
+        this.enchanter = enchanter;
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack par1ItemStack) {
-		return !enchanter.working && par1ItemStack.getItem() != Items.book && par1ItemStack.getItem().isItemTool(par1ItemStack);
-	}
+    @Override
+    public boolean isItemValid(ItemStack par1ItemStack) {
+        return !enchanter.working && par1ItemStack.getItem() != Items.book && par1ItemStack.getItem().isItemTool(par1ItemStack);
+    }
 
-	@Override
-	public int getSlotStackLimit() {
-		return 1;
-	}
+    @Override
+    public int getSlotStackLimit() {
+        return 1;
+    }
 
-	@Override
-	public boolean canTakeStack(EntityPlayer par1EntityPlayer) {
-		return !enchanter.working;
-	}
+    @Override
+    public boolean canTakeStack(EntityPlayer par1EntityPlayer) {
+        return !enchanter.working;
+    }
 
 }

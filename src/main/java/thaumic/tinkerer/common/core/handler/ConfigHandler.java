@@ -27,15 +27,11 @@ import java.io.File;
 
 public final class ConfigHandler {
 
-    private static Configuration config;
-
     private static final String CATEGORY_POTIONS = "potions";
     private static final String CATEGORY_ENCHANTMENTS = "enchantments";
-
     private static final String CATEGORY_KAMI_ITEMS = "item.kami";
     private static final String CATEGORY_KAMI_BLOCKS = "block.kami";
     private static final String CATEGORY_KAMI_GENERAL = "general.kami";
-
     public static boolean enableKami = false;
     public static boolean enableFlight = true;
     public static boolean useTootlipIndicators = true;
@@ -44,17 +40,14 @@ public final class ConfigHandler {
     public static boolean enableDebugCommands = false;
     public static boolean useOreDictMetal = true;
     public static boolean repairTConTools = false;
-
     public static boolean showPlacementMirrorBlocks = true;
     public static int netherDimensionID = -1;
     public static int endDimensionID = 1;
     public static int bedrockDimensionID = 19;
-
     public static boolean enableCake = true;
-
     public static boolean enableFire = true;
-
     public static boolean cropsAllowBonemeal = true;
+    private static Configuration config;
 
     public static void loadConfig(File configFile) {
         config = new Configuration(configFile);

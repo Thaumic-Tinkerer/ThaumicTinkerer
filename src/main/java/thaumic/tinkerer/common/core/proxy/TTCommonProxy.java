@@ -70,6 +70,9 @@ public class TTCommonProxy {
 
 
     public static EnumRarity kamiRarity;
+    public WandCap capIchor;
+    public WandRod rodIchor;
+    public Item.ToolMaterial toolMaterialIchor;
 
     public void preInit(FMLPreInitializationEvent event) {
         toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
@@ -81,17 +84,13 @@ public class TTCommonProxy {
         ThaumicTinkerer.registry.preInit();
         capIchor = new CapIchor();
         rodIchor = new RodIchorcloth();
-        if(Loader.isModLoaded("ComputerCraft")) {
+        if (Loader.isModLoaded("ComputerCraft")) {
             initCCPeripherals();
         }
         registerVersionChecker();
 
         kamiRarity = EnumHelper.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
     }
-
-    public WandCap capIchor;
-    public WandRod rodIchor;
-    public Item.ToolMaterial toolMaterialIchor;
 
     public void init(FMLInitializationEvent event) {
         ModEnchantments.initEnchantments();
@@ -156,15 +155,15 @@ public class TTCommonProxy {
     protected void initCCPeripherals() {
         PeripheralHandler handler = new PeripheralHandler();
 
-		Class[] peripheralClasses = new Class[] {
-				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
-				TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
-				TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
-				TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class,IEssentiaTransport.class
-		};
+        Class[] peripheralClasses = new Class[]{
+                TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
+                TileInfusionMatrix.class, TileJarFillable.class, TileJarNode.class, TileNode.class,
+                TileRepairer.class, TileTubeFilter.class, TileTransvectorInterface.class, TileWandPedestal.class,
+                TileDeconstructionTable.class, TileJarBrain.class, TileSensor.class, TileArcaneBore.class, IEssentiaTransport.class
+        };
         handler.registerPeripheralProvider();
-			
-		//ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
+
+        //ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
     }
 
     @Optional.Method(modid = "OpenComputers")

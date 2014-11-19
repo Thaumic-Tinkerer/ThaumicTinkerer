@@ -31,12 +31,9 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
-import thaumcraft.common.lib.research.ResearchManager;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileAspectAnalyzer;
-import thaumic.tinkerer.common.block.tile.kami.TileBedrockPortal;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibGuiIDs;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -51,126 +48,126 @@ import java.util.Random;
 
 public class BlockAspectAnalyzer extends BlockModContainer {
 
-	IIcon[] icons = new IIcon[5];
-	Random random;
+    IIcon[] icons = new IIcon[5];
+    Random random;
 
-	public BlockAspectAnalyzer() {
-		super(Material.wood);
-		setHardness(1.7F);
-		setResistance(1F);
-		setStepSound(Block.soundTypeWood);
+    public BlockAspectAnalyzer() {
+        super(Material.wood);
+        setHardness(1.7F);
+        setResistance(1F);
+        setStepSound(Block.soundTypeWood);
 
-		random = new Random();
-	}
+        random = new Random();
+    }
 
-	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if (!par1World.isRemote) {
-			TileAspectAnalyzer tile = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
-			if (tile != null) {
+    @Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+        if (!par1World.isRemote) {
+            TileAspectAnalyzer tile = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
+            if (tile != null) {
                 par5EntityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_ASPECT_ANALYZER, par1World, par2, par3, par4);
             }
-		}
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
-		TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
+    @Override
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+        TileAspectAnalyzer analyzer = (TileAspectAnalyzer) par1World.getTileEntity(par2, par3, par4);
 
-		if (analyzer != null) {
-			for (int j1 = 0; j1 < analyzer.getSizeInventory(); ++j1) {
-				ItemStack itemstack = analyzer.getStackInSlot(j1);
+        if (analyzer != null) {
+            for (int j1 = 0; j1 < analyzer.getSizeInventory(); ++j1) {
+                ItemStack itemstack = analyzer.getStackInSlot(j1);
 
-				if (itemstack != null) {
-					float f = random.nextFloat() * 0.8F + 0.1F;
-					float f1 = random.nextFloat() * 0.8F + 0.1F;
-					EntityItem entityitem;
+                if (itemstack != null) {
+                    float f = random.nextFloat() * 0.8F + 0.1F;
+                    float f1 = random.nextFloat() * 0.8F + 0.1F;
+                    EntityItem entityitem;
 
-					for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
-						int k1 = random.nextInt(21) + 10;
+                    for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
+                        int k1 = random.nextInt(21) + 10;
 
-						if (k1 > itemstack.stackSize)
-							k1 = itemstack.stackSize;
+                        if (k1 > itemstack.stackSize)
+                            k1 = itemstack.stackSize;
 
-						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-						float f3 = 0.05F;
-						entityitem.motionX = (float) random.nextGaussian() * f3;
-						entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float) random.nextGaussian() * f3;
+                        itemstack.stackSize -= k1;
+                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
+                        float f3 = 0.05F;
+                        entityitem.motionX = (float) random.nextGaussian() * f3;
+                        entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+                        entityitem.motionZ = (float) random.nextGaussian() * f3;
 
-						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
-					}
-				}
-			}
+                        if (itemstack.hasTagCompound())
+                            entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
+                    }
+                }
+            }
 
-			par1World.func_147453_f(par2, par3, par4, par5);
-		}
+            par1World.func_147453_f(par2, par3, par4, par5);
+        }
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
-	}
+        super.breakBlock(par1World, par2, par3, par4, par5, par6);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		for (int i = 0; i < 5; i++)
-			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        for (int i = 0; i < 5; i++)
+            icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
+    }
 
-	@Override
-	public IIcon getIcon(int par1, int par2) {
-		return icons[par1 == 0 || par1 == 1 ? 0 : par1 - 1];
-	}
+    @Override
+    public IIcon getIcon(int par1, int par2) {
+        return icons[par1 == 0 || par1 == 1 ? 0 : par1 - 1];
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileAspectAnalyzer();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return new TileAspectAnalyzer();
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.ASPECT_ANALYZER;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.ASPECT_ANALYZER;
+    }
 
-	@Override
-	public boolean shouldRegister() {
+    @Override
+    public boolean shouldRegister() {
         return Loader.isModLoaded("ComputerCraft");
     }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return TileAspectAnalyzer.class;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return TileAspectAnalyzer.class;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 0, 1, 2, new ItemStack(this)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound()
-				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ASPECT_ANALYZER));
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_ASPECT_ANALYZER, new AspectList().add(Aspect.MECHANISM, 2).add(Aspect.SENSES, 1).add(Aspect.MIND, 1), 0, 1, 2, new ItemStack(this)).setParents(LibResearch.KEY_PERIPHERALS).setParentsHidden("GOGGLES", "THAUMIUM").setConcealed().setRound()
+                .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_ASPECT_ANALYZER));
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.KEY_ASPECT_ANALYZER, new ItemStack(this), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
-				"TWT", "WMW", "TWT",
-				'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
-				'M', new ItemStack(ConfigItems.itemThaumometer),
-				'T', new ItemStack(ConfigItems.itemResource, 1, 2));
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ASPECT_ANALYZER, LibResearch.KEY_ASPECT_ANALYZER, new ItemStack(this), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
+                "TWT", "WMW", "TWT",
+                'W', new ItemStack(ConfigBlocks.blockWoodenDevice, 1, 6),
+                'M', new ItemStack(ConfigItems.itemThaumometer),
+                'T', new ItemStack(ConfigItems.itemResource, 1, 2));
+    }
 }

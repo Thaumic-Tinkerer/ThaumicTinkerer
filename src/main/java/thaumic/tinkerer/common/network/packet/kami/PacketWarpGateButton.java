@@ -23,36 +23,36 @@ import thaumic.tinkerer.common.network.packet.PacketTile;
 
 public class PacketWarpGateButton extends PacketTile<TileWarpGate> implements IMessageHandler<PacketWarpGateButton, IMessage> {
 
-	private static final long serialVersionUID = 1497188581985763661L;
-	boolean locked;
+    private static final long serialVersionUID = 1497188581985763661L;
+    boolean locked;
 
-	public PacketWarpGateButton() {
-		super();
-	}
+    public PacketWarpGateButton() {
+        super();
+    }
 
-	public PacketWarpGateButton(TileWarpGate tile) {
-		super(tile);
-		locked = tile.locked;
-	}
+    public PacketWarpGateButton(TileWarpGate tile) {
+        super(tile);
+        locked = tile.locked;
+    }
 
-	@Override
-	public void toBytes(ByteBuf byteBuf) {
-		super.toBytes(byteBuf);
-		byteBuf.writeBoolean(locked);
-	}
+    @Override
+    public void toBytes(ByteBuf byteBuf) {
+        super.toBytes(byteBuf);
+        byteBuf.writeBoolean(locked);
+    }
 
-	@Override
-	public void fromBytes(ByteBuf byteBuf) {
-		super.fromBytes(byteBuf);
-		locked = byteBuf.readBoolean();
-	}
+    @Override
+    public void fromBytes(ByteBuf byteBuf) {
+        super.fromBytes(byteBuf);
+        locked = byteBuf.readBoolean();
+    }
 
-	@Override
-	public IMessage onMessage(PacketWarpGateButton message, MessageContext ctx) {
-		super.onMessage(message, ctx);
-		if (!ctx.side.isServer())
-			throw new IllegalStateException("received PacketWarpgateButton " + message + "on client side!");
-		message.tile.locked = message.locked;
-		return null;
-	}
+    @Override
+    public IMessage onMessage(PacketWarpGateButton message, MessageContext ctx) {
+        super.onMessage(message, ctx);
+        if (!ctx.side.isServer())
+            throw new IllegalStateException("received PacketWarpgateButton " + message + "on client side!");
+        message.tile.locked = message.locked;
+        return null;
+    }
 }

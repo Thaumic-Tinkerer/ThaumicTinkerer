@@ -17,7 +17,6 @@ package thaumic.tinkerer.common.block.tile.transvector;
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
 import buildcraft.api.power.PowerHandler.PowerReceiver;
-
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
@@ -33,7 +32,6 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -54,6 +52,14 @@ import thaumic.tinkerer.common.lib.LibFeatures;
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
     public boolean addedToICEnergyNet = false;
+
+    public static int[] buildSlotsForLinearInventory(IInventory inv) {
+        int[] slots = new int[inv.getSizeInventory()];
+        for (int i = 0; i < slots.length; i++)
+            slots[i] = i;
+
+        return slots;
+    }
 
     @Override
     public void updateEntity() {
@@ -223,14 +229,6 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     public boolean canExtractItem(int i, ItemStack itemstack, int j) {
         TileEntity tile = getTile();
         return tile instanceof ISidedInventory ? ((ISidedInventory) tile).canExtractItem(i, itemstack, j) : tile instanceof IInventory;
-    }
-
-    public static int[] buildSlotsForLinearInventory(IInventory inv) {
-        int[] slots = new int[inv.getSizeInventory()];
-        for (int i = 0; i < slots.length; i++)
-            slots[i] = i;
-
-        return slots;
     }
 
     @Override

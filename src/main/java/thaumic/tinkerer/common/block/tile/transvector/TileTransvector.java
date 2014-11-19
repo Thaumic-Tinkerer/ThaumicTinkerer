@@ -20,58 +20,58 @@ import thaumic.tinkerer.common.block.tile.TileCamo;
 
 public abstract class TileTransvector extends TileCamo {
 
-	private static final String TAG_X_TARGET = "xt";
-	private static final String TAG_Y_TARGET = "yt";
-	private static final String TAG_Z_TARGET = "zt";
-	private static final String TAG_CHEATY_MODE = "cheatyMode";
+    private static final String TAG_X_TARGET = "xt";
+    private static final String TAG_Y_TARGET = "yt";
+    private static final String TAG_Z_TARGET = "zt";
+    private static final String TAG_CHEATY_MODE = "cheatyMode";
 
-	public int x = 0, y = -1, z = 0;
-	private boolean cheaty;
+    public int x = 0, y = -1, z = 0;
+    private boolean cheaty;
 
-	@Override
-	public boolean canUpdate() {
-		return true;
-	}
+    @Override
+    public boolean canUpdate() {
+        return true;
+    }
 
-	@Override
-	public void writeCustomNBT(NBTTagCompound cmp) {
-		super.writeCustomNBT(cmp);
+    @Override
+    public void writeCustomNBT(NBTTagCompound cmp) {
+        super.writeCustomNBT(cmp);
 
-		cmp.setInteger(TAG_X_TARGET, x);
-		cmp.setInteger(TAG_Y_TARGET, y);
-		cmp.setInteger(TAG_Z_TARGET, z);
-		cmp.setBoolean(TAG_CHEATY_MODE, cheaty);
-	}
+        cmp.setInteger(TAG_X_TARGET, x);
+        cmp.setInteger(TAG_Y_TARGET, y);
+        cmp.setInteger(TAG_Z_TARGET, z);
+        cmp.setBoolean(TAG_CHEATY_MODE, cheaty);
+    }
 
-	@Override
-	public void readCustomNBT(NBTTagCompound cmp) {
-		super.readCustomNBT(cmp);
+    @Override
+    public void readCustomNBT(NBTTagCompound cmp) {
+        super.readCustomNBT(cmp);
 
-		x = cmp.getInteger(TAG_X_TARGET);
-		y = cmp.getInteger(TAG_Y_TARGET);
-		z = cmp.getInteger(TAG_Z_TARGET);
-		cheaty = cmp.getBoolean(TAG_CHEATY_MODE);
+        x = cmp.getInteger(TAG_X_TARGET);
+        y = cmp.getInteger(TAG_Y_TARGET);
+        z = cmp.getInteger(TAG_Z_TARGET);
+        cheaty = cmp.getBoolean(TAG_CHEATY_MODE);
 
-	}
+    }
 
-	public final TileEntity getTile() {
-		if (!worldObj.blockExists(x, y, z))
-			return null;
+    public final TileEntity getTile() {
+        if (!worldObj.blockExists(x, y, z))
+            return null;
 
-		TileEntity tile = worldObj.getTileEntity(x, y, z);
+        TileEntity tile = worldObj.getTileEntity(x, y, z);
 
-		if (tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
-			y = -1;
-			return null;
-		}
+        if (tile == null && tileRequiredAtLink() || (Math.abs(x - xCoord) > getMaxDistance() || Math.abs(y - yCoord) > getMaxDistance() || Math.abs(z - zCoord) > getMaxDistance()) && !cheaty) {
+            y = -1;
+            return null;
+        }
 
-		return tile;
-	}
+        return tile;
+    }
 
-	public abstract int getMaxDistance();
+    public abstract int getMaxDistance();
 
-	boolean tileRequiredAtLink() {
-		return !cheaty;
-	}
+    boolean tileRequiredAtLink() {
+        return !cheaty;
+    }
 
 }

@@ -22,13 +22,13 @@ import thaumic.tinkerer.common.item.ItemInfusedInkwell;
 
 public class SlotResearchTableOverride extends Slot {
 
-	public SlotResearchTableOverride(IInventory par1iInventory, int par2, int par3, int par4) {
-		super(par1iInventory, par2, par3, par4);
-	}
+    public SlotResearchTableOverride(IInventory par1iInventory, int par2, int par3, int par4) {
+        super(par1iInventory, par2, par3, par4);
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() instanceof ItemInkwell || par1ItemStack.getItem() instanceof ItemInfusedInkwell;
-	}
+    @Override
+    public boolean isItemValid(ItemStack par1ItemStack) {
+        return par1ItemStack.getItem() instanceof ItemInkwell || par1ItemStack.getItem() instanceof ItemInfusedInkwell;
+    }
 
 }

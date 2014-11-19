@@ -29,40 +29,40 @@ import thaumic.tinkerer.common.network.packet.kami.PacketWarpGateButton;
 
 public class GuiWarpGate extends GuiContainer {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_WARP_GATE);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_WARP_GATE);
 
-	TileWarpGate warpGate;
-	int x, y;
+    TileWarpGate warpGate;
+    int x, y;
 
-	public GuiWarpGate(TileWarpGate warpGate, InventoryPlayer inv) {
-		super(new ContainerWarpGate(warpGate, inv));
-		this.warpGate = warpGate;
-	}
+    public GuiWarpGate(TileWarpGate warpGate, InventoryPlayer inv) {
+        super(new ContainerWarpGate(warpGate, inv));
+        this.warpGate = warpGate;
+    }
 
-	@Override
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		((GuiButtonWG) par1GuiButton).enabled = !((GuiButtonWG) par1GuiButton).enabled;
-		warpGate.locked = ((GuiButtonWG) par1GuiButton).enabled;
+    @Override
+    protected void actionPerformed(GuiButton par1GuiButton) {
+        ((GuiButtonWG) par1GuiButton).enabled = !((GuiButtonWG) par1GuiButton).enabled;
+        warpGate.locked = ((GuiButtonWG) par1GuiButton).enabled;
 
-		ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateButton(warpGate));
-	}
+        ThaumicTinkerer.netHandler.sendToServer(new PacketWarpGateButton(warpGate));
+    }
 
-	@Override
-	public void initGui() {
-		super.initGui();
-		x = (width - xSize) / 2;
-		y = (height - ySize) / 2;
+    @Override
+    public void initGui() {
+        super.initGui();
+        x = (width - xSize) / 2;
+        y = (height - ySize) / 2;
 
-		buttonList.clear();
-		buttonList.add(new GuiButtonWG(0, x + 5, y + 5, warpGate.locked));
-	}
+        buttonList.clear();
+        buttonList.add(new GuiButtonWG(0, x + 5, y + 5, warpGate.locked));
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.renderEngine.bindTexture(gui);
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		fontRendererObj.drawStringWithShadow(StatCollector.translateToLocal("ttmisc.lockedGate"), x + 20, y + 7, 0x999999);
-	}
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        mc.renderEngine.bindTexture(gui);
+        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        fontRendererObj.drawStringWithShadow(StatCollector.translateToLocal("ttmisc.lockedGate"), x + 20, y + 7, 0x999999);
+    }
 
 }

@@ -29,41 +29,41 @@ import thaumcraft.common.tiles.TileSensor;
 
 public final class PeripheralHandler implements IPeripheralProvider {
 
-	public IPeripheral getPeripheral(TileEntity tile) {
+    public IPeripheral getPeripheral(TileEntity tile) {
 
-		if (tile instanceof IAspectContainer)
-			return new PeripheralAspectContainer((IAspectContainer) tile);
+        if (tile instanceof IAspectContainer)
+            return new PeripheralAspectContainer((IAspectContainer) tile);
 
-		if (tile instanceof TileDeconstructionTable)
-			return new PeripheralDeconstructor((TileDeconstructionTable) tile);
+        if (tile instanceof TileDeconstructionTable)
+            return new PeripheralDeconstructor((TileDeconstructionTable) tile);
 
-		if (tile instanceof TileJarBrain)
-			return new PeripheralBrainInAJar((TileJarBrain) tile);
+        if (tile instanceof TileJarBrain)
+            return new PeripheralBrainInAJar((TileJarBrain) tile);
 
-		if (tile instanceof TileSensor)
-			return new PeripheralArcaneEar((TileSensor) tile);
+        if (tile instanceof TileSensor)
+            return new PeripheralArcaneEar((TileSensor) tile);
 
-		if (tile instanceof TileArcaneBore)
-			return new PeripheralArcaneBore((TileArcaneBore) tile);
+        if (tile instanceof TileArcaneBore)
+            return new PeripheralArcaneBore((TileArcaneBore) tile);
 
-		if (tile instanceof IEssentiaTransport)
-			return new PeripheralEssentiaTransport((IEssentiaTransport) tile);
+        if (tile instanceof IEssentiaTransport)
+            return new PeripheralEssentiaTransport((IEssentiaTransport) tile);
 
         //Hacky
         //TODO: Fix proper IPeripheral integration in 1.7
-        if(tile instanceof IPeripheral && tile.getClass().getName().contains("thaumic.tinkerer")){
-            return (IPeripheral)tile;
+        if (tile instanceof IPeripheral && tile.getClass().getName().contains("thaumic.tinkerer")) {
+            return (IPeripheral) tile;
         }
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public IPeripheral getPeripheral(World world, int x, int y, int z, int side) {
-		TileEntity te = world.getTileEntity(x, y, z);
-		if (te != null)
-			return getPeripheral(te);
-		return null;
-	}
+    @Override
+    public IPeripheral getPeripheral(World world, int x, int y, int z, int side) {
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (te != null)
+            return getPeripheral(te);
+        return null;
+    }
 
     public void registerPeripheralProvider() {
         ComputerCraftAPI.registerPeripheralProvider(this);

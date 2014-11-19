@@ -1,6 +1,5 @@
 package thaumic.tinkerer.common.item;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
@@ -23,7 +21,6 @@ import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.BlockInfusedFarmland;
 import thaumic.tinkerer.common.block.BlockInfusedGrain;
 import thaumic.tinkerer.common.block.tile.TileInfusedGrain;
-import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ITTinkererItem;
@@ -40,25 +37,12 @@ import java.util.List;
  */
 public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
 
+    private static final String NBT_MAIN_ASPECT = "mainAspect";
+    private static final String NBT_ASPEPCT_TENDENCIES = "aspectTendencies";
+    private IIcon[] icons;
     public ItemInfusedSeeds() {
         super(Blocks.wheat, Blocks.farmland);
     }
-
-    @Override
-    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-        super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
-        par3List.add(getAspect(par1ItemStack).getName());
-        AspectList aspectList = getAspectTendencies(par1ItemStack);
-        if (aspectList != null && aspectList.getAspects()[0] != null) {
-            for (Aspect a : aspectList.getAspects()) {
-                par3List.add(a.getName() + ": " + aspectList.getAmount(a));
-            }
-        }
-    }
-
-
-    private static final String NBT_MAIN_ASPECT = "mainAspect";
-    private static final String NBT_ASPEPCT_TENDENCIES = "aspectTendencies";
 
     public static Aspect getAspect(ItemStack stack) {
         AspectList aspectList = new AspectList();
@@ -101,6 +85,24 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
         stack.stackTagCompound.setTag(NBT_ASPEPCT_TENDENCIES, nbt);
     }
 
+    public static ItemStack getStackFromAspect(Aspect a) {
+        ItemStack stack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
+        setAspect(stack, a);
+        return stack;
+    }
+
+    @Override
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+        super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
+        par3List.add(getAspect(par1ItemStack).getName());
+        AspectList aspectList = getAspectTendencies(par1ItemStack);
+        if (aspectList != null && aspectList.getAspects()[0] != null) {
+            for (Aspect a : aspectList.getAspects()) {
+                par3List.add(a.getName() + ": " + aspectList.getAmount(a));
+            }
+        }
+    }
+
     @Override
     public boolean getHasSubtypes() {
         return true;
@@ -115,8 +117,6 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
             l.add(itemStack);
         }
     }
-
-    private IIcon[] icons;
 
     @Override
     public void registerIcons(IIconRegister par1IconRegister) {
@@ -165,12 +165,6 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
     @Override
     public EnumRarity getRarity(ItemStack par1ItemStack) {
         return EnumRarity.rare;
-    }
-
-    public static ItemStack getStackFromAspect(Aspect a) {
-        ItemStack stack = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class));
-        setAspect(stack, a);
-        return stack;
     }
 
     @Override

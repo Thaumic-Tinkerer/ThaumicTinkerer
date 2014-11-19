@@ -1,6 +1,5 @@
 package thaumic.tinkerer.common.block.fire;
 
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

@@ -29,44 +29,44 @@ import java.util.ArrayList;
 
 public abstract class BlockMod extends Block implements ITTinkererBlock {
 
-	public BlockMod(Material par2Material) {
-		super(par2Material);
-		if (registerInCreative())
-			setCreativeTab(ModCreativeTab.INSTANCE);
-	}
+    public BlockMod(Material par2Material) {
+        super(par2Material);
+        if (registerInCreative())
+            setCreativeTab(ModCreativeTab.INSTANCE);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		blockIcon = IconHelper.forBlock(par1IconRegister, this);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        blockIcon = IconHelper.forBlock(par1IconRegister, this);
+    }
 
-	boolean registerInCreative() {
-		return true;
-	}
+    boolean registerInCreative() {
+        return true;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return null;
+    }
 }

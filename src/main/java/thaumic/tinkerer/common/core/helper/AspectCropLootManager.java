@@ -1,28 +1,25 @@
 package thaumic.tinkerer.common.core.helper;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameData;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.text.WordUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.entities.ItemSpawnerEgg;
 import thaumcraft.common.items.ItemWispEssence;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.quartz.BlockDarkQuartz;
 import thaumic.tinkerer.common.item.ItemBrightNitor;
 import thaumic.tinkerer.common.item.ItemInfusedGrain;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by pixlepix on 8/7/14.
@@ -34,7 +31,7 @@ public class AspectCropLootManager {
     public static ItemStack getLootForAspect(Aspect aspect) {
         HashMap<ItemStack, Integer> aspectHashmap = lootMap.get(aspect);
         //Find total value of the possible ItemStacks for the aspect
-        if(aspectHashmap==null)
+        if (aspectHashmap == null)
             return null;
         int sum = 0;
 

@@ -38,11 +38,12 @@ import java.util.Random;
 /**
  * Created by nekosune on 28/06/14.
  */
-public class BlockRPlacer extends  BlockCamo implements IWandable{
+public class BlockRPlacer extends BlockCamo implements IWandable {
+    IIcon[] icons = new IIcon[2];
+
     public BlockRPlacer() {
         super(Material.rock);
     }
-    IIcon[] icons = new IIcon[2];
 
     @Override
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
@@ -68,6 +69,7 @@ public class BlockRPlacer extends  BlockCamo implements IWandable{
     public Class<? extends TileEntity> getTileEntity() {
         return TileRPlacer.class;
     }
+
     @Override
     public void registerBlockIcons(IIconRegister par1IconRegister) {
         icons[0] = IconHelper.forBlock(par1IconRegister, this, 0);
@@ -107,16 +109,19 @@ public class BlockRPlacer extends  BlockCamo implements IWandable{
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
-        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_REMOTE_PLACER,LibResearch.KEY_REMOTE_PLACER,new ItemStack(this),new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5),"ses","sds","sss",'s', ConfigBlocks.blockStoneDevice,'e', Items.ender_pearl,'d', Blocks.dispenser);
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_REMOTE_PLACER, LibResearch.KEY_REMOTE_PLACER, new ItemStack(this), new AspectList().add(Aspect.AIR, 20).add(Aspect.ORDER, 5).add(Aspect.EARTH, 15).add(Aspect.ENTROPY, 5), "ses", "sds", "sss", 's', ConfigBlocks.blockStoneDevice, 'e', Items.ender_pearl, 'd', Blocks.dispenser);
     }
+
     @Override
     public IIcon getIcon(int par1, int par2) {
         return icons[0];
     }
+
     @Override
     public IIcon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
         return icons[((TileRPlacer) tile).orientation == side ? 1 : 0];
     }
+
     @Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
         TileEntity tile = par1World.getTileEntity(par2, par3, par4);
@@ -126,10 +131,8 @@ public class BlockRPlacer extends  BlockCamo implements IWandable{
 
     @Override
     public int onWandRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, int i, int i2, int i3, int i4, int i5) {
-        if(!world.isRemote)
-        {
-            if(entityPlayer.isSneaking())
-            {
+        if (!world.isRemote) {
+            if (entityPlayer.isSneaking()) {
                 entityPlayer.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_REMOTE_PLACER, world, i, i2, i3);
             }
         }

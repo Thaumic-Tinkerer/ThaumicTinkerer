@@ -26,62 +26,60 @@ import thaumic.tinkerer.common.core.helper.MiscHelper;
 
 public abstract class PacketTile<T extends TileEntity> implements IMessage {
 
-	public PacketTile() {
+    private static final long serialVersionUID = -1447633008013055477L;
+    protected int dim, x, y, z;
+    protected transient T tile;
+    protected transient EntityPlayer player;
 
-	}
+    public PacketTile() {
 
-	@Override
-	public void toBytes(ByteBuf byteBuf) {
-		byteBuf.writeInt(x);
-		byteBuf.writeInt(y);
-		byteBuf.writeInt(z);
-		byteBuf.writeInt(dim);
-	}
+    }
 
-	@Override
-	public void fromBytes(ByteBuf byteBuf) {
-		x = byteBuf.readInt();
-		y = byteBuf.readInt();
-		z = byteBuf.readInt();
-		dim = byteBuf.readInt();
-	}
+    public PacketTile(T tile) {
+        this.tile = tile;
 
-	private static final long serialVersionUID = -1447633008013055477L;
+        this.x = tile.xCoord;
+        this.y = tile.yCoord;
+        this.z = tile.zCoord;
+        this.dim = tile.getWorldObj().provider.dimensionId;
+    }
 
-	protected int dim, x, y, z;
+    @Override
+    public void toBytes(ByteBuf byteBuf) {
+        byteBuf.writeInt(x);
+        byteBuf.writeInt(y);
+        byteBuf.writeInt(z);
+        byteBuf.writeInt(dim);
+    }
 
-	protected transient T tile;
-	protected transient EntityPlayer player;
+    @Override
+    public void fromBytes(ByteBuf byteBuf) {
+        x = byteBuf.readInt();
+        y = byteBuf.readInt();
+        z = byteBuf.readInt();
+        dim = byteBuf.readInt();
+    }
 
-	public PacketTile(T tile) {
-		this.tile = tile;
+    public IMessage onMessage(PacketTile message, MessageContext ctx) {
+        MinecraftServer server = MiscHelper.server();
+        if (ctx.side.isClient())
+            message.player = TTClientProxy.getPlayer();
+        else {
+            message.player = ctx.getServerHandler().playerEntity;
+        }
+        if (server != null) {
+            World world = server.worldServerForDimension(message.dim);
 
-		this.x = tile.xCoord;
-		this.y = tile.yCoord;
-		this.z = tile.zCoord;
-		this.dim = tile.getWorldObj().provider.dimensionId;
-	}
+            if (world == null) {
+                MiscHelper.printCurrentStackTrace("No world found for dimension " + message.dim + "!");
+                return null;
+            }
 
-	public IMessage onMessage(PacketTile message, MessageContext ctx) {
-		MinecraftServer server = MiscHelper.server();
-		if (ctx.side.isClient())
-			message.player = TTClientProxy.getPlayer();
-		else {
-			message.player = ctx.getServerHandler().playerEntity;
-		}
-		if (server != null) {
-			World world = server.worldServerForDimension(message.dim);
-
-			if (world == null) {
-				MiscHelper.printCurrentStackTrace("No world found for dimension " + message.dim + "!");
-				return null;
-			}
-
-			TileEntity tile = world.getTileEntity(message.x, message.y, message.z);
-			if (tile != null) {
-				message.tile = (T) tile;
-			}
-		}
-		return null;
-	}
+            TileEntity tile = world.getTileEntity(message.x, message.y, message.z);
+            if (tile != null) {
+                message.tile = (T) tile;
+            }
+        }
+        return null;
+    }
 }

@@ -27,51 +27,51 @@ import thaumic.tinkerer.common.block.kami.BlockWarpGate;
 
 public class RenderWarpGate extends BlockRenderer implements ISimpleBlockRenderingHandler {
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		IIcon topIcon = BlockWarpGate.icons[0];
-		IIcon sideIcon = BlockWarpGate.icons[1];
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
+        block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        IIcon topIcon = BlockWarpGate.icons[0];
+        IIcon sideIcon = BlockWarpGate.icons[1];
 
-		drawFaces(renderer, block, sideIcon, topIcon, sideIcon, sideIcon, sideIcon, sideIcon, false);
-		GL11.glColor3f(1F, 1F, 1F);
+        drawFaces(renderer, block, sideIcon, topIcon, sideIcon, sideIcon, sideIcon, sideIcon, false);
+        GL11.glColor3f(1F, 1F, 1F);
 
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		Tessellator t = Tessellator.instance;
-		t.startDrawingQuads();
-		t.setBrightness(255);
-		t.setNormal(0, 1, 0);
-		renderer.renderFaceYPos(block, 0, 0, 0, BlockWarpGate.icons[2]);
-		t.draw();
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-	}
+        GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+        Tessellator t = Tessellator.instance;
+        t.startDrawingQuads();
+        t.setBrightness(255);
+        t.setNormal(0, 1, 0);
+        renderer.renderFaceYPos(block, 0, 0, 0, BlockWarpGate.icons[2]);
+        t.draw();
+        GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		renderer.setRenderBoundsFromBlock(block);
-		renderer.renderStandardBlock(block, x, y, z);
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+        block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        renderer.setRenderBoundsFromBlock(block);
+        renderer.renderStandardBlock(block, x, y, z);
 
-		Tessellator t = Tessellator.instance;
-		t.setColorOpaque_I(0xFFFFFF);
-		t.setBrightness(255);
-		renderer.renderFaceYPos(block, x, y, z, BlockWarpGate.icons[2]);
+        Tessellator t = Tessellator.instance;
+        t.setColorOpaque_I(0xFFFFFF);
+        t.setBrightness(255);
+        renderer.renderFaceYPos(block, x, y, z, BlockWarpGate.icons[2]);
 
-		renderer.clearOverrideBlockTexture();
-		block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-		renderer.renderStandardBlock(block, x, y, z);
+        renderer.clearOverrideBlockTexture();
+        block.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        renderer.renderStandardBlock(block, x, y, z);
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelId) {
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelId) {
+        return true;
+    }
 
-	@Override
-	public int getRenderId() {
-		return LibRenderIDs.idWarpGate;
-	}
+    @Override
+    public int getRenderId() {
+        return LibRenderIDs.idWarpGate;
+    }
 
 }

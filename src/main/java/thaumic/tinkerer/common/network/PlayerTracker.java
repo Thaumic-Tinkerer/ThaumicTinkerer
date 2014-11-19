@@ -30,26 +30,26 @@ import thaumic.tinkerer.common.network.packet.kami.PacketToggleArmor;
 
 public class PlayerTracker {
 
-	@SubscribeEvent
-	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+    @SubscribeEvent
+    public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
 
-		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
-			ItemFocusHeal.playerHealData.put(event.player.getGameProfile().getName(), 0);
-			ThaumicTinkerer.netHandler.sendTo(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(event.player)), (EntityPlayerMP) event.player);
-		}
-	}
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
+            ItemFocusHeal.playerHealData.put(event.player.getGameProfile().getName(), 0);
+            ThaumicTinkerer.netHandler.sendTo(new PacketToggleArmor(KamiArmorHandler.getArmorStatus(event.player)), (EntityPlayerMP) event.player);
+        }
+    }
 
-	@SubscribeEvent
-	public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-		EntityPlayer player = event.player;
-		String username = player.getGameProfile().getName();
-		ItemFocusSmelt.playerData.remove(username);
-		ItemFocusHeal.playerHealData.remove(username);
+    @SubscribeEvent
+    public void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        EntityPlayer player = event.player;
+        String username = player.getGameProfile().getName();
+        ItemFocusSmelt.playerData.remove(username);
+        ItemFocusHeal.playerHealData.remove(username);
 
-		ItemGemChest.playersWithFlight.remove(username + ":false");
-		ItemGemChest.playersWithFlight.remove(username + ":true");
+        ItemGemChest.playersWithFlight.remove(username + ":false");
+        ItemGemChest.playersWithFlight.remove(username + ":true");
 
-		ItemGemBoots.playersWith1Step.remove(username);
+        ItemGemBoots.playersWith1Step.remove(username);
 
-	}
+    }
 }

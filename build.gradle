@@ -37,14 +37,15 @@ repositories {
         name 'DVS1 Maven FS'
         url 'http://dvs1.progwml6.com/files/maven'
     }
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
     maven { // the repo from which to get NEI and stuff
         name 'CB Repo'
         url "http://chickenbones.net/maven/"
     }
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+
 }
 String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
@@ -87,15 +88,15 @@ if (project.hasProperty("releaseType"))
 
 
 dependencies {
-    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.104:dev"
+    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.106:dev"
     compile "mcp.mobius.waila:Waila:1.5.3a_1.7.10"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.3.25:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
 
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.51:dev"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.67:dev"
     compile "codechicken:EnderStorage:1.7.10-1.4.5.22:dev"
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
-    compile("tconstruct:TConstruct:1.7.10-1.6.0.build625:deobf") {
+    compile("tconstruct:TConstruct:1.7.10-1.7.1.build789:deobf") {
     }
 }
 // some crazy stuff to make sure the chicken stuff is in the mods folder...

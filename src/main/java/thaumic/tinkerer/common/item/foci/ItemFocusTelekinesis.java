@@ -14,7 +14,6 @@
  */
 package thaumic.tinkerer.common.item.foci;
 
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -25,7 +24,6 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.codechicken.lib.vec.Vector3;
-import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.common.ThaumicTinkerer;
@@ -42,76 +40,76 @@ import java.util.List;
 
 public class ItemFocusTelekinesis extends ItemModFocus {
 
-	private static final AspectList visUsage = new AspectList().add(Aspect.AIR, 5).add(Aspect.ENTROPY, 5);
+    private static final AspectList visUsage = new AspectList().add(Aspect.AIR, 5).add(Aspect.ENTROPY, 5);
 
-	@Override
-	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int ticks) {
-		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+    @Override
+    public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int ticks) {
+        ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		Vector3 target = Vector3.fromEntityCenter(player);
+        Vector3 target = Vector3.fromEntityCenter(player);
 
-		final int range = 6 ;
-		final double distance = range - 1;
-		if (!player.isSneaking())
-			target.add(new Vector3(player.getLookVec()).multiply(distance));
+        final int range = 6;
+        final double distance = range - 1;
+        if (!player.isSneaking())
+            target.add(new Vector3(player.getLookVec()).multiply(distance));
 
-		target.y += 0.5;
+        target.y += 0.5;
 
-		List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
+        List<EntityItem> entities = player.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(target.x - range, target.y - range, target.z - range, target.x + range, target.y + range, target.z + range));
 
-		if (!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
-			for (EntityItem item : entities) {
-				MiscHelper.setEntityMotionFromVector(item, target, 0.3333F);
-				ThaumicTinkerer.tcProxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 0);
-			}
-		}
-	}
+        if (!entities.isEmpty() && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
+            for (EntityItem item : entities) {
+                MiscHelper.setEntityMotionFromVector(item, target, 0.3333F);
+                ThaumicTinkerer.tcProxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 0);
+            }
+        }
+    }
 
-	@Override
-	public String getSortingHelper(ItemStack itemstack) {
-		return "TELEKINESIS";
-	}
+    @Override
+    public String getSortingHelper(ItemStack itemstack) {
+        return "TELEKINESIS";
+    }
 
-	@Override
-	protected boolean hasOrnament() {
-		return true;
-	}
+    @Override
+    protected boolean hasOrnament() {
+        return true;
+    }
 
-	@Override
-	public int getFocusColor(ItemStack stack) {
-		return 0x9C00BE;
-	}
+    @Override
+    public int getFocusColor(ItemStack stack) {
+        return 0x9C00BE;
+    }
 
-	@Override
-	public AspectList getVisCost(ItemStack stack) {
-		return visUsage;
-	}
+    @Override
+    public AspectList getVisCost(ItemStack stack) {
+        return visUsage;
+    }
 
-	@Override
-	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-		return new FocusUpgradeType[0];
-	}
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[0];
+    }
 
-	@Override
-	public boolean isVisCostPerTick(ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean isVisCostPerTick(ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.FOCUS_TELEKINESIS;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.FOCUS_TELEKINESIS;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FOCUS_TELEKINESIS, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.MAGIC, 1).add(Aspect.MOTION, 1), -4, -6, 2, new ItemStack(this)).setParents(LibResearch.KEY_FOCUS_FLIGHT).setConcealed()
-				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_TELEKINESIS)).setSecondary();
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FOCUS_TELEKINESIS, new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.MAGIC, 1).add(Aspect.MOTION, 1), -4, -6, 2, new ItemStack(this)).setParents(LibResearch.KEY_FOCUS_FLIGHT).setConcealed()
+                .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_TELEKINESIS)).setSecondary();
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(this), 5, new AspectList().add(Aspect.MOTION, 10).add(Aspect.AIR, 20).add(Aspect.ENTROPY, 20).add(Aspect.MIND, 10), new ItemStack(Items.ender_pearl),
-				new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), new ItemStack(ConfigItems.itemShard, 1, 0));
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_TELEKINESIS, new ItemStack(this), 5, new AspectList().add(Aspect.MOTION, 10).add(Aspect.AIR, 20).add(Aspect.ENTROPY, 20).add(Aspect.MIND, 10), new ItemStack(Items.ender_pearl),
+                new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(Items.quartz), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), new ItemStack(ConfigItems.itemShard, 1, 0));
 
-	}
+    }
 }

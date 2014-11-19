@@ -15,7 +15,7 @@ public class ContainerRemotePlacer extends ContainerPlayerInv {
     public ContainerRemotePlacer(TileRPlacer placer, InventoryPlayer playerInv) {
         super(playerInv);
 
-        this.placer=placer;
+        this.placer = placer;
 
         addSlotToContainer(new Slot(placer, 0, 20, 30));
 

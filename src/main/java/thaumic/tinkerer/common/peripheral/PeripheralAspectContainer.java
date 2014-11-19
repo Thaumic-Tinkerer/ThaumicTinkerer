@@ -24,54 +24,54 @@ import thaumic.tinkerer.common.peripheral.implementation.IAspectContainerImpleme
 
 public class PeripheralAspectContainer implements IPeripheral {
 
-	IAspectContainer container;
+    IAspectContainer container;
 
-	public PeripheralAspectContainer(IAspectContainer container) {
-		this.container = container;
-	}
+    public PeripheralAspectContainer(IAspectContainer container) {
+        this.container = container;
+    }
 
-	@Override
-	public String getType() {
-		return "tt_aspectContainer";
-	}
+    @Override
+    public String getType() {
+        return "tt_aspectContainer";
+    }
 
-	@Override
-	public String[] getMethodNames() {
-		return new String[]{ "getAspects", "getAspectCount" };
-	}
+    @Override
+    public String[] getMethodNames() {
+        return new String[]{"getAspects", "getAspectCount"};
+    }
 
-	@Override
-	@Optional.Method(modid = "ComputerCraft")
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
-		switch (method) {
-			case 0: {
-				return IAspectContainerImplementation.getAspects(container);
-			}
-			case 1: {
-				String aspectName = (String) arguments[0];
-				return IAspectContainerImplementation.getAspectCount(container, aspectName);
-			}
-		}
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
+        switch (method) {
+            case 0: {
+                return IAspectContainerImplementation.getAspects(container);
+            }
+            case 1: {
+                String aspectName = (String) arguments[0];
+                return IAspectContainerImplementation.getAspectCount(container, aspectName);
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	@Optional.Method(modid = "ComputerCraft")
-	public void attach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public void attach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	@Optional.Method(modid = "ComputerCraft")
-	public void detach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public void detach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	@Optional.Method(modid = "ComputerCraft")
-	public boolean equals(IPeripheral other) {
-		return this.equals((Object) other);
-	}
+    @Override
+    @Optional.Method(modid = "ComputerCraft")
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object) other);
+    }
 
 }

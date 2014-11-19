@@ -14,7 +14,6 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.lib.research.ResearchManager;
 import thaumic.tinkerer.client.core.helper.IconHelper;
-import thaumic.tinkerer.client.core.proxy.TTClientProxy;
 import thaumic.tinkerer.client.lib.LibRenderIDs;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileInfusedFarmland;
@@ -37,6 +36,42 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
     //Code based off vanilla potato code
 
+
+    public static final int BREEDING_CHANCE = 10;
+    private IIcon[][] icons;
+
+    //Returns 0-5 for primal aspects, or 6 if compound aspect
+    public static int getNumberFromAspectForTexture(Aspect aspect) {
+        if (aspect == Aspect.AIR) {
+            return 0;
+        }
+        if (aspect == Aspect.FIRE) {
+            return 1;
+        }
+        if (aspect == Aspect.WATER) {
+            return 2;
+        }
+        if (aspect == Aspect.EARTH) {
+            return 3;
+        }
+        if (aspect == Aspect.ORDER) {
+            return 4;
+        }
+        if (aspect == Aspect.ENTROPY) {
+            return 5;
+        }
+        return 6;
+    }
+
+    public static Aspect getAspect(IBlockAccess world, int x, int y, int z) {
+        return world.getTileEntity(x, y, z) instanceof TileInfusedGrain ? ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect : null;
+    }
+
+    public static void setAspect(IBlockAccess world, int x, int y, int z, Aspect aspect) {
+        if (world.getTileEntity(x, y, z) instanceof TileInfusedGrain) {
+            ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect = aspect;
+        }
+    }
 
     @Override
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int meta) {
@@ -65,32 +100,6 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     public int getRenderType() {
         return LibRenderIDs.idGrain;
     }
-
-    //Returns 0-5 for primal aspects, or 6 if compound aspect
-    public static int getNumberFromAspectForTexture(Aspect aspect) {
-        if (aspect == Aspect.AIR) {
-            return 0;
-        }
-        if (aspect == Aspect.FIRE) {
-            return 1;
-        }
-        if (aspect == Aspect.WATER) {
-            return 2;
-        }
-        if (aspect == Aspect.EARTH) {
-            return 3;
-        }
-        if (aspect == Aspect.ORDER) {
-            return 4;
-        }
-        if (aspect == Aspect.ENTROPY) {
-            return 5;
-        }
-        return 6;
-    }
-
-
-    private IIcon[][] icons;
 
     @Override
     public void registerBlockIcons(IIconRegister par1IconRegister) {
@@ -122,7 +131,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         }
         if (metadata >= 7) {
             do {
-            ret.add(AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z)));
+                ret.add(AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z)));
 
             } while (world.rand.nextInt(75) < getPrimalTendencyCount(world, x, y, z, Aspect.ORDER));
         }
@@ -167,9 +176,6 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         //Growth takes place in the tile entity
         checkAndDropBlock(world, x, y, z);
     }
-
-
-    public static final int BREEDING_CHANCE = 10;
 
     public Aspect getAspectDropped(World world, int x, int y, int z, int metadata) {
         Aspect currentAspect = getAspect(world, x, y, z);
@@ -237,17 +243,6 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
         return null;
-    }
-
-
-    public static Aspect getAspect(IBlockAccess world, int x, int y, int z) {
-        return world.getTileEntity(x, y, z) instanceof TileInfusedGrain ? ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect : null;
-    }
-
-    public static void setAspect(IBlockAccess world, int x, int y, int z, Aspect aspect) {
-        if (world.getTileEntity(x, y, z) instanceof TileInfusedGrain) {
-            ((TileInfusedGrain) world.getTileEntity(x, y, z)).aspect = aspect;
-        }
     }
 
 }

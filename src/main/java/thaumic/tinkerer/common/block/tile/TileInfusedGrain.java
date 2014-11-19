@@ -12,7 +12,6 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumic.tinkerer.common.ThaumicTinkerer;
-import thaumic.tinkerer.common.block.BlockInfusedGrain;
 
 import java.util.Random;
 
@@ -21,11 +20,10 @@ import java.util.Random;
  */
 public class TileInfusedGrain extends TileEntity implements IAspectContainer {
 
-    public Aspect aspect;
-    public AspectList primalTendencies = new AspectList();
-
     private final String NBT_MAIN_ASPECT = "mainAspect";
     private final String NBT_ASPEPCT_TENDENCIES = "aspectTendencies";
+    public Aspect aspect;
+    public AspectList primalTendencies = new AspectList();
 
     @Override
     public void writeToNBT(NBTTagCompound nbt) {

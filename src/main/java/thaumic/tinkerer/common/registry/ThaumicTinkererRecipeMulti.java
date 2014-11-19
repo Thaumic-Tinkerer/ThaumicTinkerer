@@ -6,24 +6,24 @@ import java.util.List;
 
 public class ThaumicTinkererRecipeMulti extends ThaumicTinkererRecipe {
 
-	private List<ThaumicTinkererRecipe> recipes;
+    private List<ThaumicTinkererRecipe> recipes;
 
-	public ThaumicTinkererRecipeMulti(ThaumicTinkererRecipe... recipes) {
-		this.recipes = Arrays.asList(recipes);
-	}
+    public ThaumicTinkererRecipeMulti(ThaumicTinkererRecipe... recipes) {
+        this.recipes = Arrays.asList(recipes);
+    }
 
-	public ThaumicTinkererRecipeMulti() {
-		this.recipes = new ArrayList<ThaumicTinkererRecipe>();
-	}
+    public ThaumicTinkererRecipeMulti() {
+        this.recipes = new ArrayList<ThaumicTinkererRecipe>();
+    }
 
-	public void addRecipe(ThaumicTinkererRecipe recipe) {
-		recipes.add(recipe);
-	}
+    public void addRecipe(ThaumicTinkererRecipe recipe) {
+        recipes.add(recipe);
+    }
 
-	@Override
-	public void registerRecipe() {
-		for (ThaumicTinkererRecipe recipe : recipes) {
-			recipe.registerRecipe();
-		}
-	}
+    @Override
+    public void registerRecipe() {
+        for (ThaumicTinkererRecipe recipe : recipes) {
+            recipe.registerRecipe();
+        }
+    }
 }

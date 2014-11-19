@@ -35,61 +35,61 @@ import thaumic.tinkerer.common.lib.LibGuiIDs;
 
 public class GuiHandler implements IGuiHandler {
 
-	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getTileEntity(x, y, z);
-		switch (ID) {
-			case LibGuiIDs.GUI_ID_TABLET:
-				return new ContainerAnimationTablet((TileAnimationTablet) tile, player.inventory);
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        switch (ID) {
+            case LibGuiIDs.GUI_ID_TABLET:
+                return new ContainerAnimationTablet((TileAnimationTablet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_MOB_MAGNET:
-				return new ContainerMobMagnet((TileMobMagnet) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_MOB_MAGNET:
+                return new ContainerMobMagnet((TileMobMagnet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ENCHANTER:
-				return new ContainerEnchanter((TileEnchanter) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_ENCHANTER:
+                return new ContainerEnchanter((TileEnchanter) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER:
-				return new ContainerAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_ASPECT_ANALYZER:
+                return new ContainerAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ICHOR_POUCH:
-				return new ContainerIchorPouch(player);
+            case LibGuiIDs.GUI_ID_ICHOR_POUCH:
+                return new ContainerIchorPouch(player);
 
-			case LibGuiIDs.GUI_ID_WARP_GATE:
-				return new ContainerWarpGate((TileWarpGate) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_WARP_GATE:
+                return new ContainerWarpGate((TileWarpGate) tile, player.inventory);
             case LibGuiIDs.GUI_ID_REMOTE_PLACER:
-                return new ContainerRemotePlacer((TileRPlacer)tile,player.inventory);
-		}
-		return null;
-	}
+                return new ContainerRemotePlacer((TileRPlacer) tile, player.inventory);
+        }
+        return null;
+    }
 
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getTileEntity(x, y, z);
-		switch (ID) {
-			case LibGuiIDs.GUI_ID_TABLET:
-				return new GuiAnimationTablet((TileAnimationTablet) tile, player.inventory);
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        switch (ID) {
+            case LibGuiIDs.GUI_ID_TABLET:
+                return new GuiAnimationTablet((TileAnimationTablet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_MOB_MAGNET:
-				return new GuiMobMagnet((TileMobMagnet) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_MOB_MAGNET:
+                return new GuiMobMagnet((TileMobMagnet) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ENCHANTER:
-				return new GuiEnchanting((TileEnchanter) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_ENCHANTER:
+                return new GuiEnchanting((TileEnchanter) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ASPECT_ANALYZER:
-				return new GuiAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_ASPECT_ANALYZER:
+                return new GuiAspectAnalyzer((TileAspectAnalyzer) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_ICHOR_POUCH:
-				return new GuiIchorPouch(new ContainerIchorPouch(player));
+            case LibGuiIDs.GUI_ID_ICHOR_POUCH:
+                return new GuiIchorPouch(new ContainerIchorPouch(player));
 
-			case LibGuiIDs.GUI_ID_WARP_GATE:
-				return new GuiWarpGate((TileWarpGate) tile, player.inventory);
+            case LibGuiIDs.GUI_ID_WARP_GATE:
+                return new GuiWarpGate((TileWarpGate) tile, player.inventory);
 
-			case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS:
-				return new GuiWarpGateDestinations((TileWarpGate) tile);
+            case LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS:
+                return new GuiWarpGateDestinations((TileWarpGate) tile);
             case LibGuiIDs.GUI_ID_REMOTE_PLACER:
-                return new GuiRemotePlacer((TileRPlacer)tile,player.inventory);
-		}
-		return null;
-	}
+                return new GuiRemotePlacer((TileRPlacer) tile, player.inventory);
+        }
+        return null;
+    }
 
 }

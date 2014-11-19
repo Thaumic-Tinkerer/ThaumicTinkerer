@@ -1,8 +1,6 @@
 package thaumic.tinkerer.common.block.tile;
 
-import li.cil.oc.api.driver.Item;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntitySkeleton;

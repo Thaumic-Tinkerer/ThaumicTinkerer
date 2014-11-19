@@ -1,7 +1,6 @@
 package thaumic.tinkerer.common.item.kami.foci;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -20,7 +19,6 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.client.fx.particles.FXSparkle;
 import thaumcraft.codechicken.lib.vec.Vector3;
-import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.common.ThaumicTinkerer;
@@ -37,189 +35,189 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 
 public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
-	AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
+    AspectList cost = new AspectList().add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25).add(Aspect.AIR, 15);
 
-	public ItemFocusShadowbeam() {
-		super();
+    public ItemFocusShadowbeam() {
+        super();
 
-		EntityRegistry.registerModEntity(Beam.class, "ShadowbeamStaffBeam", 0, ThaumicTinkerer.instance, 0, 0, false);
-	}
+        EntityRegistry.registerModEntity(Beam.class, "ShadowbeamStaffBeam", 0, ThaumicTinkerer.instance, 0, 0, false);
+    }
 
-	@Override
-	public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
-		ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+    @Override
+    public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
+        ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
-		if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
-			int potency = 0;
+        if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
+            int potency = 0;
 
-			if (player.worldObj.rand.nextInt(10) == 0)
-				player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
+            if (player.worldObj.rand.nextInt(10) == 0)
+                player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
 
-			Beam beam = new Beam(player.worldObj, player, potency);
-			beam.updateUntilDead();
-		}
-	}
+            Beam beam = new Beam(player.worldObj, player, potency);
+            beam.updateUntilDead();
+        }
+    }
 
-	@Override
-	public boolean isVisCostPerTick(ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean isVisCostPerTick(ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	protected boolean hasOrnament() {
-		return true;
-	}
+    @Override
+    protected boolean hasOrnament() {
+        return true;
+    }
 
-	@Override
-	public int getFocusColor(ItemStack stack) {
-		return 0x4B0053;
-	}
+    @Override
+    public int getFocusColor(ItemStack stack) {
+        return 0x4B0053;
+    }
 
-	@Override
-	public AspectList getVisCost(ItemStack stack) {
-		return cost;
-	}
+    @Override
+    public AspectList getVisCost(ItemStack stack) {
+        return cost;
+    }
 
-	@Override
-	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-		return new FocusUpgradeType[0];
-	}
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[0];
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTCommonProxy.kamiRarity;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return TTCommonProxy.kamiRarity;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.FOCUS_SHADOWBEAM;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.FOCUS_SHADOWBEAM;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_SHADOWBEAM, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.MAGIC, 1).add(Aspect.ELDRITCH, 1).add(Aspect.TAINT, 1), 14, 4, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ROD)
-				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_SHADOWBEAM));
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_SHADOWBEAM, new AspectList().add(Aspect.DARKNESS, 2).add(Aspect.MAGIC, 1).add(Aspect.ELDRITCH, 1).add(Aspect.TAINT, 1), 14, 4, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ROD)
+                .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_SHADOWBEAM));
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_SHADOWBEAM, new ItemStack(this), 12, new AspectList().add(Aspect.DARKNESS, 65).add(Aspect.ELDRITCH, 32).add(Aspect.MAGIC, 50).add(Aspect.WEAPON, 32), new ItemStack(ConfigItems.itemFocusShock),
-				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.arrow), new ItemStack(Items.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusDeflect.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)));
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_SHADOWBEAM, new ItemStack(this), 12, new AspectList().add(Aspect.DARKNESS, 65).add(Aspect.ELDRITCH, 32).add(Aspect.MAGIC, 50).add(Aspect.WEAPON, 32), new ItemStack(ConfigItems.itemFocusShock),
+                new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.arrow), new ItemStack(Items.diamond), new ItemStack(ConfigItems.itemFocusExcavation), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusDeflect.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)));
 
-	}
+    }
 
-	public static class Particle extends FXSparkle {
+    @Override
+    public String getSortingHelper(ItemStack paramItemStack) {
+        return "SHADOWBEAM";
+    }
 
-		public Particle(World world, double d, double d1, double d2, float f, int type, int m) {
-			super(world, d, d1, d2, f, type, m);
-			noClip = true;
-		}
+    public static class Particle extends FXSparkle {
 
-		@Override
-		public void onUpdate() {
-			super.onUpdate();
-			if (particleAge > 1)
-				setDead();
-		}
-	}
+        public Particle(World world, double d, double d1, double d2, float f, int type, int m) {
+            super(world, d, d1, d2, f, type, m);
+            noClip = true;
+        }
 
-	public static class Beam extends EntityThrowable {
+        @Override
+        public void onUpdate() {
+            super.onUpdate();
+            if (particleAge > 1)
+                setDead();
+        }
+    }
 
-		int potency;
-		Vector3 movementVector;
-		final int maxTicks = 300;
+    public static class Beam extends EntityThrowable {
 
-		public Beam(World par1World, EntityLivingBase par2EntityLivingBase, int potency) {
-			super(par1World, par2EntityLivingBase);
+        final int maxTicks = 300;
+        int potency;
+        Vector3 movementVector;
 
-			this.potency = potency;
-			setProjectileVelocity(motionX / 10, motionY / 10, motionZ / 10);
-			movementVector = new Vector3(motionX, motionY, motionZ);
-		}
+        public Beam(World par1World, EntityLivingBase par2EntityLivingBase, int potency) {
+            super(par1World, par2EntityLivingBase);
 
-		// Copy of setVelocity, because that is client only for some reason
-		public void setProjectileVelocity(double par1, double par3, double par5) {
-			this.motionX = par1;
-			this.motionY = par3;
-			this.motionZ = par5;
+            this.potency = potency;
+            setProjectileVelocity(motionX / 10, motionY / 10, motionZ / 10);
+            movementVector = new Vector3(motionX, motionY, motionZ);
+        }
 
-			if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
-				float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
-				this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(par1, par5) * 180.0D / Math.PI);
-				this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(par3, (double) f) * 180.0D / Math.PI);
-			}
-		}
+        // Copy of setVelocity, because that is client only for some reason
+        public void setProjectileVelocity(double par1, double par3, double par5) {
+            this.motionX = par1;
+            this.motionY = par3;
+            this.motionZ = par5;
 
-		@Override
-		public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8) {
-			super.setThrowableHeading(par1, par3, par5, par7, par8);
-			float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
-			par1 /= f2;
-			par3 /= f2;
-			par5 /= f2;
-			par1 += 0.007499999832361937 * par8;
-			par3 += 0.007499999832361937 * par8;
-			par5 += 0.007499999832361937 * par8;
-			par1 *= par7;
-			par3 *= par7;
-			par5 *= par7;
-			motionX = par1;
-			motionY = par3;
-			motionZ = par5;
-		}
+            if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
+                float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
+                this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(par1, par5) * 180.0D / Math.PI);
+                this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(par3, (double) f) * 180.0D / Math.PI);
+            }
+        }
 
-		@Override
-		protected void onImpact(MovingObjectPosition movingobjectposition) {
-			if (movingobjectposition == null)
-				return;
+        @Override
+        public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8) {
+            super.setThrowableHeading(par1, par3, par5, par7, par8);
+            float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
+            par1 /= f2;
+            par3 /= f2;
+            par5 /= f2;
+            par1 += 0.007499999832361937 * par8;
+            par3 += 0.007499999832361937 * par8;
+            par5 += 0.007499999832361937 * par8;
+            par1 *= par7;
+            par3 *= par7;
+            par5 *= par7;
+            motionX = par1;
+            motionY = par3;
+            motionZ = par5;
+        }
 
-			if (movingobjectposition.entityHit != null) {
-				if ((MinecraftServer.getServer().isPVPEnabled() || !(movingobjectposition.entityHit instanceof EntityPlayer)) && movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
-					movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 8 + potency);
-				return;
-			}
+        @Override
+        protected void onImpact(MovingObjectPosition movingobjectposition) {
+            if (movingobjectposition == null)
+                return;
 
-			Vector3 movementVec = new Vector3(motionX, motionY, motionZ);
-			ForgeDirection dir = ForgeDirection.getOrientation(movingobjectposition.sideHit);
-			Vector3 normalVector = new Vector3(dir.offsetX, dir.offsetY, dir.offsetZ).normalize();
+            if (movingobjectposition.entityHit != null) {
+                if ((MinecraftServer.getServer().isPVPEnabled() || !(movingobjectposition.entityHit instanceof EntityPlayer)) && movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
+                    movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 8 + potency);
+                return;
+            }
 
-			movementVector = normalVector.multiply(-2 * movementVec.dotProduct(normalVector)).add(movementVec);
+            Vector3 movementVec = new Vector3(motionX, motionY, motionZ);
+            ForgeDirection dir = ForgeDirection.getOrientation(movingobjectposition.sideHit);
+            Vector3 normalVector = new Vector3(dir.offsetX, dir.offsetY, dir.offsetZ).normalize();
 
-			motionX = movementVector.x;
-			motionY = movementVector.y;
-			motionZ = movementVector.z;
-		}
+            movementVector = normalVector.multiply(-2 * movementVec.dotProduct(normalVector)).add(movementVec);
 
-		@Override
-		public void onUpdate() {
-			motionX = movementVector.x;
-			motionY = movementVector.y;
-			motionZ = movementVector.z;
+            motionX = movementVector.x;
+            motionY = movementVector.y;
+            motionZ = movementVector.z;
+        }
 
-			super.onUpdate();
+        @Override
+        public void onUpdate() {
+            motionX = movementVector.x;
+            motionY = movementVector.y;
+            motionZ = movementVector.z;
 
-			if (ticksExisted > 2)
-				ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
+            super.onUpdate();
 
-			++ticksExisted;
-			if (ticksExisted >= maxTicks)
-				setDead();
-		}
+            if (ticksExisted > 2)
+                ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
 
-		public void updateUntilDead() {
-			while (!isDead)
-				onUpdate();
-		}
+            ++ticksExisted;
+            if (ticksExisted >= maxTicks)
+                setDead();
+        }
 
-		@Override
-		protected float getGravityVelocity() {
-			return 0F;
-		}
-	}
+        public void updateUntilDead() {
+            while (!isDead)
+                onUpdate();
+        }
 
-	@Override
-	public String getSortingHelper(ItemStack paramItemStack) {
-		return "SHADOWBEAM";
-	}
+        @Override
+        protected float getGravityVelocity() {
+            return 0F;
+        }
+    }
 }

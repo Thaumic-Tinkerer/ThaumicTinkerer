@@ -21,21 +21,21 @@ import thaumic.tinkerer.client.lib.LibResources;
 
 public class GuiButtonWG extends GuiButton {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_WARP_GATE);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_WARP_GATE);
 
-	public boolean enabled = false;
+    public boolean enabled = false;
 
-	public GuiButtonWG(int par1, int par2, int par3, boolean enabled) {
-		super(par1, par2, par3, 13, 13, "");
-		this.enabled = enabled;
-	}
+    public GuiButtonWG(int par1, int par2, int par3, boolean enabled) {
+        super(par1, par2, par3, 13, 13, "");
+        this.enabled = enabled;
+    }
 
-	@Override
-	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if (enabled) {
-			par1Minecraft.renderEngine.bindTexture(gui);
-			int y = !enabled ? 13 : 0;
-			drawTexturedModalRect(xPosition, yPosition, 176, y, width, height);
-		}
-	}
+    @Override
+    public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
+        if (enabled) {
+            par1Minecraft.renderEngine.bindTexture(gui);
+            int y = !enabled ? 13 : 0;
+            drawTexturedModalRect(xPosition, yPosition, 176, y, width, height);
+        }
+    }
 }

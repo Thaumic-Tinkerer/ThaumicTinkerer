@@ -28,9 +28,9 @@ import java.util.ArrayList;
 
 public class ItemDarkQuartzSlab extends ItemSlab implements ITTinkererItem {
 
-	public ItemDarkQuartzSlab(Block par1) {
-		super(par1, (BlockSlab) ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), (BlockSlab) ThaumicTinkerer.registry.getBlockFromClass(BlockDarkQuartzSlab.class).get(1), false);
-	}
+    public ItemDarkQuartzSlab(Block par1) {
+        super(par1, (BlockSlab) ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartzSlab.class), (BlockSlab) ThaumicTinkerer.registry.getBlockFromClass(BlockDarkQuartzSlab.class).get(1), false);
+    }
 
     @Override
     public ArrayList<Object> getSpecialParameters() {

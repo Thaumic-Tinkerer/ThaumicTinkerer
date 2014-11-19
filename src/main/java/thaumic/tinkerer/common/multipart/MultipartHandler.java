@@ -1,4 +1,3 @@
-
 /**
  * This class was created by <Vazkii>. It's distributed as
  * part of the ThaumicTinkerer Mod.
@@ -15,10 +14,10 @@
  */
 package thaumic.tinkerer.common.multipart;
 
-import net.minecraft.block.Block;
-import thaumcraft.common.config.ConfigBlocks;
 import codechicken.microblock.BlockMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;
+import net.minecraft.block.Block;
+import thaumcraft.common.config.ConfigBlocks;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.quartz.BlockDarkQuartz;
 

@@ -26,48 +26,48 @@ import java.util.ArrayList;
 
 public class ItemBlockMagnet extends ItemBlock implements ITTinkererItem {
 
-	public ItemBlockMagnet(Block block) {
-		super(block);
-		setHasSubtypes(true);
-	}
+    public ItemBlockMagnet(Block block) {
+        super(block);
+        setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int par1) {
-		return par1 == 0 ? 0 : 2;
-	}
+    @Override
+    public int getMetadata(int par1) {
+        return par1 == 0 ? 0 : 2;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		return "tile." + (par1ItemStack.getItemDamage() == 0 ? LibBlockNames.MAGNET : LibBlockNames.MOB_MAGNET);
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack par1ItemStack) {
+        return "tile." + (par1ItemStack.getItemDamage() == 0 ? LibBlockNames.MAGNET : LibBlockNames.MOB_MAGNET);
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibBlockNames.MAGNET;
-	}
+    @Override
+    public String getItemName() {
+        return LibBlockNames.MAGNET;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return false;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return false;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 }

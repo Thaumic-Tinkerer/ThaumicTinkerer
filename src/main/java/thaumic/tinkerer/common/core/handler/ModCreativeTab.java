@@ -27,16 +27,17 @@ import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 import thaumic.tinkerer.common.lib.LibMisc;
 import thaumic.tinkerer.common.registry.ItemStackCompatator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ModCreativeTab extends CreativeTabs {
 
     public static ModCreativeTab INSTANCE;
-    ItemStack displayItem;
-    List list = new ArrayList();
-
     //Holds the registered items and blocks before they are sorted
     public ArrayList<ItemStack> creativeTabQueue = new ArrayList<ItemStack>();
+    ItemStack displayItem;
+    List list = new ArrayList();
 
     public ModCreativeTab() {
         super(LibMisc.MOD_ID);

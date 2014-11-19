@@ -15,15 +15,15 @@
 */
 package thaumic.tinkerer.common.multipart;
 
-import java.util.Arrays;
-import java.util.Random;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import thaumcraft.common.config.ConfigBlocks;
 import codechicken.lib.vec.Cuboid6;
 import codechicken.multipart.IRandomDisplayTick;
 import codechicken.multipart.minecraft.McMetaPart;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import thaumcraft.common.config.ConfigBlocks;
+
+import java.util.Arrays;
+import java.util.Random;
 
 public class PartCandle extends McMetaPart implements IRandomDisplayTick {
     public PartCandle(int meta) {

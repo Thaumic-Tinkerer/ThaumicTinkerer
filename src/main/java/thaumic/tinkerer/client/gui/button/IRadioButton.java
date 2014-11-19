@@ -16,12 +16,12 @@ package thaumic.tinkerer.client.gui.button;
 
 public interface IRadioButton {
 
-	public void enableFromClick();
+    public void enableFromClick();
 
-	public void updateStatus(IRadioButton otherButton);
+    public void updateStatus(IRadioButton otherButton);
 
-	public boolean isEnabled();
+    public boolean isEnabled();
 
-	public void setEnabled(boolean enabled);
+    public void setEnabled(boolean enabled);
 
 }

@@ -27,14 +27,14 @@ import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 
 public class DimensionalShardDropHandler {
 
-	@SubscribeEvent
-	public void onEntityLivingDrops(LivingDropsEvent event) {
-		if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
-			if (event.entityLiving instanceof EntityEnderman && event.entityLiving.dimension == ConfigHandler.endDimensionID && Math.random() <= 1D / 32D)
-				event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7)));
+    @SubscribeEvent
+    public void onEntityLivingDrops(LivingDropsEvent event) {
+        if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
+            if (event.entityLiving instanceof EntityEnderman && event.entityLiving.dimension == ConfigHandler.endDimensionID && Math.random() <= 1D / 32D)
+                event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7)));
 
-			if (event.entityLiving instanceof EntityPigZombie && event.entityLiving.dimension == ConfigHandler.netherDimensionID && Math.random() <= 1D / 16D)
-				event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 6)));
-		}
-	}
+            if (event.entityLiving instanceof EntityPigZombie && event.entityLiving.dimension == ConfigHandler.netherDimensionID && Math.random() <= 1D / 16D)
+                event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 6)));
+        }
+    }
 }

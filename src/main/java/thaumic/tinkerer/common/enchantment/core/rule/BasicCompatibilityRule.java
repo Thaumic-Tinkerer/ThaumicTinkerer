@@ -21,15 +21,15 @@ import java.util.List;
 
 public class BasicCompatibilityRule implements IEnchantmentRule {
 
-	Enchantment illegal;
+    Enchantment illegal;
 
-	public BasicCompatibilityRule(Enchantment illegal) {
-		this.illegal = illegal;
-	}
+    public BasicCompatibilityRule(Enchantment illegal) {
+        this.illegal = illegal;
+    }
 
-	@Override
-	public boolean cantApplyAlongside(List<Integer> enchantments) {
-		return enchantments.contains(illegal.effectId);
-	}
+    @Override
+    public boolean cantApplyAlongside(List<Integer> enchantments) {
+        return enchantments.contains(illegal.effectId);
+    }
 
 }

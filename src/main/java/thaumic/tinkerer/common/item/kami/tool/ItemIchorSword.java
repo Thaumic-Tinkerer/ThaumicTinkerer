@@ -40,57 +40,57 @@ import java.util.ArrayList;
 
 public class ItemIchorSword extends ItemSword implements ITTinkererItem {
 
-	public ItemIchorSword() {
-		super(ThaumicTinkerer.proxy.toolMaterialIchor);
-		setCreativeTab(ModCreativeTab.INSTANCE);
-	}
+    public ItemIchorSword() {
+        super(ThaumicTinkerer.proxy.toolMaterialIchor);
+        setCreativeTab(ModCreativeTab.INSTANCE);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = IconHelper.forItem(par1IconRegister, this);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        itemIcon = IconHelper.forItem(par1IconRegister, this);
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTCommonProxy.kamiRarity;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return TTCommonProxy.kamiRarity;
+    }
 
-	@Override
-	public boolean isItemTool(ItemStack par1ItemStack) {
-		return true;
-	}
+    @Override
+    public boolean isItemTool(ItemStack par1ItemStack) {
+        return true;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.ICHOR_SWORD;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.ICHOR_SWORD;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return ConfigHandler.enableKami;
-	}
-
-	@Override
-	public boolean shouldDisplayInTab() {
+    @Override
+    public boolean shouldRegister() {
         return ConfigHandler.enableKami;
-	}
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return ConfigHandler.enableKami;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SWORD, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.AIR, 75),
-				" I ", " I ", " R ",
-				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
+
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SWORD, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.AIR, 75),
+                " I ", " I ", " R ",
+                'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+                'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+    }
 }

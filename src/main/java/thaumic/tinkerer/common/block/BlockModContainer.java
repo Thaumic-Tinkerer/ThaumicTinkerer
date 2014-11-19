@@ -28,35 +28,35 @@ import thaumic.tinkerer.common.registry.ITTinkererBlock;
 
 public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer implements ITTinkererBlock {
 
-	protected BlockModContainer(Material par2Material) {
-		super(par2Material);
-		if (registerInCreative())
-			setCreativeTab(ModCreativeTab.INSTANCE);
-	}
+    protected BlockModContainer(Material par2Material) {
+        super(par2Material);
+        if (registerInCreative())
+            setCreativeTab(ModCreativeTab.INSTANCE);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		blockIcon = IconHelper.forBlock(par1IconRegister, this);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        blockIcon = IconHelper.forBlock(par1IconRegister, this);
+    }
 
-	/**
-	 * Does the block register in the creative inv? *
-	 */
-	boolean registerInCreative() {
-		return true;
-	}
+    /**
+     * Does the block register in the creative inv? *
+     */
+    boolean registerInCreative() {
+        return true;
+    }
 
-	@Override
-	public abstract T createNewTileEntity(World world, int var2);
+    @Override
+    public abstract T createNewTileEntity(World world, int var2);
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return null;
+    }
 }

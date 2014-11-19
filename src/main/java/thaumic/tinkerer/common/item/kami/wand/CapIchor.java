@@ -23,19 +23,19 @@ import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 
 public class CapIchor extends WandCap {
 
-	ResourceLocation res = new ResourceLocation(LibResources.MODEL_CAP_ICHOR);
+    ResourceLocation res = new ResourceLocation(LibResources.MODEL_CAP_ICHOR);
 
-	public CapIchor() {
+    public CapIchor() {
         super("ICHOR", 0.7F, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 4), 10);
     }
 
-	public CapIchor(String s) {
+    public CapIchor(String s) {
         super(s, 0.7F, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 10), 10);
     }
 
-	@Override
-	public ResourceLocation getTexture() {
-		return res;
-	}
+    @Override
+    public ResourceLocation getTexture() {
+        return res;
+    }
 
 }

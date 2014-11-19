@@ -8,7 +8,6 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -28,6 +27,9 @@ import java.util.Random;
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
 public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock {
+
+    private IIcon[] icons;
+    private IIcon itemIcon;
 
     public abstract HashMap<BlockTuple, BlockTuple> getBlockTransformation();
 
@@ -387,19 +389,6 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
         return ItemBlockFire.class;
     }
 
-    private static class FireInfo {
-        public int encouragement = 0;
-        public int flammibility = 0;
-
-        public FireInfo(int flammibility, int encouragement) {
-            this.flammibility = flammibility;
-            this.encouragement = encouragement;
-        }
-    }
-
-    private IIcon[] icons;
-    private IIcon itemIcon;
-
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
         this.icons = new IIcon[]{IconHelper.forName(iconRegister, this.getBlockName() + "_layer_0"), IconHelper.forName(iconRegister, this.getBlockName() + "_layer_1")};
@@ -438,5 +427,15 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
         return itemIcon;
+    }
+
+    private static class FireInfo {
+        public int encouragement = 0;
+        public int flammibility = 0;
+
+        public FireInfo(int flammibility, int encouragement) {
+            this.flammibility = flammibility;
+            this.encouragement = encouragement;
+        }
     }
 }

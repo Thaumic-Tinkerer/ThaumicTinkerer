@@ -22,18 +22,18 @@ import thaumcraft.common.config.ConfigItems;
 
 public class EnchantmentAutoSmelt extends EnchantmentMod {
 
-	protected EnchantmentAutoSmelt(int par1) {
-		super(par1, 1, EnumEnchantmentType.digger);
-	}
+    protected EnchantmentAutoSmelt(int par1) {
+        super(par1, 1, EnumEnchantmentType.digger);
+    }
 
-	@Override
-	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == Config.enchRepair.effectId;
-	}
+    @Override
+    public boolean canApplyTogether(Enchantment par1Enchantment) {
+        return par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == Config.enchRepair.effectId;
+    }
 
-	@Override
-	public boolean canApply(ItemStack par1ItemStack) {
-		return super.canApply(par1ItemStack) && par1ItemStack.getItem() != ConfigItems.itemAxeElemental;
-	}
+    @Override
+    public boolean canApply(ItemStack par1ItemStack) {
+        return super.canApply(par1ItemStack) && par1ItemStack.getItem() != ConfigItems.itemAxeElemental;
+    }
 
 }

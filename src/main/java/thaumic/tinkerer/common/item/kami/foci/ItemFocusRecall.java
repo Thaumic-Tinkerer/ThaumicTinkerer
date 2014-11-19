@@ -28,7 +28,6 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.kami.TileWarpGate;
-import thaumic.tinkerer.common.item.foci.ItemModFocus;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 import thaumic.tinkerer.common.item.kami.ItemSkyPearl;
 import thaumic.tinkerer.common.lib.LibItemNames;
@@ -39,92 +38,92 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.KamiResearchItem;
 import thaumic.tinkerer.common.research.ResearchHelper;
 
-public class ItemFocusRecall extends ItemModKamiFocus{
+public class ItemFocusRecall extends ItemModKamiFocus {
 
-	AspectList cost = new AspectList().add(Aspect.AIR, 4000).add(Aspect.EARTH, 4000).add(Aspect.ORDER, 4000);
+    AspectList cost = new AspectList().add(Aspect.AIR, 4000).add(Aspect.EARTH, 4000).add(Aspect.ORDER, 4000);
 
-	public ItemFocusRecall() {
-		super();
-	}
+    public ItemFocusRecall() {
+        super();
+    }
 
-	@Override
-	protected boolean hasDepth() {
-		return true;
-	}
+    @Override
+    protected boolean hasDepth() {
+        return true;
+    }
 
-	@Override
-	public boolean isUseItem(ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean isUseItem(ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
-		ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
+    @Override
+    public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
+        ItemWandCasting wand = (ItemWandCasting) paramItemStack.getItem();
 
-		if (Integer.MAX_VALUE - paramInt > 60) {
-			ItemStack stackToCount = null;
-			for (int i = 0; i < 9; i++) {
-				ItemStack stackInSlot = paramEntityPlayer.inventory.getStackInSlot(i);
-				if (stackInSlot != null && stackInSlot.getItem() instanceof ItemSkyPearl && ItemSkyPearl.isAttuned(stackInSlot)) {
-					stackToCount = stackInSlot;
-					break;
-				}
-			}
+        if (Integer.MAX_VALUE - paramInt > 60) {
+            ItemStack stackToCount = null;
+            for (int i = 0; i < 9; i++) {
+                ItemStack stackInSlot = paramEntityPlayer.inventory.getStackInSlot(i);
+                if (stackInSlot != null && stackInSlot.getItem() instanceof ItemSkyPearl && ItemSkyPearl.isAttuned(stackInSlot)) {
+                    stackToCount = stackInSlot;
+                    break;
+                }
+            }
 
-			if (stackToCount != null) {
-				int dim = ItemSkyPearl.getDim(stackToCount);
-				if (dim == paramEntityPlayer.dimension) {
-					int x = ItemSkyPearl.getX(stackToCount);
-					int y = ItemSkyPearl.getY(stackToCount);
-					int z = ItemSkyPearl.getZ(stackToCount);
+            if (stackToCount != null) {
+                int dim = ItemSkyPearl.getDim(stackToCount);
+                if (dim == paramEntityPlayer.dimension) {
+                    int x = ItemSkyPearl.getX(stackToCount);
+                    int y = ItemSkyPearl.getY(stackToCount);
+                    int z = ItemSkyPearl.getZ(stackToCount);
 
-					if (wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(paramItemStack), false, false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
-						wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(paramItemStack), true, false);
-				}
-			}
+                    if (wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(paramItemStack), false, false) && TileWarpGate.teleportPlayer(paramEntityPlayer, new ChunkCoordinates(x, y, z)))
+                        wand.consumeAllVis(paramItemStack, paramEntityPlayer, getVisCost(paramItemStack), true, false);
+                }
+            }
 
-			paramEntityPlayer.clearItemInUse();
-		}
-	}
+            paramEntityPlayer.clearItemInUse();
+        }
+    }
 
-	@Override
-	public int getFocusColor(ItemStack stack) {
-		return 0x9CF8FF;
-	}
+    @Override
+    public int getFocusColor(ItemStack stack) {
+        return 0x9CF8FF;
+    }
 
-	@Override
-	public AspectList getVisCost(ItemStack stack) {
-		return cost;
-	}
+    @Override
+    public AspectList getVisCost(ItemStack stack) {
+        return cost;
+    }
 
-	@Override
-	public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-		return new FocusUpgradeType[0];
-	}
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[0];
+    }
 
-	@Override
-	public String getSortingHelper(ItemStack paramItemStack) {
-		return "RECALL";
-	}
+    @Override
+    public String getSortingHelper(ItemStack paramItemStack) {
+        return "RECALL";
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.FOCUS_RECALL;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.FOCUS_RECALL;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		if (!Config.allowMirrors) {
-			return null;
-		}
-		return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_RECALL, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 1), 20, 8, 5, new ItemStack(this)).setParents(LibResearch.KEY_WARP_GATE).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD)
-				.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_RECALL));
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        if (!Config.allowMirrors) {
+            return null;
+        }
+        return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_FOCUS_RECALL, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.ELDRITCH, 1).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 1), 20, 8, 5, new ItemStack(this)).setParents(LibResearch.KEY_WARP_GATE).setParentsHidden(LibResearch.KEY_ICHORCLOTH_ROD)
+                .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_FOCUS_RECALL));
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_RECALL, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusRecall.class)), 10, new AspectList().add(Aspect.TRAVEL, 100).add(Aspect.ELDRITCH, 64).add(Aspect.MAGIC, 50), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class)),
-				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.ender_pearl), new ItemStack(Items.diamond), new ItemStack(ConfigBlocks.blockMirror), new ItemStack(ConfigItems.itemFocusPortableHole));
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_FOCUS_RECALL, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemFocusRecall.class)), 10, new AspectList().add(Aspect.TRAVEL, 100).add(Aspect.ELDRITCH, 64).add(Aspect.MAGIC, 50), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class)),
+                new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(Items.ender_pearl), new ItemStack(Items.diamond), new ItemStack(ConfigBlocks.blockMirror), new ItemStack(ConfigItems.itemFocusPortableHole));
 
-	}
+    }
 }

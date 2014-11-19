@@ -18,8 +18,8 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 
 public class EnchantmentAscentBoost extends EnchantmentMod {
 
-	protected EnchantmentAscentBoost(int par1) {
-		super(par1, 4, EnumEnchantmentType.armor_legs);
-	}
+    protected EnchantmentAscentBoost(int par1) {
+        super(par1, 4, EnumEnchantmentType.armor_legs);
+    }
 
 }

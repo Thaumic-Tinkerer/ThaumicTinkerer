@@ -32,78 +32,78 @@ import java.util.List;
 
 public abstract class ItemIchorclothArmorAdv extends ItemIchorclothArmor {
 
-	public ItemIchorclothArmorAdv(int par2) {
-		super(par2);
-		setHasSubtypes(true);
-		if (ticks())
-			MinecraftForge.EVENT_BUS.register(this);
-	}
+    public ItemIchorclothArmorAdv(int par2) {
+        super(par2);
+        setHasSubtypes(true);
+        if (ticks())
+            MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	public ItemIchorclothArmorAdv() {
-		this(0);
-	}
+    public ItemIchorclothArmorAdv() {
+        this(0);
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if (par3EntityPlayer.isSneaking()) {
-			int dmg = par1ItemStack.getItemDamage();
-			par1ItemStack.setItemDamage(~dmg & 1);
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+    @Override
+    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+        if (par3EntityPlayer.isSneaking()) {
+            int dmg = par1ItemStack.getItemDamage();
+            par1ItemStack.setItemDamage(~dmg & 1);
+            par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
 
-			ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.awakenedArmor" + par1ItemStack.getItemDamage()));
+            ToolModeHUDHandler.setTooltip(StatCollector.translateToLocal("ttmisc.awakenedArmor" + par1ItemStack.getItemDamage()));
 
-			return par1ItemStack;
-		}
+            return par1ItemStack;
+        }
 
-		return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
-	}
+        return super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
+    }
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
-		super.addInformation(stack, par2EntityPlayer, list, par4);
-		if (stack.getItemDamage() == 1)
-			list.add(StatCollector.translateToLocal("ttmisc.awakenedArmor1"));
-	}
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+        super.addInformation(stack, par2EntityPlayer, list, par4);
+        if (stack.getItemDamage() == 1)
+            list.add(StatCollector.translateToLocal("ttmisc.awakenedArmor1"));
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return slot == 2 ? LibResources.MODEL_ARMOR_ICHOR_GEM_2 : LibResources.MODEL_ARMOR_ICHOR_GEM_1;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+        return slot == 2 ? LibResources.MODEL_ARMOR_ICHOR_GEM_2 : LibResources.MODEL_ARMOR_ICHOR_GEM_1;
+    }
 
-	boolean ticks() {
-		return false;
-	}
+    boolean ticks() {
+        return false;
+    }
 
-	@SubscribeEvent
-	public void onEntityUpdate(LivingUpdateEvent event) {
-		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
+    @SubscribeEvent
+    public void onEntityUpdate(LivingUpdateEvent event) {
+        if (event.entityLiving instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.entityLiving;
 
-			ItemStack armor = player.getCurrentArmor(3 - armorType);
-			if (armor != null && armor.getItem() == this)
-				tickPlayer(player);
-		}
-	}
+            ItemStack armor = player.getCurrentArmor(3 - armorType);
+            if (armor != null && armor.getItem() == this)
+                tickPlayer(player);
+        }
+    }
 
-	void tickPlayer(EntityPlayer player) {
-		// NO-OP
-	}
+    void tickPlayer(EntityPlayer player) {
+        // NO-OP
+    }
 
-	@Override
-	public abstract String getItemName();
+    @Override
+    public abstract String getItemName();
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 }
