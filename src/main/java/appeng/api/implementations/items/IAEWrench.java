@@ -12,7 +12,7 @@ public interface IAEWrench
 
 	/**
 	 * Check if the wrench can be used.
-	 * 
+	 *
 	 * @param player wrenching player
 	 * @param x x pos of wrenched block
 	 * @param y y pos of wrenched block

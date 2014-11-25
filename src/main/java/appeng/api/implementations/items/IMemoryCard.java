@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Memory Card API
- * 
+ *
  * AE's Memory Card Item Class implements this interface.
  */
 public interface IMemoryCard
@@ -15,7 +15,7 @@ public interface IMemoryCard
 	/**
 	 * Configures the data stored on the memory card, the SettingsName, will be
 	 * localized when displayed.
-	 * 
+	 *
 	 * @param is item
 	 * @param SettingsName
 	 *            unlocalized string that represents the tile entity.
@@ -30,7 +30,7 @@ public interface IMemoryCard
 	 * returns the settings name provided by a previous call to
 	 * setMemoryCardContents, or "AppEng.GuiITooltip.Blank" if there was no
 	 * previous call to setMemoryCardContents.
-	 * 
+	 *
 	 * @param is item
 	 * @return setting name
 	 */
@@ -45,7 +45,7 @@ public interface IMemoryCard
 
 	/**
 	 * notify the user of a outcome related to the memory card.
-	 * 
+	 *
 	 * @param player
 	 *            that used the card.
 	 * @param msg

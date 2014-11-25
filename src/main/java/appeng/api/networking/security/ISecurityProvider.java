@@ -13,14 +13,14 @@ public interface ISecurityProvider
 
 	/**
 	 * used to represent the security key for the network, should be based on a unique timestamp.
-	 * 
+	 *
 	 * @return unique key.
 	 */
 	long getSecurityKey();
 
 	/**
 	 * Push permission data into security cache.
-	 * 
+	 *
 	 * @param playerPerms player permissions
 	 */
 	void readPermissions(HashMap<Integer, EnumSet<SecurityPermissions>> playerPerms);

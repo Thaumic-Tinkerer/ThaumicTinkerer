@@ -64,14 +64,14 @@ public interface IComputerAccess
 	 * @see	#mountWritable(String, IWritableMount)
 	 */
 	public void unmount( String location );
-	
+
 	/**
 	 * Returns the numerical ID of this computercraft.<br>
 	 * This is the same number obtained by calling os.getComputerID() or running the "id" program from lua,
 	 * and is guarunteed unique. This number will be positive.
 	 * @return	The identifier.
 	 */
-	public int getID();	
+	public int getID();
 
 	/**
 	 * Causes an event to be raised on this computercraft, which the computercraft can respond to by calling
@@ -79,7 +79,7 @@ public interface IComputerAccess
 	 * this peripheral.
 	 * @param event		A string identifying the type of event that has occurred, this will be
 	 *					returned as the first value from os.pullEvent(). It is recommended that you
-	 *					you choose a name that is unique, and recognisable as originating from your 
+	 *					you choose a name that is unique, and recognisable as originating from your
 	 *					peripheral. eg: If your peripheral type is "button", a suitable event would be
 	 *					"button_pressed".
 	 * @param arguments	In addition to a name, you may pass an array of extra arguments to the event, that will

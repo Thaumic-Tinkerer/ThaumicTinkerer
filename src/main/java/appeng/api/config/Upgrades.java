@@ -1,8 +1,8 @@
 package appeng.api.config;
 
-import java.util.HashMap;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.HashMap;
 
 public enum Upgrades
 {

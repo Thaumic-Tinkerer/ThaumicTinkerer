@@ -8,10 +8,10 @@
  */
 package buildcraft.api.gates;
 
-import java.util.LinkedList;
-
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
+
+import java.util.LinkedList;
 
 public interface IActionProvider {
 

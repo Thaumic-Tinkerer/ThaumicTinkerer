@@ -47,11 +47,11 @@ public interface IMount
 	 * @return the size of the file, in bytes
 	 */
 	public long getSize( String path ) throws IOException;
-	
+
 	/**
 	 * Opens a file with a given path, and returns an inputstream representing it's contents.
 	 * @param path A file path in normalised format, relative to the mount location. ie: "programs/myprogram"
 	 * @return a stream representing the contents of the file
 	 */
-	public InputStream openForRead( String path ) throws IOException;	
+	public InputStream openForRead( String path ) throws IOException;
 }

@@ -22,16 +22,16 @@ public interface IPeripheral
 	 * @return 	A string identifying the type of peripheral.
 	 */
     public String getType();
-    
+
 	/**
-	 * Should return an array of strings that identify the methods that this 
+	 * Should return an array of strings that identify the methods that this
 	 * peripheral exposes to Lua. This will be called once before each attachment,
 	 * and should not change when called multiple times.
 	 * @return 	An array of strings representing method names.
 	 * @see 	#callMethod
 	 */
     public String[] getMethodNames();
-    
+
 	/**
 	 * This is called when a lua program on an attached computercraft calls peripheral.call() with
 	 * one of the methods exposed by getMethodNames().<br>
@@ -61,7 +61,7 @@ public interface IPeripheral
 	 * @see 	#getMethodNames
 	 */
     public Object[] callMethod( IComputerAccess computer, ILuaContext context, int method, Object[] arguments ) throws LuaException, InterruptedException;
-    
+
 	/**
 	 * Is called when canAttachToSide has returned true, and a computercraft is attaching to the peripheral.
 	 * This will occur when a peripheral is placed next to an active computercraft, when a computercraft is turned on next to a peripheral,

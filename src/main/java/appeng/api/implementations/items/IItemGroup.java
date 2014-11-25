@@ -12,7 +12,7 @@ public interface IItemGroup
 
 	/**
 	 * returning null, is the same as not implementing the interface at all.
-	 * 
+	 *
 	 * @param is item
 	 * @return an unlocalized string to use for the items group name.
 	 */

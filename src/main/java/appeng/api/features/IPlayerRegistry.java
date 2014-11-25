@@ -1,8 +1,7 @@
 package appeng.api.features;
 
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.mojang.authlib.GameProfile;
+import net.minecraft.entity.player.EntityPlayer;
 
 /**
  * Maintains a save specific list of userids and username combinations this greatly simplifies storage internally and

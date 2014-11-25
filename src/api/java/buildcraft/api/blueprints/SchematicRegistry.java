@@ -8,19 +8,17 @@
  */
 package buildcraft.api.blueprints;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.HashSet;
-
+import buildcraft.api.core.JavaTools;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
-import buildcraft.api.core.JavaTools;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public final class SchematicRegistry {
 

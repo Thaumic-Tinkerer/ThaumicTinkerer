@@ -4,7 +4,7 @@ import net.minecraft.util.StatCollector;
 
 /**
  * List of all colors supported by AE, their names, and various colors for display.
- * 
+ *
  * Should be the same order as Dyes, excluding Transparent.
  */
 public enum AEColor

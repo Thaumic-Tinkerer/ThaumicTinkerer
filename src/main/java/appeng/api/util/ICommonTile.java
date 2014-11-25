@@ -11,7 +11,7 @@ public interface ICommonTile
 	/**
 	 * implemented on AE's Tile Entities, Gets a list of drops that the entity will normally drop, this doesn't include
 	 * the block itself.
-	 * 
+	 *
 	 * @param world world of tile entity
 	 * @param x x pos of tile entity
 	 * @param y y pos of tile entity

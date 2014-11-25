@@ -12,7 +12,7 @@ public interface ISecurityRegistry
 
 	/**
 	 * Submit Permissions into the register.
-	 * 
+	 *
 	 * @param PlayerID player id
 	 * @param permissions permissions of player
 	 */

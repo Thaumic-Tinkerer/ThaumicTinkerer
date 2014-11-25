@@ -12,7 +12,7 @@ public interface IWirelessTermRegistry
 
 	/**
 	 * add this handler to the list of other wireless handler.
-	 * 
+	 *
 	 * @param handler wireless handler
 	 */
 	void registerWirelessHandler(IWirelessTermHandler handler);

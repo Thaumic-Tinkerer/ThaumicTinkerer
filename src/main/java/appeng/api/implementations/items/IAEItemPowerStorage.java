@@ -1,8 +1,8 @@
 package appeng.api.implementations.items;
 
-import net.minecraft.item.ItemStack;
 import appeng.api.config.AccessRestriction;
 import appeng.api.networking.energy.IAEPowerStorage;
+import net.minecraft.item.ItemStack;
 
 /**
  * Basically the same as {@link IAEPowerStorage}, but for items.
@@ -13,7 +13,7 @@ public interface IAEItemPowerStorage
 	/**
 	 * Inject amt, power into the device, it will store what it can, and return
 	 * the amount unable to be stored.
-	 * 
+	 *
 	 * @return amount unable to be stored
 	 */
 	public double injectAEPower(ItemStack is, double amt);
@@ -21,7 +21,7 @@ public interface IAEItemPowerStorage
 	/**
 	 * Attempt to extract power from the device, it will extract what it can and
 	 * return it.
-	 * 
+	 *
 	 * @param amt to be extracted power from device
 	 * @return what it could extract
 	 */
@@ -40,7 +40,7 @@ public interface IAEItemPowerStorage
 	/**
 	 * Control the power flow by telling what the network can do, either add? or
 	 * subtract? or both!
-	 * 
+	 *
 	 * @return access restriction of network
 	 */
 	public AccessRestriction getPowerFlow(ItemStack is);

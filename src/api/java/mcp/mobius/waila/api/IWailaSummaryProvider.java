@@ -1,8 +1,8 @@
 package mcp.mobius.waila.api;
 
-import java.util.LinkedHashMap;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.LinkedHashMap;
 
 public interface IWailaSummaryProvider {
 	/* This interface is used to control the display data in the description screen */
@@ -16,6 +16,6 @@ public interface IWailaSummaryProvider {
 	//int getEnchantability(ItemStack stack);
 	//int getDamageVsEntity(ItemStack stack);
 	//int getDurability(ItemStack stack);
-	
+
 	LinkedHashMap<String, String> getSummary(ItemStack stack, LinkedHashMap<String, String> currentSummary, IWailaConfigHandler config);
 }

@@ -8,9 +8,7 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
+import buildcraft.api.core.Position;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
@@ -19,10 +17,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.nbt.NBTTagList;
-
 import net.minecraftforge.common.util.Constants;
 
-import buildcraft.api.core.Position;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SchematicEntity extends Schematic {
 

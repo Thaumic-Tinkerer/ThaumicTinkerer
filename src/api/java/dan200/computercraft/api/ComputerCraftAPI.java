@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
  * but may be called before it is fully loaded.
  */
 public final class ComputerCraftAPI
-{	
+{
 	/**
 	 * Creates a numbered directory in a subfolder of the save directory for a given world, and returns that number.<br>
 	 * Use in conjuction with createSaveDirMount() to create a unique place for your peripherals or media items to store files.<br>
@@ -45,7 +45,7 @@ public final class ComputerCraftAPI
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * Creates a file system mount that maps to a subfolder of the save directory for a given world, and returns it.<br>
 	 * Use in conjuction with IComputerAccess.mount() or IComputerAccess.mountWritable() to mount a folder from the
@@ -75,7 +75,7 @@ public final class ComputerCraftAPI
 		}
 		return null;
 	}
-	 
+
 	/**
 	 * Creates a file system mount to a resource folder, and returns it.<br>
 	 * Use in conjuction with IComputerAccess.mount() or IComputerAccess.mountWritable() to mount a resource folder onto a computers file system.<br>
@@ -102,7 +102,7 @@ public final class ComputerCraftAPI
 		}
 		return null;
 	}
-	 
+
 	/**
 	 * Registers a peripheral handler to convert blocks into IPeripheral implementations.
 	 * @see dan200.computercraft.api.peripheral.IPeripheral
@@ -200,7 +200,7 @@ public final class ComputerCraftAPI
 	// The functions below here are private, and are used to interface with the non-API ComputerCraft classes.
 	// Reflection is used here so you can develop your mod in MCP without decompiling ComputerCraft and including
 	// it in your solution.
-	
+
 	private static void findCC()
 	{
 		if( !ccSearched ) {
@@ -250,9 +250,9 @@ public final class ComputerCraftAPI
 			System.out.println( "ComputerCraftAPI: ComputerCraft method " + name + " not found." );
 			return null;
 		}
-	}	
-	
-	private static boolean ccSearched = false;	
+	}
+
+	private static boolean ccSearched = false;
 	private static Class computerCraft = null;
 	private static Method computerCraft_createUniqueNumberedSaveDir = null;
 	private static Method computerCraft_createSaveDirMount = null;

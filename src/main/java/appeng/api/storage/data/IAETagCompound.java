@@ -1,11 +1,11 @@
 package appeng.api.storage.data;
 
-import net.minecraft.nbt.NBTTagCompound;
 import appeng.api.features.IItemComparison;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Don't cast this... either compare with it, or copy it.
- * 
+ *
  * Don't Implement.
  */
 public interface IAETagCompound
@@ -18,7 +18,7 @@ public interface IAETagCompound
 
 	/**
 	 * compare to other NBTTagCompounds or IAETagCompounds
-	 * 
+	 *
 	 * @param a compared object
 	 * @return true, if they are the same.
 	 */

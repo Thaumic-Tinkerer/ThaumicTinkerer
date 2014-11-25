@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 /**
  * Common implementation of a simple class that monitors injection/extraction of a inventory to send events to a list of
  * listeners.
- * 
+ *
  * @param <StackType>
  */
 public class MEMonitorHandler<StackType extends IAEStack> implements IMEMonitor<StackType>
@@ -40,7 +40,7 @@ public class MEMonitorHandler<StackType extends IAEStack> implements IMEMonitor<
 	{
 		notifyListenersOfChange( changes, src );
 	}
-	
+
 	protected void notifyListenersOfChange(Iterable<StackType> diff, BaseActionSource src)
 	{
 		hasChanged = true;// need to update the cache.

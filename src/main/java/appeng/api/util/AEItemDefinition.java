@@ -34,7 +34,7 @@ public interface AEItemDefinition
 
 	/**
 	 * Compare {@link ItemStack} with this {@link AEItemDefinition}
-	 * 
+	 *
 	 * @param comparableItem compared item
 	 * @return true if the item stack is a matching item.
 	 */
@@ -42,12 +42,12 @@ public interface AEItemDefinition
 
 	/**
 	 * Compare Block with world.
-	 * 
+	 *
 	 * @param world world of block
 	 * @param x x pos of block
 	 * @param y y pos of block
 	 * @param z z pos of block
-	 * 
+	 *
 	 * @return if the block is placed in the world at the specific location.
 	 */
 	boolean sameAsBlock(IBlockAccess world, int x, int y, int z);

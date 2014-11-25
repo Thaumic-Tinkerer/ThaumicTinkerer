@@ -8,16 +8,14 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.LinkedList;
-
+import buildcraft.api.core.IInvSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-
 import net.minecraftforge.common.util.Constants;
 
-import buildcraft.api.core.IInvSlot;
+import java.util.LinkedList;
 
 /**
  * This class allow to specify specific behavior for blocks stored in

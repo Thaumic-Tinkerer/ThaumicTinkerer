@@ -6,9 +6,9 @@ import java.util.Collection;
 
 /**
  * Represents a list of items in AE.
- * 
+ *
  * Don't Implement.
- * 
+ *
  * Construct with Util.createItemList()
  */
 public interface IItemContainer<StackType extends IAEStack>
@@ -16,7 +16,7 @@ public interface IItemContainer<StackType extends IAEStack>
 
 	/**
 	 * add a stack to the list, this will merge the stack with an item already in the list if found.
-	 * 
+	 *
 	 * @param option added stack
 	 */
 	public void add(StackType option); // adds stack as is

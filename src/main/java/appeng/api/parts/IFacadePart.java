@@ -1,17 +1,17 @@
 package appeng.api.parts;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Used Internally.
- * 
+ *
  * not intended for implementation.
  */
 public interface IFacadePart
@@ -24,7 +24,7 @@ public interface IFacadePart
 
 	/**
 	 * used to collide, and pick the part
-	 * 
+	 *
 	 * @param ch collision helper
 	 * @param e colliding entity
 	 */
@@ -32,7 +32,7 @@ public interface IFacadePart
 
 	/**
 	 * render the part.
-	 * 
+	 *
 	 * @param x x pos of part
 	 * @param y y pos of part
 	 * @param z z pos of part
@@ -47,7 +47,7 @@ public interface IFacadePart
 
 	/**
 	 * render the part in inventory.
-	 * 
+	 *
 	 * @param instance render helper
 	 * @param renderer renderer
 	 */

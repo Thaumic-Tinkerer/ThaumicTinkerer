@@ -16,7 +16,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 
 public interface IWailaDataAccessor {
-		
+
 	World        		 getWorld();
 	EntityPlayer 		 getPlayer();
 	Block        		 getBlock();

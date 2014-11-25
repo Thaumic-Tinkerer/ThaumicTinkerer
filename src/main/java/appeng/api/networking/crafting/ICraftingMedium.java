@@ -11,7 +11,7 @@ public interface ICraftingMedium
 	/**
 	 * instruct a medium to create the item represented by the pattern+details, the items on the table, and where if
 	 * possible the output should be directed.
-	 * 
+	 *
 	 * @param patternDetails details
 	 * @param table crafting table
 	 * @return if the pattern was successfully pushed.

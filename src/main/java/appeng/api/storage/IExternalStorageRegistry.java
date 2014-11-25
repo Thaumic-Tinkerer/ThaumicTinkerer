@@ -1,13 +1,13 @@
 package appeng.api.storage;
 
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 import appeng.api.IAppEngApi;
 import appeng.api.networking.security.BaseActionSource;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * A Registry of External Storage handlers.
- * 
+ *
  * Do not implement obtain via {@link IAppEngApi}.registries().getExternalStorageRegistry()
  */
 public interface IExternalStorageRegistry
@@ -15,7 +15,7 @@ public interface IExternalStorageRegistry
 
 	/**
 	 * A registry for StorageBus interactions
-	 * 
+	 *
 	 * @param esh storage handler
 	 */
 	void addExternalStorageInterface(IExternalStorageHandler esh);

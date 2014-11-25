@@ -5,9 +5,9 @@ import net.minecraft.item.ItemStack;
 //@formatter:off
 /**
  * This is a pretty basic requirement, once you implement the interface, and createPartFromItemStack
- * 
+ *
  * you must register your bus with the Bus renderer, using AEApi.instance().partHelper().setItemBusRenderer( this );
- * 
+ *
  * then simply add these two methods, which tell MC to use the Block Textures, and call AE's Bus Placement Code.
  *
  * <pre>
@@ -33,7 +33,7 @@ public interface IPartItem
 
 	/**
 	 * create a new part instance, from the item stack.
-	 * 
+	 *
 	 * @param is item
 	 * @return part from item
 	 */

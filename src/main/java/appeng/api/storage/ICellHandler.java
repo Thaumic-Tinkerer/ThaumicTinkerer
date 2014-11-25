@@ -1,11 +1,11 @@
 package appeng.api.storage;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import appeng.api.implementations.tiles.IChestOrDrive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 /**
  * Registration record for {@link ICellRegistry}
@@ -16,7 +16,7 @@ public interface ICellHandler
 	/**
 	 * return true if the provided item is handled by your cell handler. ( AE May choose to skip this method, and just
 	 * request a handler )
-	 * 
+	 *
 	 * @param is to be checked item
 	 * @return return true, if getCellHandler will not return null.
 	 */
@@ -24,7 +24,7 @@ public interface ICellHandler
 
 	/**
 	 * If you cannot handle the provided item, return null
-	 * 
+	 *
 	 * @param is
 	 *            a storage cell item.
 	 * @param host
@@ -32,7 +32,7 @@ public interface ICellHandler
 	 *            note, this value can be null.
 	 * @param channel
 	 *            the storage channel requested.
-	 * 
+	 *
 	 * @return a new IMEHandler for the provided item
 	 */
 	IMEInventoryHandler getCellInventory(ItemStack is, ISaveProvider host, StorageChannel channel);
@@ -62,11 +62,11 @@ public interface ICellHandler
 	IIcon getTopTexture_Dark();
 
 	/**
-	 * 
+	 *
 	 * Called when the storage cell is planed in an ME Chest and the user tries to open the terminal side, if your item
 	 * is not available via ME Chests simply tell the user they can't use it, or something, other wise you should open
 	 * your gui and display the cell to the user.
-	 * 
+	 *
 	 * @param player player opening chest gui
 	 * @param chest to be opened chest
 	 * @param cellHandler cell handler
@@ -78,16 +78,16 @@ public interface ICellHandler
 
 	/**
 	 * 0 - cell is missing.
-	 * 
+	 *
 	 * 1 - green, ( usually means available room for types or items. )
-	 * 
+	 *
 	 * 2 - orange, ( usually means available room for items, but not types. )
-	 * 
+	 *
 	 * 3 - red, ( usually means the cell is 100% full )
-	 * 
+	 *
 	 * @param is the cell item. ( use the handler for any details you can )
 	 * @param handler the handler for the cell is provides for reference, you can cast this to your handler.
-	 * 
+	 *
 	 * @return get the status of the cell based on its contents.
 	 */
 	int getStatusForCell(ItemStack is, IMEInventory handler);

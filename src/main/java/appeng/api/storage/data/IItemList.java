@@ -4,9 +4,9 @@ import java.util.Iterator;
 
 /**
  * Represents a list of items in AE.
- * 
+ *
  * Don't Implement.
- * 
+ *
  * Construct with Util.createItemList()
  */
 public interface IItemList<StackType extends IAEStack> extends IItemContainer<StackType>, Iterable<StackType>
@@ -15,14 +15,14 @@ public interface IItemList<StackType extends IAEStack> extends IItemContainer<St
 	/**
 	 * add a stack to the list stackSize is used to add to stackSize, this will merge the stack with an item already in
 	 * the list if found.
-	 * 
+	 *
 	 * @param option stacktype option
 	 */
 	public void addStorage(StackType option); // adds a stack as stored
 
 	/**
 	 * add a stack to the list as craftable, this will merge the stack with an item already in the list if found.
-	 * 
+	 *
 	 * @param option stacktype option
 	 */
 	public void addCrafting(StackType option);
@@ -30,7 +30,7 @@ public interface IItemList<StackType extends IAEStack> extends IItemContainer<St
 	/**
 	 * add a stack to the list, stack size is used to add to requestable, this will merge the stack with an item already
 	 * in the list if found.
-	 * 
+	 *
 	 * @param option stacktype option
 	 */
 	public void addRequestable(StackType option); // adds a stack as requestable

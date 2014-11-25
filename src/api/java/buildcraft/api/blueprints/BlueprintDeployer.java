@@ -8,10 +8,10 @@
  */
 package buildcraft.api.blueprints;
 
-import java.io.File;
-
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.io.File;
 
 /**
  * This class is provided as a utility class for third-party mods that would
@@ -35,12 +35,12 @@ public abstract class BlueprintDeployer {
 	 */
 	public abstract void deployBlueprint(World world, int x, int y, int z,
 			ForgeDirection dir, File file);
-			
+
 	/**
 	*Deploy the contents of the byte array as if the builder was located at
 	*{x, y, z} facing the direction dir.
 	*/
-	
+
 	public abstract void deployBlueprintFromFileStream(World world, int x, int y,
 	int z, ForgeDirection dir, byte [] data);
 

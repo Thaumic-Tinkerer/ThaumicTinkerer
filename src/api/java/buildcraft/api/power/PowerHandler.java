@@ -8,13 +8,11 @@
  */
 package buildcraft.api.power;
 
-import net.minecraft.nbt.NBTTagCompound;
-
-import net.minecraftforge.common.util.ForgeDirection;
-
 import buildcraft.api.core.SafeTimeTracker;
 import buildcraft.api.mj.MjAPI;
 import buildcraft.api.mj.MjBattery;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * The PowerHandler is similar to FluidTank in that it holds your power and

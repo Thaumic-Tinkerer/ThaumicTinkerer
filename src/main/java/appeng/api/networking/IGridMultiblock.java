@@ -12,7 +12,7 @@ public interface IGridMultiblock extends IGridBlock
 
 	/**
 	 * Used to acquire a list of all nodes that are part of the multiblock.
-	 * 
+	 *
 	 * @return an iterator that will iterate all the nodes for the multiblock. ( read-only iterator expected. )
 	 */
 	Iterator<IGridNode> getMultiblockNodes();

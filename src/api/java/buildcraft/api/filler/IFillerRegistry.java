@@ -8,9 +8,9 @@
  */
 package buildcraft.api.filler;
 
-import java.util.Set;
-
 import buildcraft.api.gates.IAction;
+
+import java.util.Set;
 
 public interface IFillerRegistry {
 

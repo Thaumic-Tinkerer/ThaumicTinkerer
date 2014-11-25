@@ -12,14 +12,14 @@ public interface IGrinderRegistry
 
 	/**
 	 * Current list of registered recipes, you can modify this if you want too.
-	 * 
+	 *
 	 * @return currentlyRegisteredRecipes
 	 */
 	public List<IGrinderEntry> getRecipes();
 
 	/**
 	 * add a new recipe the easy way, in &#8594; out, how many turns., duplicates will not be added.
-	 * 
+	 *
 	 * @param in input
 	 * @param out output
 	 * @param turns amount of turns to turn the input into the output
@@ -28,7 +28,7 @@ public interface IGrinderRegistry
 
 	/**
 	 * add a new recipe with optional outputs, duplicates will not be added.
-	 * 
+	 *
 	 * @param in input
 	 * @param out output
 	 * @param optional optional output
@@ -39,7 +39,7 @@ public interface IGrinderRegistry
 
 	/**
 	 * add a new recipe with optional outputs, duplicates will not be added.
-	 * 
+	 *
 	 * @param in input
 	 * @param out output
 	 * @param optional optional output
@@ -52,7 +52,7 @@ public interface IGrinderRegistry
 
 	/**
 	 * Searches for a recipe for a given input, and returns it.
-	 * 
+	 *
 	 * @param input input
 	 * @return identified recipe or null
 	 */

@@ -17,7 +17,7 @@ public enum StorageChannel
 	 * AE2's Fluid Based Storage ( mainly added to better support ExtraCells )
 	 */
 	FLUIDS( IAEFluidStack.class );
-	
+
 	public final Class<? extends IAEStack> type;
 
 	private StorageChannel( Class<? extends IAEStack> t ) {

@@ -8,17 +8,15 @@
  */
 package buildcraft.api.fuels;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import buildcraft.api.core.StackKey;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-import buildcraft.api.core.StackKey;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class IronEngineCoolant {
 
@@ -74,7 +72,7 @@ public final class IronEngineCoolant {
 	 * Adds a solid coolant like Ice Blocks. The FluidStack must contain a
 	 * registered Coolant Fluid or nothing will happen. You do not need to call
 	 * this for Fluid Containers.
-	 * 
+	 *
 	 * @param item
 	 * @param coolant
 	 */

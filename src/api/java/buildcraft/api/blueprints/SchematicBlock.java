@@ -8,9 +8,6 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockLiquid;
@@ -18,9 +15,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fluids.BlockFluidBase;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SchematicBlock extends SchematicBlockBase {
 

@@ -9,7 +9,6 @@
 package buildcraft.api.transport;
 
 import net.minecraft.item.ItemStack;
-
 import net.minecraftforge.common.util.ForgeDirection;
 
 public interface IPipeTile {
@@ -35,7 +34,7 @@ public interface IPipeTile {
 
 	/**
 	 * True if the pipe is connected to the block/pipe in the specific direction
-	 * 
+	 *
 	 * @param with
 	 * @return true if connect
 	 */

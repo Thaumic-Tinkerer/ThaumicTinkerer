@@ -35,7 +35,7 @@ public interface IPartCable extends IPart, IGridHost
 
 	/**
 	 * Change the color of the cable, this should cost a small amount of dye, or something.
-	 * 
+	 *
 	 * @param newColor new color
 	 * @return if the color change was successful.
 	 */
@@ -43,16 +43,16 @@ public interface IPartCable extends IPart, IGridHost
 
 	/**
 	 * Change sides on the cables node.
-	 * 
+	 *
 	 * Called by AE, do not invoke.
-	 * 
+	 *
 	 * @param sides sides of cable
 	 */
 	void setValidSides(EnumSet<ForgeDirection> sides);
 
 	/**
 	 * used to tests if a cable connects to neighbors visually.
-	 * 
+	 *
 	 * @param side neighbor side
 	 * @return true if this side is currently connects to an external block.
 	 */

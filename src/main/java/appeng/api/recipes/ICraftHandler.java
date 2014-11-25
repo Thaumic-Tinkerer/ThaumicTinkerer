@@ -11,7 +11,7 @@ public interface ICraftHandler
 
 	/**
 	 * Called when your recipe handler receives a newly parsed list of inputs/outputs.
-	 * 
+	 *
 	 * @param input parsed inputs
 	 * @param output parsed outputs
 	 * @throws RecipeError
@@ -20,7 +20,7 @@ public interface ICraftHandler
 
 	/**
 	 * called when all recipes are parsed, and your required to register your recipe.
-	 * 
+	 *
 	 * @throws RegistrationError
 	 * @throws MissingIngredientError
 	 */

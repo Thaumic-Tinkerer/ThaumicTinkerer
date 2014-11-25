@@ -1,8 +1,8 @@
 package appeng.api.networking.energy;
 
-import java.util.Set;
-
 import appeng.api.config.Actionable;
+
+import java.util.Set;
 
 /**
  * internal use only.

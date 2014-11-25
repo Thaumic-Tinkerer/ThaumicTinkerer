@@ -9,7 +9,7 @@ public interface IMEMonitorHandlerReceiver<StackType extends IAEStack>
 
 	/**
 	 * return true if this object should remain as a listener.
-	 * 
+	 *
 	 * @param verificationToken to be checked object
 	 * @return true if object should remain as a listener
 	 */
@@ -17,7 +17,7 @@ public interface IMEMonitorHandlerReceiver<StackType extends IAEStack>
 
 	/**
 	 * called when changes are made to the Monitor, but only if listener is still valid.
-	 * 
+	 *
 	 * @param change done change
 	 */
 	void postChange(IBaseMonitor<StackType> monitor, Iterable<StackType> change, BaseActionSource actionSource);

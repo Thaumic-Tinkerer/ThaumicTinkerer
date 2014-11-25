@@ -8,11 +8,11 @@
  */
 package buildcraft.api.core;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.IBlockAccess;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public final class BuildCraftAPI {
 

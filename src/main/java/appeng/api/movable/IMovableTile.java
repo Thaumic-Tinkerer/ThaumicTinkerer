@@ -10,7 +10,7 @@ public interface IMovableTile
 	/**
 	 * notification that your block will be moved, called instead of invalidate,
 	 * return false to prevent movement.
-	 * 
+	 *
 	 * @return false to prevent movement
 	 */
 	boolean prepareToMove();

@@ -29,7 +29,7 @@ public interface IBiometricCard
 
 	/**
 	 * Check if a permission is encoded on the card.
-	 * 
+	 *
 	 * @param permission card
 	 * @return true if this permission is set on the card.
 	 */
@@ -37,7 +37,7 @@ public interface IBiometricCard
 
 	/**
 	 * remove a permission from the item stack.
-	 * 
+	 *
 	 * @param itemStack card
 	 * @param permission to be removed permission
 	 */
@@ -45,7 +45,7 @@ public interface IBiometricCard
 
 	/**
 	 * add a permission to the item stack.
-	 * 
+	 *
 	 * @param itemStack card
 	 * @param permission to be added permission
 	 */
@@ -53,7 +53,7 @@ public interface IBiometricCard
 
 	/**
 	 * lets you handle submission of security values on the card for custom behavior.
-	 * 
+	 *
 	 * @param registry security registry
 	 * @param pr player registry
 	 * @param is card

@@ -8,13 +8,11 @@
  */
 package buildcraft.api.mj;
 
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
-
-import net.minecraftforge.common.util.ForgeDirection;
-
 import buildcraft.api.power.IPowerReceptor;
 import buildcraft.api.power.PowerHandler;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class MjAPILegacy implements IPowerReceptor {
 	private final PowerHandler powerHandler;

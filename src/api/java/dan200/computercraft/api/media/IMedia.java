@@ -30,7 +30,7 @@ public interface IMedia
 	 * @return true if the label was updated, false if the label may not be modified.
 	 */
 	public boolean setLabel( ItemStack stack, String label );
-	
+
 	/**
 	 * If this disk represents an item with audio (like a record), get the readable name of the audio track. ie: "Jonathon Coulton - Still Alive"
 	 * @param stack The itemstack to inspect.
@@ -43,8 +43,8 @@ public interface IMedia
 	 * @param stack The itemstack to inspect.
 	 * @return The name, or null if this item does not represent an item with audio.
 	 */
-	public String getAudioRecordName( ItemStack stack );	
-    
+	public String getAudioRecordName( ItemStack stack );
+
 	/**
 	 * If this disk represents an item with data (like a floppy disk), get a mount representing it's contents. This will be mounted onto the filesystem of the computercraft while the media is in the disk drive.
 	 * @param stack The itemstack to inspect.

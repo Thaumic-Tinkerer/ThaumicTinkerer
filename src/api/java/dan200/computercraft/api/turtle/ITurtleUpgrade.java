@@ -27,25 +27,25 @@ public interface ITurtleUpgrade
 	 * @see dan200.computercraft.api.ComputerCraftAPI#registerTurtleUpgrade( dan200.computercraft.api.turtle.ITurtleUpgrade )
 	 */
 	public int getUpgradeID();
-	
+
 	/**
 	 * Return a String to describe this type of turtle in turtle item names.
 	 * Examples of built-in adjectives are "Wireless", "Mining" and "Crafty".
-	 */	
+	 */
 	public String getUnlocalisedAdjective();
 
 	/**
 	 * Return whether this turtle adds a tool or a peripheral to the turtle.
 	 * Currently, turtle crafting is restricted to one tool & one peripheral per turtle.
 	 * @see TurtleUpgradeType for the differences between the two.
-	 */	
+	 */
 	public TurtleUpgradeType getType();
-	
+
 	/**
 	 * Return an item stack representing the type of item that a turtle must be crafted
 	 * with to create a turtle which holds this turtle.
 	 * Currently, turtle crafting is restricted to one tool & one peripheral per turtle.
-	 */		
+	 */
 	public ItemStack getCraftingItem();
 
     /**
@@ -58,7 +58,7 @@ public interface ITurtleUpgrade
      * @param side Which side of the turtle (left or right) that the turtle resides on.
      * @return The newly created peripheral. You may return null if this turtle is a Tool
 	 * and this method is not expected to be called.
-	 */		
+	 */
 	public IPeripheral createPeripheral( ITurtleAccess turtle, TurtleSide side );
 
 	/**

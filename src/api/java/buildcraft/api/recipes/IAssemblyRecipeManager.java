@@ -8,9 +8,9 @@
  */
 package buildcraft.api.recipes;
 
-import java.util.List;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
 
 public interface IAssemblyRecipeManager {
 
@@ -25,7 +25,7 @@ public interface IAssemblyRecipeManager {
 
 	/**
 	 * Add an Assembly Table recipe.
-	 * 
+	 *
 	 * @param input
 	 *            Object... containing either an ItemStack, or a paired string
 	 *            and integer(ex: "dyeBlue", 1)

@@ -8,13 +8,12 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.LinkedList;
-
+import buildcraft.api.core.BuildCraftAPI;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import buildcraft.api.core.BuildCraftAPI;
+import java.util.LinkedList;
 
 public class SchematicMask extends SchematicBlockBase {
 

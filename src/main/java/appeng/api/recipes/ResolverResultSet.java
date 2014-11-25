@@ -1,9 +1,9 @@
 package appeng.api.recipes;
 
+import net.minecraft.item.ItemStack;
+
 import java.util.Arrays;
 import java.util.List;
-
-import net.minecraft.item.ItemStack;
 
 public class ResolverResultSet
 {

@@ -5,7 +5,7 @@ import cpw.mods.fml.common.eventhandler.Event;
 
 /**
  * Input Event:
- * 
+ *
  * Used to Notify the Location Registry of objects, and their availability.
  */
 public class LocatableEventAnnounce extends Event

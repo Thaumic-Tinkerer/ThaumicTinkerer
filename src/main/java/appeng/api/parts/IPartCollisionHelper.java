@@ -7,9 +7,9 @@ public interface IPartCollisionHelper
 
 	/**
 	 * add a collision box, expects 0.0 - 16.0 block coords.
-	 * 
+	 *
 	 * No complaints about the size, I like using pixels :P
-	 * 
+	 *
 	 * @param minX minimal x collision
 	 * @param minY minimal y collision
 	 * @param minZ minimal z collision

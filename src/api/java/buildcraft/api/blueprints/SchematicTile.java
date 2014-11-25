@@ -8,15 +8,14 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
+import buildcraft.api.core.JavaTools;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-import buildcraft.api.core.JavaTools;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SchematicTile extends SchematicBlock {
 

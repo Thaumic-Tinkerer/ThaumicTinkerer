@@ -8,7 +8,7 @@ public interface IRecipeHandler
 
 	/**
 	 * Call when you want to read recipes in from a file based on a loader
-	 * 
+	 *
 	 * @param loader recipe loader
 	 * @param path path of file
 	 */

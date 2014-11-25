@@ -14,9 +14,9 @@ public abstract class LayerBase extends TileEntity // implements IPartHost
 
 	/**
 	 * Grants access for the layer to the parts of the host.
-	 * 
+	 *
 	 * This Method looks silly, that is because its not used at runtime, a real implementation will be used instead.
-	 * 
+	 *
 	 * @param side side of part
 	 * @return the part for the requested side.
 	 */

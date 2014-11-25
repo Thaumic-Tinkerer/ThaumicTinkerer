@@ -8,16 +8,15 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-
 import net.minecraftforge.common.util.Constants;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MappingRegistry {
 

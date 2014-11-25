@@ -9,9 +9,9 @@ public interface IRecipeHandlerRegistry
 
 	/**
 	 * Add a new Recipe Handler to the parser.
-	 * 
+	 *
 	 * MUST BE CALLED IN PRE-INIT
-	 * 
+	 *
 	 * @param name name of crafthandler
 	 * @param handler class of crafthandler
 	 */
@@ -19,9 +19,9 @@ public interface IRecipeHandlerRegistry
 
 	/**
 	 * Add a new resolver to the parser.
-	 * 
+	 *
 	 * MUST BE CALLED IN PRE-INIT
-	 * 
+	 *
 	 * @param sir sub item resolver
 	 */
 	void addNewSubItemResolver(ISubItemResolver sir);
@@ -39,7 +39,7 @@ public interface IRecipeHandlerRegistry
 
 	/**
 	 * resolve sub items by name.
-	 * 
+	 *
 	 * @param nameSpace namespace of item
 	 * @param itemName full name of item
 	 * @return ResolverResult or ResolverResultSet

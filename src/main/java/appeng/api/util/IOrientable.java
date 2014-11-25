@@ -4,9 +4,9 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Nearly all of AE's Tile Entities implement IOrientable.
- * 
+ *
  * and it can be used to manipulate the direction of some machines, most of these orientations are purely visual.
- * 
+ *
  * AE also responds to Block.rotateBlock
  */
 public interface IOrientable

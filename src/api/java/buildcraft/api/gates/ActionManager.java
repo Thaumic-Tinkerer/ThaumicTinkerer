@@ -8,15 +8,14 @@
  */
 package buildcraft.api.gates;
 
+import buildcraft.api.transport.IPipeTile;
+import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import net.minecraft.block.Block;
-import net.minecraft.tileentity.TileEntity;
-
-import buildcraft.api.transport.IPipeTile;
 
 public final class ActionManager {
 

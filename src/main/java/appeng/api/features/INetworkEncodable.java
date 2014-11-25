@@ -6,7 +6,7 @@ public interface INetworkEncodable {
 
 	/**
 	 * Used to get the current key from the item.
-	 * 
+	 *
 	 * @param item item
 	 * @return string key of item
 	 */
@@ -14,7 +14,7 @@ public interface INetworkEncodable {
 
 	/**
 	 * Encode the wireless frequency via the Controller.
-	 * 
+	 *
 	 * @param item
 	 *            the wireless terminal.
 	 * @param encKey

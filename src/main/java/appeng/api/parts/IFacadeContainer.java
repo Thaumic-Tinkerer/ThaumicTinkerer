@@ -8,7 +8,7 @@ import java.io.IOException;
 
 /**
  * Used Internally.
- * 
+ *
  * not intended for implementation.
  */
 public interface IFacadeContainer
@@ -16,7 +16,7 @@ public interface IFacadeContainer
 
 	/**
 	 * Attempts to add the {@link IFacadePart} to the given side.
-	 * 
+	 *
 	 * @return true if the facade as successfully added.
 	 */
 	boolean addFacade(IFacadePart a);
@@ -38,14 +38,14 @@ public interface IFacadeContainer
 
 	/**
 	 * write nbt data
-	 * 
+	 *
 	 * @param data to be written data
 	 */
 	void writeToNBT(NBTTagCompound data);
 
 	/**
 	 * read from stream
-	 * 
+	 *
 	 * @param data to be read data
 	 * @return true if it was readable
 	 * @throws IOException
@@ -54,14 +54,14 @@ public interface IFacadeContainer
 
 	/**
 	 * read from NBT
-	 * 
+	 *
 	 * @param data to be read data
 	 */
 	void readFromNBT(NBTTagCompound data);
 
 	/**
 	 * write to stream
-	 * 
+	 *
 	 * @param data to be written data
 	 * @throws IOException
 	 */

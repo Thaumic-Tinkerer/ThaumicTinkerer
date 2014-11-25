@@ -1,10 +1,10 @@
 package appeng.api.implementations.items;
 
+import appeng.api.implementations.TransitionResult;
+import appeng.api.util.WorldCoord;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import appeng.api.implementations.TransitionResult;
-import appeng.api.util.WorldCoord;
 
 /**
  * Implemented on a {@link Item}
@@ -32,7 +32,7 @@ public interface ISpatialStorageCell
 
 	/**
 	 * get the currently stored size.
-	 * 
+	 *
 	 * @param is spatial storage cell
 	 * @return size of spatial
 	 */
@@ -40,7 +40,7 @@ public interface ISpatialStorageCell
 
 	/**
 	 * Minimum coordinates in its world for the storage cell.
-	 * 
+	 *
 	 * @param is spatial storage cell
 	 * @return minimum coordinate of dimension
 	 */
@@ -48,7 +48,7 @@ public interface ISpatialStorageCell
 
 	/**
 	 * Maximum coordinates in its world for the storage cell.
-	 * 
+	 *
 	 * @param is spatial storage cell
 	 * @return maximum coordinate of dimension
 	 */
@@ -56,7 +56,7 @@ public interface ISpatialStorageCell
 
 	/**
 	 * Perform a spatial swap with the contents of the cell, and the world.
-	 * 
+	 *
 	 * @param is spatial storage cell
 	 * @param w world of spatial
 	 * @param min min coord

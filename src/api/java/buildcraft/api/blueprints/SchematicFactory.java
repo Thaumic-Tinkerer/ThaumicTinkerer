@@ -8,9 +8,9 @@
  */
 package buildcraft.api.blueprints;
 
-import java.util.HashMap;
-
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.HashMap;
 
 public abstract class SchematicFactory<S extends Schematic> {
 
