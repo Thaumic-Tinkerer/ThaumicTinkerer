@@ -14,9 +14,7 @@
  */
 package thaumic.tinkerer.common.block.tile.transvector;
 
-import buildcraft.api.power.IPowerReceptor;
-import buildcraft.api.power.PowerHandler;
-import buildcraft.api.power.PowerHandler.PowerReceiver;
+
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
@@ -45,11 +43,10 @@ import thaumic.tinkerer.common.compat.IndustrialcraftUnloadHelper;
 import thaumic.tinkerer.common.lib.LibFeatures;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
-        @Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")})
 
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IPowerReceptor, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
     public boolean addedToICEnergyNet = false;
 
@@ -231,25 +228,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
         return tile instanceof ISidedInventory ? ((ISidedInventory) tile).canExtractItem(i, itemstack, j) : tile instanceof IInventory;
     }
 
-    @Override
-    @Optional.Method(modid = "BuildCraft|Energy")
-    public PowerReceiver getPowerReceiver(ForgeDirection side) {
-        TileEntity tile = getTile();
-        return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).getPowerReceiver(side) : null;
-    }
-
-    @Override
-    @Optional.Method(modid = "BuildCraft|Energy")
-    public void doWork(PowerHandler workProvider) {
-        TileEntity tile = getTile();
-        if (tile instanceof IPowerReceptor)
-            ((IPowerReceptor) tile).doWork(workProvider);
-    }
-
-    @Override
-    public World getWorld() {
-        return worldObj;
-    }
+   
 
     @Optional.Method(modid = "IC2")
     @Override
