@@ -14,6 +14,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.potion.ModPotions;
@@ -59,19 +60,19 @@ public class ItemInfusedPotion extends ItemPotion implements ITTinkererItem {
         List r = new ArrayList();
         switch (par1) {
             case 0:
-                r.add(new PotionEffect(ModPotions.potionAirId, 3600));
+                r.add(new PotionEffect(ConfigHandler.potionAirId, 3600));
                 break;
             case 1:
 
-                r.add(new PotionEffect(ModPotions.potionFireId, 3600));
+                r.add(new PotionEffect(ConfigHandler.potionFireId, 3600));
                 break;
             case 2:
 
-                r.add(new PotionEffect(ModPotions.potionEarthId, 3600));
+                r.add(new PotionEffect(ConfigHandler.potionEarthId, 3600));
                 break;
             case 3:
 
-                r.add(new PotionEffect(ModPotions.potionWaterId, 3600));
+                r.add(new PotionEffect(ConfigHandler.potionWaterId, 3600));
                 break;
         }
 
