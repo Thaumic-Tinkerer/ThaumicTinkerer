@@ -118,7 +118,9 @@ public class BlockBedrockPortal extends BlockMod {
             if (entity instanceof EntityPlayer && !par1World.isRemote) {
 
                 FMLCommonHandler.instance().getMinecraftServerInstance().getConfigurationManager().transferPlayerToDimension((EntityPlayerMP) entity, ConfigHandler.bedrockDimensionID, new TeleporterBedrock((WorldServer) par1World));
-
+                if(entity.worldObj.getBlock(par2, 250, par4) == Blocks.bedrock) {
+                    entity.worldObj.setBlock(par2, 250, par4, Blocks.air);
+                }
                 if (entity.worldObj.getBlock(par2, 251, par4) == Blocks.bedrock) {
                     entity.worldObj.setBlock(par2, 251, par4, Blocks.air);
                 }
@@ -131,7 +133,7 @@ public class BlockBedrockPortal extends BlockMod {
                 if (entity.worldObj.getBlock(par2, 254, par4) == Blocks.bedrock) {
                     entity.worldObj.setBlock(par2, 254, par4, this);
                 }
-                ((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, 252, par4 + 0.5, 0, 0);
+                ((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(par2 + 0.5, 251, par4 + 0.5, 0, 0);
             }
         } else if (entity.worldObj.provider instanceof WorldProviderBedrock) {
             if (entity instanceof EntityPlayer && !par1World.isRemote) {
