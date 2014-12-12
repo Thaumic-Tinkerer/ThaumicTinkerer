@@ -114,6 +114,8 @@ public final class ConfigHandler {
         propCropsAllowBonemeal.comment = "Allows crops to be grown using bonemeal. Useful for debug purposes.";
         cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
 
+        // Potions
+        
         Property propFirePotionId = config.get(CATEGORY_POTIONS, "Fire Potion id", potionFireId);
         propFirePotionId.comment = "Set to the potion id for fire potion";
         potionFireId = propFirePotionId.getInt(potionFireId);
