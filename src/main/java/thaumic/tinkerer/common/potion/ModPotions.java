@@ -18,6 +18,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -29,10 +30,6 @@ public final class ModPotions {
     public static Potion potionEarth;
     public static Potion potionAir;
 
-    public static int potionFireId = 86;
-    public static int potionWaterId = 87;
-    public static int potionEarthId = 89;
-    public static int potionAirId = 90;
 
     public static void initPotions() {
         MinecraftForge.EVENT_BUS.register(new PotionEffectHandler());
@@ -60,10 +57,10 @@ public final class ModPotions {
             }
         }
 
-        potionFire = (new DummyPotions(potionFireId, true, 0)).setIconIndex(0, 0).setPotionName("Fire Imbued");
-        potionWater = (new DummyPotions(potionWaterId, true, 0)).setIconIndex(0, 0).setPotionName("Wated Imbued");
-        potionEarth = (new DummyPotions(potionEarthId, true, 0)).setIconIndex(0, 0).setPotionName("Earth Imbued");
-        potionAir = (new DummyPotions(potionAirId, true, 0)).setIconIndex(0, 0).setPotionName("Air Imbued");
+        potionFire = (new DummyPotions(ConfigHandler.potionFireId, true, 0)).setIconIndex(0, 0).setPotionName("Fire Imbued");
+        potionWater = (new DummyPotions(ConfigHandler.potionWaterId, true, 0)).setIconIndex(0, 0).setPotionName("Wated Imbued");
+        potionEarth = (new DummyPotions(ConfigHandler.potionEarthId, true, 0)).setIconIndex(0, 0).setPotionName("Earth Imbued");
+        potionAir = (new DummyPotions(ConfigHandler.potionAirId, true, 0)).setIconIndex(0, 0).setPotionName("Air Imbued");
     }
 
 }

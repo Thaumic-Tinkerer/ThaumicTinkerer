@@ -228,7 +228,7 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
         return tile instanceof ISidedInventory ? ((ISidedInventory) tile).canExtractItem(i, itemstack, j) : tile instanceof IInventory;
     }
 
-   
+
 
     @Optional.Method(modid = "IC2")
     @Override

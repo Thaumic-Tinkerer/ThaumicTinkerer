@@ -47,6 +47,11 @@ public final class ConfigHandler {
     public static boolean enableCake = true;
     public static boolean enableFire = true;
     public static boolean cropsAllowBonemeal = true;
+
+    public static int potionFireId = 86;
+    public static int potionWaterId = 87;
+    public static int potionEarthId = 89;
+    public static int potionAirId = 90;
     private static Configuration config;
 
     public static void loadConfig(File configFile) {
@@ -108,6 +113,22 @@ public final class ConfigHandler {
         Property propCropsAllowBonemeal = config.get(Configuration.CATEGORY_GENERAL, "cropsAllowBonemeal.enabled", false);
         propCropsAllowBonemeal.comment = "Allows crops to be grown using bonemeal. Useful for debug purposes.";
         cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
+
+        Property propFirePotionId = config.get(CATEGORY_POTIONS, "Fire Potion id", potionFireId);
+        propFirePotionId.comment = "Set to the potion id for fire potion";
+        potionFireId = propFirePotionId.getInt(potionFireId);
+
+        Property propAirPotionId = config.get(CATEGORY_POTIONS, "Air Potion id", potionAirId);
+        propAirPotionId.comment = "Set to the potion id for air potion";
+        potionAirId = propAirPotionId.getInt(potionAirId);
+
+        Property propWaterPotionId = config.get(CATEGORY_POTIONS, "Water Potion id", potionWaterId);
+        propWaterPotionId.comment = "Set to the potion id for water potion";
+        potionWaterId = propWaterPotionId.getInt(potionWaterId);
+
+        Property propEarthPotionId = config.get(CATEGORY_POTIONS, "Earth Potion id", potionEarthId);
+        propEarthPotionId.comment = "Set to the potion id for earth potion";
+        potionEarthId = propEarthPotionId.getInt(potionEarthId);
 
 
         if (enableKami) {
