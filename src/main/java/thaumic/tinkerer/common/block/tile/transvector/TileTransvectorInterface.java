@@ -13,11 +13,6 @@
  * File Created @ [8 Sep 2013, 19:01:20 (GMT)]
  */
 package thaumic.tinkerer.common.block.tile.transvector;
-
-import buildcraft.api.power.IPowerReceptor;
-import buildcraft.api.power.PowerHandler;
-import buildcraft.api.power.PowerHandler.PowerReceiver;
-
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
@@ -41,7 +36,6 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumic.tinkerer.common.lib.LibFeatures;
 
 @Optional.InterfaceList({ @Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
-		@Optional.Interface(iface = "buildcraft.api.power.IPowerReceptor", modid = "BuildCraft|Energy"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib")})
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IFluidHandler, IPowerReceptor, /*IEnergySink,*/ IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
 
@@ -225,21 +219,6 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 			slots[i] = i;
 
 		return slots;
-	}
-
-	@Override
-	@Optional.Method(modid = "BuildCraft|Energy")
-	public PowerReceiver getPowerReceiver(ForgeDirection side) {
-		TileEntity tile = getTile();
-		return tile instanceof IPowerReceptor ? ((IPowerReceptor) tile).getPowerReceiver(side) : null;
-	}
-
-	@Override
-	@Optional.Method(modid = "BuildCraft|Energy")
-	public void doWork(PowerHandler workProvider) {
-		TileEntity tile = getTile();
-		if (tile instanceof IPowerReceptor)
-			((IPowerReceptor) tile).doWork(workProvider);
 	}
 
 	@Override
