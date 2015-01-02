@@ -58,7 +58,7 @@ group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.10-10.13.2.1232"
+    version = "1.7.10-10.13.2.1277"
     //minecraftVersion="1.7.2"
     runDir = "eclipse"
     replace '${version}', project.version
@@ -110,8 +110,8 @@ task copyChicken(type: Copy, dependsOn: "extractUserDev") {
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
 }
-tasks.setupDevWorkspace.dependsOn copyChicken
-tasks.setupDecompWorkspace.dependsOn copyChicken
+//tasks.setupDevWorkspace.dependsOn copyChicken
+//tasks.setupDecompWorkspace.dependsOn copyChicken
 processResources
         {
             // replace stuff in mcmod.info, nothing else

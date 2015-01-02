@@ -15,6 +15,8 @@
 package thaumic.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -156,7 +158,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
                 Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);
 
                 if (aspect != null) {
-                    wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
+                    this.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true, wandItem);
                     currentAspects.add(aspect, 1);
                     Tuple4Int p = pillars.get(i);
                     if (worldObj.rand.nextBoolean()) {
@@ -170,6 +172,61 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
             }
         }
     }
+    public boolean consumeAllVisCrafting(ItemStack is, EntityPlayer player, AspectList aspects, boolean doit, ItemWandCasting wandItem) {
+        if(aspects != null && aspects.size() != 0) {
+            AspectList aspectList = new AspectList();
+            Aspect[] aspectArray = aspects.getAspects();
+            int arrayLength = aspectArray.length;
+
+            for(int i$ = 0; i$ < arrayLength; ++i$) {
+                Aspect aspect = aspectArray[i$];
+                int cost = aspects.getAmount(aspect) * 100;
+                aspectList.add(aspect, cost);
+            }
+
+            if(aspects != null && aspects.size() != 0) {
+                AspectList nl = new AspectList();
+                Aspect[] arr$ = aspects.getAspects();
+                int len$ = arr$.length;
+
+                int i$;
+                Aspect aspect;
+                for(i$ = 0; i$ < len$; ++i$) {
+                    aspect = arr$[i$];
+                    int cost = aspects.getAmount(aspect);
+                    cost = (int)((float)cost * wandItem.getConsumptionModifier(is, player, aspect, true));
+                    nl.add(aspect, cost);
+                }
+
+                arr$ = nl.getAspects();
+                len$ = arr$.length;
+
+                for(i$ = 0; i$ < len$; ++i$) {
+                    aspect = arr$[i$];
+                    if(wandItem.getVis(is, aspect) < nl.getAmount(aspect)) {
+                        return false;
+                    }
+                }
+
+                if(doit && FMLCommonHandler.instance().getEffectiveSide()== Side.SERVER) {
+                    arr$ = nl.getAspects();
+                    len$ = arr$.length;
+
+                    for(i$ = 0; i$ < len$; ++i$) {
+                        aspect = arr$[i$];
+                        wandItem.storeVis(is, aspect, wandItem.getVis(is, aspect) - nl.getAmount(aspect));
+                    }
+                }
+
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 
     @Override
     public void markDirty() {
