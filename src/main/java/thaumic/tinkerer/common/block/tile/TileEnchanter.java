@@ -183,7 +183,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
                 int cost = aspects.getAmount(aspect) * 100;
                 aspectList.add(aspect, cost);
             }
-
+            aspects=aspectList;
             if(aspects != null && aspects.size() != 0) {
                 AspectList nl = new AspectList();
                 Aspect[] arr$ = aspects.getAspects();
@@ -194,7 +194,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
                 for(i$ = 0; i$ < len$; ++i$) {
                     aspect = arr$[i$];
                     int cost = aspects.getAmount(aspect);
-                    cost = (int)((float)cost * wandItem.getConsumptionModifier(is, player, aspect, true));
+                    //cost = (int)((float)cost * wandItem.getConsumptionModifier(is, player, aspect, true));
                     nl.add(aspect, cost);
                 }
 
