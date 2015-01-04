@@ -194,7 +194,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
                 for(i$ = 0; i$ < len$; ++i$) {
                     aspect = arr$[i$];
                     int cost = aspects.getAmount(aspect);
-                    //cost = (int)((float)cost * wandItem.getConsumptionModifier(is, player, aspect, true));
+                    cost = (int)((float)cost * wandItem.getConsumptionModifier(is, player, aspect, true));
                     nl.add(aspect, cost);
                 }
 
