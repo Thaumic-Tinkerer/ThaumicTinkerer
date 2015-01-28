@@ -15,6 +15,7 @@
 package thaumic.tinkerer.common.block.tile;
 
 import appeng.api.movable.IMovableTile;
+import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +26,9 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.FakePlayerFactory;
 import org.apache.commons.lang3.ArrayUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -156,7 +159,13 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
                 Aspect aspect = aspectsThatCanGet.isEmpty() ? null : aspectsThatCanGet.get(i);
 
                 if (aspect != null) {
-                    wandItem.consumeAllVisCrafting(wand, null, new AspectList().add(aspect, 1), true);
+                    EntityPlayer player;
+                    if (this.worldObj instanceof WorldServer) {
+                        player = FakePlayerFactory.getMinecraft((WorldServer) this.worldObj);
+                    } else {
+                        player = FMLClientHandler.instance().getClientPlayerEntity();
+                    }
+                    wandItem.consumeAllVisCrafting(wand, player, new AspectList().add(aspect, 1), true);
                     currentAspects.add(aspect, 1);
                     Tuple4Int p = pillars.get(i);
                     if (worldObj.rand.nextBoolean()) {
