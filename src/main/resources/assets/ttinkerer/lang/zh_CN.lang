@@ -286,8 +286,8 @@ ttresearch.page.FOCUS_FLIGHT.0=研究风雷剑过程中积累的丰富知识让�
 # -- WAND FOCUS: DISLOCATION
 ttresearch.name.FOCUS_DISLOCATION=法杖核心：转移
 ttresearch.lore.FOCUS_DISLOCATION=在头脑中构筑堡垒因此它从不会崩塌.
-ttresearch.page.FOCUS_DISLOCATION.0=基于等价交换核心.你制作了这种新型的法杖核心.相比前者,新的法杖核心不但能够存储被施法对象的信息,还能存储被施法对象本身,并允许你将其放置到任意地方.<BR><BR>想要转移一个 方块,需要先手持法杖右击它.然后再右击其他某处.这个法杖核心允许你转移近乎任意方块,包括箱子和刷怪笼.
-ttresearch.page.FOCUS_DISLOCATION.1=它的魔力消耗决定于方块的类型.放置时是不消耗的.<BR><BR>转移所需能量的数量如,带有tile entities的方块(比如箱子和熔炉)5倍于平常的消耗.刷怪笼则更需要20倍消耗.
+ttresearch.page.FOCUS_DISLOCATION.0=基于等价交换核心.你制作了这种新型的法杖核心.相比前者,新的法杖核心不但能够存储被施法对象的信息,还能存储被施法对象本身,并允许你将其放置到任意地方.<BR><BR>想要转移一个方块,需要先手持法杖右击它.然后再右击其他某处.这个法杖核心允许你转移近乎任意方块,包括箱子和刷怪笼.
+ttresearch.page.FOCUS_DISLOCATION.1=只在拾起方块时才会消耗魔力.放置时并无消耗.<BR><BR>由于转移需要消耗一定的能量,类似箱子和熔炉这样带有方块附加值的方块的消耗将是平常的5倍.刷怪笼的消耗则高达20倍.
 
 # -- TALISMAN OF REMEDIUM
 ttresearch.name.CLEANSING_TALISMAN=防身护身符
@@ -440,7 +440,7 @@ ttresearch.page.REVEALING_HELM.0=事实表明,揭示之护目镜没办法防御�
 # -- THAUMIC REHABILITATOR
 ttresearch.name.REPAIRER=奥法修复台
 ttresearch.lore.REPAIRER=比用棍子穿过马铃薯的伤害还小
-ttresearch.page.REPAIRER.0=你制造出一台能够修复破损工具的新设备.拿着破损工具右击设备,该设备就会通过与之相连的要素源质管道汇集源质来修复物品.<BR><BR>能够修复物品的要素按效率的次序分别是Ordo要素, Fabrico要素以及Instrumentum要素.<BR><BR>戴着护目镜或者揭示之头盔能够看见完全修复该物品还需要多少要素源质.
+ttresearch.page.REPAIRER.0=你制造出一台能够修复破损工具的新设备.拿着破损工具右击设备,该设备就会通过与之相连的要素源质管道汇集源质来修复物品.<BR><BR>修复物品需要消耗Instrumentum要素.<BR><BR>戴着护目镜或者揭示之头盔能够看见完全修复该物品还需要多少要素源质.
 
 # -- WAND FOCUS: DISTORTION
 ttresearch.name.FOCUS_DEFLECT=法杖核心:扭曲
