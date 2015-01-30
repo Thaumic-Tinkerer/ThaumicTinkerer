@@ -9,8 +9,8 @@ public class ManagedTileEntityEnvironment<T> extends ManagedEnvironment {
 
     public ManagedTileEntityEnvironment(final T tileEntity, final String name) {
         this.tileEntity = tileEntity;
-        node = Network.newNode(this, Visibility.Network).
+        setNode(Network.newNode(this, Visibility.Network).
                 withComponent(name).
-                create();
+                create());
     }
 }

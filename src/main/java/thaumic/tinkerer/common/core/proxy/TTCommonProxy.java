@@ -84,6 +84,9 @@ public class TTCommonProxy {
         ThaumicTinkerer.registry.preInit();
         capIchor = new CapIchor();
         rodIchor = new RodIchorcloth();
+        
+        ModCreativeTab.INSTANCE.addWand();
+        
         if (Loader.isModLoaded("ComputerCraft")) {
             initCCPeripherals();
         }

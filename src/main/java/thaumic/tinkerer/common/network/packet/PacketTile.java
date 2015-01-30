@@ -60,6 +60,7 @@ public abstract class PacketTile<T extends TileEntity> implements IMessage {
         dim = byteBuf.readInt();
     }
 
+
     public IMessage onMessage(PacketTile message, MessageContext ctx) {
         MinecraftServer server = MiscHelper.server();
         if (ctx.side.isClient())

@@ -12,6 +12,7 @@ buildscript {
         maven {
             url 'https://oss.sonatype.org/content/groups/public'
         }
+
         mavenLocal()
     }
     dependencies {
@@ -45,6 +46,10 @@ repositories {
         name "Mobius Repo"
         url "http://mobiusstrip.eu/maven"
     }
+    maven {
+
+        url  'http://maven.cil.li/'
+    }
 
 }
 String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
@@ -58,7 +63,7 @@ group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.10-10.13.2.1232"
+    version = "1.7.10-10.13.2.1291"
     //minecraftVersion="1.7.2"
     runDir = "eclipse"
     replace '${version}', project.version
@@ -92,10 +97,12 @@ dependencies {
     compile "mcp.mobius.waila:Waila:1.5.3a_1.7.10"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
-
+    compile 'com.mod-buildcraft:buildcraft:6.3.3:dev'
     compile "codechicken:NotEnoughItems:1.7.10-1.0.3.67:dev"
     compile "codechicken:EnderStorage:1.7.10-1.4.5.22:dev"
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.6.376-dev:api"
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.6.376-dev:dev"
     compile("tconstruct:TConstruct:1.7.10-1.7.1.build789:deobf") {
     }
 }
@@ -110,8 +117,8 @@ task copyChicken(type: Copy, dependsOn: "extractUserDev") {
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
 }
-tasks.setupDevWorkspace.dependsOn copyChicken
-tasks.setupDecompWorkspace.dependsOn copyChicken
+//tasks.setupDevWorkspace.dependsOn copyChicken
+//tasks.setupDecompWorkspace.dependsOn copyChicken
 processResources
         {
             // replace stuff in mcmod.info, nothing else
