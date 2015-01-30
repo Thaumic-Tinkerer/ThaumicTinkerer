@@ -45,15 +45,16 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
     @Override
     public void onUsingFocusTick(ItemStack stack, EntityPlayer player, int count) {
-        ItemWandCasting wand = (ItemWandCasting) stack.getItem();
+        ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
 
-        if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
-            int potency = 0;
+        if (!player.worldObj.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, false)) {
+
+            int potency = wand.getFocusPotency(itemstack);
 
             if (player.worldObj.rand.nextInt(10) == 0)
                 player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
 
-            Beam beam = new Beam(player.worldObj, player, potency);
+            Beam beam = new Beam(player.worldObj, player, potency, 300, 5, 4);
             beam.updateUntilDead();
         }
     }
@@ -69,6 +70,9 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
     }
 
     @Override
+    protected boolean hasDepth() { return false; }
+
+    @Override
     public int getFocusColor(ItemStack stack) {
         return 0x4B0053;
     }
@@ -79,8 +83,21 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
     }
 
     @Override
-    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-        return new FocusUpgradeType[0];
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int rank) {
+        switch(rank) {
+            case 1:
+                return new FocusUpgradeType[]{FocusUpgradeType.frugal, FocusUpgradeType.potency};
+            case 2:
+                return new FocusUpgradeType[]{FocusUpgradeType.frugal, FocusUpgradeType.potency};
+            case 3:
+                return new FocusUpgradeType[]{FocusUpgradeType.frugal, FocusUpgradeType.potency};
+            case 4:
+                return new FocusUpgradeType[]{FocusUpgradeType.frugal, FocusUpgradeType.potency};
+            case 5:
+                return new FocusUpgradeType[]{FocusUpgradeType.frugal, FocusUpgradeType.potency};
+            default:
+                return null;
+        }
     }
 
     @Override
@@ -114,50 +131,90 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
     public static class Particle extends FXSparkle {
 
-        public Particle(World world, double d, double d1, double d2, float f, int type, int m) {
-            super(world, d, d1, d2, f, type, m);
-            noClip = true;
-        }
-
-        @Override
-        public void onUpdate() {
-            super.onUpdate();
-            if (particleAge > 1)
-                setDead();
+        public Particle(World world, double x, double y, double z, float scale, float red, float green, float blue, int maxAge) {
+            super(world,x, y, z, scale, red, green, blue, 1);
+            this.particleMaxAge /= 3;
+            this.particleMaxAge = maxAge;
+            this.shrink = false;
+            this.blendmode = 0;
+            this.multiplier = 1;
+            this.particle = 1;
+            this.slowdown = false;
+            this.noClip = true;
+            this.setGravity(-0.7f);
+//////////////////////////////////////////////////
+//        For more check the parent class
+//////////////////////////////////////////////////
+//        this.leyLineEffect = false;
+//        this.multiplier = 2;
+//        this.shrink = true;
+//        this.particle = 16;
+//        this.tinkle = false;
+//        this.blendmode = 1;
+//        this.slowdown = true;
+//        this.currentColor = 0;
+//        if(f1 == 0.0F) {
+//            f1 = 1.0F;
+//        }
+//        this.particleRed = f1;
+//        this.particleGreen = f2;
+//        this.particleBlue = f3;
+//        this.particleGravity = 0.0F;
+//        this.motionX = this.motionY = this.motionZ = 0.0D;
+//        this.particleScale *= f;
+//        this.particleMaxAge = 3 * m;
+//        this.multiplier = m;
+//        this.noClip = false;
+//        this.setSize(0.01F, 0.01F);
+//        this.prevPosX = this.posX;
+//        this.prevPosY = this.posY;
+//        this.prevPosZ = this.posZ;
+//////////////////////////////////////////////////
         }
     }
 
     public static class Beam extends EntityThrowable {
 
-        final int maxTicks = 300;
-        int potency;
-        Vector3 movementVector;
+        private int initialOffset;
+        private int length;
+        private int maxTicks;
+        private int size;
 
-        public Beam(World par1World, EntityLivingBase par2EntityLivingBase, int potency) {
-            super(par1World, par2EntityLivingBase);
+        private int potency;
+        private Vector3 movementVector;
+
+        private EntityLivingBase player;
+
+        public Beam(World world, EntityLivingBase player, int potency, int length, int initialOffset, int size) {
+            super(world, player);
 
             this.potency = potency;
             setProjectileVelocity(motionX / 10, motionY / 10, motionZ / 10);
             movementVector = new Vector3(motionX, motionY, motionZ);
+            this.length = length;
+            this.initialOffset = initialOffset;
+            this.size = size;
+            this.player = player;
+            this.maxTicks = initialOffset + length;
         }
 
         // Copy of setVelocity, because that is client only for some reason
-        public void setProjectileVelocity(double par1, double par3, double par5) {
-            this.motionX = par1;
-            this.motionY = par3;
-            this.motionZ = par5;
+        public void setProjectileVelocity(double motionX, double motionY, double motionZ) {
+            this.motionX = motionX;
+            this.motionY = motionY;
+            this.motionZ = motionZ;
 
             if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
-                float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
-                this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(par1, par5) * 180.0D / Math.PI);
-                this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(par3, (double) f) * 180.0D / Math.PI);
+                float f = MathHelper.sqrt_double(Math.pow(motionX,2) + Math.pow(motionZ,2));
+                this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
+                this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(motionY, (double) f) * 180.0D / Math.PI);
             }
         }
 
         @Override
         public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8) {
             super.setThrowableHeading(par1, par3, par5, par7, par8);
-            float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
+            float f2 = MathHelper.sqrt_double(Math.pow(par1,2) + Math.pow(par3,2) + Math.pow(par5,2));
             par1 /= f2;
             par3 /= f2;
             par5 /= f2;
@@ -179,7 +236,7 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
             if (movingobjectposition.entityHit != null) {
                 if ((MinecraftServer.getServer().isPVPEnabled() || !(movingobjectposition.entityHit instanceof EntityPlayer)) && movingobjectposition.entityHit != getThrower() && getThrower() instanceof EntityPlayer && !movingobjectposition.entityHit.worldObj.isRemote)
-                    movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 8 + potency);
+                    movingobjectposition.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) getThrower()), 8 + potency * 1.2f);
                 return;
             }
 
@@ -202,10 +259,11 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
             super.onUpdate();
 
-            if (ticksExisted > 2)
-                ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
+            if (ticksExisted > initialOffset)
+                ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, size);
 
             ++ticksExisted;
+
             if (ticksExisted >= maxTicks)
                 setDead();
         }
