@@ -194,6 +194,5 @@ public class TTCommonProxy {
     }
 
     public void shadowSparkle(World world, float x, float y, float z, int size) {
-        // NO-OP
     }
 }

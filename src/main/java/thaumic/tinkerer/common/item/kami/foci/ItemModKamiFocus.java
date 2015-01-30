@@ -22,7 +22,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -30,6 +29,7 @@ import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.api.wands.ItemFocusBasic;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
+import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.registry.ITTinkererItem;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
@@ -93,14 +93,14 @@ public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinke
         return null;
     }
 
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-        AspectList cost = getVisCost(stack);
-        if (cost != null) {
-            list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
-            addVisCostTooltip(cost, stack, player, list, par4);
-        }
-    }
+//    @Override
+//    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+//        AspectList cost = getVisCost(stack);
+//        if (cost != null) {
+//            list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
+//            addVisCostTooltip(cost, stack, player, list, par4);
+//        }
+//    }
 
     protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
         for (Aspect aspect : cost.getAspectsSorted()) {
@@ -108,15 +108,15 @@ public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinke
             list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
         }
     }
-
-    @Override
-    public int getItemEnchantability() {
-        return 5;
-    }
+//
+//    @Override
+//    public int getItemEnchantability() {
+//        return 5;
+//    }
 
     @Override
     public EnumRarity getRarity(ItemStack itemstack) {
-        return EnumRarity.rare;
+        return TTCommonProxy.kamiRarity;
     }
 
     @Override
@@ -176,7 +176,7 @@ public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinke
 
     @Override
     public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-        return new FocusUpgradeType[]{FocusUpgradeType.treasure};
+        return new FocusUpgradeType[]{};
     }
 
 }
