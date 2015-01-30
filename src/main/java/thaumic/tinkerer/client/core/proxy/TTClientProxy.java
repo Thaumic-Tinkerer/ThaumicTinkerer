@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import thaumcraft.client.fx.ParticleEngine;
 import thaumic.tinkerer.client.core.handler.ClientTickHandler;
 import thaumic.tinkerer.client.core.handler.GemArmorKeyHandler;
 import thaumic.tinkerer.client.core.handler.HUDHandler;
@@ -136,8 +137,8 @@ public class TTClientProxy extends TTCommonProxy {
 
     @Override
     public void shadowSparkle(World world, float x, float y, float z, int size) {
-        ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);
-        ClientHelper.minecraft().effectRenderer.addEffect(particle);
+        ItemFocusShadowbeam.Particle fx = new ItemFocusShadowbeam.Particle(world, (double)x, (double)y, (double)z, size, 0.001f, 0.001f, 0.001f, 5);
+        ParticleEngine.instance.addEffect(world, fx);
     }
 
     @Override
