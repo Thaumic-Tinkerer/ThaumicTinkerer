@@ -115,7 +115,6 @@ public final class ConfigHandler {
         cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
 
         // Potions
-
         Property propFirePotionId = config.get(CATEGORY_POTIONS, "Fire Potion id", potionFireId);
         propFirePotionId.comment = "Set to the potion id for fire potion";
         potionFireId = propFirePotionId.getInt(potionFireId);

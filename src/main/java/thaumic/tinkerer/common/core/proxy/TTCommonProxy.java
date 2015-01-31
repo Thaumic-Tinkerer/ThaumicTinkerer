@@ -51,6 +51,7 @@ import thaumic.tinkerer.common.core.helper.BonemealEventHandler;
 import thaumic.tinkerer.common.core.helper.NumericAspectHelper;
 import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
+import thaumic.tinkerer.common.item.foci.ItemFocusDeflect;
 import thaumic.tinkerer.common.item.kami.wand.CapIchor;
 import thaumic.tinkerer.common.item.kami.wand.RodIchorcloth;
 import thaumic.tinkerer.common.lib.LibMisc;
@@ -153,6 +154,7 @@ public class TTCommonProxy {
         ResearchHelper.initResearch();
         ThaumicTinkerer.registry.postInit();
         AspectCropLootManager.populateLootMap();
+        ItemFocusDeflect.setupBlackList();
     }
 
     protected void initCCPeripherals() {
