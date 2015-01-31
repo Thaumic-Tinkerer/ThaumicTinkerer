@@ -208,9 +208,9 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
         if (done) {
             stack = player.getCurrentEquippedItem();
-            if (stack == null || stack.stackSize == 0)
+            if (stack == null || stack.stackSize <= 0)
                 setInventorySlotContents(0, null);
-            if (stack != getStackInSlot(0))
+            else if (stack != getStackInSlot(0))
                 setInventorySlotContents(0, stack);
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
