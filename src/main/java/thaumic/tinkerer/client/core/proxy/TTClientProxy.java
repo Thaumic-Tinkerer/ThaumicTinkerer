@@ -82,6 +82,7 @@ public class TTClientProxy extends TTCommonProxy {
     public void init(FMLInitializationEvent event) {
         super.init(event);
 
+        LocalizationHandler.loadLocalizations();
         MinecraftForge.EVENT_BUS.register(new HUDHandler());
         ClientTickHandler cthandler = new ClientTickHandler();
         FMLCommonHandler.instance().bus().register(cthandler);

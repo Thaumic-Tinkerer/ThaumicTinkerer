@@ -95,6 +95,10 @@ public final class LibResources {
     public static final String ENCHANT_VAMPIRISM = PREFIX_ENCHANTS + "vamprisim.png";
     public static final String ENCHANT_QUICK_DRAW = PREFIX_ENCHANTS + "quickDraw.png";
 
+    public static final String[] LANGS = {
+            "en_US", "de_DE", "zh_CN", "ru_RU", "ko_KR"
+    };
+
     public static final String ENCHANT_FOCUSED_STRIKE = PREFIX_ENCHANTS + "focusedStrikes.png";
     public static final String ENCHANT_DISPERSED_STRIKE = PREFIX_ENCHANTS + "dispersedStrikes.png";
     public static final String ENCHANT_VALIANCE = PREFIX_ENCHANTS + "valiance.png";
