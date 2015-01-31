@@ -64,7 +64,9 @@ public class ItemFocusXPDrain extends ItemModKamiFocus {
             int xpUse = getXpUse(paramItemStack);
             if (paramEntityPlayer.experienceTotal >= xpUse) {
                 ExperienceHelper.drainPlayerXP(paramEntityPlayer, xpUse);
-                wand.storeVis(paramItemStack, aspectToAdd, Math.min(wand.getMaxVis(paramItemStack), wand.getVis(paramItemStack, aspectToAdd) + 500));
+                int amount=wand.getVis(paramItemStack, aspectToAdd) + 500;
+                ThaumicTinkerer.log.info(amount);
+                wand.storeVis(paramItemStack, aspectToAdd, Math.min(wand.getMaxVis(paramItemStack), amount));
             }
         }
     }
@@ -81,7 +83,7 @@ public class ItemFocusXPDrain extends ItemModKamiFocus {
     }
 
     int getXpUse(ItemStack stack) {
-        return 30;
+        return 15;
     }
 
     @Override
