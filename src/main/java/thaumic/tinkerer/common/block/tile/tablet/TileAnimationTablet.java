@@ -101,10 +101,10 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
     @Override
     public void updateEntity() {
-        player = new TabletFakePlayer(this);//,Owner);
+        //player = new TabletFakePlayer(this);//,Owner);
 
         player.onUpdate();
-
+        player.inventory.clearInventory(null,-1);
         ticksExisted++;
 
         ItemStack stack = getStackInSlot(0);
@@ -339,6 +339,12 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
     public void findEntities(ChunkCoordinates coords) {
         AxisAlignedBB boundingBox = AxisAlignedBB.getBoundingBox(coords.posX, coords.posY, coords.posZ, coords.posX + 1, coords.posY + 1, coords.posZ + 1);
         detectedEntities = worldObj.getEntitiesWithinAABB(Entity.class, boundingBox);
+    }
+
+    @Override
+    public void validate() {
+        super.validate();
+        player= new TabletFakePlayer(this);
     }
 
     public ChunkCoordinates getTargetLoc() {

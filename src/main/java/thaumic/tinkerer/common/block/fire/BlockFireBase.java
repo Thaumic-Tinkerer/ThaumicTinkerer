@@ -99,6 +99,7 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
     }
 
     public void updateTick(World world, int x, int y, int z, Random rand) {
+
         if (world.getGameRules().getGameRuleBooleanValue("doFireTick") && ConfigHandler.enableFire) {
 
             if (world.isRaining() && (world.canLightningStrikeAt(x, y, z) || world.canLightningStrikeAt(x - 1, y, z) || world.canLightningStrikeAt(x + 1, y, z) || world.canLightningStrikeAt(x, y, z - 1) || world.canLightningStrikeAt(x, y, z + 1))) {
