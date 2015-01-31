@@ -32,7 +32,7 @@ import thaumcraft.client.fx.ParticleEngine;
 import thaumic.tinkerer.client.core.handler.ClientTickHandler;
 import thaumic.tinkerer.client.core.handler.GemArmorKeyHandler;
 import thaumic.tinkerer.client.core.handler.HUDHandler;
-import thaumic.tinkerer.client.core.handler.LocalizationHandler;
+
 import thaumic.tinkerer.client.core.handler.kami.KamiArmorClientHandler;
 import thaumic.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
 import thaumic.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
