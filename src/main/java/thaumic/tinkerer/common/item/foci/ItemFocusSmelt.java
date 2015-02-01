@@ -29,6 +29,8 @@ public class ItemFocusSmelt extends ItemModFocus {
 
     private static final AspectList visUsage = new AspectList().add(Aspect.FIRE, 45).add(Aspect.ENTROPY, 12);
     public static Map<String, SmeltData> playerData = new HashMap();
+	
+	private int soundCooldown = 3; // In ticks
 
     public ItemFocusSmelt() {
         super();
@@ -87,14 +89,16 @@ public class ItemFocusSmelt extends ItemModFocus {
                         if (data.progress <= 0) {
                             if (!p.worldObj.isRemote) {
                                 p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Block.getBlockFromItem(result.getItem()), result.getItemDamage(), 1 | 2);
-                                p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
-                                p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
-
                                 wand.consumeAllVis(stack, p, visUsage, true, false);
                                 playerData.remove(p.getGameProfile().getName());
                                 decremented = false;
                             }
-
+                            //  Sound
+                            ////////////////////
+                            p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
+                            p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
+                            //  Particle
+                            ////////////////////
                             for (int i = 0; i < 25; i++) {
                                 double x = pos.blockX + Math.random();
                                 double y = pos.blockY + Math.random();
@@ -109,13 +113,20 @@ public class ItemFocusSmelt extends ItemModFocus {
                 if (!decremented) {
                     int potency = this.getUpgradeLevel(stack, FocusUpgradeType.potency);
                     playerData.put(p.getGameProfile().getName(), new SmeltData(pos, 20 - Math.min(3, potency) * 5));
-                } else for (int i = 0; i < 2; i++) {
-                    double x = pos.blockX + Math.random();
-                    double y = pos.blockY + Math.random();
-                    double z = pos.blockZ + Math.random();
-                    p.worldObj.playSoundAtEntity(p, "fire.fire", (float) Math.random() / 2F + 0.5F, 1F);
+                } else{
+                    //  Sound
+                    ////////////////////
+                    if (time % soundCooldown == 0)
+                            p.worldObj.playSoundAtEntity(p, "fire.fire", 0.2F, 1F);
+                    //  Particle
+                    ////////////////////
+                    for (int i = 0; i < 2; i++) {
+                        double x = pos.blockX + Math.random();
+                        double y = pos.blockY + Math.random();
+                        double z = pos.blockZ + Math.random();
 
-                    ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, true, (float) -Math.random() / 10F);
+                        ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, true, (float) -Math.random() / 10F);
+                    }
                 }
 
                 if (p.worldObj.isRemote)
