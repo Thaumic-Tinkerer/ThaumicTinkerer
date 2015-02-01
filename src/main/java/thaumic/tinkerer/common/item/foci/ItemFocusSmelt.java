@@ -111,7 +111,7 @@ public class ItemFocusSmelt extends ItemModFocus {
                 }
 
                 if (!decremented) {
-                    int potency = this.getUpgradeLevel(stack, FocusUpgradeType.potency);
+                    int potency = wand.getFocusPotency(stack);
                     playerData.put(p.getGameProfile().getName(), new SmeltData(pos, 20 - Math.min(3, potency) * 5));
                 } else{
                     //  Sound

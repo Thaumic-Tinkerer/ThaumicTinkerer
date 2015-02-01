@@ -48,7 +48,7 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
         ItemWandCasting wand = (ItemWandCasting) stack.getItem();
 
         if (!player.worldObj.isRemote && wand.consumeAllVis(stack, player, getVisCost(stack), true, false)) {
-            int potency = 0;
+            int potency = wand.getFocusPotency(stack);
 
             if (player.worldObj.rand.nextInt(10) == 0)
                 player.worldObj.playSoundAtEntity(player, "thaumcraft:brain", 0.5F, 1F);
