@@ -44,12 +44,14 @@ public class ItemFocusFlight extends ItemModFocus {
     @Override
     public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer p, MovingObjectPosition movingobjectposition) {
         ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
+        int potency = wand.getFocusPotency(itemstack);
+		
         if (!ConfigHandler.enableFlight) {
             return itemstack;
         }
         if (wand.consumeAllVis(itemstack, p, getVisCost(itemstack), true, false)) {
             Vec3 vec = p.getLookVec();
-            double force = 1 / 1.5 * (1 + this.getUpgradeLevel(itemstack, FocusUpgradeType.potency) * 0.2);
+            double force = 1 / 1.5 * (1 + potency * 0.2);
             p.motionX = vec.xCoord * force;
             p.motionY = vec.yCoord * force;
             p.motionZ = vec.zCoord * force;

@@ -53,7 +53,7 @@ public class ItemFocusHeal extends ItemModFocus {
         if (!wand.consumeAllVis(stack, p, visUsage, false, false) || !p.shouldHeal())
             return;
 
-        int potency = this.getUpgradeLevel(stack, FocusUpgradeType.potency);
+        int potency = wand.getFocusPotency(stack);
 
         if (!playerHealData.containsKey(p.getGameProfile().getName()))
             playerHealData.put(p.getGameProfile().getName(), 0);
