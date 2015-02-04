@@ -4,18 +4,9 @@
  * For help using the API, and posting your mods, visit the forums at computercraft.info.
  */
 
-package dan200.computercraft.api.turtle;
+package dan200.computercraft.api.lua;
 
-public enum TurtleAnimation
+public interface ILuaTask
 {
-    None,
-    MoveForward,
-    MoveBack,
-    MoveUp,
-    MoveDown,
-    TurnLeft,
-    TurnRight,
-    SwingLeftTool,
-    SwingRightTool,
-    Wait,
+    public Object[] execute() throws LuaException;
 }

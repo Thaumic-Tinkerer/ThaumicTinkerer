@@ -55,6 +55,7 @@ import thaumic.tinkerer.common.block.tile.TileMagnet;
 import thaumic.tinkerer.common.block.tile.TileRepairer;
 import thaumic.tinkerer.common.block.tile.kami.TileWarpGate;
 import thaumic.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import thaumic.tinkerer.common.compat.FumeTool;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
@@ -71,8 +72,7 @@ public class TTClientProxy extends TTCommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
-        //Temporarly disabled for 1.7
-        //MinecraftForge.EVENT_BUS.register(new FumeTool());
+        MinecraftForge.EVENT_BUS.register(new FumeTool());
         if (ConfigHandler.enableKami)
             //kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
             kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");

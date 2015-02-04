@@ -23,6 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
+import dan200.computercraft.api.ComputerCraftAPI;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -40,6 +41,7 @@ import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileFunnel;
 import thaumic.tinkerer.common.block.tile.TileRepairer;
 import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import thaumic.tinkerer.common.compat.FumeTool;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
 import thaumic.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
@@ -168,7 +170,7 @@ public class TTCommonProxy {
         };
         handler.registerPeripheralProvider();
 
-        //ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
+        ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
     }
 
     @Optional.Method(modid = "OpenComputers")

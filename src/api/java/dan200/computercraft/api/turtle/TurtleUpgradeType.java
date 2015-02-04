@@ -1,6 +1,6 @@
 /**
  * This file is part of the public ComputerCraft API - http://www.computercraft.info
- * Copyright Daniel Ratcliffe, 2011-2014. This API may be redistributed unmodified and in full only.
+ * Copyright Daniel Ratcliffe, 2011-2015. This API may be redistributed unmodified and in full only.
  * For help using the API, and posting your mods, visit the forums at computercraft.info.
  */
 
@@ -9,7 +9,7 @@ package dan200.computercraft.api.turtle;
 /**
  * An enum representing the two different types of turtle that an ITurtleUpgrade
  * implementation can add to a turtle.
- * @see ITurtleUpgrade
+ * @see dan200.computercraft.api.turtle.ITurtleUpgrade
  */
 public enum TurtleUpgradeType
 {
@@ -18,7 +18,7 @@ public enum TurtleUpgradeType
 	 * and turtle.attack() methods (Such as pickaxe or sword on Mining and Melee turtles).
 	 */
 	Tool,
-
+	
 	/**
 	 * A peripheral adds a special peripheral which is attached to the side of the turtle,
 	 * and can be interacted with the peripheral API (Such as the modem on Wireless Turtles).
