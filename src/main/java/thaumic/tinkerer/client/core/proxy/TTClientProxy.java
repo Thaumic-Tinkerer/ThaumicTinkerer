@@ -17,6 +17,7 @@ package thaumic.tinkerer.client.core.proxy;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -72,7 +73,10 @@ public class TTClientProxy extends TTCommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
-        MinecraftForge.EVENT_BUS.register(new FumeTool());
+        if (Loader.isModLoaded("ComputerCraft")) {
+            MinecraftForge.EVENT_BUS.register(new FumeTool());
+        }
+        
         if (ConfigHandler.enableKami)
             //kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
             kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
