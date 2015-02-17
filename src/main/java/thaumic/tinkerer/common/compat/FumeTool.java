@@ -19,9 +19,7 @@ import thaumic.tinkerer.common.item.ItemGasRemover;
 /**
  * Created by Katrina on 04/02/2015.
  */
-@Optional.InterfaceList({
         @Optional.Interface(iface = "dan200.computercraft.api.turtle.ITurtleUpgrade", modid = "ComputerCraft")
-})
 public class FumeTool implements ITurtleUpgrade {
 
     @SideOnly(Side.CLIENT)
