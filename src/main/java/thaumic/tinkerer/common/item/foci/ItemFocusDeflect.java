@@ -51,7 +51,7 @@ public class ItemFocusDeflect extends ItemModFocus {
     AspectList visUsage = new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 4);
 
 
-    public static void setupBlackList()
+    public static void  setupBlackList()
     {
         DeflectBlacklist.add(EntityExpBottle.class);
         if(Loader.isModLoaded("BloodMagic"))

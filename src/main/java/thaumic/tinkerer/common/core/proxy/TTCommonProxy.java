@@ -158,7 +158,7 @@ public class TTCommonProxy {
         AspectCropLootManager.populateLootMap();
         ItemFocusDeflect.setupBlackList();
     }
-
+    @Optional.Method(modid = "ComputerCraft")
     protected void initCCPeripherals() {
         PeripheralHandler handler = new PeripheralHandler();
 
