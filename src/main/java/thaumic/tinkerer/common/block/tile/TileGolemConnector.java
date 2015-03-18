@@ -155,9 +155,9 @@ public class TileGolemConnector extends TileCamo implements IPeripheral, SimpleC
                 if (arguments.length != 4)
                     throw new LuaException("Invalid arguments");
                 double x = (Double) arguments[0];
-                double y = (Double) arguments[0];
-                double z = (Double) arguments[0];
-                double facing = (Double) arguments[0];
+                double y = (Double) arguments[1];
+                double z = (Double) arguments[2];
+                double facing = (Double) arguments[3];
                 return setHomeImplementation(x, y, z, facing);
             case 7:
                 return getMarkersImplementation();
