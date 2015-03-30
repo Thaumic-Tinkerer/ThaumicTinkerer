@@ -52,10 +52,14 @@ public class BlockNitorGas extends BlockGas {
     @Override
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
         if (!par1World.isRemote) {
+        	boolean remove=false;
             int dist = par1World.getBlockMetadata(par2, par3, par4) == 1 ? 6 : 1;
             List<EntityPlayer> players = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2 - dist, par3 - dist, par4 - dist, par2 + dist, par3 + dist, par4 + dist));
             if (players.isEmpty())
+            {
                 par1World.setBlockToAir(par2, par3, par4);
+                remove=true;
+            }
             else {
                 boolean has = false;
                 for (EntityPlayer player : players)
@@ -65,8 +69,12 @@ public class BlockNitorGas extends BlockGas {
                     }
 
                 if (!has)
+                {
                     par1World.setBlockToAir(par2, par3, par4);
+                    remove=true;
+                }
             }
+            if(!remove)
             par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
         }
     }

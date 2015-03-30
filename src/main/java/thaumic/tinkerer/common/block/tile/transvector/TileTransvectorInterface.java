@@ -352,8 +352,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public boolean isConnectable(ForgeDirection forgeDirection) {
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
+        //TileEntity tile = getTile();
+        //return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
+    	return true;
     }
 
     @Override
@@ -377,11 +378,17 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public Aspect getSuctionType(ForgeDirection forgeDirection) {
+    	TileEntity tile = getTile();
+        if (tile instanceof IEssentiaTransport)
+            return ((IEssentiaTransport) tile).getSuctionType(forgeDirection);
         return null;
     }
 
     @Override
     public int getSuctionAmount(ForgeDirection forgeDirection) {
+    	TileEntity tile = getTile();
+        if (tile instanceof IEssentiaTransport)
+            return ((IEssentiaTransport) tile).getSuctionAmount(forgeDirection);
         return 0;
     }
 
@@ -399,7 +406,8 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public boolean renderExtendedTube() {
-        return false;
+    	TileEntity tile = getTile();
+        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).renderExtendedTube();
     }
 
     @Override
