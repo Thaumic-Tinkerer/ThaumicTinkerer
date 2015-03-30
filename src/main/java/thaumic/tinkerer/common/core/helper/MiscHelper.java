@@ -42,7 +42,7 @@ public final class MiscHelper {
     }
 
     public static boolean breakBlockToAirWithCheck(World w, int x, int y, int z, EntityPlayer player) {
-        return breakBlockWithCheck(w, x, y, z, Blocks.air, 0, 0, player);
+        return breakBlockWithCheck(w, x, y, z, Blocks.air, 0, 3, player);
     }
 
     public static boolean breakBlockWithCheck(World w, int x, int y, int z, Block block, EntityPlayer player) {

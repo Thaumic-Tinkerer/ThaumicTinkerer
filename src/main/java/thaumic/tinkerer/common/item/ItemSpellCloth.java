@@ -19,6 +19,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.RecipeSorter;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
@@ -42,8 +44,9 @@ public class ItemSpellCloth extends ItemBase {
         setMaxDamage(LibFeatures.SPELL_CLOTH_USES);
         setMaxStackSize(1);
         setNoRepair();
-
-        CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe(this));
+        IRecipe recipe=new SpellClothRecipe(this);
+        CraftingManager.getInstance().getRecipeList().add(recipe);
+        RecipeSorter.register("ttinkers:spellcloth",SpellClothRecipe.class, RecipeSorter.Category.SHAPELESS,"after:minecraft:shapeless");
     }
 
     @Override

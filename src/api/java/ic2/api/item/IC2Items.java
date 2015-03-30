@@ -4,40 +4,40 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Provides access to IC2 blocks and items.
- * <p/>
+ * 
  * Some items can be acquired through the ore dictionary which is the recommended way.
  * The items are initialized while IC2 is being loaded - try to use ModsLoaded() or load your mod after IC2.
  * Some blocks/items can be disabled by a config setting, so it's recommended to check if they're null first.
- * <p/>
+ * 
  * Getting the associated Block/Item for an ItemStack x:
- * Blocks: Block.blocksList[x.itemID]
- * Items: x.getItem()
+ *   Blocks: Block.blocksList[x.itemID]
+ *   Items: x.getItem()
  */
 public final class IC2Items {
-    /**
-     * Get an ItemStack for a specific item name, example: Items.getItem("resin")
-     * See the list below for item names.
-     * Make sure to copy() the ItemStack if you want to modify it.
-     *
-     * @param name item name
-     * @return The item or null if the item does not exist or an error occurred
-     */
-    public static ItemStack getItem(String name) {
-        try {
-            if (Ic2Items == null) Ic2Items = Class.forName(getPackage() + ".core.Ic2Items");
+	/**
+	 * Get an ItemStack for a specific item name, example: Items.getItem("resin")
+	 * See the list below for item names.
+	 * Make sure to copy() the ItemStack if you want to modify it.
+	 *
+	 * @param name item name
+	 * @return The item or null if the item does not exist or an error occurred
+	 */
+	public static ItemStack getItem(String name) {
+		try {
+			if (Ic2Items == null) Ic2Items = Class.forName(getPackage() + ".core.Ic2Items");
 
-            Object ret = Ic2Items.getField(name).get(null);
+			Object ret = Ic2Items.getField(name).get(null);
 
-            if (ret instanceof ItemStack) {
-                return (ItemStack) ret;
-            }
-            return null;
-        } catch (Exception e) {
-            System.out.println("IC2 API: Call getItem failed for " + name);
+			if (ret instanceof ItemStack) {
+				return (ItemStack) ret;
+			}
+			return null;
+		} catch (Exception e) {
+			System.out.println("IC2 API: Call getItem failed for "+name);
 
-            return null;
-        }
-    }
+			return null;
+		}
+	}
 
 	/* Possible values:
 
@@ -576,23 +576,23 @@ public final class IC2Items {
 
 	 */
 
-    /**
-     * Get the base IC2 package name, used internally.
-     *
-     * @return IC2 package name, if unable to be determined defaults to ic2
-     */
-    private static String getPackage() {
-        Package pkg = IC2Items.class.getPackage();
+	/**
+	 * Get the base IC2 package name, used internally.
+	 * 
+	 * @return IC2 package name, if unable to be determined defaults to ic2
+	 */
+	private static String getPackage() {
+		Package pkg = IC2Items.class.getPackage();
 
-        if (pkg != null) {
-            String packageName = pkg.getName();
+		if (pkg != null) {
+			String packageName = pkg.getName();
 
-            return packageName.substring(0, packageName.length() - ".api.item".length());
-        }
+			return packageName.substring(0, packageName.length() - ".api.item".length());
+		}
 
-        return "ic2";
-    }
+		return "ic2";
+	}
 
-    private static Class<?> Ic2Items;
+	private static Class<?> Ic2Items;
 }
 

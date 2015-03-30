@@ -1,11 +1,11 @@
 package ic2.api.item;
 
-import net.minecraft.item.ItemStack;
-
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
+
 public interface IItemHudInfo {
-    /*
+	/*
     Add Info to Nano- and Quantum-Suit Helm Hud
     for itemStack
 
@@ -20,5 +20,5 @@ public interface IItemHudInfo {
 
 	 */
 
-    public List<String> getHudInfo(ItemStack itemStack);
+	public List<String> getHudInfo(ItemStack itemStack);
 }

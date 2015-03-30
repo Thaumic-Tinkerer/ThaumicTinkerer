@@ -53,6 +53,7 @@ import thaumic.tinkerer.common.core.helper.BonemealEventHandler;
 import thaumic.tinkerer.common.core.helper.NumericAspectHelper;
 import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
+import thaumic.tinkerer.common.item.SpellClothCraftingHandler;
 import thaumic.tinkerer.common.item.foci.ItemFocusDeflect;
 import thaumic.tinkerer.common.item.kami.wand.CapIchor;
 import thaumic.tinkerer.common.item.kami.wand.RodIchorcloth;
@@ -107,6 +108,7 @@ public class TTCommonProxy {
         registerPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
         MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
+        FMLCommonHandler.instance().bus().register(new SpellClothCraftingHandler());
 
         if (ConfigHandler.enableKami) {
             MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());

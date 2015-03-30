@@ -96,7 +96,7 @@ if (project.hasProperty("releaseType"))
 dependencies {
     compile "codechicken:CodeChickenLib:1.7.10-1.1.1.106:dev"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
-    compile "mcp.mobius.waila:Waila:1.5.3a_1.7.10"
+    compile "mcp.mobius.waila:Waila:1.5.8_1.7.10"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
 
     compile 'com.mod-buildcraft:buildcraft:6.3.3:dev'

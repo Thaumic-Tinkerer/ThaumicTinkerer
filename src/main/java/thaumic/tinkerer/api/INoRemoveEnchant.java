@@ -12,7 +12,7 @@
  *
  * File Created @ [9 Sep 2013, 01:21:51 (GMT)]
  */
-package thaumic.tinkerer.common.item;
+package thaumic.tinkerer.api;
 
 public interface INoRemoveEnchant {
 
