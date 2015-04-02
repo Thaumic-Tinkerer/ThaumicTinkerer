@@ -17,6 +17,7 @@ package thaumic.tinkerer.client.core.proxy;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -28,10 +29,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import thaumcraft.client.fx.ParticleEngine;
 import thaumic.tinkerer.client.core.handler.ClientTickHandler;
 import thaumic.tinkerer.client.core.handler.GemArmorKeyHandler;
 import thaumic.tinkerer.client.core.handler.HUDHandler;
-import thaumic.tinkerer.client.core.handler.LocalizationHandler;
+
 import thaumic.tinkerer.client.core.handler.kami.KamiArmorClientHandler;
 import thaumic.tinkerer.client.core.handler.kami.PlacementMirrorPredictionRenderer;
 import thaumic.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
@@ -54,6 +56,7 @@ import thaumic.tinkerer.common.block.tile.TileMagnet;
 import thaumic.tinkerer.common.block.tile.TileRepairer;
 import thaumic.tinkerer.common.block.tile.kami.TileWarpGate;
 import thaumic.tinkerer.common.block.tile.tablet.TileAnimationTablet;
+import thaumic.tinkerer.common.compat.FumeTool;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.item.ItemInfusedSeeds;
@@ -70,8 +73,10 @@ public class TTClientProxy extends TTCommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
-        //Temporarly disabled for 1.7
-        //MinecraftForge.EVENT_BUS.register(new FumeTool());
+        if (Loader.isModLoaded("ComputerCraft")) {
+            MinecraftForge.EVENT_BUS.register(new FumeTool());
+        }
+        
         if (ConfigHandler.enableKami)
             //kamiRarity = EnumHelperClient.addRarity("KAMI", 0x6, "Kami");
             kamiRarity = EnumHelperClient.addEnum(new Class[][]{{EnumRarity.class, EnumChatFormatting.class, String.class}}, EnumRarity.class, "KAMI", EnumChatFormatting.LIGHT_PURPLE, "Kami");
@@ -81,7 +86,6 @@ public class TTClientProxy extends TTCommonProxy {
     public void init(FMLInitializationEvent event) {
         super.init(event);
 
-        LocalizationHandler.loadLocalizations();
         MinecraftForge.EVENT_BUS.register(new HUDHandler());
         ClientTickHandler cthandler = new ClientTickHandler();
         FMLCommonHandler.instance().bus().register(cthandler);
@@ -136,8 +140,8 @@ public class TTClientProxy extends TTCommonProxy {
 
     @Override
     public void shadowSparkle(World world, float x, float y, float z, int size) {
-        ItemFocusShadowbeam.Particle particle = new ItemFocusShadowbeam.Particle(world, x, y, z, 1.5F, 0, size);
-        ClientHelper.minecraft().effectRenderer.addEffect(particle);
+        ItemFocusShadowbeam.Particle fx = new ItemFocusShadowbeam.Particle(world, (double)x, (double)y, (double)z, size, 0.001f, 0.001f, 0.001f, 5);
+        ParticleEngine.instance.addEffect(world, fx);
     }
 
     @Override

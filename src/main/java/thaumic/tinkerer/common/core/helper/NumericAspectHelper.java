@@ -35,6 +35,8 @@ public class NumericAspectHelper {
         new NumericAspectHelper(Aspect.TRAVEL);
         new NumericAspectHelper(Aspect.METAL);
         new NumericAspectHelper(Aspect.SLIME);
+        new NumericAspectHelper(Aspect.CLOTH);
+        new NumericAspectHelper(Aspect.CROP);
 
     }
 

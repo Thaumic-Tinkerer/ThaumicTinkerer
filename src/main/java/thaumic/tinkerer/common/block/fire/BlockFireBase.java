@@ -6,8 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -15,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumic.tinkerer.client.core.helper.IconHelper;
+import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.helper.BlockTuple;
 import thaumic.tinkerer.common.item.ItemBlockFire;
@@ -99,6 +103,7 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
     }
 
     public void updateTick(World world, int x, int y, int z, Random rand) {
+
         if (world.getGameRules().getGameRuleBooleanValue("doFireTick") && ConfigHandler.enableFire) {
 
             if (world.isRaining() && (world.canLightningStrikeAt(x, y, z) || world.canLightningStrikeAt(x - 1, y, z) || world.canLightningStrikeAt(x + 1, y, z) || world.canLightningStrikeAt(x, y, z - 1) || world.canLightningStrikeAt(x, y, z + 1))) {
@@ -253,6 +258,12 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
     @Deprecated
     public int func_149846_a(World p_149846_1_, int p_149846_2_, int p_149846_3_, int p_149846_4_, int p_149846_5_) {
         return getChanceToEncourageFire(p_149846_1_, p_149846_2_, p_149846_3_, p_149846_4_, p_149846_5_, UP);
+    }
+
+    @Override
+    public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
+        if(p_149689_5_ instanceof EntityPlayer)
+            ThaumicTinkerer.log.info("Player: "+((EntityPlayer)p_149689_5_).getDisplayName()+" placed TT Fire");
     }
 
     /**

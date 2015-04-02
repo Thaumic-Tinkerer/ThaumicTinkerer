@@ -28,7 +28,7 @@ public class EnderStorageFunctions {
             TileEntity tile = world.getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
 
 
-            if (tile instanceof TileEntityEnderChest && p.isSneaking()) {
+            if (tile instanceof TileEnderChest && p.isSneaking()) {
                 TileEnderChest chest = (TileEnderChest) tile;
 
                 focus.getTagCompound().setInteger("freq", chest.freq);

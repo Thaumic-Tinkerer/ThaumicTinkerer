@@ -41,7 +41,7 @@ public class ModCreativeTab extends CreativeTabs {
 
     public ModCreativeTab() {
         super(LibMisc.MOD_ID);
-        addWand();
+        //addWand();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ModCreativeTab extends CreativeTabs {
 
     }
 
-    private void addWand() {
+    public void addWand() {
         ItemStack wand = new ItemStack(ConfigItems.itemWandCasting);
         ((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_SILVERWOOD);
         ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);

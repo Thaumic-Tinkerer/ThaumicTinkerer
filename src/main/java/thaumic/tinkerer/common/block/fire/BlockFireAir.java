@@ -27,12 +27,16 @@ public class BlockFireAir extends BlockFireBase {
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableFire)
+            return null;
         return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FIRE_AER, new AspectList().add(Aspect.FIRE, 5).add(Aspect.AIR, 5), 3, -7, 2, new ItemStack(this)).setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
                 .setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_FIRE_AER)).setSecondary();
     }
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
+        if(!ConfigHandler.enableFire)
+            return null;
         return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_AER, new ItemStack(this), new ItemStack(ConfigItems.itemShard, 1, 0), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.AIR, 5));
     }
 

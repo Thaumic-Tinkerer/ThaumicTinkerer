@@ -7,6 +7,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.helper.BlockTuple;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -27,12 +28,16 @@ public class BlockFireIgnis extends BlockFireBase {
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableFire)
+            return null;
         return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FIRE_IGNIS, new AspectList().add(Aspect.FIRE, 10), 4, -4, 2, new ItemStack(this)).setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
                 .setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_FIRE_IGNIS)).setSecondary();
     }
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
+        if(!ConfigHandler.enableFire)
+            return null;
         return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_IGNIS, new ItemStack(this), new ItemStack(ConfigItems.itemShard, 1, 1), new AspectList().add(Aspect.FIRE, 10).add(Aspect.AIR, 5));
     }
 

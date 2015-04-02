@@ -1,6 +1,6 @@
 /**
  * This file is part of the public ComputerCraft API - http://www.computercraft.info
- * Copyright Daniel Ratcliffe, 2011-2014. This API may be redistributed unmodified and in full only.
+ * Copyright Daniel Ratcliffe, 2011-2015. This API may be redistributed unmodified and in full only.
  * For help using the API, and posting your mods, visit the forums at computercraft.info.
  */
 
@@ -36,7 +36,7 @@ public interface ITurtleAccess
     /**
      * TODO: Document me
      */
-    public boolean teleportTo( World world, int x, int y, int z );
+    public boolean teleportTo(World world, int x, int y, int z);
 
 	/**
 	 * Returns a vector containing the floating point co-ordinates at which the turtle is rendered.
@@ -44,12 +44,12 @@ public interface ITurtleAccess
 	 * @param f The subframe fraction
 	 * @return a vector containing the floating point co-ordinates at which the turtle resides.
 	 */
-	public Vec3 getVisualPosition( float f );
+	public Vec3 getVisualPosition(float f);
 
     /**
      * TODO: Document me
      */
-    public float getVisualYaw( float f );
+    public float getVisualYaw(float f);
 
 	/**
 	 * Returns the world direction the turtle is currently facing.
@@ -60,7 +60,7 @@ public interface ITurtleAccess
     /**
      * TODO: Document me
      */
-    public void setDirection( int dir );
+    public void setDirection(int dir);
 
     /**
      * TODO: Document me
@@ -70,7 +70,19 @@ public interface ITurtleAccess
     /**
      * TODO: Document me
      */
-    public void setSelectedSlot( int slot );
+    public void setSelectedSlot(int slot);
+
+    /**
+     * Sets the colour of the turtle, as if the player had dyed it with a dye item.
+     * @param dyeColour 0-15 to dye the turtle one of the 16 standard minecraft colours, or -1 to remove the dye from the turtle.
+     */
+    public void setDyeColour(int dyeColour);
+
+    /**
+     * Gets the colour the turtle has been dyed.
+     * @return 0-15 if the turtle has been dyed one of the 16 standard minecraft colours, -1 if the turtle is clean.
+     */
+    public int getDyeColour();
 
     /**
      * TODO: Document me
@@ -90,7 +102,7 @@ public interface ITurtleAccess
     /**
      * TODO: Document me
      */
-    public void setFuelLevel( int fuel );
+    public void setFuelLevel(int fuel);
 
     /**
      * TODO: Document me
@@ -102,12 +114,12 @@ public interface ITurtleAccess
 	 * @return Whether the turtle was able to consume the ammount of fuel specified. Will return false if you supply a number
 	 * greater than the current fuel level of the turtle.
 	 */
-	public boolean consumeFuel( int fuel );
+	public boolean consumeFuel(int fuel);
 
     /**
      * TODO: Document me
      */
-    public void addFuel( int fuel );
+    public void addFuel(int fuel);
 
     /**
      * Adds a custom command to the turtles command queue. Unlike peripheral methods, these custom commands will be executed
@@ -120,37 +132,37 @@ public interface ITurtleAccess
      * unchanged if called from a peripheral method.
      * @see ITurtleCommand
      */
-    public Object[] executeCommand( ILuaContext context, ITurtleCommand command ) throws LuaException, InterruptedException;
+    public Object[] executeCommand(ILuaContext context, ITurtleCommand command) throws LuaException, InterruptedException;
 
     /**
      * TODO: Document me
      */
-    public void playAnimation( TurtleAnimation animation );
+    public void playAnimation(TurtleAnimation animation);
 
 	/**
 	 * Returns the turtle on the specified side of the turtle, if there is one.
 	 * @return the turtle on the specified side of the turtle, if there is one.
 	 */
-	public ITurtleUpgrade getUpgrade( TurtleSide side );
+	public ITurtleUpgrade getUpgrade(TurtleSide side);
 
     /**
      * TODO: Document me
      */
-    public void setUpgrade( TurtleSide side, ITurtleUpgrade upgrade );
+    public void setUpgrade(TurtleSide side, ITurtleUpgrade upgrade);
 
 	/**
 	 * Returns the peripheral created by the upgrade on the specified side of the turtle, if there is one.
 	 * @return the peripheral created by the upgrade on the specified side of the turtle, if there is one.
 	 */
-	public IPeripheral getPeripheral( TurtleSide side );
+	public IPeripheral getPeripheral(TurtleSide side);
 
     /**
      * TODO: Document me
      */
-    public NBTTagCompound getUpgradeNBTData( TurtleSide side );
+    public NBTTagCompound getUpgradeNBTData(TurtleSide side);
 
     /**
      * TODO: Document me
      */
-    public void updateUpgradeNBTData( TurtleSide side );
+    public void updateUpgradeNBTData(TurtleSide side);
 }

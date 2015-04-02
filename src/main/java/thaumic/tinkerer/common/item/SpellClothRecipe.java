@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import thaumic.tinkerer.api.INoRemoveEnchant;
 
 public class SpellClothRecipe implements IRecipe {
 

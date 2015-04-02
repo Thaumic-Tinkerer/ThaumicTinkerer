@@ -79,7 +79,7 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
     }
 
     @Override
-    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int rank) {
         return new FocusUpgradeType[0];
     }
 
@@ -114,31 +114,68 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
     public static class Particle extends FXSparkle {
 
-        public Particle(World world, double d, double d1, double d2, float f, int type, int m) {
-            super(world, d, d1, d2, f, type, m);
-            noClip = true;
-        }
-
-        @Override
-        public void onUpdate() {
-            super.onUpdate();
-            if (particleAge > 1)
-                setDead();
+        public Particle(World world, double x, double y, double z, float scale, float red, float green, float blue, int maxAge) {
+            super(world,x, y, z, scale, red, green, blue, 1);
+            this.particleMaxAge /= 3;
+            this.particleMaxAge = maxAge;
+            this.shrink = false;
+            this.blendmode = 0;
+            this.multiplier = 1;
+            this.particle = 1;
+            this.slowdown = false;
+            this.noClip = true;
+            this.setGravity(-0.7f);
+//////////////////////////////////////////////////
+//        For more check the parent class
+//////////////////////////////////////////////////
+//        this.leyLineEffect = false;
+//        this.multiplier = 2;
+//        this.shrink = true;
+//        this.particle = 16;
+//        this.tinkle = false;
+//        this.blendmode = 1;
+//        this.slowdown = true;
+//        this.currentColor = 0;
+//        if(f1 == 0.0F) {
+//            f1 = 1.0F;
+//        }
+//        this.particleRed = f1;
+//        this.particleGreen = f2;
+//        this.particleBlue = f3;
+//        this.particleGravity = 0.0F;
+//        this.motionX = this.motionY = this.motionZ = 0.0D;
+//        this.particleScale *= f;
+//        this.particleMaxAge = 3 * m;
+//        this.multiplier = m;
+//        this.noClip = false;
+//        this.setSize(0.01F, 0.01F);
+//        this.prevPosX = this.posX;
+//        this.prevPosY = this.posY;
+//        this.prevPosZ = this.posZ;
+//////////////////////////////////////////////////
         }
     }
 
     public static class Beam extends EntityThrowable {
 
-        final int maxTicks = 300;
-        int potency;
-        Vector3 movementVector;
+        private int initialOffset = 2;
+        private int length = 298;
+        private int maxTicks = initialOffset + length;
+        private int size = 4;
 
-        public Beam(World par1World, EntityLivingBase par2EntityLivingBase, int potency) {
-            super(par1World, par2EntityLivingBase);
+        private int potency;
+        private Vector3 movementVector;
+
+        private EntityLivingBase player;
+
+        public Beam(World world, EntityLivingBase player, int potency) {
+            super(world, player);
 
             this.potency = potency;
+            this.player = player;
             setProjectileVelocity(motionX / 10, motionY / 10, motionZ / 10);
             movementVector = new Vector3(motionX, motionY, motionZ);
+
         }
 
         // Copy of setVelocity, because that is client only for some reason
@@ -202,10 +239,11 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
 
             super.onUpdate();
 
-            if (ticksExisted > 2)
-                ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, 6);
+            if (ticksExisted > initialOffset)
+                ThaumicTinkerer.proxy.shadowSparkle(worldObj, (float) posX, (float) posY, (float) posZ, size);
 
             ++ticksExisted;
+
             if (ticksExisted >= maxTicks)
                 setDead();
         }

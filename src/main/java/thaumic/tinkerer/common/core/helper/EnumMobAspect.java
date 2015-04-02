@@ -5,6 +5,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
@@ -35,7 +37,7 @@ public enum EnumMobAspect {
     Creeper(EntityCreeper.class, new Aspect[]{Aspect.MAGIC, Aspect.BEAST, Aspect.ELDRITCH}),
     Enderman(EntityEnderman.class, new Aspect[]{Aspect.ELDRITCH, Aspect.ELDRITCH, Aspect.MAN}, 0.3f, 0.0f),
     Ghast(EntityGhast.class, new Aspect[]{Aspect.FIRE, Aspect.FLIGHT, Aspect.FLIGHT}, 0.1f, 0.2f),
-    Horse(EntityHorse.class, new Aspect[]{Aspect.BEAST, Aspect.BEAST, Aspect.TRAVEL}),
+    EntityHorse(EntityHorse.class, new Aspect[]{Aspect.BEAST, Aspect.BEAST, Aspect.TRAVEL}),
     VillagerGolem(EntityIronGolem.class, new Aspect[]{Aspect.METAL, Aspect.METAL, Aspect.MAN}, 0.3f, 0.0f),
     LavaSlime(EntityMagmaCube.class, new Aspect[]{Aspect.FIRE, Aspect.SLIME, Aspect.SLIME}, 0.6f, 0.0f) {
         @Override
@@ -47,7 +49,7 @@ public enum EnumMobAspect {
     Ozelot(EntityOcelot.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.ELDRITCH}),
     Pig(EntityPig.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.TRAVEL}),
     PigZombie(EntityPigZombie.class, new Aspect[]{Aspect.UNDEAD, Aspect.FLESH, Aspect.FIRE}),
-    Sheep(EntitySheep.class, new Aspect[]{Aspect.EARTH, Aspect.EARTH, Aspect.BEAST}),
+    Sheep(EntitySheep.class, new Aspect[]{Aspect.EARTH, Aspect.CLOTH, Aspect.BEAST}),
     Silverfish(EntitySilverfish.class, new Aspect[]{Aspect.METAL, Aspect.METAL, Aspect.EARTH}),
     Skeleton(EntitySkeleton.class, new Aspect[]{Aspect.UNDEAD, Aspect.MAN, Aspect.UNDEAD}),
     Slime(EntitySlime.class, new Aspect[]{Aspect.SLIME, Aspect.SLIME, Aspect.BEAST}, 0.6f, 0.0f) {
@@ -105,7 +107,6 @@ public enum EnumMobAspect {
     private static Entity setSlimeSize(Entity entity, int size) {
 
         if (entity instanceof EntitySlime) {
-            //TODO: Get nekosune to make an access transformer for this
             ((EntitySlime) entity).setSlimeSize(1);
         }
 

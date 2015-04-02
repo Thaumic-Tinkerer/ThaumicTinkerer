@@ -23,6 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
+import dan200.computercraft.api.ComputerCraftAPI;
 import li.cil.oc.api.Driver;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -40,6 +41,7 @@ import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileFunnel;
 import thaumic.tinkerer.common.block.tile.TileRepairer;
 import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import thaumic.tinkerer.common.compat.FumeTool;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
 import thaumic.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
@@ -51,6 +53,8 @@ import thaumic.tinkerer.common.core.helper.BonemealEventHandler;
 import thaumic.tinkerer.common.core.helper.NumericAspectHelper;
 import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
+import thaumic.tinkerer.common.item.SpellClothCraftingHandler;
+import thaumic.tinkerer.common.item.foci.ItemFocusDeflect;
 import thaumic.tinkerer.common.item.kami.wand.CapIchor;
 import thaumic.tinkerer.common.item.kami.wand.RodIchorcloth;
 import thaumic.tinkerer.common.lib.LibMisc;
@@ -84,6 +88,9 @@ public class TTCommonProxy {
         ThaumicTinkerer.registry.preInit();
         capIchor = new CapIchor();
         rodIchor = new RodIchorcloth();
+        
+        ModCreativeTab.INSTANCE.addWand();
+        
         if (Loader.isModLoaded("ComputerCraft")) {
             initCCPeripherals();
         }
@@ -101,6 +108,7 @@ public class TTCommonProxy {
         registerPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
         MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
+        FMLCommonHandler.instance().bus().register(new SpellClothCraftingHandler());
 
         if (ConfigHandler.enableKami) {
             MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
@@ -150,8 +158,9 @@ public class TTCommonProxy {
         ResearchHelper.initResearch();
         ThaumicTinkerer.registry.postInit();
         AspectCropLootManager.populateLootMap();
+        ItemFocusDeflect.setupBlackList();
     }
-
+    @Optional.Method(modid = "ComputerCraft")
     protected void initCCPeripherals() {
         PeripheralHandler handler = new PeripheralHandler();
 
@@ -163,7 +172,7 @@ public class TTCommonProxy {
         };
         handler.registerPeripheralProvider();
 
-        //ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
+        ComputerCraftAPI.registerTurtleUpgrade(new FumeTool());
     }
 
     @Optional.Method(modid = "OpenComputers")

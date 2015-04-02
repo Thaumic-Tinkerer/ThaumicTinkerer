@@ -26,7 +26,7 @@ public class ItemMobAspect extends ItemBase {
     //Real value is 16
     //Padding room inclued
     //To prevent corruption
-    public static final int aspectCount = 20;
+    public static final int aspectCount = 21;
     public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
     public ItemMobAspect() {
@@ -49,7 +49,7 @@ public class ItemMobAspect extends ItemBase {
 
     public static ItemStack getInfusedStackFromAspect(Aspect a) {
         ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
-        result.setItemDamage(40 + NumericAspectHelper.getNumber(a));
+        result.setItemDamage(42 + NumericAspectHelper.getNumber(a));
         return result;
     }
 
@@ -119,10 +119,10 @@ public class ItemMobAspect extends ItemBase {
         for (int i = 0; i < NumericAspectHelper.values.size(); i++) {
 
             ThaumcraftApi.registerObjectTag(new ItemStack(this, 1, i), new int[]{i}, new AspectList().add(NumericAspectHelper.getAspect(i), 8));
-            recipeMulti.addRecipe(new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SUMMON + "1", new ItemStack(this, 1, i + 20), "XXX", "XXX", "XXX", 'X', new ItemStack(this, 1, i)));
+            recipeMulti.addRecipe(new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SUMMON + "1", new ItemStack(this, 1, i + 21), "XXX", "XXX", "XXX", 'X', new ItemStack(this, 1, i)));
 
-            ItemStack input = new ItemStack(this, 1, i + 20);
-            recipeMulti.addRecipe(new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SUMMON, new ItemStack(this, 1, i + 40), 4,
+            ItemStack input = new ItemStack(this, 1, i + 21);
+            recipeMulti.addRecipe(new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SUMMON, new ItemStack(this, 1, i + 42), 4,
                     new AspectList().add(getAspect(new ItemStack(this, 1, i)), 10), input,
                     new ItemStack[]{input, input, input, input, input, input, input, input}));
 

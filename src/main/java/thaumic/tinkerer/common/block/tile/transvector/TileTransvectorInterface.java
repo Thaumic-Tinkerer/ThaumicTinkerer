@@ -16,6 +16,8 @@ package thaumic.tinkerer.common.block.tile.transvector;
 
 
 import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
@@ -43,10 +45,12 @@ import thaumic.tinkerer.common.compat.IndustrialcraftUnloadHelper;
 import thaumic.tinkerer.common.lib.LibFeatures;
 
 @Optional.InterfaceList({@Optional.Interface(iface = "dan200.computercraft.api.peripheral.IPeripheral", modid = "ComputerCraft"),
-        @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHLib"),
+        @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHCore"),
+        @Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "CoFHCore"),
+        @Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "CoFHCore"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")})
 
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IEnergyHandler, IAspectContainer, IEssentiaTransport, IPeripheral {
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IEnergyHandler, IEnergyReceiver, IAspectContainer, IEssentiaTransport, IPeripheral,IEnergyProvider {
 
     public boolean addedToICEnergyNet = false;
 
@@ -348,8 +352,9 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public boolean isConnectable(ForgeDirection forgeDirection) {
-        TileEntity tile = getTile();
-        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
+        //TileEntity tile = getTile();
+        //return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).isConnectable(forgeDirection);
+    	return true;
     }
 
     @Override
@@ -373,11 +378,17 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public Aspect getSuctionType(ForgeDirection forgeDirection) {
+    	TileEntity tile = getTile();
+        if (tile instanceof IEssentiaTransport)
+            return ((IEssentiaTransport) tile).getSuctionType(forgeDirection);
         return null;
     }
 
     @Override
     public int getSuctionAmount(ForgeDirection forgeDirection) {
+    	TileEntity tile = getTile();
+        if (tile instanceof IEssentiaTransport)
+            return ((IEssentiaTransport) tile).getSuctionAmount(forgeDirection);
         return 0;
     }
 
@@ -395,7 +406,8 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
 
     @Override
     public boolean renderExtendedTube() {
-        return false;
+    	TileEntity tile = getTile();
+        return tile instanceof IEssentiaTransport && ((IEssentiaTransport) tile).renderExtendedTube();
     }
 
     @Override

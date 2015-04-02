@@ -7,6 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.registry.ItemBase;
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * Created by pixlepix on 4/22/14.
  */
-public class ItemInfusedGrain extends ItemBase {
+public class ItemInfusedGrain extends ItemBase implements IEssentiaContainerItem {
 
     private IIcon[] icons;
 
@@ -80,6 +82,16 @@ public class ItemInfusedGrain extends ItemBase {
     @Override
     public IRegisterableResearch getResearchItem() {
         return null;
+    }
+
+    @Override
+    public AspectList getAspects(ItemStack itemStack) {
+        return new AspectList().add(getAspect(itemStack),1).add(Aspect.CROP,1);
+    }
+
+    @Override
+    public void setAspects(ItemStack itemStack, AspectList aspectList) {
+
     }
 
     private enum PRIMAL_ASPECT_ENUM {

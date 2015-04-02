@@ -5,9 +5,9 @@ import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import li.cil.oc.api.network.Arguments;
-import li.cil.oc.api.network.Callback;
-import li.cil.oc.api.network.Context;
+import li.cil.oc.api.machine.Arguments;
+import li.cil.oc.api.machine.Callback;
+import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -155,9 +155,9 @@ public class TileGolemConnector extends TileCamo implements IPeripheral, SimpleC
                 if (arguments.length != 4)
                     throw new LuaException("Invalid arguments");
                 double x = (Double) arguments[0];
-                double y = (Double) arguments[0];
-                double z = (Double) arguments[0];
-                double facing = (Double) arguments[0];
+                double y = (Double) arguments[1];
+                double z = (Double) arguments[2];
+                double facing = (Double) arguments[3];
                 return setHomeImplementation(x, y, z, facing);
             case 7:
                 return getMarkersImplementation();

@@ -14,6 +14,7 @@
  */
 package thaumic.tinkerer.common.item.foci;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityExpBottle;
@@ -29,6 +30,8 @@ import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.compat.BloodMagic;
+import thaumic.tinkerer.common.compat.BotaniaFunctions;
 import thaumic.tinkerer.common.core.helper.ProjectileHelper;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -38,19 +41,30 @@ import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ItemFocusDeflect extends ItemModFocus {
 
-    public static List<Class<?>> DeflectBlacklist = Arrays.asList(new Class<?>[]{EntityExpBottle.class});
+    public static List<Class<?>> DeflectBlacklist = new ArrayList<Class<?>>();
     AspectList visUsage = new AspectList().add(Aspect.ORDER, 8).add(Aspect.AIR, 4);
 
+
+    public static void  setupBlackList()
+    {
+        DeflectBlacklist.add(EntityExpBottle.class);
+        if(Loader.isModLoaded("BloodMagic"))
+        {
+            BloodMagic.setupClass();
+        }
+
+    }
     public static void protectFromProjectiles(EntityPlayer p) {
         List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 4, p.posY - 4, p.posZ - 4, p.posX + 3, p.posY + 3, p.posZ + 3));
 
         for (Entity e : projectiles) {
-            if (DeflectBlacklist.contains(e.getClass()) || ProjectileHelper.getOwner(e) == p)
+            if (CheckBlackList(e) || ProjectileHelper.getOwner(e) == p)
                 continue;
             Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2);
 
@@ -61,6 +75,23 @@ public class ItemFocusDeflect extends ItemModFocus {
             e.posY += motionVec.y;
             e.posZ += motionVec.z;
         }
+    }
+
+    private static boolean CheckBlackList(Entity entity) {
+        Class<? extends Entity> aClass=entity.getClass();
+        if(DeflectBlacklist.contains(aClass))
+            return true;
+        if (Loader.isModLoaded("Botania"))
+        {
+            return BotaniaFunctions.isEntityHarmless(entity);
+        }
+        for(Class<?> testClass:DeflectBlacklist)
+        {
+            if(testClass.isInterface())
+                if(testClass.isAssignableFrom(aClass))
+                    return true;
+        }
+        return false;
     }
 
     @Override

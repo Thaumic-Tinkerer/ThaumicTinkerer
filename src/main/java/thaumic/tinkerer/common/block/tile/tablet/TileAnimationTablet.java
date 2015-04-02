@@ -21,9 +21,9 @@ import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import li.cil.oc.api.network.Arguments;
-import li.cil.oc.api.network.Callback;
-import li.cil.oc.api.network.Context;
+import li.cil.oc.api.machine.Arguments;
+import li.cil.oc.api.machine.Callback;
+import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -39,6 +39,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
@@ -101,10 +102,9 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
     @Override
     public void updateEntity() {
-        player = new TabletFakePlayer(this);//,Owner);
-
+        //player = new TabletFakePlayer(this);//,Owner);
         player.onUpdate();
-
+        player.inventory.clearInventory(null,-1);
         ticksExisted++;
 
         ItemStack stack = getStackInSlot(0);
@@ -208,9 +208,9 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
 
         if (done) {
             stack = player.getCurrentEquippedItem();
-            if (stack == null || stack.stackSize == 0)
+            if (stack == null || stack.stackSize <= 0)
                 setInventorySlotContents(0, null);
-            if (stack != getStackInSlot(0))
+            else if (stack != getStackInSlot(0))
                 setInventorySlotContents(0, stack);
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
@@ -341,6 +341,12 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
         detectedEntities = worldObj.getEntitiesWithinAABB(Entity.class, boundingBox);
     }
 
+    @Override
+    public void validate() {
+        super.validate();
+        player= new TabletFakePlayer(this);
+    }
+
     public ChunkCoordinates getTargetLoc() {
         ChunkCoordinates coords = new ChunkCoordinates(xCoord, yCoord, zCoord);
 
@@ -396,7 +402,14 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
     public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
         leftClick = par1NBTTagCompound.getBoolean(TAG_LEFT_CLICK);
         redstone = par1NBTTagCompound.getBoolean(TAG_REDSTONE);
-
+        //if(par1NBTTagCompound.hasKey("isBreaking"))
+         //   isBreaking = par1NBTTagCompound.getBoolean("isBreaking");
+        //if(par1NBTTagCompound.hasKey("initialDamage"))
+        //    initialDamage = par1NBTTagCompound.getInteger("initialDamage");
+        //if(par1NBTTagCompound.hasKey("curblockDamage"))
+        //curblockDamage = par1NBTTagCompound.getInteger("curblockDamage");
+        //if(par1NBTTagCompound.hasKey("durabilityRemainingOnBlock"))
+        //    durabilityRemainingOnBlock=par1NBTTagCompound.getInteger("durabilityRemainingOnBlock");
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         inventorySlots = new ItemStack[getSizeInventory()];
         for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -410,7 +423,10 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
     public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
         par1NBTTagCompound.setBoolean(TAG_LEFT_CLICK, leftClick);
         par1NBTTagCompound.setBoolean(TAG_REDSTONE, redstone);
-
+        //par1NBTTagCompound.setBoolean("isBreaking",isBreaking);
+        //par1NBTTagCompound.setInteger("initialDamage", initialDamage);
+        //par1NBTTagCompound.setInteger("curblockDamage",curblockDamage);
+        //par1NBTTagCompound.setInteger("durabilityRemainingOnBlock",durabilityRemainingOnBlock);
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
             if (inventorySlots[var3] != null) {

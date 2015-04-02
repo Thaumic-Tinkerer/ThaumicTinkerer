@@ -16,14 +16,24 @@ package thaumic.tinkerer.common.item.kami.tool;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
+import net.minecraft.network.play.server.S23PacketBlockChange;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldSettings.GameType;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.kami.BlockBedrockPortal;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
@@ -52,6 +62,8 @@ public final class ToolHandler {
     }
 
     public static boolean isRightMaterial(Material material, Material[] materialsListing) {
+    	if(material.isToolNotRequired())
+    		return true;
         for (Material mat : materialsListing)
             if (material == mat)
                 return true;
@@ -60,14 +72,19 @@ public final class ToolHandler {
     }
 
     public static void removeBlocksInIteration(EntityPlayer player, World world, int x, int y, int z, int xs, int ys, int zs, int xe, int ye, int ze, Block block, Material[] materialsListing, boolean silk, int fortune) {
-        float blockHardness = (block == null) ? 1.0f : block.getBlockHardness(world, x, y, z);
+        MovingObjectPosition mop = raytraceFromEntity(player.worldObj, player, false, 4.5d);
+        if(mop == null)
+           return;
+        int sideHit = mop.sideHit;
         for (int x1 = xs; x1 < xe; x1++) {
             for (int y1 = ys; y1 < ye; y1++) {
                 for (int z1 = zs; z1 < ze; z1++) {
-                    //if (x != x1 && y != y1 && z != z1) {
-                    ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune, blockHardness);
-
-                    //}
+                    if (x == x1+x && y == y1+y && z == z1+z) 
+                    	continue;
+                	Block lock2=world.getBlock(x1 + x, y1 + y, z1 + z);
+         
+                    //ToolHandler.removeBlockWithDrops(player, world, x1 + x, y1 + y, z1 + z, x, y, z, lock2, materialsListing, silk, fortune, blockHardness,metadata);
+                    breakExtraBlock(player.worldObj, x1+x, y1+y, z1+z, player, x,y,z,materialsListing);
                 }
             }
         }
@@ -78,7 +95,94 @@ public final class ToolHandler {
         }
     }
 
-    public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune, float blockHardness) {
+    protected static void breakExtraBlock(World world, int x, int y, int z, EntityPlayer playerEntity, int refX, int refY, int refZ, Material[] materialsListing) {
+    	if (world.isAirBlock(x, y, z))
+            return;
+
+        // what?
+        if(!(playerEntity instanceof EntityPlayerMP))
+            return;
+        EntityPlayerMP player = (EntityPlayerMP) playerEntity;
+        Block block = world.getBlock(x, y, z);
+        int meta = world.getBlockMetadata(x, y, z);
+        
+     // only effective materials
+        if (!block.canHarvestBlock(player, meta) || !isRightMaterial(block.getMaterial(), materialsListing))
+            return;
+        Block refBlock = world.getBlock(refX, refY, refZ);
+        float refStrength = ForgeHooks.blockStrength(refBlock, player, world, refX, refY, refZ);
+        float strength = ForgeHooks.blockStrength(block, player, world, x,y,z);
+        
+     // only harvestable blocks that aren't impossibly slow to harvest
+        if (!ForgeHooks.canHarvestBlock(block, player, meta) || refStrength/strength > 10f)
+            return;
+        
+        
+        
+     // send the blockbreak event
+        BlockEvent.BreakEvent event = ForgeHooks.onBlockBreakEvent(world, player.theItemInWorldManager.getGameType(), player, x,y,z);
+        if(event.isCanceled())
+            return;
+        
+        if (player.capabilities.isCreativeMode) {
+            block.onBlockHarvested(world, x, y, z, meta, player);
+            if (block.removedByPlayer(world, player, x, y, z, false))
+                block.onBlockDestroyedByPlayer(world, x, y, z, meta);
+
+            // send update to client
+            if (!world.isRemote) {
+                player.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
+            }
+            return;
+        }
+        
+     // callback to the tool the player uses. Called on both sides. This damages the tool n stuff.
+        player.getCurrentEquippedItem().func_150999_a(world, block, x, y, z, player);
+
+        // server sided handling
+        if (!world.isRemote) {
+            // serverside we reproduce ItemInWorldManager.tryHarvestBlock
+
+            // ItemInWorldManager.removeBlock
+            block.onBlockHarvested(world, x,y,z, meta, player);
+
+            if(block.removedByPlayer(world, player, x,y,z, true)) // boolean is if block can be harvested, checked above
+            {
+                block.onBlockDestroyedByPlayer( world, x,y,z, meta);
+                block.harvestBlock(world, player, x,y,z, meta);
+                block.dropXpOnBlockBreak(world, x,y,z, event.getExpToDrop());
+            }
+
+            // always send block update to client
+            player.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
+        }
+        // client sided handling
+        else {
+            //PlayerControllerMP pcmp = Minecraft.getMinecraft().playerController;
+            // clientside we do a "this clock has been clicked on long enough to be broken" call. This should not send any new packets
+            // the code above, executed on the server, sends a block-updates that give us the correct state of the block we destroy.
+
+            // following code can be found in PlayerControllerMP.onPlayerDestroyBlock
+            world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
+            if(block.removedByPlayer(world, player, x,y,z, true))
+            {
+                block.onBlockDestroyedByPlayer(world, x,y,z, meta);
+            }
+            // callback to the tool
+            ItemStack itemstack = player.getCurrentEquippedItem();
+            if (itemstack != null)
+            {
+                itemstack.func_150999_a(world, block, x, y, z, player);
+
+                if (itemstack.stackSize == 0)
+                {
+                    player.destroyCurrentEquippedItem();
+                }
+            }
+            Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C07PacketPlayerDigging(2, x,y,z, Minecraft.getMinecraft().objectMouseOver.sideHit));
+        }
+    }
+    public static void removeBlockWithDrops(EntityPlayer player, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune, float blockHardness,int metadata) {
         if (!world.blockExists(x, y, z))
             return;
 
@@ -99,19 +203,13 @@ public final class ToolHandler {
                 world.setBlock(x, y, z, Blocks.air);
             }
             if (!player.capabilities.isCreativeMode && blk != Blocks.bedrock) {
-                int localMeta = world.getBlockMetadata(x, y, z);
-                if (MiscHelper.breakBlockToAirWithCheck(world, x, y, z, player)) {
-                    blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
-
-                    blk.harvestBlock(world, player, x, y, z, localMeta);
-                    blk.onBlockHarvested(world, x, y, z, localMeta, player);
-                }
+            	//tryHarvestBlock((EntityPlayerMP)player,world,x,y,z);
             } else {
                 world.setBlockToAir(x, y, z);
             }
         }
     }
-
+    
     public static String getToolModeStr(IAdvancedTool tool, ItemStack stack) {
         return StatCollector.translateToLocal("ttmisc.mode." + tool.getType() + "." + ToolHandler.getMode(stack));
     }

@@ -72,6 +72,8 @@ public class ItemSoulMould extends ItemBase {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
+        if(par3EntityLivingBase instanceof  EntityPlayer)
+            return true;
         if (par2EntityPlayer != null)
             setPattern(par2EntityPlayer.getCurrentEquippedItem(), par3EntityLivingBase);
         else setPattern(par1ItemStack, par3EntityLivingBase);
