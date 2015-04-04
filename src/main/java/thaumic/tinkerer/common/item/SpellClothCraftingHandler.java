@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumic.tinkerer.api.INoRemoveEnchant;
 import thaumic.tinkerer.common.ThaumicTinkerer;
-
+import thaumic.tinkerer.common.item.ItemSpellCloth;
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ public class SpellClothCraftingHandler {
         for (int i = 0; i < event.craftMatrix.getSizeInventory(); i++) {
             ItemStack stack = event.craftMatrix.getStackInSlot(i);
             if (stack != null) {
-                Item item=stack.getItem();
+                Item item=ThaumicTinkerer.registry.getFirstItemFromClass(ItemSpellCloth.class);
                 if (stack.isItemEnchanted() && !(stack.getItem() instanceof INoRemoveEnchant) && !foundEnchanted) {
                     foundEnchanted = true;
                     slot = i;
