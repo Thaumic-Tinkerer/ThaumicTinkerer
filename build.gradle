@@ -93,21 +93,21 @@ if (project.hasProperty("releaseType"))
 //}
 
 
-dependencies {
-    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.106:dev"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
-    compile "mcp.mobius.waila:Waila:1.5.8_1.7.10"
-    compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
+    dependencies {
+        compile "codechicken:CodeChickenLib:1.7.10-1.1.3.127:dev"
+        compile "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
+        compile "mcp.mobius.waila:Waila:1.5.10_1.7.10"
+        compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
 
-    compile 'com.mod-buildcraft:buildcraft:6.3.3:dev'
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.67:dev"
-    compile "codechicken:EnderStorage:1.7.10-1.4.5.22:dev"
-    compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
-    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.6.376-dev:api"
-    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.6.376-dev:dev"
-    compile("tconstruct:TConstruct:1.7.10-1.7.1.build789:deobf") {
+        compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
+        compile "codechicken:NotEnoughItems:1.7.10-1.0.4.95:dev"
+        compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
+        compile "mantle:Mantle:1.7.10-0.3.2.jenkins187:deobf"
+        compile "li.cil.oc:OpenComputers:MC1.7.10-1.5.7.536-dev:api"
+        compile "li.cil.oc:OpenComputers:MC1.7.10-1.5.7.536-dev:dev"
+        compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
+        }
     }
-}
 // some crazy stuff to make sure the chicken stuff is in the mods folder...
 // because it wont work otherwise...  because FML doesnt laod coremods from the classpath
 task copyChicken(type: Copy, dependsOn: "extractUserDev") {
