@@ -148,7 +148,9 @@ tile.darkQuartzChiseled.name=Chiseled Smokey Quartz Block
 tile.darkQuartzPillar.name=Pillar Smokey Quartz Block
 tile.darkQuartzSlab.name=Smokey Quartz Slab
 tile.forcefield.name=Forcefield
-
+tile.travelSlab.name=Paving Slab of Travel
+tile.travelSlabFull.name=Paving Slab of Travel
+tile.travelStairs.name=Paving Stair of Travel
 # Fire
 tile.fireWater.name=Aqua Imbued Fire
 

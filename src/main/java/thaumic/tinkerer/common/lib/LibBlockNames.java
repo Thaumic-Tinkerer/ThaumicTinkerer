@@ -20,6 +20,11 @@ public final class LibBlockNames {
     public static final String DARK_QUARTZ_SLAB = "darkQuartzSlab";
     public static final String DARK_QUARTZ_SLAB_FULL = "darkQuartzSlabFull";
     public static final String DARK_QUARTZ_STAIRS = "darkQuartzStairs";
+    public static final String TRAVEL_SLAB = "travelSlab";
+    public static final String TRAVEL_SLAB_FULL = "travelSlabFull";
+    public static final String TRAVEL_STAIRS = "travelStairs";
+    public static final String WARD_SLAB = "wardSlab";
+    public static final String WARD_SLAB_FULL = "wardSlabFull";
     public static final String INTERFACE = "interface";
     public static final String GASEOUS_LIGHT = "gaseousLight";
     public static final String GASEOUS_SHADOW = "gaseousShadow";
