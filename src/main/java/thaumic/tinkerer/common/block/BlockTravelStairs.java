@@ -75,7 +75,7 @@ public class BlockTravelStairs extends BlockStairs implements ITTinkererBlock {
         return new ThaumicTinkererRecipeMulti(
                 new ThaumicTinkererCraftingBenchRecipe("PAVETRAVEL", new ItemStack(this, 4),
                         "  Q", " QQ", "QQQ",
-                        'Q', new ItemStack(ConfigBlocks.blockCosmeticSolid,2))
+                        'Q', new ItemStack(ConfigBlocks.blockCosmeticSolid,1,2))
         );
     }
     @Override
