@@ -131,7 +131,7 @@ public class BlockTravelSlab extends BlockSlab implements ITTinkererBlock {
         }
         return new ThaumicTinkererCraftingBenchRecipe("PAVETRAVEL", new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTravelSlab.class), 6),
                 "QQQ",
-                'Q', new ItemStack(ConfigBlocks.blockCosmeticSolid,2));
+                'Q', new ItemStack(ConfigBlocks.blockCosmeticSolid,1,2));
     }
 
     @Override
