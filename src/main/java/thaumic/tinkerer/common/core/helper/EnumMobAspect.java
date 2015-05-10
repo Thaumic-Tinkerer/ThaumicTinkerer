@@ -30,7 +30,7 @@ public enum EnumMobAspect {
     Bat(EntityBat.class, new Aspect[]{Aspect.AIR, Aspect.AIR, Aspect.FLIGHT}, 1.9f, -0.3f),
     Blaze(EntityBlaze.class, new Aspect[]{Aspect.FIRE, Aspect.FIRE, Aspect.FIRE}),
     BrainyZombie(EntityBrainyZombie.class, new Aspect[]{Aspect.MAGIC, Aspect.UNDEAD, Aspect.FLESH}, "Thaumcraft."),
-    Firebat(EntityFireBat.class, new Aspect[]{Aspect.FLIGHT, Aspect.FIRE, Aspect.MAGIC}, 1.9f, -0.3f),
+    Firebat(EntityFireBat.class, new Aspect[]{Aspect.FLIGHT, Aspect.FIRE, Aspect.MAGIC}, 1.9f, -0.3f, "Thaumcraft."),
     CaveSpider(EntityCaveSpider.class, new Aspect[]{Aspect.BEAST, Aspect.POISON, Aspect.POISON}),
     Chicken(EntityChicken.class, new Aspect[]{Aspect.CROP, Aspect.FLIGHT, Aspect.BEAST}),
     Cow(EntityCow.class, new Aspect[]{Aspect.BEAST, Aspect.EARTH, Aspect.BEAST}),
