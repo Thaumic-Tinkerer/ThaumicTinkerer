@@ -48,9 +48,9 @@ repositories {
 
 
 }
-
-apply plugin: 'forge'
 apply plugin: 'scala'
+apply plugin: 'forge'
+
 group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
