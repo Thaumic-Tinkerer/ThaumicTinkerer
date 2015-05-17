@@ -50,7 +50,7 @@ repositories {
 }
 
 apply plugin: 'forge'
-
+apply plugin: 'scala'
 group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 
@@ -63,7 +63,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20141130"
+    mappings = 'snapshot_20150404'
 }
 version = "2.5-${minecraft.version}"
 if (System.getenv("BUILD_NUMBER")!=null)
@@ -86,16 +86,16 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 	compile "codechicken:CodeChickenLib:1.8-1.1.2.133:dev"
-        compile "codechicken:CodeChickenCore:1.8-1.0.5.36:dev"
-        compile "mcp.mobius.waila:Waila:1.6.0_B1_1.8.1:dev"
-        //compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
+    compile "codechicken:CodeChickenCore:1.8-1.0.5.36:dev"
+    compile "mcp.mobius.waila:Waila:1.6.0_B1_1.8.1:dev"
+    //compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
 
         //compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
-        compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
-        //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
-        compile "mantle:Mantle:1.8-0.4.jenkins23:deobf"
-        compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:api"
-        compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:dev"
+    compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
+    //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
+    compile "mantle:Mantle:1.8-0.4.jenkins23:deobf"
+    compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:api"
+    //compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:dev"
         //compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
         //}
 
