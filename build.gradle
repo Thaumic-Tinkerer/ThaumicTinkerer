@@ -139,3 +139,9 @@ task apiJar(type: Jar) {
     from fileTree(dir: 'src/main/java').matching { include 'com/nekokittygames/Thaumic/api/**' }
     classifier = 'api'
 }
+
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
