@@ -53,6 +53,7 @@ public class BlockFireEarth extends BlockFireBase {
         result.put(new BlockTuple(Blocks.nether_brick_fence), new BlockTuple(Blocks.fence));
         result.put(new BlockTuple(Blocks.nether_brick_stairs), new BlockTuple(Blocks.oak_stairs));
         result.put(new BlockTuple(Blocks.cactus), new BlockTuple(Blocks.log));
+        result.put(new BlockTuple(Blocks.snow), new BlockTuple(Blocks.dirt));
         result.put(new BlockTuple(Blocks.snow_layer), new BlockTuple(Blocks.tallgrass));
         result.put(new BlockTuple(Blocks.stone), new BlockTuple(Blocks.dirt));
         result.put(new BlockTuple(Blocks.mob_spawner), new BlockTuple(Blocks.iron_block));

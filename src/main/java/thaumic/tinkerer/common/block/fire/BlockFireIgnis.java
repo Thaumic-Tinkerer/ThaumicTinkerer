@@ -62,7 +62,8 @@ public class BlockFireIgnis extends BlockFireBase {
         result.put(new BlockTuple(Blocks.potatoes), new BlockTuple(Blocks.nether_wart));
         result.put(new BlockTuple(Blocks.carrots), new BlockTuple(Blocks.nether_wart));
         result.put(new BlockTuple(Blocks.red_flower), new BlockTuple(Blocks.brown_mushroom));
-        result.put(new BlockTuple(Blocks.yellow_flower), new BlockTuple(Blocks.yellow_flower));
+        result.put(new BlockTuple(Blocks.yellow_flower), new BlockTuple(Blocks.red_mushroom));
+        result.put(new BlockTuple(Blocks.tallgrass), new BlockTuple(Blocks.air));
         return result;
     }
 
