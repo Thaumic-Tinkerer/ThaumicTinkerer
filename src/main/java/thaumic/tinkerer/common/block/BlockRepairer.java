@@ -231,11 +231,13 @@ public class BlockRepairer extends BlockModContainer {
     }
 
     @Override
-    public int isProvidingStrongPower(IBlockAccess world, int x, int y, int z, int meta) {
+    public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int meta) {
         TileRepairer tile = ((TileRepairer) world.getTileEntity(x, y, z));
         if (tile.getStackInSlot(0) != null && tile.getStackInSlot(0).getItemDamage() != 0) {
             return 15;
         }
-        return 0;
+        else
+            return 0;
     }
+	
 }

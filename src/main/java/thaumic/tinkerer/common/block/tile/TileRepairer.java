@@ -219,6 +219,7 @@ public class TileRepairer extends TileEntity implements ISidedInventory, IAspect
     @Override
     public void markDirty() {
         super.markDirty();
+        this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord, this.zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
         worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     }
 
