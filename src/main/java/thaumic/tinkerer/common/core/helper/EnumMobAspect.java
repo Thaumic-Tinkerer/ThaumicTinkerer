@@ -122,7 +122,7 @@ public enum EnumMobAspect {
             return null;
         Class clazz = (Class) EntityList.stringToClassMapping.get(name);
         for (EnumMobAspect e : EnumMobAspect.values()) {
-            if (clazz.equals(e.entity)) {
+            if (e.entity.isAssignableFrom(clazz)) {
                 return e;
             }
         }
@@ -131,7 +131,7 @@ public enum EnumMobAspect {
 
     public static Aspect[] getAspectsForEntity(Class clazz) {
         for (EnumMobAspect e : EnumMobAspect.values()) {
-            if (clazz.equals(e.entity)) {
+            if (e.entity.isAssignableFrom(clazz)) {
                 return e.aspects;
             }
         }
