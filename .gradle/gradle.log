@@ -1,0 +1,32 @@
+****************************
+ Powered By MCP:             
+ http://mcp.ocean-labs.de/   
+ Searge, ProfMobius, Fesh0r, 
+ R4wk, ZeuX, IngisKahn, bspkrs
+ MCP Data version : snapshot_20141001
+****************************
+Found AccessTransformer in main resources: ThaumicTinkerer_at.cfg
+:ideaModule
+Download http://mobiusstrip.eu/maven/mcp/mobius/waila/Waila/1.6.0_B1_1.8.1/Waila-1.6.0_B1_1.8.1.pom
+Download http://dvs1.progwml6.com/files/maven/mantle/Mantle/1.8-0.4.jenkins23/Mantle-1.8-0.4.jenkins23.pom
+Download http://maven.cil.li/li/cil/oc/OpenComputers/MC1.8-1.5.10.140-dev/OpenComputers-MC1.8-1.5.10.140-dev.pom
+Download http://dvs1.progwml6.com/files/maven/mantle/Mantle/1.8-0.4.jenkins23/Mantle-1.8-0.4.jenkins23-sources.jar
+Download http://mobiusstrip.eu/maven/mcp/mobius/waila/Waila/1.6.0_B1_1.8.1/Waila-1.6.0_B1_1.8.1-sources.jar
+Download http://maven.cil.li/li/cil/oc/OpenComputers/MC1.8-1.5.10.140-dev/OpenComputers-MC1.8-1.5.10.140-dev-sources.jar
+Download http://repo1.maven.org/maven2/org/scala-lang/modules/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1-sources.jar
+Download http://maven.cil.li/li/cil/oc/OpenComputers/MC1.8-1.5.10.140-dev/OpenComputers-MC1.8-1.5.10.140-dev-javadoc.jar
+Download http://repo1.maven.org/maven2/org/scala-lang/modules/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1-javadoc.jar
+Download http://files.minecraftforge.net/maven/codechicken/CodeChickenLib/1.8-1.1.2.133/CodeChickenLib-1.8-1.1.2.133-dev.jar
+Download http://chickenbones.net/maven/codechicken/CodeChickenCore/1.8-1.0.5.36/CodeChickenCore-1.8-1.0.5.36-dev.jar
+Download http://mobiusstrip.eu/maven/mcp/mobius/waila/Waila/1.6.0_B1_1.8.1/Waila-1.6.0_B1_1.8.1-dev.jar
+Download http://chickenbones.net/maven/codechicken/NotEnoughItems/1.8-1.0.5.104/NotEnoughItems-1.8-1.0.5.104-dev.jar
+Download http://dvs1.progwml6.com/files/maven/mantle/Mantle/1.8-0.4.jenkins23/Mantle-1.8-0.4.jenkins23-deobf.jar
+Download http://maven.cil.li/li/cil/oc/OpenComputers/MC1.8-1.5.10.140-dev/OpenComputers-MC1.8-1.5.10.140-dev-api.jar
+Download http://maven.cil.li/li/cil/oc/OpenComputers/MC1.8-1.5.10.140-dev/OpenComputers-MC1.8-1.5.10.140-dev-dev.jar
+:ideaProject
+:ideaWorkspace
+:idea
+
+BUILD SUCCESSFUL
+
+Total time: 2 mins 8.614 secs

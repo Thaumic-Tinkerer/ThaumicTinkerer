@@ -1,4 +1,4 @@
-    buildscript {
+buildscript {
     repositories {
         mavenCentral()
         maven {
@@ -9,139 +9,62 @@
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-        maven {
-            url 'https://oss.sonatype.org/content/groups/public'
-        }
-
-        mavenLocal()
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
-repositories {
-    ivy {
-
-        name 'Forge FS legacy'
-        artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
-    }
-
-    maven {
-        name 'ForgeFS'
-        url 'http://files.minecraftforge.net/maven'
-    }
-    maven {
-        name 'MinecraftS3'
-        url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
-    }
-    maven {
-        name 'DVS1 Maven FS'
-        url 'http://dvs1.progwml6.com/files/maven'
-    }
-    maven { // the repo from which to get NEI and stuff
-        name 'CB Repo'
-        url "http://chickenbones.net/maven/"
-    }
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
-    maven {
-
-        url  'http://maven.cil.li/'
-    }
-
-
-}
-String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
 apply plugin: 'forge'
-//apply plugin: "curseforge"
 
-
-
-group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "ThaumicTinkerer"
+version = "1.0"
+group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "modid"
 
 minecraft {
     version = "1.8-11.14.1.1405"
-    //minecraftVersion="1.7.2"
     runDir = "eclipse"
-    replace '${version}', project.version
-    //coreMod("tconstruct.preloader.TConstructLoaderContainer")
-    if (project.hasProperty("pass"))
-        replace "INSERTPASSWORDHERE", project.pass
+    
+    // the mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   snapshot are built nightly.
+    // stable_#            stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not allways work.
+    // simply re-run your setup task after changing the mappings to update your workspace.
+    mappings = "snapshot_20141130"
+}
 
+dependencies {
+    // you may put jars on which you depend on in ./libs
+    // or you may define them like so..
+    //compile "some.group:artifact:version:classifier"
+    //compile "some.group:artifact:version"
+      
+    // real examples
+    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    // for more info...
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
 }
-version = "2.6-${minecraft.version}"
-if (System.getenv("BUILD_NUMBER")!=null)
-    version = "$version-${System.getenv().BUILD_NUMBER}"
-if (project.hasProperty("releaseType"))
-    if (project.releaseType == "ALPHA")
-        version = "alpha-" + version
-//curse {
-//	projectId="75598"
-//	version = "2.5-${minecraft.version}"
-//	if (System.getenv("BUILD_NUMBER")!=null)
-//	version = "$version-${System.getenv().BUILD_NUMBER}"
-//	if(project.hasProperty("apiKey"))
-//	apiKey=project.apiKey
-//	changelog=" "
-//	releaseType="release"
-//	addGameVersion "{minecraft.version}"
-//}
 
-
-    dependencies {
-        compile "codechicken:CodeChickenLib:1.8-1.1.2.133:dev"
-        compile "codechicken:CodeChickenCore:1.8-1.0.5.36:dev"
-        compile "mcp.mobius.waila:Waila:1.6.0_B1_1.8.1:dev"
-        //compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
-
-        //compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
-        compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
-        //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
-        compile "mantle:Mantle:1.8-0.4.jenkins23:deobf"
-        compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:api"
-        compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:dev"
-        //compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
-        //}
-    }
-// some crazy stuff to make sure the chicken stuff is in the mods folder...
-// because it wont work otherwise...  because FML doesnt laod coremods from the classpath
-task copyChicken(type: Copy, dependsOn: "extractUserDev") {
-    from { configurations.compile }
-    include "**/*Chicken*.jar", "**/*NotEnoughItems*.jar"
-    exclude "**/CodeChickenLib*" // because CCC downloads it anyways.. -_-
-    into file(minecraft.runDir + "/mods")
-
-    mustRunAfter "deobfBinJar"
-    mustRunAfter "repackMinecraft"
-}
-//tasks.setupDevWorkspace.dependsOn copyChicken
-//tasks.setupDecompWorkspace.dependsOn copyChicken
 processResources
-        {
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
-                // replace version and mcversion
-                expand 'version': project.version, 'MCversion': project.minecraft.version
-            }
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
-jar {
-    manifest {
-        attributes 'FMLCorePlugin': 'thaumic.tinkerer.preloader.ThaumicTLoaderContainer'
-        attributes 'FMLCorePluginContainsFMLMod': 'true'
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-}
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = 'dev'
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
 }

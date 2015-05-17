@@ -1,17 +1,16 @@
 [
 {
-  "modid": "ThaumicTinkerer",
-  "name": "Thaumic Tinkerer",
-  "description": "An addon to Thaumcraft 4, implementing new content. This mod is a spiritual successor to Elemental Tinkerer. Researches that come from this mod are prefixed by [TT].",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
   "version": "${version}",
-  "mcversion": "${MCversion}",
-  "logoFile": "/assets/ttinkerer/textures/logo.png",
-  "url": "minecraftforum.net/topic/1813058-",
+  "mcversion": "${mcversion}",
+  "url": "",
   "updateUrl": "",
-  "authors": ["pixlepix","nekosune"],
-  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDiyo, theFlaxbeard.",
-  "parent": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
   "screenshots": [],
-  "dependencies": ["Thaumcraft"]
+  "dependencies": []
 }
 ]
