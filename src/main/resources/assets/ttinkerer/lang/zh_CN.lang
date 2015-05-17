@@ -148,6 +148,9 @@ tile.darkQuartzChiseled.name=雕琢烟黑石英块
 tile.darkQuartzPillar.name=柱状烟黑石英块
 tile.darkQuartzSlab.name=烟黑石英台阶
 tile.forcefield.name=力场
+tile.travelSlab.name=守卫者台阶
+tile.travelSlabFull.name=守卫者台阶
+tile.travelStairs.name=守卫者楼梯
 
 # Fire
 tile.fireWater.name=坎水之焰
