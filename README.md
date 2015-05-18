@@ -13,3 +13,5 @@ This mod is made with a Deobfuscated version of Thaumcraft, loaded as a Library.
 ![](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
 
 Thaumic Tinkerer Was originally by Vazkii and is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
+
+[![Build Status](http://jenkins.nekokittygames.com:8080/buildStatus/icon?job=Thaumic Tinkerer 1.8)](http://jenkins.nekokittygames.com:8080/job/Thaumic%20Tinkerer%201.8/)
