@@ -14,6 +14,11 @@ class ClientProxy extends CommonProxy{
 
   override def registerInventoryBlock(block: Block,name: String): Unit=
   {
-    Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(Item.getItemFromBlock(block),0,new ModelResourceLocation("thaumictinkerer:"+name,"inventory"))
+    registerInventoryBlock(block,name,0)
+  }
+
+  override def registerInventoryBlock(block: Block, name: String, meta: Int): Unit =
+  {
+    Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(Item.getItemFromBlock(block),meta,new ModelResourceLocation("thaumictinkerer:"+name,"inventory"))
   }
 }

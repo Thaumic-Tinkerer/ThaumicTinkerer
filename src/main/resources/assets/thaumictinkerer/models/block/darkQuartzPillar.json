@@ -1,0 +1,13 @@
+{
+  "parent":"block/cube",
+  "textures":
+  {
+    "down":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz1",
+    "up":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz1",
+    "north":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz0",
+    "south":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz0",
+    "east":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz0",
+    "west":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz0",
+    "particle":"thaumictinkerer:blocks/quartzPillar/pillarDarkQuartz0"
+  }
+}

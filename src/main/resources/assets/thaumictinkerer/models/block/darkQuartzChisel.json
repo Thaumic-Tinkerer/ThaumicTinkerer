@@ -1,0 +1,13 @@
+{
+  "parent":"block/cube",
+  "textures":
+  {
+    "down":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz1",
+    "up":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz1",
+    "north":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz0",
+    "south":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz0",
+    "east":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz0",
+    "west":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz0",
+    "particle":"thaumictinkerer:blocks/quartzChisel/chiseledDarkQuartz0"
+  }
+}

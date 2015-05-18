@@ -1,8 +1,10 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.blocks
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
-import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.BlockDarkQuartz
+import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
+import com.nekokittygames.Thaumic.api.IMetaBlockName
 import net.minecraft.block.{ITileEntityProvider, Block}
 import net.minecraftforge.fml.common.registry.GameRegistry
 
@@ -17,7 +19,10 @@ object ModBlocks {
   {
     def registerBlock(block:Block,name:String)=
     {
-      GameRegistry.registerBlock(block,name)
+      block match {
+        case s: IMetaBlockName => GameRegistry.registerBlock(block, classOf[ItemBlockMeta], name)
+        case _ => GameRegistry.registerBlock(block,name)
+      }
       block match
       {
         case s:BlockModContainer=>GameRegistry.registerTileEntity(s.getTileClass,name)
@@ -25,7 +30,8 @@ object ModBlocks {
       }
       Blocks(block)=name
     }
-    registerBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ)
+    registerBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
+    registerBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
   }
 
 
@@ -33,7 +39,9 @@ object ModBlocks {
 
   def registerBlocksInventory(): Unit =
   {
-    Blocks.foreach { block => ThaumicTinkerer.proxy.registerInventoryBlock(block._1,block._2)}
+    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
+    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
+    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED+"_Pillar",3)
   }
 
 }

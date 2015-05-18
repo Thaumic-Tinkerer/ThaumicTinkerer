@@ -6,5 +6,6 @@ package com.nekokittygames.Thaumic.Tinkerer.common.libs
 object LibNames {
 
 
-  final val DARK_QUARTZ="darkQuartz"
+  final val DARK_QUARTZ_BLOCK="darkQuartzBlock"
+  final val DARK_QUARTZ_PATTERNED="darkQuartzPatterned"
 }
