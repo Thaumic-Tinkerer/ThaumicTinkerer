@@ -21,6 +21,7 @@ object ModBlocks {
       block match
       {
         case s:BlockModContainer=>GameRegistry.registerTileEntity(s.getTileClass,name)
+        case _=>{}
       }
       Blocks(block)=name
     }
