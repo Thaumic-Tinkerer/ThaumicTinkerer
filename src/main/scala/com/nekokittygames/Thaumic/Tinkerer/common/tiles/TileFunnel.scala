@@ -25,7 +25,7 @@ class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer w
 
   override def canExtractItem(index: Int, stack: ItemStack, direction: EnumFacing): Boolean = false
 
-  override def canInsertItem(index: Int, itemStackIn: ItemStack, direction: EnumFacing): Boolean = true
+  override def canInsertItem(index: Int, itemStackIn: ItemStack, direction: EnumFacing): Boolean = itemStackIn.getItem.isInstanceOf[BlockJarItem]
 
   override def doesContainerAccept(aspect: Aspect): Boolean = false
 
