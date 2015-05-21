@@ -8,8 +8,9 @@ import net.minecraft.block.properties.PropertyDirection
 import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{BlockPos, EnumFacing}
+import net.minecraft.util.{EnumWorldBlockLayer, BlockPos, EnumFacing}
 import net.minecraft.world.World
+import net.minecraftforge.fml.relauncher.{SideOnly, Side}
 
 /**
  * Created by fiona on 21/05/2015.
@@ -22,6 +23,9 @@ object BlockRepairer extends {
   setUnlocalizedName(LibNames.REPAIRER)
   setDefaultState(getBlockState.getBaseState.withProperty(FACING, EnumFacing.NORTH))
 
+  @SideOnly(Side.CLIENT) override def getBlockLayer: EnumWorldBlockLayer = {
+    return EnumWorldBlockLayer.TRANSLUCENT
+  }
   override def getStateFromMeta(meta: Int): IBlockState = this.getDefaultState.withProperty(FACING,BlockPistonBase.getFacing(meta))
 
   override def getMetaFromState(state: IBlockState): Int = {

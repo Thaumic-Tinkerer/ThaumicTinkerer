@@ -7,12 +7,13 @@ import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.{EnumFacing, BlockPos}
 import net.minecraft.world.World
+import thaumcraft.api.aspects.{Aspect, IEssentiaTransport}
 import thaumcraft.api.wands.IWandable
 
 /**
  * Created by fiona on 21/05/2015.
  */
-class TileRepairer extends TileEntity with IWandable{
+class TileRepairer extends TileEntity with IWandable with IEssentiaTransport{
   override def onWandStoppedUsing(itemStack: ItemStack, world: World, entityPlayer: EntityPlayer, i: Int): Unit = {}
 
   override def onUsingWandTick(itemStack: ItemStack, entityPlayer: EntityPlayer, i: Int): Unit = {}
@@ -23,7 +24,28 @@ class TileRepairer extends TileEntity with IWandable{
     }else{
       world.setBlockState(blockPos,world.getBlockState(blockPos).withProperty(BlockRepairer.FACING,BlockPistonBase.getFacingFromEntity(world,blockPos,entityPlayer).getOpposite))
     }
-    //This is a comment
     true
   }
+
+  override def addEssentia(aspect: Aspect, i: Int, enumFacing: EnumFacing): Int = 0
+
+  override def takeEssentia(aspect: Aspect, i: Int, enumFacing: EnumFacing): Int = 0
+
+  override def setSuction(aspect: Aspect, i: Int): Unit = {}
+
+  override def getSuctionType(enumFacing: EnumFacing): Aspect = null
+
+  override def getSuctionAmount(enumFacing: EnumFacing): Int = 0
+
+  override def getEssentiaAmount(enumFacing: EnumFacing): Int = 0
+
+  override def getEssentiaType(enumFacing: EnumFacing): Aspect = null
+
+  override def isConnectable(enumFacing: EnumFacing): Boolean = true
+
+  override def canOutputTo(enumFacing: EnumFacing): Boolean = true
+
+  override def canInputFrom(enumFacing: EnumFacing): Boolean = true
+
+  override def getMinimumSuction: Int = 0
 }
