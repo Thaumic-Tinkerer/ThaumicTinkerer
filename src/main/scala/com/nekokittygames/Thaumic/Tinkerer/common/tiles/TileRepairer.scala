@@ -23,6 +23,7 @@ class TileRepairer extends TileEntity with IWandable{
     }else{
       world.setBlockState(blockPos,world.getBlockState(blockPos).withProperty(BlockRepairer.FACING,BlockPistonBase.getFacingFromEntity(world,blockPos,entityPlayer).getOpposite))
     }
+    //This is a comment
     true
   }
 }
