@@ -1,0 +1,13 @@
+{
+  "parent":"block/cube",
+  "textures":
+  {
+    "down":"thaumictinkerer:blocks/repairer",
+    "up":"thaumictinkerer:blocks/repairer",
+    "east":"thaumictinkerer:blocks/repairer",
+    "west":"thaumictinkerer:blocks/repairer",
+    "north":"thaumictinkerer:blocks/darkQuartzBlock",
+    "south":"thaumictinkerer:blocks/repairer",
+    "particle":"thaumictinkerer:blocks/repairer"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "variants":
+  {
+    "facing=down":{"model":"thaumictinkerer:repairer","x":90},
+    "facing=up":{"model":"thaumictinkerer:repairer","x":270},
+    "facing=north":{"model":"thaumictinkerer:repairer"},
+    "facing=south":{"model":"thaumictinkerer:repairer","y":180},
+    "facing=east":{"model":"thaumictinkerer:repairer","y":270},
+    "facing=west":{"model":"thaumictinkerer:repairer","y":90}
+
+  }
+}
