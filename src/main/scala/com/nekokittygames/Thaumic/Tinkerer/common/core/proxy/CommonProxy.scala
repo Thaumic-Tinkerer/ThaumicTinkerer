@@ -16,4 +16,10 @@ class CommonProxy {
   {
 
   }
+
+
+  def registerTileEntityRenders(): Unit =
+  {
+
+  }
 }

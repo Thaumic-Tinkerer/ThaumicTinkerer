@@ -32,6 +32,7 @@ object ThaumicTinkerer {
     ThaumcraftProxy=Thaumcraft.proxy
     logger=eventArgs.getModLog
     ModBlocks.registerBlocks()
+    proxy.registerTileEntityRenders()
   }
 
 

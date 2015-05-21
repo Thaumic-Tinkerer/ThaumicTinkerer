@@ -32,6 +32,7 @@ object ModBlocks {
     }
     registerBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
     registerBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
+    registerBlock(BlockFunnel,LibNames.FUNNEL)
   }
 
 
@@ -42,6 +43,7 @@ object ModBlocks {
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED+"_Pillar",3)
+    ThaumicTinkerer.proxy.registerInventoryBlock(BlockFunnel,LibNames.FUNNEL)
   }
 
 }

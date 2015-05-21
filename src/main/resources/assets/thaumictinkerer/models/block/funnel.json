@@ -1,0 +1,20 @@
+{
+  "textures": {
+    "particle": "thaumictinkerer:blocks/funnel/funnelSide",
+    "funnelTop":"thaumictinkerer:blocks/funnel/funnelTop",
+    "funnelSide": "thaumictinkerer:blocks/funnel/funnelSide"
+  },
+  "elements": [
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 2, 16 ],
+      "faces": {
+        "down":  {  "texture": "#funnelTop", "cullface": "down" },
+        "up":    {  "texture": "#funnelTop" },
+        "north": {  "texture": "#funnelSide", "cullface": "north" },
+        "south": { "texture": "#funnelSide", "cullface": "south" },
+        "west":  {  "texture": "#funnelSide", "cullface": "west" },
+        "east":  { "texture": "#funnelSide", "cullface": "east" }
+      }
+    }
+  ]
+}

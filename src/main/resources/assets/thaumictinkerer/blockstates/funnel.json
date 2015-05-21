@@ -1,0 +1,7 @@
+{
+  "variants":
+  {
+    "jar=false":{"model":"thaumictinkerer:funnel"},
+    "jar=true":{"model":"thaumictinkerer:funnel_jar"}
+  }
+}
