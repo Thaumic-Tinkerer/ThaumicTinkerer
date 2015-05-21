@@ -27,7 +27,7 @@ class TileFunnelRenderer extends TileEntitySpecialRenderer{
   override def renderTileEntityAt(te: TileEntity, x: Double, y: Double, z: Double, partialTicks: Float, destroyStage: Int): Unit =
   {
     val funnel:TileFunnel=te.asInstanceOf[TileFunnel]
-    if(funnel.inventory!=null) {
+    if(funnel.inventory!=null && funnel.inventory.getItem!=null && funnel.inventory.getItem.asInstanceOf[BlockJarItem].getAspects(funnel.inventory).size()>0) {
       GL11.glPushMatrix();
       //GL11.glTranslated(x + 0.5, y + 0.365, z + 0.5);
       val amount:Int=funnel.inventory.getItem.asInstanceOf[BlockJarItem].getAspects(funnel.inventory).getAmount(funnel.inventory.getItem.asInstanceOf[BlockJarItem].getAspects(funnel.inventory).getAspects()(0))
