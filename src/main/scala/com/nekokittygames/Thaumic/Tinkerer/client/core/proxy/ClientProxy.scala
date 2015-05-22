@@ -2,6 +2,7 @@ package com.nekokittygames.Thaumic.Tinkerer.client.core.proxy
 
 import com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles.TileFunnelRenderer
 import com.nekokittygames.Thaumic.Tinkerer.common.core.proxy.CommonProxy
+import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileFunnel
 import net.minecraft.block.Block
 import net.minecraft.client.Minecraft
@@ -28,5 +29,9 @@ class ClientProxy extends CommonProxy{
   override def registerTileEntityRenders(): Unit =
   {
     ClientRegistry.bindTileEntitySpecialRenderer(classOf[TileFunnel], new TileFunnelRenderer);
+  }
+
+  override def registerInventoryItem(item: ModItem, name: String): Unit = {
+    Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(item, 0, new ModelResourceLocation("thaumictinkerer:" + name, "inventory"))
   }
 }

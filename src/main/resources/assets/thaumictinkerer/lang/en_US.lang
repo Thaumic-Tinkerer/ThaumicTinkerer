@@ -3,3 +3,17 @@ tile.darkQuartzPatterned.pillar.name=Pillar of Smokey Quartz
 tile.darkQuartzPatterned.chisel.name=Chiselled block of Smokey Quartz
 tile.funnel.name=Essentia Funnel
 tile.repairer.name=Thaumic Restorer
+tc.research_category.TT_CATEGORY=Thaumic Tinkering
+
+
+# ITEM NAMES
+item.darkQuartzItem.name=Smokey Quartz
+
+
+
+
+#CONFIG COMMENTS
+ttconfig.general=General Config
+ttconfig.back=Back
+ttconfig.tooltip.name=Use Tooltip Indicators
+ttconfig.tooltip.comment=Set to false to disable the [TT] tooltips in the thauminomicon.

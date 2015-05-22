@@ -9,7 +9,7 @@ import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{EnumWorldBlockLayer, EnumFacing, BlockPos}
+import net.minecraft.util.{BlockPos, EnumFacing, EnumWorldBlockLayer}
 import net.minecraft.world.{IBlockAccess, World}
 import net.minecraftforge.fml.relauncher.SideOnly
 
@@ -20,7 +20,7 @@ import scala.util.Random
  */
 object BlockFunnel extends {
   val JAR:PropertyBool=PropertyBool.create("jar")
-} with BlockModContainer(Material.iron)
+} with ModBlockContainer(Material.iron)
 {
   setHardness(3.0F)
   setResistance(8.0f)

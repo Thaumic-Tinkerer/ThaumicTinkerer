@@ -2,24 +2,21 @@ package com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz
 
 import java.util
 
-import com.nekokittygames.Thaumic.Tinkerer.common.blocks.BlockMod
-import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.BlockDarkQuartz._
+import com.nekokittygames.Thaumic.Tinkerer.common.blocks.ModBlock
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.api.IMetaBlockName
-import net.minecraft.block.BlockLog.EnumAxis
 import net.minecraft.block.material.Material
 import net.minecraft.block.properties.PropertyEnum
 import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.util.EnumFacing.Axis
-import net.minecraft.util.{MovingObjectPosition, ChatComponentText, EnumFacing, BlockPos}
+import net.minecraft.util.{BlockPos, ChatComponentText, EnumFacing, MovingObjectPosition}
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.{Side, SideOnly}
-import org.apache.commons.lang3.builder.ToStringBuilder
 
 /**
  * Created by Katrina on 18/05/2015.
@@ -27,7 +24,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder
 object BlockDarkQuartzPatterned extends {
   val VARIANT: PropertyEnum=PropertyEnum.create("variant",classOf[EnumQuartzType])
   val AXIS: PropertyEnum=PropertyEnum.create("axis",classOf[Axis])
-} with BlockMod(Material.rock) with IMetaBlockName{
+} with ModBlock(Material.rock) with IMetaBlockName {
   setHardness(0.8f)
   setResistance(10F)
   setUnlocalizedName(LibNames.DARK_QUARTZ_PATTERNED)
@@ -40,15 +37,6 @@ object BlockDarkQuartzPatterned extends {
     super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS,facing.getAxis)
   }
 
-  override def getMetaFromState(state: IBlockState): Int =
-  {
-    val baseMeta = (state.getValue(VARIANT)).asInstanceOf[EnumQuartzType].ordinal();
-    return baseMeta * 3 + (state.getValue(AXIS)).asInstanceOf[Axis].ordinal();
-  }
-
-
-
-
   override def getStateFromMeta(meta: Int): IBlockState =
   {
     val axis = meta % 3;
@@ -56,13 +44,17 @@ object BlockDarkQuartzPatterned extends {
     return this.getDefaultState().withProperty(VARIANT, EnumQuartzType.values()(typ)).withProperty(AXIS, Axis.values()(axis));
   }
 
-
   @SideOnly(Side.CLIENT)
   override def getSubBlocks(itemIn: Item, tab: CreativeTabs, list: util.List[_]): Unit =
   {
     super.getSubBlocks(itemIn, tab, list)
     list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.CHISEL).withProperty(AXIS,Axis.X))))
     list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.PILLAR).withProperty(AXIS,Axis.X))))
+  }
+
+  override def getMetaFromState(state: IBlockState): Int = {
+    val baseMeta = (state.getValue(VARIANT)).asInstanceOf[EnumQuartzType].ordinal();
+    return baseMeta * 3 + (state.getValue(AXIS)).asInstanceOf[Axis].ordinal();
   }
 
   override def createBlockState(): BlockState = new BlockState(this,VARIANT,AXIS)

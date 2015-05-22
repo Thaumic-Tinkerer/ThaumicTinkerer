@@ -1,11 +1,11 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.blocks
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
-import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
+import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartz, BlockDarkQuartzPatterned}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.api.IMetaBlockName
-import net.minecraft.block.{ITileEntityProvider, Block}
+import net.minecraft.block.Block
 import net.minecraftforge.fml.common.registry.GameRegistry
 
 /**
@@ -25,7 +25,7 @@ object ModBlocks {
       }
       block match
       {
-        case s:BlockModContainer=>GameRegistry.registerTileEntity(s.getTileClass,name)
+        case s: ModBlockContainer => GameRegistry.registerTileEntity(s.getTileClass, name)
         case _=>{}
       }
       Blocks(block)=name

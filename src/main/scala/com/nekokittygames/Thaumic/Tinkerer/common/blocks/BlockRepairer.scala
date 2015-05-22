@@ -8,16 +8,16 @@ import net.minecraft.block.properties.PropertyDirection
 import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{EnumWorldBlockLayer, BlockPos, EnumFacing}
+import net.minecraft.util.{BlockPos, EnumFacing, EnumWorldBlockLayer}
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.{SideOnly, Side}
+import net.minecraftforge.fml.relauncher.{Side, SideOnly}
 
 /**
  * Created by fiona on 21/05/2015.
  */
 object BlockRepairer extends {
   val FACING:PropertyDirection=PropertyDirection.create("facing")
-} with BlockModContainer(Material.iron) {
+} with ModBlockContainer(Material.iron) {
   setHardness(5F)
   setResistance(10F)
   setUnlocalizedName(LibNames.REPAIRER)

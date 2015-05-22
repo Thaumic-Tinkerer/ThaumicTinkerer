@@ -2,10 +2,11 @@ package com.nekokittygames.Thaumic.Tinkerer.client.gui
 
 import java.util
 
+import com.nekokittygames.Thaumic.Tinkerer.client.gui.config.TTBaseConfigGUI
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiScreen
 import net.minecraftforge.fml.client.IModGuiFactory
-import net.minecraftforge.fml.client.IModGuiFactory.{RuntimeOptionGuiHandler, RuntimeOptionCategoryElement}
+import net.minecraftforge.fml.client.IModGuiFactory.{RuntimeOptionCategoryElement, RuntimeOptionGuiHandler}
 
 /**
  * Factory for the gui configs
@@ -18,5 +19,7 @@ class TTGuiFactory extends IModGuiFactory{
 
   override def getHandlerFor(element: RuntimeOptionCategoryElement): RuntimeOptionGuiHandler = null
 
-  override def mainConfigGuiClass(): Class[_ <: GuiScreen] = null
+  override def mainConfigGuiClass(): Class[_ <: GuiScreen] = {
+    classOf[TTBaseConfigGUI]
+  }
 }

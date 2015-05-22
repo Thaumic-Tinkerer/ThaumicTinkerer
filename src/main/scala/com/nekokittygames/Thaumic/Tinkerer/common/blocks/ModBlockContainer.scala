@@ -10,12 +10,12 @@ import net.minecraft.world.World
 /**
  * Created by Katrina on 17/05/2015.
  */
-class BlockModContainer(mat:Material) extends BlockMod(mat) with ITileEntityProvider{
+class ModBlockContainer(mat: Material) extends ModBlock(mat) with ITileEntityProvider {
 
-
-  def getTileClass:Class[_ <: TileEntity]=null
 
   override def createNewTileEntity(worldIn: World, meta: Int): TileEntity = getTileClass.newInstance()
+
+  def getTileClass: Class[_ <: TileEntity] = null
 
   override def breakBlock(worldIn: World, pos: BlockPos, state: IBlockState): Unit =
   {
