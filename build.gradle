@@ -50,8 +50,9 @@ repositories {
 }
 apply plugin: 'scala'
 apply plugin: 'forge'
+apply plugin: 'maven-publish'
 
-group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "com.nekokittygames.Thaumic.Tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
 sourceSets {
     main {
@@ -144,4 +145,37 @@ task apiJar(type: Jar) {
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
+}
+
+
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            groupId 'com.nekokittygames.Thaumic.Tinkerer'
+            artifactId 'ThaumicTinkerer'
+            from components.java
+        }
+        api(MavenPublication) {
+            groupId 'com.nekokittygames.Thaumic.Tinkerer'
+            artifactId 'ThaumicTinkerer'
+            artifact apiJar
+        }
+        dev(MavenPublication) {
+            groupId 'com.nekokittygames.Thaumic.Tinkerer'
+            artifactId 'ThaumicTinkerer'
+            artifact deobfJar
+        }
+        sources(MavenPublication) {
+            groupId 'com.nekokittygames.Thaumic.Tinkerer'
+            artifactId 'ThaumicTinkerer'
+            artifact sourcesJar
+        }
+
+    }
+    repositories {
+        maven {
+            url "/var/www/"
+        }
+    }
 }

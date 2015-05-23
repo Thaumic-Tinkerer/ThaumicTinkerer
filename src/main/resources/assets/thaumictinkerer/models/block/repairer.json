@@ -104,8 +104,8 @@
         "west":  {  "texture": "#base", "cullface": "west" },
         "east":  { "texture": "#base", "cullface": "east" }
       }
-    },{   "from": [ 4, 9, 1 ],//b -yx Top bit
-      "to": [ 12, 11, 2],
+    },{   "from": [ 4, 9, 0 ],//b -yx Top bit
+      "to": [ 12, 11, 1],
       "faces": {
         "down":  {  "texture": "#base" },
         "up":    {  "texture": "#base" },
@@ -114,8 +114,8 @@
         "west":  {  "texture": "#base", "cullface": "west" },
         "east":  { "texture": "#base", "cullface": "east" }
       }
-    },{   "from": [ 4, 5, 1 ],//b -yx Bottom bit
-      "to": [ 12, 7, 2],
+    },{   "from": [ 4, 5, 0 ],//b -yx Bottom bit
+      "to": [ 12, 7, 1],
       "faces": {
         "down":  {  "texture": "#base" },
         "up":    {  "texture": "#base" },
@@ -124,8 +124,8 @@
         "west":  {  "texture": "#base", "cullface": "west" },
         "east":  { "texture": "#base", "cullface": "east" }
       }
-    },{   "from": [ 0, 2, 2 ],//a -xy
-      "to": [ 0, 14, 14],
+    },{   "from": [ 1, 2, 2 ],//a -xy
+      "to": [ 1, 14, 14],
       "faces": {
         "down":  {  "texture": "#glass" },
         "up":    {  "texture": "#glass" },
@@ -134,8 +134,8 @@
         "west":  {  "texture": "#glass", "cullface": "west" },
         "east":  { "texture": "#glass", "cullface": "east" }
       }
-    },{   "from": [ 2, 2, 0 ],//b -yx North
-      "to": [ 14, 14, 0],
+    },{   "from": [ 2, 2, 1 ],//b -yx North
+      "to": [ 14, 14, 1],
       "faces": {
         "down":  {  "texture": "#glass" },
         "up":    {  "texture": "#glass" },
@@ -144,8 +144,8 @@
         "west":  {  "texture": "#glass", "cullface": "west" },
         "east":  { "texture": "#glass", "cullface": "east" }
       }
-    },{   "from": [ 2, 2, 16 ],//c -yz
-      "to": [ 14, 14, 16],
+    },{   "from": [ 2, 2, 15 ],//c -yz
+      "to": [ 14, 14, 15],
       "faces": {
         "down":  {  "texture": "#glass" },
         "up":    {  "texture": "#glass" },
@@ -154,8 +154,8 @@
         "west":  {  "texture": "#glass", "cullface": "west" },
         "east":  { "texture": "#glass", "cullface": "east" }
       }
-    },{   "from": [ 16, 2, 2 ],//d -zy
-      "to": [ 16, 14, 14],
+    },{   "from": [ 15, 2, 2 ],//d -zy
+      "to": [ 15, 14, 14],
       "faces": {
         "down": {
           "texture": "#glass"
