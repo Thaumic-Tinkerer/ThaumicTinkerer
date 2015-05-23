@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.{Side, SideOnly}
  */
 object BlockRepairer extends {
   val FACING:PropertyDirection=PropertyDirection.create("facing")
-} with ModBlockContainer(Material.iron) {
+} with ModBlock(Material.iron) with ModBlockContainer {
   setHardness(5F)
   setResistance(10F)
   setUnlocalizedName(LibNames.REPAIRER)
