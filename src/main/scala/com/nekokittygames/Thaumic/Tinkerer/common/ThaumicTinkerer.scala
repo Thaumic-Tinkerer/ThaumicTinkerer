@@ -5,7 +5,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.TTConfig
 import com.nekokittygames.Thaumic.Tinkerer.common.core.proxy.CommonProxy
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItems
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibMisc
-import com.nekokittygames.Thaumic.Tinkerer.common.research.ModResearch
+import com.nekokittygames.Thaumic.Tinkerer.common.research.{ModRecipes, ModResearch}
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import net.minecraftforge.fml.common.{Mod, SidedProxy}
@@ -49,7 +49,8 @@ object ThaumicTinkerer {
   @EventHandler
   def postInit(eventArgs: FMLPostInitializationEvent) =
   {
-    ModResearch.registerResearchPage()
+    ModRecipes.registerRecipes()
+    ModResearch.registerResearch()
   }
 
 }
