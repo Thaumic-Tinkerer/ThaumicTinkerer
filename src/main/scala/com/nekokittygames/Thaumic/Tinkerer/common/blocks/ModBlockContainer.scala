@@ -1,6 +1,6 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.blocks
 
-import net.minecraft.block.ITileEntityProvider
+import net.minecraft.block.{Block, ITileEntityProvider}
 import net.minecraft.block.material.Material
 import net.minecraft.block.state.IBlockState
 import net.minecraft.tileentity.TileEntity
@@ -10,7 +10,7 @@ import net.minecraft.world.World
 /**
  * Created by Katrina on 17/05/2015.
  */
-class ModBlockContainer(mat: Material) extends ModBlock(mat) with ITileEntityProvider {
+trait ModBlockContainer extends Block with ITileEntityProvider {
 
 
   override def createNewTileEntity(worldIn: World, meta: Int): TileEntity = getTileClass.newInstance()

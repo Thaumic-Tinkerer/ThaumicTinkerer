@@ -20,7 +20,7 @@ import scala.util.Random
  */
 object BlockFunnel extends {
   val JAR:PropertyBool=PropertyBool.create("jar")
-} with ModBlockContainer(Material.iron)
+} with ModBlock(Material.iron) with ModBlockContainer
 {
   setHardness(3.0F)
   setResistance(8.0f)
