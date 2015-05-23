@@ -1,7 +1,10 @@
 package com.nekokittygames.Thaumic.Tinkerer.client.core.proxy
 
+import codechicken.lib.packet.PacketCustom
 import com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles.TileFunnelRenderer
+import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.core.proxy.CommonProxy
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarManager
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileFunnel
 import net.minecraft.block.Block
@@ -33,5 +36,10 @@ class ClientProxy extends CommonProxy{
 
   override def registerInventoryItem(item: ModItem, name: String): Unit = {
     Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(item, 0, new ModelResourceLocation("thaumictinkerer:" + name, "inventory"))
+  }
+
+  override def registerPacketHandlers(): Unit = {
+
+    PacketCustom.assignHandler(ThaumicTinkerer,BoundJarManager.BoundJarHandler)
   }
 }

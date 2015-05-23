@@ -1,0 +1,8 @@
+{
+  "variants":
+  {
+    "type=normal": { "model": "thaumictinkerer:boundJar" },
+    "type=brain": { "model": "thaumcraft:jar_brain" },
+    "type=void": { "model": "thaumcraft:jar_void" }
+  }
+}

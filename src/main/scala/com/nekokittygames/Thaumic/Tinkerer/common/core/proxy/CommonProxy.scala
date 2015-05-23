@@ -26,4 +26,10 @@ class CommonProxy {
   {
 
   }
+
+
+  def registerPacketHandlers()=
+  {
+
+  }
 }
