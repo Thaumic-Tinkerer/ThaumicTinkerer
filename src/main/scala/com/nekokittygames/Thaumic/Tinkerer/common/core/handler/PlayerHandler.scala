@@ -5,13 +5,12 @@ import java.util.UUID
 
 import codechicken.lib.packet.PacketCustom
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
-import
 import thaumcraft.api.aspects.AspectList
 
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent
-
+import scala.collection.JavaConversions._
 /**
  * Created by katsw on 23/05/2015.
  */
@@ -22,11 +21,11 @@ object PlayerHandler {
   def playerLogin(event:PlayerLoggedInEvent) =
   {
     ThaumicTinkerer.logger.info("Player logged in")
-      for(entry:Entry[UUID,AspectList] <-BoundJarNetworkManager.data.networks.entrySet())
+      for(entry <-BoundJarNetworkManager.getData.networks.toList)
         {
 
           ThaumicTinkerer.logger.info(entry)
-         PacketCustom.sendToPlayer(BoundJarNetworkManager.getPacket(new Pair[UUID,AspectList](entry.getKey,entry.getValue)),event.player)
+         PacketCustom.sendToPlayer(BoundJarNetworkManager.getPacket(new Pair[UUID,AspectList](entry._1,entry._2)),event.player)
       }
   }
 }

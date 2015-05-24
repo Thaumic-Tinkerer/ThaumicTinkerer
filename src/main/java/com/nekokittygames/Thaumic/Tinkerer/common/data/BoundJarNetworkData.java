@@ -18,9 +18,11 @@ public class BoundJarNetworkData extends WorldSavedData {
     public Map<UUID,AspectList> networks=new HashMap<UUID, AspectList>();
     public static String IDENTIFIER="boundJar";
     public BoundJarNetworkData() {
-        super("");
+        super(BoundJarNetworkData.IDENTIFIER);
     }
-
+    public BoundJarNetworkData(String name) {
+        super(name);
+    }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {

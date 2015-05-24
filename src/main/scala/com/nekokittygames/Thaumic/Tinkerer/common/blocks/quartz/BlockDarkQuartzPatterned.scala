@@ -78,7 +78,7 @@ object BlockDarkQuartzPatterned extends {
     if(worldIn.isRemote) {
       val uuid: UUID = new UUID(112L, 112L)
 
-      val blockData=BoundJarNetworkManager.data.networks.get(uuid)
+      val blockData=BoundJarNetworkManager.getAspect(uuid)
       playerIn.addChatMessage(new ChatComponentText(blockData.getAspects()(0).getName))
       playerIn.addChatMessage(new ChatComponentText(blockData.getAmount(blockData.getAspects()(0)).toString))
     }

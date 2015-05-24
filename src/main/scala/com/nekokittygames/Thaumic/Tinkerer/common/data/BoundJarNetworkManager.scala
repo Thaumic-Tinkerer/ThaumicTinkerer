@@ -31,7 +31,7 @@ object BoundJarNetworkManager {
       data.networks.get(id).readFromNBT(packetCustom.readNBTTagCompound())
     }
   }
-  var data:BoundJarNetworkData=new BoundJarNetworkData()
+  private var data:BoundJarNetworkData=null
 
   def getPacket(boundJarWorldData:Tuple2[UUID,AspectList]):Packet=
   {
@@ -47,13 +47,20 @@ object BoundJarNetworkManager {
   def loadData(): Unit =
   {
     val world=ThaumicTinkerer.proxy.getOverworld
-    if(world!=null)
-      world.getMapStorage.loadData(classOf[BoundJarNetworkData],BoundJarNetworkData.IDENTIFIER).asInstanceOf[BoundJarNetworkData]
+    if(world!=null) {
+      data = world.getMapStorage.loadData(classOf[BoundJarNetworkData], BoundJarNetworkData.IDENTIFIER).asInstanceOf[BoundJarNetworkData]
+      if(data==null) {
+        data = new BoundJarNetworkData()
+        data.markDirty()
+        world.getMapStorage.setData(BoundJarNetworkData.IDENTIFIER,data)
+      }
+    }
   }
 
   def markDirty(): Unit =
   {
     val world=ThaumicTinkerer.proxy.getOverworld
+    data.markDirty()
     if(world!=null)
       world.getMapStorage.saveAllData()
 
@@ -61,12 +68,29 @@ object BoundJarNetworkManager {
 
   def markDirty(uuid:UUID): Unit =
   {
+
     markDirty()
-    PacketCustom.sendToClients(getPacket(new Pair[UUID,AspectList](uuid,data.networks.get(uuid))))
+    PacketCustom.sendToClients(getPacket(new Pair[UUID,AspectList](uuid,getData.networks.get(uuid))))
   }
+
   def getAspect(uuid:UUID):AspectList=
   {
-    data.networks.get(uuid)
+    if(!getData.networks.containsKey(uuid))
+      getData.networks.put(uuid,new AspectList())
+
+    getData.networks.get(uuid)
   }
+  def getData:BoundJarNetworkData =
+    {
+      if(data==null)
+        {
+          loadData()
+          data
+        }
+      else
+        {
+          data
+        }
+    }
 
 }

@@ -4,6 +4,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.blocks.ModBlocks
 import com.nekokittygames.Thaumic.Tinkerer.common.core.handler.PlayerHandler
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.TTConfig
 import com.nekokittygames.Thaumic.Tinkerer.common.core.proxy.CommonProxy
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItems
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibMisc
 import com.nekokittygames.Thaumic.Tinkerer.common.research.{ModRecipes, ModResearch}
