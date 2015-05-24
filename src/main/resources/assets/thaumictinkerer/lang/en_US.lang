@@ -2,12 +2,17 @@ tile.darkQuartzBlock.name=Block of Smokey Quartz
 tile.darkQuartzPatterned.pillar.name=Pillar of Smokey Quartz
 tile.darkQuartzPatterned.chisel.name=Chiselled block of Smokey Quartz
 tile.funnel.name=Essentia Funnel
-tile.repairer.name=Thaumic Restorer
+tile.funnel.name=Essentia Funnel
+tile.boundJar.name=Bound Jar
+
+
+
 tc.research_category.TT_CATEGORY=Thaumic Tinkering
 
 
 # ITEM NAMES
 item.darkQuartzItem.name=Smokey Quartz
+item.jarSeal.name=Jar Seal
 
 
 

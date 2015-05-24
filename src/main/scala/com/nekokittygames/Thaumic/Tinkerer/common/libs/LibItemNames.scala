@@ -7,4 +7,5 @@ object LibItemNames {
 
 
   final var DARK_QUARTZ: String = "darkQuartzItem"
+  final var JARSEAL="jarSeal"
 }
