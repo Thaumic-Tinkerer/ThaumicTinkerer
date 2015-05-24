@@ -7,7 +7,8 @@ import java.lang.reflect.Method;
 import java.util.UUID;
 
 /**
- * Created by katsw on 24/05/2015.
+ * API for the Bound Essentia jar system
+ * Created by Katrina on 24/05/2015.
  */
 public class BoundJarAPI {
 
@@ -18,12 +19,11 @@ public class BoundJarAPI {
     private static Boolean ttSearched=false;
 
 
-    public static String getAPIVersion()
-    {
-        return "someVersionhere"; //TODO: make this keep up
-    }
-
-
+    /**
+     * Returns an aspect list containing the aspect, or lack thereof the network contains
+     * @param uuid id of the network to check
+     * @return aspect list, or blank if a new network
+     */
     public static AspectList getAspects(UUID uuid)
     {
         findTT();
@@ -43,7 +43,10 @@ public class BoundJarAPI {
     }
 
 
-
+    /**
+     * Marks a network dirty so it will be saved
+     * @param uuid network ID
+     */
     public static void markDirty(UUID uuid)
     {
         findTT();
