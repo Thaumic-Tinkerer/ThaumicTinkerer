@@ -3,7 +3,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz
 import java.util.UUID
 
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.ModBlock
-import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarManager
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import net.minecraft.block.material.Material
 import net.minecraft.entity.player.EntityPlayer
@@ -24,9 +24,8 @@ object BlockDarkQuartz extends ModBlock(Material.rock) {
     if(!worldIn.isRemote) {
       val uuid: UUID = new UUID(112L, 112L)
 
-      val blockData=BoundJarManager.getBoundJarData(worldIn,uuid)
-      blockData.aspect.add(Aspect.CRYSTAL,64)
-      BoundJarManager.markDirty(worldIn,uuid)
+      BoundJarNetworkManager.getAspect(uuid).add(Aspect.CRYSTAL,64)
+      BoundJarNetworkManager.markDirty(uuid)
     }
     super.onBlockClicked(worldIn, pos, playerIn)
   }

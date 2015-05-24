@@ -1,7 +1,10 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.core.proxy
 
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkData
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
 import net.minecraft.block.Block
+import net.minecraft.world.World
+import net.minecraftforge.common.DimensionManager
 
 /**
  * Created by Katrina on 17/05/2015.
@@ -19,6 +22,13 @@ class CommonProxy {
   def registerInventoryBlock(block: Block,name: String,meta:Int): Unit=
   {
 
+  }
+
+
+
+  def getOverworld:World=
+  {
+    DimensionManager.getWorld(0)
   }
 
 

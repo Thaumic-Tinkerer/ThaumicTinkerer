@@ -5,7 +5,7 @@ import java.util.UUID
 
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.ModBlock
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
-import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarManager
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.api.IMetaBlockName
 import net.minecraft.block.material.Material
@@ -78,9 +78,9 @@ object BlockDarkQuartzPatterned extends {
     if(worldIn.isRemote) {
       val uuid: UUID = new UUID(112L, 112L)
 
-      val blockData=BoundJarManager.getBoundJarData(worldIn,uuid)
-      playerIn.addChatMessage(new ChatComponentText(blockData.aspect.getAspects()(0).getName))
-      playerIn.addChatMessage(new ChatComponentText(blockData.aspect.getAmount(blockData.aspect.getAspects()(0)).toString))
+      val blockData=BoundJarNetworkManager.data.networks.get(uuid)
+      playerIn.addChatMessage(new ChatComponentText(blockData.getAspects()(0).getName))
+      playerIn.addChatMessage(new ChatComponentText(blockData.getAmount(blockData.getAspects()(0)).toString))
     }
     super.onBlockClicked(worldIn, pos, playerIn)
   }
