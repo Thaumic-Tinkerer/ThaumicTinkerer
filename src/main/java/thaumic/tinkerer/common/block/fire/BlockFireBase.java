@@ -108,12 +108,14 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
                 if (rand.nextInt(20) == 0) {
                     if (isNeighborTarget(world, x, y, z)) {
                         for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-                            if (isTransmutationTarget(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ), world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)) {
-                                Random random = new Random();
-                                if (random.nextInt(getDecayChance(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)) == 0) {
-                                    world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, getBlockTransformation(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).get(new BlockTuple(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ))).block, getBlockTransformation(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).get(new BlockTuple(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ))).meta, 3);
-                                } else {
-                                    world.setBlockToAir(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+                            if(world.blockExists(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)) {
+                                if (isTransmutationTarget(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ), world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)) {
+                                    Random random = new Random();
+                                    if (random.nextInt(getDecayChance(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ)) == 0) {
+                                        world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, getBlockTransformation(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).get(new BlockTuple(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ))).block, getBlockTransformation(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).get(new BlockTuple(world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ))).meta, 3);
+                                    } else {
+                                        world.setBlockToAir(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+                                    }
                                 }
                             }
                         }
@@ -145,24 +147,26 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
                 for (int j1 = z - 1; j1 <= z + 1; j1++) {
                     for (int k1 = y - 1; k1 <= y + 2; k1++) {
                         if (i1 != x || k1 != y || j1 != z) {
-                            int l1 = 100;
+                            if (world.blockExists(i1, j1, k1)) {
+                                int l1 = 100;
 
-                            int i2 = this.getChanceOfNeighborsEncouragingFire(world, i1, k1, j1);
+                                int i2 = this.getChanceOfNeighborsEncouragingFire(world, i1, k1, j1);
 
-                            if (i2 > 0) {
-                                int j2 = (i2 + 70) / (l + 30);
-                                j2 += 70;
-                                if (flag1) {
-                                    j2 /= 2;
-                                }
-
-                                if (j2 > 0 && rand.nextInt(l1) <= j2 && (!world.isRaining() || !world.canLightningStrikeAt(i1, k1, j1)) && !world.canLightningStrikeAt(i1 - 1, k1, z) && !world.canLightningStrikeAt(i1 + 1, k1, j1) && !world.canLightningStrikeAt(i1, k1, j1 - 1) && !world.canLightningStrikeAt(i1, k1, j1 + 1)) {
-                                    int k2 = l + rand.nextInt(5) / 4;
-
-                                    if (k2 > 15) {
-                                        k2 = 15;
+                                if (i2 > 0) {
+                                    int j2 = (i2 + 70) / (l + 30);
+                                    j2 += 70;
+                                    if (flag1) {
+                                        j2 /= 2;
                                     }
-                                    setBlockWithTransmutationTarget(world, i1, j1, k1, k2, this);
+
+                                    if (j2 > 0 && rand.nextInt(l1) <= j2 && (!world.isRaining() || !world.canLightningStrikeAt(i1, k1, j1)) && !world.canLightningStrikeAt(i1 - 1, k1, z) && !world.canLightningStrikeAt(i1 + 1, k1, j1) && !world.canLightningStrikeAt(i1, k1, j1 - 1) && !world.canLightningStrikeAt(i1, k1, j1 + 1)) {
+                                        int k2 = l + rand.nextInt(5) / 4;
+
+                                        if (k2 > 15) {
+                                            k2 = 15;
+                                        }
+                                        setBlockWithTransmutationTarget(world, i1, j1, k1, k2, this);
+                                    }
                                 }
                             }
                         }
@@ -191,7 +195,7 @@ public abstract class BlockFireBase extends BlockFire implements ITTinkererBlock
     private void tryCatchFire(World world, int x, int y, int z, int strength, Random rand, int meta, ForgeDirection face) {
         int j1 = getBlockFlammability(world, x, y, z, face);
 
-        if (rand.nextInt(strength) < j1) {
+        if (world.blockExists(x, y, z) && rand.nextInt(strength) < j1) {
             boolean flag = world.getBlock(x, y, z) == Blocks.tnt;
 
             if (rand.nextInt(meta + 10) < 5 && !world.canLightningStrikeAt(x, y, z)) {
