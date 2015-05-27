@@ -21,17 +21,17 @@ import thaumic.tinkerer.common.item.kami.armor.ItemGemBoots;
 
 public class EnchantmentSlowFall extends EnchantmentMod {
 
-	protected EnchantmentSlowFall(int par1) {
-		super(par1, 3, EnumEnchantmentType.armor_feet);
-	}
+    protected EnchantmentSlowFall(int par1) {
+        super(par1, 3, EnumEnchantmentType.armor_feet);
+    }
 
-	@Override
-	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId != Enchantment.featherFalling.effectId;
-	}
+    @Override
+    public boolean canApplyTogether(Enchantment par1Enchantment) {
+        return par1Enchantment.effectId != Enchantment.featherFalling.effectId;
+    }
 
-	@Override
-	public boolean canApply(ItemStack par1ItemStack) {
-		return !(par1ItemStack.getItem() instanceof ItemGemBoots);
-	}
+    @Override
+    public boolean canApply(ItemStack par1ItemStack) {
+        return !(par1ItemStack.getItem() instanceof ItemGemBoots);
+    }
 }

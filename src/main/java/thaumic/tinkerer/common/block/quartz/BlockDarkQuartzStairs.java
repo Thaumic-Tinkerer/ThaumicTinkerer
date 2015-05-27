@@ -20,7 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
-import thaumic.tinkerer.common.item.quartz.ItemDarkQuartzBlock;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ITTinkererBlock;
@@ -33,55 +32,55 @@ import java.util.ArrayList;
 
 public class BlockDarkQuartzStairs extends BlockStairs implements ITTinkererBlock {
 
-	public BlockDarkQuartzStairs() {
-		super(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 0);
-		setCreativeTab(ModCreativeTab.INSTANCE);
-	}
+    public BlockDarkQuartzStairs() {
+        super(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class), 0);
+        setCreativeTab(ModCreativeTab.INSTANCE);
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.DARK_QUARTZ_STAIRS;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.DARK_QUARTZ_STAIRS;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return null;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererRecipeMulti(
-				new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 5, new ItemStack(this, 4),
-						"  Q", " QQ", "QQQ",
-						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class)),
-				new ThaumicTinkererCraftingBenchRecipe("", new ItemStack(this, 4),
-						"Q  ", "QQ ", "QQQ",
-						'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class))
-		);
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererRecipeMulti(
+                new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DARK_QUARTZ + 5, new ItemStack(this, 4),
+                        "  Q", " QQ", "QQQ",
+                        'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class)),
+                new ThaumicTinkererCraftingBenchRecipe("", new ItemStack(this, 4),
+                        "Q  ", "QQ ", "QQQ",
+                        'Q', ThaumicTinkerer.registry.getFirstBlockFromClass(BlockDarkQuartz.class))
+        );
+    }
 }

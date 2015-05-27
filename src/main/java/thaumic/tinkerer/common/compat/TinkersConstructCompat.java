@@ -1,4 +1,3 @@
-
 package thaumic.tinkerer.common.compat;
 
 import net.minecraft.item.Item;

@@ -36,63 +36,63 @@ import java.util.List;
 
 public class GuiAspectAnalyzer extends GuiContainer {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ASPECT_ANALYZER);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ASPECT_ANALYZER);
 
-	int x, y;
-	TileAspectAnalyzer analyzer;
-	Aspect aspectHovered = null;
+    int x, y;
+    TileAspectAnalyzer analyzer;
+    Aspect aspectHovered = null;
 
-	public GuiAspectAnalyzer(TileAspectAnalyzer analyzer, InventoryPlayer inv) {
-		super(new ContainerAspectAnalyzer(analyzer, inv));
-		this.analyzer = analyzer;
-	}
+    public GuiAspectAnalyzer(TileAspectAnalyzer analyzer, InventoryPlayer inv) {
+        super(new ContainerAspectAnalyzer(analyzer, inv));
+        this.analyzer = analyzer;
+    }
 
-	@Override
-	public void initGui() {
-		super.initGui();
-		x = (width - xSize) / 2;
-		y = (height - ySize) / 2;
-	}
+    @Override
+    public void initGui() {
+        super.initGui();
+        x = (width - xSize) / 2;
+        y = (height - ySize) / 2;
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int mx, int my) {
-		aspectHovered = null;
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int mx, int my) {
+        aspectHovered = null;
 
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.renderEngine.bindTexture(gui);
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        mc.renderEngine.bindTexture(gui);
+        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
-		ItemStack stack = analyzer.getStackInSlot(0);
-		if (stack != null) {
-			int h = ScanManager.generateItemHash(stack.getItem(), stack.getItemDamage());
+        ItemStack stack = analyzer.getStackInSlot(0);
+        if (stack != null) {
+            int h = ScanManager.generateItemHash(stack.getItem(), stack.getItemDamage());
 
-			List<String> list = Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().getGameProfile().getName());
-			if (list != null && (list.contains("@" + h) || list.contains("#" + h))) {
-				AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
-				tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);
-				if (tags != null) {
-					int i = 0;
-					for (Aspect aspect : tags.getAspectsSortedAmount()) {
-						int x = this.x + 20 + i * 18;
-						int y = this.y + 58;
-						UtilsFX.drawTag(x, y, aspect, tags.getAmount(aspect), 0, zLevel);
+            List<String> list = Thaumcraft.proxy.getScannedObjects().get(ClientHelper.clientPlayer().getGameProfile().getName());
+            if (list != null && (list.contains("@" + h) || list.contains("#" + h))) {
+                AspectList tags = ThaumcraftCraftingManager.getObjectTags(stack);
+                tags = ThaumcraftCraftingManager.getBonusTags(stack, tags);
+                if (tags != null) {
+                    int i = 0;
+                    for (Aspect aspect : tags.getAspectsSortedAmount()) {
+                        int x = this.x + 20 + i * 18;
+                        int y = this.y + 58;
+                        UtilsFX.drawTag(x, y, aspect, tags.getAmount(aspect), 0, zLevel);
 
-						if (mx > x && mx < x + 16 && my > y && my < y + 16)
-							aspectHovered = aspect;
+                        if (mx > x && mx < x + 16 && my > y && my < y + 16)
+                            aspectHovered = aspect;
 
-						i++;
-					}
-				}
-			}
-		}
-	}
+                        i++;
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	protected void drawGuiContainerForegroundLayer(int mx, int my) {
-		if (aspectHovered != null)
-			ClientHelper.renderTooltip(mx - x, my - y, Arrays.asList(EnumChatFormatting.AQUA + aspectHovered.getName(), EnumChatFormatting.GRAY + aspectHovered.getLocalizedDescription()));
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mx, int my) {
+        if (aspectHovered != null)
+            ClientHelper.renderTooltip(mx - x, my - y, Arrays.asList(EnumChatFormatting.AQUA + aspectHovered.getName(), EnumChatFormatting.GRAY + aspectHovered.getLocalizedDescription()));
 
-		super.drawGuiContainerForegroundLayer(mx, my);
-	}
+        super.drawGuiContainerForegroundLayer(mx, my);
+    }
 
 }

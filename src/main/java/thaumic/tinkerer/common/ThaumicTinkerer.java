@@ -25,13 +25,9 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import org.apache.logging.log4j.Logger;
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.CommonProxy;
 import thaumcraft.common.Thaumcraft;
 import thaumic.tinkerer.api.InterModCommsOperations;
@@ -50,62 +46,62 @@ import java.util.Arrays;
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES)
 public class ThaumicTinkerer {
 
-	@Instance(LibMisc.MOD_ID)
-	public static ThaumicTinkerer instance;
+    @Instance(LibMisc.MOD_ID)
+    public static ThaumicTinkerer instance;
 
-	@SidedProxy(clientSide = LibMisc.CLIENT_PROXY, serverSide = LibMisc.COMMON_PROXY)
-	public static TTCommonProxy proxy;
+    @SidedProxy(clientSide = LibMisc.CLIENT_PROXY, serverSide = LibMisc.COMMON_PROXY)
+    public static TTCommonProxy proxy;
 
-	public static CommonProxy tcProxy;
-	public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
+    public static CommonProxy tcProxy;
+    public static SimpleNetworkWrapper netHandler = NetworkRegistry.INSTANCE.newSimpleChannel(LibMisc.MOD_ID + "|B");
 
-	public static TTRegistry registry = new TTRegistry();
+    public static TTRegistry registry = new TTRegistry();
 
     public static Logger log;
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-        log=event.getModLog();
-		tcProxy = Thaumcraft.proxy;
-		proxy.preInit(event);
-		if (Loader.isModLoaded("Waila")) {
-			FMLInterModComms.sendMessage("Waila", "register", "thaumic.tinkerer.common.compat.TTinkererProvider.callbackRegister");
-		}
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        log = event.getModLog();
+        tcProxy = Thaumcraft.proxy;
+        proxy.preInit(event);
+        if (Loader.isModLoaded("Waila")) {
+            FMLInterModComms.sendMessage("Waila", "register", "thaumic.tinkerer.common.compat.TTinkererProvider.callbackRegister");
+        }
 
-	}
+    }
 
-	@EventHandler
-	public void serverStart(FMLServerStartingEvent event) {
-		MinecraftServer server = MinecraftServer.getServer();
-		ICommandManager command = server.getCommandManager();
-		ServerCommandManager manager = (ServerCommandManager) command;
+    @EventHandler
+    public void serverStart(FMLServerStartingEvent event) {
+        MinecraftServer server = MinecraftServer.getServer();
+        ICommandManager command = server.getCommandManager();
+        ServerCommandManager manager = (ServerCommandManager) command;
         manager.registerCommand(new SetTendencyCommand());
         manager.registerCommand(new MaxResearchCommand());
-		manager.registerCommand(new KamiUnlockedCommand());
-	}
+        manager.registerCommand(new KamiUnlockedCommand());
+    }
 
-	@EventHandler
-	public void HandleIMCMessages(FMLInterModComms.IMCEvent messages) {
-		for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
-			if (message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST)) {
-				String[] values = message.getStringValue().split(",");
-				KamiResearchItem.Blacklist.addAll(Arrays.asList(values));
-			}
-		}
-	}
+    @EventHandler
+    public void HandleIMCMessages(FMLInterModComms.IMCEvent messages) {
+        for (FMLInterModComms.IMCMessage message : messages.getMessages()) {
+            if (message.key.equalsIgnoreCase(InterModCommsOperations.ADD_RESEARCH_BLACKLIST)) {
+                String[] values = message.getStringValue().split(",");
+                KamiResearchItem.Blacklist.addAll(Arrays.asList(values));
+            }
+        }
+    }
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.init(event);
-		if (ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0) {
-			DimensionManager.registerProviderType(ConfigHandler.bedrockDimensionID, WorldProviderBedrock.class, false);
-			DimensionManager.registerDimension(ConfigHandler.bedrockDimensionID, ConfigHandler.bedrockDimensionID);
-		}
-	}
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        proxy.init(event);
+        if (ConfigHandler.enableKami && ConfigHandler.bedrockDimensionID != 0) {
+            DimensionManager.registerProviderType(ConfigHandler.bedrockDimensionID, WorldProviderBedrock.class, false);
+            DimensionManager.registerDimension(ConfigHandler.bedrockDimensionID, ConfigHandler.bedrockDimensionID);
+        }
+    }
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		proxy.postInit(event);
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        proxy.postInit(event);
 
-	}
+    }
 }

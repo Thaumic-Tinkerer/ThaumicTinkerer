@@ -42,203 +42,198 @@ import java.util.List;
 
 public class GuiEnchanting extends GuiContainer {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
+    public TileEnchanter enchanter;
+    public List<String> tooltip = new ArrayList();
+    int x, y;
+    GuiButtonEnchantment[] enchantButtons = new GuiButtonEnchantment[16];
+    List<Integer> lastTickEnchants;
+    List<Integer> lastTickLevels;
+    ItemStack lastTickStack;
+    ItemStack currentStack;
 
-	int x, y;
+    public GuiEnchanting(TileEnchanter enchanter, InventoryPlayer inv) {
+        super(new ContainerEnchanter(enchanter, inv));
+        this.enchanter = enchanter;
+        lastTickStack = enchanter.getStackInSlot(0);
+        currentStack = enchanter.getStackInSlot(0);
+        lastTickEnchants = new ArrayList(enchanter.enchantments);
+        lastTickLevels = new ArrayList(enchanter.levels);
+    }
 
-	public TileEnchanter enchanter;
+    @Override
+    public void initGui() {
+        super.initGui();
 
-	GuiButtonEnchantment[] enchantButtons = new GuiButtonEnchantment[16];
+        x = (width - xSize) / 2;
+        y = (height - ySize) / 2;
 
-	public List<String> tooltip = new ArrayList();
+        buildButtonList();
+    }
 
-	List<Integer> lastTickEnchants;
-	List<Integer> lastTickLevels;
-	ItemStack lastTickStack;
-	ItemStack currentStack;
+    public void buildButtonList() {
+        buttonList.clear();
+        GuiButton enchantButton = new GuiButtonEnchant(this, enchanter, 0, x + 151, y + 33);
+        buttonList.add(enchantButton);
+        enchantButton.enabled = !enchanter.enchantments.isEmpty();
 
-	public GuiEnchanting(TileEnchanter enchanter, InventoryPlayer inv) {
-		super(new ContainerEnchanter(enchanter, inv));
-		this.enchanter = enchanter;
-		lastTickStack = enchanter.getStackInSlot(0);
-		currentStack = enchanter.getStackInSlot(0);
-		lastTickEnchants = new ArrayList(enchanter.enchantments);
-		lastTickLevels = new ArrayList(enchanter.levels);
-	}
+        for (int i = 0; i < 16; i++) {
+            int z = -24;
+            if (i > 7 || (enchantButtons[8] == null || !enchantButtons[8].enabled)) {
+                z = 0;
+            }
+            GuiButtonEnchantment button = new GuiButtonEnchantment(this, 1 + i, x + 34 + ((i) % 8) * 16, y + 54 + z);
+            enchantButtons[i] = button;
+            buttonList.add(button);
+        }
 
-	@Override
-	public void initGui() {
-		super.initGui();
+        asignEnchantButtons();
 
-		x = (width - xSize) / 2;
-		y = (height - ySize) / 2;
+        int i = 0;
+        for (Integer enchant : enchanter.enchantments) {
+            GuiButtonEnchantment button = new GuiButtonFramedEnchantment(this, 17 + i * 3, x + xSize + 4, y + i * 26);
+            button.enchant = Enchantment.enchantmentsList[enchant];
+            buttonList.add(button);
+            buttonList.add(new GuiButtonEnchanterLevel(17 + i * 3 + 1, x + xSize + 24, y + i * 26 - 4, false));
+            buttonList.add(new GuiButtonEnchanterLevel(17 + i * 3 + 2, x + xSize + 31, y + i * 26 - 4, true));
+            ++i;
+        }
+    }
 
-		buildButtonList();
-	}
+    public void asignEnchantButtons() {
+        for (int i = 0; i < 16; i++) {
+            enchantButtons[i].enchant = null;
+            enchantButtons[i].enabled = false;
+        }
 
-	public void buildButtonList() {
-		buttonList.clear();
-		GuiButton enchantButton = new GuiButtonEnchant(this, enchanter, 0, x + 151, y + 33);
-		buttonList.add(enchantButton);
-		enchantButton.enabled = !enchanter.enchantments.isEmpty();
+        if (currentStack == null || currentStack.isItemEnchanted())
+            return;
 
-		for (int i = 0; i < 16; i++) {
-			int z = -24;
-			if (i > 7 || (enchantButtons[8] == null || !enchantButtons[8].enabled)) {
-				z = 0;
-			}
-			GuiButtonEnchantment button = new GuiButtonEnchantment(this, 1 + i, x + 34 + ((i) % 8) * 16, y + 54 + z);
-			enchantButtons[i] = button;
-			buttonList.add(button);
-		}
+        int it = 0;
 
-		asignEnchantButtons();
+        for (int enchant : EnchantmentManager.enchantmentData.keySet()) {
+            if (currentStack.getItem().getItemEnchantability() != 0 && EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
+                enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
+                enchantButtons[it].enabled = true;
+                it++;
+                if (it >= 16)
+                    break;
+            }
+        }
 
-		int i = 0;
-		for (Integer enchant : enchanter.enchantments) {
-			GuiButtonEnchantment button = new GuiButtonFramedEnchantment(this, 17 + i * 3, x + xSize + 4, y + i * 26);
-			button.enchant = Enchantment.enchantmentsList[enchant];
-			buttonList.add(button);
-			buttonList.add(new GuiButtonEnchanterLevel(17 + i * 3 + 1, x + xSize + 24, y + i * 26 - 4, false));
-			buttonList.add(new GuiButtonEnchanterLevel(17 + i * 3 + 2, x + xSize + 31, y + i * 26 - 4, true));
-			++i;
-		}
-	}
+    }
 
-	public void asignEnchantButtons() {
-		for (int i = 0; i < 16; i++) {
-			enchantButtons[i].enchant = null;
-			enchantButtons[i].enabled = false;
-		}
+    @Override
+    protected void actionPerformed(GuiButton par1GuiButton) {
+        if (par1GuiButton.id == 0) {
+            ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterStartWorking(enchanter));
+        } else if (par1GuiButton.id <= 16) {
+            GuiButtonEnchantment button = enchantButtons[par1GuiButton.id - 1];
+            if (button != null && button.enchant != null)
+                ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, button.enchant.effectId, 0));
+        } else {
+            int type = (par1GuiButton.id - 17) % 3;
+            int index = (par1GuiButton.id - 17) / 3;
 
-		if (currentStack == null || currentStack.isItemEnchanted())
-			return;
+            if (index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
+                return;
 
-		int it = 0;
+            int level = enchanter.levels.get(index);
 
-		for (int enchant : EnchantmentManager.enchantmentData.keySet()) {
-			if (currentStack.getItem().getItemEnchantability() != 0 && EnchantmentManager.canApply(currentStack, Enchantment.enchantmentsList[enchant], enchanter.enchantments) && EnchantmentManager.canEnchantmentBeUsed(ClientHelper.clientPlayer().getGameProfile().getName(), Enchantment.enchantmentsList[enchant])) {
-				enchantButtons[it].enchant = Enchantment.enchantmentsList[enchant];
-				enchantButtons[it].enabled = true;
-				it++;
-				if (it >= 16)
-					break;
-			}
-		}
+            Enchantment enchant = Enchantment.enchantmentsList[enchanter.enchantments.get(index)];
 
-	}
+            switch (type) {
+                case 0: {
+                    ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, -1));
+                    break;
+                }
+                case 1: {
+                    ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, level == 1 ? -1 : level - 1));
+                    break;
+                }
+                case 2: {
+                    ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, level + 1));
+                    break;
+                }
+            }
+        }
 
-	@Override
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if (par1GuiButton.id == 0) {
-			ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterStartWorking(enchanter));
-		} else if (par1GuiButton.id <= 16) {
-			GuiButtonEnchantment button = enchantButtons[par1GuiButton.id - 1];
-			if (button != null && button.enchant != null)
-				ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, button.enchant.effectId, 0));
-		} else {
-			int type = (par1GuiButton.id - 17) % 3;
-			int index = (par1GuiButton.id - 17) / 3;
+        buildButtonList();
+    }
 
-			if (index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
-				return;
+    @Override
+    public void updateScreen() {
+        currentStack = enchanter.getStackInSlot(0);
+        buildButtonList();
+        if (currentStack != lastTickStack || !lastTickEnchants.equals(enchanter.enchantments) || !lastTickLevels.equals(enchanter.levels))
+            buildButtonList();
 
-			int level = enchanter.levels.get(index);
+        lastTickStack = currentStack;
+        lastTickEnchants = new ArrayList(enchanter.enchantments);
+        lastTickLevels = new ArrayList(enchanter.enchantments);
+    }
 
-			Enchantment enchant = Enchantment.enchantmentsList[enchanter.enchantments.get(index)];
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
+        GL11.glColor4f(1F, 1F, 1F, 1F);
+        mc.renderEngine.bindTexture(gui);
+        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
-			switch (type) {
-				case 0: {
-					ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, -1));
-					break;
-				}
-				case 1: {
-					ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, level == 1 ? -1 : level - 1));
-					break;
-				}
-				case 2: {
-					ThaumicTinkerer.netHandler.sendToServer(new PacketEnchanterAddEnchant(enchanter, enchant.effectId, level + 1));
-					break;
-				}
-			}
-		}
+        ItemStack itemToEnchant = enchanter.getStackInSlot(0);
+        if (enchantButtons[8].enabled) {
+            if (itemToEnchant != null && !itemToEnchant.isItemEnchanted())
+                drawTexturedModalRect(x + 30, y + 26, 0, ySize, 147, 24);
+        }
 
-		buildButtonList();
-	}
+        if (itemToEnchant != null && !itemToEnchant.isItemEnchanted())
+            drawTexturedModalRect(x + 30, y + 50, 0, ySize, 147, 24);
 
-	@Override
-	public void updateScreen() {
-		currentStack = enchanter.getStackInSlot(0);
-		buildButtonList();
-		if (currentStack != lastTickStack || !lastTickEnchants.equals(enchanter.enchantments) || !lastTickLevels.equals(enchanter.levels))
-			buildButtonList();
+        if (!enchanter.enchantments.isEmpty()) {
+            int x = this.x + 40;
+            GL11.glEnable(GL11.GL_BLEND);
+            int xo = 15;
+            int z = 50;
+            if (enchantButtons[8].enabled)
+                z = 26;
+            for (Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
+                drawAspectBar(aspect, x + xo, y + z, i, j);
+                xo += 15;
+            }
+            GL11.glDisable(GL11.GL_BLEND);
+        }
+    }
 
-		lastTickStack = currentStack;
-		lastTickEnchants = new ArrayList(enchanter.enchantments);
-		lastTickLevels = new ArrayList(enchanter.enchantments);
-	}
+    @Override
+    protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+        if (!tooltip.isEmpty())
+            ClientHelper.renderTooltip(par1 - x, par2 - y, tooltip);
+        tooltip.clear();
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		mc.renderEngine.bindTexture(gui);
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+    private void drawAspectBar(Aspect aspect, int x, int y, int mx, int my) {
+        int totalCost = enchanter.totalAspects.getAmount(aspect);
+        int current = enchanter.currentAspects.getAmount(aspect);
 
-		ItemStack itemToEnchant = enchanter.getStackInSlot(0);
-		if (enchantButtons[8].enabled) {
-			if (itemToEnchant != null && !itemToEnchant.isItemEnchanted())
-				drawTexturedModalRect(x + 30, y + 26, 0, ySize, 147, 24);
-		}
+        int size = totalCost == 0 ? 11 : 59;
 
-		if (itemToEnchant != null && !itemToEnchant.isItemEnchanted())
-			drawTexturedModalRect(x + 30, y + 50, 0, ySize, 147, 24);
+        if (totalCost == 0) {
+            drawTexturedModalRect(x, y - size, 200, 0, 10, 4);
+            drawTexturedModalRect(x, y - size + 4, 200, 52, 10, 10);
+        } else {
+            int pixels = (int) (48D * ((double) current / (double) totalCost));
+            Color color = new Color(aspect.getColor());
+            GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
+            drawTexturedModalRect(x + 1, y - size + 4 + 48 - pixels, 210, 48 - pixels, 8, pixels);
+            GL11.glColor3f(1F, 1F, 1F);
+            drawTexturedModalRect(x, y - size, 200, 0, 10, size);
+        }
 
-		if (!enchanter.enchantments.isEmpty()) {
-			int x = this.x + 40;
-			GL11.glEnable(GL11.GL_BLEND);
-			int xo = 15;
-			int z = 50;
-			if (enchantButtons[8].enabled)
-				z = 26;
-			for (Aspect aspect : LibFeatures.PRIMAL_ASPECTS) {
-				drawAspectBar(aspect, x + xo, y + z, i, j);
-				xo += 15;
-			}
-			GL11.glDisable(GL11.GL_BLEND);
-		}
-	}
-
-	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		if (!tooltip.isEmpty())
-			ClientHelper.renderTooltip(par1 - x, par2 - y, tooltip);
-		tooltip.clear();
-	}
-
-	private void drawAspectBar(Aspect aspect, int x, int y, int mx, int my) {
-		int totalCost = enchanter.totalAspects.getAmount(aspect);
-		int current = enchanter.currentAspects.getAmount(aspect);
-
-		int size = totalCost == 0 ? 11 : 59;
-
-		if (totalCost == 0) {
-			drawTexturedModalRect(x, y - size, 200, 0, 10, 4);
-			drawTexturedModalRect(x, y - size + 4, 200, 52, 10, 10);
-		} else {
-			int pixels = (int) (48D * ((double) current / (double) totalCost));
-			Color color = new Color(aspect.getColor());
-			GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
-			drawTexturedModalRect(x + 1, y - size + 4 + 48 - pixels, 210, 48 - pixels, 8, pixels);
-			GL11.glColor3f(1F, 1F, 1F);
-			drawTexturedModalRect(x, y - size, 200, 0, 10, size);
-		}
-
-		if (mx > x && mx <= x + 10 && my > y - size && my <= y) {
-			List<String> tooltip = new ArrayList();
-			tooltip.add('\u00a7' + aspect.getChatcolor() + aspect.getName());
-			tooltip.add(current + "/" + totalCost);
-			this.tooltip = tooltip;
-		}
-	}
+        if (mx > x && mx <= x + 10 && my > y - size && my <= y) {
+            List<String> tooltip = new ArrayList();
+            tooltip.add('\u00a7' + aspect.getChatcolor() + aspect.getName());
+            tooltip.add(current + "/" + totalCost);
+            this.tooltip = tooltip;
+        }
+    }
 
 }

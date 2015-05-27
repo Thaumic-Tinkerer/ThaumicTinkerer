@@ -47,93 +47,93 @@ import java.util.Random;
 
 public class BlockSummon extends Block implements ITTinkererBlock {
 
-	IIcon iconTop;
-	IIcon iconSide;
+    IIcon iconTop;
+    IIcon iconSide;
 
-	Random random;
+    Random random;
 
-	public BlockSummon() {
-		super(Material.iron);
-		setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
-		setHardness(3F);
-		setResistance(50F);
-		setStepSound(Block.soundTypeMetal);
+    public BlockSummon() {
+        super(Material.iron);
+        setBlockBounds(0F, 0F, 0F, 1F, 1F / 16F * 2F, 1F);
+        setHardness(3F);
+        setResistance(50F);
+        setStepSound(Block.soundTypeMetal);
 
-		random = new Random();
-	}
+        random = new Random();
+    }
 
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
 
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean hasTileEntity(int metadata) {
-		return true;
-	}
+    @Override
+    public boolean hasTileEntity(int metadata) {
+        return true;
+    }
 
-	@Override
-	public TileEntity createTileEntity(World world, int meta) {
-		return new TileSummon();
-	}
+    @Override
+    public TileEntity createTileEntity(World world, int meta) {
+        return new TileSummon();
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister) {
-		iconTop = IconHelper.forBlock(iconRegister, this, 1);
-		iconSide = IconHelper.forBlock(iconRegister, this, 2);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister) {
+        iconTop = IconHelper.forBlock(iconRegister, this, 1);
+        iconSide = IconHelper.forBlock(iconRegister, this, 2);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int par1, int meta) {
-		return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? Block.getBlockFromName("obsidian").getIcon(0, 0) : iconSide;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int par1, int meta) {
+        return par1 == ForgeDirection.UP.ordinal() ? iconTop : par1 == ForgeDirection.DOWN.ordinal() ? Block.getBlockFromName("obsidian").getIcon(0, 0) : iconSide;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.SPAWNER;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.SPAWNER;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return TileSummon.class;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return TileSummon.class;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
+    @Override
+    public IRegisterableResearch getResearchItem() {
         return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_SUMMON, new AspectList().add(Aspect.WEAPON, 1).add(Aspect.BEAST, 3).add(Aspect.MAGIC, 3), -5, 8, 3, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class))).setWarp(3).setParents(LibResearch.KEY_BLOOD_SWORD)
                 .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_SUMMON + "0"), ResearchHelper.recipePage(LibResearch.KEY_SUMMON + "1"), ResearchHelper.infusionPage(LibResearch.KEY_SUMMON), new ResearchPage("1"));
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SUMMON + "0", LibResearch.KEY_SUMMON, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class)), new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1));
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SUMMON + "0", LibResearch.KEY_SUMMON, new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockSummon.class)), new AspectList().add(Aspect.ORDER, 50).add(Aspect.ENTROPY, 50), "WWW", "SSS", 'S', new ItemStack(Blocks.stone), 'W', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1));
+    }
 }

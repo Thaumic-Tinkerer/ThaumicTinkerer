@@ -21,8 +21,8 @@ import thaumic.tinkerer.common.core.handler.ConfigHandler;
 public final class RecipeHelper {
 
 
-	public static Object oreDictOrStack(ItemStack stack, String oreDict) {
-		return OreDictionary.getOres(oreDict).isEmpty() && ConfigHandler.useOreDictMetal ? stack : oreDict;
-	}
+    public static Object oreDictOrStack(ItemStack stack, String oreDict) {
+        return OreDictionary.getOres(oreDict).isEmpty() && ConfigHandler.useOreDictMetal ? stack : oreDict;
+    }
 
 }

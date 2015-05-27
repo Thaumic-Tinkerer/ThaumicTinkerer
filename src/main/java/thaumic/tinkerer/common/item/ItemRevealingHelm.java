@@ -50,87 +50,87 @@ import java.util.List;
 
 public class ItemRevealingHelm extends ItemArmor implements IRepairable, IRevealer, IGoggles, IVisDiscountGear, ITTinkererItem {
 
-	public ItemRevealingHelm() {
-		super(ThaumcraftApi.armorMatThaumium, 2, 0);
-		setMaxDamage(500);
-		setCreativeTab(ModCreativeTab.INSTANCE);
-	}
+    public ItemRevealingHelm() {
+        super(ThaumcraftApi.armorMatThaumium, 2, 0);
+        setMaxDamage(500);
+        setCreativeTab(ModCreativeTab.INSTANCE);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = IconHelper.forItem(par1IconRegister, this);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        itemIcon = IconHelper.forItem(par1IconRegister, this);
+    }
 
-	@Override
-	public boolean showNodes(ItemStack paramItemStack, EntityLivingBase paramEntityLivingBase) {
-		return true;
-	}
+    @Override
+    public boolean showNodes(ItemStack paramItemStack, EntityLivingBase paramEntityLivingBase) {
+        return true;
+    }
 
-	@Override
-	public boolean showIngamePopups(ItemStack paramItemStack, EntityLivingBase paramEntityLivingBase) {
-		return true;
-	}
+    @Override
+    public boolean showIngamePopups(ItemStack paramItemStack, EntityLivingBase paramEntityLivingBase) {
+        return true;
+    }
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
-		list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + 5 + "%");
-	}
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+        list.add(StatCollector.translateToLocal("tc.visdiscount") + ": " + 5 + "%");
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return LibResources.MODEL_REVEALING_HELM;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+        return LibResources.MODEL_REVEALING_HELM;
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return EnumRarity.uncommon;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return par2ItemStack.isItemEqual(new ItemStack(ConfigItems.itemResource, 1, 2)) || super.getIsRepairable(par1ItemStack, par2ItemStack);
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
+        return par2ItemStack.isItemEqual(new ItemStack(ConfigItems.itemResource, 1, 2)) || super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
 
-	@Override
-	public int getVisDiscount(ItemStack Itemstack, EntityPlayer Player, Aspect Aspect) {
-		return 5;
-	}
+    @Override
+    public int getVisDiscount(ItemStack Itemstack, EntityPlayer Player, Aspect Aspect) {
+        return 5;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.REVEALING_HELM;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.REVEALING_HELM;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		IRegisterableResearch research;
-		research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_REVEALING_HELM, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(this)).setParents("GOGGLES").setParentsHidden("THAUMIUM");
-		((TTResearchItem) research).setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
-		return research;
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        IRegisterableResearch research;
+        research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_REVEALING_HELM, new AspectList().add(Aspect.AURA, 2).add(Aspect.ARMOR, 1), 0, 0, 1, new ItemStack(this)).setParents("GOGGLES").setParentsHidden("THAUMIUM");
+        ((TTResearchItem) research).setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_REVEALING_HELM));
+        return research;
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(this), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
-				"GH",
-				'G', new ItemStack(ConfigItems.itemGoggles),
-				'H', new ItemStack(ConfigItems.itemHelmetThaumium));
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_REVEALING_HELM, LibResearch.KEY_REVEALING_HELM, new ItemStack(this), new AspectList().add(Aspect.EARTH, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
+                "GH",
+                'G', new ItemStack(ConfigItems.itemGoggles),
+                'H', new ItemStack(ConfigItems.itemHelmetThaumium));
+    }
 }

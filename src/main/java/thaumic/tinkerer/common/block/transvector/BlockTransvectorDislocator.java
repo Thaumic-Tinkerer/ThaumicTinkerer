@@ -49,140 +49,140 @@ import java.util.Random;
 
 public class BlockTransvectorDislocator extends BlockCamo {
 
-	IIcon[] icons = new IIcon[2];
+    IIcon[] icons = new IIcon[2];
 
-	public BlockTransvectorDislocator() {
-		super(Material.iron);
-		setHardness(3F);
-		setResistance(10F);
-	}
+    public BlockTransvectorDislocator() {
+        super(Material.iron);
+        setHardness(3F);
+        setResistance(10F);
+    }
 
-	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+    @Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
-		TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
-		ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
+        TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
+        ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
-		if (currentStack != null && currentStack.getItem() == ConfigItems.itemWandCasting) {
-			dislocator.orientation = par6;
-			par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
+        if (currentStack != null && currentStack.getItem() == ConfigItems.itemWandCasting) {
+            dislocator.orientation = par6;
+            par1World.playSoundEffect(par2, par3, par4, "thaumcraft:tool", 0.6F, 1F);
 
-			par1World.markBlockForUpdate(par2, par3, par4);
+            par1World.markBlockForUpdate(par2, par3, par4);
 
-			return true;
-		}
+            return true;
+        }
 
-		return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
-	}
+        return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
+    }
 
-	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
-		if (par1World.isRemote)
-			return;
+    @Override
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
+        if (par1World.isRemote)
+            return;
 
-		boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
-		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		boolean on = meta != 0;
+        boolean power = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
+        int meta = par1World.getBlockMetadata(par2, par3, par4);
+        boolean on = meta != 0;
 
-		if (power && !on) {
-			par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 4);
-		} else if (!power && on)
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
-	}
+        if (power && !on) {
+            par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World));
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 4);
+        } else if (!power && on)
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
+    }
 
-	@Override
-	public int tickRate(World par1World) {
-		return 1;
-	}
+    @Override
+    public int tickRate(World par1World) {
+        return 1;
+    }
 
-	@Override
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		if (tile != null && tile instanceof TileTransvectorDislocator) {
-			TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
-			dislocator.receiveRedstonePulse();
-		}
-	}
+    @Override
+    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+        if (tile != null && tile instanceof TileTransvectorDislocator) {
+            TileTransvectorDislocator dislocator = (TileTransvectorDislocator) tile;
+            dislocator.receiveRedstonePulse();
+        }
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons[0] = IconHelper.forBlock(par1IconRegister, this, 0);
-		icons[1] = IconHelper.forBlock(par1IconRegister, this, 1);
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        icons[0] = IconHelper.forBlock(par1IconRegister, this, 0);
+        icons[1] = IconHelper.forBlock(par1IconRegister, this, 1);
+    }
 
-	@Override
-	public IIcon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
-		return icons[((TileTransvectorDislocator) tile).orientation == side ? 1 : 0];
-	}
+    @Override
+    public IIcon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
+        return icons[((TileTransvectorDislocator) tile).orientation == side ? 1 : 0];
+    }
 
-	@Override
-	public IIcon getIcon(int par1, int par2) {
-		return icons[0];
-	}
+    @Override
+    public IIcon getIcon(int par1, int par2) {
+        return icons[0];
+    }
 
-	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
-		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		((TileTransvectorDislocator) tile).orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
-		par1World.markBlockForUpdate(par2, par3, par4);
-	}
+    @Override
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
+        TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+        ((TileTransvectorDislocator) tile).orientation = BlockPistonBase.determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
+        par1World.markBlockForUpdate(par2, par3, par4);
+    }
 
-	@Override
-	public TileCamo createNewTileEntity(World world, int var2) {
-		return new TileTransvectorDislocator();
-	}
+    @Override
+    public TileCamo createNewTileEntity(World world, int var2) {
+        return new TileTransvectorDislocator();
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.DISLOCATOR;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.DISLOCATOR;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return TileTransvectorDislocator.class;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return TileTransvectorDislocator.class;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		if (!Config.allowMirrors) {
-			return null;
-		}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        if (!Config.allowMirrors) {
+            return null;
+        }
 
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(this)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR")
-				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_DISLOCATOR)).setSecondary();
-	}
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DISLOCATOR, new AspectList().add(Aspect.TRAVEL, 2).add(Aspect.MECHANISM, 1).add(Aspect.ELDRITCH, 1), -6, 1, 3, new ItemStack(this)).setConcealed().setParents(LibResearch.KEY_INTERFACE).setParentsHidden("MIRROR")
+                .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_DISLOCATOR)).setSecondary();
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		if (!Config.allowMirrors) {
-			return null;
-		}
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(this), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
-				" M ", " I ", " C ",
-				'M', new ItemStack(ConfigItems.itemResource, 1, 10),
-				'I', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)),
-				'C', new ItemStack(Items.comparator));
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        if (!Config.allowMirrors) {
+            return null;
+        }
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_DISLOCATOR, LibResearch.KEY_DISLOCATOR, new ItemStack(this), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ENTROPY, 5),
+                " M ", " I ", " C ",
+                'M', new ItemStack(ConfigItems.itemResource, 1, 10),
+                'I', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockTransvectorInterface.class)),
+                'C', new ItemStack(Items.comparator));
+    }
 }

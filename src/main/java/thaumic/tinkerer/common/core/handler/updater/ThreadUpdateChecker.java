@@ -16,10 +16,10 @@ package thaumic.tinkerer.common.core.handler.updater;
 
 public class ThreadUpdateChecker extends Thread {
 
-	boolean checkBuilds;
+    boolean checkBuilds;
 
-	public ThreadUpdateChecker(boolean checkBuilds) {
+    public ThreadUpdateChecker(boolean checkBuilds) {
 
-	}
+    }
 
 }

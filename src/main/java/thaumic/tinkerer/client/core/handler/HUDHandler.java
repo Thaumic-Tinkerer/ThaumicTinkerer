@@ -26,7 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumic.tinkerer.client.core.helper.ClientHelper;
@@ -34,55 +34,55 @@ import thaumic.tinkerer.common.item.foci.ItemFocusDislocation;
 
 public final class HUDHandler {
 
-	RenderItem renderItem = new RenderItem();
+    RenderItem renderItem = new RenderItem();
 
-	@SubscribeEvent
-	public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
-		if (event.type == ElementType.HOTBAR && ClientHelper.minecraft().currentScreen == null) {
-			boolean up = !Config.dialBottom;
-			int xpos = 4;
-			int ypos = up ? 50 : event.resolution.getScaledHeight() - 70;
+    @SubscribeEvent
+    public void drawDislocationFocusHUD(RenderGameOverlayEvent.Post event) {
+        if (event.type == ElementType.HOTBAR && ClientHelper.minecraft().currentScreen == null) {
+            boolean up = !Config.dialBottom;
+            int xpos = 4;
+            int ypos = up ? 50 : event.resolution.getScaledHeight() - 70;
 
-			ItemStack item = ClientHelper.clientPlayer().getCurrentEquippedItem();
-			if (item != null && item.getItem() instanceof ItemWandCasting) {
-				ItemWandCasting wand = (ItemWandCasting) item.getItem();
-				wand.getFocusItem(item);
-				IWandFocus focus = wand.getFocus(item);
+            ItemStack item = ClientHelper.clientPlayer().getCurrentEquippedItem();
+            if (item != null && item.getItem() instanceof ItemWandCasting) {
+                ItemWandCasting wand = (ItemWandCasting) item.getItem();
+                wand.getFocusItem(item);
+                ItemFocusBasic focus = wand.getFocus(item);
 
-				if (focus != null && focus instanceof ItemFocusDislocation) {
-					ItemStack pickedBlock = ((ItemFocusDislocation) focus).getPickedBlock(item);
-					if (pickedBlock != null) {
-						Gui.drawRect(xpos - 1, ypos - 1, xpos + 18, ypos + 18, 0x66000000);
+                if (focus != null && focus instanceof ItemFocusDislocation) {
+                    ItemStack pickedBlock = ((ItemFocusDislocation) focus).getPickedBlock(item);
+                    if (pickedBlock != null) {
+                        Gui.drawRect(xpos - 1, ypos - 1, xpos + 18, ypos + 18, 0x66000000);
 
-						FontRenderer font = ClientHelper.fontRenderer();
-						boolean unicode = font.getUnicodeFlag();
-						font.setUnicodeFlag(true);
-						String name = StatCollector.translateToLocal("ttmisc.focusDislocation.tooltip");
-						int strLength = font.getStringWidth(name);
+                        FontRenderer font = ClientHelper.fontRenderer();
+                        boolean unicode = font.getUnicodeFlag();
+                        font.setUnicodeFlag(true);
+                        String name = StatCollector.translateToLocal("ttmisc.focusDislocation.tooltip");
+                        int strLength = font.getStringWidth(name);
 
-						Gui.drawRect(xpos + 18, ypos, xpos + 18 + strLength + 4, ypos + 9, 0x66000000);
-						font.drawStringWithShadow(name, xpos + 20, ypos, 0xFFAA00);
+                        Gui.drawRect(xpos + 18, ypos, xpos + 18 + strLength + 4, ypos + 9, 0x66000000);
+                        font.drawStringWithShadow(name, xpos + 20, ypos, 0xFFAA00);
 
-						NBTTagCompound cmp = ((ItemFocusDislocation) focus).getStackTileEntity(item);
-						if (cmp != null && !cmp.hasNoTags()) {
-							String content = StatCollector.translateToLocal("ttmisc.focusDislocation.tooltipExtra");
-							font.getStringWidth(content);
+                        NBTTagCompound cmp = ((ItemFocusDislocation) focus).getStackTileEntity(item);
+                        if (cmp != null && !cmp.hasNoTags()) {
+                            String content = StatCollector.translateToLocal("ttmisc.focusDislocation.tooltipExtra");
+                            font.getStringWidth(content);
 
-							Gui.drawRect(xpos + 18, ypos + 9, xpos + 18 + strLength + 4, ypos + 18, 0x66000000);
-							font.drawStringWithShadow(content, xpos + 20, ypos + 9, 0xFFAA00);
-						}
+                            Gui.drawRect(xpos + 18, ypos + 9, xpos + 18 + strLength + 4, ypos + 18, 0x66000000);
+                            font.drawStringWithShadow(content, xpos + 20, ypos + 9, 0xFFAA00);
+                        }
 
-						if (new ItemStack(((ItemBlock) pickedBlock.getItem()).field_150939_a).getItem() != null)
-							renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(((ItemBlock) pickedBlock.getItem()).field_150939_a), xpos, ypos);
-						else {
-							if (((ItemBlock) pickedBlock.getItem()).field_150939_a == Blocks.reeds)
-								renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(Items.reeds), xpos, ypos);
-						}
-						font.setUnicodeFlag(unicode);
-					}
-				}
-			}
-		}
-	}
+                        if (new ItemStack(((ItemBlock) pickedBlock.getItem()).field_150939_a).getItem() != null)
+                            renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(((ItemBlock) pickedBlock.getItem()).field_150939_a), xpos, ypos);
+                        else {
+                            if (((ItemBlock) pickedBlock.getItem()).field_150939_a == Blocks.reeds)
+                                renderItem.renderItemIntoGUI(font, ClientHelper.minecraft().renderEngine, new ItemStack(Items.reeds), xpos, ypos);
+                        }
+                        font.setUnicodeFlag(unicode);
+                    }
+                }
+            }
+        }
+    }
 
 }

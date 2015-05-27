@@ -36,146 +36,146 @@ import java.util.Random;
 
 public abstract class BlockGas extends BlockMod implements ITTinkererBlock {
 
-	public BlockGas() {
-		super(Material.air);
-		setBlockBounds(0, 0, 0, 0, 0, 0);
-		setTickRandomly(true);
-	}
+    public BlockGas() {
+        super(Material.air);
+        setBlockBounds(0, 0, 0, 0, 0, 0);
+        setTickRandomly(true);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		blockIcon = IconHelper.emptyTexture(par1IconRegister);
-	}
+    public BlockGas(Material par2Material) {
+        super(par2Material);
+    }
 
-	@Override
-	public int getRenderType() {
-		return -1;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        blockIcon = IconHelper.emptyTexture(par1IconRegister);
+    }
 
-	@Override
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (meta != 0) {
-			setAt(par1World, par2 - 1, par3, par4, meta - 1);
-			setAt(par1World, par2 + 1, par3, par4, meta - 1);
+    @Override
+    public int getRenderType() {
+        return -1;
+    }
 
-			setAt(par1World, par2, par3 - 1, par4, meta - 1);
-			setAt(par1World, par2, par3 + 1, par4, meta - 1);
+    @Override
+    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+        int meta = par1World.getBlockMetadata(par2, par3, par4);
+        if (meta != 0) {
+            setAt(par1World, par2 - 1, par3, par4, meta - 1);
+            setAt(par1World, par2 + 1, par3, par4, meta - 1);
 
-			setAt(par1World, par2, par3, par4 - 1, meta - 1);
-			setAt(par1World, par2, par3, par4 + 1, meta - 1);
+            setAt(par1World, par2, par3 - 1, par4, meta - 1);
+            setAt(par1World, par2, par3 + 1, par4, meta - 1);
 
-			// Just in case...
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
+            setAt(par1World, par2, par3, par4 - 1, meta - 1);
+            setAt(par1World, par2, par3, par4 + 1, meta - 1);
 
-			placeParticle(par1World, par2, par3, par4);
-		}
-	}
+            // Just in case...
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
 
-	public void placeParticle(World world, int par2, int par3, int par4) {
-		// NO-OP, override
-	}
+            placeParticle(par1World, par2, par3, par4);
+        }
+    }
 
-	private void setAt(World world, int x, int y, int z, int meta) {
-		if (world.isAirBlock(x, y, z) && world.getBlock(x, y, z) != this) {
-			if (!world.isRemote)
-				world.setBlock(x, y, z, this, meta, 2);
-			world.scheduleBlockUpdate(x, y, z, this, 10);
-		}
-	}
+    public void placeParticle(World world, int par2, int par3, int par4) {
+        // NO-OP, override
+    }
 
-	@Override
-	public boolean isBlockNormalCube() {
-		return false;
-	}
+    private void setAt(World world, int x, int y, int z, int meta) {
+        if (world.isAirBlock(x, y, z) && world.getBlock(x, y, z) != this) {
+            if (!world.isRemote)
+                world.setBlock(x, y, z, this, meta, 2);
+            world.scheduleBlockUpdate(x, y, z, this, 10);
+        }
+    }
 
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
+    @Override
+    public boolean isBlockNormalCube() {
+        return false;
+    }
 
-	@Override
-	public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity e) {
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	public boolean canCollideCheck(int par1, boolean par2) {
-		return false;
-	}
+    @Override
+    public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity e) {
+        return false;
+    }
 
-	@Override
-	public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z) {
-		return true;
-	}
+    @Override
+    public boolean canCollideCheck(int par1, boolean par2) {
+        return false;
+    }
 
-	@Override
-	public boolean canDropFromExplosion(Explosion par1Explosion) {
-		return false;
-	}
+    @Override
+    public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z) {
+        return true;
+    }
 
-	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		return new ArrayList(); // Empty List
-	}
+    @Override
+    public boolean canDropFromExplosion(Explosion par1Explosion) {
+        return false;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
-		return null;
-	}
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+        return new ArrayList(); // Empty List
+    }
 
-	@Override
-	public boolean isAir(IBlockAccess world, int x, int y, int z) {
-		return true;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+        return null;
+    }
 
-	@Override
-	boolean registerInCreative() {
-		return false;
-	}
+    @Override
+    public boolean isAir(IBlockAccess world, int x, int y, int z) {
+        return true;
+    }
 
-	public BlockGas(Material par2Material) {
-		super(par2Material);
-	}
+    @Override
+    boolean registerInCreative() {
+        return false;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean func_149730_j() {
-		return super.func_149730_j();
-	}
+    @Override
+    public boolean func_149730_j() {
+        return super.func_149730_j();
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return false;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return false;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return null;
+    }
 }

@@ -23,64 +23,64 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileCamo extends TileEntity implements IMovableTile {
 
-	private static final String TAG_CAMO = "camo";
-	private static final String TAG_CAMO_META = "camoMeta";
+    private static final String TAG_CAMO = "camo";
+    private static final String TAG_CAMO_META = "camoMeta";
 
-	public Block camo;
-	public int camoMeta;
+    public Block camo;
+    public int camoMeta;
 
-	@Override
-	public boolean canUpdate() {
-		return false;
-	}
+    @Override
+    public boolean canUpdate() {
+        return false;
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
-		super.writeToNBT(par1nbtTagCompound);
+    @Override
+    public void writeToNBT(NBTTagCompound par1nbtTagCompound) {
+        super.writeToNBT(par1nbtTagCompound);
 
-		writeCustomNBT(par1nbtTagCompound);
-	}
+        writeCustomNBT(par1nbtTagCompound);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
-		super.readFromNBT(par1nbtTagCompound);
+    @Override
+    public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
+        super.readFromNBT(par1nbtTagCompound);
 
-		readCustomNBT(par1nbtTagCompound);
-	}
+        readCustomNBT(par1nbtTagCompound);
+    }
 
-	public void writeCustomNBT(NBTTagCompound cmp) {
-		if (camo != null) {
-			cmp.setString(TAG_CAMO, Block.blockRegistry.getNameForObject(camo));
-			cmp.setInteger(TAG_CAMO_META, camoMeta);
-		}
-	}
+    public void writeCustomNBT(NBTTagCompound cmp) {
+        if (camo != null) {
+            cmp.setString(TAG_CAMO, Block.blockRegistry.getNameForObject(camo));
+            cmp.setInteger(TAG_CAMO_META, camoMeta);
+        }
+    }
 
-	public void readCustomNBT(NBTTagCompound cmp) {
-		camo = Block.getBlockFromName(cmp.getString(TAG_CAMO));
-		camoMeta = cmp.getInteger(TAG_CAMO_META);
-	}
+    public void readCustomNBT(NBTTagCompound cmp) {
+        camo = Block.getBlockFromName(cmp.getString(TAG_CAMO));
+        camoMeta = cmp.getInteger(TAG_CAMO_META);
+    }
 
-	@Override
-	public S35PacketUpdateTileEntity getDescriptionPacket() {
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		writeCustomNBT(nbttagcompound);
-		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
-	}
+    @Override
+    public S35PacketUpdateTileEntity getDescriptionPacket() {
+        NBTTagCompound nbttagcompound = new NBTTagCompound();
+        writeCustomNBT(nbttagcompound);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
+    }
 
-	@Override
-	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
-		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.func_148857_g());
-		worldObj.markBlockRangeForRenderUpdate(xCoord, yCoord, zCoord, xCoord, yCoord, zCoord);
-	}
+    @Override
+    public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
+        super.onDataPacket(manager, packet);
+        readCustomNBT(packet.func_148857_g());
+        worldObj.markBlockRangeForRenderUpdate(xCoord, yCoord, zCoord, xCoord, yCoord, zCoord);
+    }
 
-	@Override
-	public boolean prepareToMove() {
-		return true;
-	}
+    @Override
+    public boolean prepareToMove() {
+        return true;
+    }
 
-	@Override
-	public void doneMoving() {
+    @Override
+    public void doneMoving() {
 
-	}
+    }
 }

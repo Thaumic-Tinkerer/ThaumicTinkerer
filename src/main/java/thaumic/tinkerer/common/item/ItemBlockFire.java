@@ -15,69 +15,69 @@ import java.util.ArrayList;
 
 public class ItemBlockFire extends ItemBlock implements ITTinkererItem {
 
-	public ItemBlockFire(Block block) {
-		super(block);
-	}
+    private IIcon icon;
 
-	@Override
-	public int getMetadata(int par1) {
-		return 0;
-	}
+    public ItemBlockFire(Block block) {
+        super(block);
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public int getMetadata(int par1) {
+        return 0;
+    }
 
-	@Override
-	public String getItemName() {
-		return ((ITTinkererBlock) field_150939_a).getBlockName();
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public String getItemName() {
+        return ((ITTinkererBlock) field_150939_a).getBlockName();
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	private IIcon icon;
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 
-	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		String s = "";
-		if (field_150939_a instanceof BlockFireAir) {
-			s = "aer";
-		}
-		if (field_150939_a instanceof BlockFireEarth) {
-			s = "terra";
-		}
-		if (field_150939_a instanceof BlockFireWater) {
-			s = "aqua";
-		}
-		if (field_150939_a instanceof BlockFireIgnis) {
-			s = "ignis";
-		}
-		if (field_150939_a instanceof BlockFireOrder) {
-			s = "ordo";
-		}
-		if (field_150939_a instanceof BlockFireChaos) {
-			s = "perditio";
-		}
-		s += "Fire";
-		icon = IconHelper.forName(par1IconRegister, s);
-	}
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister) {
+        String s = "";
+        if (field_150939_a instanceof BlockFireAir) {
+            s = "aer";
+        }
+        if (field_150939_a instanceof BlockFireEarth) {
+            s = "terra";
+        }
+        if (field_150939_a instanceof BlockFireWater) {
+            s = "aqua";
+        }
+        if (field_150939_a instanceof BlockFireIgnis) {
+            s = "ignis";
+        }
+        if (field_150939_a instanceof BlockFireOrder) {
+            s = "ordo";
+        }
+        if (field_150939_a instanceof BlockFireChaos) {
+            s = "perditio";
+        }
+        s += "Fire";
+        icon = IconHelper.forName(par1IconRegister, s);
+    }
 }

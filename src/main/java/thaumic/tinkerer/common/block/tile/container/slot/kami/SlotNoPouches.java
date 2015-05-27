@@ -22,13 +22,13 @@ import thaumcraft.common.items.wands.ItemFocusPouch;
 
 public class SlotNoPouches extends Slot {
 
-	public SlotNoPouches(IInventory par1iInventory, int par2, int par3, int par4) {
-		super(par1iInventory, par2, par3, par4);
-	}
+    public SlotNoPouches(IInventory par1iInventory, int par2, int par3, int par4) {
+        super(par1iInventory, par2, par3, par4);
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack par1ItemStack) {
-		Item item = par1ItemStack.getItem();
-		return !(item instanceof ItemFocusPouch);
-	}
+    @Override
+    public boolean isItemValid(ItemStack par1ItemStack) {
+        Item item = par1ItemStack.getItem();
+        return !(item instanceof ItemFocusPouch);
+    }
 }

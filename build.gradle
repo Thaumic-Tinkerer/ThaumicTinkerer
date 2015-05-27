@@ -1,4 +1,4 @@
-buildscript {
+    buildscript {
     repositories {
         mavenCentral()
         maven {
@@ -12,6 +12,7 @@ buildscript {
         maven {
             url 'https://oss.sonatype.org/content/groups/public'
         }
+
         mavenLocal()
     }
     dependencies {
@@ -37,20 +38,25 @@ repositories {
         name 'DVS1 Maven FS'
         url 'http://dvs1.progwml6.com/files/maven'
     }
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
     maven { // the repo from which to get NEI and stuff
         name 'CB Repo'
         url "http://chickenbones.net/maven/"
     }
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven {
+
+        url  'http://maven.cil.li/'
+    }
+
+
 }
 String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
-//apply plugin: 'curseforge'
 apply plugin: 'forge'
-
+//apply plugin: "curseforge"
 
 
 
@@ -58,7 +64,7 @@ group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "ThaumicTinkerer"
 
 minecraft {
-    version = "1.7.10-10.13.2.1232"
+    version = "1.7.10-10.13.2.1291"
     //minecraftVersion="1.7.2"
     runDir = "eclipse"
     replace '${version}', project.version
@@ -75,25 +81,31 @@ if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
 //curse {
-//    projectId="75598"
-//    if(project.hasProperty("apiKey"))
-//        apiKey=project.apiKey
-//   changelog="test"
-//   if(project.hasProperty("releaseType"))
-//       releaseType=project.releaseType
+//	projectId="75598"
+//	version = "2.5-${minecraft.version}"
+//	if (System.getenv("BUILD_NUMBER")!=null)
+//	version = "$version-${System.getenv().BUILD_NUMBER}"
+//	if(project.hasProperty("apiKey"))
+//	apiKey=project.apiKey
+//	changelog=" "
+//	releaseType="release"
+//	addGameVersion "{minecraft.version}"
 //}
 
 
 dependencies {
-    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.104:dev"
-    compile "mcp.mobius.waila:Waila:1.5.3a_1.7.10"
+    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.106:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
+    compile "mcp.mobius.waila:Waila:1.5.8_1.7.10"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.0.300:dev"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.3.25:dev"
 
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.51:dev"
+    compile 'com.mod-buildcraft:buildcraft:6.3.3:dev'
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.67:dev"
     compile "codechicken:EnderStorage:1.7.10-1.4.5.22:dev"
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
-    compile("tconstruct:TConstruct:1.7.10-1.6.0.build625:deobf") {
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.6.376-dev:api"
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.6.376-dev:dev"
+    compile("tconstruct:TConstruct:1.7.10-1.7.1.build789:deobf") {
     }
 }
 // some crazy stuff to make sure the chicken stuff is in the mods folder...
@@ -107,8 +119,8 @@ task copyChicken(type: Copy, dependsOn: "extractUserDev") {
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
 }
-tasks.setupDevWorkspace.dependsOn copyChicken
-tasks.setupDecompWorkspace.dependsOn copyChicken
+//tasks.setupDevWorkspace.dependsOn copyChicken
+//tasks.setupDecompWorkspace.dependsOn copyChicken
 processResources
         {
             // replace stuff in mcmod.info, nothing else

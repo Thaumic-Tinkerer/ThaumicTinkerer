@@ -1,8 +1,9 @@
 package appeng.api.implementations;
 
+import appeng.api.networking.crafting.ICraftingPatternDetails;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import appeng.api.crafting.ICraftingPatternMAC;
+import net.minecraft.world.World;
 
 /**
  * Implemented on {@link Item}
@@ -11,11 +12,11 @@ public interface ICraftingPatternItem
 {
 
 	/**
-	 * Get information about the contents of a crafting pattern.
-	 * 
-	 * @param is
-	 *            potential crafting pattern.
-	 * @return the MAC Crafting Pattern, or null
+	 * Access Details about a pattern
+	 *
+	 * @param is pattern
+	 * @param w crafting world
+	 * @return details of pattern
 	 */
-	ICraftingPatternMAC getPatternForItem(ItemStack is);
+	ICraftingPatternDetails getPatternForItem(ItemStack is, World w);
 }

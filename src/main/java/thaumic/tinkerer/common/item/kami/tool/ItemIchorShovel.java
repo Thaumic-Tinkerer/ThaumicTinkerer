@@ -40,58 +40,58 @@ import java.util.ArrayList;
 
 public class ItemIchorShovel extends ItemSpade implements ITTinkererItem {
 
-	public ItemIchorShovel() {
-		super(ThaumicTinkerer.proxy.toolMaterialIchor);
-		setCreativeTab(ModCreativeTab.INSTANCE);
-		setHarvestLevel("shovel", 4);
-	}
+    public ItemIchorShovel() {
+        super(ThaumicTinkerer.proxy.toolMaterialIchor);
+        setCreativeTab(ModCreativeTab.INSTANCE);
+        setHarvestLevel("shovel", 4);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		itemIcon = IconHelper.forItem(par1IconRegister, this);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        itemIcon = IconHelper.forItem(par1IconRegister, this);
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTCommonProxy.kamiRarity;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return TTCommonProxy.kamiRarity;
+    }
 
-	@Override
-	public boolean isItemTool(ItemStack par1ItemStack) {
-		return true;
-	}
+    @Override
+    public boolean isItemTool(ItemStack par1ItemStack) {
+        return true;
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.ICHOR_SHOVEL;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.ICHOR_SHOVEL;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return ConfigHandler.enableKami;
-	}
-
-	@Override
-	public boolean shouldDisplayInTab() {
+    @Override
+    public boolean shouldRegister() {
         return ConfigHandler.enableKami;
-	}
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return ConfigHandler.enableKami;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SHOVEL, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.EARTH, 75),
-				" I ", " R ", " R ",
-				'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
-				'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
+
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_ICHOR_SHOVEL, LibResearch.KEY_ICHOR_TOOLS, new ItemStack(this), new AspectList().add(Aspect.EARTH, 75),
+                " I ", " R ", " R ",
+                'R', new ItemStack(ConfigItems.itemWandRod, 1, 2),
+                'I', new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 2));
+    }
 }

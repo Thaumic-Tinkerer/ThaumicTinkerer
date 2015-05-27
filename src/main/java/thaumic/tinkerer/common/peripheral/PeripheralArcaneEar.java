@@ -22,48 +22,48 @@ import thaumcraft.common.tiles.TileSensor;
 
 public class PeripheralArcaneEar implements IPeripheral {
 
-	TileSensor ear;
+    TileSensor ear;
 
-	public PeripheralArcaneEar(TileSensor ear) {
-		this.ear = ear;
-	}
+    public PeripheralArcaneEar(TileSensor ear) {
+        this.ear = ear;
+    }
 
-	@Override
-	public String getType() {
-		return "tt_arcaneear";
-	}
+    @Override
+    public String getType() {
+        return "tt_arcaneear";
+    }
 
-	@Override
-	public String[] getMethodNames() {
-		return new String[]{ "getNote", "setNote" };
-	}
+    @Override
+    public String[] getMethodNames() {
+        return new String[]{"getNote", "setNote"};
+    }
 
-	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
-		if (method == 0) {
-			return new Object[]{ ear.note };
-		} else {
-			ear.note = (byte) ((Double) arguments[0]).doubleValue();
+    @Override
+    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
+        if (method == 0) {
+            return new Object[]{ear.note};
+        } else {
+            ear.note = (byte) ((Double) arguments[0]).doubleValue();
 
-			return null;
-		}
-	}
+            return null;
+        }
+    }
 
-	@Override
-	public void attach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void attach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public void detach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void detach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public boolean equals(IPeripheral other) {
+    @Override
+    public boolean equals(IPeripheral other) {
 
-		return this.equals((Object) other);
-	}
+        return this.equals((Object) other);
+    }
 
 }
 

@@ -44,122 +44,122 @@ import java.util.List;
 
 public class ItemSkyPearl extends ItemKamiBase {
 
-	public static final String TAG_X = "x";
-	public static final String TAG_Y = "y";
-	public static final String TAG_Z = "z";
-	public static final String TAG_DIM = "dim";
+    public static final String TAG_X = "x";
+    public static final String TAG_Y = "y";
+    public static final String TAG_Z = "z";
+    public static final String TAG_DIM = "dim";
 
-	public ItemSkyPearl() {
-		super();
-		setMaxStackSize(1);
-	}
+    public ItemSkyPearl() {
+        super();
+        setMaxStackSize(1);
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		Block block = par3World.getBlock(par4, par5, par6);
-		if (block == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockWarpGate.class) && !isAttuned(par1ItemStack)) {
-			setValues(par1ItemStack, par4, par5, par6, par2EntityPlayer.dimension);
-			par3World.playSoundAtEntity(par2EntityPlayer, "random.orb", 0.3F, 0.1F);
-		}
+    public static void addInfo(ItemStack stack, int dim, Vector3 pos, List<String> list, boolean simpleMode) {
+        if (isAttuned(stack)) {
+            int x = getX(stack);
+            int y = getY(stack);
+            int z = getZ(stack);
+            list.add("X: " + x);
+            if (!simpleMode)
+                list.add("Y: " + y);
+            list.add("Z: " + z);
+            if (getDim(stack) != dim) {
+                if (!simpleMode)
+                    list.add(EnumChatFormatting.RED + StatCollector.translateToLocal("ttmisc.differentDim"));
+            } else
+                list.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, simpleMode ? 0 : y, z, pos.x, simpleMode ? 0 : pos.y, pos.z)).setScale(2, RoundingMode.UP).toString() + "m");
+        }
+    }
 
-		return true;
-	}
+    public static void setValues(ItemStack stack, int x, int y, int z, int dim) {
+        ItemNBTHelper.setInt(stack, TAG_X, x);
+        ItemNBTHelper.setInt(stack, TAG_Y, y);
+        ItemNBTHelper.setInt(stack, TAG_Z, z);
+        ItemNBTHelper.setInt(stack, TAG_DIM, dim);
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if (par3EntityPlayer.isSneaking() && isAttuned(par1ItemStack)) {
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
-			ItemNBTHelper.setInt(par1ItemStack, TAG_Y, -1);
-		}
+    public static boolean isAttuned(ItemStack stack) {
+        return ItemNBTHelper.detectNBT(stack) && ItemNBTHelper.getInt(stack, TAG_Y, -1) != -1;
+    }
 
-		return par1ItemStack;
-	}
+    public static int getX(ItemStack stack) {
+        if (!isAttuned(stack))
+            return 0;
 
-	@Override
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		addInfo(par1ItemStack, par2EntityPlayer.dimension, Vector3.fromEntityCenter(par2EntityPlayer), par3List, false);
-	}
+        return ItemNBTHelper.getInt(stack, TAG_X, 0);
+    }
 
-	public static void addInfo(ItemStack stack, int dim, Vector3 pos, List<String> list, boolean simpleMode) {
-		if (isAttuned(stack)) {
-			int x = getX(stack);
-			int y = getY(stack);
-			int z = getZ(stack);
-			list.add("X: " + x);
-			if (!simpleMode)
-				list.add("Y: " + y);
-			list.add("Z: " + z);
-			if (getDim(stack) != dim) {
-				if (!simpleMode)
-					list.add(EnumChatFormatting.RED + StatCollector.translateToLocal("ttmisc.differentDim"));
-			} else
-				list.add(EnumChatFormatting.BLUE + StatCollector.translateToLocal("ttmisc.distance") + ": " + new BigDecimal(MiscHelper.pointDistanceSpace(x, simpleMode ? 0 : y, z, pos.x, simpleMode ? 0 : pos.y, pos.z)).setScale(2, RoundingMode.UP).toString() + "m");
-		}
-	}
+    public static int getY(ItemStack stack) {
+        if (!isAttuned(stack))
+            return 0;
 
-	@Override
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return isAttuned(par1ItemStack);
-	}
+        return ItemNBTHelper.getInt(stack, TAG_Y, 0);
+    }
 
-	public static void setValues(ItemStack stack, int x, int y, int z, int dim) {
-		ItemNBTHelper.setInt(stack, TAG_X, x);
-		ItemNBTHelper.setInt(stack, TAG_Y, y);
-		ItemNBTHelper.setInt(stack, TAG_Z, z);
-		ItemNBTHelper.setInt(stack, TAG_DIM, dim);
-	}
+    public static int getZ(ItemStack stack) {
+        if (!isAttuned(stack))
+            return 0;
 
-	public static boolean isAttuned(ItemStack stack) {
-		return ItemNBTHelper.detectNBT(stack) && ItemNBTHelper.getInt(stack, TAG_Y, -1) != -1;
-	}
+        return ItemNBTHelper.getInt(stack, TAG_Z, 0);
+    }
 
-	public static int getX(ItemStack stack) {
-		if (!isAttuned(stack))
-			return 0;
+    public static int getDim(ItemStack stack) {
+        if (!isAttuned(stack))
+            return 0;
 
-		return ItemNBTHelper.getInt(stack, TAG_X, 0);
-	}
+        return ItemNBTHelper.getInt(stack, TAG_DIM, 0);
+    }
 
-	public static int getY(ItemStack stack) {
-		if (!isAttuned(stack))
-			return 0;
+    @Override
+    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+        Block block = par3World.getBlock(par4, par5, par6);
+        if (block == ThaumicTinkerer.registry.getFirstBlockFromClass(BlockWarpGate.class) && !isAttuned(par1ItemStack)) {
+            setValues(par1ItemStack, par4, par5, par6, par2EntityPlayer.dimension);
+            par3World.playSoundAtEntity(par2EntityPlayer, "random.orb", 0.3F, 0.1F);
+        }
 
-		return ItemNBTHelper.getInt(stack, TAG_Y, 0);
-	}
+        return true;
+    }
 
-	public static int getZ(ItemStack stack) {
-		if (!isAttuned(stack))
-			return 0;
+    @Override
+    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+        if (par3EntityPlayer.isSneaking() && isAttuned(par1ItemStack)) {
+            par2World.playSoundAtEntity(par3EntityPlayer, "random.orb", 0.3F, 0.1F);
+            ItemNBTHelper.setInt(par1ItemStack, TAG_Y, -1);
+        }
 
-		return ItemNBTHelper.getInt(stack, TAG_Z, 0);
-	}
+        return par1ItemStack;
+    }
 
-	public static int getDim(ItemStack stack) {
-		if (!isAttuned(stack))
-			return 0;
+    @Override
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+        addInfo(par1ItemStack, par2EntityPlayer.dimension, Vector3.fromEntityCenter(par2EntityPlayer), par3List, false);
+    }
 
-		return ItemNBTHelper.getInt(stack, TAG_DIM, 0);
-	}
+    @Override
+    public boolean hasEffect(ItemStack par1ItemStack) {
+        return isAttuned(par1ItemStack);
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return TTCommonProxy.kamiRarity;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack) {
+        return TTCommonProxy.kamiRarity;
+    }
 
-	@Override
-	public String getItemName() {
-		return LibItemNames.SKY_PEARL;
-	}
+    @Override
+    public String getItemName() {
+        return LibItemNames.SKY_PEARL;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class), 2), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Items.ender_pearl),
-				new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7), new ItemStack(Blocks.lapis_block), new ItemStack(Items.diamond));
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SKY_PEARL, LibResearch.KEY_WARP_GATE, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class), 2), 6, new AspectList().add(Aspect.TRAVEL, 32).add(Aspect.ELDRITCH, 32).add(Aspect.FLIGHT, 32).add(Aspect.AIR, 16), new ItemStack(Items.ender_pearl),
+                new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class)), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7), new ItemStack(Blocks.lapis_block), new ItemStack(Items.diamond));
 
-	}
+    }
 }

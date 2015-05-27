@@ -15,11 +15,9 @@ import java.util.Random;
  * Created by pixlepix on 8/4/14.
  */
 public class TileInfusedFarmland extends TileEntity implements IAspectContainer {
-    public AspectList aspectList = new AspectList();
-
     public static final int MAX_ASPECTS = 20;
-
     public static final String NBT_ASPECT_LIST = "aspectList";
+    public AspectList aspectList = new AspectList();
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {

@@ -26,35 +26,35 @@ import java.util.Random;
 
 public class BlockGaseousLight extends BlockGas {
 
-	public BlockGaseousLight() {
-		super();
-		setLightLevel(0.85F);
-	}
+    public BlockGaseousLight() {
+        super();
+        setLightLevel(0.85F);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		if (par5Random.nextFloat() < 0.0075F)
-			ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1F, 1, par5Random.nextFloat() / 2);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+        if (par5Random.nextFloat() < 0.0075F)
+            ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1F, 1, par5Random.nextFloat() / 2);
+    }
 
-	@Override
-	public void placeParticle(World world, int par2, int par3, int par4) {
-		ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1);
-	}
+    @Override
+    public void placeParticle(World world, int par2, int par3, int par4) {
+        ThaumicTinkerer.tcProxy.sparkle(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, 1);
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.GASEOUS_LIGHT;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.GASEOUS_LIGHT;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return null;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return null;
+    }
 }

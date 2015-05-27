@@ -1,6 +1,6 @@
 /**
  * This file is part of the public ComputerCraft API - http://www.computercraft.info
- * Copyright Daniel Ratcliffe, 2011-2014. This API may be redistributed unmodified and in full only.
+ * Copyright Daniel Ratcliffe, 2011-2015. This API may be redistributed unmodified and in full only.
  * For help using the API, and posting your mods, visit the forums at computercraft.info.
  */
 
@@ -30,7 +30,7 @@ public final class ComputerCraftAPI
 	 * @param parentSubPath The folder path within the save directory where the new directory should be created. eg: "computercraft/disk"
 	 * @return The numerical value of the name of the new folder, or -1 if the folder could not be created for some reason.<br>
 	 * eg: if createUniqueNumberedSaveDir( world, "computer/disk" ) was called returns 42, then "computer/disk/42" is now available for writing.
-	 * @see #createSaveDirMount(World, String, long)
+	 * @see #createSaveDirMount(net.minecraft.world.World, String, long)
 	 */
 	public static int createUniqueNumberedSaveDir( World world, String parentSubPath )
 	{
@@ -56,11 +56,11 @@ public final class ComputerCraftAPI
 	 * @param capacity The ammount of data that can be stored in the directory before it fills up, in bytes.
 	 * @return The mount, or null if it could be created for some reason. Use IComputerAccess.mount() or IComputerAccess.mountWritable()
 	 * to mount this on a Computers' file system.
-	 * @see #createUniqueNumberedSaveDir(World, String)
+	 * @see #createUniqueNumberedSaveDir(net.minecraft.world.World, String)
 	 * @see dan200.computercraft.api.peripheral.IComputerAccess#mount(String, dan200.computercraft.api.filesystem.IMount)
 	 * @see dan200.computercraft.api.peripheral.IComputerAccess#mountWritable(String, dan200.computercraft.api.filesystem.IWritableMount)
 	 * @see dan200.computercraft.api.filesystem.IMount
-	 * @see IWritableMount
+	 * @see dan200.computercraft.api.filesystem.IWritableMount
 	 */
 	public static IWritableMount createSaveDirMount( World world, String subPath, long capacity )
 	{
@@ -86,7 +86,7 @@ public final class ComputerCraftAPI
 	 * @return The mount, or null if it could be created for some reason. Use IComputerAccess.mount() or IComputerAccess.mountWritable()
 	 * to mount this on a Computers' file system.
 	 * @see dan200.computercraft.api.peripheral.IComputerAccess#mount(String, dan200.computercraft.api.filesystem.IMount)
-	 * @see dan200.computercraft.api.peripheral.IComputerAccess#mountWritable(String, IWritableMount)
+	 * @see dan200.computercraft.api.peripheral.IComputerAccess#mountWritable(String, dan200.computercraft.api.filesystem.IWritableMount)
 	 * @see dan200.computercraft.api.filesystem.IMount
 	 */
 	public static IMount createResourceMount( Class modClass, String domain, String subPath )

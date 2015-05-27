@@ -32,9 +32,9 @@ public class Materials
 	public AEItemDefinition materialBasicCard;
 	public AEItemDefinition materialAdvCard;
 
-	public AEItemDefinition materialPureifiedCertusQuartzCrystal;
-	public AEItemDefinition materialPureifiedNetherQuartzCrystal;
-	public AEItemDefinition materialPureifiedFluixCrystal;
+	public AEItemDefinition materialPurifiedCertusQuartzCrystal;
+	public AEItemDefinition materialPurifiedNetherQuartzCrystal;
+	public AEItemDefinition materialPurifiedFluixCrystal;
 
 	public AEItemDefinition materialCell1kPart;
 	public AEItemDefinition materialCell4kPart;
@@ -47,6 +47,7 @@ public class Materials
 	public AEItemDefinition materialCardCapacity;
 	public AEItemDefinition materialCardFuzzy;
 	public AEItemDefinition materialCardInverter;
+	public AEItemDefinition materialCardCrafting;
 
 	public AEItemDefinition materialEnderDust;
 	public AEItemDefinition materialFlour;
@@ -74,5 +75,6 @@ public class Materials
 
 	public AEItemDefinition materialSingularity;
 	public AEItemDefinition materialQESingularity;
+	public AEItemDefinition materialBlankPattern;
 
 }

@@ -22,32 +22,32 @@ import thaumic.tinkerer.client.core.handler.kami.SoulHeartClientHandler;
 
 public class PacketSoulHearts implements IMessage, IMessageHandler<PacketSoulHearts, IMessage> {
 
-	private static final long serialVersionUID = 8044672277674872323L;
-	int hearts;
+    private static final long serialVersionUID = 8044672277674872323L;
+    int hearts;
 
-	public PacketSoulHearts(int hearts) {
-		this.hearts = hearts;
-	}
+    public PacketSoulHearts(int hearts) {
+        this.hearts = hearts;
+    }
 
-	public PacketSoulHearts() {
-		super();
-	}
+    public PacketSoulHearts() {
+        super();
+    }
 
-	@Override
-	public void fromBytes(ByteBuf byteBuf) {
-		hearts = byteBuf.readInt();
-	}
+    @Override
+    public void fromBytes(ByteBuf byteBuf) {
+        hearts = byteBuf.readInt();
+    }
 
-	@Override
-	public void toBytes(ByteBuf byteBuf) {
-		byteBuf.writeInt(hearts);
-	}
+    @Override
+    public void toBytes(ByteBuf byteBuf) {
+        byteBuf.writeInt(hearts);
+    }
 
-	@Override
-	public IMessage onMessage(PacketSoulHearts message, MessageContext ctx) {
-		if (!ctx.side.isClient())
-			throw new IllegalStateException("received PacketSoulHearts " + message + "on server side!");
-		SoulHeartClientHandler.clientPlayerHP = message.hearts;
-		return null;
-	}
+    @Override
+    public IMessage onMessage(PacketSoulHearts message, MessageContext ctx) {
+        if (!ctx.side.isClient())
+            throw new IllegalStateException("received PacketSoulHearts " + message + "on server side!");
+        SoulHeartClientHandler.clientPlayerHP = message.hearts;
+        return null;
+    }
 }

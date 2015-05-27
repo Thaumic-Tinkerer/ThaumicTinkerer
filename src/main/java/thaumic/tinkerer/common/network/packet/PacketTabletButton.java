@@ -22,40 +22,40 @@ import thaumic.tinkerer.common.block.tile.tablet.TileAnimationTablet;
 
 public class PacketTabletButton extends PacketTile<TileAnimationTablet> implements IMessageHandler<PacketTabletButton, IMessage> {
 
-	private static final long serialVersionUID = -6507755382924554527L;
-	boolean leftClick, redstone;
+    private static final long serialVersionUID = -6507755382924554527L;
+    boolean leftClick, redstone;
 
-	public PacketTabletButton() {
-		super();
-	}
+    public PacketTabletButton() {
+        super();
+    }
 
-	public PacketTabletButton(TileAnimationTablet tile) {
-		super(tile);
-		leftClick = tile.leftClick;
-		redstone = tile.redstone;
-	}
+    public PacketTabletButton(TileAnimationTablet tile) {
+        super(tile);
+        leftClick = tile.leftClick;
+        redstone = tile.redstone;
+    }
 
-	@Override
-	public void toBytes(ByteBuf byteBuf) {
-		super.toBytes(byteBuf);
-		byteBuf.writeBoolean(leftClick);
-		byteBuf.writeBoolean(redstone);
-	}
+    @Override
+    public void toBytes(ByteBuf byteBuf) {
+        super.toBytes(byteBuf);
+        byteBuf.writeBoolean(leftClick);
+        byteBuf.writeBoolean(redstone);
+    }
 
-	@Override
-	public void fromBytes(ByteBuf byteBuf) {
-		super.fromBytes(byteBuf);
-		leftClick = byteBuf.readBoolean();
-		redstone = byteBuf.readBoolean();
-	}
+    @Override
+    public void fromBytes(ByteBuf byteBuf) {
+        super.fromBytes(byteBuf);
+        leftClick = byteBuf.readBoolean();
+        redstone = byteBuf.readBoolean();
+    }
 
-	@Override
-	public IMessage onMessage(PacketTabletButton message, MessageContext ctx) {
-		super.onMessage(message, ctx);
-		if (!ctx.side.isServer())
-			throw new IllegalStateException("received PacketTabletbutton " + message + "on client side!");
-		message.tile.leftClick = message.leftClick;
-		message.tile.redstone = message.redstone;
-		return null;
-	}
+    @Override
+    public IMessage onMessage(PacketTabletButton message, MessageContext ctx) {
+        super.onMessage(message, ctx);
+        if (!ctx.side.isServer())
+            throw new IllegalStateException("received PacketTabletbutton " + message + "on client side!");
+        message.tile.leftClick = message.leftClick;
+        message.tile.redstone = message.redstone;
+        return null;
+    }
 }

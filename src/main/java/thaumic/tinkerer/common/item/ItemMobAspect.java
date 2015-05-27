@@ -26,19 +26,64 @@ public class ItemMobAspect extends ItemBase {
     //Real value is 16
     //Padding room inclued
     //To prevent corruption
-    public static final int aspectCount = 20;
+    public static final int aspectCount = 21;
+    public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
     public ItemMobAspect() {
         super();
         setMaxStackSize(16);
     }
 
+    public static Aspect getAspect(ItemStack item) {
+        if (item == null) {
+            return null;
+        }
+        return NumericAspectHelper.getAspect(item.getItemDamage() % aspectCount);
+    }
+
+    public static ItemStack getStackFromAspect(Aspect a) {
+        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
+        result.setItemDamage(NumericAspectHelper.getNumber(a));
+        return result;
+    }
+
+    public static ItemStack getInfusedStackFromAspect(Aspect a) {
+        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
+        result.setItemDamage(42 + NumericAspectHelper.getNumber(a));
+        return result;
+    }
+
+    public static boolean isCondensed(ItemStack item) {
+        return item.getItemDamage() >= aspectCount && item.getItemDamage() < aspectCount * 2;
+    }
+
+    public static boolean isInfused(ItemStack item) {
+        return item.getItemDamage() >= aspectCount * 2;
+    }
+
+    public static void markLastUsedTablet(ItemStack stack, TileSummon tablet) {
+        if (stack.stackTagCompound == null) {
+            stack.stackTagCompound = new NBTTagCompound();
+        }
+        stack.stackTagCompound.setInteger("LastX", tablet.xCoord);
+        stack.stackTagCompound.setInteger("LastY", tablet.yCoord);
+        stack.stackTagCompound.setInteger("LastZ", tablet.zCoord);
+    }
+
+    public static boolean lastUsedTabletMatches(ItemStack stack, TileSummon tablet) {
+        if (stack.stackTagCompound == null) {
+            return true;
+        }
+
+        return (stack.stackTagCompound.getInteger("LastX") == tablet.xCoord &&
+                stack.stackTagCompound.getInteger("LastY") == tablet.yCoord &&
+                stack.stackTagCompound.getInteger("LastZ") == tablet.zCoord);
+    }
+
     @Override
     public boolean getHasSubtypes() {
         return true;
     }
-
-    public static IIcon[] aspectIcons = new IIcon[aspectCount * 3];
 
     @Override
     public void registerIcons(IIconRegister par1IconRegister) {
@@ -74,10 +119,10 @@ public class ItemMobAspect extends ItemBase {
         for (int i = 0; i < NumericAspectHelper.values.size(); i++) {
 
             ThaumcraftApi.registerObjectTag(new ItemStack(this, 1, i), new int[]{i}, new AspectList().add(NumericAspectHelper.getAspect(i), 8));
-            recipeMulti.addRecipe(new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SUMMON + "1", new ItemStack(this, 1, i + 20), "XXX", "XXX", "XXX", 'X', new ItemStack(this, 1, i)));
+            recipeMulti.addRecipe(new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_SUMMON + "1", new ItemStack(this, 1, i + 21), "XXX", "XXX", "XXX", 'X', new ItemStack(this, 1, i)));
 
-            ItemStack input = new ItemStack(this, 1, i + 20);
-            recipeMulti.addRecipe(new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SUMMON, new ItemStack(this, 1, i + 40), 4,
+            ItemStack input = new ItemStack(this, 1, i + 21);
+            recipeMulti.addRecipe(new ThaumicTinkererInfusionRecipe(LibResearch.KEY_SUMMON, new ItemStack(this, 1, i + 42), 4,
                     new AspectList().add(getAspect(new ItemStack(this, 1, i)), 10), input,
                     new ItemStack[]{input, input, input, input, input, input, input, input}));
 
@@ -114,54 +159,8 @@ public class ItemMobAspect extends ItemBase {
         list.add(getAspect(itemStack).getName());
     }
 
-    public static Aspect getAspect(ItemStack item) {
-        if (item == null) {
-            return null;
-        }
-        return NumericAspectHelper.getAspect(item.getItemDamage() % aspectCount);
-    }
-
-    public static ItemStack getStackFromAspect(Aspect a) {
-        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
-        result.setItemDamage(NumericAspectHelper.getNumber(a));
-        return result;
-    }
-
-    public static ItemStack getInfusedStackFromAspect(Aspect a) {
-        ItemStack result = new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemMobAspect.class));
-        result.setItemDamage(40 + NumericAspectHelper.getNumber(a));
-        return result;
-    }
-
-    public static boolean isCondensed(ItemStack item) {
-        return item.getItemDamage() >= aspectCount && item.getItemDamage() < aspectCount * 2;
-    }
-
-    public static boolean isInfused(ItemStack item) {
-        return item.getItemDamage() >= aspectCount * 2;
-    }
-
     @Override
     public String getItemName() {
         return LibItemNames.MOB_ASPECT;
-    }
-
-    public static void markLastUsedTablet(ItemStack stack, TileSummon tablet) {
-        if (stack.stackTagCompound == null) {
-            stack.stackTagCompound = new NBTTagCompound();
-        }
-        stack.stackTagCompound.setInteger("LastX", tablet.xCoord);
-        stack.stackTagCompound.setInteger("LastY", tablet.yCoord);
-        stack.stackTagCompound.setInteger("LastZ", tablet.zCoord);
-    }
-
-    public static boolean lastUsedTabletMatches(ItemStack stack, TileSummon tablet) {
-        if (stack.stackTagCompound == null) {
-            return true;
-        }
-
-        return (stack.stackTagCompound.getInteger("LastX") == tablet.xCoord &&
-                stack.stackTagCompound.getInteger("LastY") == tablet.yCoord &&
-                stack.stackTagCompound.getInteger("LastZ") == tablet.zCoord);
     }
 }

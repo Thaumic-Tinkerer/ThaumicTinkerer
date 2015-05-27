@@ -1,15 +1,15 @@
 package appeng.api.config;
 
-import java.util.HashMap;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.HashMap;
 
 public enum Upgrades
 {
 	/**
 	 * Gold Tier Upgrades.
 	 */
-	CAPACITY(0), REDSTONE(0),
+	CAPACITY(0), REDSTONE(0), CRAFTING(0),
 
 	/**
 	 * Diamond Tier Upgrades.

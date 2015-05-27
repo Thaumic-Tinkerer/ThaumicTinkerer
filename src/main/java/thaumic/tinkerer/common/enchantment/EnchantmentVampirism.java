@@ -22,18 +22,18 @@ import thaumic.tinkerer.common.item.ItemBloodSword;
 
 public class EnchantmentVampirism extends EnchantmentMod {
 
-	protected EnchantmentVampirism(int par1) {
-		super(par1, 2, EnumEnchantmentType.weapon);
-	}
+    protected EnchantmentVampirism(int par1) {
+        super(par1, 2, EnumEnchantmentType.weapon);
+    }
 
-	@Override
-	public boolean canApplyTogether(Enchantment par1Enchantment) {
-		return par1Enchantment.effectId != Enchantment.fireAspect.effectId && par1Enchantment.effectId != Enchantment.knockback.effectId || par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == ThaumcraftApi.enchantRepair;
-	}
+    @Override
+    public boolean canApplyTogether(Enchantment par1Enchantment) {
+        return par1Enchantment.effectId != Enchantment.fireAspect.effectId && par1Enchantment.effectId != Enchantment.knockback.effectId || par1Enchantment.effectId == Enchantment.unbreaking.effectId || par1Enchantment.effectId == ThaumcraftApi.enchantRepair;
+    }
 
-	@Override
-	public boolean canApply(ItemStack par1ItemStack) {
-		return super.canApply(par1ItemStack) && par1ItemStack.getItem().getClass() != ItemBloodSword.class;
-	}
+    @Override
+    public boolean canApply(ItemStack par1ItemStack) {
+        return super.canApply(par1ItemStack) && par1ItemStack.getItem().getClass() != ItemBloodSword.class;
+    }
 
 }

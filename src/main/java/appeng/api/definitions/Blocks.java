@@ -16,7 +16,7 @@ public class Blocks
 	 * Decorative
 	 */
 	public AEItemDefinition blockQuartz;
-	public AEItemDefinition blockQuartzPiller;
+	public AEItemDefinition blockQuartzPillar;
 	public AEItemDefinition blockQuartzChiseled;
 	public AEItemDefinition blockQuartzGlass;
 	public AEItemDefinition blockQuartzVibrantGlass;
@@ -71,5 +71,19 @@ public class Blocks
 	public AEItemDefinition blockEnergyCell;
 	public AEItemDefinition blockEnergyCellDense;
 	public AEItemDefinition blockEnergyCellCreative;
+
+	// rv1
+	public AEItemDefinition blockCraftingUnit;
+	public AEItemDefinition blockCraftingAccelerator;
+	public AEItemDefinition blockCraftingStorage1k;
+	public AEItemDefinition blockCraftingStorage4k;
+	public AEItemDefinition blockCraftingStorage16k;
+	public AEItemDefinition blockCraftingStorage64k;
+	public AEItemDefinition blockCraftingMonitor;
+
+	public AEItemDefinition blockMolecularAssembler;
+
+	public AEItemDefinition blockLightDetector;
+	public AEItemDefinition blockPaint;
 
 }

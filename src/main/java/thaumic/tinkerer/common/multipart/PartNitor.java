@@ -14,11 +14,11 @@
  */
 package thaumic.tinkerer.common.multipart;
 
+import codechicken.lib.vec.Cuboid6;
+import codechicken.multipart.minecraft.McMetaPart;
 import net.minecraft.block.Block;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumic.tinkerer.common.ThaumicTinkerer;
-import codechicken.lib.vec.Cuboid6;
-import codechicken.multipart.minecraft.McMetaPart;
 
 public class PartNitor extends McMetaPart {
     public PartNitor() {

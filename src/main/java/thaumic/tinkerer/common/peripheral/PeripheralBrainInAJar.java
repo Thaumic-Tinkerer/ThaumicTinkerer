@@ -22,41 +22,41 @@ import thaumcraft.common.tiles.TileJarBrain;
 
 public class PeripheralBrainInAJar implements IPeripheral {
 
-	TileJarBrain jar;
+    TileJarBrain jar;
 
-	public PeripheralBrainInAJar(TileJarBrain jar) {
-		this.jar = jar;
-	}
+    public PeripheralBrainInAJar(TileJarBrain jar) {
+        this.jar = jar;
+    }
 
-	@Override
-	public String getType() {
-		return "tt_braininajar";
-	}
+    @Override
+    public String getType() {
+        return "tt_braininajar";
+    }
 
-	@Override
-	public String[] getMethodNames() {
-		return new String[]{ "getXP" };
-	}
+    @Override
+    public String[] getMethodNames() {
+        return new String[]{"getXP"};
+    }
 
-	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
-		return new Object[]{ jar.xp };
-	}
+    @Override
+    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
+        return new Object[]{jar.xp};
+    }
 
-	@Override
-	public void attach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void attach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public void detach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void detach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public boolean equals(IPeripheral other) {
-		return this.equals((Object) other);
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object) other);
+    }
 
 }
 

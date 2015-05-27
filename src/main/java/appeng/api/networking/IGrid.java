@@ -5,7 +5,7 @@ import appeng.api.util.IReadOnlyCollection;
 
 /**
  * Gives you access to Grid based information.
- * 
+ *
  * Don't Implement.
  */
 public interface IGrid
@@ -13,15 +13,15 @@ public interface IGrid
 
 	/**
 	 * Get Access to various grid modules
-	 * 
-	 * @param iface
+	 *
+	 * @param iface face
 	 * @return the IGridCache you requested.
 	 */
 	public <C extends IGridCache> C getCache(Class<? extends IGridCache> iface);
 
 	/**
 	 * Post an event into the network event bus.
-	 * 
+	 *
 	 * @param ev
 	 *            - event to post
 	 * @return returns ev back to original poster
@@ -30,7 +30,7 @@ public interface IGrid
 
 	/**
 	 * Post an event into the network event bus, but direct it at a single node.
-	 * 
+	 *
 	 * @param ev
 	 *            event to post
 	 * @return returns ev back to original poster
@@ -40,21 +40,21 @@ public interface IGrid
 	/**
 	 * get a list of the diversity of classes, you can use this to better detect which machines your interested in,
 	 * rather then iterating the entire grid to test them.
-	 * 
+	 *
 	 * @return IReadOnlyCollection of all available host types (Of Type IGridHost).
 	 */
 	public IReadOnlyCollection<Class<? extends IGridHost>> getMachinesClasses();
 
 	/**
 	 * Get machines on the network.
-	 * 
-	 * @param classofIGridHost
+	 *
+	 * @param gridHostClass class of the grid host
 	 * @return IMachineSet of all nodes belonging to hosts of specified class.
 	 */
-	public IMachineSet getMachines(Class<? extends IGridHost> classofIGridHost);
+	public IMachineSet getMachines(Class<? extends IGridHost> gridHostClass);
 
 	/**
-	 * @return IReadOnlyCollection for all nodes on the network, node visitors are prefered.
+	 * @return IReadOnlyCollection for all nodes on the network, node visitors are preferred.
 	 */
 	IReadOnlyCollection<IGridNode> getNodes();
 

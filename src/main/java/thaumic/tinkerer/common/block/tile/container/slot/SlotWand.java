@@ -21,22 +21,22 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class SlotWand extends Slot {
 
-	public SlotWand(IInventory par1iInventory, int par2, int par3, int par4) {
-		super(par1iInventory, par2, par3, par4);
-	}
+    public SlotWand(IInventory par1iInventory, int par2, int par3, int par4) {
+        super(par1iInventory, par2, par3, par4);
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack par1ItemStack) {
-		if (!(par1ItemStack.getItem() instanceof ItemWandCasting) || ((ItemWandCasting) par1ItemStack.getItem()).isStaff(par1ItemStack))
-			return false;
+    @Override
+    public boolean isItemValid(ItemStack par1ItemStack) {
+        if (!(par1ItemStack.getItem() instanceof ItemWandCasting) || ((ItemWandCasting) par1ItemStack.getItem()).isStaff(par1ItemStack))
+            return false;
 
-		ItemWandCasting wand = (ItemWandCasting) par1ItemStack.getItem();
-		return wand.getCap(par1ItemStack).getBaseCostModifier() <= 1F;
-	}
+        ItemWandCasting wand = (ItemWandCasting) par1ItemStack.getItem();
+        return wand.getCap(par1ItemStack).getBaseCostModifier() <= 1F;
+    }
 
-	@Override
-	public int getSlotStackLimit() {
-		return 1;
-	}
+    @Override
+    public int getSlotStackLimit() {
+        return 1;
+    }
 
 }

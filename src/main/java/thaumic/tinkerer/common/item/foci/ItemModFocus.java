@@ -26,143 +26,157 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.wands.IWandFocus;
-import thaumcraft.common.config.Config;
+import thaumcraft.api.wands.FocusUpgradeType;
+import thaumcraft.api.wands.ItemFocusBasic;
 import thaumic.tinkerer.client.core.helper.IconHelper;
-import thaumic.tinkerer.common.registry.ItemBase;
+import thaumic.tinkerer.common.registry.ITTinkererItem;
 import thaumic.tinkerer.common.registry.ThaumicTinkererRecipe;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ItemModFocus extends ItemBase implements IWandFocus {
+public abstract class ItemModFocus extends ItemFocusBasic implements ITTinkererItem {
 
-	private IIcon ornament, depth;
+    private IIcon ornament, depth;
 
-	public ItemModFocus() {
-		super();
-		setMaxDamage(1);
-		setNoRepair();
-		setMaxStackSize(1);
-	}
+    public ItemModFocus() {
+        super();
+        setMaxDamage(1);
+        setNoRepair();
+        setMaxStackSize(1);
+    }
 
-	protected boolean hasOrnament() {
-		return false;
-	}
+    protected boolean hasOrnament() {
+        return false;
+    }
 
-	protected boolean hasDepth() {
-		return false;
-	}
+    protected boolean hasDepth() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		super.registerIcons(par1IconRegister);
-		if (hasOrnament())
-			ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
-		if (hasDepth())
-			depth = IconHelper.forItem(par1IconRegister, this, "Depth");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        super.registerIcons(par1IconRegister);
+        this.icon = IconHelper.forItem(par1IconRegister, this);
+        if (hasOrnament())
+            ornament = IconHelper.forItem(par1IconRegister, this, "Orn");
+        if (hasDepth())
+            depth = IconHelper.forItem(par1IconRegister, this, "Depth");
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return null;
-	}
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return null;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean isItemTool(ItemStack par1ItemStack) {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		AspectList cost = getVisCost();
-		if (cost != null) {
-			list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
-			addVisCostTooltip(cost, stack, player, list, par4);
-		}
-	}
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return null;
+    }
 
-	protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		for (Aspect aspect : cost.getAspectsSorted()) {
-			float amount = cost.getAmount(aspect) / 100.0F;
-			list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
-		}
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+    }
 
-	@Override
-	public int getItemEnchantability() {
-		return 5;
-	}
+    @Override
+    public boolean isItemTool(ItemStack par1ItemStack) {
+        return true;
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack itemstack) {
-		return EnumRarity.rare;
-	}
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        AspectList cost = getVisCost(stack);
+        if (cost != null) {
+            list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
+            addVisCostTooltip(cost, stack, player, list, par4);
+        }
+    }
 
-	@Override
-	public IIcon getOrnament() {
-		return ornament;
-	}
+    protected void addVisCostTooltip(AspectList cost, ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        for (Aspect aspect : cost.getAspectsSorted()) {
+            float amount = cost.getAmount(aspect) / 100.0F;
+            list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
+        }
+    }
 
-	@Override
-	public IIcon getFocusDepthLayerIcon() {
-		return depth;
-	}
+    @Override
+    public int getItemEnchantability() {
+        return 5;
+    }
 
-	@Override
-	public WandFocusAnimation getAnimation() {
-		return WandFocusAnimation.WAVE;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack itemstack) {
+        return EnumRarity.rare;
+    }
 
-	@Override
-	public boolean isVisCostPerTick() {
-		return false;
-	}
+    @Override
+    public IIcon getOrnament(ItemStack stack) {
+        return ornament;
+    }
 
-	public boolean isUseItem() {
-		return isVisCostPerTick();
-	}
+    @Override
+    public IIcon getFocusDepthLayerIcon(ItemStack stack) {
+        return depth;
+    }
 
-	@Override
-	public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-		if (isUseItem())
-			paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
+    @Override
+    public WandFocusAnimation getAnimation(ItemStack stack) {
+        return WandFocusAnimation.WAVE;
+    }
 
-		return paramItemStack;
-	}
+    @Override
+    public boolean isVisCostPerTick(ItemStack stack) {
+        return false;
+    }
 
-	@Override
-	public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
-		// NO-OP
-	}
+    public boolean isUseItem(ItemStack stack) {
+        return isVisCostPerTick(stack);
+    }
 
-	@Override
-	public void onPlayerStoppedUsingFocus(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
-		// NO-OP
-	}
+    @Override
+    public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
+        if (isUseItem(paramItemStack))
+            paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
 
-	@Override
-	public abstract String getSortingHelper(ItemStack paramItemStack);
+        return paramItemStack;
+    }
 
-	@Override
-	public boolean onFocusBlockStartBreak(ItemStack paramItemStack, int paramInt1, int paramInt2, int paramInt3, EntityPlayer paramEntityPlayer) {
-		return false;
-	}
+    @Override
+    public void onUsingFocusTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
+        // NO-OP
+    }
 
-	@Override
-	public boolean acceptsEnchant(int paramInt) {
-		return paramInt != Config.enchWandFortune.effectId;
-	}
+    @Override
+    public void onPlayerStoppedUsingFocus(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
+        // NO-OP
+    }
+
+    @Override
+    public abstract String getSortingHelper(ItemStack paramItemStack);
+
+    @Override
+    public boolean onFocusBlockStartBreak(ItemStack paramItemStack, int paramInt1, int paramInt2, int paramInt3, EntityPlayer paramEntityPlayer) {
+        return false;
+    }
+
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[]{FocusUpgradeType.treasure};
+    }
+
 
 }

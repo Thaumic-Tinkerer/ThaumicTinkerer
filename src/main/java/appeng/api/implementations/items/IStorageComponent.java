@@ -13,17 +13,17 @@ public interface IStorageComponent
 	 * This isn't necessarily the same as if you make a storage cell out of it,
 	 * but all of AE's default cells do it that way, its currently only used for
 	 * the condenser.
-	 * 
-	 * @param cellItem
-	 * @return numberofBytes
+	 *
+	 * @param is item
+	 * @return number of bytes
 	 */
 	int getBytes(ItemStack is);
 
 	/**
 	 * Just true or false for the item stack.
-	 * 
-	 * @param is
-	 * @return
+	 *
+	 * @param is item
+	 * @return true if item is a storage component
 	 */
 	boolean isStorageComponent(ItemStack is);
 

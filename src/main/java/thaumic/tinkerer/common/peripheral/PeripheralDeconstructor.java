@@ -22,49 +22,49 @@ import thaumcraft.common.tiles.TileDeconstructionTable;
 
 public class PeripheralDeconstructor implements IPeripheral {
 
-	TileDeconstructionTable deconstructor;
+    TileDeconstructionTable deconstructor;
 
-	public PeripheralDeconstructor(TileDeconstructionTable deconstructor) {
-		this.deconstructor = deconstructor;
-	}
+    public PeripheralDeconstructor(TileDeconstructionTable deconstructor) {
+        this.deconstructor = deconstructor;
+    }
 
-	@Override
-	public String getType() {
-		return "tt_deconstructor";
-	}
+    @Override
+    public String getType() {
+        return "tt_deconstructor";
+    }
 
-	@Override
-	public String[] getMethodNames() {
-		return new String[]{ "hasAspect", "hasItem", "getAspect" };
-	}
+    @Override
+    public String[] getMethodNames() {
+        return new String[]{"hasAspect", "hasItem", "getAspect"};
+    }
 
-	@Override
-	public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
-		switch (method) {
-			case 0:
-				return new Object[]{ deconstructor.aspect != null };
-			case 1:
-				return new Object[]{ deconstructor.getStackInSlot(0) != null };
-			case 2:
-				return deconstructor.aspect == null ? null : new Object[]{ deconstructor.aspect.getTag() };
-		}
+    @Override
+    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) {
+        switch (method) {
+            case 0:
+                return new Object[]{deconstructor.aspect != null};
+            case 1:
+                return new Object[]{deconstructor.getStackInSlot(0) != null};
+            case 2:
+                return deconstructor.aspect == null ? null : new Object[]{deconstructor.aspect.getTag()};
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public void attach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void attach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public void detach(IComputerAccess computer) {
-		// NO-OP
-	}
+    @Override
+    public void detach(IComputerAccess computer) {
+        // NO-OP
+    }
 
-	@Override
-	public boolean equals(IPeripheral other) {
-		return this.equals((Object) other);
-	}
+    @Override
+    public boolean equals(IPeripheral other) {
+        return this.equals((Object) other);
+    }
 
 }

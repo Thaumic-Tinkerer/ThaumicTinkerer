@@ -9,25 +9,25 @@ public interface IRecipeHandlerRegistry
 
 	/**
 	 * Add a new Recipe Handler to the parser.
-	 * 
+	 *
 	 * MUST BE CALLED IN PRE-INIT
-	 * 
-	 * @param name
-	 * @param handler
+	 *
+	 * @param name name of crafthandler
+	 * @param handler class of crafthandler
 	 */
 	void addNewCraftHandler(String name, Class<? extends ICraftHandler> handler);
 
 	/**
 	 * Add a new resolver to the parser.
-	 * 
+	 *
 	 * MUST BE CALLED IN PRE-INIT
-	 * 
-	 * @param sir
+	 *
+	 * @param sir sub item resolver
 	 */
 	void addNewSubItemResolver(ISubItemResolver sir);
 
 	/**
-	 * @param name
+	 * @param name name of crafting handler
 	 * @return A recipe handler by name, returns null on failure.
 	 */
 	ICraftHandler getCraftHandlerFor(String name);
@@ -39,9 +39,10 @@ public interface IRecipeHandlerRegistry
 
 	/**
 	 * resolve sub items by name.
-	 * 
-	 * @param tmpName
-	 * @return ResolerResult or ResolverResultSet
+	 *
+	 * @param nameSpace namespace of item
+	 * @param itemName full name of item
+	 * @return ResolverResult or ResolverResultSet
 	 */
 	Object resolveItem(String nameSpace, String itemName);
 

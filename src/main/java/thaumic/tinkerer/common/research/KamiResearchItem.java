@@ -20,7 +20,6 @@ import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.ConfigResearch;
 import thaumic.tinkerer.common.lib.LibResearch;
 
 import java.util.ArrayList;
@@ -29,29 +28,29 @@ import java.util.List;
 
 public class KamiResearchItem extends TTResearchItem {
 
-	public static List<String> Blacklist = new ArrayList<String>();
+    public static List<String> Blacklist = new ArrayList<String>();
 
-	static {
-		Blacklist.add("MINILITH");
-	}
+    static {
+        Blacklist.add("MINILITH");
+    }
 
-	public KamiResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ItemStack icon) {
-		super(par1, tags, par3, par4, par5, icon);
-		setConcealed();
-	}
+    public KamiResearchItem(String par1, AspectList tags, int par3, int par4, int par5, ItemStack icon) {
+        super(par1, tags, par3, par4, par5, icon);
+        setConcealed();
+    }
 
-	@Override
-	public ResearchItem setPages(ResearchPage... par) {
-		List<String> requirements = parentsHidden == null || parentsHidden.length == 0 ? new ArrayList() : new ArrayList(Arrays.asList(parentsHidden));
+    @Override
+    public ResearchItem setPages(ResearchPage... par) {
+        List<String> requirements = parentsHidden == null || parentsHidden.length == 0 ? new ArrayList() : new ArrayList(Arrays.asList(parentsHidden));
 
-		if (!isAutoUnlock())
-			for (String categoryStr : ResearchCategories.researchCategories.keySet()) {
-				ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
-				for (String tag : category.research.keySet()) {
-					ResearchItem research = category.research.get(tag);
+        if (!isAutoUnlock())
+            for (String categoryStr : ResearchCategories.researchCategories.keySet()) {
+                ResearchCategoryList category = ResearchCategories.researchCategories.get(categoryStr);
+                for (String tag : category.research.keySet()) {
+                    ResearchItem research = category.research.get(tag);
 
-					if (research.isLost() || (research.parentsHidden == null && research.parents == null) || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
-						continue;
+                    if (research.isLost() || (research.parentsHidden == null && research.parents == null) || research.isVirtual() || research instanceof KamiResearchItem || requirements.contains(tag))
+                        continue;
                     if (research.getAspectTriggers() != null || research.getEntityTriggers() != null || research.getItemTriggers() != null) {
                         continue;
                     }
@@ -68,20 +67,20 @@ public class KamiResearchItem extends TTResearchItem {
                         requirements.add(tag);
                     }
                 }
-			}
+            }
 
-		parentsHidden = requirements.toArray(new String[requirements.size()]);
+        parentsHidden = requirements.toArray(new String[requirements.size()]);
 
-		return super.setPages(par);
-	}
+        return super.setPages(par);
+    }
 
-	@Override
-	String getPrefix() {
-		return super.getPrefix() + ".kami";
-	}
+    @Override
+    String getPrefix() {
+        return super.getPrefix() + ".kami";
+    }
 
-	@Override
-	boolean checkInfusion() {
-		return false;
-	}
+    @Override
+    boolean checkInfusion() {
+        return false;
+    }
 }

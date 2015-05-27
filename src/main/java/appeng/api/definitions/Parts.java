@@ -11,6 +11,11 @@ public class Parts
 	public AEColoredItemDefinition partCableGlass;
 	public AEColoredItemDefinition partCableDense;
 
+	public AEColoredItemDefinition partLumenCableSmart;
+	public AEColoredItemDefinition partLumenCableCovered;
+	public AEColoredItemDefinition partLumenCableGlass;
+	public AEColoredItemDefinition partLumenCableDense;
+
 	public AEItemDefinition partQuartzFiber;
 	public AEItemDefinition partToggleBus;
 	public AEItemDefinition partInvertedToggleBus;
@@ -32,13 +37,14 @@ public class Parts
 	public AEItemDefinition partP2PTunnelMJ;
 	public AEItemDefinition partP2PTunnelEU;
 	public AEItemDefinition partP2PTunnelRF;
+	public AEItemDefinition partP2PTunnelLight;
 
 	public AEItemDefinition partCableAnchor;
 	public AEItemDefinition partMonitor;
 	public AEItemDefinition partSemiDarkMonitor;
 	public AEItemDefinition partDarkMonitor;
 
-	public AEItemDefinition partCraftingMonitor;
+	public AEItemDefinition partInterfaceTerminal;
 	public AEItemDefinition partPatternTerminal;
 	public AEItemDefinition partCraftingTerminal;
 	public AEItemDefinition partTerminal;

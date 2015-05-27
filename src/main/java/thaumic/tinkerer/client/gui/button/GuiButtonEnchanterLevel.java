@@ -21,24 +21,24 @@ import thaumic.tinkerer.client.lib.LibResources;
 
 public class GuiButtonEnchanterLevel extends GuiButton {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ENCHANTER);
 
-	boolean plus;
+    boolean plus;
 
-	public GuiButtonEnchanterLevel(int par1, int par2, int par3, boolean plus) {
-		super(par1, par2, par3, 7, 7, "");
-		this.plus = plus;
-	}
+    public GuiButtonEnchanterLevel(int par1, int par2, int par3, boolean plus) {
+        super(par1, par2, par3, 7, 7, "");
+        this.plus = plus;
+    }
 
-	@Override
-	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if (!enabled)
-			return;
+    @Override
+    public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
+        if (!enabled)
+            return;
 
-		int x = 218 + (plus ? 7 : 0);
+        int x = 218 + (plus ? 7 : 0);
 
-		par1Minecraft.renderEngine.bindTexture(gui);
-		drawTexturedModalRect(xPosition, yPosition, x, 0, 7, 7);
-	}
+        par1Minecraft.renderEngine.bindTexture(gui);
+        drawTexturedModalRect(xPosition, yPosition, x, 0, 7, 7);
+    }
 
 }

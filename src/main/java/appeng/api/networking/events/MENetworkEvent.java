@@ -4,7 +4,7 @@ import appeng.api.networking.IGrid;
 
 /**
  * Part of AE's Event Bus.
- * 
+ *
  * Posted via {@link IGrid}.postEvent or {@link IGrid}.postEventTo
  */
 public class MENetworkEvent
@@ -23,8 +23,8 @@ public class MENetworkEvent
 
 	/**
 	 * called by AE after each object is called to cancel any future calls.
-	 * 
-	 * @return
+	 *
+	 * @return true to cancel future calls
 	 */
 	public boolean isCanceled()
 	{
@@ -33,8 +33,8 @@ public class MENetworkEvent
 
 	/**
 	 * the number of objects that were visited by the event.
-	 * 
-	 * @return
+	 *
+	 * @return number of visitors
 	 */
 	public int getVisitedObjects()
 	{
@@ -43,8 +43,8 @@ public class MENetworkEvent
 
 	/**
 	 * Called by AE after iterating the event subscribers.
-	 * 
-	 * @param v
+	 *
+	 * @param v current number of visitors
 	 */
 	public void setVisitedObjects(int v)
 	{

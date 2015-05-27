@@ -1,6 +1,6 @@
 /**
  * This file is part of the public ComputerCraft API - http://www.computercraft.info
- * Copyright Daniel Ratcliffe, 2011-2014. This API may be redistributed unmodified and in full only.
+ * Copyright Daniel Ratcliffe, 2011-2015. This API may be redistributed unmodified and in full only.
  * For help using the API, and posting your mods, visit the forums at computercraft.info.
  */
 
@@ -60,7 +60,7 @@ public interface IPeripheral
 	 *						arguments are supplied to your method.
 	 * @see 	#getMethodNames
 	 */
-    public Object[] callMethod( IComputerAccess computer, ILuaContext context, int method, Object[] arguments ) throws LuaException, InterruptedException;
+    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws LuaException, InterruptedException;
     
 	/**
 	 * Is called when canAttachToSide has returned true, and a computercraft is attaching to the peripheral.
@@ -76,7 +76,7 @@ public interface IPeripheral
 	 *							computers can be attached to a peripheral at once.
 	 * @see		#detach
 	 */
-    public void attach( IComputerAccess computer );
+    public void attach(IComputerAccess computer);
 
 	/**
 	 * Is called when a computercraft is detaching from the peripheral.
@@ -91,10 +91,10 @@ public interface IPeripheral
 	 *							computers can be attached to a peripheral at once.
 	 * @see		#detach
 	 */
-    public void detach( IComputerAccess computer );
+    public void detach(IComputerAccess computer);
 
     /**
      * TODO: Document me
      */
-    public boolean equals( IPeripheral other );
+    public boolean equals(IPeripheral other);
 }

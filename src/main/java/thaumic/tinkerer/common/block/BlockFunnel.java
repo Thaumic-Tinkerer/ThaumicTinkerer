@@ -49,174 +49,174 @@ import java.util.Random;
 
 public class BlockFunnel extends BlockModContainer {
 
-	IIcon sideIcon, topIcon;
+    IIcon sideIcon, topIcon;
 
-	Random random;
+    Random random;
 
-	public BlockFunnel() {
-		super(Material.rock);
-		setHardness(3.0F);
-		setResistance(8.0F);
-		setStepSound(Block.soundTypeStone);
-		setBlockBounds(0F, 0F, 0F, 1F, 1F / 8F, 1F);
+    public BlockFunnel() {
+        super(Material.rock);
+        setHardness(3.0F);
+        setResistance(8.0F);
+        setStepSound(Block.soundTypeStone);
+        setBlockBounds(0F, 0F, 0F, 1F, 1F / 8F, 1F);
 
-		random = new Random();
-	}
+        random = new Random();
+    }
 
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		topIcon = IconHelper.forBlock(par1IconRegister, this, 0);
-		sideIcon = IconHelper.forBlock(par1IconRegister, this, 1);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister) {
+        topIcon = IconHelper.forBlock(par1IconRegister, this, 0);
+        sideIcon = IconHelper.forBlock(par1IconRegister, this, 1);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int par1, int par2) {
-		return par1 > 1 ? sideIcon : topIcon;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int par1, int par2) {
+        return par1 > 1 ? sideIcon : topIcon;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
-		return AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1, par4 + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+        return AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1, par4 + 1);
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.getBlock(par2, par3 - 1, par4) == Block.getBlockFromName("hopper");
-	}
+    @Override
+    public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
+        return par1World.getBlock(par2, par3 - 1, par4) == Block.getBlockFromName("hopper");
+    }
 
-	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
-		if (par1World.getBlock(par2, par3 - 1, par4) != Block.getBlockFromName("hopper")) {
-			dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
-			par1World.setBlockToAir(par2, par3, par4);
-		}
-	}
+    @Override
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
+        if (par1World.getBlock(par2, par3 - 1, par4) != Block.getBlockFromName("hopper")) {
+            dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
+            par1World.setBlockToAir(par2, par3, par4);
+        }
+    }
 
-	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
-		TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
+    @Override
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+        TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
 
-		if (funnel != null) {
-			for (int j1 = 0; j1 < funnel.getSizeInventory(); ++j1) {
-				ItemStack itemstack = funnel.getStackInSlot(j1);
+        if (funnel != null) {
+            for (int j1 = 0; j1 < funnel.getSizeInventory(); ++j1) {
+                ItemStack itemstack = funnel.getStackInSlot(j1);
 
-				if (itemstack != null) {
-					float f = random.nextFloat() * 0.8F + 0.1F;
-					float f1 = random.nextFloat() * 0.8F + 0.1F;
-					EntityItem entityitem;
+                if (itemstack != null) {
+                    float f = random.nextFloat() * 0.8F + 0.1F;
+                    float f1 = random.nextFloat() * 0.8F + 0.1F;
+                    EntityItem entityitem;
 
-					for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
-						int k1 = random.nextInt(21) + 10;
+                    for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
+                        int k1 = random.nextInt(21) + 10;
 
-						if (k1 > itemstack.stackSize)
-							k1 = itemstack.stackSize;
+                        if (k1 > itemstack.stackSize)
+                            k1 = itemstack.stackSize;
 
-						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-						float f3 = 0.05F;
-						entityitem.motionX = (float) random.nextGaussian() * f3;
-						entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float) random.nextGaussian() * f3;
+                        itemstack.stackSize -= k1;
+                        entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
+                        float f3 = 0.05F;
+                        entityitem.motionX = (float) random.nextGaussian() * f3;
+                        entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+                        entityitem.motionZ = (float) random.nextGaussian() * f3;
 
-						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
-					}
-				}
-			}
+                        if (itemstack.hasTagCompound())
+                            entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
+                    }
+                }
+            }
 
-			par1World.func_147453_f(par2, par3, par4, par5);
-		}
+            par1World.func_147453_f(par2, par3, par4, par5);
+        }
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
-	}
+        super.breakBlock(par1World, par2, par3, par4, par5, par6);
+    }
 
-	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
-		ItemStack stack = funnel.getStackInSlot(0);
+    @Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+        TileFunnel funnel = (TileFunnel) par1World.getTileEntity(par2, par3, par4);
+        ItemStack stack = funnel.getStackInSlot(0);
 
-		if (stack == null) {
-			ItemStack playerStack = par5EntityPlayer.getCurrentEquippedItem();
-			if (funnel.canInsertItem(0, playerStack, 1)) {
-				funnel.setInventorySlotContents(0, playerStack.splitStack(1));
+        if (stack == null) {
+            ItemStack playerStack = par5EntityPlayer.getCurrentEquippedItem();
+            if (funnel.canInsertItem(0, playerStack, 1)) {
+                funnel.setInventorySlotContents(0, playerStack.splitStack(1));
 
-				if (playerStack.stackSize <= 0)
-					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-				funnel.markDirty();
-				return true;
-			}
-		} else {
-			if (!par5EntityPlayer.inventory.addItemStackToInventory(stack))
-				par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
+                if (playerStack.stackSize <= 0)
+                    par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
+                funnel.markDirty();
+                return true;
+            }
+        } else {
+            if (!par5EntityPlayer.inventory.addItemStackToInventory(stack))
+                par5EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
 
-			funnel.setInventorySlotContents(0, null);
-			funnel.markDirty();
-			return true;
-		}
+            funnel.setInventorySlotContents(0, null);
+            funnel.markDirty();
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileFunnel();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return new TileFunnel();
+    }
 
-	@Override
-	public ArrayList<Object> getSpecialParameters() {
-		return null;
-	}
+    @Override
+    public ArrayList<Object> getSpecialParameters() {
+        return null;
+    }
 
-	@Override
-	public String getBlockName() {
-		return LibBlockNames.FUNNEL;
-	}
+    @Override
+    public String getBlockName() {
+        return LibBlockNames.FUNNEL;
+    }
 
-	@Override
-	public boolean shouldRegister() {
-		return true;
-	}
+    @Override
+    public boolean shouldRegister() {
+        return true;
+    }
 
-	@Override
-	public boolean shouldDisplayInTab() {
-		return true;
-	}
+    @Override
+    public boolean shouldDisplayInTab() {
+        return true;
+    }
 
-	@Override
-	public Class<? extends ItemBlock> getItemBlock() {
-		return null;
-	}
+    @Override
+    public Class<? extends ItemBlock> getItemBlock() {
+        return null;
+    }
 
-	@Override
-	public Class<? extends TileEntity> getTileEntity() {
-		return TileFunnel.class;
-	}
+    @Override
+    public Class<? extends TileEntity> getTileEntity() {
+        return TileFunnel.class;
+    }
 
-	@Override
-	public IRegisterableResearch getResearchItem() {
-		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_FUNNEL, new AspectList().add(Aspect.TOOL, 1).add(Aspect.TRAVEL, 2), 0, -7, 1, new ItemStack(this)).setParentsHidden("DISTILESSENTIA").setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
-				.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FUNNEL)).setSecondary();
+    @Override
+    public IRegisterableResearch getResearchItem() {
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_FUNNEL, new AspectList().add(Aspect.TOOL, 1).add(Aspect.TRAVEL, 2), 0, -7, 1, new ItemStack(this)).setParentsHidden("DISTILESSENTIA").setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
+                .setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_FUNNEL)).setSecondary();
 
-	}
+    }
 
-	@Override
-	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(this), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
-				"STS",
-				'S', new ItemStack(Blocks.stone),
-				'T', new ItemStack(ConfigItems.itemResource, 1, 2));
-	}
+    @Override
+    public ThaumicTinkererRecipe getRecipeItem() {
+        return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_FUNNEL, LibResearch.KEY_FUNNEL, new ItemStack(this), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),
+                "STS",
+                'S', new ItemStack(Blocks.stone),
+                'T', new ItemStack(ConfigItems.itemResource, 1, 2));
+    }
 }

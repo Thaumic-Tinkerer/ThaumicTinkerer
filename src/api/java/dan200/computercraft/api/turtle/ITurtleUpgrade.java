@@ -1,6 +1,6 @@
 /**
  * This file is part of the public ComputerCraft API - http://www.computercraft.info
- * Copyright Daniel Ratcliffe, 2011-2014. This API may be redistributed unmodified and in full only.
+ * Copyright Daniel Ratcliffe, 2011-2015. This API may be redistributed unmodified and in full only.
  * For help using the API, and posting your mods, visit the forums at computercraft.info.
  */
 
@@ -13,7 +13,7 @@ import net.minecraft.util.IIcon;
 /**
  * The primary interface for defining an turtle for Turtles. A turtle turtle
  * can either be a new tool, or a new peripheral.
- * @see dan200.computercraft.api.ComputerCraftAPI#registerTurtleUpgrade( dan200.computercraft.api.turtle.ITurtleUpgrade )
+ * @see dan200.computercraft.api.ComputerCraftAPI#registerTurtleUpgrade( ITurtleUpgrade )
  */
 public interface ITurtleUpgrade
 {
@@ -24,7 +24,7 @@ public interface ITurtleUpgrade
 	 * The ID must be in the range 64 to 255, as the ID is stored as an 8-bit value,
 	 * and 0-64 is reserved for future use by ComputerCraft. The turtle will
 	 * fail registration if an already used ID is specified.
-	 * @see dan200.computercraft.api.ComputerCraftAPI#registerTurtleUpgrade( dan200.computercraft.api.turtle.ITurtleUpgrade )
+	 * @see dan200.computercraft.api.ComputerCraftAPI#registerTurtleUpgrade( ITurtleUpgrade )
 	 */
 	public int getUpgradeID();
 	
@@ -59,7 +59,7 @@ public interface ITurtleUpgrade
      * @return The newly created peripheral. You may return null if this turtle is a Tool
 	 * and this method is not expected to be called.
 	 */		
-	public IPeripheral createPeripheral( ITurtleAccess turtle, TurtleSide side );
+	public IPeripheral createPeripheral(ITurtleAccess turtle, TurtleSide side);
 
 	/**
 	 * Will only be called for Tool turtle. Called when turtle.dig() or turtle.attack() is called
@@ -75,7 +75,7 @@ public interface ITurtleUpgrade
 	 * a swinging animation. You may return null if this turtle is a Peripheral
 	 * and this method is not expected to be called.
 	 */
-	public TurtleCommandResult useTool( ITurtleAccess turtle, TurtleSide side, TurtleVerb verb, int direction );
+	public TurtleCommandResult useTool(ITurtleAccess turtle, TurtleSide side, TurtleVerb verb, int direction);
 
 	/**
 	 * Called to obtain the IIcon to be used when rendering a turtle peripheral. Needs to be a "common"
@@ -85,10 +85,10 @@ public interface ITurtleUpgrade
 	 * @param side Which side of the turtle (left or right) the peripheral resides on.
 	 * @return The IIcon that you wish to be used to render your turtle peripheral.
 	 */
-	public IIcon getIcon( ITurtleAccess turtle, TurtleSide side );
+	public IIcon getIcon(ITurtleAccess turtle, TurtleSide side);
 
     /**
      * TODO: Document me
      */
-    public void update( ITurtleAccess turtle, TurtleSide side );
+    public void update(ITurtleAccess turtle, TurtleSide side);
 }

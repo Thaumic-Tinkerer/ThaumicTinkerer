@@ -14,6 +14,8 @@
  */
 package thaumic.tinkerer.client.gui;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.util.StatCollector;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.client.gui.GuiResearchRecipe;
@@ -21,22 +23,23 @@ import thaumcraft.client.gui.GuiResearchRecipe;
 import java.awt.*;
 import java.net.URI;
 
+@SideOnly(Side.CLIENT)
 public class GuiResearchPeripheral extends GuiResearchRecipe {
 
-	public GuiResearchPeripheral(ResearchItem research) {
-		super(research, 0, -100, -75);
-	}
+    public GuiResearchPeripheral(ResearchItem research) {
+        super(research, 0, -100, -75);
+    }
 
-	@Override
-	protected void keyTyped(char par1, int par2) {
-		if (par2 == 28) {
-			String url = StatCollector.translateToLocal("ttresearch.webpage.peripherals");
-			try {
-				Desktop.getDesktop().browse(new URI(url));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else super.keyTyped(par1, par2);
-	}
+    @Override
+    protected void keyTyped(char par1, int par2) {
+        if (par2 == 28) {
+            String url = StatCollector.translateToLocal("ttresearch.webpage.peripherals");
+            try {
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else super.keyTyped(par1, par2);
+    }
 
 }

@@ -36,202 +36,202 @@ import java.util.List;
 
 public class TileWarpGate extends TileEntity implements IInventory {
 
-	private static final String TAG_LOCKED = "locked";
+    private static final String TAG_LOCKED = "locked";
 
-	public boolean locked = false;
-	boolean teleportedThisTick = false;
-	ItemStack[] inventorySlots = new ItemStack[10];
+    public boolean locked = false;
+    boolean teleportedThisTick = false;
+    ItemStack[] inventorySlots = new ItemStack[10];
 
-	@Override
-	public void updateEntity() {
-		List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 1.5, zCoord + 1));
+    public static boolean teleportPlayer(EntityPlayer player, ChunkCoordinates coords) {
+        int x = coords.posX;
+        int y = coords.posY;
+        int z = coords.posZ;
 
-		EntityPlayer clientPlayer = ThaumicTinkerer.proxy.getClientPlayer();
-		for (EntityPlayer player : players)
-			if (player != null && player == clientPlayer && player.isSneaking()) {
-				player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
-				break;
-			}
+        TileEntity tile = player.worldObj.getTileEntity(x, y, z);
+        if (tile != null && tile instanceof TileWarpGate) {
+            TileWarpGate destGate = (TileWarpGate) tile;
+            if (!destGate.locked) {
+                player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
 
-		teleportedThisTick = false;
-	}
+                for (int i = 0; i < 20; i++)
+                    ThaumicTinkerer.tcProxy.sparkle((float) player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float) player.posY + player.worldObj.rand.nextFloat(), (float) player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
 
-	public void teleportPlayer(EntityPlayer player, int index) {
-		if (teleportedThisTick)
-			return;
+                player.mountEntity(null);
+                if (player instanceof EntityPlayerMP)
+                    ((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
 
-		ItemStack stack = index < getSizeInventory() ? getStackInSlot(index) : null;
-		if (stack != null && ItemSkyPearl.isAttuned(stack)) {
-			int x = ItemSkyPearl.getX(stack);
-			int y = ItemSkyPearl.getY(stack);
-			int z = ItemSkyPearl.getZ(stack);
+                for (int i = 0; i < 20; i++)
+                    ThaumicTinkerer.tcProxy.sparkle((float) player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float) player.posY + player.worldObj.rand.nextFloat(), (float) player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
 
-			if (teleportPlayer(player, new ChunkCoordinates(x, y, z)))
-				teleportedThisTick = true;
-		}
-	}
+                player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
+                return true;
+            } else if (!player.worldObj.isRemote)
+                player.addChatMessage(new ChatComponentTranslation("ttmisc.noTeleport"));
+        } else if (!player.worldObj.isRemote)
+            player.addChatMessage(new ChatComponentTranslation("ttmisc.noDest"));
 
-	public static boolean teleportPlayer(EntityPlayer player, ChunkCoordinates coords) {
-		int x = coords.posX;
-		int y = coords.posY;
-		int z = coords.posZ;
+        return false;
+    }
 
-		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
-		if (tile != null && tile instanceof TileWarpGate) {
-			TileWarpGate destGate = (TileWarpGate) tile;
-			if (!destGate.locked) {
-				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 1F);
+    @Override
+    public void updateEntity() {
+        List<EntityPlayer> players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord + 1, zCoord, xCoord + 1, yCoord + 1.5, zCoord + 1));
 
-				for (int i = 0; i < 20; i++)
-					ThaumicTinkerer.tcProxy.sparkle((float) player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float) player.posY + player.worldObj.rand.nextFloat(), (float) player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
+        EntityPlayer clientPlayer = ThaumicTinkerer.proxy.getClientPlayer();
+        for (EntityPlayer player : players)
+            if (player != null && player == clientPlayer && player.isSneaking()) {
+                player.openGui(ThaumicTinkerer.instance, LibGuiIDs.GUI_ID_WARP_GATE_DESTINATIONS, worldObj, xCoord, yCoord, zCoord);
+                break;
+            }
 
-				player.mountEntity(null);
-				if (player instanceof EntityPlayerMP)
-					((EntityPlayerMP) player).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 1.6, z + 0.5, player.rotationYaw, player.rotationPitch);
+        teleportedThisTick = false;
+    }
 
-				for (int i = 0; i < 20; i++)
-					ThaumicTinkerer.tcProxy.sparkle((float) player.posX + player.worldObj.rand.nextFloat() - 0.5F, (float) player.posY + player.worldObj.rand.nextFloat(), (float) player.posZ + player.worldObj.rand.nextFloat() - 0.5F, 6);
+    public void teleportPlayer(EntityPlayer player, int index) {
+        if (teleportedThisTick)
+            return;
 
-				player.worldObj.playSoundAtEntity(player, "thaumcraft:wand", 1F, 0.1F);
-				return true;
-			} else if (!player.worldObj.isRemote)
-				player.addChatMessage(new ChatComponentTranslation("ttmisc.noTeleport"));
-		} else if (!player.worldObj.isRemote)
-			player.addChatMessage(new ChatComponentTranslation("ttmisc.noDest"));
+        ItemStack stack = index < getSizeInventory() ? getStackInSlot(index) : null;
+        if (stack != null && ItemSkyPearl.isAttuned(stack)) {
+            int x = ItemSkyPearl.getX(stack);
+            int y = ItemSkyPearl.getY(stack);
+            int z = ItemSkyPearl.getZ(stack);
 
-		return false;
-	}
+            if (teleportPlayer(player, new ChunkCoordinates(x, y, z)))
+                teleportedThisTick = true;
+        }
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readFromNBT(par1NBTTagCompound);
+    @Override
+    public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
+        super.readFromNBT(par1NBTTagCompound);
 
-		readCustomNBT(par1NBTTagCompound);
-	}
+        readCustomNBT(par1NBTTagCompound);
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeToNBT(par1NBTTagCompound);
+    @Override
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
+        super.writeToNBT(par1NBTTagCompound);
 
-		writeCustomNBT(par1NBTTagCompound);
-	}
+        writeCustomNBT(par1NBTTagCompound);
+    }
 
-	public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		locked = par1NBTTagCompound.getBoolean(TAG_LOCKED);
+    public void readCustomNBT(NBTTagCompound par1NBTTagCompound) {
+        locked = par1NBTTagCompound.getBoolean(TAG_LOCKED);
 
-		NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-		inventorySlots = new ItemStack[getSizeInventory()];
-		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
-			NBTTagCompound var4 = var2.getCompoundTagAt(var3);
-			byte var5 = var4.getByte("Slot");
-			if (var5 >= 0 && var5 < inventorySlots.length)
-				inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
-		}
-	}
+        NBTTagList var2 = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+        inventorySlots = new ItemStack[getSizeInventory()];
+        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
+            NBTTagCompound var4 = var2.getCompoundTagAt(var3);
+            byte var5 = var4.getByte("Slot");
+            if (var5 >= 0 && var5 < inventorySlots.length)
+                inventorySlots[var5] = ItemStack.loadItemStackFromNBT(var4);
+        }
+    }
 
-	public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
-		par1NBTTagCompound.setBoolean(TAG_LOCKED, locked);
+    public void writeCustomNBT(NBTTagCompound par1NBTTagCompound) {
+        par1NBTTagCompound.setBoolean(TAG_LOCKED, locked);
 
-		NBTTagList var2 = new NBTTagList();
-		for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
-			if (inventorySlots[var3] != null) {
-				NBTTagCompound var4 = new NBTTagCompound();
-				var4.setByte("Slot", (byte) var3);
-				inventorySlots[var3].writeToNBT(var4);
-				var2.appendTag(var4);
-			}
-		}
-		par1NBTTagCompound.setTag("Items", var2);
-	}
+        NBTTagList var2 = new NBTTagList();
+        for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
+            if (inventorySlots[var3] != null) {
+                NBTTagCompound var4 = new NBTTagCompound();
+                var4.setByte("Slot", (byte) var3);
+                inventorySlots[var3].writeToNBT(var4);
+                var2.appendTag(var4);
+            }
+        }
+        par1NBTTagCompound.setTag("Items", var2);
+    }
 
-	@Override
-	public int getSizeInventory() {
-		return inventorySlots.length;
-	}
+    @Override
+    public int getSizeInventory() {
+        return inventorySlots.length;
+    }
 
-	@Override
-	public ItemStack getStackInSlot(int i) {
-		return inventorySlots[i];
-	}
+    @Override
+    public ItemStack getStackInSlot(int i) {
+        return inventorySlots[i];
+    }
 
-	@Override
-	public ItemStack decrStackSize(int i, int j) {
-		if (inventorySlots[i] != null) {
-			ItemStack stackAt;
+    @Override
+    public ItemStack decrStackSize(int i, int j) {
+        if (inventorySlots[i] != null) {
+            ItemStack stackAt;
 
-			if (inventorySlots[i].stackSize <= j) {
-				stackAt = inventorySlots[i];
-				inventorySlots[i] = null;
-				return stackAt;
-			} else {
-				stackAt = inventorySlots[i].splitStack(j);
+            if (inventorySlots[i].stackSize <= j) {
+                stackAt = inventorySlots[i];
+                inventorySlots[i] = null;
+                return stackAt;
+            } else {
+                stackAt = inventorySlots[i].splitStack(j);
 
-				if (inventorySlots[i].stackSize == 0)
-					inventorySlots[i] = null;
+                if (inventorySlots[i].stackSize == 0)
+                    inventorySlots[i] = null;
 
-				return stackAt;
-			}
-		}
+                return stackAt;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public ItemStack getStackInSlotOnClosing(int i) {
-		return getStackInSlot(i);
-	}
+    @Override
+    public ItemStack getStackInSlotOnClosing(int i) {
+        return getStackInSlot(i);
+    }
 
-	@Override
-	public void setInventorySlotContents(int i, ItemStack itemstack) {
-		inventorySlots[i] = itemstack;
-	}
+    @Override
+    public void setInventorySlotContents(int i, ItemStack itemstack) {
+        inventorySlots[i] = itemstack;
+    }
 
-	@Override
-	public String getInventoryName() {
-		return LibBlockNames.WARP_GATE;
-	}
+    @Override
+    public String getInventoryName() {
+        return LibBlockNames.WARP_GATE;
+    }
 
-	@Override
-	public boolean hasCustomInventoryName() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
-	@Override
-	public int getInventoryStackLimit() {
-		return 1;
-	}
+    @Override
+    public int getInventoryStackLimit() {
+        return 1;
+    }
 
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
-	}
+    @Override
+    public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+        return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && entityplayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
+    }
 
-	@Override
-	public void openInventory() {
+    @Override
+    public void openInventory() {
 
-	}
+    }
 
-	@Override
-	public void closeInventory() {
+    @Override
+    public void closeInventory() {
 
-	}
+    }
 
-	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return itemstack.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class);
-	}
+    @Override
+    public boolean isItemValidForSlot(int i, ItemStack itemstack) {
+        return itemstack.getItem() == ThaumicTinkerer.registry.getFirstItemFromClass(ItemSkyPearl.class);
+    }
 
-	@Override
-	public S35PacketUpdateTileEntity getDescriptionPacket() {
-		NBTTagCompound nbttagcompound = new NBTTagCompound();
-		writeCustomNBT(nbttagcompound);
-		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
-	}
+    @Override
+    public S35PacketUpdateTileEntity getDescriptionPacket() {
+        NBTTagCompound nbttagcompound = new NBTTagCompound();
+        writeCustomNBT(nbttagcompound);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound);
+    }
 
-	@Override
-	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
-		super.onDataPacket(manager, packet);
-		readCustomNBT(packet.func_148857_g());
-	}
+    @Override
+    public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
+        super.onDataPacket(manager, packet);
+        readCustomNBT(packet.func_148857_g());
+    }
 
 }

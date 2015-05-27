@@ -1,25 +1,25 @@
 package ic2.api.energy;
 
 public class NodeStats {
-    public NodeStats(double energyIn, double energyOut, double voltage) {
-        this.energyIn = energyIn;
-        this.energyOut = energyOut;
-        this.voltage = voltage;
-    }
+	public NodeStats(double energyIn, double energyOut, double voltage) {
+		this.energyIn = energyIn;
+		this.energyOut = energyOut;
+		this.voltage = voltage;
+	}
 
-    public double getEnergyIn() {
-        return energyIn;
-    }
+	public double getEnergyIn() {
+		return energyIn;
+	}
 
-    public double getEnergyOut() {
-        return energyOut;
-    }
+	public double getEnergyOut() {
+		return energyOut;
+	}
 
-    public double getVoltage() {
-        return voltage;
-    }
+	public double getVoltage() {
+		return voltage;
+	}
 
-    private final double energyIn;
-    private final double energyOut;
-    private final double voltage;
+	protected double energyIn;
+	protected double energyOut;
+	protected double voltage;
 }

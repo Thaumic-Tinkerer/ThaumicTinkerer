@@ -15,8 +15,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.helper.BlockTuple;
-import thaumic.tinkerer.common.core.helper.FakeContainerCrafting;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibResearch;
 import thaumic.tinkerer.common.registry.ThaumicTinkererCrucibleRecipe;
@@ -29,6 +29,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BlockFireOrder extends BlockFireBase {
+
+    public HashMap<BlockTuple, BlockTuple> fireResults = new HashMap<BlockTuple, BlockTuple>();
+    private HashMap<Block, Block> oreDictinaryOresCache;
 
     public BlockFireOrder() {
         super();
@@ -44,16 +47,18 @@ public class BlockFireOrder extends BlockFireBase {
         return LibBlockNames.BLOCK_FIRE_ORDER;
     }
 
-    public HashMap<BlockTuple, BlockTuple> fireResults = new HashMap<BlockTuple, BlockTuple>();
-
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableFire)
+            return null;
         return (TTResearchItem) new TTResearchItem(LibResearch.KEY_FIRE_ORDO, new AspectList().add(Aspect.FIRE, 5).add(Aspect.ORDER, 5), 3, -3, 2, new ItemStack(this)).setParents(LibResearch.KEY_BRIGHT_NITOR).setConcealed()
                 .setPages(new ResearchPage("0"), ResearchHelper.crucibleRecipePage(LibResearch.KEY_FIRE_ORDO)).setSecondary();
     }
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
+        if(!ConfigHandler.enableFire)
+            return null;
         return new ThaumicTinkererCrucibleRecipe(LibResearch.KEY_FIRE_ORDO, new ItemStack(this), new ItemStack(ConfigItems.itemShard, 1, 4), new AspectList().add(Aspect.FIRE, 5).add(Aspect.MAGIC, 5).add(Aspect.ORDER, 5));
     }
 
@@ -69,15 +74,13 @@ public class BlockFireOrder extends BlockFireBase {
         return 3;
     }
 
-    private HashMap<Block, Block> oreDictinaryOresCache;
-
     public HashMap<Block, Block> getOreDictionaryOres() {
         if (oreDictinaryOresCache == null) {
             HashMap<Block, Block> result = new HashMap<Block, Block>();
             for (String ore : OreDictionary.getOreNames()) {
                 if (ore.startsWith("ore")) {
                     for (String block : OreDictionary.getOreNames()) {
-                            if (block.startsWith("block") && block.substring(5).equalsIgnoreCase(ore.substring(3))) {
+                        if (block.startsWith("block") && block.substring(5).equalsIgnoreCase(ore.substring(3))) {
                             if (OreDictionary.getOres(block).size() > 0 && OreDictionary.getOres(ore).size() > 0) {
                                 result.put(((ItemBlock) OreDictionary.getOres(ore).get(0).getItem()).field_150939_a, ((ItemBlock) OreDictionary.getOres(block).get(0).getItem()).field_150939_a);
                             }

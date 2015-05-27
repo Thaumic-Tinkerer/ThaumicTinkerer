@@ -2,7 +2,6 @@ package thaumic.tinkerer.common.registry;
 
 import net.minecraft.tileentity.TileEntity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

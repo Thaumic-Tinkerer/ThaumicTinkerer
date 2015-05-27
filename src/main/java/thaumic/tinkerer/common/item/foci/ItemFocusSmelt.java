@@ -1,7 +1,6 @@
 package thaumic.tinkerer.common.item.foci;
 
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -10,7 +9,7 @@ import net.minecraft.util.MovingObjectPosition;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.Config;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.utils.BlockUtils;
@@ -28,7 +27,14 @@ import java.util.Map;
 
 public class ItemFocusSmelt extends ItemModFocus {
 
+    private static final AspectList visUsage = new AspectList().add(Aspect.FIRE, 45).add(Aspect.ENTROPY, 12);
     public static Map<String, SmeltData> playerData = new HashMap();
+	
+	private int soundCooldown = 3; // In ticks
+
+    public ItemFocusSmelt() {
+        super();
+    }
 
     @Override
     public String getItemName() {
@@ -51,28 +57,8 @@ public class ItemFocusSmelt extends ItemModFocus {
                 'N', new ItemStack(ConfigItems.itemResource, 1, 1));
     }
 
-    static class SmeltData {
-        public MovingObjectPosition pos;
-        public int progress;
-
-        public SmeltData(MovingObjectPosition pos, int progress) {
-            this.pos = pos;
-            this.progress = progress;
-        }
-
-        public boolean equalPos(MovingObjectPosition pos) {
-            return pos.blockX == this.pos.blockX && pos.blockY == this.pos.blockY && pos.blockZ == this.pos.blockZ;
-        }
-    }
-
-    private static final AspectList visUsage = new AspectList().add(Aspect.FIRE, 45).add(Aspect.ENTROPY, 12);
-
-    public ItemFocusSmelt() {
-        super();
-    }
-
     @Override
-    public boolean isUseItem() {
+    public boolean isUseItem(ItemStack stack) {
         return true;
     }
 
@@ -103,14 +89,16 @@ public class ItemFocusSmelt extends ItemModFocus {
                         if (data.progress <= 0) {
                             if (!p.worldObj.isRemote) {
                                 p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Block.getBlockFromItem(result.getItem()), result.getItemDamage(), 1 | 2);
-                                p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
-                                p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
-
                                 wand.consumeAllVis(stack, p, visUsage, true, false);
                                 playerData.remove(p.getGameProfile().getName());
                                 decremented = false;
                             }
-
+                            //  Sound
+                            ////////////////////
+                            p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
+                            p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
+                            //  Particle
+                            ////////////////////
                             for (int i = 0; i < 25; i++) {
                                 double x = pos.blockX + Math.random();
                                 double y = pos.blockY + Math.random();
@@ -123,15 +111,22 @@ public class ItemFocusSmelt extends ItemModFocus {
                 }
 
                 if (!decremented) {
-                    int potency = EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack));
+                    int potency = this.getUpgradeLevel(stack, FocusUpgradeType.potency);
                     playerData.put(p.getGameProfile().getName(), new SmeltData(pos, 20 - Math.min(3, potency) * 5));
-                } else for (int i = 0; i < 2; i++) {
-                    double x = pos.blockX + Math.random();
-                    double y = pos.blockY + Math.random();
-                    double z = pos.blockZ + Math.random();
-                    p.worldObj.playSoundAtEntity(p, "fire.fire", (float) Math.random() / 2F + 0.5F, 1F);
+                } else{
+                    //  Sound
+                    ////////////////////
+                    if (time % soundCooldown == 0)
+                            p.worldObj.playSoundAtEntity(p, "fire.fire", 0.2F, 1F);
+                    //  Particle
+                    ////////////////////
+                    for (int i = 0; i < 2; i++) {
+                        double x = pos.blockX + Math.random();
+                        double y = pos.blockY + Math.random();
+                        double z = pos.blockZ + Math.random();
 
-                    ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, true, (float) -Math.random() / 10F);
+                        ThaumicTinkerer.tcProxy.wispFX2(p.worldObj, x, y, z, (float) Math.random() / 2F, 4, true, true, (float) -Math.random() / 10F);
+                    }
                 }
 
                 if (p.worldObj.isRemote)
@@ -151,13 +146,32 @@ public class ItemFocusSmelt extends ItemModFocus {
     }
 
     @Override
-    public int getFocusColor() {
+    public int getFocusColor(ItemStack stack) {
         return 0xFF0000;
     }
 
     @Override
-    public AspectList getVisCost() {
+    public AspectList getVisCost(ItemStack stack) {
         return visUsage;
+    }
+
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
+        return new FocusUpgradeType[]{FocusUpgradeType.treasure, FocusUpgradeType.potency};
+    }
+
+    static class SmeltData {
+        public MovingObjectPosition pos;
+        public int progress;
+
+        public SmeltData(MovingObjectPosition pos, int progress) {
+            this.pos = pos;
+            this.progress = progress;
+        }
+
+        public boolean equalPos(MovingObjectPosition pos) {
+            return pos.blockX == this.pos.blockX && pos.blockY == this.pos.blockY && pos.blockZ == this.pos.blockZ;
+        }
     }
 
 }

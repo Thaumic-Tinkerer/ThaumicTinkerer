@@ -22,40 +22,40 @@ import thaumic.tinkerer.client.lib.LibResources;
 
 public class GuiIchorPouch extends GuiContainer {
 
-	private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ICHOR_POUCH);
+    private static final ResourceLocation gui = new ResourceLocation(LibResources.GUI_ICHOR_POUCH);
 
-	int x, y;
+    int x, y;
 
-	public GuiIchorPouch(Container par1Container) {
-		super(par1Container);
-	}
+    public GuiIchorPouch(Container par1Container) {
+        super(par1Container);
+    }
 
-	//Overridden to prevent a dupe
-	//See issue 367
-	protected boolean checkHotbarKeys(int slot) {
-		if (this.mc.gameSettings.keyBindsHotbar[this.mc.thePlayer.inventory.currentItem].getKeyCode() != slot) {
-			super.checkHotbarKeys(slot);
-		}
+    //Overridden to prevent a dupe
+    //See issue 367
+    protected boolean checkHotbarKeys(int slot) {
+        if (this.mc.gameSettings.keyBindsHotbar[this.mc.thePlayer.inventory.currentItem].getKeyCode() != slot) {
+            super.checkHotbarKeys(slot);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	@Override
-	public void initGui() {
-		super.initGui();
-		xSize = ySize = 256;
+    @Override
+    public void initGui() {
+        super.initGui();
+        xSize = ySize = 256;
 
-		guiLeft = x = (width - xSize) / 2;
-		guiTop = y = (height - ySize) / 2;
-	}
+        guiLeft = x = (width - xSize) / 2;
+        guiTop = y = (height - ySize) / 2;
+    }
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glEnable(GL11.GL_BLEND);
-		mc.renderEngine.bindTexture(gui);
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		GL11.glDisable(GL11.GL_BLEND);
-	}
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glEnable(GL11.GL_BLEND);
+        mc.renderEngine.bindTexture(gui);
+        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        GL11.glDisable(GL11.GL_BLEND);
+    }
 
 }

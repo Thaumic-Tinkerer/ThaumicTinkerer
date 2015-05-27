@@ -20,19 +20,19 @@ import thaumic.tinkerer.common.lib.LibBlockNames;
 /**
  * Created by nekosune on 30/06/14.
  */
-public class TileRPlacer extends TileCamo implements IInventory{
+public class TileRPlacer extends TileCamo implements IInventory {
     private static final String TAG_ORIENTATION = "orientation";
     private static final String TAG_BLOCKS = "blocks";
     public int orientation;
+    public int blocks = 1;
     ItemStack[] inventorySlots = new ItemStack[1];
-    public int blocks=1;
 
     @Override
     public void readCustomNBT(NBTTagCompound cmp) {
         super.readCustomNBT(cmp);
 
         orientation = cmp.getInteger(TAG_ORIENTATION);
-        blocks=cmp.getInteger(TAG_BLOCKS);
+        blocks = cmp.getInteger(TAG_BLOCKS);
         NBTTagList var2 = cmp.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         inventorySlots = new ItemStack[getSizeInventory()];
         for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
@@ -58,7 +58,7 @@ public class TileRPlacer extends TileCamo implements IInventory{
         super.writeCustomNBT(cmp);
 
         cmp.setInteger(TAG_ORIENTATION, orientation);
-        cmp.setInteger(TAG_BLOCKS,blocks);
+        cmp.setInteger(TAG_BLOCKS, blocks);
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < inventorySlots.length; ++var3) {
             if (inventorySlots[var3] != null) {
@@ -157,6 +157,7 @@ public class TileRPlacer extends TileCamo implements IInventory{
     public boolean isItemValidForSlot(int var1, ItemStack var2) {
         return var2.getItem() instanceof ItemBlock;
     }
+
     @Override
     public S35PacketUpdateTileEntity getDescriptionPacket() {
         NBTTagCompound nbttagcompound = new NBTTagCompound();
@@ -171,67 +172,65 @@ public class TileRPlacer extends TileCamo implements IInventory{
     }
 
     public void receiveRedstonePulse() {
-        if(worldObj.isRemote)
+        if (worldObj.isRemote)
             return;
-        if(this.inventorySlots[0]!=null)
-        {
-            int x,y,z=0;
-            x=0;
-            y=0;
-            switch(orientation)
-            {
+        if (this.inventorySlots[0] != null) {
+            int x, y, z = 0;
+            x = 0;
+            y = 0;
+            switch (orientation) {
                 case 0:
-                    x=this.xCoord;
-                    y=this.yCoord-this.blocks;
-                    z=this.zCoord;
+                    x = this.xCoord;
+                    y = this.yCoord - this.blocks;
+                    z = this.zCoord;
                     break;
                 case 1:
-                    x=this.xCoord;
-                    y=this.yCoord+this.blocks;
-                    z=this.zCoord;
+                    x = this.xCoord;
+                    y = this.yCoord + this.blocks;
+                    z = this.zCoord;
                     break;
                 case 2:
-                    x=this.xCoord;
-                    y=this.yCoord;
-                    z=this.zCoord-this.blocks;
+                    x = this.xCoord;
+                    y = this.yCoord;
+                    z = this.zCoord - this.blocks;
                     break;
                 case 3:
-                    x=this.xCoord;
-                    y=this.yCoord;
-                    z=this.zCoord+this.blocks;
+                    x = this.xCoord;
+                    y = this.yCoord;
+                    z = this.zCoord + this.blocks;
                     break;
                 case 4:
-                    x=this.xCoord-this.blocks;
-                    y=this.yCoord;
-                    z=this.zCoord;
+                    x = this.xCoord - this.blocks;
+                    y = this.yCoord;
+                    z = this.zCoord;
                     break;
                 case 5:
-                    x=this.xCoord-this.blocks;
-                    y=this.yCoord;
-                    z=this.zCoord;
+                    x = this.xCoord - this.blocks;
+                    y = this.yCoord;
+                    z = this.zCoord;
                     break;
             }
             //if(this.inventorySlots[0].getItem() instanceof ItemBlock) {
-                if (this.worldObj.getBlock(x, y, z) == Blocks.air) {
-                    //if (this.worldObj.setBlock(x, y, z, ((ItemBlock) this.inventorySlots[0].getItem()).field_150939_a, this.inventorySlots[0].getItemDamage(), 1 | 2)) {
-                      //  this.decrStackSize(0, 1);
-                       // markDirty();
-                    //Block block = worldObj.getBlock(x, y, z);
-                    boolean done=false;
-                    FakePlayer player=FakePlayerFactory.getMinecraft((WorldServer)worldObj);
-                    Item item=inventorySlots[0].getItem();
-                    ItemStack stack=inventorySlots[0];
-                    if (!done)
-                        item.onItemUseFirst(stack, player, worldObj, x, y, z, ForgeDirection.OPPOSITES[orientation], 0F, 0F, 0F);
-                    if (!done)
-                        done = item.onItemUse(stack, player, worldObj, x, y, z, ForgeDirection.OPPOSITES[orientation], 0F, 0F, 0F);
-                    if (!done) {
-                        item.onItemRightClick(stack, worldObj, player);
-                        done = true;
-                    }
+            if (this.worldObj.getBlock(x, y, z) == Blocks.air) {
+                //if (this.worldObj.setBlock(x, y, z, ((ItemBlock) this.inventorySlots[0].getItem()).field_150939_a, this.inventorySlots[0].getItemDamage(), 1 | 2)) {
+                //  this.decrStackSize(0, 1);
+                // markDirty();
+                //Block block = worldObj.getBlock(x, y, z);
+                boolean done = false;
+                FakePlayer player = FakePlayerFactory.getMinecraft((WorldServer) worldObj);
+                Item item = inventorySlots[0].getItem();
+                ItemStack stack = inventorySlots[0];
+                if (!done)
+                    item.onItemUseFirst(stack, player, worldObj, x, y, z, ForgeDirection.OPPOSITES[orientation], 0F, 0F, 0F);
+                if (!done)
+                    done = item.onItemUse(stack, player, worldObj, x, y, z, ForgeDirection.OPPOSITES[orientation], 0F, 0F, 0F);
+                if (!done) {
+                    item.onItemRightClick(stack, worldObj, player);
+                    done = true;
+                }
 
-                    }
-                //}
+            }
+            //}
             //}
 
         }

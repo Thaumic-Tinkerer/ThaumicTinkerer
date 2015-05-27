@@ -31,63 +31,63 @@ import java.awt.*;
 
 public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
-	ItemWandRenderer wandRenderer = new ItemWandRenderer();
+    ItemWandRenderer wandRenderer = new ItemWandRenderer();
 
-	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float partTicks) {
-		TileEnchanter enchanter = (TileEnchanter) tileentity;
+    @Override
+    public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float partTicks) {
+        TileEnchanter enchanter = (TileEnchanter) tileentity;
 
-		GL11.glPushMatrix();
-		GL11.glTranslated(d0, d1 + 0.75, d2);
+        GL11.glPushMatrix();
+        GL11.glTranslated(d0, d1 + 0.75, d2);
 
-		ItemStack item = enchanter.getStackInSlot(0);
-		if (item != null) {
-			GL11.glPushMatrix();
-			GL11.glRotatef(90F, 1F, 0F, 0F);
-			final float scale = 0.7F;
-			GL11.glScalef(scale, scale, scale);
-			GL11.glTranslatef(0.6F, -0.2F, 0F);
-			GL11.glRotatef(30F, 0F, 0F, 1F);
+        ItemStack item = enchanter.getStackInSlot(0);
+        if (item != null) {
+            GL11.glPushMatrix();
+            GL11.glRotatef(90F, 1F, 0F, 0F);
+            final float scale = 0.7F;
+            GL11.glScalef(scale, scale, scale);
+            GL11.glTranslatef(0.6F, -0.2F, 0F);
+            GL11.glRotatef(30F, 0F, 0F, 1F);
 
-			ClientHelper.minecraft().renderEngine.bindTexture(TextureMap.locationItemsTexture);
+            ClientHelper.minecraft().renderEngine.bindTexture(TextureMap.locationItemsTexture);
 
-			int renderPass = 0;
-			do {
-				IIcon icon = item.getItem().getIcon(item, renderPass);
-				if (icon != null) {
-					Color color = new Color(item.getItem().getColorFromItemStack(item, renderPass));
-					GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
-					float f = icon.getMinU();
-					float f1 = icon.getMaxU();
-					float f2 = icon.getMinV();
-					float f3 = icon.getMaxV();
-					ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
-					GL11.glColor3f(1F, 1F, 1F);
-				}
-				renderPass++;
-			} while (renderPass < item.getItem().getRenderPasses(item.getItemDamage()));
-			GL11.glPopMatrix();
-		}
+            int renderPass = 0;
+            do {
+                IIcon icon = item.getItem().getIcon(item, renderPass);
+                if (icon != null) {
+                    Color color = new Color(item.getItem().getColorFromItemStack(item, renderPass));
+                    GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
+                    float f = icon.getMinU();
+                    float f1 = icon.getMaxU();
+                    float f2 = icon.getMinV();
+                    float f3 = icon.getMaxV();
+                    ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
+                    GL11.glColor3f(1F, 1F, 1F);
+                }
+                renderPass++;
+            } while (renderPass < item.getItem().getRenderPasses(item.getItemDamage()));
+            GL11.glPopMatrix();
+        }
 
-		item = enchanter.getStackInSlot(1);
-		if (item != null) {
-			GL11.glPushMatrix();
-			GL11.glRotatef(90F, 1F, 0F, 0F);
-			final float scale = 0.5F;
-			GL11.glScalef(scale, scale, scale);
-			GL11.glTranslatef(0.6F, 1.5F, -0.1F);
-			GL11.glRotatef(-70F, 0F, 0F, 1F);
-			long millis = System.currentTimeMillis();
+        item = enchanter.getStackInSlot(1);
+        if (item != null) {
+            GL11.glPushMatrix();
+            GL11.glRotatef(90F, 1F, 0F, 0F);
+            final float scale = 0.5F;
+            GL11.glScalef(scale, scale, scale);
+            GL11.glTranslatef(0.6F, 1.5F, -0.1F);
+            GL11.glRotatef(-70F, 0F, 0F, 1F);
+            long millis = System.currentTimeMillis();
 
-			GL11.glTranslatef(0F, 0F, (float) (Math.cos((double) millis / 1000F) - 1.2F) / 10F);
-			GL11.glTranslatef(0F, 0.325F, 0F);
-			GL11.glRotatef((float) Math.cos((double) millis / 500F) * 5F, 1F, 0F, 0F);
-			GL11.glTranslatef(0F, -0.325F, 0F);
+            GL11.glTranslatef(0F, 0F, (float) (Math.cos((double) millis / 1000F) - 1.2F) / 10F);
+            GL11.glTranslatef(0F, 0.325F, 0F);
+            GL11.glRotatef((float) Math.cos((double) millis / 500F) * 5F, 1F, 0F, 0F);
+            GL11.glTranslatef(0F, -0.325F, 0F);
 
-			wandRenderer.renderItem(ItemRenderType.ENTITY, item, (Object[]) null);
-			GL11.glPopMatrix();
-		}
+            wandRenderer.renderItem(ItemRenderType.ENTITY, item, (Object[]) null);
+            GL11.glPopMatrix();
+        }
 
-		GL11.glPopMatrix();
-	}
+        GL11.glPopMatrix();
+    }
 }

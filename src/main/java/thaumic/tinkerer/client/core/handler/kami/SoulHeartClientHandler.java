@@ -27,59 +27,59 @@ import thaumic.tinkerer.client.lib.LibResources;
 
 public final class SoulHeartClientHandler {
 
-	private static final ResourceLocation iconsResource = new ResourceLocation("textures/gui/icons.png");
-	private static final ResourceLocation heartsResource = new ResourceLocation(LibResources.GUI_SOUL_HEARTS);
+    private static final ResourceLocation iconsResource = new ResourceLocation("textures/gui/icons.png");
+    private static final ResourceLocation heartsResource = new ResourceLocation(LibResources.GUI_SOUL_HEARTS);
 
-	@SideOnly(Side.CLIENT)
-	public static int clientPlayerHP = 0;
+    @SideOnly(Side.CLIENT)
+    public static int clientPlayerHP = 0;
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void renderHealthBar(RenderGameOverlayEvent event) {
-		if (event.type == ElementType.FOOD && clientPlayerHP > 0) {
-			if (event instanceof RenderGameOverlayEvent.Post) {
-				Minecraft mc = Minecraft.getMinecraft();
+    @SideOnly(Side.CLIENT)
+    private static void renderHeart(int x, int y, boolean full) {
+        Tessellator tess = Tessellator.instance;
+        float size = 1 / 16F;
 
-				int x = event.resolution.getScaledWidth() / 2 + 10;
-				int y = event.resolution.getScaledHeight() - 39;
+        float startX = full ? 0 : 9 * size;
+        float endX = full ? 9 * size : 1;
+        float startY = 0;
+        float endY = 9 * size;
 
-				GL11.glTranslatef(0F, 10F, 0F);
-				mc.renderEngine.bindTexture(heartsResource);
-				int it = 0;
-				for (int i = 0; i < clientPlayerHP; i++) {
-					boolean half = i == clientPlayerHP - 1 && clientPlayerHP % 2 != 0;
-					if (half || i % 2 == 0) {
-						renderHeart(x + it * 8, y, !half);
-						it++;
-					}
-				}
+        tess.startDrawingQuads();
+        tess.addVertexWithUV(x, y + 9, 0, startX, endY);
+        tess.addVertexWithUV(x + (full ? 9 : 7), y + 9, 0, endX, endY);
+        tess.addVertexWithUV(x + (full ? 9 : 7), y, 0, endX, startY);
+        tess.addVertexWithUV(x, y, 0, startX, startY);
+        tess.draw();
+    }
 
-				mc.renderEngine.bindTexture(iconsResource);
-			}
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void renderHealthBar(RenderGameOverlayEvent event) {
+        if (event.type == ElementType.FOOD && clientPlayerHP > 0) {
+            if (event instanceof RenderGameOverlayEvent.Post) {
+                Minecraft mc = Minecraft.getMinecraft();
 
-			GL11.glTranslatef(0F, -10F, 0F);
-		}
+                int x = event.resolution.getScaledWidth() / 2 + 10;
+                int y = event.resolution.getScaledHeight() - 39;
 
-		if (event.type == ElementType.AIR && event instanceof RenderGameOverlayEvent.Post && clientPlayerHP > 0)
-			GL11.glTranslatef(0F, 10F, 0F);
-	}
+                GL11.glTranslatef(0F, 10F, 0F);
+                mc.renderEngine.bindTexture(heartsResource);
+                int it = 0;
+                for (int i = 0; i < clientPlayerHP; i++) {
+                    boolean half = i == clientPlayerHP - 1 && clientPlayerHP % 2 != 0;
+                    if (half || i % 2 == 0) {
+                        renderHeart(x + it * 8, y, !half);
+                        it++;
+                    }
+                }
 
-	@SideOnly(Side.CLIENT)
-	private static void renderHeart(int x, int y, boolean full) {
-		Tessellator tess = Tessellator.instance;
-		float size = 1 / 16F;
+                mc.renderEngine.bindTexture(iconsResource);
+            }
 
-		float startX = full ? 0 : 9 * size;
-		float endX = full ? 9 * size : 1;
-		float startY = 0;
-		float endY = 9 * size;
+            GL11.glTranslatef(0F, -10F, 0F);
+        }
 
-		tess.startDrawingQuads();
-		tess.addVertexWithUV(x, y + 9, 0, startX, endY);
-		tess.addVertexWithUV(x + (full ? 9 : 7), y + 9, 0, endX, endY);
-		tess.addVertexWithUV(x + (full ? 9 : 7), y, 0, endX, startY);
-		tess.addVertexWithUV(x, y, 0, startX, startY);
-		tess.draw();
-	}
+        if (event.type == ElementType.AIR && event instanceof RenderGameOverlayEvent.Post && clientPlayerHP > 0)
+            GL11.glTranslatef(0F, 10F, 0F);
+    }
 
 }

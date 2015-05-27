@@ -21,17 +21,17 @@ import thaumic.tinkerer.common.item.ItemSoulMould;
 
 public class SlotMobMagnet extends Slot {
 
-	public SlotMobMagnet(TileMobMagnet mobMagnet, int par2, int par3, int par4) {
-		super(mobMagnet, par2, par3, par4);
-	}
+    public SlotMobMagnet(TileMobMagnet mobMagnet, int par2, int par3, int par4) {
+        super(mobMagnet, par2, par3, par4);
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() instanceof ItemSoulMould;
-	}
+    @Override
+    public boolean isItemValid(ItemStack par1ItemStack) {
+        return par1ItemStack.getItem() instanceof ItemSoulMould;
+    }
 
-	@Override
-	public int getSlotStackLimit() {
-		return 1;
-	}
+    @Override
+    public int getSlotStackLimit() {
+        return 1;
+    }
 }
