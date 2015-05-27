@@ -23,6 +23,10 @@ object ModItems {
 
   def registerInventoryItems() = {
     ThaumicTinkerer.proxy.registerInventoryItem(ItemDarkQuartz, LibItemNames.DARK_QUARTZ)
-    ThaumicTinkerer.proxy.registerInventoryItem(ItemJarSeal, LibItemNames.JARSEAL)
+
+    for(i <- 0 to 16)
+      {
+        ThaumicTinkerer.proxy.registerInventoryItem(ItemJarSeal, LibItemNames.JARSEAL,i)
+      }
   }
 }

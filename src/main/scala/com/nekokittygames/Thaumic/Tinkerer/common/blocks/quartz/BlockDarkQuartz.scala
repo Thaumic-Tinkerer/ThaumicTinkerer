@@ -22,7 +22,7 @@ object BlockDarkQuartz extends ModBlock(Material.rock) {
   override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
   {
     if(!worldIn.isRemote) {
-      val uuid: UUID = new UUID(112L, 112L)
+      val uuid: String="Poppy"
 
       BoundJarNetworkManager.getAspect(uuid).add(Aspect.CRYSTAL,64)
       BoundJarNetworkManager.markDirty(uuid)

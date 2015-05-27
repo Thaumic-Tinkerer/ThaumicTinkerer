@@ -76,7 +76,7 @@ object BlockDarkQuartzPatterned extends {
   override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
   {
     if(worldIn.isRemote) {
-      val uuid: UUID = new UUID(112L, 112L)
+      val uuid: String = "Poppy"
 
       val blockData=BoundJarNetworkManager.getAspect(uuid)
       playerIn.addChatMessage(new ChatComponentText(blockData.getAspects()(0).getName))

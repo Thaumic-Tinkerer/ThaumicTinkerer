@@ -14,6 +14,9 @@ class CommonProxy {
 
   }
 
+  def registerInventoryItem(item: ModItem, name: String,meta:Int) = {
+
+  }
 
   def registerInventoryBlock(block: Block,name: String): Unit=
   {

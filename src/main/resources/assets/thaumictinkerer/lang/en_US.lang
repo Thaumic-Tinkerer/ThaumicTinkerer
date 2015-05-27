@@ -15,6 +15,10 @@ item.darkQuartzItem.name=Smokey Quartz
 item.jarSeal.name=Jar Seal
 
 
+##Item Details
+ttitems.boundJar.networkInfo=Network ID: %s
+ttitems.boundJar.noNetworkInfo=No Network
+
 
 
 #CONFIG COMMENTS

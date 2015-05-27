@@ -34,8 +34,14 @@ class ClientProxy extends CommonProxy{
     ClientRegistry.bindTileEntitySpecialRenderer(classOf[TileFunnel], new TileFunnelRenderer);
   }
 
+
+  override def registerInventoryItem(item: ModItem, name: String, meta: Int): Unit =
+  {
+    Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(item, meta, new ModelResourceLocation("thaumictinkerer:" + name, "inventory"))
+  }
+
   override def registerInventoryItem(item: ModItem, name: String): Unit = {
-    Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(item, 0, new ModelResourceLocation("thaumictinkerer:" + name, "inventory"))
+    registerInventoryItem(item,name,0)
   }
 
   override def registerPacketHandlers(): Unit = {

@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public class BoundJarNetworkData extends WorldSavedData {
 
-    public Map<UUID,AspectList> networks=new HashMap<UUID, AspectList>();
+    public Map<String,AspectList> networks=new HashMap<String, AspectList>();
     public static String IDENTIFIER="boundJar";
     public BoundJarNetworkData() {
         super(BoundJarNetworkData.IDENTIFIER);
@@ -31,7 +31,7 @@ public class BoundJarNetworkData extends WorldSavedData {
         for(int i=0;i<list.tagCount();i++)
         {
             NBTTagCompound cmp=list.getCompoundTagAt(i);
-            UUID uuid=new UUID(cmp.getLong("high"),cmp.getLong("low"));
+            String uuid=cmp.getString("network");
             AspectList aspectList=new AspectList();
             aspectList.readFromNBT(cmp);
             networks.put(uuid,aspectList);
@@ -42,11 +42,10 @@ public class BoundJarNetworkData extends WorldSavedData {
     public void writeToNBT(NBTTagCompound nbt) {
 
         NBTTagList list=new NBTTagList();
-        for(Map.Entry<UUID,AspectList> entry : networks.entrySet())
+        for(Map.Entry<String,AspectList> entry : networks.entrySet())
         {
             NBTTagCompound cmp=new NBTTagCompound();
-            cmp.setLong("high",entry.getKey().getMostSignificantBits());
-            cmp.setLong("low", entry.getKey().getLeastSignificantBits());
+            cmp.setString("network", entry.getKey());
             entry.getValue().writeToNBT(cmp);
             list.appendTag(cmp);
             }

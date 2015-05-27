@@ -25,7 +25,7 @@ object PlayerHandler {
         {
 
           ThaumicTinkerer.logger.info(entry)
-         PacketCustom.sendToPlayer(BoundJarNetworkManager.getPacket(new Pair[UUID,AspectList](entry._1,entry._2)),event.player)
+         PacketCustom.sendToPlayer(BoundJarNetworkManager.getPacket(new Pair[String,AspectList](entry._1,entry._2)),event.player)
       }
   }
 }

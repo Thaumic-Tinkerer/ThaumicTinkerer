@@ -22,7 +22,7 @@ object BoundJarNetworkManager {
 
   object BoundJarHandler extends IClientPacketHandler {
     override def handlePacket(packetCustom: PacketCustom, minecraft: Minecraft, iNetHandlerPlayClient: INetHandlerPlayClient): Unit = {
-      val id: UUID = new UUID(packetCustom.readLong(), packetCustom.readLong())
+      val id=packetCustom.readString()            //new UUID(packetCustom.readLong(), packetCustom.readLong())
       if(!data.networks.containsKey(id))
         {
           data.networks.put(id,new AspectList())
@@ -33,11 +33,10 @@ object BoundJarNetworkManager {
   }
   private var data:BoundJarNetworkData=null
 
-  def getPacket(boundJarWorldData:Tuple2[UUID,AspectList]):Packet=
+  def getPacket(boundJarWorldData:Tuple2[String,AspectList]):Packet=
   {
     val packetCustom:PacketCustom=new PacketCustom(ThaumicTinkerer,2)
-    packetCustom.writeLong(boundJarWorldData._1.getMostSignificantBits)
-    packetCustom.writeLong(boundJarWorldData._1.getLeastSignificantBits)
+    packetCustom.writeString(boundJarWorldData._1)
     val nbt:NBTTagCompound=new NBTTagCompound()
     boundJarWorldData._2.writeToNBT(nbt)
     packetCustom.writeNBTTagCompound(nbt)
@@ -66,14 +65,14 @@ object BoundJarNetworkManager {
 
   }
 
-  def markDirty(uuid:UUID): Unit =
+  def markDirty(uuid:String): Unit =
   {
 
     markDirty()
-    PacketCustom.sendToClients(getPacket(new Pair[UUID,AspectList](uuid,getData.networks.get(uuid))))
+    PacketCustom.sendToClients(getPacket(new Pair[String,AspectList](uuid,getData.networks.get(uuid))))
   }
 
-  def getAspect(uuid:UUID):AspectList=
+  def getAspect(uuid:String):AspectList=
   {
     if(!getData.networks.containsKey(uuid))
       getData.networks.put(uuid,new AspectList())
