@@ -1,13 +1,16 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.blocks
 
+import java.util.UUID
+
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.TTCreativeTab
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileBoundJar
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{EnumFacing, BlockPos}
+import net.minecraft.util.{ChatComponentText, EnumFacing, BlockPos}
 import net.minecraft.world.World
 import thaumcraft.api.aspects.{AspectList, Aspect, IEssentiaContainerItem}
 import thaumcraft.api.items.{ItemsTC, ItemGenericEssentiaContainer}
@@ -73,5 +76,15 @@ object BlockBoundJar extends BlockJar with ModBlockContainer{
       world.playSoundAtEntity(player, "liquid.swim", 0.25F, 1.0F)
     }
     super.onBlockActivated(world,pos,state,player,side,fx,fy,fz)
+  }
+
+
+  override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
+  {
+    if(worldIn.isRemote) {
+      val tileEntity=worldIn.getTileEntity(pos).asInstanceOf[TileBoundJar]
+      playerIn.addChatMessage(new ChatComponentText(tileEntity.network.toString))
+    }
+    super.onBlockClicked(worldIn, pos, playerIn)
   }
 }
