@@ -102,7 +102,9 @@ object ItemJarSeal extends ModItem {
 
   def getNetwork(itemStack:ItemStack):String=
   {
-    if(ItemNBT.getItemStackTag(itemStack).hasKey("network"))
+    if(itemStack.hasDisplayName)
+      itemStack.getDisplayName
+    else if(ItemNBT.getItemStackTag(itemStack).hasKey("network"))
       ItemNBT.getItemStackTag(itemStack).getString("network")
     else
       null

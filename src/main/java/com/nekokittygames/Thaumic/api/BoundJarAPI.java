@@ -24,7 +24,7 @@ public class BoundJarAPI {
      * @param uuid id of the network to check
      * @return aspect list, or blank if a new network
      */
-    public static AspectList getAspects(UUID uuid)
+    public static AspectList getAspects(String uuid)
     {
         findTT();
         if(BoundJarGetAspect!=null)
@@ -47,7 +47,7 @@ public class BoundJarAPI {
      * Marks a network dirty so it will be saved
      * @param uuid network ID
      */
-    public static void markDirty(UUID uuid)
+    public static void markDirty(String uuid)
     {
         findTT();
         if(BoundJarMarkDirty!=null)
@@ -74,8 +74,8 @@ public class BoundJarAPI {
             {
                 BoundJarManager=Class.forName("com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager$");
                 BoundClassInstance=findTTField("MODULE$");
-                BoundJarGetAspect=findTTMethod("getAspect",new Class[] {UUID.class});
-                BoundJarMarkDirty=findTTMethod("markDirty",new Class[] {UUID.class});
+                BoundJarGetAspect=findTTMethod("getAspect",new Class[] {String.class});
+                BoundJarMarkDirty=findTTMethod("markDirty",new Class[] {String.class});
 
             } catch( Exception e ) {
                 System.out.println( "Thaumic Tinkerer API: Thaumic Tinkerer not found." );

@@ -21,7 +21,7 @@ public class BlockBlock extends Block {
 
     @Override
     public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
-        AspectList blockData= BoundJarAPI.getAspects(new UUID(112L, 112L));
+        AspectList blockData= BoundJarAPI.getAspects("Poppy");
         playerIn.addChatMessage(new ChatComponentText(blockData.getAspects()[0].getName()));
     }
 }
