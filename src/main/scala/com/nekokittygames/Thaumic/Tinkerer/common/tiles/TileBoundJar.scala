@@ -17,7 +17,15 @@ class TileBoundJar  extends TileJarFillable{
 
   var network:String=StringID.getName() // TODO: Choose random network name
   var jarColor:Int=0
-  var aspectList:AspectList=null
+  var aspectList:AspectList=new AspectList()
+
+  override def update(): Unit =
+    {
+      aspectList=BoundJarNetworkManager.getAspect(network)
+      aspect=aspectList.getAspects()(0)
+      amount=aspectList.getAmount(aspect)
+      super.update()
+    }
 
   override def validate(): Unit =
     {
@@ -27,11 +35,11 @@ class TileBoundJar  extends TileJarFillable{
 
   override def markDirty(): Unit = {
     super.markDirty()
+    aspectList.remove(aspect)
+    aspectList.add(aspect,amount)
     val oldAspects=BoundJarNetworkManager.getAspect(network)
     oldAspects.remove(oldAspects.getAspects()(0))
-    oldAspects.add(aspectList.getAspects()(0),aspectList.getAmount(aspectList.getAspects()(0)))
-    aspect=aspectList.getAspects()(0)
-    amount=aspectList.getAmount(aspectList.getAspects()(0))
+    oldAspects.add(aspect,amount)
     BoundJarNetworkManager.markDirty(network)
   }
 
@@ -60,28 +68,41 @@ class TileBoundJar  extends TileJarFillable{
         if(this.amount < this.maxAmount && tt == this.aspect || this.amount == 0) {
           this.aspect = tt;
           var added = Math.min(am, this.maxAmount - this.amount);
-          this.amount = this.amount- added;
+          this.amount = this.amount+ added;
           amount = amount- added;
         }
 
 
         this.markDirty();
         this.worldObj.markBlockForUpdate(this.pos);
+
         return amount;
       }
     }
 
-  override def containerContains(tag: Aspect): Int = super.containerContains(tag)
 
-  override def takeFromContainer(tt: Aspect, am: Int): Boolean = super.takeFromContainer(tt, am)
 
-  override def takeFromContainer(ot: AspectList): Boolean = super.takeFromContainer(ot)
+  override def takeFromContainer(tt: Aspect, am: Int): Boolean =
+    {
+      if(this.amount >= am && tt == this.aspect) {
+        this.amount = this.amount - am;
+        if(this.amount <= 0) {
+          this.aspect = null;
+          this.amount = 0;
+        }
+        this.markDirty();
+        this.worldObj.markBlockForUpdate(this.pos);
+        return true;
+      } else {
+        return false;
+      }
+    }
 
-  override def getAspects: AspectList = super.getAspects
 
-  override def getEssentiaType(loc: EnumFacing): Aspect = super.getEssentiaType(loc)
-
-  override def setAspects(aspects: AspectList): Unit = super.setAspects(aspects)
-
-  override def doesContainerContainAmount(tag: Aspect, amt: Int): Boolean = super.doesContainerContainAmount(tag, amt)
+  override def setAspects(aspects: AspectList): Unit =
+    {
+      super.setAspects(aspects)
+      this.markDirty()
+      this.worldObj.markBlockForUpdate(this.pos);
+    }
 }

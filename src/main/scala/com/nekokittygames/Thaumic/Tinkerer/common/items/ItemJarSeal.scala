@@ -6,6 +6,7 @@ import java.util.UUID
 import codechicken.lib.colour.{ColourRGBA, Colour}
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.BlockBoundJar
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.ItemNBT
+import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileBoundJar
 import net.minecraft.block.state.BlockState
@@ -40,6 +41,9 @@ object ItemJarSeal extends ModItem {
           if(id!=null) {
 
             tileEntity.network = id
+            val aList=BoundJarNetworkManager.getAspect(id)
+            tileEntity.aspect=aList.getAspects()(0)
+            tileEntity.amount-aList.getAmount(tileEntity.aspect)
             tileEntity.markDirty()
 
           }

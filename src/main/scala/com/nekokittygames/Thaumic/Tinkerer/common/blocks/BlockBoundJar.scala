@@ -48,13 +48,13 @@ object BlockBoundJar extends BlockJar with ModBlockContainer{
 
     var amount:Int=0
     if(heldItem.getItemDamage==1) {
-      val aspects = phial.getAspects(heldItem)
-      if (aspects.size() > 0)
-        aspect = aspects.getAspects()(0)
+      val aspects = phial.getAspects(heldItem).getAspects
+      if (aspects.length > 0)
+        aspect = aspects(0)
       amount = phial.getAspects(heldItem).getAmount(aspect)
     }
 
-    if(heldItem!=null && jar.amount <= (jar.maxAmount-amount) && ((jar.aspect!=null && jar.aspect!=aspect && jar.amount == 0) || jar.aspect==null || (jar.aspect!=null && jar.aspect==aspect ))) {
+    if (heldItem != null && jar.amount <= (jar.maxAmount - 8) && ((jar.aspect != null && jar.aspect != aspect && jar.amount == 0) || jar.aspect == null || (jar.aspect != null && jar.aspect == aspect && amount >= 8))){
       player.inventory.decrStackSize(player.inventory.currentItem,1)
 
       jar.aspect = aspect
@@ -64,7 +64,8 @@ object BlockBoundJar extends BlockJar with ModBlockContainer{
 
       world.playSoundAtEntity(player,"liquid.swim",0.25F,1.0F)
     }
-    else if(heldItem!=null && jar.amount>=8 && aspect==null) {
+    else if (heldItem != null && jar.amount >= 8 && aspect == null)
+      {
       player.inventory.decrStackSize(player.inventory.currentItem, 1)
       val newPhial = new ItemStack(ItemsTC.phial, 1, 1)
       val setAspect = new AspectList().add(jar.aspect, 8)
