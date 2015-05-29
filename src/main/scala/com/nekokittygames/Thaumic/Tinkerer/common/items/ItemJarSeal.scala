@@ -43,7 +43,7 @@ object ItemJarSeal extends ModItem {
             tileEntity.network = id
             val aList=BoundJarNetworkManager.getAspect(id)
             tileEntity.aspect=aList.getAspects()(0)
-            tileEntity.amount-aList.getAmount(tileEntity.aspect)
+            tileEntity.amount=aList.getAmount(tileEntity.aspect)
             tileEntity.markDirty()
 
           }

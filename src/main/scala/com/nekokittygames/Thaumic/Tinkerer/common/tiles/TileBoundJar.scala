@@ -21,7 +21,7 @@ class TileBoundJar  extends TileJarFillable{
 
   override def update(): Unit =
     {
-      aspectList=BoundJarNetworkManager.getAspect(network)
+      aspectList=BoundJarNetworkManager.getAspect(network).copy()
       aspect=aspectList.getAspects()(0)
       amount=aspectList.getAmount(aspect)
       super.update()
