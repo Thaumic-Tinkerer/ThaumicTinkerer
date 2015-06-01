@@ -2,6 +2,22 @@
   "variants":
   {
     "type=normal": { "model": "thaumictinkerer:boundJar" },
+    "colour=white,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_white" },
+    "colour=silver,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_lightGray" },
+    "colour=gray,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_darkGray"},
+    "colour=black,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_black" },
+    "colour=red,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_red" },
+    "colour=orange,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_orange" },
+    "colour=yellow,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_yellow" },
+    "colour=lime,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_limeGreen" },
+    "colour=green,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_green" },
+    "colour=light_blue,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_lightBlue" },
+    "colour=cyan,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_cyan" },
+    "colour=blue,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_blue" },
+    "colour=purple,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_purple" },
+    "colour=magenta,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_magenta" },
+    "colour=pink,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_pink" },
+    "colour=brown,type=normal": { "model": "thaumictinkerer:boundJar/boundJar_brown" },
     "type=brain": { "model": "thaumcraft:jar_brain" },
     "type=void": { "model": "thaumcraft:jar_void" }
   }

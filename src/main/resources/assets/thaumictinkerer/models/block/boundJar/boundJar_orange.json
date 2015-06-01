@@ -1,0 +1,7 @@
+{
+  "parent":"thaumictinkerer:block/boundJar",
+  "textures":
+  {
+    "top": "thaumictinkerer:blocks/boundJar/jar_top_orange"
+  }
+}

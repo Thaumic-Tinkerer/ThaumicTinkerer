@@ -6,12 +6,13 @@ import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.TTCreativeTab
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileBoundJar
-import net.minecraft.block.state.IBlockState
+import net.minecraft.block.properties.PropertyEnum
+import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{EnumDyeColor, ItemStack}
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.{ChatComponentText, EnumFacing, BlockPos}
-import net.minecraft.world.World
+import net.minecraft.world.{IBlockAccess, World}
 import thaumcraft.api.aspects.{AspectList, Aspect, IEssentiaContainerItem}
 import thaumcraft.api.items.{ItemsTC, ItemGenericEssentiaContainer}
 import thaumcraft.common.blocks.devices.BlockJar
@@ -20,11 +21,12 @@ import thaumcraft.common.config.ConfigItems
 /**
  * Created by Katrina on 23/05/2015.
  */
-object BlockBoundJar extends BlockJar with ModBlockContainer{
-
+object BlockBoundJar extends {
+  val COLOUR:PropertyEnum=PropertyEnum.create("colour",classOf[EnumDyeColor])
+} with BlockJar  with ModBlockContainer{
 
   setUnlocalizedName(LibNames.BOUNDJAR)
-
+  setDefaultState(getBlockState.getBaseState.withProperty(COLOUR,EnumDyeColor.WHITE))
   override def getTileClass: Class[_ <: TileEntity] = classOf[TileBoundJar]
 
   override def onBlockActivated(world: World, pos: BlockPos, state: IBlockState, player: EntityPlayer, side: EnumFacing, fx: Float, fy: Float, fz: Float): Boolean =
@@ -88,4 +90,21 @@ object BlockBoundJar extends BlockJar with ModBlockContainer{
     }
     super.onBlockClicked(worldIn, pos, playerIn)
   }
+
+  override def createBlockState(): BlockState = new BlockState(this,COLOUR,BlockJar.TYPE)
+
+  override def getMetaFromState(state: IBlockState): Int = super.getMetaFromState(state)
+
+  override def getStateFromMeta(meta: Int): IBlockState = super.getStateFromMeta(meta)
+
+  override def getActualState(state: IBlockState, worldIn: IBlockAccess, pos: BlockPos): IBlockState =
+    {
+      val tileEntity:TileBoundJar=worldIn.getTileEntity(pos).asInstanceOf[TileBoundJar]
+      if(tileEntity!=null)
+        super.getActualState(state, worldIn, pos).withProperty(COLOUR,EnumDyeColor.byDyeDamage(tileEntity.jarColor))
+      else
+        super.getActualState(state, worldIn, pos)
+    }
+
+
 }

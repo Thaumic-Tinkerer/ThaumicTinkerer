@@ -4,6 +4,8 @@ import java.util.UUID
 
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.StringID
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
+import net.minecraft.block.properties.PropertyEnum
+import net.minecraft.item.EnumDyeColor
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import thaumcraft.api.aspects.{Aspect, AspectList}
@@ -18,6 +20,7 @@ class TileBoundJar  extends TileJarFillable{
   var network:String=StringID.getName() // TODO: Choose random network name
   var jarColor:Int=0
   var aspectList:AspectList=new AspectList()
+
 
   override def update(): Unit =
     {
