@@ -9,8 +9,8 @@ import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItems
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibMisc
 import com.nekokittygames.Thaumic.Tinkerer.common.research.{ModRecipes, ModResearch}
 import net.minecraftforge.fml.common.Mod.EventHandler
-import net.minecraftforge.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import net.minecraftforge.fml.common.{FMLCommonHandler, Mod, SidedProxy}
+import net.minecraftforge.fml.common.event.{FMLInterModComms, FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import net.minecraftforge.fml.common.{Loader, FMLCommonHandler, Mod, SidedProxy}
 import org.apache.logging.log4j.Logger
 import thaumcraft.common
 import thaumcraft.common.Thaumcraft
@@ -47,6 +47,10 @@ object ThaumicTinkerer {
     ModItems.registerInventoryItems()
     proxy.registerPacketHandlers()
     FMLCommonHandler.instance().bus().register(PlayerHandler)
+
+    if (Loader.isModLoaded("Waila")) {
+      FMLInterModComms.sendMessage("Waila", "register", "com.nekokittygames.Thaumic.Tinkerer.common.integration.Waila.callbackRegister");
+    }
 
   }
 

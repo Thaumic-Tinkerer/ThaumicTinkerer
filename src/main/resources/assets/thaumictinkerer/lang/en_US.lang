@@ -9,6 +9,10 @@ tile.boundJar.name=Bound Jar
 
 tc.research_category.TT_CATEGORY=Thaumic Tinkering
 
+# WAILA
+ttwaila.boundJar.network=Network: %s
+ttwaila.boundJar.colour=Colour: %s
+
 
 # ITEM NAMES
 item.darkQuartzItem.name=Smokey Quartz
