@@ -28,6 +28,7 @@ object ItemJarSeal extends ModItem {
   setUnlocalizedName(LibItemNames.JARSEAL)
   setHasSubtypes(true)
 
+
   override def onItemUse(stack: ItemStack, playerIn: EntityPlayer, worldIn: World, pos: BlockPos, side: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean =
     {
       if(worldIn.getBlockState(pos).getBlock==BlocksTC.jar)
@@ -48,11 +49,21 @@ object ItemJarSeal extends ModItem {
 
           }
           worldIn.markBlockForUpdate(pos)
+          playerIn.inventory.getCurrentItem.stackSize=playerIn.inventory.getCurrentItem.stackSize-1
+          if(playerIn.inventory.getCurrentItem.stackSize<=0)
+            playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem,null)
         }
       else if(worldIn.getBlockState(pos).getBlock==BlockBoundJar)
         {
           val tileEntity=worldIn.getTileEntity(pos).asInstanceOf[TileBoundJar]
-          setNetwork(stack,tileEntity.network)
+          var newStack=new ItemStack(this,1,tileEntity.jarColor)
+          setNetwork(newStack,tileEntity.network)
+          playerIn.inventory.getCurrentItem.stackSize=playerIn.inventory.getCurrentItem.stackSize-1
+          if(playerIn.inventory.getCurrentItem.stackSize<=0)
+            playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem,null)
+          if(!playerIn.inventory.addItemStackToInventory(newStack))
+            playerIn.dropItem(newStack,false,false)
+
         }
       super.onItemUse(stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ)
     }

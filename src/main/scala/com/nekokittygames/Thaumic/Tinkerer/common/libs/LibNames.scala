@@ -11,5 +11,5 @@ object LibNames {
   final val FUNNEL="funnel"
   final val REPAIRER="repairer"
   final var BOUNDJAR="boundJar"
-
+  final var BRAINJAR="brainJar"
 }
