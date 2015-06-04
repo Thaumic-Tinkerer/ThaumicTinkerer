@@ -1,12 +1,19 @@
 {
   "variants":
   {
-    "facing=down":{"model":"thaumictinkerer:repairer","x":90},
-    "facing=up":{"model":"thaumictinkerer:repairer","x":270},
-    "facing=north":{"model":"thaumictinkerer:repairer"},
-    "facing=south":{"model":"thaumictinkerer:repairer","y":180},
-    "facing=east":{"model":"thaumictinkerer:repairer","y":270},
-    "facing=west":{"model":"thaumictinkerer:repairer","y":90}
+    "active=false,facing=down":{"model":"thaumictinkerer:repairerOff","x":90},
+    "active=false,facing=up":{"model":"thaumictinkerer:repairerOff","x":270},
+    "active=false,facing=north":{"model":"thaumictinkerer:repairerOff"},
+    "active=false,facing=south":{"model":"thaumictinkerer:repairerOff","y":180},
+    "active=false,facing=east":{"model":"thaumictinkerer:repairerOff","y":270},
+    "active=false,facing=west":{"model":"thaumictinkerer:repairerOff","y":90},
+    //
+    "active=true,facing=down":{"model":"thaumictinkerer:repairerOn","x":90},
+    "active=true,facing=up":{"model":"thaumictinkerer:repairerOn","x":270},
+    "active=true,facing=north":{"model":"thaumictinkerer:repairerOn"},
+    "active=true,facing=south":{"model":"thaumictinkerer:repairerOn","y":180},
+    "active=true,facing=east":{"model":"thaumictinkerer:repairerOn","y":270},
+    "active=true,facing=west":{"model":"thaumictinkerer:repairerOn","y":90}
 
   }
 }

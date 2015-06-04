@@ -1,0 +1,7 @@
+{
+  "parent":"thaumictinkerer:block/repairer",
+  "textures":
+  {
+    "swirlytop":"thaumictinkerer:blocks/repairer/repairOff"
+  }
+}

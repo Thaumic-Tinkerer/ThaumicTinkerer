@@ -1,5 +1,5 @@
 {
-  "parent": "thaumictinkerer:block/repairer",
+  "parent": "thaumictinkerer:block/repairerOn",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

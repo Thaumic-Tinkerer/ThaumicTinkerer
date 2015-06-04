@@ -12,6 +12,8 @@
     "base":"thaumictinkerer:blocks/repairer/base",
     "glass":"thaumictinkerer:blocks/repairer/glass",
     "glasshole":"thaumictinkerer:blocks/repairer/glasshole"
+//     "swirlytop":"thaumictinkerer:blocks/repairer/repairOff"
+
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],
@@ -180,6 +182,16 @@
           "cullface": "east"
         }
       }
+      },{   "from": [ 2, 15, 2 ],
+      "to": [ 14, 15, 14 ],
+      "faces": {
+        "down":  {  "texture": "#swirlytop" },
+        "up":    {  "texture": "#swirlytop" },
+        "north": {  "texture": "#swirlytop", "cullface": "north" },
+        "south": { "texture": "#swirlytop", "cullface": "south" },
+        "west":  {  "texture": "#swirlytop", "cullface": "west" },
+        "east":  { "texture": "#swirlytop", "cullface": "east" }
       }
+    }
   ]
 }
