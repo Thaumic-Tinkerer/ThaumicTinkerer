@@ -1,8 +1,10 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.items
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
+import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 
 /**
@@ -11,13 +13,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 object ModItems {
 
 
-  def registerItems() = {
+  def registerItems(fMLPreInitializationEvent: FMLPreInitializationEvent) = {
     def registerItem(item: ModItem, name: String) = {
       GameRegistry.registerItem(item, name)
+      item.initItem(fMLPreInitializationEvent)
     }
 
     registerItem(ItemDarkQuartz, LibItemNames.DARK_QUARTZ)
     registerItem(ItemJarSeal,LibItemNames.JARSEAL)
+    registerItem(ItemStabilizerBelt,LibItemNames.STABILIZERBELT)
+    registerItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
   }
 
 
@@ -28,5 +33,7 @@ object ModItems {
       {
         ThaumicTinkerer.proxy.registerInventoryItem(ItemJarSeal, LibItemNames.JARSEAL,i)
       }
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemStabilizerBelt,LibItemNames.STABILIZERBELT)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
   }
 }

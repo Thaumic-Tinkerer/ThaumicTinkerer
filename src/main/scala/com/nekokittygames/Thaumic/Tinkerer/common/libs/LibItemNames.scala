@@ -8,4 +8,6 @@ object LibItemNames {
 
   final var DARK_QUARTZ: String = "darkQuartzItem"
   final var JARSEAL="jarSeal"
+  final var STABILIZERBELT="stabilizerBelt"
+  final var ENDERDISRUPTION="enderDisruption"
 }

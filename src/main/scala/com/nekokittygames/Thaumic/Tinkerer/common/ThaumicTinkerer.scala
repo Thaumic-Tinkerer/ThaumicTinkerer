@@ -35,8 +35,8 @@ object ThaumicTinkerer {
     TTConfig.init(eventArgs.getSuggestedConfigurationFile)
     ThaumcraftProxy = Thaumcraft.proxy
     logger = eventArgs.getModLog
-    ModBlocks.registerBlocks()
-    ModItems.registerItems()
+    ModBlocks.registerBlocks(eventArgs)
+    ModItems.registerItems(eventArgs)
     proxy.registerTileEntityRenders()
   }
 

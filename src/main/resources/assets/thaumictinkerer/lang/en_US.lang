@@ -17,7 +17,7 @@ ttwaila.boundJar.colour=Colour: %s
 # ITEM NAMES
 item.darkQuartzItem.name=Smokey Quartz
 item.jarSeal.name=Jar Seal
-
+item.stabilizerBelt.name=Stabilizer Belt
 
 ##Item Details
 ttitems.boundJar.networkInfo=Network ID: %s

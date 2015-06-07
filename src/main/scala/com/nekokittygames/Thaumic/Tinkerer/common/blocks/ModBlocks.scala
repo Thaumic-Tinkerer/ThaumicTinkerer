@@ -6,6 +6,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.api.IMetaBlockName
 import net.minecraft.block.Block
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 
 /**
@@ -15,7 +16,7 @@ object ModBlocks {
   val Blocks=scala.collection.mutable.Map[Block,String]()
 
 
-  def registerBlocks()=
+  def registerBlocks(fMLPreInitializationEvent: FMLPreInitializationEvent)=
   {
     def registerBlock(block:Block,name:String)=
     {
@@ -26,9 +27,10 @@ object ModBlocks {
       block match
       {
         case s: ModBlockContainer => GameRegistry.registerTileEntity(s.getTileClass, name)
+        case s:ModBlock=> s.initBlock(fMLPreInitializationEvent)
         case _=>{}
       }
-      Blocks(block)=name
+
     }
     registerBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
     registerBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
