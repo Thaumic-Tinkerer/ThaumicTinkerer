@@ -131,7 +131,9 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
         }
         if (metadata >= 7) {
             do {
-                ret.add(AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z)));
+                ItemStack retItem=AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z));
+                if(retItem!=null)
+                    ret.add(retItem);
 
             } while (world.rand.nextInt(75) < getPrimalTendencyCount(world, x, y, z, Aspect.ORDER));
         }
