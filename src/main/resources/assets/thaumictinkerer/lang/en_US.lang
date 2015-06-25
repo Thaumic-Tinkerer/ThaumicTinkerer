@@ -18,10 +18,13 @@ ttwaila.boundJar.colour=Colour: %s
 item.darkQuartzItem.name=Smokey Quartz
 item.jarSeal.name=Jar Seal
 item.stabilizerBelt.name=Stabilizer Belt
+item.enderDisruption.name=Ender Disruptor
+item.foodTalisman.name=Food Talisman
 
 ##Item Details
 ttitems.boundJar.networkInfo=Network ID: %s
 ttitems.boundJar.noNetworkInfo=No Network
+ttitems.foodTalisman.tooltip=Currently holds %s food points and %s saturation points
 
 
 

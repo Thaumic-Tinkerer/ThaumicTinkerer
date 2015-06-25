@@ -86,7 +86,7 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
 
   override def doesContainerContainAmount(aspect: Aspect, i: Int): Boolean = false
 
-  override def decrStackSize(index: Int, count: Int): ItemStack = {}
+  override def decrStackSize(index: Int, count: Int): ItemStack = null
 
   override def closeInventory(player: EntityPlayer): Unit = {}
 
@@ -98,7 +98,7 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
 
   override def isItemValidForSlot(index: Int, stack: ItemStack): Boolean = false
 
-  override def getStackInSlotOnClosing(index: Int): ItemStack = {}
+  override def getStackInSlotOnClosing(index: Int): ItemStack = null
 
   override def openInventory(player: EntityPlayer): Unit = {}
 
@@ -110,7 +110,7 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
 
   override def isUseableByPlayer(player: EntityPlayer): Boolean = true
 
-  override def getStackInSlot(index: Int): ItemStack = {}
+  override def getStackInSlot(index: Int): ItemStack = null
 
   override def setField(id: Int, value: Int): Unit = {}
 

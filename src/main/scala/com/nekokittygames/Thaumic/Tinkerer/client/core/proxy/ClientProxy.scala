@@ -19,6 +19,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry
 class ClientProxy extends CommonProxy{
 
 
+
   override def registerInventoryBlock(block: Block,name: String): Unit=
   {
     registerInventoryBlock(block,name,0)

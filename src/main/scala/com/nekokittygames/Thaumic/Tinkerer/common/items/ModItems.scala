@@ -1,7 +1,7 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.items
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
-import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemEnderDisruption, ItemStabilizerBelt}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
@@ -23,6 +23,7 @@ object ModItems {
     registerItem(ItemJarSeal,LibItemNames.JARSEAL)
     registerItem(ItemStabilizerBelt,LibItemNames.STABILIZERBELT)
     registerItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
+    registerItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
   }
 
 
@@ -35,5 +36,6 @@ object ModItems {
       }
     ThaumicTinkerer.proxy.registerInventoryItem(ItemStabilizerBelt,LibItemNames.STABILIZERBELT)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
   }
 }

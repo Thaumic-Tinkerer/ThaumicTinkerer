@@ -10,4 +10,5 @@ object LibItemNames {
   final var JARSEAL="jarSeal"
   final var STABILIZERBELT="stabilizerBelt"
   final var ENDERDISRUPTION="enderDisruption"
+  final var FOOD_TALISMAN="foodTalisman"
 }
