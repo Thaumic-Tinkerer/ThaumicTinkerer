@@ -31,7 +31,47 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
 
   override def onWornTick(itemstack: ItemStack, player: EntityLivingBase): Unit =
   {
-
+    if (player.isInstanceOf[EntityPlayer] && !player.worldObj.isRemote && player.ticksExisted % 20 == 0) {
+      val plyr:EntityPlayer=player.asInstanceOf[EntityPlayer]
+      for(i<-0 until 10) {
+        if(plyr.inventory.getStackInSlot(i)!=null) {
+          val food=plyr.inventory.getStackInSlot(i)
+          if(isEdible(food,plyr)) {
+            val foodItm=food.getItem.asInstanceOf[ItemFood]
+            val sat=foodItm.getSaturationModifier(food)*2
+            val heal=foodItm.getHealAmount(food)
+            if(getFood(itemstack)+heal<100) {
+              setSaturation(itemstack,Math.min(100,getSaturation(itemstack)+sat))
+              if(food.stackSize<=1)
+                plyr.inventory.setInventorySlotContents(i,null)
+              plyr.inventory.decrStackSize(i,1)
+              plyr.playSound("random.eat", 0.5F + 0.5F * player.worldObj.rand.nextInt(2).toFloat, (player.worldObj.rand.nextFloat - player.worldObj.rand.nextFloat) * 0.2F + 1.0F)
+              setFood(itemstack,getFood(itemstack)+heal)
+            }
+          }
+        }
+      }
+      if((plyr.getFoodStats.getFoodLevel<20) && (100-getFood(itemstack) > 0)) {
+        var heal=getFood(itemstack)
+        var finalheal=0
+        if(20-plyr.getFoodStats.getFoodLevel < heal) {
+          finalheal=heal-(20-plyr.getFoodStats.getFoodLevel)
+          heal=20-plyr.getFoodStats.getFoodLevel
+        }
+        plyr.getFoodStats.setFoodLevel(plyr.getFoodStats.getFoodLevel+heal)
+        setFood(itemstack,finalheal)
+      }
+      if(plyr.getFoodStats.getSaturationLevel<plyr.getFoodStats.getFoodLevel && getSaturation(itemstack) > 0) {
+        var sat=getSaturation(itemstack)
+        var finalSat=0.0f
+        if(plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getSaturationLevel < sat) {
+          finalSat=sat-(plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getFoodLevel)
+          sat=plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getFoodLevel
+        }
+        plyr.getFoodStats.setFoodSaturationLevel(plyr.getFoodStats.getSaturationLevel+sat)
+        setSaturation(itemstack,finalSat)
+      }
+    }
   }
 
 
@@ -50,10 +90,10 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
       0
   }
 
-  def getFood(itemStack:ItemStack):Float=
+  def getFood(itemStack:ItemStack):Integer=
   {
     if(ItemNBT.getItemStackTag(itemStack).hasKey("food"))
-      ItemNBT.getItemStackTag(itemStack).getFloat("food")
+      ItemNBT.getItemStackTag(itemStack).getInteger("food")
     else
       0
   }
@@ -64,9 +104,9 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
     ItemNBT.getItemStackTag(itemStack).setFloat("saturation",saturation)
   }
 
-  def setFood(itemStack:ItemStack,food:Float)=
+  def setFood(itemStack:ItemStack,food:Int)=
   {
-    ItemNBT.getItemStackTag(itemStack).setFloat("food",food)
+    ItemNBT.getItemStackTag(itemStack).setInteger("food",food)
   }
 
   def isEdible(itemStack: ItemStack, player: EntityPlayer): Boolean = {
