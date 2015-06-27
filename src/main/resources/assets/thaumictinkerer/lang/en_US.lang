@@ -33,3 +33,19 @@ ttconfig.general=General Config
 ttconfig.back=Back
 ttconfig.tooltip.name=Use Tooltip Indicators
 ttconfig.tooltip.comment=Set to false to disable the [TT] tooltips in the thauminomicon.
+
+
+
+#RESEARCH
+ttresearch.prefix=[TT]
+
+#STABILIZER BELT
+ttresearch.name.STABILIZER_BELT=Stabilizer Belt
+ttresearch.lore.STABILIZER_BELT=Knockback? but I like it here
+ttresearch.page.STABILIZER_BELT.0=Using similar technology to that found in the thaumostatic harness, you've created a special belt that nullifies the effect of knockback.<BR><BR>Any time you take damage, instead of being knocked around, you will instead remain in place. You have found this device to be extremely useful for not only flying using the harness, but also and travel at night.
+
+#ENDER_DISRUPTER
+ttresearch.name.ENDER_DISRUPTER=Ender Disruptor
+ttresearch.lore.ENDER_DISRUPTER=Stop jumping around like that and fight me!
+ttresearch.page.ENDER_DISRUPTER.0=After careful research into ender pearls, you have discovered how the Endermen's teleportation works, and more importantly how to stop it.<BR><BR>If you infuse an ender pearl with taint, the taint affects the border between this world and the dimension Endermen use to travel from one place to the other, closing it. you theorize if you make this into an amulet, they will not be able to teleport around you while you wear it.
+
