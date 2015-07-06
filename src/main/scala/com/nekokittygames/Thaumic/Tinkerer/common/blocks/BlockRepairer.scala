@@ -35,6 +35,9 @@ object BlockRepairer extends {
 
     i
   }
+  override def isOpaqueCube(): Boolean = false
+
+  override def isFullCube(): Boolean = false
 
   override def createBlockState(): BlockState = new BlockState(this,FACING, ACTIVE)
 

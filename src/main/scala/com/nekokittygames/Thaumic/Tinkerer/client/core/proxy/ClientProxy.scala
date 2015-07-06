@@ -1,12 +1,12 @@
 package com.nekokittygames.Thaumic.Tinkerer.client.core.proxy
 
 import codechicken.lib.packet.PacketCustom
-import com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles.TileFunnelRenderer
+import com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles.{TileRepairerRenderer, TileFunnelRenderer}
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.core.proxy.CommonProxy
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
-import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileFunnel
+import com.nekokittygames.Thaumic.Tinkerer.common.tiles.{TileRepairer, TileFunnel}
 import net.minecraft.block.Block
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.model.ModelResourceLocation
@@ -33,6 +33,7 @@ class ClientProxy extends CommonProxy{
   override def registerTileEntityRenders(): Unit =
   {
     ClientRegistry.bindTileEntitySpecialRenderer(classOf[TileFunnel], new TileFunnelRenderer);
+    ClientRegistry.bindTileEntitySpecialRenderer(classOf[TileRepairer], new TileRepairerRenderer)
   }
 
 
