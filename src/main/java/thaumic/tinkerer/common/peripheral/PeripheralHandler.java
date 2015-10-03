@@ -26,10 +26,23 @@ import thaumcraft.common.tiles.TileArcaneBore;
 import thaumcraft.common.tiles.TileDeconstructionTable;
 import thaumcraft.common.tiles.TileJarBrain;
 import thaumcraft.common.tiles.TileSensor;
+import thaumic.tinkerer.common.ThaumicTinkerer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class PeripheralHandler implements IPeripheralProvider {
 
+
+    public static List<String> Blacklist=new ArrayList<String>();
     public IPeripheral getPeripheral(TileEntity tile) {
+        for(String s:Blacklist)
+        {
+            if(s.equalsIgnoreCase(tile.getClass().getName()))
+            {
+                return null;
+            }
+        }
 
         if (tile instanceof IAspectContainer)
             return new PeripheralAspectContainer((IAspectContainer) tile);

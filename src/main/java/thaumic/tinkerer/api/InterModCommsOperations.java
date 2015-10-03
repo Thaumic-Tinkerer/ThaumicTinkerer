@@ -5,4 +5,5 @@ package thaumic.tinkerer.api;
  */
 public class InterModCommsOperations {
     public static final String ADD_RESEARCH_BLACKLIST = "AddResearchBlacklist";
+    public static final String ADD_CC_BLACKLIST = "AddCCBlacklist";
 }

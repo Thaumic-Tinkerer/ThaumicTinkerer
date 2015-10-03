@@ -19,6 +19,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -38,6 +39,7 @@ import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.dim.WorldProviderBedrock;
 import thaumic.tinkerer.common.lib.LibMisc;
+import thaumic.tinkerer.common.peripheral.PeripheralHandler;
 import thaumic.tinkerer.common.registry.TTRegistry;
 import thaumic.tinkerer.common.research.KamiResearchItem;
 
@@ -87,7 +89,18 @@ public class ThaumicTinkerer {
                 String[] values = message.getStringValue().split(",");
                 KamiResearchItem.Blacklist.addAll(Arrays.asList(values));
             }
+            if(message.key.equalsIgnoreCase(InterModCommsOperations.ADD_CC_BLACKLIST))
+            {
+                if(Loader.isModLoaded("ComputerCraft"))
+                    blackListCCDevices(message.getStringValue());
+            }
         }
+    }
+
+    @Optional.Method(modid = "ComputerCraft")
+    public void blackListCCDevices(String classname)
+    {
+        PeripheralHandler.Blacklist.add(classname);
     }
 
     @EventHandler
