@@ -12,6 +12,7 @@ public class TinkersConstructCompat {
     private static final String TAG_INFINITOOL = "InfiTool";
     private static final String TAG_BROKEN = "Broken";
     private static final String TAG_DAMAGE = "Damage";
+    private static final String TAG_MODIFIERS = "Modifiers";
     private static final String TAG_DURABILITY = "TotalDurability";
     private static final String TAG_CHARGE = "charge";
     private static final String TAG_ENERGY = "Energy";
@@ -61,18 +62,18 @@ public class TinkersConstructCompat {
             return false;
         if (ItemNBTHelper.getNBT(stack).hasKey(TAG_INFINITOOL)) {
             NBTTagCompound InfiniTool = ItemNBTHelper.getNBT(stack).getCompoundTag(TAG_INFINITOOL);
-            InfiniTool.setBoolean("Broken", false);
-            int damage = InfiniTool.getInteger("Damage");
+            InfiniTool.setBoolean(TAG_BROKEN, false);
+            int damage = InfiniTool.getInteger(TAG_DAMAGE);
             int itemsUsed = 0;
             int increase = calculateIncrease(stack, amount);
-            int repair = InfiniTool.getInteger("RepairCount");
+            int repair = InfiniTool.getInteger(TAG_REPAIRCOUNT);
             repair += itemsUsed;
-            InfiniTool.setInteger("RepairCount", repair);
+            InfiniTool.setInteger(TAG_REPAIRCOUNT, repair);
 
             damage -= increase;
             if (damage < 0)
                 damage = 0;
-            InfiniTool.setInteger("Damage", damage);
+            InfiniTool.setInteger(TAG_DAMAGE, damage);
 
             AbilityHelper.damageTool(stack, 0, null, true);
             ItemNBTHelper.setCompound(stack, TAG_INFINITOOL, InfiniTool);
@@ -82,10 +83,10 @@ public class TinkersConstructCompat {
     }
 
     private static int calculateIncrease(ItemStack tool, int amount) {
-        NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
+        NBTTagCompound tags = tool.getTagCompound().getCompoundTag(TAG_INFINITOOL);
         int increase = amount * 2;
 
-        int modifiers = tags.getInteger("Modifiers");
+        int modifiers = tags.getInteger(TAG_MODIFIERS);
         float mods = 1.0f;
         if (modifiers == 2)
             mods = 1.0f;
@@ -96,7 +97,7 @@ public class TinkersConstructCompat {
 
         increase *= mods;
 
-        int repair = tags.getInteger("RepairCount");
+        int repair = tags.getInteger(TAG_REPAIRCOUNT);
         float repairCount = (100 - repair) / 100f;
         if (repairCount < 0.5f)
             repairCount = 0.5f;

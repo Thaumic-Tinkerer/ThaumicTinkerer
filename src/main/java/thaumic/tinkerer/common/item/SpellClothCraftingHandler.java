@@ -21,6 +21,7 @@ public class SpellClothCraftingHandler {
     {
         boolean foundCloth = false;
         boolean foundEnchanted = false;
+        ItemStack cloth=null;
         int slot=0;
         for (int i = 0; i < event.craftMatrix.getSizeInventory(); i++) {
             ItemStack stack = event.craftMatrix.getStackInSlot(i);
@@ -30,8 +31,10 @@ public class SpellClothCraftingHandler {
                     foundEnchanted = true;
                     slot = i;
                 }
-                else if (stack.getItem() == item && !foundCloth)
+                else if (stack.getItem() == item && !foundCloth) {
                     foundCloth = true;
+                    cloth=stack;
+                }
                 else
                 {
                     return;
@@ -41,6 +44,7 @@ public class SpellClothCraftingHandler {
         if(foundCloth && foundEnchanted)
         {
             event.craftMatrix.setInventorySlotContents(slot,null);
+            cloth.setItemDamage(cloth.getItemDamage() + 1);
         }
     }
 }

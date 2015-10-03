@@ -82,7 +82,7 @@ public class ItemSpellCloth extends ItemBase {
 
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
-        itemStack.setItemDamage(itemStack.getItemDamage() + 1);
+
         return itemStack;
     }
 
