@@ -46,7 +46,7 @@ object ModBlocks {
   {
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
-    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED+"_Pillar",3)
+    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PILLAR,3)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockFunnel,LibNames.FUNNEL)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockRepairer,LibNames.REPAIRER)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockBoundJar,LibNames.BOUNDJAR)

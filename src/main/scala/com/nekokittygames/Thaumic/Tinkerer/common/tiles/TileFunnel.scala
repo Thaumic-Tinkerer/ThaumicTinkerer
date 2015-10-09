@@ -13,7 +13,7 @@ import net.minecraft.tileentity.{TileEntityHopper, TileEntity}
 import net.minecraft.util.{BlockPos, ChatComponentText, EnumFacing, IChatComponent}
 import thaumcraft.api.aspects.{IEssentiaContainerItem, AspectList, Aspect, IAspectContainer}
 import thaumcraft.common.blocks.devices.BlockJarItem
-import thaumcraft.common.tiles.devices.{TileJarFillableVoid, TileJarFillable}
+import thaumcraft.common.tiles.essentia.{TileJarFillableVoid, TileJarFillable}
 
 /**
  * Created by Katrina on 18/05/2015.

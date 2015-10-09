@@ -24,6 +24,7 @@ object ModItems {
     registerItem(ItemStabilizerBelt,LibItemNames.STABILIZERBELT)
     registerItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
     registerItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
+    registerItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
   }
 
 
@@ -37,5 +38,6 @@ object ModItems {
     ThaumicTinkerer.proxy.registerInventoryItem(ItemStabilizerBelt,LibItemNames.STABILIZERBELT)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
   }
 }

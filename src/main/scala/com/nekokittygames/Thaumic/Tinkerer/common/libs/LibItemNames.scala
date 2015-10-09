@@ -11,4 +11,5 @@ object LibItemNames {
   final var STABILIZERBELT="stabilizerBelt"
   final var ENDERDISRUPTION="enderDisruption"
   final var FOOD_TALISMAN="foodTalisman"
+  final var MOB_ASPECT="mobAspect"
 }

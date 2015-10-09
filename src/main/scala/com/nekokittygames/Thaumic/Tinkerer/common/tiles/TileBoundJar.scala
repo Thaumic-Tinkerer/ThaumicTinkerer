@@ -9,7 +9,7 @@ import net.minecraft.item.EnumDyeColor
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import thaumcraft.api.aspects.{Aspect, AspectList}
-import thaumcraft.common.tiles.devices.{TileJarFillable, TileJar}
+import thaumcraft.common.tiles.essentia.TileJarFillable
 
 /**
  * Created by Katrina on 23/05/2015.
