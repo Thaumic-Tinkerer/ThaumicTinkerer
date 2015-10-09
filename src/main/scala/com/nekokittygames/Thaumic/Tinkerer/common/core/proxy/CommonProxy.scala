@@ -45,4 +45,6 @@ class CommonProxy {
   {
 
   }
+
+  def registerItemBakery(item:ModItem,names:Array[String])={}
 }

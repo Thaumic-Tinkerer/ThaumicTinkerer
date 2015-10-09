@@ -9,7 +9,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.{TileRepairer, TileFunnel}
 import net.minecraft.block.Block
 import net.minecraft.client.Minecraft
-import net.minecraft.client.resources.model.ModelResourceLocation
+import net.minecraft.client.resources.model.{ModelBakery, ModelResourceLocation}
 import net.minecraft.item.Item
 import net.minecraftforge.fml.client.registry.ClientRegistry
 
@@ -40,6 +40,12 @@ class ClientProxy extends CommonProxy{
   override def registerInventoryItem(item: ModItem, name: String, meta: Int): Unit =
   {
     Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(item, meta, new ModelResourceLocation("thaumictinkerer:" + name, "inventory"))
+    //Minecraft.getMinecraft.getRenderItem.getItemModelMesher.
+
+  }
+  override def registerItemBakery(item:ModItem,names:Array[String])=
+  {
+    ModelBakery.addVariantName(item,names:_*)
   }
 
   override def registerInventoryItem(item: ModItem, name: String): Unit = {

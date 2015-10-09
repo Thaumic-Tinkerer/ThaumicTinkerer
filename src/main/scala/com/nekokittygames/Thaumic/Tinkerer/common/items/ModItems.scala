@@ -3,7 +3,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.items
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
-import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
+import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibItemNames}
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 
@@ -39,5 +39,6 @@ object ModItems {
     ThaumicTinkerer.proxy.registerInventoryItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
+    ThaumicTinkerer.proxy.registerItemBakery(ItemMobAspect,Array[String](LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT,LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT+"Condensed"))
   }
 }

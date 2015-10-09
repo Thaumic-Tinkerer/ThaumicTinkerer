@@ -3,11 +3,13 @@ package com.nekokittygames.Thaumic.Tinkerer.common.items
 import java.util
 
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.ItemNBT
-import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
+import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibNames, LibItemNames}
 import mcp.mobius.waila.gui.widgets.ItemStackDisplay
+import net.minecraft.client.resources.model.ModelResourceLocation
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
+import net.minecraftforge.fml.relauncher.{Side, SideOnly}
 import net.minecraftforge.oredict.OreDictionary
 import thaumcraft.api.ThaumcraftApiHelper
 import thaumcraft.api.aspects.Aspect
@@ -130,4 +132,15 @@ object ItemMobAspect extends ModItem{
       false
 
   }
+
+  @SideOnly(Side.CLIENT)
+  override def getModel(stack: ItemStack, player: EntityPlayer, useRemaining: Int): ModelResourceLocation =
+    {
+      if(isCondensed(stack) || isInfused(stack))
+        {
+         new ModelResourceLocation(LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT+"Condensed","inventory")
+        }
+      else
+        new ModelResourceLocation(LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT,"inventory")
+    }
 }
