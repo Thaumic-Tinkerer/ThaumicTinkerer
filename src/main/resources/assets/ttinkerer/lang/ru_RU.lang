@@ -76,10 +76,10 @@ ttmisc.noDest=Там нет Небесного портала.
 ttmisc.noTeleport=Небесный портал, на который Вы хотите попасть не позволяет телепортироваться.
 
 # ITEM NAMES
-item.darkQuartz.name=Закоптившийся кварц
+item.darkQuartzItem.name=Закоптившийся кварц
 item.connector.name=Трансвекторный соединитель
-item.gaseousLight.name=Светящийся газ
-item.gaseousShadow.name=Газ темноты
+item.gaseousLightItem.name=Светящийся газ
+item.gaseousShadowItem.name=Газ темноты
 item.gasRemover.name=Рассеиватель газа
 item.spellCloth.name=Ткань поглощения заклинаний
 item.focusFlight.name=Набалдашник: Подъём
@@ -148,6 +148,9 @@ tile.darkQuartzChiseled.name=Резной блок закоптившегося 
 tile.darkQuartzPillar.name=Колонна из закоптившегося кварца
 tile.darkQuartzSlab.name=Плита закоптившегося кварца
 tile.forcefield.name=Силовое поле
+tile.travelSlab.name=Тротуарная плита путешествия
+tile.travelSlabFull.name=Тротуарная плита путешествия
+tile.travelStairs.name=Тротуарные ступеньки путешествия
 
 # Fire
 tile.fireWater.name=Пропитанный Aqua огонь
@@ -176,7 +179,7 @@ tile.repairer.name=Таум-восстановитель
 tile.aspectAnalyzer.name=Аспектализатор
 tile.platform.name=Эфирная платформа
 tile.spawner.name=Пьедестал некроманта
-tile.portal.name=Админиум-портал
+tile.bedrockPortal.name=Админиум-портал
 tile.Levitational Locomotive.name=Левитатор
 tile.Levitational Locomotive Relay.name=Стрелка левитатора
 tile.golemConnector.name=Голем-соединитель
