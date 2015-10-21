@@ -2,10 +2,13 @@ package com.nekokittygames.Thaumic.Tinkerer.common.blocks
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartz, BlockDarkQuartzPatterned}
+import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.api.IMetaBlockName
 import net.minecraft.block.Block
+import net.minecraft.item.ItemStack
+import net.minecraft.util.EnumFacing.Axis
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 
@@ -46,7 +49,7 @@ object ModBlocks {
   {
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartz,LibNames.DARK_QUARTZ_BLOCK)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PATTERNED)
-    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PILLAR,3)
+    ThaumicTinkerer.proxy.registerInventoryBlock(BlockDarkQuartzPatterned,LibNames.DARK_QUARTZ_PILLAR,BlockDarkQuartzPatterned.getMetaFromState(BlockDarkQuartzPatterned.getDefaultState.withProperty(BlockDarkQuartzPatterned.VARIANT,EnumQuartzType.PILLAR).withProperty(BlockDarkQuartzPatterned.AXIS,Axis.X)))
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockFunnel,LibNames.FUNNEL)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockRepairer,LibNames.REPAIRER)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockBoundJar,LibNames.BOUNDJAR)

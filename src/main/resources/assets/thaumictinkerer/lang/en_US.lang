@@ -24,6 +24,7 @@ item.foodTalisman.name=Food Talisman
 item.mobAspect.name=Mob Aspect
 item.mobAspect.condensed.name=Condensed Mob Aspect
 item.mobAspect.infused.name=Infused Mob Aspect
+item.bootsComet.name=Boots of the Comet
 
 ##Item Details
 ttitems.boundJar.networkInfo=Network ID: %s

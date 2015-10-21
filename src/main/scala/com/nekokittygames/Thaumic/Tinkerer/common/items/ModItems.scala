@@ -4,6 +4,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibItemNames}
+import net.minecraft.item.Item
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.GameRegistry
 
@@ -14,9 +15,12 @@ object ModItems {
 
 
   def registerItems(fMLPreInitializationEvent: FMLPreInitializationEvent) = {
-    def registerItem(item: ModItem, name: String) = {
+    def registerItem(item: Item, name: String) = {
       GameRegistry.registerItem(item, name)
-      item.initItem(fMLPreInitializationEvent)
+      item match {
+        case itm:ModItem => itm.initItem (fMLPreInitializationEvent)
+        case _=>{}
+      }
     }
 
     registerItem(ItemDarkQuartz, LibItemNames.DARK_QUARTZ)
@@ -25,6 +29,7 @@ object ModItems {
     registerItem(ItemEnderDisruption,LibItemNames.ENDERDISRUPTION)
     registerItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
     registerItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
+    registerItem(ItemCometBoots,LibItemNames.BOOTS_COMET)
   }
 
 
@@ -40,5 +45,6 @@ object ModItems {
     ThaumicTinkerer.proxy.registerInventoryItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
     ThaumicTinkerer.proxy.registerItemBakery(ItemMobAspect,Array[String](LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT,LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT+"Condensed"))
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemCometBoots,LibItemNames.BOOTS_COMET)
   }
 }

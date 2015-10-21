@@ -82,6 +82,11 @@ object BlockBoundJar extends {
   }
 
 
+  override def getRenderColor(state: IBlockState): Int =
+    {
+      super.getRenderColor(state)
+    }
+
   override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
   {
     if(worldIn.isRemote) {

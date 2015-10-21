@@ -3,6 +3,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.core.proxy
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkData
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
 import net.minecraft.block.Block
+import net.minecraft.item.Item
 import net.minecraft.world.World
 import net.minecraftforge.common.DimensionManager
 
@@ -10,11 +11,13 @@ import net.minecraftforge.common.DimensionManager
  * Created by Katrina on 17/05/2015.
  */
 class CommonProxy {
-  def registerInventoryItem(item: ModItem, name: String) = {
+  def registerTest() = {}
+
+  def registerInventoryItem(item: Item, name: String) = {
 
   }
 
-  def registerInventoryItem(item: ModItem, name: String,meta:Int) = {
+  def registerInventoryItem(item: Item, name: String,meta:Int) = {
 
   }
 

@@ -70,18 +70,5 @@ object BlockDarkQuartzPatterned extends {
     if(typ==1) "pillar" else "chisel"
   }
 
-  override def getPickBlock(target: MovingObjectPosition, world: World, pos: BlockPos): ItemStack =new ItemStack(Item.getItemFromBlock(this),1,this.getMetaFromState(world.getBlockState(pos)))
-
-
-  override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
-  {
-    if(worldIn.isRemote) {
-      val uuid: String = "Poppy"
-
-      val blockData=BoundJarNetworkManager.getAspect(uuid)
-      playerIn.addChatMessage(new ChatComponentText(blockData.getAspects()(0).getName))
-      playerIn.addChatMessage(new ChatComponentText(blockData.getAmount(blockData.getAspects()(0)).toString))
-    }
-    super.onBlockClicked(worldIn, pos, playerIn)
-  }
+  override def getPickBlock(target: MovingObjectPosition, world: World, pos: BlockPos): ItemStack =new ItemStack(Item.getItemFromBlock(this),1,BlockDarkQuartzPatterned.getMetaFromState(BlockDarkQuartzPatterned.getDefaultState.withProperty(BlockDarkQuartzPatterned.VARIANT,EnumQuartzType.PILLAR).withProperty(BlockDarkQuartzPatterned.AXIS,Axis.X)))
 }

@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.event.{FMLPreInitializationEvent, FMLInitia
 /**
  * Created by Katrina on 22/05/2015.
  */
-class ModItem extends Item{
+trait ModItem extends Item{
 
 
   def initItem(fMLPreInitializationEvent: FMLPreInitializationEvent)=

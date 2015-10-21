@@ -3,9 +3,12 @@ package com.nekokittygames.Thaumic.Tinkerer.client.core.proxy
 import codechicken.lib.packet.PacketCustom
 import com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles.{TileRepairerRenderer, TileFunnelRenderer}
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
+import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.BlockDarkQuartzPatterned
 import com.nekokittygames.Thaumic.Tinkerer.common.core.proxy.CommonProxy
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
+import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
+import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.{TileRepairer, TileFunnel}
 import net.minecraft.block.Block
 import net.minecraft.client.Minecraft
@@ -37,7 +40,12 @@ class ClientProxy extends CommonProxy{
   }
 
 
-  override def registerInventoryItem(item: ModItem, name: String, meta: Int): Unit =
+  override def registerTest(): Unit =
+    {
+      Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(new ItemBlockMeta(BlockDarkQuartzPatterned),3,new ModelResourceLocation("thaumictinkerer:"+LibNames.DARK_QUARTZ_PILLAR,"inventory"))
+    }
+
+  override def registerInventoryItem(item: Item, name: String, meta: Int): Unit =
   {
     Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(item, meta, new ModelResourceLocation("thaumictinkerer:" + name, "inventory"))
     //Minecraft.getMinecraft.getRenderItem.getItemModelMesher.
@@ -48,7 +56,7 @@ class ClientProxy extends CommonProxy{
     ModelBakery.addVariantName(item,names:_*)
   }
 
-  override def registerInventoryItem(item: ModItem, name: String): Unit = {
+  override def registerInventoryItem(item: Item, name: String): Unit = {
     registerInventoryItem(item,name,0)
   }
 

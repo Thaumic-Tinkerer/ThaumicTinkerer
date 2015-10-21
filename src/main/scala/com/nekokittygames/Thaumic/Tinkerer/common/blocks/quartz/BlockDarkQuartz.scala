@@ -18,15 +18,4 @@ object BlockDarkQuartz extends ModBlock(Material.rock) {
   setHardness(0.8f)
   setResistance(10F)
   setUnlocalizedName(LibNames.DARK_QUARTZ_BLOCK)
-
-  override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
-  {
-    if(!worldIn.isRemote) {
-      val uuid: String="Poppy"
-
-      BoundJarNetworkManager.getAspect(uuid).add(Aspect.CRYSTAL,64)
-      BoundJarNetworkManager.markDirty(uuid)
-    }
-    super.onBlockClicked(worldIn, pos, playerIn)
-  }
 }
