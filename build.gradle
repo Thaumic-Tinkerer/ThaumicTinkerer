@@ -53,6 +53,18 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven-publish'
 group = "com.nekokittygames.Thaumic.Tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala', ]
+        }
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+}
+
 minecraft {
     version = "1.8-11.14.3.1519"
     runDir = "eclipse"
