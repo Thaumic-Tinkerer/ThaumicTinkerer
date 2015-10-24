@@ -2,7 +2,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.research
 
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
-import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemMobAspect
+import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemCometBoots, ItemMobAspect}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibResearch
@@ -14,9 +14,10 @@ import net.minecraft.util.EnumFacing.Axis
 import net.minecraftforge.fml.common.registry.GameRegistry
 import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.aspects.{Aspect, AspectList}
+import thaumcraft.api.blocks.BlocksTC
 import thaumcraft.api.crafting.InfusionRecipe
 import thaumcraft.api.items.ItemsTC
-import thaumcraft.common.config.ConfigResearch
+import thaumcraft.common.config.{ConfigBlocks, ConfigItems, ConfigResearch}
 
 /**
  * Created by Katrina on 22/05/2015.
@@ -54,6 +55,10 @@ object ModRecipes {
         new ItemStack(Items.leather),new ItemStack(ItemsTC.quicksilver),
         new ItemStack(ItemsTC.tainted,1,1),new ItemStack(Items.iron_ingot))
 
+      registerResearchItemI(LibResearch.KEY_COMET_BOOTS+0,new ItemStack(ItemCometBoots),4,new AspectList().add(Aspect.WATER, 25).add(Aspect.COLD, 25).add(Aspect.FLIGHT, 25).add(Aspect.MOTION,25),new ItemStack(ItemsTC.travellerBoots, 1, 32767), new ItemStack(BlocksTC.crystalWater),
+      new ItemStack(Blocks.snow), new ItemStack(Blocks.snow),
+      new ItemStack(Blocks.snow), new ItemStack(ItemsTC.focusFrost))
+
       val itemStack=new ItemStack(ItemMobAspect)
       ItemMobAspect.setAspect(itemStack,Aspect.LIFE)
       ItemMobAspect.setInfused(itemStack,true)
@@ -84,13 +89,13 @@ object ModRecipes {
 
 
 
-  def registerResearchItemI(name:String, research: String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, stuff: ItemStack*)=
+  def registerResearchItemI(name:String, research: String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, stuff: AnyRef*)=
   {
     val recipe:InfusionRecipe=ThaumcraftApi.addInfusionCraftingRecipe(name,output,instability,aspects,input,stuff.toArray)
     ConfigResearch.recipes.put(research,recipe)
   }
 
-  def registerResearchItemI(name:String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, stuff: ItemStack*)=
+  def registerResearchItemI(name:String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, stuff: AnyRef*)=
   {
     val recipe:InfusionRecipe=ThaumcraftApi.addInfusionCraftingRecipe(name,output,instability,aspects,input,stuff.toArray)
     ConfigResearch.recipes.put(name,recipe)

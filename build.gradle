@@ -78,7 +78,7 @@ if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
 dependencies {
-    compile files('libs/Thaumcraft-1.8-5.0.B5-deobf.jar')
+    compile files('libs/Thaumcraft-1.8-5.0.B6-deobf.jar')
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

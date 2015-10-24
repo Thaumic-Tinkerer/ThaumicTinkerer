@@ -13,4 +13,5 @@ object LibItemNames {
   final var FOOD_TALISMAN="foodTalisman"
   final var MOB_ASPECT="mobAspect"
   final var BOOTS_COMET="bootsComet"
+  final var BOOTS_METEOR="bootsMeteor"
 }

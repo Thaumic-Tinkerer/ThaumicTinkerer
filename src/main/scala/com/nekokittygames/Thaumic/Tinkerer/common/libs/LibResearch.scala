@@ -14,6 +14,8 @@ object LibResearch {
   final val KEY_STABILIZER_BELT:String="STABILIZER_BELT"
   final var KEY_ENDER_DISRUPTER:String="ENDER_DISRUPTER"
   final var KEY_MOB_SUMMON:String="MOB_SUMMON"
+  final var KEY_COMET_BOOTS="COMET_BOOTS"
+  final var KEY_METEOR_BOOTS="METEOR_BOOTS"
   final var KEY_KAMI:String="KAMI"
   final var lang: LangProxy = new LangProxy("ttresearch")
 }
