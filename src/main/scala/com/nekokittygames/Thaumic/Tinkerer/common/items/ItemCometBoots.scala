@@ -5,6 +5,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.{ItemNBT, TTCreative
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibItemNames, LibMisc}
 import mantle.utils.ItemStackNBTWrapper
 import net.minecraft.block.material.Material
+import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -17,53 +18,19 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import thaumcraft.api.ThaumcraftMaterials
 import thaumcraft.common.Thaumcraft
+import thaumcraft.common.config.Config
 import thaumcraft.common.items.armor.{Hover, ItemBootsTraveller}
 
 /**
  * Created by katsw on 21/10/2015.
  */
-object ItemCometBoots extends ItemBootsTraveller(ThaumcraftMaterials.ARMORMAT_SPECIAL, 4, 3) with ModItem{
+object ItemCometBoots extends ItemTXBoots{
 
-  final var RUNTICKS="runTicks"
+
   setUnlocalizedName(LibItemNames.BOOTS_COMET)
-  override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =
-    return LibMisc.MOD_ID + ":textures/models/armor/bootsComet.png"
+  override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String = LibMisc.MOD_ID + ":textures/models/armor/bootsComet.png"
 
-  override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
-    {
-      if(!player.capabilities.isFlying && player.moveForward > 0.0F) {
-        if(player.worldObj.isRemote && !player.isSneaking()) {
-          if(!Thaumcraft.instance.playerEvents.prevStep.containsKey(Integer.valueOf(player.getEntityId()))) {
-            Thaumcraft.instance.playerEvents.prevStep.put(Integer.valueOf(player.getEntityId()), player.stepHeight);
-          }
 
-          player.stepHeight = 1.0F;
-        }
-        if(!ItemNBT.getItemStackTag(itemStack).hasKey(RUNTICKS))
-          {
-            ItemNBT.getItemStackTag(itemStack).setInteger(RUNTICKS,0)
-          }
-
-        if(player.onGround) {
-          var ticks = ItemNBT.getItemStackTag(itemStack).getInteger(RUNTICKS);
-          var bonus:Float = 0.110F;
-          bonus = bonus+((ticks/5)*0.003F);
-          if(player.isInWater()) {
-            bonus = bonus/4.0F;
-          }
-
-          player.moveFlying(0.0F, 1.0F, bonus);
-        } else if(Hover.getHover(player.getEntityId())) {
-          player.jumpMovementFactor = 0.03F;
-        } else {
-          player.jumpMovementFactor = 0.05F;
-        }
-      }
-
-      if(player.fallDistance > 0.0F) {
-        player.fallDistance -= 0.25F;
-      }
-    }
 
   override def initItem(fMLPreInitializationEvent: FMLPreInitializationEvent): Unit =
     {
