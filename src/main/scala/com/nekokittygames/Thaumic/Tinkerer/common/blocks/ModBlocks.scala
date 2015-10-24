@@ -5,7 +5,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
-import com.nekokittygames.Thaumic.api.IMetaBlockName
+import com.nekokittygames.Thaumic.Tinkerer.api.IMetaBlockName
 import net.minecraft.block.Block
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing.Axis

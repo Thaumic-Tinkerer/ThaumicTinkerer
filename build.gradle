@@ -1,19 +1,26 @@
+
+// For those who want the bleeding edge
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
     }
 }
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+
+// for people who want stable
+
+//plugins {
+//    id "net.minecraftforge.gradle.forge" version "2.0.1"
+//}
+apply plugin: 'scala'
 repositories {
     ivy {
 
@@ -48,30 +55,21 @@ repositories {
 
 
 }
-apply plugin: 'scala'
-apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'maven-publish'
 group = "com.nekokittygames.Thaumic.Tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ThaumicTinkerer"
-
-sourceSets {
-    main {
-        scala {
-            srcDirs = ['src/main/scala','src/main/java' ]
-        }
-    }
-}
+apply plugin: 'maven-publish'
 
 minecraft {
-    version = "1.8-11.14.3.1519"
-    runDir = "eclipse"
-    
+    version = "1.8-11.14.3.1521"
+    runDir = "run"
+
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = 'snapshot_20150404'
+    mappings = "snapshot_20150404"
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 version = "2.5-${minecraft.version}"
 if (System.getenv("BUILD_NUMBER")!=null)
@@ -80,60 +78,68 @@ if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
 dependencies {
+    compile files('libs/Thaumcraft-1.8-5.0.B5-deobf.jar')
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-	compile "codechicken:CodeChickenLib:1.8-1.1.2.139:dev"
+    compile "codechicken:CodeChickenLib:1.8-1.1.2.139:dev"
     compile "codechicken:CodeChickenCore:1.8-1.0.5.36:dev"
     compile "mcp.mobius.waila:Waila:1.6.0_B1_1.8.1:dev"
     //compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
 
-        //compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
+    //compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
     compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
     //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
     compile "mantle:Mantle:1.8-0.4.jenkins23:deobf"
     compile "li.cil.oc:OpenComputers:MC1.8-1.5.18.227-dev:api"
     //compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:dev"
-        //compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
-        //}
+    //compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
+    //}
+    // real examples
+    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
+    //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+
+    // the deobf configurations:  'deobfCompile' and 'deobfProvided' are the same as the normal compile and provided,
+    // except that these dependencies get remapped to your current MCP mappings
+    //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+    //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+
+    // for more info...
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
 }
 
 processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+        {
+            // this will ensure that this task is redone when the versions change.
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version':project.version, 'mcversion':project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
 task deobfJar(type: Jar) {
     from sourceSets.main.output
     classifier = 'dev'
 }
 
 task apiJar(type: Jar) {
-    from fileTree(dir: 'src/main/java').matching { include 'com/nekokittygames/Thaumic/api/**' }
+    from fileTree(dir: 'src/main/scala').matching { include 'com/nekokittygames/Thaumic/api/**' }
     classifier = 'api'
 }
 
@@ -142,8 +148,6 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'
 }
-
-
 
 publishing {
     publications {

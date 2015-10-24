@@ -1,6 +1,6 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks
 
-import com.nekokittygames.Thaumic.api.IMetaBlockName
+import com.nekokittygames.Thaumic.Tinkerer.api.IMetaBlockName
 import net.minecraft.block.Block
 import net.minecraft.item.{ItemStack, ItemBlock}
 

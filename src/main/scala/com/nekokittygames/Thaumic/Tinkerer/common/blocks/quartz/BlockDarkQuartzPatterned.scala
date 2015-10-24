@@ -7,7 +7,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.blocks.ModBlock
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
-import com.nekokittygames.Thaumic.api.IMetaBlockName
+import com.nekokittygames.Thaumic.Tinkerer.api.IMetaBlockName
 import net.minecraft.block.material.Material
 import net.minecraft.block.properties.PropertyEnum
 import net.minecraft.block.state.{BlockState, IBlockState}

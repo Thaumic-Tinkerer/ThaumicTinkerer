@@ -1,4 +1,4 @@
-package com.nekokittygames.Thaumic.api;
+package com.nekokittygames.Thaumic.Tinkerer.api;
 
 import net.minecraft.item.ItemStack;
 

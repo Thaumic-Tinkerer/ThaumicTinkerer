@@ -1,10 +1,9 @@
-package com.nekokittygames.Thaumic.api;
+package com.nekokittygames.Thaumic.Tinkerer.api;
 
 import thaumcraft.api.aspects.AspectList;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.UUID;
 
 /**
  * API for the Bound Essentia jar system
