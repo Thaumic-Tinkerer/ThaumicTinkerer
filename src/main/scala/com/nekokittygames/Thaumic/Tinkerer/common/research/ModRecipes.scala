@@ -2,7 +2,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.research
 
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
-import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemCometBoots, ItemMobAspect}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemMeteorBoots, ItemCometBoots, ItemMobAspect}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibResearch
@@ -59,6 +59,7 @@ object ModRecipes {
       new ItemStack(Blocks.snow), new ItemStack(Blocks.snow),
       new ItemStack(Blocks.snow), new ItemStack(ItemsTC.focusFrost))
 
+      registerResearchItemI(LibResearch.KEY_METEOR_BOOTS+0,new ItemStack(ItemMeteorBoots),4,new AspectList().add(Aspect.FIRE,25).add(Aspect.ENERGY,25).add(Aspect.FLIGHT,25),new ItemStack(ItemsTC.travellerBoots,1,32767),new ItemStack(BlocksTC.crystalFire),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(ItemsTC.focusFire))
       val itemStack=new ItemStack(ItemMobAspect)
       ItemMobAspect.setAspect(itemStack,Aspect.LIFE)
       ItemMobAspect.setInfused(itemStack,true)

@@ -30,6 +30,7 @@ object ModItems {
     registerItem(ItemFoodTalisman,LibItemNames.FOOD_TALISMAN)
     registerItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
     registerItem(ItemCometBoots,LibItemNames.BOOTS_COMET)
+    registerItem(ItemMeteorBoots,LibItemNames.BOOTS_METEOR)
   }
 
 
@@ -46,5 +47,6 @@ object ModItems {
     ThaumicTinkerer.proxy.registerInventoryItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
     ThaumicTinkerer.proxy.registerItemBakery(ItemMobAspect,Array[String](LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT,LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT+"Condensed"))
     ThaumicTinkerer.proxy.registerInventoryItem(ItemCometBoots,LibItemNames.BOOTS_COMET)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemMeteorBoots,LibItemNames.BOOTS_METEOR)
   }
 }

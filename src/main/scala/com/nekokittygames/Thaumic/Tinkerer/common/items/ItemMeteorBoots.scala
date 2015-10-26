@@ -93,6 +93,8 @@ object ItemMeteorBoots extends ItemTXBoots {
         var ticks=ItemNBT.getItemStackTag(item).getInteger(SMASH_TICKS)
         var ticksAir=ItemNBT.getItemStackTag(item).getInteger(AIR_TICKS)
 
+        if(player.isSneaking)
+          smashing=true
         if(player.onGround || player.isOnLadder)
           {
             var size=0
@@ -106,7 +108,7 @@ object ItemMeteorBoots extends ItemTXBoots {
             ticks=0
             if(size>0)
               {
-                player.worldObj.createExplosion(player,player.posX,player.posY,player.posZ,size,false)
+                player.worldObj.createExplosion(player,player.posX,player.posY,player.posZ,size,true)
               }
           }
         if(player.capabilities.isFlying)
