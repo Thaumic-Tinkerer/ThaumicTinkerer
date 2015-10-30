@@ -71,7 +71,7 @@ minecraft {
     mappings = "snapshot_20150404"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
-version = "2.5-${minecraft.version}"
+version = "3.0-${minecraft.version}"
 if (System.getenv("BUILD_NUMBER")!=null)
     version = "$version-${System.getenv().BUILD_NUMBER}"
 if (project.hasProperty("releaseType"))
