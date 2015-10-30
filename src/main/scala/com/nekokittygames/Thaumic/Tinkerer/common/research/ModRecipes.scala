@@ -2,13 +2,13 @@ package com.nekokittygames.Thaumic.Tinkerer.common.research
 
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
-import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemMeteorBoots, ItemCometBoots, ItemMobAspect}
-import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemEnderDisruption, ItemStabilizerBelt}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemBloodSword, ItemMeteorBoots, ItemCometBoots, ItemMobAspect}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemCleaningTalisman, ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibResearch
 import com.nekokittygames.Thaumic.Tinkerer.common.recipes.{InfusedMobAspectInfusionRecipe, CondensedMobAspectRecipe}
 import net.minecraft.init.{Blocks, Items}
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumFacing.Axis
 import net.minecraftforge.fml.common.registry.GameRegistry
@@ -60,6 +60,10 @@ object ModRecipes {
       new ItemStack(Blocks.snow), new ItemStack(ItemsTC.focusFrost))
 
       registerResearchItemI(LibResearch.KEY_METEOR_BOOTS+0,new ItemStack(ItemMeteorBoots),4,new AspectList().add(Aspect.FIRE,25).add(Aspect.ENERGY,25).add(Aspect.FLIGHT,25),new ItemStack(ItemsTC.travellerBoots,1,32767),new ItemStack(BlocksTC.crystalFire),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(ItemsTC.focusFire))
+      registerResearchItemI(LibResearch.KEY_FOOD_TALISMAN+0,new ItemStack(ItemFoodTalisman),5,new AspectList().add(Aspect.PLANT,25).add(Aspect.LIFE,30).add(Aspect.EXCHANGE,25),new ItemStack(ItemsTC.primalCharm),new ItemStack(Blocks.obsidian),new ItemStack(Items.cooked_beef),new ItemStack(Items.cooked_chicken),new ItemStack(Items.cooked_porkchop),new ItemStack(Items.cooked_fish),new ItemStack(Items.bread))
+      registerResearchItemI(LibResearch.KEY_BLOOD_SWORD+0,new ItemStack(ItemBloodSword),6,new AspectList().add(Aspect.DARKNESS,5).add(Aspect.SOUL,10).add(Aspect.MAN,6).add(Aspect.DEATH,20),new ItemStack(ItemsTC.thaumiumSword),new ItemStack(Items.rotten_flesh),new ItemStack(Items.porkchop),new ItemStack(Items.beef),new ItemStack(Items.bone),new ItemStack(Items.diamond),new ItemStack(Items.ghast_tear))
+      registerResearchItemI(LibResearch.KEY_CLEANSING_TALISMAN+0,new ItemStack(ItemCleaningTalisman),5,new AspectList().add(Aspect.TOOL,10).add(Aspect.MAN,20).add(Aspect.LIFE,10),new ItemStack(Items.ender_pearl),
+      new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(Items.ghast_tear),new ItemStack(BlocksTC.nitor,1,32767))
       val itemStack=new ItemStack(ItemMobAspect)
       ItemMobAspect.setAspect(itemStack,Aspect.LIFE)
       ItemMobAspect.setInfused(itemStack,true)

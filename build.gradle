@@ -78,7 +78,7 @@ if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
 dependencies {
-    compile files('libs/Thaumcraft-1.8-5.0.B7-deobf.jar')
+    compile files('libs/Thaumcraft-1.8-5.0.B11-deobf.jar')
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -139,7 +139,7 @@ task deobfJar(type: Jar) {
 }
 
 task apiJar(type: Jar) {
-    from fileTree(dir: 'src/main/scala').matching { include 'com/nekokittygames/Thaumic/api/**' }
+    from fileTree(dir: 'src/main/scala').matching { include 'com/nekokittygames/Thaumic/Tinkerer/api/**' }
     classifier = 'api'
 }
 

@@ -1,7 +1,7 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.items
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
-import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemCleaningTalisman, ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibItemNames}
 import net.minecraft.item.Item
@@ -31,6 +31,8 @@ object ModItems {
     registerItem(ItemMobAspect,LibItemNames.MOB_ASPECT)
     registerItem(ItemCometBoots,LibItemNames.BOOTS_COMET)
     registerItem(ItemMeteorBoots,LibItemNames.BOOTS_METEOR)
+    registerItem(ItemBloodSword,LibItemNames.BLOOD_SWORD)
+    registerItem(ItemCleaningTalisman,LibItemNames.CLEANSING_TALISMAN)
   }
 
 
@@ -48,5 +50,7 @@ object ModItems {
     ThaumicTinkerer.proxy.registerItemBakery(ItemMobAspect,Array[String](LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT,LibMisc.MOD_ID+":"+LibItemNames.MOB_ASPECT+"Condensed"))
     ThaumicTinkerer.proxy.registerInventoryItem(ItemCometBoots,LibItemNames.BOOTS_COMET)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemMeteorBoots,LibItemNames.BOOTS_METEOR)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemBloodSword,LibItemNames.BLOOD_SWORD)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemCleaningTalisman,LibItemNames.CLEANSING_TALISMAN)
   }
 }

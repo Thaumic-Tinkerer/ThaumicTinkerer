@@ -1,5 +1,6 @@
 package com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles
 
+import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileFunnel
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.Tessellator
@@ -50,7 +51,7 @@ class TileFunnelRenderer extends TileEntitySpecialRenderer{
     GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
     GL11.glDisable(2896);
       if(amount > 0) {
-        this.renderLiquid(x, y, z, amount,aspect);
+        this.renderLiquid(x, y-0.5f, z, amount,aspect);
       }
 
       GL11.glEnable(2896);
@@ -64,7 +65,7 @@ class TileFunnelRenderer extends TileEntitySpecialRenderer{
     GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
     val renderBlocks:RenderBlocks = new RenderBlocks();
     GL11.glDisable(2896);
-    val level:Float = amount / 64 * 0.625F;
+    val level:Float = amount.toFloat / 64f * 0.625F;
     val t:Tessellator = Tessellator.getInstance();
     renderBlocks.setRenderBounds(0.25D, 0.0625D, 0.25D, 0.75D, 0.0625D + level, 0.75D);
     t.getWorldRenderer().startDrawingQuads();

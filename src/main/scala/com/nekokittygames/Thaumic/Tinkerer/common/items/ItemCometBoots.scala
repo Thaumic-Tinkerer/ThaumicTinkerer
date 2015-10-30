@@ -1,6 +1,7 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.items
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
+import com.nekokittygames.Thaumic.Tinkerer.common.blocks.BlockUnstableIce
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.{ItemNBT, TTCreativeTab}
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibItemNames, LibMisc}
 import mantle.utils.ItemStackNBTWrapper
@@ -66,7 +67,7 @@ object ItemCometBoots extends ItemTXBoots{
               if (player.worldObj.getBlockState(new BlockPos(player.posX + x, player.posY - 1, player.posZ + z)).getBlock == Blocks.water &&
                 player.worldObj.getBlockState(new BlockPos(player.posX + x, player.posY - 1, player.posZ + z)).getBlock.getMaterial == Material.water &&
                 !player.isInWater && (Math.abs(x) + Math.abs(z) < 8)) {
-                player.worldObj.setBlockState(new BlockPos(player.posX + x, player.posY - 1, player.posZ + z), Blocks.ice.getDefaultState())
+                player.worldObj.setBlockState(new BlockPos(player.posX + x, player.posY - 1, player.posZ + z), BlockUnstableIce.getDefaultState())
                 player.worldObj.spawnParticle(EnumParticleTypes.SNOWBALL,(player.posX + x), player.posY, (player.posZ + z), 0.0D, 0.025D, 0.0D)
               }
             }

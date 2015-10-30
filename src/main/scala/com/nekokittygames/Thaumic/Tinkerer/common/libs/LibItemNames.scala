@@ -4,8 +4,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.libs
  * Created by Katrina on 22/05/2015.
  */
 object LibItemNames {
-
-
+  final val CLEANSING_TALISMAN: String = "cleansingTalisman"
   final var DARK_QUARTZ: String = "darkQuartzItem"
   final var JARSEAL="jarSeal"
   final var STABILIZERBELT="stabilizerBelt"
@@ -14,4 +13,5 @@ object LibItemNames {
   final var MOB_ASPECT="mobAspect"
   final var BOOTS_COMET="bootsComet"
   final var BOOTS_METEOR="bootsMeteor"
+  final var BLOOD_SWORD="bloodSword"
 }

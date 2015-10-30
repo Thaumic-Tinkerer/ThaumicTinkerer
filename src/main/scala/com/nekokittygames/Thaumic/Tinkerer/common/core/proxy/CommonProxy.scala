@@ -3,6 +3,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.core.proxy
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkData
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ModItem
 import net.minecraft.block.Block
+import net.minecraft.client.resources.model.ModelResourceLocation
 import net.minecraft.item.Item
 import net.minecraft.world.World
 import net.minecraftforge.common.DimensionManager
@@ -22,6 +23,14 @@ class CommonProxy {
   }
 
   def registerInventoryBlock(block: Block,name: String): Unit=
+  {
+
+  }
+  def registerInventoryBlockWithResourceDomain(block: Block,location: String): Unit=
+  {
+
+  }
+  def registerInventoryBlockWithResourceDomain(block: Block,location: String,meta:Int): Unit=
   {
 
   }

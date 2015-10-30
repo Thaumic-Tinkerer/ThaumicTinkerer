@@ -40,6 +40,7 @@ object ModBlocks {
     registerBlock(BlockFunnel,LibNames.FUNNEL)
     registerBlock(BlockRepairer,LibNames.REPAIRER)
     registerBlock(BlockBoundJar,LibNames.BOUNDJAR)
+    registerBlock(BlockUnstableIce,LibNames.UNSTABLE_ICE)
   }
 
 
@@ -53,6 +54,7 @@ object ModBlocks {
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockFunnel,LibNames.FUNNEL)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockRepairer,LibNames.REPAIRER)
     ThaumicTinkerer.proxy.registerInventoryBlock(BlockBoundJar,LibNames.BOUNDJAR)
+    ThaumicTinkerer.proxy.registerInventoryBlockWithResourceDomain(BlockUnstableIce,"minecraft:ice")
   }
 
 }

@@ -4,6 +4,7 @@ tile.darkQuartzPatterned.chisel.name=Chiselled block of Smokey Quartz
 tile.funnel.name=Essentia Funnel
 tile.funnel.name=Essentia Funnel
 tile.boundJar.name=Bound Jar
+tile.unstableIce.name=Ice
 
 
 
@@ -20,11 +21,13 @@ item.darkQuartzItem.name=Smokey Quartz
 item.jarSeal.name=Jar Seal
 item.stabilizerBelt.name=Stabilizer Belt
 item.enderDisruption.name=Ender Disruptor
-item.foodTalisman.name=Food Talisman
+item.foodTalisman.name=Talisman of Nourishment
 item.mobAspect.name=Mob Aspect
 item.mobAspect.condensed.name=Condensed Mob Aspect
 item.mobAspect.infused.name=Infused Mob Aspect
 item.bootsComet.name=Boots of the Comet
+item.bloodSword.name=Cursed Spirit's Blade
+item.cleansingTalisman.name=Talisman of Remedium
 
 ##Item Details
 ttitems.boundJar.networkInfo=Network ID: %s
@@ -33,6 +36,8 @@ ttitems.foodTalisman.tooltip=Currently holds %s food points and %s saturation po
 ttitems.mobAspects.aspect.info=Aspect: %s
 ttitems.mobaspects.condensed=Condensed
 ttitems.mobaspects.infused=Infused
+ttitems.cleansingTalisman.enabled=Enabled
+ttitems.cleansingTalisman.disabled=Disabled
 
 
 
@@ -62,8 +67,31 @@ ttresearch.name.COMET_BOOTS=Boots of the Comet
 ttresearch.lore.COMET_BOOTS=Ice ice baby
 ttresearch.page.COMET_BOOTS.0=The Boots of the Traveller are fast, but you think that there is room for improvement. By infusing the Boots of the Traveller with Aqua and Gelum, you have created a pair of boots with unrivaled speed.<BR><BR>These boots allow the user to run with the speed of a comet, covering large tracts of land in a matter of seconds. Water can do nothing to slow you. When wearing the Boots of the Comet, water will be temporarily frozen under your feet.
 
+#FOOD_TALISMAN
+ttresearch.name.FOOD_TALISMAN=Talisman of Nourishment
+ttresearch.lore.FOOD_TALISMAN=Everfull belly
+ttresearch.page.FOOD_TALISMAN.0=You often find yourself needing to take breaks during marathon researching sessions to satisfy your hunger. Finally you have found a way to get past your need for food.<BR><BR>By infusing a diamond with the essence of hunger, you have created an item that is able to suck the nourishing energy from various food items in your hotbar and store this energy within. It will then automatically replenish your food meter if it is depleted.<BR><BR>This device will only work on simple food items, so foods that invoke effects such as Rotten Flesh and Golden Apples must be consumed normally.
+
+#BLOOD_SWORD
+ttresearch.name.BLOOD_SWORD=Cursed Spirit's Blade
+ttresearch.lore.BLOOD_SWORD=You're being unpleasent.
+ttresearch.page.BLOOD_SWORD.0=You created a sword that strikes with unparalleled force. However, for this to be the case, the sword feeds on the striker's blood.<BR><BR>Upon damaging anything with this sword, the attacker will take one heart of damage. Blocking with this sword will always deal only 1.5 hearts, regardless of the original damage.<BR><BR>Furthermore, simply holding this sword gives the holder a steadfast aura, making them move faster than normal.
+
 # METEOR_BOOTS
 --Boots of the Meteor
 ttresearch.name.METEOR_BOOTS=Boots of the Meteor
 ttresearch.lore.METEOR_BOOTS=Come on and slam
 ttresearch.page.METEOR_BOOTS.0=Your Boots of the Traveller have been very useful, but sometimes you have desired even more mobility. By imbuing the Boots of the Traveller with the raw power of Ignis and Potentia, you have created a pair of boots with unrivaled mobility.<BR><BR>These boots propel the wearer with the force of a meteor in the direction they are looking, if they jump while crouching. Pressing the crouch button when in midair will launch the player towards the ground at incredible speeds, damaging anything near the point of impact.
+
+# CLEANSING_TALISMAN
+ttresearch.name.CLEANSING_TALISMAN=Talisman of Remedium
+ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
+ttresearch.page.CLEANSING_TALISMAN.0=You have studied life and the body and found that through the application of magic you can protect yourself from harmful outside influences by redirecting these effects to a construct. This talisman will dispel most harmful effects on the holder and keep them on itself, taking damage. It will remove some warp effects, at an extreme durability cost.<BR><BR>To enable or disable this ability, one would shift-right click on it. As expected, it only works whilst enabled. It must be worn in your amulet slot to take effect.
+
+
+# DARK_QUARTZ
+ttresearch.name.DARK_QUARTZ=Smokey Quartz
+ttresearch.lore.DARK_QUARTZ=Shadow of the Day
+ttresearch.page.DARK_QUARTZ.0=Smokey Quartz is pretty much Quartz, but negative. All regular blocks that can be made with quartz, can also be made with smokey quartz, and they look black.<BR><BR>Smokey Quartz itself can be made with a piece of coal or charcoal for tinting, and a few pieces of regular nether quartz.
+
+

@@ -51,6 +51,19 @@ class ClientProxy extends CommonProxy{
     //Minecraft.getMinecraft.getRenderItem.getItemModelMesher.
 
   }
+
+
+
+  override def registerInventoryBlockWithResourceDomain(block: Block, location: String): Unit =
+  {
+    registerInventoryBlock(block,location,0)
+  }
+
+  override def registerInventoryBlockWithResourceDomain(block: Block, location: String, meta: Int): Unit =
+  {
+    Minecraft.getMinecraft.getRenderItem.getItemModelMesher.register(Item.getItemFromBlock(block),meta,new ModelResourceLocation(location,"inventory"))
+  }
+
   override def registerItemBakery(item:ModItem,names:Array[String])=
   {
     ModelBakery.addVariantName(item,names:_*)

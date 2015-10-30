@@ -13,4 +13,5 @@ object LibNames {
   final val REPAIRER="repairer"
   final var BOUNDJAR="boundJar"
   final var BRAINJAR="brainJar"
+  final var UNSTABLE_ICE="unstableIce"
 }
