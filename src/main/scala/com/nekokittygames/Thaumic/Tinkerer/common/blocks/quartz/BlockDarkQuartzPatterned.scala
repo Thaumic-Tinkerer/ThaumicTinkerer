@@ -52,7 +52,7 @@ object BlockDarkQuartzPatterned extends {
   {
     super.getSubBlocks(itemIn, tab, list)
     list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.CHISEL).withProperty(AXIS,Axis.X))))
-    list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.PILLAR).withProperty(AXIS,Axis.X))))
+    //list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.PILLAR).withProperty(AXIS,Axis.X))))
   }
 
   override def getMetaFromState(state: IBlockState): Int = {

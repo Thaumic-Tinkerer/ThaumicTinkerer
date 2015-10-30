@@ -25,7 +25,7 @@ object ModResearch {
 
     var research: TTResearchItem=null
 
-    research=new TTResearchItem(LibResearch.KEY_DARK_QUARTZ,new AspectList(),-2,2,0,new ItemStack(ItemDarkQuartz),new ResearchPage("0"),recipePage(LibResearch.KEY_DARK_QUARTZ+0),recipePage(LibResearch.KEY_DARK_QUARTZ_BLOCKS+0),recipePage(LibResearch.KEY_DARK_QUARTZ_BLOCKS+1),recipePage(LibResearch.KEY_DARK_QUARTZ_BLOCKS+2)).registerResearchItem().asInstanceOf[TTResearchItem]
+    research=new TTResearchItem(LibResearch.KEY_DARK_QUARTZ,new AspectList(),-2,2,0,new ItemStack(ItemDarkQuartz),new ResearchPage("0"),recipePage(LibResearch.KEY_DARK_QUARTZ+0),recipePage(LibResearch.KEY_DARK_QUARTZ_BLOCKS+0),recipePage(LibResearch.KEY_DARK_QUARTZ_BLOCKS+1)).registerResearchItem().asInstanceOf[TTResearchItem]
 
     research=new TTResearchItem(LibResearch.KEY_STABILIZER_BELT,new AspectList().add(Aspect.ORDER, 4).add(Aspect.EARTH, 4).add(Aspect.MOTION, 2),1,-6,1,new ItemStack(ItemStabilizerBelt),new ResearchPage("0"),infusionPage(LibResearch.KEY_STABILIZER_BELT+0)).setParentsHidden("INFUSION").registerResearchItem().asInstanceOf[TTResearchItem]
     research=new TTResearchItem(LibResearch.KEY_ENDER_DISRUPTER,new AspectList().add(Aspect.FLUX, 4).add(Aspect.EXCHANGE, 4).add(Aspect.ELDRITCH, 2),2,-5,2,new ItemStack(ItemEnderDisruption),new ResearchPage("0"),infusionPage(LibResearch.KEY_ENDER_DISRUPTER+0)).setParentsHidden("INFUSION").registerResearchItem().asInstanceOf[TTResearchItem]
