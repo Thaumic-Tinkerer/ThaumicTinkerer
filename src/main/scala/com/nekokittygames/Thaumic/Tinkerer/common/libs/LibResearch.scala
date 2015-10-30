@@ -19,6 +19,7 @@ object LibResearch {
   final var KEY_MOB_SUMMON:String="MOB_SUMMON"
   final var KEY_COMET_BOOTS="COMET_BOOTS"
   final var KEY_METEOR_BOOTS="METEOR_BOOTS"
+  final var KEY_JAR_SEAL="JAR_SEAL"
   final var KEY_KAMI:String="KAMI"
   final var lang: LangProxy = new LangProxy("ttresearch")
 }

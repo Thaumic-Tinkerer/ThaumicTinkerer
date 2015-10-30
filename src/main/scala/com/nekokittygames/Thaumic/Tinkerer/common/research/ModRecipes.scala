@@ -2,16 +2,17 @@ package com.nekokittygames.Thaumic.Tinkerer.common.research
 
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
-import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemBloodSword, ItemMeteorBoots, ItemCometBoots, ItemMobAspect}
+import com.nekokittygames.Thaumic.Tinkerer.common.items._
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemCleaningTalisman, ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibResearch
 import com.nekokittygames.Thaumic.Tinkerer.common.recipes.{InfusedMobAspectInfusionRecipe, CondensedMobAspectRecipe}
 import net.minecraft.init.{Blocks, Items}
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.{EnumDyeColor, Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumFacing.Axis
 import net.minecraftforge.fml.common.registry.GameRegistry
+import net.minecraftforge.oredict.OreDictionary
 import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.aspects.{Aspect, AspectList}
 import thaumcraft.api.blocks.BlocksTC
@@ -37,6 +38,13 @@ object ModRecipes {
       val cRecipe=new CondensedMobAspectRecipe()
       GameRegistry.addRecipe(cRecipe)
       registerResearchItemC(LibResearch.KEY_MOB_SUMMON+1,cRecipe)
+
+      registerResearchItemC(LibResearch.KEY_JAR_SEAL+1,GameRegistry.addShapedRecipe(new ItemStack(ItemJarSeal,1,1),"   "," X "," Y ",Character.valueOf('X'),new ItemStack(ItemJarSeal,1,3),Character.valueOf('Y'),new ItemStack(Items.dye,1,EnumDyeColor.RED.getDyeDamage)))
+      for(i <- 0 until 16)
+        {
+          GameRegistry.addShapelessRecipe(new ItemStack(ItemJarSeal,1,i),new ItemStack(ItemJarSeal,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Items.dye,1,i))
+        }
+
 
     }
 
@@ -64,6 +72,8 @@ object ModRecipes {
       registerResearchItemI(LibResearch.KEY_BLOOD_SWORD+0,new ItemStack(ItemBloodSword),6,new AspectList().add(Aspect.DARKNESS,5).add(Aspect.SOUL,10).add(Aspect.MAN,6).add(Aspect.DEATH,20),new ItemStack(ItemsTC.thaumiumSword),new ItemStack(Items.rotten_flesh),new ItemStack(Items.porkchop),new ItemStack(Items.beef),new ItemStack(Items.bone),new ItemStack(Items.diamond),new ItemStack(Items.ghast_tear))
       registerResearchItemI(LibResearch.KEY_CLEANSING_TALISMAN+0,new ItemStack(ItemCleaningTalisman),5,new AspectList().add(Aspect.TOOL,10).add(Aspect.MAN,20).add(Aspect.LIFE,10),new ItemStack(Items.ender_pearl),
       new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(Items.ghast_tear),new ItemStack(BlocksTC.nitor,1,32767))
+      val jarSeal=new ItemStack(ItemJarSeal)
+      registerResearchItemI(LibResearch.KEY_JAR_SEAL+0,new ItemStack(ItemJarSeal,1,1),5,new AspectList().add(Aspect.AURA,6).add(Aspect.ELDRITCH,4).add(Aspect.EXCHANGE,4),new ItemStack(ItemsTC.tallow),new ItemStack(Items.ender_pearl),new ItemStack(BlocksTC.jar,1),new ItemStack(Items.blaze_powder),new ItemStack(ItemsTC.salisMundus),new ItemStack(ItemsTC.salisMundus))
       val itemStack=new ItemStack(ItemMobAspect)
       ItemMobAspect.setAspect(itemStack,Aspect.LIFE)
       ItemMobAspect.setInfused(itemStack,true)

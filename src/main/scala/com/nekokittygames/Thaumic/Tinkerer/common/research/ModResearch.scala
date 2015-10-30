@@ -2,7 +2,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.research
 
 import com.nekokittygames.Thaumic.Tinkerer.client.libs.LibResources
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.BlockDarkQuartz
-import com.nekokittygames.Thaumic.Tinkerer.common.items.{ItemBloodSword, ItemMeteorBoots, ItemCometBoots, ItemMobAspect}
+import com.nekokittygames.Thaumic.Tinkerer.common.items._
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemCleaningTalisman, ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibResearch
@@ -37,6 +37,7 @@ object ModResearch {
     //research=new TTResearchItem(LibResearch.KEY_MOB_SUMMON,new AspectList().add(Aspect.DEATH, 4).add(Aspect.LIFE, 4).add(Aspect.UNDEAD, 2),0,0,2,itemStack,new ResearchPage("0"),recipePage(LibResearch.KEY_MOB_SUMMON+1),new ResearchPage("2"),infusionPage(LibResearch.KEY_MOB_SUMMON+2)).setParentsHidden("INFUSION").registerResearchItem().asInstanceOf[TTResearchItem]
     research=new TTResearchItem(LibResearch.KEY_CLEANSING_TALISMAN,new AspectList().add(Aspect.ORDER,1).add(Aspect.DEATH,1).add(Aspect.PROTECT,2),1,-1,3,new ItemStack(ItemCleaningTalisman),new ResearchPage("0"),infusionPage(LibResearch.KEY_CLEANSING_TALISMAN+0)).setSecondary().setParents(LibResearch.KEY_DARK_QUARTZ).registerResearchItem().asInstanceOf[TTResearchItem]
     research=new TTResearchItem(LibResearch.KEY_BLOOD_SWORD,new AspectList().add(Aspect.DEATH,2).add(Aspect.MAN,1).add(Aspect.LIFE,1).add(Aspect.SOUL,1),3,-2,3,new ItemStack(ItemBloodSword),new ResearchPage("0"),infusionPage(LibResearch.KEY_BLOOD_SWORD+0)).setWarp(1).setParentsHidden("INFUSION").setParents(LibResearch.KEY_CLEANSING_TALISMAN).registerResearchItem().asInstanceOf[TTResearchItem]
+    research=new TTResearchItem(LibResearch.KEY_JAR_SEAL,new AspectList().add(Aspect.EXCHANGE,3).add(Aspect.ELDRITCH,3).add(Aspect.AURA,2),2,-2,3,new ItemStack(ItemJarSeal,1,1),new ResearchPage("0"),new ResearchPage("1"),infusionPage(LibResearch.KEY_JAR_SEAL+0),new ResearchPage("2"),recipePage(LibResearch.KEY_JAR_SEAL+1)).setParentsHidden("INFUSION").registerResearchItem().asInstanceOf[TTResearchItem]
   }
 
   def registerResearchPage() = {
