@@ -1,0 +1,54 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "particle": "thaumcraft:blocks/taint_fibres", 
+            "crust": "thaumcraft:blocks/taint_fibres"
+           },
+        "model": "thaumcraft:empty"
+    },
+    "variants": {
+        "up": {
+            "true": {"submodel": "thaumcraft:taint_fibre", "x": 180},
+            "false": {}
+        },
+        "down": {
+            "true": {"submodel": "thaumcraft:taint_fibre"},
+            "false": {}
+        },
+        "north": {
+            "true": {"submodel": "thaumcraft:taint_fibre", "y": 180, "x": 90},
+            "false": {}
+        },
+        "south": {
+            "true": {"submodel": "thaumcraft:taint_fibre", "x": 90},
+            "false": {}
+        },
+        "east": {
+            "true": {"submodel": "thaumcraft:taint_fibre", "y": 270, "x": 90},
+            "false": {}
+        },
+        "west": {
+            "true": {"submodel": "thaumcraft:taint_fibre", "y": 90, "x": 90},
+            "false": {}
+        },
+        "growth1": {
+            "true": {"submodel": "tallgrass", "textures": {"cross": "thaumcraft:blocks/taint_growth_1"}},
+            "false": {}
+        },
+        "growth2": {
+            "true": {"submodel": "tallgrass", "textures": {"cross": "thaumcraft:blocks/taint_growth_2"}},
+            "false": {}
+        },
+        "growth3": {
+            "true": {"submodel": "thaumcraft:taint_growth_3"},
+            "false": {}
+        },
+        "growth4": {
+            "true": {"submodel": "tallgrass", "textures": {"cross": "thaumcraft:blocks/taint_growth_4"}},
+            "false": {}
+        },
+        "up=true,down=true,east=true,north=true,south=true,up=true,west=true": {"model": null}
+    }
+}
+
