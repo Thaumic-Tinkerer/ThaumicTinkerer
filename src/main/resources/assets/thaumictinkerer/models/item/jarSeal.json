@@ -1,8 +1,8 @@
 {
   "parent": "builtin/generated",
   "textures": {
-    "layer0": "thaumictinkerer:items/sealjar",
-    "layer1": "thaumictinkerer:items/sealjarOverlay"
+    "layer0": "thaumictinkerer:items/sealJar",
+    "layer1": "thaumictinkerer:items/sealJarOverlay"
   },
   "display": {
     "thirdperson": {

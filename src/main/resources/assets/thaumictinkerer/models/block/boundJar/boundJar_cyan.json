@@ -2,6 +2,6 @@
   "parent":"thaumictinkerer:block/boundJar",
   "textures":
   {
-    "top": "thaumictinkerer:blocks/boundJar/jar_top_cyan"
+    "top": "thaumictinkerer:blocks/bounjar/jar_top_cyan"
   }
 }
