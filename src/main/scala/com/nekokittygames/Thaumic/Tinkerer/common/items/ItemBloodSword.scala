@@ -3,17 +3,21 @@ package com.nekokittygames.Thaumic.Tinkerer.common.items
 import com.google.common.collect.{HashMultimap, Multimap}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.ItemNBT
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
+import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.{EntityLivingBase, SharedMonsterAttributes}
 import net.minecraft.entity.ai.attributes.AttributeModifier
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.{Item, ItemSword}
+import net.minecraft.item.{ItemStack, Item, ItemSword}
 import net.minecraft.util.DamageSource
+import net.minecraft.world.World
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.util.EnumHelper
 import net.minecraftforge.event.entity.living.{LivingAttackEvent, LivingDropsEvent}
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import thaumcraft.api.aspects.{Aspect, AspectHelper}
 import thaumcraft.api.items.IRepairable
+import thaumcraft.api.research.{ScanningManager, ScanEntity}
 import thaumcraft.api.{ThaumcraftMaterials, ThaumcraftApi}
 
 /**
@@ -29,6 +33,16 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
   {
     MinecraftForge.EVENT_BUS.register(this)
   }
+
+
+  override def onItemRightClick(itemStackIn: ItemStack, worldIn: World, playerIn: EntityPlayer): ItemStack =
+    {
+      if(playerIn.isSneaking)
+        {
+          ItemNBT.getItemStackTag(itemStackIn).setBoolean(ACTIVATED,! ItemNBT.getItemStackTag(itemStackIn).getBoolean(ACTIVATED))
+        }
+      return itemStackIn
+    }
 
   override def getItemAttributeModifiers: Multimap[_,_] =
   {
@@ -47,7 +61,12 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
         val stack=player.getCurrentEquippedItem
         if(stack!=null && stack.getItem == this && ItemNBT.getItemStackTag(stack).hasKey(ACTIVATED) && ItemNBT.getItemStackTag(stack).getBoolean(ACTIVATED))
           {
-
+            var aspects=AspectHelper.getEntityAspects(event.entity)
+            for(aspect:Aspect <- aspects.getAspects) {
+              var item=new ItemStack(ItemMobAspect,aspects.getAmount(aspect))
+              ItemMobAspect.setAspect(item,aspect)
+              event.drops.add(new EntityItem(player.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ,item))
+            }
           }
       }
   }

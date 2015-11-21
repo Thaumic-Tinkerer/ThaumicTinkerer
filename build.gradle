@@ -78,7 +78,7 @@ if (project.hasProperty("releaseType"))
     if (project.releaseType == "ALPHA")
         version = "alpha-" + version
 dependencies {
-    compile files('libs/Thaumcraft-1.8-5.0.B11-deobf.jar')
+    compile files('libs/Thaumcraft-1.8-5.0.3-deobf.jar')
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -92,8 +92,8 @@ dependencies {
     compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
     //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
     compile "mantle:Mantle:1.8-0.4.jenkins23:deobf"
-    compile "li.cil.oc:OpenComputers:MC1.8-1.5.18.227-dev:api"
-    //compile "li.cil.oc:OpenComputers:MC1.8-1.5.10.140-dev:dev"
+    compile "li.cil.oc:OpenComputers:MC1.8-1.5.20.239-dev:api"
+    //compile "li.cil.oc:OpenComputers:MC1.8-1.5.20.239-dev:dev"
     //compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
     //}
     // real examples
