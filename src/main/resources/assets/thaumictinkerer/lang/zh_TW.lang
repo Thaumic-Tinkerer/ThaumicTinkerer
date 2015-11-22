@@ -1,0 +1,102 @@
+tile.darkQuartzBlock.name=煙晶方塊
+tile.darkQuartzPatterned.pillar.name=柱狀煙晶
+tile.darkQuartzPatterned.chisel.name=浮雕煙晶方塊
+tile.funnel.name=源質漏斗
+tile.funnel.name=源質漏斗
+tile.boundJar.name=綁定罐
+tile.unstableIce.name=冰
+
+
+
+tc.research_category.TT_CATEGORY=秘術擴充
+
+itemGroup.ThaumicTinkerer=秘術工匠
+# WAILA
+ttwaila.boundJar.network=網路：%s
+ttwaila.boundJar.colour=顏色：%s
+
+
+# ITEM NAMES
+item.darkQuartzItem.name=煙晶
+item.jarSeal.name=封罐印
+item.stabilizerBelt.name=穩定腰帶
+item.enderDisruption.name=終界干擾器
+item.foodTalisman.name=營養護符
+item.mobAspect.name=生物要素
+item.mobAspect.condensed.name=凝結生物要素
+item.mobAspect.infused.name=灌注生物要素
+item.bootsComet.name=彗星之靴
+item.bloodSword.name=咒魂之刃
+item.bootsMeteor.name=流星之靴
+item.cleansingTalisman.name=替身護符
+
+##Item Details
+ttitems.boundJar.networkInfo=網路ID：%s
+ttitems.boundJar.noNetworkInfo=無網路
+ttitems.foodTalisman.tooltip=目前分配%s食物點和%s飽食度
+ttitems.mobAspects.aspect.info=要素：%s
+ttitems.mobaspects.condensed=凝結
+ttitems.mobaspects.infused=灌注
+ttitems.cleansingTalisman.enabled=啟用
+ttitems.cleansingTalisman.disabled=關閉
+
+
+
+#CONFIG COMMENTS
+ttconfig.general=通用設定
+ttconfig.back=返回
+ttconfig.tooltip.name=使用工具提醒指示
+ttconfig.tooltip.comment=設為false以停用魔導手冊中的[秘術工匠]工具提醒
+
+
+#RESEARCH
+ttresearch.prefix=[秘術工匠]
+
+#STABILIZER BELT
+ttresearch.name.STABILIZER_BELT=穩定腰帶
+ttresearch.lore.STABILIZER_BELT=擊退？but I Like It Here
+ttresearch.page.STABILIZER_BELT.0=基於類似奧術腰帶的技術，你製作出了一條可以抵銷擊退的特殊腰帶。<BR><BR>當你受到傷害時會留在原地，而不會被擊退。你發現這項裝備不只在飛行時，就連夜遊時也非常實用。
+
+#ENDER_DISRUPTER
+ttresearch.name.ENDER_DISRUPTER=終界干擾器
+ttresearch.lore.ENDER_DISRUPTER=別在打鬥時跳來跳去！
+ttresearch.page.ENDER_DISRUPTER.0=在小心地研究中介珍珠後，你發現了終界使者的傳送原理，以及更重要的是如何阻止它。<BR><BR>當你對一個終界珍珠注入污染，污染會干涉終界使者用以傳送的世界維度邊緣，使之關閉。 你推斷當你穿上這個護符便能阻止它們在你周圍傳送。<BR><BR>控制污染並將之散播至世界維度邊緣對你身上的護符造成相當大的壓力，它終將分崩離析。
+
+#COMET_BOOTS
+ttresearch.name.COMET_BOOTS=彗星之靴
+ttresearch.lore.COMET_BOOTS=Ice Ice Baby
+ttresearch.page.COMET_BOOTS.0=旅人之靴非常迅速，但你認為依然有改進的空間。透過在旅人之靴中注入Aqua和Gelum，你造出一雙神速的跑靴。<BR><BR>這雙跑靴能使其使用者疾如彗星，橫越大地只需數秒。川湖與汪洋絲毫無法阻撓你的腳步。當你穿著彗星之靴，你腳下的水面會暫時被凍成冰塊。
+
+#FOOD_TALISMAN
+ttresearch.name.FOOD_TALISMAN=營養護符
+ttresearch.lore.FOOD_TALISMAN=恆久滿腹
+ttresearch.page.FOOD_TALISMAN.0=你發現你經常需要在馬拉松式的研究會議中停下來滿足你的空腹。最後你找到了一個方法能克服你對食物的需求。<BR><BR>透過在鑽石中注入飢餓要素，你做出了可吸收快捷欄中食物，並儲存成能量的物件。當你飽食度耗盡時將能自動為你補充。<BR><BR>這項裝置只有普通食物的效果，所以當物品欄中有金蘋果或腐肉時也會很普通地被消耗掉。
+
+#BLOOD_SWORD
+ttresearch.name.BLOOD_SWORD=咒魂之刃
+ttresearch.lore.BLOOD_SWORD=不愉快です。
+ttresearch.page.BLOOD_SWORD.0=你造出了一把威力拔群的劍。然而這是有條件的，這把劍吞噬使用者的血液。<BR><BR>無論擊中任何目標，攻擊者都會損失一格心的生命。而無論原本會承受多少傷害，以這把劍格擋都只會被扣1.5格生命。<BR><BR>此外，只要手持這把劍就會受一股靈氣壟罩，加快其行動速度。
+# METEOR_BOOTS
+--Boots of the Meteor
+ttresearch.name.METEOR_BOOTS=流星之靴
+ttresearch.lore.METEOR_BOOTS=Come on and Slam
+ttresearch.page.METEOR_BOOTS.0=你的旅人之靴向來實用，但有時你需要的是更高的靈活度。透過在旅人之靴中注入純粹的Ignis和Potentia能量，你造出一雙神速的跑靴。<BR><BR>這雙靴子在衝向地面時賦予你流星降下的強大推力。在半空中按下潛行鍵你將以難以置信的速度落下，並破壞周圍的一切。
+
+# CLEANSING_TALISMAN
+ttresearch.name.CLEANSING_TALISMAN=替身護符
+ttresearch.lore.CLEANSING_TALISMAN=Mitsukake's Gift
+ttresearch.page.CLEANSING_TALISMAN.0=居於在你在生命與肉體的研究，你找到能夠將身上受到的負面影響轉由結構來承受的術式。這顆護符能消除使用者身上的負面狀態，透過將其影響轉為對自身的傷害。它會透過消耗大量耐久度來移除扭曲造成的效果。<BR><BR>以「shift右鍵」來啟用或關閉它的效果。當然，只有啟用時會有作用。必須穿在護符欄位才會發揮其效果。
+
+
+# DARK_QUARTZ
+ttresearch.name.DARK_QUARTZ=煙晶
+ttresearch.lore.DARK_QUARTZ=Shadow of the Day
+ttresearch.page.DARK_QUARTZ.0=煙晶相當於石英，但性質偏陰。所有石英方塊都能以煙晶製造，但其做出的煙晶方塊是黑的。<BR><BR>煙晶能透過利用煤炭或木炭染黑地獄石英來製成。
+
+
+# JAR_SEAL
+ttresearch.name.JAR_SEAL=封罐綁定印
+ttresearch.lore.JAR_SEAL=源質，到處都是源質
+ttresearch.page.JAR_SEAL.0=透過以源質浸泡肉脂來調整其魔法結構，你找到讓源質容器互相綁定的方法，單純針對封罐。封罐印可以染色，並能創建出無限的網路。<BR><BR>以封罐綁定印右鍵封罐能創造一個新網路，而右鍵一個綁定罐可以將之連上該網路。
+ttresearch.page.JAR_SEAL.1=以綁定的封罐印右鍵一個未綁定的罐子可將之加入該網路。注意：只有空罐能被綁定，你無法綁定虛空罐或是貼了標籤的罐子。<BR><BR>綁定罐的吸力高於普通封罐，但低於貼了標籤的罐子。
+ttresearch.page.JAR_SEAL.2=你能以染料將封罐印染成任意顏色。你也能透過以鐵砧命名它來為網路命名。
