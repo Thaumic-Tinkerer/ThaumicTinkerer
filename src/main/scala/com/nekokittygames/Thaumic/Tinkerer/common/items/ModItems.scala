@@ -2,6 +2,7 @@ package com.nekokittygames.Thaumic.Tinkerer.common.items
 
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.items.baubles.{ItemCleaningTalisman, ItemFoodTalisman, ItemEnderDisruption, ItemStabilizerBelt}
+import com.nekokittygames.Thaumic.Tinkerer.common.items.oc.ItemThaumometerUpgrade
 import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibItemNames}
 import net.minecraft.item.Item
@@ -33,6 +34,7 @@ object ModItems {
     registerItem(ItemMeteorBoots,LibItemNames.BOOTS_METEOR)
     registerItem(ItemBloodSword,LibItemNames.BLOOD_SWORD)
     registerItem(ItemCleaningTalisman,LibItemNames.CLEANSING_TALISMAN)
+    registerItem(ItemThaumometerUpgrade,LibItemNames.THAUMOMETER_UPGRADE)
   }
 
 
@@ -52,5 +54,6 @@ object ModItems {
     ThaumicTinkerer.proxy.registerInventoryItem(ItemMeteorBoots,LibItemNames.BOOTS_METEOR)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemBloodSword,LibItemNames.BLOOD_SWORD)
     ThaumicTinkerer.proxy.registerInventoryItem(ItemCleaningTalisman,LibItemNames.CLEANSING_TALISMAN)
+    ThaumicTinkerer.proxy.registerInventoryItem(ItemThaumometerUpgrade,LibItemNames.THAUMOMETER_UPGRADE)
   }
 }

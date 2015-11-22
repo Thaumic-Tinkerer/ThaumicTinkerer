@@ -14,4 +14,11 @@ object LibItemNames {
   final var BOOTS_COMET="bootsComet"
   final var BOOTS_METEOR="bootsMeteor"
   final var BLOOD_SWORD="bloodSword"
+
+
+
+
+
+  // OC Items
+  final var THAUMOMETER_UPGRADE="thaumUpgrade"
 }

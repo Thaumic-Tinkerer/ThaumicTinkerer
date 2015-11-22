@@ -45,6 +45,12 @@ object ThaumicTinkerer {
 
 
   @EventHandler
+  def init(eventArgs:FMLInitializationEvent): Unit =
+  {
+    proxy.init(eventArgs)
+  }
+
+  @EventHandler
   def imcCallback(event:FMLInterModComms.IMCEvent)=
   {
 
