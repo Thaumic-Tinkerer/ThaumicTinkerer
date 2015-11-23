@@ -92,8 +92,8 @@ dependencies {
     compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
     //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
     compile "mantle:Mantle:1.8-0.4.jenkins23:deobf"
-    compile "li.cil.oc:OpenComputers:MC1.8-1.5.20.239-dev:api"
-    //compile "li.cil.oc:OpenComputers:MC1.8-1.5.20.239-dev:dev"
+    compile "li.cil.oc:OpenComputers:MC1.8-1.5.20.242-dev:api"
+    deobfCompile "li.cil.oc:OpenComputers:MC1.8-1.5.20.242-dev"
     //compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
     //}
     // real examples

@@ -40,7 +40,7 @@ object ThaumicTinkerer {
     logger = eventArgs.getModLog
     ModBlocks.registerBlocks(eventArgs)
     ModItems.registerItems(eventArgs)
-    proxy.registerTileEntityRenders()
+
   }
 
 
@@ -49,6 +49,7 @@ object ThaumicTinkerer {
   {
     proxy.init(eventArgs)
   }
+
 
   @EventHandler
   def imcCallback(event:FMLInterModComms.IMCEvent)=
@@ -81,6 +82,7 @@ object ThaumicTinkerer {
   {
     ModRecipes.registerRecipes()
     ModResearch.registerResearch()
+    proxy.registerTileEntityRenders()
   }
 
 }
