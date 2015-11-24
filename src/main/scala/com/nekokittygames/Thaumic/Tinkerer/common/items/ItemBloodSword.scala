@@ -1,7 +1,9 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.items
 
+import java.util
+
 import com.google.common.collect.{HashMultimap, Multimap}
-import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.ItemNBT
+import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.{MobAspects, ItemNBT}
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibItemNames
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.{EntityLivingBase, SharedMonsterAttributes}
@@ -35,6 +37,20 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
   }
 
 
+  override def hasEffect(stack: ItemStack): Boolean =
+    {
+      if(ItemNBT.getItemStackTag(stack).getBoolean(ACTIVATED))
+        true
+      else
+        super.hasEffect(stack)
+    }
+
+
+  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit =
+    {
+      super.addInformation(stack, playerIn, tooltip, advanced)
+    }
+
   override def onItemRightClick(itemStackIn: ItemStack, worldIn: World, playerIn: EntityPlayer): ItemStack =
     {
       if(playerIn.isSneaking)
@@ -61,9 +77,10 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
         val stack=player.getCurrentEquippedItem
         if(stack!=null && stack.getItem == this && ItemNBT.getItemStackTag(stack).hasKey(ACTIVATED) && ItemNBT.getItemStackTag(stack).getBoolean(ACTIVATED))
           {
-            var aspects=AspectHelper.getEntityAspects(event.entity)
-            for(aspect:Aspect <- aspects.getAspects) {
-              var item=new ItemStack(ItemMobAspect,aspects.getAmount(aspect))
+            val entity=event.entity
+            var aspects=MobAspects.getAspects(entity.getClass)
+            for(aspect:Aspect <- aspects) {
+              var item=new ItemStack(ItemMobAspect,1)
               ItemMobAspect.setAspect(item,aspect)
               event.drops.add(new EntityItem(player.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ,item))
             }
