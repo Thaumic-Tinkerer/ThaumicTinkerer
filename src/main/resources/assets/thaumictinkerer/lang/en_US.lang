@@ -38,7 +38,9 @@ ttitems.mobaspects.condensed=Condensed
 ttitems.mobaspects.infused=Infused
 ttitems.cleansingTalisman.enabled=Enabled
 ttitems.cleansingTalisman.disabled=Disabled
-
+ttitems.bloodsword.activated=In Mob Essence mode
+ttitems.bloodsword.deactivated=In Normal Mode
+ttitems.bloodsword.sneakhelp=Press sneak + right click to change mode
 
 
 #CONFIG COMMENTS

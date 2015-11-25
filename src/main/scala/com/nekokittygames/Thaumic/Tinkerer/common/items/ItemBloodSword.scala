@@ -49,6 +49,12 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
   override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit =
     {
       super.addInformation(stack, playerIn, tooltip, advanced)
+
+      if(ItemNBT.getItemStackTag(stack).getBoolean(ACTIVATED))
+        tooltip.asInstanceOf[java.util.List[String]].add(lang.translate("bloodsword.activated"))
+      else
+        tooltip.asInstanceOf[java.util.List[String]].add(lang.translate("bloodsword.deactivated"))
+      tooltip.asInstanceOf[java.util.List[String]].add(lang.translate("bloodsword.sneakhelp"))
     }
 
   override def onItemRightClick(itemStackIn: ItemStack, worldIn: World, playerIn: EntityPlayer): ItemStack =
