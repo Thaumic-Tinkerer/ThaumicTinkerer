@@ -1,0 +1,20 @@
+{
+  "textures": {
+    "particle": "thaumictinkerer:blocks/summoner/summonerSide",
+    "summonerTop":"thaumictinkerer:blocks/summoner/summonerTop",
+    "summonerSide": "thaumictinkerer:blocks/summoner/summonerSide"
+  },
+  "elements": [
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 2, 16 ],
+      "faces": {
+        "down":  {  "texture": "#summonerTop", "cullface": "down" },
+        "up":    {  "texture": "#summonerTop" },
+        "north": {  "texture": "#summonerSide", "cullface": "north" },
+        "south": { "texture": "#summonerSide", "cullface": "south" },
+        "west":  {  "texture": "#summonerSide", "cullface": "west" },
+        "east":  { "texture": "#summonerSide", "cullface": "east" }
+      }
+    }
+  ]
+}

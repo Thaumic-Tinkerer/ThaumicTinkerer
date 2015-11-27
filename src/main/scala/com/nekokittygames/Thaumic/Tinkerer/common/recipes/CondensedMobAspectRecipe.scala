@@ -50,6 +50,7 @@ class CondensedMobAspectRecipe extends IRecipe{
   {
     val stack=inventoryCrafting.getStackInSlot(0).copy()
     ItemMobAspect.setCondensed(stack,true)
+    stack.stackSize=1
     stack
   }
 

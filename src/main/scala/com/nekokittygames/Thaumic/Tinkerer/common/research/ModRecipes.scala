@@ -1,5 +1,6 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.research
 
+import com.nekokittygames.Thaumic.Tinkerer.common.blocks.BlockSummon
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartzPatterned, BlockDarkQuartz}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
 import com.nekokittygames.Thaumic.Tinkerer.common.items._
@@ -8,6 +9,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.items.quartz.ItemDarkQuartz
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibResearch
 import com.nekokittygames.Thaumic.Tinkerer.common.recipes.{InfusedMobAspectInfusionRecipe, CondensedMobAspectRecipe}
 import net.minecraft.init.{Blocks, Items}
+import net.minecraft.item.crafting.{ShapedRecipes, CraftingManager, IRecipe}
 import net.minecraft.item.{EnumDyeColor, Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumFacing.Axis
@@ -16,7 +18,7 @@ import net.minecraftforge.oredict.OreDictionary
 import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.aspects.{Aspect, AspectList}
 import thaumcraft.api.blocks.BlocksTC
-import thaumcraft.api.crafting.InfusionRecipe
+import thaumcraft.api.crafting.{ShapedArcaneRecipe, InfusionRecipe}
 import thaumcraft.api.items.ItemsTC
 import thaumcraft.common.config.{ConfigBlocks, ConfigItems, ConfigResearch}
 
@@ -44,6 +46,14 @@ object ModRecipes {
         {
           GameRegistry.addShapelessRecipe(new ItemStack(ItemJarSeal,1,i),new ItemStack(ItemJarSeal,1,OreDictionary.WILDCARD_VALUE),new ItemStack(Items.dye,1,i))
         }
+
+      val aspect=new ItemStack(ItemMobAspect)
+      ItemMobAspect.setAspect(aspect,Aspect.LIFE)
+      val aspectOut=aspect.copy()
+      ItemMobAspect.setCondensed(aspectOut,true)
+      val fakeRec=new ShapedRecipes(3,3,Array[ItemStack](aspect,aspect,aspect,aspect,aspect,aspect,aspect,aspect,aspect),aspectOut)
+
+      registerResearchItemC(LibResearch.KEY_MOB_SUMMON+4,fakeRec.asInstanceOf[IRecipe])
 
 
     }
@@ -89,9 +99,13 @@ object ModRecipes {
 
 
     }
-
+    def registerArcaneRecipes()=
+    {
+        registerResearchItemsA(LibResearch.KEY_MOB_SUMMON+"0",new ItemStack(BlockSummon),new AspectList().add(Aspect.ORDER,50).add(Aspect.ENTROPY,50),"WWW", "SSS", Character.valueOf('S'),new ItemStack(Blocks.stone),Character.valueOf('W'),new ItemStack(BlocksTC.stone,1,1))
+    }
     registerConstructRecipes()
     registerInfusionRecipes()
+    registerArcaneRecipes()
   }
 
 
@@ -100,6 +114,14 @@ object ModRecipes {
   def registerResearchItemC(string:String,asList:AnyRef)=
   {
     ConfigResearch.recipes.put(string,asList)
+  }
+
+  def registerResearchItemsA(research:String,result:ItemStack,aspects:AspectList,asList:AnyRef*)=
+  {
+    val recipe:ShapedArcaneRecipe=new ShapedArcaneRecipe(research,result,aspects,asList.toArray: _*)
+    ThaumcraftApi.getCraftingRecipes.asInstanceOf[java.util.List[IRecipe]].add(recipe)
+    CraftingManager.getInstance().addRecipe(recipe)
+    ConfigResearch.recipes.put(research,recipe)
   }
 
 

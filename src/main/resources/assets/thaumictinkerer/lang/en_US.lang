@@ -5,6 +5,7 @@ tile.funnel.name=Essentia Funnel
 tile.funnel.name=Essentia Funnel
 tile.boundJar.name=Bound Jar
 tile.unstableIce.name=Ice
+tile.summoner.name=Tablet of Necromancy
 
 
 
@@ -22,7 +23,7 @@ item.jarSeal.name=Jar Seal
 item.stabilizerBelt.name=Stabilizer Belt
 item.enderDisruption.name=Ender Disruptor
 item.foodTalisman.name=Talisman of Nourishment
-item.mobAspect.name=Mob Aspect
+item.mobAspect.name=Soul Aspect
 item.mobAspect.condensed.name=Condensed Mob Aspect
 item.mobAspect.infused.name=Infused Mob Aspect
 item.bootsComet.name=Boots of the Comet
@@ -103,3 +104,9 @@ ttresearch.lore.JAR_SEAL=Essentia, essentia everywhere
 ttresearch.page.JAR_SEAL.0=By adjusting the mixture of aspects that you soak the tallow seal in to account for essentia's mystical properties, you have found that you are able to bind essentia containers, in particular, warded jars. Much like your previous binding seals, the jar binding seal can be dyed and an unlimited amount of networks can be created.<BR><BR>By right clicking on a jar with a jar binding seal, you can create a new network. Right clicking on a bound jar will link the seal to that network.
 ttresearch.page.JAR_SEAL.1=Right clicking on an unbound jar with a linked seal will add that jar to the linked network. Note that only empty jars are able to be bound. You can not bind void jars or jars with labels.<BR><BR>Sealed jars have a higher suction than unlabeled jars but lower than labeled jars.
 ttresearch.page.JAR_SEAL.2=You may use a dye to dye a seal to any desired colour. You may also name it in an anvil to gain any desired network name
+
+# MOB_SUMMON
+ttresearch.name.MOB_SUMMON=Mob Summoning
+ttresearch.lore.MOB_SUMMON=Almost Necromancy
+ttresearch.page.MOB_SUMMON.0=You are able to use the souls gained from a Cursed spirits blade in order to summon mobs. Place three pedestals around a Tablet of Necromancy. On the pedestals, place three soul aspects. Different types of soul aspects give different types of mobs. Every mob has a different composition.
+ttresearch.page.MOB_SUMMON.1=By creating Infused Soul Aspects, you are able to summon mobs without consuming Soul Aspects. Summoning using Infused Soul Aspects is much slower than normal.

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.IRecipe
 import net.minecraft.util.ResourceLocation
 import thaumcraft.api.aspects.{Aspect, AspectList}
-import thaumcraft.api.crafting.InfusionRecipe
+import thaumcraft.api.crafting.{IArcaneRecipe, InfusionRecipe}
 import thaumcraft.api.research.{ResearchCategories, ResearchPage}
 import thaumcraft.common.config.ConfigResearch
 
@@ -34,7 +34,7 @@ object ModResearch {
     research=new TTResearchItem(LibResearch.KEY_METEOR_BOOTS,new AspectList().add(Aspect.FIRE,5).add(Aspect.ENERGY,5).add(Aspect.FLIGHT,10),5,-2,2,new ItemStack(ItemMeteorBoots),new ResearchPage("0"),infusionPage(LibResearch.KEY_METEOR_BOOTS+0)).setParentsHidden("INFUSION").setParentsHidden("FOCUSFIRE").setParents("BOOTSTRAVELLER").registerResearchItem().asInstanceOf[TTResearchItem]
     val itemStack=new ItemStack(ItemMobAspect)
     ItemMobAspect.setAspect(itemStack,Aspect.LIFE)
-    //research=new TTResearchItem(LibResearch.KEY_MOB_SUMMON,new AspectList().add(Aspect.DEATH, 4).add(Aspect.LIFE, 4).add(Aspect.UNDEAD, 2),0,0,2,itemStack,new ResearchPage("0"),recipePage(LibResearch.KEY_MOB_SUMMON+1),new ResearchPage("2"),infusionPage(LibResearch.KEY_MOB_SUMMON+2)).setParentsHidden("INFUSION").registerResearchItem().asInstanceOf[TTResearchItem]
+    research=new TTResearchItem(LibResearch.KEY_MOB_SUMMON,new AspectList().add(Aspect.DEATH, 4).add(Aspect.LIFE, 4).add(Aspect.UNDEAD, 2),4,-1,2,itemStack,new ResearchPage("0"),arcanePage(LibResearch.KEY_MOB_SUMMON+"0"),new ResearchPage("1"),recipePage(LibResearch.KEY_MOB_SUMMON+4),infusionPage(LibResearch.KEY_MOB_SUMMON+2)).setParentsHidden("INFUSION").setParents(LibResearch.KEY_BLOOD_SWORD).registerResearchItem().asInstanceOf[TTResearchItem]
     research=new TTResearchItem(LibResearch.KEY_CLEANSING_TALISMAN,new AspectList().add(Aspect.ORDER,1).add(Aspect.DEATH,1).add(Aspect.PROTECT,2),1,-1,3,new ItemStack(ItemCleaningTalisman),new ResearchPage("0"),infusionPage(LibResearch.KEY_CLEANSING_TALISMAN+0)).setSecondary().setParents(LibResearch.KEY_DARK_QUARTZ).registerResearchItem().asInstanceOf[TTResearchItem]
     research=new TTResearchItem(LibResearch.KEY_BLOOD_SWORD,new AspectList().add(Aspect.DEATH,2).add(Aspect.MAN,1).add(Aspect.LIFE,1).add(Aspect.SOUL,1),3,-2,3,new ItemStack(ItemBloodSword),new ResearchPage("0"),infusionPage(LibResearch.KEY_BLOOD_SWORD+0)).setWarp(1).setParentsHidden("INFUSION").setParents(LibResearch.KEY_CLEANSING_TALISMAN).registerResearchItem().asInstanceOf[TTResearchItem]
     research=new TTResearchItem(LibResearch.KEY_JAR_SEAL,new AspectList().add(Aspect.EXCHANGE,3).add(Aspect.ELDRITCH,3).add(Aspect.AURA,2),2,-2,3,new ItemStack(ItemJarSeal,1,1),new ResearchPage("0"),new ResearchPage("1"),infusionPage(LibResearch.KEY_JAR_SEAL+0),new ResearchPage("2"),recipePage(LibResearch.KEY_JAR_SEAL+1)).setParentsHidden("INFUSION").registerResearchItem().asInstanceOf[TTResearchItem]
@@ -54,5 +54,10 @@ object ModResearch {
   def infusionPage(name:String)=
   {
     new ResearchPage(ConfigResearch.recipes.get(name).asInstanceOf[InfusionRecipe])
+  }
+
+  def arcanePage(name:String)=
+  {
+    new ResearchPage(ConfigResearch.recipes.get(name).asInstanceOf[IArcaneRecipe])
   }
 }

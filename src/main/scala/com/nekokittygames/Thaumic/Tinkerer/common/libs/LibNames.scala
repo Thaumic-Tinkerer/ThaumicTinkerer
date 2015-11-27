@@ -14,4 +14,5 @@ object LibNames {
   final var BOUNDJAR="boundJar"
   final var BRAINJAR="brainJar"
   final var UNSTABLE_ICE="unstableIce"
+  final var SUMMON_BLOCK="summoner"
 }
