@@ -28,7 +28,7 @@ class DriverThaumometerUpgrade extends Item with HostAware with EnvironmentAware
       {
         new UpgradeThaumometer((tEntity))
       }
-    case _ => null
+    case _ => new UpgradeThaumometer(host)
   }
 
   override def dataTag(stack: ItemStack): NBTTagCompound = new NBTTagCompound

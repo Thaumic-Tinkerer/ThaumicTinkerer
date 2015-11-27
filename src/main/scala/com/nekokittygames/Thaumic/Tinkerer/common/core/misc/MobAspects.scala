@@ -42,7 +42,7 @@ object MobAspects {
   aspects.put(classOf[EntitySquid],Array[Aspect](Aspect.WATER,Aspect.WATER,Aspect.WATER))
   aspects.put(classOf[EntityVillager],Array[Aspect](Aspect.MAN,Aspect.MAN,Aspect.MAN))
   aspects.put(classOf[EntityWolf],Array[Aspect](Aspect.BEAST,Aspect.BEAST,Aspect.BEAST))
-  aspects.put(classOf[EntityZombie],Array[Aspect](Aspect.UNDEAD,Aspect.UNDEAD,Aspect.UNDEADfig))
+  aspects.put(classOf[EntityZombie],Array[Aspect](Aspect.UNDEAD,Aspect.UNDEAD,Aspect.UNDEAD))
 
   // TODO: Add more creatures
 

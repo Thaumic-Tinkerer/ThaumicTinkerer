@@ -31,13 +31,12 @@ class UpgradeThaumometer(val owner:EnvironmentHost) extends prefab.ManagedEnviro
     if(chunk!=null)
       {
         val aspectList=chunk.getCurrentAspects
-        //val testMap=new util.HashMap[String,Integer]()
-        //for(aspect <- aspectList.getAspects)
-        //  {
-        //    testMap.put(aspect.getTag,new Integer(aspectList.getAmount(aspect)))
-        //  }
-        val resArray:Array[AnyRef]=aspectList.getAspects.map(f => Array[AnyRef](f.getTag,new Integer(aspectList.getAmount(f))))
-        Array[AnyRef](resArray)
+        val testMap=new util.HashMap[String,Integer]()
+        for(aspect <- aspectList.getAspects)
+          {
+            testMap.put(aspect.getTag,new Integer(aspectList.getAmount(aspect)))
+          }
+        Array[AnyRef](testMap)
       }
     else
       {
