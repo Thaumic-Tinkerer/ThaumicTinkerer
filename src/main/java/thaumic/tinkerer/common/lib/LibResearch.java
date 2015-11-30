@@ -18,7 +18,7 @@ public final class LibResearch {
 
 	public static final String CATEGORY_THAUMICTINKERER = "TT_CATEGORY";
 
-	public static final String KEY_MOBILIZER = "LEVITATOR";
+	public static final String KEY_MOBILIZER = "LEVITATOR_LOCOMOTIVE";
 	public static final String KEY_DARK_QUARTZ = "DARK_QUARTZ";
 	public static final String KEY_INTERFACE = "INTERFACE";
 	public static final String KEY_GASEOUS_LIGHT = "GASEOUS_LIGHT";
