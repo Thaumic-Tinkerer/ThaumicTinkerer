@@ -422,10 +422,10 @@ ttresearch.name.FOCUS_DEFLECT=완드 포커스: 왜곡
 ttresearch.lore.FOCUS_DEFLECT=난 천사가 아니야
 ttresearch.page.FOCUS_DEFLECT.0=외부로부터 사용자를 보호해주는 포커스를 만들었습니다.<BR><BR>이 포커스를 작동시킬 경우 비스를 지속적으로 소모하며, 사용자 주위에 일반적인 투사체를 막아주는 결계를 생성합니다.<BR><BR>이 일반적인 투사체에는 화살, 눈덩이, 포션 등이 포함되며, 위더의 공격이나 화염구와 같은 강력한 투사체들은 막지 못합니다.
 
-# -- LEVITATOR
-ttresearch.name.LEVITATOR=부양 추진체
-ttresearch.lore.LEVITATOR=왼쪽 오른쪽
-ttresearch.page.LEVITATOR.0=이 기계장치는 물체를 앞뒤로 움직이게 합니다. 두 중계기를 일직선상에 놓으면 입자 빔이 그 둘 사이를 연결합니다. 입자 효과가 활성화되어 있을 경우 시각 효과를 볼 수 있습니다.<BR><BR>그 다음 추진체를 입자 빔 안에 놓으세요. 추진체는 이제 두 중계기 사이를 왕복하게 되며, 위에 올려진 블럭 또한 같이 움직입니다.
+# -- LEVITATOR LOCOMOTIVE
+ttresearch.name.LEVITATOR_LOCOMOTIVE=부양 추진체
+ttresearch.lore.LEVITATOR_LOCOMOTIVE=왼쪽 오른쪽
+ttresearch.page.LEVITATOR_LOCOMOTIVE.0=이 기계장치는 물체를 앞뒤로 움직이게 합니다. 두 중계기를 일직선상에 놓으면 입자 빔이 그 둘 사이를 연결합니다. 입자 효과가 활성화되어 있을 경우 시각 효과를 볼 수 있습니다.<BR><BR>그 다음 추진체를 입자 빔 안에 놓으세요. 추진체는 이제 두 중계기 사이를 왕복하게 되며, 위에 올려진 블럭 또한 같이 움직입니다.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=반투과성 플랫폼
