@@ -449,10 +449,10 @@ ttresearch.name.FOCUS_DEFLECT=Wand Focus: Distortion
 ttresearch.lore.FOCUS_DEFLECT=I'm not an Angel
 ttresearch.page.FOCUS_DEFLECT.0=You created a focus to protect you from incoming fire.<BR><BR>This focus, when in use, will constantly drain vis from the wand it's inserted on, in order to summon a ward around the caster, making ordinary projectiles pass through them harmlessly.<BR><BR>Ordinary projectiles include arrows, snowballs or potions. It seems the ward is not strong enough to displace stronger attacks, like fireballs or wither heads.
 
-# -- LEVITATOR
-ttresearch.name.LEVITATOR=Levitational Locomotive
-ttresearch.lore.LEVITATOR=It moves to the left, it moves to the right.
-ttresearch.page.LEVITATOR.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them. A visual effect will be shown if particles are enabled.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
+# -- LEVITATOR LOCOMOTIVE
+ttresearch.name.LEVITATOR_LOCOMOTIVE=Levitational Locomotive
+ttresearch.lore.LEVITATOR_LOCOMOTIVE=It moves to the left, it moves to the right.
+ttresearch.page.LEVITATOR_LOCOMOTIVE.0=You created a new contraption to move things back and forth. Two relays placed in a straight line will project a force beam between them. A visual effect will be shown if particles are enabled.<BR><BR> Place a Levitator inside that projected beam. The Levitator will be moved back and forth inside that beam, carrying the block on top of it.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=Ethereal Platform
