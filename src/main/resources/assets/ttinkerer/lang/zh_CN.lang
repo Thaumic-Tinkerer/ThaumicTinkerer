@@ -450,10 +450,10 @@ ttresearch.name.FOCUS_DEFLECT=法杖核心:扭曲
 ttresearch.lore.FOCUS_DEFLECT=我不是天使
 ttresearch.page.FOCUS_DEFLECT.0=你制造出一种法杖核心,能够防护你免遭来袭的火球伤害.<BR><BR>这种核心在使用时会持续抽取其插入的法杖内的魔力,以在施法者附近召唤出一道防护的幕墙,使得穿过它们的寻常炮弹变得毫无伤害.<BR><BR>此处寻常炮弹包括箭矢,雪球以及药水.但似乎这种防护并不足以抵御一些更强力的攻击,比如火球或者凋灵头颅.
 
-# -- LEVITATOR
-ttresearch.name.LEVITATOR=悬浮平台
-ttresearch.lore.LEVITATOR=忽左忽右
-ttresearch.page.LEVITATOR.0=你制造出一台将东西移来移去的巧妙设备.将两个悬浮平台中继呈直线放置,它们之间会发出一道力场光束.如若粒子效果开启能显示出炫酷的视觉效果.<BR><BR> 将悬浮平台放置于它们所发出的光束上.悬浮平台会连同放置于其上的方块，沿着直线来回移动.
+# -- LEVITATOR LOCOMOTIVE
+ttresearch.name.LEVITATOR_LOCOMOTIVE=悬浮平台
+ttresearch.lore.LEVITATOR_LOCOMOTIVE=忽左忽右
+ttresearch.page.LEVITATOR_LOCOMOTIVE.0=你制造出一台将东西移来移去的巧妙设备.将两个悬浮平台中继呈直线放置,它们之间会发出一道力场光束.如若粒子效果开启能显示出炫酷的视觉效果.<BR><BR> 将悬浮平台放置于它们所发出的光束上.悬浮平台会连同放置于其上的方块，沿着直线来回移动.
 
 # -- ETHEREAL PLATFORM
 ttresearch.name.PLATFORM=天域平台
