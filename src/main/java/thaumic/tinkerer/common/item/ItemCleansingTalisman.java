@@ -15,6 +15,7 @@
 package thaumic.tinkerer.common.item;
 
 import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -30,6 +31,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import org.apache.commons.lang3.ArrayUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -169,6 +172,10 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
 
 
                         par1ItemStack.damageItem(damage, player);
+                        if(par1ItemStack.getItemDamage()<=0)
+                            {
+                                BaublesApi.getBaubles((EntityPlayer) player).setInventorySlotContents(BaubleType.AMULET.ordinal(),null);
+                            }
                         par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
                     }
                 }

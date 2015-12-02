@@ -81,7 +81,7 @@ public class TinkersConstructCompat {
         }
         return false;
     }
-
+    
     private static int calculateIncrease(ItemStack tool, int amount) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag(TAG_INFINITOOL);
         int increase = amount * 2;

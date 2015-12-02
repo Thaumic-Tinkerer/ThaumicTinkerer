@@ -173,4 +173,5 @@ public class ItemInfusedPotion extends ItemPotion implements ITTinkererItem {
             this.aspect = a;
         }
     }
+
 }
