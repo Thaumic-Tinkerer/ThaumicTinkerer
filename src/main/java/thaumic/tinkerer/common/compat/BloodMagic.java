@@ -1,6 +1,6 @@
 package thaumic.tinkerer.common.compat;
 
-import WayofTime.alchemicalWizardry.common.entity.projectile.EntityParticleBeam;
+
 import thaumic.tinkerer.common.item.foci.ItemFocusDeflect;
 
 /**
@@ -12,6 +12,10 @@ public class BloodMagic {
 
     public static void setupClass()
     {
-        ItemFocusDeflect.DeflectBlacklist.add(EntityParticleBeam.class);
+        try {
+            ItemFocusDeflect.DeflectBlacklist.add(Class.forName("WayofTime.alchemicalWizardry.common.entity.projectile.EntityParticleBeam"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

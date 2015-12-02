@@ -62,8 +62,8 @@ public final class ToolHandler {
     }
 
     public static boolean isRightMaterial(Material material, Material[] materialsListing) {
-    	if(material.isToolNotRequired())
-    		return true;
+    	//if(material.isToolNotRequired())
+    	//	return true;
         for (Material mat : materialsListing)
             if (material == mat)
                 return true;

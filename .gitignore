@@ -38,6 +38,7 @@ remotebuild.py
 /libs/*1.7.10*
 TCDEOBF*
 ## Ignore OS cache files
+/src/main/resources/CoFH_at.cfg
 *.DS_Store
 _MACOSX
 Thumbs.db

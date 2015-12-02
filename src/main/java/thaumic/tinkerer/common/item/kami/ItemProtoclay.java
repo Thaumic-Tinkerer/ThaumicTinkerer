@@ -14,6 +14,7 @@
  */
 package thaumic.tinkerer.common.item.kami;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -24,6 +25,8 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
@@ -47,51 +50,102 @@ public class ItemProtoclay extends ItemKamiBase {
         setMaxStackSize(1);
     }
 
-    @Override
-    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-        if (!(par3Entity instanceof EntityPlayer))
-            return;
 
-        EntityPlayer player = (EntityPlayer) par3Entity;
-        ItemStack currentStack = player.getCurrentEquippedItem();
-        if (currentStack == null || !(currentStack.getItem() instanceof IAdvancedTool))
-            return;
-        IAdvancedTool tool = (IAdvancedTool) currentStack.getItem();
+    @SubscribeEvent
+    public void Interact(PlayerInteractEvent event)
+    {
+        if(event.entityPlayer.inventory.hasItem(ThaumicTinkerer.registry.getFirstItemFromClass(ItemProtoclay.class))) {
+            World par2World = event.world;
+            Entity par3Entity=event.entityPlayer;
+            EntityPlayer player = (EntityPlayer) par3Entity;
+            ItemStack currentStack = player.getCurrentEquippedItem();
+            if (currentStack == null || !(currentStack.getItem() instanceof IAdvancedTool))
+                return;
+            IAdvancedTool tool = (IAdvancedTool) currentStack.getItem();
 
-        if (tool.getType().equals("sword"))
-            return;
+            if (tool.getType().equals("sword"))
+                return;
 
-        MovingObjectPosition pos = ToolHandler.raytraceFromEntity(par2World, par3Entity, true, 4.5F);
-        String typeToFind = "";
+            MovingObjectPosition pos = ToolHandler.raytraceFromEntity(par2World, par3Entity, true, 4.5F);
+            String typeToFind = "";
 
-        if (player.isSwingInProgress && pos != null) {
-            Block block = par2World.getBlock(pos.blockX, pos.blockY, pos.blockZ);
+            if (player.isSwingInProgress && pos != null) {
+                Block block = par2World.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
-            if (block != null) {
-                Material mat = block.getMaterial();
-                if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
-                    typeToFind = "pick";
-                else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
-                    typeToFind = "shovel";
-                else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
-                    typeToFind = "axe";
-            }
-        }
-
-        if (tool.getType().equals(typeToFind) || typeToFind.isEmpty())
-            return;
-
-        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-            ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-            if (stackInSlot != null && stackInSlot.getItem() instanceof IAdvancedTool && stackInSlot != currentStack) {
-                IAdvancedTool toolInSlot = (IAdvancedTool) stackInSlot.getItem();
-                if (toolInSlot.getType().equals(typeToFind)) {
-                    player.inventory.setInventorySlotContents(player.inventory.currentItem, stackInSlot);
-                    player.inventory.setInventorySlotContents(i, currentStack);
-                    break;
+                if (block != null) {
+                    Material mat = block.getMaterial();
+                    if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
+                        typeToFind = "pick";
+                    else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
+                        typeToFind = "shovel";
+                    else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
+                        typeToFind = "axe";
                 }
             }
+
+            if (tool.getType().equals(typeToFind) || typeToFind.isEmpty())
+                return;
+
+            for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+                ItemStack stackInSlot = player.inventory.getStackInSlot(i);
+                if (stackInSlot != null && stackInSlot.getItem() instanceof IAdvancedTool && stackInSlot != currentStack) {
+                    IAdvancedTool toolInSlot = (IAdvancedTool) stackInSlot.getItem();
+                    if (toolInSlot.getType().equals(typeToFind)) {
+                        player.inventory.setInventorySlotContents(player.inventory.currentItem, stackInSlot);
+                        player.inventory.setInventorySlotContents(i, currentStack);
+                        break;
+                    }
+                }
+            }
+            event.setCanceled(true);
         }
+
+    }
+    @Override
+    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+//        if (!(par3Entity instanceof EntityPlayer))
+//            return;
+//
+//        EntityPlayer player = (EntityPlayer) par3Entity;
+//        ItemStack currentStack = player.getCurrentEquippedItem();
+//        if (currentStack == null || !(currentStack.getItem() instanceof IAdvancedTool))
+//            return;
+//        IAdvancedTool tool = (IAdvancedTool) currentStack.getItem();
+//
+//        if (tool.getType().equals("sword"))
+//            return;
+//
+//        MovingObjectPosition pos = ToolHandler.raytraceFromEntity(par2World, par3Entity, true, 4.5F);
+//        String typeToFind = "";
+//
+//        if (player.isSwingInProgress && pos != null) {
+//            Block block = par2World.getBlock(pos.blockX, pos.blockY, pos.blockZ);
+//
+//            if (block != null) {
+//                Material mat = block.getMaterial();
+//                if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsPick))
+//                    typeToFind = "pick";
+//                else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsShovel))
+//                    typeToFind = "shovel";
+//                else if (ToolHandler.isRightMaterial(mat, ToolHandler.materialsAxe))
+//                    typeToFind = "axe";
+//            }
+//        }
+//
+//        if (tool.getType().equals(typeToFind) || typeToFind.isEmpty())
+//            return;
+//
+//        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+//            ItemStack stackInSlot = player.inventory.getStackInSlot(i);
+//            if (stackInSlot != null && stackInSlot.getItem() instanceof IAdvancedTool && stackInSlot != currentStack) {
+//                IAdvancedTool toolInSlot = (IAdvancedTool) stackInSlot.getItem();
+//                if (toolInSlot.getType().equals(typeToFind)) {
+//                    player.inventory.setInventorySlotContents(player.inventory.currentItem, stackInSlot);
+//                    player.inventory.setInventorySlotContents(i, currentStack);
+//                    break;
+//                }
+//            }
+//        }
     }
 
     @Override
@@ -117,5 +171,11 @@ public class ItemProtoclay extends ItemKamiBase {
 
                 new ItemStack(Blocks.dirt), new ItemStack(Blocks.stone), new ItemStack(Blocks.log), new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 7));
 
+    }
+
+    @Override
+    public boolean shouldRegister() {
+        MinecraftForge.EVENT_BUS.register(this);
+        return super.shouldRegister();
     }
 }
