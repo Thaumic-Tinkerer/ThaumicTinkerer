@@ -6,9 +6,8 @@ import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.MobAspects
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemMobAspect
 import net.minecraft.entity.{IEntityLivingData, EntityLiving, EntityList}
 import net.minecraft.entity.monster.EntitySkeleton
-import net.minecraft.server.gui.IUpdatePlayerListBox
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.BlockPos
+import net.minecraft.util.{ITickable, BlockPos}
 import net.minecraft.world.WorldProviderHell
 import thaumcraft.api.aspects.Aspect
 import thaumcraft.common.Thaumcraft
@@ -19,7 +18,7 @@ import scala.collection.mutable
 /**
   * Created by katsw on 25/11/2015.
   */
-class TileSummon extends TileEntity with IUpdatePlayerListBox {
+class TileSummon extends TileEntity with ITickable {
   override def update(): Unit = {
     if (worldObj.getTotalWorldTime() % 300 == 0) {
       if(worldObj.isBlockIndirectlyGettingPowered(pos)!=0)

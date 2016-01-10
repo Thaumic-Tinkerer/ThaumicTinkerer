@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Callback class interface used to provide FMP decorator.<br>
  * All methods in this interface shouldn't to be called by the implementing mod. An instance of the class is to be
- * registered to Waila via the {@link IWailaRegistrar} instance provided in the original registration callback method 
+ * registered to Waila via the {@link IWailaRegistrar} instance provided in the original registration callback method
  * (cf. {@link IWailaRegistrar} documentation for more information).
  * @author ProfMobius
  *
@@ -19,5 +19,5 @@ public interface IWailaFMPDecorator {
 	 * @param accessor Contains most of the relevant information about the current environment.
 	 * @param config Current configuration of Waila.
 	 */	
-	void decorateBlock(ItemStack itemStack, IWailaFMPAccessor accessor, IWailaConfigHandler config);	
+	void decorateBlock(ItemStack itemStack, mcp.mobius.waila.api.IWailaFMPAccessor accessor, IWailaConfigHandler config);
 }

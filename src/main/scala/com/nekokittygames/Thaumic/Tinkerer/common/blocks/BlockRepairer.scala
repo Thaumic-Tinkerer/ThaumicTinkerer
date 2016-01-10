@@ -22,7 +22,7 @@ object BlockRepairer extends {
   setHardness(5F)
   setResistance(10F)
   setUnlocalizedName(LibNames.REPAIRER)
-  setDefaultState(getBlockState.getBaseState.withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE,false))
+  setDefaultState(getBlockState.getBaseState.withProperty(FACING, EnumFacing.NORTH).withProperty[java.lang.Boolean,java.lang.Boolean](ACTIVE,false))
 
   @SideOnly(Side.CLIENT) override def getBlockLayer: EnumWorldBlockLayer = {
     return EnumWorldBlockLayer.TRANSLUCENT
@@ -42,7 +42,7 @@ object BlockRepairer extends {
   override def createBlockState(): BlockState = new BlockState(this,FACING, ACTIVE)
 
   override def getActualState(state: IBlockState, worldIn: IBlockAccess, pos: BlockPos): IBlockState = {
-    super.getActualState(state, worldIn, pos).withProperty(ACTIVE,true)
+    super.getActualState(state, worldIn, pos).withProperty[java.lang.Boolean,java.lang.Boolean](ACTIVE,true)
   }
 
   override def onBlockPlaced(worldIn: World, pos: BlockPos, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase): IBlockState = {

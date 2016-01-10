@@ -9,7 +9,7 @@ import codechicken.lib.packet.PacketCustom.IClientPacketHandler
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import net.minecraft.client.Minecraft
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraft.network.Packet
+import net.minecraft.network.{INetHandler, Packet}
 import net.minecraft.network.play.INetHandlerPlayClient
 import net.minecraftforge.common.DimensionManager
 import thaumcraft.api.aspects.AspectList
@@ -33,7 +33,7 @@ object BoundJarNetworkManager {
   }
   private var data:BoundJarNetworkData=null
 
-  def getPacket(boundJarWorldData:Tuple2[String,AspectList]):Packet=
+  def getPacket(boundJarWorldData:Tuple2[String,AspectList]):Packet[INetHandler]=
   {
     val packetCustom:PacketCustom=new PacketCustom(ThaumicTinkerer,2)
     packetCustom.writeString(boundJarWorldData._1)

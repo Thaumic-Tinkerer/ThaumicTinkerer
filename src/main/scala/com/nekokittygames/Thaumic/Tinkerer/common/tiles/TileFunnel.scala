@@ -6,11 +6,11 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ISidedInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.network.play.INetHandlerPlayClient
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity
-import net.minecraft.network.{NetworkManager, Packet}
-import net.minecraft.server.gui.IUpdatePlayerListBox
+import net.minecraft.network.{INetHandler, NetworkManager, Packet}
 import net.minecraft.tileentity.{TileEntityHopper, TileEntity}
-import net.minecraft.util.{BlockPos, ChatComponentText, EnumFacing, IChatComponent}
+import net.minecraft.util._
 import thaumcraft.api.aspects.{IEssentiaContainerItem, AspectList, Aspect, IAspectContainer}
 import thaumcraft.common.blocks.devices.BlockJarItem
 import thaumcraft.common.tiles.essentia.{TileJarFillableVoid, TileJarFillable}
@@ -18,7 +18,7 @@ import thaumcraft.common.tiles.essentia.{TileJarFillableVoid, TileJarFillable}
 /**
  * Created by Katrina on 18/05/2015.
  */
-class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer with IUpdatePlayerListBox{
+class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer with ITickable{
 
   var inventory:ItemStack=null
   override def getSlotsForFace(side: EnumFacing): Array[Int] = Array(0)
@@ -82,7 +82,6 @@ class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer w
 
   override def isItemValidForSlot(index: Int, stack: ItemStack): Boolean = stack.getItem.isInstanceOf[BlockJarItem] && stack.getItemDamage==0
 
-  override def getStackInSlotOnClosing(index: Int): ItemStack = inventory
 
   override def openInventory(player: EntityPlayer): Unit = {}
 
@@ -100,7 +99,7 @@ class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer w
 
   override def getDisplayName: IChatComponent = new ChatComponentText(getCommandSenderName)
 
-  override def getCommandSenderName: String = LibNames.FUNNEL
+  def getCommandSenderName: String = LibNames.FUNNEL
 
   override def hasCustomName: Boolean = false
 
@@ -122,7 +121,7 @@ class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer w
     writeCustomNBT(compound)
   }
 
-  override def getDescriptionPacket: Packet =
+  override def getDescriptionPacket: Packet[INetHandlerPlayClient] =
   {
     super.getDescriptionPacket
     val nbttagcompound: NBTTagCompound = new NBTTagCompound
@@ -187,4 +186,17 @@ class TileFunnel extends TileEntity with ISidedInventory with IAspectContainer w
           }
       }
   }
+
+  override def removeStackFromSlot(index: Int): ItemStack =
+    {
+      if(index!=0)
+        null
+      else {
+        val stack = inventory;
+        inventory=null;
+        stack
+      }
+    }
+
+  override def getName: String = this.getCommandSenderName
 }

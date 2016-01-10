@@ -4,7 +4,6 @@ import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.BlockUnstableIce
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.{ItemNBT, TTCreativeTab}
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibItemNames, LibMisc}
-import mantle.utils.ItemStackNBTWrapper
 import net.minecraft.block.material.Material
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.Entity

@@ -29,7 +29,7 @@ public interface IWailaRegistrar {
 	public void addConfigRemote(String modname, String keyname, boolean defvalue);
 	
 	/* Register a stack overrider for the given blockID */
-	public void registerStackProvider(IWailaDataProvider dataProvider, Class block);	
+	public void registerStackProvider(IWailaDataProvider dataProvider, Class block);
 	
 	/* Same thing, but works on a class hierarchy instead */
 	public void registerHeadProvider(IWailaDataProvider dataProvider, Class block);
@@ -40,7 +40,7 @@ public interface IWailaRegistrar {
 	public void registerNBTProvider(IWailaDataProvider dataProvider, Class block);	
 	
 	/* Entity text registration methods */
-	public void registerHeadProvider(IWailaEntityProvider dataProvider, Class entity);
+	public void registerHeadProvider     (IWailaEntityProvider dataProvider, Class entity);
 	public void registerBodyProvider(IWailaEntityProvider dataProvider, Class entity);
 	public void registerTailProvider(IWailaEntityProvider dataProvider, Class entity);
 	public void registerOverrideEntityProvider(IWailaEntityProvider dataProvider, Class entity);
@@ -49,25 +49,15 @@ public interface IWailaRegistrar {
 	public void registerNBTProvider(IWailaEntityProvider dataProvider, Class entity);	
 	
 	/* FMP Providers */
-	public void registerHeadProvider(IWailaFMPProvider dataProvider, String name);
-	public void registerBodyProvider(IWailaFMPProvider dataProvider, String name);
-	public void registerTailProvider(IWailaFMPProvider dataProvider, String name);
+	public void registerHeadProvider(mcp.mobius.waila.api.IWailaFMPProvider dataProvider, String name);
+	public void registerBodyProvider(mcp.mobius.waila.api.IWailaFMPProvider dataProvider, String name);
+	public void registerTailProvider(mcp.mobius.waila.api.IWailaFMPProvider dataProvider, String name);
 	
 	/* The block decorators */
 	public void registerDecorator(IWailaBlockDecorator decorator, Class block);
-	public void registerDecorator(IWailaFMPDecorator decorator, String name);
+	public void registerDecorator (IWailaFMPDecorator decorator, String name);
 	
-	/* Selective NBT key syncing. Will register a key to sync over the network for the given class (block, te or ent).  
-	 * Accept * as a ending wildcard 
-	 * registerNBTKey("bob.*", MyBlock.class)
-	 * registerNBTKey("data.life", MyEntity.class) 
-	 * registerNBTKey("*", MyTileEntity.class) will reproduce the full tag syncing from 1.4.5 
-	 * 
-	 * This registration method is deprecated in favor to registerNBTProvider.
-	 * It will be removed in MC 1.8 !!!
-	 * */
-	@Deprecated
-	public void registerSyncedNBTKey(String key, Class target);
+	public void registerTooltipRenderer(String name, IWailaTooltipRenderer renderer);
 	
 	/* UNUSED FOR NOW (Will be used for the ingame wiki */
 	//public void registerDocTextFile  (String filename);

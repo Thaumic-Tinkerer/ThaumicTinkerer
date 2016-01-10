@@ -69,9 +69,9 @@ object ItemJarSeal extends ModItem {
     }
 
 
-  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit =
+  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[String], advanced: Boolean): Unit =
     {
-      super.addInformation(stack, playerIn, tooltip, advanced)
+      super.addInformation(stack, playerIn, tooltip.asInstanceOf[java.util.List[String]], advanced)
       val network:String=getNetwork(stack)
       if(network!=null)
         tooltip.asInstanceOf[java.util.List[String]].add(lang.format("boundJar.networkInfo",network.toString))
@@ -102,9 +102,9 @@ object ItemJarSeal extends ModItem {
 
 
   @SideOnly(Side.CLIENT)
-  override def getSubItems(itemIn: Item, tab: CreativeTabs, subItems: util.List[_]): Unit =
+  override def getSubItems(itemIn: Item, tab: CreativeTabs, subItems: util.List[ItemStack]): Unit =
     {
-      super.getSubItems(itemIn, tab, subItems)
+      super.getSubItems(itemIn, tab, subItems.asInstanceOf[java.util.List[ItemStack]])
       for(i <- 1 to 16)
         {
           subItems.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,i))

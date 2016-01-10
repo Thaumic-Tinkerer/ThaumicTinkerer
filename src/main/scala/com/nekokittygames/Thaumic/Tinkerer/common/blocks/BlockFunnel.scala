@@ -4,7 +4,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileFunnel
 import net.minecraft.block.Block
 import net.minecraft.block.material.Material
-import net.minecraft.block.properties.PropertyBool
+import net.minecraft.block.properties.{IProperty, PropertyBool}
 import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.init.Blocks
@@ -26,7 +26,7 @@ object BlockFunnel extends {
   setResistance(8.0f)
   setStepSound(Block.soundTypeStone)
   setBlockBounds(0f, 0f, 0f, 1f, 1f / 8f, 1f)
-  setDefaultState(getDefaultState.withProperty(JAR, false))
+  setDefaultState(this.getBlockState.getBaseState.withProperty[java.lang.Boolean,java.lang.Boolean](JAR,false.asInstanceOf[java.lang.Boolean]))
   setUnlocalizedName(LibNames.FUNNEL)
   val random: Random = new Random()
 
@@ -39,12 +39,12 @@ object BlockFunnel extends {
       if(te.isInstanceOf[TileFunnel])
         {
           if(te.asInstanceOf[TileFunnel].inventory==null)
-            state.withProperty(JAR,false)
+            state.withProperty[java.lang.Boolean,java.lang.Boolean](JAR,false)
           else
-            state.withProperty(JAR,true)
+            state.withProperty[java.lang.Boolean,java.lang.Boolean](JAR,true)
         }
       else
-        state.withProperty(JAR,false)
+        state.withProperty[java.lang.Boolean,java.lang.Boolean](JAR,false)
     }
 
   override def getMetaFromState(state: IBlockState): Int = {0}

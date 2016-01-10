@@ -46,9 +46,9 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
     }
 
 
-  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit =
+  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[String], advanced: Boolean): Unit =
     {
-      super.addInformation(stack, playerIn, tooltip, advanced)
+      super.addInformation(stack, playerIn, tooltip.asInstanceOf[java.util.List[String]], advanced)
 
       if(ItemNBT.getItemStackTag(stack).getBoolean(ACTIVATED))
         tooltip.asInstanceOf[java.util.List[String]].add(lang.translate("bloodsword.activated"))
@@ -66,7 +66,7 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
       return itemStackIn
     }
 
-  override def getItemAttributeModifiers: Multimap[_,_] =
+  override def getItemAttributeModifiers: Multimap[String,AttributeModifier] =
   {
     var multimap = super.getItemAttributeModifiers()
     multimap.asInstanceOf[com.google.common.collect.HashMultimap[String,AttributeModifier]].put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(Item.itemModifierUUID, "Weapon modifier", DAMAGE, 0));

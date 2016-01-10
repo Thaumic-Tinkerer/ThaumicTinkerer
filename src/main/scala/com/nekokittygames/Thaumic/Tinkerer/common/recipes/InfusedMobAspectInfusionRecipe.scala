@@ -21,7 +21,7 @@ class InfusedMobAspectInfusionRecipe(research:Array[String], output:Any, inst:In
     val mainAspect: Aspect = ItemMobAspect.getAspect(central)
     if (this.getRecipeInput() == null) {
       return false;
-    } else if (this.research != null && this.research.asInstanceOf[Array[String]](0).length > 0 && !ResearchHelper.isResearchComplete(player.getCommandSenderName(), this.research)) {
+    } else if (this.research != null && this.research.asInstanceOf[Array[String]](0).length > 0 && !ResearchHelper.isResearchComplete(player.getDisplayNameString, this.research)) {
       return false;
     } else {
       var i2: ItemStack = central.copy();

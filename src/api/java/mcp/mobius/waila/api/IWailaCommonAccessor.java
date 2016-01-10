@@ -1,7 +1,7 @@
 package mcp.mobius.waila.api;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,26 +14,25 @@ import net.minecraft.world.World;
 
 /**
  * The Accessor is used to get some basic data out of the game without having to request direct access to the game engine.<br>
- * It will also return things that are unmodified by the overriding systems (like getWailaStack).<br>
- * An instance of this interface is passed to most of Waila Block/TileEntity callbacks.
- * @author ProfMobius
+ * It will also return things that are unmodified by the overriding systems (like getWailaStack).<br> 
+ * Common accessor for both Entity and Block/TileEntity.<br>
+ * Available data depends on what it is called upon (ie : getEntity() will return null if looking at a block, etc).<br>
  *
  */
-
-public interface IWailaDataAccessor{
+public interface IWailaCommonAccessor {
 	World        		 getWorld();
 	EntityPlayer 		 getPlayer();
 	Block        		 getBlock();
-	//int          		 getBlockID();
-	int                  getMetadata();
-	IBlockState    		 getBlockState();
+	int          		 getBlockID();
+	String               getBlockQualifiedName();
+	int          		 getMetadata();
 	TileEntity           getTileEntity();
-	MovingObjectPosition getMOP();
-	BlockPos             getPosition();
+	Entity               getEntity();
+	BlockPos 			 getPosition();
 	Vec3                 getRenderingPosition();
 	NBTTagCompound       getNBTData();
 	int                  getNBTInteger(NBTTagCompound tag, String keyname);
 	double               getPartialFrame();
-	EnumFacing           getSide();
+	EnumFacing			 getSide();
 	ItemStack            getStack();
 }

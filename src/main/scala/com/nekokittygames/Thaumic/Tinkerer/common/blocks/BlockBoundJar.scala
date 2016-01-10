@@ -22,7 +22,7 @@ import thaumcraft.common.config.ConfigItems
  * Created by Katrina on 23/05/2015.
  */
 object BlockBoundJar extends {
-  val COLOUR:PropertyEnum=PropertyEnum.create("colour",classOf[EnumDyeColor])
+  val COLOUR:PropertyEnum[EnumDyeColor]=PropertyEnum.create("colour",classOf[EnumDyeColor])
 } with BlockJar  with ModBlockContainer{
 
   setUnlocalizedName(LibNames.BOUNDJAR)

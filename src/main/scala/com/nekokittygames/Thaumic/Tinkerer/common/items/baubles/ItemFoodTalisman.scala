@@ -75,7 +75,7 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
   }
 
 
-  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit = {
+  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[String], advanced: Boolean): Unit = {
     super.addInformation(stack, playerIn, tooltip, advanced)
     val saturation = getSaturation(stack)
     val food = getFood(stack)

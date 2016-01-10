@@ -25,8 +25,8 @@ import thaumcraft.api.aspects.Aspect
  * Created by Katrina on 18/05/2015.
  */
 object BlockDarkQuartzPatterned extends {
-  val VARIANT: PropertyEnum=PropertyEnum.create("variant",classOf[EnumQuartzType])
-  val AXIS: PropertyEnum=PropertyEnum.create("axis",classOf[Axis])
+  val VARIANT: PropertyEnum[EnumQuartzType]=PropertyEnum.create("variant",classOf[EnumQuartzType])
+  val AXIS: PropertyEnum[Axis]=PropertyEnum.create("axis",classOf[Axis])
 } with ModBlock(Material.rock) with IMetaBlockName {
   setHardness(0.8f)
   setResistance(10F)
@@ -48,9 +48,9 @@ object BlockDarkQuartzPatterned extends {
   }
 
   @SideOnly(Side.CLIENT)
-  override def getSubBlocks(itemIn: Item, tab: CreativeTabs, list: util.List[_]): Unit =
+  override def getSubBlocks(itemIn: Item, tab: CreativeTabs, list: util.List[ItemStack]): Unit =
   {
-    super.getSubBlocks(itemIn, tab, list)
+    super.getSubBlocks(itemIn, tab, list.asInstanceOf[java.util.List[ItemStack]])
     list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.CHISEL).withProperty(AXIS,Axis.X))))
     //list.asInstanceOf[java.util.List[ItemStack]].add(new ItemStack(this,1,getMetaFromState(this.getDefaultState.withProperty(VARIANT,EnumQuartzType.PILLAR).withProperty(AXIS,Axis.X))))
   }

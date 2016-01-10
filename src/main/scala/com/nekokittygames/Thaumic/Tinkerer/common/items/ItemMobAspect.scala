@@ -4,7 +4,6 @@ import java.util
 
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.ItemNBT
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibNames, LibItemNames}
-import mcp.mobius.waila.gui.widgets.ItemStackDisplay
 import net.minecraft.client.resources.model.ModelResourceLocation
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
@@ -27,9 +26,9 @@ object ItemMobAspect extends ModItem{
   setHasSubtypes(true)
 
 
-  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit =
+  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[String], advanced: Boolean): Unit =
     {
-      super.addInformation(stack, playerIn, tooltip, advanced)
+      super.addInformation(stack, playerIn, tooltip.asInstanceOf[java.util.List[String]], advanced)
       val aspect:Aspect=getAspect(stack)
       if(aspect!=null)
         tooltip.asInstanceOf[java.util.List[String]].add(lang.format("mobAspects.aspect.info",aspect.getName))
@@ -69,7 +68,7 @@ object ItemMobAspect extends ModItem{
     ItemNBT.getItemStackTag(itemStack).setBoolean(CONDENSED_TAG,condensed)
   }
 
-  override def getSubItems(itemIn: Item, tab: CreativeTabs, subItems: util.List[_]): Unit =
+  override def getSubItems(itemIn: Item, tab: CreativeTabs, subItems: util.List[ItemStack]): Unit =
     {
       super.getSubItems(itemIn, tab, subItems)
       Aspect.getPrimalAspects.toArray.foreach

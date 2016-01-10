@@ -2,17 +2,18 @@ package com.nekokittygames.Thaumic.Tinkerer.common.tiles
 
 import codechicken.lib.inventory.InventoryNBT
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.BlockRepairer
+import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import net.minecraft.block.BlockPistonBase
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.{ISidedInventory, IInventory}
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.network.play.INetHandlerPlayClient
 import net.minecraft.network.{NetworkManager, Packet}
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity
-import net.minecraft.server.gui.IUpdatePlayerListBox
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{ChatComponentText, IChatComponent, EnumFacing, BlockPos}
+import net.minecraft.util._
 import net.minecraft.world.World
 import thaumcraft.api.aspects.{AspectList, IAspectContainer, Aspect, IEssentiaTransport}
 import thaumcraft.api.wands.IWandable
@@ -22,7 +23,7 @@ import thaumcraft.api.wands.IWandable
 /**
  * Created by fiona on 21/05/2015.
  */
-class TileRepairer extends TileEntity with IWandable with IEssentiaTransport with IAspectContainer with ISidedInventory with IUpdatePlayerListBox{
+class TileRepairer extends TileEntity with IWandable with IEssentiaTransport with IAspectContainer with ISidedInventory with ITickable{
 
   override def update(): Unit = ticksExisted=ticksExisted+1
 
@@ -44,7 +45,7 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
     writeCustomNBT(compound)
 
   }
-  override def getDescriptionPacket: Packet = {
+  override def getDescriptionPacket: Packet[INetHandlerPlayClient] = {
     super.getDescriptionPacket
     val compound:NBTTagCompound=new NBTTagCompound
     writeCustomNBT(compound)
@@ -167,8 +168,6 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
 
   override def isItemValidForSlot(index: Int, stack: ItemStack): Boolean = true
 
-  override def getStackInSlotOnClosing(index: Int): ItemStack = inventory
-
   override def openInventory(player: EntityPlayer): Unit = {}
 
   override def getFieldCount: Int = 0
@@ -188,7 +187,7 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
 
   override def getDisplayName: IChatComponent = new ChatComponentText(getCommandSenderName)
 
-  override def getCommandSenderName: String = "repairer"
+ def getCommandSenderName: String = LibNames.REPAIRER
 
   override def hasCustomName: Boolean = false
 
@@ -197,4 +196,17 @@ class TileRepairer extends TileEntity with IWandable with IEssentiaTransport wit
   override def canExtractItem(index: Int, stack: ItemStack, direction: EnumFacing): Boolean = true
 
   override def canInsertItem(index: Int, itemStackIn: ItemStack, direction: EnumFacing): Boolean = true
+
+  override def removeStackFromSlot(index: Int): ItemStack =
+  {
+    if(index!=0)
+      null
+    else {
+      val stack = inventory;
+      inventory=null;
+      stack
+    }
+  }
+
+  override def getName: String = getCommandSenderName
 }

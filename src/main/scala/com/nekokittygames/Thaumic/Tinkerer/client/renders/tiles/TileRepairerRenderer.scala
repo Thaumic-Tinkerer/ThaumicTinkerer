@@ -3,6 +3,7 @@ package com.nekokittygames.Thaumic.Tinkerer.client.renders.tiles
 import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileRepairer
 import net.minecraft.client.Minecraft
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType
 import net.minecraft.client.renderer.{RenderHelper, GlStateManager}
 import net.minecraft.client.renderer.entity.{RenderManager, RenderItem}
 import net.minecraft.client.renderer.texture.TextureAtlasSprite
@@ -16,8 +17,8 @@ import org.lwjgl.opengl.GL11
 /**
  * Created by fiona on 06/07/2015.  A horrible experiment in rendering with something inside it.
  */
-class TileRepairerRenderer extends TileEntitySpecialRenderer{
-  override def renderTileEntityAt(te: TileEntity, x: Double, y: Double, z: Double, partialTicks: Float, destroyStage: Int): Unit = {
+class TileRepairerRenderer extends TileEntitySpecialRenderer[TileRepairer]{
+  override def renderTileEntityAt(te: TileRepairer, x: Double, y: Double, z: Double, partialTicks: Float, destroyStage: Int): Unit = {
     val tileEntity:TileRepairer = te.asInstanceOf[TileRepairer]
     val stack=tileEntity.inventory
     GlStateManager.pushMatrix
@@ -48,7 +49,7 @@ class TileRepairerRenderer extends TileEntitySpecialRenderer{
         }
         GlStateManager.pushAttrib
         RenderHelper.enableStandardItemLighting
-        Minecraft.getMinecraft.getRenderItem.renderItemModel(entityitem.getEntityItem)
+        Minecraft.getMinecraft.getRenderItem.renderItem(entityitem.getEntityItem,TransformType.GROUND)
         RenderHelper.disableStandardItemLighting
         GlStateManager.popAttrib
 

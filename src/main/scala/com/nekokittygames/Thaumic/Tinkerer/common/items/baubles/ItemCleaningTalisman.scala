@@ -12,8 +12,9 @@ import net.minecraft.item.ItemStack
 import net.minecraft.potion.{Potion, PotionEffect}
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.ReflectionHelper
+import thaumcraft.api.potions.PotionVisExhaust
 import thaumcraft.common.config.Config
-import thaumcraft.common.lib.potions.PotionWarpWard
+import thaumcraft.common.lib.potions._
 import scala.collection.JavaConversions._
 /**
  * Created by katsw on 30/10/2015.
@@ -21,7 +22,7 @@ import scala.collection.JavaConversions._
 object ItemCleaningTalisman extends ItemBaubles(BaubleType.AMULET) {
 
   final val TAG_ENABLED="enabled"
-  final val WARP_POTIONS=Array[Int](Config.potionBlurredID,Config.potionDeathGazeID,Config.potionInfVisExhaustID,Config.potionSunScornedID,Config.potionUnHungerID)
+
   setMaxStackSize(1)
   setMaxDamage(LibFeatures.CLEANSING_TALISMAN_USES)
   setUnlocalizedName(LibItemNames.CLEANSING_TALISMAN)
@@ -46,7 +47,7 @@ object ItemCleaningTalisman extends ItemBaubles(BaubleType.AMULET) {
     }
 
 
-  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[_], advanced: Boolean): Unit =
+  override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[String], advanced: Boolean): Unit =
     {
       super.addInformation(stack, playerIn, tooltip, advanced)
       if(isEnabled(stack))
@@ -93,7 +94,7 @@ object ItemCleaningTalisman extends ItemBaubles(BaubleType.AMULET) {
                       if(badEffect)
                         {
                           player.removePotionEffect(id)
-                          if(WARP_POTIONS contains id)
+                          if(Array(Array[Int](PotionBlurredVision.instance.id,PotionDeathGaze.instance.id,PotionVisExhaust.instance.id,PotionSunScorned.instance.id,PotionUnnaturalHunger.instance.id)) contains id)
                             {
                               damage=10
                             }
