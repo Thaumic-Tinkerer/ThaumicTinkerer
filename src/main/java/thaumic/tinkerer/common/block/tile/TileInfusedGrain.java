@@ -45,7 +45,14 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
                 }
             }
         }
-
+        if(aspect==null) {
+            aspect = Aspect.AIR;
+        }
+        if(primalTendencies==null)
+        {
+            primalTendencies=new AspectList();
+            primalTendencies.merge(aspect,1);
+        }
         //Aspect Exchange
         if (worldObj.rand.nextInt((2550 - ((int) Math.pow(primalTendencies.getAmount(Aspect.AIR), 2))) * 10) == 0 && !aspect.isPrimal()) {
 

@@ -33,6 +33,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.world.ChunkDataEvent;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
@@ -41,6 +42,7 @@ import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.TileFunnel;
 import thaumic.tinkerer.common.block.tile.TileRepairer;
 import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import thaumic.tinkerer.common.compat.EnderIO;
 import thaumic.tinkerer.common.compat.FumeTool;
 import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.handler.ModCreativeTab;
@@ -119,6 +121,10 @@ public class TTCommonProxy {
         if (Loader.isModLoaded("OpenComputers")) {
             initOpenCDrivers();
         }
+        if(Loader.isModLoaded("EnderIO"))
+        {
+            InitEnderIO();
+        }
 
         if (Loader.isModLoaded("ForgeMultipart")) {
             ThaumicTinkerer.log.trace("Attempting to load Multiparts");
@@ -159,6 +165,12 @@ public class TTCommonProxy {
         ThaumicTinkerer.registry.postInit();
         AspectCropLootManager.populateLootMap();
         ItemFocusDeflect.setupBlackList();
+    }
+
+    @Optional.Method(modid = "EnderIO")
+    protected void InitEnderIO()
+    {
+        EnderIO.registerPlanters();
     }
     @Optional.Method(modid = "ComputerCraft")
     protected void initCCPeripherals() {

@@ -41,7 +41,7 @@ public class ItemInfusedSeeds extends ItemSeeds implements ITTinkererItem {
     private static final String NBT_ASPEPCT_TENDENCIES = "aspectTendencies";
     private IIcon[] icons;
     public ItemInfusedSeeds() {
-        super(Blocks.wheat, Blocks.farmland);
+        super(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedGrain.class), Blocks.farmland);
     }
 
     public static Aspect getAspect(ItemStack stack) {

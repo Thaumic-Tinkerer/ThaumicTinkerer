@@ -115,6 +115,13 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
     @Override
     public void breakBlock(World world, int x, int y, int z, Block block, int metadata) {
+
+        super.breakBlock(world, x, y, z, block, metadata);
+
+    }
+
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
         Random rand = new Random();
@@ -137,23 +144,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
 
             } while (world.rand.nextInt(75) < getPrimalTendencyCount(world, x, y, z, Aspect.ORDER));
         }
-        for (ItemStack item : ret) {
-            float f = 0.7F;
-            double d0 = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-            double d1 = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-            double d2 = (double) (rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-            EntityItem entityitem = new EntityItem(world, (double) x + d0, (double) y + d1, (double) z + d2, item);
-            entityitem.delayBeforeCanPickup = 10;
-            world.spawnEntityInWorld(entityitem);
-        }
-
-        super.breakBlock(world, x, y, z, block, metadata);
-
-    }
-
-    @Override
-    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-        return new ArrayList<ItemStack>();
+        return ret;
     }
 
     public int getPrimalTendencyCount(World world, int x, int y, int z, Aspect aspect) {
@@ -172,6 +163,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
             } while (world.rand.nextInt(55) < getPrimalTendencyCount(world, x, y, z, Aspect.EARTH));
         }
     }
+
 
     public void updateTick(World world, int x, int y, int z, Random rand) {
         //Prevent normal growth from occuring
