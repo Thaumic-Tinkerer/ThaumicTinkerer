@@ -63,7 +63,11 @@ public class TileTransvectorDislocator extends TileTransvector {
 
         ChunkCoordinates endCoords = new ChunkCoordinates(x, y, z);
         ChunkCoordinates targetCoords = getBlockTarget();
+        List<Entity> entitiesAtEnd = getEntitiesAtPoint(endCoords);
+        List<Entity> entitiesAtTarget = getEntitiesAtPoint(targetCoords);
 
+        Vector3 targetToEnd = asVector(targetCoords, endCoords);
+        Vector3 endToTarget = asVector(endCoords, targetCoords);
         if (worldObj.blockExists(x, y, z)) {
             BlockData endData = new BlockData(endCoords);
             BlockData targetData = new BlockData(targetCoords);
@@ -75,16 +79,13 @@ public class TileTransvectorDislocator extends TileTransvector {
                 endData.setTo(targetCoords);
                 targetData.setTo(endCoords);
 
+
+
+
                 endData.notify(targetCoords);
                 targetData.notify(endCoords);
             }
         }
-
-        List<Entity> entitiesAtEnd = getEntitiesAtPoint(endCoords);
-        List<Entity> entitiesAtTarget = getEntitiesAtPoint(targetCoords);
-
-        Vector3 targetToEnd = asVector(targetCoords, endCoords);
-        Vector3 endToTarget = asVector(endCoords, targetCoords);
 
         for (Entity entity : entitiesAtEnd)
             moveEntity(entity, endToTarget);
