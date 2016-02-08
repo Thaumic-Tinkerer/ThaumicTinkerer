@@ -4,7 +4,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import com.nekokittygames.Thaumic.Tinkerer.common.blocks.quartz.{BlockDarkQuartz, BlockDarkQuartzPatterned}
 import com.nekokittygames.Thaumic.Tinkerer.common.core.enums.EnumQuartzType
 import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemBlocks.ItemBlockMeta
-import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
+import com.nekokittygames.Thaumic.Tinkerer.common.libs.{LibMisc, LibNames}
 import com.nekokittygames.Thaumic.Tinkerer.api.IMetaBlockName
 import net.minecraft.block.Block
 import net.minecraft.item.ItemStack
@@ -29,7 +29,7 @@ object ModBlocks {
       }
       block match
       {
-        case s: ModBlockContainer => GameRegistry.registerTileEntity(s.getTileClass, name)
+        case s: ModBlockContainer => GameRegistry.registerTileEntityWithAlternatives(s.getTileClass, LibMisc.MOD_ID+"_"+name,name);
         case s:ModBlock=> s.initBlock(fMLPreInitializationEvent)
         case _=>{}
       }
