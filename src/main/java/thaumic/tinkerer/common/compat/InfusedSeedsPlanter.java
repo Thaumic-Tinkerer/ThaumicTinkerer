@@ -30,7 +30,7 @@ public class InfusedSeedsPlanter extends PlantableFarmer implements ICompat{
 
     @Override
     protected boolean canPlant(World worldObj, BlockCoord bc, IPlantable plantable) {
-        return super.canPlant(worldObj, bc, plantable) || worldObj.getBlock(bc.x,bc.y-1,bc.z)==ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedFarmland.class);
+        return (super.canPlant(worldObj, bc, plantable) && plantable==ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedSeeds.class) )|| worldObj.getBlock(bc.x,bc.y-1,bc.z)==ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedFarmland.class);
     }
 
     @Override
