@@ -34,6 +34,11 @@ public class InfusedSeedsPlanter extends PlantableFarmer implements ICompat{
     }
 
     @Override
+    public boolean canHarvest(TileFarmStation farm, BlockCoord bc, Block block, int meta) {
+        return super.canHarvest(farm, bc, block, meta) && block==ThaumicTinkerer.registry.getFirstBlockFromClass(BlockInfusedGrain.class);
+    }
+
+    @Override
     public IHarvestResult harvestBlock(TileFarmStation farm, BlockCoord bc, Block block, int meta) {
         return super.harvestBlock(farm, bc, block, meta);
     }
