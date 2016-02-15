@@ -15,6 +15,7 @@ import net.minecraft.world.World
 object BlockUnstableIce extends BlockIce {
 
 setUnlocalizedName("unstableIce")
+  setCreativeTab(null)
 
   override def getItemDropped(state: IBlockState, rand: Random, fortune: Int): Item = Item.getItemFromBlock(Blocks.ice)
 
