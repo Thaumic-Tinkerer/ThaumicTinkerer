@@ -36,7 +36,9 @@ object ItemJarSeal extends ModItem {
         {
           if(worldIn.getTileEntity(pos).asInstanceOf[TileJarFillable].getAspects.size()>0)
             {
-              playerIn.addChatComponentMessage(new ChatComponentText(lang.translate("boundJar.nonEmptyJar")))
+              if(worldIn.isRemote) {
+                playerIn.addChatComponentMessage(new ChatComponentText(lang.translate("boundJar.nonEmptyJar")))
+              }
               return false
             }
           worldIn.setBlockState(pos,BlockBoundJar.getDefaultState)
