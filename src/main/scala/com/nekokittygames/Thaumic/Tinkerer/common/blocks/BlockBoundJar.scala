@@ -8,6 +8,7 @@ import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileBoundJar
 import net.minecraft.block.properties.PropertyEnum
 import net.minecraft.block.state.{BlockState, IBlockState}
+import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{EnumDyeColor, ItemStack}
 import net.minecraft.tileentity.TileEntity
@@ -15,8 +16,10 @@ import net.minecraft.util.{ChatComponentText, EnumFacing, BlockPos}
 import net.minecraft.world.{IBlockAccess, World}
 import thaumcraft.api.aspects.{AspectList, Aspect, IEssentiaContainerItem}
 import thaumcraft.api.items.{ItemsTC, ItemGenericEssentiaContainer}
+import thaumcraft.common.Thaumcraft
 import thaumcraft.common.blocks.devices.BlockJar
 import thaumcraft.common.config.ConfigItems
+import thaumcraft.common.lib.CreativeTabThaumcraft
 
 /**
  * Created by Katrina on 23/05/2015.
@@ -27,6 +30,7 @@ object BlockBoundJar extends {
 
   setUnlocalizedName(LibNames.BOUNDJAR)
   setDefaultState(getBlockState.getBaseState.withProperty(COLOUR,EnumDyeColor.WHITE))
+  this.setCreativeTab(null)
   override def getTileClass: Class[_ <: TileEntity] = classOf[TileBoundJar]
 
   override def onBlockActivated(world: World, pos: BlockPos, state: IBlockState, player: EntityPlayer, side: EnumFacing, fx: Float, fy: Float, fz: Float): Boolean =
