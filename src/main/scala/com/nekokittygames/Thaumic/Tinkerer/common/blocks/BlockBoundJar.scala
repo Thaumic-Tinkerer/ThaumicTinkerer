@@ -4,22 +4,27 @@ import java.util.UUID
 
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.TTCreativeTab
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
+import com.nekokittygames.Thaumic.Tinkerer.common.items.ItemJarSeal
 import com.nekokittygames.Thaumic.Tinkerer.common.libs.LibNames
 import com.nekokittygames.Thaumic.Tinkerer.common.tiles.TileBoundJar
+import net.minecraft.block.Block
 import net.minecraft.block.properties.PropertyEnum
 import net.minecraft.block.state.{BlockState, IBlockState}
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{EnumDyeColor, ItemStack}
+import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.{ChatComponentText, EnumFacing, BlockPos}
 import net.minecraft.world.{IBlockAccess, World}
 import thaumcraft.api.aspects.{AspectList, Aspect, IEssentiaContainerItem}
+import thaumcraft.api.blocks.BlocksTC
 import thaumcraft.api.items.{ItemsTC, ItemGenericEssentiaContainer}
 import thaumcraft.common.Thaumcraft
-import thaumcraft.common.blocks.devices.BlockJar
+import thaumcraft.common.blocks.devices.{BlockJarItem, BlockJar}
 import thaumcraft.common.config.ConfigItems
 import thaumcraft.common.lib.CreativeTabThaumcraft
+import thaumcraft.common.tiles.essentia.TileJarFillable
 
 /**
  * Created by Katrina on 23/05/2015.
@@ -114,6 +119,46 @@ object BlockBoundJar extends {
       else
         super.getActualState(state, worldIn, pos)
     }
+
+  override def dropBlockAsItemWithChance(worldIn: World, pos: BlockPos, state: IBlockState, chance: Float, fortune: Int): Unit =
+  {
+    val te:TileEntity = worldIn.getTileEntity(pos);
+    if(te.isInstanceOf[TileJarFillable]) {
+      this.spawnFilledJar(worldIn, pos, state, te.asInstanceOf[TileJarFillable]);
+    } else {
+      super.dropBlockAsItemWithChance(worldIn, pos, state, chance, fortune);
+    }
+  }
+
+  override  def harvestBlock(worldIn: World, player: EntityPlayer, pos: BlockPos, state: IBlockState, te: TileEntity)
+  =
+  {
+
+
+    if(te.isInstanceOf[TileJarFillable]) {
+      this.spawnFilledJar(worldIn, pos, state, te.asInstanceOf[TileJarFillable]);
+    } else {
+      super.harvestBlock(worldIn, player, pos, state, te)
+    }
+  }
+
+  def spawnFilledJar(world: World, pos: BlockPos, state: IBlockState, te: TileBoundJar): Unit =
+  {
+    val drop = new ItemStack(BlocksTC.jar, 1, this.getMetaFromState(state));
+
+    if(te.aspectFilter != null) {
+      if(!drop.hasTagCompound()) {
+        drop.setTagCompound(new NBTTagCompound());
+      }
+
+      drop.getTagCompound().setString("AspectFilter", te.aspectFilter.getTag());
+    }
+
+    val seal=new ItemStack(ItemJarSeal,1,te.jarColor)
+    ItemJarSeal.setNetwork(seal,te.network)
+    Block.spawnAsEntity(world, pos, drop)
+    Block.spawnAsEntity(world,pos,seal)
+  }
 
 
 }
