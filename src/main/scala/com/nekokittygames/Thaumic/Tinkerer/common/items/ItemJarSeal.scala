@@ -13,11 +13,12 @@ import net.minecraft.block.state.BlockState
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{EnumDyeColor, Item, ItemStack}
-import net.minecraft.util.{StatCollector, EnumFacing, BlockPos}
+import net.minecraft.util.{ChatComponentText, StatCollector, EnumFacing, BlockPos}
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.{Side, SideOnly}
 import org.lwjgl.util.Color
 import thaumcraft.api.blocks.BlocksTC
+import thaumcraft.common.tiles.essentia.TileJarFillable
 
 /**
  * Created by katsw on 24/05/2015.
@@ -31,8 +32,13 @@ object ItemJarSeal extends ModItem {
 
   override def onItemUse(stack: ItemStack, playerIn: EntityPlayer, worldIn: World, pos: BlockPos, side: EnumFacing, hitX: Float, hitY: Float, hitZ: Float): Boolean =
     {
-      if(worldIn.getBlockState(pos).getBlock==BlocksTC.jar)
+      if(worldIn.getBlockState(pos).getBlock==BlocksTC.jar && worldIn.getTileEntity(pos).isInstanceOf[TileJarFillable])
         {
+          if(worldIn.getTileEntity(pos).asInstanceOf[TileJarFillable].getAspects.size()>0)
+            {
+              playerIn.addChatComponentMessage(new ChatComponentText(lang.translate("boundJar.nonEmptyJar")))
+              return false
+            }
           worldIn.setBlockState(pos,BlockBoundJar.getDefaultState)
 
           val id=getNetwork(stack)

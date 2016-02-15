@@ -33,6 +33,7 @@ item.cleansingTalisman.name=Talisman of Remedium
 ##Item Details
 ttitems.boundJar.networkInfo=Network ID: %s
 ttitems.boundJar.noNetworkInfo=No Network
+ttitems.boundJar.nonEmptyJar=Essentia Jar must be empty.
 ttitems.foodTalisman.tooltip=Currently holds %s food points and %s saturation points
 ttitems.mobAspects.aspect.info=Aspect: %s
 ttitems.mobaspects.condensed=Condensed
