@@ -88,6 +88,7 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
             for(aspect:Aspect <- aspects) {
               var item=new ItemStack(ItemMobAspect,1)
               ItemMobAspect.setAspect(item,aspect)
+              event.drops.clear()
               event.drops.add(new EntityItem(player.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ,item))
             }
           }
