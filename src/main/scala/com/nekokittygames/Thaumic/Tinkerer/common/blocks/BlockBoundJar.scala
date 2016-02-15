@@ -123,8 +123,8 @@ object BlockBoundJar extends {
   override def dropBlockAsItemWithChance(worldIn: World, pos: BlockPos, state: IBlockState, chance: Float, fortune: Int): Unit =
   {
     val te:TileEntity = worldIn.getTileEntity(pos);
-    if(te.isInstanceOf[TileJarFillable]) {
-      this.spawnFilledJar(worldIn, pos, state, te.asInstanceOf[TileJarFillable]);
+    if(te.isInstanceOf[TileBoundJar]) {
+      this.spawnFilledJar(worldIn, pos, state, te.asInstanceOf[TileBoundJar]);
     } else {
       super.dropBlockAsItemWithChance(worldIn, pos, state, chance, fortune);
     }
@@ -135,8 +135,8 @@ object BlockBoundJar extends {
   {
 
 
-    if(te.isInstanceOf[TileJarFillable]) {
-      this.spawnFilledJar(worldIn, pos, state, te.asInstanceOf[TileJarFillable]);
+    if(te.isInstanceOf[TileBoundJar]) {
+      this.spawnFilledJar(worldIn, pos, state, te.asInstanceOf[TileBoundJar]);
     } else {
       super.harvestBlock(worldIn, player, pos, state, te)
     }
