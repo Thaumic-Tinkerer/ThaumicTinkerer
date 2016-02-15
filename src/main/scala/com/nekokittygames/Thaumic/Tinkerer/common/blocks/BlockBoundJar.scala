@@ -98,10 +98,6 @@ object BlockBoundJar extends {
 
   override def onBlockClicked(worldIn: World, pos: BlockPos, playerIn: EntityPlayer): Unit =
   {
-    if(worldIn.isRemote) {
-      val tileEntity=worldIn.getTileEntity(pos).asInstanceOf[TileBoundJar]
-      playerIn.addChatMessage(new ChatComponentText(tileEntity.network.toString))
-    }
     super.onBlockClicked(worldIn, pos, playerIn)
   }
 
