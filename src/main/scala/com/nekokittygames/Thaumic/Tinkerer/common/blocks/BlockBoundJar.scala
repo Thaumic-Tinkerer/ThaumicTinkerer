@@ -76,7 +76,7 @@ object BlockBoundJar extends {
         player.dropItem(newPhial.getItem, 1)
 
       jar.takeFromContainer(jar.aspect, 8)
-      world.playSoundAtEntity(player, "liquid.swim", 0.25F, 1.0F)
+      world.playSoundAtEntity(player, "thaumcraft:jar", 0.4F, 1.0F)
     }
     super.onBlockActivated(world,pos,state,player,side,fx,fy,fz)
   }
