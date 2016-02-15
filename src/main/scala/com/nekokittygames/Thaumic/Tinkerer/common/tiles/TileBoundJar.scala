@@ -43,8 +43,10 @@ class TileBoundJar  extends TileJarFillable{
     aspectList.remove(aspect)
     aspectList.add(aspect,amount)
     val oldAspects=BoundJarNetworkManager.getAspect(network)
-    oldAspects.remove(oldAspects.getAspects()(0))
-    oldAspects.add(aspect,amount)
+    if(oldAspects.size()>0) {
+      oldAspects.remove(oldAspects.getAspects()(0))
+      oldAspects.add(aspect, amount)
+    }
     BoundJarNetworkManager.markDirty(network)
   }
 
