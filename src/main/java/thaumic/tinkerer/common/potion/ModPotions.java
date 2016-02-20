@@ -58,7 +58,7 @@ public final class ModPotions {
         }
 
         potionFire = (new DummyPotions(ConfigHandler.potionFireId, true, 0)).setIconIndex(0, 0).setPotionName("Fire Imbued");
-        potionWater = (new DummyPotions(ConfigHandler.potionWaterId, true, 0)).setIconIndex(0, 0).setPotionName("Wated Imbued");
+        potionWater = (new DummyPotions(ConfigHandler.potionWaterId, true, 0)).setIconIndex(0, 0).setPotionName("Water Imbued");
         potionEarth = (new DummyPotions(ConfigHandler.potionEarthId, true, 0)).setIconIndex(0, 0).setPotionName("Earth Imbued");
         potionAir = (new DummyPotions(ConfigHandler.potionAirId, true, 0)).setIconIndex(0, 0).setPotionName("Air Imbued");
     }
