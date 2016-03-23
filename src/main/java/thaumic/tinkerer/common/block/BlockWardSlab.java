@@ -145,7 +145,7 @@ public class BlockWardSlab extends BlockSlab implements ITTinkererBlock,ITileEnt
         }
         return new ThaumicTinkererCraftingBenchRecipe("PAVEWARD", new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockWardSlab.class), 6),
                 "QQQ",
-                'Q', new ItemStack(ConfigBlocks.blockCosmeticSolid,3));
+                'Q', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1,3));
     }
 
     @Override
