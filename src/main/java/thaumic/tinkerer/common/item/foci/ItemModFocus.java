@@ -173,10 +173,7 @@ public abstract class ItemModFocus extends ItemFocusBasic implements ITTinkererI
         return false;
     }
 
-    @Override
-    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-        return new FocusUpgradeType[]{FocusUpgradeType.treasure};
-    }
+
 
 
 }

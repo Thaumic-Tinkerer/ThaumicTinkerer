@@ -46,6 +46,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -93,7 +94,7 @@ public class TileAnimationTablet extends TileEntity implements IInventory, IMova
     List<Entity> detectedEntities = new ArrayList();
     ItemStack[] inventorySlots = new ItemStack[1];
     //public String Owner;
-    FakeThaumcraftPlayer player;
+    TabletFakePlayer player;
     private int swingMod = 0;
     private boolean isBreaking = false;
     private int initialDamage = 0;

@@ -78,7 +78,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     }
 
     public void removeLevel(int index) {
-        levels.remove(index);
+            levels.remove(index);
     }
 
     public void setEnchant(int index, int enchant) {

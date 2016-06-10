@@ -24,6 +24,7 @@ import net.minecraft.util.AxisAlignedBB;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
@@ -77,6 +78,11 @@ public class ItemFocusDeflect extends ItemModFocus {
         }
     }
 
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack focusstack, int rank) {
+        return new FocusUpgradeType[]{FocusUpgradeType.frugal};
+    }
+
     private static boolean CheckBlackList(Entity entity) {
         Class<? extends Entity> aClass=entity.getClass();
         if(DeflectBlacklist.contains(aClass))
@@ -120,7 +126,13 @@ public class ItemFocusDeflect extends ItemModFocus {
 
     @Override
     public AspectList getVisCost(ItemStack stack) {
-        return visUsage;
+        float modifier=this.getUpgradeLevel(stack,FocusUpgradeType.frugal)*0.10f;
+        AspectList cost=visUsage.copy();
+        for(Aspect a:visUsage.getAspects())
+        {
+            cost.remove(a, (int) Math.round(cost.getAmount(a)*modifier));
+        }
+        return cost;
     }
 
 

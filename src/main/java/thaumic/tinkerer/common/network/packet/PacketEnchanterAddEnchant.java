@@ -62,8 +62,10 @@ public class PacketEnchanterAddEnchant extends PacketTile<TileEnchanter> impleme
 
         if (message.level == -1) {
             int index = message.tile.enchantments.indexOf(message.enchant);
-            message.tile.removeLevel(index);
-            message.tile.removeEnchant(index);
+            if(index!=-1) {
+                message.tile.removeLevel(index);
+                message.tile.removeEnchant(index);
+            }
         } else {
             if (!message.tile.enchantments.contains(message.enchant)) {
                 if (message.player != null && EnchantmentManager.canApply(message.tile.getStackInSlot(0), Enchantment.enchantmentsList[message.enchant], message.tile.enchantments) && EnchantmentManager.canEnchantmentBeUsed(((EntityPlayer) message.player).getGameProfile().getName(), Enchantment.enchantmentsList[message.enchant])) {
