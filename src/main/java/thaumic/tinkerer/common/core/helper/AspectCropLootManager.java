@@ -38,13 +38,15 @@ public class AspectCropLootManager {
         for (Integer i : aspectHashmap.values()) {
             sum += i;
         }
-
-        Random rand = new Random();
-        int randInt = rand.nextInt(sum);
-        for (Map.Entry<ItemStack, Integer> pair : aspectHashmap.entrySet()) {
-            randInt -= pair.getValue();
-            if (randInt <= 0) {
-                return pair.getKey().copy();
+        if(sum>0)
+        {
+            Random rand = new Random();
+            int randInt = rand.nextInt(sum);
+            for (Map.Entry<ItemStack, Integer> pair : aspectHashmap.entrySet()) {
+                randInt -= pair.getValue();
+                if (randInt <= 0) {
+                    return pair.getKey().copy();
+                }
             }
         }
         return null;
