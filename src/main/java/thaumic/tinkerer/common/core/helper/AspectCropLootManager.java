@@ -40,7 +40,7 @@ public class AspectCropLootManager {
         }
 
         Random rand = new Random();
-        int randInt = rand.nextInt(sum);
+        int randInt = rand.nextInt(Math.abs(sum));
         for (Map.Entry<ItemStack, Integer> pair : aspectHashmap.entrySet()) {
             randInt -= pair.getValue();
             if (randInt <= 0) {
