@@ -41,6 +41,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
 import thaumic.tinkerer.common.block.tile.transvector.TileTransvectorInterface;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.helper.ItemNBTHelper;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.lib.LibItemNames;
@@ -301,6 +302,8 @@ public class ItemBlockTalisman extends ItemKamiBase implements IBauble {
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableKami)
+            return null;
         return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_BLOCK_TALISMAN, new AspectList().add(Aspect.VOID, 2).add(Aspect.DARKNESS, 1).add(Aspect.ELDRITCH, 1).add(Aspect.MAGIC, 1), 14, 17, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHOR_PICK_GEM, LibResearch.KEY_ICHOR_SHOVEL_GEM)
                 .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_BLOCK_TALISMAN));
 

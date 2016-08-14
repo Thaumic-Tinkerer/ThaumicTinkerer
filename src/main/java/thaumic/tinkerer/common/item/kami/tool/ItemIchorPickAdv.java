@@ -156,6 +156,8 @@ public class ItemIchorPickAdv extends ItemIchorPick implements IAdvancedTool {
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableKami)
+            return null;
         return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHOR_PICK_GEM, new AspectList().add(Aspect.FIRE, 2).add(Aspect.TOOL, 1).add(Aspect.MINE, 1).add(Aspect.EARTH, 1), 13, 15, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHOR_TOOLS)
                 .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR_PICK_GEM), new ResearchPage("1"));
 

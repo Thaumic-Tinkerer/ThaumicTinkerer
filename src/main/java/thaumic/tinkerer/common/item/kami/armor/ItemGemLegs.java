@@ -29,6 +29,7 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.item.ItemBrightNitor;
 import thaumic.tinkerer.common.item.foci.ItemFocusSmelt;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
@@ -91,6 +92,8 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableKami)
+            return null;
         return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHORCLOTH_LEGS_GEM, new AspectList().add(Aspect.FIRE, 2).add(Aspect.HEAL, 1).add(Aspect.GREED, 1).add(Aspect.ENERGY, 1), 17, 9, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHORCLOTH_ARMOR)
                 .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_LEGS_GEM), new ResearchPage("1"));
 

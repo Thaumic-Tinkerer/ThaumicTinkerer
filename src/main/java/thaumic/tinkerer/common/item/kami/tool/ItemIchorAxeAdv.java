@@ -37,6 +37,7 @@ import thaumcraft.common.lib.utils.Utils;
 import thaumic.tinkerer.client.core.handler.kami.ToolModeHUDHandler;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -149,6 +150,8 @@ public class ItemIchorAxeAdv extends ItemIchorAxe implements IAdvancedTool {
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableKami)
+            return null;
         return (IRegisterableResearch) new KamiResearchItem(LibResearch.KEY_ICHOR_AXE_GEM, new AspectList().add(Aspect.WATER, 2).add(Aspect.TOOL, 1).add(Aspect.TREE, 1).add(Aspect.CROP, 1), 16, 14, 5, new ItemStack(this)).setParents(LibResearch.KEY_ICHOR_TOOLS)
                 .setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHOR_AXE_GEM));
     }

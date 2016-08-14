@@ -28,6 +28,7 @@ import thaumcraft.api.nodes.IRevealer;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.item.kami.ItemKamiResource;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -103,6 +104,8 @@ public class ItemGemHelm extends ItemIchorclothArmorAdv implements IGoggles,
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableKami)
+            return null;
         return (IRegisterableResearch) new KamiResearchItem(
                 LibResearch.KEY_ICHORCLOTH_HELM_GEM, new AspectList()
                 .add(Aspect.WATER, 2).add(Aspect.HEAL, 1)

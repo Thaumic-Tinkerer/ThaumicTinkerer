@@ -159,6 +159,8 @@ public class ItemIchorclothArmor extends ItemArmor implements IVisDiscountGear,
 
     @Override
     public IRegisterableResearch getResearchItem() {
+        if(!ConfigHandler.enableKami)
+            return null;
         return armorType != 0 ? null
                 : (IRegisterableResearch) new KamiResearchItem(
                 LibResearch.KEY_ICHORCLOTH_ARMOR, new AspectList()

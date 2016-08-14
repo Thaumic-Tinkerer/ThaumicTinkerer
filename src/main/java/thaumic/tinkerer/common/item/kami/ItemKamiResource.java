@@ -28,6 +28,7 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigItems;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.core.proxy.TTCommonProxy;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -82,7 +83,8 @@ public class ItemKamiResource extends ItemKamiBase {
 
     @Override
     public IRegisterableResearch getResearchItem() {
-
+        if(!ConfigHandler.enableKami)
+            return null;
         TTResearchItem research;
         TTResearchItemMulti researchItemMulti = new TTResearchItemMulti();
 
