@@ -24,8 +24,7 @@ import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import ic2.api.energy.tile.IEnergyAcceptor;
-import ic2.api.energy.tile.IEnergySink;
+import ic2.api.energy.tile.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -48,9 +47,11 @@ import thaumic.tinkerer.common.lib.LibFeatures;
         @Optional.Interface(iface = "cofh.api.energy.IEnergyHandler", modid = "CoFHCore"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "CoFHCore"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "CoFHCore"),
-        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")})
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2"),
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyEmmiter", modid = "IC2"),
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyConductor", modid = "IC2")})
 
-public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergySink, IFluidHandler, IEnergyHandler, IEnergyReceiver, IAspectContainer, IEssentiaTransport, IPeripheral,IEnergyProvider {
+public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergyEmitter,IEnergySink,IEnergyConductor,IEnergySource, IFluidHandler, IEnergyHandler, IEnergyReceiver, IAspectContainer, IEssentiaTransport, IPeripheral,IEnergyProvider {
 
     public boolean addedToICEnergyNet = false;
 
@@ -475,5 +476,80 @@ public class TileTransvectorInterface extends TileTransvector implements ISidedI
     public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
         TileEntity tile = getTile();
         return tile instanceof IEnergyAcceptor ? ((IEnergySink) tile).acceptsEnergyFrom(emitter, direction) : false;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public double getConductionLoss() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergyConductor ? ((IEnergyConductor)tile).getConductionLoss():0;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public double getInsulationEnergyAbsorption() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergyConductor ? ((IEnergyConductor)tile).getInsulationEnergyAbsorption():0;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public double getInsulationBreakdownEnergy() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergyConductor ? ((IEnergyConductor)tile).getInsulationBreakdownEnergy():0;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public double getConductorBreakdownEnergy() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergyConductor ? ((IEnergyConductor)tile).getConductorBreakdownEnergy():0;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public void removeInsulation() {
+        TileEntity tile = getTile();
+        if(tile instanceof IEnergyConductor )
+            ((IEnergyConductor)tile).removeInsulation();
+    }
+
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public void removeConductor() {
+
+        TileEntity tile = getTile();
+        if(tile instanceof IEnergyConductor )
+            ((IEnergyConductor)tile).removeConductor();
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public boolean emitsEnergyTo(TileEntity receiver, ForgeDirection direction) {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergyEmitter ? ((IEnergyEmitter)tile).emitsEnergyTo(receiver,direction):false;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public double getOfferedEnergy() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergySource ? ((IEnergySource)tile).getOfferedEnergy():0;
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public void drawEnergy(double amount) {
+        TileEntity tile = getTile();
+        if(tile instanceof IEnergySource )
+            ((IEnergySource)tile).drawEnergy(amount);
+    }
+
+    @Override
+    @Optional.Method(modid = "IC2")
+    public int getSourceTier() {
+        TileEntity tile = getTile();
+        return tile instanceof IEnergySource ? ((IEnergySource)tile).getSourceTier():0;
     }
 }

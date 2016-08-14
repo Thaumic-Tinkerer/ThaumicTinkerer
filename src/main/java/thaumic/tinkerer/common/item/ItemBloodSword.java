@@ -129,7 +129,7 @@ public class ItemBloodSword extends ItemSword implements IRepairable, ITTinkerer
     public void onDamageTaken(LivingAttackEvent event) {
         if(event.entity==null)
             return;
-        
+
         if (event.entity.worldObj.isRemote)
             return;
 
