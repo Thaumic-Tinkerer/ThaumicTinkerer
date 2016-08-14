@@ -49,6 +49,7 @@ import thaumic.tinkerer.common.lib.LibFeatures;
         @Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "CoFHCore"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyEmmiter", modid = "IC2"),
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySource", modid = "IC2"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyConductor", modid = "IC2")})
 
 public class TileTransvectorInterface extends TileTransvector implements ISidedInventory, IEnergyEmitter,IEnergySink,IEnergyConductor,IEnergySource, IFluidHandler, IEnergyHandler, IEnergyReceiver, IAspectContainer, IEssentiaTransport, IPeripheral,IEnergyProvider {
