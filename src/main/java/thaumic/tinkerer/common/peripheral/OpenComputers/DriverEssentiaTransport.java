@@ -8,6 +8,7 @@ import li.cil.oc.api.network.ManagedEnvironment;
 import li.cil.oc.api.prefab.DriverTileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.IEssentiaTransport;
 
 /**
@@ -57,7 +58,10 @@ public class DriverEssentiaTransport extends DriverTileEntity {
 
         @Callback(doc = "function(direction:number):string -- returns which essentia in pipe")
         public Object[] getEssentiaType(final Context context, final Arguments arguments) {
-            return new Object[]{this.tileEntity.getEssentiaType(ForgeDirection.getOrientation(arguments.checkInteger(0))).getTag()};
+            Aspect aspect=this.tileEntity.getEssentiaType(ForgeDirection.getOrientation(arguments.checkInteger(0)));
+            if(aspect==null)
+                return new Object[]{};
+            return new Object[]{aspect.getTag()};
         }
 
         @Callback(doc = "function(direction:number):number -- returnd amount of essentia")
