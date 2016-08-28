@@ -123,7 +123,8 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-
+        if(world==null)
+            return ret;
         Random rand = new Random();
         int count = 1;
         for (int i = 0; i < count; i++) {
