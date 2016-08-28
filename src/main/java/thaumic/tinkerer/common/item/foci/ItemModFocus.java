@@ -40,6 +40,8 @@ public abstract class ItemModFocus extends ItemFocusBasic implements ITTinkererI
 
     private IIcon ornament, depth;
 
+
+
     public ItemModFocus() {
         super();
         setMaxDamage(1);

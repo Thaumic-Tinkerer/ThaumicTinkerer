@@ -94,12 +94,8 @@ public class ItemFocusRecall extends ItemModKamiFocus {
 
     @Override
     public AspectList getVisCost(ItemStack stack) {
-        return cost;
-    }
 
-    @Override
-    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-        return new FocusUpgradeType[0];
+        return cost;
     }
 
     @Override

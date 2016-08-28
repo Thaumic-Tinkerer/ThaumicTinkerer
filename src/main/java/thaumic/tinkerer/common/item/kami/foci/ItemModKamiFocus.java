@@ -176,7 +176,7 @@ public abstract class ItemModKamiFocus extends ItemFocusBasic implements ITTinke
 
     @Override
     public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int i) {
-        return new FocusUpgradeType[]{FocusUpgradeType.treasure};
+        return new FocusUpgradeType[]{FocusUpgradeType.frugal};
     }
 
 }

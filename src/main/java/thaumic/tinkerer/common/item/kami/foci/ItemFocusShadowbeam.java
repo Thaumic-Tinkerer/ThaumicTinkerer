@@ -79,10 +79,7 @@ public class ItemFocusShadowbeam extends ItemModKamiFocus {
         return cost;
     }
 
-    @Override
-    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack itemStack, int rank) {
-        return new FocusUpgradeType[0];
-    }
+
 
     @Override
     public EnumRarity getRarity(ItemStack par1ItemStack) {
