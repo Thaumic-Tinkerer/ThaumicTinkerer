@@ -48,7 +48,7 @@ import thaumic.tinkerer.common.lib.LibFeatures;
         @Optional.Interface(iface = "cofh.api.energy.IEnergyReceiver", modid = "CoFHCore"),
         @Optional.Interface(iface = "cofh.api.energy.IEnergyProvider", modid = "CoFHCore"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2"),
-        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyEmiter", modid = "IC2"),
+        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyEmitter", modid = "IC2"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySource", modid = "IC2"),
         @Optional.Interface(iface = "ic2.api.energy.tile.IEnergyConductor", modid = "IC2")})
 
