@@ -31,19 +31,21 @@ public class BonemealEventHandler {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (!event.world.isRemote) {
             if (event.world.getBlock(event.x, event.y, event.z) instanceof BlockInfusedGrain) {
-                if (event.entityPlayer.getCurrentEquippedItem().getItem() == ConfigItems.itemHoeElemental) {
-                    IGrowable igrowable = (IGrowable) event.world.getBlock(event.x, event.y, event.z);
+                if (event.entityPlayer != null && event.entityPlayer.getCurrentEquippedItem() != null) {
+                    if (event.entityPlayer.getCurrentEquippedItem().getItem() == ConfigItems.itemHoeElemental) {
+                        IGrowable igrowable = (IGrowable) event.world.getBlock(event.x, event.y, event.z);
 
-                    if (igrowable.func_149851_a(event.world, event.x, event.y, event.z, event.world.isRemote)) {
-                        if (!event.world.isRemote) {
-                            if (igrowable.func_149852_a(event.world, event.world.rand, event.x, event.y, event.z)) {
-                                igrowable.func_149853_b(event.world, event.world.rand, event.x, event.y, event.z);
+                        if (igrowable.func_149851_a(event.world, event.x, event.y, event.z, event.world.isRemote)) {
+                            if (!event.world.isRemote) {
+                                if (igrowable.func_149852_a(event.world, event.world.rand, event.x, event.y, event.z)) {
+                                    igrowable.func_149853_b(event.world, event.world.rand, event.x, event.y, event.z);
+                                }
                             }
-                        }
 
+                        }
+                        event.entityPlayer.getCurrentEquippedItem().damageItem(25, event.entityPlayer);
+                        Thaumcraft.proxy.blockSparkle(event.world, event.x, event.y, event.z, 0, 2);
                     }
-                    event.entityPlayer.getCurrentEquippedItem().damageItem(25, event.entityPlayer);
-                    Thaumcraft.proxy.blockSparkle(event.world, event.x, event.y, event.z, 0, 2);
                 }
             }
         }
