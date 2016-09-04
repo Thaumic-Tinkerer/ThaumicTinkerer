@@ -75,9 +75,9 @@ class TileSummon extends TileEntity with ITickable {
                   else
                     {
 
-                      Thaumcraft.proxy.getFX.essentiaTrailFx(pedastel1.getPos,pos,20,aspectList(0).getColor,20)
-                      Thaumcraft.proxy.getFX.essentiaTrailFx(pedastel2.getPos,pos,20,aspectList(1).getColor,20)
-                      Thaumcraft.proxy.getFX.essentiaTrailFx(pedastel3.getPos,pos,20,aspectList(2).getColor,20)
+                      Thaumcraft.proxy.getFX.essentiaTrailFx(pedastel1.getPos,pos,20,aspectList(0).getColor,20,1)
+                      Thaumcraft.proxy.getFX.essentiaTrailFx(pedastel2.getPos,pos,20,aspectList(1).getColor,20,1)
+                      Thaumcraft.proxy.getFX.essentiaTrailFx(pedastel3.getPos,pos,20,aspectList(2).getColor,20,1s)
                     }
                   return
 
