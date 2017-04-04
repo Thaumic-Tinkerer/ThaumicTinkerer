@@ -152,6 +152,12 @@ public class BlockBedrockPortal extends BlockMod {
 
                 while (entity.worldObj.getBlock(x, y, z) == Blocks.air || entity.worldObj.getBlock(x, y, z).isAir(par1World, x, y, z)) {
                     y--;
+                    // Avoid infinite loop.
+                    if (y <= 1) {
+                        y = 120;
+                        // Set up the scaffolding.
+                        entity.worldObj.setBlock(x, y - 1, z, Blocks.stone);
+                    }
                 }
 
                 ((EntityPlayerMP) entity).playerNetServerHandler.setPlayerLocation(x + 0.5, y + 3, z + 0.5, 0, 0);
