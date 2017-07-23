@@ -85,11 +85,13 @@ object ItemBloodSword extends ItemSword(EnumHelper.addToolMaterial("TT_BLOOD",0,
           {
             val entity=event.entity
             var aspects=MobAspects.getAspects(entity.getClass)
-            for(aspect:Aspect <- aspects) {
-              var item=new ItemStack(ItemMobAspect,1)
-              ItemMobAspect.setAspect(item,aspect)
+            if (aspects!=null) {
               event.drops.clear()
-              event.drops.add(new EntityItem(player.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ,item))
+              for(aspect:Aspect <- aspects) {
+                var item=new ItemStack(ItemMobAspect,1)
+                ItemMobAspect.setAspect(item,aspect)
+                event.drops.add(new EntityItem(player.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ,item))
+              }
             }
           }
       }
