@@ -19,10 +19,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchPage;
@@ -58,12 +56,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
         ItemStack armor = player.getCurrentArmor(1);
         if (armor.getItemDamage() == 1 || !ThaumicTinkerer.proxy.armorStatus(player))
             return;
-        PotionEffect effect=player.getActivePotionEffect(Potion.fireResistance);
-        if (effect != null && effect.duration <= 202)
-            effect.duration = 202;
-        else
-            player.addPotionEffect(new PotionEffect(Potion.fireResistance.id,
-                    202, 10, true));
+
         ItemBrightNitor.meta = 1;
         ((ItemBrightNitor)ThaumicTinkerer.registry.getFirstItemFromClass(ItemBrightNitor.class)).onUpdate(null, player.worldObj, player, 0, false);
         ItemBrightNitor.meta = 0;
@@ -107,7 +100,7 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void onDamageTaken(LivingHurtEvent event) {
+    public void onDamageTaken(LivingAttackEvent event) {
         if (event.entityLiving instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.entityLiving;
             if (player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {

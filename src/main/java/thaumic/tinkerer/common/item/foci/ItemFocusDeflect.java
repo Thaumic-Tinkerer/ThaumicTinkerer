@@ -64,9 +64,45 @@ public class ItemFocusDeflect extends ItemModFocus {
     public static void protectFromProjectiles(EntityPlayer p) {
         List<Entity> projectiles = p.worldObj.getEntitiesWithinAABB(IProjectile.class, AxisAlignedBB.getBoundingBox(p.posX - 4, p.posY - 4, p.posZ - 4, p.posX + 3, p.posY + 3, p.posZ + 3));
 
+	// only deflect projectiles if the player is within a set angle in front of their trajectory
+	// this angle will scale inversely with distance - narrow angles at long range, wider angles at close range
+	// we define an exclusion zone around the player as 1.5x the maximum radius (core to corner)
+	// and from this exclusion zone, we derive the distance-dependent angle
+	
+	// due to things like Morph, we'll need to calculate the exclusion zone instead of using a static value
+	// calculation is done outside of the projectile checking loop to avoid repeated computations of the same value
+	double safe_exclusion_zone = 1.5F * Math.sqrt((p.height * p.height * 0.25F) + (p.width * p.width * 0.25F));
+	double safe_exclusion_zone_sq = safe_exclusion_zone * safe_exclusion_zone;
+
         for (Entity e : projectiles) {
             if (CheckBlackList(e) || ProjectileHelper.getOwner(e) == p)
                 continue;
+
+	    Vector3 entPos = new Vector3(p.posX, p.posY + p.height * 0.5F, p.posZ);
+	    Vector3 projPos = new Vector3(e.posX, e.posY, e.posZ);
+	    Vector3 projVel = new Vector3(e.motionX, e.motionY, e.motionZ);
+	    
+	    Vector3 separation = entPos.subtract(projPos);
+	    double distance = separation.mag();
+	    double cosine = separation.normalize().dotProduct(projVel.normalize());
+	    
+	    double comparison = distance / Math.sqrt(distance * distance + safe_exclusion_zone_sq);
+	    
+	    // 0.707 = sqrt(2) = cos(45 degrees) - the detection angle won't go any higher than this
+	    // the angle cap is what prevents your own (outgoing) projectiles from being affected
+	    // for incoming projectiles already in flight, this is not an issue
+	    // but anything which is actively fired from inside the exclusion zone will hit (tested with arrows in a dispenser)
+	    // I don't consider this a problem, because you are now well within melee range
+	    if(comparison < 0.707) {
+	        comparison = 0.707;
+	    }
+	    
+	    // if the target is not within a cone of semi-angle acos(comparison) from the projectile's velocity vector
+	    // then we don't consider it a threat, hence we won't deflect it
+	    if(cosine < comparison) {
+	        continue;
+	    }
+
             Vector3 motionVec = new Vector3(e.motionX, e.motionY, e.motionZ).normalize().multiply(Math.sqrt((e.posX - p.posX) * (e.posX - p.posX) + (e.posY - p.posY) * (e.posY - p.posY) + (e.posZ - p.posZ) * (e.posZ - p.posZ)) * 2);
 
             for (int i = 0; i < 6; i++)
