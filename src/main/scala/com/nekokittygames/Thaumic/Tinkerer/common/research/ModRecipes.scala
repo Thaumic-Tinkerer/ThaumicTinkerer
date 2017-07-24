@@ -60,30 +60,30 @@ object ModRecipes {
 
     def registerInfusionRecipes(): Unit =
     {
-      registerResearchItemI(LibResearch.KEY_STABILIZER_BELT+0,new ItemStack(ItemStabilizerBelt),3,
+      registerResearchItemI(LibResearch.KEY_STABILIZER_BELT+0,LibResearch.KEY_STABILIZER_BELT,new ItemStack(ItemStabilizerBelt),3,
       new AspectList().add(Aspect.ORDER,12).add(Aspect.EARTH,12).add(Aspect.PROTECT,4).add(Aspect.MOTION,8),
       new ItemStack(Blocks.iron_block),
         new ItemStack(Items.iron_ingot), new ItemStack(Items.iron_ingot),
         new ItemStack(Items.gold_ingot), new ItemStack(Items.gold_ingot),
       new ItemStack(ItemsTC.shard,1,4),new ItemStack(ItemsTC.shard,1,3))
 
-      registerResearchItemI(LibResearch.KEY_ENDER_DISRUPTER+0,new ItemStack(ItemEnderDisruption),4,
+      registerResearchItemI(LibResearch.KEY_ENDER_DISRUPTER+0,LibResearch.KEY_ENDER_DISRUPTER,new ItemStack(ItemEnderDisruption),4,
         new AspectList().add(Aspect.FLUX,12).add(Aspect.ELDRITCH,6).add(Aspect.EXCHANGE,12),
       new ItemStack(Items.ender_pearl),
         new ItemStack(Items.leather),new ItemStack(ItemsTC.quicksilver),
         new ItemStack(ItemsTC.tainted,1,1),new ItemStack(Items.iron_ingot))
 
-      registerResearchItemI(LibResearch.KEY_COMET_BOOTS+0,new ItemStack(ItemCometBoots),4,new AspectList().add(Aspect.WATER, 25).add(Aspect.COLD, 25).add(Aspect.FLIGHT, 25).add(Aspect.MOTION,25),new ItemStack(ItemsTC.travellerBoots, 1, 32767), new ItemStack(BlocksTC.crystalWater),
+      registerResearchItemI(LibResearch.KEY_COMET_BOOTS+0,LibResearch.KEY_COMET_BOOTS,new ItemStack(ItemCometBoots),4,new AspectList().add(Aspect.WATER, 25).add(Aspect.COLD, 25).add(Aspect.FLIGHT, 25).add(Aspect.MOTION,25),new ItemStack(ItemsTC.travellerBoots, 1, 32767), new ItemStack(BlocksTC.crystalWater),
       new ItemStack(Blocks.snow), new ItemStack(Blocks.snow),
       new ItemStack(Blocks.snow), new ItemStack(ItemsTC.focusFrost))
 
-      registerResearchItemI(LibResearch.KEY_METEOR_BOOTS+0,new ItemStack(ItemMeteorBoots),4,new AspectList().add(Aspect.FIRE,25).add(Aspect.ENERGY,25).add(Aspect.FLIGHT,25),new ItemStack(ItemsTC.travellerBoots,1,32767),new ItemStack(BlocksTC.crystalFire),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(ItemsTC.focusFire))
-      registerResearchItemI(LibResearch.KEY_FOOD_TALISMAN+0,new ItemStack(ItemFoodTalisman),5,new AspectList().add(Aspect.PLANT,25).add(Aspect.LIFE,30).add(Aspect.EXCHANGE,25),new ItemStack(ItemsTC.primalCharm),new ItemStack(Blocks.obsidian),new ItemStack(Items.cooked_beef),new ItemStack(Items.cooked_chicken),new ItemStack(Items.cooked_porkchop),new ItemStack(Items.cooked_fish),new ItemStack(Items.bread))
-      registerResearchItemI(LibResearch.KEY_BLOOD_SWORD+0,new ItemStack(ItemBloodSword),6,new AspectList().add(Aspect.DARKNESS,5).add(Aspect.SOUL,10).add(Aspect.MAN,6).add(Aspect.DEATH,20),new ItemStack(ItemsTC.thaumiumSword),new ItemStack(Items.rotten_flesh),new ItemStack(Items.porkchop),new ItemStack(Items.beef),new ItemStack(Items.bone),new ItemStack(Items.diamond),new ItemStack(Items.ghast_tear))
-      registerResearchItemI(LibResearch.KEY_CLEANSING_TALISMAN+0,new ItemStack(ItemCleaningTalisman),5,new AspectList().add(Aspect.TOOL,10).add(Aspect.MAN,20).add(Aspect.LIFE,10),new ItemStack(Items.ender_pearl),
+      registerResearchItemI(LibResearch.KEY_METEOR_BOOTS+0,LibResearch.KEY_METEOR_BOOTS,new ItemStack(ItemMeteorBoots),4,new AspectList().add(Aspect.FIRE,25).add(Aspect.ENERGY,25).add(Aspect.FLIGHT,25),new ItemStack(ItemsTC.travellerBoots,1,32767),new ItemStack(BlocksTC.crystalFire),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(Blocks.netherrack),new ItemStack(ItemsTC.focusFire))
+      registerResearchItemI(LibResearch.KEY_FOOD_TALISMAN+0,LibResearch.KEY_FOOD_TALISMAN,new ItemStack(ItemFoodTalisman),5,new AspectList().add(Aspect.PLANT,25).add(Aspect.LIFE,30).add(Aspect.EXCHANGE,25),new ItemStack(ItemsTC.primalCharm),new ItemStack(Blocks.obsidian),new ItemStack(Items.cooked_beef),new ItemStack(Items.cooked_chicken),new ItemStack(Items.cooked_porkchop),new ItemStack(Items.cooked_fish),new ItemStack(Items.bread))
+      registerResearchItemI(LibResearch.KEY_BLOOD_SWORD+0,LibResearch.KEY_BLOOD_SWORD,new ItemStack(ItemBloodSword),6,new AspectList().add(Aspect.DARKNESS,5).add(Aspect.SOUL,10).add(Aspect.MAN,6).add(Aspect.DEATH,20),new ItemStack(ItemsTC.thaumiumSword),new ItemStack(Items.rotten_flesh),new ItemStack(Items.porkchop),new ItemStack(Items.beef),new ItemStack(Items.bone),new ItemStack(Items.diamond),new ItemStack(Items.ghast_tear))
+      registerResearchItemI(LibResearch.KEY_CLEANSING_TALISMAN+0,LibResearch.KEY_CLEANSING_TALISMAN,new ItemStack(ItemCleaningTalisman),5,new AspectList().add(Aspect.TOOL,10).add(Aspect.MAN,20).add(Aspect.LIFE,10),new ItemStack(Items.ender_pearl),
       new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(ItemDarkQuartz),new ItemStack(Items.ghast_tear),new ItemStack(BlocksTC.nitor,1,32767))
       val jarSeal=new ItemStack(ItemJarSeal)
-      registerResearchItemI(LibResearch.KEY_JAR_SEAL+0,new ItemStack(ItemJarSeal,1,1),5,new AspectList().add(Aspect.AURA,6).add(Aspect.ELDRITCH,4).add(Aspect.EXCHANGE,4),new ItemStack(ItemsTC.tallow),new ItemStack(Items.ender_pearl),new ItemStack(BlocksTC.jar,1),new ItemStack(Items.blaze_powder),new ItemStack(ItemsTC.salisMundus),new ItemStack(ItemsTC.salisMundus))
+      registerResearchItemI(LibResearch.KEY_JAR_SEAL+0,LibResearch.KEY_JAR_SEAL,new ItemStack(ItemJarSeal,1,1),5,new AspectList().add(Aspect.AURA,6).add(Aspect.ELDRITCH,4).add(Aspect.EXCHANGE,4),new ItemStack(ItemsTC.tallow),new ItemStack(Items.ender_pearl),new ItemStack(BlocksTC.jar,1),new ItemStack(Items.blaze_powder),new ItemStack(ItemsTC.salisMundus),new ItemStack(ItemsTC.salisMundus))
       val itemStack=new ItemStack(ItemMobAspect)
       ItemMobAspect.setAspect(itemStack,Aspect.LIFE)
       ItemMobAspect.setInfused(itemStack,true)
@@ -101,7 +101,7 @@ object ModRecipes {
     }
     def registerArcaneRecipes()=
     {
-        registerResearchItemsA(LibResearch.KEY_MOB_SUMMON+"0",new ItemStack(BlockSummon),new AspectList().add(Aspect.ORDER,50).add(Aspect.ENTROPY,50),"WWW", "SSS", Character.valueOf('S'),new ItemStack(Blocks.stone),Character.valueOf('W'),new ItemStack(BlocksTC.stone,1,1))
+        registerResearchItemsA(LibResearch.KEY_MOB_SUMMON+"0",LibResearch.KEY_MOB_SUMMON,new ItemStack(BlockSummon),new AspectList().add(Aspect.ORDER,50).add(Aspect.ENTROPY,50),"WWW", "SSS", Character.valueOf('S'),new ItemStack(Blocks.stone),Character.valueOf('W'),new ItemStack(BlocksTC.stone,1,1))
     }
     registerConstructRecipes()
     registerInfusionRecipes()
@@ -116,27 +116,23 @@ object ModRecipes {
     ConfigResearch.recipes.put(string,asList)
   }
 
-  def registerResearchItemsA(research:String,result:ItemStack,aspects:AspectList,asList:AnyRef*)=
+  def registerResearchItemsA(name:String, research:String,result:ItemStack,aspects:AspectList,asList:AnyRef*)=
   {
     val recipe:ShapedArcaneRecipe=new ShapedArcaneRecipe(research,result,aspects,asList.toArray: _*)
     ThaumcraftApi.getCraftingRecipes.asInstanceOf[java.util.List[IRecipe]].add(recipe)
     CraftingManager.getInstance().addRecipe(recipe)
-    ConfigResearch.recipes.put(research,recipe)
+    ConfigResearch.recipes.put(name,recipe)
   }
 
 
 
   def registerResearchItemI(name:String, research: String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, stuff: AnyRef*)=
   {
-    val recipe:InfusionRecipe=ThaumcraftApi.addInfusionCraftingRecipe(name,output,instability,aspects,input,stuff.toArray)
-    ConfigResearch.recipes.put(research,recipe)
-  }
-
-  def registerResearchItemI(name:String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, stuff: AnyRef*)=
-  {
-    val recipe:InfusionRecipe=ThaumcraftApi.addInfusionCraftingRecipe(name,output,instability,aspects,input,stuff.toArray)
+    val recipe:InfusionRecipe=ThaumcraftApi.addInfusionCraftingRecipe(research,output,instability,aspects,input,stuff.toArray)
     ConfigResearch.recipes.put(name,recipe)
   }
+
+
 
   def registerResearchItemSpecial(name:String,research:String, output: AnyRef, instability: Int, aspects: AspectList, input: ItemStack, clazz:Class[_ <: InfusionRecipe] ,stuff: ItemStack*)=
   {
