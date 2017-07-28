@@ -61,14 +61,11 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
         plyr.getFoodStats.setFoodLevel(plyr.getFoodStats.getFoodLevel+heal)
         setFood(itemstack,finalheal)
       }
-      if(plyr.getFoodStats.getSaturationLevel<plyr.getFoodStats.getFoodLevel && getSaturation(itemstack) > 0) {
+      var satinc=0.5F
+      if(plyr.getFoodStats.getSaturationLevel+satinc < 20.0F && getSaturation(itemstack)-satinc > 0) {
         var sat=getSaturation(itemstack)
-        var finalSat=0.0f
-        if(plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getSaturationLevel < sat) {
-          finalSat=sat-(plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getFoodLevel)
-          sat=plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getFoodLevel
-        }
-        plyr.getFoodStats.setFoodSaturationLevel(plyr.getFoodStats.getSaturationLevel+sat)
+        var finalSat=sat-satinc
+        plyr.getFoodStats.addStats(1,satinc)
         setSaturation(itemstack,finalSat)
       }
     }
@@ -77,7 +74,7 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
 
   override def addInformation(stack: ItemStack, playerIn: EntityPlayer, tooltip: util.List[String], advanced: Boolean): Unit = {
     super.addInformation(stack, playerIn, tooltip, advanced)
-    val saturation = getSaturation(stack)
+    val saturation =  scala.math.round(getSaturation(stack))
     val food = getFood(stack)
   tooltip.asInstanceOf[java.util.List[String]].add(lang.format("foodTalisman.tooltip",food.toString,saturation.toString))
   }
