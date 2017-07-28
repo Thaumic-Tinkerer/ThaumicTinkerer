@@ -60,7 +60,7 @@ archivesBaseName = "ThaumicTinkerer"
 apply plugin: 'maven-publish'
 
 minecraft {
-    version = "1.8.9-11.15.1.1738"
+    version = "1.8.9-11.15.1.2318-1.8.9"
     runDir = "run"
     makeObfSourceJar = false
     // the mappings can be changed at any time, and must be in the following format.

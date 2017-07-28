@@ -66,7 +66,7 @@ object ItemFoodTalisman extends ItemBaubles(BaubleType.AMULET) {
         var finalSat=0.0f
         if(plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getSaturationLevel < sat) {
           finalSat=sat-(plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getFoodLevel)
-          sat=plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getFoodLevel
+          sat=plyr.getFoodStats.getFoodLevel-plyr.getFoodStats.getSaturationLevel
         }
         plyr.getFoodStats.setFoodSaturationLevel(plyr.getFoodStats.getSaturationLevel+sat)
         setSaturation(itemstack,finalSat)
