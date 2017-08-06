@@ -23,12 +23,12 @@ object BoundJarNetworkManager {
   object BoundJarHandler extends IClientPacketHandler {
     override def handlePacket(packetCustom: PacketCustom, minecraft: Minecraft, iNetHandlerPlayClient: INetHandlerPlayClient): Unit = {
       val id=packetCustom.readString()            //new UUID(packetCustom.readLong(), packetCustom.readLong())
-      if(!data.networks.containsKey(id))
+      if(!getData.networks.containsKey(id))
         {
-          data.networks.put(id,new AspectList())
+          getData.networks.put(id,new AspectList())
         }
 
-      data.networks.get(id).readFromNBT(packetCustom.readNBTTagCompound())
+      getData.networks.get(id).readFromNBT(packetCustom.readNBTTagCompound())
     }
   }
   private var data:BoundJarNetworkData=null
@@ -74,6 +74,11 @@ object BoundJarNetworkManager {
 
   def getAspect(uuid:String):AspectList=
   {
+    val data=getData
+    if(data==None)
+      {
+        return new AspectList();
+      }
     if(!getData.networks.containsKey(uuid))
       getData.networks.put(uuid,new AspectList())
 
