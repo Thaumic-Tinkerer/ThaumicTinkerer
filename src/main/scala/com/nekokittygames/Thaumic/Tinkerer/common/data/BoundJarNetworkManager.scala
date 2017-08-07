@@ -23,6 +23,17 @@ object BoundJarNetworkManager {
   object BoundJarHandler extends IClientPacketHandler {
     override def handlePacket(packetCustom: PacketCustom, minecraft: Minecraft, iNetHandlerPlayClient: INetHandlerPlayClient): Unit = {
       val id=packetCustom.readString()            //new UUID(packetCustom.readLong(), packetCustom.readLong())
+      if(getData==null)
+        {
+          ThaumicTinkerer.logger.error("data Should never be null")
+          return
+        }
+      if(getData.networks==null)
+        {
+          ThaumicTinkerer.logger.error("how the heck is networks null????")
+          return
+        }
+
       if(!getData.networks.containsKey(id))
         {
           getData.networks.put(id,new AspectList())
@@ -45,6 +56,7 @@ object BoundJarNetworkManager {
 
   def loadData(): Unit =
   {
+    // todo only do this on server side, client side should just throw all changes away and let server resent it later
     val world=ThaumicTinkerer.proxy.getOverworld
     if(world!=null) {
       data = world.getMapStorage.loadData(classOf[BoundJarNetworkData], BoundJarNetworkData.IDENTIFIER).asInstanceOf[BoundJarNetworkData]
@@ -75,7 +87,7 @@ object BoundJarNetworkManager {
   def getAspect(uuid:String):AspectList=
   {
     val data=getData
-    if(data==None)
+    if(getData==None)
       {
         return new AspectList();
       }

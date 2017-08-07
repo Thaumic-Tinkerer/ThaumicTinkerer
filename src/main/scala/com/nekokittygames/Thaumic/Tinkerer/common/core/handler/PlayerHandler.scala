@@ -21,4 +21,5 @@ object PlayerHandler {
          PacketCustom.sendToPlayer(BoundJarNetworkManager.getPacket(new Pair[String,AspectList](entry._1,entry._2)),event.player)
       }
   }
+
 }
