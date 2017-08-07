@@ -30,6 +30,7 @@ class TileBoundJar  extends TileJarFillable{
         amount = aspectList.getAmount(aspect)
       }
       super.update()
+      this.worldObj.markBlockForUpdate(this.pos);
     }
 
   override def validate(): Unit =
