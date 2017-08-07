@@ -12,6 +12,8 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.network.{INetHandler, Packet}
 import net.minecraft.network.play.INetHandlerPlayClient
 import net.minecraftforge.common.DimensionManager
+import net.minecraftforge.fml.common.FMLCommonHandler
+import net.minecraftforge.fml.relauncher.Side
 import thaumcraft.api.aspects.AspectList
 
 /**
@@ -54,16 +56,17 @@ object BoundJarNetworkManager {
     packetCustom.toPacket
   }
 
-  def loadData(): Unit =
-  {
+  def loadData(): Unit = {
     // todo only do this on server side, client side should just throw all changes away and let server resent it later
-    val world=ThaumicTinkerer.proxy.getOverworld
-    if(world!=null) {
+    val world = ThaumicTinkerer.proxy.getOverworld
+    if (world != null) {
       data = world.getMapStorage.loadData(classOf[BoundJarNetworkData], BoundJarNetworkData.IDENTIFIER).asInstanceOf[BoundJarNetworkData]
-      if(data==null) {
-        data = new BoundJarNetworkData()
-        data.markDirty()
-        world.getMapStorage.setData(BoundJarNetworkData.IDENTIFIER,data)
+    }
+    if (data == null) {
+      data = new BoundJarNetworkData()
+      data.markDirty()
+      if (world != null) {
+        world.getMapStorage.setData(BoundJarNetworkData.IDENTIFIER, data)
       }
     }
   }
@@ -81,7 +84,8 @@ object BoundJarNetworkManager {
   {
 
     markDirty()
-    PacketCustom.sendToClients(getPacket(new Pair[String,AspectList](uuid,getData.networks.get(uuid))))
+    if(FMLCommonHandler.instance().getSide==Side.SERVER)
+      PacketCustom.sendToClients(getPacket(new Pair[String,AspectList](uuid,getData.networks.get(uuid))))
   }
 
   def getAspect(uuid:String):AspectList=

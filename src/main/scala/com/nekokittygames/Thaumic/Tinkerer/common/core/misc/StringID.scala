@@ -1,6 +1,8 @@
 package com.nekokittygames.Thaumic.Tinkerer.common.core.misc
 
-import java.io.{InputStreamReader, BufferedReader}
+import java.io.{BufferedReader, InputStreamReader}
+
+import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 
 import scala.io.Source
 import scala.util.Random
@@ -12,11 +14,9 @@ object StringID {
 
   def getName():String=
   {
-    val adjectivesFile = Source.fromInputStream(getClass().getClassLoader()
-      .getResourceAsStream("assets/thaumictinkerer/misc/adjectives"), "UTF-8").getLines().toArray
+    val adjectivesFile = Source.fromInputStream(Source.getClass.getResourceAsStream("/assets/thaumictinkerer/misc/adjectives"),"UTF-8").getLines().toArray
 
-    val animalsFile = Source.fromInputStream(getClass().getClassLoader()
-      .getResourceAsStream("assets/thaumictinkerer/misc/animals"), "UTF-8").getLines().toArray
+    val animalsFile = Source.fromInputStream(Source.getClass().getResourceAsStream("/assets/thaumictinkerer/misc/animals"), "UTF-8").getLines().toArray
 
     val random=new Random()
 

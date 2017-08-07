@@ -35,25 +35,25 @@ object ItemEnderDisruption extends ItemBaubles(BaubleType.AMULET){
 
 
 
-  @SubscribeEvent
-  def onEnderTeleport(event: EnderTeleportEvent)=
-  {
-
-
-    val players=event.entityLiving.worldObj.getEntitiesWithinAABB(classOf[EntityPlayer],event.entityLiving.getEntityBoundingBox.expand(RANGE,RANGE,RANGE)).toList
-
-    for(player <- players)
-      {
-        val play=player.asInstanceOf[EntityPlayer]
-        val inventory=BaublesApi.getBaubles(play)
-        for( i <- 0 to inventory.getSizeInventory)
-          {
-            val itemStack=inventory.getStackInSlot(i)
-            if(itemStack!=null && itemStack.getItem==ItemEnderDisruption && itemStack.getItemDamage<itemStack.getMaxDamage) {
-              event.setCanceled(true)
-              itemStack.setItemDamage(Math.min(itemStack.getMaxDamage,itemStack.getItemDamage+1))
-            }
-          }
-      }
-  }
+//  @SubscribeEvent
+//  def onEnderTeleport(event: EnderTeleportEvent)=
+//  {
+//
+//
+//    val players=event.entityLiving.worldObj.getEntitiesWithinAABB(classOf[EntityPlayer],event.entityLiving.getEntityBoundingBox.expand(RANGE,RANGE,RANGE)).toList
+//
+//    for(player <- players)
+//      {
+//        val play=player.asInstanceOf[EntityPlayer]
+//        val inventory=BaublesApi.getBaubles(play)
+//        for( i <- 0 to inventory.getSizeInventory)
+//          {
+//            val itemStack=inventory.getStackInSlot(i)
+//            if(itemStack!=null && itemStack.getItem==ItemEnderDisruption && itemStack.getItemDamage<itemStack.getMaxDamage) {
+//              event.setCanceled(true)
+//              itemStack.setItemDamage(Math.min(itemStack.getMaxDamage,itemStack.getItemDamage+1))
+//            }
+//          }
+//      }
+//  }
 }
