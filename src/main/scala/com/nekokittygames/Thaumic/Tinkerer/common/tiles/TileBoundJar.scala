@@ -55,7 +55,6 @@ class TileBoundJar  extends TileJarFillable{
   {
     if(boundNetworkChangedEvent.network.equalsIgnoreCase(this.network))
       {
-        ThaumicTinkerer.logger.info("Updating network");
         this.worldObj.markBlockForUpdate(this.pos)
       }
   }
