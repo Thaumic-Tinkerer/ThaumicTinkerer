@@ -4,10 +4,13 @@ import java.util.UUID
 
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.StringID
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
+import com.nekokittygames.Thaumic.Tinkerer.api.{BoundNetworkChangedEvent, BoundNetworkEvent}
 import net.minecraft.block.properties.PropertyEnum
 import net.minecraft.item.EnumDyeColor
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
+import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.event.ForgeEventFactory
 import thaumcraft.api.aspects.{Aspect, AspectList}
 import thaumcraft.common.tiles.essentia.TileJarFillable
 
@@ -81,6 +84,7 @@ class TileBoundJar  extends TileJarFillable{
 
 
         this.markDirty();
+        MinecraftForge.EVENT_BUS.post(new BoundNetworkChangedEvent(this.network))
         this.worldObj.markBlockForUpdate(this.pos);
 
         return amount;
@@ -99,6 +103,7 @@ class TileBoundJar  extends TileJarFillable{
         }
         this.markDirty();
         this.worldObj.markBlockForUpdate(this.pos);
+        MinecraftForge.EVENT_BUS.post(new BoundNetworkChangedEvent(this.network))
         return true;
       } else {
         return false;
@@ -110,6 +115,7 @@ class TileBoundJar  extends TileJarFillable{
     {
       super.setAspects(aspects)
       this.markDirty()
+      MinecraftForge.EVENT_BUS.post(new BoundNetworkChangedEvent(this.network))
       this.worldObj.markBlockForUpdate(this.pos);
     }
 }
