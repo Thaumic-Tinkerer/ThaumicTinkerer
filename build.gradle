@@ -46,12 +46,23 @@ repositories {
     }
     maven { // The repo from which to get waila
         name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
+        url "http://default.mobiusstrip.eu/maven"
     }
     maven {
 
         url  'http://maven.cil.li/'
     }
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
+    maven {url "http://tehnut.info/maven"}
 
 
 }
@@ -94,6 +105,9 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:1.8.9-0.6.jenkins69"
     compile "li.cil.oc:OpenComputers:MC1.8.9-1.5.21.1:api"
     deobfCompile "li.cil.oc:OpenComputers:MC1.8.9-1.5.21.1"
+    //deobfCompile "mcp.mobius.waila:Waila:1.6.0_B1_1.8.8"
+    deobfProvided "mezz.jei:jei_1.8.9:2.28.9.177"
+    // at runtime, use the full JEI jar
     //deobfCompile("slimeknights.TConstruct:TConstruct:1.8.9-2.0.1.jenkins36") {
     //}
     // real examples

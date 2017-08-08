@@ -15,13 +15,14 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{EnumDyeColor, ItemStack}
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{ChatComponentText, EnumFacing, BlockPos}
+import net.minecraft.util.{BlockPos, ChatComponentText, EnumFacing}
 import net.minecraft.world.{IBlockAccess, World}
-import thaumcraft.api.aspects.{AspectList, Aspect, IEssentiaContainerItem}
+import thaumcraft.api.aspects.{Aspect, AspectList, IEssentiaContainerItem}
+import thaumcraft.api.aura.AuraHelper
 import thaumcraft.api.blocks.BlocksTC
-import thaumcraft.api.items.{ItemsTC, ItemGenericEssentiaContainer}
+import thaumcraft.api.items.{ItemGenericEssentiaContainer, ItemsTC}
 import thaumcraft.common.Thaumcraft
-import thaumcraft.common.blocks.devices.{BlockJarItem, BlockJar}
+import thaumcraft.common.blocks.devices.{BlockJar, BlockJarItem}
 import thaumcraft.common.config.ConfigItems
 import thaumcraft.common.lib.CreativeTabThaumcraft
 import thaumcraft.common.tiles.essentia.TileJarFillable
@@ -73,7 +74,11 @@ object BlockBoundJar extends {
       if (!player.inventory.addItemStackToInventory(new ItemStack(ItemsTC.phial, 1, 0)))
         player.dropItem(ItemsTC.phial, 1)
 
-      world.playSoundAtEntity(player,"liquid.swim",0.25F,1.0F)
+      if (world.isRemote) {
+        world.playSound(pos.getX.toDouble + 0.5D, pos.getY.toDouble + 0.5D, pos.getZ.toDouble + 0.5D, "thaumcraft:jar", 0.4F, 1.0F, false)
+        world.playSound(pos.getX.toDouble + 0.5D, pos.getY.toDouble + 0.5D, pos.getZ.toDouble + 0.5D, "game.neutral.swim", 0.5F, 1.0F + (world.rand.nextFloat - world.rand.nextFloat) * 0.3F, false)
+      }
+      else AuraHelper.pollute(world, pos, jar.amount, true)
     }
     else if (heldItem != null && jar.amount >= 8 && aspect == null)
       {

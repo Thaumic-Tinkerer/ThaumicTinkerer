@@ -5,12 +5,14 @@ import java.util.UUID
 import com.nekokittygames.Thaumic.Tinkerer.common.core.misc.StringID
 import com.nekokittygames.Thaumic.Tinkerer.common.data.BoundJarNetworkManager
 import com.nekokittygames.Thaumic.Tinkerer.api.{BoundNetworkChangedEvent, BoundNetworkEvent}
+import com.nekokittygames.Thaumic.Tinkerer.common.ThaumicTinkerer
 import net.minecraft.block.properties.PropertyEnum
 import net.minecraft.item.EnumDyeColor
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.ForgeEventFactory
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import thaumcraft.api.aspects.{Aspect, AspectList}
 import thaumcraft.common.tiles.essentia.TileJarFillable
 
@@ -38,9 +40,25 @@ class TileBoundJar  extends TileJarFillable{
   override def validate(): Unit =
     {
       super.validate()
+      MinecraftForge.EVENT_BUS.register(this)
     }
 
 
+  override def invalidate(): Unit =
+    {
+      super.invalidate()
+      MinecraftForge.EVENT_BUS.unregister(this)
+    }
+
+  @SubscribeEvent
+  def networkChanged(boundNetworkChangedEvent: BoundNetworkChangedEvent): Unit =
+  {
+    if(boundNetworkChangedEvent.network.equalsIgnoreCase(this.network))
+      {
+        ThaumicTinkerer.logger.info("Updating network");
+        this.worldObj.markBlockForUpdate(this.pos)
+      }
+  }
   override def markDirty(): Unit = {
     super.markDirty()
     aspectList.remove(aspect)
