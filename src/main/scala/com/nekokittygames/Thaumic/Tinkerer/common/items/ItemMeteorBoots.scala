@@ -106,7 +106,7 @@ object ItemMeteorBoots extends ItemTXBoots {
               size=3
             smashing=false
             ticks=0
-            if(size>0)
+            if(size>0 && !player.worldObj.isRemote)
               {
                 player.worldObj.createExplosion(player,player.posX,player.posY,player.posZ,size,true)
               }
