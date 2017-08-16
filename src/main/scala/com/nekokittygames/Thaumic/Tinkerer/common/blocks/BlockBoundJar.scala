@@ -78,7 +78,6 @@ object BlockBoundJar extends {
         world.playSound(pos.getX.toDouble + 0.5D, pos.getY.toDouble + 0.5D, pos.getZ.toDouble + 0.5D, "thaumcraft:jar", 0.4F, 1.0F, false)
         world.playSound(pos.getX.toDouble + 0.5D, pos.getY.toDouble + 0.5D, pos.getZ.toDouble + 0.5D, "game.neutral.swim", 0.5F, 1.0F + (world.rand.nextFloat - world.rand.nextFloat) * 0.3F, false)
       }
-      else AuraHelper.pollute(world, pos, jar.amount, true)
     }
     else if (heldItem != null && jar.amount >= 8 && aspect == null)
       {
