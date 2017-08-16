@@ -56,6 +56,7 @@ class TileBoundJar  extends TileJarFillable{
     if(boundNetworkChangedEvent.network.equalsIgnoreCase(this.network))
       {
         this.worldObj.markBlockForUpdate(this.pos)
+        super.markDirty()
       }
   }
   override def markDirty(): Unit = {
