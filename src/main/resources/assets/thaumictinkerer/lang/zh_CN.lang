@@ -1,0 +1,113 @@
+tile.darkQuartzBlock.name=烟黑石英块
+tile.darkQuartzPatterned.pillar.name=竖纹烟黑石英块
+tile.darkQuartzPatterned.chisel.name=錾制烟黑石英块
+tile.funnel.name=源质漏斗
+tile.funnel.name=源质漏斗
+tile.boundJar.name=绑定之罐
+tile.unstableIce.name=冰
+tile.summoner.name=死灵石板
+
+
+
+tc.research_category.TT_CATEGORY=神秘工匠
+
+itemGroup.ThaumicTinkerer=神秘工匠
+# WAILA
+ttwaila.boundJar.network=网络: %s
+ttwaila.boundJar.colour=颜色: %s
+
+
+# ITEM NAMES
+item.darkQuartzItem.name=烟黑石英
+item.jarSeal.name=绑定之罐封印
+item.stabilizerBelt.name=稳定腰带
+item.enderDisruption.name=末地干扰器
+item.foodTalisman.name=营养护身符
+item.mobAspect.name=灵魂要素
+item.mobAspect.condensed.name=稠密灵魂要素
+item.mobAspect.infused.name=注魔灵魂要素
+item.bootsComet.name=彗星之靴
+item.bloodSword.name=咒灵之剑
+item.cleansingTalisman.name=防身护身符
+
+##Item Details
+ttitems.boundJar.networkInfo=网络ID: %s
+ttitems.boundJar.noNetworkInfo=无网络
+ttitems.boundJar.nonEmptyJar=源质罐必须为空.
+ttitems.foodTalisman.tooltip=目前容有 %s 食物点和 %s 饱和度
+ttitems.mobAspects.aspect.info=要素: %s
+ttitems.mobaspects.condensed=稠密
+ttitems.mobaspects.infused=注魔
+ttitems.cleansingTalisman.enabled=已开启
+ttitems.cleansingTalisman.disabled=已关闭
+ttitems.bloodsword.activated=怪物精华模式
+ttitems.bloodsword.deactivated=正常模式
+ttitems.bloodsword.sneakhelp=按潜行+右击以更改模式
+
+
+#CONFIG COMMENTS
+ttconfig.general=通用设定
+ttconfig.back=返回
+ttconfig.tooltip.name=使用工具提醒
+ttconfig.tooltip.comment=设为false以停用魔导手册中的[TT]提醒.
+
+
+
+#RESEARCH
+ttresearch.prefix=[TT]
+
+#STABILIZER BELT
+ttresearch.name.STABILIZER_BELT=稳定腰带
+ttresearch.lore.STABILIZER_BELT=击退? 但我喜欢这样
+ttresearch.page.STABILIZER_BELT.0=使用类似于奥术腰带的技术，你已经制成一条可抵消击退效果的特殊腰带。<BR><BR>受伤时你不会被击飞，而是会停在原地。你发现这个装置不止在飞行时有用，更在夜行时有用。
+
+#ENDER_DISRUPTER
+ttresearch.name.ENDER_DISRUPTER=末地干扰器
+ttresearch.lore.ENDER_DISRUPTER=别跳来跳去的，正面上我啊！
+ttresearch.page.ENDER_DISRUPTER.0=仔细研究过末影珍珠后，你发现了末影人传送的原理，更重要的是，如何阻止它。<BR><BR>若你向末影珍珠中注入污染，污染便会影响这个世界与末影人用于瞬移的那个世界的边界，并使其关闭。你推断若将其制成护身符，佩戴的时候末影人便无法在你身旁传送。<BR><BR>控制污染并将其蔓延至世界维度边缘对护身符的损伤很大，终将使护身符分离崩析。
+
+#COMET_BOOTS
+ttresearch.name.COMET_BOOTS=彗星之靴
+ttresearch.lore.COMET_BOOTS=Ice ice baby
+ttresearch.page.COMET_BOOTS.0=旅行者之靴很快，但你认为还有改进的余地。通过向旅行者之靴中注入Aqua要素和Gelum要素，你创造了一双神速的靴子。<BR><BR>这只靴子能让使用者以彗星之速飞奔，数息之间横越大地。水流亦无法阻止你的脚步。穿着此靴时，你脚下的水面将被暂时冻成冰块。
+
+#FOOD_TALISMAN
+ttresearch.name.FOOD_TALISMAN=营养护身符
+ttresearch.lore.FOOD_TALISMAN=持久饱腹感
+ttresearch.page.FOOD_TALISMAN.0=你发现自己经常需要在马拉松式的研究过程中时不时地停下来去满足你的肚皮。终于你找到了一个方法能克服你对食物的需求。<BR><BR>通过向钻石中注入饥饿要素，你做出了能自动吸收快捷栏中食物并以能量储存的物品。当你饿了的时候它会自动帮你填满肚皮。<BR><BR>这项装置只对普通食物起效，所以会引发效果的食物例如金苹果或是腐肉需以正常方式食用。
+
+#BLOOD_SWORD
+ttresearch.name.BLOOD_SWORD=咒灵之剑
+ttresearch.lore.BLOOD_SWORD=你又不愉快了
+ttresearch.page.BLOOD_SWORD.0=你打造出一柄威力无双的魔剑。然而要发挥这种威力必须以执剑者的鲜血饲之。<BR><BR>只要挥剑斩中任何东西，剑身都会抽取执剑者一颗心的生命值。而使用该剑格挡则无论受到多大程度的伤害总是固定丢失1.5颗心的伤害。<BR><BR>此外，只要手持该剑就能加持一个恒定光环来增加移动速度。
+
+# METEOR_BOOTS
+--Boots of the Meteor
+ttresearch.name.METEOR_BOOTS=流星之靴
+ttresearch.lore.METEOR_BOOTS=Come on and slam
+ttresearch.page.METEOR_BOOTS.0=你的旅行者之靴一向好用，但你有时想要更高的灵活度。通过向旅行者之靴中注入Ignis和Potentia要素的原始能量，你创造了一只具有无上灵活度的神靴。<BR><BR>若使用者在潜行时跃起，这双靴子将以流星之力把使用者向注视的方向推进。在半空中按下潜行按钮将会把玩家向地面以惊人的速度发射，摧毁附近的一切。
+
+# CLEANSING_TALISMAN
+ttresearch.name.CLEANSING_TALISMAN=防身护身符
+ttresearch.lore.CLEANSING_TALISMAN=妙寿安的礼物
+ttresearch.page.CLEANSING_TALISMAN.0=在研究生命以及肉体时，你发现可以利用魔力转移来自外界的伤害效果。这个护身符将为持有者抵挡大多数类型的伤害，但这会消耗它的耐久。<BR><BR>潜行加右键来选择是否开启护身符的效果。理所当然的，只有装备在护身符栏并开启时才起效。
+
+
+# DARK_QUARTZ
+ttresearch.name.DARK_QUARTZ=烟黑石英
+ttresearch.lore.DARK_QUARTZ=暗影之日
+ttresearch.page.DARK_QUARTZ.0=烟黑石英肖似普通的石英，但性状相反。石英为材料的方块都能用烟黑石英做，但是看起来是黑色的。<BR><BR>烟黑使用可以用煤炭或者木炭以及普通下界石英制成。
+
+
+# JAR_SEAL
+ttresearch.name.JAR_SEAL=绑定封印
+ttresearch.lore.JAR_SEAL=源质，到处都是源质
+ttresearch.page.JAR_SEAL.0=通过使用源质浸泡油脂来调整其魔法结构，你找到了让源质容器相互绑定的方法，尤其是源质罐子。很像之前的罐子标签，绑定之罐封印可被染色，并可创建无限数量的网络。<BR><BR>只需手持绑定封印右击源质罐子，你就能建立一个新网络。右击一个绑定之罐就会将绑定封印连接到那个网络。
+ttresearch.page.JAR_SEAL.1=手持已创建连接的绑定封印右击未绑定的源质罐子会将该罐加入已连接的网络。注意只有空罐子能被绑定。虚空罐子和带标签的罐子无法被绑定。<BR><BR>封印过的罐子比普通罐子在管道系统中的吸力大，但比带标签的罐子吸力小。
+ttresearch.page.JAR_SEAL.2=你可以用染料将封印染成想要的颜色。你也可以用铁砧将其改名，得到想要的网络名称。
+
+# MOB_SUMMON
+ttresearch.name.MOB_SUMMON=怪物召唤
+ttresearch.lore.MOB_SUMMON=近乎死灵法师
+ttresearch.page.MOB_SUMMON.0=如今你已能够利用咒灵之剑捕获的灵魂召唤出怪物。在死灵祭坛附近放置三个基座。于基座上放置三个灵魂要素。不同类型的灵魂要素对应不同类型的怪物。每种怪物的构成都不相同。
+ttresearch.page.MOB_SUMMON.1=通过制造注魔灵魂要素，无需消耗灵魂要素就能召唤出怪物。但使用注魔灵魂要素进行召唤，仪式会比平时更加缓慢。
