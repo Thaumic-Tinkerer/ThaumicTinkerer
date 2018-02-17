@@ -9,15 +9,24 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
+ext.buildnumber = 0
+if (System.getenv('BUILD_NUMBER') != null)
+    project.buildnumber = System.getenv('BUILD_NUMBER')
+else {
+    try {
+        ext.buildnumber += "_" + "git rev-parse --abbrev-ref HEAD".execute().text.trim();
+        ext.buildnumber += "_" + "git rev-parse --short HEAD".execute().text.trim();
+    } catch (all) {}
+    logger.lifecycle "No build number detected, setting to ${ext.buildnumber}"
+}
 
-
-version = "1.0"
+version = "1.10.2-4.0.0.${buildnumber}"
 group= "com.nekokittygames.thaumic" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "thaumictinkerer"
 
-sourceCompatibility = targetCompatibility = "1.6" // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
 compileJava {
-    sourceCompatibility = targetCompatibility = "1.6"
+    sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
