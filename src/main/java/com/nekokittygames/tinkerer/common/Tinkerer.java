@@ -1,7 +1,9 @@
 package com.nekokittygames.tinkerer.common;
 
 import com.nekokittygames.tinkerer.common.libs.LibMisc;
+import com.nekokittygames.tinkerer.common.proxy.IProxy;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +14,8 @@ public class Tinkerer {
     @Mod.Instance()
     public static Tinkerer instance;
 
-
+    @SidedProxy(clientSide = "com.nekokittygames.tinkerer.client.proxy.ClientProxy",serverSide = "com.nekokittygames.tinkerer.common.proxy.CommonProxy")
+    public static IProxy iProxy;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
