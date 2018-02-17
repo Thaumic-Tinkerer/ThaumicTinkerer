@@ -1,14 +1,14 @@
 [
 {
-  "modid": "thaumictinkerer",
-  "name": "Thaumic Tinkerer",
-  "description": "Thaumic Tinkerering",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["nekosune"],
-  "credits": "Azanor for making thaumcraft, pixlepix for all his work previously, and vazkii for the brilliant ideas that went into this mod",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

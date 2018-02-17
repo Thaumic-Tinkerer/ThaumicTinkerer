@@ -1,181 +1,78 @@
-
-// For those who want the bleeding edge
 buildscript {
     repositories {
         jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
+        maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+//Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
 
-// for people who want stable
+version = "1.0"
+group= "com.nekokittygames.thaumic" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "thaumictinkerer"
 
-//plugins {
-//    id "net.minecraftforge.gradle.forge" version "2.0.1"
-//}
-apply plugin: 'scala'
-repositories {
-    ivy {
-
-        name 'Forge FS legacy'
-        artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
-    }
-
-    maven {
-        name 'ForgeFS'
-        url 'http://files.minecraftforge.net/maven'
-    }
-    maven {
-        name 'MinecraftS3'
-        url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
-    }
-    maven {
-        name 'DVS1 Maven FS'
-        url 'http://dvs1.progwml6.com/files/maven'
-    }
-    maven { // the repo from which to get NEI and stuff
-        name 'CB Repo'
-        url "http://chickenbones.net/maven/"
-    }
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
-    maven {
-
-        url  'http://maven.cil.li/'
-    }
-
-
+sourceCompatibility = targetCompatibility = "1.6" // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.6"
 }
-group = "com.nekokittygames.Thaumic.Tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "ThaumicTinkerer"
-apply plugin: 'maven-publish'
 
 minecraft {
-    version = "1.8.9-11.15.1.1738"
+    version = "1.10.2-12.18.3.2511"
     runDir = "run"
-    makeObfSourceJar = false
+    
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = 'stable_20'
+    mappings = "snapshot_20161111"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
-version = "3.0-${minecraft.version}"
-if (System.getenv("BUILD_NUMBER")!=null)
-    version = "$version-${System.getenv().BUILD_NUMBER}"
-if (project.hasProperty("releaseType"))
-    if (project.releaseType == "ALPHA")
-        version = "alpha-" + version
+repositories {
+    mavenCentral()
+    maven { url = "http://mobiusstrip.eu/maven" }
+    maven { url = "http://dl.tsr.me/artifactory/libs-release-local" }
+    maven { url = "http://maven.tterrag.com" }
+    maven { url = "http://dvs1.progwml6.com/files/maven" }
+    maven { url = "http://files.minecraftforge.net/maven" }
+    maven { url = "http://maven.cil.li/" }
+    maven { url = "http://maven.ic2.player.to" }
+    maven { url 'http://maven.epoxide.xyz' }
+    repositories {
+        maven { url 'http://tehnut.info/maven/' }
+    }
+    mavenLocal()
+}
 dependencies {
-    compile files('libs/Thaumcraft-1.8.9-5.2.4-deobf.jar')
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-    compile "codechicken:CodeChickenLib:1.8-1.1.2.139:dev"
-    //compile "codechicken:CodeChickenCore:1.8-1.0.5.36:dev"
-    //compile "mcp.mobius.waila:Waila:1.6.0-B3_1.8.8:dev"
-    //compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
-
-    //compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
-    //compile "codechicken:NotEnoughItems:1.8-1.0.5.104:dev"
-    //compile "codechicken:EnderStorage:1.7.10-1.4.6.31:dev"
-    deobfCompile "slimeknights.mantle:Mantle:1.8.9-0.6.jenkins69"
-    compile "li.cil.oc:OpenComputers:MC1.8.9-1.5.21.1:api"
-    deobfCompile "li.cil.oc:OpenComputers:MC1.8.9-1.5.21.1"
-    //deobfCompile("slimeknights.TConstruct:TConstruct:1.8.9-2.0.1.jenkins36") {
-    //}
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // the deobf configurations:  'deobfCompile' and 'deobfProvided' are the same as the normal compile and provided,
-    // except that these dependencies get remapped to your current MCP mappings
-    //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-    //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+    deobfCompile "mezz.jei:jei_1.10.2:3.11.1.270"
+    //compile "net.darkhax.tesla:Tesla:1.10.2-1.2.1.49"
+	compile fileTree(dir: 'lib', includes: ['*.jar']) 
+    //deobfCompile "com.enderio.core:EnderCore:1.10.2-0.4.1.58-beta"
+    //deobfCompile "com.enderio:EnderIO:1.10.2-3.0.1.131_beta"
+    //deobfCompile "info.amerifrance.guideapi:Guide-API:1.10.2-2.0.2-45"
 }
 
 processResources
-        {
-            // this will ensure that this task is redone when the versions change.
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
-
-                // replace version and mcversion
-                expand 'version':project.version, 'mcversion':project.minecraft.version
-            }
-
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = 'dev'
-}
-
-task apiJar(type: Jar) {
-    from fileTree(dir: 'src/main/scala').matching { include 'com/nekokittygames/Thaumic/Tinkerer/api/**' }
-    classifier = 'api'
-}
-
-
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allScala
-    classifier = 'sources'
-}
-
-publishing {
-    publications {
-        main(MavenPublication) {
-            groupId 'com.nekokittygames.Thaumic.Tinkerer'
-            artifactId 'ThaumicTinkerer'
-            from components.java
-        }
-        api(MavenPublication) {
-            groupId 'com.nekokittygames.Thaumic.Tinkerer'
-            artifactId 'ThaumicTinkerer'
-            artifact apiJar
-        }
-        dev(MavenPublication) {
-            groupId 'com.nekokittygames.Thaumic.Tinkerer'
-            artifactId 'ThaumicTinkerer'
-            artifact deobfJar
-        }
-        sources(MavenPublication) {
-            groupId 'com.nekokittygames.Thaumic.Tinkerer'
-            artifactId 'ThaumicTinkerer'
-            artifact sourcesJar
-        }
-
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-    repositories {
-        maven {
-            url "/var/www/maven/"
-        }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
     }
 }
