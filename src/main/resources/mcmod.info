@@ -1,16 +1,16 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "thaumictinkerer",
+  "name": "Thaumic Tinkerer",
+  "description": "An addon to Thaumcraft 6, implementing new content. This mod is a spiritual successor to Elemental Tinkerer. Researches that come from this mod are prefixed by [TT]..",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "http://minecraftforum.net/topic/1813058-",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
+  "authorList": ["nekosune"],
+  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDiyo, theFlaxbeard.",
+  "logoFile": "/assets/thaumictinkerer/textures/logo.png",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["thaumcraft"]
 }
 ]

@@ -96,6 +96,8 @@ minecraft {
     version = "${mc_version}-${forge_version}"
     runDir = "run"
 
+    replace "@VERSION@", project.version
+    replaceIn "LibMisc.java"
     if (project.hasProperty('mappings_version'))
         mappings = project.mappings_version
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
