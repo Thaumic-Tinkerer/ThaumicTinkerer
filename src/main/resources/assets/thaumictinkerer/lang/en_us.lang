@@ -1,0 +1,12 @@
+itemGroup.thaumictinkerer=Thaumic Tinkerer
+item.thaumictinkerer:share_book.name=Tome of Knowledge Sharing
+item.thaumictinkerer:share_book.0=It's no Book of Melusedek, but it helps spread the power around.
+
+
+
+
+
+ttmisc.shareTome.write=Research Written!
+ttmisc.shareTome.noAssign=Not Assigned
+ttmisc.shareTome.playerName=Bound to %s's research.
+ttmisc.shareTome.sync=Research Acquired.

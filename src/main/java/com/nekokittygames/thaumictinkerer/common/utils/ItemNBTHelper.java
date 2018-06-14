@@ -1,0 +1,34 @@
+package com.nekokittygames.thaumictinkerer.common.utils;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import org.jetbrains.annotations.NotNull;
+
+public class ItemNBTHelper {
+
+
+    @NotNull
+    public static NBTTagCompound getItemTag(ItemStack item)
+    {
+        if(item.getTagCompound()==null)
+        {
+            item.setTagCompound(new NBTTagCompound());
+        }
+        return item.getTagCompound();
+    }
+    public static String getString(ItemStack item,String keyName,String defaultValue)
+    {
+        if(getItemTag(item).hasKey(keyName))
+            return getItemTag(item).getString(keyName);
+        else
+        {
+            getItemTag(item).setString(keyName,defaultValue);
+            return defaultValue;
+        }
+    }
+
+    public static void setString(ItemStack item,String keyName,String value)
+    {
+        getItemTag(item).setString(keyName,value);
+    }
+}
