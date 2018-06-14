@@ -1,6 +1,6 @@
 itemGroup.thaumictinkerer=Thaumic Tinkerer
 item.thaumictinkerer:share_book.name=Tome of Knowledge Sharing
-item.thaumictinkerer:share_book.0=It's no Book of Melusedek, but it helps spread the power around.
+item.thaumictinkerer:share_book.0=A Goldfish's Diary
 
 
 
@@ -10,3 +10,11 @@ ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.noAssign=Not Assigned
 ttmisc.shareTome.playerName=Bound to %s's research.
 ttmisc.shareTome.sync=Research Acquired.
+
+
+
+//Research
+tc.research_category.THAUMIC_TINKERER=Thaumic Tinkerer
+thaumictinkerer.research.share_tome.title=Tome of Knowledge Sharing
+thaumictinkerer.research.share_tome.lore=A Goldfish's Diary
+thaumictinkerer.research.share_tome.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else, they'll get all the research you've discovered so far.<BR><BR>(Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)

@@ -3,6 +3,7 @@ package com.nekokittygames.thaumictinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -10,6 +11,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION,dependencies = LibMisc.MOD_DEPENDENCIES)
 public class ThaumicTinkerer
@@ -33,7 +38,8 @@ public class ThaumicTinkerer
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        ResearchCategories.registerCategory("THAUMIC_TINKERER",(String)null,new AspectList(),new ResourceLocation("thaumictinkerer","textures/items/share_book.png"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc" ));
     }
 }
 
