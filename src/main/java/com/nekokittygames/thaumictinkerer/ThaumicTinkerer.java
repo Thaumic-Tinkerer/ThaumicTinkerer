@@ -2,6 +2,7 @@ package com.nekokittygames.thaumictinkerer;
 
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
+import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -38,8 +39,10 @@ public class ThaumicTinkerer
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        ModRecipes.InitializeRecipes();
         ResearchCategories.registerCategory("THAUMIC_TINKERER",(String)null,new AspectList(),new ResourceLocation("thaumictinkerer","textures/items/share_book.png"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc" ));
+        proxy.registerRenderers();
     }
 }
 

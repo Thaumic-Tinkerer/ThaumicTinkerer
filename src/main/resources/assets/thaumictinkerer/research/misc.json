@@ -2,23 +2,13 @@
   "entries" :[
     {
       "key": "SHARE_TOME",
-      /* REQUIRED; the key used to identify this research */
       "name": "thaumictinkerer.research.share_tome.title",
-      /* text name for the research. Can be a localization key */
       "icons": [
         "thaumictinkerer:textures/items/share_book.png"
       ],
       "category": "THAUMIC_TINKERER",
-      /* REQUIRED; the category/tab you wish to add this research to */
       "parents": ["FIRSTSTEPS"],
-      /*
-         Parent research that needs to be completed to open up this research.
-         Adding a @ followed by a number will allow the research to open up at that stage of the parents
-         progress instead of fully completed.
-         Prefixing an entry with ~ will prevent lines from being drawn between them in GUI.
-      */
       "siblings": [],
-      /* research entries that will get unlocked along with this one if it is completed. Accepts same prefixes as "parents" above*/
       "meta": [
         "ROUND",
         "AUTOUNLOCK"
@@ -27,25 +17,52 @@
         0,
         -1
       ],
-      /* x and y location of the research icon in the gui*/
-      "reward_item": [],
-      /* and item the player will receive as a reward for completing this research */
-      "reward_knowledge": [],
-      /* knowledge the player will receive as a reward for completing this research */
 
+      "reward_item": [],
+      "reward_knowledge": [],
       "stages": [
         {
           "text": "thaumictinkerer.research.share_tome.0",
-          /* REQUIRED; description of this stage */
           "recipes": [
             "thaumictinkerer:share_book"
           ],
-          /* list of recipes to display on page. The name must have an entry in the thaumcraft recipe catalog */
           "required_item": [],
           "required_craft": [],
           "required_knowledge": [],
           "required_research": []
-          /* follows similar logic to parent research. You can specify things that are not full blown research entries in their own right. In that case a ? will be shown instead of their icon and you will have to add localization in the format "research.RESEARCH_YOU_NEED.text" if you want a proper name to be shown. Some other icons are also possible. Starting the research with "m_" will show a map, "f_" a flask and "c_" a chest. */
+        }
+      ]
+    },
+    {
+      "key": "ESSENTIA_FUNNEL",
+      "name": "thaumictinkerer.research.funnel.title",
+      "icons": [
+        "thaumictinkerer:textures/blocks/funnel/funnel_top.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": ["WARDEDJARS"],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "AUTOUNLOCK"
+      ],
+      "location": [
+        3,
+        3
+      ],
+
+      "reward_item": [],
+      "reward_knowledge": [],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.funnel.0",
+          "recipes": [
+            "thaumictinkerer:funnel"
+          ],
+          "required_item": [],
+          "required_craft": [],
+          "required_knowledge": [],
+          "required_research": []
         }
       ]
     }

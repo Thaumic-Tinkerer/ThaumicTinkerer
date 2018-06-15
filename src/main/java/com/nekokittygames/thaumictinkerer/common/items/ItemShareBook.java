@@ -1,8 +1,8 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibItemNames;
 import com.nekokittygames.thaumictinkerer.common.utils.ItemNBTHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -78,7 +78,7 @@ public class ItemShareBook extends TTItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         String name = getPlayerName(stack);
-        tooltip.add(name.equals(NON_ASIGNED) ? I18n.format("ttmisc.shareTome.noAssign") : I18n.format("ttmisc.shareTome.playerName", name));
+        tooltip.add(name.equals(NON_ASIGNED) ? ThaumicTinkerer.proxy.localize("ttmisc.shareTome.noAssign") : ThaumicTinkerer.proxy.localize("ttmisc.shareTome.playerName", name));
     }
 
     private static String getPlayerName(ItemStack stack) {

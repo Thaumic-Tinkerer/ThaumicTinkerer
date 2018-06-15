@@ -1,15 +1,22 @@
 package com.nekokittygames.thaumictinkerer.client.rendering;
 
 import com.nekokittygames.thaumictinkerer.client.misc.LibClientMisc;
+import com.nekokittygames.thaumictinkerer.common.blocks.BlockFunnel;
+import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,15 +43,42 @@ public class ModelManager {
     @SubscribeEvent
     public static void registerAllModels(final ModelRegistryEvent event) {
         //INSTANCE.registerFluidModels();
-        //INSTANCE.registerBlockModels();
+        INSTANCE.registerBlockModels();
         INSTANCE.registerItemModels();
     }
+
+    private void registerBlockModels() {
+
+        //registerBlockItemModel(ModBlocks.funnel.getDefaultState().withProperty(BlockFunnel.JAR, false));
+        
+        ModBlocks.RegistrationHandler.ITEM_BLOCKS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
+
+    }
+    private final StateMapperBase propertyStringMapper = new StateMapperBase() {
+        @Override
+        protected ModelResourceLocation getModelResourceLocation(final IBlockState state) {
+            return new ModelResourceLocation("minecraft:air");
+        }
+    };
+
+    private void registerBlockItemModel(IBlockState state) {
+        final Block block = state.getBlock();
+        final Item item = Item.getItemFromBlock(block);
+
+        if (item != Items.AIR) {
+            final ResourceLocation registryName = Objects.requireNonNull(block.getRegistryName());
+            ModelResourceLocation mrl=new ModelResourceLocation(registryName, propertyStringMapper.getPropertyString(state.getProperties()));
+            registerItemModel(item, mrl);
+        }
+    }
+
     /**
      * The {@link Item}s that have had models registered so far.
      */
     private final Set<Item> itemsRegistered = new HashSet<>();
 
     private void registerItemModels() {
+
         ModItems.RegistrationHandler.ITEMS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
     }
 
