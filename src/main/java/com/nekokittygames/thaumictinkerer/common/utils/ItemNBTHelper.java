@@ -31,4 +31,20 @@ public class ItemNBTHelper {
     {
         getItemTag(item).setString(keyName,value);
     }
+
+    public static boolean getBool(ItemStack item,String keyName,boolean defaultValue)
+    {
+        if(getItemTag(item).hasKey(keyName))
+            return getItemTag(item).getBoolean(keyName);
+        else
+        {
+            getItemTag(item).setBoolean(keyName,defaultValue);
+            return defaultValue;
+        }
+    }
+
+    public static void setBool(ItemStack item,String keyName,boolean value)
+    {
+        getItemTag(item).setBoolean(keyName,value);
+    }
 }

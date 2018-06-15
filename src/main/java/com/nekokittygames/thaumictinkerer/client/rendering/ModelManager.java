@@ -4,7 +4,9 @@ import com.nekokittygames.thaumictinkerer.client.misc.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockFunnel;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
+import com.nekokittygames.thaumictinkerer.common.items.baubles.ItemCleaningTalisman;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import com.nekokittygames.thaumictinkerer.common.utils.IVariant;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -82,6 +84,13 @@ public class ModelManager {
         ModItems.RegistrationHandler.ITEMS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
     }
 
+
+    private <T extends IVariant> void registerVariantItemModels(final Item item, final String variantName, final T[] values) {
+        for (final T value : values) {
+
+            registerItemModelForMeta(item, value.getMeta(), variantName + "=" + value.getName());
+        }
+    }
     /**
      * Register a single model for an {@link Item}.
      * <p>

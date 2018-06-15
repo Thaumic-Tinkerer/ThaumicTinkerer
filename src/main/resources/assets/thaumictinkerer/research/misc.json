@@ -17,19 +17,40 @@
         0,
         -1
       ],
-
-      "reward_item": [],
-      "reward_knowledge": [],
       "stages": [
         {
           "text": "thaumictinkerer.research.share_tome.0",
           "recipes": [
             "thaumictinkerer:share_book"
           ],
-          "required_item": [],
-          "required_craft": [],
-          "required_knowledge": [],
-          "required_research": []
+          "required_craft":["thaumcraft:arcane_workbench"]
+        }
+      ]
+    },
+    {
+      "key": "BLACK_QUARTZ",
+      "name": "thaumictinkerer.research.black_quartz.title",
+      "icons": [
+        "thaumictinkerer:textures/items/black_quartz.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": ["FIRSTSTEPS"],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "AUTOUNLOCK"
+      ],
+      "location": [
+        2,
+        2
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.black_quartz.0",
+          "recipes": [
+            "thaumictinkerer:black_quartz"
+          ],
+          "required_item":["minecraft:quartz"]
         }
       ]
     },
@@ -43,26 +64,17 @@
       "parents": ["WARDEDJARS"],
       "siblings": [],
       "meta": [
-        "ROUND",
-        "AUTOUNLOCK"
       ],
       "location": [
         3,
-        3
+        1
       ],
-
-      "reward_item": [],
-      "reward_knowledge": [],
       "stages": [
         {
           "text": "thaumictinkerer.research.funnel.0",
           "recipes": [
             "thaumictinkerer:funnel"
-          ],
-          "required_item": [],
-          "required_craft": [],
-          "required_knowledge": [],
-          "required_research": []
+          ]
         }
       ]
     }

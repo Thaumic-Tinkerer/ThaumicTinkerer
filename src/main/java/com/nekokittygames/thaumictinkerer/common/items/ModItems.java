@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
+import com.nekokittygames.thaumictinkerer.common.items.baubles.ItemCleaningTalisman;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,7 +18,9 @@ import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.Null;
 @GameRegistry.ObjectHolder(LibMisc.MOD_ID)
 public class ModItems {
 
-    public static ItemShareBook share_book=Null();
+    public static final ItemShareBook share_book=Null();
+    public static final ItemCleaningTalisman cleaning_talisman=Null();
+    public static final ItemBlackQuartz black_quartz=Null();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
@@ -30,7 +33,9 @@ public class ModItems {
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event) {
             final Item[] items = {
-              new ItemShareBook()
+              new ItemShareBook(),
+                    new ItemCleaningTalisman(),
+                    new ItemBlackQuartz()
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 

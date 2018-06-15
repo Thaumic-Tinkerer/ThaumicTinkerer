@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Q ",
+    "QCQ",
+    " Q "
+  ],
+  "key": {
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "C":[
+    {
+      "item": "minecraft:coal",
+      "data":0
+    },
+      {
+        "item": "minecraft:coal",
+        "data":1
+      }
+      ]
+  },
+  "result": {
+    "item": "thaumictinkerer:black_quartz"
+  }
+}
