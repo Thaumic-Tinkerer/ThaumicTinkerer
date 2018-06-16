@@ -12,4 +12,11 @@ public class TTConfig {
     @Config.LangKey("thaumictinkerer.config.talisman")
     @Config.RangeInt(min=0)
     public static int talismanUses=100;
+
+
+    @Config.Comment("This is the distance a block can be from a Transvector Interface")
+    @Config.Name("Transvector Interface Distance")
+    @Config.LangKey("thaumictinkerer.config.transvector_interface.distance")
+    @Config.RangeInt(min=0)
+    public static int transvectorInterfaceDistance=4;
 }

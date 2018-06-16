@@ -29,7 +29,7 @@ import thaumcraft.common.tiles.essentia.TileJarFillableVoid;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityFunnel extends TileEntity implements IAspectContainer, ITickable {
+public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspectContainer, ITickable {
 
     private ItemStackHandler inventory= new ItemStackHandler(1)
     {
@@ -65,57 +65,22 @@ public class TileEntityFunnel extends TileEntity implements IAspectContainer, IT
     }
 
 
-
-    public void sendUpdates()
-    {
-        world.markBlockRangeForRenderUpdate(pos, pos);
-        world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
-        world.scheduleBlockUpdate(pos,this.getBlockType(),0,0);
-        markDirty();
-    }
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        writeExtraNBT(compound);
-        return super.writeToNBT(compound);
-
-    }
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
         nbttagcompound.setTag("inventory",inventory.serializeNBT());
     }
-    @Override
-    public void readFromNBT(NBTTagCompound compound) {
-        readExtraNBT(compound);
-        super.readFromNBT(compound);
-    }
 
+    @Override
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
     }
 
 
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        NBTTagCompound cmp=super.getUpdateTag();
-        writeExtraNBT(cmp);
-        return cmp;
-    }
 
-    @Override
-    public void handleUpdateTag(NBTTagCompound tag) {
-        super.handleUpdateTag(tag);
-        readExtraNBT(tag);
-    }
-
-    @Nullable
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket() {
-        return new SPacketUpdateTileEntity(this.pos, 5, this.getUpdateTag());
-    }
 
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         super.onDataPacket(net, pkt);
-        readExtraNBT(pkt.getNbtCompound());
         sendUpdates();
     }
 

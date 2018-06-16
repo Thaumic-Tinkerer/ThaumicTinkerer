@@ -53,7 +53,7 @@ public class ItemShareBook extends TTItem {
                 setPlayerName(item, playerIn.getGameProfile().getName());
                 setPlayerResearch(item, playerIn);
                 if (!worldIn.isRemote)
-                    playerIn.sendMessage(new TextComponentTranslation("ttmisc.shareTome.write"));
+                    playerIn.sendStatusMessage(new TextComponentTranslation("ttmisc.shareTome.write"),true);
             } else {
                 Set<String> researchesDone;
                 if (!worldIn.isRemote) {
@@ -63,7 +63,7 @@ public class ItemShareBook extends TTItem {
                         ThaumcraftCapabilities.getKnowledge(playerIn).sync((EntityPlayerMP)playerIn);
                     }
                         } else {
-                            playerIn.sendMessage(new TextComponentTranslation(("ttmisc.shareTome.sync")));
+                            playerIn.sendStatusMessage(new TextComponentTranslation(("ttmisc.shareTome.sync")),true);
                         }
 
                     }

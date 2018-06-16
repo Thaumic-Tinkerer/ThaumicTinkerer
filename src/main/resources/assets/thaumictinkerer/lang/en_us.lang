@@ -9,12 +9,15 @@ item.thaumictinkerer:cleaning_talisman.name=Talisman of Remedium
 item.thaumictinkerer:cleaning_talisman.0=Mitsukake's Gift
 
 item.thaumictinkerer:black_quartz.name=Smokey Quartz
-
+item.thaumictinkerer:connector.name=Transvector Binder
 // Blocks
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
 
 tile.thaumictinkerer:dissimulation.name=Dissimulation Block
+
+tile.thaumictinkerer:transvector_interface.name=Transvector Interface
+
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses
@@ -27,6 +30,13 @@ ttmisc.shareTome.playerName=Bound to %s's research.
 ttmisc.shareTome.sync=Research Acquired.
 ttmisc.cleaning_talisman.active=Talisman Active
 ttmisc.cleaning_talisman.inactive=Talisman Inactive
+ttmisc.connector.complete=Binding Complete!
+ttmisc.connector.set=Location Set!
+ttmisc.connector.notinterf=Not a Transvector Block.
+ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
+ttmisc.connector.dislfail=Can't bind a Transvector Dislocator to another.
+ttmisc.connector.notpresent=The Transvector Block isn't present.
+ttmisc.connector.toofar=The Transvector Block of origin is too far away.
 
 
 

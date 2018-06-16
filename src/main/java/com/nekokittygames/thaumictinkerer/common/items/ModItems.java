@@ -21,6 +21,7 @@ public class ModItems {
     public static final ItemShareBook share_book=Null();
     public static final ItemCleaningTalisman cleaning_talisman=Null();
     public static final ItemBlackQuartz black_quartz=Null();
+    public static final ItemConnector connector=Null();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
@@ -35,7 +36,8 @@ public class ModItems {
             final Item[] items = {
               new ItemShareBook(),
                     new ItemCleaningTalisman(),
-                    new ItemBlackQuartz()
+                    new ItemBlackQuartz(),
+                    new ItemConnector()
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
