@@ -14,7 +14,7 @@ item.thaumictinkerer:black_quartz.name=Smokey Quartz
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
 
-
+tile.thaumictinkerer:dissimulation.name=Dissimulation Block
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses

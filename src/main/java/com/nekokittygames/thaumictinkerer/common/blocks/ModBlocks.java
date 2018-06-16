@@ -4,6 +4,8 @@ import com.google.common.base.Preconditions;
 import com.nekokittygames.thaumictinkerer.client.misc.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityCamoflage;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityDissimulation;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityFunnel;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -26,6 +28,7 @@ import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.Null;
 public class ModBlocks {
 
     public static final BlockFunnel funnel=Null();
+    public static final BlockDissimulation dissimulation=Null();
 
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -42,7 +45,8 @@ public class ModBlocks {
             final IForgeRegistry<Block> registry = event.getRegistry();
 
             final Block[] blocks = {
-                    new BlockFunnel()
+                    new BlockFunnel(),
+                    new BlockDissimulation()
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -56,7 +60,8 @@ public class ModBlocks {
         @SubscribeEvent
         public static void registerItemBlocks(final RegistryEvent.Register<Item> event) {
             final ItemBlock[] items = {
-                new ItemBlock(funnel)
+                new ItemBlock(funnel),
+                    new ItemBlock(dissimulation)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
@@ -69,6 +74,7 @@ public class ModBlocks {
         }
         private static void registerTileEntities() {
             registerTileEntity(TileEntityFunnel.class, LibBlockNames.FUNNEL);
+            registerTileEntity(TileEntityDissimulation.class,LibBlockNames.DISSIMULATION);
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {
