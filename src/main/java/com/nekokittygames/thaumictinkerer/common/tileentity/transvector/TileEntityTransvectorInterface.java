@@ -24,7 +24,6 @@ public class TileEntityTransvectorInterface extends TileEntityTransvector implem
     @Override
     public void validate() {
         super.validate();
-        setCheaty(true);
     }
 
     @Override

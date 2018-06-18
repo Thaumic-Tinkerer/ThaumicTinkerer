@@ -19,4 +19,10 @@ public class TTConfig {
     @Config.LangKey("thaumictinkerer.config.transvector_interface.distance")
     @Config.RangeInt(min=0)
     public static int transvectorInterfaceDistance=4;
+
+    @Config.Comment("This is the distance a block can be from a Transvector Dislocator")
+    @Config.Name("Transvector Dislocator Distance")
+    @Config.LangKey("thaumictinkerer.config.transvector_dislocator.distance")
+    @Config.RangeInt(min=0)
+    public static int transvectorDislocatorDistance=10;
 }

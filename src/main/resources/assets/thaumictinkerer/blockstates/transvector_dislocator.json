@@ -1,0 +1,39 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "side": "thaumictinkerer:blocks/dislocator/off",
+      "north": "thaumictinkerer:blocks/dislocator/on",
+      "south": "#side",
+      "east": "#side",
+      "west": "#side",
+      "up": "#side",
+      "down": "#side",
+      "particle": "#side"
+    },
+    "model": "cube",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "powered":
+    {
+      "false": {
+      },
+      "true": {
+      }
+    },
+    "facing":
+    {
+      "up": {"x":90},
+      "down": {"x":270},
+      "north": {},
+      "south": {"y":180},
+      "west": {"y":270},
+      "east": {"y":90}
+    },
+    "inventory": {
+      "model": "cube"
+    }
+  }
+}

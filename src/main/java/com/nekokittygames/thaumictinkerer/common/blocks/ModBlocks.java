@@ -1,11 +1,13 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
 import com.google.common.base.Preconditions;
+import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransvectorInterface;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityDissimulation;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityFunnel;
+import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorInterface;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -30,6 +32,7 @@ public class ModBlocks {
     public static final BlockFunnel funnel=Null();
     public static final BlockDissimulation dissimulation=Null();
     public static final BlockTransvectorInterface transvector_interface=Null();
+    public static final BlockTransvectorDislocator transvector_dislocator=Null();
 
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -48,7 +51,8 @@ public class ModBlocks {
             final Block[] blocks = {
                     new BlockFunnel(),
                     new BlockDissimulation(),
-                    new BlockTransvectorInterface()
+                    new BlockTransvectorInterface(),
+                    new BlockTransvectorDislocator()
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -64,7 +68,8 @@ public class ModBlocks {
             final ItemBlock[] items = {
                 new ItemBlock(funnel),
                     new ItemBlock(dissimulation),
-                    new ItemBlock(transvector_interface)
+                    new ItemBlock(transvector_interface),
+                    new ItemBlock(transvector_dislocator)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
@@ -79,6 +84,7 @@ public class ModBlocks {
             registerTileEntity(TileEntityFunnel.class, LibBlockNames.FUNNEL);
             registerTileEntity(TileEntityDissimulation.class,LibBlockNames.DISSIMULATION);
             registerTileEntity(TileEntityTransvectorInterface.class,LibBlockNames.TRANSVECTOR_INTERFACE);
+            registerTileEntity(TileEntityTransvectorDislocator.class,LibBlockNames.TRANSVECTOR_DISLOCATOR);
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {
