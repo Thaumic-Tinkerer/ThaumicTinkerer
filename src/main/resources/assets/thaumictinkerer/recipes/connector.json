@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " I ",
+    " WI",
+    "S  "
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "W":
+    {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "S": {
+      "item": "thaumcraft:crystal_ordo"
+    }
+  },
+  "result": {
+    "item": "thaumictinkerer:connector"
+  }
+}

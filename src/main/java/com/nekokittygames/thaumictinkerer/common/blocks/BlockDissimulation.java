@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransvectorInterface;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityCamoflage;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityDissimulation;
@@ -27,19 +28,7 @@ public class BlockDissimulation extends TTCamoBlock<TileEntityDissimulation> {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity te = worldIn.getTileEntity(pos);
-        if (te != null && te instanceof TileEntityCamoflage) {
-            TileEntityCamoflage camo = (TileEntityCamoflage) te;
-            boolean doChange = true;
-            ItemStack currentStack = playerIn.getHeldItem(hand);
-            if (currentStack != ItemStack.EMPTY) {
-                if (currentStack.getItem() instanceof ItemBlock) {
-                    ItemBlock itemBlock = (ItemBlock) currentStack.getItem();
-                    camo.setBlockCopy(itemBlock.getBlock().getStateFromMeta(itemBlock.getMetadata(currentStack)));
-                    camo.sendUpdates();
-                    return true;
-                }
-            }
-        }
+        if (TTCamoBlock.camoflageFromHand(playerIn, hand, te)) return true;
         return false;
 
     }

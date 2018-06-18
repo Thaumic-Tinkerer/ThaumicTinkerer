@@ -43,6 +43,7 @@ public class ThaumicTinkerer
         ResearchCategories.registerCategory("THAUMIC_TINKERER",(String)null,new AspectList(),new ResourceLocation("thaumictinkerer","textures/items/share_book.png"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc" ));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles" ));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines" ));
         proxy.registerRenderers();
     }
 }

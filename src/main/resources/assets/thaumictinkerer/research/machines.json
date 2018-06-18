@@ -1,0 +1,32 @@
+{
+  "entries" :[
+    {
+      "key": "TRANSVECTOR_INTERFACE",
+      "name": "thaumictinkerer.research.transvector_interface.title",
+      "icons": [
+        "thaumictinkerer:textures/blocks/interface.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": ["FIRSTSTEPS"],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "AUTOUNLOCK"
+      ],
+      "location": [
+        1,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.transvector_interface.0",
+          "recipes": [
+            "thaumictinkerer:transvector_interface",
+            "thaumictinkerer:connector"
+          ],
+          "required_craft":["thaumcraft:arcane_workbench"]
+        }
+      ]
+    }
+    ]
+}

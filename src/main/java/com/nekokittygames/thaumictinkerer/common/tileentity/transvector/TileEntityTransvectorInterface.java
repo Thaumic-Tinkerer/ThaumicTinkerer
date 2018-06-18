@@ -5,7 +5,9 @@ import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
+import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.*;
+import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 import javax.annotation.Nullable;
 
@@ -206,5 +208,43 @@ public class TileEntityTransvectorInterface extends TileEntityTransvector implem
         if(tile instanceof IEssentiaTransport)
             return ((IEssentiaTransport)tile).getMinimumSuction();
         return 0;
+    }
+    int count = 0;
+    @Override
+    public void update() {
+        super.update();
+        TileEntity tile=getTile();
+        if(tile instanceof TileJarFillable)
+        {
+            TileJarFillable jar= (TileJarFillable) tile;
+            fillJar(jar);
+        }
+
+
+    }
+
+    private void fillJar(TileJarFillable jar) {
+        if (!this.world.isRemote && ++this.count % 5 == 0 && jar.amount < 250) {
+            TileEntity te = ThaumcraftApiHelper.getConnectableTile(this.world, this.pos, EnumFacing.UP);
+            if (te != null) {
+                IEssentiaTransport ic = (IEssentiaTransport)te;
+                if (!ic.canOutputTo(EnumFacing.DOWN)) {
+                    return;
+                }
+
+                Aspect ta = null;
+                if (jar.aspectFilter != null) {
+                    ta = jar.aspectFilter;
+                } else if (jar.aspect != null && jar.amount > 0) {
+                    ta = jar.aspect;
+                } else if (ic.getEssentiaAmount(EnumFacing.DOWN) > 0 && ic.getSuctionAmount(EnumFacing.DOWN) < this.getSuctionAmount(EnumFacing.UP) && this.getSuctionAmount(EnumFacing.UP) >= ic.getMinimumSuction()) {
+                    ta = ic.getEssentiaType(EnumFacing.DOWN);
+                }
+
+                if (ta != null && ic.getSuctionAmount(EnumFacing.DOWN) < this.getSuctionAmount(EnumFacing.UP)) {
+                    this.addToContainer(ta, ic.takeEssentia(ta, 1, EnumFacing.DOWN));
+                }
+            }
+        }
     }
 }
