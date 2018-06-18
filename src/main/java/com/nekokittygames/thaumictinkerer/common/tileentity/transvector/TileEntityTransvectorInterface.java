@@ -2,6 +2,8 @@ package com.nekokittygames.thaumictinkerer.common.tileentity.transvector;
 
 
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -15,6 +17,14 @@ public class TileEntityTransvectorInterface extends TileEntityTransvector implem
     @Override
     public int getMaxDistance() {
         return TTConfig.transvectorInterfaceDistance*TTConfig.transvectorInterfaceDistance;
+    }
+
+    private int comparatorValue=0;
+
+    @Override
+    public void validate() {
+        super.validate();
+        setCheaty(true);
     }
 
     @Override
@@ -219,8 +229,41 @@ public class TileEntityTransvectorInterface extends TileEntityTransvector implem
             TileJarFillable jar= (TileJarFillable) tile;
             fillJar(jar);
         }
+        int originalValue=comparatorValue;
+        if(getTilePos()!=null) {
+            IBlockState state = world.getBlockState(getTilePos());
+            if (state.hasComparatorInputOverride()) {
+                comparatorValue = state.getComparatorInputOverride(world, getTilePos());
+            } else
+                comparatorValue = 0;
+            if (comparatorValue != originalValue) {
+                world.updateComparatorOutputLevel(pos, getBlockType());
+
+            }
+        }
 
 
+    }
+
+    public int getComparatorValue() {
+        return comparatorValue;
+    }
+
+    public void setComparatorValue(int comparatorValue) {
+        this.comparatorValue = comparatorValue;
+    }
+
+    @Override
+    public void readExtraNBT(NBTTagCompound compound) {
+        super.readExtraNBT(compound);
+        if(compound.hasKey("comparator"))
+            comparatorValue=compound.getInteger("comparator");
+    }
+
+    @Override
+    public void writeExtraNBT(NBTTagCompound compound) {
+        super.writeExtraNBT(compound);
+        compound.setInteger("comparator",comparatorValue);
     }
 
     private void fillJar(TileJarFillable jar) {
