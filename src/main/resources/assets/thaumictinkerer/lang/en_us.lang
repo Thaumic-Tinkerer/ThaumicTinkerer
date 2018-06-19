@@ -28,6 +28,7 @@ ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.noAssign=Not Assigned
 ttmisc.shareTome.playerName=Bound to %s's research.
 ttmisc.shareTome.sync=Research Acquired.
+ttmisc.shareTome.clear=Research Cleared.
 ttmisc.cleaning_talisman.active=Talisman Active
 ttmisc.cleaning_talisman.inactive=Talisman Inactive
 ttmisc.connector.complete=Binding Complete!
@@ -44,7 +45,7 @@ ttmisc.connector.toofar=The Transvector Block of origin is too far away.
 tc.research_category.THAUMIC_TINKERER=Thaumic Tinkerer
 thaumictinkerer.research.share_tome.title=Tome of Knowledge Sharing
 thaumictinkerer.research.share_tome.lore=A Goldfish's Diary
-thaumictinkerer.research.share_tome.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else, they'll get all the research you've discovered so far.<BR><BR>(Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)
+thaumictinkerer.research.share_tome.0=If one day you happen to want to share your knowledge with the rest of the world, this is the item for you.<BR><BR>By simply right clicking on this tome and handing it to someone else, they'll get all the research you've discovered so far.<BR><BR>It only seems to be able to hold research you have completed however. (Note: Case there being no recipe on the right of this, the recipe is disabled and the item is creative only)
 
 thaumictinkerer.research.funnel.title=Essentia Funnel
 thaumictinkerer.research.funnel.lore=Even Transfer

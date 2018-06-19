@@ -47,27 +47,35 @@ public class ItemShareBook extends TTItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
-        if (item.getItem() instanceof ItemShareBook) {
-            String name = getPlayerName(item);
-            if (name.endsWith(NON_ASIGNED)) {
-                setPlayerName(item, playerIn.getGameProfile().getName());
-                setPlayerResearch(item, playerIn);
-                if (!worldIn.isRemote)
-                    playerIn.sendStatusMessage(new TextComponentTranslation("ttmisc.shareTome.write"),true);
-            } else {
-                Set<String> researchesDone;
-                if (!worldIn.isRemote) {
-                    researchesDone = getPlayerResearch(item);
-                    for (String researchkey : researchesDone) {
-                        CommandThaumcraft.giveRecursiveResearch(playerIn,researchkey);
-                        ThaumcraftCapabilities.getKnowledge(playerIn).sync((EntityPlayerMP)playerIn);
-                    }
-                        } else {
-                            playerIn.sendStatusMessage(new TextComponentTranslation(("ttmisc.shareTome.sync")),true);
+        if(!playerIn.isSneaking()) {
+            if (item.getItem() instanceof ItemShareBook) {
+                String name = getPlayerName(item);
+                if (name.endsWith(NON_ASIGNED)) {
+                    setPlayerName(item, playerIn.getGameProfile().getName());
+                    setPlayerResearch(item, playerIn);
+                    if (!worldIn.isRemote)
+                        playerIn.sendStatusMessage(new TextComponentTranslation("ttmisc.shareTome.write"), true);
+                } else {
+                    Set<String> researchesDone;
+                    if (!worldIn.isRemote) {
+                        researchesDone = getPlayerResearch(item);
+                        for (String researchkey: researchesDone) {
+                            CommandThaumcraft.giveRecursiveResearch(playerIn, researchkey);
+                            ThaumcraftCapabilities.getKnowledge(playerIn).sync((EntityPlayerMP) playerIn);
                         }
-
+                    } else {
+                        playerIn.sendStatusMessage(new TextComponentTranslation(("ttmisc.shareTome.sync")), true);
                     }
+
+                }
+            }
         }
+        else
+        {
+            clearPlayerResearch(item);
+            playerIn.sendStatusMessage(new TextComponentTranslation("ttmisc.shareTome.clear"), true);
+        }
+
         return ActionResult.newResult(EnumActionResult.SUCCESS, item);
     }
 
@@ -102,13 +110,17 @@ public class ItemShareBook extends TTItem {
         return retVals;
     }
 
-
+    private static void clearPlayerResearch(ItemStack stack)
+    {
+        ItemNBTHelper.getItemTag(stack).removeTag("research");
+    }
     private static void setPlayerResearch(ItemStack stack, EntityPlayer playername) {
         Set<String> researchesDone= ThaumcraftCapabilities.getKnowledge(playername).getResearchList();
         NBTTagCompound cmp = ItemNBTHelper.getItemTag(stack);
         NBTTagList list = new NBTTagList();
         for (String tag : researchesDone) {
-            list.appendTag(new NBTTagString(tag));
+            if(ThaumcraftCapabilities.getKnowledge(playername).isResearchComplete(tag))
+                list.appendTag(new NBTTagString(tag));
         }
         cmp.setTag("research", list);
     }
