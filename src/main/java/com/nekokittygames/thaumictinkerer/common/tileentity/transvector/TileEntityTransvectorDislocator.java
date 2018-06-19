@@ -13,6 +13,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.common.lib.utils.BlockUtils;
 
 import java.util.List;
 
@@ -158,7 +159,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
 
     private boolean checkBlock(BlockPos coords) {
         IBlockState state=world.getBlockState(coords);
-        return (!world.isAirBlock(coords)); //todo: make my own api based blacklist
+        return (!world.isAirBlock(coords) && !BlockUtils.isPortableHoleBlackListed(state));
     }
 
     public BlockPos getBlockTarget() {
