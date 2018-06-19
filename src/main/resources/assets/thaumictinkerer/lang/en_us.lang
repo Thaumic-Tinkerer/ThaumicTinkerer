@@ -38,6 +38,7 @@ ttmisc.connector.interffail=Can't bind a Transvector Interface to another.
 ttmisc.connector.dislfail=Can't bind a Transvector Dislocator to another.
 ttmisc.connector.notpresent=The Transvector Block isn't present.
 ttmisc.connector.toofar=The Transvector Block of origin is too far away.
+ttmisc.connector.clear=You have cleared the selected Transvector block
 
 
 

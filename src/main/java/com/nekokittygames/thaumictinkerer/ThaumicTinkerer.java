@@ -20,7 +20,7 @@ import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION,dependencies = LibMisc.MOD_DEPENDENCIES)
 public class ThaumicTinkerer
 {
-    private static Logger logger;
+    public static Logger logger;
 
     @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy",clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
     public static ITTProxy proxy;

@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibItemNames;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvector;
 import com.nekokittygames.thaumictinkerer.common.utils.ItemNBTHelper;
@@ -8,11 +9,9 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
@@ -30,8 +29,25 @@ public class ItemConnector extends TTItem {
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        RayTraceResult result=rayTrace(worldIn,playerIn,false);
+        if(result==null || (result!=null && result.typeOfHit== RayTraceResult.Type.MISS && playerIn.isSneaking()))
+        {
 
+
+            ItemStack stack=playerIn.getHeldItem(handIn);
+            BlockPos target=getTarget(stack);
+            if(target!=null)
+            {
+                clearTarget(stack);
+                playerIn.sendStatusMessage(new TextComponentTranslation("ttmisc.connector.clear"),true);
+            }
+        }
+        return super.onItemRightClick(worldIn, playerIn, handIn);
+    }
+
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity tile=worldIn.getTileEntity(pos);
         ItemStack stack=player.getHeldItem(hand);
         BlockPos target=getTarget(stack);
