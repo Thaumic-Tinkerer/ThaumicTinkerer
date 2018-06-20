@@ -1,0 +1,52 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "down":"thaumictinkerer:blocks/repairer",
+      "up":"thaumictinkerer:blocks/repairer",
+      "east":"thaumictinkerer:blocks/repairer",
+      "west":"thaumictinkerer:blocks/repairer",
+      "north":"thaumictinkerer:blocks/dark_quartz_block",
+      "south":"thaumictinkerer:blocks/repairer",
+      "particle":"thaumictinkerer:blocks/repairer",
+      "base":"thaumictinkerer:blocks/repairer/base",
+      "glass":"thaumictinkerer:blocks/repairer/glass",
+      "glasshole":"thaumictinkerer:blocks/repairer/glasshole",
+      "swirlytop":"thaumictinkerer:blocks/repairer/repair_off"
+    },
+    "model": "thaumictinkerer:repairer",
+    "uvlock": true
+  },
+  "variants": {
+    "active":
+    {
+      "false":
+      {
+        "textures":
+        {
+          "swirlytop":"thaumictinkerer:blocks/repairer/repair_off"
+        }
+      },
+      "true":
+      {
+        "textures":
+        {
+          "swirlytop":"thaumictinkerer:blocks/repairer/repair_on"
+        }
+      }
+    },
+    "facing":
+    {
+      "up": {"x":90},
+      "down": {"x":270},
+      "north": {},
+      "south": {"y":180},
+      "west": {"y":270},
+      "east": {"y":90}
+    },
+    "inventory": {
+      "model": "thaumictinkerer:repairer",
+      "transform":"forge:default-block"
+    }
+  }
+}

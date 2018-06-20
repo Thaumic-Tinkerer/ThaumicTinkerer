@@ -78,11 +78,6 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
 
 
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        super.onDataPacket(net, pkt);
-        sendUpdates();
-    }
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {

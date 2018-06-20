@@ -12,10 +12,12 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
+import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
+import thaumcraft.proxies.IProxy;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION,dependencies = LibMisc.MOD_DEPENDENCIES)
 public class ThaumicTinkerer
@@ -24,6 +26,8 @@ public class ThaumicTinkerer
 
     @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy",clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
     public static ITTProxy proxy;
+
+
 
     @Mod.Instance(LibMisc.MOD_ID)
     public static ThaumicTinkerer instance;

@@ -18,6 +18,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import thaumcraft.common.items.casters.CasterManager;
+import thaumcraft.common.items.casters.ItemCaster;
 
 public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
 
@@ -28,6 +30,7 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
         setHardness(3.0F);
         setResistance(8.0f);
         setDefaultState(this.getBlockState().getBaseState().withProperty(JAR,false));
+        ItemCaster tmp;
 
     }
 

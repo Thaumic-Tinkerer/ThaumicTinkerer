@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
@@ -12,7 +13,7 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
     {
         world.markBlockRangeForRenderUpdate(pos, pos);
         world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
-        world.scheduleBlockUpdate(pos,this.getBlockType(),0,0);
+
         markDirty();
     }
     @Override
@@ -43,6 +44,13 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
     public void handleUpdateTag(NBTTagCompound tag) {
         super.handleUpdateTag(tag);
         readExtraNBT(tag);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        super.onDataPacket(net, pkt);
+        handleUpdateTag(pkt.getNbtCompound());
+        sendUpdates();
     }
 
     @Nullable

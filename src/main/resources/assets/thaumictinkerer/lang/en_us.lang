@@ -10,6 +10,7 @@ item.thaumictinkerer:cleaning_talisman.0=Mitsukake's Gift
 
 item.thaumictinkerer:black_quartz.name=Smokey Quartz
 item.thaumictinkerer:connector.name=Transvector Binder
+
 // Blocks
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
@@ -17,6 +18,8 @@ tile.thaumictinkerer:funnel.0=Even Transfer
 tile.thaumictinkerer:dissimulation.name=Dissimulation Block
 
 tile.thaumictinkerer:transvector_interface.name=Transvector Interface
+
+tile.thaumictinkerer:repairer.name=Thaumic Restorer
 
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer Config

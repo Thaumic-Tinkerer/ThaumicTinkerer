@@ -25,4 +25,9 @@ public class TTConfig {
     @Config.LangKey("thaumictinkerer.config.transvector_dislocator.distance")
     @Config.RangeInt(min=0)
     public static int transvectorDislocatorDistance=10;
+
+    @Config.Comment("Can Tinkers Construct tools be repaired in the repairer?")
+    @Config.Name("Tinkers Construct Compatibility")
+    @Config.LangKey("thaumictinkerer.config.ticon.compatibility")
+    public static boolean TiConCompatibility=true;
 }

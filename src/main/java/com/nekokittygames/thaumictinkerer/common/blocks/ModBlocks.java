@@ -7,6 +7,7 @@ import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityDissimulation;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityFunnel;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityRepairer;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorInterface;
 import net.minecraft.block.Block;
@@ -33,6 +34,7 @@ public class ModBlocks {
     public static final BlockDissimulation dissimulation=Null();
     public static final BlockTransvectorInterface transvector_interface=Null();
     public static final BlockTransvectorDislocator transvector_dislocator=Null();
+    public static final BlockRepairer repairer=Null();
 
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -52,7 +54,8 @@ public class ModBlocks {
                     new BlockFunnel(),
                     new BlockDissimulation(),
                     new BlockTransvectorInterface(),
-                    new BlockTransvectorDislocator()
+                    new BlockTransvectorDislocator(),
+                    new BlockRepairer()
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -69,7 +72,8 @@ public class ModBlocks {
                 new ItemBlock(funnel),
                     new ItemBlock(dissimulation),
                     new ItemBlock(transvector_interface),
-                    new ItemBlock(transvector_dislocator)
+                    new ItemBlock(transvector_dislocator),
+                    new ItemBlock(repairer)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
@@ -85,6 +89,7 @@ public class ModBlocks {
             registerTileEntity(TileEntityDissimulation.class,LibBlockNames.DISSIMULATION);
             registerTileEntity(TileEntityTransvectorInterface.class,LibBlockNames.TRANSVECTOR_INTERFACE);
             registerTileEntity(TileEntityTransvectorDislocator.class,LibBlockNames.TRANSVECTOR_DISLOCATOR);
+            registerTileEntity(TileEntityRepairer.class,LibBlockNames.REPAIRER);
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {
