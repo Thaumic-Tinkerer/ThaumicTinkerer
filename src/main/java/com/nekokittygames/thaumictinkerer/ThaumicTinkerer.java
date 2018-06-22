@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer;
 
+import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
@@ -12,9 +13,12 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.util.Color;
 import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.casters.FocusEngine;
+import thaumcraft.api.casters.FocusNode;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import thaumcraft.proxies.IProxy;
@@ -49,6 +53,8 @@ public class ThaumicTinkerer
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles" ));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines" ));
         proxy.registerRenderers();
+        FocusEngine.registerElement(FocusEffectDislocate.class,new ResourceLocation("thaumictinkerer","blocks/dark_quartz_block"), 8760709);
+
     }
 }
 

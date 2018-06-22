@@ -47,4 +47,19 @@ public class ItemNBTHelper {
     {
         getItemTag(item).setBoolean(keyName,value);
     }
+
+    public static void setInteger(ItemStack item, String keyName, int value) {
+        getItemTag(item).setInteger(keyName,value);
+    }
+
+    public static int getInteger(ItemStack item,String keyName,int defaultValue)
+    {
+        if(getItemTag(item).hasKey(keyName))
+            return getItemTag(item).getInteger(keyName);
+        else
+        {
+            getItemTag(item).setInteger(keyName,defaultValue);
+            return defaultValue;
+        }
+    }
 }
