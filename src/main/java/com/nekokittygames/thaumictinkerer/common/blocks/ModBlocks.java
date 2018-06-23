@@ -93,7 +93,7 @@ public class ModBlocks {
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {
-            GameRegistry.registerTileEntity(clazz, new ResourceLocation("thaumictinkerer",name));
+            GameRegistry.registerTileEntity(clazz, new ResourceLocation("thaumictinkerer",name).toString());
         }
     }
 }
