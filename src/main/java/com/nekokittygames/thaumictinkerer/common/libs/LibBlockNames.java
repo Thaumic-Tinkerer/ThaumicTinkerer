@@ -7,4 +7,5 @@ public class LibBlockNames {
     public static final String TRANSVECTOR_INTERFACE="transvector_interface";
     public static final String TRANSVECTOR_DISLOCATOR="transvector_dislocator";
     public static final String REPAIRER="repairer";
+    public static final String MAGNET="magnet";
 }

@@ -20,7 +20,7 @@ tile.thaumictinkerer:dissimulation.name=Dissimulation Block
 tile.thaumictinkerer:transvector_interface.name=Transvector Interface
 
 tile.thaumictinkerer:repairer.name=Thaumic Restorer
-
+tile.thaumictinkerer:magnet.name=Attractor (WIP NOT WORKING)
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses
