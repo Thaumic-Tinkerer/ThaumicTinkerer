@@ -3,7 +3,7 @@
   "defaults": {
     "textures": {
     },
-    "model": "thaumictinkerer:magnet/magnet_base",
+    "model": "thaumictinkerer:magnet/mobmagnet_base",
     "uvlock": true
   },
   "variants": {
@@ -13,14 +13,14 @@
       {
         "textures":
         {
-          "1": "thaumictinkerer:blocks/magnet/item/back_front_pull"
+          "1": "thaumictinkerer:blocks/magnet/mob/back_front_pull"
         }
       },
       "push":
       {
         "textures":
         {
-          "1": "thaumictinkerer:blocks/magnet/item/back_front_push"
+          "1": "thaumictinkerer:blocks/magnet/mob/back_front_push"
         }
       }
     },
@@ -34,8 +34,12 @@
       "east": {"x":90,"y":90,"uvlock":false}
     },
     "inventory": {
-      "model": "thaumictinkerer:magnet/magnet_base",
-      "transform":"forge:default-block"
+      "model": "thaumictinkerer:magnet/mobmagnet_base",
+      "transform":"forge:default-block",
+      "textures":
+      {
+        "1": "thaumictinkerer:blocks/magnet/mob/back_front_pull"
+      }
     }
   }
 }

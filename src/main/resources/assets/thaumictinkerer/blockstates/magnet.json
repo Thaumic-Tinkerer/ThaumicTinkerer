@@ -35,7 +35,11 @@
     },
     "inventory": {
       "model": "thaumictinkerer:magnet/magnet_base",
-      "transform":"forge:default-block"
+      "transform":"forge:default-block",
+      "textures":
+      {
+        "1": "thaumictinkerer:blocks/magnet/item/back_front_pull"
+      }
     }
   }
 }
