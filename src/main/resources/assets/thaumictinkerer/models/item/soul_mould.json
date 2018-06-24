@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thaumictinkerer:items/soul_mould/empty"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "thaumictinkerer:full": 1
+      },
+      "model": "thaumictinkerer:item/soul_mould_full"
+    }
+  ]
+}

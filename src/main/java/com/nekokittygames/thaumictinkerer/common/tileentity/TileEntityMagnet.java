@@ -17,16 +17,13 @@ import thaumcraft.codechicken.lib.vec.Vector3;
 import java.util.List;
 
 
-public class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITickable {
+public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITickable {
 
     protected void test()
     {
 
     }
-    protected<T extends Entity> java.util.function.Predicate selectedEntities()
-    {
-        return  o -> o instanceof EntityItem;
-    }
+    protected abstract <T extends Entity>java.util.function.Predicate selectedEntities();
 
     @Override
     public void update() {
@@ -54,7 +51,8 @@ public class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITick
                 if (distanceSqrd > 1) {
 
                     MiscHelper.setEntityMotionFromVector(entity, new Vector3(x1, y1, z1), speedMod * 0.25F);
-                    FXDispatcher.INSTANCE.sparkle((float)x2,(float)y2,(float)z2,mode== BlockMagnet.MagnetPull.PULL?0:1,0,mode== BlockMagnet.MagnetPull.PULL?1:0);
+                    if(world!=null && FXDispatcher.INSTANCE.getWorld()!=null)
+                        FXDispatcher.INSTANCE.sparkle((float)x2,(float)y2,(float)z2,mode== BlockMagnet.MagnetPull.PULL?0:1,0,mode== BlockMagnet.MagnetPull.PULL?1:0);
 
                 }
 
@@ -62,9 +60,5 @@ public class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITick
         }
     }
 
-    private boolean filterEntity(Entity entity) {
-        if(entity.getEntityData().hasKey("PreventRemoteMovement"))
-            return !entity.getEntityData().getBoolean("PreventRemoteMovement");
-        return true;
-    }
+    protected abstract boolean filterEntity(Entity entity);
 }

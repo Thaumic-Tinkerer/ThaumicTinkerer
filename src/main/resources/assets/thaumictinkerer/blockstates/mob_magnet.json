@@ -1,0 +1,41 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+    },
+    "model": "thaumictinkerer:magnet/magnet_base",
+    "uvlock": true
+  },
+  "variants": {
+    "pole":
+    {
+      "pull":
+      {
+        "textures":
+        {
+          "1": "thaumictinkerer:blocks/magnet/item/back_front_pull"
+        }
+      },
+      "push":
+      {
+        "textures":
+        {
+          "1": "thaumictinkerer:blocks/magnet/item/back_front_push"
+        }
+      }
+    },
+    "facing":
+    {
+      "up": {},
+      "down": {"x":270,"uvlock":false},
+      "north": {"x":90,"uvlock":false},
+      "south": {"x":90,"y":180,"uvlock":false},
+      "west": {"x":90,"y":270,"uvlock":false},
+      "east": {"x":90,"y":90,"uvlock":false}
+    },
+    "inventory": {
+      "model": "thaumictinkerer:magnet/magnet_base",
+      "transform":"forge:default-block"
+    }
+  }
+}

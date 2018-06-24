@@ -21,19 +21,16 @@ import thaumcraft.api.casters.IInteractWithCaster;
 
 import static net.minecraft.block.BlockPistonBase.getFacing;
 
-public class BlockMagnet extends TTTileEntity<TileEntityMagnet> implements IInteractWithCaster {
+public abstract class BlockMagnet<T extends TileEntityMagnet> extends TTTileEntity<T> implements IInteractWithCaster {
     public static final PropertyDirection FACING=PropertyDirection.create("facing");
     public static final PropertyEnum<MagnetPull> POLE=PropertyEnum.create("pole",MagnetPull.class);
 
-    public BlockMagnet() {
-        super(LibBlockNames.MAGNET,Material.IRON, true);
+    public BlockMagnet(String name) {
+        super(name, Material.IRON,true);
         setDefaultState(this.getBlockState().getBaseState().withProperty(POLE,MagnetPull.PULL).withProperty(FACING, EnumFacing.NORTH));
     }
 
-    @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntityMagnet();
-    }
+
 
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this,POLE,FACING);

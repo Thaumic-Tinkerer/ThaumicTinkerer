@@ -21,6 +21,7 @@ tile.thaumictinkerer:transvector_interface.name=Transvector Interface
 
 tile.thaumictinkerer:repairer.name=Thaumic Restorer
 tile.thaumictinkerer:magnet.name=Kinetic Attractor
+tile.thaumictinkerer:mob_magnet.name=Corporeal Attractor
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses
@@ -42,6 +43,8 @@ ttmisc.connector.dislfail=Can't bind a Transvector Dislocator to another.
 ttmisc.connector.notpresent=The Transvector Block isn't present.
 ttmisc.connector.toofar=The Transvector Block of origin is too far away.
 ttmisc.connector.clear=You have cleared the selected Transvector block
+ttmisc.soulMould.nonAssigned=No Pattern
+ttmisc.soulMould.pattern=Current Pattern: %s
 
 
 

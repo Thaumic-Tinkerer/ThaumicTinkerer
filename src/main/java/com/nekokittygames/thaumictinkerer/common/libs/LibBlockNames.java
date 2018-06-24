@@ -8,4 +8,5 @@ public class LibBlockNames {
     public static final String TRANSVECTOR_DISLOCATOR="transvector_dislocator";
     public static final String REPAIRER="repairer";
     public static final String MAGNET="magnet";
+    public static final String MOB_MAGNET="mob_magnet";
 }

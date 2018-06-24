@@ -16,6 +16,7 @@ public class ItemNBTHelper {
         }
         return item.getTagCompound();
     }
+
     public static String getString(ItemStack item,String keyName,String defaultValue)
     {
         if(getItemTag(item).hasKey(keyName))
