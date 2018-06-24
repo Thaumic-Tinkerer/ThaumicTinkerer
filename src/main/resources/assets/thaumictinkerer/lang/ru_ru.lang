@@ -1,68 +1,68 @@
-itemGroup.thaumictinkerer=§l§eThaumic Tinkerer
+itemGroup.thaumictinkerer=Thaumic Tinkerer
 
 
 // Предметы
-item.thaumictinkerer:share_book.name=§eТом Обмена Знаний
+item.thaumictinkerer:share_book.name=Том Обмена Знаний
 item.thaumictinkerer:share_book.0=Дневник Золотой Рыбки
 
-item.thaumictinkerer:cleaning_talisman.name=§eТалисман Очищения
+item.thaumictinkerer:cleaning_talisman.name=Талисман Очищения
 item.thaumictinkerer:cleaning_talisman.0=Подарок Мицукаке
 
-item.thaumictinkerer:black_quartz.name=§8Дымчатый Кварц
-item.thaumictinkerer:connector.name=§eСвязывающий Трансвектор
+item.thaumictinkerer:black_quartz.name=Дымчатый Кварц
+item.thaumictinkerer:connector.name=Связывающий Трансвектор
 
 // Блоки
-tile.thaumictinkerer:funnel.name=§5Воронка Эссенции
+tile.thaumictinkerer:funnel.name=Воронка Эссенции
 tile.thaumictinkerer:funnel.0=Ещё Переливать!
 
-tile.thaumictinkerer:dissimulation.name=§6Скрытный Блок
+tile.thaumictinkerer:dissimulation.name=Скрытный Блок
 
-tile.thaumictinkerer:transvector_interface.name=§6Трансвектор
+tile.thaumictinkerer:transvector_interface.name=Трансвектор
 
-tile.thaumictinkerer:repairer.name=§eТаум Восстановитель
-tile.thaumictinkerer:magnet.name=§eПритяжатель (В разработке, Не работает)
+tile.thaumictinkerer:repairer.name=Таум Восстановитель
+tile.thaumictinkerer:magnet.name=Притяжатель (В разработке, Не работает)
 // Конфигурация
 thaumictinkerer.config.title=Конфигурация Thaumic Tinkerer
-thaumictinkerer.config.talisman=§2Использовать Талисман Очищения
+thaumictinkerer.config.talisman=Использовать Талисман Очищения
 
 // Разное
 
-ttmisc.shareTome.write=§2Исследования Записаны!
-ttmisc.shareTome.noAssign=§2Не Назначено
-ttmisc.shareTome.playerName=§2Связано с §c%s's исследованиями.
-ttmisc.shareTome.sync=§2Приобретённые Исследования.
-ttmisc.shareTome.clear=§2Исследования Очищенны.
-ttmisc.cleaning_talisman.active=§2Талисман Активирован
-ttmisc.cleaning_talisman.inactive=§2Талисман Неактивирован
-ttmisc.connector.complete=§2Привязка Завершена!
-ttmisc.connector.set=§2Местоположение Установлено!
-ttmisc.connector.notinterf=§2Нет Трансвектора.
-ttmisc.connector.interffail=§2Невозможно связать Трансвектор с другим.
-ttmisc.connector.dislfail=§2Невозможно связать Связывающий Трансвектор с другим.
-ttmisc.connector.notpresent=§2Трансвектор не присутствует.
-ttmisc.connector.toofar=§2Происхождение Трансвектора находится слишком далеко.
-ttmisc.connector.clear=§2Ты очистил выбранный Трансвектор.
+ttmisc.shareTome.write=Исследования Записаны!
+ttmisc.shareTome.noAssign=Не Назначено
+ttmisc.shareTome.playerName=Связано с §c%s's исследованиями.
+ttmisc.shareTome.sync=Приобретённые Исследования.
+ttmisc.shareTome.clear=Исследования Очищенны.
+ttmisc.cleaning_talisman.active=Талисман Активирован
+ttmisc.cleaning_talisman.inactive=Талисман Неактивирован
+ttmisc.connector.complete=Привязка Завершена!
+ttmisc.connector.set=Местоположение Установлено!
+ttmisc.connector.notinterf=Нет Трансвектора.
+ttmisc.connector.interffail=Невозможно связать Трансвектор с другим.
+ttmisc.connector.dislfail=Невозможно связать Связывающий Трансвектор с другим.
+ttmisc.connector.notpresent=Трансвектор не присутствует.
+ttmisc.connector.toofar=Происхождение Трансвектора находится слишком далеко.
+ttmisc.connector.clear=Ты очистил выбранный Трансвектор.
 
 
 
 //Исследование
 tc.research_category.THAUMIC_TINKERER=Thaumic Tinkerer
-thaumictinkerer.research.share_tome.title=§e§lТом Обмена Знаний
-thaumictinkerer.research.share_tome.lore=§2Дневник Золотой Рыбки
-thaumictinkerer.research.share_tome.0=Если в один прекрасный день ты захочешь поделиться своими знаниями с остальным миром, это предмет для тебя.<LINE>Просто щёлкнув ПКМ на этом томе и передав его кому-нибудь другому, они получат все исследования, которые ты до сих пор обнаружил.<LINE>Однако, кажется, ты можешь проводить исследования, которые ты завершил. (§2Примечание§r: В случае отсутствия рецепта справа от него, рецепт отключён и он является предметом творческого режима).
+thaumictinkerer.research.share_tome.title=Том Обмена Знаний
+thaumictinkerer.research.share_tome.lore=Дневник Золотой Рыбки
+thaumictinkerer.research.share_tome.0=Если в один прекрасный день ты захочешь поделиться своими знаниями с остальным миром, это предмет для тебя.<BR><BR>Просто щёлкнув ПКМ на этом томе и передав его кому-нибудь другому, они получат все исследования, которые ты до сих пор обнаружил.<BR><BR>Однако, кажется, ты можешь проводить исследования, которые ты завершил. (§2Примечание§r: В случае отсутствия рецепта справа от него, рецепт отключён и он является предметом творческого режима).
 
-thaumictinkerer.research.funnel.title=§e§lВоронка Эссенции
-thaumictinkerer.research.funnel.lore=§2Ещё Передавать
-thaumictinkerer.research.funnel.0=Ты устал управлять своими §7банками§r с §7пузырьками§r, до этого, ты создал новый механизм для передачи содержимого из одной §7банки§r в другую.<LINE>Разместив эту §5Воронку Эссенции§r поверх воронки и щёлкнув ПКМ с заполненной §7банкой§r, и если воронка указывает на §7банку§r которая либо пуста, либо имеет тот же аспект, содержимое §7банки§r будет перелито.
+thaumictinkerer.research.funnel.title=Воронка Эссенции
+thaumictinkerer.research.funnel.lore=Ещё Передавать
+thaumictinkerer.research.funnel.0=Ты устал управлять своими банками§r с пузырьками, до этого, ты создал новый механизм для передачи содержимого из одной банки в другую.<BR><BR>Разместив эту Воронку Эссенции поверх воронки и щёлкнув ПКМ с заполненной банкой, и если воронка указывает на банку которая либо пуста, либо имеет тот же аспект, содержимое банки будет перелито.
 
-thaumictinkerer.research.cleaning_talisman.title=§e§lТалисман Очищения
-thaumictinkerer.research.cleaning_talisman.lore=§2Подарок Мицукаке
-thaumictinkerer.research.cleaning_talisman.0=Ты изучил жизнь и тело, и после изучения некоторых §4ядов§r и §2лекарств§r, ты обнаружил, что с помощью применения §5магии§r, ты можешь защитить себя от вредных внешних эффектов, перенаправляя эти эффекты на предмет. Этот §6§1талисман§r позволит развеить самые §8вредные эффекты§r на владельца и сохранит их на себе, получив урон.<LINE>Чтобы включить или отключить эту возможность, нужно щёлкнуть по нему ПКМ. Как и следовало ожидать, он работает только когда включён. Его необходимо носить в своём слоте амулета чтобы принимать в себя §8вредные эффекты§r.
+thaumictinkerer.research.cleaning_talisman.title=Талисман Очищения
+thaumictinkerer.research.cleaning_talisman.lore=Подарок Мицукаке
+thaumictinkerer.research.cleaning_talisman.0=Ты изучил жизнь и тело, и после изучения некоторых ядов и лекарств, ты обнаружил, что с помощью применения магии, ты можешь защитить себя от вредных внешних эффектов, перенаправляя эти эффекты на предмет. Этот талисман позволит развеить самые вредные эффекты на владельца и сохранит их на себе, получив урон.<BR><BR>Чтобы включить или отключить эту возможность, нужно щёлкнуть по нему ПКМ. Как и следовало ожидать, он работает только когда включён. Его необходимо носить в своём слоте амулета чтобы принимать в себя вредные эффекты.
 
-thaumictinkerer.research.black_quartz.title=§e§lДымчатый Кварц
-thaumictinkerer.research.black_quartz.lore=§2Тёмный День
-thaumictinkerer.research.black_quartz.0=§6§1Дымчатый Кварц§r в основном §7кварцевый§r, хотя негативный. Все обычные блоки, которые могут быть изготовлены с помощью §7кварца§r, также могут быть изготовлены с помощью §8Дымчатого Кварца§r, и они выглядят §8чёрными§r.<LINE>Сам §8дымчатый кварц§r может быть изготовлен из §8кусочка угля§r или из §8древесного угля§r, и из нескольких обычных кусочков §4Адских Кварцев§r.
+thaumictinkerer.research.black_quartz.title=Дымчатый Кварц
+thaumictinkerer.research.black_quartz.lore=Тёмный День
+thaumictinkerer.research.black_quartz.0=Дымчатый Кварц§r в основном §7кварцевый§r, хотя негативный. Все обычные блоки, которые могут быть изготовлены с помощью §7кварца§r, также могут быть изготовлены с помощью §8Дымчатого Кварца§r, и они выглядят §8чёрными§r.<LINE>Сам §8дымчатый кварц§r может быть изготовлен из §8кусочка угля§r или из §8древесного угля§r, и из нескольких обычных кусочков §4Адских Кварцев§r.
 
-thaumictinkerer.research.transvector_interface.title=§e§lТрансвектор
-thaumictinkerer.research.transvector_interface.0=Дело в том, что есть только 6 сторон блока ..."- Direwolf20<LINE>Миф = Разрушен! Твоя последняя конструкция может быть привязана к блоку недалеко от расположенного по соседству. Его стороны будут имитировать стороны выбранного блока, и он будет функционировать в качестве дополнения. Он может принимать энергию §2BuildCraft§r, §2TE3§r и §2IC2§r, §dэссенцию§r, предметы и жидкости, также способен экспортировать последние 2.<LINE>Чтобы привязать трансвектор к другому блоку, для этого необходимо создать специальный инструмент. То, что ты называешь §6Трансвекторный Соединитель§r должен выполнять свою работу.<LINE>Просто щёлкнув ПКМ по §6Трансвектору§r, после-чего щёлкнув ПКМ на цель, эти 2 блока получат связь и будут готовы к работе. Лимит небольшой, чаще всего 4 блока. (Примечание: трубы из §2buildcraft§r должны быть сломаны и заменены на работу) также возможно, щёлкнув ПКМ этим блоком с каким-либо другим, чтобы его скрыть. Чтобы снять покрытие, просто щёлкнит ПКМ на скрытом блоке с пустой рукой.
+thaumictinkerer.research.transvector_interface.title=Трансвектор
+thaumictinkerer.research.transvector_interface.0=Дело в том, что есть только 6 сторон блока ..."- Direwolf20<BR>Миф = Разрушен! Твоя последняя конструкция может быть привязана к блоку недалеко от расположенного по соседству. Его стороны будут имитировать стороны выбранного блока, и он будет функционировать в качестве дополнения. Он может принимать энергию §2BuildCraft§r, §2TE3§r и §2IC2§r, §dэссенцию§r, предметы и жидкости, также способен экспортировать последние 2.<BR><BR>Чтобы привязать трансвектор к другому блоку, для этого необходимо создать специальный инструмент. То, что ты называешь §6Трансвекторный Соединитель§r должен выполнять свою работу.<BR>Просто щёлкнув ПКМ по §6Трансвектору§r, после-чего щёлкнув ПКМ на цель, эти 2 блока получат связь и будут готовы к работе. Лимит небольшой, чаще всего 4 блока. (Примечание: трубы из §2buildcraft§r должны быть сломаны и заменены на работу) также возможно, щёлкнув ПКМ этим блоком с каким-либо другим, чтобы его скрыть. Чтобы снять покрытие, просто щёлкнит ПКМ на скрытом блоке с пустой рукой.
 
