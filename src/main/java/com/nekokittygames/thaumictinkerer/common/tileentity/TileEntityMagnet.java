@@ -63,7 +63,7 @@ public class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITick
     }
 
     private boolean filterEntity(Entity entity) {
-        if(entity.getEntityData()!=null && entity.getEntityData().hasKey("PreventRemoteMovement"))
+        if(entity.getEntityData().hasKey("PreventRemoteMovement"))
             return !entity.getEntityData().getBoolean("PreventRemoteMovement");
         return true;
     }
