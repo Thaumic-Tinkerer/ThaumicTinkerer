@@ -20,7 +20,7 @@ tile.thaumictinkerer:dissimulation.name=Скрытный Блок
 tile.thaumictinkerer:transvector_interface.name=Трансвектор
 
 tile.thaumictinkerer:repairer.name=Таум Восстановитель
-tile.thaumictinkerer:magnet.name=Притяжатель
+tile.thaumictinkerer:magnet.name=Кинетический Притяжатель
 // Конфигурация
 thaumictinkerer.config.title=Конфигурация Thaumic Tinkerer
 thaumictinkerer.config.talisman=Использовать Талисман Очищения
