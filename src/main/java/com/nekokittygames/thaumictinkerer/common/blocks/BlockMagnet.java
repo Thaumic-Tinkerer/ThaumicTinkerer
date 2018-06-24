@@ -58,15 +58,7 @@ public class BlockMagnet extends TTTileEntity<TileEntityMagnet> implements IInte
         return i;
     }
 
-    @Override
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        TileEntity te=worldIn.getTileEntity(pos);
-        if(te instanceof TileEntityMagnet) {
-            TileEntityMagnet magnet = (TileEntityMagnet) te;
-            return state.withProperty(POLE,MagnetPull.PUSH);
-        }
-        return state;
-    }
+
     @Override
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.TRANSLUCENT;
@@ -101,7 +93,9 @@ public class BlockMagnet extends TTTileEntity<TileEntityMagnet> implements IInte
 
     @Override
     public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing, EnumHand enumHand) {
-        return false;
+        IBlockState current=world.getBlockState(blockPos);
+        world.setBlockState(blockPos,current.withProperty(POLE,current.getValue(POLE)==MagnetPull.PULL?MagnetPull.PUSH:MagnetPull.PULL));
+        return true;
     }
 
     public static enum MagnetPull implements IStringSerializable
