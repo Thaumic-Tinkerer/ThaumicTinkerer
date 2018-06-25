@@ -48,9 +48,11 @@ public class ItemSoulMould extends TTItem {
 
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+        ItemStack actualStack=playerIn.getHeldItem(hand);
         if(target!=null && !(target instanceof EntityPlayer))
         {
-            setEntityName(stack,target);
+            setEntityName(actualStack,target);
+
             return true;
         }
         return false;
