@@ -1,4 +1,4 @@
-package com.nekokittygames.thaumictinkerer.client.misc;
+package com.nekokittygames.thaumictinkerer.client.libs;
 
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 

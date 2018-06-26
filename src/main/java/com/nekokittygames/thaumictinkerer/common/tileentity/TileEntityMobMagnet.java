@@ -5,6 +5,7 @@ import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,6 +48,14 @@ public class TileEntityMobMagnet extends TileEntityMagnet{
             return super.insertItem(slot, stack, simulate);
         }
     };
+
+    public boolean isPullAdults() {
+        return pullAdults;
+    }
+
+    public void setPullAdults(boolean pullAdults) {
+        this.pullAdults = pullAdults;
+    }
 
     private boolean pullAdults=true;
 
@@ -102,7 +111,11 @@ public class TileEntityMobMagnet extends TileEntityMagnet{
     protected boolean filterEntity(Entity entity) {
         EntityLiving entityLiving= (EntityLiving) entity;
         boolean agePull=false;
-        if(entityLiving.isChild()==!pullAdults )
+        if(entityLiving instanceof EntityAgeable)
+        {
+            agePull=isPullAdults() !=((EntityAgeable) entity).isChild();
+        }
+        else
             agePull=true;
         boolean typePull=true;
         if(this.getInventory().getStackInSlot(0)!=ItemStack.EMPTY)

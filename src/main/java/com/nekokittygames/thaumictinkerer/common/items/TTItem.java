@@ -1,7 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
 
-import com.nekokittygames.thaumictinkerer.client.misc.LibClientMisc;
+import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.misc.CreativeTabThaumicTinkerer;
 import net.minecraft.client.resources.I18n;

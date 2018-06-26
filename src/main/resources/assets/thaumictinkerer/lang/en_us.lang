@@ -27,6 +27,10 @@ thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses
 
 // Misc
+ttmisc.mobmagnet.all=All
+ttmisc.mobmagnet.none=None
+ttmisc.mobmagnet.child=Child
+ttmisc.mobmagnet.adult=Adult
 
 ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.noAssign=Not Assigned

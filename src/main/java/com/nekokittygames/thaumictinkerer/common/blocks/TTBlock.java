@@ -1,6 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
-import com.nekokittygames.thaumictinkerer.client.misc.LibClientMisc;
+import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.misc.CreativeTabThaumicTinkerer;
 import net.minecraft.block.Block;

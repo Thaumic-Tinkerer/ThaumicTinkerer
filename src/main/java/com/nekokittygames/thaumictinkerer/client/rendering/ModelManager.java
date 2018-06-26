@@ -1,10 +1,8 @@
 package com.nekokittygames.thaumictinkerer.client.rendering;
 
-import com.nekokittygames.thaumictinkerer.client.misc.LibClientMisc;
-import com.nekokittygames.thaumictinkerer.common.blocks.BlockFunnel;
+import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
-import com.nekokittygames.thaumictinkerer.common.items.baubles.ItemCleaningTalisman;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.utils.IVariant;
 import net.minecraft.block.Block;
