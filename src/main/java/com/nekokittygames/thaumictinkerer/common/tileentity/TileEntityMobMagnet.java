@@ -55,6 +55,7 @@ public class TileEntityMobMagnet extends TileEntityMagnet{
 
     public void setPullAdults(boolean pullAdults) {
         this.pullAdults = pullAdults;
+        sendUpdates();
     }
 
     private boolean pullAdults=true;
@@ -104,7 +105,7 @@ public class TileEntityMobMagnet extends TileEntityMagnet{
     }
     @Override
     protected <T extends Entity> Predicate selectedEntities() {
-        return o->o instanceof EntityLiving;
+        return o->o instanceof EntityLiving && filterEntity((Entity)o);
     }
 
     @Override

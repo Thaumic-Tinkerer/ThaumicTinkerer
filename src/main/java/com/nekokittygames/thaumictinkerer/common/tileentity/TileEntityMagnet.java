@@ -19,10 +19,6 @@ import java.util.List;
 
 public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITickable {
 
-    protected void test()
-    {
-
-    }
     protected abstract <T extends Entity>java.util.function.Predicate selectedEntities();
 
     @Override
@@ -42,8 +38,6 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
             double range = redstone >> 1;
             List<Entity> entities=world.<Entity>getEntitiesWithinAABB(Entity.class,new AxisAlignedBB(x1-range,pos.getY(),z1-range,x1+range,y1+range,z1+range), selectedEntities()::test);
             for (Entity entity : entities) {
-                if(!filterEntity(entity))
-                    return;
                 double x2=entity.posX;
                 double y2=entity.posY;
                 double z2=entity.posZ;

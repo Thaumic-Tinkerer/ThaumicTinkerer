@@ -12,7 +12,7 @@ public class TileEntityItemMagnet extends TileEntityMagnet {
 
     @Override
     public <T extends Entity>Predicate selectedEntities() {
-        return  o -> o instanceof EntityItem;
+        return  o -> o instanceof EntityItem && filterEntity((Entity)o);
     }
 
     protected boolean filterEntity(Entity entity) {

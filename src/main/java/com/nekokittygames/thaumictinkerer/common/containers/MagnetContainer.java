@@ -10,6 +10,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
+import javax.annotation.Nonnull;
+
 public class MagnetContainer extends Container {
 
     private TileEntityMobMagnet tileEntity;
@@ -44,7 +46,14 @@ public class MagnetContainer extends Container {
         IItemHandler itemHandler = this.tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         int x = 54;
         int y = 38;
-        this.addSlotToContainer(new SlotItemHandler(itemHandler,0,x,y));
+        this.addSlotToContainer(new SlotItemHandler(itemHandler,0,x,y)
+        {
+            @Override
+            public void onSlotChange(@Nonnull ItemStack p_75220_1_, @Nonnull ItemStack p_75220_2_) {
+                tileEntity.sendUpdates();
+                super.onSlotChange(p_75220_1_, p_75220_2_);
+            }
+        });
     }
 
 
