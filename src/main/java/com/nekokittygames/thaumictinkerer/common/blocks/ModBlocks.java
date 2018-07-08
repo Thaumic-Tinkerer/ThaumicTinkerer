@@ -36,7 +36,7 @@ public class ModBlocks {
     public static final BlockRepairer repairer=Null();
     public static final BlockItemMagnet magnet=Null();
     public static final BlockMobMagnet mob_magnet=Null();
-    public static final BlockNitorVapor nitor_vapor = new BlockNitorVapor();
+    public static final BlockNitorVapor nitor_vapor = Null();
 
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -60,7 +60,7 @@ public class ModBlocks {
                     new BlockRepairer(),
                     new BlockItemMagnet(),
                     new BlockMobMagnet(),
-                    nitor_vapor
+                    new BlockNitorVapor()
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -80,8 +80,7 @@ public class ModBlocks {
                     new ItemBlock(transvector_dislocator),
                     new ItemBlock(repairer),
                     new ItemBlock(magnet),
-                    new ItemBlock(mob_magnet),
-                    (ItemBlock) new ItemBlock(nitor_vapor).setCreativeTab(null)
+                    new ItemBlock(mob_magnet)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
