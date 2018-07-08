@@ -9,4 +9,5 @@ public class LibBlockNames {
     public static final String REPAIRER="repairer";
     public static final String MAGNET="magnet";
     public static final String MOB_MAGNET="mob_magnet";
+    public static final String ENERGETIC_NITOR_VAPOR = "nitor_vapor";
 }

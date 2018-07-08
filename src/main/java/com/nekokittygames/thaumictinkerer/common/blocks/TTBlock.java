@@ -40,7 +40,7 @@ public class TTBlock extends Block {
     }
 
 
-    private boolean isInCreativeTab() {
+    protected boolean isInCreativeTab() {
         return true;
     }
 
