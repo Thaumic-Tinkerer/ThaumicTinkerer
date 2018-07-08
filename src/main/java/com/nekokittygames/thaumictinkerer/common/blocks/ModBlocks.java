@@ -9,6 +9,7 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.*;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorInterface;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
@@ -35,6 +36,7 @@ public class ModBlocks {
     public static final BlockRepairer repairer=Null();
     public static final BlockItemMagnet magnet=Null();
     public static final BlockMobMagnet mob_magnet=Null();
+    public static final BlockNitorVapor nitor_vapor = new BlockNitorVapor();
 
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -57,7 +59,8 @@ public class ModBlocks {
                     new BlockTransvectorDislocator(),
                     new BlockRepairer(),
                     new BlockItemMagnet(),
-                    new BlockMobMagnet()
+                    new BlockMobMagnet(),
+                    nitor_vapor
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -77,7 +80,8 @@ public class ModBlocks {
                     new ItemBlock(transvector_dislocator),
                     new ItemBlock(repairer),
                     new ItemBlock(magnet),
-                    new ItemBlock(mob_magnet)
+                    new ItemBlock(mob_magnet),
+                    (ItemBlock) new ItemBlock(nitor_vapor).setCreativeTab(null)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 

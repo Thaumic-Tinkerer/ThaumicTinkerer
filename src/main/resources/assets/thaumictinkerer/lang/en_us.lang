@@ -11,6 +11,8 @@ item.thaumictinkerer:cleaning_talisman.0=Mitsukake's Gift
 item.thaumictinkerer:black_quartz.name=Smokey Quartz
 item.thaumictinkerer:connector.name=Transvector Binder
 
+item.thaumictinkerer:energetic_nitor.name=Energetic Nitor
+
 // Blocks
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
