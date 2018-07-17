@@ -36,7 +36,7 @@ public class ModBlocks {
     public static final BlockItemMagnet magnet=Null();
     public static final BlockMobMagnet mob_magnet=Null();
     public static final BlockNitorVapor nitor_vapor = Null();
-
+    public static final BlockExample example=Null();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
@@ -59,7 +59,8 @@ public class ModBlocks {
                     new BlockRepairer(),
                     new BlockItemMagnet(),
                     new BlockMobMagnet(),
-                    new BlockNitorVapor()
+                    new BlockNitorVapor(),
+                    new BlockExample()
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -80,7 +81,8 @@ public class ModBlocks {
                     new ItemBlock(repairer),
                     new ItemBlock(magnet),
                     new ItemBlock(mob_magnet),
-                    new ItemBlock(nitor_vapor)
+                    new ItemBlock(nitor_vapor),
+                    new ItemBlock(example)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
@@ -99,6 +101,7 @@ public class ModBlocks {
             registerTileEntity(TileEntityRepairer.class,LibBlockNames.REPAIRER);
             registerTileEntity(TileEntityItemMagnet.class,LibBlockNames.MAGNET);
             registerTileEntity(TileEntityMobMagnet.class,LibBlockNames.MOB_MAGNET);
+            registerTileEntity(TileEntityExample.class,LibBlockNames.EXAMPLE);
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {

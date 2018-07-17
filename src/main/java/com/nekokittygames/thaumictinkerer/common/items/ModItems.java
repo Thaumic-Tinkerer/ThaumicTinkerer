@@ -24,6 +24,7 @@ public class ModItems {
     public static final ItemConnector connector=Null();
     public static final ItemSoulMould soul_mould=Null();
     public static final ItemEnergeticNitor energetic_nitor = Null();
+    public static final ItemFormRevealer form_revealer=Null();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
@@ -41,7 +42,8 @@ public class ModItems {
                     new ItemBlackQuartz(),
                     new ItemConnector(),
                     new ItemSoulMould(),
-                    new ItemEnergeticNitor()
+                    new ItemEnergeticNitor(),
+                    new ItemFormRevealer()
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
