@@ -10,16 +10,13 @@ import net.minecraft.client.renderer.block.model.ModelManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.shader.Shader;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.client.model.animation.FastTESR;
 import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.blocks.misc.BlockNitor;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEntityExample> {
 
@@ -33,16 +30,16 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GlStateManager.disableLighting();
-        GlStateManager.translate(x + 1/20f, y + 1/20f, z + 1/20f);
-        Shaders.useShader(Shaders.getChangeAlphaShader(), new Consumer<Integer>() {
-            @Override
-            public void accept(Integer shaderId) {
-                int alpha = ARBShaderObjects.glGetUniformLocationARB(shaderId, "alpha");
-                ARBShaderObjects.glUniform1fARB(alpha, 0.4F);
-            }
+        float growthFactor=(((float)te.getTime())/((float)TileEntityExample.GROW_TIME));
+
+        GlStateManager.translate(x + 10/20f, y + 10/20f, z + 10/20f);
+        GlStateManager.translate(x,y,z);
+        Shaders.useShader(Shaders.getChangeAlphaShader(), shaderId -> {
+            int alpha1 = ARBShaderObjects.glGetUniformLocationARB(shaderId, "alpha");
+            ARBShaderObjects.glUniform1fARB(alpha1, 0.4F);
         });
         float maxScale=18/20f;
-        float currentScale=maxScale*(((float)te.getTime())/((float)TileEntityExample.GROW_TIME));
+        float currentScale=maxScale*growthFactor;
         GlStateManager.scale(currentScale, currentScale, currentScale);
         GlStateManager.color(1.0f,1.0f,1.0f,0.5f);
 
