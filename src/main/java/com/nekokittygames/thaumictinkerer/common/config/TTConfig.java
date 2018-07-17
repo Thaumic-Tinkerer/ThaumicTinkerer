@@ -30,4 +30,11 @@ public class TTConfig {
     @Config.Name("Tinkers Construct Compatibility")
     @Config.LangKey("thaumictinkerer.config.ticon.compatibility")
     public static boolean TiConCompatibility=true;
+
+
+    @Config.Comment("Are Shaders allowed? This effects purely cosmetic visual effects like the transparency for multiblock placeholder")
+    @Config.Name("Shaders Enabled")
+    @Config.RequiresMcRestart()
+    public static boolean ShadersEnabled=true;
 }
+

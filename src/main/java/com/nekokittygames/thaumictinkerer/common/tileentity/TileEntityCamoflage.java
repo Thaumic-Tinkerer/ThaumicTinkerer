@@ -14,6 +14,8 @@ import javax.annotation.Nullable;
 
 public abstract class TileEntityCamoflage extends TileEntityThaumicTinkerer {
 
+    public static final String TAG_BLOCK_NAME = "blockName";
+    public static final String TAG_BLOCK_META = "blockMeta";
     private IBlockState blockCopy;
 
     public IBlockState getBlockCopy() {
@@ -27,9 +29,9 @@ public abstract class TileEntityCamoflage extends TileEntityThaumicTinkerer {
 
   @Override
     public void readExtraNBT(NBTTagCompound compound) {
-        if(compound.hasKey("blockName")) {
-            Block blk = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(compound.getString("blockName")));
-            blockCopy=blk.getStateFromMeta(compound.getInteger("blockMeta"));
+        if(compound.hasKey(TAG_BLOCK_NAME)) {
+            Block blk = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(compound.getString(TAG_BLOCK_NAME)));
+            blockCopy=blk.getStateFromMeta(compound.getInteger(TAG_BLOCK_META));
         }
     }
 
@@ -42,8 +44,8 @@ public abstract class TileEntityCamoflage extends TileEntityThaumicTinkerer {
     @Override
     public void writeExtraNBT(NBTTagCompound compound) {
         if(blockCopy!=null) {
-            compound.setString("blockName", blockCopy.getBlock().getRegistryName().toString());
-            compound.setInteger("blockMeta", blockCopy.getBlock().getMetaFromState(blockCopy));
+            compound.setString(TAG_BLOCK_NAME, blockCopy.getBlock().getRegistryName().toString());
+            compound.setInteger(TAG_BLOCK_META, blockCopy.getBlock().getMetaFromState(blockCopy));
         }
 
     }

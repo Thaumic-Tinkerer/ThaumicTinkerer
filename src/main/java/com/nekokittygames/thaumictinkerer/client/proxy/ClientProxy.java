@@ -1,5 +1,7 @@
 package com.nekokittygames.thaumictinkerer.client.proxy;
 
+import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
+import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityExampleRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityFunnelRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityRepairerRenderer;
@@ -21,6 +23,8 @@ public class ClientProxy implements ITTProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFunnel.class,new TileEntityFunnelRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRepairer.class,new TileEntityRepairerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExample.class,new TileEntityExampleRenderer());
+
+        Shaders.initShaders();
     }
 
     @Override
