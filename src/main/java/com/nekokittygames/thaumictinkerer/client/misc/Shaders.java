@@ -114,6 +114,8 @@ public class Shaders {
             ThaumicTinkerer.logger.error(ARBShaderObjects.glGetInfoLogARB(program, ARBShaderObjects.glGetObjectParameteriARB(program, ARBShaderObjects.GL_OBJECT_INFO_LOG_LENGTH_ARB)));
             return 0;
         }
+        ARBShaderObjects.glDeleteObjectARB(fragId);
+        ARBShaderObjects.glDeleteObjectARB(vertId);
         return program;
     }
 
