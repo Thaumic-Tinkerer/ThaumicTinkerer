@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ITickable;
@@ -41,6 +42,8 @@ public class TileEntityExample extends TileEntityThaumicTinkerer implements ITic
         nbttagcompound.setInteger("TIME",time);
         nbttagcompound.setBoolean("ACTIVATED",activated);
         NBTTagCompound block=new NBTTagCompound();
+        if(guideBlockType==null)
+            guideBlockType= Blocks.AIR.getDefaultState();
         NBTUtil.writeBlockState(block,guideBlockType);
         nbttagcompound.setTag("BLOCKTYPE",block);
     }

@@ -1,0 +1,337 @@
+{
+  "name": "Osmotic Enchanter",
+  "keyBlock": "thaumictinkerer:osmotic_enchanter",
+  "blocks": [
+    {
+      "name": "obsidian",
+      "block": {
+        "blockType": "minecraft:obsidian"
+      }
+    },
+    {
+      "name": "nitor",
+      "block": [
+        {
+          "blockType": "thaumcraft:nitor_white"
+        },
+        {
+          "blockType": "thaumcraft:nitor_orange"
+        },
+        {
+          "blockType": "thaumcraft:nitor_magenta"
+        },
+        {
+          "blockType": "thaumcraft:nitor_lightblue"
+        },
+        {
+          "blockType": "thaumcraft:nitor_yellow"
+        },
+        {
+          "blockType": "thaumcraft:nitor_lime"
+        },
+        {
+          "blockType": "thaumcraft:nitor_pink"
+        },
+        {
+          "blockType": "thaumcraft:nitor_gray"
+        },
+        {
+          "blockType": "thaumcraft:nitor_silver"
+        },
+        {
+          "blockType": "thaumcraft:nitor_cyan"
+        },
+        {
+          "blockType": "thaumcraft:nitor_purple"
+        },
+        {
+          "blockType": "thaumcraft:nitor_blue"
+        },
+        {
+          "blockType": "thaumcraft:nitor_brown"
+        },
+        {
+          "blockType": "thaumcraft:nitor_green"
+        },
+        {
+          "blockType": "thaumcraft:nitor_red"
+        },
+        {
+          "blockType": "thaumcraft:nitor_black"
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "y": -2,
+      "blocks": [
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": -1,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 1,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": -1
+        },
+        {
+          "block": "obsidian",
+          "x": -1,
+          "z": -1
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": -1
+        },
+        {
+          "block": "obsidian",
+          "x": 1,
+          "z": -1
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": -1
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": -1,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": 1,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 1
+        },
+        {
+          "block": "obsidian",
+          "x": -1,
+          "z": 1
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": 1
+        },
+        {
+          "block": "obsidian",
+          "x": 1,
+          "z": 1
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 1
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": -1,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 1,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "y": -1,
+      "blocks": [
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "y": 0,
+      "blocks": [
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "obsidian",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "obsidian",
+          "x": 2,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "y": 1,
+      "blocks": [
+        {
+          "block": "nitor",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "nitor",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "nitor",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "nitor",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "nitor",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "nitor",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "nitor",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "nitor",
+          "x": 2,
+          "z": 2
+        }
+      ]
+    }
+  ]
+}

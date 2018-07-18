@@ -2,9 +2,11 @@ package com.nekokittygames.thaumictinkerer.client.proxy;
 
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
+import com.nekokittygames.thaumictinkerer.client.rendering.special.multi.NitorRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityExampleRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityFunnelRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityRepairerRenderer;
+import com.nekokittygames.thaumictinkerer.common.intl.MultiBlockPreviewRendering;
 import com.nekokittygames.thaumictinkerer.common.proxy.GuiProxy;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityExample;
@@ -14,6 +16,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import thaumcraft.common.blocks.misc.BlockNitor;
 
 import static com.nekokittygames.thaumictinkerer.ThaumicTinkerer.instance;
 
@@ -25,6 +28,7 @@ public class ClientProxy implements ITTProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExample.class,new TileEntityExampleRenderer());
 
         Shaders.initShaders();
+        MultiBlockPreviewRendering.RegisterRenderer(BlockNitor.class,new NitorRenderer());
     }
 
     @Override

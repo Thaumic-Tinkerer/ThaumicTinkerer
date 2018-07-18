@@ -1,6 +1,8 @@
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
+import com.nekokittygames.thaumictinkerer.api.rendering.IMultiBlockPreviewRenderer;
 import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
+import com.nekokittygames.thaumictinkerer.common.intl.MultiBlockPreviewRendering;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityExample;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -10,6 +12,7 @@ import net.minecraft.client.renderer.block.model.ModelManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
@@ -23,7 +26,14 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
     @Override
     public void render(TileEntityExample te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
-
+        IBlockState blockState=te.getGuideBlockType();
+        if(blockState==null ) {
+            return;
+        }
+        if(blockState== Blocks.AIR.getDefaultState())
+        {
+            return;
+        }
 
         GlStateManager.pushMatrix();
         GL11.glPushAttrib(GL11.GL_LIGHTING_BIT);
@@ -31,9 +41,8 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GlStateManager.disableLighting();
         float growthFactor=(((float)te.getTime())/((float)TileEntityExample.GROW_TIME));
-
-        GlStateManager.translate(x + 10/20f, y + 10/20f, z + 10/20f);
-        GlStateManager.translate(x,y,z);
+        float transpose=(10f/20f)-((9f/20f)*growthFactor);
+        GlStateManager.translate(x + transpose, y + transpose, z + transpose);
         Shaders.useShader(Shaders.getChangeAlphaShader(), shaderId -> {
             int alpha1 = ARBShaderObjects.glGetUniformLocationARB(shaderId, "alpha");
             ARBShaderObjects.glUniform1fARB(alpha1, 0.4F);
@@ -47,18 +56,15 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
         BufferBuilder buffer=Tessellator.getInstance().getBuffer();
         buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-        IBlockState blockState=te.getGuideBlockType();
+
         blockrendererdispatcher.renderBlock(blockState,new BlockPos(0,0,0),getWorld(),buffer);
         Tessellator.getInstance().draw();
         Shaders.releaseShader();
         GL11.glPopAttrib();
         GlStateManager.popMatrix();
-        if(blockState.getBlock() instanceof BlockNitor)
-        {
-            BlockNitor nitor= (BlockNitor) blockState.getBlock();
-            BlockPos pos=te.getPos();
-            FXDispatcher.INSTANCE.drawNitorFlames((double)((float)pos.getX() + 0.5F) + getWorld().rand.nextGaussian() * 0.025D, (double)((float)pos.getY() + 0.45F) + getWorld().rand.nextGaussian() * 0.025D, (double)((float)pos.getZ() + 0.5F) + getWorld().rand.nextGaussian() * 0.025D, getWorld().rand.nextGaussian() * 0.0025D, (double)getWorld().rand.nextFloat() * 0.06D, getWorld().rand.nextGaussian() * 0.0025D, nitor.getMapColor(blockState, getWorld(), te.getPos()).colorValue, 0);
-        }
+        IMultiBlockPreviewRenderer iMultiBlockPreviewRenderer= MultiBlockPreviewRendering.getRenderer(blockState.getBlock().getClass());
+        if(iMultiBlockPreviewRenderer!=null)
+            iMultiBlockPreviewRenderer.render(te.getPos(),x,y,z,getWorld(),blockState);
 
     }
 

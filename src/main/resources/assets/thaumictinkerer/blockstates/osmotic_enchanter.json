@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "side": "thaumictinkerer:blocks/enchanter/enchanter_side",
+      "north": "#side",
+      "south": "#side",
+      "east": "#side",
+      "west": "#side",
+      "up": "thaumictinkerer:blocks/enchanter/enchanter_top",
+      "down": "thaumictinkerer:blocks/enchanter/enchanter_bottom",
+      "particle": "#side"
+    },
+    "model": "thaumictinkerer:osmotic_enchanter",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": {
+      "model": "thaumictinkerer:osmotic_enchanter"
+    }
+  }
+}

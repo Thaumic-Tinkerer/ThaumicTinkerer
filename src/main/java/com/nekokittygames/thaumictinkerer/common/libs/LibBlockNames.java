@@ -11,4 +11,5 @@ public class LibBlockNames {
     public static final String MOB_MAGNET="mob_magnet";
     public static final String ENERGETIC_NITOR_VAPOR = "nitor_vapor";
     public static final String EXAMPLE="example";
+    public static final String OSMOTIC_ENCHANTER="osmotic_enchanter";
 }
