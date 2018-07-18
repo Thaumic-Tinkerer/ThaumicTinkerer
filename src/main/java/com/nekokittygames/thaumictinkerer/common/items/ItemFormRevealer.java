@@ -5,6 +5,7 @@ import com.nekokittygames.thaumictinkerer.common.libs.LibItemNames;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockBlock;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockLayer;
+import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityExample;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -24,7 +25,9 @@ public class ItemFormRevealer extends  TTItem{
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        Multiblock tmp=new Multiblock("/assets/thaumictinkerer/multiblocks/enchanter.json");
+       Multiblock tmp= MultiblockManager.getMultiblock(worldIn.getBlockState(pos));
+       if(tmp==null)
+           return EnumActionResult.PASS;
         for(MultiblockLayer layer:tmp)
         {
             for(MultiblockBlock block:layer)

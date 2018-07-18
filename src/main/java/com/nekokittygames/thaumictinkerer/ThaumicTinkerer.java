@@ -4,6 +4,7 @@ import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockLayer;
+import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
@@ -25,6 +26,9 @@ import thaumcraft.api.casters.FocusNode;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import thaumcraft.proxies.IProxy;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION,dependencies = LibMisc.MOD_DEPENDENCIES)
 public class ThaumicTinkerer
@@ -54,7 +58,13 @@ public class ThaumicTinkerer
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        try {
+            MultiblockManager.initMultiblocks();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         proxy.init(event);
         ModRecipes.InitializeRecipes();
         ResearchCategories.registerCategory("THAUMIC_TINKERER",(String)null,new AspectList(),new ResourceLocation("thaumictinkerer","textures/items/share_book.png"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
