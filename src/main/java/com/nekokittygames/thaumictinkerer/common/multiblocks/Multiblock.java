@@ -27,7 +27,15 @@ public class Multiblock implements Iterable<MultiblockLayer>{
     private int bottomY=100;
     private String name;
     private IBlockState keyBlock;
+    private ResourceLocation id;
 
+    public ResourceLocation getId() {
+        return id;
+    }
+
+    public void setId(ResourceLocation id) {
+        this.id = id;
+    }
 
     public Map<Integer, MultiblockLayer> getLayers() {
         return layers;
@@ -71,6 +79,10 @@ public class Multiblock implements Iterable<MultiblockLayer>{
             if(!jsonObject.has("name"))
                 throw new Exception("Multiblock json malformed, missing name ");
             this.name=jsonObject.get("name").getAsString();
+
+            if(!jsonObject.has("id"))
+                throw new Exception("Multiblock json malformed, missing id");
+            this.id=new ResourceLocation(jsonObject.get("id").getAsString());
 
             if(!jsonObject.has("keyBlock"))
                 throw new Exception("Multiblock json malformed, missing keyBlock");

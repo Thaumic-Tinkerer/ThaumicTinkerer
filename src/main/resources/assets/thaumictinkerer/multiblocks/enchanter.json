@@ -1,6 +1,7 @@
 {
   "name": "Osmotic Enchanter",
   "keyBlock": "thaumictinkerer:osmotic_enchanter",
+  "id": "thaumictinkerer:osmotic_enchanter",
   "blocks": [
     {
       "name": "obsidian",
