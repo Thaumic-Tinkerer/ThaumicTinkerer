@@ -10,6 +10,12 @@
       }
     },
     {
+      "name": "arcane_stone",
+      "block": {
+        "blockType": "thaumcraft:stone_arcane"
+      }
+    },
+    {
       "name": "nitor",
       "block": [
         {
@@ -198,47 +204,47 @@
       "y": -1,
       "blocks": [
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": -2,
           "z": -2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 0,
           "z": -2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 2,
           "z": -2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": -2,
           "z": 0
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 0,
           "z": 0
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 2,
           "z": 0
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": -2,
           "z": 2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 0,
           "z": 2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 2,
           "z": 2
         }
@@ -248,42 +254,42 @@
       "y": 0,
       "blocks": [
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": -2,
           "z": -2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 0,
           "z": -2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 2,
           "z": -2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": -2,
           "z": 0
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 2,
           "z": 0
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": -2,
           "z": 2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 0,
           "z": 2
         },
         {
-          "block": "obsidian",
+          "block": "arcane_stone",
           "x": 2,
           "z": 2
         }
@@ -334,5 +340,102 @@
         }
       ]
     }
+  ],
+  "output":[
+    {
+      "y": -1,
+      "blocks": [
+        {
+          "block": "arcane_stone",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "arcane_stone",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "arcane_stone",
+          "x": 0,
+          "z": 0
+        },
+        {
+          "block": "arcane_stone",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "arcane_stone",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 2,
+          "z": 2
+        }
+      ]
+    },
+    {
+      "y": 0,
+      "blocks": [
+        {
+          "block": "arcane_stone",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "arcane_stone",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "arcane_stone",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "arcane_stone",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "arcane_stone",
+          "x": 2,
+          "z": 2
+        }
+      ]
+    },
   ]
 }

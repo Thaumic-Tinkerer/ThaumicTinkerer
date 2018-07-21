@@ -30,7 +30,6 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
         setHardness(3.0F);
         setResistance(8.0f);
         setDefaultState(this.getBlockState().getBaseState().withProperty(JAR,false));
-        ItemCaster tmp;
 
     }
 

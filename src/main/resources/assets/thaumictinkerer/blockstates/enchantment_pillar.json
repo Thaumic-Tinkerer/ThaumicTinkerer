@@ -1,0 +1,48 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {},
+    "model": "builtin/generated",
+    "transform": "forge:default-block",
+    "uvlock": true
+  },
+  "variants": {
+    "direction": {
+      "0": {
+        "model": "thaumictinkerer:pillar-side.obj"
+      },
+      "1": {
+        "model": "thaumictinkerer:pillar-side.obj"
+      },
+      "2": {
+        "model": "thaumictinkerer:pillar_diag.obj"
+      },
+      "3": {
+        "model": "thaumictinkerer:pillar-side.obj"
+      },
+      "4": {
+        "model": "thaumictinkerer:pillar_diag.obj"
+      },
+      "5": {
+        "model": "thaumictinkerer:pillar-side.obj"
+      },
+      "6": {
+        "model": "thaumictinkerer:pillar_diag.obj"
+      },
+      "7": {
+        "model": "thaumictinkerer:pillar-side.obj"
+      }
+    },
+    "top": {
+      "true": {},
+      "false": {}
+    },
+    "inventory": {
+      "model": "thaumictinkerer:pillar-side.obj",
+      "transform": "forge:default-block",
+      "textures": {
+        "1": "thaumictinkerer:blocks/magnet/item/back_front_pull"
+      }
+    }
+  }
+}
