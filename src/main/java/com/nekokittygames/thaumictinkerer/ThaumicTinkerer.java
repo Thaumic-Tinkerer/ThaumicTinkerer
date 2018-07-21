@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer;
 
+import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.util.Color;
 import thaumcraft.Thaumcraft;
@@ -54,7 +56,10 @@ public class ThaumicTinkerer
 
         PacketHandler.registerMessages(LibMisc.MOD_ID);
     }
-
+    @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new CommandRefreshMultiblocks());
+    }
     @EventHandler
     public void init(FMLInitializationEvent event)
     {

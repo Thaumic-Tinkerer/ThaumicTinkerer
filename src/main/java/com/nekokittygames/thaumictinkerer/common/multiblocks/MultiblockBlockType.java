@@ -49,7 +49,7 @@ public class MultiblockBlockType {
             Block block=ForgeRegistries.BLOCKS.getValue(new ResourceLocation(blockObj.get("blockType").getAsString()));
             int meta=0;
             if(blockObj.has("blockMeta"))
-                meta=blockObj.get("blockmeta").getAsInt();
+                meta=blockObj.get("blockMeta").getAsInt();
             state=block.getStateFromMeta(meta);
         }
         else

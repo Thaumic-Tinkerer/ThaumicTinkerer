@@ -26,7 +26,9 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
     @Override
     public void render(TileEntityExample te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
-        IBlockState blockState=te.getGuideBlockType();
+        if(te.getGuideBlockType().size()<=0)
+            return;
+        IBlockState blockState=te.getGuideBlockType().get(0);
         if(blockState==null ) {
             return;
         }

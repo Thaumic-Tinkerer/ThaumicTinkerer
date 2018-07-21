@@ -43,7 +43,7 @@ public class ItemFormRevealer extends  TTItem{
                     if(te instanceof TileEntityExample)
                     {
                         TileEntityExample example= (TileEntityExample) te;
-                        example.setGuideBlockType(tmp.getBlocks().get(block.getBlockName()).getBlockTypes().get(0));
+                        example.getGuideBlockType().addAll(tmp.getBlocks().get(block.getBlockName()).getBlockTypes());
                         example.setActivated(true);
                         example.sendUpdates();
 

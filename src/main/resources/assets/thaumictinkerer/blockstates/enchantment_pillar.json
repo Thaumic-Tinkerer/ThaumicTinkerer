@@ -9,28 +9,34 @@
   "variants": {
     "direction": {
       "0": {
-        "model": "thaumictinkerer:pillar-side.obj"
+        "y": 270,
+        "model": "thaumictinkerer:pillar_diag.obj"
       },
       "1": {
-        "model": "thaumictinkerer:pillar-side.obj"
+        "model": "thaumictinkerer:pillar_side.obj",
+        "y": 180
       },
       "2": {
+        "y": 180,
         "model": "thaumictinkerer:pillar_diag.obj"
       },
       "3": {
-        "model": "thaumictinkerer:pillar-side.obj"
+        "model": "thaumictinkerer:pillar_side.obj",
+        "y": 90
       },
       "4": {
-        "model": "thaumictinkerer:pillar_diag.obj"
+        "model": "thaumictinkerer:pillar_diag.obj",
+        "y": 90
       },
       "5": {
-        "model": "thaumictinkerer:pillar-side.obj"
+        "model": "thaumictinkerer:pillar_side.obj"
       },
       "6": {
         "model": "thaumictinkerer:pillar_diag.obj"
       },
       "7": {
-        "model": "thaumictinkerer:pillar-side.obj"
+        "model": "thaumictinkerer:pillar_side.obj",
+        "y": 270
       }
     },
     "top": {
@@ -38,7 +44,7 @@
       "false": {}
     },
     "inventory": {
-      "model": "thaumictinkerer:pillar-side.obj",
+      "model": "thaumictinkerer:pillar_side.obj",
       "transform": "forge:default-block",
       "textures": {
         "1": "thaumictinkerer:blocks/magnet/item/back_front_pull"

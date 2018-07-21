@@ -71,6 +71,49 @@ public class MultiblockManager {
         }
         return false;
     }
+
+    public static EnumFacing checkMultiblockFacing(World world, BlockPos keyBlock,ResourceLocation multiblock)
+    {
+        for(EnumFacing facing:EnumFacing.HORIZONTALS)
+        {
+            if(checkMultiblock(world, keyBlock, multiblock,facing))
+                return facing;
+        }
+        return EnumFacing.UP;
+
+    }
+    public static void outputMultiblock(World world,BlockPos keyBlock,ResourceLocation multiblockLocation,EnumFacing facing) throws Exception {
+        Multiblock multiblock=getMultiblock(multiblockLocation);
+        if(multiblock==null)
+            return;
+        Matrix2f matrix=FACING_ROTATIONS.get(facing);
+        boolean complete=true;
+        for (Iterator<MultiblockLayer> it = multiblock.outputIterator(); it.hasNext(); ) {
+            MultiblockLayer layer = it.next();
+            if(layer==null)
+                continue;
+            for (MultiblockBlock block : layer) {
+                Vector2f tmpPos=new Vector2f(block.getxOffset(),block.getzOffset());
+                tmpPos=mul(matrix,tmpPos);
+                BlockPos posToCheck=keyBlock.add(new BlockPos(tmpPos.x,layer.getyLevel(),tmpPos.y));
+                String blockType=block.getBlockName();
+                if(blockType.equalsIgnoreCase("minecraft:air"))
+                {
+                    world.setBlockToAir(posToCheck);
+                    continue;
+                }
+                MultiblockBlockType mBlockType=multiblock.getBlocks().get(blockType);
+                boolean blockFound=false;
+                IBlockState state;
+                if(mBlockType.getBlockTypes().size()<1)
+                    throw new Exception("Invalid Output");
+                state=mBlockType.getBlockTypes().get(0);
+                if(block.getExtraMeta()!=-1)
+                    state=state.getBlock().getStateFromMeta(block.getExtraMeta());
+                world.setBlockState(posToCheck,state,3);
+            }
+        }
+    }
     public static boolean checkMultiblock(World world, BlockPos keyBlock, ResourceLocation multiblockLocation, EnumFacing facing)
     {
         Multiblock multiblock=getMultiblock(multiblockLocation);
@@ -88,13 +131,22 @@ public class MultiblockManager {
                 String blockType=block.getBlockName();
                 MultiblockBlockType mBlockType=multiblock.getBlocks().get(blockType);
                 boolean blockFound=false;
+                if(blockType.equalsIgnoreCase("minecraft:air"))
+                {
+                    blockFound=world.isAirBlock(posToCheck);
+                }
+                else
+                {
                 for(IBlockState blockState:mBlockType.getBlockTypes())
                 {
+                    if(block.getExtraMeta()!=-1)
+                        blockState=blockState.getBlock().getStateFromMeta(block.getExtraMeta());
+
                     if(blockState==world.getBlockState(posToCheck))
                     {
                        blockFound=true;
                     }
-                }
+                }}
                 if(!blockFound)
                     return false;
 
@@ -131,5 +183,9 @@ public class MultiblockManager {
             }
         }
         return null;
+    }
+
+    public static void clearMultiblocks() {
+        multiblocks.clear();
     }
 }

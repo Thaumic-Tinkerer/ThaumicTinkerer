@@ -29,17 +29,20 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(worldIn.isRemote) {
+
             if (MultiblockManager.checkMultiblock(worldIn,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")))
             {
                 playerIn.sendStatusMessage(new TextComponentString("Complete"),true);
+                try {
+                    MultiblockManager.outputMultiblock(worldIn,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter"),MultiblockManager.checkMultiblockFacing(worldIn,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             else
             {
                 playerIn.sendStatusMessage(new TextComponentString("InComplete"),true);
             }
-
-        }
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 }

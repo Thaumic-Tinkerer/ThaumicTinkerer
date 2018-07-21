@@ -23,6 +23,8 @@ public class Multiblock implements Iterable<MultiblockLayer>{
     private Map<Integer,MultiblockLayer> layers=new HashMap<>();
     private List<Integer> layerIndices=new ArrayList<>();
     private Map<String, MultiblockBlockType> blocks=new HashMap<>();
+
+    private Map<Integer,MultiblockLayer> output=new HashMap<>();
     private int topY=-100;
     private int bottomY=100;
     private String name;
@@ -117,6 +119,17 @@ public class Multiblock implements Iterable<MultiblockLayer>{
                 MultiblockLayer layer=new MultiblockLayer(layerElement.getAsJsonObject());
                 AddLayer(layer.getyLevel(),layer);
             }
+            if(jsonObject.has("output"))
+            {
+                JsonElement outputsElement=jsonObject.get("output");
+                JsonArray outputArray=outputsElement.getAsJsonArray();
+                for(JsonElement outputElement:outputArray)
+                {
+                    MultiblockLayer layer=new MultiblockLayer(outputElement.getAsJsonObject());
+                    AddOutputLayer(layer.getyLevel(),layer);
+                }
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,7 +138,16 @@ public class Multiblock implements Iterable<MultiblockLayer>{
 
     }
 
-
+    public void AddOutputLayer(int yLevel,MultiblockLayer layer)
+    {
+        output.put(yLevel,layer);
+        if(!layerIndices.contains(yLevel))
+            layerIndices.add(yLevel);
+        if(yLevel>topY)
+            topY=yLevel;
+        if(yLevel<bottomY)
+            bottomY=yLevel;
+    }
     public void AddLayer(int yLevel,MultiblockLayer layer)
     {
         layers.put(yLevel,layer);
@@ -153,6 +175,27 @@ public class Multiblock implements Iterable<MultiblockLayer>{
                     ;
                 }
                 return layers.get(current);
+            }
+        };
+    }
+
+    public Iterator<MultiblockLayer> outputIterator()
+    {
+        return new Iterator<MultiblockLayer>() {
+            private int current=bottomY-1;
+            @Override
+            public boolean hasNext() {
+                return current<topY;
+            }
+
+            @Override
+            public MultiblockLayer next() {
+                while (!output.containsKey(++current) && current<topY) {
+                    ;
+                }
+                if(!output.containsKey(current))
+                    return null;
+                return output.get(current);
             }
         };
     }

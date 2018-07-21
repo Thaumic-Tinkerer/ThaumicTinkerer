@@ -7,9 +7,15 @@ public class MultiblockBlock {
     private String blockName;
     private int xOffset;
     private int zOffset;
+    private int extraMeta;
+
+    public int getExtraMeta() {
+        return extraMeta;
+    }
 
     public String getBlockName() {
         return blockName;
+
     }
 
     public int getxOffset() {
@@ -30,6 +36,12 @@ public class MultiblockBlock {
         if(!object.has("block"))
             throw new Exception("Layer object has no blockType");
         blockName=JsonUtils.getString(object,"block");
+        if(object.has("meta"))
+        {
+            extraMeta=JsonUtils.getInt(object,"meta");
+        }
+        else
+            extraMeta=-1;
 
     }
 }

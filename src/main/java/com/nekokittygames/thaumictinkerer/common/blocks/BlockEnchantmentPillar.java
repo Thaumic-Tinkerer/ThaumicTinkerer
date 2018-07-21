@@ -8,10 +8,13 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -51,6 +54,10 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
             state = state.withProperty(Top, true);
             meta-=8;
         }
+        else
+        {
+            state = state.withProperty(Top, false);
+        }
         return state.withProperty(Direction,meta);
     }
 
@@ -64,5 +71,10 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
         return EnumBlockRenderType.MODEL;
         else
             return EnumBlockRenderType.INVISIBLE;
+    }
+
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        playerIn.sendStatusMessage(new TextComponentString(String.format("metaData is %d", getMetaFromState(state))),true);
+        return true;
     }
 }
