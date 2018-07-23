@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
@@ -28,8 +29,17 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
 
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+// Only execute on the server
+        if (world.isRemote) {
+            return true;
+        }
+        TileEntity te = world.getTileEntity(pos);
+        if (!(te instanceof TileEntityEnchanter)) {
+            return false;
+        }
+        player.openGui(ThaumicTinkerer.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+        /*
             if (MultiblockManager.checkMultiblock(worldIn,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")))
             {
                 playerIn.sendStatusMessage(new TextComponentString("Complete"),true);
@@ -43,6 +53,7 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
             {
                 playerIn.sendStatusMessage(new TextComponentString("InComplete"),true);
             }
-        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+            */
+        return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
 }

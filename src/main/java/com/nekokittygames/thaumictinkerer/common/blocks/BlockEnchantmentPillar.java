@@ -1,7 +1,10 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchantmentPillar;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
@@ -63,7 +66,7 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
 
     @Override
     protected boolean isInCreativeTab() {
-        return true;
+        return false;
     }
 
     public EnumBlockRenderType getRenderType(IBlockState state) {
@@ -73,8 +76,8 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
             return EnumBlockRenderType.INVISIBLE;
     }
 
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        playerIn.sendStatusMessage(new TextComponentString(String.format("metaData is %d", getMetaFromState(state))),true);
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+
         return true;
     }
 }

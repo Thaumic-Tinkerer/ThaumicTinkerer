@@ -36,5 +36,9 @@ public class TTConfig {
     @Config.Name("Shaders Enabled")
     @Config.RequiresMcRestart()
     public static boolean ShadersEnabled=true;
+
+    @Config.Comment("Does the Osmotic Enchanter use the classic pillar structure")
+    @Config.Name("Classic Enchanter")
+    public static boolean ClassicEnchanter=false;
 }
 

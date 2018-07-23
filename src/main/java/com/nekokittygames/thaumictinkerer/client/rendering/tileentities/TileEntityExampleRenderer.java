@@ -40,14 +40,15 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
         GlStateManager.pushMatrix();
         GL11.glPushAttrib(GL11.GL_LIGHTING_BIT);
         GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        //GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GlStateManager.disableAlpha();
         GlStateManager.disableLighting();
         float growthFactor=(((float)te.getTime())/((float)TileEntityExample.GROW_TIME));
         float transpose=(10f/20f)-((9f/20f)*growthFactor);
         GlStateManager.translate(x + transpose, y + transpose, z + transpose);
         Shaders.useShader(Shaders.getChangeAlphaShader(), shaderId -> {
             int alpha1 = ARBShaderObjects.glGetUniformLocationARB(shaderId, "alpha");
-            ARBShaderObjects.glUniform1fARB(alpha1, 0.4F);
+            ARBShaderObjects.glUniform1fARB(alpha1, 0.75F);
         });
         float maxScale=18/20f;
         float currentScale=maxScale*growthFactor;
@@ -62,6 +63,9 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
         blockrendererdispatcher.renderBlock(blockState,new BlockPos(0,0,0),getWorld(),buffer);
         Tessellator.getInstance().draw();
         Shaders.releaseShader();
+        GlStateManager.disableBlend();
+        //GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GlStateManager.enableAlpha();
         GL11.glPopAttrib();
         GlStateManager.popMatrix();
         IMultiBlockPreviewRenderer iMultiBlockPreviewRenderer= MultiBlockPreviewRendering.getRenderer(blockState.getBlock().getClass());

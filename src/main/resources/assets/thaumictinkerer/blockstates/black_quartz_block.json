@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "side": "thaumictinkerer:blocks/black_quartz",
+      "north": "thaumictinkerer:blocks/black_quartz",
+      "south": "#side",
+      "east": "#side",
+      "west": "#side",
+      "up": "#side",
+      "down": "#side",
+      "particle": "#side"
+    },
+    "model": "cube",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": {
+      "model": "cube"
+    }
+  }
+}
