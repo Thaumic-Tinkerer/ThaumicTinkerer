@@ -2,6 +2,10 @@ package com.nekokittygames.thaumictinkerer.common.config;
 
 
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnchantmentVanishingCurse;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = LibMisc.MOD_ID)
@@ -40,5 +44,9 @@ public class TTConfig {
     @Config.Comment("Does the Osmotic Enchanter use the classic pillar structure")
     @Config.Name("Classic Enchanter")
     public static boolean ClassicEnchanter=false;
+
+    @Config.Comment("Any Enchant ID's in this list can not be added by the Osmotic Enchanter")
+    @Config.Name("Blacklisted Enchants")
+    public static int[] blacklistedEnchants=new int[]{71};
 }
 
