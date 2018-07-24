@@ -9,6 +9,7 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -16,8 +17,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import thaumcraft.api.casters.IInteractWithCaster;
 
-public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
+public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements IInteractWithCaster {
     public BlockEnchanter() {
         super(LibBlockNames.OSMOTIC_ENCHANTER,Material.ROCK,true);
     }
@@ -55,5 +57,14 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
             }
             */
         return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
+    }
+
+    @Override
+    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing, EnumHand enumHand) {
+        if (MultiblockManager.checkMultiblockCombined(world,blockPos,new ResourceLocation("thaumictinkerer:osmotic_enchanter"))) {
+            entityPlayer.sendStatusMessage(new TextComponentString("Complete"), true);
+            return true;
+        }
+        return false;
     }
 }

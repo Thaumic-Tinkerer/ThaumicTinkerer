@@ -200,5 +200,30 @@ public class Multiblock implements Iterable<MultiblockLayer>{
         };
     }
 
+    public Iterator<MultiblockLayer> combinedIterator()
+    {
+        return new Iterator<MultiblockLayer>() {
+            private int current=bottomY-1;
+            @Override
+            public boolean hasNext() {
+                return current<topY;
+            }
+
+            @Override
+            public MultiblockLayer next() {
+                while (true) {
+
+                    current++;
+                    if(output.containsKey(current))
+                        return output.get(current);
+                    if(layers.containsKey(current))
+                        return  layers.get(current);
+                    if(current>=topY)
+                        return null;
+                }
+            }
+        };
+    }
+
 
 }

@@ -72,6 +72,15 @@ public class MultiblockManager {
         return false;
     }
 
+    public static boolean checkMultiblockCombined(World world, BlockPos keyBlock,ResourceLocation multiblock)
+    {
+        for(EnumFacing facing:EnumFacing.HORIZONTALS)
+        {
+            if(checkOutputMultiblock(world, keyBlock, multiblock,facing))
+                return true;
+        }
+        return false;
+    }
     public static EnumFacing checkMultiblockFacing(World world, BlockPos keyBlock,ResourceLocation multiblock)
     {
         for(EnumFacing facing:EnumFacing.HORIZONTALS)
@@ -81,6 +90,51 @@ public class MultiblockManager {
         }
         return EnumFacing.UP;
 
+    }
+
+
+
+    public static boolean checkOutputMultiblock(World world, BlockPos keyBlock,ResourceLocation multiblockLocation,EnumFacing facing)
+    {
+        Multiblock multiblock=getMultiblock(multiblockLocation);
+        if(multiblock==null)
+            return false;
+        Matrix2f matrix=FACING_ROTATIONS.get(facing);
+        boolean complete=true;
+        for (Iterator<MultiblockLayer> it = multiblock.combinedIterator(); it.hasNext(); ) {
+            MultiblockLayer layer = it.next();
+            for(MultiblockBlock block:layer)
+            {
+                Vector2f tmpPos=new Vector2f(block.getxOffset(),block.getzOffset());
+                tmpPos=mul(matrix,tmpPos);
+                BlockPos posToCheck=keyBlock.add(new BlockPos(tmpPos.x,layer.getyLevel(),tmpPos.y));
+                String blockType=block.getBlockName();
+                MultiblockBlockType mBlockType=multiblock.getBlocks().get(blockType);
+                boolean blockFound=false;
+                if(blockType.equalsIgnoreCase("minecraft:air"))
+                {
+                    blockFound=world.isAirBlock(posToCheck);
+                }
+                else
+                {
+                    for(IBlockState blockState:mBlockType.getBlockTypes())
+                    {
+                        if(block.getExtraMeta()!=-1)
+                            blockState=blockState.getBlock().getStateFromMeta(block.getExtraMeta());
+
+                        if(blockState==world.getBlockState(posToCheck))
+                        {
+                            blockFound=true;
+                        }
+                    }}
+                if(!blockFound)
+                    return false;
+
+
+            }
+        }
+
+        return true;
     }
     public static void outputMultiblock(World world,BlockPos keyBlock,ResourceLocation multiblockLocation,EnumFacing facing) throws Exception {
         Multiblock multiblock=getMultiblock(multiblockLocation);
