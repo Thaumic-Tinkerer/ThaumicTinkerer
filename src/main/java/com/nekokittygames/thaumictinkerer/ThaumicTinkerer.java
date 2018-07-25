@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer;
 
+import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
@@ -59,6 +60,7 @@ public class ThaumicTinkerer
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandRefreshMultiblocks());
+        event.registerServerCommand(new CommandDumpEnchants());
     }
     @EventHandler
     public void init(FMLInitializationEvent event)

@@ -14,6 +14,7 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
