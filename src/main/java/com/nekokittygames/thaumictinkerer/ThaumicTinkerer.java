@@ -2,17 +2,15 @@ package com.nekokittygames.thaumictinkerer;
 
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
+import com.nekokittygames.thaumictinkerer.common.commands.CommandThaumicTinkererClient;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
-import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockLayer;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -20,15 +18,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.util.Color;
-import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.FocusEngine;
-import thaumcraft.api.casters.FocusNode;
 import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
-import thaumcraft.proxies.IProxy;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -52,7 +45,7 @@ public class ThaumicTinkerer
     {
         logger = event.getModLog();
 
-
+        ClientCommandHandler.instance.registerCommand(new CommandThaumicTinkererClient());
 
 
         PacketHandler.registerMessages(LibMisc.MOD_ID);
@@ -61,6 +54,7 @@ public class ThaumicTinkerer
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandRefreshMultiblocks());
         event.registerServerCommand(new CommandDumpEnchants());
+
     }
     @EventHandler
     public void init(FMLInitializationEvent event)

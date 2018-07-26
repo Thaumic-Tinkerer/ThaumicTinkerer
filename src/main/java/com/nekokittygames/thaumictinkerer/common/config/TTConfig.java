@@ -47,6 +47,6 @@ public class TTConfig {
 
     @Config.Comment("Any Enchant ID's in this list can not be added by the Osmotic Enchanter")
     @Config.Name("Blacklisted Enchants")
-    public static int[] blacklistedEnchants=new int[]{71};
+    public static int[] blacklistedEnchants=new int[]{71,10};
 }
 
