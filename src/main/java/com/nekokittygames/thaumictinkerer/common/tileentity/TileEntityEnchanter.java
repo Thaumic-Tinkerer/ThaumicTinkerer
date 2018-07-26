@@ -25,6 +25,7 @@ import thaumcraft.common.config.ConfigBlocks;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements ITickable {
@@ -233,4 +234,31 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             return -1;
         }
     }
+
+
+    public List<Enchantment> getValidEnchantments()
+    {
+        List<Enchantment> enchantments=new ArrayList<Enchantment>();
+        if(inventory.getStackInSlot(0)==ItemStack.EMPTY)
+            return enchantments;
+        ItemStack item=inventory.getStackInSlot(0);
+        for (Iterator<Enchantment> it = Enchantment.REGISTRY.iterator(); it.hasNext(); ) {
+            Enchantment enchantment = it.next();
+            if(item.getItem().getItemEnchantability(item)!=0 && canApply(item,enchantment,enchantments))
+                enchantments.add(enchantment);
+
+        }
+        return enchantments;
+    }
+
+    public static boolean canApply(ItemStack itemStack,Enchantment enchantment,List<Enchantment> currentEnchants)
+    {
+        if(!enchantment.canApply(itemStack) || !enchantment.type.canEnchantItem(itemStack.getItem()) || currentEnchants.contains(enchantment))
+            return false;
+        for(Enchantment curEnchant:currentEnchants)
+            if(!curEnchant.isCompatibleWith(enchantment))
+                return false;
+        return true;
+    }
+
 }
