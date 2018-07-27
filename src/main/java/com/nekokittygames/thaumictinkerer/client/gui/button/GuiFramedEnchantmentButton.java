@@ -19,7 +19,7 @@ public class GuiFramedEnchantmentButton extends GuiEnchantmentButton {
             return;
 
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ENCHANTER);
-        drawTexturedModalRect(x - 4, x - 4, 176, 0, 24, 24);
+        drawTexturedModalRect(x - 4, y - 4, 176, 0, 24, 24);
 
         int index = parent.enchanter.enchantments.indexOf(Enchantment.getEnchantmentID(enchant));
         if (index != -1) {

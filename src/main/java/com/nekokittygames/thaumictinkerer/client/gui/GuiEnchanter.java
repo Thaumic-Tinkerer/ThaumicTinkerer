@@ -9,6 +9,7 @@ import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
 import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketAddEnchant;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
+import com.nekokittygames.thaumictinkerer.common.packets.PacketIncrementEnchantLevel;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
@@ -62,7 +63,7 @@ public class GuiEnchanter extends GuiContainer {
         buttonList.clear();
         for (int i = 0; i < 16; i++) {
             int z = -11;
-            if(i>8)
+            if(i>7)
             {
                 z=26;
             }
@@ -78,9 +79,11 @@ public class GuiEnchanter extends GuiContainer {
 
         int i = 0;
         for (Integer enchant : enchanter.enchantments) {
-            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4, y + (i * 26)+7+10);
+            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4, y + (i * 26)+30+15);
             button.enchant = Enchantment.getEnchantmentByID(enchant);
             buttonList.add(button);
+            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 1, x + xSize + 24, y + (i * 26)+30+15 - 4, false));
+            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 2, x + xSize + 31, y + (i * 26)+30+15 - 4, true));
             ++i;
         }
     }
@@ -160,6 +163,18 @@ public class GuiEnchanter extends GuiContainer {
             {
                 PacketHandler.INSTANCE.sendToServer(new PacketAddEnchant(enchanter,Enchantment.getEnchantmentID(enchantButton.enchant)));
             }
+        }
+        else
+        {
+            int type = (button.id - 17) % 3;
+            int index = (button.id - 17) / 3;
+            if (index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
+                return;
+
+            int level = enchanter.levels.get(index);
+            GuiEnchantmentLevelButton levelButton= (GuiEnchantmentLevelButton) button;
+            PacketHandler.INSTANCE.sendToServer(new PacketIncrementEnchantLevel(enchanter,enchanter.enchantments.get(index),levelButton.plus));
+
         }
     }
     @Override

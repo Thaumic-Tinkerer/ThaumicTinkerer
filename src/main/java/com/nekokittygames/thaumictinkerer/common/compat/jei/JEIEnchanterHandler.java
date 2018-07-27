@@ -21,7 +21,7 @@ public class JEIEnchanterHandler implements IAdvancedGuiHandler<GuiEnchanter> {
         exclusions.add(new Rectangle(guiContainer.x+176,guiContainer.y+6,guiContainer.visRequireWidth,guiContainer.visRequireHeight));
         for(int i=0;i<guiContainer.enchanter.enchantments.size();i++)
         {
-            exclusions.add(new Rectangle(guiContainer.x+176,guiContainer.y + (i * 26)+7+10,25,25));
+            exclusions.add(new Rectangle(guiContainer.x+176,guiContainer.y + (i * 26)+30+15,34,25));
         }
         return exclusions;
     }

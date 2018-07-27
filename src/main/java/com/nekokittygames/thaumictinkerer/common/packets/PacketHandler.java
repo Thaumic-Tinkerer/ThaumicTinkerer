@@ -26,6 +26,7 @@ public class PacketHandler {
         // Register messages which are sent from the client to the server here:
         INSTANCE.registerMessage(PacketMobMagnet.Handler.class, PacketMobMagnet.class, nextID(), Side.SERVER);
         INSTANCE.registerMessage(PacketAddEnchant.Handler.class,PacketAddEnchant.class,nextID(),Side.SERVER);
+        INSTANCE.registerMessage(PacketIncrementEnchantLevel.Handler.class,PacketIncrementEnchantLevel.class,nextID(),Side.SERVER);
     }
 
 }
