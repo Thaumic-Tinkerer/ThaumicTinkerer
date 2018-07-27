@@ -1,15 +1,13 @@
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
-import com.nekokittygames.thaumictinkerer.client.gui.button.GuiButtonMM;
-import com.nekokittygames.thaumictinkerer.client.gui.button.GuiEnchantmentButton;
-import com.nekokittygames.thaumictinkerer.client.gui.button.GuiRadioButtonMM;
-import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
+import com.nekokittygames.thaumictinkerer.client.gui.button.*;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.ClientHelper;
 import com.nekokittygames.thaumictinkerer.common.containers.EnchanterContainer;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
 import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
+import com.nekokittygames.thaumictinkerer.common.packets.PacketAddEnchant;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
@@ -29,7 +27,7 @@ import java.util.List;
 public class GuiEnchanter extends GuiContainer {
 
 
-    private TileEntityEnchanter enchanter;
+    public TileEntityEnchanter enchanter;
     public List<String> tooltip = new ArrayList();
     public static final int WIDTH = 176;
     public static final int HEIGHT = 166;
@@ -63,8 +61,12 @@ public class GuiEnchanter extends GuiContainer {
     public void buildButtonList() {
         buttonList.clear();
         for (int i = 0; i < 16; i++) {
-            int z = -24;
-            if (i > 7 || (enchantButtons[8] == null || !enchantButtons[8].enabled)) {
+            int z = -11;
+            if(i>8)
+            {
+                z=26;
+            }
+            if ((enchantButtons[8] == null || !enchantButtons[8].enabled)) {
                 z = 0;
             }
             GuiEnchantmentButton button = new GuiEnchantmentButton(this, 1 + i, x + 38 + ((i) % 8) * 16, y + 32 + z);
@@ -73,6 +75,14 @@ public class GuiEnchanter extends GuiContainer {
         }
 
         asignEnchantButtons();
+
+        int i = 0;
+        for (Integer enchant : enchanter.enchantments) {
+            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4, y + (i * 26)+7+10);
+            button.enchant = Enchantment.getEnchantmentByID(enchant);
+            buttonList.add(button);
+            ++i;
+        }
     }
     @Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -137,7 +147,21 @@ public class GuiEnchanter extends GuiContainer {
 
 
     }
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException {
+        if(button.id==0)
+        {
 
+        }
+        else if(button.id<=16)
+        {
+            GuiEnchantmentButton enchantButton=enchantButtons[button.id-1];
+            if(enchantButton!=null && enchantButton.enchant!=null)
+            {
+                PacketHandler.INSTANCE.sendToServer(new PacketAddEnchant(enchanter,Enchantment.getEnchantmentID(enchantButton.enchant)));
+            }
+        }
+    }
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         if (!tooltip.isEmpty())

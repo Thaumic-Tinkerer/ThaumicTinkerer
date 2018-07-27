@@ -56,6 +56,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
     public void appendEnchant(int enchant) {
         enchantments.add(enchant);
+        refreshEnchants();
+        sendUpdates();
     }
 
     public void appendLevel(int level) {
@@ -107,9 +109,13 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     };
 
     private void onInventoryChanged(ItemStack stackInSlot) {
+
+        refreshEnchants();
+    }
+
+    public void refreshEnchants() {
         List<Enchantment> enchantmentObjects=getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
         cachedEnchantments=enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());
-        ThaumicTinkerer.logger.info(ArrayUtils.toString(cachedEnchantments.toArray()));
     }
 
     public boolean isItemValidForSlot(int index, ItemStack stack)
@@ -274,7 +280,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         ItemStack item=inventory.getStackInSlot(0);
         for (Iterator<Enchantment> it = Enchantment.REGISTRY.iterator(); it.hasNext(); ) {
             Enchantment enchantment = it.next();
-            if(item.getItem().getItemEnchantability(item)!=0 && canApply(item,enchantment,enchantments))
+            if(item.getItem().getItemEnchantability(item)!=0 && canApply(item,enchantment,enchantments,false))
                 enchantments.add(enchantment);
 
         }
@@ -290,7 +296,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         ItemStack item=inventory.getStackInSlot(0);
         List<Enchantment> valid=getValidEnchantments();
         for (Enchantment validEnchant:valid) {
-            if(item.getItem().getItemEnchantability(item)!=0 && canApply(item,validEnchant,enchantments))
+            if(item.getItem().getItemEnchantability(item)!=0 && canApply(item,validEnchant,enchantments,false))
             {
                 if(canApply(item,validEnchant,currentEnchants))
                     enchantments.add(validEnchant);
@@ -301,7 +307,11 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return enchantments;
     }
 
-    public static boolean canApply(ItemStack itemStack,Enchantment enchantment,List<Enchantment> currentEnchants)
+    public static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants) {
+        return canApply(itemStack, enchantment, currentEnchants, true);
+    }
+
+    public static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants, boolean checkConflicts)
     {
         if(ArrayUtils.contains(TTConfig.blacklistedEnchants,Enchantment.getEnchantmentID(enchantment)))
             return false;
@@ -309,9 +319,11 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             return false;
         if(EnchantmentHelper.getEnchantments(itemStack).keySet().contains(enchantment))
             return false;
-        for(Enchantment curEnchant:currentEnchants)
-            if(!curEnchant.isCompatibleWith(enchantment))
-                return false;
+        if(checkConflicts) {
+            for (Enchantment curEnchant : currentEnchants)
+                if (!curEnchant.isCompatibleWith(enchantment))
+                    return false;
+        }
         return true;
     }
 
