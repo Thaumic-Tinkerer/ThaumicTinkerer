@@ -7,6 +7,10 @@ import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentVanishingCurse;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Config(modid = LibMisc.MOD_ID)
 @Config.LangKey("thaumictinkerer.config.title")
@@ -48,5 +52,22 @@ public class TTConfig {
     @Config.Comment("Any Enchant ID's in this list can not be added by the Osmotic Enchanter")
     @Config.Name("Blacklisted Enchants")
     public static int[] blacklistedEnchants=new int[]{71,10};
+
+
+    @Mod.EventBusSubscriber
+    private static class EventHandler {
+
+        /**
+         * Inject the new values and save to the config file when the config has been changed from the GUI.
+         *
+         * @param event The event
+         */
+        @SubscribeEvent
+        public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+            if (event.getModID().equals(LibMisc.MOD_ID)) {
+                ConfigManager.sync(LibMisc.MOD_ID, net.minecraftforge.common.config.Config.Type.INSTANCE);
+            }
+        }
+    }
 }
 

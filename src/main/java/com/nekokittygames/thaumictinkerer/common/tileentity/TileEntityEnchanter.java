@@ -1,11 +1,13 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
@@ -18,24 +20,27 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.apache.commons.lang3.ArrayUtils;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.config.ConfigBlocks;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements ITickable {
     private static final String TAG_ENCHANTS = "enchantsIntArray";
     private static final String TAG_LEVELS = "levelsIntArray";
+    private static final String TAG_CACHED_ENCHANTS="cachedEnchants";
     private static final String TAG_WORKING = "working";
     public static final ResourceLocation MULTIBLOCK_LOCATION=new ResourceLocation("thaumictinkerer","osmotic_enchanter");
 
-    public List<Integer> enchantments = new ArrayList();
-    public List<Integer> levels = new ArrayList();
+    public List<Integer> enchantments = new ArrayList<>();
+    public List<Integer> levels = new ArrayList<>();
+
+    public List<Integer> cachedEnchantments=new ArrayList<>();
 
 
     public boolean working = false;
@@ -46,6 +51,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     public void clearEnchants() {
         enchantments.clear();
         levels.clear();
+
     }
 
     public void appendEnchant(int enchant) {
@@ -73,13 +79,17 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     }
 
 
+
+
     private ItemStackHandler inventory= new ItemStackHandler(1)
     {
         @Override
         protected void onContentsChanged(int slot)
         {
             super.onContentsChanged(slot);
+            TileEntityEnchanter.this.onInventoryChanged(getStackInSlot(slot));
             sendUpdates();
+
         }
 
         public boolean isItemValidForSlot(int index, ItemStack stack)
@@ -96,6 +106,12 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
     };
 
+    private void onInventoryChanged(ItemStack stackInSlot) {
+        List<Enchantment> enchantmentObjects=getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
+        cachedEnchantments=enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());
+        ThaumicTinkerer.logger.info(ArrayUtils.toString(cachedEnchantments.toArray()));
+    }
+
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
         Item item=stack.getItem();
@@ -110,11 +126,25 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     @Override
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
         nbttagcompound.setTag("inventory",inventory.serializeNBT());
+        nbttagcompound.setIntArray(TAG_ENCHANTS, enchantments.stream().mapToInt(i -> i).toArray());
+        nbttagcompound.setIntArray(TAG_LEVELS, levels.stream().mapToInt(i -> i).toArray());
+        nbttagcompound.setIntArray(TAG_CACHED_ENCHANTS, cachedEnchantments.stream().mapToInt(i -> i).toArray());
     }
 
     @Override
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
+        if(nbttagcompound.hasKey(TAG_ENCHANTS)) {
+            enchantments.clear();
+            levels.clear();
+            cachedEnchantments.clear();
+            int[] enchantmentArray=nbttagcompound.getIntArray(TAG_ENCHANTS);
+            Arrays.stream(enchantmentArray).forEach(i -> enchantments.add(i));
+            int[] levelsArray=nbttagcompound.getIntArray(TAG_LEVELS);
+            Arrays.stream(levelsArray).forEach(i -> levels.add(i));
+            int[] cachedEnchantmentArray=nbttagcompound.getIntArray(TAG_CACHED_ENCHANTS);
+            Arrays.stream(cachedEnchantmentArray).forEach(i -> cachedEnchantments.add(i));
+        }
     }
 
 
@@ -251,9 +281,33 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return enchantments;
     }
 
+
+    public List<Enchantment> getAvailableEnchants(List<Enchantment> currentEnchants)
+    {
+        List<Enchantment> enchantments=new ArrayList<Enchantment>();
+        if(inventory.getStackInSlot(0)==ItemStack.EMPTY)
+            return enchantments;
+        ItemStack item=inventory.getStackInSlot(0);
+        List<Enchantment> valid=getValidEnchantments();
+        for (Enchantment validEnchant:valid) {
+            if(item.getItem().getItemEnchantability(item)!=0 && canApply(item,validEnchant,enchantments))
+            {
+                if(canApply(item,validEnchant,currentEnchants))
+                    enchantments.add(validEnchant);
+            }
+
+        }
+
+        return enchantments;
+    }
+
     public static boolean canApply(ItemStack itemStack,Enchantment enchantment,List<Enchantment> currentEnchants)
     {
+        if(ArrayUtils.contains(TTConfig.blacklistedEnchants,Enchantment.getEnchantmentID(enchantment)))
+            return false;
         if(!enchantment.canApply(itemStack) || !enchantment.type.canEnchantItem(itemStack.getItem()) || currentEnchants.contains(enchantment))
+            return false;
+        if(EnchantmentHelper.getEnchantments(itemStack).keySet().contains(enchantment))
             return false;
         for(Enchantment curEnchant:currentEnchants)
             if(!curEnchant.isCompatibleWith(enchantment))

@@ -37,7 +37,7 @@ public class EnchanterContainer extends Container {
 
         // Slots for the hotbar
         for (int row = 0; row < 9; ++row) {
-            int x = 9 + row * 18;
+            int x = 8 + row * 18;
             int y = 58 + 84;
             this.addSlotToContainer(new Slot(playerInventory, row, x, y));
         }
@@ -45,8 +45,8 @@ public class EnchanterContainer extends Container {
 
     private void addOwnSlots() {
         IItemHandler itemHandler = this.tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        int x = 9;
-        int y = 31;
+        int x = 8;
+        int y = 32;
         this.addSlotToContainer(new SlotItemHandler(itemHandler,0,x,y)
         {
             @Override
