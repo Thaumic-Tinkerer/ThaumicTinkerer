@@ -192,7 +192,6 @@ public class GuiEnchanter extends GuiContainer {
         }
         this.fontRenderer.drawString("Required Vis Crystals",x+177,y+7,0x999999);
         GlStateManager.color(1F, 1F, 1F);
-        int y=0;
         int j=0;
         zLevel = 100.0F;
         itemRender.zLevel = 100.0F;

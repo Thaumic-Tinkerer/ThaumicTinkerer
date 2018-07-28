@@ -18,7 +18,7 @@ public class JEIEnchanterHandler implements IAdvancedGuiHandler<GuiEnchanter> {
     @Override
     public List<Rectangle> getGuiExtraAreas(GuiEnchanter guiContainer) {
         List<Rectangle> exclusions=new ArrayList<>();
-        exclusions.add(new Rectangle(guiContainer.getX()+176,guiContainer.getY()+6,guiContainer.getVisRequireWidth(),guiContainer.getVisRequireHeight()));
+        exclusions.add(new Rectangle(guiContainer.getX()+176,guiContainer.getY()+6,guiContainer.getVisRequireWidth(),guiContainer.getVisRequireHeight()+(guiContainer.enchanter.getEnchantmentCost().size()>0?18:0)));
         for(int i=0;i<guiContainer.enchanter.getEnchantments().size();i++)
         {
             exclusions.add(new Rectangle(guiContainer.getX()+176,guiContainer.getY() + (i * 26)+30+15,34,25));
