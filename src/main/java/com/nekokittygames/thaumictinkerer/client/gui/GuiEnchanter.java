@@ -17,6 +17,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
@@ -25,6 +26,7 @@ import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Color;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 
 import java.io.IOException;
@@ -192,25 +194,31 @@ public class GuiEnchanter extends GuiContainer {
         GlStateManager.color(1F, 1F, 1F);
         int y=0;
         int j=0;
+        zLevel = 100.0F;
+        itemRender.zLevel = 100.0F;
+
+        GlStateManager.enableLighting();
+        GlStateManager.enableRescaleNormal();
+        GlStateManager.enableDepth();
+        RenderHelper.enableGUIStandardItemLighting();
+
         for(ItemStack itemStack:enchanter.getEnchantmentCost()) {
             if (!itemStack.isEmpty()) {
-                GlStateManager.pushMatrix();
-                //GlStateManager.translate(0.0F, 0.0F, 32.0F);
-                GlStateManager.color(1F, 1F, 1F, 1F);
-                GlStateManager.enableRescaleNormal();
-                GlStateManager.enableLighting();
-                short short1 = 240;
-                short short2 = 240;
-                net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+
                 //OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1 / 1.0F, short2 / 1.0F);
                 itemRender.renderItemAndEffectIntoGUI(itemStack, x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT);
-                itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, itemStack, x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT, ""+((ItemCrystalEssence)itemStack.getItem()).getAspects(itemStack).getAmount(((ItemCrystalEssence)itemStack.getItem()).getAspects(itemStack).getAspectsSortedByAmount()[0]));
-                GlStateManager.popMatrix();
-                GlStateManager.disableRescaleNormal();
-                GlStateManager.disableLighting();
+                ItemCrystalEssence crystalEssence= (ItemCrystalEssence) itemStack.getItem();
+                Aspect aspect=crystalEssence.getAspects(itemStack).getAspectsSortedByAmount()[0];
+                itemRender.renderItemOverlayIntoGUI(fontRenderer,itemStack,x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT,""+crystalEssence.getAspects(itemStack).getAmount(aspect));
+                GlStateManager.enableAlpha();
+
                 j++;
             }
         }
+
+
+        itemRender.zLevel = 0.0F;
+        zLevel = 0.0F;
 
 
 
