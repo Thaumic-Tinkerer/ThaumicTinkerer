@@ -15,11 +15,17 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Color;
+import thaumcraft.common.items.resources.ItemCrystalEssence;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -146,6 +152,30 @@ public class GuiEnchanter extends GuiContainer {
             this.fontRenderer.drawString(ArrayUtils.toString(enchanter.cachedEnchantments.toArray()),x+30,y+5, 0x610B0B);
         }
         this.fontRenderer.drawString("Required Vis Crystals",x+177,y+7,0x999999);
+        GlStateManager.color(1F, 1F, 1F);
+        int y=0;
+        int j=0;
+        for(ItemStack itemStack:enchanter.getEnchantmentCost()) {
+            boolean rc = false;
+            if (!itemStack.isEmpty() && itemStack.getItem() != null) {
+                rc = true;
+                GlStateManager.pushMatrix();
+                GlStateManager.translate(0.0F, 0.0F, 32.0F);
+                GlStateManager.color(1F, 1F, 1F, 1F);
+                GlStateManager.enableRescaleNormal();
+                GlStateManager.enableLighting();
+                short short1 = 240;
+                short short2 = 240;
+                net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1 / 1.0F, short2 / 1.0F);
+                itemRender.renderItemAndEffectIntoGUI(itemStack, x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT);
+                itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, itemStack, x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT, ""+((ItemCrystalEssence)itemStack.getItem()).getAspects(itemStack).getAmount(((ItemCrystalEssence)itemStack.getItem()).getAspects(itemStack).getAspectsSortedByAmount()[0]));
+                GlStateManager.popMatrix();
+                GlStateManager.disableRescaleNormal();
+                GlStateManager.disableLighting();
+                j++;
+            }
+        }
 
 
 

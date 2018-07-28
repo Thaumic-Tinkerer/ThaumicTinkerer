@@ -21,9 +21,13 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.items.resources.ItemCrystalEssence;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -305,6 +309,63 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
 
         return enchantments;
+    }
+
+    public List<ItemStack> getEnchantmentCost()
+    {
+        List<ItemStack> costs=new ArrayList<>();
+        Map<Aspect,Integer> costItems=new HashMap<>();
+        List<Enchantment> enchantmentObjects=enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList());
+        for(Enchantment enchantment:enchantmentObjects)
+        {
+            switch (enchantment.type) {
+                case ARMOR:
+                    addOneTo(costItems, Aspect.PROTECT);
+                case ARMOR_FEET:
+                    addOneTo(costItems, Aspect.PROTECT);
+                    addOneTo(costItems, Aspect.MOTION);
+                case ARMOR_CHEST:
+                    addOneTo(costItems, Aspect.PROTECT);
+                    addOneTo(costItems, Aspect.LIFE);
+                case ARMOR_LEGS:
+                    addOneTo(costItems, Aspect.PROTECT);
+                case ARMOR_HEAD:
+                    addOneTo(costItems, Aspect.PROTECT);
+                    addOneTo(costItems, Aspect.MIND);
+                case DIGGER:
+                    addOneTo(costItems,Aspect.ENTROPY);
+                    addOneTo(costItems,Aspect.TOOL);
+                case BREAKABLE:
+                    addOneTo(costItems,Aspect.ENTROPY);
+                case WEARABLE:
+                    addOneTo(costItems,Aspect.MAN);
+                case WEAPON:
+                    addOneTo(costItems,Aspect.ENTROPY);
+                    addOneTo(costItems,Aspect.DEATH);
+                case BOW:
+                    addOneTo(costItems,Aspect.ENTROPY);
+                    addOneTo(costItems,Aspect.DEATH);
+                case FISHING_ROD:;
+                    addOneTo(costItems,Aspect.ENTROPY);
+                    addOneTo(costItems,Aspect.BEAST);
+            }
+        }
+
+
+        for(Aspect item:costItems.keySet())
+        {
+            ItemStack crystal=new ItemStack(ItemsTC.crystalEssence);
+            ((ItemCrystalEssence)crystal.getItem()).setAspects(crystal,new AspectList().add(item,costItems.get(item)));
+            costs.add(crystal);
+        }
+        return costs;
+    }
+
+    private void addOneTo(Map<Aspect, Integer> costItems, Aspect crystalEssence) {
+        if(costItems.containsKey(crystalEssence))
+            costItems.put(crystalEssence,costItems.get(crystalEssence)+1);
+        else
+            costItems.put(crystalEssence,1);
     }
 
     public static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants) {
