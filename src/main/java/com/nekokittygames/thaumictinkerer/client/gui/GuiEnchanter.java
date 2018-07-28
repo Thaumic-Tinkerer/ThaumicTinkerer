@@ -35,14 +35,51 @@ public class GuiEnchanter extends GuiContainer {
 
 
     public TileEntityEnchanter enchanter;
-    public List<String> tooltip = new ArrayList();
-    public static final int WIDTH = 176;
+
+    public TileEntityEnchanter getEnchanter() {
+        return enchanter;
+    }
+
+    public void setEnchanter(TileEntityEnchanter enchanter) {
+        this.enchanter = enchanter;
+    }
+
+    public List<String> getTooltip() {
+        return tooltip;
+    }
+
+    public int getVisRequireWidth() {
+        return visRequireWidth;
+    }
+
+    public void setVisRequireWidth(int visRequireWidth) {
+        this.visRequireWidth = visRequireWidth;
+    }
+
+    public int getVisRequireHeight() {
+        return visRequireHeight;
+    }
+
+    public void setVisRequireHeight(int visRequireHeight) {
+        this.visRequireHeight = visRequireHeight;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    private List<String> tooltip = new ArrayList();
+    private static final int WIDTH = 176;
     public static final int HEIGHT = 166;
-    public int visRequireWidth=0;
-    public int visRequireHeight=0;
-    public int x, y;
-    public ItemStack lastTickItem;
-    public ItemStack stack;
+    private  int visRequireWidth=0;
+    private int visRequireHeight=0;
+    private int x, y;
+    private ItemStack lastTickItem;
+    private ItemStack stack;
     GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
 
     public GuiEnchanter(TileEntityEnchanter tileEntity, EnchanterContainer container) {
@@ -84,7 +121,7 @@ public class GuiEnchanter extends GuiContainer {
         asignEnchantButtons();
 
         int i = 0;
-        for (Integer enchant : enchanter.enchantments) {
+        for (Integer enchant : enchanter.getEnchantments()) {
             GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4, y + (i * 26)+30+15);
             button.enchant = Enchantment.getEnchantmentByID(enchant);
             buttonList.add(button);
@@ -108,7 +145,7 @@ public class GuiEnchanter extends GuiContainer {
         if (currentStack == ItemStack.EMPTY || currentStack.isItemEnchanted())
             return;
         int it = 0;
-        for (int enchant : enchanter.cachedEnchantments) {
+        for (int enchant : enchanter.getCachedEnchantments()) {
             enchantButtons[it].enchant = Enchantment.getEnchantmentByID(enchant);
             enchantButtons[it].enabled = true;
             it++;
@@ -131,43 +168,41 @@ public class GuiEnchanter extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float v, int i, int i1) {
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ENCHANTER);
         drawTexturedModalRect(guiLeft,guiTop,0,0,xSize,ySize);
-        if(enchanter.cachedEnchantments.size()>0 && enchanter.cachedEnchantments.size()<9)
+        if(enchanter.getCachedEnchantments().size()>0 && enchanter.getCachedEnchantments().size()<9)
         {
 
             // 34,61
             drawTexturedModalRect(x+34,y+28,0,ySize,147,24);
         }
-        else if(enchanter.cachedEnchantments.size()>=9)
+        else if(enchanter.getCachedEnchantments().size()>=8)
         {
             drawTexturedModalRect(x+34,y+17,0,ySize,147,24);
             // 34,61
             drawTexturedModalRect(x+34,y+54,0,ySize,147,24);
         }
 
-        if(enchanter.cachedEnchantments.size()>0)
+        if(enchanter.getCachedEnchantments().size()>0)
         {
-            this.fontRenderer.drawString(ArrayUtils.toString(enchanter.cachedEnchantments.toArray()),x+30,y+5, 0x610B0B);
+            this.fontRenderer.drawString(ArrayUtils.toString(enchanter.getCachedEnchantments().toArray()),x+30,y+5, 0x610B0B);
         }
         this.fontRenderer.drawString("Required Vis Crystals",x+177,y+7,0x999999);
         GlStateManager.color(1F, 1F, 1F);
         int y=0;
         int j=0;
         for(ItemStack itemStack:enchanter.getEnchantmentCost()) {
-            boolean rc = false;
-            if (!itemStack.isEmpty() && itemStack.getItem() != null) {
-                rc = true;
+            if (!itemStack.isEmpty()) {
                 GlStateManager.pushMatrix();
-                GlStateManager.translate(0.0F, 0.0F, 32.0F);
+                //GlStateManager.translate(0.0F, 0.0F, 32.0F);
                 GlStateManager.color(1F, 1F, 1F, 1F);
                 GlStateManager.enableRescaleNormal();
                 GlStateManager.enableLighting();
                 short short1 = 240;
                 short short2 = 240;
                 net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
-                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1 / 1.0F, short2 / 1.0F);
+                //OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, short1 / 1.0F, short2 / 1.0F);
                 itemRender.renderItemAndEffectIntoGUI(itemStack, x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT);
                 itemRender.renderItemOverlayIntoGUI(mc.fontRenderer, itemStack, x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT, ""+((ItemCrystalEssence)itemStack.getItem()).getAspects(itemStack).getAmount(((ItemCrystalEssence)itemStack.getItem()).getAspects(itemStack).getAspectsSortedByAmount()[0]));
                 GlStateManager.popMatrix();
@@ -198,12 +233,12 @@ public class GuiEnchanter extends GuiContainer {
         {
             int type = (button.id - 17) % 3;
             int index = (button.id - 17) / 3;
-            if (index >= enchanter.enchantments.size() || index >= enchanter.levels.size())
+            if (index >= enchanter.getEnchantments().size() || index >= enchanter.getLevels().size())
                 return;
 
-            int level = enchanter.levels.get(index);
+            int level = enchanter.getLevels().get(index);
             GuiEnchantmentLevelButton levelButton= (GuiEnchantmentLevelButton) button;
-            PacketHandler.INSTANCE.sendToServer(new PacketIncrementEnchantLevel(enchanter,enchanter.enchantments.get(index),levelButton.plus));
+            PacketHandler.INSTANCE.sendToServer(new PacketIncrementEnchantLevel(enchanter,enchanter.getEnchantments().get(index),levelButton.plus));
 
         }
     }

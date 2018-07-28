@@ -41,13 +41,32 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     private static final String TAG_WORKING = "working";
     public static final ResourceLocation MULTIBLOCK_LOCATION=new ResourceLocation("thaumictinkerer","osmotic_enchanter");
 
-    public List<Integer> enchantments = new ArrayList<>();
-    public List<Integer> levels = new ArrayList<>();
+    private List<Integer> enchantments = new ArrayList<>();
+    private List<Integer> levels = new ArrayList<>();
 
-    public List<Integer> cachedEnchantments=new ArrayList<>();
+    private List<Integer> cachedEnchantments=new ArrayList<>();
 
+    public List<Integer> getEnchantments() {
+        return enchantments;
+    }
 
-    public boolean working = false;
+    public List<Integer> getLevels() {
+        return levels;
+    }
+
+    public List<Integer> getCachedEnchantments() {
+        return cachedEnchantments;
+    }
+
+    public boolean isWorking() {
+        return working;
+    }
+
+    public List<Tuple4Int> getPillars() {
+        return pillars;
+    }
+
+    private boolean working = false;
 
     // old stytle multiblock
     private List<Tuple4Int> pillars = new ArrayList();

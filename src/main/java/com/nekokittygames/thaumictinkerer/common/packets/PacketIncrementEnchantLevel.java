@@ -84,11 +84,11 @@ public class PacketIncrementEnchantLevel implements IMessage {
                 TileEntity te = world.getTileEntity(packetIncrementEnchantLevel.getPos());
                 if (te instanceof TileEntityEnchanter) {
                     TileEntityEnchanter enchanter = (TileEntityEnchanter) te;
-                    int index=enchanter.enchantments.indexOf(packetIncrementEnchantLevel.enchantID);
+                    int index=enchanter.getEnchantments().indexOf(packetIncrementEnchantLevel.enchantID);
                     if(index!=-1)
                     {
-                        Enchantment enchantment=Enchantment.getEnchantmentByID(enchanter.enchantments.get(index));
-                        int currentLevel=enchanter.levels.get(index);
+                        Enchantment enchantment=Enchantment.getEnchantmentByID(enchanter.getEnchantments().get(index));
+                        int currentLevel=enchanter.getLevels().get(index);
                         if(packetIncrementEnchantLevel.plus)
                         {
                             currentLevel++;
@@ -99,7 +99,7 @@ public class PacketIncrementEnchantLevel implements IMessage {
                             currentLevel--;
                             currentLevel=Math.max(currentLevel,enchantment.getMinLevel());
                         }
-                        enchanter.levels.set(index,currentLevel);
+                        enchanter.getLevels().set(index,currentLevel);
                         enchanter.sendUpdates();
                     }
                 }

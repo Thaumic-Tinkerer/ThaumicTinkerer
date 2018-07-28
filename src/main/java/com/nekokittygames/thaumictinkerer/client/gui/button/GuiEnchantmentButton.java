@@ -43,7 +43,7 @@ public class GuiEnchantmentButton extends GuiButton {
         if (mouseX >= x &&mouseX< x + 16 && mouseY >= y&& mouseY< y+ 16) {
             List<String> tooltip = new ArrayList();
             tooltip.add(ChatFormatting.AQUA+ ThaumicTinkerer.proxy.localize(enchant.getName()));
-            parent.tooltip = tooltip;
+            parent.getTooltip().addAll( tooltip);
         }
     }
 
