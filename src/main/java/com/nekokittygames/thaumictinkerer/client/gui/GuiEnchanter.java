@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.client.gui;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.client.gui.button.*;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
@@ -7,10 +8,7 @@ import com.nekokittygames.thaumictinkerer.client.misc.ClientHelper;
 import com.nekokittygames.thaumictinkerer.common.containers.EnchanterContainer;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
 import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketAddEnchant;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketIncrementEnchantLevel;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
+import com.nekokittygames.thaumictinkerer.common.packets.*;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.client.gui.GuiButton;
@@ -83,6 +81,7 @@ public class GuiEnchanter extends GuiContainer {
     private ItemStack lastTickItem;
     private ItemStack stack;
     GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
+    GuiEnchantmentStartButton startButton;
 
     public GuiEnchanter(TileEntityEnchanter tileEntity, EnchanterContainer container) {
         super(container);
@@ -131,6 +130,8 @@ public class GuiEnchanter extends GuiContainer {
             buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 2, x + xSize + 31, y + (i * 26)+30+15 - 4, true));
             ++i;
         }
+        startButton=new GuiEnchantmentStartButton(0,x+8,y+58);
+        buttonList.add(startButton);
     }
     @Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -166,10 +167,19 @@ public class GuiEnchanter extends GuiContainer {
 
         lastTickItem=stack;
 
+        if(enchanter.getEnchantments().size()>0 && !enchanter.isWorking() && !stack.isItemEnchanted())
+        {
+            startButton.setEnabled(true);
+        }
+        else
+        {
+            startButton.setEnabled(false);
+        }
+
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float v, int i, int i1) {
+    protected void drawGuiContainerBackgroundLayer(float v, int mouseX, int mouseY) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ENCHANTER);
         drawTexturedModalRect(guiLeft,guiTop,0,0,xSize,ySize);
@@ -188,7 +198,7 @@ public class GuiEnchanter extends GuiContainer {
 
         if(enchanter.getCachedEnchantments().size()>0)
         {
-            this.fontRenderer.drawString(ArrayUtils.toString(enchanter.getCachedEnchantments().toArray()),x+30,y+5, 0x610B0B);
+            this.fontRenderer.drawString("Time Remaining: "+enchanter.getProgress(),x+30,y+5, 0x610B0B);
         }
         this.fontRenderer.drawString("Required Vis Crystals",x+177,y+7,0x999999);
         GlStateManager.color(1F, 1F, 1F);
@@ -210,7 +220,11 @@ public class GuiEnchanter extends GuiContainer {
                 Aspect aspect=crystalEssence.getAspects(itemStack).getAspectsSortedByAmount()[0];
                 itemRender.renderItemOverlayIntoGUI(fontRenderer,itemStack,x+177+(j*17), y+7+fontRenderer.FONT_HEIGHT,""+crystalEssence.getAspects(itemStack).getAmount(aspect));
                 GlStateManager.enableAlpha();
-
+                if (mouseX >= x+177+(j*17) &&mouseX< x+177+(j*17) + 16 && mouseY >= y+7+fontRenderer.FONT_HEIGHT&& mouseY< y+7+fontRenderer.FONT_HEIGHT+ 16) {
+                    List<String> tooltip = new ArrayList();
+                    tooltip.add(ChatFormatting.AQUA+ ThaumicTinkerer.proxy.localize(aspect.getName()));
+                    getTooltip().addAll( tooltip);
+                }
                 j++;
             }
         }
@@ -226,7 +240,7 @@ public class GuiEnchanter extends GuiContainer {
     protected void actionPerformed(GuiButton button) throws IOException {
         if(button.id==0)
         {
-
+            PacketHandler.INSTANCE.sendToServer(new PacketStartEnchant(enchanter));
         }
         else if(button.id<=16)
         {
@@ -238,14 +252,20 @@ public class GuiEnchanter extends GuiContainer {
         }
         else
         {
+
             int type = (button.id - 17) % 3;
             int index = (button.id - 17) / 3;
             if (index >= enchanter.getEnchantments().size() || index >= enchanter.getLevels().size())
                 return;
 
-            int level = enchanter.getLevels().get(index);
-            GuiEnchantmentLevelButton levelButton= (GuiEnchantmentLevelButton) button;
-            PacketHandler.INSTANCE.sendToServer(new PacketIncrementEnchantLevel(enchanter,enchanter.getEnchantments().get(index),levelButton.plus));
+            if(type==0)
+            {
+             PacketHandler.INSTANCE.sendToServer(new PacketRemoveEnchant(enchanter,enchanter.getEnchantments().get(index)));
+            }
+            else {
+                GuiEnchantmentLevelButton levelButton = (GuiEnchantmentLevelButton) button;
+                PacketHandler.INSTANCE.sendToServer(new PacketIncrementEnchantLevel(enchanter, enchanter.getEnchantments().get(index), levelButton.plus));
+            }
 
         }
     }

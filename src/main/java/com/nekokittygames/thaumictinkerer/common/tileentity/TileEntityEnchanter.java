@@ -39,12 +39,15 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     private static final String TAG_LEVELS = "levelsIntArray";
     private static final String TAG_CACHED_ENCHANTS="cachedEnchants";
     private static final String TAG_WORKING = "working";
+    private static final String TAG_PROGRESS="progress";
     public static final ResourceLocation MULTIBLOCK_LOCATION=new ResourceLocation("thaumictinkerer","osmotic_enchanter");
 
     private List<Integer> enchantments = new ArrayList<>();
     private List<Integer> levels = new ArrayList<>();
 
     private List<Integer> cachedEnchantments=new ArrayList<>();
+    private int progress;
+
 
     public List<Integer> getEnchantments() {
         return enchantments;
@@ -75,6 +78,11 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         enchantments.clear();
         levels.clear();
 
+    }
+
+    public void setWorking(boolean working) {
+        this.working = working;
+        sendUpdates();
     }
 
     public void appendEnchant(int enchant) {
@@ -158,6 +166,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         nbttagcompound.setIntArray(TAG_ENCHANTS, enchantments.stream().mapToInt(i -> i).toArray());
         nbttagcompound.setIntArray(TAG_LEVELS, levels.stream().mapToInt(i -> i).toArray());
         nbttagcompound.setIntArray(TAG_CACHED_ENCHANTS, cachedEnchantments.stream().mapToInt(i -> i).toArray());
+        nbttagcompound.setInteger(TAG_PROGRESS,progress);
+        nbttagcompound.setBoolean(TAG_WORKING,working);
     }
 
     @Override
@@ -174,6 +184,12 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             int[] cachedEnchantmentArray=nbttagcompound.getIntArray(TAG_CACHED_ENCHANTS);
             Arrays.stream(cachedEnchantmentArray).forEach(i -> cachedEnchantments.add(i));
         }
+        if(nbttagcompound.hasKey(TAG_PROGRESS))
+        {
+            progress=nbttagcompound.getInteger(TAG_PROGRESS);
+        }
+        if(nbttagcompound.hasKey(TAG_WORKING))
+            working=nbttagcompound.getBoolean(TAG_WORKING);
     }
 
 
@@ -211,13 +227,33 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             if(tool==ItemStack.EMPTY)
             {
                 working=false;
+                progress=0;
                 return;
             }
 
             checkStructure();
 
             if (!working) // Pillar check
+            {
+                progress=0;
                 return;
+
+            }
+
+            progress++;
+            if(progress>20*10)
+            {
+                if(!world.isRemote) {
+                    for (int i = 0; i < enchantments.size(); i++) {
+                        tool.addEnchantment(Enchantment.getEnchantmentByID(enchantments.get(i)),levels.get(i));
+                    }
+                }
+                progress=0;
+                working=false;
+                clearEnchants();
+                sendUpdates();
+            }
+
         }
     }
 
@@ -340,33 +376,44 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             switch (enchantment.type) {
                 case ARMOR:
                     addOneTo(costItems, Aspect.PROTECT);
+                    break;
                 case ARMOR_FEET:
                     addOneTo(costItems, Aspect.PROTECT);
                     addOneTo(costItems, Aspect.MOTION);
+                    break;
                 case ARMOR_CHEST:
                     addOneTo(costItems, Aspect.PROTECT);
                     addOneTo(costItems, Aspect.LIFE);
+                    break;
                 case ARMOR_LEGS:
                     addOneTo(costItems, Aspect.PROTECT);
+                    break;
                 case ARMOR_HEAD:
                     addOneTo(costItems, Aspect.PROTECT);
                     addOneTo(costItems, Aspect.MIND);
+                    break;
                 case DIGGER:
                     addOneTo(costItems,Aspect.ENTROPY);
                     addOneTo(costItems,Aspect.TOOL);
+                    break;
                 case BREAKABLE:
                     addOneTo(costItems,Aspect.ENTROPY);
+                    break;
                 case WEARABLE:
                     addOneTo(costItems,Aspect.MAN);
+                    break;
                 case WEAPON:
                     addOneTo(costItems,Aspect.ENTROPY);
                     addOneTo(costItems,Aspect.DEATH);
+                    break;
                 case BOW:
                     addOneTo(costItems,Aspect.ENTROPY);
                     addOneTo(costItems,Aspect.DEATH);
+                    break;
                 case FISHING_ROD:;
                     addOneTo(costItems,Aspect.ENTROPY);
                     addOneTo(costItems,Aspect.BEAST);
+                    break;
             }
         }
 
@@ -407,4 +454,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return true;
     }
 
+    public int getProgress() {
+        return progress;
+    }
 }
