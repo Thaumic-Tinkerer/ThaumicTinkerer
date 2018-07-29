@@ -17,6 +17,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -25,6 +26,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.client.fx.FXDispatcher;
+import thaumcraft.client.fx.beams.FXArc;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
@@ -73,6 +76,18 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
     // old stytle multiblock
     private List<Tuple4Int> pillars = new ArrayList();
+
+    private Vec3d[] points=new Vec3d[]{
+            new Vec3d(2.8, 2.15, 2.8),    // 0
+            new Vec3d(2.8, 2.15, 0.5),    // 1
+            new Vec3d(2.8, 2.15, -2.2),   // 2
+            new Vec3d(0.5, 2.15, -2.2),   // 3
+            new Vec3d(-2.2, 2.15, -2.2),  // 4
+            new Vec3d(-2.2, 2.15, 0.5),   // 5
+            new Vec3d(-2.2, 2.15, 2.8),   // 6
+            new Vec3d(0.5, 2.15, 2.8)     // 7
+    };
+
 
     public void clearEnchants() {
         enchantments.clear();
@@ -241,6 +256,22 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             }
 
             progress++;
+            if(world.isRemote)
+            {
+                if(progress % 20==0)
+                {
+                    for(Vec3d point:points)
+                    {
+                        Vec3d curPos=new Vec3d(getPos().getX(),getPos().getY(),getPos().getZ());
+                        Vec3d originPos=curPos.add(point);
+                        FXDispatcher.INSTANCE.arcLightning(originPos.x,originPos.y,originPos.z,getPos().getX()+0.5f,getPos().up().getY()+0.5f,getPos().getZ()+0.5f,1.0f,1.0f,0.0f,0.5f);
+                    }
+
+
+
+
+                }
+            }
             if(progress>20*10)
             {
                 if(!world.isRemote) {
@@ -248,6 +279,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                         tool.addEnchantment(Enchantment.getEnchantmentByID(enchantments.get(i)),levels.get(i));
                     }
                 }
+
+
                 progress=0;
                 working=false;
                 clearEnchants();
