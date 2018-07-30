@@ -5,6 +5,7 @@ import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,6 +20,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
@@ -34,7 +37,9 @@ import thaumcraft.common.items.resources.ItemCrystalEssence;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements ITickable {
@@ -78,16 +83,18 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     private List<Tuple4Int> pillars = new ArrayList();
 
     private Vec3d[] points=new Vec3d[]{
-            new Vec3d(2.8, 2.15, 2.8),    // 0
-            new Vec3d(2.8, 2.15, 0.5),    // 1
-            new Vec3d(2.8, 2.15, -2.2),   // 2
-            new Vec3d(0.5, 2.15, -2.2),   // 3
-            new Vec3d(-2.2, 2.15, -2.2),  // 4
-            new Vec3d(-2.2, 2.15, 0.5),   // 5
-            new Vec3d(-2.2, 2.15, 2.8),   // 6
-            new Vec3d(0.5, 2.15, 2.8)     // 7
+            new Vec3d(-1.2, 2.15, -1.2),    // 0
+            new Vec3d(-2.2, 2.15, 0.5),    // 1
+            new Vec3d(-1.2, 2.15, 2.2),   // 2
+            new Vec3d(0.5, 2.15, 3.2),   // 3
+            new Vec3d(2.2, 2.15, 2.2),  // 4
+            new Vec3d(3.2, 2.15, 0.5),   // 5
+            new Vec3d(2.2, 2.15, -1.2),   // 6
+            new Vec3d(0.5, 2.15, -2.2)     // 7
     };
 
+    @SideOnly(Side.CLIENT)
+    private Color c = new Color(MapColor.GOLD.colorValue);
 
     public void clearEnchants() {
         enchantments.clear();
@@ -236,6 +243,9 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         {
             clearEnchants();
         }
+
+
+
         if(working)
         {
             ItemStack tool=inventory.getStackInSlot(0);
@@ -256,23 +266,53 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             }
 
             progress++;
-            if(world.isRemote)
+            if(world.isRemote && !TTConfig.ClassicEnchanter)
             {
-                if(progress % 20==0)
+                float tmp= (((progress / (20f * 15f)) * 100f) / 75f) * 100f;
+                if(tmp>=0)
+                {
+                    arcPoints(0,1);
+                }
+                if(tmp>=12.5)
+                {
+                    arcPoints(1,2);
+                }
+
+                if(tmp>=25)
+                {
+                    arcPoints(2,3);
+                }
+                if(tmp>=37.5)
+                {
+                    arcPoints(3,4);
+                }
+                if(tmp>=50)
+                {
+                    arcPoints(4,5);
+                }
+                if(tmp>=62.5)
+                {
+                    arcPoints(5,6);
+                }
+                if(tmp>=75)
+                {
+                    arcPoints(6,7);
+                }
+                if(tmp>=87.5) {
+
+                    arcPoints(7, 0);
+                }
+                if(tmp>=100)
                 {
                     for(Vec3d point:points)
                     {
                         Vec3d curPos=new Vec3d(getPos().getX(),getPos().getY(),getPos().getZ());
                         Vec3d originPos=curPos.add(point);
-                        FXDispatcher.INSTANCE.arcLightning(originPos.x,originPos.y,originPos.z,getPos().getX()+0.5f,getPos().up().getY()+0.5f,getPos().getZ()+0.5f,1.0f,1.0f,0.0f,0.5f);
+                        FXDispatcher.INSTANCE.arcLightning(originPos.x,originPos.y,originPos.z,getPos().getX()+0.5f,getPos().up().getY()+0.5f,getPos().getZ()+0.5f,this.c.getRed() / 255.0F,this.c.getGreen() / 255.0F,this.c.getBlue() / 255.0F,0.5f);
                     }
-
-
-
-
                 }
             }
-            if(progress>20*10)
+            if(progress>20*15)
             {
                 if(!world.isRemote) {
                     for (int i = 0; i < enchantments.size(); i++) {
@@ -288,6 +328,13 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             }
 
         }
+    }
+
+    private void arcPoints(int start,int end) {
+        Vec3d curPos=new Vec3d(getPos().getX(),getPos().getY(),getPos().getZ());
+        Vec3d originPos=curPos.add(points[start]);
+        Vec3d nextPos=curPos.add(points[end]);
+        FXDispatcher.INSTANCE.arcLightning(originPos.x,originPos.y,originPos.z,nextPos.x,nextPos.y,nextPos.z,this.c.getRed() / 255.0F,this.c.getGreen() / 255.0F,this.c.getBlue() / 255.0F,1f);
     }
 
     private void checkStructure() {

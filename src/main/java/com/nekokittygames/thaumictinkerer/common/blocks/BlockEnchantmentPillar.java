@@ -77,7 +77,7 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
     }
 
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
+        player.sendStatusMessage(new TextComponentString("Direction - "+state.getValue(Direction)),true);
         return true;
     }
 }
