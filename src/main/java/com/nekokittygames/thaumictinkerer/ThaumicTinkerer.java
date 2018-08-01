@@ -2,7 +2,6 @@ package com.nekokittygames.thaumictinkerer;
 
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
-import com.nekokittygames.thaumictinkerer.common.commands.CommandThaumicTinkererClient;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
@@ -10,7 +9,6 @@ import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -45,9 +43,7 @@ public class ThaumicTinkerer
     {
         logger = event.getModLog();
 
-        ClientCommandHandler.instance.registerCommand(new CommandThaumicTinkererClient());
-
-
+        proxy.preInit(event);
         PacketHandler.registerMessages(LibMisc.MOD_ID);
     }
     @Mod.EventHandler
