@@ -9,6 +9,7 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
@@ -34,6 +35,7 @@ import thaumcraft.client.fx.beams.FXArc;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
+import thaumcraft.common.lib.utils.InventoryUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -103,6 +105,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     }
 
     public void setWorking(boolean working) {
+
         this.working = working;
         sendUpdates();
     }
@@ -330,6 +333,23 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
     }
 
+    public boolean playerHasIngredients(List<ItemStack> stacks, EntityPlayer player)
+    {
+        for(ItemStack stack:stacks)
+        {
+            if(!InventoryUtils.isPlayerCarryingAmount(player,stack,false))
+                return false;
+        }
+        return true;
+    }
+
+    public void takeIngredients(List<ItemStack> stacks, EntityPlayer player)
+    {
+        for(ItemStack stack:stacks)
+        {
+            InventoryUtils.consumePlayerItem(player,stack,true,false);
+        }
+    }
     private void arcPoints(int start,int end) {
         Vec3d curPos=new Vec3d(getPos().getX(),getPos().getY(),getPos().getZ());
         Vec3d originPos=curPos.add(points[start]);

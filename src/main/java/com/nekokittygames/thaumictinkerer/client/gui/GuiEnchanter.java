@@ -11,6 +11,7 @@ import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
 import com.nekokittygames.thaumictinkerer.common.packets.*;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -167,7 +168,7 @@ public class GuiEnchanter extends GuiContainer {
 
         lastTickItem=stack;
 
-        if(enchanter.getEnchantments().size()>0 && !enchanter.isWorking() && !stack.isItemEnchanted())
+        if(enchanter.getEnchantments().size()>0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player))
         {
             startButton.setEnabled(true);
         }
@@ -238,9 +239,9 @@ public class GuiEnchanter extends GuiContainer {
     }
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
-        if(button.id==0)
+        if(button.id==0 )
         {
-            PacketHandler.INSTANCE.sendToServer(new PacketStartEnchant(enchanter));
+            PacketHandler.INSTANCE.sendToServer(new PacketStartEnchant(enchanter,Minecraft.getMinecraft().player));
         }
         else if(button.id<=16)
         {
