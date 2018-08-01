@@ -60,10 +60,19 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements
     }
 
     @Override
-    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing, EnumHand enumHand) {
-        if (MultiblockManager.checkMultiblockCombined(world,blockPos,new ResourceLocation("thaumictinkerer:osmotic_enchanter"))) {
-            entityPlayer.sendStatusMessage(new TextComponentString("Complete"), true);
-            return true;
+    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos pos, EnumFacing enumFacing, EnumHand enumHand) {
+        if (MultiblockManager.checkMultiblock(world,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")))
+        {
+            entityPlayer.sendStatusMessage(new TextComponentString("Complete"),true);
+            try {
+                MultiblockManager.outputMultiblock(world,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter"),MultiblockManager.checkMultiblockFacing(world,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            entityPlayer.sendStatusMessage(new TextComponentString("InComplete"),true);
         }
         return false;
     }

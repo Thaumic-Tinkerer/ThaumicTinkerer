@@ -95,7 +95,6 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             new Vec3d(0.5, 2.15, -2.2)     // 7
     };
 
-    @SideOnly(Side.CLIENT)
     private Color c = new Color(MapColor.GOLD.colorValue);
 
     public void clearEnchants() {

@@ -1,21 +1,19 @@
 package com.nekokittygames.thaumictinkerer.common.multiblocks;
 
 
+import com.nekokittygames.thaumictinkerer.common.helper.Mat2f;
+import com.nekokittygames.thaumictinkerer.common.helper.TTVec2f;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.lwjgl.util.vector.Matrix;
-import org.lwjgl.util.vector.Matrix2f;
-import org.lwjgl.util.vector.Vector2f;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class MultiblockManager {
@@ -44,23 +42,23 @@ public class MultiblockManager {
             }
         }));
 
-        Matrix2f tmp;
-        FACING_ROTATIONS.put(EnumFacing.NORTH, (Matrix2f) new Matrix2f().setIdentity());
-        tmp=new Matrix2f();
+        Mat2f tmp;
+        FACING_ROTATIONS.put(EnumFacing.NORTH, (Mat2f) new Mat2f().setIdentity());
+        tmp=new Mat2f();
         tmp.m00=0; tmp.m01=1;
         tmp.m10=-1; tmp.m11=0;
         FACING_ROTATIONS.put(EnumFacing.EAST,tmp);
-        tmp=new Matrix2f();
+        tmp=new Mat2f();
         tmp.m00=-1; tmp.m01=0;
         tmp.m10=0; tmp.m11=-1;
         FACING_ROTATIONS.put(EnumFacing.SOUTH,tmp);
-        tmp=new Matrix2f();
+        tmp=new Mat2f();
         tmp.m00=0; tmp.m01=-1;
         tmp.m10=1; tmp.m11=0;
         FACING_ROTATIONS.put(EnumFacing.WEST,tmp);
     }
 
-    public static Map<EnumFacing,Matrix2f> FACING_ROTATIONS=new HashMap<>();
+    public static Map<EnumFacing,Mat2f> FACING_ROTATIONS=new HashMap<>();
 
     public static boolean checkMultiblock(World world, BlockPos keyBlock,ResourceLocation multiblock)
     {
@@ -99,13 +97,13 @@ public class MultiblockManager {
         Multiblock multiblock=getMultiblock(multiblockLocation);
         if(multiblock==null)
             return false;
-        Matrix2f matrix=FACING_ROTATIONS.get(facing);
+        Mat2f matrix=FACING_ROTATIONS.get(facing);
         boolean complete=true;
         for (Iterator<MultiblockLayer> it = multiblock.combinedIterator(); it.hasNext(); ) {
             MultiblockLayer layer = it.next();
             for(MultiblockBlock block:layer)
             {
-                Vector2f tmpPos=new Vector2f(block.getxOffset(),block.getzOffset());
+                TTVec2f tmpPos=new TTVec2f(block.getxOffset(),block.getzOffset());
                 tmpPos=mul(matrix,tmpPos);
                 BlockPos posToCheck=keyBlock.add(new BlockPos(tmpPos.x,layer.getyLevel(),tmpPos.y));
                 String blockType=block.getBlockName();
@@ -140,14 +138,14 @@ public class MultiblockManager {
         Multiblock multiblock=getMultiblock(multiblockLocation);
         if(multiblock==null)
             return;
-        Matrix2f matrix=FACING_ROTATIONS.get(facing);
+        Mat2f matrix=FACING_ROTATIONS.get(facing);
         boolean complete=true;
         for (Iterator<MultiblockLayer> it = multiblock.outputIterator(); it.hasNext(); ) {
             MultiblockLayer layer = it.next();
             if(layer==null)
                 continue;
             for (MultiblockBlock block : layer) {
-                Vector2f tmpPos=new Vector2f(block.getxOffset(),block.getzOffset());
+                TTVec2f tmpPos=new TTVec2f(block.getxOffset(),block.getzOffset());
                 tmpPos=mul(matrix,tmpPos);
                 BlockPos posToCheck=keyBlock.add(new BlockPos(tmpPos.x,layer.getyLevel(),tmpPos.y));
                 String blockType=block.getBlockName();
@@ -173,13 +171,13 @@ public class MultiblockManager {
         Multiblock multiblock=getMultiblock(multiblockLocation);
         if(multiblock==null)
             return false;
-        Matrix2f matrix=FACING_ROTATIONS.get(facing);
+        Mat2f matrix=FACING_ROTATIONS.get(facing);
         boolean complete=true;
         for(MultiblockLayer layer:multiblock)
         {
             for(MultiblockBlock block:layer)
             {
-                Vector2f tmpPos=new Vector2f(block.getxOffset(),block.getzOffset());
+                TTVec2f tmpPos=new TTVec2f(block.getxOffset(),block.getzOffset());
                 tmpPos=mul(matrix,tmpPos);
                 BlockPos posToCheck=keyBlock.add(new BlockPos(tmpPos.x,layer.getyLevel(),tmpPos.y));
                 String blockType=block.getBlockName();
@@ -213,13 +211,12 @@ public class MultiblockManager {
     }
 
 
-    public static Vector2f mul(Matrix2f matrix,Vector2f vec)
+    public static TTVec2f mul(Mat2f matrix,TTVec2f vec)
     {
-        Vector2f rotatedPos=new Vector2f();
-        rotatedPos.x=(matrix.m00*vec.x)+(matrix.m01*vec.y);
-        rotatedPos.y=(matrix.m10*vec.x)+(matrix.m11*vec.y);
+        TTVec2f rotatedPos=new TTVec2f((matrix.m00*vec.x)+(matrix.m01*vec.y),(matrix.m10*vec.x)+(matrix.m11*vec.y));
         return rotatedPos;
     }
+
     public static Multiblock getMultiblock(ResourceLocation location)
     {
         if(multiblocks.containsKey(location))
