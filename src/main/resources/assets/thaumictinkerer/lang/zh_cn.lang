@@ -11,6 +11,9 @@ item.thaumictinkerer:cleaning_talisman.0=妙寿安的礼物
 item.thaumictinkerer:black_quartz.name=烟黑石英
 item.thaumictinkerer:connector.name=矢量变换绑定器
 
+item.thaumictinkerer:energetic_nitor.name=超能闪耀之光
+item.thaumictinkerer:form_revealer.name=多方块结构映射器
+
 // Blocks
 tile.thaumictinkerer:funnel.name=源质漏斗
 tile.thaumictinkerer:funnel.0=纵已转移
@@ -22,6 +25,10 @@ tile.thaumictinkerer:transvector_interface.name=矢量变换接口
 tile.thaumictinkerer:repairer.name=奥法修复台
 tile.thaumictinkerer:magnet.name=奥术磁铁
 tile.thaumictinkerer:mob_magnet.name=奥术生物磁铁
+tile.thaumictinkerer:osmotic_enchanter.name=渗透附魔台
+tile.thaumictinkerer:enchantment_pillar.name=蕴魔柱
+tile.thaumictinkerer:black_quartz_block.name=烟黑石英块
+tile.thaumictinkerer:example.name=镜像方块
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer配置
 thaumictinkerer.config.talisman=启用防身护身符
@@ -61,7 +68,6 @@ thaumictinkerer.research.share_tome.0=假如有朝一日，你想要将你所研
 thaumictinkerer.research.funnel.title=源质漏斗
 thaumictinkerer.research.funnel.lore=纵已转移
 thaumictinkerer.research.funnel.0=你对用安瓿来倒腾罐子里的要素烦透了，因此你最终制造出一种新设备，能够将罐子里的源质转移到其他罐子中。<BR><BR>将此方块置于漏斗上方，用含有要素的罐子右击，如果漏斗对接的是一个空罐子或者装有相同要素的未满罐子，那么你手持罐子中的要素会向其转移。
-
 thaumictinkerer.research.cleaning_talisman.title=防身护身符
 thaumictinkerer.research.cleaning_talisman.lore=妙寿安的礼物
 thaumictinkerer.research.cleaning_talisman.0=在研究生命以及肉体时，你发现可以利用魔力转移来自外界的伤害效果。这个护身符将为佩戴者抵挡大多数类型的伤害，但这会消耗它的耐久。<BR><BR>按住Shift右击启用/禁用护符效果。另外，只有护符装备在饰品栏并启用时才起效。
