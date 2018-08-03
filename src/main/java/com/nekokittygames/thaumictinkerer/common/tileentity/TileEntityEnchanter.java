@@ -57,6 +57,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
     private List<Integer> cachedEnchantments=new ArrayList<>();
     private int progress;
+    private int cooldown;
 
 
     public List<Integer> getEnchantments() {
@@ -135,8 +136,13 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         levels.set(index, level);
     }
 
+    public int getCooldown() {
+        return cooldown;
+    }
 
-
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
+    }
 
     private ItemStackHandler inventory= new ItemStackHandler(1)
     {
@@ -246,7 +252,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             clearEnchants();
         }
 
-
+        if(cooldown>0)
+            cooldown--;
 
         if(working)
         {
@@ -325,6 +332,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
                 progress=0;
                 working=false;
+                cooldown=28;
                 clearEnchants();
                 sendUpdates();
             }

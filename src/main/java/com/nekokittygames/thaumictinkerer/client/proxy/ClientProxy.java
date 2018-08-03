@@ -3,18 +3,12 @@ package com.nekokittygames.thaumictinkerer.client.proxy;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
 import com.nekokittygames.thaumictinkerer.client.rendering.special.multi.NitorRenderer;
-import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityEnchantmentPillarRenderer;
-import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityExampleRenderer;
-import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityFunnelRenderer;
-import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.TileEntityRepairerRenderer;
+import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.*;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandThaumicTinkererClient;
 import com.nekokittygames.thaumictinkerer.common.intl.MultiBlockPreviewRendering;
 import com.nekokittygames.thaumictinkerer.common.proxy.GuiProxy;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchantmentPillar;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityExample;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityFunnel;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityRepairer;
+import com.nekokittygames.thaumictinkerer.common.tileentity.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -32,6 +26,7 @@ public class ClientProxy implements ITTProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRepairer.class,new TileEntityRepairerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExample.class,new TileEntityExampleRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchantmentPillar.class,new TileEntityEnchantmentPillarRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchanter.class,new TileEntityEnchanterRenderer());
 
         Shaders.initShaders();
         MultiBlockPreviewRendering.RegisterRenderer(BlockNitor.class,new NitorRenderer());
