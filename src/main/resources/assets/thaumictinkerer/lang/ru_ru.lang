@@ -1,74 +1,81 @@
 itemGroup.thaumictinkerer=Thaumic Tinkerer
 
 
-// Предметы
-item.thaumictinkerer:share_book.name=Том Обмена Знаний
-item.thaumictinkerer:share_book.0=Дневник Золотой Рыбки
+// Items
+item.thaumictinkerer:share_book.name=Том обмена знаний
+item.thaumictinkerer:share_book.0=Дневник золотой рыбки
 
-item.thaumictinkerer:cleaning_talisman.name=Талисман Очищения
-item.thaumictinkerer:cleaning_talisman.0=Подарок Мицукаке
+item.thaumictinkerer:cleaning_talisman.name=Талисман очищения
+item.thaumictinkerer:cleaning_talisman.0=Сувенир от Мицукаке
 
-item.thaumictinkerer:black_quartz.name=Дымчатый Кварц
-item.thaumictinkerer:connector.name=Связывающий Трансвектор
+item.thaumictinkerer:black_quartz.name=Дымчатый кварц
+item.thaumictinkerer:connector.name=Связывающий трансвектор
 
-// Блоки
-tile.thaumictinkerer:funnel.name=Воронка Эссенции
-tile.thaumictinkerer:funnel.0=Ещё Переливать!
+item.thaumictinkerer:energetic_nitor.name=Энергетический нитор
+item.thaumictinkerer:form_revealer.name=Мультиблочный визуализатор
 
-tile.thaumictinkerer:dissimulation.name=Скрытный Блок
+// Blocks
+tile.thaumictinkerer:funnel.name=Воронка для Эссенции
+tile.thaumictinkerer:funnel.0=Больше переливать!
 
-tile.thaumictinkerer:transvector_interface.name=Трансвектор
+tile.thaumictinkerer:dissimulation.name=Скрытный блок
 
-tile.thaumictinkerer:repairer.name=Таум Восстановитель
-tile.thaumictinkerer:magnet.name=Кинетический Притяжатель
-tile.thaumictinkerer:mob_magnet.name=Материальный Притяжатель
-// Конфигурация
-thaumictinkerer.config.title=Конфигурация Thaumic Tinkerer
-thaumictinkerer.config.talisman=Использовать Талисман Очищения
+tile.thaumictinkerer:transvector_interface.name=Трансвекторный интерфейс
 
-// Разное
-ttmisc.mobmagnet.all=Всё
+tile.thaumictinkerer:repairer.name=Таумиевый восстановитель
+tile.thaumictinkerer:magnet.name=Кинетический притяжатель
+tile.thaumictinkerer:mob_magnet.name=Материальный притяжатель
+tile.thaumictinkerer:osmotic_enchanter.name=Осмотический стол зачарований
+tile.thaumictinkerer:enchantment_pillar.name=Зачаровательный столб
+tile.thaumictinkerer:black_quartz_block.name=Чёрный кварцевый блок
+tile.thaumictinkerer:example.name=Блок заполнитель
+// Config
+thaumictinkerer.config.title=Thaumic Tinkerer Конфиг
+thaumictinkerer.config.talisman=Использовать талисман очищения
+
+// Misc
+ttmisc.mobmagnet.all=Все
 ttmisc.mobmagnet.none=Нет
 ttmisc.mobmagnet.child=Ребёнок
 ttmisc.mobmagnet.adult=Взрослый
 
-ttmisc.shareTome.write=Исследования Записаны!
-ttmisc.shareTome.noAssign=Не Назначено
-ttmisc.shareTome.playerName=Связано с %s's исследованиями.
-ttmisc.shareTome.sync=Приобретённые Исследования.
-ttmisc.shareTome.clear=Исследования Очищенны.
-ttmisc.cleaning_talisman.active=Талисман Активирован
-ttmisc.cleaning_talisman.inactive=Талисман Неактивирован
-ttmisc.connector.complete=Привязка Завершена!
-ttmisc.connector.set=Местоположение Установлено!
-ttmisc.connector.notinterf=Нет Трансвектора.
-ttmisc.connector.interffail=Невозможно связать Трансвектор с другим.
-ttmisc.connector.dislfail=Невозможно связать Связывающий Трансвектор с другим.
-ttmisc.connector.notpresent=Трансвектор не присутствует.
-ttmisc.connector.toofar=Происхождение Трансвектора находится слишком далеко.
-ttmisc.connector.clear=Ты очистил выбранный Трансвектор
-ttmisc.soulMould.nonAssigned=Нет Шаблона
-ttmisc.soulMould.pattern=Нынешний Шаблон %s
+ttmisc.shareTome.write=Исследования записаны!
+ttmisc.shareTome.noAssign=Не назначено
+ttmisc.shareTome.playerName=Связано с %s's исследованиями
+ttmisc.shareTome.sync=Приобретённые исследования
+ttmisc.shareTome.clear=Исследования очищенны
+ttmisc.cleaning_talisman.active=Талисман активен
+ttmisc.cleaning_talisman.inactive=Талисман неактивен
+ttmisc.connector.complete=Привязка завершена!
+ttmisc.connector.set=Местоположение установлено!
+ttmisc.connector.notinterf=Нет трансвектора
+ttmisc.connector.interffail=Невозможно связать Трансвекторный интерфейс с другим.
+ttmisc.connector.dislfail=Невозможно связать Связывающий трансвекторный интерфейс с другим.
+ttmisc.connector.notpresent=Трансвекторный Интерфейс не присутствует.
+ttmisc.connector.toofar=Местоположение трансвекторного интерфейса, находится слишком далеко.
+ttmisc.connector.clear=Ты очистил выбранный Трансвекторный интерфейс
+ttmisc.soulMould.nonAssigned=Нет шаблона
+ttmisc.soulMould.pattern=Нынешний шаблон %s
 
 
 
-//Исследование
+//Research
 tc.research_category.THAUMIC_TINKERER=Thaumic Tinkerer
 thaumictinkerer.research.share_tome.title=Том Обмена Знаний
-thaumictinkerer.research.share_tome.lore=Дневник Золотой Рыбки
-thaumictinkerer.research.share_tome.0=При изучении магии Таумономикона, я начал размышлять о рамках знаний, и как она размещает в себя магию, легко потерянной, не разделяемой книге. Похоже, кого-то, кого я обучаю, чтобы сделать Таумономикон, вносит одну заметку или, если он специалист, тот, который содержит свои собственные знания. После незначительных экспериментов, я обнаружил, что если я пишу при помощи специальных чернил, я могу сделать том, который сможет перенести законченные знания одного Таумономикона в другой практикующий Таумономикон. Похоже, незаконченные исследования, устойчивы к этому методу передачи.
+thaumictinkerer.research.share_tome.lore=Дневник золотой рыбки
+thaumictinkerer.research.share_tome.0=При изучении магии Таумономикона, я начал размышлять о рамках знаний, и как она размещает магию в себя, легко потерянной не разделяемой книге. Похоже, кого-то которого я обучаю, чтобы сделать Таумономикон, вносит одну заметку или, если он специалист, тот, который содержит свои собственные знания. После незначительных экспериментов, я обнаружил, что если я пишу при помощи Специальных чернил, я могу сделать Том, который сможет перенести законченные знания 1-го Таумономикона в другой практикующий. Похоже незаконченные исследования устойчивы к методу передачи.
 
-thaumictinkerer.research.funnel.title=Воронка Эссенции
-thaumictinkerer.research.funnel.lore=Даже Передать
-thaumictinkerer.research.funnel.0=thaumictinkerer.research.funnel.0=Ты устал управлять своими банками и пузырьками, до этого, ты создал новый механизм для передачи содержимого из одной банки в другую.<BR><BR>Разместив эту Воронку Эссенции поверх воронки и щёлкнув ПКМ с заполненной банкой, и если воронка указывает на банку которая либо пуста, либо имеет тот же аспект, содержимое банки будет перелито.
+thaumictinkerer.research.funnel.title=Воронка для Эссенции
+thaumictinkerer.research.funnel.lore=Больше Передать
+thaumictinkerer.research.funnel.0=thaumictinkerer.research.funnel.0=Ты устал управлять своими Банками и Пузырьками, но до этого, ты создал новый механизм для передачи содержимого из 1-ой банки в другую.<BR><BR>Разместив воронку для эссенции поверх ванильной Воронки и щёлкнув ПКМ с заполненной банкой, эссенция в банке будет перелита в другую. Воронка для эссенции переливает только в одинаковые Банки с Эссенцией.
 thaumictinkerer.research.cleaning_talisman.title=Талисман Очищения
 thaumictinkerer.research.cleaning_talisman.lore=Подарок Мицукаке
-thaumictinkerer.research.cleaning_talisman.0=Ты изучил жизнь и тело, и после изучения некоторых ядов и лекарств, ты обнаружил, что с помощью применения магии, ты можешь защитить себя от вредных внешних эффектов, перенаправляя эти эффекты на предмет. Этот талисман позволит развеить самые вредные эффекты на владельца и сохранит их на себе, получив урон.<BR><BR>Чтобы включить или отключить эту возможность, нужно щёлкнуть по нему ПКМ. Как и следовало ожидать, он работает только когда включён. Его необходимо носить в своём слоте амулета чтобы принимать в себя вредные эффекты.
+thaumictinkerer.research.cleaning_talisman.0=Ты изучил жизнь и тело, и после изучения некоторых ядов и лекарств ты обнаружил, что с помощью применения магии ты можешь защитить себя от вредных внешних отравляющих воздействий, перенаправляя эти воздействия на талисман. Талисман позволяет развеивать самые вредные воздействия на владельца и сохранять их на себе.<BR><BR>Для работы талисмана, нужно щёлкнуть ПКМ держа его в руке. Как и следовало ожидать, он работает только когда включён. Его необходимо носить в слоте амулета, чтобы он смог принимать в себя вредные воздействия.
 
 thaumictinkerer.research.black_quartz.title=Дымчатый Кварц
 thaumictinkerer.research.black_quartz.lore=Тёмный День
-thaumictinkerer.research.black_quartz.0=Дымчатый Кварц в основном кварцевый, хотя негативный. Все обычные блоки, которые могут быть изготовлены с помощью кварца, также могут быть изготовлены с помощью Дымчатого Кварца, и они выглядят чёрными.<LINE>Сам дымчатый кварц может быть изготовлен из кусочка угля или из древесного угля, и из нескольких обычных кусочков Кварца Нижнего Мира.
+thaumictinkerer.research.black_quartz.0=Дымчатый кварц в основном Кварцевый, хотя и негативный. Все обычные блоки, которые могут быть изготовлены из Кварца, также могут быть изготовлены из Дымчатого кварца, и они будут выглядить чёрными.<LINE>Сам дымчатый кварц может быть изготовлен из Кусочка угля или из Древесного угля, и из нескольких обычных кусочков Адского кварца.
 
 thaumictinkerer.research.transvector_interface.title=Трансвектор
-thaumictinkerer.research.transvector_interface.0=Дело в том, что есть только 6 сторон блока ..."- Direwolf20<BR>Миф = Разрушен! Твоя последняя конструкция может быть привязана к блоку недалеко от расположенного по соседству. Его стороны будут имитировать стороны выбранного блока, и он будет функционировать в качестве дополнения. Он может принимать энергию BuildCraft, TE3 и IC2, эссенцию, предметы и жидкости, также способен экспортировать последние 2.<BR><BR>Чтобы привязать трансвектор к другому блоку, для этого необходимо создать специальный инструмент. То, что ты называешь Трансвекторный Соединитель должен выполнять свою работу.<BR>Просто щёлкнув ПКМ по Трансвектору, после-чего щёлкнув ПКМ на цель, эти 2 блока получат связь и будут готовы к работе. Лимит небольшой, чаще всего 4 блока. (Примечание: трубы из buildcraft должны быть сломаны и заменены на работу) также возможно, щёлкнув ПКМ этим блоком с каким-либо другим, чтобы его скрыть. Чтобы снять покрытие, просто щёлкнит ПКМ на скрытом блоке с пустой рукой.
+thaumictinkerer.research.transvector_interface.0=Дело в том, что есть только 6 сторон блока ..."- Direwolf20<BR>Миф = Разрушен! Твоя последняя конструкция может быть привязана к блоку, недалеко от расположенного по соседству. Его стороны будут имитировать стороны выбранного блока, и он будет функционировать в качестве дополнения. Он может принимать энергию Buildcraft, TE3 и IC2, эссенцию, предметы и жидкости, также он способен экспортировать последние 2.<BR><BR>Чтобы привязать Трансвекторный интерфейс к другому блоку, нужно создать специальный инструмент. То, что ты называешь Трансвекторным соединителем, он должен выполнять свою работу.<BR>Просто щёлкнув ПКМ по Трансвекторному интерфейсу, и после-чего щёлкнув ПКМ на цель, эти 2 блока получат между собой связь и уже будут готовы к работе. Лимит небольшой, всего 4 блока. (Примечание: работающие трубы из Buildcraft должны быть разрушены и заменены) также, возможно, щёлкнув ПКМ этим блоком с каким-либо другим, чтобы его скрыть. Чтобы снять покрытие, просто щёлкни ПКМ по скрытому блоку пустой рукой.
 
