@@ -14,4 +14,5 @@ public class LibBlockNames {
     public static final String OSMOTIC_ENCHANTER="osmotic_enchanter";
     public static final String ENCHANTMENT_PILLAR="enchantment_pillar";
     public static final String BLACK_QUARTZ_BLOCK="black_quartz_block";
+    public static final String ANIMATION_TABLET="animation_tablet";
 }
