@@ -260,6 +260,11 @@ public class TileEntityTransvectorInterface extends TileEntityTransvector implem
     }
 
     @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
+
+    @Override
     public void writeExtraNBT(NBTTagCompound compound) {
         super.writeExtraNBT(compound);
         compound.setInteger("comparator",comparatorValue);

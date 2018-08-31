@@ -222,8 +222,10 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             working=nbttagcompound.getBoolean(TAG_WORKING);
     }
 
-
-
+    @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
 
 
     @Override

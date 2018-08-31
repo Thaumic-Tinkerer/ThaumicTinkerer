@@ -57,7 +57,7 @@ ttmisc.connector.clear=你已解除对原矢量变换接口的绑定。
 ttmisc.soulMould.nonAssigned=无模板
 ttmisc.soulMould.pattern=目前模板：%s
 
-
+ttmisc.debug.redstone=Redstone Recieved: %b
 
 //Research
 tc.research_category.THAUMIC_TINKERER=神秘工匠

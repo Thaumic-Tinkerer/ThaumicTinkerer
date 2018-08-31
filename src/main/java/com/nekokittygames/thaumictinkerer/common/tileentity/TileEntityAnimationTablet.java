@@ -16,6 +16,35 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer {
 
     private boolean rightClick;
     private int progress;
+    private EnumFacing facing;
+
+
+    public EnumFacing getFacing() {
+        return facing;
+    }
+
+    public void setFacing(EnumFacing facing) {
+        this.facing = facing;
+    }
+
+    public boolean isRightClick() {
+        return rightClick;
+    }
+
+    public void setRightClick(boolean rightClick) {
+        this.rightClick = rightClick;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+
+
 
     private ItemStackHandler inventory= new ItemStackHandler(1)
     {
@@ -53,15 +82,33 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer {
     @Override
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
         nbttagcompound.setTag("inventory",inventory.serializeNBT());
+        nbttagcompound.setBoolean("rightClick",rightClick);
+        nbttagcompound.setInteger("progress",progress);
+        nbttagcompound.setInteger("facing",facing.getIndex());
     }
 
     @Override
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
+        rightClick=nbttagcompound.getBoolean("rightClick");
+        progress=nbttagcompound.getInteger("progress");
+        facing=EnumFacing.values()[nbttagcompound.getInteger("facing")];
     }
 
+    @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
 
+    @Override
+    public boolean canRedstoneConnect() {
+        return true;
+    }
 
+    @Override
+    public void activateOnPulse() {
+
+    }
 
 
     @Override

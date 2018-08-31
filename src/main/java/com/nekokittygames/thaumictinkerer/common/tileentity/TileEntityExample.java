@@ -77,6 +77,11 @@ public class TileEntityExample extends TileEntityThaumicTinkerer implements ITic
         }
     }
 
+    @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
+
 
     @Override
     public void update() {

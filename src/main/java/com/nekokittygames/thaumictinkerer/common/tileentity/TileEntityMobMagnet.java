@@ -86,6 +86,11 @@ public class TileEntityMobMagnet extends TileEntityMagnet{
     }
 
     @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
+
+    @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
         return capability== CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ||super.hasCapability(capability, facing);
     }

@@ -1,17 +1,21 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
-import net.minecraft.block.ITileEntityProvider;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityThaumicTinkerer;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock  {
 
@@ -73,5 +77,72 @@ public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock  {
         super.eventReceived(state, worldIn, pos, id, param);
         TileEntity tileentity = worldIn.getTileEntity(pos);
         return tileentity == null ? false : tileentity.receiveClientEvent(id, param);
+    }
+
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+        if (!world.isRemote) {
+            TileEntity tile = world.getTileEntity(pos);
+            if (tile instanceof TileEntityThaumicTinkerer) {
+                TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer)tile;
+                if (base.respondsToPulses()) {
+                    base.activateOnPulse();
+                }
+            }
+        }
+
+    }
+
+    public void customNeighborsChanged(World world, BlockPos pos) {
+        this.updateRedstone(world, pos);
+
+    }
+
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+        customNeighborsChanged(worldIn,pos);
+    }
+
+    @Override
+    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
+        super.onNeighborChange(world, pos, neighbor);
+        if(world instanceof World)
+            customNeighborsChanged((World) world,pos);
+    }
+
+    public void updateRedstone(World world, BlockPos pos) {
+        if (!world.isRemote) {
+            TileEntity tile = world.getTileEntity(pos);
+            if (tile instanceof TileEntityThaumicTinkerer) {
+                TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer)tile;
+                boolean powered = world.isBlockIndirectlyGettingPowered(pos) > 0;
+                boolean wasPowered = base.getRedstonePowered();
+                if (powered && !wasPowered) {
+                    if (base.respondsToPulses()) {
+                        world.scheduleUpdate(pos, this, this.tickRate(world));
+                    }
+
+                    base.setRedstonePowered(true);
+                } else if (!powered && wasPowered) {
+                    base.setRedstonePowered(false);
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+        super.onBlockAdded(worldIn, pos, state);
+        this.updateRedstone(worldIn,pos);
+    }
+
+    @Override
+    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EnumFacing side) {
+        TileEntity tile = world.getTileEntity(pos);
+        if (tile instanceof TileEntityThaumicTinkerer) {
+            TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer) tile;
+            return base.canRedstoneConnect();
+        }
+        return false;
     }
 }

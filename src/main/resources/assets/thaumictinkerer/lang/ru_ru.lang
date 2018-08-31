@@ -56,7 +56,7 @@ ttmisc.connector.toofar=Местоположение трансвекторно�
 ttmisc.connector.clear=Ты очистил выбранный Трансвекторный интерфейс
 ttmisc.soulMould.nonAssigned=Нет шаблона
 ttmisc.soulMould.pattern=Нынешний шаблон %s
-
+ttmisc.debug.redstone=Redstone Recieved: %b
 
 
 //Research

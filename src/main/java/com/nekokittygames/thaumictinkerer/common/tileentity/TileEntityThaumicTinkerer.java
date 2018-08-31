@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 public abstract class TileEntityThaumicTinkerer extends TileEntity {
 
+    private boolean redstonePowered;
     public void sendUpdates()
     {
         world.markBlockRangeForRenderUpdate(pos, pos);
@@ -23,6 +24,7 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
 
     }
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
+        nbttagcompound.setBoolean("redstone",redstonePowered);
     }
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -31,6 +33,11 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
     }
 
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
+        // todo: remove if in a couple versions time
+        if(nbttagcompound.hasKey("redstone"))
+            redstonePowered=nbttagcompound.getBoolean("redstone");
+        else
+            redstonePowered=false;
     }
 
     @Override
@@ -59,4 +66,26 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
         return new SPacketUpdateTileEntity(this.pos, 5, this.getUpdateTag());
     }
 
+    public abstract boolean respondsToPulses();
+
+    public void activateOnPulse()
+    {
+
+    }
+
+    public void setRedstonePowered(boolean b)
+    {
+        boolean oldRedstone=redstonePowered;
+        redstonePowered=b;
+        if(redstonePowered!=oldRedstone)
+            this.sendUpdates();
+    }
+    public boolean getRedstonePowered()
+    {
+        return redstonePowered;
+    }
+
+    public boolean canRedstoneConnect() {
+        return false;
+    }
 }

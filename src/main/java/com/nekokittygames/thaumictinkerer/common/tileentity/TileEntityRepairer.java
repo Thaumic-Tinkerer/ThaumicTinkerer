@@ -86,6 +86,11 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
     }
 
     @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
+
+    @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
         return capability== CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ||super.hasCapability(capability, facing);
     }

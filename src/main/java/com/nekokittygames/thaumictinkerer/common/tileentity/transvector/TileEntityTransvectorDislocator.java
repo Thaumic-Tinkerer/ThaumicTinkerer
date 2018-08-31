@@ -81,6 +81,11 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
     }
 
     @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
+
+    @Override
     public void writeExtraNBT(NBTTagCompound compound) {
         super.writeExtraNBT(compound);
         compound.setBoolean("powered",powered);

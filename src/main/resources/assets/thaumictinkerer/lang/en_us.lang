@@ -57,6 +57,7 @@ ttmisc.connector.clear=You have cleared the selected Transvector block
 ttmisc.soulMould.nonAssigned=No Pattern
 ttmisc.soulMould.pattern=Current Pattern: %s
 
+ttmisc.debug.redstone=Redstone Recieved: %s
 
 
 //Research

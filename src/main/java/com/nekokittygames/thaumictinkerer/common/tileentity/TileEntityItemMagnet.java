@@ -20,4 +20,9 @@ public class TileEntityItemMagnet extends TileEntityMagnet {
             return !entity.getEntityData().getBoolean("PreventRemoteMovement");
         return true;
     }
+
+    @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
 }

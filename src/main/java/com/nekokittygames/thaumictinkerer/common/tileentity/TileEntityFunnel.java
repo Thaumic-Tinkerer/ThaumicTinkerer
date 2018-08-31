@@ -75,8 +75,10 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
     }
 
-
-
+    @Override
+    public boolean respondsToPulses() {
+        return false;
+    }
 
 
     @Override
