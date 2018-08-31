@@ -5,6 +5,7 @@ import net.minecraft.util.ResourceLocation;
 public class LibClientResources {
     public static final ResourceLocation GUI_MOBMAGNET=new ResourceLocation("thaumictinkerer","textures/gui/mob_magnet.png");
     public static final ResourceLocation GUI_ENCHANTER = new ResourceLocation("thaumictinkerer", "textures/gui/enchanter.png");
+    public static final ResourceLocation GUI_ANIMATION_TABLET = new ResourceLocation("thaumictinkerer", "textures/gui/animation_tablet.png");
 
 
     public static final class Shaders

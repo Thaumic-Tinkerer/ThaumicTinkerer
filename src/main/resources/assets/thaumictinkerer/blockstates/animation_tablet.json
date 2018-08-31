@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumictinkerer:animation_tablet"
+  },
+  "variants":
+  {
+    "normal":{"model": "thaumictinkerer:animation_tablet"},
+
+    "inventory": {
+      "model": "thaumictinkerer:animation_tablet"
+    }
+  }
+}

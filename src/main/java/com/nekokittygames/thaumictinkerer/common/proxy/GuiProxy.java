@@ -1,9 +1,12 @@
 package com.nekokittygames.thaumictinkerer.common.proxy;
 
+import com.nekokittygames.thaumictinkerer.client.gui.GuiAnimationTablet;
 import com.nekokittygames.thaumictinkerer.client.gui.GuiEnchanter;
 import com.nekokittygames.thaumictinkerer.client.gui.GuiMobMagnet;
+import com.nekokittygames.thaumictinkerer.common.containers.AnimationTabletContainer;
 import com.nekokittygames.thaumictinkerer.common.containers.EnchanterContainer;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationTablet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,6 +29,10 @@ public class GuiProxy implements IGuiHandler {
         if(te instanceof TileEntityEnchanter) {
             return new EnchanterContainer(entityPlayer.inventory,(TileEntityEnchanter)te);
         }
+        if(te instanceof TileEntityAnimationTablet)
+        {
+            return new AnimationTabletContainer(entityPlayer.inventory,(TileEntityAnimationTablet)te);
+        }
         return null;
     }
 
@@ -41,6 +48,10 @@ public class GuiProxy implements IGuiHandler {
         if(te instanceof TileEntityEnchanter) {
             TileEntityEnchanter enchanter= (TileEntityEnchanter) te;
             return new GuiEnchanter(enchanter,new EnchanterContainer(entityPlayer.inventory,enchanter));
+        }
+        if(te instanceof TileEntityAnimationTablet) {
+            TileEntityAnimationTablet animationTablet= (TileEntityAnimationTablet) te;
+            return new GuiAnimationTablet(animationTablet,new AnimationTabletContainer(entityPlayer.inventory,animationTablet));
         }
         return null;
     }
