@@ -45,7 +45,7 @@ public class BlockAnimationTablet extends TTTileEntity<TileEntityAnimationTablet
 
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
        // worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer)), 2);
         TileEntity te = world.getTileEntity(pos);
         if(te instanceof TileEntityAnimationTablet) {
