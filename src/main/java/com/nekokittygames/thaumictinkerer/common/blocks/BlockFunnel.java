@@ -19,6 +19,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.items.casters.CasterManager;
 import thaumcraft.common.items.casters.ItemCaster;
 
@@ -116,9 +117,15 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
             }
             else
             {
-                if(!playerIn.inventory.addItemStackToInventory(stack.copy()))
+                ItemStack jar=stack.copy();
+                BlockJarItem item= (BlockJarItem) stack.getItem();
+                if(item.getAspects(jar)==null || item.getAspects(jar).getAspects().length==0)
                 {
-                    playerIn.dropItem(stack,false);
+                    jar.setTagCompound(null);
+                }
+                if(!playerIn.inventory.addItemStackToInventory(jar))
+                {
+                    playerIn.dropItem(jar,false);
 
                 }
                 funnel.getInventory().setStackInSlot(0,ItemStack.EMPTY);

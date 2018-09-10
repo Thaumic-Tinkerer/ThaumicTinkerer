@@ -139,6 +139,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
                             {
                                 jar.addToContainer(aspect,1);
                                 item.setAspects(inventory.getStackInSlot(0),aspectList.remove(aspect,1));
+
                             }
                         }
                     }
