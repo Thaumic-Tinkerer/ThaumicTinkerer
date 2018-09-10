@@ -112,7 +112,8 @@ dependencies {
     deobfCompile "opencomputers:OpenComputers:MC${mc_version}:${open_computers_version}"//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
     deobfCompile "actually-additions:ActuallyAdditions:${mc_version}:${actually_additions_version}"
 
-
+    
+    deobfCompile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA24"
     deobfCompile "cofh:RedstoneFlux:1.12-${redstone_flux_version}:deobf"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"

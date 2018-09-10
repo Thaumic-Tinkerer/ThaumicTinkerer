@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
+import com.nekokittygames.thaumictinkerer.api.IFillableJar;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -129,7 +130,12 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
                             TileJarFillable jar= (TileJarFillable) hoppered;
                             boolean voidJar=jar instanceof TileJarFillableVoid;
                             AspectList JarAspects=jar.getAspects();
-                            if(JarAspects!=null && JarAspects.size()==0 && (jar.aspectFilter==null || jar.aspectFilter==aspect)|| JarAspects.getAspects()[0]==aspect && (JarAspects.getAmount(JarAspects.getAspects()[0])<250 || voidJar))
+                            int maxAmount=250;
+                            if(jar instanceof IFillableJar)
+                            {
+                                maxAmount=((IFillableJar)jar).getMaxCapacity(aspect);
+                            }
+                            if(JarAspects!=null && JarAspects.size()==0 && (jar.aspectFilter==null || jar.aspectFilter==aspect)|| JarAspects.getAspects()[0]==aspect && (JarAspects.getAmount(JarAspects.getAspects()[0])<maxAmount || voidJar))
                             {
                                 jar.addToContainer(aspect,1);
                                 item.setAspects(inventory.getStackInSlot(0),aspectList.remove(aspect,1));
