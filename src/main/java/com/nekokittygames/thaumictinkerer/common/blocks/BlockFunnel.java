@@ -8,6 +8,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -126,5 +127,17 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
             }
         }
         return false;
+    }
+
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        TileEntityFunnel funnel= (TileEntityFunnel) worldIn.getTileEntity(pos);
+        ItemStack inv=funnel.getInventory().getStackInSlot(0);
+        if(inv!=ItemStack.EMPTY) {
+            EntityItem item = new EntityItem(worldIn,pos.getX(),pos.getY(),pos.getZ(),inv);
+            worldIn.spawnEntity(item);
+        }
+        super.breakBlock(worldIn, pos, state);
+
     }
 }
