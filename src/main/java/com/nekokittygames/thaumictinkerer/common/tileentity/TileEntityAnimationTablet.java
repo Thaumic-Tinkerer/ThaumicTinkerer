@@ -2,16 +2,23 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.mojang.authlib.GameProfile;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.server.FMLServerHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -163,7 +170,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     private void afterFakePlayer(FakePlayer fPlayer)
     {
         this.inventory.setStackInSlot(0, fPlayer.inventory.getStackInSlot(0).copy());
-
+        fPlayer.inventory.setInventorySlotContents(0,ItemStack.EMPTY);
         fPlayer.inventory.dropAllItems();
     }
 
@@ -186,14 +193,38 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             //active=false;
             if(!world.isRemote)
             {
-                FakePlayer fakePlayer= FakePlayerFactory.get(FMLServerHandler.instance().getServer().getWorld(this.world.provider.getDimension()),new GameProfile(LibMisc.MOD_UUID,LibMisc.MOD_F_NAME));
+                MinecraftServer worldServer= FMLCommonHandler.instance().getMinecraftServerInstance();
+                FakePlayer fakePlayer= FakePlayerFactory.get(worldServer.getWorld(this.world.provider.getDimension()),new GameProfile(LibMisc.MOD_UUID,LibMisc.MOD_F_NAME));
+                fakePlayer.setLocationAndAngles(pos.getX(),pos.getY(),pos.getZ(),0,0);
                 prepareFakePlayer(fakePlayer);
+                BlockPos targetPos=this.GetBlockTarget();
+                Block targetBlock=world.getBlockState(targetPos).getBlock();
+                ItemStack itemInUse=fakePlayer.inventory.getCurrentItem();
                 if(!rightClick)
                 {
+
+                    if(itemInUse.canDestroy(targetBlock)) {
+                        boolean canHarvest=false;
+                        if(itemInUse.canHarvestBlock(getWorld().getBlockState(targetPos))) {
+                            targetBlock.harvestBlock(world, fakePlayer, targetPos, world.getBlockState(targetPos), world.getTileEntity(targetPos), itemInUse);
+                            canHarvest=true;
+                        }
+                        itemInUse.attemptDamageItem(1,world.rand,fakePlayer);
+                        targetBlock.removedByPlayer(world.getBlockState(targetPos), world, targetPos, fakePlayer, canHarvest);
+                    }
                     //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
+
                 }
+
+                afterFakePlayer(fakePlayer);
 
             }
         }
+    }
+
+    public BlockPos GetBlockTarget()
+    {
+        BlockPos newPos=this.getPos().offset(facing);
+        return newPos;
     }
 }
