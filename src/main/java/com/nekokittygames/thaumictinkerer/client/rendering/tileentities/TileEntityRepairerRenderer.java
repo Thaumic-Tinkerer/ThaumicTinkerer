@@ -22,7 +22,7 @@ public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEn
 
     private RenderEntityItem itemRenderer;
 
-    private static EntityItem customitem = new EntityItem(null);
+    private static EntityItem customitem;
 
     private static float halfPI = (float) (Math.PI / 2D);
 
