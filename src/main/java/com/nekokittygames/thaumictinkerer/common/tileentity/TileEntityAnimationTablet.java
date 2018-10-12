@@ -2,17 +2,24 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.mojang.authlib.GameProfile;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import com.nekokittygames.thaumictinkerer.common.misc.FakePlayerUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCommandBlock;
+import net.minecraft.block.BlockStructure;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.PlayerInteractionManager;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
@@ -199,19 +206,12 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
                 prepareFakePlayer(fakePlayer);
                 BlockPos targetPos=this.GetBlockTarget();
                 Block targetBlock=world.getBlockState(targetPos).getBlock();
-                ItemStack itemInUse=fakePlayer.inventory.getCurrentItem();
+                ItemStack itemInUse = fakePlayer.getHeldItemMainhand();
                 if(!rightClick)
                 {
 
-                    if(itemInUse.canDestroy(targetBlock)) {
-                        boolean canHarvest=false;
-                        if(itemInUse.canHarvestBlock(getWorld().getBlockState(targetPos))) {
-                            targetBlock.harvestBlock(world, fakePlayer, targetPos, world.getBlockState(targetPos), world.getTileEntity(targetPos), itemInUse);
-                            canHarvest=true;
-                        }
-                        itemInUse.attemptDamageItem(1,world.rand,fakePlayer);
-                        targetBlock.removedByPlayer(world.getBlockState(targetPos), world, targetPos, fakePlayer, canHarvest);
-                    }
+                    FakePlayerUtils.tryHarvestBlock(fakePlayer,world,targetPos);
+
                     //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
 
                 }
