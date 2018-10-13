@@ -38,6 +38,8 @@ ttmisc.mobmagnet.all=All
 ttmisc.mobmagnet.none=None
 ttmisc.mobmagnet.child=Child
 ttmisc.mobmagnet.adult=Adult
+ttmisc.animation_tablet.left=Left Click
+ttmisc.animation_tablet.right=Right Click
 
 ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.noAssign=Not Assigned

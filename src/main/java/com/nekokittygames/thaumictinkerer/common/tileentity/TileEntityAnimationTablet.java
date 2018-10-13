@@ -64,6 +64,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     public void setRightClick(boolean rightClick) {
         this.rightClick = rightClick;
+        sendUpdates();
     }
 
     public int getProgress() {

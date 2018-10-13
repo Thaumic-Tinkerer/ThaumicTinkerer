@@ -29,6 +29,7 @@ public class PacketHandler {
         INSTANCE.registerMessage(PacketRemoveEnchant.Handler.class,PacketRemoveEnchant.class,nextID(),Side.SERVER);
         INSTANCE.registerMessage(PacketIncrementEnchantLevel.Handler.class,PacketIncrementEnchantLevel.class,nextID(),Side.SERVER);
         INSTANCE.registerMessage(PacketStartEnchant.Handler.class,PacketStartEnchant.class,nextID(),Side.SERVER);
+        INSTANCE.registerMessage(PacketTabletButton.Handler.class,PacketTabletButton.class,nextID(),Side.SERVER);
     }
 
 }
