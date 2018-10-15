@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -23,6 +24,25 @@ public class ClientHelper {
             renderItem=ObfuscationReflectionHelper.getPrivateValue(Minecraft.class,Minecraft.getMinecraft(),"field_175621_X");
         }
         return renderItem;
+    }
+
+    public static float toDegrees(EnumFacing facing)
+    {
+        switch (facing)
+        {
+            case SOUTH:
+                return 90.0F;
+
+            case NORTH:
+                return 270.0F;
+
+            case WEST:
+                return 0.0F;
+
+            case EAST:
+                return 180.0F;
+        }
+        return 0;
     }
     public static void renderTooltip(int x, int y, List<String> tooltipData) {
         int color = 0x505000ff;

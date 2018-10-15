@@ -41,6 +41,15 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     private int progress;
     private EnumFacing facing;
     private boolean active;
+    private int ticksExisted;
+
+    public int getTicksExisted() {
+        return ticksExisted;
+    }
+
+    public void setTicksExisted(int ticksExisted) {
+        this.ticksExisted = ticksExisted;
+    }
 
     public boolean isActive() {
         return active;
@@ -184,6 +193,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     @Override
     public void update() {
+        ticksExisted++;
         if(getRedstonePowered() && progress<=0)
         {
             progress=200;
