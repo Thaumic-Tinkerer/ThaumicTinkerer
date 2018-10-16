@@ -226,6 +226,10 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
                     //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
 
                 }
+                else
+                {
+                    FakePlayerUtils.proccessRightClick(fakePlayer,world,targetPos,(world.isAirBlock(getPos().offset(getFacing())))?EnumFacing.UP:getFacing().getOpposite());
+                }
 
                 afterFakePlayer(fakePlayer);
 
@@ -236,6 +240,8 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     public BlockPos GetBlockTarget()
     {
         BlockPos newPos=this.getPos().offset(facing);
+        if(isRightClick() && world.isAirBlock(newPos))
+            newPos=newPos.offset(EnumFacing.DOWN);
         return newPos;
     }
 }
