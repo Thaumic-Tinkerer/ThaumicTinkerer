@@ -3,6 +3,7 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 import com.mojang.authlib.GameProfile;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.misc.FakePlayerUtils;
+import com.nekokittygames.thaumictinkerer.common.misc.ThaumicFakePlayer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockStructure;
@@ -33,15 +34,21 @@ import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.lang.ref.WeakReference;
 import java.util.UUID;
+import java.util.function.Consumer;
 
-public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer implements ITickable {
+public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer implements ITickable, Consumer<ItemStack> {
 
     private boolean rightClick;
     private int progress;
     private EnumFacing facing;
     private boolean active;
     private int ticksExisted;
+    private WeakReference<ThaumicFakePlayer> player;
+
+
+
 
     public int getTicksExisted() {
         return ticksExisted;
@@ -176,23 +183,17 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         }
     }
 
-    private void prepareFakePlayer(FakePlayer fPlayer)
-    {
-        fPlayer.inventory.dropAllItems();
-        fPlayer.inventory.setInventorySlotContents(0,inventory.getStackInSlot(0).copy());
-        fPlayer.inventory.currentItem=0;
-        fPlayer.setActiveHand(EnumHand.MAIN_HAND);
-    }
 
-    private void afterFakePlayer(FakePlayer fPlayer)
-    {
-        this.inventory.setStackInSlot(0, fPlayer.inventory.getStackInSlot(0).copy());
-        fPlayer.inventory.setInventorySlotContents(0,ItemStack.EMPTY);
-        fPlayer.inventory.dropAllItems();
-    }
 
     @Override
     public void update() {
+
+        if(!world.isRemote) {
+            if (player == null) {
+                MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
+                player = new WeakReference<ThaumicFakePlayer>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME)));
+            }
+        }
         ticksExisted++;
         if(getRedstonePowered() && progress<=0)
         {
@@ -212,36 +213,47 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             if(!world.isRemote)
             {
                 MinecraftServer worldServer= FMLCommonHandler.instance().getMinecraftServerInstance();
-                FakePlayer fakePlayer= FakePlayerFactory.get(worldServer.getWorld(this.world.provider.getDimension()),new GameProfile(LibMisc.MOD_UUID,LibMisc.MOD_F_NAME));
-                fakePlayer.setLocationAndAngles(pos.getX(),pos.getY(),pos.getZ(),0,0);
-                prepareFakePlayer(fakePlayer);
+
                 BlockPos targetPos=this.GetBlockTarget();
                 Block targetBlock=world.getBlockState(targetPos).getBlock();
-                ItemStack itemInUse = fakePlayer.getHeldItemMainhand();
+
                 if(!rightClick)
                 {
-
-                    FakePlayerUtils.tryHarvestBlock(fakePlayer,world,targetPos);
+                    FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
+                    ItemStack result = this.inventory.getStackInSlot(0);
+                    result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos));
+                    FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), result, this.inventory.getStackInSlot(0), this);
 
                     //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
 
                 }
                 else
                 {
-                    FakePlayerUtils.proccessRightClick(fakePlayer,world,targetPos,(world.isAirBlock(getPos().offset(getFacing())))?EnumFacing.UP:getFacing().getOpposite());
+                    FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
+                    ItemStack result = this.inventory.getStackInSlot(0);
+                    result = FakePlayerUtils.rightClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos));
+                    FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), result, this.inventory.getStackInSlot(0), this);
                 }
 
-                afterFakePlayer(fakePlayer);
 
             }
         }
     }
 
+
+    ThaumicFakePlayer getPlayer() {
+        return player.get();
+    }
     public BlockPos GetBlockTarget()
     {
         BlockPos newPos=this.getPos().offset(facing);
         if(isRightClick() && world.isAirBlock(newPos))
             newPos=newPos.offset(EnumFacing.DOWN);
         return newPos;
+    }
+
+    @Override
+    public void accept(ItemStack itemStack) {
+        this.inventory.setStackInSlot(0,itemStack);
     }
 }

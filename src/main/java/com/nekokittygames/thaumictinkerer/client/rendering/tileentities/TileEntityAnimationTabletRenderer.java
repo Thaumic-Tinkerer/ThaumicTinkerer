@@ -43,6 +43,9 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
         GL11.glPushMatrix();
         GL11.glTranslated(x, y, z);
+        int index=te.getFacing().getIndex();
+        if(index<2)
+            index=2;
         renderOverlay(te, LibClientResources.MISC_AT_CENTER, -1, false, false, 0.65, 0.13F, 0F);
         if (!te.isRightClick())
             renderOverlay(te, LibClientResources.MISC_AT_LEFT, 1, false, true, 1, 0.131F, 0F);
@@ -51,7 +54,7 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
 
         GlStateManager.rotate(ClientHelper.toDegrees(te.getFacing()), 0F, 1F, 0F);
         GlStateManager.translate(0.1, 0.2 + Math.cos(System.currentTimeMillis() / 600D) / 18F, 0.5);
-        float[] translations = TRANSLATIONS[te.getFacing().getIndex()-2];
+        float[] translations = TRANSLATIONS[index-2];
         GlStateManager.translate(translations[0], translations[1], translations[2]);
         GlStateManager.scale(0.8F, 0.8F, 0.8F);
         GlStateManager.translate(0.5F, 0F, 0.5F);
