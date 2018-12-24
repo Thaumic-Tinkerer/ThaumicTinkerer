@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.multiblocks;
 
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.helper.Mat2f;
 import com.nekokittygames.thaumictinkerer.common.helper.TTVec2f;
 import net.minecraft.block.state.IBlockState;
@@ -19,7 +20,18 @@ import java.util.stream.Stream;
 public class MultiblockManager {
     private static Map<ResourceLocation,Multiblock> multiblocks=new HashMap<>();
     public static void initMultiblocks() throws URISyntaxException, IOException {
-        URI uri = MultiblockManager.class.getResource("/assets/thaumictinkerer/multiblocks").toURI();
+    // todo: add nullcheck
+        URI uri;
+        try
+        {
+            uri = MultiblockManager.class.getResource("/assets/thaumictinkerer/multiblocks").toURI();
+        }
+        catch(Exception e)
+        {
+            ThaumicTinkerer.logger.error("Unable to load multiblocks",e);
+            return;
+        }
+
         Path myPath;
         if (uri.getScheme().equals("jar")) {
             FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());

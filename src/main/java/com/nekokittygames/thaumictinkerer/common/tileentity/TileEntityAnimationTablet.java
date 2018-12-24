@@ -45,6 +45,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     private EnumFacing facing;
     private boolean active;
     private int ticksExisted;
+    private float curBlockDamageMP;
     private WeakReference<ThaumicFakePlayer> player;
 
 
@@ -191,13 +192,13 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         if(!world.isRemote) {
             if (player == null) {
                 MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
-                player = new WeakReference<ThaumicFakePlayer>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME)));
+                player = new WeakReference<>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME)));
             }
         }
         ticksExisted++;
         if(getRedstonePowered() && progress<=0)
         {
-            progress=200;
+            progress=20;
             active=true;
         }
         if(progress>0)
@@ -212,13 +213,21 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             //active=false;
             if(!world.isRemote)
             {
-                MinecraftServer worldServer= FMLCommonHandler.instance().getMinecraftServerInstance();
-
-                BlockPos targetPos=this.GetBlockTarget();
-                Block targetBlock=world.getBlockState(targetPos).getBlock();
+                BlockPos targetPos=this.pos;
 
                 if(!rightClick)
                 {
+                    if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
+                        this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(player.get(), player.get().world, targetPos);
+                        if (this.curBlockDamageMP >= 1.0f) {
+                            player.get().interactionManager.blockRemoving(targetPos);
+                            this.curBlockDamageMP = 0;
+                        }
+                    }
+                    else
+                    {
+                        this.curBlockDamageMP = 0;
+                    }
                     FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
                     ItemStack result = this.inventory.getStackInSlot(0);
                     result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos));

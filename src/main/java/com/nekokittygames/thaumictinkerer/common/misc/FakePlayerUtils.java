@@ -3,6 +3,7 @@ package com.nekokittygames.thaumictinkerer.common.misc;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Maps;
 import com.mojang.authlib.GameProfile;
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockStructure;
@@ -176,13 +177,15 @@ public class FakePlayerUtils {
      */
     public static void setupFakePlayerForUse(ThaumicFakePlayer player, BlockPos pos, EnumFacing direction, ItemStack toHold, boolean sneaking) {
         player.inventory.mainInventory.set(player.inventory.currentItem, toHold);
-        float pitch = direction == EnumFacing.UP ? -90 : direction == EnumFacing.DOWN ? 90 : 0;
+        float pitch = direction == EnumFacing.UP ? -90 : direction == EnumFacing.DOWN ? 90 : 45;
         float yaw = direction == EnumFacing.SOUTH ? 0 : direction == EnumFacing.WEST ? 90 : direction == EnumFacing.NORTH ? 180 : -90;
         Vec3i sideVec = direction.getDirectionVec();
         EnumFacing.Axis a = direction.getAxis();
         EnumFacing.AxisDirection ad = direction.getAxisDirection();
+
+
         double x = a == EnumFacing.Axis.X && ad == EnumFacing.AxisDirection.NEGATIVE ? -.5 : .5 + sideVec.getX() / 1.9D;
-        double y = 0.5 + sideVec.getY() / 1.9D;
+        double y =  sideVec.getY() / 1.9D;
         double z = a == EnumFacing.Axis.Z && ad == EnumFacing.AxisDirection.NEGATIVE ? -.5 : .5 + sideVec.getZ() / 1.9D;
         player.setLocationAndAngles(pos.getX() + x, pos.getY() + y, pos.getZ() + z, yaw, pitch);
         if (!toHold.isEmpty()) player.getAttributeMap().applyAttributeModifiers(toHold.getAttributeModifiers(EntityEquipmentSlot.MAINHAND));
