@@ -43,7 +43,10 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
         GL11.glPushMatrix();
         GL11.glTranslated(x, y, z);
-        int index=te.getFacing().getIndex();
+        int index=2;
+        if(te.getFacing()!=null) {
+            index = te.getFacing().getIndex();
+        }
         if(index<2)
             index=2;
         renderOverlay(te, LibClientResources.MISC_AT_CENTER, -1, false, false, 0.65, 0.13F, 0F);

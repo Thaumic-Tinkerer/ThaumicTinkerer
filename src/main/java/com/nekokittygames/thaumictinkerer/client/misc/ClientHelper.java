@@ -28,6 +28,8 @@ public class ClientHelper {
 
     public static float toDegrees(EnumFacing facing)
     {
+        if(facing==null)
+            return 0.0f;
         switch (facing)
         {
             case SOUTH:
@@ -41,8 +43,9 @@ public class ClientHelper {
 
             case EAST:
                 return 180.0F;
+            default:
+                return 0.0f;
         }
-        return 0;
     }
     public static void renderTooltip(int x, int y, List<String> tooltipData) {
         int color = 0x505000ff;

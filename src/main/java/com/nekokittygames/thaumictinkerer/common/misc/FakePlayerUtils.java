@@ -217,19 +217,8 @@ public class FakePlayerUtils {
      * @param sourceState The state of the calling tile entity, so we don't click ourselves.
      * @return The remainder of whatever the player was holding.  This should be set back into the tile's stack handler or similar.
      */
-    public static ItemStack rightClickInDirection(ThaumicFakePlayer player, World world, BlockPos pos, EnumFacing side, IBlockState sourceState) {
-        Vec3d base = new Vec3d(player.posX, player.posY, player.posZ);
-        Vec3d look = player.getLookVec();
-        Vec3d target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
-        RayTraceResult trace = world.rayTraceBlocks(base, target, false, false, true);
-        RayTraceResult traceEntity = traceEntities(player, base, target, world);
-        RayTraceResult toUse = trace == null ? traceEntity : trace;
-
-        if (trace != null && traceEntity != null) {
-            double d1 = trace.hitVec.distanceTo(base);
-            double d2 = traceEntity.hitVec.distanceTo(base);
-            toUse = traceEntity.typeOfHit == RayTraceResult.Type.ENTITY && d1 > d2 ? traceEntity : trace;
-        }
+    public static ItemStack rightClickInDirection(ThaumicFakePlayer player, World world, BlockPos pos, EnumFacing side, IBlockState sourceState,RayTraceResult toUse)
+    {
 
         if (toUse == null) return player.getHeldItemMainhand();
 
@@ -274,19 +263,8 @@ public class FakePlayerUtils {
      * @param sourceState The state of the calling tile entity, so we don't click ourselves.
      * @return The remainder of whatever the player was holding.  This should be set back into the tile's stack handler or similar.
      */
-    public static ItemStack leftClickInDirection(ThaumicFakePlayer player, World world, BlockPos pos, EnumFacing side, IBlockState sourceState) {
-        Vec3d base = new Vec3d(player.posX, player.posY, player.posZ);
-        Vec3d look = player.getLookVec();
-        Vec3d target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
-        RayTraceResult trace = world.rayTraceBlocks(base, target, false, false, true);
-        RayTraceResult traceEntity = traceEntities(player, base, target, world);
-        RayTraceResult toUse = trace == null ? traceEntity : trace;
+    public static ItemStack leftClickInDirection(ThaumicFakePlayer player, World world, BlockPos pos, EnumFacing side, IBlockState sourceState,RayTraceResult toUse) {
 
-        if (trace != null && traceEntity != null) {
-            double d1 = trace.hitVec.distanceTo(base);
-            double d2 = traceEntity.hitVec.distanceTo(base);
-            toUse = traceEntity.typeOfHit == RayTraceResult.Type.ENTITY && d1 > d2 ? traceEntity : trace;
-        }
 
         if (toUse == null) return player.getHeldItemMainhand();
 
