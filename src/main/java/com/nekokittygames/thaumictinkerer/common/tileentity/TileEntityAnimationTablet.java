@@ -366,8 +366,9 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     private void stopBreaking() {
-        this.isRemoving=false;
-        world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, -1);
+        this.isRemoving = false;
+        if (!world.isRemote)
+            world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, -1);
     }
 
     private void onPlayerDestroyBlock(BlockPos targetPos, ThaumicFakePlayer player) {
