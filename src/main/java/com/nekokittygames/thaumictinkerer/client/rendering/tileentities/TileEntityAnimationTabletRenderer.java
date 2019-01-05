@@ -61,7 +61,7 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
         GlStateManager.translate(translations[0], translations[1], translations[2]);
         GlStateManager.scale(0.8F, 0.8F, 0.8F);
         GlStateManager.translate(0.5F, 0F, 0.5F);
-        GlStateManager.rotate(0, 0F, 0F, 1F);
+        GlStateManager.rotate(te.getProgress(), 0F, 0F, 1F);
         GlStateManager.translate(-0.5F, 0F, -0.5F);
         GlStateManager.translate(-0 / 250F, 0 / 1000F, 0F);
         GlStateManager.rotate((float) Math.cos(System.currentTimeMillis() / 400F) * 5F, 1F, 0F, 1F);

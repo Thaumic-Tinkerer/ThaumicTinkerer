@@ -37,12 +37,14 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     private boolean rightClick;
     private int progress;
+    private int swingMod = 3;
     private EnumFacing facing;
     private boolean active;
     private int ticksExisted;
     private float curBlockDamageMP;
     private WeakReference<ThaumicFakePlayer> player;
-
+    private static final int SWING_SPEED = 3;
+    private static final int MAX_DEGREE = 45;
     private boolean isRemoving;
     private ItemStack currentItemHittingBlock;
     private BlockPos currentBlock;
@@ -127,6 +129,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         nbttagcompound.setTag("inventory", inventory.serializeNBT());
         nbttagcompound.setBoolean("rightClick", rightClick);
         nbttagcompound.setInteger("progress", progress);
+        nbttagcompound.setInteger("swingMod",swingMod);
         nbttagcompound.setInteger("facing", facing.getIndex());
         nbttagcompound.setBoolean("active", active);
         if(currentItemHittingBlock!=null) {
@@ -141,6 +144,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
         rightClick = nbttagcompound.getBoolean("rightClick");
         progress = nbttagcompound.getInteger("progress");
+        swingMod=nbttagcompound.getInteger("swingMod");
         facing = EnumFacing.values()[nbttagcompound.getInteger("facing")];
         active = nbttagcompound.getBoolean("active");
         if(nbttagcompound.hasKey("currentItemHittingBlock")) {
@@ -199,8 +203,16 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     public void resetAll() {
         progress=0;
         isRemoving=false;
+        swingMod=3;
         curBlockDamageMP=0.0f;
 
+    }
+    public void initiateSwing() {
+        swingMod = SWING_SPEED;
+        progress = 1;
+    }
+    public boolean detect() {
+        return !world.isAirBlock(GetBlockTarget());
     }
     @Override
     public void update() {
@@ -212,114 +224,150 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             }
         }
         ticksExisted++;
-        if (getRedstonePowered() && progress <= 0) {
-            progress = 20;
-            active = true;
-        }
-        if (progress > 0) {
+        ItemStack stack = inventory.getStackInSlot(0);
+        if (stack != ItemStack.EMPTY) {
+            if (!world.isRemote && progress>=MAX_DEGREE) {
+                swingHit();
+            }
 
-            progress--;
+            swingMod = progress <= 0 ? 0 : progress >= MAX_DEGREE ? -SWING_SPEED : swingMod;
+            progress += swingMod;
+            if (progress < 0)
+                progress = 0;
             sendUpdates();
         }
+        else {
+            resetAll();
+        }
+
+
+
+        active = getRedstonePowered();
+
+        boolean detect = detect();
+        if (!detect)
+            stopBreaking();
+        if(detect && isRemoving && !world.isRemote)
+        {
+            player.get().interactionManager.updateBlockRemoving();
+            continueBreaking();
+        }
+
+
+
+
+        if((active||isRemoving) && detect && progress==0)
+            initiateSwing();
+    }
+
+    private BlockPos getTargetBlock()
+    {
         Vec3d base;
         Vec3d look;
         Vec3d target;
         RayTraceResult trace;
         RayTraceResult traceEntity;
         RayTraceResult toUse=null;
-        BlockPos targetPos=new BlockPos(0,0,0);
-        if (active) {
-            if (!world.isRemote) {
-                player.get().interactionManager.updateBlockRemoving();
-                if(isRemoving || progress<=0) {
-                    base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
-                    look = player.get().getLookVec();
-                    target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
-                    trace = world.rayTraceBlocks(base, target, false, false, true);
-                    traceEntity = FakePlayerUtils.traceEntities(player.get(), base, target, world);
-                    toUse = trace == null ? traceEntity : trace;
-                    targetPos = toUse.getBlockPos();
-                    if (trace != null && traceEntity != null) {
-                        double d1 = trace.hitVec.distanceTo(base);
-                        double d2 = traceEntity.hitVec.distanceTo(base);
-                        toUse = traceEntity.typeOfHit == RayTraceResult.Type.ENTITY && d1 > d2 ? traceEntity : trace;
-                    }
+        base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
+        look = player.get().getLookVec();
+        target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
+        trace = world.rayTraceBlocks(base, target, false, false, true);
+        traceEntity = FakePlayerUtils.traceEntities(player.get(), base, target, world);
+        toUse = trace == null ? traceEntity : trace;
+        return toUse.getBlockPos();
+    }
 
-                    if (toUse == null || world.getBlockState(targetPos) == world.getBlockState(pos)) return;
-                    if(!rightClick)
-                    {
-                        if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
-                            this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(player.get(), player.get().world, targetPos);
-                            ThaumicTinkerer.logger.info(String.format("Cur Block Damage: %s", this.curBlockDamageMP));
+    private void continueBreaking() {
+        BlockPos targetPos=getTargetBlock();
+        if(!rightClick)
+        {
+            if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
+                this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(player.get(), player.get().world, targetPos);
+                ThaumicTinkerer.logger.info(String.format("Cur Block Damage: %s", this.curBlockDamageMP));
 
-                            //if (this.curBlockDamageMP >= 1.0f) {
-                            //    player.get().interactionManager
+                //if (this.curBlockDamageMP >= 1.0f) {
+                //    player.get().interactionManager
 
-                            //this.curBlockDamageMP = 0;
-                            //}
+                //this.curBlockDamageMP = 0;
+                //}
 
-                        } else {
-                            this.curBlockDamageMP = 0;
-                        }
-                        if ( this.isRemoving && this.isHittingPosition(targetPos, player.get())) {
-                            IBlockState iblockstate = world.getBlockState(targetPos);
-                            Block block = iblockstate.getBlock();
-
-                            if (iblockstate.getMaterial() == Material.AIR) {
-                                this.isRemoving = false;
-                            }
-                            this.curBlockDamageMP += iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos);
-                            if (this.curBlockDamageMP >= 1.0F) {
-                                this.isRemoving = false;
-                                player.get().interactionManager.blockRemoving(this.currentBlock);
-                                this.onPlayerDestroyBlock(this.currentBlock, player.get());
-                                this.curBlockDamageMP = 0.0F;
-                            }
-
-                            world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
-                        }
-
-                    }
-                }
+            } else {
+                this.curBlockDamageMP = 0;
             }
+            if ( this.isRemoving && this.isHittingPosition(targetPos, player.get())) {
+                IBlockState iblockstate = world.getBlockState(targetPos);
+                Block block = iblockstate.getBlock();
+
+                if (iblockstate.getMaterial() == Material.AIR) {
+                    this.isRemoving = false;
+                }
+                this.curBlockDamageMP += iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos);
+                if (this.curBlockDamageMP >= 1.0F) {
+                    this.isRemoving = false;
+                    player.get().interactionManager.blockRemoving(this.currentBlock);
+                    this.onPlayerDestroyBlock(this.currentBlock, player.get());
+                    this.curBlockDamageMP = 0.0F;
+                }
+
+                world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
+            }
+
+        }
+    }
+
+    private void swingHit() {
+        Vec3d base;
+        Vec3d look;
+        Vec3d target;
+        RayTraceResult trace;
+        RayTraceResult traceEntity;
+        RayTraceResult toUse=null;
+        base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
+        look = player.get().getLookVec();
+        target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
+        trace = world.rayTraceBlocks(base, target, false, false, true);
+        traceEntity = FakePlayerUtils.traceEntities(player.get(), base, target, world);
+        toUse = trace == null ? traceEntity : trace;
+        BlockPos targetPos = toUse.getBlockPos();
+        if (trace != null && traceEntity != null) {
+            double d1 = trace.hitVec.distanceTo(base);
+            double d2 = traceEntity.hitVec.distanceTo(base);
+            toUse = traceEntity.typeOfHit == RayTraceResult.Type.ENTITY && d1 > d2 ? traceEntity : trace;
         }
 
-        if (active && progress <= 0) {
-            //active=false;
-            if (!world.isRemote) {
+        if (toUse == null || world.getBlockState(targetPos) == world.getBlockState(pos)) return;
+        if (!rightClick) {
 
+            if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
+                IBlockState iblockstate = world.getBlockState(targetPos);
+                FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
+                ItemStack result = this.inventory.getStackInSlot(0);
+                result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
 
-                if (!rightClick) {
-
-                    if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
-                        IBlockState iblockstate = world.getBlockState(targetPos);
-                        FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
-                        ItemStack result = this.inventory.getStackInSlot(0);
-                        result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
-
-                        boolean flag = iblockstate.getMaterial() != Material.AIR;
-                        if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
-                            this.onPlayerDestroyBlock(targetPos, player.get());
-                        } else {
-                            this.isRemoving = true;
-                            this.currentBlock = targetPos;
-                            this.currentItemHittingBlock = player.get().getHeldItemMainhand();
-                            this.curBlockDamageMP = 0.0F;
-                            world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
-                        }
-                    }
-                    //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
-
+                boolean flag = iblockstate.getMaterial() != Material.AIR;
+                if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
+                    this.onPlayerDestroyBlock(targetPos, player.get());
                 } else {
-                    FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
-                    ItemStack result = this.inventory.getStackInSlot(0);
-                    result = FakePlayerUtils.rightClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
-                    FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), result, this.inventory.getStackInSlot(0), this);
+                    this.isRemoving = true;
+                    this.currentBlock = targetPos;
+                    this.currentItemHittingBlock = player.get().getHeldItemMainhand();
+                    this.curBlockDamageMP = 0.0F;
+                    world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
                 }
-
-
             }
+            //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
+
+        } else {
+            FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
+            ItemStack result = this.inventory.getStackInSlot(0);
+            result = FakePlayerUtils.rightClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
+            FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), result, this.inventory.getStackInSlot(0), this);
         }
+    }
+
+    private void stopBreaking() {
+        this.isRemoving=false;
+        world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, -1);
     }
 
     private void onPlayerDestroyBlock(BlockPos targetPos, ThaumicFakePlayer player) {
