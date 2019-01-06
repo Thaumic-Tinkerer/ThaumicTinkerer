@@ -1,6 +1,5 @@
 package com.nekokittygames.thaumictinkerer.common.misc;
 
-import jline.internal.Log;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.EnumPacketDirection;
 import net.minecraft.network.NetHandlerPlayServer;

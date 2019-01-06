@@ -37,8 +37,7 @@
       "parents": ["FIRSTSTEPS"],
       "siblings": [],
       "meta": [
-        "ROUND",
-        "AUTOUNLOCK"
+        "ROUND"
       ],
       "location": [
         2,
@@ -51,6 +50,9 @@
             "thaumictinkerer:black_quartz"
           ],
           "required_item":["minecraft:quartz"]
+        },
+        {
+          "text": "thaumictinkerer.research.black_quartz.1"
         }
       ]
     },

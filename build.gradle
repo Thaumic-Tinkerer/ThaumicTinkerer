@@ -113,7 +113,7 @@ dependencies {
     deobfCompile "actually-additions:ActuallyAdditions:${mc_version}:${actually_additions_version}"
     deobfCompile "hammer-core:HammerCore:1.12.2:2.0.2.3"
     
-    deobfCompile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA24"
+    deobfCompile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
     deobfCompile "cofh:RedstoneFlux:1.12-${redstone_flux_version}:deobf"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
