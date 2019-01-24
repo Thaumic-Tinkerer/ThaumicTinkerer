@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
 import java.util.Set;
 
 public class FakeNetHandler extends NetHandlerPlayServer {
-    private FakeNetHandler(EntityPlayerMP p_i1530_3_) {
+    FakeNetHandler(EntityPlayerMP p_i1530_3_) {
         super(FMLCommonHandler.instance().getMinecraftServerInstance(), new NetworkManager(EnumPacketDirection.CLIENTBOUND), p_i1530_3_);
     }
 
