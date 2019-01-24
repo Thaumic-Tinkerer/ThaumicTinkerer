@@ -112,6 +112,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public void update() {
+        // todo: dont need max capacity, just keep trying to add until it fails
         if(inventory.getStackInSlot(0)!=ItemStack.EMPTY && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0))!=null && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0)
         {
             if(!world.isRemote)
