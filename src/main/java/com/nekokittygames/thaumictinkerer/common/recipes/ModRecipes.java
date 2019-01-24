@@ -14,22 +14,24 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 
+import java.util.Objects;
+
 public class ModRecipes {
 
 
-    static ResourceLocation defaultGroup = new ResourceLocation("");
+    private static ResourceLocation defaultGroup = new ResourceLocation("");
 
-    public static void InitializeRecipes() {
-        InitializeArcaneRecipes();
-        InitializeInfusionRecipes();
+    public static void initializeRecipes() {
+        initializeArcaneRecipes();
+        initializeInfusionRecipes();
     }
 
-    public static void InitializeArcaneRecipes() {
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer", "funnel"), new ShapedArcaneRecipe(defaultGroup, "ESSENTIA_FUNNEL", 10, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(ModBlocks.funnel), new Object[]{"STS", 'S', Blocks.STONE, 'T', "ingotThaumium"}));
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer", "transvector_interface"), new ShapedArcaneRecipe(defaultGroup, "TRANSVECTOR_INTERFACE", 10, new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16), new ItemStack(ModBlocks.transvector_interface), new Object[]{"BRB", "LEL", "BDB", 'B', new ItemStack(BlocksTC.stoneArcane), 'R', "dustRedstone", 'L', new ItemStack(Items.DYE, 1, 4), 'E', new ItemStack(Items.ENDER_PEARL), 'D', new ItemStack(ModBlocks.dissimulation)}));
+    private static void initializeArcaneRecipes() {
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer", "funnel"), new ShapedArcaneRecipe(defaultGroup, "ESSENTIA_FUNNEL", 10, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.funnel)), "STS", 'S', Blocks.STONE, 'T', "ingotThaumium"));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer", "transvector_interface"), new ShapedArcaneRecipe(defaultGroup, "TRANSVECTOR_INTERFACE", 10, new AspectList().add(Aspect.ORDER, 12).add(Aspect.ENTROPY, 16), new ItemStack(Objects.requireNonNull(ModBlocks.transvector_interface)), "BRB", "LEL", "BDB", 'B', new ItemStack(BlocksTC.stoneArcane), 'R', "dustRedstone", 'L', new ItemStack(Items.DYE, 1, 4), 'E', new ItemStack(Items.ENDER_PEARL), 'D', new ItemStack(Objects.requireNonNull(ModBlocks.dissimulation))));
     }
 
-    public static void InitializeInfusionRecipes() {
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumictinkerer", "cleaning_talisman"), new InfusionRecipe("CLEANING_TALISMAN", new ItemStack(ModItems.cleaning_talisman), 5, (new AspectList()).add(Aspect.LIFE, 10).add(Aspect.MAN, 20).add(Aspect.AVERSION, 10), new ItemStack(Items.ENDER_PEARL), new Object[]{new ItemStack(ItemsTC.quicksilver), new ItemStack(ItemsTC.quicksilver), new ItemStack(ModItems.black_quartz), new ItemStack(ModItems.black_quartz), new ItemStack(Items.GHAST_TEAR)}));
+    private static void initializeInfusionRecipes() {
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumictinkerer", "cleaning_talisman"), new InfusionRecipe("CLEANING_TALISMAN", new ItemStack(Objects.requireNonNull(ModItems.cleaning_talisman)), 5, (new AspectList()).add(Aspect.LIFE, 10).add(Aspect.MAN, 20).add(Aspect.AVERSION, 10), new ItemStack(Items.ENDER_PEARL), new ItemStack(ItemsTC.quicksilver), new ItemStack(ItemsTC.quicksilver), new ItemStack(Objects.requireNonNull(ModItems.black_quartz)), new ItemStack(ModItems.black_quartz), new ItemStack(Items.GHAST_TEAR)));
     }
 }

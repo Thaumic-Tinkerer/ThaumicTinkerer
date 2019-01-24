@@ -10,13 +10,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.common.lib.utils.BlockUtils;
 
 import java.util.List;
 
 public class TileEntityTransvectorDislocator extends TileEntityTransvector {
 
-    boolean powered = false;
+    private boolean powered = false;
     private int cooldown = 0;
 
     @Override
@@ -107,7 +108,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
         return (!world.isAirBlock(coords) && !BlockUtils.isPortableHoleBlackListed(state));
     }
 
-    public BlockPos getBlockTarget() {
+    private BlockPos getBlockTarget() {
         EnumFacing dir = world.getBlockState(pos).getValue(BlockTransvectorDislocator.FACING);
         return pos.offset(dir);
         //return new ChunkCoordinates(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
@@ -125,7 +126,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
     }
 
     @Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+    public boolean shouldRefresh(World world, BlockPos pos, @NotNull IBlockState oldState, @NotNull IBlockState newSate) {
         if (oldState.getBlock() == newSate.getBlock())
             return false;
         else
@@ -133,11 +134,11 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
     }
 
     class BlockData {
-        IBlockState state;
-        NBTTagCompound tile;
-        BlockPos pos;
+        private IBlockState state;
+        private NBTTagCompound tile;
+        private BlockPos pos;
 
-        public BlockData(IBlockState state, TileEntity tile, BlockPos pos) {
+        BlockData(IBlockState state, TileEntity tile, BlockPos pos) {
             this.state = state;
             if (tile != null) {
                 NBTTagCompound cmp = new NBTTagCompound();
@@ -147,11 +148,11 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
             this.pos = pos;
         }
 
-        public BlockData(BlockPos pos) {
+        BlockData(BlockPos pos) {
             this(world.getBlockState(pos), world.getTileEntity(pos), pos);
         }
 
-        public void clearTileEntityAt() {
+        void clearTileEntityAt() {
             if (state != null) {
                 TileEntity tileToSet = state.getBlock().createTileEntity(world, state);
                 world.setTileEntity(pos, tileToSet);

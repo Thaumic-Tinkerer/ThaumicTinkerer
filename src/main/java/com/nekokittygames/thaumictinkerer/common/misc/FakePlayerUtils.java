@@ -36,6 +36,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 
@@ -72,6 +73,8 @@ public class FakePlayerUtils {
                 break;
             case WEST:
                 hitX -= 0.5;
+                break;
+            default:
                 break;
         }
 
@@ -136,7 +139,7 @@ public class FakePlayerUtils {
                 return false;
             }
             world.playEvent(fakePlayer, 2001, targetPos, Block.getStateId(state));
-            boolean flag1 = false;
+            boolean flag1;
             ItemStack itemstack1 = fakePlayer.getHeldItemMainhand();
             ItemStack itemstack2 = itemstack1.isEmpty() ? ItemStack.EMPTY : itemstack1.copy();
             boolean flag = state.getBlock().canHarvestBlock(world, targetPos, fakePlayer);
@@ -241,7 +244,7 @@ public class FakePlayerUtils {
             }
         }
 
-        if (toUse == null || toUse.typeOfHit == RayTraceResult.Type.MISS) {
+        if (toUse.typeOfHit == RayTraceResult.Type.MISS) {
             for (int i = 1; i <= 5; i++) {
                 IBlockState state = world.getBlockState(pos.offset(side, i));
                 if (state != sourceState && state.getMaterial() != Material.AIR) {
@@ -251,7 +254,7 @@ public class FakePlayerUtils {
             }
         }
 
-        if (itemstack.isEmpty() && (toUse == null || toUse.typeOfHit == RayTraceResult.Type.MISS))
+        if (itemstack.isEmpty() && toUse.typeOfHit == RayTraceResult.Type.MISS)
             ForgeHooks.onEmptyClick(player, EnumHand.MAIN_HAND);
         if (!itemstack.isEmpty())
             player.interactionManager.processRightClick(player, world, itemstack, EnumHand.MAIN_HAND);
@@ -287,7 +290,7 @@ public class FakePlayerUtils {
             }
         }
 
-        if (toUse == null || toUse.typeOfHit == RayTraceResult.Type.MISS) {
+        if (toUse.typeOfHit == RayTraceResult.Type.MISS) {
             for (int i = 1; i <= 5; i++) {
                 IBlockState state = world.getBlockState(pos.offset(side, i));
                 if (state != sourceState && state.getMaterial() != Material.AIR) {
@@ -297,7 +300,7 @@ public class FakePlayerUtils {
             }
         }
 
-        if (itemstack.isEmpty() && (toUse == null || toUse.typeOfHit == RayTraceResult.Type.MISS))
+        if (itemstack.isEmpty() && toUse.typeOfHit == RayTraceResult.Type.MISS)
             ForgeHooks.onEmptyLeftClick(player);
         return player.getHeldItemMainhand();
     }
@@ -318,9 +321,7 @@ public class FakePlayerUtils {
         List<Entity> list = world.getEntitiesInAABBexcluding(player, search, Predicates.and(EntitySelectors.NOT_SPECTATING, entity -> entity != null && entity.canBeCollidedWith()));
         double d2 = 5;
 
-        for (int j = 0; j < list.size(); ++j) {
-            Entity entity1 = list.get(j);
-
+        for (Entity entity1 : list) {
             AxisAlignedBB aabb = entity1.getEntityBoundingBox().grow(entity1.getCollisionBorderSize());
             RayTraceResult raytraceresult = aabb.calculateIntercept(base, target);
 
@@ -350,7 +351,8 @@ public class FakePlayerUtils {
 
         if (pointedEntity != null && base.distanceTo(vec3d3) > 5) {
             pointedEntity = null;
-            result = new RayTraceResult(RayTraceResult.Type.MISS, vec3d3, (EnumFacing) null, new BlockPos(vec3d3));
+            //noinspection ConstantConditions
+            result = new RayTraceResult(RayTraceResult.Type.MISS, vec3d3, null, new BlockPos(vec3d3));
         }
 
         if (pointedEntity != null) {
@@ -370,7 +372,7 @@ public class FakePlayerUtils {
      * @param action The type of interaction to perform.
      * @return If the entity was used.
      */
-    public static boolean processUseEntity(ThaumicFakePlayer player, World world, Entity entity, @Nullable RayTraceResult result, CPacketUseEntity.Action action) {
+    private static boolean processUseEntity(ThaumicFakePlayer player, World world, Entity entity, @Nullable RayTraceResult result, CPacketUseEntity.Action action) {
         if (entity != null) {
             boolean flag = player.canEntityBeSeen(entity);
             double d0 = 36.0D;
@@ -381,7 +383,7 @@ public class FakePlayerUtils {
                 if (action == CPacketUseEntity.Action.INTERACT) {
                     return player.interactOn(entity, EnumHand.MAIN_HAND) == EnumActionResult.SUCCESS;
                 } else if (action == CPacketUseEntity.Action.INTERACT_AT) {
-                    if (ForgeHooks.onInteractEntityAt(player, entity, result.hitVec, EnumHand.MAIN_HAND) != null)
+                    if (ForgeHooks.onInteractEntityAt(player, entity, Objects.requireNonNull(result).hitVec, EnumHand.MAIN_HAND) != null)
                         return false;
                     return entity.applyPlayerInteraction(player, result.hitVec, EnumHand.MAIN_HAND) == EnumActionResult.SUCCESS;
                 } else if (action == CPacketUseEntity.Action.ATTACK) {

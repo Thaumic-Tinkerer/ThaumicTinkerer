@@ -12,17 +12,17 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationT
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuiAnimationTablet extends GuiContainer {
-    public static final int HEIGHT = 166;
+    private static final int HEIGHT = 166;
     private static final int WIDTH = 176;
-    public TileEntityAnimationTablet animation_tablet;
-    List<GuiButtonAT> buttonListAT = new ArrayList();
-    List<IRadioButton> radioButtons = new ArrayList();
+    private TileEntityAnimationTablet animation_tablet;
+    private List<GuiButtonAT> buttonListAT = new ArrayList<>();
+    private List<IRadioButton> radioButtons = new ArrayList<>();
     private int x, y;
     public GuiAnimationTablet(TileEntityAnimationTablet animation_tablet, AnimationTabletContainer inventorySlotsIn) {
         super(inventorySlotsIn);
@@ -60,7 +60,7 @@ public class GuiAnimationTablet extends GuiContainer {
     }
 
     @Override
-    protected void actionPerformed(GuiButton button) throws IOException {
+    protected void actionPerformed(GuiButton button) {
         if (button instanceof IRadioButton)
             ((IRadioButton) button).enableFromClick();
         else buttonListAT.get(1).enabled = !buttonListAT.get(1).enabled;
@@ -70,8 +70,9 @@ public class GuiAnimationTablet extends GuiContainer {
         PacketHandler.INSTANCE.sendToServer(new PacketTabletButton(animation_tablet, animation_tablet.isRightClick()));
     }
 
+    @NotNull
     @Override
-    protected <T extends GuiButton> T addButton(T button) {
+    protected <T extends GuiButton> T addButton(@NotNull T button) {
         if (button instanceof GuiButtonAT) {
             buttonListAT.add((GuiButtonAT) button);
 

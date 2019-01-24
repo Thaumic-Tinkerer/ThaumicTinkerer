@@ -28,7 +28,7 @@ public class ClientProxy implements ITTProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchanter.class, new TileEntityEnchanterRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimationTablet.class, new TileEntityAnimationTabletRenderer());
         Shaders.initShaders();
-        MultiBlockPreviewRendering.RegisterRenderer(BlockNitor.class, new NitorRenderer());
+        MultiBlockPreviewRendering.registerRenderer(BlockNitor.class, new NitorRenderer());
     }
 
     @Override

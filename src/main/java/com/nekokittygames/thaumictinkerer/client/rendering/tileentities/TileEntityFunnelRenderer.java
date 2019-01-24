@@ -8,8 +8,6 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.blocks.BlocksTC;
@@ -21,9 +19,6 @@ import java.awt.*;
 
 public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEntityFunnel> {
 
-
-    private static ResourceLocation TEX_LABEL = new ResourceLocation("thaumcraft", "textures/models/label.png");
-    private static ResourceLocation TEX_BRINE = new ResourceLocation("thaumcraft", "textures/models/jarbrine.png");
     private TileJarRenderer jarRenderer = new TileJarRenderer();
 
     @Override
@@ -40,7 +35,7 @@ public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEnti
                 Aspect aspect = ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).getAspects()[0];
                 int amount = ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).getAmount(aspect);
                 if (amount > 0)
-                    renderTCJar((float) x, (float) y, (float) z, amount, aspect);
+                    renderTCJar(amount, aspect);
             }
             GL11.glEnable(2896);
             GL11.glEnable(2884);
@@ -49,11 +44,10 @@ public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEnti
 
     }
 
-    private void renderTCJar(float x, float y, float z, int amount, Aspect aspect) {
+    private void renderTCJar(int amount, Aspect aspect) {
         GL11.glPushMatrix();
         GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
         //GL11.glTranslatef(x + 0.5F, y + 0.1F, 0);
-        World world = getWorld();
         RenderCubes renderBlocks = new RenderCubes();
         GL11.glDisable(2896);
         float level = (float) amount / 250.0F * 0.625F;

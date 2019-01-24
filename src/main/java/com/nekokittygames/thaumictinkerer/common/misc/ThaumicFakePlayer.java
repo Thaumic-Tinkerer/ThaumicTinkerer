@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntityCommandBlock;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayer;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -20,7 +21,7 @@ public class ThaumicFakePlayer extends FakePlayer {
     private final @Nonnull
     WorldServer originalWorld;
 
-    public ThaumicFakePlayer(WorldServer world, GameProfile name) {
+    ThaumicFakePlayer(WorldServer world, GameProfile name) {
         super(world, name);
         this.connection = new FakeNetHandler(this);
         this.originalWorld = super.getServerWorld();
@@ -28,14 +29,17 @@ public class ThaumicFakePlayer extends FakePlayer {
 
     @Override
     public void displayGUIChest(IInventory chestInventory) {
+        // Empty
     }
 
     @Override
     public void displayGuiCommandBlock(TileEntityCommandBlock commandBlock) {
+        // Empty
     }
 
     @Override
     public void sendAllContents(Container containerToSend, NonNullList<ItemStack> itemsList) {
+        // Empty
     }
 
     @Override
@@ -55,20 +59,25 @@ public class ThaumicFakePlayer extends FakePlayer {
 
     @Override
     protected void onNewPotionEffect(@Nonnull PotionEffect p_70670_1_) {
+        // Empty
     }
 
     @Override
     protected void onChangedPotionEffect(@Nonnull PotionEffect p_70695_1_, boolean p_70695_2_) {
+        // Empty
     }
 
     @Override
     protected void onFinishedPotionEffect(@Nonnull PotionEffect p_70688_1_) {
+        // Empty
     }
 
     @Override
     protected void playEquipSound(@Nullable ItemStack stack) {
+        // Empty
     }
 
+    @NotNull
     @Override
     public WorldServer getServerWorld() {
         return originalWorld;

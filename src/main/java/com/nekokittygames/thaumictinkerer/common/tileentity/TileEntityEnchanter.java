@@ -21,6 +21,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
@@ -37,7 +38,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements ITickable {
-    public static final ResourceLocation MULTIBLOCK_LOCATION = new ResourceLocation("thaumictinkerer", "osmotic_enchanter");
+    private static final ResourceLocation MULTIBLOCK_LOCATION = new ResourceLocation("thaumictinkerer", "osmotic_enchanter");
     private static final String TAG_ENCHANTS = "enchantsIntArray";
     private static final String TAG_LEVELS = "levelsIntArray";
     private static final String TAG_CACHED_ENCHANTS = "cachedEnchants";
@@ -51,7 +52,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     private int cooldown;
     private boolean working = false;
     // old stytle multiblock
-    private List<Tuple4Int> pillars = new ArrayList();
+    private List<Tuple4Int> pillars = new ArrayList<>();
     private Vec3d[] points = new Vec3d[]{
             new Vec3d(-1.2, 2.15, -1.2),    // 0
             new Vec3d(-2.2, 2.15, 0.5),    // 1
@@ -72,7 +73,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
         }
 
-        public boolean isItemValidForSlot(int index, ItemStack stack) {
+        boolean isItemValidForSlot(int index, ItemStack stack) {
             return TileEntityEnchanter.this.isItemValidForSlot(index, stack);
         }
 
@@ -85,14 +86,14 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
     };
 
-    public static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants) {
+    private static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants) {
         return canApply(itemStack, enchantment, currentEnchants, true);
     }
 
-    public static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants, boolean checkConflicts) {
+    private static boolean canApply(ItemStack itemStack, Enchantment enchantment, List<Enchantment> currentEnchants, boolean checkConflicts) {
         if (ArrayUtils.contains(TTConfig.blacklistedEnchants, Enchantment.getEnchantmentID(enchantment)))
             return false;
-        if (!enchantment.canApply(itemStack) || !enchantment.type.canEnchantItem(itemStack.getItem()) || currentEnchants.contains(enchantment))
+        if (!enchantment.canApply(itemStack) || !Objects.requireNonNull(enchantment.type).canEnchantItem(itemStack.getItem()) || currentEnchants.contains(enchantment))
             return false;
         if (EnchantmentHelper.getEnchantments(itemStack).keySet().contains(enchantment))
             return false;
@@ -130,7 +131,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return pillars;
     }
 
-    public void clearEnchants() {
+    private void clearEnchants() {
         enchantments.clear();
         levels.clear();
 
@@ -175,12 +176,12 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         refreshEnchants();
     }
 
-    public void refreshEnchants() {
+    private void refreshEnchants() {
         List<Enchantment> enchantmentObjects = getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
         cachedEnchantments = enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());
     }
 
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    private boolean isItemValidForSlot(int index, ItemStack stack) {
         Item item = stack.getItem();
         return item.isEnchantable(stack);
     }
@@ -226,13 +227,13 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+    public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
         return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
     @Nullable
     @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+    public <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return (T) inventory;
         } else {
@@ -306,7 +307,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             if (progress > 20 * 15) {
                 if (!world.isRemote) {
                     for (int i = 0; i < enchantments.size(); i++) {
-                        tool.addEnchantment(Enchantment.getEnchantmentByID(enchantments.get(i)), levels.get(i));
+                        tool.addEnchantment(Objects.requireNonNull(Enchantment.getEnchantmentByID(enchantments.get(i))), levels.get(i));
                     }
                 }
 
@@ -351,7 +352,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
     }
 
-    public boolean checkPillars() {
+    private boolean checkPillars() {
         if (pillars.isEmpty()) {
             if (assignPillars()) {
                 working = false;
@@ -374,7 +375,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return true;
     }
 
-    public boolean assignPillars() {
+    private boolean assignPillars() {
         int y = pos.getY();
         for (int x = pos.getX() - 4; x <= pos.getX() + 4; x++)
             for (int z = pos.getZ() - 4; z <= pos.getZ() + 4; z++) {
@@ -390,7 +391,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return true;
     }
 
-    public int findPillar(BlockPos pillarPos) {
+    private int findPillar(BlockPos pillarPos) {
         int obsidianFound = 0;
         for (int i = 0; true; i++) {
             if (pillarPos.getY() + i >= 256)
@@ -412,13 +413,12 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
     }
 
-    public List<Enchantment> getValidEnchantments() {
-        List<Enchantment> enchantments = new ArrayList<Enchantment>();
+    private List<Enchantment> getValidEnchantments() {
+        List<Enchantment> enchantments = new ArrayList<>();
         if (inventory.getStackInSlot(0) == ItemStack.EMPTY)
             return enchantments;
         ItemStack item = inventory.getStackInSlot(0);
-        for (Iterator<Enchantment> it = Enchantment.REGISTRY.iterator(); it.hasNext(); ) {
-            Enchantment enchantment = it.next();
+        for (Enchantment enchantment : Enchantment.REGISTRY) {
             if (item.getItem().getItemEnchantability(item) != 0 && canApply(item, enchantment, enchantments, false))
                 enchantments.add(enchantment);
 
@@ -426,8 +426,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return enchantments;
     }
 
-    public List<Enchantment> getAvailableEnchants(List<Enchantment> currentEnchants) {
-        List<Enchantment> enchantments = new ArrayList<Enchantment>();
+    private List<Enchantment> getAvailableEnchants(List<Enchantment> currentEnchants) {
+        List<Enchantment> enchantments = new ArrayList<>();
         if (inventory.getStackInSlot(0) == ItemStack.EMPTY)
             return enchantments;
         ItemStack item = inventory.getStackInSlot(0);
@@ -448,7 +448,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         Map<Aspect, Integer> costItems = new HashMap<>();
         List<Enchantment> enchantmentObjects = enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList());
         for (Enchantment enchantment : enchantmentObjects) {
-            switch (enchantment.type) {
+            switch (Objects.requireNonNull(enchantment.type)) {
                 case ARMOR:
                     addOneTo(costItems, Aspect.PROTECT);
                     break;
@@ -486,7 +486,6 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                     addOneTo(costItems, Aspect.DEATH);
                     break;
                 case FISHING_ROD:
-                    ;
                     addOneTo(costItems, Aspect.ENTROPY);
                     addOneTo(costItems, Aspect.BEAST);
                     break;

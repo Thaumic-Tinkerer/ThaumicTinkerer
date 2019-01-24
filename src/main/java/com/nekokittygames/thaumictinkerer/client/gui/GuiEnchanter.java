@@ -21,18 +21,17 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuiEnchanter extends GuiContainer {
 
-    public static final int HEIGHT = 166;
+    private static final int HEIGHT = 166;
     private static final int WIDTH = 176;
     public TileEntityEnchanter enchanter;
-    GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
-    GuiEnchantmentStartButton startButton;
-    private List<String> tooltip = new ArrayList();
+    private GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
+    private GuiEnchantmentStartButton startButton;
+    private List<String> tooltip = new ArrayList<>();
     private int visRequireWidth = 0;
     private int visRequireHeight = 0;
     private int x, y;
@@ -95,7 +94,7 @@ public class GuiEnchanter extends GuiContainer {
 
     }
 
-    public void buildButtonList() {
+    private void buildButtonList() {
         buttonList.clear();
         for (int i = 0; i < 16; i++) {
             int z = -11;
@@ -207,7 +206,7 @@ public class GuiEnchanter extends GuiContainer {
                 itemRender.renderItemOverlayIntoGUI(fontRenderer, itemStack, x + 177 + (j * 17), y + 7 + fontRenderer.FONT_HEIGHT, "" + crystalEssence.getAspects(itemStack).getAmount(aspect));
                 GlStateManager.enableAlpha();
                 if (mouseX >= x + 177 + (j * 17) && mouseX < x + 177 + (j * 17) + 16 && mouseY >= y + 7 + fontRenderer.FONT_HEIGHT && mouseY < y + 7 + fontRenderer.FONT_HEIGHT + 16) {
-                    List<String> tooltip = new ArrayList();
+                    List<String> tooltip = new ArrayList<>();
                     tooltip.add(ChatFormatting.AQUA + ThaumicTinkerer.proxy.localize(aspect.getName()));
                     getTooltip().addAll(tooltip);
                 }
@@ -223,7 +222,7 @@ public class GuiEnchanter extends GuiContainer {
     }
 
     @Override
-    protected void actionPerformed(GuiButton button) throws IOException {
+    protected void actionPerformed(GuiButton button) {
         if (button.id == 0) {
             PacketHandler.INSTANCE.sendToServer(new PacketStartEnchant(enchanter, Minecraft.getMinecraft().player));
         } else if (button.id <= 16) {

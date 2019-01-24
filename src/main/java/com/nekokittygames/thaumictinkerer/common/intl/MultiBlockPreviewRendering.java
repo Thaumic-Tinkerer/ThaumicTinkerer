@@ -8,7 +8,7 @@ import java.util.Map;
 public class MultiBlockPreviewRendering {
     private static Map<Class, IMultiBlockPreviewRenderer> renderers = new HashMap<>();
 
-    public static void RegisterRenderer(Class clazz, IMultiBlockPreviewRenderer renderer) {
+    public static void registerRenderer(Class clazz, IMultiBlockPreviewRenderer renderer) {
         if (!renderers.containsKey(clazz))
             renderers.put(clazz, renderer);
     }

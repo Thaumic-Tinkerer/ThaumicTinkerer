@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("deprecation")
 public class BlockTransvectorInterface extends TTCamoBlock<TileEntityTransvectorInterface> {
     public BlockTransvectorInterface() {
         super(LibBlockNames.TRANSVECTOR_INTERFACE, Material.WOOD, true);
@@ -65,7 +66,7 @@ public class BlockTransvectorInterface extends TTCamoBlock<TileEntityTransvector
             BlockPos remote = tinterface.getTilePos();
             if (remote != null) {
                 IBlockState state1 = world.getBlockState(tinterface.getTilePos());
-                return state.getWeakPower(world, remote, side);
+                return state1.getWeakPower(world, remote, side);
             }
         }
         return 0;

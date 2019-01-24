@@ -19,7 +19,9 @@ import thaumcraft.common.items.casters.ItemCaster;
 import thaumcraft.common.lib.utils.BlockUtils;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
+@SuppressWarnings("deprecation")
 public class FocusEffectDislocate extends FocusEffect {
 
     private static final String TAG_AVAILABLE = "available";
@@ -40,9 +42,9 @@ public class FocusEffectDislocate extends FocusEffect {
         IBlockState blockState = this.getPackage().world.getBlockState(pos);
         TileEntity tileEntity = this.getPackage().world.getTileEntity(pos);
         ItemStack casterStack = ItemStack.EMPTY;
-        if (this.getPackage().getCaster().getHeldItemMainhand() != null && this.getPackage().getCaster().getHeldItemMainhand().getItem() instanceof ItemCaster) {
+        if (this.getPackage().getCaster().getHeldItemMainhand() != ItemStack.EMPTY && this.getPackage().getCaster().getHeldItemMainhand().getItem() instanceof ItemCaster) {
             casterStack = this.getPackage().getCaster().getHeldItemMainhand();
-        } else if (this.getPackage().getCaster().getHeldItemOffhand() != null && this.getPackage().getCaster().getHeldItemOffhand().getItem() instanceof ItemCaster) {
+        } else if (this.getPackage().getCaster().getHeldItemOffhand() != ItemStack.EMPTY && this.getPackage().getCaster().getHeldItemOffhand().getItem() instanceof ItemCaster) {
             casterStack = this.getPackage().getCaster().getHeldItemOffhand();
         }
         if (casterStack == null)
@@ -80,7 +82,7 @@ public class FocusEffectDislocate extends FocusEffect {
                         NBTTagCompound tileCmp = getStackTileEntity(focus);
                         if (tileCmp != null && !tileCmp.hasNoTags()) {
                             TileEntity tile1 = TileEntity.create(getPackage().world, tileCmp);
-                            tile1.setPos(pos);
+                            Objects.requireNonNull(tile1).setPos(pos);
                             getPackage().world.setTileEntity(pos, tile1);
                         }
                         stateStored.getBlock().onBlockPlacedBy(getPackage().world, pos, stateStored, getPackage().getCaster(), new ItemStack(stateStored.getBlock()));
@@ -88,23 +90,21 @@ public class FocusEffectDislocate extends FocusEffect {
                     }
 
                 }
-            } else if (!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState)) {
-                if (!getPackage().world.isRemote) {
-                    storePickedBlock(blockState, pos, tileEntity, focus);
-                    if (tileEntity != null)
-                        getPackage().world.removeTileEntity(pos);
-                    getPackage().world.setBlockToAir(pos);
-                }
+            } else if (!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState) && !getPackage().world.isRemote) {
+                storePickedBlock(blockState, tileEntity, focus);
+                if (tileEntity != null)
+                    getPackage().world.removeTileEntity(pos);
+                getPackage().world.setBlockToAir(pos);
             }
         }
         return false;
     }
 
 
-    private void storePickedBlock(IBlockState blockState, BlockPos pos, TileEntity tileEntity, ItemStack focus) {
+    private void storePickedBlock(IBlockState blockState, TileEntity tileEntity, ItemStack focus) {
         ResourceLocation blockName = blockState.getBlock().getRegistryName();
         int metadata = blockState.getBlock().getMetaFromState(blockState);
-        ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, blockName.toString());
+        ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, Objects.requireNonNull(blockName).toString());
         ItemNBTHelper.setInteger(focus, TAG_BLOCK_META, metadata);
         NBTTagCompound cmp = new NBTTagCompound();
         if (tileEntity != null) {
@@ -138,7 +138,7 @@ public class FocusEffectDislocate extends FocusEffect {
         int metadata = ItemNBTHelper.getInteger(focus, TAG_BLOCK_META, 0);
         IBlockState state;
         Block block = ForgeRegistries.BLOCKS.getValue(location);
-        state = block.getStateFromMeta(metadata);
+        state = Objects.requireNonNull(block).getStateFromMeta(metadata);
         return state;
     }
 

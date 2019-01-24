@@ -55,14 +55,12 @@ public class ThaumicTinkerer {
     public void init(FMLInitializationEvent event) {
         try {
             MultiblockManager.initMultiblocks();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
         proxy.init(event);
-        ModRecipes.InitializeRecipes();
-        ResearchCategories.registerCategory("THAUMIC_TINKERER", (String) "FIRSTSTEPS", new AspectList(), new ResourceLocation("thaumictinkerer", "textures/items/share_book.png"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
+        ModRecipes.initializeRecipes();
+        ResearchCategories.registerCategory("THAUMIC_TINKERER", "FIRSTSTEPS", new AspectList(), new ResourceLocation("thaumictinkerer", "textures/items/share_book.png"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc.json"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));

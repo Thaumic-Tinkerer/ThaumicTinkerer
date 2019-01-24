@@ -28,6 +28,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer implements ITickable, Consumer<ItemStack> {
@@ -52,7 +53,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             sendUpdates();
         }
 
-        public boolean isItemValidForSlot(int index, ItemStack stack) {
+        boolean isItemValidForSlot(int index, ItemStack stack) {
             return TileEntityAnimationTablet.this.isItemValidForSlot(index, stack);
         }
 
@@ -109,7 +110,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         this.progress = progress;
     }
 
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    private boolean isItemValidForSlot(int index, ItemStack stack) {
         return true;
     }
 
@@ -160,7 +161,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     @Override
     public void activateOnPulse() {
-
+        // Empty
     }
 
 
@@ -195,7 +196,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         return pos.equals(this.currentBlock) && flag;
     }
 
-    public void resetAll() {
+    private void resetAll() {
         progress = 0;
         isRemoving = false;
         swingMod = 3;
@@ -203,12 +204,12 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     }
 
-    public void initiateSwing() {
+    private void initiateSwing() {
         swingMod = SWING_SPEED;
         progress = 1;
     }
 
-    public boolean detect() {
+    private boolean detect() {
         return !world.isAirBlock(GetBlockTarget());
     }
 
@@ -244,7 +245,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         if (!detect)
             stopBreaking();
         if (detect && isRemoving && !world.isRemote) {
-            player.get().interactionManager.updateBlockRemoving();
+            Objects.requireNonNull(player.get()).interactionManager.updateBlockRemoving();
             continueBreaking();
         }
 
@@ -259,9 +260,9 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         Vec3d target;
         RayTraceResult trace;
         RayTraceResult traceEntity;
-        RayTraceResult toUse = null;
-        base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
-        look = player.get().getLookVec();
+        RayTraceResult toUse;
+        base = new Vec3d(Objects.requireNonNull(player.get()).posX, Objects.requireNonNull(player.get()).posY, Objects.requireNonNull(player.get()).posZ);
+        look = Objects.requireNonNull(player.get()).getLookVec();
         target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
         trace = world.rayTraceBlocks(base, target, false, false, true);
         traceEntity = FakePlayerUtils.traceEntities(player.get(), base, target, world);
@@ -273,7 +274,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         BlockPos targetPos = getTargetBlock();
         if (!rightClick) {
             if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
-                this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(player.get(), player.get().world, targetPos);
+                this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(Objects.requireNonNull(player.get()), player.get().world, targetPos);
                 ThaumicTinkerer.logger.info(String.format("Cur Block Damage: %s", this.curBlockDamageMP));
 
                 //if (this.curBlockDamageMP >= 1.0f) {
@@ -285,7 +286,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             } else {
                 this.curBlockDamageMP = 0;
             }
-            if (this.isRemoving && this.isHittingPosition(targetPos, player.get())) {
+            if (this.isRemoving && this.isHittingPosition(targetPos, Objects.requireNonNull(player.get()))) {
                 IBlockState iblockstate = world.getBlockState(targetPos);
                 Block block = iblockstate.getBlock();
 
@@ -313,7 +314,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         RayTraceResult trace;
         RayTraceResult traceEntity;
         RayTraceResult toUse = null;
-        base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
+        base = new Vec3d(Objects.requireNonNull(player.get()).posX, player.get().posY, player.get().posZ);
         look = player.get().getLookVec();
         target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
         trace = world.rayTraceBlocks(base, target, false, false, true);
@@ -326,7 +327,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             toUse = traceEntity.typeOfHit == RayTraceResult.Type.ENTITY && d1 > d2 ? traceEntity : trace;
         }
 
-        if (toUse == null || world.getBlockState(targetPos) == world.getBlockState(pos)) return;
+        if (world.getBlockState(targetPos) == world.getBlockState(pos)) return;
         if (!rightClick) {
 
             if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
@@ -358,8 +359,9 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     private void stopBreaking() {
         this.isRemoving = false;
-        if (!world.isRemote)
-            world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, -1);
+        if (!world.isRemote) {
+            world.sendBlockBreakProgress(Objects.requireNonNull(player.get()).getEntityId(), this.currentBlock, -1);
+        }
     }
 
     private void onPlayerDestroyBlock(BlockPos targetPos, ThaumicFakePlayer player) {
@@ -397,7 +399,6 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         if (flag) {
             block.onBlockDestroyedByPlayer(world, targetPos, iblockstate);
         }
-        return;
     }
 
 
@@ -405,7 +406,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         return player.get();
     }
 
-    public BlockPos GetBlockTarget() {
+    private BlockPos GetBlockTarget() {
         BlockPos newPos = this.getPos().offset(facing);
         if (isRightClick() && world.isAirBlock(newPos))
             newPos = newPos.offset(EnumFacing.DOWN);

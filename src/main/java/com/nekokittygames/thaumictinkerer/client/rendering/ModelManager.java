@@ -1,6 +1,5 @@
 package com.nekokittygames.thaumictinkerer.client.rendering;
 
-import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
@@ -21,6 +20,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -29,11 +29,9 @@ import java.util.Set;
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class ModelManager {
     public static final ModelManager INSTANCE = new ModelManager();
-
-    private static final String FLUID_MODEL_PATH = LibClientMisc.RESOURCE_PREFIX + "fluid";
     private final StateMapperBase propertyStringMapper = new StateMapperBase() {
         @Override
-        protected ModelResourceLocation getModelResourceLocation(final IBlockState state) {
+        protected ModelResourceLocation getModelResourceLocation(@NotNull final IBlockState state) {
             return new ModelResourceLocation("minecraft:air");
         }
     };
@@ -150,7 +148,7 @@ public class ModelManager {
      * @param variant  The variant
      */
     private void registerItemModelForMeta(final Item item, final int metadata, final String variant) {
-        registerItemModelForMeta(item, metadata, new ModelResourceLocation(item.getRegistryName(), variant));
+        registerItemModelForMeta(item, metadata, new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), variant));
     }
 
     /**
