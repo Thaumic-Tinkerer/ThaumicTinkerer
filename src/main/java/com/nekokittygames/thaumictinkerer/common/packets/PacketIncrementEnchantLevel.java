@@ -18,6 +18,20 @@ public class PacketIncrementEnchantLevel implements IMessage {
     private int enchantID;
     private boolean plus;
 
+    public PacketIncrementEnchantLevel(BlockPos pos, int enchantID, boolean plus) {
+        this.pos = pos;
+        this.enchantID = enchantID;
+        this.plus = plus;
+    }
+
+    public PacketIncrementEnchantLevel() {
+
+    }
+
+    public PacketIncrementEnchantLevel(TileEntityEnchanter enchanter, int enchantID, boolean plus) {
+        this(enchanter.getPos(), enchantID, plus);
+    }
+
     public BlockPos getPos() {
         return pos;
     }
@@ -42,25 +56,11 @@ public class PacketIncrementEnchantLevel implements IMessage {
         this.plus = plus;
     }
 
-    public PacketIncrementEnchantLevel(BlockPos pos, int enchantID, boolean plus) {
-        this.pos = pos;
-        this.enchantID = enchantID;
-        this.plus = plus;
-    }
-    public PacketIncrementEnchantLevel() {
-
-    }
-
-    public PacketIncrementEnchantLevel(TileEntityEnchanter enchanter, int enchantID, boolean plus) {
-        this(enchanter.getPos(),enchantID,plus);
-    }
-
-
     @Override
     public void fromBytes(ByteBuf byteBuf) {
-        pos=BlockPos.fromLong(byteBuf.readLong());
-        enchantID=byteBuf.readInt();
-        plus=byteBuf.readBoolean();
+        pos = BlockPos.fromLong(byteBuf.readLong());
+        enchantID = byteBuf.readInt();
+        plus = byteBuf.readBoolean();
     }
 
     @Override
@@ -70,7 +70,7 @@ public class PacketIncrementEnchantLevel implements IMessage {
         byteBuf.writeBoolean(plus);
     }
 
-    public static class Handler implements IMessageHandler<PacketIncrementEnchantLevel,IMessage> {
+    public static class Handler implements IMessageHandler<PacketIncrementEnchantLevel, IMessage> {
         @Override
         public IMessage onMessage(PacketIncrementEnchantLevel packetIncrementEnchantLevel, MessageContext messageContext) {
             FMLCommonHandler.instance().getWorldThread(messageContext.netHandler).addScheduledTask(() -> handle(packetIncrementEnchantLevel, messageContext));
@@ -80,26 +80,22 @@ public class PacketIncrementEnchantLevel implements IMessage {
         private void handle(PacketIncrementEnchantLevel packetIncrementEnchantLevel, MessageContext ctx) {
             EntityPlayerMP playerEntity = ctx.getServerHandler().player;
             World world = playerEntity.getEntityWorld();
-            if(world.isBlockLoaded(packetIncrementEnchantLevel.getPos())) {
+            if (world.isBlockLoaded(packetIncrementEnchantLevel.getPos())) {
                 TileEntity te = world.getTileEntity(packetIncrementEnchantLevel.getPos());
                 if (te instanceof TileEntityEnchanter) {
                     TileEntityEnchanter enchanter = (TileEntityEnchanter) te;
-                    int index=enchanter.getEnchantments().indexOf(packetIncrementEnchantLevel.enchantID);
-                    if(index!=-1)
-                    {
-                        Enchantment enchantment=Enchantment.getEnchantmentByID(enchanter.getEnchantments().get(index));
-                        int currentLevel=enchanter.getLevels().get(index);
-                        if(packetIncrementEnchantLevel.plus)
-                        {
+                    int index = enchanter.getEnchantments().indexOf(packetIncrementEnchantLevel.enchantID);
+                    if (index != -1) {
+                        Enchantment enchantment = Enchantment.getEnchantmentByID(enchanter.getEnchantments().get(index));
+                        int currentLevel = enchanter.getLevels().get(index);
+                        if (packetIncrementEnchantLevel.plus) {
                             currentLevel++;
-                            currentLevel=Math.min(currentLevel,enchantment.getMaxLevel());
-                        }
-                        else
-                        {
+                            currentLevel = Math.min(currentLevel, enchantment.getMaxLevel());
+                        } else {
                             currentLevel--;
-                            currentLevel=Math.max(currentLevel,enchantment.getMinLevel());
+                            currentLevel = Math.max(currentLevel, enchantment.getMinLevel());
                         }
-                        enchanter.getLevels().set(index,currentLevel);
+                        enchanter.getLevels().set(index, currentLevel);
                         enchanter.sendUpdates();
                     }
                 }

@@ -7,37 +7,48 @@
     "uvlock": true
   },
   "variants": {
-    "pole":
-    {
-      "pull":
-      {
-        "textures":
-        {
+    "pole": {
+      "pull": {
+        "textures": {
           "1": "thaumictinkerer:blocks/magnet/mob/back_front_pull"
         }
       },
-      "push":
-      {
-        "textures":
-        {
+      "push": {
+        "textures": {
           "1": "thaumictinkerer:blocks/magnet/mob/back_front_push"
         }
       }
     },
-    "facing":
-    {
+    "facing": {
       "up": {},
-      "down": {"x":270,"uvlock":false},
-      "north": {"x":90,"uvlock":false},
-      "south": {"x":90,"y":180,"uvlock":false},
-      "west": {"x":90,"y":270,"uvlock":false},
-      "east": {"x":90,"y":90,"uvlock":false}
+      "down": {
+        "x": 270,
+        "uvlock": false
+      },
+      "north": {
+        "x": 90,
+        "uvlock": false
+      },
+      "south": {
+        "x": 90,
+        "y": 180,
+        "uvlock": false
+      },
+      "west": {
+        "x": 90,
+        "y": 270,
+        "uvlock": false
+      },
+      "east": {
+        "x": 90,
+        "y": 90,
+        "uvlock": false
+      }
     },
     "inventory": {
       "model": "thaumictinkerer:magnet/mobmagnet_base",
-      "transform":"forge:default-block",
-      "textures":
-      {
+      "transform": "forge:default-block",
+      "textures": {
         "1": "thaumictinkerer:blocks/magnet/mob/back_front_pull"
       }
     }

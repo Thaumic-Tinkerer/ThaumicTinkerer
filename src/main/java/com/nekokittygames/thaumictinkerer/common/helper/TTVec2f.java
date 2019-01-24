@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.helper;
 
 
-
 public class TTVec2f {
 
     public static final TTVec2f ZERO = new TTVec2f(0.0F, 0.0F);

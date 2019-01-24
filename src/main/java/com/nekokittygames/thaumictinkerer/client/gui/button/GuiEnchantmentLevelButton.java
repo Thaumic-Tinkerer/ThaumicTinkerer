@@ -9,9 +9,9 @@ public class GuiEnchantmentLevelButton extends GuiButton {
 
     public boolean plus;
 
-    public GuiEnchantmentLevelButton(int buttonId, int x, int y,boolean plus) {
-        super(buttonId, x, y,7,7, "");
-        this.plus=plus;
+    public GuiEnchantmentLevelButton(int buttonId, int x, int y, boolean plus) {
+        super(buttonId, x, y, 7, 7, "");
+        this.plus = plus;
     }
 
     @Override

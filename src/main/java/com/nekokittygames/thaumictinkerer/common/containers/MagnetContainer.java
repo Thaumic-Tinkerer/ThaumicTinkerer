@@ -16,7 +16,7 @@ public class MagnetContainer extends Container {
 
     private TileEntityMobMagnet tileEntity;
 
-    public MagnetContainer(IInventory playerInventory,TileEntityMobMagnet tileEntity) {
+    public MagnetContainer(IInventory playerInventory, TileEntityMobMagnet tileEntity) {
 
         this.tileEntity = tileEntity;
 
@@ -46,8 +46,7 @@ public class MagnetContainer extends Container {
         IItemHandler itemHandler = this.tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         int x = 54;
         int y = 38;
-        this.addSlotToContainer(new SlotItemHandler(itemHandler,0,x,y)
-        {
+        this.addSlotToContainer(new SlotItemHandler(itemHandler, 0, x, y) {
             @Override
             public void onSlotChange(@Nonnull ItemStack p_75220_1_, @Nonnull ItemStack p_75220_2_) {
                 tileEntity.sendUpdates();

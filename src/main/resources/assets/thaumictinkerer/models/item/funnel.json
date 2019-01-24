@@ -2,29 +2,89 @@
   "parent": "thaumictinkerer:block/funnel",
   "display": {
     "thirdperson_righthand": {
-      "rotation": [ 90, -45, 0 ],
-      "translation": [ 0, 1.5, 5.75 ],
-      "scale": [ 1.1, 1.1, 1.1 ]
+      "rotation": [
+        90,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        1.5,
+        5.75
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
     },
     "thirdperson_lefthand": {
-      "rotation": [ 90, -45, 0],
-      "translation": [ 0, 1.5, 5.75 ],
-      "scale": [ 1.1, 1.1, 1.1 ]
+      "rotation": [
+        90,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        1.5,
+        5.75
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
     },
     "firstperson_righthand": {
-      "rotation": [ 90, -45, 0 ],
-      "translation": [ 0, 1.5, 5.75 ],
-      "scale": [ 1.1, 1.1, 1.1 ]
+      "rotation": [
+        90,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        1.5,
+        5.75
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
     },
     "firstperson_lefthand": {
-      "rotation": [ 90, -45, 0],
-      "translation": [ 0, 1.5, 5.75 ],
-      "scale": [ 1.1, 1.1, 1.1 ]
+      "rotation": [
+        90,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        1.5,
+        5.75
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
     },
     "gui": {
-      "rotation": [ 90, -45, 0],
-      "translation": [ 0, 1.5, 5.75 ],
-      "scale": [ 0.8, 0.8, 0.8 ]
+      "rotation": [
+        90,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        1.5,
+        5.75
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
     }
   }
 }

@@ -8,6 +8,12 @@ import net.minecraft.item.ItemStack;
 
 public class TTGhostSlot extends Slot {
     private static IInventory emptyInventory = new InventoryBasic("[Null]", true, 0);
+    private ItemStack itemStack;
+
+    public TTGhostSlot(ItemStack inventoryIn, int index, int xPosition, int yPosition) {
+        super(emptyInventory, index, xPosition, yPosition);
+        this.itemStack = inventoryIn;
+    }
 
     public ItemStack getItemStack() {
         return itemStack;
@@ -15,12 +21,6 @@ public class TTGhostSlot extends Slot {
 
     public void setItemStack(ItemStack itemStack) {
         this.itemStack = itemStack;
-    }
-
-    private ItemStack itemStack;
-    public TTGhostSlot(ItemStack inventoryIn, int index, int xPosition, int yPosition) {
-        super(emptyInventory , index, xPosition, yPosition);
-        this.itemStack=inventoryIn;
     }
 
     @Override

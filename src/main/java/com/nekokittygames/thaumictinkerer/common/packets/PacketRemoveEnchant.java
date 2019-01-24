@@ -17,6 +17,20 @@ public class PacketRemoveEnchant implements IMessage {
     private BlockPos pos;
     private int enchantID;
 
+    public PacketRemoveEnchant() {
+
+    }
+
+    public PacketRemoveEnchant(TileEntityEnchanter enchanter, int enchantID) {
+        this.pos = enchanter.getPos();
+        this.enchantID = enchantID;
+    }
+
+    public PacketRemoveEnchant(BlockPos pos, int enchantID) {
+        this.pos = pos;
+        this.enchantID = enchantID;
+    }
+
     public BlockPos getPos() {
         return pos;
     }
@@ -33,25 +47,10 @@ public class PacketRemoveEnchant implements IMessage {
         this.enchantID = enchantID;
     }
 
-    public PacketRemoveEnchant()
-    {
-
-    }
-    public PacketRemoveEnchant(TileEntityEnchanter enchanter, int enchantID)
-    {
-        this.pos=enchanter.getPos();
-        this.enchantID=enchantID;
-    }
-
-    public PacketRemoveEnchant(BlockPos pos, int enchantID)
-    {
-        this.pos=pos;
-        this.enchantID=enchantID;
-    }
     @Override
     public void fromBytes(ByteBuf byteBuf) {
-        pos=BlockPos.fromLong(byteBuf.readLong());
-        enchantID=byteBuf.readInt();
+        pos = BlockPos.fromLong(byteBuf.readLong());
+        enchantID = byteBuf.readInt();
     }
 
     @Override
@@ -60,22 +59,21 @@ public class PacketRemoveEnchant implements IMessage {
         byteBuf.writeInt(enchantID);
     }
 
-    public static class Handler implements IMessageHandler<PacketRemoveEnchant,IMessage> {
+    public static class Handler implements IMessageHandler<PacketRemoveEnchant, IMessage> {
 
         @Override
         public IMessage onMessage(PacketRemoveEnchant packetAddEnchant, MessageContext messageContext) {
             FMLCommonHandler.instance().getWorldThread(messageContext.netHandler).addScheduledTask(() -> handle(packetAddEnchant, messageContext));
             return null;
         }
+
         private void handle(PacketRemoveEnchant packetAddEnchant, MessageContext ctx) {
             EntityPlayerMP playerEntity = ctx.getServerHandler().player;
             World world = playerEntity.getEntityWorld();
-            if(world.isBlockLoaded(packetAddEnchant.getPos()))
-            {
-                TileEntity te=world.getTileEntity(packetAddEnchant.getPos());
-                if(te instanceof TileEntityEnchanter)
-                {
-                    TileEntityEnchanter enchanter= (TileEntityEnchanter) te;
+            if (world.isBlockLoaded(packetAddEnchant.getPos())) {
+                TileEntity te = world.getTileEntity(packetAddEnchant.getPos());
+                if (te instanceof TileEntityEnchanter) {
+                    TileEntityEnchanter enchanter = (TileEntityEnchanter) te;
                     enchanter.removeEnchant(enchanter.getEnchantments().indexOf(packetAddEnchant.enchantID));
                     enchanter.removeLevel(enchanter.getEnchantments().indexOf(packetAddEnchant.enchantID));
                 }

@@ -13,7 +13,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public abstract class TTCamoBlock< T extends TileEntityCamoflage> extends TTTileEntity<T> {
+public abstract class TTCamoBlock<T extends TileEntityCamoflage> extends TTTileEntity<T> {
 
 
     public TTCamoBlock(String name, Material blockMaterialIn, MapColor blockMapColorIn, boolean preserveTileEntity) {
@@ -21,47 +21,8 @@ public abstract class TTCamoBlock< T extends TileEntityCamoflage> extends TTTile
     }
 
 
-    @Override
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        TileEntity te=worldIn.getTileEntity(pos);
-        if(te instanceof TileEntityCamoflage)
-        {
-            TileEntityCamoflage camo= (TileEntityCamoflage) te;
-            if(camo.getBlockCopy()!=null)
-                return camo.getBlockCopy();
-        }
-        return super.getActualState(state,worldIn,pos);
-    }
-
     public TTCamoBlock(String name, Material materialIn, boolean preserveTileEntity) {
         super(name, materialIn, preserveTileEntity);
-    }
-
-    @Override
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
-    }
-
-    @Override
-    public boolean isTranslucent(IBlockState state) {
-        return true;
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-
-    @Override
-    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-        TileEntity te=world.getTileEntity(pos);
-        if(te instanceof TileEntityCamoflage) {
-            TileEntityCamoflage camo = (TileEntityCamoflage) te;
-            if (camo.getBlockCopy() != null)
-                return camo.getBlockCopy().getLightValue();
-        }
-        return super.getLightValue(state,world,pos);
     }
 
     public static boolean camoflageFromHand(EntityPlayer playerIn, EnumHand hand, TileEntity te) {
@@ -79,5 +40,42 @@ public abstract class TTCamoBlock< T extends TileEntityCamoflage> extends TTTile
             }
         }
         return false;
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        TileEntity te = worldIn.getTileEntity(pos);
+        if (te instanceof TileEntityCamoflage) {
+            TileEntityCamoflage camo = (TileEntityCamoflage) te;
+            if (camo.getBlockCopy() != null)
+                return camo.getBlockCopy();
+        }
+        return super.getActualState(state, worldIn, pos);
+    }
+
+    @Override
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.TRANSLUCENT;
+    }
+
+    @Override
+    public boolean isTranslucent(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof TileEntityCamoflage) {
+            TileEntityCamoflage camo = (TileEntityCamoflage) te;
+            if (camo.getBlockCopy() != null)
+                return camo.getBlockCopy().getLightValue();
+        }
+        return super.getLightValue(state, world, pos);
     }
 }

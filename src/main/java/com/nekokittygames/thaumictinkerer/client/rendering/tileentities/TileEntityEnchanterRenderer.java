@@ -1,55 +1,41 @@
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
-import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.client.misc.ClientHelper;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.RenderItem;
-import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.block.model.ModelManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import org.lwjgl.opengl.GL11;
 
 public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileEntityEnchanter> {
 
 
-
-    public TileEntityEnchanterRenderer()
-    {
+    public TileEntityEnchanterRenderer() {
 
     }
+
     @Override
     public void render(TileEntityEnchanter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
-        if(te.getInventory().getStackInSlot(0)!= ItemStack.EMPTY)
-        {
+        if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY) {
             GlStateManager.pushMatrix();
             GlStateManager.disableLighting();
             float tmp = 0.7f;
             float progress;
-            if(te.isWorking()) {
+            if (te.isWorking()) {
                 progress = Math.min(1.0f, ((float) te.getProgress()) / 225f);
-                tmp*= progress;
-            }
-            else if(te.getCooldown()>0)
-            {
-                progress= Math.max(0.0f, ((float) te.getCooldown()) / 28f);
-                tmp=0.7f-(0.7f*(1-progress));
-            }
-            else
-            {
-                tmp=0.0f;
-                progress=0f;
+                tmp *= progress;
+            } else if (te.getCooldown() > 0) {
+                progress = Math.max(0.0f, ((float) te.getCooldown()) / 28f);
+                tmp = 0.7f - (0.7f * (1 - progress));
+            } else {
+                tmp = 0.0f;
+                progress = 0f;
             }
 
-            GlStateManager.translate((float)x + 0.5F, (float)y + 0.8F+tmp, (float)z + 0.5F);
-            GlStateManager.rotate(90f*(1-progress),1,0,0);
+            GlStateManager.translate((float) x + 0.5F, (float) y + 0.8F + tmp, (float) z + 0.5F);
+            GlStateManager.rotate(90f * (1 - progress), 1, 0, 0);
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
             GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();

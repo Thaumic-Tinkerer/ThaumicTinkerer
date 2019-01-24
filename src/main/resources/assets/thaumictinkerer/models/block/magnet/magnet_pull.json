@@ -1,7 +1,5 @@
 {
   "parent": "thaumictinkerer:magnet/magnet_base",
-  "textures":
-  {
-
+  "textures": {
   }
 }

@@ -1,14 +1,11 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
-import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockRepairer;
 import com.nekokittygames.thaumictinkerer.common.compat.TiConCompat;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -22,38 +19,34 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.client.fx.FXDispatcher;
-import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITickable, IAspectContainer, IEssentiaTransport {
 
-    private ItemStackHandler inventory= new ItemStackHandler(1)
-    {
+    private ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
-        protected void onContentsChanged(int slot)
-        {
+        protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
             sendUpdates();
         }
 
-        public boolean isItemValidForSlot(int index, ItemStack stack)
-        {
-            return TileEntityRepairer.this.isItemValidForSlot(index,stack);
+        public boolean isItemValidForSlot(int index, ItemStack stack) {
+            return TileEntityRepairer.this.isItemValidForSlot(index, stack);
         }
 
         @Nonnull
         @Override
         public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-            if(!isItemValidForSlot(slot,stack))
+            if (!isItemValidForSlot(slot, stack))
                 return stack;
             return super.insertItem(slot, stack, simulate);
         }
     };
     private int ticksExisted;
     private int dmgLastTick = 0;
-    private boolean tookLastTick=true;
+    private boolean tookLastTick = true;
 
     public int getTicksExisted() {
         return ticksExisted;
@@ -63,10 +56,9 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
         this.ticksExisted = ticksExisted;
     }
 
-    public boolean isItemValidForSlot(int index, ItemStack stack)
-    {
-        Item item=stack.getItem();
-        if(Loader.isModLoaded("tconstruct") && TTConfig.TiConCompatibility)
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
+        Item item = stack.getItem();
+        if (Loader.isModLoaded("tconstruct") && TTConfig.TiConCompatibility)
             return TiConCompat.isRepairableTiCon(stack) || item.isRepairable();
         return item.isRepairable();
     }
@@ -77,7 +69,7 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
 
     @Override
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
-        nbttagcompound.setTag("inventory",inventory.serializeNBT());
+        nbttagcompound.setTag("inventory", inventory.serializeNBT());
     }
 
     @Override
@@ -92,82 +84,65 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability== CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ||super.hasCapability(capability, facing);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
 
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-        {
-            return (T)inventory;
-        }
-        else
-        {
-            return super.getCapability(capability,facing);
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return (T) inventory;
+        } else {
+            return super.getCapability(capability, facing);
         }
     }
 
 
     @Override
     public void update() {
-        if(++ticksExisted %10 ==0)
-        {
-            ItemStack stack=inventory.getStackInSlot(0);
-            if(Loader.isModLoaded("tconstruct" )&& TTConfig.TiConCompatibility)
-            {
-                if(stack!=ItemStack.EMPTY)
-                {
-                    if(TiConCompat.isTiConTool(stack) && TTConfig.TiConCompatibility)
-                    {
-                        int damage=TiConCompat.getDamage(stack);
-                        if(damage>0)
-                        {
-                            int essentia=drawEssentia();
-                            TiConCompat.fixDamage(stack,essentia);
+        if (++ticksExisted % 10 == 0) {
+            ItemStack stack = inventory.getStackInSlot(0);
+            if (Loader.isModLoaded("tconstruct") && TTConfig.TiConCompatibility) {
+                if (stack != ItemStack.EMPTY) {
+                    if (TiConCompat.isTiConTool(stack) && TTConfig.TiConCompatibility) {
+                        int damage = TiConCompat.getDamage(stack);
+                        if (damage > 0) {
+                            int essentia = drawEssentia();
+                            TiConCompat.fixDamage(stack, essentia);
                             sendUpdates();
-                            if(dmgLastTick!=0 && dmgLastTick!=damage)
-                            {
-                                FXDispatcher.INSTANCE.sparkle((float) (pos.getX()+ 0.25 + Math.random() / 2F), (float) (pos.getY()+ 1 + Math.random() / 2F), (float) (pos.getZ() + 0.25 + Math.random() / 2F), 1.0f,1.0f,0.0f);
-                                tookLastTick=true;
-                            }
-                            else
-                                tookLastTick=false;
+                            if (dmgLastTick != 0 && dmgLastTick != damage) {
+                                FXDispatcher.INSTANCE.sparkle((float) (pos.getX() + 0.25 + Math.random() / 2F), (float) (pos.getY() + 1 + Math.random() / 2F), (float) (pos.getZ() + 0.25 + Math.random() / 2F), 1.0f, 1.0f, 0.0f);
+                                tookLastTick = true;
+                            } else
+                                tookLastTick = false;
 
-                        }
-                        else
-                            tookLastTick=false;
+                        } else
+                            tookLastTick = false;
 
-                        dmgLastTick=stack==ItemStack.EMPTY?0:TiConCompat.getDamage(stack);
+                        dmgLastTick = stack == ItemStack.EMPTY ? 0 : TiConCompat.getDamage(stack);
                         return;
-                    }
-                    else
-                        tookLastTick=false;
-                }
-                else
-                    tookLastTick=false;
+                    } else
+                        tookLastTick = false;
+                } else
+                    tookLastTick = false;
             }
 
-            int damage=stack.getItemDamage();
-            if(damage>0)
-            {
-                int essentia=drawEssentia();
-                stack.setItemDamage(Math.max(0,stack.getItemDamage()-essentia));
+            int damage = stack.getItemDamage();
+            if (damage > 0) {
+                int essentia = drawEssentia();
+                stack.setItemDamage(Math.max(0, stack.getItemDamage() - essentia));
                 sendUpdates();
-                if(dmgLastTick!=0 && dmgLastTick!=damage)
-                {
-                    FXDispatcher.INSTANCE.sparkle((float) (pos.getX()+ 0.25 + Math.random() / 2F), (float) (pos.getY()+ 1 + Math.random() / 2F), (float) (pos.getZ() + 0.25 + Math.random() / 2F), 1.0f,1.0f,0.0f);
-                    tookLastTick=true;
-                }
-                else
-                    tookLastTick=false;
+                if (dmgLastTick != 0 && dmgLastTick != damage) {
+                    FXDispatcher.INSTANCE.sparkle((float) (pos.getX() + 0.25 + Math.random() / 2F), (float) (pos.getY() + 1 + Math.random() / 2F), (float) (pos.getZ() + 0.25 + Math.random() / 2F), 1.0f, 1.0f, 0.0f);
+                    tookLastTick = true;
+                } else
+                    tookLastTick = false;
 
-            }
-            else
-                tookLastTick=false;
+            } else
+                tookLastTick = false;
 
-            dmgLastTick=stack==ItemStack.EMPTY?0:stack.getItemDamage();
+            dmgLastTick = stack == ItemStack.EMPTY ? 0 : stack.getItemDamage();
 
         }
 
@@ -175,29 +150,28 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
     }
 
 
-    int drawEssentia()
-    {
-        EnumFacing facing=world.getBlockState(pos).getValue(BlockRepairer.FACING);
+    int drawEssentia() {
+        EnumFacing facing = world.getBlockState(pos).getValue(BlockRepairer.FACING);
         TileEntity te = ThaumcraftApiHelper.getConnectableTile(this.world, this.pos, facing);
         if (te != null) {
             IEssentiaTransport ic = (IEssentiaTransport) te;
-            if(!ic.canOutputTo(facing.getOpposite()))
+            if (!ic.canOutputTo(facing.getOpposite()))
                 return 0;
 
-            return ic.takeEssentia(Aspect.TOOL,8,facing.getOpposite());
+            return ic.takeEssentia(Aspect.TOOL, 8, facing.getOpposite());
         }
         return 0;
     }
 
     @Override
     public AspectList getAspects() {
-        ItemStack stack=inventory.getStackInSlot(0);
-        if(stack==ItemStack.EMPTY)
+        ItemStack stack = inventory.getStackInSlot(0);
+        if (stack == ItemStack.EMPTY)
             return null;
-        int damage=stack.getItemDamage();
-        if(Loader.isModLoaded("tconstruct") && TTConfig.TiConCompatibility)
-            damage=TiConCompat.getDamage(stack);
-        return new AspectList().add(Aspect.ENTROPY,damage);
+        int damage = stack.getItemDamage();
+        if (Loader.isModLoaded("tconstruct") && TTConfig.TiConCompatibility)
+            damage = TiConCompat.getDamage(stack);
+        return new AspectList().add(Aspect.ENTROPY, damage);
     }
 
     @Override
@@ -242,7 +216,7 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
 
     @Override
     public boolean isConnectable(EnumFacing enumFacing) {
-        return enumFacing==world.getBlockState(pos).getValue(BlockRepairer.FACING);
+        return enumFacing == world.getBlockState(pos).getValue(BlockRepairer.FACING);
     }
 
     @Override
@@ -267,7 +241,7 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
 
     @Override
     public int getSuctionAmount(EnumFacing enumFacing) {
-        return isConnectable(enumFacing)?128:0;
+        return isConnectable(enumFacing) ? 128 : 0;
     }
 
     @Override

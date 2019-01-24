@@ -1,5 +1,5 @@
 {
-  "entries" :[
+  "entries": [
     {
       "key": "TRANSVECTOR_INTERFACE",
       "name": "thaumictinkerer.research.transvector_interface.title",
@@ -7,7 +7,9 @@
         "thaumictinkerer:textures/blocks/interface.png"
       ],
       "category": "THAUMIC_TINKERER",
-      "parents": ["FIRSTSTEPS"],
+      "parents": [
+        "FIRSTSTEPS"
+      ],
       "siblings": [],
       "meta": [
         "ROUND",
@@ -24,9 +26,11 @@
             "thaumictinkerer:transvector_interface",
             "thaumictinkerer:connector"
           ],
-          "required_craft":["thaumcraft:arcane_workbench"]
+          "required_craft": [
+            "thaumcraft:arcane_workbench"
+          ]
         }
       ]
     }
-    ]
+  ]
 }

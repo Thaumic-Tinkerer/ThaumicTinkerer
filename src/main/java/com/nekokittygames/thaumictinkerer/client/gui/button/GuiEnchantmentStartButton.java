@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiButton;
 
 public class GuiEnchantmentStartButton extends GuiButton {
     private boolean enabled;
+
     public GuiEnchantmentStartButton(int buttonId, int x, int y) {
         super(buttonId, x, y, "");
     }
@@ -21,6 +22,6 @@ public class GuiEnchantmentStartButton extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ENCHANTER);
-        drawTexturedModalRect(x , y , 176, enabled?39:24, 15, 15);
+        drawTexturedModalRect(x, y, 176, enabled ? 39 : 24, 15, 15);
     }
 }

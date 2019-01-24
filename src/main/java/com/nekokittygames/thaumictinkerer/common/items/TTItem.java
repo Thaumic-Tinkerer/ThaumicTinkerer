@@ -19,18 +19,18 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class TTItem extends Item {
-private String baseName;
-    public TTItem(final String itemName)
-    {
-        baseName=itemName;
-        setItemName(this,itemName);
-        if(isInCreativeTab())
+    private String baseName;
+
+    public TTItem(final String itemName) {
+        baseName = itemName;
+        setItemName(this, itemName);
+        if (isInCreativeTab())
             setCreativeTab(CreativeTabThaumicTinkerer.getInstance());
     }
 
     public static void setItemName(@NotNull TTItem item, String itemName) {
-        item.setRegistryName(LibMisc.MOD_ID,itemName);
-        final ResourceLocation regName= Objects.requireNonNull(item.getRegistryName());
+        item.setRegistryName(LibMisc.MOD_ID, itemName);
+        final ResourceLocation regName = Objects.requireNonNull(item.getRegistryName());
         item.setUnlocalizedName(regName.toString());
     }
 
@@ -43,13 +43,12 @@ private String baseName;
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        int i=0;
-        String name="item."+ LibClientMisc.RESOURCE_PREFIX+baseName+"."+i;
-        while(I18n.hasKey(name))
-        {
+        int i = 0;
+        String name = "item." + LibClientMisc.RESOURCE_PREFIX + baseName + "." + i;
+        while (I18n.hasKey(name)) {
             tooltip.add(I18n.format(name));
             i++;
-            name="item."+ LibClientMisc.RESOURCE_PREFIX+baseName+"."+i;
+            name = "item." + LibClientMisc.RESOURCE_PREFIX + baseName + "." + i;
         }
 
     }

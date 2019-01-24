@@ -1,6 +1,5 @@
 package com.nekokittygames.thaumictinkerer.client.proxy;
 
-import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
 import com.nekokittygames.thaumictinkerer.client.rendering.special.multi.NitorRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.*;
@@ -22,14 +21,14 @@ import static com.nekokittygames.thaumictinkerer.ThaumicTinkerer.instance;
 public class ClientProxy implements ITTProxy {
     @Override
     public void registerRenderers() {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFunnel.class,new TileEntityFunnelRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRepairer.class,new TileEntityRepairerRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExample.class,new TileEntityExampleRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchantmentPillar.class,new TileEntityEnchantmentPillarRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchanter.class,new TileEntityEnchanterRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimationTablet.class,new TileEntityAnimationTabletRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFunnel.class, new TileEntityFunnelRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRepairer.class, new TileEntityRepairerRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExample.class, new TileEntityExampleRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchantmentPillar.class, new TileEntityEnchantmentPillarRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnchanter.class, new TileEntityEnchanterRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnimationTablet.class, new TileEntityAnimationTabletRenderer());
         Shaders.initShaders();
-        MultiBlockPreviewRendering.RegisterRenderer(BlockNitor.class,new NitorRenderer());
+        MultiBlockPreviewRendering.RegisterRenderer(BlockNitor.class, new NitorRenderer());
     }
 
     @Override

@@ -2,10 +2,8 @@ package com.nekokittygames.thaumictinkerer.common.blocks;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
-import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +19,7 @@ import thaumcraft.api.casters.IInteractWithCaster;
 
 public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements IInteractWithCaster {
     public BlockEnchanter() {
-        super(LibBlockNames.OSMOTIC_ENCHANTER,Material.ROCK,true);
+        super(LibBlockNames.OSMOTIC_ENCHANTER, Material.ROCK, true);
     }
 
     @Override
@@ -61,18 +59,15 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements
 
     @Override
     public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos pos, EnumFacing enumFacing, EnumHand enumHand) {
-        if (MultiblockManager.checkMultiblock(world,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")))
-        {
-            entityPlayer.sendStatusMessage(new TextComponentString("Complete"),true);
+        if (MultiblockManager.checkMultiblock(world, pos, new ResourceLocation("thaumictinkerer:osmotic_enchanter"))) {
+            entityPlayer.sendStatusMessage(new TextComponentString("Complete"), true);
             try {
-                MultiblockManager.outputMultiblock(world,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter"),MultiblockManager.checkMultiblockFacing(world,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")));
+                MultiblockManager.outputMultiblock(world, pos, new ResourceLocation("thaumictinkerer:osmotic_enchanter"), MultiblockManager.checkMultiblockFacing(world, pos, new ResourceLocation("thaumictinkerer:osmotic_enchanter")));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else
-        {
-            entityPlayer.sendStatusMessage(new TextComponentString("InComplete"),true);
+        } else {
+            entityPlayer.sendStatusMessage(new TextComponentString("InComplete"), true);
         }
         return false;
     }

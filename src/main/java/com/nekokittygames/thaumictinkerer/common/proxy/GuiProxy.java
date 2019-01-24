@@ -26,12 +26,11 @@ public class GuiProxy implements IGuiHandler {
         if (te instanceof TileEntityMobMagnet) {
             return new MagnetContainer(entityPlayer.inventory, (TileEntityMobMagnet) te);
         }
-        if(te instanceof TileEntityEnchanter) {
-            return new EnchanterContainer(entityPlayer.inventory,(TileEntityEnchanter)te);
+        if (te instanceof TileEntityEnchanter) {
+            return new EnchanterContainer(entityPlayer.inventory, (TileEntityEnchanter) te);
         }
-        if(te instanceof TileEntityAnimationTablet)
-        {
-            return new AnimationTabletContainer(entityPlayer.inventory,(TileEntityAnimationTablet)te);
+        if (te instanceof TileEntityAnimationTablet) {
+            return new AnimationTabletContainer(entityPlayer.inventory, (TileEntityAnimationTablet) te);
         }
         return null;
     }
@@ -42,16 +41,16 @@ public class GuiProxy implements IGuiHandler {
         BlockPos pos = new BlockPos(x, y, z);
         TileEntity te = world.getTileEntity(pos);
         if (te instanceof TileEntityMobMagnet) {
-            TileEntityMobMagnet magnet= (TileEntityMobMagnet) te;
-            return new GuiMobMagnet(magnet,new MagnetContainer(entityPlayer.inventory,magnet));
+            TileEntityMobMagnet magnet = (TileEntityMobMagnet) te;
+            return new GuiMobMagnet(magnet, new MagnetContainer(entityPlayer.inventory, magnet));
         }
-        if(te instanceof TileEntityEnchanter) {
-            TileEntityEnchanter enchanter= (TileEntityEnchanter) te;
-            return new GuiEnchanter(enchanter,new EnchanterContainer(entityPlayer.inventory,enchanter));
+        if (te instanceof TileEntityEnchanter) {
+            TileEntityEnchanter enchanter = (TileEntityEnchanter) te;
+            return new GuiEnchanter(enchanter, new EnchanterContainer(entityPlayer.inventory, enchanter));
         }
-        if(te instanceof TileEntityAnimationTablet) {
-            TileEntityAnimationTablet animationTablet= (TileEntityAnimationTablet) te;
-            return new GuiAnimationTablet(animationTablet,new AnimationTabletContainer(entityPlayer.inventory,animationTablet));
+        if (te instanceof TileEntityAnimationTablet) {
+            TileEntityAnimationTablet animationTablet = (TileEntityAnimationTablet) te;
+            return new GuiAnimationTablet(animationTablet, new AnimationTabletContainer(entityPlayer.inventory, animationTablet));
         }
         return null;
     }

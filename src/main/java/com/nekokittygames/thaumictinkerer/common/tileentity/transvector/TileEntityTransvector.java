@@ -18,8 +18,8 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
     @Override
     public void readExtraNBT(NBTTagCompound compound) {
         super.readExtraNBT(compound);
-        int x,y,z;
-        if(compound.hasKey(TAG_X_TARGET)) {
+        int x, y, z;
+        if (compound.hasKey(TAG_X_TARGET)) {
             x = compound.getInteger(TAG_X_TARGET);
             y = compound.getInteger(TAG_Y_TARGET);
             z = compound.getInteger(TAG_Z_TARGET);
@@ -31,7 +31,7 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
     @Override
     public void writeExtraNBT(NBTTagCompound compound) {
         super.writeExtraNBT(compound);
-        if(tilePos!=null) {
+        if (tilePos != null) {
             compound.setInteger(TAG_X_TARGET, tilePos.getX());
             compound.setInteger(TAG_Y_TARGET, tilePos.getY());
             compound.setInteger(TAG_Z_TARGET, tilePos.getZ());
@@ -44,14 +44,14 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
     }
 
     public boolean setTilePos(BlockPos tilePos) {
-        TileEntity tile=world.getTileEntity(tilePos);
+        TileEntity tile = world.getTileEntity(tilePos);
         if (checkTile(tilePos, tile)) return false;
         this.tilePos = tilePos;
         return true;
     }
 
     public boolean checkTile(BlockPos tilePos, TileEntity tile) {
-        if(tile==null && tileRequiredAtLink() || (tilePos.distanceSq(getPos())>getMaxDistance())) {
+        if (tile == null && tileRequiredAtLink() || (tilePos.distanceSq(getPos()) > getMaxDistance())) {
             return true;
         }
         return false;
@@ -65,14 +65,13 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
         this.cheaty = cheaty;
     }
 
-    public final TileEntity getTile()
-    {
-        if(tilePos==null)
+    public final TileEntity getTile() {
+        if (tilePos == null)
             return null;
-        if(world.isAirBlock(tilePos))
+        if (world.isAirBlock(tilePos))
             return null;
-        TileEntity tile=world.getTileEntity(tilePos);
-        if(checkTile(tilePos,tile)) {
+        TileEntity tile = world.getTileEntity(tilePos);
+        if (checkTile(tilePos, tile)) {
             tilePos = null;
             return null;
         }

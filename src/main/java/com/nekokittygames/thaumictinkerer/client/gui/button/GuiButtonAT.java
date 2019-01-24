@@ -15,8 +15,8 @@ public class GuiButtonAT extends GuiButton {
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
-            mc.renderEngine.bindTexture(LibClientResources.GUI_ANIMATION_TABLET);
-            int y = enabled ? 13 : 0;
-            drawTexturedModalRect(x, this.y, 176, y, width, height);
+        mc.renderEngine.bindTexture(LibClientResources.GUI_ANIMATION_TABLET);
+        int y = enabled ? 13 : 0;
+        drawTexturedModalRect(x, this.y, 176, y, width, height);
     }
 }

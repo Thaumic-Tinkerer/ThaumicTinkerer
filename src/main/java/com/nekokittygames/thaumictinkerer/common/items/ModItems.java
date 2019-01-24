@@ -18,17 +18,18 @@ import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.Null;
 @GameRegistry.ObjectHolder(LibMisc.MOD_ID)
 public class ModItems {
 
-    public static final ItemShareBook share_book=Null();
-    public static final ItemCleaningTalisman cleaning_talisman=Null();
-    public static final ItemBlackQuartz black_quartz=Null();
-    public static final ItemConnector connector=Null();
-    public static final ItemSoulMould soul_mould=Null();
+    public static final ItemShareBook share_book = Null();
+    public static final ItemCleaningTalisman cleaning_talisman = Null();
+    public static final ItemBlackQuartz black_quartz = Null();
+    public static final ItemConnector connector = Null();
+    public static final ItemSoulMould soul_mould = Null();
     public static final ItemEnergeticNitor energetic_nitor = Null();
-    public static final ItemFormRevealer form_revealer=Null();
+    public static final ItemFormRevealer form_revealer = Null();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
         public static final Set<Item> ITEMS = new HashSet<>();
+
         /**
          * Register this mod's {@link Item}s.
          *
@@ -37,7 +38,7 @@ public class ModItems {
         @SubscribeEvent
         public static void registerItems(final RegistryEvent.Register<Item> event) {
             final Item[] items = {
-              new ItemShareBook(),
+                    new ItemShareBook(),
                     new ItemCleaningTalisman(),
                     new ItemBlackQuartz(),
                     new ItemConnector(),

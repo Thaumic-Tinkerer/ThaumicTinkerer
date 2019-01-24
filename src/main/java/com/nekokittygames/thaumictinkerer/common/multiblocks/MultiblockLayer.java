@@ -13,28 +13,27 @@ import java.util.List;
 
 public class MultiblockLayer implements Iterable<MultiblockBlock> {
 
-    public List<MultiblockBlock> blocks=new ArrayList<>();
+    public List<MultiblockBlock> blocks = new ArrayList<>();
+    private int yLevel;
+
+    public MultiblockLayer(JsonObject object) throws Exception {
+        if (!object.has("y"))
+            throw new Exception("Layer object has no y level");
+        yLevel = JsonUtils.getInt(object, "y");
+        if (!object.has("blocks"))
+            throw new Exception("Layer object has no blocks");
+        JsonArray blockArray = JsonUtils.getJsonArray(object, "blocks");
+        for (JsonElement blockElement : blockArray) {
+            blocks.add(new MultiblockBlock(blockElement.getAsJsonObject()));
+        }
+    }
+
     public int getyLevel() {
         return yLevel;
     }
 
     public void setyLevel(int yLevel) {
         this.yLevel = yLevel;
-    }
-
-    private int yLevel;
-
-    public MultiblockLayer(JsonObject object) throws Exception {
-        if(!object.has("y"))
-            throw new Exception("Layer object has no y level");
-        yLevel= JsonUtils.getInt(object,"y");
-        if(!object.has("blocks"))
-            throw new Exception("Layer object has no blocks");
-        JsonArray blockArray=JsonUtils.getJsonArray(object,"blocks");
-        for(JsonElement blockElement:blockArray)
-        {
-            blocks.add(new MultiblockBlock(blockElement.getAsJsonObject()));
-        }
     }
 
     @Override

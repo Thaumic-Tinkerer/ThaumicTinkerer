@@ -5,6 +5,6 @@ import net.minecraft.block.material.Material;
 
 public class BlockBlackQuartz extends TTBlock {
     public BlockBlackQuartz() {
-        super(LibBlockNames.BLACK_QUARTZ_BLOCK,Material.ROCK);
+        super(LibBlockNames.BLACK_QUARTZ_BLOCK, Material.ROCK);
     }
 }

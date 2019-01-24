@@ -15,9 +15,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.casters.FocusEffect;
 import thaumcraft.api.casters.Trajectory;
-import thaumcraft.common.items.casters.CasterManager;
 import thaumcraft.common.items.casters.ItemCaster;
-import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.lib.utils.BlockUtils;
 
 import javax.annotation.Nullable;
@@ -32,56 +30,52 @@ public class FocusEffectDislocate extends FocusEffect {
 
     @Override
     public boolean execute(RayTraceResult rayTraceResult, @Nullable Trajectory trajectory, float v, int i) {
-        if(rayTraceResult==null )
+        if (rayTraceResult == null)
             return false;
-        if(rayTraceResult.typeOfHit!= RayTraceResult.Type.BLOCK)
+        if (rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK)
             return false;
 
-        BlockPos pos=rayTraceResult.getBlockPos();
+        BlockPos pos = rayTraceResult.getBlockPos();
 
-        IBlockState blockState=this.getPackage().world.getBlockState(pos);
-        TileEntity tileEntity=this.getPackage().world.getTileEntity(pos);
+        IBlockState blockState = this.getPackage().world.getBlockState(pos);
+        TileEntity tileEntity = this.getPackage().world.getTileEntity(pos);
         ItemStack casterStack = ItemStack.EMPTY;
         if (this.getPackage().getCaster().getHeldItemMainhand() != null && this.getPackage().getCaster().getHeldItemMainhand().getItem() instanceof ItemCaster) {
             casterStack = this.getPackage().getCaster().getHeldItemMainhand();
         } else if (this.getPackage().getCaster().getHeldItemOffhand() != null && this.getPackage().getCaster().getHeldItemOffhand().getItem() instanceof ItemCaster) {
             casterStack = this.getPackage().getCaster().getHeldItemOffhand();
         }
-        if(casterStack==null)
+        if (casterStack == null)
             return false;
-        if(casterStack==ItemStack.EMPTY)
+        if (casterStack == ItemStack.EMPTY)
             return false;
 
-        ItemStack focus=((ItemCaster)casterStack.getItem()).getFocusStack(casterStack);
-        if(getPackage().getCaster() instanceof EntityPlayer && ((EntityPlayer)getPackage().getCaster()).canPlayerEdit(pos,rayTraceResult.sideHit, casterStack))
-        {
-            IBlockState stateStored=getStoredState(focus);
-            if(stateStored!=null)
-            {
-                switch(rayTraceResult.sideHit)
-                {
+        ItemStack focus = ((ItemCaster) casterStack.getItem()).getFocusStack(casterStack);
+        if (getPackage().getCaster() instanceof EntityPlayer && ((EntityPlayer) getPackage().getCaster()).canPlayerEdit(pos, rayTraceResult.sideHit, casterStack)) {
+            IBlockState stateStored = getStoredState(focus);
+            if (stateStored != null) {
+                switch (rayTraceResult.sideHit) {
                     case UP:
-                        pos=pos.up();
+                        pos = pos.up();
                         break;
                     case DOWN:
-                        pos=pos.down();
+                        pos = pos.down();
                         break;
                     case NORTH:
-                        pos=pos.north();
+                        pos = pos.north();
                         break;
                     case EAST:
-                        pos=pos.east();
+                        pos = pos.east();
                         break;
                     case SOUTH:
-                        pos=pos.south();
+                        pos = pos.south();
                         break;
                     case WEST:
-                        pos=pos.west();
+                        pos = pos.west();
                         break;
                 }
-                if(blockState.getBlock().canPlaceBlockOnSide(getPackage().world,pos,rayTraceResult.sideHit))
-                {
-                    if(!getPackage().world.isRemote) {
+                if (blockState.getBlock().canPlaceBlockOnSide(getPackage().world, pos, rayTraceResult.sideHit)) {
+                    if (!getPackage().world.isRemote) {
                         getPackage().world.setBlockState(pos, stateStored, 1 | 2);
                         NBTTagCompound tileCmp = getStackTileEntity(focus);
                         if (tileCmp != null && !tileCmp.hasNoTags()) {
@@ -94,13 +88,10 @@ public class FocusEffectDislocate extends FocusEffect {
                     }
 
                 }
-            }
-            else if(!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState))
-            {
-                if(!getPackage().world.isRemote)
-                {
-                    storePickedBlock(blockState,pos,tileEntity,focus);
-                    if(tileEntity!=null)
+            } else if (!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState)) {
+                if (!getPackage().world.isRemote) {
+                    storePickedBlock(blockState, pos, tileEntity, focus);
+                    if (tileEntity != null)
                         getPackage().world.removeTileEntity(pos);
                     getPackage().world.setBlockToAir(pos);
                 }
@@ -110,32 +101,30 @@ public class FocusEffectDislocate extends FocusEffect {
     }
 
 
-
     private void storePickedBlock(IBlockState blockState, BlockPos pos, TileEntity tileEntity, ItemStack focus) {
-        ResourceLocation blockName=blockState.getBlock().getRegistryName();
-        int metadata=blockState.getBlock().getMetaFromState(blockState);
-        ItemNBTHelper.setString(focus,TAG_BLOCK_NAME,blockName.toString());
-        ItemNBTHelper.setInteger(focus,TAG_BLOCK_META,metadata);
-        NBTTagCompound cmp=new NBTTagCompound();
-        if(tileEntity!=null)
-        {
+        ResourceLocation blockName = blockState.getBlock().getRegistryName();
+        int metadata = blockState.getBlock().getMetaFromState(blockState);
+        ItemNBTHelper.setString(focus, TAG_BLOCK_NAME, blockName.toString());
+        ItemNBTHelper.setInteger(focus, TAG_BLOCK_META, metadata);
+        NBTTagCompound cmp = new NBTTagCompound();
+        if (tileEntity != null) {
             tileEntity.writeToNBT(cmp);
         }
-        ItemNBTHelper.getItemTag(focus).setTag(TAG_TILE_CMP,cmp);
-        ItemNBTHelper.setBool(focus,TAG_AVAILABLE,true);
+        ItemNBTHelper.getItemTag(focus).setTag(TAG_TILE_CMP, cmp);
+        ItemNBTHelper.setBool(focus, TAG_AVAILABLE, true);
     }
 
     private void clearPickedBlock(ItemStack focus) {
-        ItemNBTHelper.setBool(focus,TAG_AVAILABLE,false);
+        ItemNBTHelper.setBool(focus, TAG_AVAILABLE, false);
         ItemNBTHelper.getItemTag(focus).removeTag(TAG_TILE_CMP);
         ItemNBTHelper.getItemTag(focus).removeTag(TAG_BLOCK_NAME);
         ItemNBTHelper.getItemTag(focus).removeTag(TAG_BLOCK_META);
     }
 
     private NBTTagCompound getStackTileEntity(ItemStack focus) {
-        if(ItemNBTHelper.getItemTag(focus).hasKey(TAG_TILE_CMP) ) {
+        if (ItemNBTHelper.getItemTag(focus).hasKey(TAG_TILE_CMP)) {
             NBTTagCompound cmp = ItemNBTHelper.getItemTag(focus).getCompoundTag(TAG_TILE_CMP);
-            if(cmp.getSize()!=0)
+            if (cmp.getSize() != 0)
                 return cmp;
         }
         return null;
@@ -143,13 +132,13 @@ public class FocusEffectDislocate extends FocusEffect {
     }
 
     private IBlockState getStoredState(ItemStack focus) {
-        if(!ItemNBTHelper.getBool(focus,TAG_AVAILABLE,false))
+        if (!ItemNBTHelper.getBool(focus, TAG_AVAILABLE, false))
             return null;
-        ResourceLocation location=new ResourceLocation(ItemNBTHelper.getString(focus,TAG_BLOCK_NAME,"minecraft:air"));
-        int metadata=ItemNBTHelper.getInteger(focus,TAG_BLOCK_META,0);
+        ResourceLocation location = new ResourceLocation(ItemNBTHelper.getString(focus, TAG_BLOCK_NAME, "minecraft:air"));
+        int metadata = ItemNBTHelper.getInteger(focus, TAG_BLOCK_META, 0);
         IBlockState state;
-        Block block=ForgeRegistries.BLOCKS.getValue(location);
-        state=block.getStateFromMeta(metadata);
+        Block block = ForgeRegistries.BLOCKS.getValue(location);
+        state = block.getStateFromMeta(metadata);
         return state;
     }
 

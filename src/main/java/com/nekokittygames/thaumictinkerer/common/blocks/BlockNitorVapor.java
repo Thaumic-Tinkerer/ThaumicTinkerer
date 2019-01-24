@@ -41,10 +41,11 @@ public class BlockNitorVapor extends BlockGas {
 
 
         if (!world.isRemote) {
-            List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() -1 , pos.getY() - 1, pos.getZ() - 1, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
+            List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() - 1, pos.getY() - 1, pos.getZ() - 1, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
 
             if (players.isEmpty()) world.setBlockToAir(pos);
-            else if (players.stream().noneMatch(p -> p.inventory.hasItemStack(new ItemStack(ModItems.energetic_nitor)))) world.setBlockToAir(pos);
+            else if (players.stream().noneMatch(p -> p.inventory.hasItemStack(new ItemStack(ModItems.energetic_nitor))))
+                world.setBlockToAir(pos);
 
             //world.scheduleBlockUpdate(pos, this, tickRate(world), 0);
 

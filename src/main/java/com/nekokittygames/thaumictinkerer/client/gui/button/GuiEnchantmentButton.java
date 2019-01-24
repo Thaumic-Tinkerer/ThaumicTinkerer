@@ -3,7 +3,6 @@ package com.nekokittygames.thaumictinkerer.client.gui.button;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.client.gui.GuiEnchanter;
-import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.EnchantmentGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -27,22 +26,22 @@ public class GuiEnchantmentButton extends GuiButton {
     }
 
     boolean dontRender() {
-        return enchant == null || !enabled ;
+        return enchant == null || !enabled;
     }
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
-        if(dontRender())
+        if (dontRender())
             return;
-        ResourceLocation resourceLocation= EnchantmentGui.getEnchantmentIcon(enchant);
+        ResourceLocation resourceLocation = EnchantmentGui.getEnchantmentIcon(enchant);
         mc.getTextureManager().bindTexture(resourceLocation);
         GlStateManager.enableBlend();
-        drawTexturedModalRect16(x,y,0,0,16,16);
+        drawTexturedModalRect16(x, y, 0, 0, 16, 16);
         GlStateManager.disableBlend();
-        if (mouseX >= x &&mouseX< x + 16 && mouseY >= y&& mouseY< y+ 16) {
+        if (mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16) {
             List<String> tooltip = new ArrayList();
-            tooltip.add(ChatFormatting.AQUA+ ThaumicTinkerer.proxy.localize(enchant.getName()));
-            parent.getTooltip().addAll( tooltip);
+            tooltip.add(ChatFormatting.AQUA + ThaumicTinkerer.proxy.localize(enchant.getName()));
+            parent.getTooltip().addAll(tooltip);
         }
     }
 
@@ -52,10 +51,10 @@ public class GuiEnchantmentButton extends GuiButton {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos((double)(x + 0), (double)(y + height), (double)this.zLevel).tex((double)((float)(textureX + 0) * f), (double)((float)(textureY + height) * f1)).endVertex();
-        bufferbuilder.pos((double)(x + width), (double)(y + height), (double)this.zLevel).tex((double)((float)(textureX + width) * f), (double)((float)(textureY + height) * f1)).endVertex();
-        bufferbuilder.pos((double)(x + width), (double)(y + 0), (double)this.zLevel).tex((double)((float)(textureX + width) * f), (double)((float)(textureY + 0) * f1)).endVertex();
-        bufferbuilder.pos((double)(x + 0), (double)(y + 0), (double)this.zLevel).tex((double)((float)(textureX + 0) * f), (double)((float)(textureY + 0) * f1)).endVertex();
+        bufferbuilder.pos((double) (x + 0), (double) (y + height), (double) this.zLevel).tex((double) ((float) (textureX + 0) * f), (double) ((float) (textureY + height) * f1)).endVertex();
+        bufferbuilder.pos((double) (x + width), (double) (y + height), (double) this.zLevel).tex((double) ((float) (textureX + width) * f), (double) ((float) (textureY + height) * f1)).endVertex();
+        bufferbuilder.pos((double) (x + width), (double) (y + 0), (double) this.zLevel).tex((double) ((float) (textureX + width) * f), (double) ((float) (textureY + 0) * f1)).endVertex();
+        bufferbuilder.pos((double) (x + 0), (double) (y + 0), (double) this.zLevel).tex((double) ((float) (textureX + 0) * f), (double) ((float) (textureY + 0) * f1)).endVertex();
         tessellator.draw();
     }
 }

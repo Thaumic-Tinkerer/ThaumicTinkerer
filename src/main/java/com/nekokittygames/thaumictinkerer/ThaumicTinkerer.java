@@ -24,14 +24,12 @@ import thaumcraft.api.research.ResearchCategories;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION,dependencies = LibMisc.MOD_DEPENDENCIES)
-public class ThaumicTinkerer
-{
+@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.MOD_DEPENDENCIES)
+public class ThaumicTinkerer {
     public static Logger logger;
 
-    @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy",clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
+    @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy", clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
     public static ITTProxy proxy;
-
 
 
     @Mod.Instance(LibMisc.MOD_ID)
@@ -39,22 +37,22 @@ public class ThaumicTinkerer
 
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
 
         proxy.preInit(event);
         PacketHandler.registerMessages(LibMisc.MOD_ID);
     }
+
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandRefreshMultiblocks());
         event.registerServerCommand(new CommandDumpEnchants());
 
     }
+
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         try {
             MultiblockManager.initMultiblocks();
         } catch (URISyntaxException e) {
@@ -64,12 +62,12 @@ public class ThaumicTinkerer
         }
         proxy.init(event);
         ModRecipes.InitializeRecipes();
-        ResearchCategories.registerCategory("THAUMIC_TINKERER",(String)"FIRSTSTEPS",new AspectList(),new ResourceLocation("thaumictinkerer","textures/items/share_book.png"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc.json" ));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles" ));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines" ));
+        ResearchCategories.registerCategory("THAUMIC_TINKERER", (String) "FIRSTSTEPS", new AspectList(), new ResourceLocation("thaumictinkerer", "textures/items/share_book.png"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc.json"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));
         proxy.registerRenderers();
-        FocusEngine.registerElement(FocusEffectDislocate.class,new ResourceLocation("thaumictinkerer","blocks/dark_quartz_block"), 8760709);
+        FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "blocks/dark_quartz_block"), 8760709);
 
     }
 }

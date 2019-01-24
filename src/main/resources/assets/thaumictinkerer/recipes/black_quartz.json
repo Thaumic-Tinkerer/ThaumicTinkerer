@@ -9,16 +9,16 @@
     "Q": {
       "item": "minecraft:quartz"
     },
-    "C":[
-    {
-      "item": "minecraft:coal",
-      "data":0
-    },
+    "C": [
       {
         "item": "minecraft:coal",
-        "data":1
+        "data": 0
+      },
+      {
+        "item": "minecraft:coal",
+        "data": 1
       }
-      ]
+    ]
   },
   "result": {
     "item": "thaumictinkerer:black_quartz"

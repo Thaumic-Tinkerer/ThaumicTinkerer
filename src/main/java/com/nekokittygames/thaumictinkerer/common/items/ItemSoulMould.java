@@ -22,36 +22,51 @@ import java.util.List;
 
 public class ItemSoulMould extends TTItem {
 
-    public static final String TAG_ENTITYNAME="entity_name";
+    public static final String TAG_ENTITYNAME = "entity_name";
+
     public ItemSoulMould() {
         super(LibItemNames.SOUL_MOULD);
         this.addPropertyOverride(new ResourceLocation("thaumictinkerer", "full"), new IItemPropertyGetter() {
             @Override
             public float apply(ItemStack itemStack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase) {
-                return getEntityName(itemStack)!=null?1:0;
+                return getEntityName(itemStack) != null ? 1 : 0;
             }
         });
+    }
+
+    public static void setEntityName(ItemStack stack, EntityLivingBase entity) {
+        ItemNBTHelper.setString(stack, TAG_ENTITYNAME, EntityList.getEntityString(entity));
+    }
+
+    public static String getEntityName(ItemStack stack) {
+        NBTTagCompound cmp = ItemNBTHelper.getItemTag(stack);
+        if (cmp.hasKey(TAG_ENTITYNAME))
+            return cmp.getString(TAG_ENTITYNAME);
+        return null;
+    }
+
+    public static void clearEntityName(ItemStack stack) {
+        NBTTagCompound cmp = ItemNBTHelper.getItemTag(stack);
+        cmp.removeTag(TAG_ENTITYNAME);
     }
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         RayTraceResult result = rayTrace(worldIn, playerIn, false);
 
         if (result == null || (result != null && result.typeOfHit == RayTraceResult.Type.MISS && playerIn.isSneaking())) {
-            ItemStack stack=playerIn.getHeldItem(handIn);
+            ItemStack stack = playerIn.getHeldItem(handIn);
             clearEntityName(stack);
-            return ActionResult.newResult(EnumActionResult.SUCCESS,stack);
+            return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
         }
-        return super.onItemRightClick(worldIn,playerIn,handIn);
+        return super.onItemRightClick(worldIn, playerIn, handIn);
 
     }
 
-
     @Override
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-        ItemStack actualStack=playerIn.getHeldItem(hand);
-        if(target!=null && !(target instanceof EntityPlayer))
-        {
-            setEntityName(actualStack,target);
+        ItemStack actualStack = playerIn.getHeldItem(hand);
+        if (target != null && !(target instanceof EntityPlayer)) {
+            setEntityName(actualStack, target);
 
             return true;
         }
@@ -61,33 +76,11 @@ public class ItemSoulMould extends TTItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        String entityName=getEntityName(stack);
-        if(entityName==null)
-        {
+        String entityName = getEntityName(stack);
+        if (entityName == null) {
             tooltip.add(ThaumicTinkerer.proxy.localize("ttmisc.soulMould.nonAssigned"));
+        } else {
+            tooltip.add(ThaumicTinkerer.proxy.localize("ttmisc.soulMould.pattern", ThaumicTinkerer.proxy.localize("entity." + entityName + ".name")));
         }
-        else
-        {
-            tooltip.add(ThaumicTinkerer.proxy.localize("ttmisc.soulMould.pattern",ThaumicTinkerer.proxy.localize("entity."+entityName+".name")));
-        }
-    }
-
-    public static void setEntityName(ItemStack stack, EntityLivingBase entity)
-    {
-        ItemNBTHelper.setString(stack, TAG_ENTITYNAME,EntityList.getEntityString(entity));
-    }
-
-    public static String getEntityName(ItemStack stack)
-    {
-        NBTTagCompound cmp=ItemNBTHelper.getItemTag(stack);
-        if(cmp.hasKey(TAG_ENTITYNAME))
-            return cmp.getString(TAG_ENTITYNAME);
-        return null;
-    }
-
-    public static  void clearEntityName(ItemStack stack)
-    {
-        NBTTagCompound cmp=ItemNBTHelper.getItemTag(stack);
-        cmp.removeTag(TAG_ENTITYNAME);
     }
 }

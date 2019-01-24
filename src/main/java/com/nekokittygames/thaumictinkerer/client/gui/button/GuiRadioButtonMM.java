@@ -2,7 +2,7 @@ package com.nekokittygames.thaumictinkerer.client.gui.button;
 
 import java.util.List;
 
-public class GuiRadioButtonMM extends GuiButtonMM implements IRadioButton  {
+public class GuiRadioButtonMM extends GuiButtonMM implements IRadioButton {
 
     List<IRadioButton> linkedButtons;
 

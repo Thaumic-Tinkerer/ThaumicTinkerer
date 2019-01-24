@@ -2,13 +2,10 @@ package com.nekokittygames.thaumictinkerer.common.blocks.transvector;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.TTCamoBlock;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityCamoflage;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorInterface;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -20,7 +17,7 @@ import javax.annotation.Nullable;
 
 public class BlockTransvectorInterface extends TTCamoBlock<TileEntityTransvectorInterface> {
     public BlockTransvectorInterface() {
-        super(LibBlockNames.TRANSVECTOR_INTERFACE,Material.WOOD, true);
+        super(LibBlockNames.TRANSVECTOR_INTERFACE, Material.WOOD, true);
     }
 
     @Override
@@ -36,10 +33,9 @@ public class BlockTransvectorInterface extends TTCamoBlock<TileEntityTransvector
     @Override
     public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
 
-        TileEntity te=worldIn.getTileEntity(pos);
-        if(te instanceof TileEntityTransvectorInterface)
-        {
-            TileEntityTransvectorInterface tinterface= (TileEntityTransvectorInterface) te;
+        TileEntity te = worldIn.getTileEntity(pos);
+        if (te instanceof TileEntityTransvectorInterface) {
+            TileEntityTransvectorInterface tinterface = (TileEntityTransvectorInterface) te;
             return tinterface.getComparatorValue();
         }
         return super.getComparatorInputOverride(blockState, worldIn, pos);
@@ -63,19 +59,17 @@ public class BlockTransvectorInterface extends TTCamoBlock<TileEntityTransvector
 
     @Override
     public int getWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-        TileEntity te=world.getTileEntity(pos);
-        if(te instanceof TileEntityTransvectorInterface) {
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof TileEntityTransvectorInterface) {
             TileEntityTransvectorInterface tinterface = (TileEntityTransvectorInterface) te;
-            BlockPos remote=tinterface.getTilePos();
-            if(remote!=null)
-            {
-                IBlockState state1=world.getBlockState(tinterface.getTilePos());
-                return state.getWeakPower(world,remote,side);
+            BlockPos remote = tinterface.getTilePos();
+            if (remote != null) {
+                IBlockState state1 = world.getBlockState(tinterface.getTilePos());
+                return state.getWeakPower(world, remote, side);
             }
         }
         return 0;
     }
-
 
 
 }

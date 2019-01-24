@@ -1,5 +1,5 @@
 {
-  "entries" :[
+  "entries": [
     {
       "key": "SHARE_TOME",
       "name": "thaumictinkerer.research.share_tome.title",
@@ -7,7 +7,9 @@
         "thaumictinkerer:textures/items/share_book.png"
       ],
       "category": "THAUMIC_TINKERER",
-      "parents": ["FIRSTSTEPS"],
+      "parents": [
+        "FIRSTSTEPS"
+      ],
       "siblings": [],
       "meta": [
         "ROUND",
@@ -23,7 +25,9 @@
           "recipes": [
             "thaumictinkerer:share_book"
           ],
-          "required_craft":["thaumcraft:arcane_workbench"]
+          "required_craft": [
+            "thaumcraft:arcane_workbench"
+          ]
         }
       ]
     },
@@ -34,7 +38,9 @@
         "thaumictinkerer:textures/items/black_quartz.png"
       ],
       "category": "THAUMIC_TINKERER",
-      "parents": ["FIRSTSTEPS"],
+      "parents": [
+        "FIRSTSTEPS"
+      ],
       "siblings": [],
       "meta": [
         "ROUND"
@@ -49,7 +55,9 @@
           "recipes": [
             "thaumictinkerer:black_quartz"
           ],
-          "required_item":["minecraft:quartz"]
+          "required_item": [
+            "minecraft:quartz"
+          ]
         },
         {
           "text": "thaumictinkerer.research.black_quartz.1"
@@ -63,7 +71,9 @@
         "thaumictinkerer:textures/blocks/funnel/funnel_top.png"
       ],
       "category": "THAUMIC_TINKERER",
-      "parents": ["WARDEDJARS"],
+      "parents": [
+        "WARDEDJARS"
+      ],
       "siblings": [],
       "meta": [
       ],
@@ -80,5 +90,5 @@
         }
       ]
     }
-    ]
+  ]
 }

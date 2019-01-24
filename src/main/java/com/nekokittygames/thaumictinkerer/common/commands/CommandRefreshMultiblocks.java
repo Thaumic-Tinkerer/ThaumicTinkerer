@@ -2,7 +2,6 @@ package com.nekokittygames.thaumictinkerer.common.commands;
 
 import com.google.common.collect.Lists;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.multiblocks.Multiblock;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -18,9 +17,11 @@ import java.util.List;
 
 public class CommandRefreshMultiblocks extends CommandBase {
     private final List<String> aliases;
-    public CommandRefreshMultiblocks(){
+
+    public CommandRefreshMultiblocks() {
         aliases = Lists.newArrayList(LibMisc.MOD_ID, "REFRESHMULTI", "refreshmulti");
     }
+
     @Override
     public String getName() {
         return "refreshmulti";

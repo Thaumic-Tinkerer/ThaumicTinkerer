@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.containers;
 
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationTablet;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;

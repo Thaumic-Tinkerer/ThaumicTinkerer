@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.packets;
 
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationTablet;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
@@ -13,6 +12,21 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketTabletButton implements IMessage {
+    private BlockPos pos;
+    private boolean rightClick;
+
+    public PacketTabletButton() {
+
+    }
+    public PacketTabletButton(TileEntityAnimationTablet te, boolean rightClick) {
+        this(te.getPos(), rightClick);
+    }
+
+    public PacketTabletButton(BlockPos pos, boolean rightClick) {
+        this.pos = pos;
+        this.rightClick = rightClick;
+    }
+
     public BlockPos getPos() {
         return pos;
     }
@@ -20,9 +34,6 @@ public class PacketTabletButton implements IMessage {
     public void setPos(BlockPos pos) {
         this.pos = pos;
     }
-
-    private BlockPos pos;
-    private boolean rightClick;
 
     public boolean isRightClick() {
         return rightClick;
@@ -32,24 +43,10 @@ public class PacketTabletButton implements IMessage {
         this.rightClick = rightClick;
     }
 
-    public PacketTabletButton()
-    {
-
-    }
-    public PacketTabletButton(TileEntityAnimationTablet te, boolean rightClick)
-    {
-        this(te.getPos(),rightClick);
-    }
-
-    public PacketTabletButton(BlockPos pos, boolean rightClick) {
-        this.pos = pos;
-        this.rightClick = rightClick;
-    }
-
     @Override
     public void fromBytes(ByteBuf byteBuf) {
-        this.pos=BlockPos.fromLong(byteBuf.readLong());
-        this.rightClick=byteBuf.readBoolean();
+        this.pos = BlockPos.fromLong(byteBuf.readLong());
+        this.rightClick = byteBuf.readBoolean();
     }
 
     @Override
@@ -57,7 +54,8 @@ public class PacketTabletButton implements IMessage {
         byteBuf.writeLong(this.pos.toLong());
         byteBuf.writeBoolean(this.rightClick);
     }
-    public static class Handler implements IMessageHandler<PacketTabletButton,IMessage> {
+
+    public static class Handler implements IMessageHandler<PacketTabletButton, IMessage> {
 
         @Override
         public IMessage onMessage(PacketTabletButton packetTabletButton, MessageContext messageContext) {

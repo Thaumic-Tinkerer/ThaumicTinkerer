@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.containers;
 
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -51,8 +50,7 @@ public class EnchanterContainer extends Container {
         IItemHandler itemHandler = this.tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         int x = 8;
         int y = 32;
-        this.addSlotToContainer(new SlotItemHandler(itemHandler,0,x,y)
-        {
+        this.addSlotToContainer(new SlotItemHandler(itemHandler, 0, x, y) {
             @Override
             public void onSlotChange(@Nonnull ItemStack p_75220_1_, @Nonnull ItemStack p_75220_2_) {
                 tileEntity.sendUpdates();
@@ -60,23 +58,19 @@ public class EnchanterContainer extends Container {
             }
         });
 
-        slots=new TTGhostSlot[6];
-        for(int i=0;i<slots.length;i++)
-        {
-            slots[i]=new TTGhostSlot(ItemStack.EMPTY,i+1,177+(i*17),17);
+        slots = new TTGhostSlot[6];
+        for (int i = 0; i < slots.length; i++) {
+            slots[i] = new TTGhostSlot(ItemStack.EMPTY, i + 1, 177 + (i * 17), 17);
         }
     }
 
 
-    private void refreshCostSlots()
-    {
-        List<ItemStack> costs=tileEntity.getEnchantmentCost();
-        for(int i=0;i<Math.min(slots.length,costs.size());i++)
-        {
+    private void refreshCostSlots() {
+        List<ItemStack> costs = tileEntity.getEnchantmentCost();
+        for (int i = 0; i < Math.min(slots.length, costs.size()); i++) {
             slots[i].setItemStack(costs.get(i));
         }
     }
-
 
 
     @Override

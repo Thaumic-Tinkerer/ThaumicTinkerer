@@ -10,11 +10,9 @@ import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockStructure;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
-import net.minecraft.network.play.client.CPacketPlayerDigging;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -22,7 +20,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -35,6 +32,8 @@ import java.util.function.Consumer;
 
 public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer implements ITickable, Consumer<ItemStack> {
 
+    private static final int SWING_SPEED = 3;
+    private static final int MAX_DEGREE = 45;
     private boolean rightClick;
     private int progress;
     private int swingMod = 3;
@@ -43,11 +42,28 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     private int ticksExisted;
     private float curBlockDamageMP;
     private WeakReference<ThaumicFakePlayer> player;
-    private static final int SWING_SPEED = 3;
-    private static final int MAX_DEGREE = 45;
     private boolean isRemoving;
     private ItemStack currentItemHittingBlock;
     private BlockPos currentBlock;
+    private ItemStackHandler inventory = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            super.onContentsChanged(slot);
+            sendUpdates();
+        }
+
+        public boolean isItemValidForSlot(int index, ItemStack stack) {
+            return TileEntityAnimationTablet.this.isItemValidForSlot(index, stack);
+        }
+
+        @Nonnull
+        @Override
+        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+            if (!isItemValidForSlot(slot, stack))
+                return stack;
+            return super.insertItem(slot, stack, simulate);
+        }
+    };
 
     public int getTicksExisted() {
         return ticksExisted;
@@ -78,8 +94,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     public void setRightClick(boolean rightClick) {
-        if(this.rightClick!=rightClick)
-        {
+        if (this.rightClick != rightClick) {
             resetAll();
         }
         this.rightClick = rightClick;
@@ -93,27 +108,6 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     public void setProgress(int progress) {
         this.progress = progress;
     }
-
-
-    private ItemStackHandler inventory = new ItemStackHandler(1) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
-            sendUpdates();
-        }
-
-        public boolean isItemValidForSlot(int index, ItemStack stack) {
-            return TileEntityAnimationTablet.this.isItemValidForSlot(index, stack);
-        }
-
-        @Nonnull
-        @Override
-        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-            if (!isItemValidForSlot(slot, stack))
-                return stack;
-            return super.insertItem(slot, stack, simulate);
-        }
-    };
 
     public boolean isItemValidForSlot(int index, ItemStack stack) {
         return true;
@@ -129,10 +123,10 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         nbttagcompound.setTag("inventory", inventory.serializeNBT());
         nbttagcompound.setBoolean("rightClick", rightClick);
         nbttagcompound.setInteger("progress", progress);
-        nbttagcompound.setInteger("swingMod",swingMod);
+        nbttagcompound.setInteger("swingMod", swingMod);
         nbttagcompound.setInteger("facing", facing.getIndex());
         nbttagcompound.setBoolean("active", active);
-        if(currentItemHittingBlock!=null) {
+        if (currentItemHittingBlock != null) {
             nbttagcompound.setTag("currentItemHittingBlock", currentItemHittingBlock.serializeNBT());
             nbttagcompound.setTag("currentBlock", NBTUtil.createPosTag(currentBlock));
         }
@@ -144,10 +138,10 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
         rightClick = nbttagcompound.getBoolean("rightClick");
         progress = nbttagcompound.getInteger("progress");
-        swingMod=nbttagcompound.getInteger("swingMod");
+        swingMod = nbttagcompound.getInteger("swingMod");
         facing = EnumFacing.values()[nbttagcompound.getInteger("facing")];
         active = nbttagcompound.getBoolean("active");
-        if(nbttagcompound.hasKey("currentItemHittingBlock")) {
+        if (nbttagcompound.hasKey("currentItemHittingBlock")) {
             currentItemHittingBlock = new ItemStack(nbttagcompound.getCompoundTag("currentItemHittingBlock"));
             currentBlock = NBTUtil.getPosFromTag(nbttagcompound.getCompoundTag("currentBlock"));
         }
@@ -200,20 +194,24 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
         return pos.equals(this.currentBlock) && flag;
     }
+
     public void resetAll() {
-        progress=0;
-        isRemoving=false;
-        swingMod=3;
-        curBlockDamageMP=0.0f;
+        progress = 0;
+        isRemoving = false;
+        swingMod = 3;
+        curBlockDamageMP = 0.0f;
 
     }
+
     public void initiateSwing() {
         swingMod = SWING_SPEED;
         progress = 1;
     }
+
     public boolean detect() {
         return !world.isAirBlock(GetBlockTarget());
     }
+
     @Override
     public void update() {
 
@@ -226,7 +224,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         ticksExisted++;
         ItemStack stack = inventory.getStackInSlot(0);
         if (stack != ItemStack.EMPTY) {
-            if (!world.isRemote && progress>=MAX_DEGREE) {
+            if (!world.isRemote && progress >= MAX_DEGREE) {
                 swingHit();
             }
 
@@ -235,11 +233,9 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             if (progress < 0)
                 progress = 0;
             sendUpdates();
-        }
-        else {
+        } else {
             resetAll();
         }
-
 
 
         active = getRedstonePowered();
@@ -247,27 +243,23 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         boolean detect = detect();
         if (!detect)
             stopBreaking();
-        if(detect && isRemoving && !world.isRemote)
-        {
+        if (detect && isRemoving && !world.isRemote) {
             player.get().interactionManager.updateBlockRemoving();
             continueBreaking();
         }
 
 
-
-
-        if((active||isRemoving) && detect && progress==0)
+        if ((active || isRemoving) && detect && progress == 0)
             initiateSwing();
     }
 
-    private BlockPos getTargetBlock()
-    {
+    private BlockPos getTargetBlock() {
         Vec3d base;
         Vec3d look;
         Vec3d target;
         RayTraceResult trace;
         RayTraceResult traceEntity;
-        RayTraceResult toUse=null;
+        RayTraceResult toUse = null;
         base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
         look = player.get().getLookVec();
         target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
@@ -278,9 +270,8 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     private void continueBreaking() {
-        BlockPos targetPos=getTargetBlock();
-        if(!rightClick)
-        {
+        BlockPos targetPos = getTargetBlock();
+        if (!rightClick) {
             if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
                 this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(player.get(), player.get().world, targetPos);
                 ThaumicTinkerer.logger.info(String.format("Cur Block Damage: %s", this.curBlockDamageMP));
@@ -294,7 +285,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             } else {
                 this.curBlockDamageMP = 0;
             }
-            if ( this.isRemoving && this.isHittingPosition(targetPos, player.get())) {
+            if (this.isRemoving && this.isHittingPosition(targetPos, player.get())) {
                 IBlockState iblockstate = world.getBlockState(targetPos);
                 Block block = iblockstate.getBlock();
 
@@ -321,7 +312,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         Vec3d target;
         RayTraceResult trace;
         RayTraceResult traceEntity;
-        RayTraceResult toUse=null;
+        RayTraceResult toUse = null;
         base = new Vec3d(player.get().posX, player.get().posY, player.get().posZ);
         look = player.get().getLookVec();
         target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
@@ -410,20 +401,19 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
 
-
     ThaumicFakePlayer getPlayer() {
         return player.get();
     }
-    public BlockPos GetBlockTarget()
-    {
-        BlockPos newPos=this.getPos().offset(facing);
-        if(isRightClick() && world.isAirBlock(newPos))
-            newPos=newPos.offset(EnumFacing.DOWN);
+
+    public BlockPos GetBlockTarget() {
+        BlockPos newPos = this.getPos().offset(facing);
+        if (isRightClick() && world.isAirBlock(newPos))
+            newPos = newPos.offset(EnumFacing.DOWN);
         return newPos;
     }
 
     @Override
     public void accept(ItemStack itemStack) {
-        this.inventory.setStackInSlot(0,itemStack);
+        this.inventory.setStackInSlot(0, itemStack);
     }
 }

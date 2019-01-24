@@ -1,20 +1,46 @@
 {
   "textures": {
     "particle": "thaumictinkerer:blocks/animation_tablet/top",
-    "tablet_top":"thaumictinkerer:blocks/animation_tablet/top",
-    "tablet_bottom":"thaumictinkerer:blocks/animation_tablet/bottom",
+    "tablet_top": "thaumictinkerer:blocks/animation_tablet/top",
+    "tablet_bottom": "thaumictinkerer:blocks/animation_tablet/bottom",
     "tablet_side": "thaumictinkerer:blocks/animation_tablet/side"
   },
   "elements": [
-    {   "from": [ 0, 0, 0 ],
-      "to": [ 16, 2, 16 ],
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        2,
+        16
+      ],
       "faces": {
-        "down":  {  "texture": "#tablet_bottom", "cullface": "down" },
-        "up":    {  "texture": "#tablet_top" },
-        "north": {  "texture": "#tablet_side", "cullface": "north" },
-        "south": { "texture": "#tablet_side", "cullface": "south" },
-        "west":  {  "texture": "#tablet_side", "cullface": "west" },
-        "east":  { "texture": "#tablet_side", "cullface": "east" }
+        "down": {
+          "texture": "#tablet_bottom",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#tablet_top"
+        },
+        "north": {
+          "texture": "#tablet_side",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#tablet_side",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#tablet_side",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#tablet_side",
+          "cullface": "east"
+        }
       }
     }
   ]

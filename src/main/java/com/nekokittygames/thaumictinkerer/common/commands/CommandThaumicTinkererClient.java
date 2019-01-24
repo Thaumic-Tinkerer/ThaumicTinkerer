@@ -11,6 +11,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import org.apache.commons.lang3.ArrayUtils;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class CommandThaumicTinkererClient extends CommandBase {
         this.aliases.add("thaumictinkererc");
         this.aliases.add("ttc");
     }
+
     @Override
     public String getName() {
         return "thaumictinkererc";
@@ -49,20 +51,18 @@ public class CommandThaumicTinkererClient extends CommandBase {
             sender.sendMessage(new TextComponentString("§cInvalid arguments"));
             sender.sendMessage(new TextComponentString("§cUse /tt help to get help"));
         } else {
-            if (args[0].equalsIgnoreCase("listunknownenchants") ) {
-                for(Enchantment enchantment:Enchantment.REGISTRY) {
-                    if(ArrayUtils.contains(TTConfig.blacklistedEnchants,Enchantment.REGISTRY.getIDForObject(enchantment)))
+            if (args[0].equalsIgnoreCase("listunknownenchants")) {
+                for (Enchantment enchantment : Enchantment.REGISTRY) {
+                    if (ArrayUtils.contains(TTConfig.blacklistedEnchants, Enchantment.REGISTRY.getIDForObject(enchantment)))
                         continue;
-                    ResourceLocation object= Enchantment.REGISTRY.getNameForObject(enchantment);
-                    ResourceLocation iconLoc=new ResourceLocation(object.getResourceDomain(),"textures/enchant_icons/"+object.getResourcePath()+".png");
+                    ResourceLocation object = Enchantment.REGISTRY.getNameForObject(enchantment);
+                    ResourceLocation iconLoc = new ResourceLocation(object.getResourceDomain(), "textures/enchant_icons/" + object.getResourcePath() + ".png");
 
                     try {
                         IResource res = Minecraft.getMinecraft().getResourceManager().getResource(iconLoc);
-                        if(res==null)
+                        if (res == null)
                             sender.sendMessage(new TextComponentString("Enchantment name: " + iconLoc + " has no icon"));
-                    }
-                    catch(IOException e)
-                    {
+                    } catch (IOException e) {
                         sender.sendMessage(new TextComponentString("Enchantment name: " + iconLoc + " has no icon"));
                     }
                 }

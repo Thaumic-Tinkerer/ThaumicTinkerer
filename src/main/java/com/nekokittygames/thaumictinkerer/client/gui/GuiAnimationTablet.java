@@ -1,45 +1,43 @@
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
-import com.nekokittygames.thaumictinkerer.client.gui.button.*;
+import com.nekokittygames.thaumictinkerer.client.gui.button.GuiButtonAT;
+import com.nekokittygames.thaumictinkerer.client.gui.button.GuiRadioButtonAT;
+import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.containers.AnimationTabletContainer;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketTabletButton;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationTablet;
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.Container;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuiAnimationTablet extends GuiContainer {
+    public static final int HEIGHT = 166;
+    private static final int WIDTH = 176;
     public TileEntityAnimationTablet animation_tablet;
+    List<GuiButtonAT> buttonListAT = new ArrayList();
+    List<IRadioButton> radioButtons = new ArrayList();
+    private int x, y;
+    public GuiAnimationTablet(TileEntityAnimationTablet animation_tablet, AnimationTabletContainer inventorySlotsIn) {
+        super(inventorySlotsIn);
+        this.animation_tablet = animation_tablet;
+        xSize = WIDTH;
+        ySize = HEIGHT;
+    }
 
     public TileEntityAnimationTablet getAnimationTablet() {
         return animation_tablet;
     }
 
     public void setEnchanter(TileEntityAnimationTablet animation_tablet) {
-        this.animation_tablet= animation_tablet;
+        this.animation_tablet = animation_tablet;
     }
-    private static final int WIDTH = 176;
-    public static final int HEIGHT = 166;
-    private int x,y;
-    List<GuiButtonAT> buttonListAT = new ArrayList();
-    List<IRadioButton> radioButtons = new ArrayList();
-    public GuiAnimationTablet(TileEntityAnimationTablet animation_tablet, AnimationTabletContainer inventorySlotsIn) {
-        super(inventorySlotsIn);
-        this.animation_tablet=animation_tablet;
-        xSize=WIDTH;
-        ySize=HEIGHT;
-    }
-
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -69,19 +67,18 @@ public class GuiAnimationTablet extends GuiContainer {
 
         //mobMagnet.adult = buttonListMM.get(0).enabled;
         animation_tablet.setRightClick(buttonListAT.get(1).enabled);
-        PacketHandler.INSTANCE.sendToServer(new PacketTabletButton(animation_tablet,animation_tablet.isRightClick()));
+        PacketHandler.INSTANCE.sendToServer(new PacketTabletButton(animation_tablet, animation_tablet.isRightClick()));
     }
 
     @Override
     protected <T extends GuiButton> T addButton(T button) {
-        if(button instanceof GuiButtonAT) {
+        if (button instanceof GuiButtonAT) {
             buttonListAT.add((GuiButtonAT) button);
 
             if (button instanceof IRadioButton)
                 radioButtons.add((IRadioButton) button);
             return button;
-        }
-        else
+        } else
             return super.addButton(button);
     }
 
@@ -89,7 +86,7 @@ public class GuiAnimationTablet extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float v, int i, int i1) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ANIMATION_TABLET);
-        drawTexturedModalRect(guiLeft,guiTop,0,0,xSize,ySize);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
         String leftClick = ThaumicTinkerer.proxy.localize("ttmisc.animation_tablet.left");
         String rightClick = ThaumicTinkerer.proxy.localize("ttmisc.animation_tablet.right");
 

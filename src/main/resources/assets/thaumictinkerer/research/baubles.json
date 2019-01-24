@@ -1,5 +1,5 @@
 {
-  "entries" :[
+  "entries": [
     {
       "key": "CLEANING_TALISMAN",
       "name": "thaumictinkerer.research.cleaning_talisman.title",
@@ -7,7 +7,10 @@
         "thaumictinkerer:textures/items/cleaning_talisman/off.png"
       ],
       "category": "THAUMIC_TINKERER",
-      "parents": ["INFUSION","BLACK_QUARTZ"],
+      "parents": [
+        "INFUSION",
+        "BLACK_QUARTZ"
+      ],
       "siblings": [],
       "meta": [
       ],
@@ -15,7 +18,6 @@
         3,
         5
       ],
-
       "reward_item": [],
       "reward_knowledge": [],
       "stages": [
@@ -24,7 +26,11 @@
           "recipes": [
             "thaumictinkerer:cleaning_talisman"
           ],
-          "required_item": ["minecraft:spider_eye","minecraft:poisonous_potato","minecraft:milk_bucket"],
+          "required_item": [
+            "minecraft:spider_eye",
+            "minecraft:poisonous_potato",
+            "minecraft:milk_bucket"
+          ],
           "required_craft": [],
           "required_knowledge": [],
           "required_research": []

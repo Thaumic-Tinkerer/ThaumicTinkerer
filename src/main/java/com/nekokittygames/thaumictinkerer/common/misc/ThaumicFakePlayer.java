@@ -17,31 +17,39 @@ import javax.annotation.Nullable;
 // Fake player a mix of Lemonszz and Shadows-of-Fire
 public class ThaumicFakePlayer extends FakePlayer {
 
-    private final @Nonnull WorldServer originalWorld;
+    private final @Nonnull
+    WorldServer originalWorld;
+
     public ThaumicFakePlayer(WorldServer world, GameProfile name) {
         super(world, name);
-        this.connection=new FakeNetHandler(this);
-        this.originalWorld=super.getServerWorld();
+        this.connection = new FakeNetHandler(this);
+        this.originalWorld = super.getServerWorld();
     }
 
     @Override
-    public void displayGUIChest(IInventory chestInventory){}
-    @Override
-    public void displayGuiCommandBlock(TileEntityCommandBlock commandBlock){}
-    @Override
-    public void sendAllContents(Container containerToSend, NonNullList<ItemStack> itemsList) { }
+    public void displayGUIChest(IInventory chestInventory) {
+    }
 
     @Override
-    public float getCooledAttackStrength(float adjustTicks)
-    {
+    public void displayGuiCommandBlock(TileEntityCommandBlock commandBlock) {
+    }
+
+    @Override
+    public void sendAllContents(Container containerToSend, NonNullList<ItemStack> itemsList) {
+    }
+
+    @Override
+    public float getCooledAttackStrength(float adjustTicks) {
         return 1;
     }
-    @Override public void onUpdate(){
+
+    @Override
+    public void onUpdate() {
         this.interactionManager.updateBlockRemoving();
     }
+
     @Override
-    public float getEyeHeight()
-    {
+    public float getEyeHeight() {
         return 0;
     }
 

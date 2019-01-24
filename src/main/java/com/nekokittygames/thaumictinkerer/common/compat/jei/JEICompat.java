@@ -7,14 +7,13 @@ import mezz.jei.api.JEIPlugin;
 @JEIPlugin
 public class JEICompat implements IModPlugin {
 
+    public static void initJEI() {
+
+
+    }
+
     @Override
     public void register(IModRegistry registry) {
         registry.addAdvancedGuiHandlers(new JEIEnchanterHandler());
-    }
-
-    public static void initJEI()
-    {
-
-
     }
 }

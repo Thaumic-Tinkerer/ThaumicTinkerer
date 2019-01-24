@@ -24,7 +24,7 @@ public class GuiFramedEnchantmentButton extends GuiEnchantmentButton {
         int index = parent.enchanter.getEnchantments().indexOf(Enchantment.getEnchantmentID(enchant));
         if (index != -1) {
             int level = parent.enchanter.getLevels().get(index);
-            Minecraft.getMinecraft().fontRenderer.drawString(ThaumicTinkerer.proxy.localize("enchantment.level." + level), x + 26, y + 8, 0xFFFFFF,true);
+            Minecraft.getMinecraft().fontRenderer.drawString(ThaumicTinkerer.proxy.localize("enchantment.level." + level), x + 26, y + 8, 0xFFFFFF, true);
         }
         super.drawButton(mc, mouseX, mouseY, partialTicks);
     }

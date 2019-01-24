@@ -2,12 +2,13 @@
   "name": "Osmotic Enchanter",
   "keyBlock": "thaumictinkerer:osmotic_enchanter",
   "id": "thaumictinkerer:osmotic_enchanter",
-  "blocks": [{
-    "name": "arcane_brick",
-    "block": {
-      "blockType": "thaumcraft:stone_arcane_brick"
-    }
-  },
+  "blocks": [
+    {
+      "name": "arcane_brick",
+      "block": {
+        "blockType": "thaumcraft:stone_arcane_brick"
+      }
+    },
     {
       "name": "black_quartz",
       "block": {
@@ -29,9 +30,10 @@
     },
     {
       "name": "nitor",
-      "block": [{
-        "blockType": "thaumcraft:nitor_white"
-      },
+      "block": [
+        {
+          "blockType": "thaumcraft:nitor_white"
+        },
         {
           "blockType": "thaumcraft:nitor_orange"
         },
@@ -80,202 +82,205 @@
       ]
     }
   ],
-  "layers": [{
-    "y": -1,
-    "blocks": [{
-      "block": "arcane_brick",
-      "x": -3,
-      "z": -1
+  "layers": [
+    {
+      "y": -1,
+      "blocks": [
+        {
+          "block": "arcane_brick",
+          "x": -3,
+          "z": -1
+        },
+        {
+          "block": "arcane_brick",
+          "x": -3,
+          "z": 0
+        },
+        {
+          "block": "arcane_brick",
+          "x": -3,
+          "z": 1
+        },
+        {
+          "block": "arcane_brick",
+          "x": -2,
+          "z": -2
+        },
+        {
+          "block": "arcane_brick",
+          "x": -2,
+          "z": -1
+        },
+        {
+          "block": "black_quartz",
+          "x": -2,
+          "z": 0
+        },
+        {
+          "block": "arcane_brick",
+          "x": -2,
+          "z": 1
+        },
+        {
+          "block": "arcane_brick",
+          "x": -2,
+          "z": 2
+        },
+        {
+          "block": "arcane_brick",
+          "x": -1,
+          "z": -3
+        },
+        {
+          "block": "arcane_brick",
+          "x": -1,
+          "z": -2
+        },
+        {
+          "block": "black_quartz",
+          "x": -1,
+          "z": -1
+        },
+        {
+          "block": "black_quartz",
+          "x": -1,
+          "z": 0
+        },
+        {
+          "block": "black_quartz",
+          "x": -1,
+          "z": 1
+        },
+        {
+          "block": "arcane_brick",
+          "x": -1,
+          "z": 2
+        },
+        {
+          "block": "arcane_brick",
+          "x": -1,
+          "z": 3
+        },
+        {
+          "block": "arcane_brick",
+          "x": 0,
+          "z": -3
+        },
+        {
+          "block": "black_quartz",
+          "x": 0,
+          "z": -2
+        },
+        {
+          "block": "black_quartz",
+          "x": 0,
+          "z": -1
+        },
+        {
+          "block": "black_quartz",
+          "x": 0,
+          "z": 0
+        },
+        {
+          "block": "black_quartz",
+          "x": 0,
+          "z": 1
+        },
+        {
+          "block": "black_quartz",
+          "x": 0,
+          "z": 2
+        },
+        {
+          "block": "arcane_brick",
+          "x": 0,
+          "z": 3
+        },
+        {
+          "block": "arcane_brick",
+          "x": 1,
+          "z": -3
+        },
+        {
+          "block": "arcane_brick",
+          "x": 1,
+          "z": -2
+        },
+        {
+          "block": "black_quartz",
+          "x": 1,
+          "z": -1
+        },
+        {
+          "block": "black_quartz",
+          "x": 1,
+          "z": 0
+        },
+        {
+          "block": "black_quartz",
+          "x": 1,
+          "z": 1
+        },
+        {
+          "block": "arcane_brick",
+          "x": 1,
+          "z": 2
+        },
+        {
+          "block": "arcane_brick",
+          "x": 1,
+          "z": 3
+        },
+        {
+          "block": "arcane_brick",
+          "x": 3,
+          "z": -1
+        },
+        {
+          "block": "arcane_brick",
+          "x": 3,
+          "z": 0
+        },
+        {
+          "block": "arcane_brick",
+          "x": 3,
+          "z": 1
+        },
+        {
+          "block": "arcane_brick",
+          "x": 2,
+          "z": -2
+        },
+        {
+          "block": "arcane_brick",
+          "x": 2,
+          "z": -1
+        },
+        {
+          "block": "black_quartz",
+          "x": 2,
+          "z": 0
+        },
+        {
+          "block": "arcane_brick",
+          "x": 2,
+          "z": 1
+        },
+        {
+          "block": "arcane_brick",
+          "x": 2,
+          "z": 2
+        }
+      ]
     },
-      {
-        "block": "arcane_brick",
-        "x": -3,
-        "z": 0
-      },
-      {
-        "block": "arcane_brick",
-        "x": -3,
-        "z": 1
-      },
-      {
-        "block": "arcane_brick",
-        "x": -2,
-        "z": -2
-      },
-      {
-        "block": "arcane_brick",
-        "x": -2,
-        "z": -1
-      },
-      {
-        "block": "black_quartz",
-        "x": -2,
-        "z": 0
-      },
-      {
-        "block": "arcane_brick",
-        "x": -2,
-        "z": 1
-      },
-      {
-        "block": "arcane_brick",
-        "x": -2,
-        "z": 2
-      },
-      {
-        "block": "arcane_brick",
-        "x": -1,
-        "z": -3
-      },
-      {
-        "block": "arcane_brick",
-        "x": -1,
-        "z": -2
-      },
-      {
-        "block": "black_quartz",
-        "x": -1,
-        "z": -1
-      },
-      {
-        "block": "black_quartz",
-        "x": -1,
-        "z": 0
-      },
-      {
-        "block": "black_quartz",
-        "x": -1,
-        "z": 1
-      },
-      {
-        "block": "arcane_brick",
-        "x": -1,
-        "z": 2
-      },
-      {
-        "block": "arcane_brick",
-        "x": -1,
-        "z": 3
-      },
-      {
-        "block": "arcane_brick",
-        "x": 0,
-        "z": -3
-      },
-      {
-        "block": "black_quartz",
-        "x": 0,
-        "z": -2
-      },
-      {
-        "block": "black_quartz",
-        "x": 0,
-        "z": -1
-      },
-      {
-        "block": "black_quartz",
-        "x": 0,
-        "z": 0
-      },
-      {
-        "block": "black_quartz",
-        "x": 0,
-        "z": 1
-      },
-      {
-        "block": "black_quartz",
-        "x": 0,
-        "z": 2
-      },
-      {
-        "block": "arcane_brick",
-        "x": 0,
-        "z": 3
-      },
-      {
-        "block": "arcane_brick",
-        "x": 1,
-        "z": -3
-      },
-      {
-        "block": "arcane_brick",
-        "x": 1,
-        "z": -2
-      },
-      {
-        "block": "black_quartz",
-        "x": 1,
-        "z": -1
-      },
-      {
-        "block": "black_quartz",
-        "x": 1,
-        "z": 0
-      },
-      {
-        "block": "black_quartz",
-        "x": 1,
-        "z": 1
-      },
-      {
-        "block": "arcane_brick",
-        "x": 1,
-        "z": 2
-      },
-      {
-        "block": "arcane_brick",
-        "x": 1,
-        "z": 3
-      },
-      {
-        "block": "arcane_brick",
-        "x": 3,
-        "z": -1
-      },
-      {
-        "block": "arcane_brick",
-        "x": 3,
-        "z": 0
-      },
-      {
-        "block": "arcane_brick",
-        "x": 3,
-        "z": 1
-      },
-      {
-        "block": "arcane_brick",
-        "x": 2,
-        "z": -2
-      },
-      {
-        "block": "arcane_brick",
-        "x": 2,
-        "z": -1
-      },
-      {
-        "block": "black_quartz",
-        "x": 2,
-        "z": 0
-      },
-      {
-        "block": "arcane_brick",
-        "x": 2,
-        "z": 1
-      },
-      {
-        "block": "arcane_brick",
-        "x": 2,
-        "z": 2
-      }
-    ]
-  },
     {
       "y": 0,
-      "blocks": [{
-        "block": "arcane_stone",
-        "x": -3,
-        "z": 0
-      },
+      "blocks": [
+        {
+          "block": "arcane_stone",
+          "x": -3,
+          "z": 0
+        },
         {
           "block": "arcane_stone",
           "x": 3,
@@ -315,11 +320,12 @@
     },
     {
       "y": 1,
-      "blocks": [{
-        "block": "arcane_stone",
-        "x": -3,
-        "z": 0
-      },
+      "blocks": [
+        {
+          "block": "arcane_stone",
+          "x": -3,
+          "z": 0
+        },
         {
           "block": "arcane_stone",
           "x": 3,
@@ -359,11 +365,12 @@
     },
     {
       "y": 2,
-      "blocks": [{
-        "block": "nitor",
-        "x": -3,
-        "z": 0
-      },
+      "blocks": [
+        {
+          "block": "nitor",
+          "x": -3,
+          "z": 0
+        },
         {
           "block": "nitor",
           "x": 3,
@@ -405,12 +412,13 @@
   "output": [
     {
       "y": 0,
-      "blocks": [{
-        "block": "enchantment_pillar",
-        "x": -3,
-        "z": 0,
-        "meta": 5
-      },
+      "blocks": [
+        {
+          "block": "enchantment_pillar",
+          "x": -3,
+          "z": 0,
+          "meta": 5
+        },
         {
           "block": "enchantment_pillar",
           "x": 3,
@@ -457,12 +465,13 @@
     },
     {
       "y": 1,
-      "blocks": [{
-        "block": "enchantment_pillar",
-        "x": -3,
-        "z": 0,
-        "meta": 13
-      },
+      "blocks": [
+        {
+          "block": "enchantment_pillar",
+          "x": -3,
+          "z": 0,
+          "meta": 13
+        },
         {
           "block": "enchantment_pillar",
           "x": 3,
@@ -509,11 +518,12 @@
     },
     {
       "y": 2,
-      "blocks": [{
-        "block": "minecraft:air",
-        "x": -3,
-        "z": 0
-      },
+      "blocks": [
+        {
+          "block": "minecraft:air",
+          "x": -3,
+          "z": 0
+        },
         {
           "block": "minecraft:air",
           "x": 3,

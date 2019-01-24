@@ -10,22 +10,25 @@ import javax.annotation.Nullable;
 public abstract class TileEntityThaumicTinkerer extends TileEntity {
 
     private boolean redstonePowered;
-    public void sendUpdates()
-    {
+
+    public void sendUpdates() {
         world.markBlockRangeForRenderUpdate(pos, pos);
         world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 
         markDirty();
     }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         writeExtraNBT(compound);
         return super.writeToNBT(compound);
 
     }
+
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
-        nbttagcompound.setBoolean("redstone",redstonePowered);
+        nbttagcompound.setBoolean("redstone", redstonePowered);
     }
+
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         readExtraNBT(compound);
@@ -34,15 +37,15 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
 
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
         // todo: remove if in a couple versions time
-        if(nbttagcompound.hasKey("redstone"))
-            redstonePowered=nbttagcompound.getBoolean("redstone");
+        if (nbttagcompound.hasKey("redstone"))
+            redstonePowered = nbttagcompound.getBoolean("redstone");
         else
-            redstonePowered=false;
+            redstonePowered = false;
     }
 
     @Override
     public NBTTagCompound getUpdateTag() {
-        NBTTagCompound cmp=super.getUpdateTag();
+        NBTTagCompound cmp = super.getUpdateTag();
         writeExtraNBT(cmp);
         return cmp;
     }
@@ -68,21 +71,19 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
 
     public abstract boolean respondsToPulses();
 
-    public void activateOnPulse()
-    {
+    public void activateOnPulse() {
 
     }
 
-    public void setRedstonePowered(boolean b)
-    {
-        boolean oldRedstone=redstonePowered;
-        redstonePowered=b;
-        if(redstonePowered!=oldRedstone)
-            this.sendUpdates();
-    }
-    public boolean getRedstonePowered()
-    {
+    public boolean getRedstonePowered() {
         return redstonePowered;
+    }
+
+    public void setRedstonePowered(boolean b) {
+        boolean oldRedstone = redstonePowered;
+        redstonePowered = b;
+        if (redstonePowered != oldRedstone)
+            this.sendUpdates();
     }
 
     public boolean canRedstoneConnect() {

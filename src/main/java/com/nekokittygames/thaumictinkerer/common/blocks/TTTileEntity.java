@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityThaumicTinkerer;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -17,7 +16,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock  {
+public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock {
 
     /**
      * Should the {@link TileEntity} be preserved until after {@link #getDrops} has been called?
@@ -83,7 +82,7 @@ public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock  {
         if (!world.isRemote) {
             TileEntity tile = world.getTileEntity(pos);
             if (tile instanceof TileEntityThaumicTinkerer) {
-                TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer)tile;
+                TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer) tile;
                 if (base.respondsToPulses()) {
                     base.activateOnPulse();
                 }
@@ -99,21 +98,21 @@ public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock  {
 
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        customNeighborsChanged(worldIn,pos);
+        customNeighborsChanged(worldIn, pos);
     }
 
     @Override
     public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
         super.onNeighborChange(world, pos, neighbor);
-        if(world instanceof World)
-            customNeighborsChanged((World) world,pos);
+        if (world instanceof World)
+            customNeighborsChanged((World) world, pos);
     }
 
     public void updateRedstone(World world, BlockPos pos) {
         if (!world.isRemote) {
             TileEntity tile = world.getTileEntity(pos);
             if (tile instanceof TileEntityThaumicTinkerer) {
-                TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer)tile;
+                TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer) tile;
                 boolean powered = world.isBlockIndirectlyGettingPowered(pos) > 0;
                 boolean wasPowered = base.getRedstonePowered();
                 if (powered && !wasPowered) {
@@ -133,7 +132,7 @@ public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock  {
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
         super.onBlockAdded(worldIn, pos, state);
-        this.updateRedstone(worldIn,pos);
+        this.updateRedstone(worldIn, pos);
     }
 
     @Override

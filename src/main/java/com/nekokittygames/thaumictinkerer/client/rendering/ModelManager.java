@@ -31,6 +31,16 @@ public class ModelManager {
     public static final ModelManager INSTANCE = new ModelManager();
 
     private static final String FLUID_MODEL_PATH = LibClientMisc.RESOURCE_PREFIX + "fluid";
+    private final StateMapperBase propertyStringMapper = new StateMapperBase() {
+        @Override
+        protected ModelResourceLocation getModelResourceLocation(final IBlockState state) {
+            return new ModelResourceLocation("minecraft:air");
+        }
+    };
+    /**
+     * The {@link Item}s that have had models registered so far.
+     */
+    private final Set<Item> itemsRegistered = new HashSet<>();
 
     private ModelManager() {
 
@@ -55,12 +65,6 @@ public class ModelManager {
         ModBlocks.RegistrationHandler.ITEM_BLOCKS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
 
     }
-    private final StateMapperBase propertyStringMapper = new StateMapperBase() {
-        @Override
-        protected ModelResourceLocation getModelResourceLocation(final IBlockState state) {
-            return new ModelResourceLocation("minecraft:air");
-        }
-    };
 
     private void registerBlockItemModel(IBlockState state) {
         final Block block = state.getBlock();
@@ -68,15 +72,10 @@ public class ModelManager {
 
         if (item != Items.AIR) {
             final ResourceLocation registryName = Objects.requireNonNull(block.getRegistryName());
-            ModelResourceLocation mrl=new ModelResourceLocation(registryName, propertyStringMapper.getPropertyString(state.getProperties()));
+            ModelResourceLocation mrl = new ModelResourceLocation(registryName, propertyStringMapper.getPropertyString(state.getProperties()));
             registerItemModel(item, mrl);
         }
     }
-
-    /**
-     * The {@link Item}s that have had models registered so far.
-     */
-    private final Set<Item> itemsRegistered = new HashSet<>();
 
     private void registerItemModels() {
 
@@ -90,6 +89,7 @@ public class ModelManager {
             registerItemModelForMeta(item, value.getMeta(), variantName + "=" + value.getName());
         }
     }
+
     /**
      * Register a single model for an {@link Item}.
      * <p>

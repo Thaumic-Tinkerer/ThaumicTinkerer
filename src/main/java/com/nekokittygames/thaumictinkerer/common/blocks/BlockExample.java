@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 
 public class BlockExample extends TTTileEntity<TileEntityExample> {
     public BlockExample() {
-        super(LibBlockNames.EXAMPLE,Material.GROUND,true);
+        super(LibBlockNames.EXAMPLE, Material.GROUND, true);
     }
 
     @Override
@@ -72,33 +72,28 @@ public class BlockExample extends TTTileEntity<TileEntityExample> {
     }
 
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        TileEntity te=worldIn.getTileEntity(pos);
-        if(te instanceof TileEntityExample)
-        {
-            TileEntityExample example= (TileEntityExample) te;
-            ItemStack stack=playerIn.getHeldItem(hand);
-            if(stack.getItem() instanceof ItemBlock)
-            {
-                ItemBlock itemBlock= (ItemBlock) stack.getItem();
-                boolean found=false;
-                if(example.getGuideBlockType().size()<=0)
+        TileEntity te = worldIn.getTileEntity(pos);
+        if (te instanceof TileEntityExample) {
+            TileEntityExample example = (TileEntityExample) te;
+            ItemStack stack = playerIn.getHeldItem(hand);
+            if (stack.getItem() instanceof ItemBlock) {
+                ItemBlock itemBlock = (ItemBlock) stack.getItem();
+                boolean found = false;
+                if (example.getGuideBlockType().size() <= 0)
                     return false;
-                IBlockState desiredState=example.getGuideBlockType().get(0);
-                for(IBlockState foundState:example.getGuideBlockType())
-                {
-                    if(itemBlock.getBlock()==foundState.getBlock())
-                    {
-                        found=true;
-                        desiredState=foundState;
+                IBlockState desiredState = example.getGuideBlockType().get(0);
+                for (IBlockState foundState : example.getGuideBlockType()) {
+                    if (itemBlock.getBlock() == foundState.getBlock()) {
+                        found = true;
+                        desiredState = foundState;
                         break;
                     }
                 }
-                if(found)
-                {
-                    if(!playerIn.capabilities.isCreativeMode)
-                        playerIn.getHeldItem(hand).setCount((stack.getCount())-1);
-                    worldIn.setBlockState(pos,desiredState,3);
-                    return  true;
+                if (found) {
+                    if (!playerIn.capabilities.isCreativeMode)
+                        playerIn.getHeldItem(hand).setCount((stack.getCount()) - 1);
+                    worldIn.setBlockState(pos, desiredState, 3);
+                    return true;
                 }
             }
         }

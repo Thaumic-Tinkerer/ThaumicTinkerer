@@ -15,7 +15,9 @@
     "uvlock": true
   },
   "variants": {
-    "normal": [{}],
+    "normal": [
+      {}
+    ],
     "inventory": {
       "model": "cube"
     }

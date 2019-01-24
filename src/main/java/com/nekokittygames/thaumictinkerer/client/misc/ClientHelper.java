@@ -15,23 +15,19 @@ import java.util.List;
 
 public class ClientHelper {
 
-    private  static RenderItem renderItem;
+    private static RenderItem renderItem;
 
-    public static  RenderItem getRenderItem()
-    {
-        if(renderItem==null)
-        {
-            renderItem=ObfuscationReflectionHelper.getPrivateValue(Minecraft.class,Minecraft.getMinecraft(),"field_175621_X");
+    public static RenderItem getRenderItem() {
+        if (renderItem == null) {
+            renderItem = ObfuscationReflectionHelper.getPrivateValue(Minecraft.class, Minecraft.getMinecraft(), "field_175621_X");
         }
         return renderItem;
     }
 
-    public static float toDegrees(EnumFacing facing)
-    {
-        if(facing==null)
+    public static float toDegrees(EnumFacing facing) {
+        if (facing == null)
             return 0.0f;
-        switch (facing)
-        {
+        switch (facing) {
             case SOUTH:
                 return 90.0F;
 
@@ -47,6 +43,7 @@ public class ClientHelper {
                 return 0.0f;
         }
     }
+
     public static void renderTooltip(int x, int y, List<String> tooltipData) {
         int color = 0x505000ff;
         int color2 = 0xf0100010;
@@ -84,7 +81,7 @@ public class ClientHelper {
             drawGradientRect(var6 - 3, var7 + var9 + 2, z, var6 + var5 + 3, var7 + var9 + 3, var12, var12);
             for (int var13 = 0; var13 < tooltipData.size(); ++var13) {
                 String var14 = tooltipData.get(var13);
-                fontRenderer.drawString(var14, var6, var7, -1,true);
+                fontRenderer.drawString(var14, var6, var7, -1, true);
                 if (var13 == 0)
                     var7 += 2;
                 var7 += 10;
