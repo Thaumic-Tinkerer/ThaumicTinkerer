@@ -54,7 +54,7 @@ public class MultiblockBlockType {
         blockTypes.add(state);
     }
 
-    String getBlockName() {
+    protected String getBlockName() {
         return blockName;
     }
 

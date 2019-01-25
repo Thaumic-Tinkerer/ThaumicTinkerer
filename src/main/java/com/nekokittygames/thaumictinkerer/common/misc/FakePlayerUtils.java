@@ -228,9 +228,9 @@ public class FakePlayerUtils {
 
         ItemStack itemstack = player.getHeldItemMainhand();
         if (toUse.typeOfHit == RayTraceResult.Type.ENTITY) {
-            if (processUseEntity(player, world, toUse.entityHit, toUse, CPacketUseEntity.Action.INTERACT_AT))
+            if (processUseEntity(player, toUse.entityHit, toUse, CPacketUseEntity.Action.INTERACT_AT))
                 return player.getHeldItemMainhand();
-            else if (processUseEntity(player, world, toUse.entityHit, null, CPacketUseEntity.Action.INTERACT))
+            else if (processUseEntity(player, toUse.entityHit, null, CPacketUseEntity.Action.INTERACT))
                 return player.getHeldItemMainhand();
         } else if (toUse.typeOfHit == RayTraceResult.Type.BLOCK) {
             BlockPos blockpos = toUse.getBlockPos();
@@ -279,7 +279,7 @@ public class FakePlayerUtils {
 
         ItemStack itemstack = player.getHeldItemMainhand();
         if (toUse.typeOfHit == RayTraceResult.Type.ENTITY) {
-            if (processUseEntity(player, world, toUse.entityHit, null, CPacketUseEntity.Action.ATTACK))
+            if (processUseEntity(player, toUse.entityHit, null, CPacketUseEntity.Action.ATTACK))
                 return player.getHeldItemMainhand();
         } else if (toUse.typeOfHit == RayTraceResult.Type.BLOCK) {
             BlockPos blockpos = toUse.getBlockPos();
@@ -366,13 +366,12 @@ public class FakePlayerUtils {
      * Processes the using of an entity from the server side.
      *
      * @param player The player.
-     * @param world  The world of the calling tile entity.
      * @param entity The entity to interact with.
      * @param result The actual ray trace result, only necessary if using {@link CPacketUseEntity.Action#INTERACT_AT}
      * @param action The type of interaction to perform.
      * @return If the entity was used.
      */
-    private static boolean processUseEntity(ThaumicFakePlayer player, World world, Entity entity, @Nullable RayTraceResult result, CPacketUseEntity.Action action) {
+    private static boolean processUseEntity(ThaumicFakePlayer player, Entity entity, @Nullable RayTraceResult result, CPacketUseEntity.Action action) {
         if (entity != null) {
             boolean flag = player.canEntityBeSeen(entity);
             double d0 = 36.0D;

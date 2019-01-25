@@ -489,6 +489,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                     addOneTo(costItems, Aspect.ENTROPY);
                     addOneTo(costItems, Aspect.BEAST);
                     break;
+                default:
+                    break;
             }
         }
 

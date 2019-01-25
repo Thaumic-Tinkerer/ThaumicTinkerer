@@ -27,7 +27,7 @@ public class MultiblockBlock {
 
     }
 
-    int getExtraMeta() {
+    protected int getExtraMeta() {
         return extraMeta;
     }
 

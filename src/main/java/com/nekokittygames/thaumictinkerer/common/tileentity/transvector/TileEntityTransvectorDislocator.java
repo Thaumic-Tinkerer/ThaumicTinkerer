@@ -152,7 +152,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
             this(world.getBlockState(pos), world.getTileEntity(pos), pos);
         }
 
-        void clearTileEntityAt() {
+        protected void clearTileEntityAt() {
             if (state != null) {
                 TileEntity tileToSet = state.getBlock().createTileEntity(world, state);
                 world.setTileEntity(pos, tileToSet);
