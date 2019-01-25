@@ -16,7 +16,7 @@ import java.io.IOException;
 public class EnchantmentGui {
 
     public static ResourceLocation getEnchantmentIcon(Enchantment enchantment) {
-        ResourceLocation location;
+
         ResourceLocation object = Enchantment.REGISTRY.getNameForObject(enchantment);
         ResourceLocation iconLoc = new ResourceLocation(object.getResourceDomain(), "textures/enchant_icons/" + object.getResourcePath() + ".png");
 

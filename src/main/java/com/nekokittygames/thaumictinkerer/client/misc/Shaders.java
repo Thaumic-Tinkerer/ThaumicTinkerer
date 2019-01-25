@@ -17,6 +17,7 @@ import org.lwjgl.opengl.GL11;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -87,7 +88,6 @@ public class Shaders {
         int vertId = 0;
         int fragId = 0;
         int program;
-        ;
         if (vert != null)
             vertId = createShader(vert, VERT);
         if (frag != null)
@@ -143,7 +143,7 @@ public class Shaders {
         if (in == null)
             return "";
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
             return reader.lines().collect(Collectors.joining("\n"));
         }
     }

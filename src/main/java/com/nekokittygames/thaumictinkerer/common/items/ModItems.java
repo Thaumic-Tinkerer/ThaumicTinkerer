@@ -12,19 +12,19 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.Null;
+import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.nullz;
 
 @SuppressWarnings("WeakerAccess")
 @GameRegistry.ObjectHolder(LibMisc.MOD_ID)
 public class ModItems {
 
-    public static final ItemShareBook share_book = Null();
-    public static final ItemCleaningTalisman cleaning_talisman = Null();
-    public static final ItemBlackQuartz black_quartz = Null();
-    public static final ItemConnector connector = Null();
-    public static final ItemSoulMould soul_mould = Null();
-    public static final ItemEnergeticNitor energetic_nitor = Null();
-    public static final ItemFormRevealer form_revealer = Null();
+    public static final ItemShareBook share_book = nullz();
+    public static final ItemCleaningTalisman cleaning_talisman = nullz();
+    public static final ItemBlackQuartz black_quartz = nullz();
+    public static final ItemConnector connector = nullz();
+    public static final ItemSoulMould soul_mould = nullz();
+    public static final ItemEnergeticNitor energetic_nitor = nullz();
+    public static final ItemFormRevealer form_revealer = nullz();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {

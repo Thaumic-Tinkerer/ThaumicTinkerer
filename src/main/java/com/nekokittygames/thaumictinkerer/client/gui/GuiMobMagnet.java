@@ -22,11 +22,11 @@ import java.util.List;
 public class GuiMobMagnet extends GuiContainer {
 
 
-    public static final int WIDTH = 176;
-    public static final int HEIGHT = 166;
-    int x, y;
-    List<GuiButtonMM> buttonListMM = new ArrayList();
-    List<IRadioButton> radioButtons = new ArrayList();
+    private static final int WIDTH = 176;
+    private static final int HEIGHT = 166;
+    private int x, y;
+    private List<GuiButtonMM> buttonListMM = new ArrayList<>();
+    private List<IRadioButton> radioButtons = new ArrayList<>();
     private TileEntityMobMagnet mobMagnet;
 
     public GuiMobMagnet(TileEntityMobMagnet tileEntity, MagnetContainer container) {

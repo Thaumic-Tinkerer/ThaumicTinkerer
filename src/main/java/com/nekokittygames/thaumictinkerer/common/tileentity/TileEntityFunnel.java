@@ -99,28 +99,26 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
     @Override
     public void update() {
         // todo: dont need max capacity, just keep trying to add until it fails
-        if (inventory.getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) {
-            if (!world.isRemote) {
-                BlockJarItem item = (BlockJarItem) inventory.getStackInSlot(0).getItem();
-                AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
-                if (aspectList != null && aspectList.size() == 1) {
-                    Aspect aspect = aspectList.getAspects()[0];
-                    TileEntity tile = world.getTileEntity(pos.down());
-                    if (tile != null && tile instanceof TileEntityHopper) {
-                        TileEntity hoppered = getHopperFacing(tile.getPos(), tile.getBlockMetadata());
-                        if (hoppered instanceof TileJarFillable) {
-                            TileJarFillable jar = (TileJarFillable) hoppered;
-                            boolean voidJar = jar instanceof TileJarFillableVoid;
-                            AspectList JarAspects = jar.getAspects();
-                            int maxAmount = 250;
-                            if (jar instanceof IFillableJar) {
-                                maxAmount = ((IFillableJar) jar).getMaxCapacity(aspect);
-                            }
-                            if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || JarAspects.getAspects()[0] == aspect && (JarAspects.getAmount(JarAspects.getAspects()[0]) < maxAmount || voidJar)) {
-                                jar.addToContainer(aspect, 1);
-                                item.setAspects(inventory.getStackInSlot(0), aspectList.remove(aspect, 1));
+        if (inventory.getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0 && !world.isRemote) {
+            BlockJarItem item = (BlockJarItem) inventory.getStackInSlot(0).getItem();
+            AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
+            if (aspectList != null && aspectList.size() == 1) {
+                Aspect aspect = aspectList.getAspects()[0];
+                TileEntity tile = world.getTileEntity(pos.down());
+                if (tile != null && tile instanceof TileEntityHopper) {
+                    TileEntity hoppered = getHopperFacing(tile.getPos(), tile.getBlockMetadata());
+                    if (hoppered instanceof TileJarFillable) {
+                        TileJarFillable jar = (TileJarFillable) hoppered;
+                        boolean voidJar = jar instanceof TileJarFillableVoid;
+                        AspectList JarAspects = jar.getAspects();
+                        int maxAmount = 250;
+                        if (jar instanceof IFillableJar) {
+                            maxAmount = ((IFillableJar) jar).getMaxCapacity(aspect);
+                        }
+                        if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || JarAspects.getAspects()[0] == aspect && (JarAspects.getAmount(JarAspects.getAspects()[0]) < maxAmount || voidJar)) {
+                            jar.addToContainer(aspect, 1);
+                            item.setAspects(inventory.getStackInSlot(0), aspectList.remove(aspect, 1));
 
-                            }
                         }
                     }
                 }

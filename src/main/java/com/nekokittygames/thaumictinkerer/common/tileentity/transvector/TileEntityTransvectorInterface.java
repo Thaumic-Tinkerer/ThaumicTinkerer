@@ -14,7 +14,7 @@ import thaumcraft.common.tiles.essentia.TileJarFillable;
 import javax.annotation.Nullable;
 
 public class TileEntityTransvectorInterface extends TileEntityTransvector implements IAspectSource, IEssentiaTransport {
-    int count = 0;
+    private int count = 0;
     private int comparatorValue = 0;
 
     @Override

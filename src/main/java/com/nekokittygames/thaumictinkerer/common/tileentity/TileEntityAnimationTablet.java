@@ -210,17 +210,15 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     private boolean detect() {
-        return !world.isAirBlock(GetBlockTarget());
+        return !world.isAirBlock(getBlockTarget());
     }
 
     @Override
     public void update() {
 
-        if (!world.isRemote) {
-            if (player == null) {
-                MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
-                player = new WeakReference<>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME + "." + pos.toString())));
-            }
+        if (!world.isRemote && player == null) {
+            MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
+            player = new WeakReference<>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME + "." + pos.toString())));
         }
         ticksExisted++;
         ItemStack stack = inventory.getStackInSlot(0);
@@ -330,30 +328,38 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         if (world.getBlockState(targetPos) == world.getBlockState(pos)) return;
         if (!rightClick) {
 
-            if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
-                IBlockState iblockstate = world.getBlockState(targetPos);
-                FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
-                ItemStack result = this.inventory.getStackInSlot(0);
-                result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
-
-                boolean flag = iblockstate.getMaterial() != Material.AIR;
-                if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
-                    this.onPlayerDestroyBlock(targetPos, player.get());
-                } else {
-                    this.isRemoving = true;
-                    this.currentBlock = targetPos;
-                    this.currentItemHittingBlock = player.get().getHeldItemMainhand();
-                    this.curBlockDamageMP = 0.0F;
-                    world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
-                }
-            }
+            leftClick(toUse, targetPos);
             //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
 
         } else {
+            rightClick(toUse);
+        }
+    }
+
+    private void rightClick(RayTraceResult toUse) {
+        FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
+        ItemStack result = this.inventory.getStackInSlot(0);
+        result = FakePlayerUtils.rightClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
+        FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), result, this.inventory.getStackInSlot(0), this);
+    }
+
+    private void leftClick(RayTraceResult toUse, BlockPos targetPos) {
+        if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
+            IBlockState iblockstate = world.getBlockState(targetPos);
             FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
             ItemStack result = this.inventory.getStackInSlot(0);
-            result = FakePlayerUtils.rightClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
-            FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), result, this.inventory.getStackInSlot(0), this);
+            result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
+
+            boolean flag = iblockstate.getMaterial() != Material.AIR;
+            if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
+                this.onPlayerDestroyBlock(targetPos, player.get());
+            } else {
+                this.isRemoving = true;
+                this.currentBlock = targetPos;
+                this.currentItemHittingBlock = player.get().getHeldItemMainhand();
+                this.curBlockDamageMP = 0.0F;
+                world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
+            }
         }
     }
 
@@ -406,7 +412,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         return player.get();
     }
 
-    private BlockPos GetBlockTarget() {
+    private BlockPos getBlockTarget() {
         BlockPos newPos = this.getPos().offset(facing);
         if (isRightClick() && world.isAirBlock(newPos))
             newPos = newPos.offset(EnumFacing.DOWN);

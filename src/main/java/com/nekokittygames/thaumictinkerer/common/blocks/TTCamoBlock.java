@@ -25,19 +25,17 @@ public abstract class TTCamoBlock<T extends TileEntityCamoflage> extends TTTileE
         super(name, materialIn, preserveTileEntity);
     }
 
-    public static boolean camoflageFromHand(EntityPlayer playerIn, EnumHand hand, TileEntity te) {
-        if (te != null && te instanceof TileEntityCamoflage) {
+    protected static boolean camoflageFromHand(EntityPlayer playerIn, EnumHand hand, TileEntity te) {
+        if (te instanceof TileEntityCamoflage) {
             TileEntityCamoflage camo = (TileEntityCamoflage) te;
             boolean doChange = true;
             ItemStack currentStack = playerIn.getHeldItem(hand);
-            if (currentStack != ItemStack.EMPTY) {
-                if (currentStack.getItem() instanceof ItemBlock) {
+            if (currentStack != ItemStack.EMPTY && currentStack.getItem() instanceof ItemBlock) {
                     ItemBlock itemBlock = (ItemBlock) currentStack.getItem();
                     camo.setBlockCopy(itemBlock.getBlock().getStateFromMeta(itemBlock.getMetadata(currentStack)));
                     camo.sendUpdates();
                     return true;
                 }
-            }
         }
         return false;
     }

@@ -8,7 +8,7 @@ import mezz.jei.api.JEIPlugin;
 public class JEICompat implements IModPlugin {
 
     public static void initJEI() {
-
+        // Empty
 
     }
 

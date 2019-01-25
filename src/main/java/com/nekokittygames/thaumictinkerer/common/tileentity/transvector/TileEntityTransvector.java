@@ -51,10 +51,7 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
     }
 
     public boolean checkTile(BlockPos tilePos, TileEntity tile) {
-        if (tile == null && tileRequiredAtLink() || (tilePos.distanceSq(getPos()) > getMaxDistance())) {
-            return true;
-        }
-        return false;
+        return tile == null && tileRequiredAtLink() || (tilePos.distanceSq(getPos()) > getMaxDistance());
     }
 
     public boolean isCheaty() {
@@ -81,7 +78,7 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
 
     @Override
     public void update() {
-
+        // Empty
     }
 
     public abstract int getMaxDistance();

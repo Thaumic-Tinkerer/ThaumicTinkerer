@@ -3,7 +3,7 @@ package com.nekokittygames.thaumictinkerer.client.gui.button;
 import java.util.List;
 
 public class GuiRadioButtonAT extends GuiButtonAT implements IRadioButton {
-    List<IRadioButton> linkedButtons;
+    private List<IRadioButton> linkedButtons;
 
     public GuiRadioButtonAT(int par1, int par2, int par3, boolean enabled, List<IRadioButton> linkedButtons) {
         super(par1, par2, par3, enabled);

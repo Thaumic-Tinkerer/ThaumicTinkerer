@@ -80,27 +80,25 @@ public class ItemCleaningTalisman extends TTItem implements IBauble {
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
         World world = player.world;
         if (getStatus(itemstack) && !world.isRemote) {
-            if (player.ticksExisted % 20 == 0) {
-                if (player instanceof EntityPlayer) {
-                    boolean removed = false;
-                    Collection<PotionEffect> effects = player.getActivePotionEffects();
-                    if (player.isBurning()) {
-                        player.extinguish();
-                        removed = true;
-                    } else {
-                        for (PotionEffect effect : effects) {
-                            Potion potion = effect.getPotion();
-                            if (potion.isBadEffect()) {
-                                player.removePotionEffect(potion);
-                                removed = true;
-                                break;
-                            }
+            if (player.ticksExisted % 20 == 0 && player instanceof EntityPlayer) {
+                boolean removed = false;
+                Collection<PotionEffect> effects = player.getActivePotionEffects();
+                if (player.isBurning()) {
+                    player.extinguish();
+                    removed = true;
+                } else {
+                    for (PotionEffect effect : effects) {
+                        Potion potion = effect.getPotion();
+                        if (potion.isBadEffect()) {
+                            player.removePotionEffect(potion);
+                            removed = true;
+                            break;
                         }
                     }
-                    if (removed) {
-                        itemstack.damageItem(1, player);
-                        world.playSound((EntityPlayer) player, player.getPosition(), SoundsTC.wand, SoundCategory.MASTER, 0.3f, 0.1f);
-                    }
+                }
+                if (removed) {
+                    itemstack.damageItem(1, player);
+                    world.playSound((EntityPlayer) player, player.getPosition(), SoundsTC.wand, SoundCategory.MASTER, 0.3f, 0.1f);
                 }
             }
         }

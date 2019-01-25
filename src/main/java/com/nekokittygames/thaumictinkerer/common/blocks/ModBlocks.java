@@ -22,25 +22,25 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.Null;
+import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.nullz;
 
 @SuppressWarnings("WeakerAccess")
 @GameRegistry.ObjectHolder(LibMisc.MOD_ID)
 public class ModBlocks {
 
-    public static final BlockFunnel funnel = Null();
-    public static final BlockDissimulation dissimulation = Null();
-    public static final BlockTransvectorInterface transvector_interface = Null();
-    public static final BlockTransvectorDislocator transvector_dislocator = Null();
-    public static final BlockRepairer repairer = Null();
-    public static final BlockItemMagnet magnet = Null();
-    public static final BlockMobMagnet mob_magnet = Null();
-    public static final BlockNitorVapor nitor_vapor = Null();
-    public static final BlockExample example = Null();
-    public static final BlockEnchanter osmotic_enchanter = Null();
-    public static final BlockEnchantmentPillar enchantment_pillar = Null();
-    public static final BlockBlackQuartz black_quartz_block = Null();
-    public static final BlockAnimationTablet animation_tablet = Null();
+    public static final BlockFunnel funnel = nullz();
+    public static final BlockDissimulation dissimulation = nullz();
+    public static final BlockTransvectorInterface transvector_interface = nullz();
+    public static final BlockTransvectorDislocator transvector_dislocator = nullz();
+    public static final BlockRepairer repairer = nullz();
+    public static final BlockItemMagnet magnet = nullz();
+    public static final BlockMobMagnet mob_magnet = nullz();
+    public static final BlockNitorVapor nitor_vapor = nullz();
+    public static final BlockExample example = nullz();
+    public static final BlockEnchanter osmotic_enchanter = nullz();
+    public static final BlockEnchantmentPillar enchantment_pillar = nullz();
+    public static final BlockBlackQuartz black_quartz_block = nullz();
+    public static final BlockAnimationTablet animation_tablet = nullz();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {

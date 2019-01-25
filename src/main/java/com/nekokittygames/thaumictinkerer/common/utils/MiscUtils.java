@@ -13,7 +13,7 @@ public class MiscUtils {
      * @return null
      */
     @SuppressWarnings({"ConstantConditions", "SameReturnValue"})
-    public static <T> T Null() {
+    public static <T> T nullz() {
         return null;
     }
 }

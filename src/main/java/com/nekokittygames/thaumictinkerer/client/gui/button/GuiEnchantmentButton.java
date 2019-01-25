@@ -25,7 +25,7 @@ public class GuiEnchantmentButton extends GuiButton {
         this.parent = parent;
     }
 
-    boolean dontRender() {
+    protected boolean dontRender() {
         return enchant == null || !enabled;
     }
 

@@ -3,6 +3,7 @@ package com.nekokittygames.thaumictinkerer.common.multiblocks;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.minecraft.client.util.JsonException;
 import net.minecraft.util.JsonUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -18,10 +19,10 @@ public class MultiblockLayer implements Iterable<MultiblockBlock> {
 
     public MultiblockLayer(JsonObject object) throws Exception {
         if (!object.has("y"))
-            throw new Exception("Layer object has no y level");
+            throw new JsonException("Layer object has no y level");
         yLevel = JsonUtils.getInt(object, "y");
         if (!object.has("blocks"))
-            throw new Exception("Layer object has no blocks");
+            throw new JsonException("Layer object has no blocks");
         JsonArray blockArray = JsonUtils.getJsonArray(object, "blocks");
         for (JsonElement blockElement : blockArray) {
             blocks.add(new MultiblockBlock(blockElement.getAsJsonObject()));
