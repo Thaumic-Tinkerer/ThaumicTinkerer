@@ -10,8 +10,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
-import java.util.Random;
-
 public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEntityRepairer> {
 
     private static EntityItem customitem;
@@ -19,7 +17,6 @@ public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEn
 
     public TileEntityRepairerRenderer() {
         super();
-        Random random = new Random();
     }
 
 
