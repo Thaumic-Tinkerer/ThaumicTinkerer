@@ -269,40 +269,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
             progress++;
             if (world.isRemote && !TTConfig.ClassicEnchanter) {
-                float tmp = (((progress / (20f * 15f)) * 100f) / 75f) * 100f;
-                if (tmp >= 0) {
-                    arcPoints(0, 1);
-                }
-                if (tmp >= 12.5) {
-                    arcPoints(1, 2);
-                }
-
-                if (tmp >= 25) {
-                    arcPoints(2, 3);
-                }
-                if (tmp >= 37.5) {
-                    arcPoints(3, 4);
-                }
-                if (tmp >= 50) {
-                    arcPoints(4, 5);
-                }
-                if (tmp >= 62.5) {
-                    arcPoints(5, 6);
-                }
-                if (tmp >= 75) {
-                    arcPoints(6, 7);
-                }
-                if (tmp >= 87.5) {
-
-                    arcPoints(7, 0);
-                }
-                if (tmp >= 100) {
-                    for (Vec3d point : points) {
-                        Vec3d curPos = new Vec3d(getPos().getX(), getPos().getY(), getPos().getZ());
-                        Vec3d originPos = curPos.add(point);
-                        FXDispatcher.INSTANCE.arcLightning(originPos.x, originPos.y, originPos.z, getPos().getX() + 0.5f, getPos().up().getY() + 0.5f, getPos().getZ() + 0.5f, this.c.getRed() / 255.0F, this.c.getGreen() / 255.0F, this.c.getBlue() / 255.0F, 0.5f);
-                    }
-                }
+                newEnchant();
             }
             if (progress > 20 * 15) {
                 if (!world.isRemote) {
@@ -319,6 +286,43 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                 sendUpdates();
             }
 
+        }
+    }
+
+    private void newEnchant() {
+        float tmp = (((progress / (20f * 15f)) * 100f) / 75f) * 100f;
+        if (tmp >= 0) {
+            arcPoints(0, 1);
+        }
+        if (tmp >= 12.5) {
+            arcPoints(1, 2);
+        }
+
+        if (tmp >= 25) {
+            arcPoints(2, 3);
+        }
+        if (tmp >= 37.5) {
+            arcPoints(3, 4);
+        }
+        if (tmp >= 50) {
+            arcPoints(4, 5);
+        }
+        if (tmp >= 62.5) {
+            arcPoints(5, 6);
+        }
+        if (tmp >= 75) {
+            arcPoints(6, 7);
+        }
+        if (tmp >= 87.5) {
+
+            arcPoints(7, 0);
+        }
+        if (tmp >= 100) {
+            for (Vec3d point : points) {
+                Vec3d curPos = new Vec3d(getPos().getX(), getPos().getY(), getPos().getZ());
+                Vec3d originPos = curPos.add(point);
+                FXDispatcher.INSTANCE.arcLightning(originPos.x, originPos.y, originPos.z, getPos().getX() + 0.5f, getPos().up().getY() + 0.5f, getPos().getZ() + 0.5f, this.c.getRed() / 255.0F, this.c.getGreen() / 255.0F, this.c.getBlue() / 255.0F, 0.5f);
+            }
         }
     }
 

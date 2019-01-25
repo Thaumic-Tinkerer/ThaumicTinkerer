@@ -83,7 +83,7 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
 
     public abstract int getMaxDistance();
 
-    boolean tileRequiredAtLink() {
+    private boolean tileRequiredAtLink() {
         return !cheaty;
     }
 }

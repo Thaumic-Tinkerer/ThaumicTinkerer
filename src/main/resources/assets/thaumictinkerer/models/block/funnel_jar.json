@@ -1,6 +1,5 @@
 {
   "textures": {
-    "particle": "thaumictinkerer:blocks/funnel/funnel_side",
     "side": "thaumcraft:blocks/jar_side",
     "bottom": "thaumcraft:blocks/jar_bottom",
     "top": "thaumcraft:blocks/jar_top",

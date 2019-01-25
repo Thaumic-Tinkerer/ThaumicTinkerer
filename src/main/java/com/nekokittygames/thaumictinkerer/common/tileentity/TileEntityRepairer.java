@@ -150,7 +150,7 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
     }
 
 
-    int drawEssentia() {
+    private int drawEssentia() {
         EnumFacing facing = world.getBlockState(pos).getValue(BlockRepairer.FACING);
         TileEntity te = ThaumcraftApiHelper.getConnectableTile(this.world, this.pos, facing);
         if (te != null) {
@@ -176,7 +176,7 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
 
     @Override
     public void setAspects(AspectList aspectList) {
-
+        // Empty
     }
 
     @Override

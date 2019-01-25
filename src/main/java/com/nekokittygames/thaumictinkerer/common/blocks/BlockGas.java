@@ -90,6 +90,7 @@ public abstract class BlockGas extends TTBlock {
 
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        // Empty
     }
 
     @Override

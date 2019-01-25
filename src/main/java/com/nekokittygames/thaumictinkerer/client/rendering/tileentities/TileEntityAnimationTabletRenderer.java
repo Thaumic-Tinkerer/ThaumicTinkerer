@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.entity.RenderEntityItem;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.item.EntityItem;
@@ -18,8 +17,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-import java.util.Random;
-
 public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer<TileEntityAnimationTablet> {
     private static final float[][] TRANSLATIONS = new float[][]{
             {0F, 0F, -1F},
@@ -27,14 +24,9 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
             {0F, 0F, 0F},
             {-1F, 0F, -1F}
     };
-    private static EntityItem customitem;
-    private static float halfPI = (float) (Math.PI / 2D);
-    private Random random;
-    private RenderEntityItem itemRenderer;
 
     public TileEntityAnimationTabletRenderer() {
         super();
-        this.random = new Random();
     }
 
     @Override
@@ -66,7 +58,7 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
         GlStateManager.rotate((float) Math.cos(System.currentTimeMillis() / 400F) * 5F, 1F, 0F, 1F);
         ItemStack stack = te.getInventory().getStackInSlot(0);
         if (stack != ItemStack.EMPTY) {
-            customitem = new EntityItem(te.getWorld(), 0.0d, 0.0d, 0.0d, stack.copy());
+            EntityItem customitem = new EntityItem(te.getWorld(), 0.0d, 0.0d, 0.0d, stack.copy());
             customitem.getItem().setCount(1);
             customitem.hoverStart = 0.0F;
             GlStateManager.pushMatrix();
@@ -106,7 +98,7 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
             GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         }
         GlStateManager.translate(0.5F, height, 0.5F);
-        float deg = rotationMod == 0 ? forceDeg : (float) (tablet.getTicksExisted() * rotationMod % 360F);
+        float deg = rotationMod == 0 ? forceDeg : (tablet.getTicksExisted() * rotationMod % 360F);
         GlStateManager.rotate(deg, 0F, 1F, 0F);
         GlStateManager.color(1F, 1F, 1F, 1F);
         Tessellator tess = Tessellator.getInstance();

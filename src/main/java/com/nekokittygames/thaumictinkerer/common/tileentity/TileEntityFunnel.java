@@ -90,7 +90,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
         }
     }
 
-    TileEntity getHopperFacing(BlockPos pos, int getBlockMetadata) {
+    private TileEntity getHopperFacing(BlockPos pos, int getBlockMetadata) {
         EnumFacing i = BlockHopper.getFacing(getBlockMetadata);
         return world.getTileEntity(pos.offset(i));
     }
@@ -136,7 +136,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public void setAspects(AspectList aspectList) {
-
+        // Empty
     }
 
     @Override

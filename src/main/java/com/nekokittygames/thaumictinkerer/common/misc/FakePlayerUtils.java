@@ -171,7 +171,7 @@ public class FakePlayerUtils {
         if (toUse.typeOfHit == RayTraceResult.Type.MISS) {
             for (int i = 1; i <= 5; i++) {
                 IBlockState state = world.getBlockState(pos.offset(side, i));
-                if (state != sourceState && state.getMaterial() != Material.AIR) {
+                if (!state.equals(sourceState) && state.getMaterial() != Material.AIR) {
                     player.interactionManager.onBlockClicked(pos.offset(side, i), side.getOpposite());
                     return player.getHeldItemMainhand();
                 }
@@ -264,7 +264,7 @@ public class FakePlayerUtils {
                         return false;
                     return entity.applyPlayerInteraction(player, result.hitVec, EnumHand.MAIN_HAND) == EnumActionResult.SUCCESS;
                 } else if (action == CPacketUseEntity.Action.ATTACK) {
-                    if (entity instanceof EntityItem || entity instanceof EntityXPOrb || entity instanceof EntityArrow || entity == player)
+                    if (entity instanceof EntityItem || entity instanceof EntityXPOrb || entity instanceof EntityArrow || entity.equals(player))
                         return false;
                     player.attackTargetEntityWithCurrentItem(entity);
                     return true;

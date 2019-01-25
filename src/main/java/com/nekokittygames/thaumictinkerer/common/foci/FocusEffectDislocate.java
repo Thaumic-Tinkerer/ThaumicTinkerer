@@ -144,7 +144,7 @@ public class FocusEffectDislocate extends FocusEffect {
 
     @Override
     public void renderParticleFX(World world, double v, double v1, double v2, double v3, double v4, double v5) {
-
+        // Empty
     }
 
     @Override

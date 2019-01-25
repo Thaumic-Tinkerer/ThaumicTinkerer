@@ -11,7 +11,6 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 public class EnchanterContainer extends Container {
 
@@ -61,14 +60,6 @@ public class EnchanterContainer extends Container {
         slots = new TTGhostSlot[6];
         for (int i = 0; i < slots.length; i++) {
             slots[i] = new TTGhostSlot(ItemStack.EMPTY, i + 1, 177 + (i * 17), 17);
-        }
-    }
-
-
-    private void refreshCostSlots() {
-        List<ItemStack> costs = tileEntity.getEnchantmentCost();
-        for (int i = 0; i < Math.min(slots.length, costs.size()); i++) {
-            slots[i].setItemStack(costs.get(i));
         }
     }
 

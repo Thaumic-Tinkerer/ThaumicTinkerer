@@ -12,13 +12,6 @@ import org.lwjgl.opengl.GL11;
 
 public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEntityRepairer> {
 
-    private static EntityItem customitem;
-
-
-    public TileEntityRepairerRenderer() {
-        super();
-    }
-
 
     @Override
     public void render(TileEntityRepairer te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -34,7 +27,7 @@ public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEn
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.translate(0.0F, 0.0F, 0.4375F);
         if (stack != ItemStack.EMPTY) {
-            customitem = new EntityItem(te.getWorld(), 0.0d, 0.0d, 0.0d, stack.copy());
+            EntityItem customitem = new EntityItem(te.getWorld(), 0.0d, 0.0d, 0.0d, stack.copy());
             GL11.glTranslatef(0, (float) (Math.sin(te.getTicksExisted() / 10F) * 0.1F), 0);
             float deg = te.getTicksExisted() * 0.75F % 360F;
             GL11.glRotatef(deg, 0, 1, 0);

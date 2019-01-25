@@ -28,7 +28,6 @@ public abstract class TTCamoBlock<T extends TileEntityCamoflage> extends TTTileE
     protected static boolean camoflageFromHand(EntityPlayer playerIn, EnumHand hand, TileEntity te) {
         if (te instanceof TileEntityCamoflage) {
             TileEntityCamoflage camo = (TileEntityCamoflage) te;
-            boolean doChange = true;
             ItemStack currentStack = playerIn.getHeldItem(hand);
             if (currentStack != ItemStack.EMPTY && currentStack.getItem() instanceof ItemBlock) {
                     ItemBlock itemBlock = (ItemBlock) currentStack.getItem();

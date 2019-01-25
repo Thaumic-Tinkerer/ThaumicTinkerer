@@ -1,6 +1,9 @@
 package com.nekokittygames.thaumictinkerer.common.multiblocks;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -35,7 +38,6 @@ public class Multiblock implements Iterable<MultiblockLayer> {
         InputStream in = Files.newInputStream(filename);
         try {
             JsonReader reader = new JsonReader(new InputStreamReader(in, StandardCharsets.UTF_8));
-            Gson gson = new Gson();
             // Read from File to String
             JsonObject jsonObject = new JsonObject();
             JsonParser parser = new JsonParser();
@@ -77,7 +79,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             JsonArray layersArray = layersElement.getAsJsonArray();
             for (JsonElement layerElement : layersArray) {
                 MultiblockLayer layer = new MultiblockLayer(layerElement.getAsJsonObject());
-                AddLayer(layer.getyLevel(), layer);
+                addLayer(layer.getyLevel(), layer);
             }
             if (jsonObject.has("output")) {
                 JsonElement outputsElement = jsonObject.get("output");
@@ -142,7 +144,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             bottomY = yLevel;
     }
 
-    public void AddLayer(int yLevel, MultiblockLayer layer) {
+    public void addLayer(int yLevel, MultiblockLayer layer) {
         layers.put(yLevel, layer);
         layerIndices.add(yLevel);
         layerIndices.sort(Comparator.reverseOrder());

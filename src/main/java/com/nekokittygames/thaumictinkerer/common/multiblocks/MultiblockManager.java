@@ -145,7 +145,6 @@ public class MultiblockManager {
         if (multiblock == null)
             return;
         Mat2f matrix = FACING_ROTATIONS.get(facing);
-        boolean complete = true;
         for (Iterator<MultiblockLayer> it = multiblock.outputIterator(); it.hasNext(); ) {
             MultiblockLayer layer = it.next();
             if (layer == null)
@@ -160,7 +159,6 @@ public class MultiblockManager {
                     continue;
                 }
                 MultiblockBlockType mBlockType = multiblock.getBlocks().get(blockType);
-                boolean blockFound = false;
                 IBlockState state;
                 if (mBlockType.getBlockTypes().size() < 1)
                     throw new Exception("Invalid Output");

@@ -11,10 +11,6 @@ import net.minecraft.item.ItemStack;
 public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileEntityEnchanter> {
 
 
-    public TileEntityEnchanterRenderer() {
-
-    }
-
     @Override
     public void render(TileEntityEnchanter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);

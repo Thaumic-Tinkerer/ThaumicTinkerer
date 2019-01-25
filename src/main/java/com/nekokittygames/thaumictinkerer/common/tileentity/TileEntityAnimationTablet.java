@@ -222,19 +222,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         }
         ticksExisted++;
         ItemStack stack = inventory.getStackInSlot(0);
-        if (stack != ItemStack.EMPTY) {
-            if (!world.isRemote && progress >= MAX_DEGREE) {
-                swingHit();
-            }
-
-            swingMod = progress <= 0 ? 0 : progress >= MAX_DEGREE ? -SWING_SPEED : swingMod;
-            progress += swingMod;
-            if (progress < 0)
-                progress = 0;
-            sendUpdates();
-        } else {
-            resetAll();
-        }
+        tick(stack);
 
 
         active = getRedstonePowered();
@@ -250,6 +238,22 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
         if ((active || isRemoving) && detect && progress == 0)
             initiateSwing();
+    }
+
+    private void tick(ItemStack stack) {
+        if (stack != ItemStack.EMPTY) {
+            if (!world.isRemote && progress >= MAX_DEGREE) {
+                swingHit();
+            }
+
+            swingMod = progress <= 0 ? 0 : progress >= MAX_DEGREE ? -SWING_SPEED : swingMod;
+            progress += swingMod;
+            if (progress < 0)
+                progress = 0;
+            sendUpdates();
+        } else {
+            resetAll();
+        }
     }
 
     private BlockPos getTargetBlock() {
@@ -286,7 +290,6 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             }
             if (this.isRemoving && this.isHittingPosition(targetPos, Objects.requireNonNull(player.get()))) {
                 IBlockState iblockstate = world.getBlockState(targetPos);
-                Block block = iblockstate.getBlock();
 
                 if (iblockstate.getMaterial() == Material.AIR) {
                     this.isRemoving = false;
@@ -347,9 +350,8 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
             IBlockState iblockstate = world.getBlockState(targetPos);
             FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
-            ItemStack result = this.inventory.getStackInSlot(0);
-            result = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
-
+            ItemStack itm = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
+            this.inventory.setStackInSlot(0, itm.copy());
             boolean flag = iblockstate.getMaterial() != Material.AIR;
             if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
                 this.onPlayerDestroyBlock(targetPos, player.get());
@@ -408,7 +410,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
 
-    ThaumicFakePlayer getPlayer() {
+    private ThaumicFakePlayer getPlayer() {
         return player.get();
     }
 

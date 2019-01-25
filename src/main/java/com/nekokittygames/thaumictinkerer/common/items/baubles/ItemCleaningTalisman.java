@@ -104,12 +104,12 @@ public class ItemCleaningTalisman extends TTItem implements IBauble {
 
     @Override
     public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
-
+        // Empty
     }
 
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-
+        // Empty
     }
 
     @Override

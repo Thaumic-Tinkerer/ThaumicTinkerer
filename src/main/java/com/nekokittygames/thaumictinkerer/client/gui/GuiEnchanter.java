@@ -154,7 +154,7 @@ public class GuiEnchanter extends GuiContainer {
         super.updateScreen();
 
         stack = enchanter.getInventory().getStackInSlot(0);
-        if (stack != lastTickItem)
+        if (!stack.equals(lastTickItem))
             buildButtonList();
 
         lastTickItem = stack;
