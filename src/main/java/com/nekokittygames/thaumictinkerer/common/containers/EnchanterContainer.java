@@ -16,8 +16,6 @@ public class EnchanterContainer extends Container {
 
     private TileEntityEnchanter tileEntity;
 
-    private TTGhostSlot[] slots;
-
     public EnchanterContainer(IInventory playerInventory, TileEntityEnchanter tileEntity) {
 
         this.tileEntity = tileEntity;
@@ -57,7 +55,7 @@ public class EnchanterContainer extends Container {
             }
         });
 
-        slots = new TTGhostSlot[6];
+        TTGhostSlot[] slots = new TTGhostSlot[6];
         for (int i = 0; i < slots.length; i++) {
             slots[i] = new TTGhostSlot(ItemStack.EMPTY, i + 1, 177 + (i * 17), 17);
         }

@@ -108,7 +108,6 @@ public class MultiblockManager {
         if (multiblock == null)
             return false;
         Mat2f matrix = FACING_ROTATIONS.get(facing);
-        boolean complete = true;
         for (Iterator<MultiblockLayer> it = multiblock.combinedIterator(); it.hasNext(); ) {
             MultiblockLayer layer = it.next();
             for (MultiblockBlock block : layer) {

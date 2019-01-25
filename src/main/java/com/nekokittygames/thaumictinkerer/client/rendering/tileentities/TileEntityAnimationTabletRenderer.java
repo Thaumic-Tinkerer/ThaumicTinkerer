@@ -25,9 +25,6 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
             {-1F, 0F, -1F}
     };
 
-    public TileEntityAnimationTabletRenderer() {
-        super();
-    }
 
     @Override
     public void render(TileEntityAnimationTablet te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {

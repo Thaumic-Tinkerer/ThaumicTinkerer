@@ -18,7 +18,9 @@ public abstract class TileEntityTransvector extends TileEntityCamoflage implemen
     @Override
     public void readExtraNBT(NBTTagCompound compound) {
         super.readExtraNBT(compound);
-        int x, y, z;
+        int x;
+        int y;
+        int z;
         if (compound.hasKey(TAG_X_TARGET)) {
             x = compound.getInteger(TAG_X_TARGET);
             y = compound.getInteger(TAG_Y_TARGET);

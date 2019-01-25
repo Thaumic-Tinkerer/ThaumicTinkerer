@@ -162,7 +162,7 @@ public class FakePlayerUtils {
         } else if (toUse.typeOfHit == RayTraceResult.Type.BLOCK) {
             BlockPos blockpos = toUse.getBlockPos();
             IBlockState state = world.getBlockState(blockpos);
-            if (state != sourceState && state.getMaterial() != Material.AIR) {
+            if (!state.equals(sourceState) && state.getMaterial() != Material.AIR) {
                 player.interactionManager.onBlockClicked(blockpos, toUse.sideHit);
                 return player.getHeldItemMainhand();
             }
