@@ -113,7 +113,7 @@ public class FakePlayerUtils {
         } else if (toUse.typeOfHit == RayTraceResult.Type.BLOCK) {
             BlockPos blockpos = toUse.getBlockPos();
             IBlockState state = world.getBlockState(blockpos);
-            if (state != sourceState && state.getMaterial() != Material.AIR) {
+            if (!state.equals(sourceState) && state.getMaterial() != Material.AIR) {
                 float f = (float) (toUse.hitVec.x - pos.getX());
                 float f1 = (float) (toUse.hitVec.y - pos.getY());
                 float f2 = (float) (toUse.hitVec.z - pos.getZ());
