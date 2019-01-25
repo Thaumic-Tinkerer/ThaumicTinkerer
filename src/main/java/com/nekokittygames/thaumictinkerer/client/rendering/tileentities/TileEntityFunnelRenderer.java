@@ -12,14 +12,11 @@ import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.client.lib.RenderCubes;
-import thaumcraft.client.renderers.tile.TileJarRenderer;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 import java.awt.*;
 
 public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEntityFunnel> {
-
-    private TileJarRenderer jarRenderer = new TileJarRenderer();
 
     @Override
     public void render(TileEntityFunnel te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {

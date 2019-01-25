@@ -75,19 +75,19 @@ public class FocusEffectDislocate extends FocusEffect {
                     case WEST:
                         pos = pos.west();
                         break;
+                    default:
+                        break;
                 }
-                if (blockState.getBlock().canPlaceBlockOnSide(getPackage().world, pos, rayTraceResult.sideHit)) {
-                    if (!getPackage().world.isRemote) {
-                        getPackage().world.setBlockState(pos, stateStored, 1 | 2);
-                        NBTTagCompound tileCmp = getStackTileEntity(focus);
-                        if (tileCmp != null && !tileCmp.hasNoTags()) {
-                            TileEntity tile1 = TileEntity.create(getPackage().world, tileCmp);
-                            Objects.requireNonNull(tile1).setPos(pos);
-                            getPackage().world.setTileEntity(pos, tile1);
-                        }
-                        stateStored.getBlock().onBlockPlacedBy(getPackage().world, pos, stateStored, getPackage().getCaster(), new ItemStack(stateStored.getBlock()));
-                        clearPickedBlock(focus);
+                if (blockState.getBlock().canPlaceBlockOnSide(getPackage().world, pos, rayTraceResult.sideHit) && !getPackage().world.isRemote) {
+                    getPackage().world.setBlockState(pos, stateStored, 1 | 2);
+                    NBTTagCompound tileCmp = getStackTileEntity(focus);
+                    if (tileCmp != null && !tileCmp.hasNoTags()) {
+                        TileEntity tile1 = TileEntity.create(getPackage().world, tileCmp);
+                        Objects.requireNonNull(tile1).setPos(pos);
+                        getPackage().world.setTileEntity(pos, tile1);
                     }
+                    stateStored.getBlock().onBlockPlacedBy(getPackage().world, pos, stateStored, getPackage().getCaster(), new ItemStack(stateStored.getBlock()));
+                    clearPickedBlock(focus);
 
                 }
             } else if (!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState) && !getPackage().world.isRemote) {

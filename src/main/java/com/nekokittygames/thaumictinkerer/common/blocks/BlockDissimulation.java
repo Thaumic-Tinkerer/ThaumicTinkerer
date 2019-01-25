@@ -24,8 +24,7 @@ public class BlockDissimulation extends TTCamoBlock<TileEntityDissimulation> {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity te = worldIn.getTileEntity(pos);
-        if (TTCamoBlock.camoflageFromHand(playerIn, hand, te)) return true;
-        return false;
+        return TTCamoBlock.camoflageFromHand(playerIn, hand, te);
 
     }
 }

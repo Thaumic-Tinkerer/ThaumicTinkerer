@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock {
+public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
 
     /**
      * Should the {@link TileEntity} be preserved until after {@link #getDrops} has been called?
@@ -52,8 +52,8 @@ public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock {
      */
     @SuppressWarnings("unchecked")
     @Nullable
-    protected TE getTileEntity(final IBlockAccess world, final BlockPos pos) {
-        return (TE) world.getTileEntity(pos);
+    protected T getTileEntity(final IBlockAccess world, final BlockPos pos) {
+        return (T) world.getTileEntity(pos);
     }
 
     @Override
@@ -75,7 +75,7 @@ public abstract class TTTileEntity<TE extends TileEntity> extends TTBlock {
     public boolean eventReceived(IBlockState state, World worldIn, BlockPos pos, int id, int param) {
         super.eventReceived(state, worldIn, pos, id, param);
         TileEntity tileentity = worldIn.getTileEntity(pos);
-        return tileentity == null ? false : tileentity.receiveClientEvent(id, param);
+        return tileentity != null && tileentity.receiveClientEvent(id, param);
     }
 
     public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {

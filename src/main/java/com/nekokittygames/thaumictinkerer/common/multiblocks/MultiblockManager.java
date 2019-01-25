@@ -36,7 +36,7 @@ public class MultiblockManager {
 
         Path myPath;
         if (uri.getScheme().equals("jar")) {
-            FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.<String, Object>emptyMap());
+            FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
             myPath = fileSystem.getPath("/assets/thaumictinkerer/multiblocks");
         } else {
             myPath = Paths.get(uri);
@@ -56,7 +56,7 @@ public class MultiblockManager {
         }));
 
         Mat2f tmp;
-        FACING_ROTATIONS.put(EnumFacing.NORTH, (Mat2f) new Mat2f().setIdentity());
+        FACING_ROTATIONS.put(EnumFacing.NORTH, new Mat2f().setIdentity());
         tmp = new Mat2f();
         tmp.m00 = 0;
         tmp.m01 = 1;
@@ -177,7 +177,6 @@ public class MultiblockManager {
         if (multiblock == null)
             return false;
         Mat2f matrix = FACING_ROTATIONS.get(facing);
-        boolean complete = true;
         for (MultiblockLayer layer : multiblock) {
             for (MultiblockBlock block : layer) {
                 TTVec2f tmpPos = new TTVec2f(block.getxOffset(), block.getzOffset());

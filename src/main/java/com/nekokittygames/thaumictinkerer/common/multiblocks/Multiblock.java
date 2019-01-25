@@ -5,6 +5,7 @@ import com.google.gson.stream.JsonReader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.JsonException;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -13,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -32,7 +34,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
     public Multiblock(Path filename) throws IOException {
         InputStream in = Files.newInputStream(filename);
         try {
-            JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+            JsonReader reader = new JsonReader(new InputStreamReader(in, StandardCharsets.UTF_8));
             Gson gson = new Gson();
             // Read from File to String
             JsonObject jsonObject = new JsonObject();
@@ -41,15 +43,15 @@ public class Multiblock implements Iterable<MultiblockLayer> {
 
             // get Multiblock name
             if (!jsonObject.has("name"))
-                throw new Exception("Multiblock json malformed, missing name ");
+                throw new JsonException("Multiblock json malformed, missing name ");
             this.name = jsonObject.get("name").getAsString();
 
             if (!jsonObject.has("id"))
-                throw new Exception("Multiblock json malformed, missing id");
+                throw new JsonException("Multiblock json malformed, missing id");
             this.id = new ResourceLocation(jsonObject.get("id").getAsString());
 
             if (!jsonObject.has("keyBlock"))
-                throw new Exception("Multiblock json malformed, missing keyBlock");
+                throw new JsonException("Multiblock json malformed, missing keyBlock");
             Block keyBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(JsonUtils.getString(jsonObject, "keyBlock")));
             if (keyBlock instanceof BlockAir)
                 return;
@@ -59,7 +61,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             this.keyBlock = keyBlock.getStateFromMeta(meta);
 
             if (!jsonObject.has("blocks")) {
-                throw new Exception("Multiblock json malformed, missing blocks array ");
+                throw new JsonException("Multiblock json malformed, missing blocks array ");
             }
             JsonElement blocksElement = jsonObject.get("blocks");
             JsonArray blocksArray = blocksElement.getAsJsonArray();
@@ -69,7 +71,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             }
 
             if (!jsonObject.has("layers")) {
-                throw new Exception("Multiblock json malformed, missing layers array ");
+                throw new JsonException("Multiblock json malformed, missing layers array ");
             }
             JsonElement layersElement = jsonObject.get("layers");
             JsonArray layersArray = layersElement.getAsJsonArray();
@@ -82,7 +84,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
                 JsonArray outputArray = outputsElement.getAsJsonArray();
                 for (JsonElement outputElement : outputArray) {
                     MultiblockLayer layer = new MultiblockLayer(outputElement.getAsJsonObject());
-                    AddOutputLayer(layer.getyLevel(), layer);
+                    addOutputLayer(layer.getyLevel(), layer);
                 }
             }
 
@@ -130,7 +132,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
         return keyBlock;
     }
 
-    public void AddOutputLayer(int yLevel, MultiblockLayer layer) {
+    public void addOutputLayer(int yLevel, MultiblockLayer layer) {
         output.put(yLevel, layer);
         if (!layerIndices.contains(yLevel))
             layerIndices.add(yLevel);
@@ -164,7 +166,6 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             @Override
             public MultiblockLayer next() {
                 while (!layerIndices.contains(++current)) {
-                    ;
                 }
                 return layers.get(current);
             }
@@ -183,7 +184,6 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             @Override
             public MultiblockLayer next() {
                 while (!output.containsKey(++current) && current < topY) {
-                    ;
                 }
                 if (!output.containsKey(current))
                     return null;

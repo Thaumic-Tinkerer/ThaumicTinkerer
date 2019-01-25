@@ -50,14 +50,15 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
+        int curMeta = meta;
         IBlockState state = this.blockState.getBaseState();
-        if (meta >= 8) {
+        if (curMeta >= 8) {
             state = state.withProperty(Top, true);
-            meta -= 8;
+            curMeta -= 8;
         } else {
             state = state.withProperty(Top, false);
         }
-        return state.withProperty(Direction, meta);
+        return state.withProperty(Direction, curMeta);
     }
 
     @Override

@@ -231,7 +231,7 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
 
     @Override
     public void setSuction(Aspect aspect, int i) {
-
+        // Empty
     }
 
     @Override

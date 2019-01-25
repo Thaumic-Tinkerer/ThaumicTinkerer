@@ -12,7 +12,7 @@ public class CommonProxy implements ITTProxy {
 
     @Override
     public void registerRenderers() {
-
+        // Empty
     }
 
     @Override
@@ -27,6 +27,6 @@ public class CommonProxy implements ITTProxy {
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
-
+        // Empty
     }
 }

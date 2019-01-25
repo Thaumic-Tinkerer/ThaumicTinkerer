@@ -433,13 +433,10 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         ItemStack item = inventory.getStackInSlot(0);
         List<Enchantment> valid = getValidEnchantments();
         for (Enchantment validEnchant : valid) {
-            if (item.getItem().getItemEnchantability(item) != 0 && canApply(item, validEnchant, enchantments, false)) {
-                if (canApply(item, validEnchant, currentEnchants))
-                    enchantments.add(validEnchant);
-            }
+            if (item.getItem().getItemEnchantability(item) != 0 && canApply(item, validEnchant, enchantments, false) && canApply(item, validEnchant, currentEnchants))
+                enchantments.add(validEnchant);
 
         }
-
         return enchantments;
     }
 

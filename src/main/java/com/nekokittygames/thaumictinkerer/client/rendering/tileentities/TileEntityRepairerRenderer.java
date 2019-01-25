@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.entity.RenderEntityItem;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -16,21 +15,18 @@ import java.util.Random;
 public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEntityRepairer> {
 
     private static EntityItem customitem;
-    private static float halfPI = (float) (Math.PI / 2D);
-    private Random random;
-    private RenderEntityItem itemRenderer;
 
 
     public TileEntityRepairerRenderer() {
         super();
-        this.random = new Random();
+        Random random = new Random();
     }
 
 
     @Override
     public void render(TileEntityRepairer te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
-        if (te == null || te.isInvalid()) {
+        if (te.isInvalid()) {
             return;
         }
         ItemStack stack = te.getInventory().getStackInSlot(0);

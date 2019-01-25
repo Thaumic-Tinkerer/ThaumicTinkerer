@@ -72,6 +72,6 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
 
     @Override
     public void renderTileEntityFast(TileEntityExample te, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
-
+        // Empty
     }
 }
