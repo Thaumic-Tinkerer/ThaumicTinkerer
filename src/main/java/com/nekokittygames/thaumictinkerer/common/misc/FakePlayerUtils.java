@@ -125,7 +125,7 @@ public class FakePlayerUtils {
         if (toUse.typeOfHit == RayTraceResult.Type.MISS) {
             for (int i = 1; i <= 5; i++) {
                 IBlockState state = world.getBlockState(pos.offset(side, i));
-                if (state != sourceState && state.getMaterial() != Material.AIR) {
+                if (!state.equals(sourceState) && state.getMaterial() != Material.AIR) {
                     player.interactionManager.processRightClickBlock(player, world, itemstack, EnumHand.MAIN_HAND, pos.offset(side, i), toUse.sideHit, 0, 0, 0);
                     return player.getHeldItemMainhand();
                 }
