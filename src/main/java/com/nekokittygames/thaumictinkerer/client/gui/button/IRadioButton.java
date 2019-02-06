@@ -1,11 +1,29 @@
 package com.nekokittygames.thaumictinkerer.client.gui.button;
 
+/**
+ * Radio button interface
+ */
 public interface IRadioButton {
-    public void enableFromClick();
 
-    public void updateStatus(IRadioButton otherButton);
+    /**
+     * enable a single button from a button click
+     */
+    void enableFromClick();
 
-    public boolean isEnabled();
+    /**
+     * Updates the button based on another's changed status
+     *
+     * @param otherButton button who's status changed
+     */
+    void updateStatus(IRadioButton otherButton);
 
-    public void setEnabled(boolean enabled);
+    /**
+     * @return is this button enabled?
+     */
+    boolean isEnabled();
+
+    /**
+     * @param enabled Is the button enabled?
+     */
+    void setEnabled(boolean enabled);
 }

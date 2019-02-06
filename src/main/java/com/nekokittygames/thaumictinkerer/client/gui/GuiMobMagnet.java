@@ -1,8 +1,8 @@
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
-import com.nekokittygames.thaumictinkerer.client.gui.button.GuiButtonMM;
-import com.nekokittygames.thaumictinkerer.client.gui.button.GuiRadioButtonMM;
+import com.nekokittygames.thaumictinkerer.client.gui.button.GuiTexturedButton;
+import com.nekokittygames.thaumictinkerer.client.gui.button.GuiTexturedRadioButton;
 import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
@@ -13,9 +13,9 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class GuiMobMagnet extends GuiContainer {
     private static final int WIDTH = 176;
     private static final int HEIGHT = 166;
     private int x, y;
-    private List<GuiButtonMM> buttonListMM = new ArrayList<>();
+    private List<GuiTexturedButton> buttonListMM = new ArrayList<>();
     private List<IRadioButton> radioButtons = new ArrayList<>();
     private TileEntityMobMagnet mobMagnet;
 
@@ -42,16 +42,17 @@ public class GuiMobMagnet extends GuiContainer {
         x = (width - xSize) / 2;
         y = (height - ySize) / 2;
         buttonListMM.clear();
-        addButton(new GuiRadioButtonMM(0, x + 100, y + 28, mobMagnet.isPullAdults(), radioButtons));
-        addButton(new GuiRadioButtonMM(1, x + 100, y + 48, !mobMagnet.isPullAdults(), radioButtons));
+        addButton(new GuiTexturedRadioButton(0, x + 100, y + 28, LibClientResources.GUI_MOBMAGNET, mobMagnet.isPullAdults(), radioButtons));
+        addButton(new GuiTexturedRadioButton(1, x + 100, y + 48, LibClientResources.GUI_MOBMAGNET, !mobMagnet.isPullAdults(), radioButtons));
         buttonList.addAll(buttonListMM);
 
     }
 
+    @NotNull
     @Override
-    protected <T extends GuiButton> T addButton(T button) {
-        if (button instanceof GuiButtonMM) {
-            buttonListMM.add((GuiButtonMM) button);
+    protected <T extends GuiButton> T addButton(@NotNull T button) {
+        if (button instanceof GuiTexturedButton) {
+            buttonListMM.add((GuiTexturedButton) button);
 
             if (button instanceof IRadioButton)
                 radioButtons.add((IRadioButton) button);
@@ -61,13 +62,13 @@ public class GuiMobMagnet extends GuiContainer {
     }
 
     @Override
-    protected void actionPerformed(GuiButton button) throws IOException {
+    protected void actionPerformed(GuiButton button) {
         if (button instanceof IRadioButton)
             ((IRadioButton) button).enableFromClick();
-        else buttonListMM.get(0).enabled = !buttonListMM.get(0).enabled;
+        else buttonListMM.get(1).setButtonEnabled(!buttonListMM.get(1).isButtonEnabled());
 
         //mobMagnet.adult = buttonListMM.get(0).enabled;
-        mobMagnet.setPullAdults(buttonListMM.get(0).enabled);
+        mobMagnet.setPullAdults(buttonListMM.get(0).isButtonEnabled());
         PacketHandler.INSTANCE.sendToServer(new PacketMobMagnet(mobMagnet, mobMagnet.isPullAdults()));
     }
 
