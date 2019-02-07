@@ -24,11 +24,14 @@ import thaumcraft.common.items.resources.ItemCrystalEssence;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * GUI for the Enchanter.
+ */
 public class GuiEnchanter extends GuiContainer {
 
     private static final int HEIGHT = 166;
     private static final int WIDTH = 176;
-    public TileEntityEnchanter enchanter;
+    private TileEntityEnchanter enchanter;
     private GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
     private GuiEnchantmentStartButton startButton;
     private List<String> tooltip = new ArrayList<>();
@@ -38,6 +41,12 @@ public class GuiEnchanter extends GuiContainer {
     private ItemStack lastTickItem;
     private ItemStack stack;
 
+    /**
+     * Constructor
+     *
+     * @param tileEntity Enchanter to display GUI for
+     * @param container  enchanter's container
+     */
     public GuiEnchanter(TileEntityEnchanter tileEntity, EnchanterContainer container) {
         super(container);
         xSize = WIDTH;
@@ -47,42 +56,82 @@ public class GuiEnchanter extends GuiContainer {
         lastTickItem = stack;
     }
 
+    /**
+     * gets the Enchanter this GUI is for
+     *
+     * @return enchanter object
+     */
     public TileEntityEnchanter getEnchanter() {
         return enchanter;
     }
 
+    /**
+     * Sets the Enchanter
+     * @param enchanter enchanter to set
+     */
     public void setEnchanter(TileEntityEnchanter enchanter) {
         this.enchanter = enchanter;
     }
 
+    /**
+     * Gets the current tooltip
+     * @return tooltip
+     */
     public List<String> getTooltip() {
         return tooltip;
     }
 
+    /**
+     * gets the width required to display Vis
+     * @return required width
+     */
     public int getVisRequireWidth() {
         return visRequireWidth;
     }
 
+    /**
+     * Sets the width required to display vis
+     * @param visRequireWidth width required
+     */
     public void setVisRequireWidth(int visRequireWidth) {
         this.visRequireWidth = visRequireWidth;
     }
 
+    /**
+     * gets the height required to display Vis
+     * @return required height
+     */
     public int getVisRequireHeight() {
         return visRequireHeight;
     }
 
+    /**
+     * sets the required height to display vis
+     * @param visRequireHeight required height
+     */
     public void setVisRequireHeight(int visRequireHeight) {
         this.visRequireHeight = visRequireHeight;
     }
 
+    /**
+     * gets the xPos of the GUI
+     * @return xPos
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * gets the yPos of the GUI
+     * @return yPos
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Initializes the GUI
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -94,6 +143,9 @@ public class GuiEnchanter extends GuiContainer {
 
     }
 
+    /**
+     * Builds the main button list
+     */
     private void buildButtonList() {
         buttonList.clear();
         for (int i = 0; i < 16; i++) {
@@ -124,6 +176,12 @@ public class GuiEnchanter extends GuiContainer {
         buttonList.add(startButton);
     }
 
+    /**
+     * Draws the foreground screen
+     * @param mouseX xPos of mouse
+     * @param mouseY yPos of mouse
+     * @param partialTicks update ticks
+     */
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();
@@ -131,6 +189,9 @@ public class GuiEnchanter extends GuiContainer {
         this.renderHoveredToolTip(mouseX, mouseY);
     }
 
+    /**
+     * Assigns enchants to the buttons
+     */
     private void asignEnchantButtons() {
         for (int i = 0; i < 16; i++) {
             enchantButtons[i].enchant = null;
@@ -149,6 +210,9 @@ public class GuiEnchanter extends GuiContainer {
         }
     }
 
+    /**
+     * updates the screen per tick
+     */
     @Override
     public void updateScreen() {
         super.updateScreen();
@@ -167,8 +231,14 @@ public class GuiEnchanter extends GuiContainer {
 
     }
 
+    /**
+     * Draws the background GUI layer
+     * @param partialTicks update Ticks
+     * @param mouseX xPos of mouse
+     * @param mouseY yPos of mouse
+     */
     @Override
-    protected void drawGuiContainerBackgroundLayer(float v, int mouseX, int mouseY) {
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ENCHANTER);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
@@ -221,6 +291,10 @@ public class GuiEnchanter extends GuiContainer {
 
     }
 
+    /**
+     * Callback for button pressed
+     * @param button button that was pressed
+     */
     @Override
     protected void actionPerformed(GuiButton button) {
         if (button.id == 0) {
@@ -247,10 +321,16 @@ public class GuiEnchanter extends GuiContainer {
         }
     }
 
+    /**
+     * Draws the foreground layer, draws the tooltips added by enchanter
+     * @param mouseX xPos of mouse
+     * @param mouseY yPos of mouse
+     */
     @Override
-    protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         if (!tooltip.isEmpty())
-            ClientHelper.renderTooltip(par1 - x, par2 - y, tooltip);
+            ClientHelper.renderTooltip(mouseX - x, mouseY - y, tooltip);
         tooltip.clear();
     }
 

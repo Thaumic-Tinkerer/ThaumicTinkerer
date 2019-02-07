@@ -13,10 +13,18 @@ import org.lwjgl.opengl.GL12;
 
 import java.util.List;
 
+/**
+ * Helper class for the client
+ */
 public class ClientHelper {
 
     private static RenderItem renderItem;
 
+    /**
+     * Gets the Render item, caching it if needed
+     *
+     * @return Render item, from cache or fresh
+     */
     public static RenderItem getRenderItem() {
         if (renderItem == null) {
             renderItem = ObfuscationReflectionHelper.getPrivateValue(Minecraft.class, Minecraft.getMinecraft(), "field_175621_X");
@@ -24,6 +32,12 @@ public class ClientHelper {
         return renderItem;
     }
 
+    /**
+     * Converts a <c>EnumFacing</c> to degrees
+     *
+     * @param facing facing to convert
+     * @return facing in degrees
+     */
     public static float toDegrees(EnumFacing facing) {
         if (facing == null)
             return 0.0f;
@@ -44,6 +58,12 @@ public class ClientHelper {
         }
     }
 
+    /**
+     * Renders a list of tooltips
+     * @param x xPos
+     * @param y yPos
+     * @param tooltipData list of tooltips
+     */
     public static void renderTooltip(int x, int y, List<String> tooltipData) {
         int color = 0x505000ff;
         int color2 = 0xf0100010;
@@ -89,15 +109,26 @@ public class ClientHelper {
         }
     }
 
-    public static void drawGradientRect(int par1, int par2, float z, int par3, int par4, int par5, int par6) {
-        float var7 = (par5 >> 24 & 255) / 255.0F;
-        float var8 = (par5 >> 16 & 255) / 255.0F;
-        float var9 = (par5 >> 8 & 255) / 255.0F;
-        float var10 = (par5 & 255) / 255.0F;
-        float var11 = (par6 >> 24 & 255) / 255.0F;
-        float var12 = (par6 >> 16 & 255) / 255.0F;
-        float var13 = (par6 >> 8 & 255) / 255.0F;
-        float var14 = (par6 & 255) / 255.0F;
+    /**
+     * Draws the gradient rect for the tooltips
+     *
+     * @param x       xPos of origin point
+     * @param y       yPos of origin point
+     * @param z       zPos of origin point
+     * @param xMax    xPos of max point
+     * @param yMax    yPos of max point
+     * @param colour1 origin colour
+     * @param colour2 colour to gradient to
+     */
+    private static void drawGradientRect(int x, int y, float z, int xMax, int yMax, int colour1, int colour2) {
+        float var7 = (colour1 >> 24 & 255) / 255.0F;
+        float var8 = (colour1 >> 16 & 255) / 255.0F;
+        float var9 = (colour1 >> 8 & 255) / 255.0F;
+        float var10 = (colour1 & 255) / 255.0F;
+        float var11 = (colour2 >> 24 & 255) / 255.0F;
+        float var12 = (colour2 >> 16 & 255) / 255.0F;
+        float var13 = (colour2 >> 8 & 255) / 255.0F;
+        float var14 = (colour2 & 255) / 255.0F;
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
@@ -106,10 +137,10 @@ public class ClientHelper {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferbuilder = tessellator.getBuffer();
         bufferbuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-        bufferbuilder.pos(par3, par2, z).color(var8, var9, var10, var7).endVertex();
-        bufferbuilder.pos(par1, par2, z).color(var8, var9, var10, var7).endVertex();
-        bufferbuilder.pos(par1, par4, z).color(var12, var13, var14, var11).endVertex();
-        bufferbuilder.pos(par3, par4, z).color(var12, var13, var14, var11).endVertex();
+        bufferbuilder.pos(xMax, y, z).color(var8, var9, var10, var7).endVertex();
+        bufferbuilder.pos(x, y, z).color(var8, var9, var10, var7).endVertex();
+        bufferbuilder.pos(x, yMax, z).color(var12, var13, var14, var11).endVertex();
+        bufferbuilder.pos(xMax, yMax, z).color(var12, var13, var14, var11).endVertex();
         tessellator.draw();
         GL11.glShadeModel(GL11.GL_FLAT);
         GL11.glDisable(GL11.GL_BLEND);

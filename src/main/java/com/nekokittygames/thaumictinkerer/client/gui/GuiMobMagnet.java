@@ -19,6 +19,9 @@ import org.lwjgl.opengl.GL11;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * GUI for the mob magnet.
+ */
 public class GuiMobMagnet extends GuiContainer {
 
 
@@ -29,6 +32,12 @@ public class GuiMobMagnet extends GuiContainer {
     private List<IRadioButton> radioButtons = new ArrayList<>();
     private TileEntityMobMagnet mobMagnet;
 
+    /**
+     * Constructor
+     *
+     * @param tileEntity mob magnet to display GUI for
+     * @param container  mo magnet's container
+     */
     public GuiMobMagnet(TileEntityMobMagnet tileEntity, MagnetContainer container) {
         super(container);
         xSize = WIDTH;
@@ -36,6 +45,9 @@ public class GuiMobMagnet extends GuiContainer {
         this.mobMagnet = tileEntity;
     }
 
+    /**
+     * Initializes the GUI
+     */
     @Override
     public void initGui() {
         super.initGui();
@@ -48,6 +60,13 @@ public class GuiMobMagnet extends GuiContainer {
 
     }
 
+    /**
+     * Adds button to GUI
+     *
+     * @param button button to add
+     * @param <T>    type of button to add
+     * @return added button
+     */
     @NotNull
     @Override
     protected <T extends GuiButton> T addButton(@NotNull T button) {
@@ -61,6 +80,10 @@ public class GuiMobMagnet extends GuiContainer {
             return super.addButton(button);
     }
 
+    /**
+     * Callback for button pressed
+     * @param button button that was pressed
+     */
     @Override
     protected void actionPerformed(GuiButton button) {
         if (button instanceof IRadioButton)
@@ -72,8 +95,14 @@ public class GuiMobMagnet extends GuiContainer {
         PacketHandler.INSTANCE.sendToServer(new PacketMobMagnet(mobMagnet, mobMagnet.isPullAdults()));
     }
 
+    /**
+     * Draws the background layer
+     * @param partialTicks update ticks
+     * @param mouseX xPos of mouse
+     * @param mouseY yPos of mouse
+     */
     @Override
-    protected void drawGuiContainerBackgroundLayer(float v, int i, int i1) {
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(LibClientResources.GUI_MOBMAGNET);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
