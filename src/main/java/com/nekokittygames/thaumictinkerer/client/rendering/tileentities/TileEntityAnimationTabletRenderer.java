@@ -17,6 +17,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * TESR for Animation Tablet
+ */
 public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer<TileEntityAnimationTablet> {
     private static final float[][] TRANSLATIONS = new float[][]{
             {0F, 0F, -1F},
@@ -26,6 +29,17 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
     };
 
 
+    /**
+     * renders the Animation tablet tile entity in world
+     *
+     * @param te           tile entity
+     * @param x            xPos of the block
+     * @param y            yPos of the block
+     * @param z            zPos of the block
+     * @param partialTicks udpate ticks
+     * @param destroyStage stage of the block destruction
+     * @param alpha        alpha amount of the block
+     */
     @Override
     public void render(TileEntityAnimationTablet te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
@@ -83,6 +97,18 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
     }
 
 
+    /**
+     * Renders overlay over the tablet
+     *
+     * @param tablet      animation tablet
+     * @param texture     texture to render
+     * @param rotationMod rotation direction and speed
+     * @param useLighting use lighting while displaying texture?
+     * @param useBlend    use blend mode while displaying texture?
+     * @param size        size of displayed texture
+     * @param height      height of the displayed texture
+     * @param forceDeg    force texture to be at specific degrees?
+     */
     private void renderOverlay(TileEntityAnimationTablet tablet, ResourceLocation texture, int rotationMod, boolean useLighting, boolean useBlend, double size, float height, float forceDeg) {
         Minecraft mc = Minecraft.getMinecraft();
         mc.renderEngine.bindTexture(texture);

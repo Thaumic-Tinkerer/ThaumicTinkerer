@@ -10,9 +10,23 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * TESR for the repairer
+ */
 public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEntityRepairer> {
 
 
+    /**
+     * renders the repairer
+     *
+     * @param te           tile entity
+     * @param x            xPos of the block
+     * @param y            yPos of the block
+     * @param z            zPos of the block
+     * @param partialTicks udpate ticks
+     * @param destroyStage stage of the block destruction
+     * @param alpha        alpha amount of the block
+     */
     @Override
     public void render(TileEntityRepairer te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);

@@ -9,9 +9,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import thaumcraft.client.fx.FXDispatcher;
 
+/**
+ * TESR for the enchantment pillar
+ */
 public class TileEntityEnchantmentPillarRenderer extends TileEntitySpecialRenderer<TileEntityEnchantmentPillar> {
 
 
+    /**
+     * Renders the enchantment pillar
+     *
+     * @param te           tile entity
+     * @param x            xPos of the block
+     * @param y            yPos of the block
+     * @param z            zPos of the block
+     * @param partialTicks udpate ticks
+     * @param destroyStage stage of the block destruction
+     * @param alpha        alpha amount of the block
+     */
     @Override
     public void render(TileEntityEnchantmentPillar te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);

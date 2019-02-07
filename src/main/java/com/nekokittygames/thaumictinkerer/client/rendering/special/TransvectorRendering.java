@@ -19,9 +19,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * Renders the transvector interface linking
+ */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class TransvectorRendering {
 
+    /**
+     * Event called on block rendering
+     *
+     * @param evt event object
+     */
     @SubscribeEvent
     public static void renderBlocks(final RenderWorldLastEvent evt) {
         EntityPlayerSP player = Minecraft.getMinecraft().player;
@@ -62,7 +70,7 @@ public class TransvectorRendering {
             float a = 0.8f;
             buffer.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
             drawOutline(buffer, blockX, blockY, blockZ, r, g, b, a);
-            TileEntity te = (TileEntity) Minecraft.getMinecraft().world.getTileEntity(pos);
+            TileEntity te = Minecraft.getMinecraft().world.getTileEntity(pos);
             if (te instanceof TileEntityTransvector) {
                 TileEntityTransvector transvector = (TileEntityTransvector) te;
                 BlockPos linkPos = transvector.getTilePos();
@@ -91,6 +99,18 @@ public class TransvectorRendering {
 
     }
 
+    /**
+     * Draws outline around an area
+     *
+     * @param buffer current Vertex buffer
+     * @param mx     minimum xPos
+     * @param my     minimum yPos
+     * @param mz     minimum zPos
+     * @param r      red value of colour
+     * @param g      green value of colour
+     * @param b      lue value of colour
+     * @param a      alpha value of colour
+     */
     private static void drawOutline(BufferBuilder buffer, float mx, float my, float mz, float r, float g, float b, float a) {
 
         buffer.pos(mx, my, mz).color(r, g, b, a).endVertex();

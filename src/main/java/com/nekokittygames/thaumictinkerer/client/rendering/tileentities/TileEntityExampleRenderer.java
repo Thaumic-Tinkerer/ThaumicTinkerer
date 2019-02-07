@@ -18,8 +18,22 @@ import net.minecraft.util.math.BlockPos;
 import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * TESR for the example renderer
+ */
 public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEntityExample> {
 
+    /**
+     * renders the example block
+     *
+     * @param te           tile entity
+     * @param x            xPos of the block
+     * @param y            yPos of the block
+     * @param z            zPos of the block
+     * @param partialTicks udpate ticks
+     * @param destroyStage stage of the block destruction
+     * @param alpha        alpha amount of the block
+     */
     @Override
     public void render(TileEntityExample te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
@@ -70,8 +84,4 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
 
     }
 
-    @Override
-    public void renderTileEntityFast(TileEntityExample te, double x, double y, double z, float partialTicks, int destroyStage, float partial, BufferBuilder buffer) {
-        // Empty
-    }
 }

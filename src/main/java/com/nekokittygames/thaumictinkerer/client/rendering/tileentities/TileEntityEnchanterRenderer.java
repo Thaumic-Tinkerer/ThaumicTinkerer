@@ -8,9 +8,23 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 
+/**
+ * TESR for the enchanter
+ */
 public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileEntityEnchanter> {
 
 
+    /**
+     * renders the Enchanter
+     *
+     * @param te           tile entity
+     * @param x            xPos of the block
+     * @param y            yPos of the block
+     * @param z            zPos of the block
+     * @param partialTicks udpate ticks
+     * @param destroyStage stage of the block destruction
+     * @param alpha        alpha amount of the block
+     */
     @Override
     public void render(TileEntityEnchanter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);

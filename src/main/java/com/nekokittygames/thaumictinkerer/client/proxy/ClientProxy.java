@@ -18,7 +18,14 @@ import thaumcraft.common.blocks.misc.BlockNitor;
 
 import static com.nekokittygames.thaumictinkerer.ThaumicTinkerer.instance;
 
+/**
+ * Client side proxy
+ */
 public class ClientProxy implements ITTProxy {
+
+    /**
+     * register any renderers or shaders needed on client side
+     */
     @Override
     public void registerRenderers() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFunnel.class, new TileEntityFunnelRenderer());
@@ -31,16 +38,32 @@ public class ClientProxy implements ITTProxy {
         MultiBlockPreviewRendering.registerRenderer(BlockNitor.class, new NitorRenderer());
     }
 
+    /**
+     * initialization phase of the mod
+     *
+     * @param event initialization event
+     */
     @Override
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiProxy());
     }
 
+    /**
+     * Pre-Initialization phase of the mod
+     *
+     * @param event pre-initialization event
+     */
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         ClientCommandHandler.instance.registerCommand(new CommandThaumicTinkererClient());
     }
 
+    /**
+     * Localize a string
+     * @param unlocalized unlocalised string
+     * @param args arguments to the localisation
+     * @return the string fully localised to current locale
+     */
     @Override
     public String localize(String unlocalized, Object... args) {
         return I18n.format(unlocalized, args);

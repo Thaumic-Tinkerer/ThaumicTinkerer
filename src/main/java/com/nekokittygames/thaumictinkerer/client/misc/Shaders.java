@@ -21,6 +21,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Shaders helper class
+ */
 public class Shaders {
 
     private static final int VERT = ARBVertexShader.GL_VERTEX_SHADER_ARB;
@@ -31,10 +34,18 @@ public class Shaders {
     private static int change_alpha = 0;
 
 
+    /**
+     * Gets the Shader id for the shader that changes the alpha value
+     *
+     * @return shader id
+     */
     public static int getChangeAlphaShader() {
         return change_alpha;
     }
 
+    /**
+     * Initialized shaders, deleting any previously loaded if called again
+     */
     public static void initShaders() {
         if (Minecraft.getMinecraft().getResourceManager() instanceof SimpleReloadableResourceManager) {
             ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(iResourceManager -> {
@@ -45,35 +56,55 @@ public class Shaders {
         }
     }
 
+    /**
+     * loads shaders from disk if enabled
+     */
     private static void loadShaders() {
-        if (!enableShaders())
+        if (areShadersDisabled())
             return;
 
         change_alpha = createProgram(LibClientResources.Shaders.CHANGE_ALPHA_VERT, LibClientResources.Shaders.CHANGE_ALPHA_FRAG);
-
 
         ThaumicTinkerer.logger.info("Looks like we can shade with the best of them!");
 
 
     }
 
-    public static void deleteProgram(int program) {
+    /**
+     * deletes a shader
+     *
+     * @param program shader id of the shader to delete
+     */
+    private static void deleteProgram(int program) {
         if (program != 0)
             ARBShaderObjects.glDeleteObjectARB(program);
     }
 
+    /**
+     * releases the current shader
+     */
     public static void releaseShader() {
         if (lighting)
             GlStateManager.enableLighting();
         useShader(0);
     }
 
+    /**
+     * helper function to use a shader
+     *
+     * @param shaderId shader Id to use
+     */
     private static void useShader(int shaderId) {
         useShader(shaderId, null);
     }
 
+    /**
+     * start a shader to be in use
+     * @param shaderId shader id to use
+     * @param callback callback function to obtain arguments for shader
+     */
     public static void useShader(int shaderId, Consumer<Integer> callback) {
-        if (!enableShaders())
+        if (areShadersDisabled())
             return;
         lighting = GL11.glGetBoolean(GL11.GL_LIGHTING);
         GlStateManager.disableLighting();
@@ -84,20 +115,27 @@ public class Shaders {
         }
     }
 
-    private static int createProgram(String vert, String frag) {
+    /**
+     * Creates the shader program from the two seperate shaders
+     *
+     * @param vertexFilename   vertex shader filename
+     * @param fragmentFilename fragment shader filename
+     * @return shader program id
+     */
+    private static int createProgram(String vertexFilename, String fragmentFilename) {
         int vertId = 0;
         int fragId = 0;
         int program;
-        if (vert != null)
-            vertId = createShader(vert, VERT);
-        if (frag != null)
-            fragId = createShader(frag, FRAG);
+        if (vertexFilename != null)
+            vertId = createShader(vertexFilename, VERT);
+        if (fragmentFilename != null)
+            fragId = createShader(fragmentFilename, FRAG);
         program = ARBShaderObjects.glCreateProgramObjectARB();
         if (program == 0)
             return 0;
-        if (vert != null)
+        if (vertexFilename != null)
             ARBShaderObjects.glAttachObjectARB(program, vertId);
-        if (frag != null)
+        if (fragmentFilename != null)
             ARBShaderObjects.glAttachObjectARB(program, fragId);
         ARBShaderObjects.glLinkProgramARB(program);
         if (ARBShaderObjects.glGetObjectParameteriARB(program, ARBShaderObjects.GL_OBJECT_LINK_STATUS_ARB) == GL11.GL_FALSE) {
@@ -115,6 +153,12 @@ public class Shaders {
         return program;
     }
 
+    /**
+     * Creates a shader from a filename
+     * @param fileName filename to load
+     * @param type type of shader to load
+     * @return shader Id
+     */
     private static int createShader(String fileName, int type) {
         int shaderId = 0;
         try {
@@ -137,6 +181,12 @@ public class Shaders {
         }
     }
 
+    /**
+     * helper function to read a file into a string
+     * @param filename filename to read
+     * @return string containing file contents
+     * @throws Exception if file is unreadable
+     */
     private static String readFileAsString(String filename) throws Exception {
         InputStream in = Shader.class.getResourceAsStream(filename);
 
@@ -148,14 +198,23 @@ public class Shaders {
         }
     }
 
-    private static boolean enableShaders() {
+    /**
+     * are shaders disabled
+     *
+     * @return <c>true</c> if the shaders are disabled, and are in config
+     */
+    private static boolean areShadersDisabled() {
         if (checkedShader)
-            return canShader;
+            return !canShader;
         checkedShader = true;
         canShader = OpenGlHelper.areShadersSupported() && TTConfig.ShadersEnabled && !hasConflictingMods();
-        return canShader;
+        return !canShader;
     }
 
+    /**
+     * Is there any mods that would interfere with the shaders running?
+     * @return true if the mods conflict
+     */
     private static boolean hasConflictingMods() {
         return Loader.isModLoaded("optifine");
     }

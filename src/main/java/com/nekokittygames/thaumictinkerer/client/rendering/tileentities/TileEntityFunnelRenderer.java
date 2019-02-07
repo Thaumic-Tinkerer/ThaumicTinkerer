@@ -16,8 +16,22 @@ import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 import java.awt.*;
 
+/**
+ * TESR for the funnel
+ */
 public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEntityFunnel> {
 
+    /**
+     * renders the funnel
+     *
+     * @param te           tile entity
+     * @param x            xPos of the block
+     * @param y            yPos of the block
+     * @param z            zPos of the block
+     * @param partialTicks udpate ticks
+     * @param destroyStage stage of the block destruction
+     * @param alpha        alpha amount of the block
+     */
     @Override
     public void render(TileEntityFunnel te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
@@ -41,6 +55,12 @@ public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEnti
 
     }
 
+    /**
+     * Renders the TC jar inside the funnel
+     *
+     * @param amount amount of essentia inside the jar
+     * @param aspect which aspect is inside the jar
+     */
     private void renderTCJar(int amount, Aspect aspect) {
         GL11.glPushMatrix();
         GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);

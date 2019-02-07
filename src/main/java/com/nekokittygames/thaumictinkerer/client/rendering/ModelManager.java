@@ -26,9 +26,15 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Model manager helper class for loading models
+ */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class ModelManager {
-    public static final ModelManager INSTANCE = new ModelManager();
+    private static final ModelManager INSTANCE = new ModelManager();
+    /**
+     * default mapper for properties to string
+     */
     private final StateMapperBase propertyStringMapper = new StateMapperBase() {
         @Override
         protected ModelResourceLocation getModelResourceLocation(@NotNull final IBlockState state) {
@@ -40,8 +46,20 @@ public class ModelManager {
      */
     private final Set<Item> itemsRegistered = new HashSet<>();
 
+    /**
+     * Empty constructor
+     */
     private ModelManager() {
 
+    }
+
+    /**
+     * Gets the ModelManager instance
+     *
+     * @return the current instance
+     */
+    public static ModelManager getInstance() {
+        return INSTANCE;
     }
 
     /**
@@ -56,6 +74,9 @@ public class ModelManager {
         INSTANCE.registerItemModels();
     }
 
+    /**
+     * registers the needed block models
+     */
     private void registerBlockModels() {
 
         //registerBlockItemModel(ModBlocks.funnel.getDefaultState().withProperty(BlockFunnel.JAR, false));
@@ -64,6 +85,11 @@ public class ModelManager {
 
     }
 
+    /**
+     * register a paticular block
+     *
+     * @param state state of the block
+     */
     private void registerBlockItemModel(IBlockState state) {
         final Block block = state.getBlock();
         final Item item = Item.getItemFromBlock(block);
@@ -75,12 +101,22 @@ public class ModelManager {
         }
     }
 
+    /**
+     * registers items
+     */
     private void registerItemModels() {
 
         ModItems.RegistrationHandler.ITEMS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
     }
 
 
+    /**
+     * register item by variant
+     * @param item item object
+     * @param variantName name of the variant
+     * @param values varients
+     * @param <T> Type of varient
+     */
     private <T extends IVariant> void registerVariantItemModels(final Item item, final String variantName, final T[] values) {
         for (final T value : values) {
 
