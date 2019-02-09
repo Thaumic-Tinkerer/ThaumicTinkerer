@@ -15,6 +15,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
+import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 import thaumcraft.common.tiles.essentia.TileJarFillableVoid;
@@ -49,7 +50,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     public boolean isItemValidForSlot(int index, ItemStack stack) {
         Item item = stack.getItem();
-        return item instanceof BlockJarItem;
+        return item instanceof IEssentiaContainerItem;
     }
 
     public int getSpeed() {
@@ -109,7 +110,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
     public void update() {
         // todo: dont need max capacity, just keep trying to add until it fails
         if (inventory.getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0 && !world.isRemote) {
-            BlockJarItem item = (BlockJarItem) inventory.getStackInSlot(0).getItem();
+            IEssentiaContainerItem item = (IEssentiaContainerItem) inventory.getStackInSlot(0).getItem();
             AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
             if (aspectList != null && aspectList.size() == 1) {
                 Aspect aspect = aspectList.getAspects()[0];
