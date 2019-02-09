@@ -1,6 +1,5 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
-import com.nekokittygames.thaumictinkerer.api.IFillableJar;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +23,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspectContainer, ITickable {
+
+
+    private int speed = 1;
 
     private ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
@@ -50,6 +52,13 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
         return item instanceof BlockJarItem;
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
     public ItemStackHandler getInventory() {
         return inventory;
     }
@@ -111,13 +120,11 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
                         TileJarFillable jar = (TileJarFillable) hoppered;
                         boolean voidJar = jar instanceof TileJarFillableVoid;
                         AspectList JarAspects = jar.getAspects();
-                        int maxAmount = 250;
-                        if (jar instanceof IFillableJar) {
-                            maxAmount = ((IFillableJar) jar).getMaxCapacity(aspect);
-                        }
-                        if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || JarAspects.getAspects()[0] == aspect && (JarAspects.getAmount(JarAspects.getAspects()[0]) < maxAmount || voidJar)) {
-                            jar.addToContainer(aspect, 1);
-                            item.setAspects(inventory.getStackInSlot(0), aspectList.remove(aspect, 1));
+
+                        if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || JarAspects.getAspects()[0] == aspect) {
+                            int remain = jar.addToContainer(aspect, speed);
+                            int amt = speed - remain;
+                            item.setAspects(inventory.getStackInSlot(0), aspectList.remove(aspect, amt));
 
                         }
                     }

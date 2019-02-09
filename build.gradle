@@ -111,10 +111,13 @@ dependencies {
     deobfCompile "com.github.azanor:Baubles:${baubles_version}"
     deobfCompile "opencomputers:OpenComputers:MC${mc_version}:${open_computers_version}"//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
     deobfCompile "actually-additions:ActuallyAdditions:${mc_version}:${actually_additions_version}"
-    deobfCompile "hammer-core:HammerCore:1.12.2:2.0.2.3"
+    deobfCompile "hammer-core:HammerCore:1.12.2:2.0.4.2"
     
     deobfCompile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
+    deobfCompile "thaumic-additions:ThaumicAdditions:1.12.2:11r"
     deobfCompile "cofh:RedstoneFlux:1.12-${redstone_flux_version}:deobf"
+
+    deobfCompile "thaumic-energistics:thaumicenergistics:2.1.1"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-${probe_version}"//1.1x-1.4.4-55

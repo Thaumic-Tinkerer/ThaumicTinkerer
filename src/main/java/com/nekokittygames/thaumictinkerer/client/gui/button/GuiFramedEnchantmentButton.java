@@ -15,15 +15,15 @@ public class GuiFramedEnchantmentButton extends GuiEnchantmentButton {
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
-        if (dontRender() || parent.enchanter.getEnchantments().isEmpty() || parent.enchanter.getLevels().isEmpty())
+        if (dontRender() || parent.getEnchanter().getEnchantments().isEmpty() || parent.getEnchanter().getLevels().isEmpty())
             return;
 
         mc.getTextureManager().bindTexture(LibClientResources.GUI_ENCHANTER);
         drawTexturedModalRect(x - 4, y - 4, 176, 0, 24, 24);
 
-        int index = parent.enchanter.getEnchantments().indexOf(Enchantment.getEnchantmentID(enchant));
+        int index = parent.getEnchanter().getEnchantments().indexOf(Enchantment.getEnchantmentID(enchant));
         if (index != -1) {
-            int level = parent.enchanter.getLevels().get(index);
+            int level = parent.getEnchanter().getLevels().get(index);
             Minecraft.getMinecraft().fontRenderer.drawString(ThaumicTinkerer.proxy.localize("enchantment.level." + level), x + 26, y + 8, 0xFFFFFF, true);
         }
         super.drawButton(mc, mouseX, mouseY, partialTicks);
