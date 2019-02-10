@@ -8,6 +8,8 @@ import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
+import com.zeitheron.hammercore.utils.HammerCoreUtils;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -28,6 +30,15 @@ import java.net.URISyntaxException;
 public class ThaumicTinkerer {
     public static Logger logger;
 
+    private static CreativeTabs tab;
+
+    public static CreativeTabs getTab() {
+        return tab;
+    }
+
+    public static void setTab(CreativeTabs tab) {
+        ThaumicTinkerer.tab = tab;
+    }
     @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy", clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
     public static ITTProxy proxy;
 
@@ -35,9 +46,9 @@ public class ThaumicTinkerer {
     @Mod.Instance(LibMisc.MOD_ID)
     public static ThaumicTinkerer instance;
 
-
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        tab = HammerCoreUtils.createDynamicCreativeTab("thaumictinkerer", 40);
         logger = event.getModLog();
 
         proxy.preInit(event);

@@ -1,6 +1,5 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
-import com.nekokittygames.thaumictinkerer.common.items.baubles.ItemCleaningTalisman;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -19,7 +18,6 @@ import static com.nekokittygames.thaumictinkerer.common.utils.MiscUtils.nullz;
 public class ModItems {
 
     public static final ItemShareBook share_book = nullz();
-    public static final ItemCleaningTalisman cleaning_talisman = nullz();
     public static final ItemBlackQuartz black_quartz = nullz();
     public static final ItemConnector connector = nullz();
     public static final ItemSoulMould soul_mould = nullz();
@@ -39,7 +37,6 @@ public class ModItems {
         public static void registerItems(final RegistryEvent.Register<Item> event) {
             final Item[] items = {
                     new ItemShareBook(),
-                    new ItemCleaningTalisman(),
                     new ItemBlackQuartz(),
                     new ItemConnector(),
                     new ItemSoulMould(),

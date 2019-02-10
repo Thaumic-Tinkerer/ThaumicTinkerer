@@ -1,8 +1,8 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.misc.CreativeTabThaumicTinkerer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -26,7 +26,7 @@ public class TTBlock extends Block {
         baseName = name;
         setBlockName(this, name);
         if (isInCreativeTab())
-            setCreativeTab(CreativeTabThaumicTinkerer.getInstance());
+            setCreativeTab(ThaumicTinkerer.getTab());
     }
 
     public TTBlock(String name, Material materialIn) {

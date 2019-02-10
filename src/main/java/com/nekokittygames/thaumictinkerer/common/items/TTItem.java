@@ -1,9 +1,9 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.misc.CreativeTabThaumicTinkerer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -25,7 +25,7 @@ public abstract class TTItem extends Item {
         baseName = itemName;
         setItemName(this, itemName);
         if (isInCreativeTab())
-            setCreativeTab(CreativeTabThaumicTinkerer.getInstance());
+            setCreativeTab(ThaumicTinkerer.getTab());
     }
 
     public static void setItemName(@NotNull TTItem item, String itemName) {
