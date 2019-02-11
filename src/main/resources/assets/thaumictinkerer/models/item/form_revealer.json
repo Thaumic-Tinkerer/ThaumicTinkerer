@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thaumictinkerer:items/connector"
+    "layer0": "thaumictinkerer:items/form_revealer"
   }
 }

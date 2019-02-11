@@ -31,6 +31,34 @@
           ]
         }
       ]
+    },
+    {
+      "key": "THAUMIC_MAGNETS",
+      "name": "thaumictinkerer.research.magnetd.title",
+      "icons": [
+        "thaumictinkerer:textures/blocks/magnet/item/back_front_pull.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "FIRSTSTEPS"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        3,
+        4
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.magnet.0",
+          "recipes": [
+            "thaumictinkerer:transvector_interface",
+            "thaumictinkerer:connector"
+          ]
+        }
+      ]
     }
   ]
 }
