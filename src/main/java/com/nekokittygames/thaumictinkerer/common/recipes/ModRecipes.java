@@ -29,6 +29,6 @@ public class ModRecipes {
     }
 
     private static void initializeInfusionRecipes() {
-
+        // Empty for now
     }
 }

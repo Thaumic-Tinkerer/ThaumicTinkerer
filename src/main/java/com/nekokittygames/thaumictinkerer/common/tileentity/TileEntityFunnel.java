@@ -19,7 +19,6 @@ import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
-import thaumcraft.common.tiles.essentia.TileJarFillableVoid;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -120,7 +119,6 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
                     TileEntity hoppered = getHopperFacing(tile.getPos(), tile.getBlockMetadata());
                     if (hoppered instanceof TileJarFillable) {
                         TileJarFillable jar = (TileJarFillable) hoppered;
-                        boolean voidJar = jar instanceof TileJarFillableVoid;
                         AspectList JarAspects = jar.getAspects();
 
                         if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || Objects.requireNonNull(JarAspects).getAspects()[0] == aspect) {

@@ -33,6 +33,13 @@ public class ThaumicTinkerer {
 
     private static CreativeTabs tab;
 
+    @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy", clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
+    public static ITTProxy proxy;
+
+
+    @Mod.Instance(LibMisc.MOD_ID)
+    public static ThaumicTinkerer instance;
+
     public static CreativeTabs getTab() {
         return tab;
     }
@@ -40,12 +47,6 @@ public class ThaumicTinkerer {
     public static void setTab(CreativeTabs tab) {
         ThaumicTinkerer.tab = tab;
     }
-    @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy", clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
-    public static ITTProxy proxy;
-
-
-    @Mod.Instance(LibMisc.MOD_ID)
-    public static ThaumicTinkerer instance;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
