@@ -3,12 +3,13 @@ package com.nekokittygames.thaumictinkerer;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
+import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
+import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTInkererCreativeTab;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
-import com.zeitheron.hammercore.utils.HammerCoreUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -48,7 +49,7 @@ public class ThaumicTinkerer {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        tab = HammerCoreUtils.createDynamicCreativeTab("thaumictinkerer", 40);
+        tab = new ThaumicTInkererCreativeTab();
         logger = event.getModLog();
 
         proxy.preInit(event);
@@ -76,7 +77,9 @@ public class ThaumicTinkerer {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));
         proxy.registerRenderers();
-        FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "blocks/dark_quartz_block"), 8760709);
+        FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/blocks/dark_quartz_block.png"), 8760709);
+        logger.info("Initializing Telekenetic powers");
+        FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/blocks/repairer.png"), 8760708);
 
     }
 }

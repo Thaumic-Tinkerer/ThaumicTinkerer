@@ -27,6 +27,10 @@ tile.thaumictinkerer:osmotic_enchanter.name=Osmotic Enchanter
 tile.thaumictinkerer:enchantment_pillar.name=Enchanting Pillar
 tile.thaumictinkerer:black_quartz_block.name=Black Quartz Block
 tile.thaumictinkerer:example.name=Placeholder Block
+
+// Foci
+thaumictinkerer.TELEKENESIS.name=Telekenesis
+
 // Config
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses

@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
@@ -22,6 +23,7 @@ import thaumcraft.common.tiles.essentia.TileJarFillableVoid;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspectContainer, ITickable {
 
@@ -82,7 +84,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+    public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
         if (facing != EnumFacing.DOWN)
             return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
         else
@@ -92,7 +94,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Nullable
     @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+    public <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
         if (facing != EnumFacing.DOWN && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return (T) inventory;
         } else {
@@ -108,8 +110,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public void update() {
-        // todo: dont need max capacity, just keep trying to add until it fails
-        if (inventory.getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0 && !world.isRemote) {
+        if ((inventory.getStackInSlot(0) != ItemStack.EMPTY) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null) && (((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) && !world.isRemote) {
             IEssentiaContainerItem item = (IEssentiaContainerItem) inventory.getStackInSlot(0).getItem();
             AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
             if (aspectList != null && aspectList.size() == 1) {
@@ -122,7 +123,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
                         boolean voidJar = jar instanceof TileJarFillableVoid;
                         AspectList JarAspects = jar.getAspects();
 
-                        if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || JarAspects.getAspects()[0] == aspect) {
+                        if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || Objects.requireNonNull(JarAspects).getAspects()[0] == aspect) {
                             int remain = jar.addToContainer(aspect, speed);
                             int amt = speed - remain;
                             item.setAspects(inventory.getStackInSlot(0), aspectList.remove(aspect, amt));
