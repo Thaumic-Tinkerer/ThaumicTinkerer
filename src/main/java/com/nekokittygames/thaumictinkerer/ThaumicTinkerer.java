@@ -75,8 +75,9 @@ public class ThaumicTinkerer {
         ModRecipes.initializeRecipes();
         ResearchCategories.registerCategory("THAUMIC_TINKERER", "FIRSTSTEPS", new AspectList(), new ResourceLocation("thaumictinkerer", "textures/items/share_book.png"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"), new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc.json"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles.json"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines.json"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/foci.json"));
         proxy.registerRenderers();
         FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/blocks/dark_quartz_block.png"), 8760709);
         logger.info("Initializing Telekenetic powers");

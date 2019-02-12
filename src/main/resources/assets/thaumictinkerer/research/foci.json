@@ -1,0 +1,34 @@
+{
+  "entries": [
+    {
+      "key": "TELEKENESIS",
+      "name": "research.VISBATTERY.title",
+      "icons": [
+        "thaumcraft:vis_battery"
+      ],
+      "category": "AUROMANCY",
+      "location": [
+        -5,
+        0
+      ],
+      "parents": [
+        "BASEAUROMANCY"
+      ],
+      "stages": [
+        {
+          "text": "research.TELEKENESIS.0",
+          "required_knowledge": [
+            "OBSERVATION;AUROMANCY;1",
+            "OBSERVATION;ARTIFICE;1"
+          ]
+        },
+        {
+          "text": "research.TELEKENESIS.1",
+          "recipes": [
+            "thaumcraft:VisBattery"
+          ]
+        }
+      ]
+    }
+  ]
+}
