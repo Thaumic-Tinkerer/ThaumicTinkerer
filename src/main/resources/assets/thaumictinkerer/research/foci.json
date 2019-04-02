@@ -2,31 +2,28 @@
   "entries": [
     {
       "key": "TELEKENESIS",
-      "name": "research.VISBATTERY.title",
+      "name": "thaumictinkerer.research.telekenesis.title",
       "icons": [
         "thaumcraft:vis_battery"
       ],
-      "category": "AUROMANCY",
+      "category": "THAUMIC_TINKERER",
       "location": [
         -5,
         0
       ],
       "parents": [
-        "BASEAUROMANCY"
+        "FIRSTSTEPS"
       ],
       "stages": [
         {
-          "text": "research.TELEKENESIS.0",
+          "text": "thaumictinkerer.research.TELEKENESIS.0",
           "required_knowledge": [
             "OBSERVATION;AUROMANCY;1",
             "OBSERVATION;ARTIFICE;1"
           ]
         },
         {
-          "text": "research.TELEKENESIS.1",
-          "recipes": [
-            "thaumcraft:VisBattery"
-          ]
+          "text": "thaumictinkerer.research.TELEKENESIS.1"
         }
       ]
     }
