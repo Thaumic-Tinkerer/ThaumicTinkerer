@@ -3,8 +3,8 @@ package com.nekokittygames.thaumictinkerer.common.misc;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.Objects;
 
 public class ThaumicTInkererCreativeTab extends CreativeTabs {
@@ -12,7 +12,7 @@ public class ThaumicTInkererCreativeTab extends CreativeTabs {
         super("thaumictinkerer");
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public ItemStack getTabIconItem() {
         return new ItemStack(Objects.requireNonNull(ModBlocks.repairer));

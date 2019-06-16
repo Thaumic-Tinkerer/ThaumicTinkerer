@@ -3,7 +3,8 @@ package com.nekokittygames.thaumictinkerer.client.gui.button;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * Gui button that uses a preset texture rather then inbuilt
@@ -64,7 +65,7 @@ public class GuiTexturedButton extends GuiButton {
      * @param partialTicks how many ticks
      */
     @Override
-    public void drawButton(@NotNull Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+    public void drawButton(@Nonnull Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         mc.renderEngine.bindTexture(textureLocation);
         int y = buttonEnabled ? 13 : 0;
         drawTexturedModalRect(x, this.y, 176, y, width, height);

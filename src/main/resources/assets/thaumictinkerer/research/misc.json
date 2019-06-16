@@ -10,11 +10,11 @@
       "parents": [
         "FIRSTSTEPS"
       ],
-      "siblings": [],
       "meta": [
-        "ROUND",
-        "AUTOUNLOCK"
+        "ROUND"
       ],
+      "siblings": [],
+
       "location": [
         0,
         -1
@@ -28,6 +28,9 @@
           "required_craft": [
             "thaumcraft:arcane_workbench"
           ]
+        },
+        {
+          "text": "thaumictinkerer.research.share_tome.1"
         }
       ]
     },

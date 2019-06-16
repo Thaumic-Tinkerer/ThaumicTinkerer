@@ -12,8 +12,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
@@ -28,7 +28,7 @@ public abstract class TTItem extends Item {
             setCreativeTab(ThaumicTinkerer.getTab());
     }
 
-    public static void setItemName(@NotNull TTItem item, String itemName) {
+    public static void setItemName(@Nonnull TTItem item, String itemName) {
         item.setRegistryName(LibMisc.MOD_ID, itemName);
         final ResourceLocation regName = Objects.requireNonNull(item.getRegistryName());
         item.setUnlocalizedName(regName.toString());

@@ -6,8 +6,8 @@ import com.google.gson.JsonObject;
 import net.minecraft.client.util.JsonException;
 import net.minecraft.util.JsonUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -42,7 +42,7 @@ public class MultiblockLayer implements Iterable<MultiblockBlock> {
         return ToStringBuilder.reflectionToString(this);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Iterator<MultiblockBlock> iterator() {
         return blocks.iterator();

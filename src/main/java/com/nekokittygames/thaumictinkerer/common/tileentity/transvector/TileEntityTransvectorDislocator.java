@@ -10,9 +10,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import thaumcraft.common.lib.utils.BlockUtils;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class TileEntityTransvectorDislocator extends TileEntityTransvector {
@@ -126,7 +126,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
     }
 
     @Override
-    public boolean shouldRefresh(World world, BlockPos pos, @NotNull IBlockState oldState, @NotNull IBlockState newSate) {
+    public boolean shouldRefresh(World world, BlockPos pos, @Nonnull IBlockState oldState, @Nonnull IBlockState newSate) {
         if (oldState.getBlock() == newSate.getBlock())
             return false;
         else

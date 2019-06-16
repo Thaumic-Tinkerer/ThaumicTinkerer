@@ -3,11 +3,13 @@ package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityFunnel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.blocks.BlocksTC;
@@ -35,6 +37,7 @@ public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEnti
     @Override
     public void render(TileEntityFunnel te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
+        IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(te.getWorld().getBlockState(new BlockPos(x, y, z)));
         if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)) != null && ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).size() > 0) {
             GL11.glPushMatrix();
             GL11.glDisable(2884);

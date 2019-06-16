@@ -12,9 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.casters.IInteractWithCaster;
 
+import javax.annotation.Nonnull;
 import java.util.Objects;
 
 import static net.minecraft.block.BlockPistonBase.getFacing;
@@ -29,7 +29,7 @@ public abstract class BlockMagnet<T extends TileEntityMagnet> extends TTTileEnti
     }
 
 
-    @NotNull
+    @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, POLE, FACING);
     }

@@ -4,7 +4,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -19,7 +18,6 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
         markDirty();
     }
 
-    @NotNull
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         writeExtraNBT(compound);
@@ -45,7 +43,6 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
             redstonePowered = false;
     }
 
-    @NotNull
     @Override
     public NBTTagCompound getUpdateTag() {
         NBTTagCompound cmp = super.getUpdateTag();
@@ -54,7 +51,7 @@ public abstract class TileEntityThaumicTinkerer extends TileEntity {
     }
 
     @Override
-    public void handleUpdateTag(@NotNull NBTTagCompound tag) {
+    public void handleUpdateTag(NBTTagCompound tag) {
         super.handleUpdateTag(tag);
         readExtraNBT(tag);
     }

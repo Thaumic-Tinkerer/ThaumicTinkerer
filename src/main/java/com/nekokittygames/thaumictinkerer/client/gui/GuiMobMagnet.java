@@ -13,9 +13,9 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,9 +67,9 @@ public class GuiMobMagnet extends GuiContainer {
      * @param <T>    type of button to add
      * @return added button
      */
-    @NotNull
+    @Nonnull
     @Override
-    protected <T extends GuiButton> T addButton(@NotNull T button) {
+    protected <T extends GuiButton> T addButton(@Nonnull T button) {
         if (button instanceof GuiTexturedButton) {
             buttonListMM.add((GuiTexturedButton) button);
 

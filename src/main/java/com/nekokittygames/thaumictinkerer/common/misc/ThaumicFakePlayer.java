@@ -9,7 +9,6 @@ import net.minecraft.tileentity.TileEntityCommandBlock;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayer;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -77,7 +76,7 @@ public class ThaumicFakePlayer extends FakePlayer {
         // Empty
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public WorldServer getServerWorld() {
         return originalWorld;

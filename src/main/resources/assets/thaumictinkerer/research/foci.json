@@ -2,11 +2,11 @@
   "entries": [
     {
       "key": "TELEKENESIS",
-      "name": "research.VISBATTERY.title",
+      "name": "thaumictinkerer.research.TELEKENESIS.title",
       "icons": [
-        "thaumcraft:vis_battery"
+        "thaumictinkerer:textures/blocks/interface.png"
       ],
-      "category": "AUROMANCY",
+      "category": "THAUMIC_TINKERER",
       "location": [
         -5,
         0
@@ -18,15 +18,37 @@
         {
           "text": "research.TELEKENESIS.0",
           "required_knowledge": [
-            "OBSERVATION;AUROMANCY;1",
-            "OBSERVATION;ARTIFICE;1"
+            "THEORY;AUROMANCY;1"
           ]
         },
         {
-          "text": "research.TELEKENESIS.1",
-          "recipes": [
-            "thaumcraft:VisBattery"
+          "text": "research.TELEKENESIS.1"
+        }
+      ]
+    },
+    {
+      "key": "DISLOCATE",
+      "name": "thaumictinkerer.research.DISLOCATE.title",
+      "icons": [
+        "thaumictinkerer:textures/blocks/interface.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "location": [
+        -5,
+        3
+      ],
+      "parents": [
+        "BASEAUROMANCY"
+      ],
+      "stages": [
+        {
+          "text": "research.DISLOCATE.0",
+          "required_knowledge": [
+            "THEORY;AUROMANCY;1"
           ]
+        },
+        {
+          "text": "research.DISLOCATE.1"
         }
       ]
     }

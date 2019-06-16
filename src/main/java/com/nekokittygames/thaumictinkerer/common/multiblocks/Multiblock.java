@@ -12,8 +12,8 @@ import net.minecraft.client.util.JsonException;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -154,7 +154,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             bottomY = yLevel;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Iterator<MultiblockLayer> iterator() {
         return new Iterator<MultiblockLayer>() {

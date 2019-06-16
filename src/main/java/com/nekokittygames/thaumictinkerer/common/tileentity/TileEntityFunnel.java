@@ -12,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
@@ -83,7 +82,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
 
     @Override
-    public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
         if (facing != EnumFacing.DOWN)
             return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
         else
@@ -93,7 +92,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Nullable
     @Override
-    public <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
         if (facing != EnumFacing.DOWN && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return (T) inventory;
         } else {
@@ -109,7 +108,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public void update() {
-        if ((inventory.getStackInSlot(0) != ItemStack.EMPTY) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null) && (((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) && !world.isRemote) {
+        if (inventory != null && (inventory.getStackInSlot(0) != ItemStack.EMPTY) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null) && (((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) && !world.isRemote) {
             IEssentiaContainerItem item = (IEssentiaContainerItem) inventory.getStackInSlot(0).getItem();
             AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
             if (aspectList != null && aspectList.size() == 1) {

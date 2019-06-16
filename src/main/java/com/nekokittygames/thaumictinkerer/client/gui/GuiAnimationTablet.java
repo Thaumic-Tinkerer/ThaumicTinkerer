@@ -12,8 +12,8 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationT
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,9 +108,9 @@ public class GuiAnimationTablet extends GuiContainer {
      * @param <T> Type of button to add
      * @return returns the button
      */
-    @NotNull
+    @Nonnull
     @Override
-    protected <T extends GuiButton> T addButton(@NotNull T button) {
+    protected <T extends GuiButton> T addButton(@Nonnull T button) {
         if (button instanceof GuiTexturedButton) {
             buttonListAT.add((GuiTexturedButton) button);
 

@@ -2,12 +2,14 @@ package com.nekokittygames.thaumictinkerer.common.utils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
+
 
 public class ItemNBTHelper {
 
 
-    @NotNull
+    @Nonnull
     public static NBTTagCompound getItemTag(ItemStack item) {
         if (item.getTagCompound() == null) {
             item.setTagCompound(new NBTTagCompound());

@@ -20,8 +20,8 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class ModelManager {
      */
     private final StateMapperBase propertyStringMapper = new StateMapperBase() {
         @Override
-        protected ModelResourceLocation getModelResourceLocation(@NotNull final IBlockState state) {
+        protected ModelResourceLocation getModelResourceLocation(@Nonnull final IBlockState state) {
             return new ModelResourceLocation("minecraft:air");
         }
     };
