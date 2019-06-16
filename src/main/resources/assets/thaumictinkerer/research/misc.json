@@ -28,9 +28,6 @@
           "required_craft": [
             "thaumcraft:arcane_workbench"
           ]
-        },
-        {
-          "text": "thaumictinkerer.research.share_tome.1"
         }
       ]
     },

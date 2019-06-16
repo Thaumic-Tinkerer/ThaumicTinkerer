@@ -5,10 +5,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.util.JsonException;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,10 +21,10 @@ public class MultiblockBlockType {
 
     MultiblockBlockType(JsonObject object) throws Exception {
         if (!object.has("name"))
-            throw new JsonException("Multiblock json malformed, missing name for object " + object.toString());
+            throw new IOException("Multiblock json malformed, missing name for object " + object.toString());
         blockName = object.get("name").getAsString();
         if (!object.has("block"))
-            throw new JsonException("Multiblock json malformed, missing block array for object " + object.toString());
+            throw new IOException("Multiblock json malformed, missing block array for object " + object.toString());
         JsonElement blocksObject = object.get("block");
         if (blocksObject.isJsonArray()) {
             JsonArray blocks = (JsonArray) blocksObject;
@@ -41,7 +41,7 @@ public class MultiblockBlockType {
         if (blocksObject.isJsonObject()) {
             JsonObject blockObj = (JsonObject) blocksObject;
             if (!blockObj.has("blockType"))
-                throw new JsonException("Multiblock json malformed, missing block array for object " + blockObj.toString());
+                throw new IOException("Multiblock json malformed, missing block array for object " + blockObj.toString());
             Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(blockObj.get("blockType").getAsString()));
             int meta = 0;
             if (blockObj.has("blockMeta"))

@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonReader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.util.JsonException;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -45,15 +44,15 @@ public class Multiblock implements Iterable<MultiblockLayer> {
 
             // get Multiblock name
             if (!jsonObject.has("name"))
-                throw new JsonException("Multiblock json malformed, missing name ");
+                throw new IOException("Multiblock json malformed, missing name ");
             this.name = jsonObject.get("name").getAsString();
 
             if (!jsonObject.has("id"))
-                throw new JsonException("Multiblock json malformed, missing id");
+                throw new IOException("Multiblock json malformed, missing id");
             this.id = new ResourceLocation(jsonObject.get("id").getAsString());
 
             if (!jsonObject.has("keyBlock"))
-                throw new JsonException("Multiblock json malformed, missing keyBlock");
+                throw new IOException("Multiblock json malformed, missing keyBlock");
             Block keyBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(JsonUtils.getString(jsonObject, "keyBlock")));
             if (keyBlock instanceof BlockAir)
                 return;
@@ -63,7 +62,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             this.keyBlock = keyBlock.getStateFromMeta(meta);
 
             if (!jsonObject.has("blocks")) {
-                throw new JsonException("Multiblock json malformed, missing blocks array ");
+                throw new IOException("Multiblock json malformed, missing blocks array ");
             }
             JsonElement blocksElement = jsonObject.get("blocks");
             JsonArray blocksArray = blocksElement.getAsJsonArray();
@@ -73,7 +72,7 @@ public class Multiblock implements Iterable<MultiblockLayer> {
             }
 
             if (!jsonObject.has("layers")) {
-                throw new JsonException("Multiblock json malformed, missing layers array ");
+                throw new IOException("Multiblock json malformed, missing layers array ");
             }
             JsonElement layersElement = jsonObject.get("layers");
             JsonArray layersArray = layersElement.getAsJsonArray();
