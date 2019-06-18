@@ -65,6 +65,6 @@ public class FocusEffectTelekenesis extends FocusEffect {
 
     @Override
     public String getResearch() {
-        return "TELEKENESIS";
+        return "TT_TELEKENESIS";
     }
 }

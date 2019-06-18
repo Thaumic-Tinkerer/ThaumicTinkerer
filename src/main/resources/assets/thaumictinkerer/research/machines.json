@@ -1,7 +1,7 @@
 {
   "entries": [
     {
-      "key": "TRANSVECTOR_INTERFACE",
+      "key": "TT_TRANSVECTOR_INTERFACE",
       "name": "thaumictinkerer.research.transvector_interface.title",
       "icons": [
         "thaumictinkerer:textures/blocks/interface.png"
@@ -32,8 +32,8 @@
       ]
     },
     {
-      "key": "THAUMIC_MAGNETS",
-      "name": "thaumictinkerer.research.magnetd.title",
+      "key": "TT_THAUMIC_MAGNETS",
+      "name": "thaumictinkerer.research.magnet.title",
       "icons": [
         "thaumictinkerer:textures/blocks/magnet/item/back_front_pull.png"
       ],
@@ -55,6 +55,58 @@
           "recipes": [
             "thaumictinkerer:transvector_interface",
             "thaumictinkerer:connector"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "TT_ESSENTIA_FUNNEL",
+      "name": "thaumictinkerer.research.funnel.title",
+      "icons": [
+        "thaumictinkerer:textures/blocks/funnel/funnel_top.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "WARDEDJARS"
+      ],
+      "siblings": [],
+      "meta": [
+      ],
+      "location": [
+        3,
+        1
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.funnel.0",
+          "recipes": [
+            "thaumictinkerer:funnel"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "TT_ENCHANTER",
+      "name": "thaumictinkerer.research.enchanter.title",
+      "icons": [
+        "thaumictinkerer:textures/blocks/enchanter/enchanter_top.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "WARDEDJARS"
+      ],
+      "siblings": [],
+      "meta": [
+      ],
+      "location": [
+        3,
+        1
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.enchanter.0",
+          "recipes": [
+            "thaumictinkerer:enchanter"
           ]
         }
       ]

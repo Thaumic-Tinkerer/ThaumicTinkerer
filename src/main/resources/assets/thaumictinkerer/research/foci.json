@@ -1,7 +1,7 @@
 {
   "entries": [
     {
-      "key": "TELEKENESIS",
+      "key": "TT_TELEKENESIS",
       "name": "thaumictinkerer.research.TELEKENESIS.title",
       "icons": [
         "thaumictinkerer:textures/blocks/interface.png"
@@ -27,7 +27,7 @@
       ]
     },
     {
-      "key": "DISLOCATE",
+      "key": "TT_DISLOCATE",
       "name": "thaumictinkerer.research.DISLOCATE.title",
       "icons": [
         "thaumictinkerer:textures/blocks/interface.png"

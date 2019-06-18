@@ -164,6 +164,6 @@ public class FocusEffectDislocate extends FocusEffect {
 
     @Override
     public String getResearch() {
-        return "DISLOCATE";
+        return "TT_DISLOCATE";
     }
 }

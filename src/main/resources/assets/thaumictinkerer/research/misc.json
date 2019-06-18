@@ -1,7 +1,7 @@
 {
   "entries": [
     {
-      "key": "SHARE_TOME",
+      "key": "TT_SHARE_TOME",
       "name": "thaumictinkerer.research.share_tome.title",
       "icons": [
         "thaumictinkerer:textures/items/share_book.png"
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "key": "BLACK_QUARTZ",
+      "key": "TT_BLACK_QUARTZ",
       "name": "thaumictinkerer.research.black_quartz.title",
       "icons": [
         "thaumictinkerer:textures/items/black_quartz.png"
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "key": "FORM_REVEALER",
+      "key": "TT_FORM_REVEALER",
       "name": "thaumictinkerer.research.form_revealer.title",
       "icons": [
         "thaumictinkerer:textures/items/form_revealer.png"
@@ -90,32 +90,6 @@
           ],
           "required_item": [
             "thaumcraft:ender_pearl"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "ESSENTIA_FUNNEL",
-      "name": "thaumictinkerer.research.funnel.title",
-      "icons": [
-        "thaumictinkerer:textures/blocks/funnel/funnel_top.png"
-      ],
-      "category": "THAUMIC_TINKERER",
-      "parents": [
-        "WARDEDJARS"
-      ],
-      "siblings": [],
-      "meta": [
-      ],
-      "location": [
-        3,
-        1
-      ],
-      "stages": [
-        {
-          "text": "thaumictinkerer.research.funnel.0",
-          "recipes": [
-            "thaumictinkerer:funnel"
           ]
         }
       ]
