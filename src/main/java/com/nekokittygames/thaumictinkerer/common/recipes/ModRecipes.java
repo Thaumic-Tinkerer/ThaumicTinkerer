@@ -10,12 +10,14 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.IThaumcraftRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
@@ -31,8 +33,13 @@ public class ModRecipes {
 
     public static void initializeRecipes() {
         initializeCraftingRecipes();
+        initializeCauldronRecipes();
         initializeArcaneRecipes();
         initializeInfusionRecipes();
+    }
+
+    private static void initializeCauldronRecipes() {
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:prismarine"),new CrucibleRecipe("TT_PRISMARINE",new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
     }
 
     private static void initializeCraftingRecipes() {

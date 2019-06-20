@@ -41,6 +41,11 @@ public class TTConfig {
     @Config.RequiresMcRestart()
     public static boolean ShadersEnabled = true;
 
+    @Config.Comment("Is the dislocation focus enabled?")
+    @Config.Name("Dislocation Focus Enabled")
+    @Config.RequiresMcRestart()
+    public static boolean DislocationFocusEnabled=true;
+
     @Config.Comment("Does the Osmotic Enchanter use the classic pillar structure")
     @Config.Name("Classic Enchanter")
     public static boolean ClassicEnchanter = false;

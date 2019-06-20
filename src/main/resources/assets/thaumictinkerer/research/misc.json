@@ -93,6 +93,36 @@
           ]
         }
       ]
+    },
+    {
+      "key": "TT_PRISMARINE",
+      "name": "thaumictinkerer.research.prismarine.title",
+      "icons": [
+        "minecraft:textures/items/prismarine_shard.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "FIRSTSTEPS"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        5,
+        4
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.prismarine.0",
+          "recipes": [
+            "thaumictinkerer:prismarine"
+          ],
+          "required_item": [
+            "minecraft:glass_pane"
+          ]
+        }
+      ]
     }
   ]
 }
