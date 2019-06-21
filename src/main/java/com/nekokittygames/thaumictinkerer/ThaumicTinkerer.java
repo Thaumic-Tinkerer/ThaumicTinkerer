@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer;
 
+import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
@@ -63,6 +65,20 @@ public class ThaumicTinkerer {
         event.registerServerCommand(new CommandRefreshMultiblocks());
         event.registerServerCommand(new CommandDumpEnchants());
 
+    }
+
+    @EventHandler
+    public void processIMC(FMLInterModComms.IMCEvent event) {
+        for(FMLInterModComms.IMCMessage message:event.getMessages()) {
+            if(message.key.equalsIgnoreCase("addDislocateBlacklist") && message.isStringMessage())
+            {
+                ThaumicTinkererAPI.getDislocationBlacklist().add(message.getStringValue());
+            }
+            if(message.key.equalsIgnoreCase("addTabletBlacklist") && message.isStringMessage())
+            {
+                ThaumicTinkererAPI.getAnimationTabletBlacklist().add(message.getStringValue());
+            }
+        }
     }
 
     @EventHandler
