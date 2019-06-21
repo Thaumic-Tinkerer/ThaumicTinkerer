@@ -2,6 +2,7 @@ package com.nekokittygames.thaumictinkerer.common.foci;
 
 import com.google.common.collect.Lists;
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
+import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
 import com.nekokittygames.thaumictinkerer.common.utils.ItemNBTHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -104,7 +105,7 @@ public class FocusEffectDislocate extends FocusEffect {
                             clearPickedBlock(focus);
 
                     }
-                } else if (!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState) && !getPackage().world.isRemote) {
+                } else if (!blockState.getBlock().isAir(blockState, getPackage().world, pos) && !BlockUtils.isPortableHoleBlackListed(blockState) && !ThaumicTinkererAPI.getDislocationBlacklist().contains(blockState.getBlock().getClass().getName()) && !getPackage().world.isRemote) {
                     storePickedBlock(blockState, tileEntity, focus);
 
                     if (BreakBlock(getPackage().world, (EntityPlayerMP) getPackage().getCaster(), pos) == EnumActionResult.FAIL)
