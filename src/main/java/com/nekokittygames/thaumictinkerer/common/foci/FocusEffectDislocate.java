@@ -176,6 +176,7 @@ public class FocusEffectDislocate extends FocusEffect {
 
             return EnumActionResult.FAIL;
         }
+        world.removeTileEntity(pos);
         world.setBlockToAir(pos);
         return EnumActionResult.SUCCESS;
     }
