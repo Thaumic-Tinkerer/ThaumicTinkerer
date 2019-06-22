@@ -56,7 +56,8 @@
           "text": "thaumictinkerer.research.magnet.0",
           "recipes": [
             "thaumictinkerer:corporeal_attactor",
-            "thaumictinkerer:kinetic_attactor"
+            "thaumictinkerer:kinetic_attactor",
+            "thaumictinkerer:soul_mould"
           ]
         }
       ]
