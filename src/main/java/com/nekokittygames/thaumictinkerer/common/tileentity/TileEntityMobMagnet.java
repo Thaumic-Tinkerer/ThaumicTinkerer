@@ -117,7 +117,7 @@ public class TileEntityMobMagnet extends TileEntityMagnet {
             if (selectedEntity != null && !(selectedEntity.equalsIgnoreCase(targetEntity)))
                 typePull = false;
         }
-        return !(entity instanceof EntityPlayer) && agePull && typePull;
+        return agePull && typePull;
     }
 
     @Override

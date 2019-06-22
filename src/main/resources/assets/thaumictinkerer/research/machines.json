@@ -40,22 +40,23 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS"
+        "FIRSTSTEPS",
+        "TT_TELEKENESIS"
       ],
       "siblings": [],
       "meta": [
         "ROUND"
       ],
       "location": [
-        3,
-        4
+        -4,
+        1
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.magnet.0",
           "recipes": [
-            "thaumictinkerer:transvector_interface",
-            "thaumictinkerer:connector"
+            "thaumictinkerer:corporeal_attactor",
+            "thaumictinkerer:kinetic_attactor"
           ]
         }
       ]
