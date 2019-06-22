@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.casters.IInteractWithCaster;
 
@@ -54,6 +55,10 @@ public abstract class BlockMagnet<T extends TileEntityMagnet> extends TTTileEnti
         return i;
     }
 
+    @Override
+    public boolean shouldCheckWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+        return true;
+    }
 
     @Override
     public BlockRenderLayer getBlockLayer() {

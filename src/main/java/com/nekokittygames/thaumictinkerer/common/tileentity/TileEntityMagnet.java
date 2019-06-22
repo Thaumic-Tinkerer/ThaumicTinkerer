@@ -19,9 +19,11 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
     @Override
     public void update() {
         int redstone = 0;
+        // Fixed pos
         for (EnumFacing dir : EnumFacing.VALUES) {
-            redstone = Math.max(redstone, world.getRedstonePower(pos, dir));
+            redstone = Math.max(redstone, world.getRedstonePower(pos.offset(dir), dir));
         }
+
         if (redstone > 0) {
             double x1 = pos.getX() + 0.5;
             double y1 = pos.getY() + 0.5;
