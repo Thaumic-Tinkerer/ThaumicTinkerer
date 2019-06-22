@@ -20,6 +20,9 @@
           "required_knowledge": [
             "THEORY;AUROMANCY;1"
           ]
+        },
+        {
+          "text": "thaumictinkerer.research.TT_TELEKENESIS.1"
         }
       ]
     },

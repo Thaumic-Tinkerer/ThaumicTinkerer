@@ -18,7 +18,8 @@ import java.util.List;
 public class FocusEffectTelekenesis extends FocusEffect {
     @Override
     public boolean execute(RayTraceResult paramRayTraceResult, @Nullable Trajectory paramTrajectory, float paramFloat, int paramInt) {
-
+        if ( paramRayTraceResult.typeOfHit!= RayTraceResult.Type.BLOCK)
+            return false;
         if (paramTrajectory == null)
             return false;
         Vector3 target = new Vector3(paramTrajectory.source);

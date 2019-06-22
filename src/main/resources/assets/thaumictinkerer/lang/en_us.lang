@@ -84,7 +84,8 @@ thaumictinkerer.research.form_revealer.title=Multiblock Guide
 thaumictinkerer.research.form_revealer.0=As I learn more about Thaumaturgy, I find that my workings no longer always fit inside one block, sometimes structures taller then myself even, are needed to be constructed to complete my tasks. If I take the basic memory provided from a zombie’s brain, and combine it with the phantasmal light of nitor, I may be able to make a wand that will remember where I need to place blocks, to complete a structure, and show me which block I need to provide in whichever places they need to go.
 
 thaumictinkerer.research.TT_TELEKENESIS.title=Telekenesis
-thaumictinkerer.research.TT_TELEKENESIS.0=After watching how creatures and items alike drift in water I started to wonder, if I could make items drift in a stream of magic, it might make those hard to reach items a bit easier when they float to me.
+thaumictinkerer.research.TT_TELEKENESIS.0=After watching how creatures and items alike drift in water I started to wonder, what if I had a stream of air that could do so?
+thaumictinkerer.research.TT_TELEKENESIS.1=I have managed to create a focal pattern that creates a light stream of air infused with vis,  if I add this pattern to a bolt and right click on the ground, all nearby items will float towards that point. Crouching will instead cause the items to flee from that point.
 
 thaumictinkerer.research.TT_DISLOCATE.title=Dislocation
 thaumictinkerer.research.DISLOCATE.0=After so much work was put into discovering how to exchange blocks, I noticed sometimes there would be a delay before the block appears when being swapped. I wonder what would happen if I look into this more?
