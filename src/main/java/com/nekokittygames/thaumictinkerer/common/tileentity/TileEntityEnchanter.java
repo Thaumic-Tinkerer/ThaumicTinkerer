@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
@@ -15,7 +16,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -27,6 +30,7 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
+import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.utils.InventoryUtils;
 
 import javax.annotation.Nonnull;
@@ -254,6 +258,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             if (tool == ItemStack.EMPTY) {
                 working = false;
                 progress = 0;
+                world.playSound( (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundsTC.craftfail, SoundCategory.BLOCKS, 0.5F, 1.0F,false);
                 return;
             }
 
@@ -267,9 +272,14 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             }
 
             progress++;
+            float percenDone = (((progress / (20f * 15f)) * 100f) / 75f) * 100f;
             if (world.isRemote && !TTConfig.ClassicEnchanter) {
-                newEnchant();
+                newEnchant(percenDone);
             }
+
+            if(!TTConfig.ClassicEnchanter)
+                playCorrectSound(percenDone);
+
             if (progress > 20 * 15) {
                 if (!world.isRemote) {
                     for (int i = 0; i < enchantments.size(); i++) {
@@ -277,7 +287,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                     }
                 }
 
-
+                world.playSound( (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundsTC.wand, SoundCategory.BLOCKS, 0.5F, 1.0F,false);
                 progress = 0;
                 working = false;
                 cooldown = 28;
@@ -288,35 +298,74 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
     }
 
-    private void newEnchant() {
-        float tmp = (((progress / (20f * 15f)) * 100f) / 75f) * 100f;
-        if (tmp >= 0) {
+    private void playCorrectSound(float percentDone) {
+        Vec3d curPos = new Vec3d(getPos().getX(), getPos().getY(), getPos().getZ());
+        Vec3d targetPos;
+        // test
+        if (percentDone >= 0.0f && percentDone <= 0.5f) {
+            targetPos=curPos.add(points[0]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 12.4f && percentDone <=12.7f){
+            targetPos=curPos.add(points[1]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 24.7f && percentDone <=25.4f){
+            targetPos=curPos.add(points[2]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 37.3f && percentDone <=37.6f){
+            targetPos=curPos.add(points[3]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 49.7f && percentDone <=50.1f){
+            targetPos=curPos.add(points[4]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 61.3f && percentDone <=61.7f){
+            targetPos=curPos.add(points[5]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 74.6f && percentDone <=75.1f){
+            targetPos=curPos.add(points[6]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 87.5f && percentDone <=88.0f){
+            targetPos=curPos.add(points[7]);
+            world.playSound((double) targetPos.x + 0.5D, (double) targetPos.y + 0.5D, (double) targetPos.z + 0.5D, SoundsTC.jacobs, SoundCategory.BLOCKS, 0.5F, 1.0F, true);
+        }
+        if (percentDone >= 99.6f && percentDone <=100.3f)
+            world.playSound( (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundsTC.brain, SoundCategory.BLOCKS, 0.25F, 1.0F,false);
+    }
+    private void newEnchant(float percenDone) {
+
+        if (percenDone >= 0) {
             arcPoints(0, 1);
         }
-        if (tmp >= 12.5) {
+        if (percenDone >= 12.5) {
             arcPoints(1, 2);
         }
-
-        if (tmp >= 25) {
+        if (percenDone >= 25) {
             arcPoints(2, 3);
         }
-        if (tmp >= 37.5) {
+        if (percenDone >= 37.5) {
             arcPoints(3, 4);
         }
-        if (tmp >= 50) {
+        if (percenDone >= 50) {
             arcPoints(4, 5);
         }
-        if (tmp >= 62.5) {
+        if (percenDone >= 62.5) {
             arcPoints(5, 6);
         }
-        if (tmp >= 75) {
+        if (percenDone >= 75) {
             arcPoints(6, 7);
         }
-        if (tmp >= 87.5) {
+
+        if (percenDone >= 87.5) {
 
             arcPoints(7, 0);
         }
-        if (tmp >= 100) {
+        if (percenDone >= 100) {
             for (Vec3d point : points) {
                 Vec3d curPos = new Vec3d(getPos().getX(), getPos().getY(), getPos().getZ());
                 Vec3d originPos = curPos.add(point);
