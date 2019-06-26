@@ -98,7 +98,7 @@ public class ThaumicTinkerer {
         if(TTConfig.DislocationFocusEnabled)
             FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/dislocation.png"), 8760709);
         logger.info("Initializing Telekenetic powers");
-        FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/telekenesis.png"), 8760708);
+        FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/telekenesis.png"), 13566207);
 
     }
 }

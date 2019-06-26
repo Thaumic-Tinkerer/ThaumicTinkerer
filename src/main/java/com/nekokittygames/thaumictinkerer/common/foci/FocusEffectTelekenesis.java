@@ -56,7 +56,7 @@ public class FocusEffectTelekenesis extends FocusEffect {
 
     @Override
     public Aspect getAspect() {
-        return Aspect.MOTION;
+        return Aspect.MAGIC;
     }
 
     @Override
