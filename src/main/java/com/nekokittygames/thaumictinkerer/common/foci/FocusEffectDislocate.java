@@ -237,7 +237,7 @@ public class FocusEffectDislocate extends FocusEffect {
 
     @Override
     public Aspect getAspect() {
-        return Aspect.AIR;
+        return Aspect.DESIRE;
     }
 
     @Override
