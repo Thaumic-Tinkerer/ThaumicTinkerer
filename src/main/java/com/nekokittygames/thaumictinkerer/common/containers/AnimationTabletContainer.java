@@ -51,6 +51,32 @@ public class AnimationTabletContainer extends Container {
             this.addSlotToContainer(new Slot(playerInventory, row, x, y));
         }
     }
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slot = this.inventorySlots.get(index);
+
+        if (slot != null && slot.getHasStack()) {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+
+            if (index < 1) {
+                if (!this.mergeItemStack(itemstack1, 1, this.inventorySlots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemstack1.isEmpty()) {
+                slot.putStack(ItemStack.EMPTY);
+            } else {
+                slot.onSlotChanged();
+            }
+        }
+
+        return itemstack;
+    }
 
     @Override
     public boolean canInteractWith(EntityPlayer entityPlayer) {
