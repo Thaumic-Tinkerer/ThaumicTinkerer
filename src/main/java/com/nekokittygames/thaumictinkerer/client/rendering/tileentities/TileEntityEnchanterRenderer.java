@@ -2,10 +2,12 @@ package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.client.misc.ClientHelper;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -29,8 +31,10 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
     public void render(TileEntityEnchanter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
         if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY) {
+            EntityItem customitem = new EntityItem(te.getWorld(), 0.0d, 0.0d, 0.0d, te.getInventory().getStackInSlot(0).copy());
+            customitem.getItem().setCount(1);
+            customitem.hoverStart = 0.0F;
             GlStateManager.pushMatrix();
-            GlStateManager.disableLighting();
             float tmp = 0.7f;
             float progress;
             if (te.isWorking()) {
@@ -44,12 +48,13 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
                 progress = 0f;
             }
 
-            GlStateManager.translate((float) x + 0.5F, (float) y + 0.8F + tmp, (float) z + 0.5F);
+            GlStateManager.translate((float) x + 0.5F, (float) y + 0.9F + tmp, (float) z + 0.5F);
             GlStateManager.rotate(90f * (1 - progress), 1, 0, 0);
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
+            GlStateManager.disableLighting();
             GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
-            ClientHelper.getRenderItem().renderItem(te.getInventory().getStackInSlot(0), ItemCameraTransforms.TransformType.FIXED);
+            Minecraft.getMinecraft().getRenderItem().renderItem(te.getInventory().getStackInSlot(0), ItemCameraTransforms.TransformType.FIXED);
             RenderHelper.disableStandardItemLighting();
             GlStateManager.popAttrib();
             GlStateManager.enableLighting();

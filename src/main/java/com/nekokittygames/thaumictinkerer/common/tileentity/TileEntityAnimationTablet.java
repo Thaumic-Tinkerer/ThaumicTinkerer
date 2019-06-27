@@ -228,7 +228,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         active = getRedstonePowered();
 
         boolean detect = detect();
-        if (!detect)
+        if (!detect && isRemoving)
             stopBreaking();
         if (detect && isRemoving && !world.isRemote) {
             Objects.requireNonNull(player.get()).interactionManager.updateBlockRemoving();
