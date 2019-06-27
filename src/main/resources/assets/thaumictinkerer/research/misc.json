@@ -65,36 +65,6 @@
       ]
     },
     {
-      "key": "TT_FORM_REVEALER",
-      "name": "thaumictinkerer.research.form_revealer.title",
-      "icons": [
-        "thaumictinkerer:textures/items/form_revealer.png"
-      ],
-      "category": "THAUMIC_TINKERER",
-      "parents": [
-        "FIRSTSTEPS"
-      ],
-      "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
-      "location": [
-        4,
-        4
-      ],
-      "stages": [
-        {
-          "text": "thaumictinkerer.research.form_revealer.0",
-          "recipes": [
-            "thaumictinkerer:form_revealer"
-          ],
-          "required_item": [
-            "thaumcraft:ender_pearl"
-          ]
-        }
-      ]
-    },
-    {
       "key": "TT_PRISMARINE",
       "name": "thaumictinkerer.research.prismarine.title",
       "icons": [

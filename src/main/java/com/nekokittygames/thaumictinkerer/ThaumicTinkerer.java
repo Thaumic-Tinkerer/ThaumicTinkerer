@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer;
 
 import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
+import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
@@ -25,6 +26,7 @@ import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.FocusEngine;
+import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.research.ResearchCategories;
 
 import java.io.IOException;
@@ -99,6 +101,7 @@ public class ThaumicTinkerer {
             FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/dislocation.png"), 8760709);
         logger.info("Initializing Telekenetic powers");
         FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/telekenesis.png"), 13566207);
+        //IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);
 
     }
 }

@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "side": "thaumcraft:blocks/nitor",
+      "north": "thaumcraft:blocks/nitor",
+      "south": "#side",
+      "east": "#side",
+      "west": "#side",
+      "up": "#side",
+      "down": "#side",
+      "particle": "#side"
+    },
+    "model": "cube",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": {
+      "model": "cube"
+    }
+  }
+}

@@ -16,8 +16,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import thaumcraft.api.casters.IInteractWithCaster;
+import thaumcraft.api.crafting.IDustTrigger;
 
-public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements IInteractWithCaster {
+import java.util.ArrayList;
+import java.util.List;
+
+public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements IDustTrigger {
     public BlockEnchanter() {
         super(LibBlockNames.OSMOTIC_ENCHANTER, Material.ROCK, true);
     }
@@ -57,18 +61,42 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> implements
         return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
 
+
+
     @Override
-    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos pos, EnumFacing enumFacing, EnumHand enumHand) {
-        if (MultiblockManager.checkMultiblock(world, pos, new ResourceLocation("thaumictinkerer:osmotic_enchanter"))) {
-            entityPlayer.sendStatusMessage(new TextComponentString("Complete"), true);
-            try {
-                MultiblockManager.outputMultiblock(world, pos, new ResourceLocation("thaumictinkerer:osmotic_enchanter"), MultiblockManager.checkMultiblockFacing(world, pos, new ResourceLocation("thaumictinkerer:osmotic_enchanter")));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            entityPlayer.sendStatusMessage(new TextComponentString("InComplete"), true);
+    public Placement getValidFace(World world, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing) {
+        if(world.getBlockState(blockPos).getBlock()!=this)
+            return null;
+        boolean valid=MultiblockManager.checkMultiblock(world, blockPos, new ResourceLocation("thaumictinkerer:osmotic_enchanter"));
+        if(!valid)
+            return null;
+        return new Placement(0,0,0,EnumFacing.UP);
+    }
+
+    @Override
+    public void execute(World world, EntityPlayer entityPlayer, BlockPos blockPos, Placement placement, EnumFacing enumFacing) {
+        entityPlayer.sendStatusMessage(new TextComponentString("Complete"), true);
+        try {
+            MultiblockManager.outputMultiblock(world, blockPos, new ResourceLocation("thaumictinkerer:osmotic_enchanter"), MultiblockManager.checkMultiblockFacing(world, blockPos, new ResourceLocation("thaumictinkerer:osmotic_enchanter")));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return false;
+    }
+
+    @Override
+    public List<BlockPos> sparkle(World world, EntityPlayer player, BlockPos pos, Placement placement) {
+        List<BlockPos> sparkleBlocks=new ArrayList<>();
+        sparkleBlocks.add(pos);
+        for(int i=0;i<3;i++) {
+            sparkleBlocks.add(pos.north(3).up(i));
+            sparkleBlocks.add(pos.east(3).up(i));
+            sparkleBlocks.add(pos.south(3).up(i));
+            sparkleBlocks.add(pos.west(3).up(i));
+            sparkleBlocks.add(pos.north(2).east(2).up(i));
+            sparkleBlocks.add(pos.south(2).east(2).up(i));
+            sparkleBlocks.add(pos.south(2).west(2).up(i));
+            sparkleBlocks.add(pos.north(2).west(2).up(i));
+        }
+        return sparkleBlocks;
     }
 }

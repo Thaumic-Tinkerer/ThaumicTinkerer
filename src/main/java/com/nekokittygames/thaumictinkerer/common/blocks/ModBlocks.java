@@ -41,6 +41,7 @@ public class ModBlocks {
     public static final BlockEnchantmentPillar enchantment_pillar = nullz();
     public static final BlockBlackQuartz black_quartz_block = nullz();
     public static final BlockAnimationTablet animation_tablet = nullz();
+    public static final BlockDummyNitor dummy_nitor=nullz();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
@@ -68,7 +69,8 @@ public class ModBlocks {
                     new BlockEnchanter(),
                     new BlockEnchantmentPillar(),
                     new BlockBlackQuartz(),
-                    new BlockAnimationTablet()
+                    new BlockAnimationTablet(),
+                    new BlockDummyNitor(),
             };
             registry.registerAll(blocks);
             registerTileEntities();
@@ -92,8 +94,10 @@ public class ModBlocks {
                     //new ItemBlock(nitor_vapor),
                     //new ItemBlock(example),
                     new ItemBlock(osmotic_enchanter),
+                    new ItemBlock(enchantment_pillar),
                     new ItemBlock(animation_tablet),
-                    new ItemBlock(black_quartz_block)
+                    new ItemBlock(black_quartz_block),
+                    new ItemBlock(dummy_nitor),
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
