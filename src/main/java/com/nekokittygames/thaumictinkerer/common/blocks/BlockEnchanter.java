@@ -77,4 +77,8 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
         return false;
     }
 
+    @Override
+    public boolean isFullBlock(IBlockState state) {
+        return false;
+    }
 }

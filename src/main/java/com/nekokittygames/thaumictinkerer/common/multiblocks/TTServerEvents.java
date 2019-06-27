@@ -144,7 +144,7 @@ public class TTServerEvents {
                             } else {
                                 world.setBlockToAir(vs.pos);
                             }
-
+                            world.markBlocksDirtyVertical(vs.pos.getX(),vs.pos.getZ(),vs.pos.getY()-1,vs.pos.getY()+1);
                             if (vs.fx) {
                                 PacketHandler.INSTANCE.sendToAllAround(new PacketFXBlockBamf(vs.pos, vs.color, true, vs.fancy, (EnumFacing)null), new NetworkRegistry.TargetPoint(world.provider.getDimension(), (double)vs.pos.getX(), (double)vs.pos.getY(), (double)vs.pos.getZ(), 32.0D));
                             }
