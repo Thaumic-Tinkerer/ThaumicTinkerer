@@ -30,6 +30,8 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
     @Override
     public void render(TileEntityEnchanter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(x,y,z);
         if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY) {
             EntityItem customitem = new EntityItem(te.getWorld(), 0.0d, 0.0d, 0.0d, te.getInventory().getStackInSlot(0).copy());
             customitem.getItem().setCount(1);
@@ -48,18 +50,19 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
                 progress = 0f;
             }
 
-            GlStateManager.translate((float) x + 0.5F, (float) y + 0.9F + tmp, (float) z + 0.5F);
+            GlStateManager.translate((float)  0.5F, (float) 0.9F + tmp, (float) 0.5F);
             GlStateManager.rotate(90f * (1 - progress), 1, 0, 0);
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
             GlStateManager.disableLighting();
             GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
-            Minecraft.getMinecraft().getRenderItem().renderItem(te.getInventory().getStackInSlot(0), ItemCameraTransforms.TransformType.FIXED);
+            Minecraft.getMinecraft().getRenderItem().renderItem(customitem.getItem(), ItemCameraTransforms.TransformType.FIXED);
             RenderHelper.disableStandardItemLighting();
             GlStateManager.popAttrib();
             GlStateManager.enableLighting();
             GlStateManager.popMatrix();
 
         }
+        GlStateManager.popMatrix();
     }
 }
