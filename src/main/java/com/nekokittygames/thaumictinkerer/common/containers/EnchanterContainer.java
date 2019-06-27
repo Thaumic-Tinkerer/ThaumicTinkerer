@@ -64,7 +64,7 @@ public class EnchanterContainer extends Container {
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = null;
+        ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()) {
@@ -73,10 +73,10 @@ public class EnchanterContainer extends Container {
 
             if (index < 1) {
                 if (!this.mergeItemStack(itemstack1, 1, this.inventorySlots.size(), true)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
             } else if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-                return null;
+                return ItemStack.EMPTY;
             }
 
             if (itemstack1.isEmpty()) {
