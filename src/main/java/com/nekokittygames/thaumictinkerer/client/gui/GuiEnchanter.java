@@ -252,9 +252,6 @@ public class GuiEnchanter extends GuiContainer {
             drawTexturedModalRect(x + 34, y + 54, 0, ySize, 147, 24);
         }
 
-        if (enchanter.getCachedEnchantments().size() > 0) {
-            this.fontRenderer.drawString("Time Remaining: " + enchanter.getProgress(), x + 30, y + 5, 0x610B0B);
-        }
         this.fontRenderer.drawString("Required Vis Crystals", x + 177, y + 7, 0x999999);
         GlStateManager.color(1F, 1F, 1F);
         int j = 0;
