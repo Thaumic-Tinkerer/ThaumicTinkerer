@@ -221,14 +221,18 @@ public class GuiEnchanter extends GuiContainer {
         super.updateScreen();
 
         stack = enchanter.getInventory().getStackInSlot(0);
-        if (!stack.equals(lastTickItem))
+        if (!stack.equals(lastTickItem)) {
+            if(stack==ItemStack.EMPTY)
+                enchanter.clearEnchants();
             buildButtonList();
+        }
 
         lastTickItem = stack;
         if(enchanter.isWorking()!=workingLastTick)
         {
            buildButtonList();
         }
+
         workingLastTick=enchanter.isWorking();
         if (startButton!=null && enchanter.getEnchantments().size() > 0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player)) {
             startButton.setEnabled(true);

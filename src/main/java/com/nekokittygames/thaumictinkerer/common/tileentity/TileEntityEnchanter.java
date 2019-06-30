@@ -135,7 +135,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return pillars;
     }
 
-    private void clearEnchants() {
+    public void clearEnchants() {
         enchantments.clear();
         levels.clear();
 
