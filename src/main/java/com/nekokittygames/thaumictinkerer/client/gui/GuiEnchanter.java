@@ -148,6 +148,8 @@ public class GuiEnchanter extends GuiContainer {
      */
     private void buildButtonList() {
         buttonList.clear();
+        if(enchanter.isWorking())
+            return;
         for (int i = 0; i < 16; i++) {
             int z = -11;
             if (i > 7) {
@@ -209,7 +211,7 @@ public class GuiEnchanter extends GuiContainer {
                 break;
         }
     }
-
+    private boolean workingLastTick=false;
     /**
      * updates the screen per tick
      */
@@ -222,11 +224,17 @@ public class GuiEnchanter extends GuiContainer {
             buildButtonList();
 
         lastTickItem = stack;
-
-        if (enchanter.getEnchantments().size() > 0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player)) {
+        if(enchanter.isWorking()!=workingLastTick)
+        {
+           buildButtonList();
+        }
+        workingLastTick=enchanter.isWorking();
+        if (startButton!=null && enchanter.getEnchantments().size() > 0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player)) {
             startButton.setEnabled(true);
         } else {
-            startButton.setEnabled(false);
+            if (startButton != null) {
+                startButton.setEnabled(false);
+            }
         }
 
     }
@@ -294,6 +302,8 @@ public class GuiEnchanter extends GuiContainer {
      */
     @Override
     protected void actionPerformed(GuiButton button) {
+        if(enchanter.isWorking())
+            return;
         if (button.id == 0) {
             PacketHandler.INSTANCE.sendToServer(new PacketStartEnchant(enchanter, Minecraft.getMinecraft().player));
         } else if (button.id <= 16) {
