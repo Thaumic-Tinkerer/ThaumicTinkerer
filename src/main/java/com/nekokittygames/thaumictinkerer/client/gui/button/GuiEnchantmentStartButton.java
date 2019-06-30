@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 
 public class GuiEnchantmentStartButton extends GuiButton {
-    private boolean enabled;
 
     public GuiEnchantmentStartButton(int buttonId, int x, int y) {
         super(buttonId, x, y, "");
