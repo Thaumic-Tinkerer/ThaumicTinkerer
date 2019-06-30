@@ -304,7 +304,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
     private boolean isItemValidForSlot(int index, ItemStack stack) {
         Item item = stack.getItem();
-        return item.isEnchantable(stack);
+        return item.isEnchantable(stack) && !stack.isItemEnchanted();
     }
 
     public ItemStackHandler getInventory() {
