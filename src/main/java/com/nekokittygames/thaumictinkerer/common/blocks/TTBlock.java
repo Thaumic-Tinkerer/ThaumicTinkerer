@@ -25,6 +25,7 @@ public class TTBlock extends Block {
         super(blockMaterialIn, blockMapColorIn);
         baseName = name;
         setBlockName(this, name);
+        setHardness(2);
         if (isInCreativeTab())
             setCreativeTab(ThaumicTinkerer.getTab());
     }
