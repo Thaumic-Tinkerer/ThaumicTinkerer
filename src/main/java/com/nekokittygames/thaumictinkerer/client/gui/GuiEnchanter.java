@@ -333,7 +333,12 @@ public class GuiEnchanter extends GuiContainer {
                 return;
 
             if (type == 0) {
+
                 PacketHandler.INSTANCE.sendToServer(new PacketRemoveEnchant(enchanter, enchanter.getEnchantments().get(index)));
+                enchanter.removeEnchant(index);
+                enchanter.removeLevel(index);
+                buildButtonList();
+
             } else {
                 GuiEnchantmentLevelButton levelButton = (GuiEnchantmentLevelButton) button;
                 PacketHandler.INSTANCE.sendToServer(new PacketIncrementEnchantLevel(enchanter, enchanter.getEnchantments().get(index), levelButton.plus));

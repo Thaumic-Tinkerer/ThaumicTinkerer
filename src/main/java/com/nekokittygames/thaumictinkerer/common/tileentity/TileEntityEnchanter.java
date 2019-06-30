@@ -153,6 +153,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
     public void removeEnchant(int index) {
         enchantments.remove(index);
+        refreshEnchants();
     }
 
     public void removeLevel(int index) {
@@ -297,7 +298,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return valid;
 
     }
-    private void refreshEnchants() {
+    public void refreshEnchants() {
         List<Enchantment> enchantmentObjects = getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
         cachedEnchantments = enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());
     }
