@@ -55,14 +55,14 @@ public class ModRecipes {
         Part[][][] enchanterBP = new Part[][][]{{{null, null, null, NR, null, null, null}, {null, NR, null, null, null, NR, null}, {null, null, null, null, null, null, null}, {NR, null, null, null, null, null, NR}, {null, null, null, null, null, null, null}, {null, NR, null, null, null, NR, null}, {null, null, null, NR, null, null, null}},
                 {{null, null, null, pillars[15], null, null, null}, {null, pillars[14], null, null, null,pillars[8], null}, {null, null, null, null, null, null, null}, {pillars[13], null, null, null, null, null, pillars[9]}, {null, null, null, null, null, null, null}, {null, pillars[12], null, null, null, pillars[10], null}, {null, null, null, pillars[11], null, null, null}},
                 {{null, null, null, pillars[7], null, null, null}, {null, pillars[6], null, null, null, pillars[0], null}, {null, null, null, null, null, null, null}, {pillars[5], null, null, OE, null, null, pillars[1]}, {null, null, null, null, null, null, null}, {null, pillars[4], null, null, null, pillars[2], null}, {null, null, null, pillars[3], null, null, null}},
-                {{null,null,null,AB,null,null,null},{null,AB,AB,BQ,AB,AB,null},{AB,AB,BQ,BQ,BQ,AB,AB},{AB,BQ,BQ,BQ,BQ,BQ,AB},{AB,AB,BQ,BQ,BQ,AB,AB},{null,AB,AB,BQ,AB,AB,null},{null,null,null,AB,null,null,null}}
+                {{null,null,null,AB,null,null,null},{null,AB,AB,BQ,AB,AB,null},{null,AB,BQ,BQ,BQ,AB,null},{AB,BQ,BQ,BQ,BQ,BQ,AB},{null,AB,BQ,BQ,BQ,AB,null},{null,AB,AB,BQ,AB,AB,null},{null,null,null,AB,null,null,null}}
 
         };
 
         Part[][][] dummyenchanterBP = new Part[][][]{{{null, null, null, DN, null, null, null}, {null, DN, null, null, null, DN, null}, {null, null, null, null, null, null, null}, {DN, null, null, null, null, null, DN}, {null, null, null, null, null, null, null}, {null, DN, null, null, null, DN, null}, {null, null, null, DN, null, null, null}},
                 {{null, null, null, pillars[15], null, null, null}, {null, pillars[14], null, null, null,pillars[8], null}, {null, null, null, null, null, null, null}, {pillars[13], null, null, null, null, null, pillars[9]}, {null, null, null, null, null, null, null}, {null, pillars[12], null, null, null, pillars[10], null}, {null, null, null, pillars[11], null, null, null}},
                 {{null, null, null, pillars[7], null, null, null}, {null, pillars[6], null, null, null, pillars[0], null}, {null, null, null, null, null, null, null}, {pillars[5], null, null, OE, null, null, pillars[1]}, {null, null, null, null, null, null, null}, {null, pillars[4], null, null, null, pillars[2], null}, {null, null, null, pillars[3], null, null, null}},
-                {{null,null,null,AB,null,null,null},{null,AB,AB,BQ,AB,AB,null},{AB,AB,BQ,BQ,BQ,AB,AB},{AB,BQ,BQ,BQ,BQ,BQ,AB},{AB,AB,BQ,BQ,BQ,AB,AB},{null,AB,AB,BQ,AB,AB,null},{null,null,null,AB,null,null,null}}
+                {{null,null,AB,AB,AB,null,null},{null,AB,AB,BQ,AB,AB,null},{AB,AB,BQ,BQ,BQ,AB,AB},{AB,BQ,BQ,BQ,BQ,BQ,AB},{AB,AB,BQ,BQ,BQ,AB,AB},{null,AB,AB,BQ,AB,AB,null},{null,null,AB,AB,AB,null,null}}
 
         };
         IDustTrigger.registerDustTrigger(new TTDustTriggerMultiblock("TT_ENCHANTER",enchanterBP));
