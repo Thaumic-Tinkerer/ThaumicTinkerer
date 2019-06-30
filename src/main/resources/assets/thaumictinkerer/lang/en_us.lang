@@ -42,8 +42,8 @@ ttmisc.mobmagnet.child=Child
 ttmisc.mobmagnet.adult=Adult
 ttmisc.animation_tablet.left=Left Click
 ttmisc.animation_tablet.right=Right Click
-ttmisc.enchanter.start=Start Enchanting Button
-ttmisc.enchanter.notready=Disabled Start Enchanting Button
+ttmisc.enchanter.start=Start Enchanting!
+ttmisc.enchanter.notready=Can't Enchant!
 
 ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.noAssign=Not Assigned
