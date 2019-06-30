@@ -291,7 +291,7 @@ public class GuiEnchanter extends GuiContainer {
                 itemRender.renderItemAndEffectIntoGUI(itemStack, x + 177 + (j * 17), y + 7 + fontRenderer.FONT_HEIGHT);
                 ItemCrystalEssence crystalEssence = (ItemCrystalEssence) itemStack.getItem();
                 Aspect aspect = crystalEssence.getAspects(itemStack).getAspectsSortedByAmount()[0];
-                itemRender.renderItemOverlayIntoGUI(fontRenderer, itemStack, x + 177 + (j * 17), y + 7 + fontRenderer.FONT_HEIGHT, "" + crystalEssence.getAspects(itemStack).getAmount(aspect));
+                itemRender.renderItemOverlayIntoGUI(fontRenderer, itemStack, x + 177 + (j * 17), y + 7 + fontRenderer.FONT_HEIGHT, "" + itemStack.getCount());
                 GlStateManager.enableAlpha();
 
                 if (mouseX >= x + 177 + (j * 17) && mouseX < x + 177 + (j * 17) + 16 && mouseY >= y + 7 + fontRenderer.FONT_HEIGHT && mouseY < y + 7 + fontRenderer.FONT_HEIGHT + 16) {

@@ -663,8 +663,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
 
         for (Aspect item : costItems.keySet()) {
-            ItemStack crystal = new ItemStack(ItemsTC.crystalEssence);
-            ((ItemCrystalEssence) crystal.getItem()).setAspects(crystal, new AspectList().add(item, costItems.get(item)));
+            ItemStack crystal = new ItemStack(ItemsTC.crystalEssence,costItems.get(item));
+            ((ItemCrystalEssence) crystal.getItem()).setAspects(crystal, new AspectList().add(item, 1));
             costs.add(crystal);
         }
         return costs;
