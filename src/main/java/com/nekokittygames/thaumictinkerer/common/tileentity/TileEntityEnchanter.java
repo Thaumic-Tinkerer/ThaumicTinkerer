@@ -11,6 +11,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -178,10 +179,62 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
         refreshEnchants();
     }
+
+    public void BreakPillars()
+    {
+        if(world.getBlockState(pos.north(3)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.north(3),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.north(3).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.north(3).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.north(3).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.east(3)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.east(3),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.east(3).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.east(3).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.east(3).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.south(3)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.south(3),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.south(3).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.south(3).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.south(3).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.west(3)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.west(3),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.west(3).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.west(3).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.west(3).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.north(2).east(2)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.north(2).east(2),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.north(2).east(2).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.north(2).east(2).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.north(2).east(2).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.south(2).east(2)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.south(2).east(2),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.south(2).east(2).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.south(2).east(2).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.south(2).east(2).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.north(2).west(2)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.north(2).west(2),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.north(2).west(2).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.north(2).west(2).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.north(2).west(2).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+
+        if(world.getBlockState(pos.south(2).west(2)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.south(2).west(2),BlocksTC.stoneArcane.getDefaultState());
+        if(world.getBlockState(pos.south(2).west(2).up(1)).getBlock()==ModBlocks.enchantment_pillar)
+            world.setBlockState(pos.south(2).west(2).up(1),BlocksTC.stoneArcane.getDefaultState());
+        world.setBlockState(pos.south(2).west(2).up(2),BlocksTC.nitor.get(EnumDyeColor.YELLOW).getDefaultState());
+    }
+
     public boolean checkLocation()
     {
-        boolean valid=true;
-        valid = valid && world.getBlockState(pos.north(3)).getBlock()== ModBlocks.enchantment_pillar;
+        boolean valid;
+        valid = world.getBlockState(pos.north(3)).getBlock() == ModBlocks.enchantment_pillar;
         valid = valid && world.getBlockState(pos.east(3)).getBlock()== ModBlocks.enchantment_pillar;
         valid = valid && world.getBlockState(pos.south(3)).getBlock()== ModBlocks.enchantment_pillar;
         valid = valid && world.getBlockState(pos.west(3)).getBlock()== ModBlocks.enchantment_pillar;
@@ -190,6 +243,16 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         valid = valid && world.getBlockState(pos.south(2).east(2)).getBlock()== ModBlocks.enchantment_pillar;
         valid = valid && world.getBlockState(pos.south(2).west(2)).getBlock()== ModBlocks.enchantment_pillar;
         valid = valid && world.getBlockState(pos.north(2).west(2)).getBlock()== ModBlocks.enchantment_pillar;
+
+        valid = valid && world.getBlockState(pos.north(3).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.east(3).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.south(3).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.west(3).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+
+        valid = valid && world.getBlockState(pos.north(2).east(2).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.south(2).east(2).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.south(2).west(2).up(1)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.north(2).west(2).up(1)).getBlock()== ModBlocks.enchantment_pillar;
 
         valid = valid && world.getBlockState(pos.down(1)).getBlock()==ModBlocks.black_quartz_block;
         valid = valid && world.getBlockState(pos.down(1).north(1)).getBlock()==ModBlocks.black_quartz_block;
@@ -231,7 +294,6 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         valid = valid && world.getBlockState(pos.down(1).south(1).east(3)).getBlock()==BlocksTC.stoneArcaneBrick;
         valid = valid && world.getBlockState(pos.down(1).south(1).west(2)).getBlock()==BlocksTC.stoneArcaneBrick;
         valid = valid && world.getBlockState(pos.down(1).south(1).west(3)).getBlock()==BlocksTC.stoneArcaneBrick;
-
         return valid;
 
     }
