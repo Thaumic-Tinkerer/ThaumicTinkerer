@@ -1,8 +1,10 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
+import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
+import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -43,7 +45,10 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
         if (!(te instanceof TileEntityEnchanter)) {
             return false;
         }
-        player.openGui(ThaumicTinkerer.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+        if(((TileEntityEnchanter)te).checkLocation())
+            player.openGui(ThaumicTinkerer.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+        else
+            player.sendStatusMessage(new TextComponentString("InComplete"),true);
         /*
             if (MultiblockManager.checkMultiblock(worldIn,pos,new ResourceLocation("thaumictinkerer:osmotic_enchanter")))
             {

@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
+import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
@@ -125,7 +126,6 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     }
 
     public void setWorking(boolean working) {
-
         this.working = working;
         sendUpdates();
     }
@@ -178,7 +178,63 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
         refreshEnchants();
     }
+    public boolean checkLocation()
+    {
+        boolean valid=true;
+        valid = valid && world.getBlockState(pos.north(3)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.east(3)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.south(3)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.west(3)).getBlock()== ModBlocks.enchantment_pillar;
 
+        valid = valid && world.getBlockState(pos.north(2).east(2)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.south(2).east(2)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.south(2).west(2)).getBlock()== ModBlocks.enchantment_pillar;
+        valid = valid && world.getBlockState(pos.north(2).west(2)).getBlock()== ModBlocks.enchantment_pillar;
+
+        valid = valid && world.getBlockState(pos.down(1)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).north(1)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).north(2)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).south(1)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).south(2)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).north(1).east(1)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).north(1).west(1)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).south(1).east(1)).getBlock()==ModBlocks.black_quartz_block;
+        valid = valid && world.getBlockState(pos.down(1).south(1).west(1)).getBlock()==ModBlocks.black_quartz_block;
+
+        valid = valid && world.getBlockState(pos.down(1).north(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(3).east(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(3).west(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        valid = valid && world.getBlockState(pos.down(1).north(2).east(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(2).east(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(2).west(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(2).west(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        valid = valid && world.getBlockState(pos.down(1).north(1).east(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(1).east(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(1).west(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).north(1).west(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        valid = valid && world.getBlockState(pos.down(1).east(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).west(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        valid = valid && world.getBlockState(pos.down(1).south(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(3).east(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(3).west(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        valid = valid && world.getBlockState(pos.down(1).south(2).east(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(2).east(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(2).west(1)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(2).west(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        valid = valid && world.getBlockState(pos.down(1).south(1).east(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(1).east(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(1).west(2)).getBlock()==BlocksTC.stoneArcaneBrick;
+        valid = valid && world.getBlockState(pos.down(1).south(1).west(3)).getBlock()==BlocksTC.stoneArcaneBrick;
+
+        return valid;
+
+    }
     private void refreshEnchants() {
         List<Enchantment> enchantmentObjects = getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
         cachedEnchantments = enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());
