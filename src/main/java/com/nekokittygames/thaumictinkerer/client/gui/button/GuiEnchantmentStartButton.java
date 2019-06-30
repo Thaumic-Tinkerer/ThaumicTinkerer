@@ -9,6 +9,7 @@ public class GuiEnchantmentStartButton extends GuiButton {
 
     public GuiEnchantmentStartButton(int buttonId, int x, int y) {
         super(buttonId, x, y, "");
+        this.width=15;
     }
 
     public boolean isEnabled() {

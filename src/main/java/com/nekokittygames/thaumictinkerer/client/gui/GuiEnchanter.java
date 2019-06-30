@@ -212,6 +212,7 @@ public class GuiEnchanter extends GuiContainer {
         }
     }
     private boolean workingLastTick=false;
+    private boolean ready=false;
     /**
      * updates the screen per tick
      */
@@ -231,8 +232,10 @@ public class GuiEnchanter extends GuiContainer {
         workingLastTick=enchanter.isWorking();
         if (startButton!=null && enchanter.getEnchantments().size() > 0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player)) {
             startButton.setEnabled(true);
+            ready = true;
         } else {
             if (startButton != null) {
+                ready=false;
                 startButton.setEnabled(false);
             }
         }
@@ -259,6 +262,12 @@ public class GuiEnchanter extends GuiContainer {
             // 34,61
             drawTexturedModalRect(x + 34, y + 54, 0, ySize, 147, 24);
         }
+        if(mouseX>=x+8 && mouseX <x+8+15 && mouseY>=y+58 && mouseY < y+58+15) {
+            if(ready)
+                getTooltip().add(ThaumicTinkerer.proxy.localize("ttmisc.enchanter.start"));
+            else
+                getTooltip().add(ThaumicTinkerer.proxy.localize("ttmisc.enchanter.notready"));
+        }
 
         this.fontRenderer.drawString("Required Vis Crystals", x + 177, y + 7, 0x999999);
         GlStateManager.color(1F, 1F, 1F);
@@ -280,6 +289,7 @@ public class GuiEnchanter extends GuiContainer {
                 Aspect aspect = crystalEssence.getAspects(itemStack).getAspectsSortedByAmount()[0];
                 itemRender.renderItemOverlayIntoGUI(fontRenderer, itemStack, x + 177 + (j * 17), y + 7 + fontRenderer.FONT_HEIGHT, "" + crystalEssence.getAspects(itemStack).getAmount(aspect));
                 GlStateManager.enableAlpha();
+
                 if (mouseX >= x + 177 + (j * 17) && mouseX < x + 177 + (j * 17) + 16 && mouseY >= y + 7 + fontRenderer.FONT_HEIGHT && mouseY < y + 7 + fontRenderer.FONT_HEIGHT + 16) {
                     List<String> tooltip = new ArrayList<>();
                     tooltip.add(ChatFormatting.AQUA + ThaumicTinkerer.proxy.localize(aspect.getName()));
