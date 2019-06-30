@@ -645,16 +645,15 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                     addOneTo(costItems, Aspect.MAN);
                     break;
                 case WEAPON:
-                    addOneTo(costItems, Aspect.ENTROPY);
                     addOneTo(costItems, Aspect.DEATH);
+                    addOneTo(costItems,Aspect.AVERSION);
                     break;
                 case BOW:
-                    addOneTo(costItems, Aspect.ENTROPY);
                     addOneTo(costItems, Aspect.DEATH);
                     break;
                 case FISHING_ROD:
-                    addOneTo(costItems, Aspect.ENTROPY);
                     addOneTo(costItems, Aspect.BEAST);
+                    addOneTo(costItems, Aspect.WATER);
                     break;
                 default:
                     break;
