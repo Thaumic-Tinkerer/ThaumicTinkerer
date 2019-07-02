@@ -30,10 +30,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.casters.FocusEffect;
-import thaumcraft.api.casters.FocusPackage;
-import thaumcraft.api.casters.Trajectory;
-import thaumcraft.common.items.casters.ItemCaster;
+import thaumcraft.api.casters.*;
 import thaumcraft.common.lib.utils.BlockUtils;
 
 import javax.annotation.Nullable;
@@ -62,9 +59,9 @@ public class FocusEffectDislocate extends FocusEffect {
             IBlockState blockState = this.getPackage().world.getBlockState(pos);
             TileEntity tileEntity = this.getPackage().world.getTileEntity(pos);
             ItemStack casterStack = ItemStack.EMPTY;
-            if (this.getPackage().getCaster().getHeldItemMainhand() != ItemStack.EMPTY && this.getPackage().getCaster().getHeldItemMainhand().getItem() instanceof ItemCaster) {
+            if (this.getPackage().getCaster().getHeldItemMainhand() != ItemStack.EMPTY && this.getPackage().getCaster().getHeldItemMainhand().getItem() instanceof ICaster) {
                 casterStack = this.getPackage().getCaster().getHeldItemMainhand();
-            } else if (this.getPackage().getCaster().getHeldItemOffhand() != ItemStack.EMPTY && this.getPackage().getCaster().getHeldItemOffhand().getItem() instanceof ItemCaster) {
+            } else if (this.getPackage().getCaster().getHeldItemOffhand() != ItemStack.EMPTY && this.getPackage().getCaster().getHeldItemOffhand().getItem() instanceof ICaster) {
                 casterStack = this.getPackage().getCaster().getHeldItemOffhand();
             }
             if (casterStack == null)
@@ -72,7 +69,7 @@ public class FocusEffectDislocate extends FocusEffect {
             if (casterStack == ItemStack.EMPTY)
                 return false;
 
-            ItemStack focus = ((ItemCaster) casterStack.getItem()).getFocusStack(casterStack);
+            ItemStack focus = ((ICaster) casterStack.getItem()).getFocusStack(casterStack);
             if (getPackage().getCaster() instanceof EntityPlayer && ((EntityPlayer) getPackage().getCaster()).canPlayerEdit(pos, rayTraceResult.sideHit, casterStack)) {
                 IBlockState stateStored = getStoredState(focus);
                 if (stateStored != null) {
@@ -195,6 +192,7 @@ public class FocusEffectDislocate extends FocusEffect {
         ThaumicTinkerer.logger.info("Storing a "+blockName.toString()+" with metadata "+metadata+" With NBT: "+cmp.toString());
         ItemNBTHelper.getItemTag(focus).setTag(TAG_TILE_CMP, cmp);
         ItemNBTHelper.setBool(focus, TAG_AVAILABLE, true);
+
     }
 
     private void clearPickedBlock(ItemStack focus) {
