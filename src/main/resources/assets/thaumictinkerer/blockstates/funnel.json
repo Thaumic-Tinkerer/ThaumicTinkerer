@@ -14,7 +14,8 @@
       "model": "thaumictinkerer:funnel_jar"
     },
     "inventory": {
-      "model": "thaumictinkerer:funnel"
+      "model": "thaumictinkerer:funnel",
+      "transform": "forge:default-block"
     }
   }
 }

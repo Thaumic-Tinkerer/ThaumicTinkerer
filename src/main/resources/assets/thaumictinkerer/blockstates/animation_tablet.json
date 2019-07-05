@@ -8,7 +8,8 @@
       "model": "thaumictinkerer:animation_tablet"
     },
     "inventory": {
-      "model": "thaumictinkerer:animation_tablet"
+      "model": "thaumictinkerer:animation_tablet",
+      "transform": "forge:default-block"
     }
   }
 }

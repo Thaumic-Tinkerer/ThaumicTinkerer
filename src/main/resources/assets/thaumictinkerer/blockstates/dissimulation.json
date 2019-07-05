@@ -19,7 +19,8 @@
       {}
     ],
     "inventory": {
-      "model": "cube"
+      "model": "cube",
+      "transform": "forge:default-block"
     }
   }
 }
