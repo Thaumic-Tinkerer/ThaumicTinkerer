@@ -4,7 +4,7 @@
       "key": "TT_SHARE_TOME",
       "name": "thaumictinkerer.research.share_tome.title",
       "icons": [
-        "thaumictinkerer:textures/items/share_book.png"
+        "thaumictinkerer:share_book"
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
@@ -35,7 +35,7 @@
       "key": "TT_BLACK_QUARTZ",
       "name": "thaumictinkerer.research.black_quartz.title",
       "icons": [
-        "thaumictinkerer:textures/items/black_quartz.png"
+        "thaumictinkerer:black_quartz"
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
@@ -68,7 +68,7 @@
       "key": "TT_PRISMARINE",
       "name": "thaumictinkerer.research.prismarine.title",
       "icons": [
-        "minecraft:textures/items/prismarine_shard.png"
+        "minecraft:prismarine_shard"
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
