@@ -1,6 +1,5 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
-import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
@@ -20,7 +19,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -615,46 +613,45 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         List<ItemStack> costs = new ArrayList<>();
         Map<Aspect, Integer> costItems = new HashMap<>();
         List<Enchantment> enchantmentObjects = enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList());
-        for (Enchantment enchantment : enchantmentObjects) {
+        for (int i = 0, enchantmentObjectsSize = enchantmentObjects.size(); i < enchantmentObjectsSize; i++) {
+            Enchantment enchantment = enchantmentObjects.get(i);
             switch (Objects.requireNonNull(enchantment.type)) {
                 case ARMOR:
-                    addOneTo(costItems, Aspect.PROTECT);
+                case ARMOR_LEGS:
+                    addAmountTo(costItems, Aspect.PROTECT, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case ARMOR_FEET:
-                    addOneTo(costItems, Aspect.PROTECT);
-                    addOneTo(costItems, Aspect.MOTION);
+                    addAmountTo(costItems, Aspect.PROTECT, (int)Math.pow(2,getLevels().get(i)));
+                    addAmountTo(costItems, Aspect.MOTION, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case ARMOR_CHEST:
-                    addOneTo(costItems, Aspect.PROTECT);
-                    addOneTo(costItems, Aspect.LIFE);
-                    break;
-                case ARMOR_LEGS:
-                    addOneTo(costItems, Aspect.PROTECT);
+                    addAmountTo(costItems, Aspect.PROTECT, (int)Math.pow(2,getLevels().get(i)));
+                    addAmountTo(costItems, Aspect.LIFE, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case ARMOR_HEAD:
-                    addOneTo(costItems, Aspect.PROTECT);
-                    addOneTo(costItems, Aspect.MIND);
+                    addAmountTo(costItems, Aspect.PROTECT, (int)Math.pow(2,getLevels().get(i)));
+                    addAmountTo(costItems, Aspect.MIND, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case DIGGER:
-                    addOneTo(costItems, Aspect.ENTROPY);
-                    addOneTo(costItems, Aspect.TOOL);
+                    addAmountTo(costItems, Aspect.ENTROPY, (int)Math.pow(2,getLevels().get(i)));
+                    addAmountTo(costItems, Aspect.TOOL, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case BREAKABLE:
-                    addOneTo(costItems, Aspect.ENTROPY);
+                    addAmountTo(costItems, Aspect.ENTROPY, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case WEARABLE:
-                    addOneTo(costItems, Aspect.MAN);
+                    addAmountTo(costItems, Aspect.MAN, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case WEAPON:
-                    addOneTo(costItems, Aspect.DEATH);
-                    addOneTo(costItems,Aspect.AVERSION);
+                    addAmountTo(costItems, Aspect.DEATH, (int)Math.pow(2,getLevels().get(i)));
+                    addAmountTo(costItems, Aspect.AVERSION, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case BOW:
-                    addOneTo(costItems, Aspect.DEATH);
+                    addAmountTo(costItems, Aspect.DEATH, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case FISHING_ROD:
-                    addOneTo(costItems, Aspect.BEAST);
-                    addOneTo(costItems, Aspect.WATER);
+                    addAmountTo(costItems, Aspect.BEAST, (int)Math.pow(2,getLevels().get(i)));
+                    addAmountTo(costItems, Aspect.WATER, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 default:
                     break;
@@ -670,11 +667,11 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return costs;
     }
 
-    private void addOneTo(Map<Aspect, Integer> costItems, Aspect crystalEssence) {
+    private void addAmountTo(Map<Aspect, Integer> costItems, Aspect crystalEssence,int amount) {
         if (costItems.containsKey(crystalEssence))
-            costItems.put(crystalEssence, costItems.get(crystalEssence) + 1);
+            costItems.put(crystalEssence, costItems.get(crystalEssence) + amount);
         else
-            costItems.put(crystalEssence, 1);
+            costItems.put(crystalEssence, amount);
     }
 
     public int getProgress() {
