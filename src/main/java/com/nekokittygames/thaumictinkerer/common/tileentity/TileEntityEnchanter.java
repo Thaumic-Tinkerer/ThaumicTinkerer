@@ -32,6 +32,8 @@ import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.utils.InventoryUtils;
+import thaumcraft.common.world.aura.AuraChunk;
+import thaumcraft.common.world.aura.AuraHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -47,12 +49,17 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     private static final String TAG_CACHED_ENCHANTS = "cachedEnchants";
     private static final String TAG_WORKING = "working";
     private static final String TAG_PROGRESS = "progress";
+    private static final String TAG_AURA="aura";
     private List<Integer> enchantments = new ArrayList<>();
     private List<Integer> levels = new ArrayList<>();
 
     private List<Integer> cachedEnchantments = new ArrayList<>();
     private int progress;
     private int cooldown;
+
+
+
+    private int auraVisServer=0;
     private boolean working = false;
     // old stytle multiblock
     private List<Tuple4Int> pillars = new ArrayList<>();
@@ -299,6 +306,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     public void refreshEnchants() {
         List<Enchantment> enchantmentObjects = getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
         cachedEnchantments = enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());
+        getAura();
     }
 
     private boolean isItemValidForSlot(int index, ItemStack stack) {
@@ -318,6 +326,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         nbttagcompound.setIntArray(TAG_CACHED_ENCHANTS, cachedEnchantments.stream().mapToInt(i -> i).toArray());
         nbttagcompound.setInteger(TAG_PROGRESS, progress);
         nbttagcompound.setBoolean(TAG_WORKING, working);
+        nbttagcompound.setInteger(TAG_AURA,auraVisServer);
     }
 
     @Override
@@ -339,6 +348,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         }
         if (nbttagcompound.hasKey(TAG_WORKING))
             working = nbttagcompound.getBoolean(TAG_WORKING);
+        if(nbttagcompound.hasKey(TAG_AURA))
+            auraVisServer=nbttagcompound.getInteger(TAG_AURA);
     }
 
     @Override
@@ -408,6 +419,8 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
                 progress = 0;
                 working = false;
                 cooldown = 28;
+                this.spendAura(this.getEnchantmentVisCost());
+                this.getAura();
                 clearEnchants();
                 sendUpdates();
             }
@@ -609,15 +622,54 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return enchantments;
     }
 
+    public int getEnchantmentVisCost() {
+        List<Enchantment> enchantmentObjects = enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList());
+        int visAmount=0;
+        for (int i = 0, enchantmentObjectsSize = enchantmentObjects.size(); i < enchantmentObjectsSize; i++) {
+            Enchantment enchantment = enchantmentObjects.get(i);
+
+            switch (enchantment.getRarity()) {
+                case COMMON:
+                    visAmount += 25 * getLevels().get(i);
+                    break;
+                case UNCOMMON:
+                    visAmount += 35 * getLevels().get(i);
+                    break;
+                case RARE:
+                    visAmount += 40 * getLevels().get(i);
+                    break;
+                case VERY_RARE:
+                    visAmount += 50 * getLevels().get(i);
+            }
+        }
+        return visAmount;
+    }
     public List<ItemStack> getEnchantmentCost() {
         List<ItemStack> costs = new ArrayList<>();
         Map<Aspect, Integer> costItems = new HashMap<>();
         List<Enchantment> enchantmentObjects = enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList());
+        int visAmount=0;
         for (int i = 0, enchantmentObjectsSize = enchantmentObjects.size(); i < enchantmentObjectsSize; i++) {
             Enchantment enchantment = enchantmentObjects.get(i);
+
+            switch(enchantment.getRarity())
+            {
+                case COMMON:
+                    visAmount+=25*getLevels().get(i);
+                    break;
+                case UNCOMMON:
+                    visAmount+=35*getLevels().get(i);
+                    break;
+                case RARE:
+                    visAmount+=40*getLevels().get(i);
+                    break;
+                case VERY_RARE:
+                    visAmount+=50*getLevels().get(i);
+            }
             switch (Objects.requireNonNull(enchantment.type)) {
                 case ARMOR:
                 case ARMOR_LEGS:
+
                     addAmountTo(costItems, Aspect.PROTECT, (int)Math.pow(2,getLevels().get(i)));
                     break;
                 case ARMOR_FEET:
@@ -676,5 +728,68 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
 
     public int getProgress() {
         return progress;
+    }
+
+
+    public void getAura() {
+        if (!this.getWorld().isRemote) {
+            int t = 0;
+            //if (this.world.getBlockState(this.getPos().up()).getBlock() != BlocksTC.arcaneWorkbenchCharger) {
+            //    t = (int) AuraHandler.getVis(this.getWorld(), this.getPos());
+            //} else {
+                int sx = this.pos.getX() >> 4;
+                int sz = this.pos.getZ() >> 4;
+
+                for(int xx = -1; xx <= 1; ++xx) {
+                    for(int zz = -1; zz <= 1; ++zz) {
+                        AuraChunk ac = AuraHandler.getAuraChunk(this.world.provider.getDimension(), sx + xx, sz + zz);
+                        if (ac != null) {
+                            t = (int)((float)t + ac.getVis());
+                        }
+                    }
+                }
+            //}
+
+            this.auraVisServer = t;
+        }
+
+    }
+
+    public void spendAura(int vis) {
+        if (!this.getWorld().isRemote) {
+            //if (this.world.getBlockState(this.getPos().up()).getBlock() == BlocksTC.arcaneWorkbenchCharger) {
+                int q = vis;
+                int z = Math.max(1, vis / 9);
+                int attempts = 0;
+
+                while (q > 0) {
+                    ++attempts;
+
+                    for (int xx = -1; xx <= 1; ++xx) {
+                        for (int zz = -1; zz <= 1; ++zz) {
+                            if (z > q) {
+                                z = q;
+                            }
+
+                            q = (int) ((float) q - AuraHandler.drainVis(this.getWorld(), this.getPos().add(xx * 16, 0, zz * 16), (float) z, false));
+                            if (q <= 0 || attempts > 1000) {
+                                return;
+                            }
+                        }
+                    }
+                }
+            //} else {
+            //    AuraHandler.drainVis(this.getWorld(), this.getPos(), (float) vis, false);
+            //}
+        }
+
+    }
+
+    public int getAuraVisServer() {
+        return auraVisServer;
+    }
+
+    public void setAuraVisServer(int auraVisServer) {
+        this.auraVisServer = auraVisServer;
     }
 }
