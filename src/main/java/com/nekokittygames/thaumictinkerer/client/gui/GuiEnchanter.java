@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 
@@ -37,6 +38,7 @@ public class GuiEnchanter extends GuiContainer {
     private List<String> tooltip = new ArrayList<>();
     private int visRequireWidth = 0;
     private int visRequireHeight = 0;
+    private int cost=0;
     private int x, y;
     private ItemStack lastTickItem;
     private ItemStack stack;
@@ -53,6 +55,7 @@ public class GuiEnchanter extends GuiContainer {
         ySize = HEIGHT;
         this.enchanter = tileEntity;
         stack = enchanter.getInventory().getStackInSlot(0);
+        cost=enchanter.getEnchantmentVisCost();
         lastTickItem = stack;
     }
 
@@ -225,16 +228,19 @@ public class GuiEnchanter extends GuiContainer {
             if(stack==ItemStack.EMPTY)
                 enchanter.clearEnchants();
             buildButtonList();
+            cost=enchanter.getEnchantmentVisCost();
         }
 
         lastTickItem = stack;
         if(enchanter.isWorking()!=workingLastTick)
         {
            buildButtonList();
+            cost=enchanter.getEnchantmentVisCost();
         }
 
+
         workingLastTick=enchanter.isWorking();
-        if (startButton!=null && enchanter.getEnchantments().size() > 0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player)) {
+        if (startButton!=null && enchanter.getEnchantments().size() > 0 && !enchanter.isWorking() && !stack.isItemEnchanted() && enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), Minecraft.getMinecraft().player) && this.enchanter.getAuraVisServer() > this.cost) {
             startButton.setEnabled(true);
             ready = true;
         } else {
@@ -358,6 +364,9 @@ public class GuiEnchanter extends GuiContainer {
         if (!tooltip.isEmpty())
             ClientHelper.renderTooltip(mouseX - x, mouseY - y, tooltip);
         tooltip.clear();
+        String text = this.enchanter.getAuraVisServer() + " " + ThaumicTinkerer.proxy.localize ("workbench.available");
+
+        this.fontRenderer.drawString(text, 8, 58+15+2,   this.enchanter.getAuraVisServer() < this.cost ? 15625838 : 7237358);
     }
 
 }

@@ -44,7 +44,7 @@ ttmisc.animation_tablet.left=Left Click
 ttmisc.animation_tablet.right=Right Click
 ttmisc.enchanter.start=Start Enchanting!
 ttmisc.enchanter.notready=Can't Enchant!
-
+ttmisc.enchanter.incomplete=This construct is incomplete. The enchanter is unable to work.
 ttmisc.shareTome.write=Research Written!
 ttmisc.shareTome.noAssign=Not Assigned
 ttmisc.shareTome.playerName=Bound to %s's research.
