@@ -86,6 +86,7 @@ public class ItemShareBook extends TTItem {
             }
         } else {
             clearPlayerResearch(item);
+            setPlayerName(item,NON_ASIGNED);
             playerIn.sendStatusMessage(new TextComponentTranslation("ttmisc.shareTome.clear"), true);
         }
 
