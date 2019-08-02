@@ -85,12 +85,12 @@ thaumictinkerer.research.transvector_interface.0=A man who’s name is only know
 thaumictinkerer.research.form_revealer.title=Multiblock Guide
 thaumictinkerer.research.form_revealer.0=As I learn more about Thaumaturgy, I find that my workings no longer always fit inside one block, sometimes structures taller then myself even, are needed to be constructed to complete my tasks. If I take the basic memory provided from a zombie’s brain, and combine it with the phantasmal light of nitor, I may be able to make a wand that will remember where I need to place blocks, to complete a structure, and show me which block I need to provide in whichever places they need to go.
 
-thaumictinkerer.research.TT_TELEKENESIS.title=Telekenesis
-thaumictinkerer.research.TT_TELEKENESIS.0=After watching how creatures and items alike drift in water I started to wonder, what if I had a stream of air that could do so?
-thaumictinkerer.research.TT_TELEKENESIS.1=I have managed to create a focal pattern that creates a light stream of air infused with vis,  if I add this pattern to a bolt and right click on the ground, all nearby items will float towards that point. Crouching will instead cause the items to flee from that point.
+thaumictinkerer.research.TT_TELEKENESIS.title=Telekinesis
+thaumictinkerer.research.TT_TELEKENESIS.0=After watching how creatures and items alike drift in water I started to wonder, what if I had a stream of magical energy that could do so?
+thaumictinkerer.research.TT_TELEKENESIS.1=I have managed to create a focal pattern that creates a light stream of amgic infused with vis,  if I add this pattern to a bolt and right click on the ground, all nearby items will float towards that point. Crouching will instead cause the items to flee from that point.
 
 thaumictinkerer.research.TT_DISLOCATE.title=Dislocation
 thaumictinkerer.research.DISLOCATE.0=After so much work was put into discovering how to exchange blocks, I noticed sometimes there would be a delay before the block appears when being swapped. I wonder what would happen if I look into this more?
-thaumictinkerer.research.DISLOCATE.1=Success! After some experimentation, and many lost blocks of cobblestone, I now have a pattern that can temporarily store blocks to move them. <BR> Once applied to a focus, left click on a block to store it within the focus, then left click again to place the block.
+thaumictinkerer.research.DISLOCATE.1=Success! After some experimentation, many lost blocks of cobblestone, and an invasion of endermen or two,  I substituted permutatio for desiderium, so the effect desired to hold on longer, and now I have a pattern that can temporarily store blocks to move them. <BR> Once applied to a focus, left click on a block to store it within the focus, then left click again to place the block.
 
 thaumictinkerer.research.prismarine.title=Aquatic Alchemy
