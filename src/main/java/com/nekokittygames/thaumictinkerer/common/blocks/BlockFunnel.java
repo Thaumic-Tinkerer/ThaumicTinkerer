@@ -18,6 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
@@ -110,7 +111,7 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
                 }
             } else {
                 ItemStack jar = stack.copy();
-                BlockJarItem item = (BlockJarItem) stack.getItem();
+                IEssentiaContainerItem item = (IEssentiaContainerItem) stack.getItem();
                 if (item.getAspects(jar) == null || item.getAspects(jar).getAspects().length == 0) {
                     jar.setTagCompound(null);
                 }

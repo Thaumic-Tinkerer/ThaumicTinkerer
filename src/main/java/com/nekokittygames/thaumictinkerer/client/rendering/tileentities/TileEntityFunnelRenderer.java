@@ -12,9 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import org.lwjgl.opengl.GL11;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.client.lib.RenderCubes;
-import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 import java.awt.*;
 
@@ -38,16 +38,16 @@ public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEnti
     public void render(TileEntityFunnel te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
         IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getModelForState(te.getWorld().getBlockState(new BlockPos(x, y, z)));
-        if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)) != null && ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).size() > 0) {
+        if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY && ((IEssentiaContainerItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)) != null && ((IEssentiaContainerItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).size() > 0) {
             GL11.glPushMatrix();
             GL11.glDisable(2884);
             GL11.glTranslatef((float) x + 0.5F, (float) y + 0.01F, (float) z + 0.5F);
             GL11.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glDisable(2896);
-            if (((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).size() > 0) {
-                Aspect aspect = ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).getAspects()[0];
-                int amount = ((BlockJarItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).getAmount(aspect);
+            if (((IEssentiaContainerItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).size() > 0) {
+                Aspect aspect = ((IEssentiaContainerItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).getAspects()[0];
+                int amount = ((IEssentiaContainerItem) te.getInventory().getStackInSlot(0).getItem()).getAspects(te.getInventory().getStackInSlot(0)).getAmount(aspect);
                 if (amount > 0)
                     renderTCJar(amount, aspect);
             }

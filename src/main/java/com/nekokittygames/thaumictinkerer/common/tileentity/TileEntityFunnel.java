@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
+import com.nekokittygames.thaumictinkerer.common.misc.SingleItemStackHandler;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,6 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
-import thaumcraft.common.blocks.essentia.BlockJarItem;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 import javax.annotation.Nonnull;
@@ -28,7 +28,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     private int speed = 1;
 
-    private ItemStackHandler inventory = new ItemStackHandler(1) {
+    private SingleItemStackHandler inventory = new SingleItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
@@ -108,7 +108,7 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public void update() {
-        if (inventory != null && (inventory.getStackInSlot(0) != ItemStack.EMPTY) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null) && (((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) && !world.isRemote) {
+        if (inventory != null && (inventory.getStackInSlot(0) != ItemStack.EMPTY) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) && !world.isRemote) {
             IEssentiaContainerItem item = (IEssentiaContainerItem) inventory.getStackInSlot(0).getItem();
             AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
             if (aspectList != null && aspectList.size() == 1) {
@@ -134,8 +134,8 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public AspectList getAspects() {
-        if (inventory.getStackInSlot(0) != ItemStack.EMPTY && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null && ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) {
-            return ((BlockJarItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0));
+        if (inventory.getStackInSlot(0) != ItemStack.EMPTY && ((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null && ((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) {
+            return ((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0));
         } else
             return null;
     }
