@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.containers;
 
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -14,9 +15,9 @@ import javax.annotation.Nonnull;
 
 public class MagnetContainer extends Container {
 
-    private TileEntityMobMagnet tileEntity;
+    private TileEntityMagnet tileEntity;
 
-    public MagnetContainer(IInventory playerInventory, TileEntityMobMagnet tileEntity) {
+    public MagnetContainer(IInventory playerInventory, TileEntityMagnet tileEntity) {
 
         this.tileEntity = tileEntity;
 
