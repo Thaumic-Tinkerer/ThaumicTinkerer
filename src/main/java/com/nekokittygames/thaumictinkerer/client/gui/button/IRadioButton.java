@@ -26,4 +26,12 @@ public interface IRadioButton {
      * @param enabled Is the button enabled?
      */
     void setEnabled(boolean enabled);
+
+    /**
+     * @return what group is this button attached to?
+     */
+    default String getGroup()
+    {
+        return "default";
+    }
 }

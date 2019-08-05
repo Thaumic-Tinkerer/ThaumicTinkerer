@@ -9,6 +9,21 @@ import java.util.List;
  */
 public class GuiTexturedRadioButton extends GuiTexturedButton implements IRadioButton {
     private List<IRadioButton> linkedButtons;
+    private String groupName;
+
+    /**
+     * @param buttonId        id of the button
+     * @param x               xPos of the button
+     * @param y               yPos of the button
+     * @param textureLocation texture Location for the button
+     * @param group           name of group radio button is part of
+     * @param enabled         is the button enabled?
+     */
+    public GuiTexturedRadioButton(int buttonId, int x, int y, ResourceLocation textureLocation, boolean enabled, String group, List<IRadioButton> linkedButtons) {
+        super(buttonId, x, y, textureLocation, enabled);
+        this.linkedButtons = linkedButtons;
+        this.groupName=group;
+    }
 
     /**
      * @param buttonId        id of the button
@@ -20,6 +35,12 @@ public class GuiTexturedRadioButton extends GuiTexturedButton implements IRadioB
     public GuiTexturedRadioButton(int buttonId, int x, int y, ResourceLocation textureLocation, boolean enabled, List<IRadioButton> linkedButtons) {
         super(buttonId, x, y, textureLocation, enabled);
         this.linkedButtons = linkedButtons;
+        this.groupName="default";
+    }
+
+    @Override
+    public String getGroup() {
+        return groupName;
     }
 
     /**
@@ -29,7 +50,7 @@ public class GuiTexturedRadioButton extends GuiTexturedButton implements IRadioB
     public void enableFromClick() {
         setEnabled(true);
         for (IRadioButton button : linkedButtons)
-            if (button != this)
+            if (button != this && this.groupName.equals(button.getGroup()))
                 button.updateStatus(this);
     }
 
@@ -40,7 +61,7 @@ public class GuiTexturedRadioButton extends GuiTexturedButton implements IRadioB
      */
     @Override
     public void updateStatus(IRadioButton otherButton) {
-        if (otherButton.isEnabled())
+        if (otherButton.isEnabled() && this.groupName.equals(otherButton.getGroup()))
             setEnabled(false);
     }
 
