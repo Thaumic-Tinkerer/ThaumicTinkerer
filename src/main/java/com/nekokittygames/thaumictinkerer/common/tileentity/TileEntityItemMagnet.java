@@ -2,6 +2,7 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemStack;
 
 import java.util.function.Predicate;
 
@@ -16,6 +17,11 @@ public class TileEntityItemMagnet extends TileEntityMagnet {
     protected boolean filterEntity(Entity entity) {
         if (entity.getEntityData().hasKey("PreventRemoteMovement"))
             return !entity.getEntityData().getBoolean("PreventRemoteMovement");
+        return true;
+    }
+
+    @Override
+    protected boolean isItemValidForSlot(int index, ItemStack itemstack) {
         return true;
     }
 

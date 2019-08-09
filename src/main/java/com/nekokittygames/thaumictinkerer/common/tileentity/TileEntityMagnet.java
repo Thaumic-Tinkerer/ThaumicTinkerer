@@ -3,18 +3,46 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockMagnet;
 import com.nekokittygames.thaumictinkerer.common.misc.MiscHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.codechicken.lib.vec.Vector3;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 
 
 public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer implements ITickable {
 
     protected abstract <T extends Entity> java.util.function.Predicate selectedEntities();
+
+
+    protected ItemStackHandler inventory = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            super.onContentsChanged(slot);
+            sendUpdates();
+        }
+
+        public boolean isItemValidForSlot(int index, ItemStack stack) {
+            return TileEntityMagnet.this.isItemValidForSlot(index, stack);
+        }
+
+        @Nonnull
+        @Override
+        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+            if (!isItemValidForSlot(slot, stack))
+                return stack;
+            return super.insertItem(slot, stack, simulate);
+        }
+    };
 
     @Override
     public void update() {
@@ -48,6 +76,40 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
             }
         }
     }
+    public ItemStackHandler getInventory() {
+        return inventory;
+    }
 
+    @Override
+    public void writeExtraNBT(NBTTagCompound nbttagcompound) {
+        super.writeExtraNBT(nbttagcompound);
+        nbttagcompound.setTag("inventory", inventory.serializeNBT());
+    }
+
+    @Override
+    public void readExtraNBT(NBTTagCompound nbttagcompound) {
+        super.readExtraNBT(nbttagcompound);
+        if (nbttagcompound.hasKey("inventory")) {
+            inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
+        }
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+    }
+
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return (T) inventory;
+        } else {
+            return super.getCapability(capability, facing);
+        }
+    }
     protected abstract boolean filterEntity(Entity entity);
+
+    protected abstract boolean isItemValidForSlot(int index, ItemStack itemstack);
 }

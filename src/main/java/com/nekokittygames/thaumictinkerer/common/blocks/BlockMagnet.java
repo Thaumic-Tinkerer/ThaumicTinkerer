@@ -1,6 +1,8 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
+import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
@@ -9,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -20,7 +23,7 @@ import java.util.Objects;
 
 import static net.minecraft.block.BlockPistonBase.getFacing;
 
-public abstract class BlockMagnet<T extends TileEntityMagnet> extends TTTileEntity<T> implements IInteractWithCaster {
+public abstract class BlockMagnet<T extends TileEntityMagnet> extends TTTileEntity<T>  {
     private static final PropertyDirection FACING = PropertyDirection.create("facing");
     public static final PropertyEnum<MagnetPull> POLE = PropertyEnum.create("pole", MagnetPull.class);
 
@@ -94,9 +97,16 @@ public abstract class BlockMagnet<T extends TileEntityMagnet> extends TTTileEnti
     }
 
     @Override
-    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing, EnumHand enumHand) {
-        IBlockState current = world.getBlockState(blockPos);
-        world.setBlockState(blockPos, current.withProperty(POLE, current.getValue(POLE) == MagnetPull.PULL ? MagnetPull.PUSH : MagnetPull.PULL));
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        // Only execute on the server
+        if (world.isRemote) {
+            return true;
+        }
+        TileEntity te = world.getTileEntity(pos);
+        if (!(te instanceof TileEntityMagnet)) {
+            return false;
+        }
+        player.openGui(ThaumicTinkerer.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 

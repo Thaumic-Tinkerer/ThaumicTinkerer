@@ -22,25 +22,7 @@ import java.util.function.Predicate;
 
 public class TileEntityMobMagnet extends TileEntityMagnet {
 
-    private ItemStackHandler inventory = new ItemStackHandler(1) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
-            sendUpdates();
-        }
 
-        public boolean isItemValidForSlot(int index, ItemStack stack) {
-            return TileEntityMobMagnet.this.isItemValidForSlot(index, stack);
-        }
-
-        @Nonnull
-        @Override
-        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-            if (!isItemValidForSlot(slot, stack))
-                return stack;
-            return super.insertItem(slot, stack, simulate);
-        }
-    };
     private boolean pullAdults = true;
 
     public boolean isPullAdults() {
@@ -51,8 +33,8 @@ public class TileEntityMobMagnet extends TileEntityMagnet {
         this.pullAdults = pullAdults;
         sendUpdates();
     }
-
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    @Override
+    protected boolean isItemValidForSlot(int index, ItemStack stack) {
         return stack.getItem() instanceof ItemSoulMould;
     }
 
@@ -63,17 +45,14 @@ public class TileEntityMobMagnet extends TileEntityMagnet {
     @Override
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
         super.writeExtraNBT(nbttagcompound);
-        nbttagcompound.setTag("inventory", inventory.serializeNBT());
         nbttagcompound.setBoolean("adults", pullAdults);
     }
 
     @Override
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
         super.readExtraNBT(nbttagcompound);
-        if (nbttagcompound.hasKey("inventory")) {
-            inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
+
             pullAdults = nbttagcompound.getBoolean("adults");
-        }
     }
 
     @Override
@@ -81,21 +60,7 @@ public class TileEntityMobMagnet extends TileEntityMagnet {
         return false;
     }
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
-    }
 
-
-    @Nullable
-    @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return (T) inventory;
-        } else {
-            return super.getCapability(capability, facing);
-        }
-    }
 
     @Override
     protected <T extends Entity> Predicate selectedEntities() {
