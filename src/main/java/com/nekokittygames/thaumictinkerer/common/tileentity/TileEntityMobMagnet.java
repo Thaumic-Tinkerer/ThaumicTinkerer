@@ -85,11 +85,5 @@ public class TileEntityMobMagnet extends TileEntityMagnet {
         return agePull && typePull;
     }
 
-    @Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
-        if (oldState.getBlock() == newSate.getBlock())
-            return false;
-        else
-            return super.shouldRefresh(world, pos, oldState, newSate);
-    }
+
 }

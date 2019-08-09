@@ -28,8 +28,6 @@ public class GuiMobMagnet extends GuiMagnet {
     private static final int WIDTH = 176;
     private static final int HEIGHT = 166;
     private int x, y;
-    private List<GuiTexturedButton> buttonListMM = new ArrayList<>();
-    private List<IRadioButton> radioButtons = new ArrayList<>();
     private TileEntityMobMagnet mobMagnet;
 
     /**
@@ -54,31 +52,17 @@ public class GuiMobMagnet extends GuiMagnet {
         x = (width - xSize) / 2;
         y = (height - ySize) / 2;
         buttonListMM.clear();
-        addButton(new GuiTexturedRadioButton(0, x + 100, y + 28, LibClientResources.GUI_MOBMAGNET, mobMagnet.isPullAdults(), radioButtons));
-        addButton(new GuiTexturedRadioButton(1, x + 100, y + 48, LibClientResources.GUI_MOBMAGNET, !mobMagnet.isPullAdults(), radioButtons));
+        getButtons();
         buttonList.addAll(buttonListMM);
-
     }
 
-    /**
-     * Adds button to GUI
-     *
-     * @param button button to add
-     * @param <T>    type of button to add
-     * @return added button
-     */
-    @Nonnull
     @Override
-    protected <T extends GuiButton> T addButton(@Nonnull T button) {
-        if (button instanceof GuiTexturedButton) {
-            buttonListMM.add((GuiTexturedButton) button);
-
-            if (button instanceof IRadioButton)
-                radioButtons.add((IRadioButton) button);
-            return button;
-        } else
-            return super.addButton(button);
+    protected void getButtons() {
+        super.getButtons();
+        addButton(new GuiTexturedRadioButton(2, x + 100, y + 28, LibClientResources.GUI_MOBMAGNET, mobMagnet.isPullAdults(), "age",radioButtons));
+        addButton(new GuiTexturedRadioButton(3, x + 100, y + 48, LibClientResources.GUI_MOBMAGNET, !mobMagnet.isPullAdults(), "age",radioButtons));
     }
+
 
     /**
      * Callback for button pressed
@@ -86,12 +70,10 @@ public class GuiMobMagnet extends GuiMagnet {
      */
     @Override
     protected void actionPerformed(GuiButton button) {
-        if (button instanceof IRadioButton)
-            ((IRadioButton) button).enableFromClick();
-        else buttonListMM.get(1).setButtonEnabled(!buttonListMM.get(1).isButtonEnabled());
+       super.actionPerformed(button);
 
         //mobMagnet.adult = buttonListMM.get(0).enabled;
-        mobMagnet.setPullAdults(buttonListMM.get(0).isButtonEnabled());
+        mobMagnet.setPullAdults(buttonListMM.get(2).isButtonEnabled());
         PacketHandler.INSTANCE.sendToServer(new PacketMobMagnet(mobMagnet, mobMagnet.isPullAdults()));
     }
 
@@ -103,9 +85,8 @@ public class GuiMobMagnet extends GuiMagnet {
      */
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.getTextureManager().bindTexture(LibClientResources.GUI_MOBMAGNET);
-        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
         String adult = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.adult");
         String child = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.child");
         ItemStack stack = mobMagnet.getInventory().getStackInSlot(0);

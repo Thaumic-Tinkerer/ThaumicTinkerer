@@ -2,12 +2,15 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockMagnet;
 import com.nekokittygames.thaumictinkerer.common.misc.MiscHelper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -44,6 +47,17 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
         }
     };
 
+    public BlockMagnet.MagnetPull GetMode()
+    {
+        return world.getBlockState(pos).getValue(BlockMagnet.POLE);
+    }
+
+    public void setMode(BlockMagnet.MagnetPull mode)
+    {
+        IBlockState current = world.getBlockState(pos);
+        world.setBlockState(pos, current.withProperty(BlockMagnet.POLE,mode));
+    }
+
     @Override
     public void update() {
         int redstone = 0;
@@ -56,7 +70,7 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
             double x1 = pos.getX() + 0.5;
             double y1 = pos.getY() + 0.5;
             double z1 = pos.getZ() + 0.5;
-            BlockMagnet.MagnetPull mode = world.getBlockState(pos).getValue(BlockMagnet.POLE);
+            BlockMagnet.MagnetPull mode = GetMode();
             int speedMod = mode == BlockMagnet.MagnetPull.PULL ? 1 : -1;
             double range = redstone >> 1;
             List<Entity> entities = world.<Entity>getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(x1 - range, pos.getY(), z1 - range, x1 + range, y1 + range, z1 + range), selectedEntities()::test);
@@ -112,4 +126,12 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
     protected abstract boolean filterEntity(Entity entity);
 
     protected abstract boolean isItemValidForSlot(int index, ItemStack itemstack);
+
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+        if (oldState.getBlock() == newSate.getBlock())
+            return false;
+        else
+            return super.shouldRefresh(world, pos, oldState, newSate);
+    }
 }
