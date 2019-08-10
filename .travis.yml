@@ -8,5 +8,5 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 script:
-  - gradle setupDecompWorkspace
-  - gradle build
+  - ./gradlew setupDecompWorkspace
+  - ./gradlew build
