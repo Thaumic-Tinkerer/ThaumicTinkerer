@@ -60,7 +60,7 @@ repositories {
     repositories {//Curseforge maven, in case some other maven goes offline
         maven {
             name = "CurseForge"
-            url = "https://minecraft.curseforge.com/api/maven/"
+            url = "http://minecraft.curseforge.com/api/maven/"
         }
     }
     /*maven { //IC2
@@ -72,9 +72,9 @@ repositories {
         url "http://maven.covers1624.net/"
     }
     maven { // Albedo Lights
-        url 'https://repo.elytradev.com/'
+        url 'http://repo.elytradev.com/'
     }
-    maven { url 'https://jitpack.io' }
+    maven { url 'http://jitpack.io' }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
