@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityCamoflage;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -35,6 +36,11 @@ public abstract class TTCamoBlock<T extends TileEntityCamoflage> extends TTTileE
                     camo.sendUpdates();
                     return true;
                 }
+            if(currentStack==ItemStack.EMPTY && playerIn.isSneaking())
+            {
+                camo.clearBlockCopy();
+                camo.sendUpdates();
+            }
         }
         return false;
     }

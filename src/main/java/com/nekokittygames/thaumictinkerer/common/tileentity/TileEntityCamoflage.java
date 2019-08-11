@@ -8,6 +8,8 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import java.util.Objects;
+
 public abstract class TileEntityCamoflage extends TileEntityThaumicTinkerer {
 
     public static final String TAG_BLOCK_NAME = "blockName";
@@ -25,10 +27,12 @@ public abstract class TileEntityCamoflage extends TileEntityThaumicTinkerer {
 
     @Override
     public void readExtraNBT(NBTTagCompound compound) {
-        if (compound.hasKey(TAG_BLOCK_NAME)) {
+        if (compound.hasKey(TAG_BLOCK_NAME) && !compound.getString(TAG_BLOCK_NAME).equalsIgnoreCase("NULL")) {
             Block blk = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(compound.getString(TAG_BLOCK_NAME)));
-            blockCopy = blk.getStateFromMeta(compound.getInteger(TAG_BLOCK_META));
+            blockCopy = Objects.requireNonNull(blk).getStateFromMeta(compound.getInteger(TAG_BLOCK_META));
         }
+        else
+            blockCopy=null;
     }
 
     @Override
@@ -40,9 +44,19 @@ public abstract class TileEntityCamoflage extends TileEntityThaumicTinkerer {
     @Override
     public void writeExtraNBT(NBTTagCompound compound) {
         if (blockCopy != null) {
-            compound.setString(TAG_BLOCK_NAME, blockCopy.getBlock().getRegistryName().toString());
+            compound.setString(TAG_BLOCK_NAME, Objects.requireNonNull(blockCopy.getBlock().getRegistryName()).toString());
             compound.setInteger(TAG_BLOCK_META, blockCopy.getBlock().getMetaFromState(blockCopy));
         }
+        else
+        {
+            compound.setString(TAG_BLOCK_NAME, "NULL");
+            compound.setInteger(TAG_BLOCK_META, -1);
+        }
 
+    }
+
+    public  void clearBlockCopy()
+    {
+        this.blockCopy=null;
     }
 }
