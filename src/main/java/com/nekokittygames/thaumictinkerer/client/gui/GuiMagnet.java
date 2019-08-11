@@ -7,12 +7,14 @@ import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockMagnet;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
+import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMagnetMode;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nonnull;
@@ -111,18 +113,14 @@ public class GuiMagnet extends GuiContainer {
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
         String push = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.push");
         String pull = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.pull");
-        //ItemStack stack = mobMagnet.getInventory().getStackInSlot(0);
+        ItemStack stack = magnet.getInventory().getStackInSlot(0);
         String filter;
-        //if (stack != ItemStack.EMPTY) {
-        //    String name = ItemSoulMould.getEntityName(stack);
-        //    if (name != null) {
-        //        filter = ThaumicTinkerer.proxy.localize("entity." + name + ".name");
-        //    } else
-        //        filter = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.none");
-//
-//        } else
-//            filter = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.all");
-  //      fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
+        if (stack != ItemStack.EMPTY) {
+            filter = stack.getItem().getItemStackDisplayName(stack);
+
+        } else
+            filter = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.all");
+        fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
         fontRenderer.drawString(push, x + 120, y -11, 0x999999);
         fontRenderer.drawString(pull, x + 120, y + 10, 0x999999);
         GL11.glColor3f(1F, 1F, 1F);
