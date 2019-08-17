@@ -59,7 +59,9 @@ public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
     @Override
     public boolean removedByPlayer(final IBlockState state, final World world, final BlockPos pos, final EntityPlayer player, final boolean willHarvest) {
         // If it will harvest, delay deletion of the block until after getDrops
-        return preserveTileEntity && willHarvest || super.removedByPlayer(state, world, pos, player, false);
+        if(preserveTileEntity && willHarvest && !player.capabilities.isCreativeMode)
+            return true;
+        return super.removedByPlayer(state, world, pos, player, willHarvest);
     }
 
     @Override
@@ -67,7 +69,9 @@ public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
         super.harvestBlock(world, player, pos, state, te, stack);
 
         if (preserveTileEntity) {
+            this.onBlockHarvested(world,pos,state,player);
             world.setBlockToAir(pos);
+            world.removeTileEntity(pos);
         }
     }
 
