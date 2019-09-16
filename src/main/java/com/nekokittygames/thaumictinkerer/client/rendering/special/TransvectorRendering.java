@@ -19,6 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -30,7 +31,7 @@ import org.lwjgl.opengl.GL11;
  */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class TransvectorRendering {
-
+ static long ticks=0;
     /**
      * Event called on block rendering
      *
@@ -47,6 +48,7 @@ public class TransvectorRendering {
         }
         BlockPos pos = ItemConnector.getTarget(stack);
         if (pos != null) {
+            ticks++;
             double doubleX = player.lastTickPosX + (player.posX - player.lastTickPosX) * evt.getPartialTicks();
             double doubleY = player.lastTickPosY + (player.posY - player.lastTickPosY) * evt.getPartialTicks();
             double doubleZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * evt.getPartialTicks();
@@ -56,26 +58,24 @@ public class TransvectorRendering {
 
             GlStateManager.disableDepth();
             GlStateManager.enableTexture2D();
+            GlStateManager.enableAlpha();
+            GlStateManager.enableBlend();
             net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
             Minecraft.getMinecraft().entityRenderer.disableLightmap();
-            GlStateManager.disableTexture2D();
-            //GlStateManager.disableBlend();
-            //GlStateManager.disableLighting();
-            //GlStateManager.disableAlpha();
             GlStateManager.glLineWidth(4);
-            //GlStateManager.color(1, 1, 1);
             ;
             Tessellator tessellator = Tessellator.getInstance();
             BufferBuilder buffer = tessellator.getBuffer();
             float blockX = pos.getX();
             float blockY = pos.getY();
             float blockZ = pos.getZ();
-            float r = 1f;
+
+            float r = 1f*MathHelper.sin(ticks/100f);
             float g = 0.2f;
             float b = 0.3f;
-            float a = 0.3f;
+            float a = 0.5f;
             Minecraft.getMinecraft().getTextureManager().bindTexture(LibClientResources.MARK_TEXTURE);
-            buffer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX);
+            buffer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR);
             drawTexturedOutline(buffer, blockX, blockY, blockZ, r, g, b, a,RenderEvents.MARK_SPRITE);
 
             TileEntity te = Minecraft.getMinecraft().world.getTileEntity(pos);
@@ -87,23 +87,24 @@ public class TransvectorRendering {
                     blockY = linkPos.getY();
                     blockZ = linkPos.getZ();
                     r = 0.2f;
-                    g = 1f;
+                    g = 1f*MathHelper.sin(ticks/100f);
                     b = 0.3f;
-                    a = 0.3f;
+                    a = 0.5f;
 
                     drawTexturedOutline(buffer, blockX, blockY, blockZ, r, g, b, a, RenderEvents.MARK_SPRITE);
                     tessellator.draw();
                     buffer = tessellator.getBuffer();
 
+                    GlStateManager.disableBlend();
+                    GlStateManager.disableAlpha();
                     buffer.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
 
-                    drawLine(buffer,pos.getX(),pos.getY(),pos.getZ(),blockX,blockY,blockZ,1f,0.2f,0.3f,0.3f,r,g,b,a);
+                    drawLine(buffer,pos.getX(),pos.getY(),pos.getZ(),blockX,blockY,blockZ,1f,0.2f,0.3f,0.8f,0.2f,1f,0.3f,0.8f);
                 }
             }
             tessellator.draw();
 
             Minecraft.getMinecraft().entityRenderer.enableLightmap();
-           GlStateManager.enableTexture2D();
             GlStateManager.enableDepth();
 
             GlStateManager.popMatrix();
@@ -121,9 +122,8 @@ public class TransvectorRendering {
 
     private static void drawTexturedOutline(BufferBuilder buffer, float mx, float my, float mz, float r, float g, float b, float a, TextureAtlasSprite texture )
     {
-        GlStateManager.enableTexture2D();
-        GlStateManager.enableAlpha();
-        GlStateManager.enableBlend();
+        //GlStateManager.enableTexture2D();
+
 
         //GlStateManager.bindTexture(Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).getGlTextureId());
         float u0=0; //texture.getInterpolatedU(0);
@@ -132,17 +132,54 @@ public class TransvectorRendering {
         float v1=1; //texture.getInterpolatedV(1);
 
         // Face 1
-        buffer.pos(mx, my, mz).tex(u0,v0).endVertex(); //.color(r,g,b,a);
-        buffer.pos(mx,my+1,mz).tex(u1,v0).endVertex(); //.color(r,g,b,a).endVertex();
-        buffer.pos(mx+1,my,mz).tex(u0,v1).endVertex(); //.color(r,g,b,a).endVertex();
-        buffer.pos(mx, my+1, mz).tex(u1,v0).endVertex(); //.color(r,g,b,a).endVertex();
-        buffer.pos(mx+1,my+1,mz).tex(u1,v1).endVertex(); //.color(r,g,b,a).endVertex();
-        buffer.pos(mx+1,my,mz).tex(u0,v1).endVertex(); //.color(r,g,b,a).endVertex();
+        buffer.pos(mx, my, mz).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 0,0,0
+        buffer.pos(mx,my+1,mz).tex(u1,v0).color(r,g,b,a).endVertex(); // 0,1,0
+        buffer.pos(mx+1,my,mz).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,0,0
+        buffer.pos(mx, my+1, mz).tex(u1,v0).color(r,g,b,a).endVertex(); // Triangle 2: 0,1,0
+        buffer.pos(mx+1,my+1,mz).tex(u1,v1).color(r,g,b,a).endVertex(); // 1,1,0
+        buffer.pos(mx+1,my,mz).tex(u0,v1).color(r,g,b,a).endVertex(); //1,0,0
 
+        // Face 2
+        buffer.pos(mx+1, my, mz).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 1,0,0
+        buffer.pos(mx+1,my+1,mz).tex(u1,v0).color(r,g,b,a).endVertex(); // 1,1,0
+        buffer.pos(mx+1,my,mz+1).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,0,1
+        buffer.pos(mx+1, my+1, mz).tex(u1,v0).color(r,g,b,a).endVertex(); // Triangle 2: 1,1,0
+        buffer.pos(mx+1,my+1,mz+1).tex(u1,v1).color(r,g,b,a).endVertex(); // 1,1,1
+        buffer.pos(mx+1,my,mz+1).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,0,1
 
-        GlStateManager.disableBlend();
-        GlStateManager.disableAlpha();
-        GlStateManager.disableTexture2D();
+        // Face 3
+        buffer.pos(mx+1, my, mz+1).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 1,0,1
+        buffer.pos(mx+1,my+1,mz+1).tex(u1,v0).color(r,g,b,a).endVertex(); // 1,1,1
+        buffer.pos(mx,my,mz+1).tex(u0,v1).color(r,g,b,a).endVertex(); // 0,0,1
+        buffer.pos(mx+1, my+1, mz+1).tex(u1,v0).color(r,g,b,a).endVertex(); // Triangle 2: 1,1,1
+        buffer.pos(mx,my+1,mz+1).tex(u1,v1).color(r,g,b,a).endVertex(); // 0,1,1
+        buffer.pos(mx,my,mz+1).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,0,1
+
+        // Face 4
+        buffer.pos(mx, my, mz+1).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 0,0,1
+        buffer.pos(mx,my+1,mz+1).tex(u1,v0).color(r,g,b,a).endVertex(); // 0,1,1
+        buffer.pos(mx,my,mz).tex(u0,v1).color(r,g,b,a).endVertex(); // 0,0,0
+        buffer.pos(mx, my+1, mz+1).tex(u1,v0).color(r,g,b,a).endVertex(); // Triangle 2: 0,1,1
+        buffer.pos(mx,my+1,mz).tex(u1,v1).color(r,g,b,a).endVertex(); // 0,1,0
+        buffer.pos(mx,my,mz).tex(u0,v1).color(r,g,b,a).endVertex(); // 0,0,0
+
+        // Face 5
+        buffer.pos(mx, my+1, mz).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 0,1,0
+        buffer.pos(mx,my+1,mz+1).tex(u1,v0).color(r,g,b,a).endVertex(); // 0,1,1
+        buffer.pos(mx+1,my+1,mz).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,1,0
+        buffer.pos(mx, my+1, mz+1).tex(u1,v0).color(r,g,b,a).endVertex(); // Triangle 2: 0,1,1
+        buffer.pos(mx+1,my+1,mz+1).tex(u1,v1).color(r,g,b,a).endVertex(); // 1,1,1
+        buffer.pos(mx+1,my+1,mz).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,1,0
+
+        // Face 6
+        buffer.pos(mx, my, mz+1).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 0,0,1
+        buffer.pos(mx,my,mz).tex(u1,v0).color(r,g,b,a).endVertex(); // 0,0,0
+        buffer.pos(mx+1,my,mz+1).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,0,1
+        buffer.pos(mx, my, mz).tex(u1,v0).color(r,g,b,a).endVertex(); // Triangle 2: 0,0,0
+        buffer.pos(mx+1,my,mz).tex(u1,v1).color(r,g,b,a).endVertex(); // 1,0,0
+        buffer.pos(mx+1,my,mz+1).tex(u0,v1).color(r,g,b,a).endVertex(); // 1,0,1
+        //
+        //GlStateManager.disableTexture2D();
 
     }
 
