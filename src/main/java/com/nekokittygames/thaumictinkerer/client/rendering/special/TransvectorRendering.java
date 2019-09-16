@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.client.rendering.special;
 
+import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.RenderEvents;
 import com.nekokittygames.thaumictinkerer.common.items.ItemConnector;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
@@ -9,7 +10,9 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -61,7 +64,7 @@ public class TransvectorRendering {
             //GlStateManager.disableAlpha();
             GlStateManager.glLineWidth(4);
             //GlStateManager.color(1, 1, 1);
-
+            ;
             Tessellator tessellator = Tessellator.getInstance();
             BufferBuilder buffer = tessellator.getBuffer();
             float blockX = pos.getX();
@@ -71,6 +74,7 @@ public class TransvectorRendering {
             float g = 0.2f;
             float b = 0.3f;
             float a = 0.3f;
+            Minecraft.getMinecraft().getTextureManager().bindTexture(LibClientResources.MARK_TEXTURE);
             buffer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX);
             drawTexturedOutline(buffer, blockX, blockY, blockZ, r, g, b, a,RenderEvents.MARK_SPRITE);
 
@@ -120,10 +124,12 @@ public class TransvectorRendering {
         GlStateManager.enableTexture2D();
         GlStateManager.enableAlpha();
         GlStateManager.enableBlend();
-        float u0=texture.getInterpolatedU(0);
-        float u1=texture.getInterpolatedU(1);
-        float v0=texture.getInterpolatedV(0);
-        float v1=texture.getInterpolatedV(1);
+
+        //GlStateManager.bindTexture(Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).getGlTextureId());
+        float u0=0; //texture.getInterpolatedU(0);
+        float u1=1; //texture.getInterpolatedU(1);
+        float v0=0; //texture.getInterpolatedV(0);
+        float v1=1; //texture.getInterpolatedV(1);
 
         // Face 1
         buffer.pos(mx, my, mz).tex(u0,v0).endVertex(); //.color(r,g,b,a);
