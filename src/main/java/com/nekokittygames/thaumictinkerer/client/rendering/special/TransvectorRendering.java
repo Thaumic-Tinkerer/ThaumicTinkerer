@@ -84,6 +84,7 @@ public class TransvectorRendering {
                     a = 0.8f;
 
                     drawOutline(buffer, blockX, blockY, blockZ, r, g, b, a);
+                    drawLine(buffer,pos.getX(),pos.getY(),pos.getZ(),blockX,blockY,blockZ,1f,0.2f,0.3f,0.8f,r,g,b,a);
                 }
             }
             tessellator.draw();
@@ -97,6 +98,11 @@ public class TransvectorRendering {
         }
 
 
+    }
+
+    private static void drawLine(BufferBuilder buffer, int originX, int originY, int originZ, float blockX, float blockY, float blockZ, float r, float g, float b, float a,float gr, float gg, float gb, float ga) {
+        buffer.pos(originX+0.5f,originY+0.5f,originZ+0.5f).color(r,g,b,a).endVertex();
+        buffer.pos(blockX+0.5f,blockY+0.5f,blockZ+0.5f).color(gr,gg,gb,ga).endVertex();
     }
 
     /**

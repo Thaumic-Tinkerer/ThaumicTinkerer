@@ -1,10 +1,12 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class TileEntityExample extends TileEntityThaumicTinkerer implements ITic
     private int time;
     private boolean activated;
     private List<IBlockState> guideBlockType = new ArrayList<>();
+    private BlockPos originalPos;
 
     public int getTime() {
         return time;
@@ -50,6 +53,11 @@ public class TileEntityExample extends TileEntityThaumicTinkerer implements ITic
                 block.appendTag(stateCmp);
             }
         }
+        if(originalPos!=null)
+        {
+            NBTTagCompound cmp=NBTUtil.createPosTag(originalPos);
+            nbttagcompound.setTag("original",cmp);
+        }
         nbttagcompound.setTag("BLOCKTYPES", block);
     }
 
@@ -67,6 +75,10 @@ public class TileEntityExample extends TileEntityThaumicTinkerer implements ITic
                 guideBlockType.add(NBTUtil.readBlockState(blockList.getCompoundTagAt(i)));
             }
         }
+        if(nbttagcompound.hasKey("original"))
+        {
+            originalPos=NBTUtil.getPosFromTag(nbttagcompound.getCompoundTag("original"));
+        }
     }
 
     @Override
@@ -83,5 +95,8 @@ public class TileEntityExample extends TileEntityThaumicTinkerer implements ITic
             else
                 activated = false;
         }
+        if(world.getBlockState(originalPos)== Blocks.AIR.getDefaultState())
+            world.setBlockState(pos,Blocks.AIR.getDefaultState());
+        //
     }
 }
