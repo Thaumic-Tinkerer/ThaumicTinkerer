@@ -11,7 +11,7 @@ public class LibClientResources {
     public static final ResourceLocation MISC_AT_LEFT = new ResourceLocation(ASSET_NAME, "textures/misc/animation_tablet/left.png");
     public static final ResourceLocation MISC_AT_RIGHT = new ResourceLocation(ASSET_NAME, "textures/misc/animation_tablet/right.png");
     public static final ResourceLocation MISC_AT_INDENT = new ResourceLocation(ASSET_NAME, "textures/misc/animation_tablet/facing_indent.png");
-    public static final ResourceLocation MARK_TEXTURE=new ResourceLocation(ASSET_NAME,"textures/misc/mark.png");
+    public static final ResourceLocation MARK_TEXTURE=new ResourceLocation(ASSET_NAME,"misc/mark");
 
 
     public static final class Shaders {

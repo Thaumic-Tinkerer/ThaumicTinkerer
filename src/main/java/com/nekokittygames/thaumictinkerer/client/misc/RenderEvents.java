@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.client.misc;
 
+import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.item.Item;
@@ -16,7 +17,7 @@ public class RenderEvents {
     public static TextureAtlasSprite MARK_SPRITE;
     @SubscribeEvent
     public static void AddTextures(final TextureStitchEvent.Pre event) {
-        MARK_SPRITE=event.getMap().registerSprite(new ResourceLocation("thaumictinkerer:textures/misc/mark.png"));
+        MARK_SPRITE=event.getMap().registerSprite(LibClientResources.MARK_TEXTURE);
     }
  /*   private static StructureRendererHandler structureHandler = new StructureRendererHandler();
 

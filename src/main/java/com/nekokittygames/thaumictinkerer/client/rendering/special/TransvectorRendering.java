@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.client.rendering.special;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.RenderEvents;
 import com.nekokittygames.thaumictinkerer.common.items.ItemConnector;
@@ -31,7 +32,7 @@ import org.lwjgl.opengl.GL11;
  */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class TransvectorRendering {
- static long ticks=0;
+
     /**
      * Event called on block rendering
      *
@@ -48,7 +49,7 @@ public class TransvectorRendering {
         }
         BlockPos pos = ItemConnector.getTarget(stack);
         if (pos != null) {
-            ticks++;
+            float ticks=(Minecraft.getMinecraft().world.getTotalWorldTime()+evt.getPartialTicks())/10f;
             double doubleX = player.lastTickPosX + (player.posX - player.lastTickPosX) * evt.getPartialTicks();
             double doubleY = player.lastTickPosY + (player.posY - player.lastTickPosY) * evt.getPartialTicks();
             double doubleZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * evt.getPartialTicks();
@@ -70,14 +71,13 @@ public class TransvectorRendering {
             float blockY = pos.getY();
             float blockZ = pos.getZ();
 
-            float r = 1f*MathHelper.sin(ticks/100f);
+            float r = 0.5f + 0.5f*MathHelper.sin(ticks);
             float g = 0.2f;
             float b = 0.3f;
             float a = 0.5f;
-            Minecraft.getMinecraft().getTextureManager().bindTexture(LibClientResources.MARK_TEXTURE);
+            //Minecraft.getMinecraft().getTextureManager().bindTexture(LibClientResources.MARK_TEXTURE);
             buffer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_COLOR);
             drawTexturedOutline(buffer, blockX, blockY, blockZ, r, g, b, a,RenderEvents.MARK_SPRITE);
-
             TileEntity te = Minecraft.getMinecraft().world.getTileEntity(pos);
             if (te instanceof TileEntityTransvector) {
                 TileEntityTransvector transvector = (TileEntityTransvector) te;
@@ -87,16 +87,17 @@ public class TransvectorRendering {
                     blockY = linkPos.getY();
                     blockZ = linkPos.getZ();
                     r = 0.2f;
-                    g = 1f*MathHelper.sin(ticks/100f);
+                    g = 0.5f + 0.5f*MathHelper.sin(ticks);
                     b = 0.3f;
                     a = 0.5f;
 
                     drawTexturedOutline(buffer, blockX, blockY, blockZ, r, g, b, a, RenderEvents.MARK_SPRITE);
                     tessellator.draw();
                     buffer = tessellator.getBuffer();
-
+                    GlStateManager.disableTexture2D();
                     GlStateManager.disableBlend();
                     GlStateManager.disableAlpha();
+                    GlStateManager.enableTexture2D();
                     buffer.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
 
                     drawLine(buffer,pos.getX(),pos.getY(),pos.getZ(),blockX,blockY,blockZ,1f,0.2f,0.3f,0.8f,0.2f,1f,0.3f,0.8f);
@@ -125,11 +126,11 @@ public class TransvectorRendering {
         //GlStateManager.enableTexture2D();
 
 
-        //GlStateManager.bindTexture(Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).getGlTextureId());
-        float u0=0; //texture.getInterpolatedU(0);
-        float u1=1; //texture.getInterpolatedU(1);
-        float v0=0; //texture.getInterpolatedV(0);
-        float v1=1; //texture.getInterpolatedV(1);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+        float u0=texture.getInterpolatedU(0);
+        float u1=texture.getInterpolatedU(16);
+        float v0=texture.getInterpolatedV(0);
+        float v1=texture.getInterpolatedV(16);
 
         // Face 1
         buffer.pos(mx, my, mz).tex(u0,v0).color(r,g,b,a).endVertex(); // Triangle 1: 0,0,0
