@@ -105,7 +105,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
 
     private boolean checkBlock(BlockPos coords) {
         IBlockState state = world.getBlockState(coords);
-        return (!world.isAirBlock(coords) && !BlockUtils.isPortableHoleBlackListed(state));
+        return (!BlockUtils.isPortableHoleBlackListed(state));
     }
 
     private BlockPos getBlockTarget() {

@@ -26,13 +26,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import org.lwjgl.opengl.GL11;
+import thaumcraft.Thaumcraft;
+import thaumcraft.client.fx.FXDispatcher;
 
 /**
  * Renders the transvector interface linking
  */
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class TransvectorRendering {
-
+public static float lastLineTick=0;
     /**
      * Event called on block rendering
      *
@@ -55,6 +57,7 @@ public class TransvectorRendering {
             double doubleZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * evt.getPartialTicks();
 
             GlStateManager.pushMatrix();
+
             GlStateManager.translate(-doubleX, -doubleY, -doubleZ);
 
             GlStateManager.disableDepth();
@@ -105,10 +108,10 @@ public class TransvectorRendering {
             }
             tessellator.draw();
 
-            Minecraft.getMinecraft().entityRenderer.enableLightmap();
-            GlStateManager.enableDepth();
+           Minecraft.getMinecraft().entityRenderer.enableLightmap();
+           GlStateManager.enableDepth();
 
-            GlStateManager.popMatrix();
+           GlStateManager.popMatrix();
 
         }
 
