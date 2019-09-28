@@ -74,7 +74,7 @@ repositories {
     maven { // Albedo Lights
         url 'http://repo.elytradev.com/'
     }
-    maven { url 'http://jitpack.io' }
+    maven { url 'https://jitpack.io' }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'

@@ -218,7 +218,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
         if (!world.isRemote && player == null) {
             MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
-            player = new WeakReference<>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME + "." + pos.toString())));
+            player = new WeakReference<>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME)));
         }
         ticksExisted++;
         ItemStack stack = inventory.getStackInSlot(0);
@@ -277,7 +277,6 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         if (!rightClick) {
             if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
                 this.curBlockDamageMP += world.getBlockState(targetPos).getPlayerRelativeBlockHardness(Objects.requireNonNull(player.get()), player.get().world, targetPos);
-                ThaumicTinkerer.logger.info(String.format("Cur Block Damage: %s", this.curBlockDamageMP));
 
                 //if (this.curBlockDamageMP >= 1.0f) {
                 //    player.get().interactionManager

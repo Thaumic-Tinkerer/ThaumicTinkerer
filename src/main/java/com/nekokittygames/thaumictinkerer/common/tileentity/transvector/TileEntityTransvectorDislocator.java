@@ -1,8 +1,8 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity.transvector;
 
-import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
+import com.nekokittygames.thaumictinkerer.common.misc.APIHelpers;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -52,38 +52,40 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
     @Override
     public void activateOnPulse() {
         super.activateOnPulse();
-        getTile(); // Sanity check!
-        if (getTilePos() == null)
-            return;
+        if(!world.isRemote) {
+            getTile(); // Sanity check!
+            if (getTilePos() == null)
+                return;
 
-        if (cooldown > 0) {
-            pulseStored=true;
-            return;
-        }
-
-        BlockPos targetCoords = getBlockTarget();
-        if (!world.isAirBlock(getTilePos())) {
-            BlockData endData = new BlockData(getTilePos());
-            BlockData targetData = new BlockData(targetCoords);
-
-            if (checkBlock(targetCoords) && checkBlock(getTilePos())) {
-                endData.clearTileEntityAt();
-                targetData.clearTileEntityAt();
-
-                endData.setTo(targetCoords);
-                targetData.setTo(getTilePos());
-
+            if (cooldown > 0) {
+                pulseStored = true;
+                return;
             }
+
+            BlockPos targetCoords = getBlockTarget();
+            if (!world.isAirBlock(getTilePos())) {
+                BlockData endData = new BlockData(getTilePos());
+                BlockData targetData = new BlockData(targetCoords);
+
+                if (checkBlock(targetCoords) && checkBlock(getTilePos())) {
+                    endData.clearTileEntityAt();
+                    targetData.clearTileEntityAt();
+
+                    endData.setTo(targetCoords);
+                    targetData.setTo(getTilePos());
+
+                }
+            }
+
+            List<Entity> entitiesAtEnd = getEntitiesAtPoint(getTilePos());
+            List<Entity> entitiesAtTarget = getEntitiesAtPoint(targetCoords);
+
+            for (Entity entity : entitiesAtEnd)
+                moveEntity(entity, targetCoords);
+
+            for (Entity entity : entitiesAtTarget)
+                moveEntity(entity, getTilePos());
         }
-
-        List<Entity> entitiesAtEnd = getEntitiesAtPoint(getTilePos());
-        List<Entity> entitiesAtTarget = getEntitiesAtPoint(targetCoords);
-
-        for (Entity entity : entitiesAtEnd)
-            moveEntity(entity, targetCoords);
-
-        for (Entity entity : entitiesAtTarget)
-            moveEntity(entity, getTilePos());
         cooldown = 10;
     }
 
@@ -104,7 +106,7 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
 
     private boolean checkBlock(BlockPos coords) {
         IBlockState state = world.getBlockState(coords);
-        return (!BlockUtils.isPortableHoleBlackListed(state));
+        return (!BlockUtils.isPortableHoleBlackListed(state) && APIHelpers.canDislocateBlock(world,state.getBlock(),coords));
     }
 
     private BlockPos getBlockTarget() {
