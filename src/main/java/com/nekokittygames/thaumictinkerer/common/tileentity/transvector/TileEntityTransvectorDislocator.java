@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity.transvector;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import net.minecraft.block.state.IBlockState;
@@ -17,27 +18,23 @@ import java.util.List;
 
 public class TileEntityTransvectorDislocator extends TileEntityTransvector {
 
-    private boolean powered = false;
     private int cooldown = 0;
-
+    private boolean pulseStored = false;
     @Override
     public void readExtraNBT(NBTTagCompound compound) {
         super.readExtraNBT(compound);
-        if (compound.hasKey("powered"))
-            powered = compound.getBoolean("powered");
         if (compound.hasKey("cooldown"))
             cooldown = compound.getInteger("cooldown");
     }
 
     @Override
     public boolean respondsToPulses() {
-        return false;
+        return true;
     }
 
     @Override
     public void writeExtraNBT(NBTTagCompound compound) {
         super.writeExtraNBT(compound);
-        compound.setBoolean("powered", powered);
         compound.setInteger("cooldown", cooldown);
     }
 
@@ -46,19 +43,21 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
         super.update();
 
         cooldown = Math.max(0, cooldown - 1);
-        if (cooldown == 0 && powered) {
-            powered = false;
-            receiveRedstonePulse();
+        if (cooldown == 0 && pulseStored) {
+            pulseStored=false;
+            activateOnPulse();
         }
     }
 
-    public void receiveRedstonePulse() {
+    @Override
+    public void activateOnPulse() {
+        super.activateOnPulse();
         getTile(); // Sanity check!
         if (getTilePos() == null)
             return;
 
         if (cooldown > 0) {
-            powered = true;
+            pulseStored=true;
             return;
         }
 
@@ -86,8 +85,8 @@ public class TileEntityTransvectorDislocator extends TileEntityTransvector {
         for (Entity entity : entitiesAtTarget)
             moveEntity(entity, getTilePos());
         cooldown = 10;
-
     }
+
 
     private void moveEntity(Entity entity, BlockPos pos) {
         if (entity == null)

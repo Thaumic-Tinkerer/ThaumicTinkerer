@@ -60,9 +60,7 @@ public class BlockTransvectorDislocator extends TTCamoBlock<TileEntityTransvecto
 
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        if (!worldIn.isRemote && state.getValue(POWERED) && !worldIn.isBlockPowered(pos)) {
-            worldIn.setBlockState(pos, state.withProperty(POWERED, false), 2);
-        }
+        super.updateTick(worldIn,pos,state,rand);
     }
 
     @Override
@@ -70,16 +68,16 @@ public class BlockTransvectorDislocator extends TTCamoBlock<TileEntityTransvecto
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
         if (!worldIn.isRemote) {
             if (state.getValue(POWERED) && !worldIn.isBlockPowered(pos)) {
-                worldIn.scheduleUpdate(pos, this, 4);
+                worldIn.setBlockState(pos, state.withProperty(POWERED, false), 2);
             } else if (!state.getValue(POWERED) && worldIn.isBlockPowered(pos)) {
                 worldIn.setBlockState(pos, state.withProperty(POWERED, true), 2);
-                TileEntity ent = worldIn.getTileEntity(pos);
-                if (ent instanceof TileEntityTransvectorDislocator) {
-                    TileEntityTransvectorDislocator dislocator = (TileEntityTransvectorDislocator) ent;
-                    dislocator.receiveRedstonePulse();
-                }
             }
         }
+    }
+
+    @Override
+    public int tickRate(World par1World) {
+        return 1;
     }
 
     public IBlockState withRotation(IBlockState state, Rotation rot) {

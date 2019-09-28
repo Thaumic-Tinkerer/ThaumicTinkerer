@@ -25,7 +25,7 @@ public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
 
     public TTTileEntity(String name, Material blockMaterialIn, MapColor blockMapColorIn, final boolean preserveTileEntity) {
         super(name, blockMaterialIn, blockMapColorIn);
-
+        this.setTickRandomly(false);
         this.preserveTileEntity = preserveTileEntity;
     }
 
@@ -82,7 +82,9 @@ public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
         return tileentity != null && tileentity.receiveClientEvent(id, param);
     }
 
+
     public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+        super.updateTick(world, pos, state, random);
         if (!world.isRemote) {
             TileEntity tile = world.getTileEntity(pos);
             if (tile instanceof TileEntityThaumicTinkerer) {
@@ -121,9 +123,8 @@ public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
                 boolean wasPowered = base.getRedstonePowered();
                 if (powered && !wasPowered) {
                     if (base.respondsToPulses()) {
-                        world.scheduleUpdate(pos, this, this.tickRate(world));
+                        world.scheduleUpdate(pos, this, 4);
                     }
-
                     base.setRedstonePowered(true);
                 } else if (!powered && wasPowered) {
                     base.setRedstonePowered(false);
