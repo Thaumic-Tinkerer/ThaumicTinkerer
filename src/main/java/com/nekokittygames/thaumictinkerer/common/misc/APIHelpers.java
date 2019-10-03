@@ -16,6 +16,7 @@ public class APIHelpers {
 
     public static boolean canDislocateBlock(World world, Block block, BlockPos pos)
     {
+        //
         if(world.getBlockState(pos).getBlockHardness(world,pos) != -1 && ThaumicTinkererAPI.getDislocationBlacklist().stream().noneMatch(s -> s.equalsIgnoreCase(block.getClass().getName())))
         {
             MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
