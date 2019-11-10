@@ -97,12 +97,18 @@ public class ThaumicTinkerer {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/foci"));
         proxy.registerRenderers();
-        if(TTConfig.DislocationFocusEnabled)
-            FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/dislocation.png"), 15121988);
-        logger.info("Initializing Telekenetic powers");
-        FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/telekenesis.png"), 13566207);
+        initFoci();
         //IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);
 
+    }
+
+    private void initFoci() {
+        if(TTConfig.DislocationFocusEnabled)
+            FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/dislocation.png"), 15121988);
+        if(TTConfig.TelekenesisFocusEnabled) {
+            logger.info("Initializing Telekenetic powers");
+            FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/telekenesis.png"), 13566207);
+        }
     }
 }
 

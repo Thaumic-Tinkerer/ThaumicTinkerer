@@ -46,6 +46,11 @@ public class TTConfig {
     @Config.RequiresMcRestart()
     public static boolean DislocationFocusEnabled=true;
 
+    @Config.Comment("Is the telekenesis focus enabled?")
+    @Config.Name("Telekenesis Focus Enabled")
+    @Config.RequiresMcRestart()
+    public static boolean TelekenesisFocusEnabled=true;
+
     @Config.Comment("Does the Osmotic Enchanter use the classic pillar structure")
     @Config.Name("Classic Enchanter")
     public static boolean ClassicEnchanter = false;

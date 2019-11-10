@@ -116,7 +116,7 @@ dependencies {
     deobfCompile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
     deobfCompile "thaumic-additions:ThaumicAdditions:1.12.2:15r"
     deobfCompile "cofh:RedstoneFlux:1.12-${redstone_flux_version}:deobf"
-
+    deobfCompile "appeng:appliedenergistics2:rv6-stable-7"
     deobfCompile "thaumic-energistics:thaumicenergistics:2.1.1"
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
