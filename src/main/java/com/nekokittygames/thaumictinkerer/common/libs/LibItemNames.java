@@ -9,6 +9,7 @@ public class LibItemNames {
     public static final String SOUL_MOULD = "soul_mould";
     public static final String ENERGETIC_NITOR = "energetic_nitor";
     public static final String FORM_REVEALER = "form_revealer";
+    public static final String SPELLBINDING_CLOTH="spellbinding_cloth";
 
     public static final String ICHOR = "ichor";
     public static final String ICHORIUM = "ichorium";

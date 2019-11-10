@@ -10,6 +10,6 @@ public class Registers {
 
     @SubscribeEvent
     public static void registerVanillaRecipes(RegistryEvent.Register<IRecipe> event) {
-        ModRecipes.initializeRecipes();
+        ModRecipes.initializeRecipes(event.getRegistry());
     }
 }

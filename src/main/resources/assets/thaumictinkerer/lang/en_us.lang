@@ -11,7 +11,7 @@ item.thaumictinkerer:connector.name=Transvector Binder
 
 item.thaumictinkerer:energetic_nitor.name=Energetic Nitor
 item.thaumictinkerer:form_revealer.name=Multiblock Guide
-
+item.thaumictinkerer:spellbinding_cloth.name=Spellbinding Cloth
 // Blocks
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
@@ -96,3 +96,8 @@ thaumictinkerer.research.DISLOCATE.0=After so much work was put into discovering
 thaumictinkerer.research.DISLOCATE.1=Success! After some experimentation, many lost blocks of cobblestone, and an invasion of endermen or two,  I substituted permutatio for desiderium, so the effect desired to hold on longer, and now I have a pattern that can temporarily store blocks to move them. <BR> Once applied to a focus, left click on a block to store it within the focus, then left click again to place the block.
 
 thaumictinkerer.research.prismarine.title=Aquatic Alchemy
+
+thaumictinkerer.research.spellbinding_cloth.title=Spellbinding Cloth
+thaumictinkerer.research.spellbinding_cloth.lore=The sad palmtop thaumaturge
+thaumictinkerer.research.spellbinding_cloth.0=While working with my enchanted axe one day, I accidentally dropped it in a cauldron of concentrated magic. The axe, of course, was lost, but I noticed the first thing to go was the enchantment glow, leaving it a plain metal axe before it dissolved. <BR> I wonder what would happen if I coated some Enchanted cloth in this mixture and just wiped a tool down with it?
+ thaumictinkerer.research.spellbinding_cloth.1=My experiments have born fruit, Enchanted fabric soaked in the mixture will wipe an enchantment off an item, leaving it pristine and ready for re-enchantment. It seems to damage the cloth slightly each time, however.

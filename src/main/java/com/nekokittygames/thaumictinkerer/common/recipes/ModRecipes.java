@@ -4,6 +4,7 @@ import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.blocks.TTBlock;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
+import com.nekokittygames.thaumictinkerer.common.libs.LibResearch;
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTFocusIngredient;
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTIngredientNBT;
 import li.cil.oc.integration.Mod;
@@ -11,7 +12,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -31,8 +35,8 @@ public class ModRecipes {
 
     private static ResourceLocation defaultGroup = new ResourceLocation("");
 
-    public static void initializeRecipes() {
-        initializeCraftingRecipes();
+    public static void initializeRecipes(IForgeRegistry<IRecipe> registry) {
+        initializeCraftingRecipes(registry);
         initializeCauldronRecipes();
         initializeArcaneRecipes();
         initializeInfusionRecipes();
@@ -70,9 +74,11 @@ public class ModRecipes {
     private static void initializeCauldronRecipes() {
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:prismarine"),new CrucibleRecipe("TT_PRISMARINE",new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
         ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:soul_mould"),new CrucibleRecipe("TT_THAUMIC_MAGNETS",new ItemStack(ModItems.soul_mould),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,4).add(Aspect.MIND,8).add(Aspect.SENSES,8)));
+        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:spellbinding_cloth"),new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
     }
 
-    private static void initializeCraftingRecipes() {
+    private static void initializeCraftingRecipes(IForgeRegistry<IRecipe> registry) {
+        registry.register(new SpellClothRecipe(ModItems.spellbinding_cloth));
     }
 
     private static void initializeArcaneRecipes() {
@@ -94,6 +100,6 @@ public class ModRecipes {
 
     private static void initializeInfusionRecipes() {
         // Empty for now
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumictinkerer:osmotic_enchanter"),new InfusionRecipe("TT_ENCHANTER",new ItemStack(ModBlocks.osmotic_enchanter),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.WOOL),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumictinkerer:osmotic_enchanter"),new InfusionRecipe("TT_ENCHANTER",new ItemStack(ModBlocks.osmotic_enchanter),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
     }
 }

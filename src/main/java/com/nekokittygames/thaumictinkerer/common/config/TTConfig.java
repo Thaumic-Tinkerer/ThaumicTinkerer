@@ -30,6 +30,13 @@ public class TTConfig {
     @Config.RangeInt(min = 0)
     public static int transvectorDislocatorDistance = 10;
 
+    @Config.Comment("This is the amount of times a spellbinding cloth may be used")
+    @Config.Name("Spellbinding Cloth Uses")
+    @Config.LangKey("thaumictinkerer.config.spellbinding_cloth.uses")
+    @Config.RangeInt(min = 0)
+    @Config.RequiresMcRestart()
+    public static int spellbindingClothUses = 10;
+
     @Config.Comment("Can Tinkers Construct tools be repaired in the repairer?")
     @Config.Name("Tinkers Construct Compatibility")
     @Config.LangKey("thaumictinkerer.config.ticon.compatibility")
