@@ -109,7 +109,7 @@
         {
           "text": "thaumictinkerer.research.enchanter.0",
           "recipes": [
-            "thaumictinkerer:enchanter",
+            "thaumictinkerer:osmotic_enchanter",
             "thaumictinkerer:osmotic_enchanter_mb"
           ]
         }

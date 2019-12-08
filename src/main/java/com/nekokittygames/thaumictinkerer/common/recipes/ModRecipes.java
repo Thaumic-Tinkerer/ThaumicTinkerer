@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.recipes;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
+import com.nekokittygames.thaumictinkerer.common.blocks.TTBlock;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTFocusIngredient;
@@ -16,10 +17,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.casters.FocusPackage;
-import thaumcraft.api.crafting.CrucibleRecipe;
-import thaumcraft.api.crafting.IDustTrigger;
-import thaumcraft.api.crafting.Part;
-import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.api.crafting.*;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.misc.BlockNitor;
 import thaumcraft.common.items.casters.ItemFocus;
@@ -96,5 +94,6 @@ public class ModRecipes {
 
     private static void initializeInfusionRecipes() {
         // Empty for now
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumictinkerer:osmotic_enchanter"),new InfusionRecipe("TT_ENCHANTER",new ItemStack(ModBlocks.osmotic_enchanter),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.WOOL),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
     }
 }
