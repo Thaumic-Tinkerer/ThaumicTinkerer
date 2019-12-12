@@ -1,13 +1,11 @@
 package com.nekokittygames.thaumictinkerer.common.items;
 
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.misc.IOreDict;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.HashSet;
@@ -49,8 +47,6 @@ public class ModItems {
 
             for (final Item item : items) {
                 registry.register(item);
-                if(item instanceof IOreDict)
-                    OreDictionary.registerOre(((IOreDict)item).getOreDictName(),item);
                 ITEMS.add(item);
             }
 

@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.recipes;
 
+import com.nekokittygames.thaumictinkerer.common.helper.OreDictHelper;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.TTServerEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,6 +11,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.crafting.IDustTrigger;
@@ -67,19 +69,22 @@ public class TTDustTriggerMultiblock implements IDustTrigger {
         int var4 = var3.length;
 
         label67:
-        for(int var5 = 0; var5 < var4; ++var5) {
-            EnumFacing face = var3[var5];
-
-            for(int y = 0; y < this.ySize; ++y) {
+        for (EnumFacing face : var3) {
+            for (int y = 0; y < this.ySize; ++y) {
                 TTMatrix matrix = new TTMatrix(this.blueprint[y]);
                 matrix.Rotate90DegRight(3 - face.getHorizontalIndex());
 
-                for(int x = 0; x < matrix.rows; ++x) {
-                    for(int z = 0; z < matrix.cols; ++z) {
+                for (int x = 0; x < matrix.rows; ++x) {
+                    for (int z = 0; z < matrix.cols; ++z) {
                         if (matrix.matrix[x][z] != null) {
                             IBlockState bsWo = world.getBlockState(pos.add(x, -y + (this.ySize - 1), z));
-                            Object source=matrix.matrix[x][z].getSource();
-                            if (source instanceof Block && bsWo.getBlock() != (Block)source || source instanceof Material && bsWo.getMaterial() != (Material)source || source instanceof ItemStack && (bsWo.getBlock() != Block.getBlockFromItem(((ItemStack)source).getItem()) || bsWo.getBlock().getMetaFromState(bsWo) != ((ItemStack)source).getItemDamage()) || source instanceof IBlockState && bsWo != source || source instanceof Class<?> && !bsWo.getBlock().getClass().equals(source)) {
+                            Object source = matrix.matrix[x][z].getSource();
+                            if (source instanceof Block && bsWo.getBlock() != (Block) source ||
+                                    source instanceof Material && bsWo.getMaterial() != (Material) source ||
+                                    source instanceof ItemStack && (bsWo.getBlock() != Block.getBlockFromItem(((ItemStack) source).getItem()) || bsWo.getBlock().getMetaFromState(bsWo) != ((ItemStack) source).getItemDamage()) ||
+                                    source instanceof IBlockState && bsWo != source ||
+                                    source instanceof Class<?> && !bsWo.getBlock().getClass().equals(source) ||
+                                    source instanceof String && !OreDictHelper.oreDictCheck(bsWo,(String)source)) {
                                 continue label67;
                             }
                         }
@@ -157,7 +162,9 @@ public class TTDustTriggerMultiblock implements IDustTrigger {
                             } else if (matrix.matrix[x][z].getSource() instanceof IBlockState) {
                                 sourceObject = (IBlockState) matrix.matrix[x][z].getSource();
                             } else if(matrix.matrix[x][z].getSource() instanceof Class<?>) {
-                                sourceObject = (Class<?>)matrix.matrix[x][z].getSource();
+                                sourceObject = (Class<?>) matrix.matrix[x][z].getSource();
+                            } else if(matrix.matrix[x][z].getSource() instanceof String) {
+                                sourceObject = (String)matrix.matrix[x][z].getSource();
                         } else {
                                 sourceObject = null;
                             }

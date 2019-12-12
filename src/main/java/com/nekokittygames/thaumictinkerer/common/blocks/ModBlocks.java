@@ -5,7 +5,6 @@ import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransve
 import com.nekokittygames.thaumictinkerer.common.blocks.transvector.BlockTransvectorInterface;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.misc.IOreDict;
 import com.nekokittygames.thaumictinkerer.common.tileentity.*;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorDislocator;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorInterface;
@@ -18,7 +17,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.HashSet;
@@ -76,8 +74,6 @@ public class ModBlocks {
             };
             for(Block block:blocks) {
                 registry.register(block);
-                if(block instanceof IOreDict)
-                    OreDictionary.registerOre(((IOreDict)block).getOreDictName(),block);
             }
             registerTileEntities();
         }
