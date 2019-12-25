@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "quartzDark"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "quartzDark"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "quartzDark"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "quartzDark"
+    }
+  ],
+  "result":
+  {
+    "item": "thaumictinkerer:black_quartz_block",
+    "count": 1
+  }
+}

@@ -2,7 +2,9 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
+import com.nekokittygames.thaumictinkerer.common.helper.OreDictHelper;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
+import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
@@ -25,6 +27,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -43,6 +46,8 @@ import java.awt.*;
 import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static com.nekokittygames.thaumictinkerer.common.helper.OreDictHelper.oreDictCheck;
 
 public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements ITickable, IInventory {
     private static final ResourceLocation MULTIBLOCK_LOCATION = new ResourceLocation("thaumictinkerer", "osmotic_enchanter");
@@ -262,15 +267,20 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         valid = valid && world.getBlockState(pos.south(2).west(2).up(1)).getBlock()== ModBlocks.enchantment_pillar;
         valid = valid && world.getBlockState(pos.north(2).west(2).up(1)).getBlock()== ModBlocks.enchantment_pillar;
 
-        valid = valid && world.getBlockState(pos.down(1)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).north(1)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).north(2)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).south(1)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).south(2)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).north(1).east(1)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).north(1).west(1)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).south(1).east(1)).getBlock()==ModBlocks.black_quartz_block;
-        valid = valid && world.getBlockState(pos.down(1).south(1).west(1)).getBlock()==ModBlocks.black_quartz_block;
+        int oreDictNum=OreDictionary.getOreID(LibOreDict.BLACK_QUARTZ_BLOCK);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).north(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).north(2)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).south(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).south(2)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).east(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).east(2)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).west(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).west(2)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).north(1).east(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).north(1).west(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).south(1).east(1)),oreDictNum);
+        valid = valid && oreDictCheck(world.getBlockState(pos.down(1).south(1).west(1)),oreDictNum);
 
         valid = valid && world.getBlockState(pos.down(1).north(3)).getBlock()==BlocksTC.stoneArcaneBrick;
         valid = valid && world.getBlockState(pos.down(1).north(3).east(1)).getBlock()==BlocksTC.stoneArcaneBrick;
@@ -305,6 +315,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         return valid;
 
     }
+
     public void refreshEnchants() {
         List<Enchantment> enchantmentObjects = getAvailableEnchants(enchantments.stream().map(Enchantment::getEnchantmentByID).collect(Collectors.toList()));
         cachedEnchantments = enchantmentObjects.stream().map(Enchantment::getEnchantmentID).collect(Collectors.toList());

@@ -2,9 +2,14 @@ package com.nekokittygames.thaumictinkerer.common.recipes;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.blocks.TTBlock;
+import com.nekokittygames.thaumictinkerer.common.compat.BotaniaCompat;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
+
 import com.nekokittygames.thaumictinkerer.common.libs.LibResearch;
+
+import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
+
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTFocusIngredient;
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTIngredientNBT;
 import li.cil.oc.integration.Mod;
@@ -15,7 +20,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.registries.IForgeRegistry;
+
+import net.minecraftforge.oredict.OreDictionary;
+
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -35,17 +44,28 @@ public class ModRecipes {
 
     private static ResourceLocation defaultGroup = new ResourceLocation("");
 
+
     public static void initializeRecipes(IForgeRegistry<IRecipe> registry) {
+        registerOreDict();
         initializeCraftingRecipes(registry);
         initializeCauldronRecipes();
         initializeArcaneRecipes();
         initializeInfusionRecipes();
         initializeMultiblockRecipes();
+        BotaniaCompat.addOreDict();
+
+    }
+
+    private static void registerOreDict() {
+        OreDictionary.registerOre(LibOreDict.BLACK_QUARTZ_BLOCK,ModBlocks.black_quartz_block);
+        OreDictionary.registerOre(LibOreDict.BLACK_QUARTZ,ModItems.black_quartz);
     }
 
     private static void initializeMultiblockRecipes() {
         Part AB = new Part(BlocksTC.stoneArcaneBrick, BlocksTC.stoneArcaneBrick);
-        Part BQ = new Part(ModBlocks.black_quartz_block, ModBlocks.black_quartz_block);
+        Part BQ = new Part(LibOreDict.BLACK_QUARTZ_BLOCK, ModBlocks.black_quartz_block);
+        Part DBQ = new Part(ModBlocks.black_quartz_block, ModBlocks.black_quartz_block);
+
         Part[] pillars = new Part[16];
 
         for (int i = 0; i < 16; i++) {
@@ -64,7 +84,7 @@ public class ModRecipes {
         Part[][][] dummyenchanterBP = new Part[][][]{{{null, null, null, DN, null, null, null}, {null, DN, null, null, null, DN, null}, {null, null, null, null, null, null, null}, {DN, null, null, null, null, null, DN}, {null, null, null, null, null, null, null}, {null, DN, null, null, null, DN, null}, {null, null, null, DN, null, null, null}},
                 {{null, null, null, pillars[15], null, null, null}, {null, pillars[14], null, null, null,pillars[8], null}, {null, null, null, null, null, null, null}, {pillars[13], null, null, null, null, null, pillars[9]}, {null, null, null, null, null, null, null}, {null, pillars[12], null, null, null, pillars[10], null}, {null, null, null, pillars[11], null, null, null}},
                 {{null, null, null, pillars[7], null, null, null}, {null, pillars[6], null, null, null, pillars[0], null}, {null, null, null, null, null, null, null}, {pillars[5], null, null, OE, null, null, pillars[1]}, {null, null, null, null, null, null, null}, {null, pillars[4], null, null, null, pillars[2], null}, {null, null, null, pillars[3], null, null, null}},
-                {{null,null,AB,AB,AB,null,null},{null,AB,AB,BQ,AB,AB,null},{AB,AB,BQ,BQ,BQ,AB,AB},{AB,BQ,BQ,BQ,BQ,BQ,AB},{AB,AB,BQ,BQ,BQ,AB,AB},{null,AB,AB,BQ,AB,AB,null},{null,null,AB,AB,AB,null,null}}
+                {{null,null,AB,AB,AB,null,null},{null,AB,AB,DBQ,AB,AB,null},{AB,AB,DBQ,DBQ,AB,AB},{AB,DBQ,DBQ,DBQ,DBQ,DBQ,AB},{AB,AB,DBQ,DBQ,DBQ,AB,AB},{null,AB,AB,DBQ,AB,AB,null},{null,null,AB,AB,AB,null,null}}
 
         };
         IDustTrigger.registerDustTrigger(new TTDustTriggerMultiblock("TT_ENCHANTER",enchanterBP));

@@ -1,6 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.multiblocks;
 
 import com.google.common.base.Predicate;
+import com.nekokittygames.thaumictinkerer.common.helper.OreDictHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.common.entities.EntitySpecialItem;
@@ -64,7 +66,10 @@ public class TTServerEvents {
                 if (vs != null) {
                     IBlockState bs = world.getBlockState(vs.pos);
                     boolean allow = bs.getBlockHardness(world, vs.pos) >= 0.0F;
-                    if (vs.source != null && vs.source instanceof IBlockState && (IBlockState)vs.source != bs || vs.source != null && vs.source instanceof Material && (Material)vs.source != bs.getMaterial() || vs.source!=null && vs.source instanceof Class<?> && (Class<?>)vs.source!=bs.getBlock().getClass()) {
+                    if (vs.source != null && vs.source instanceof IBlockState && (IBlockState)vs.source != bs ||
+                            vs.source != null && vs.source instanceof Material && (Material)vs.source != bs.getMaterial() ||
+                            vs.source!=null && vs.source instanceof Class<?> && (Class<?>)vs.source!=bs.getBlock().getClass() ||
+                            vs.source!=null && vs.source instanceof String && !OreDictHelper.oreDictCheck(bs,(String)vs.source)) {
                         allow = false;
                     }
 
@@ -94,6 +99,9 @@ public class TTServerEvents {
                         }
                         if(vs.source instanceof Class<?>) {
                             matches = bs.getBlock().getClass().equals(vs.source);
+                        }
+                        if(vs.source instanceof  String) {
+                            matches= OreDictionary.getOres((String) vs.source).contains(new ItemStack(bs.getBlock(),1,bs.getBlock().getMetaFromState(bs)));
                         }
                         if ((vs.source == null || matches) && slot >= 0) {
                             if (!vs.player.capabilities.isCreativeMode) {
@@ -165,6 +173,10 @@ public class TTServerEvents {
                                             if(vs.source instanceof Class<?>) {
                                                 IBlockState bb = world.getBlockState(vs.pos.add(xx, yy, zz));
                                                 matches=bb.getBlock().getClass() == vs.source;
+                                            }
+                                            if(vs.source instanceof  String) {
+                                                IBlockState bb = world.getBlockState(vs.pos.add(xx,yy,zz));
+                                                matches= OreDictionary.getOres((String) vs.source).contains(new ItemStack(bb.getBlock(),1,bb.getBlock().getMetaFromState(bb)));
                                             }
 
                                             if ((xx != 0 || yy != 0 || zz != 0) && matches && BlockUtils.isBlockExposed(world, vs.pos.add(xx, yy, zz))) {

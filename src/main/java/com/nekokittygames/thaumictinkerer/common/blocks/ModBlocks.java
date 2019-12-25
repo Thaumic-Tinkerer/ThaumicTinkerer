@@ -72,7 +72,9 @@ public class ModBlocks {
                     new BlockAnimationTablet(),
                     new BlockDummyNitor(),
             };
-            registry.registerAll(blocks);
+            for(Block block:blocks) {
+                registry.register(block);
+            }
             registerTileEntities();
         }
 

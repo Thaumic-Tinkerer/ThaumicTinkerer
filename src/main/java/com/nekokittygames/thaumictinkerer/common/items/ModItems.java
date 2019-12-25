@@ -52,6 +52,7 @@ public class ModItems {
                 ITEMS.add(item);
             }
 
+
         }
     }
 }
