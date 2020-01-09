@@ -81,4 +81,9 @@ public abstract class TTCamoBlock<T extends TileEntityCamoflage> extends TTTileE
         }
         return super.getLightValue(state, world, pos);
     }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return 0;
+    }
 }
