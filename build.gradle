@@ -122,6 +122,8 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
     deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
     deobfCompile "curse.maven:botania:2782181"
+    deobfCompile "curse.maven:cyclops-core:2831241"
+    deobfCompile "curse.maven:evilcraft:2811267"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-${probe_version}"//1.1x-1.4.4-55
 	compile fileTree(dir: 'libs', includes: ['*.jar'])
     // you may put jars on which you depend on in ./libs

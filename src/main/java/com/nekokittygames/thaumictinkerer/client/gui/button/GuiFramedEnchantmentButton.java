@@ -14,6 +14,16 @@ public class GuiFramedEnchantmentButton extends GuiEnchantmentButton {
     }
 
     @Override
+    protected int getLevel() {
+        int index = parent.getEnchanter().getEnchantments().indexOf(Enchantment.getEnchantmentID(enchant));
+        if (index != -1) {
+            int level = parent.getEnchanter().getLevels().get(index);
+            return level;
+        }
+        return 1;
+    }
+
+    @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (dontRender() || parent.getEnchanter().getEnchantments().isEmpty() || parent.getEnchanter().getLevels().isEmpty())
             return;

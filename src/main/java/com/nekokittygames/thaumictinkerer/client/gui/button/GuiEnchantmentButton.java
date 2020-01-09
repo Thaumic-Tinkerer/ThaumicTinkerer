@@ -19,7 +19,9 @@ import java.util.List;
 public class GuiEnchantmentButton extends GuiButton {
     public Enchantment enchant;
     protected GuiEnchanter parent;
-
+    protected int getLevel() {
+        return 1;
+    }
     public GuiEnchantmentButton(GuiEnchanter parent, int par1, int par2, int par3) {
         super(par1, par2, par3, 16, 16, "");
         this.parent = parent;
@@ -40,7 +42,7 @@ public class GuiEnchantmentButton extends GuiButton {
         GlStateManager.disableBlend();
         if (mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16) {
             List<String> tooltip = new ArrayList();
-            tooltip.add(ChatFormatting.AQUA + ThaumicTinkerer.proxy.localize(enchant.getName()));
+            tooltip.add(ChatFormatting.AQUA + enchant.getTranslatedName(getLevel()));
             parent.getTooltip().addAll(tooltip);
         }
     }
