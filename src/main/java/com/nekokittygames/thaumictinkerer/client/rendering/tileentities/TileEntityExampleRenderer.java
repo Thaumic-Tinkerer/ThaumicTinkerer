@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.api.rendering.IMultiBlockPreviewRenderer;
@@ -26,7 +30,7 @@ public class TileEntityExampleRenderer extends TileEntitySpecialRenderer<TileEnt
     /**
      * renders the example block
      *
-     * @param te           tile entity
+     * @param te           {@link TileEntityExampleRenderer} entity
      * @param x            xPos of the block
      * @param y            yPos of the block
      * @param z            zPos of the block

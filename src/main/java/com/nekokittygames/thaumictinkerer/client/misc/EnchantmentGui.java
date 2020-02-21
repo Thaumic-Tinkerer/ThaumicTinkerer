@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.misc;
 
 import net.minecraft.client.Minecraft;
@@ -12,7 +16,6 @@ import java.util.Objects;
 
 /**
  * Helper class to load enchanter icons
- * Created by nekosune on 26/07/18.
  */
 @SideOnly(Side.CLIENT)
 public class EnchantmentGui {
@@ -20,8 +23,8 @@ public class EnchantmentGui {
     /**
      * Gets the appropriate ResourceLocation for an enchantment, or the default unknown location if none
      *
-     * @param enchantment enchantment to get icon for
-     * @return ResourceLocation containign the appropriate icon
+     * @param enchantment {@link Enchantment} to get icon for
+     * @return {@link ResourceLocation} containing the appropriate icon
      */
     public static ResourceLocation getEnchantmentIcon(Enchantment enchantment) {
 

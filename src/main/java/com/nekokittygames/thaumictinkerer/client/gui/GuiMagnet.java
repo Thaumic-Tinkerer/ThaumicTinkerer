@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
@@ -7,10 +11,8 @@ import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockMagnet;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
-import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMagnetMode;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -29,13 +31,13 @@ public class GuiMagnet extends GuiContainer {
     protected List<GuiTexturedButton> buttonListMM = new ArrayList<>();
     protected List<IRadioButton> radioButtons = new ArrayList<>();
 
-    private TileEntityMagnet magnet;
+    private final TileEntityMagnet magnet;
 
     /**
      * Constructor
      *
-     * @param tileEntity mob magnet to display GUI for
-     * @param container  mo magnet's container
+     * @param tileEntity {@link TileEntityMagnet} to display GUI for
+     * @param container  {@link MagnetContainer} for magnet
      */
     public GuiMagnet(TileEntityMagnet tileEntity, MagnetContainer container) {
         super(container);
@@ -58,17 +60,19 @@ public class GuiMagnet extends GuiContainer {
 
     }
 
-
+    /**
+     * Gets the buttons needed for the magnet
+     */
     protected void getButtons() {
         addButton(new GuiTexturedRadioButton(0, x + 100, y - 13, LibClientResources.GUI_MOBMAGNET, magnet.GetMode() == BlockMagnet.MagnetPull.PUSH,"mode", radioButtons));
-        addButton(new GuiTexturedRadioButton(1, x + 100, y + 8, LibClientResources.GUI_MOBMAGNET, magnet.GetMode() == BlockMagnet.MagnetPull.PULL, "mode",radioButtons));;
+        addButton(new GuiTexturedRadioButton(1, x + 100, y + 8, LibClientResources.GUI_MOBMAGNET, magnet.GetMode() == BlockMagnet.MagnetPull.PULL, "mode",radioButtons));
     }
     /**
      * Adds button to GUI
      *
-     * @param button button to add
-     * @param <T>    type of button to add
-     * @return added button
+     * @param button {@link GuiButton} to add
+     * @param <T>    type of {@link GuiButton} to add
+     * @return added {@link GuiButton}
      */
     @Nonnull
     @Override
@@ -84,8 +88,8 @@ public class GuiMagnet extends GuiContainer {
     }
 
     /**
-     * Callback for button pressed
-     * @param button button that was pressed
+     * Callback for {@link GuiButton} pressed
+     * @param button {@link GuiButton} that was pressed
      */
     @Override
     protected void actionPerformed(GuiButton button) {

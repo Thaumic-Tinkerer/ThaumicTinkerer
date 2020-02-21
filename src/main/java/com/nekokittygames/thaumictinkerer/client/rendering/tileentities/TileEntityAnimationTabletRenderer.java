@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
@@ -32,7 +36,7 @@ public class TileEntityAnimationTabletRenderer extends TileEntitySpecialRenderer
     /**
      * renders the Animation tablet tile entity in world
      *
-     * @param te           tile entity
+     * @param te           {@link TileEntityAnimationTablet} Entity
      * @param x            xPos of the block
      * @param y            yPos of the block
      * @param z            zPos of the block

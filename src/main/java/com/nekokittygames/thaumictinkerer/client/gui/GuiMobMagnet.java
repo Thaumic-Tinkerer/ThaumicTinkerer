@@ -1,9 +1,11 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
-import com.nekokittygames.thaumictinkerer.client.gui.button.GuiTexturedButton;
 import com.nekokittygames.thaumictinkerer.client.gui.button.GuiTexturedRadioButton;
-import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
 import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
@@ -11,13 +13,8 @@ import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMobMagnet;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * GUI for the mob magnet.
@@ -28,13 +25,13 @@ public class GuiMobMagnet extends GuiMagnet {
     private static final int WIDTH = 176;
     private static final int HEIGHT = 166;
     private int x, y;
-    private TileEntityMobMagnet mobMagnet;
+    private final TileEntityMobMagnet mobMagnet;
 
     /**
      * Constructor
      *
-     * @param tileEntity mob magnet to display GUI for
-     * @param container  mo magnet's container
+     * @param tileEntity {@link TileEntityMobMagnet} to display GUI for
+     * @param container  {@link MagnetContainer} for magnet
      */
     public GuiMobMagnet(TileEntityMobMagnet tileEntity, MagnetContainer container) {
         super(tileEntity, container);
@@ -56,6 +53,9 @@ public class GuiMobMagnet extends GuiMagnet {
         buttonList.addAll(buttonListMM);
     }
 
+    /**
+     * Gets the buttons this magnet uses
+     */
     @Override
     protected void getButtons() {
         super.getButtons();
@@ -65,8 +65,8 @@ public class GuiMobMagnet extends GuiMagnet {
 
 
     /**
-     * Callback for button pressed
-     * @param button button that was pressed
+     * Callback for {@link GuiButton} pressed
+     * @param button {@link GuiButton} that was pressed
      */
     @Override
     protected void actionPerformed(GuiButton button) {

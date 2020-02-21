@@ -7,11 +7,12 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+
 /**
  * Ghost slot for Thaumic Tinkerer
  */
 public class TTGhostSlot extends Slot {
-    private static IInventory emptyInventory = new InventoryBasic("[Null]", true, 0);
+    private static final IInventory emptyInventory = new InventoryBasic("[Null]", true, 0);
     private ItemStack itemStack;
 
     /**

@@ -1,6 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.containers;
 
-import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -38,13 +38,12 @@ public abstract class ThaumicTContainer<T extends TileEntity>  extends Container
      */
     protected void addPlayerSlots(IInventory playerInventory) {
         // Slots for the main inventory
-        for (int row = 0; row < 3; ++row) {
+        for (int row = 0; row < 3; ++row)
             for (int col = 0; col < 9; ++col) {
                 int x = 8 + col * 18;
                 int y = row * 18 + 84;
                 this.addSlotToContainer(new Slot(playerInventory, col + row * 9 + 9, x, y));
             }
-        }
 
         // Slots for the hotbar
         for (int row = 0; row < 9; ++row) {
@@ -95,7 +94,7 @@ public abstract class ThaumicTContainer<T extends TileEntity>  extends Container
     /**
      * Can the player open this inventory
      * @param entityPlayer player in question
-     * @return <c>true</c> if player can open <c>false</c> otherwise
+     * @return true if player can open false otherwise
      */
     @Override
     public boolean canInteractWith(@NotNull EntityPlayer entityPlayer) {

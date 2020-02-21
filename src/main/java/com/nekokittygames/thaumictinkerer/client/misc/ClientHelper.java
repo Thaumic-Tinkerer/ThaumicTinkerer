@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.misc;
 
 import net.minecraft.client.Minecraft;
@@ -21,9 +25,9 @@ public class ClientHelper {
     private static RenderItem renderItem;
 
     /**
-     * Gets the Render item, caching it if needed
+     * Gets the {@link RenderItem} , caching it if needed
      *
-     * @return Render item, from cache or fresh
+     * @return {@link RenderItem}, from cache or fresh
      */
     public static RenderItem getRenderItem() {
         if (renderItem == null) {
@@ -33,9 +37,9 @@ public class ClientHelper {
     }
 
     /**
-     * Converts a <c>EnumFacing</c> to degrees
+     * Converts a {@link EnumFacing} to degrees
      *
-     * @param facing facing to convert
+     * @param facing {@link EnumFacing} to convert
      * @return facing in degrees
      */
     public static float toDegrees(EnumFacing facing) {

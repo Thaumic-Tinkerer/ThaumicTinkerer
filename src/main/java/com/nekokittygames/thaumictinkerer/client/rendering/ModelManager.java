@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;

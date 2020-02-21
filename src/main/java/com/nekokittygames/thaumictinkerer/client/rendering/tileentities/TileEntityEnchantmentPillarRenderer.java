@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockEnchantmentPillar;
@@ -18,7 +22,7 @@ public class TileEntityEnchantmentPillarRenderer extends TileEntitySpecialRender
     /**
      * Renders the enchantment pillar
      *
-     * @param te           tile entity
+     * @param te           {@link TileEntityEnchantmentPillar} entity
      * @param x            xPos of the block
      * @param y            yPos of the block
      * @param z            zPos of the block

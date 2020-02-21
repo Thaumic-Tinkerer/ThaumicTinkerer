@@ -1,6 +1,9 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
-import com.nekokittygames.thaumictinkerer.client.misc.ClientHelper;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -19,6 +22,7 @@ import thaumcraft.client.lib.UtilsFX;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * TESR for the enchanter
@@ -29,7 +33,7 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
     /**
      * renders the Enchanter
      *
-     * @param te           tile entity
+     * @param te           {@link TileEntityEnchanter}  entity
      * @param x            xPos of the block
      * @param y            yPos of the block
      * @param z            zPos of the block
@@ -40,7 +44,7 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
     @Override
     public void render(TileEntityEnchanter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
-        float ticks = (float)Minecraft.getMinecraft().getRenderViewEntity().ticksExisted + partialTicks;
+        float ticks = (float) Objects.requireNonNull(Minecraft.getMinecraft().getRenderViewEntity()).ticksExisted + partialTicks;
         if (te.getInventory().getStackInSlot(0) != ItemStack.EMPTY) {
             if(te.isWorking() && te.getEnchantmentCost().size()>0) {
                 int q = te.getEnchantmentCost().size();
@@ -107,7 +111,7 @@ public class TileEntityEnchanterRenderer extends TileEntitySpecialRenderer<TileE
                 progress = 0f;
             }
 
-            GlStateManager.translate((float)  0.5F, (float) 0.9F + tmp, (float) 0.5F);
+            GlStateManager.translate(0.5F, 0.9F + tmp, 0.5F);
             GlStateManager.rotate(90f * (1 - progress), 1, 0, 0);
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
             GlStateManager.disableLighting();

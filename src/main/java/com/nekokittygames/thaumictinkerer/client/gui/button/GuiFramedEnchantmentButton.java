@@ -5,6 +5,7 @@ import com.nekokittygames.thaumictinkerer.client.gui.GuiEnchanter;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
+import org.jetbrains.annotations.NotNull;
 
 public class GuiFramedEnchantmentButton extends GuiEnchantmentButton {
 
@@ -17,14 +18,13 @@ public class GuiFramedEnchantmentButton extends GuiEnchantmentButton {
     protected int getLevel() {
         int index = parent.getEnchanter().getEnchantments().indexOf(Enchantment.getEnchantmentID(enchant));
         if (index != -1) {
-            int level = parent.getEnchanter().getLevels().get(index);
-            return level;
+            return parent.getEnchanter().getLevels().get(index);
         }
         return 1;
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+    public void drawButton(@NotNull Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (dontRender() || parent.getEnchanter().getEnchantments().isEmpty() || parent.getEnchanter().getLevels().isEmpty())
             return;
 
