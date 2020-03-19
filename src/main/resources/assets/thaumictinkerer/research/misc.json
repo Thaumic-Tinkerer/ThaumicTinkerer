@@ -126,6 +126,26 @@
           ]
         }
       ]
+    },
+    {
+      "key": "TT_DISSIMULATION",
+      "name": "thaumictinkerer.research.dissimulation.title",
+      "icons": [ "thaumictinkerer:dissimulation" ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [ "FIRSTSTEPS" ],
+      "meta": [ "ROUND" ],
+      "location": [ 1,-1 ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.dissimulation.0"
+        },
+        {
+          "text": "thaumictinkerer.research.dissimulation.1",
+          "recipes": ["thaumictinkerer:dissimulation"],
+          "required_item":["minecraft:prismarine_shard;30"]
+        }
+      ]
     }
+
   ]
 }

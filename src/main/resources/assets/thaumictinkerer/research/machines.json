@@ -8,15 +8,14 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS"
+        "TT_DISSIMULATION"
       ],
       "siblings": [],
       "meta": [
-        "ROUND"
       ],
       "location": [
         1,
-        -1
+        3
       ],
       "stages": [
         {
@@ -102,7 +101,7 @@
       "meta": [
       ],
       "location": [
-        1,
+        3,
         2
       ],
       "stages": [

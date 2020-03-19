@@ -69,7 +69,7 @@ public class TTServerEvents {
                     if (vs.source != null && vs.source instanceof IBlockState && (IBlockState)vs.source != bs ||
                             vs.source != null && vs.source instanceof Material && (Material)vs.source != bs.getMaterial() ||
                             vs.source!=null && vs.source instanceof Class<?> && (Class<?>)vs.source!=bs.getBlock().getClass() ||
-                            vs.source!=null && vs.source instanceof String && !OreDictHelper.oreDictCheck(bs,(String)vs.source)) {
+                            vs.source!=null && vs.source instanceof String && !OreDictHelper.oreDictCheck(bs,(String)vs.source))  {
                         allow = false;
                     }
 
