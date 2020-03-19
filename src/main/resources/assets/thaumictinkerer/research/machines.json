@@ -19,15 +19,45 @@
       ],
       "stages": [
         {
-          "text": "thaumictinkerer.research.transvector_interface.0",
+          "text": "thaumictinkerer.research.transvector_interface.0"
+        },
+        {
+          "text": "thaumictinkerer.research.transvector_interface.1",
           "recipes": [
 
             "thaumictinkerer:transvector_interface",
             "thaumictinkerer:connector"
-          ],
-          "required_craft": [
-            "thaumcraft:arcane_workbench"
           ]
+        }
+      ]
+    },
+    {
+      "key": "TT_TRANSVECTOR_DISLOCATOR",
+      "name": "thaumictinkerer.research.transvector_dislocator.title",
+      "icons": [
+        "thaumictinkerer:transvector_dislocator"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "TT_TRANSVECTOR_INTERFACE"
+      ],
+      "siblings": [],
+      "meta": [
+      ],
+      "location": [
+        0,
+        2
+      ],
+      "stages": [
+
+        {
+          "text": "thaumictinkerer.research.transvector_dislocator.0"
+        },{
+          "text": "thaumictinkerer.research.transvector_dislocator.1",
+          "recipes": [
+            "thaumictinkerer:transvector_disslocator"
+          ],
+          "required_item":["thaumcraft:mirrored_glass;1"]
         }
       ]
     },
