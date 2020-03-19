@@ -100,4 +100,8 @@ thaumictinkerer.research.prismarine.title=Aquatic Alchemy
 thaumictinkerer.research.spellbinding_cloth.title=Spellbinding Cloth
 thaumictinkerer.research.spellbinding_cloth.lore=The sad palmtop thaumaturge
 thaumictinkerer.research.spellbinding_cloth.0=While working with my enchanted axe one day, I accidentally dropped it in a cauldron of concentrated magic. The axe, of course, was lost, but I noticed the first thing to go was the enchantment glow, leaving it a plain metal axe before it dissolved. <BR> I wonder what would happen if I coated some Enchanted cloth in this mixture and just wiped a tool down with it?
- thaumictinkerer.research.spellbinding_cloth.1=My experiments have born fruit, Enchanted fabric soaked in the mixture will wipe an enchantment off an item, leaving it pristine and ready for re-enchantment. It seems to damage the cloth slightly each time, however.
+thaumictinkerer.research.spellbinding_cloth.1=My experiments have born fruit, Enchanted fabric soaked in the mixture will wipe an enchantment off an item, leaving it pristine and ready for re-enchantment. It seems to damage the cloth slightly each time, however.
+
+thaumictinkerer.research.dissimulation.title=Dissimulation Block
+thaumictinkerer.research.dissimulation.0=This new substance called Prismarine seems to have some unusual optical properties. I wonder what I could do once I have fully investigated it.
+thaumictinkerer.research.dissimulation.1= After fully investigating Prismarine, I have found a way to make blocks that with a magical push, can look like any other block. <BR> All I have to do is place this Dissimulation block down, and then touch another block against it by right clicking. I wonder if I can use this apparent memory of another block in any other ways?
