@@ -6,6 +6,7 @@ import com.nekokittygames.thaumictinkerer.common.compat.BotaniaCompat;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 
+import com.nekokittygames.thaumictinkerer.common.libs.LibRecipes;
 import com.nekokittygames.thaumictinkerer.common.libs.LibResearch;
 
 import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
@@ -38,6 +39,8 @@ import thaumcraft.common.items.resources.ItemCrystalEssence;
 import thaumcraft.common.lib.crafting.DustTriggerMultiblock;
 
 import java.util.Objects;
+
+import static thaumcraft.api.ThaumcraftApi.*;
 
 public class ModRecipes {
 
@@ -86,14 +89,15 @@ public class ModRecipes {
                 {{null, null, null, pillars[7], null, null, null}, {null, pillars[6], null, null, null, pillars[0], null}, {null, null, null, null, null, null, null}, {pillars[5], null, null, OE, null, null, pillars[1]}, {null, null, null, null, null, null, null}, {null, pillars[4], null, null, null, pillars[2], null}, {null, null, null, pillars[3], null, null, null}},
                 {{null,null,AB,AB,AB,null,null},{null,AB,AB,DBQ,AB,AB,null},{AB,AB,DBQ,DBQ,DBQ,AB,AB},{AB,DBQ,DBQ,DBQ,DBQ,DBQ,AB},{AB,AB,DBQ,DBQ,DBQ,AB,AB},{null,AB,AB,DBQ,AB,AB,null},{null,null,AB,AB,AB,null,null}}
         };
-        IDustTrigger.registerDustTrigger(new TTDustTriggerMultiblock("TT_ENCHANTER",enchanterBP));
-        ThaumcraftApi.addMultiblockRecipeToCatalog(new ResourceLocation("thaumictinkerer:osmotic_enchanter_mb"),new ThaumcraftApi.BluePrint("TT_ENCHANTER",dummyenchanterBP,new ItemStack[]{new ItemStack(ModBlocks.black_quartz_block,13),new ItemStack(BlocksTC.stoneArcaneBrick,24),new ItemStack(BlocksTC.stoneArcane,16),new ItemStack(BlocksTC.nitor.get(EnumDyeColor.WHITE),8)}));
+        IDustTrigger.registerDustTrigger(new TTDustTriggerMultiblock(LibResearch.ENCHANTER,enchanterBP));
+        addMultiblockRecipeToCatalog(LibRecipes.OSMOTIC_ENCHANTER_MB,
+                new BluePrint(LibResearch.ENCHANTER,dummyenchanterBP,new ItemStack[]{new ItemStack(ModBlocks.black_quartz_block,13),new ItemStack(BlocksTC.stoneArcaneBrick,24),new ItemStack(BlocksTC.stoneArcane,16),new ItemStack(BlocksTC.nitor.get(EnumDyeColor.WHITE),8)}));
 
     }
     private static void initializeCauldronRecipes() {
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:prismarine"),new CrucibleRecipe("TT_PRISMARINE",new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:soul_mould"),new CrucibleRecipe("TT_THAUMIC_MAGNETS",new ItemStack(ModItems.soul_mould),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
-        ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("thaumictinkerer:spellbinding_cloth"),new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
+        addCrucibleRecipe(LibRecipes.PRISMARINE,new CrucibleRecipe(LibResearch.PRISMARINE,new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
+        addCrucibleRecipe(LibRecipes.SOUL_MOLD,new CrucibleRecipe(LibResearch.MAGNETS,new ItemStack(ModItems.soul_mould),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
+        addCrucibleRecipe(LibRecipes.SPELLBINDING_CLOTH,new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
     }
 
     private static void initializeCraftingRecipes(IForgeRegistry<IRecipe> registry) {
@@ -101,9 +105,10 @@ public class ModRecipes {
     }
 
     private static void initializeArcaneRecipes() {
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer:funnel"), new ShapedArcaneRecipe(defaultGroup, "TT_ESSENTIA_FUNNEL", 60, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.funnel)), "STS", 'S', Blocks.STONE, 'T', "ingotThaumium"));
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer:dissimulation"),new ShapedArcaneRecipe(defaultGroup,"TT_DISSIMULATION",30,new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),new ItemStack(ModBlocks.dissimulation),"BEB","PBP","BEB",'B',new ItemStack(BlocksTC.stoneArcane),'E',new ItemStack(Items.CLAY_BALL),'P',new ItemStack(Items.PRISMARINE_SHARD)));
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer:transvector_interface"), new ShapedArcaneRecipe(defaultGroup, "TT_TRANSVECTOR_INTERFACE", 200, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.transvector_interface)), "BRB", "LEL", "BDB", 'B', new ItemStack(BlocksTC.stoneArcane), 'R', "dustRedstone", 'L', new ItemStack(Items.DYE, 1, 4), 'E', new ItemStack(Items.ENDER_PEARL), 'D', new ItemStack(Objects.requireNonNull(ModBlocks.dissimulation))));
+        addArcaneCraftingRecipe(LibRecipes.FUNNEL, new ShapedArcaneRecipe(defaultGroup, LibResearch.ESSENTIA_FUNNEL, 60, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.funnel)), "STS", 'S', Blocks.STONE, 'T', "ingotThaumium"));
+        addArcaneCraftingRecipe(LibRecipes.DISSIMULATION,new ShapedArcaneRecipe(defaultGroup,LibResearch.DISSIMULATION,30,new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),new ItemStack(ModBlocks.dissimulation),"BEB","PBP","BEB",'B',new ItemStack(BlocksTC.stoneArcane),'E',new ItemStack(Items.CLAY_BALL),'P',new ItemStack(Items.PRISMARINE_SHARD)));
+        addArcaneCraftingRecipe(LibRecipes.TRANSVECTOR_INTERFACE, new ShapedArcaneRecipe(defaultGroup, LibResearch.TRANSVECTOR_INTERFACE, 200, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.transvector_interface)), "BRB", "LEL", "BDB", 'B', new ItemStack(BlocksTC.stoneArcane), 'R', "dustRedstone", 'L', new ItemStack(Items.DYE, 1, 4), 'E', new ItemStack(Items.ENDER_PEARL), 'D', new ItemStack(Objects.requireNonNull(ModBlocks.dissimulation))));
+        addArcaneCraftingRecipe(LibRecipes.TRANSVECTOR_DISLOCATOR,new ShapedArcaneRecipe(defaultGroup,LibResearch.TRANSVECTOR_DISLOCATOR,200,new AspectList().add(Aspect.EARTH,5).add(Aspect.ENTROPY,5),new ItemStack(Objects.requireNonNull(ModBlocks.transvector_dislocator))," M "," T "," C ",'M',new ItemStack(ItemsTC.mirroredGlass),'T',new ItemStack(ModBlocks.transvector_interface),'C',new ItemStack(Items.COMPARATOR)));
         // Magnets
         ItemStack airCrystal=new ItemStack(ItemsTC.crystalEssence);
         ((ItemCrystalEssence)ItemsTC.crystalEssence).setAspects(airCrystal,new AspectList().add(Aspect.AIR,1));
@@ -113,12 +118,12 @@ public class ModRecipes {
         FocusPackage focusPackage=new FocusPackage();
         focusPackage.addNode(new FocusEffectTelekenesis());
         ItemFocus.setPackage(focus,focusPackage);
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer:corporeal_attactor"),new ShapedArcaneRecipe(defaultGroup,"TT_THAUMIC_MAGNETS",200,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.mob_magnet))," C ","ACE","GFG",'C', new ItemStack(ItemsTC.ingots, 1, 0),'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumictinkerer:kinetic_attactor"),new ShapedArcaneRecipe(defaultGroup,"TT_THAUMIC_MAGNETS",20,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.magnet))," C ","ACE","GFG",'C',"ingotIron",'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
+        addArcaneCraftingRecipe(LibRecipes.MOB_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.MAGNETS,200,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.mob_magnet))," C ","ACE","GFG",'C', new ItemStack(ItemsTC.ingots, 1, 0),'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
+        addArcaneCraftingRecipe(LibRecipes.ITEM_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.MAGNETS,20,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.magnet))," C ","ACE","GFG",'C',"ingotIron",'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
     }
 
     private static void initializeInfusionRecipes() {
         // Empty for now
-        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumictinkerer:osmotic_enchanter"),new InfusionRecipe("TT_ENCHANTER",new ItemStack(ModBlocks.osmotic_enchanter),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
+        addInfusionCraftingRecipe(LibRecipes.ENCHANTER,new InfusionRecipe(LibResearch.ENCHANTER,new ItemStack(ModBlocks.osmotic_enchanter),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
     }
 }

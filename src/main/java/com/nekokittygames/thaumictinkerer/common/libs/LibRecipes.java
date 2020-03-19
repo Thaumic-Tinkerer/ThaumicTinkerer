@@ -1,0 +1,20 @@
+package com.nekokittygames.thaumictinkerer.common.libs;
+
+import net.minecraft.util.ResourceLocation;
+
+import static com.nekokittygames.thaumictinkerer.common.libs.LibMisc.MOD_ID;
+
+public class LibRecipes {
+    public static final ResourceLocation OSMOTIC_ENCHANTER_MB=new ResourceLocation(MOD_ID,"osmotic_enchanter_mb");
+    public static final ResourceLocation PRISMARINE=new ResourceLocation(MOD_ID,"prismarine");
+    public static final ResourceLocation SOUL_MOLD=new ResourceLocation(MOD_ID,"soul_mould");
+    public static final ResourceLocation SPELLBINDING_CLOTH=new ResourceLocation(MOD_ID,"spellbinding_cloth");
+    public static final ResourceLocation FUNNEL=new ResourceLocation(MOD_ID,"funnel");
+    public static final ResourceLocation DISSIMULATION = new ResourceLocation(MOD_ID, "dissimulation");
+    public static final ResourceLocation TRANSVECTOR_INTERFACE = new ResourceLocation(MOD_ID, "transvector_interface");
+    public static final ResourceLocation TRANSVECTOR_DISLOCATOR = new ResourceLocation(MOD_ID, "transvector_disslocator");
+    public static final ResourceLocation MOB_MAGNET = new ResourceLocation(MOD_ID, "corporeal_attactor");
+
+    public static final ResourceLocation ITEM_MAGNET = new ResourceLocation(MOD_ID, "kinetic_attactor");
+    public static final ResourceLocation ENCHANTER = new ResourceLocation(MOD_ID, "osmotic_enchanter");
+}
