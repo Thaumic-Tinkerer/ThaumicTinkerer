@@ -1,7 +1,5 @@
 package com.nekokittygames.thaumictinkerer.common.libs;
 
-import net.minecraft.util.ResourceLocation;
-
 public class LibResearch {
 
     public static final String SHARE_BOOK = "TT_SHARE_TOME";
@@ -14,4 +12,5 @@ public class LibResearch {
     public static final String DISSIMULATION = "TT_DISSIMULATION";
     public static final String TRANSVECTOR_INTERFACE = "TT_TRANSVECTOR_INTERFACE";
     public static final String TRANSVECTOR_DISLOCATOR = "TT_TRANSVECTOR_DISLOCATOR";
+    public static final String REPAIRER = "TT_REPAIRER";
 }

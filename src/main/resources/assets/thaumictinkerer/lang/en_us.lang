@@ -18,6 +18,7 @@ tile.thaumictinkerer:funnel.0=Even Transfer
 tile.thaumictinkerer:dissimulation.name=Dissimulation Block
 
 tile.thaumictinkerer:transvector_interface.name=Transvector Interface
+tile.thaumictinkerer:transvector_dislocator.name=Transvector Dislocator
 
 tile.thaumictinkerer:repairer.name=Thaumic Restorer
 tile.thaumictinkerer:magnet.name=Kinetic Attractor

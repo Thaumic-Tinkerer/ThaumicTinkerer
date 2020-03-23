@@ -34,7 +34,7 @@ import static thaumcraft.api.ThaumcraftApi.*;
 public class ModRecipes {
 
 
-    private static ResourceLocation defaultGroup = new ResourceLocation("");
+    private static final ResourceLocation defaultGroup = new ResourceLocation("");
 
 
     public static void initializeRecipes(IForgeRegistry<IRecipe> registry) {
@@ -61,7 +61,7 @@ public class ModRecipes {
         Part[] pillars = new Part[16];
 
         for (int i = 0; i < 16; i++) {
-            pillars[i] = new Part(BlocksTC.stoneArcane, new ItemStack(ModBlocks.enchantment_pillar, 1, i));
+            pillars[i] = new Part(BlocksTC.stoneArcane, new ItemStack(Objects.requireNonNull(ModBlocks.enchantment_pillar), 1, i));
         }
         Part NR = new Part(BlockNitor.class, "AIR");
         Part DN = new Part(ModBlocks.dummy_nitor,"AIR");
@@ -80,13 +80,13 @@ public class ModRecipes {
         };
         IDustTrigger.registerDustTrigger(new TTDustTriggerMultiblock(LibResearch.ENCHANTER,enchanterBP));
         addMultiblockRecipeToCatalog(LibRecipes.OSMOTIC_ENCHANTER_MB,
-                new BluePrint(LibResearch.ENCHANTER,dummyenchanterBP,new ItemStack[]{new ItemStack(ModBlocks.black_quartz_block,13),new ItemStack(BlocksTC.stoneArcaneBrick,24),new ItemStack(BlocksTC.stoneArcane,16),new ItemStack(BlocksTC.nitor.get(EnumDyeColor.WHITE),8)}));
+                new BluePrint(LibResearch.ENCHANTER,dummyenchanterBP, new ItemStack(Objects.requireNonNull(ModBlocks.black_quartz_block),13),new ItemStack(BlocksTC.stoneArcaneBrick,24),new ItemStack(BlocksTC.stoneArcane,16),new ItemStack(BlocksTC.nitor.get(EnumDyeColor.WHITE),8)));
 
     }
     private static void initializeCauldronRecipes() {
         addCrucibleRecipe(LibRecipes.PRISMARINE,new CrucibleRecipe(LibResearch.PRISMARINE,new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
-        addCrucibleRecipe(LibRecipes.SOUL_MOLD,new CrucibleRecipe(LibResearch.MAGNETS,new ItemStack(ModItems.soul_mould),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
-        addCrucibleRecipe(LibRecipes.SPELLBINDING_CLOTH,new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
+        addCrucibleRecipe(LibRecipes.SOUL_MOLD,new CrucibleRecipe(LibResearch.MAGNETS,new ItemStack(Objects.requireNonNull(ModItems.soul_mould)),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
+        addCrucibleRecipe(LibRecipes.SPELLBINDING_CLOTH,new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(Objects.requireNonNull(ModItems.spellbinding_cloth)),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
     }
 
     private static void initializeCraftingRecipes(IForgeRegistry<IRecipe> registry) {
@@ -95,7 +95,7 @@ public class ModRecipes {
 
     private static void initializeArcaneRecipes() {
         addArcaneCraftingRecipe(LibRecipes.FUNNEL, new ShapedArcaneRecipe(defaultGroup, LibResearch.ESSENTIA_FUNNEL, 60, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.funnel)), "STS", 'S', Blocks.STONE, 'T', "ingotThaumium"));
-        addArcaneCraftingRecipe(LibRecipes.DISSIMULATION,new ShapedArcaneRecipe(defaultGroup,LibResearch.DISSIMULATION,30,new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),new ItemStack(ModBlocks.dissimulation),"BEB","PBP","BEB",'B',new ItemStack(BlocksTC.stoneArcane),'E',new ItemStack(Items.CLAY_BALL),'P',new ItemStack(Items.PRISMARINE_SHARD)));
+        addArcaneCraftingRecipe(LibRecipes.DISSIMULATION,new ShapedArcaneRecipe(defaultGroup,LibResearch.DISSIMULATION,30,new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1),new ItemStack(Objects.requireNonNull(ModBlocks.dissimulation)),"BEB","PBP","BEB",'B',new ItemStack(BlocksTC.stoneArcane),'E',new ItemStack(Items.CLAY_BALL),'P',new ItemStack(Items.PRISMARINE_SHARD)));
         addArcaneCraftingRecipe(LibRecipes.TRANSVECTOR_INTERFACE, new ShapedArcaneRecipe(defaultGroup, LibResearch.TRANSVECTOR_INTERFACE, 200, new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY, 1), new ItemStack(Objects.requireNonNull(ModBlocks.transvector_interface)), "BRB", "LEL", "BDB", 'B', new ItemStack(BlocksTC.stoneArcane), 'R', "dustRedstone", 'L', new ItemStack(Items.DYE, 1, 4), 'E', new ItemStack(Items.ENDER_PEARL), 'D', new ItemStack(Objects.requireNonNull(ModBlocks.dissimulation))));
         addArcaneCraftingRecipe(LibRecipes.TRANSVECTOR_DISLOCATOR,new ShapedArcaneRecipe(defaultGroup,LibResearch.TRANSVECTOR_DISLOCATOR,200,new AspectList().add(Aspect.EARTH,5).add(Aspect.ENTROPY,5),new ItemStack(Objects.requireNonNull(ModBlocks.transvector_dislocator))," M "," T "," C ",'M',new ItemStack(ItemsTC.mirroredGlass),'T',new ItemStack(ModBlocks.transvector_interface),'C',new ItemStack(Items.COMPARATOR)));
         // Magnets
@@ -113,6 +113,7 @@ public class ModRecipes {
 
     private static void initializeInfusionRecipes() {
         // Empty for now
-        addInfusionCraftingRecipe(LibRecipes.ENCHANTER,new InfusionRecipe(LibResearch.ENCHANTER,new ItemStack(ModBlocks.osmotic_enchanter),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(ModItems.spellbinding_cloth),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
+        addInfusionCraftingRecipe(LibRecipes.ENCHANTER,new InfusionRecipe(LibResearch.ENCHANTER,new ItemStack(Objects.requireNonNull(ModBlocks.osmotic_enchanter)),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Objects.requireNonNull(ModItems.spellbinding_cloth)),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
+        addInfusionCraftingRecipe(LibRecipes.REPAIRER,new InfusionRecipe(LibResearch.REPAIRER,new ItemStack(Objects.requireNonNull(ModBlocks.repairer)),1,new AspectList().add(Aspect.CRAFT,20).add(Aspect.TOOL,15).add(Aspect.ORDER,10).add(Aspect.MAGIC,15),new ItemStack(BlocksTC.metalBlockThaumium),"plankWood",new ItemStack(Items.LEATHER),new ItemStack(ItemsTC.fabric),new ItemStack(ItemsTC.ingots,1,0),new ItemStack(Items.IRON_INGOT),new ItemStack(Items.GOLD_INGOT),new ItemStack(Items.DIAMOND),new ItemStack(Blocks.COBBLESTONE)));
     }
 }
