@@ -19,7 +19,8 @@
       ],
       "stages": [
         {
-          "text": "thaumictinkerer.research.transvector_interface.0"
+          "text": "thaumictinkerer.research.transvector_interface.0",
+          "required_item":["minecraft:ender_pearl;4"]
         },
         {
           "text": "thaumictinkerer.research.transvector_interface.1",
@@ -51,13 +52,14 @@
       "stages": [
 
         {
-          "text": "thaumictinkerer.research.transvector_dislocator.0"
+          "text": "thaumictinkerer.research.transvector_dislocator.0",
+          "required_item":["thaumcraft:mirrored_glass;1"]
         },{
           "text": "thaumictinkerer.research.transvector_dislocator.1",
           "recipes": [
             "thaumictinkerer:transvector_disslocator"
-          ],
-          "required_item":["thaumcraft:mirrored_glass;1"]
+          ]
+
         }
       ]
     },

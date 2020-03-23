@@ -137,12 +137,13 @@
       "location": [ 1,-1 ],
       "stages": [
         {
-          "text": "thaumictinkerer.research.dissimulation.0"
+          "text": "thaumictinkerer.research.dissimulation.0",
+          "required_item":["minecraft:prismarine_shard;30"]
         },
         {
           "text": "thaumictinkerer.research.dissimulation.1",
-          "recipes": ["thaumictinkerer:dissimulation"],
-          "required_item":["minecraft:prismarine_shard;30"]
+          "recipes": ["thaumictinkerer:dissimulation"]
+
         }
       ]
     }
