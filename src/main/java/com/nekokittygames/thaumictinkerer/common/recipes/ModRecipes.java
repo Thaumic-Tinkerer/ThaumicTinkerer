@@ -1,32 +1,22 @@
 package com.nekokittygames.thaumictinkerer.common.recipes;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
-import com.nekokittygames.thaumictinkerer.common.blocks.TTBlock;
 import com.nekokittygames.thaumictinkerer.common.compat.BotaniaCompat;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
-
+import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
 import com.nekokittygames.thaumictinkerer.common.libs.LibRecipes;
 import com.nekokittygames.thaumictinkerer.common.libs.LibResearch;
-
-import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
-
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTFocusIngredient;
 import com.nekokittygames.thaumictinkerer.common.recipes.ing.TTIngredientNBT;
-import li.cil.oc.integration.Mod;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-
-import net.minecraftforge.registries.IForgeRegistry;
-
 import net.minecraftforge.oredict.OreDictionary;
-
-import thaumcraft.api.ThaumcraftApi;
+import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
@@ -36,7 +26,6 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.blocks.misc.BlockNitor;
 import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
-import thaumcraft.common.lib.crafting.DustTriggerMultiblock;
 
 import java.util.Objects;
 
@@ -80,7 +69,7 @@ public class ModRecipes {
         Part[][][] enchanterBP = new Part[][][]{{{null, null, null, NR, null, null, null}, {null, NR, null, null, null, NR, null}, {null, null, null, null, null, null, null}, {NR, null, null, null, null, null, NR}, {null, null, null, null, null, null, null}, {null, NR, null, null, null, NR, null}, {null, null, null, NR, null, null, null}},
                 {{null, null, null, pillars[15], null, null, null}, {null, pillars[14], null, null, null,pillars[8], null}, {null, null, null, null, null, null, null}, {pillars[13], null, null, null, null, null, pillars[9]}, {null, null, null, null, null, null, null}, {null, pillars[12], null, null, null, pillars[10], null}, {null, null, null, pillars[11], null, null, null}},
                 {{null, null, null, pillars[7], null, null, null}, {null, pillars[6], null, null, null, pillars[0], null}, {null, null, null, null, null, null, null}, {pillars[5], null, null, OE, null, null, pillars[1]}, {null, null, null, null, null, null, null}, {null, pillars[4], null, null, null, pillars[2], null}, {null, null, null, pillars[3], null, null, null}},
-                {{null,null,null,AB,null,null,null},{null,AB,AB,BQ,AB,AB,null},{null,AB,BQ,BQ,BQ,AB,null},{AB,BQ,BQ,BQ,BQ,BQ,AB},{null,AB,BQ,BQ,BQ,AB,null},{null,AB,AB,BQ,AB,AB,null},{null,null,null,AB,null,null,null}}
+                {{null,null,AB,AB,AB,null,null},{null,AB,AB,BQ,AB,AB,null},{AB,AB,BQ,BQ,BQ,AB,AB},{AB,BQ,BQ,BQ,BQ,BQ,AB},{AB,AB,BQ,BQ,BQ,AB,AB},{null,AB,AB,BQ,AB,AB,null},{null,null,AB,AB,AB,null,null}}
 
         };
 
