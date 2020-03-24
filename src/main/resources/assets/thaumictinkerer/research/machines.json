@@ -35,7 +35,9 @@
         {
           "text": "thaumictinkerer.research.transvector_interface.2",
           "recipes": [
-            "thaumictinkerer:transvector_disslocator"
+            "thaumictinkerer:transvector_disslocator",
+            "thaumictinkerer:transvector_interface",
+            "thaumictinkerer:connector"
           ]
 
         }
