@@ -106,3 +106,6 @@ thaumictinkerer.research.dissimulation.1=After fully investigating Prismarine, I
 thaumictinkerer.research.transvector_dislocator.title=Transvector Dislocator
 thaumictinkerer.research.transvector_dislocator.0=After playing with the interface block for a while, I started to notice that the linking of the two areas could be strengthened, I wonder what woiuld happen if I use a mirror and some redstone?
 thaumictinkerer.research.transvector_dislocator.1=It seems if I use a comparator and a mirror, I can control the linkage between areas, swapping the block in front of the dislocator, and the linked block whenevr it recieves a redstone signal.
+
+thaumictinkerer.research.repairer.title=Thaumic Restorer
+thaumictinkerer.research.repairer.0=After finding out one mixture of Essentia could disenchant, but damage tools, I started to wonder, could another fix them? <BR> Turns out it can. If I take my new Thaumic Restorer and put the tool in, then pump in the correct Essentia for the tool, it will let the tool regain it's natural durability. It's handy that the ever-useful goggles let me see which type is needed.
