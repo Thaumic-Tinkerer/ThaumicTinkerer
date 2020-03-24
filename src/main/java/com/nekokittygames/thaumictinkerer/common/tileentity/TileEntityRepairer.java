@@ -13,6 +13,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -25,7 +26,7 @@ import javax.annotation.Nullable;
 
 public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITickable, IAspectContainer, IEssentiaTransport {
 
-    private ItemStackHandler inventory = new ItemStackHandler(1) {
+    private final ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
@@ -83,14 +84,14 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+    public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
         return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
     }
 
 
     @Nullable
     @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+    public <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return (T) inventory;
         } else {
@@ -171,7 +172,8 @@ public class TileEntityRepairer extends TileEntityThaumicTinkerer implements ITi
         int damage = stack.getItemDamage();
         if (Loader.isModLoaded("tconstruct") && TTConfig.TiConCompatibility)
             damage = TiConCompat.getDamage(stack);
-        return new AspectList().add(Aspect.ENTROPY, damage);
+        // todo: make this require different Aspects per tool type
+        return new AspectList().add(Aspect.TOOL, damage);
     }
 
     @Override
