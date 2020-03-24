@@ -11,6 +11,5 @@ public class LibResearch {
 
     public static final String DISSIMULATION = "TT_DISSIMULATION";
     public static final String TRANSVECTOR_INTERFACE = "TT_TRANSVECTOR_INTERFACE";
-    public static final String TRANSVECTOR_DISLOCATOR = "TT_TRANSVECTOR_DISLOCATOR";
     public static final String REPAIRER = "TT_REPAIRER";
 }

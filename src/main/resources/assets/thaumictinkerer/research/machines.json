@@ -4,7 +4,8 @@
       "key": "TT_TRANSVECTOR_INTERFACE",
       "name": "thaumictinkerer.research.transvector_interface.title",
       "icons": [
-        "thaumictinkerer:transvector_interface"
+        "thaumictinkerer:transvector_interface",
+        "thaumictinkerer:transvector_dislocator"
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
@@ -28,34 +29,11 @@
 
             "thaumictinkerer:transvector_interface",
             "thaumictinkerer:connector"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "TT_TRANSVECTOR_DISLOCATOR",
-      "name": "thaumictinkerer.research.transvector_dislocator.title",
-      "icons": [
-        "thaumictinkerer:transvector_dislocator"
-      ],
-      "category": "THAUMIC_TINKERER",
-      "parents": [
-        "TT_TRANSVECTOR_INTERFACE"
-      ],
-      "siblings": [],
-      "meta": [
-      ],
-      "location": [
-        0,
-        2
-      ],
-      "stages": [
-
-        {
-          "text": "thaumictinkerer.research.transvector_dislocator.0",
+          ],
           "required_item":["thaumcraft:mirrored_glass;1"]
-        },{
-          "text": "thaumictinkerer.research.transvector_dislocator.1",
+        },
+        {
+          "text": "thaumictinkerer.research.transvector_interface.2",
           "recipes": [
             "thaumictinkerer:transvector_disslocator"
           ]
