@@ -64,6 +64,22 @@
       ]
     },
     {
+      "key": "TT_REPAIRER",
+      "name": "thaumictinkerer.research.repairer.title",
+      "icons": ["thaumictinkerer:repairer"],
+      "category": "THAUMIC_TINKERER",
+      "parents": ["INFUSION","~TT_SPELLBINDING_CLOTH"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [5,5],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.repairer.0",
+          "recipes": [ "thaumictinkerer:repairer"]
+        }
+      ]
+    },
+    {
       "key": "TT_THAUMIC_MAGNETS",
       "name": "thaumictinkerer.research.magnet.title",
       "icons": [
