@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer;
 
 import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
-import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
@@ -12,7 +11,6 @@ import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTInkererCreativeTab
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
-import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -26,7 +24,6 @@ import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.FocusEngine;
-import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.research.ResearchCategories;
 
 import java.io.IOException;

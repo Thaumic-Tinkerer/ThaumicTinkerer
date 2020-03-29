@@ -82,10 +82,17 @@
         {
           "text": "thaumictinkerer.research.magnet.0",
           "recipes": [
+            "thaumictinkerer:kinetic_attactor"
+          ],
+          "required_knowledge":["THEORY;BASICS;1","THEORY;THAUMIC_TINKERER;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.magnet.1",
+          "recipes": [
             "thaumictinkerer:corporeal_attactor",
             "thaumictinkerer:kinetic_attactor",
             "thaumictinkerer:soul_mould"
-          ]
+            ]
         }
       ]
     },

@@ -14,7 +14,6 @@ public class LibRecipes {
     public static final ResourceLocation TRANSVECTOR_INTERFACE = new ResourceLocation(MOD_ID, "transvector_interface");
     public static final ResourceLocation TRANSVECTOR_DISLOCATOR = new ResourceLocation(MOD_ID, "transvector_disslocator");
     public static final ResourceLocation MOB_MAGNET = new ResourceLocation(MOD_ID, "corporeal_attactor");
-
     public static final ResourceLocation ITEM_MAGNET = new ResourceLocation(MOD_ID, "kinetic_attactor");
     public static final ResourceLocation ENCHANTER = new ResourceLocation(MOD_ID, "osmotic_enchanter");
     public static final ResourceLocation REPAIRER = new ResourceLocation(MOD_ID, "repairer");

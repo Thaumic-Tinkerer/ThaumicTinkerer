@@ -85,7 +85,7 @@ public class ModRecipes {
     }
     private static void initializeCauldronRecipes() {
         addCrucibleRecipe(LibRecipes.PRISMARINE,new CrucibleRecipe(LibResearch.PRISMARINE,new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
-        addCrucibleRecipe(LibRecipes.SOUL_MOLD,new CrucibleRecipe(LibResearch.MAGNETS,new ItemStack(Objects.requireNonNull(ModItems.soul_mould)),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
+        addCrucibleRecipe(LibRecipes.SOUL_MOLD,new CrucibleRecipe(LibResearch.CORPOREAL_MAGNET,new ItemStack(Objects.requireNonNull(ModItems.soul_mould)),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
         addCrucibleRecipe(LibRecipes.SPELLBINDING_CLOTH,new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(Objects.requireNonNull(ModItems.spellbinding_cloth)),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
     }
 
@@ -107,8 +107,9 @@ public class ModRecipes {
         FocusPackage focusPackage=new FocusPackage();
         focusPackage.addNode(new FocusEffectTelekenesis());
         ItemFocus.setPackage(focus,focusPackage);
-        addArcaneCraftingRecipe(LibRecipes.MOB_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.MAGNETS,200,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.mob_magnet))," C ","ACE","GFG",'C', new ItemStack(ItemsTC.ingots, 1, 0),'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
-        addArcaneCraftingRecipe(LibRecipes.ITEM_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.MAGNETS,20,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.magnet))," C ","ACE","GFG",'C',"ingotIron",'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
+        addArcaneCraftingRecipe(LibRecipes.MOB_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.CORPOREAL_MAGNET,200,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.mob_magnet))," C ","ACE","GFG",'C', new ItemStack(ItemsTC.ingots, 1, 0),'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
+        addArcaneCraftingRecipe(LibRecipes.ITEM_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.KINETIC_MAGNET,20,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.magnet))," C ","ACE","GFG",'C',"ingotIron",'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
+
     }
 
     private static void initializeInfusionRecipes() {
