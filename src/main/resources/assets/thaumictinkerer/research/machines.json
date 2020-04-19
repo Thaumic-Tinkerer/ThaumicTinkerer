@@ -142,10 +142,15 @@
       "stages": [
         {
           "text": "thaumictinkerer.research.enchanter.0",
+          "required_knowledge":["THEORY;BASICS;1","THEORY;THAUMIC_TINKERER;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.enchanter.1",
           "recipes": [
             "thaumictinkerer:osmotic_enchanter",
             "thaumictinkerer:osmotic_enchanter_mb"
-          ]
+          ],
+          "required_knowledge":["THEORY;BASICS;1","THEORY;THAUMIC_TINKERER;1"]
         }
       ]
     }
