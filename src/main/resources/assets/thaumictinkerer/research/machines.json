@@ -142,7 +142,7 @@
       "stages": [
         {
           "text": "thaumictinkerer.research.enchanter.0",
-          "required_knowledge":["THEORY;BASICS;1","THEORY;THAUMIC_TINKERER;1"]
+          "required_knowledge":["THEORY;INFUSION;2"]
         },
         {
           "text": "thaumictinkerer.research.enchanter.1",
