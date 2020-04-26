@@ -17,4 +17,5 @@ public class LibRecipes {
     public static final ResourceLocation ITEM_MAGNET = new ResourceLocation(MOD_ID, "kinetic_attactor");
     public static final ResourceLocation ENCHANTER = new ResourceLocation(MOD_ID, "osmotic_enchanter");
     public static final ResourceLocation REPAIRER = new ResourceLocation(MOD_ID, "repairer");
+    public static final ResourceLocation TABLET = new ResourceLocation(MOD_ID, "tablet");
 }
