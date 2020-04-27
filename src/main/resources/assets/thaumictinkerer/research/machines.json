@@ -161,21 +161,21 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS",
-        "TT_THAUMIC_MAGNETS"
+        "TT_THAUMIC_MAGNETS",
+        "CONTROLSEALS"
       ],
       "siblings": [],
       "meta": [
         "ROUND"
       ],
       "location": [
-        -4,
+        -3,
         3
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.tablet.0",
-          "required_knowledge":["THEORY;THAUMIC_TINKERER;2"]
+          "required_knowledge":["THEORY;GOLEMANCY;2"]
         },
         {
           "text": "thaumictinkerer.research.tablet.1",

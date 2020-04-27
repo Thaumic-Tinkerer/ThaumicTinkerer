@@ -21,6 +21,7 @@ tile.thaumictinkerer:transvector_interface.name=Transvector Interface
 tile.thaumictinkerer:transvector_dislocator.name=Transvector Dislocator
 
 tile.thaumictinkerer:repairer.name=Thaumic Restorer
+tile.thaumictinkerer:animation_tablet.name=Dynamism Tablet
 tile.thaumictinkerer:magnet.name=Kinetic Attractor
 tile.thaumictinkerer:mob_magnet.name=Corporeal Attractor
 tile.thaumictinkerer:osmotic_enchanter.name=Osmotic Enchanter
@@ -116,3 +117,7 @@ thaumictinkerer.research.magnet.1=Putting a focus containing my new telekenesis 
 thaumictinkerer.research.enchanter.title=Osmotic Enchanter
 thaumictinkerer.research.enchanter.0=Infusion seems more familiar the more I look at it. Something about how it pulls in magic and infuses such a large amount into an object to give it new properties makes me think it could be related to enchantment of an item in some way. If I investigate infusion more I wonder if I can find the link?
 thaumictinkerer.research.enchanter.1=I have found the link between infusion and enchantment! Whereas infusing an object requires a massive amount of different essentia, enchantment, being a lower power infusing, doesnt need much more then the basic ambient magic. Working off of this theory, I can build an enchanting table that uses a similar setup to the infusion matrix, to instead add enchantment to a tool, while being able to select which magic settles on the tool, meaning I can select the enchantment. Building this structure, then triggering it by sprinkling some salis mundus should work
+
+thaumictinkerer.research.tablet.title=Dynamism Tablet
+thaumictinkerer.research.tablet.0=Golems are so very useful, watching them wandering here and there to do my bidding is quite amusing. However, sometimes I don't want a minion doing something for me. Sometimes, I just need a plain block that does one thing, but does it well. The way I built a magnet around a focus makes me wonder: can I build something around a seal? I must examine golems more.
+thaumictinkerer.research.tablet.1=It looks like I can build a block around a seal that leverages golemancy to use an item, without actually being a fully mobile golem. If I place this block down and give it an item, it will use the item on the block in front of it. That is, as long as it has a redstone signal. It can be told whether to mine or use a block. However, with no inventory, anything it does mine drops into the world - perhaps for its more mobile cousin to pick up.
