@@ -152,6 +152,38 @@
           ]
         }
       ]
+    },
+    {
+      "key": "TT_TABLET",
+      "name": "thaumictinkerer.research.tablet.title",
+      "icons": [
+        "thaumictinkerer:animation_tablet"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "FIRSTSTEPS",
+        "TT_THAUMIC_MAGNETS"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        -4,
+        3
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.tablet.0",
+          "required_knowledge":["THEORY;THAUMIC_TINKERER;2"]
+        },
+        {
+          "text": "thaumictinkerer.research.tablet.1",
+          "recipes": [
+            "thaumictinkerer:tablet"
+          ]
+        }
+      ]
     }
   ]
 }
