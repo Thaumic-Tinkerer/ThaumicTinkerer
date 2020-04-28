@@ -21,7 +21,7 @@ tile.thaumictinkerer:transvector_interface.name=Интерфейс Трансв�
 tile.thaumictinkerer:transvector_dislocator.name=Дислокатор Трансвектора
 
 tile.thaumictinkerer:repairer.name=Таумический Восстановитель
-tile.thaumictinkerer:animation_tablet.name=Dynamism Tablet
+tile.thaumictinkerer:animation_tablet.name=Панель Динамизма
 tile.thaumictinkerer:magnet.name=Кинетический Притяжатель
 tile.thaumictinkerer:mob_magnet.name=Телесный Притяжатель
 tile.thaumictinkerer:osmotic_enchanter.name=Осмотический Зачаровыватель
