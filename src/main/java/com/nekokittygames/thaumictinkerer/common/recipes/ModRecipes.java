@@ -80,7 +80,7 @@ public class ModRecipes {
         };
         IDustTrigger.registerDustTrigger(new TTDustTriggerMultiblock(LibResearch.ENCHANTER,enchanterBP));
         addMultiblockRecipeToCatalog(LibRecipes.OSMOTIC_ENCHANTER_MB,
-                new BluePrint(LibResearch.ENCHANTER,dummyenchanterBP, new ItemStack(Objects.requireNonNull(ModBlocks.black_quartz_block),13),new ItemStack(BlocksTC.stoneArcaneBrick,24),new ItemStack(BlocksTC.stoneArcane,16),new ItemStack(BlocksTC.nitor.get(EnumDyeColor.WHITE),8)));
+                new BluePrint(LibResearch.ENCHANTER,dummyenchanterBP, new ItemStack(Objects.requireNonNull(ModBlocks.black_quartz_block),13),new ItemStack(BlocksTC.stoneArcaneBrick,24),new ItemStack(BlocksTC.stoneArcane,16),new ItemStack(BlocksTC.nitor.get(EnumDyeColor.YELLOW),8)));
 
     }
     private static void initializeCauldronRecipes() {

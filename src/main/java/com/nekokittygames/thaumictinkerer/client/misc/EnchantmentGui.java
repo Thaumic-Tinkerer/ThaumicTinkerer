@@ -27,7 +27,8 @@ public class EnchantmentGui {
      * @return {@link ResourceLocation} containing the appropriate icon
      */
     public static ResourceLocation getEnchantmentIcon(Enchantment enchantment) {
-
+        if(enchantment==null)
+            return new ResourceLocation("thaumictinkerer", "textures/enchant_icons/unknown.png");
         ResourceLocation object = Enchantment.REGISTRY.getNameForObject(enchantment);
         ResourceLocation iconLoc = new ResourceLocation(Objects.requireNonNull(object).getResourceDomain(), "textures/enchant_icons/" + object.getResourcePath() + ".png");
 

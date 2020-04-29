@@ -85,7 +85,8 @@ public class GuiEnchantmentButton extends GuiButton {
         GlStateManager.disableBlend();
         if (mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16) {
             List<String> tooltip = new ArrayList<>();
-            tooltip.add(ChatFormatting.AQUA + enchant.getTranslatedName(getLevel()));
+            if(enchant!=null)
+                tooltip.add(ChatFormatting.AQUA + enchant.getTranslatedName(getLevel()));
             parent.getTooltip().addAll(tooltip);
         }
     }

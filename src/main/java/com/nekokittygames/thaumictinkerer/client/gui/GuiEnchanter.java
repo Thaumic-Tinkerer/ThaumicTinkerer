@@ -172,12 +172,18 @@ public class GuiEnchanter extends GuiContainer {
         asignEnchantButtons();
 
         int i = 0;
+        int xOffset=0;
         for (Integer enchant : enchanter.getEnchantments()) {
-            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4, y + (i * 26) + 30 + 15);
+            if((y + (i * 26) + 30 + 15) +24 >height)
+            {
+                xOffset+=26+14+1;
+                i=0;
+            }
+            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4+xOffset, y + (i * 26) + 30 + 15);
             button.setEnchant( Enchantment.getEnchantmentByID(enchant));
             buttonList.add(button);
-            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 1, x + xSize + 24, y + (i * 26) + 30 + 15 - 4, false));
-            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 2, x + xSize + 31, y + (i * 26) + 30 + 15 - 4, true));
+            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 1, x + xSize + 24+xOffset, y + (i * 26) + 30 + 15 - 4, false));
+            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 2, x + xSize + 31+xOffset, y + (i * 26) + 30 + 15 - 4, true));
             ++i;
         }
         startButton = new GuiEnchantmentStartButton(0, x + 8, y + 58);

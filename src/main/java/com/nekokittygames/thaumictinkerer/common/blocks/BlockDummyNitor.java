@@ -16,6 +16,6 @@ public class BlockDummyNitor extends TTBlock implements IDummyBlock {
 
     @Override
     public String getReplacementBlock() {
-        return "thaumcraft:nitor_white";
+        return "thaumcraft:nitor_yellow";
     }
 }
