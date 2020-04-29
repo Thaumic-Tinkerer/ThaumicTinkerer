@@ -15,9 +15,10 @@ public class CommonProxy implements ITTProxy {
         // Empty
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public String localize(String unlocalized, Object... args) {
-        return I18n.translateToLocalFormatted(unlocalized, args);
+    public String localize(String translationKey, Object... args) {
+        return I18n.translateToLocalFormatted(translationKey, args);
     }
 
     @Override

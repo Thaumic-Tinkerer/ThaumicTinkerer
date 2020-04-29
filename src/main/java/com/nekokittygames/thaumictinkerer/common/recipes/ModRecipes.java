@@ -1,7 +1,7 @@
 package com.nekokittygames.thaumictinkerer.common.recipes;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
-import com.nekokittygames.thaumictinkerer.common.compat.BotaniaCompat;
+import com.nekokittygames.thaumictinkerer.common.compat.botania.BotaniaCompat;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
@@ -87,6 +87,7 @@ public class ModRecipes {
         addCrucibleRecipe(LibRecipes.PRISMARINE,new CrucibleRecipe(LibResearch.PRISMARINE,new ItemStack(Items.PRISMARINE_SHARD), "paneGlass",new AspectList().add(Aspect.WATER,5).add(Aspect.EARTH,5)));
         addCrucibleRecipe(LibRecipes.SOUL_MOLD,new CrucibleRecipe(LibResearch.CORPOREAL_MAGNET,new ItemStack(Objects.requireNonNull(ModItems.soul_mould)),new ItemStack(Items.ENDER_PEARL),new AspectList().add(Aspect.BEAST,5).add(Aspect.MIND,10).add(Aspect.SENSES,10)));
         addCrucibleRecipe(LibRecipes.SPELLBINDING_CLOTH,new CrucibleRecipe(LibResearch.SPELLBINDING_CLOTH,new ItemStack(Objects.requireNonNull(ModItems.spellbinding_cloth)),new ItemStack(ItemsTC.fabric),new AspectList().add(Aspect.EXCHANGE,4).add(Aspect.ENTROPY,6).add(Aspect.MAGIC,10)));
+        addCrucibleRecipe(LibRecipes.ENERGETIC_NITOR,new CrucibleRecipe(LibResearch.ENERGETIC_NITOR,new ItemStack(Objects.requireNonNull(ModItems.energetic_nitor)),"nitor",new AspectList().add(Aspect.FIRE,10).add(Aspect.AIR,10).add(Aspect.LIGHT,25).add(Aspect.ENERGY,25)));
     }
 
     private static void initializeCraftingRecipes(IForgeRegistry<IRecipe> registry) {
@@ -109,7 +110,7 @@ public class ModRecipes {
         ItemFocus.setPackage(focus,focusPackage);
         addArcaneCraftingRecipe(LibRecipes.MOB_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.CORPOREAL_MAGNET,200,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.mob_magnet))," C ","ACE","GFG",'C', new ItemStack(ItemsTC.ingots, 1, 0),'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
         addArcaneCraftingRecipe(LibRecipes.ITEM_MAGNET,new ShapedArcaneRecipe(defaultGroup,LibResearch.KINETIC_MAGNET,20,new AspectList().add(Aspect.AIR,1).add(Aspect.ORDER,1).add(Aspect.EARTH,15).add(Aspect.ENTROPY,1),new ItemStack(Objects.requireNonNull(ModBlocks.magnet))," C ","ACE","GFG",'C',"ingotIron",'A',new TTIngredientNBT(airCrystal),'E',new TTIngredientNBT(earthCrystal),'G',new ItemStack(BlocksTC.logGreatwood),'F',new TTFocusIngredient(FocusEffectTelekenesis.class, focus)));
-        addArcaneCraftingRecipe(LibRecipes.TABLET,new ShapedArcaneRecipe(defaultGroup,LibResearch.TABLET,20,new AspectList().add(Aspect.AIR,3).add(Aspect.ORDER,2).add(Aspect.FIRE,1),new ItemStack(ModBlocks.animation_tablet),"GIG","ISI",'G',new ItemStack(Items.GOLD_INGOT),'I',new ItemStack(Items.IRON_INGOT),'S',new ItemStack(ItemsTC.seals)));
+        addArcaneCraftingRecipe(LibRecipes.TABLET,new ShapedArcaneRecipe(defaultGroup,LibResearch.TABLET,20,new AspectList().add(Aspect.AIR,3).add(Aspect.ORDER,2).add(Aspect.FIRE,1),new ItemStack(Objects.requireNonNull(ModBlocks.animation_tablet)),"GIG","ISI",'G',new ItemStack(Items.GOLD_INGOT),'I',new ItemStack(Items.IRON_INGOT),'S',new ItemStack(ItemsTC.seals)));
 
     }
 

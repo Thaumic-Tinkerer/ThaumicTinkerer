@@ -17,4 +17,5 @@ public class LibResearch {
     public static final String TRANSVECTOR_INTERFACE = TRANSVECTOR_DISLOCATOR+"@2";
 
     public static final String TABLET = "TT_TABLET";
+    public static final String ENERGETIC_NITOR = "TT_ENERGETIC_NITOR";
 }
