@@ -128,5 +128,5 @@ thaumictinkerer.research.tablet.0=Golems are so very useful, watching them wande
 thaumictinkerer.research.tablet.1=It looks like I can build a block around a seal that leverages golemancy to use an item, without actually being a fully mobile golem. If I place this block down and give it an item, it will use the item on the block in front of it. That is, as long as it has a redstone signal. ` It can be told whether to mine or use a block. However, with no inventory, anything it does mine drops into the world - perhaps for its more mobile cousin to pick up.
 
 thaumictinkerer.research.energetic_nitor.title=Hyperenergetic Nitor
-thaumictinkerer.research.energetic_nitor.0=Temp1
-thaumictinkerer.research.energetic_nitor.1=Temp2
+thaumictinkerer.research.energetic_nitor.0=Nitor is useful, I can not deny, however having to place it down before I see anything is annoying. I wonder if I make it more energetic, could I make it visible from my palm?
+thaumictinkerer.research.energetic_nitor.1=Adding in more Energy and Light Essentia seems to have done the trick to create a more powerful nitor. This Hyperenergized Nitor burns with a visible light from my hand, so much so it will even leave a trail as I move.
