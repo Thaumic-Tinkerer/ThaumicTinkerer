@@ -9,7 +9,7 @@ import thaumcraft.api.research.theorycraft.ITheorycraftAid;
 import thaumcraft.api.research.theorycraft.TheorycraftCard;
 
 public class AidBlackQuartz implements ITheorycraftAid {
-    Block curBlock;
+    private Block curBlock;
     public AidBlackQuartz(Block researchBlock) {
         curBlock=researchBlock;
     }

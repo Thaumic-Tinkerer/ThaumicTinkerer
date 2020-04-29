@@ -100,7 +100,7 @@ public class ThaumicTinkerer {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/foci"));
         TheorycraftManager.registerCard(CardExperience.class);
         TheorycraftManager.registerAid(new AidBlackQuartz(ModBlocks.black_quartz_block));
-        BotaniaCompat.AddTheorycraft();
+        BotaniaCompat.addTheorycraft();
         proxy.registerRenderers();
         initFoci();
         //IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);

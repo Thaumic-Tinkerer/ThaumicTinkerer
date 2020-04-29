@@ -29,7 +29,7 @@ public class BotaniaCompat {
             ThaumicTinkerer.logger.info("Botania not found, Sad now.");
     }
 
-    public static void AddTheorycraft() {
+    public static void addTheorycraft() {
         if(botaniaQuartz!=null) {
             TheorycraftManager.registerAid(new AidBotaniaQuartz(botaniaQuartz));
         }
