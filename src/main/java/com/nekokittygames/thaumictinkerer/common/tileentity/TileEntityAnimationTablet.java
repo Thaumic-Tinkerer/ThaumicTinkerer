@@ -1,7 +1,6 @@
 package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.mojang.authlib.GameProfile;
-import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.misc.FakePlayerUtils;
 import com.nekokittygames.thaumictinkerer.common.misc.ThaumicFakePlayer;
@@ -190,7 +189,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         boolean flag = this.currentItemHittingBlock.isEmpty() && itemstack.isEmpty();
 
         if (!this.currentItemHittingBlock.isEmpty() && !itemstack.isEmpty()) {
-            flag = !net.minecraftforge.client.ForgeHooksClient.shouldCauseBlockBreakReset(this.currentItemHittingBlock, itemstack);
+            flag = !this.currentItemHittingBlock.getItem().shouldCauseBlockBreakReset(this.currentItemHittingBlock, itemstack);
         }
 
         return pos.equals(this.currentBlock) && flag;
