@@ -9,13 +9,16 @@ import net.minecraft.block.BlockCommandBlock;
 import net.minecraft.block.BlockStructure;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
+import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -27,7 +30,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.function.Consumer;
 
 public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer implements ITickable, Consumer<ItemStack> {
@@ -45,6 +51,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     private boolean isRemoving;
     private ItemStack currentItemHittingBlock;
     private BlockPos currentBlock;
+    List<Entity> detectedEntities = new ArrayList<>();
     private ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -120,6 +127,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     @Override
     public void writeExtraNBT(NBTTagCompound nbttagcompound) {
+        super.writeExtraNBT(nbttagcompound);
         nbttagcompound.setTag("inventory", inventory.serializeNBT());
         nbttagcompound.setBoolean("rightClick", rightClick);
         nbttagcompound.setInteger("progress", progress);
@@ -135,6 +143,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     @Override
     public void readExtraNBT(NBTTagCompound nbttagcompound) {
+        super.readExtraNBT(nbttagcompound);
         inventory.deserializeNBT(nbttagcompound.getCompoundTag("inventory"));
         rightClick = nbttagcompound.getBoolean("rightClick");
         progress = nbttagcompound.getInteger("progress");
@@ -209,7 +218,18 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     private boolean detect() {
-        return !world.isAirBlock(getBlockTarget());
+        return !world.isAirBlock(getBlockTarget()) || detectEntity().size()>0;
+    }
+
+
+    private AxisAlignedBB getBlockBounding() {
+        BlockPos newPos = this.getPos().offset(facing);
+        return new AxisAlignedBB(newPos);
+    }
+    private List<Entity> detectEntity() {
+        AxisAlignedBB bounding=getBlockBounding();
+        detectedEntities = world.getEntitiesWithinAABB(Entity.class,bounding);
+        return detectedEntities;
     }
 
     @Override
@@ -219,6 +239,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             MinecraftServer worldServer = FMLCommonHandler.instance().getMinecraftServerInstance();
             player = new WeakReference<>(FakePlayerUtils.get(worldServer.getWorld(this.world.provider.getDimension()), new GameProfile(LibMisc.MOD_UUID, LibMisc.MOD_F_NAME)));
         }
+
         ticksExisted++;
         ItemStack stack = inventory.getStackInSlot(0);
         tick(stack);
@@ -305,20 +326,47 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
         }
     }
+    public static void LookAt(double px, double py, double pz , Entity entity) {
+        double dirx = entity.getPosition().getX() - px;
+        double diry = entity.getPosition().getY() - py;
+        double dirz = entity.getPosition().getZ() - pz;
 
-    private void swingHit() {
+        double len = Math.sqrt(dirx * dirx + diry * diry + dirz * dirz);
+
+        dirx /= len;
+        diry /= len;
+        dirz /= len;
+
+        double pitch = Math.asin(diry);
+        double yaw = Math.atan2(dirz, dirx);
+
+        //to degree
+        pitch = pitch * 180.0 / Math.PI;
+        yaw = yaw * 180.0 / Math.PI;
+
+        yaw += 90f;
+        entity.rotationPitch = (float) pitch;
+        entity.rotationYaw = (float)yaw;
+    }
+
+        private void swingHit() {
+
         Vec3d base;
         Vec3d look;
         Vec3d target;
         RayTraceResult trace;
         RayTraceResult traceEntity;
         RayTraceResult toUse = null;
+        FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
         base = new Vec3d(Objects.requireNonNull(player.get()).posX, player.get().posY, player.get().posZ);
+
         look = player.get().getLookVec();
         target = base.add(new Vec3d(look.x * 5, look.y * 5, look.z * 5));
         trace = world.rayTraceBlocks(base, target, false, false, true);
         traceEntity = FakePlayerUtils.traceEntities(player.get(), base, target, world);
-        toUse = trace == null ? traceEntity : trace;
+        if(traceEntity ==null && trace==null)
+            return;
+        toUse = traceEntity == null ?  trace: traceEntity;
         BlockPos targetPos = toUse.getBlockPos();
         if (trace != null && traceEntity != null) {
             double d1 = trace.hitVec.distanceTo(base);
@@ -326,13 +374,33 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
             toUse = traceEntity.typeOfHit == RayTraceResult.Type.ENTITY && d1 > d2 ? traceEntity : trace;
         }
 
-        if (world.getBlockState(targetPos) == world.getBlockState(pos)) return;
+        if (toUse.typeOfHit== RayTraceResult.Type.BLOCK && world.getBlockState(targetPos) == world.getBlockState(pos)) return;
         if (!rightClick) {
-
-            leftClick(toUse, targetPos);
+            if(detectEntity().size()>0)
+            {
+                Random rand=new Random();
+                Objects.requireNonNull(player.get()).attackTargetEntityWithCurrentItem(detectedEntities.get(rand.nextInt(detectedEntities.size())));
+                FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), player.get().getHeldItemMainhand(), this.inventory.getStackInSlot(0), this);
+                return;
+            }
+            leftClick(toUse, getTargetBlock());
             //world.sendBlockBreakProgress(fakePlayer.getEntityId(),);
 
         } else {
+            if(detectEntity().size()>0)
+            {
+                Random rand=new Random();
+                Entity entity=detectedEntities.get(rand.nextInt(detectedEntities.size()));
+                if (FakePlayerUtils.processUseEntity(player.get(), entity, toUse, CPacketUseEntity.Action.INTERACT_AT)) {
+                    FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), player.get().getHeldItemMainhand(), this.inventory.getStackInSlot(0), this);
+                    return;
+                }
+                else if (FakePlayerUtils.processUseEntity(player.get(), entity, null, CPacketUseEntity.Action.INTERACT)) {
+                    FakePlayerUtils.cleanupFakePlayerFromUse(getPlayer(), player.get().getHeldItemMainhand().copy(), this.inventory.getStackInSlot(0), this);
+                    return;
+                }
+                return;
+            }
             rightClick(toUse);
         }
     }
@@ -346,19 +414,21 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     private void leftClick(RayTraceResult toUse, BlockPos targetPos) {
         if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
-            IBlockState iblockstate = world.getBlockState(targetPos);
-            FakePlayerUtils.setupFakePlayerForUse(getPlayer(), this.pos, facing, this.inventory.getStackInSlot(0).copy(), false);
+
             ItemStack itm = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);
-            this.inventory.setStackInSlot(0, itm.copy());
-            boolean flag = iblockstate.getMaterial() != Material.AIR;
-            if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
-                this.onPlayerDestroyBlock(targetPos, player.get());
-            } else {
-                this.isRemoving = true;
-                this.currentBlock = targetPos;
-                this.currentItemHittingBlock = player.get().getHeldItemMainhand();
-                this.curBlockDamageMP = 0.0F;
-                world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
+            if(toUse.typeOfHit== RayTraceResult.Type.BLOCK) {
+                IBlockState iblockstate = world.getBlockState(targetPos);
+                this.inventory.setStackInSlot(0, itm.copy());
+                boolean flag = iblockstate.getMaterial() != Material.AIR;
+                if (flag && iblockstate.getPlayerRelativeBlockHardness(player.get(), world, targetPos) >= 1.0F) {
+                    this.onPlayerDestroyBlock(targetPos, player.get());
+                } else {
+                    this.isRemoving = true;
+                    this.currentBlock = targetPos;
+                    this.currentItemHittingBlock = player.get().getHeldItemMainhand();
+                    this.curBlockDamageMP = 0.0F;
+                    world.sendBlockBreakProgress(player.get().getEntityId(), this.currentBlock, (int) (this.curBlockDamageMP * 10.0F) - 1);
+                }
             }
         }
     }
@@ -414,7 +484,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
 
     private BlockPos getBlockTarget() {
         BlockPos newPos = this.getPos().offset(facing);
-        if (isRightClick() && world.isAirBlock(newPos))
+        if (isRightClick() && world.isAirBlock(newPos) )
             newPos = newPos.offset(EnumFacing.DOWN);
         return newPos;
     }

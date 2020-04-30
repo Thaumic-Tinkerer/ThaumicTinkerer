@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -77,7 +78,19 @@ public class BlockAnimationTablet extends TTTileEntity<TileEntityAnimationTablet
 
         return false;
     }
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        if (tileentity instanceof TileEntityAnimationTablet) {
+            TileEntityAnimationTablet repairer= (TileEntityAnimationTablet) tileentity;
+            if(repairer.getInventory().getStackInSlot(0)!=ItemStack.EMPTY) {
+                InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), repairer.getInventory().getStackInSlot(0));
 
+            }
+            worldIn.updateComparatorOutputLevel(pos, this);
+        }
+        super.breakBlock(worldIn, pos, state);
+    }
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);

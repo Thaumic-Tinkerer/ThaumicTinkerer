@@ -5,6 +5,7 @@
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockEnchantmentPillar;
+import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchantmentPillar;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
@@ -34,7 +35,8 @@ public class TileEntityEnchantmentPillarRenderer extends TileEntitySpecialRender
     public void render(TileEntityEnchantmentPillar te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         super.render(te, x, y, z, partialTicks, destroyStage, alpha);
         IBlockState state = te.getWorld().getBlockState(te.getPos());
-        if (state.getValue(BlockEnchantmentPillar.Top)) {
+
+        if (state.getBlock() == ModBlocks.enchantment_pillar && state.getValue(BlockEnchantmentPillar.Top)) {
             BlockPos pos = te.getPos();
             World world = te.getWorld();
             float xoffset = 0.0f;
