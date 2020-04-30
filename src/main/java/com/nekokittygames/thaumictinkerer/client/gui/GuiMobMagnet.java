@@ -38,6 +38,7 @@ public class GuiMobMagnet extends GuiMagnet {
         xSize = WIDTH;
         ySize = HEIGHT;
         this.mobMagnet = tileEntity;
+        mob=true;
     }
 
     /**

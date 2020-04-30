@@ -16,7 +16,9 @@ import com.nekokittygames.thaumictinkerer.common.packets.PacketMagnetMode;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nonnull;
@@ -32,6 +34,7 @@ public class GuiMagnet extends GuiContainer {
     protected List<IRadioButton> radioButtons = new ArrayList<>();
 
     private final TileEntityMagnet magnet;
+    public boolean mob=false;
 
     /**
      * Constructor
@@ -92,7 +95,7 @@ public class GuiMagnet extends GuiContainer {
      * @param button {@link GuiButton} that was pressed
      */
     @Override
-    protected void actionPerformed(GuiButton button) {
+    protected void actionPerformed(@NotNull GuiButton button) {
         if (button instanceof IRadioButton)
             ((IRadioButton) button).enableFromClick();
         else buttonListMM.get(1).setButtonEnabled(!buttonListMM.get(1).isButtonEnabled());
@@ -119,12 +122,13 @@ public class GuiMagnet extends GuiContainer {
         String pull = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.pull");
         ItemStack stack = magnet.getInventory().getStackInSlot(0);
         String filter;
-        if (stack != ItemStack.EMPTY) {
+        if (stack != ItemStack.EMPTY && stack.getItem()!= Items.AIR) {
             filter = stack.getItem().getItemStackDisplayName(stack);
 
         } else
             filter = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.all");
-        fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
+        if(!mob)
+            fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
         fontRenderer.drawString(push, x + 120, y -11, 0x999999);
         fontRenderer.drawString(pull, x + 120, y + 10, 0x999999);
         GL11.glColor3f(1F, 1F, 1F);

@@ -11,7 +11,7 @@ item.thaumictinkerer:connector.name=Transvector Binder
 item.thaumictinkerer:energetic_nitor.name=Energetic Nitor
 item.thaumictinkerer:form_revealer.name=Multiblock Guide
 item.thaumictinkerer:spellbinding_cloth.name=Spellbinding Cloth
-
+item.thaumictinkerer:soul_mould.name=Soul Mould
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
 
@@ -128,5 +128,5 @@ thaumictinkerer.research.tablet.0=Golems are so very useful, watching them wande
 thaumictinkerer.research.tablet.1=It looks like I can build a block around a seal that leverages golemancy to use an item, without actually being a fully mobile golem. If I place this block down and give it an item, it will use the item on the block in front of it. That is, as long as it has a redstone signal. ` It can be told whether to mine or use a block. However, with no inventory, anything it does mine drops into the world - perhaps for its more mobile cousin to pick up.
 
 thaumictinkerer.research.energetic_nitor.title=Hyperenergetic Nitor
-thaumictinkerer.research.energetic_nitor.0=Nitor is useful, I can not deny, however having to place it down before I see anything is annoying. I wonder if I make it more energetic, could I make it visible from my palm?
-thaumictinkerer.research.energetic_nitor.1=Adding in more Energy and Light Essentia seems to have done the trick to create a more powerful nitor. This Hyperenergized Nitor burns with a visible light from my hand, so much so it will even leave a trail as I move.
+thaumictinkerer.research.energetic_nitor.0=One cannot deny the Nitor is useful. However, having to place it down before I see anything is annoying. I wonder, could I somehow make it visible from my palm if I were to make it more energetic?
+thaumictinkerer.research.energetic_nitor.1=Adding in more Energy and Light Essentia seems to have done the trick. I have managed to create a more powerful nitor - this Hyperenergetic Nitor burns with a visible light from my hand, so much so that it will even leave a trail as I move.
