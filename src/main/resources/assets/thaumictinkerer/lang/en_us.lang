@@ -12,6 +12,8 @@ item.thaumictinkerer:energetic_nitor.name=Energetic Nitor
 item.thaumictinkerer:form_revealer.name=Multiblock Guide
 item.thaumictinkerer:spellbinding_cloth.name=Spellbinding Cloth
 item.thaumictinkerer:soul_mould.name=Soul Mould
+item.thaumictinkerer:blood_sword.name=Cursed Spirit's Blade
+
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
 
