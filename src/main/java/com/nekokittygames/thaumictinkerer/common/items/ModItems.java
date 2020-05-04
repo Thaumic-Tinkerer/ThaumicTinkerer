@@ -23,6 +23,7 @@ public class ModItems {
     public static final ItemSoulMould soul_mould = nullz();
     public static final ItemEnergeticNitor energetic_nitor = nullz();
     public static final ItemSpellbindingCloth spellbinding_cloth=nullz();
+    public static final ItemBloodSword blood_sword=nullz();
     //public static final ItemFormRevealer form_revealer = nullz();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -43,6 +44,7 @@ public class ModItems {
                     new ItemSoulMould(),
                     new ItemEnergeticNitor(),
                     new ItemSpellbindingCloth(),
+                    new ItemBloodSword()
                    // new ItemFormRevealer()
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
