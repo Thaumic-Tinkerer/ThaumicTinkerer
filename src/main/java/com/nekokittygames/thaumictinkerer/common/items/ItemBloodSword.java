@@ -10,13 +10,18 @@ import com.nekokittygames.thaumictinkerer.api.Materials;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemBloodSword extends ItemSword {
     private static final int DAMAGE = 10;
+    public static final String ACTIVE="Active";
     static int handleNext = 0;
     private String baseName;
     public ItemBloodSword() {
@@ -62,7 +67,14 @@ public class ItemBloodSword extends ItemSword {
         return sup;
     }
 
-
+    @SubscribeEvent
+    public void onDrops(LivingDropsEvent event) {
+        EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        ItemStack stack = player.getHeldItemMainhand();
+        if (stack != ItemStack.EMPTY && stack.getItem() == this && stack.getTagCompound() != null && stack.getTagCompound().getInteger(ACTIVE) == 1) {
+            EnumHelper.addAction()
+        }
+    }
 
     private boolean isInCreativeTab() {
         return true;

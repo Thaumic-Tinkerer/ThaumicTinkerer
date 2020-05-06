@@ -32,7 +32,7 @@ public class CardExperience extends TheorycraftCard {
 
     @Override
     public boolean activate(EntityPlayer entityPlayer, ResearchTableData data) {
-        if (data.table != null && entityPlayer.experienceLevel>4) {
+        if (data.table != null && entityPlayer.experienceLevel>=4) {
             entityPlayer.addExperienceLevel(-4);
             data.addTotal(this.getResearchCategory(), 25);
             return true;
