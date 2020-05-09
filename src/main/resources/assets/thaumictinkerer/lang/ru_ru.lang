@@ -11,6 +11,8 @@ item.thaumictinkerer:connector.name=Связыватель Трансвекто�
 item.thaumictinkerer:energetic_nitor.name=Энергетический Нитор
 item.thaumictinkerer:form_revealer.name=Мультиблочный Визуализатор
 item.thaumictinkerer:spellbinding_cloth.name=Ткань Поглощения Заклинаний
+item.thaumictinkerer:soul_mould.name=Форма для Души
+item.thaumictinkerer:blood_sword.name=Лезвие Проклятого Духа
 
 tile.thaumictinkerer:funnel.name=Воронка для Эссенции
 tile.thaumictinkerer:funnel.0=Больше Переливания
