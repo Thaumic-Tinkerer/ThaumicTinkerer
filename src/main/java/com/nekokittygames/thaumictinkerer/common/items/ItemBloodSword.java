@@ -75,8 +75,8 @@ public class ItemBloodSword extends ItemSword {
 
     @SubscribeEvent
     public void onLivingDrops(LivingDropsEvent event) {
-        EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-        if(player!=null) {
+        if(event.getSource()!=null && event.getSource().getTrueSource() instanceof EntityPlayer && event.getSource().getTrueSource()!=null) {
+	   EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
             ItemStack stack = player.getHeldItemMainhand();
             if (stack != ItemStack.EMPTY && stack.getItem() == this) { //&& stack.getTagCompound() != null && stack.getTagCompound().getInteger(ACTIVE) == 1) {
                 //EnumHelper.addAction()
