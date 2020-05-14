@@ -7,6 +7,10 @@ package com.nekokittygames.thaumictinkerer.common.items;
 import com.google.common.collect.Multimap;
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.api.Materials;
+import com.nekokittygames.thaumictinkerer.api.MobAspect;
+import com.nekokittygames.thaumictinkerer.api.MobAspects;
+import com.nekokittygames.thaumictinkerer.common.libs.LibItemNames;
+import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -15,10 +19,12 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
 public class ItemBloodSword extends ItemSword {
     private static final int DAMAGE = 10;
     public static final String ACTIVE="Active";
@@ -26,12 +32,12 @@ public class ItemBloodSword extends ItemSword {
     private String baseName;
     public ItemBloodSword() {
         super(Materials.BLOOD_MATERIAL);
-        baseName = "blood_sword";
+        baseName = LibItemNames.BLOOD_SWORD;
         TTItem.setItemName(this, baseName);
         if (isInCreativeTab())
             setCreativeTab(ThaumicTinkerer.getTab());
 
-
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
@@ -68,11 +74,18 @@ public class ItemBloodSword extends ItemSword {
     }
 
     @SubscribeEvent
-    public void onDrops(LivingDropsEvent event) {
+    public void onLivingDrops(LivingDropsEvent event) {
         EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-        ItemStack stack = player.getHeldItemMainhand();
-        if (stack != ItemStack.EMPTY && stack.getItem() == this && stack.getTagCompound() != null && stack.getTagCompound().getInteger(ACTIVE) == 1) {
-            EnumHelper.addAction()
+        if(player!=null) {
+            ItemStack stack = player.getHeldItemMainhand();
+            if (stack != ItemStack.EMPTY && stack.getItem() == this) { //&& stack.getTagCompound() != null && stack.getTagCompound().getInteger(ACTIVE) == 1) {
+                //EnumHelper.addAction()
+                MobAspect aspect = MobAspects.getAspects().get(event.getEntity().getClass());
+                if (aspect != null) {
+                    event.getDrops().clear();
+                    ThaumicTinkerer.logger.debug("Outputting: " + aspect.toString());
+                }
+            }
         }
     }
 

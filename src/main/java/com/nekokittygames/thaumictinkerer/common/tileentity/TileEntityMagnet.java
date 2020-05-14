@@ -82,7 +82,7 @@ public abstract class TileEntityMagnet extends TileEntityThaumicTinkerer impleme
                 if (distanceSqrd > 1) {
 
                     MiscHelper.setEntityMotionFromVector(entity, new Vector3(x1, y1, z1), speedMod * 0.25F);
-                    if (world != null && FXDispatcher.INSTANCE.getWorld() != null)
+                    if (world != null &&  world.isRemote && FXDispatcher.INSTANCE.getWorld() != null)
                         FXDispatcher.INSTANCE.sparkle((float) x2, (float) y2, (float) z2, mode == BlockMagnet.MagnetPull.PULL ? 0 : 1, 0, mode == BlockMagnet.MagnetPull.PULL ? 1 : 0);
 
                 }
