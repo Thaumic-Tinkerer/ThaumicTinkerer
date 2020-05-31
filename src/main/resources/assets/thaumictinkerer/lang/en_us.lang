@@ -32,7 +32,7 @@ tile.thaumictinkerer:black_quartz_block.name=Black Quartz Block
 tile.thaumictinkerer:example.name=Placeholder Block
 
 thaumictinkerer.TELEKENESIS.name=Telekenesis
-
+thaumictinkerer.mobaspect.type=Aspect: %s
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses
 

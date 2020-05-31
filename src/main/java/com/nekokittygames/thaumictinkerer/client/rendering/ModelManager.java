@@ -5,6 +5,7 @@
 package com.nekokittygames.thaumictinkerer.client.rendering;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
+import com.nekokittygames.thaumictinkerer.common.helper.IItemVariants;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.utils.IVariant;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -163,7 +165,15 @@ public class ModelManager {
      */
     private void registerItemModel(final Item item, final ModelResourceLocation fullModelLocation) {
         ModelBakery.registerItemVariants(item, fullModelLocation); // Ensure the custom model is loaded and prevent the default model from being loaded
-        registerItemModel(item, stack -> fullModelLocation);
+        if(item instanceof IItemVariants)
+        {
+            for (String variant:((IItemVariants)item).GetVariants()) {
+                ModelBakery.registerItemVariants(item, new ModelResourceLocation(fullModelLocation.getResourcePath()+"/"+variant,fullModelLocation.getVariant()));
+            }
+            registerItemModel(item, stack -> new ModelResourceLocation(fullModelLocation.getResourcePath()+"/"+((IItemVariants)item).GetVariant(stack),fullModelLocation.getVariant()));
+        }
+        else
+            registerItemModel(item, stack -> fullModelLocation);
     }
 
     /**
