@@ -19,6 +19,9 @@ import thaumcraft.api.aspects.Aspect;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class ItemMobAspect extends TTItem implements IItemVariants {
     public static String ASPECT_NAME="aspectName";
@@ -33,23 +36,35 @@ public class ItemMobAspect extends TTItem implements IItemVariants {
     }
 
     @Override
-    public String[] GetVariants() {
-        return Aspect.aspects.keySet().toArray(new String[0]);
+    public Set<String> GetVariants() {
+        return Aspect.aspects.keySet();
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        if(stack.hasTagCompound() && stack.getTagCompound().hasKey(ASPECT_NAME))
-            tooltip.add(I18n.format("thaumictinkerer.mobaspect.type",stack.getTagCompound().getString(ASPECT_NAME)));
+        if(stack.hasTagCompound() && stack.getTagCompound().hasKey(ASPECT_NAME)) {
+            Aspect aspect=Aspect.getAspect(stack.getTagCompound().getString(ASPECT_NAME));
+            if(aspect!=null) {
+                tooltip.add(I18n.format("thaumictinkerer.mobaspect.type", aspect.getName()));
+            }
+            else
+            {
+                tooltip.add(I18n.format("thaumictinkerer.mobaspect.invalid"));
+            }
+        }
+        else {
+            tooltip.add(I18n.format("thaumictinkerer.mobaspect.invalid"));
+        }
     }
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab))
         {
-            for(String aspect:GetVariants()) {
+            SortedSet<String> sortedAspects = new TreeSet<>(GetVariants());
+            for(String aspect:sortedAspects) {
                 ItemStack itemStack=new ItemStack(this);
                 NBTTagCompound cmp=itemStack.getTagCompound();
                 if(cmp==null)

@@ -13,6 +13,7 @@ item.thaumictinkerer:form_revealer.name=Multiblock Guide
 item.thaumictinkerer:spellbinding_cloth.name=Spellbinding Cloth
 item.thaumictinkerer:soul_mould.name=Soul Mould
 item.thaumictinkerer:blood_sword.name=Cursed Spirit's Blade
+item.thaumictinkerer:mob_aspect.name=Mob Aspect
 
 tile.thaumictinkerer:funnel.name=Essentia Funnel
 tile.thaumictinkerer:funnel.0=Even Transfer
@@ -33,6 +34,9 @@ tile.thaumictinkerer:example.name=Placeholder Block
 
 thaumictinkerer.TELEKENESIS.name=Telekenesis
 thaumictinkerer.mobaspect.type=Aspect: %s
+thaumictinkerer.mobaspect.invalid=Invalid Aspect
+
+
 thaumictinkerer.config.title=Thaumic Tinkerer Config
 thaumictinkerer.config.talisman=Talisman of Remedium Uses
 
