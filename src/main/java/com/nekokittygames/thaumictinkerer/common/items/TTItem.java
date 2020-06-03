@@ -6,6 +6,7 @@ import com.nekokittygames.thaumictinkerer.client.libs.LibClientMisc;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -25,7 +26,7 @@ public abstract class TTItem extends Item {
         baseName = itemName;
         setItemName(this, itemName);
         if (isInCreativeTab())
-            setCreativeTab(ThaumicTinkerer.getTab());
+            setCreativeTab(getModCreativeTab());
     }
 
     public static void setItemName(@Nonnull Item item, String itemName) {
@@ -34,10 +35,11 @@ public abstract class TTItem extends Item {
         item.setUnlocalizedName(regName.toString());
     }
 
-    private boolean isInCreativeTab() {
+    protected boolean isInCreativeTab() {
         return true;
     }
 
+    protected CreativeTabs getModCreativeTab() { return ThaumicTinkerer.getTabMain();}
 
     @Override
     @SideOnly(Side.CLIENT)

@@ -1,4 +1,5 @@
-itemGroup.thaumictinkerer=Thaumic Tinkerer
+itemGroup.thaumictinkererMain=Thaumic Tinkerer
+itemGroup.thaumictinkererAspect=Thaumic Tinkerer Aspects
 
 
 item.thaumictinkerer:share_book.name=Tome of Knowledge Sharing

@@ -4,6 +4,7 @@
 
 package com.nekokittygames.thaumictinkerer.common.items;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.helper.IItemVariants;
 import com.nekokittygames.thaumictinkerer.common.libs.LibItemNames;
 import net.minecraft.client.resources.I18n;
@@ -29,6 +30,10 @@ public class ItemMobAspect extends TTItem implements IItemVariants {
         super(LibItemNames.MOB_ASPECT);
     }
 
+    @Override
+    protected CreativeTabs getModCreativeTab() {
+        return ThaumicTinkerer.getTabAspects();
+    }
 
     @Override
     public String GetVariant(ItemStack stack) {
