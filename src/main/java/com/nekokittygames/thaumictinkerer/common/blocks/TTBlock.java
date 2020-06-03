@@ -27,7 +27,7 @@ public class TTBlock extends Block {
         setBlockName(this, name);
         setHardness(2);
         if (isInCreativeTab())
-            setCreativeTab(ThaumicTinkerer.getTab());
+            setCreativeTab(ThaumicTinkerer.getTabMain());
     }
 
     public TTBlock(String name, Material materialIn) {

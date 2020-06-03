@@ -9,7 +9,8 @@ import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
-import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTInkererCreativeTab;
+import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTinkererAspectCreativeTab;
+import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTinkererMainCreativeTab;
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
@@ -38,7 +39,10 @@ import java.net.URISyntaxException;
 public class ThaumicTinkerer {
     public static Logger logger;
 
-    private static CreativeTabs tab;
+    private static CreativeTabs tabMain;
+
+    private static CreativeTabs tabAspects;
+
 
     @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy", clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
     public static ITTProxy proxy;
@@ -47,17 +51,26 @@ public class ThaumicTinkerer {
     @Mod.Instance(LibMisc.MOD_ID)
     public static ThaumicTinkerer instance;
 
-    public static CreativeTabs getTab() {
-        return tab;
+    public static CreativeTabs getTabMain() {
+        return tabMain;
     }
 
-    public static void setTab(CreativeTabs tab) {
-        ThaumicTinkerer.tab = tab;
+    public static void setTabMain(CreativeTabs tabMain) {
+        ThaumicTinkerer.tabMain = tabMain;
+    }
+
+    public static CreativeTabs getTabAspects() {
+        return tabAspects;
+    }
+
+    public static void setTabAspects(CreativeTabs tabAspects) {
+        ThaumicTinkerer.tabAspects = tabAspects;
     }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        tab = new ThaumicTInkererCreativeTab();
+        tabMain = new ThaumicTinkererMainCreativeTab();
+        tabAspects = new ThaumicTinkererAspectCreativeTab();
         logger = event.getModLog();
 
         proxy.preInit(event);

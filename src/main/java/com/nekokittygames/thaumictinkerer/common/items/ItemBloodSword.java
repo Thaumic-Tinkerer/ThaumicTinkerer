@@ -35,7 +35,7 @@ public class ItemBloodSword extends ItemSword {
         baseName = LibItemNames.BLOOD_SWORD;
         TTItem.setItemName(this, baseName);
         if (isInCreativeTab())
-            setCreativeTab(ThaumicTinkerer.getTab());
+            setCreativeTab(ThaumicTinkerer.getTabMain());
 
         MinecraftForge.EVENT_BUS.register(this);
     }
