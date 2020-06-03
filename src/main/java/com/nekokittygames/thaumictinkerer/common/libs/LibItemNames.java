@@ -13,6 +13,8 @@ public class LibItemNames {
 
     public static final String BLOOD_SWORD="blood_sword";
     public static final String MOB_ASPECT="mob_aspect";
+
+    public static final String CONDENSED_MOB_ASPECT="condensed_mob_aspect";
     public static final String ICHOR = "ichor";
     public static final String ICHORIUM = "ichorium";
 
