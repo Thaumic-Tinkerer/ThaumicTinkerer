@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thaumictinkerer:items/aspects/alienis"
+    "layer0": "thaumictinkerer:items/condensed_aspects/alienis"
   }
 }

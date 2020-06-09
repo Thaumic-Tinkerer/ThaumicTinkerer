@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thaumictinkerer:items/aspects/aer"
+    "layer0": "thaumictinkerer:items/aspects/default"
   }
 }
