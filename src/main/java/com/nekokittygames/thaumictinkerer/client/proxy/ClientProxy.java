@@ -4,14 +4,17 @@
 
 package com.nekokittygames.thaumictinkerer.client.proxy;
 
+import com.nekokittygames.thaumictinkerer.client.misc.AspectColouror;
 import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
 import com.nekokittygames.thaumictinkerer.client.rendering.special.multi.NitorRenderer;
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.*;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandThaumicTinkererClient;
 import com.nekokittygames.thaumictinkerer.common.intl.MultiBlockPreviewRendering;
+import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.proxy.GuiProxy;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.tileentity.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -50,6 +53,7 @@ public class ClientProxy implements ITTProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiProxy());
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new AspectColouror(), ModItems.condensed_mob_aspect,ModItems.mob_aspect);
     }
 
     /**
