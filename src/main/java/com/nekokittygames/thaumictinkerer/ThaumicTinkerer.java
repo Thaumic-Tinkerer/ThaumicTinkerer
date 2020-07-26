@@ -11,7 +11,6 @@ import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTinkererAspectCreativeTab;
 import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTinkererMainCreativeTab;
-import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.research.theorycraft.AidBlackQuartz;
@@ -31,9 +30,6 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.FocusEngine;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.theorycraft.TheorycraftManager;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 @Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.MOD_DEPENDENCIES)
 public class ThaumicTinkerer {
@@ -100,11 +96,11 @@ public class ThaumicTinkerer {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        try {
-            MultiblockManager.initMultiblocks();
-        } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
-        }
+        //try {
+            //MultiblockManager.initMultiblocks();
+        //} catch (URISyntaxException | IOException e) {
+        //    e.printStackTrace();
+        //}
         proxy.init(event);
         ResearchCategories.registerCategory("THAUMIC_TINKERER", null, new AspectList(), new ResourceLocation("thaumictinkerer", "textures/items/share_book.png"), new ResourceLocation("thaumictinkerer", "textures/misc/sky1.png"), new ResourceLocation("thaumictinkerer", "textures/misc/sky1.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc"));

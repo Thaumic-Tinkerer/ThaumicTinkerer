@@ -2,10 +2,8 @@ package com.nekokittygames.thaumictinkerer.common.tileentity;
 
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
-import com.nekokittygames.thaumictinkerer.common.helper.OreDictHelper;
 import com.nekokittygames.thaumictinkerer.common.helper.Tuple4Int;
 import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
-import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -63,6 +61,17 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     private List<Integer> cachedEnchantments = new ArrayList<>();
     private int progress;
     private int cooldown;
+
+    public boolean isCheckSurroundings() {
+        return checkSurroundings;
+    }
+
+    public TileEntityEnchanter setCheckSurroundings(boolean checkSurroundings) {
+        this.checkSurroundings = checkSurroundings;
+        return this;
+    }
+
+    private boolean checkSurroundings;
 
 
 
@@ -619,8 +628,9 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
         if (TTConfig.ClassicEnchanter) {
             checkPillars();
         } else {
-            if (!MultiblockManager.checkMultiblockCombined(world, getPos(), MULTIBLOCK_LOCATION))
-                working = false;
+            if (checkSurroundings)
+                working=checkLocation();
+
         }
     }
 

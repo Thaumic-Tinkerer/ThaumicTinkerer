@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -79,13 +80,21 @@ public class PacketStartEnchant implements IMessage {
                 if (te instanceof TileEntityEnchanter) {
                     TileEntityEnchanter enchanter = (TileEntityEnchanter) te;
                     EntityPlayer player = world.getPlayerEntityByUUID(packetAddEnchant.playerID);
-                    if (player != null) {
-                        if (!enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), player))
-                            return;
-                        enchanter.takeIngredients(enchanter.getEnchantmentCost(), player);
+                    enchanter.setCheckSurroundings(true);
+                    if(enchanter.checkLocation()) {
+                        if (player != null) {
+                            if (!enchanter.playerHasIngredients(enchanter.getEnchantmentCost(), player))
+                                return;
+                            enchanter.takeIngredients(enchanter.getEnchantmentCost(), player);
+                        }
+                        //if(enchanter.playerHasIngredients())
+                        enchanter.setWorking(true);
                     }
-                    //if(enchanter.playerHasIngredients())
-                    enchanter.setWorking(true);
+                    else
+                    {
+                        if(player!=null)
+                            player.sendMessage(new TextComponentTranslation("thaumictinkerer.enchanter.badmb"));
+                    }
                 }
             }
         }

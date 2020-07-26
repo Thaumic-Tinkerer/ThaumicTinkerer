@@ -85,13 +85,13 @@ public class MultiblockManager {
         return false;
     }
 
-    public static boolean checkMultiblockCombined(World world, BlockPos keyBlock, ResourceLocation multiblock) {
-        for (EnumFacing facing : EnumFacing.HORIZONTALS) {
-            if (checkOutputMultiblock(world, keyBlock, multiblock, facing))
-                return true;
-        }
-        return false;
-    }
+    //public static boolean checkMultiblockCombined(World world, BlockPos keyBlock, ResourceLocation multiblock) {
+    //    for (EnumFacing facing : EnumFacing.HORIZONTALS) {
+    //        if (checkOutputMultiblock(world, keyBlock, multiblock, facing))
+    //            return true;
+    //    }
+    //    return false;
+    //}
 
     public static EnumFacing checkMultiblockFacing(World world, BlockPos keyBlock, ResourceLocation multiblock) {
         for (EnumFacing facing : EnumFacing.HORIZONTALS) {

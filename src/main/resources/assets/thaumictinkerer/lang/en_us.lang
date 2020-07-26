@@ -45,6 +45,7 @@ thaumictinkerer.config.talisman=Talisman of Remedium Uses
 
 thaumictinkerer.card.experience.name=Experience
 thaumictinkerer.card.experience.text=You notice that a lot of the Tinkering you are doing, is inspired by your experience in life. Gain 25 in Thaumic Tinkerer, At the cost of 4 levels of experience.
+thaumictinkerer.enchanter.badmb=The Multiblock is not fully formed
 
 ttmisc.mobmagnet.all=All
 ttmisc.mobmagnet.none=None
