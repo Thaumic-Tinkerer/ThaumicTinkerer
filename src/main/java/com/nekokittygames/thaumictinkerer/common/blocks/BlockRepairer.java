@@ -68,7 +68,7 @@ public class BlockRepairer extends TTTileEntity<TileEntityRepairer> {
         if (te instanceof TileEntityRepairer) {
             TileEntityRepairer repairer = (TileEntityRepairer) te;
             ItemStack stack = repairer.getInventory().getStackInSlot(0);
-            if (stack == ItemStack.EMPTY) {
+            if(stack.isEmpty()) {
                 ItemStack playerStack = playerIn.getHeldItem(hand);
                 if (repairer.isItemValidForSlot(0, playerStack)) {
                     repairer.getInventory().insertItem(0, playerStack.copy(), false);
