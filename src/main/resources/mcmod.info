@@ -8,7 +8,7 @@
   "url": "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/2552088-thaumic-tinkerer-5-0-thaumcraft-addon-evolve",
   "updateUrl": "",
   "authorList": ["nekosune"],
-  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDiyo, theFlaxbeard, Languages: Hesperusrus  & Artleksandr - Russian, DYColdWind - Simplified Chinese.",
+  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDiyo, theFlaxbeard, Languages: Hesperusrus  & Artleksandr - Russian, DYColdWind - Simplified Chinese, bpwpb - British English and Irish Gaeilge.",
   "logoFile": "/assets/thaumictinkerer/textures/logo.png",
   "screenshots": [],
   "dependencies": ["thaumcraft"]
