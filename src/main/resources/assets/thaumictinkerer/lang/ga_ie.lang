@@ -1,0 +1,138 @@
+itemGroup.thaumictinkerer=Thaumic Tinkerer
+
+
+item.thaumictinkerer:share_book.name=Tome of Roinnt Eolais
+item.thaumictinkerer:share_book.0=Dialann Éisc Óir
+
+
+item.thaumictinkerer:black_quartz.name=Grianchloch dheatach
+item.thaumictinkerer:connector.name=Ceanglóir Transvector
+
+item.thaumictinkerer:energetic_nitor.name=Nitor fuinniúil
+item.thaumictinkerer:form_revealer.name=Multiblock treoirleabhar
+item.thaumictinkerer:spellbinding_cloth.name=Éadach Litrithe
+item.thaumictinkerer:soul_mould.name=Soul Mould
+item.thaumictinkerer:blood_sword.name=Claíomh Spiorad Cursed
+item.thaumictinkerer:mob_aspect.name=Mob Aspect
+
+tile.thaumictinkerer:funnel.name=Essentia Funnel
+tile.thaumictinkerer:funnel.0=Fiú Aistriú
+
+tile.thaumictinkerer:dissimulation.name=Bloc Díshamhlaithe
+
+tile.thaumictinkerer:transvector_interface.name=Comhéadan Transvector
+tile.thaumictinkerer:transvector_dislocator.name=Dislocator Transvector
+
+tile.thaumictinkerer:repairer.name=Thaumic Restorer
+tile.thaumictinkerer:animation_tablet.name=Dynamism Tablet
+tile.thaumictinkerer:magnet.name=Mealltóir Cinéiteach
+tile.thaumictinkerer:mob_magnet.name=Corporeal Attractor
+tile.thaumictinkerer:osmotic_enchanter.name=Osmotic Enchanter
+tile.thaumictinkerer:enchantment_pillar.name=Enchanting Colún
+tile.thaumictinkerer:black_quartz_block.name=Bloc Grianchloch Dubh
+tile.thaumictinkerer:example.name=Bloc Áititheoir
+
+thaumictinkerer.TELEKENESIS.name=Telekenesis
+thaumictinkerer.mobaspect.type=Aspect: %s
+thaumictinkerer.mobaspect.invalid=Gné Neamhbhailí
+
+
+thaumictinkerer.config.title=Thaumic Tinkerer Cumraigh
+thaumictinkerer.config.talisman=Talisman of Remedium Uses
+
+
+thaumictinkerer.card.experience.name=Taithí
+thaumictinkerer.card.experience.text=Tugann tú faoi deara go bhfuil go leor den Tinkering atá á dhéanamh agat spreagtha ag do thaithí sa saol. Gnóthachan 25 i Thaumic Tinkerer, Ar chostas 4 leibhéal taithí.
+
+ttmisc.mobmagnet.all=Gach
+ttmisc.mobmagnet.none=Níl aon
+ttmisc.mobmagnet.child=Páiste
+ttmisc.mobmagnet.adult=Fásta
+ttmisc.mobmagnet.push=Brúigh
+ttmisc.mobmagnet.pull=Tarraingt
+ttmisc.animation_tablet.left=Cliceáil ar chlé
+ttmisc.animation_tablet.right=Cliceáil ar dheis
+ttmisc.enchanter.start=Tosaigh an Draíocht!
+ttmisc.enchanter.notready=Ní féidir Enchant!
+ttmisc.enchanter.incomplete=Tá an tógra seo neamhiomlán. Níl an t-enchanter in ann obair.
+ttmisc.shareTome.write=Taighde Scríofa!
+ttmisc.shareTome.noAssign=Gan Sannadh
+ttmisc.shareTome.playerName=Ceangailte le taighde %s.
+ttmisc.shareTome.sync=Taighde Faighte.
+ttmisc.shareTome.clear=Taighde Glanta.
+ttmisc.connector.complete=Ceangal Comhlánaithe!
+ttmisc.connector.set=Suíomh Socraithe!
+ttmisc.connector.notinterf=Ní Bloc Transvector.
+ttmisc.connector.interffail=Ní féidir Comhéadan Transvector a cheangal le ceann eile.
+ttmisc.connector.dislfail=Ní féidir Dislocator Transvector a cheangal le duine eile.
+ttmisc.connector.notpresent=Níl an Bloc Transvector i láthair.
+ttmisc.connector.toofar=Tá an Bloc tionscnaimh Transvector rófhada.
+ttmisc.connector.clear=Tá an bloc Transvector roghnaithe glanta agat
+ttmisc.soulMould.nonAssigned=Gan patrún
+ttmisc.soulMould.pattern=Current Pattern: %s
+
+ttmisc.debug.redstone=Redstone Recieved: %s
+
+
+tc.research_category.THAUMIC_TINKERER=Thaumic Tinkerer
+thaumictinkerer.research.share_tome.title=Tome of Roinnt Eolais
+thaumictinkerer.research.share_tome.lore=Dialann Éisc Óir
+thaumictinkerer.research.share_tome.0=Agus mé ag iniúchadh draíocht an Thaumonomicon tráthnóna amháin thosaigh mé ag smaoineamh faoin eolas laistigh de, agus faoin gcaoi a bhfuil sé ar fad sa leabhar seo, atá caillte go héasca agus nach féidir a roinnt. Dealraíonn sé go ndéanann duine ar bith a mhúinim Thaumonomicon a dhéanamh bán nó más cleachtóir é, ceann a bhfuil a chuid eolais féin aige. Tar éis roinnt turgnamh beag, fuair mé amach má scríobhaim le dúch speisialta, is féidir liom cruinneachán a dhéanamh a aistreoidh eolas críochnaithe Thaumonomicon amháin go Thaumonomicon cleachtóra eile. Is cosúil go bhfuil taighde neamhchríochnaithe frithsheasmhach don mhodh aistrithe seo.
+
+thaumictinkerer.research.funnel.title=Essentia Funnel
+thaumictinkerer.research.funnel.lore=Fiú Aistriú
+thaumictinkerer.research.funnel.0=D’fhás mé tuirseach as mo prócaí a bhainistiú le vials, agus is cosúil go bhfuil feadáin rud beag esoteric fós le haghaidh mo chuid cách, cé go mbeidh orm iniúchadh a dhéanamh ar a n-úsáid níos déanaí. Má bhainim úsáid as airíonna seoltaí thaumium Thaumium i roinnt cloiche múnlaithe is féidir liom clúdach a dhéanamh do hopper, ag ligean dó essentia a aistriú ó phróca amháin go próca eile, amhail is gur cófra iad.
+
+thaumictinkerer.research.black_quartz.title=Grianchloch Deatach
+thaumictinkerer.research.black_quartz.lore=Scáth an Lae
+thaumictinkerer.research.black_quartz.0=Is ábhar álainn é Grianchloch a bheith ag obair leis, ach fuair mé amach nach bhfuil sé ach beagán bídeach ró-gheal do mo thaitin. An féidir liom é a dhéanamh níos úsáidí?
+thaumictinkerer.research.black_quartz.1=Má úsáidim roinnt guail nó gualaigh agus é a chomhleá le grianchloch, críochnóidh mé le grianchloch dheatach a fhéadann na bloic grianchloch rialta go léir a dhéanamh, ach a bhreathnaíonn i bhfad níos dorcha agus níos sásúla le húsáid, is cosúil freisin go bhfuil cúpla úsáid níos séimhe díghlasáilte agam mar bhuel. N’fheadar dom an ndéanfadh sé seo arm seilge maith dá gceanglóinn sreangán
+
+
+thaumictinkerer.research.transvector_interface.title=Comhéadan Transvector
+thaumictinkerer.research.transvector_interface.0=Dúirt fear nach dtugtar Direwolf20 air ach uair amháin “Is é an rud, níl ach sé thaobh le bloc ...”. Is é an t-eolas seo bane Thaumaturge le blianta fada, mar ní bhíonn go leor taobhanna ann riamh chun gach rud a theastaíonn uainn a cheangal. Más féidir cuma bloc a bheith ar mo bhloic díscaoilte nua, n’fheadar an féidir leo gníomhú mar é freisin, in éineacht le héifeachtaí díláithrithe péarlaí deiridh b’fhéidir go mbeidh mé in ann an bane seo a bhriseadh.
+thaumictinkerer.research.transvector_interface.1=Dúirt fear nach dtugtar Direwolf20 air ach uair amháin “Is é an rud, níl ach sé thaobh le bloc ...”. ... Sílim gur féidir liom a rá anois go bhfuil miotas busted. Is féidir liom an comhéadan nua seo a cheangal le bloc in aice láimhe, agus ceangailfidh sé an dá phointe sa spás go héifeachtach. <BR> Cé go bhféadfadh sé breathnú ar leithligh ón tsúil nocht, beidh píopaí, sreanga, agus meicnic eile, idir thaumic agus mundane. idirghníomhú leis an mbloc comhéadain amhail is dá mbeidís i dteagmháil leis an mbloc nasctha féin. <BR> Níl le déanamh agam ach an comhéadan a roghnú le mo ghléas beacon a tógadh go speisialta, chun an dá cheann a nascadh, ansin an bloc is mian liom atá nasctha leis an beacon a roghnú, agus ansin tá an dá bhloc nasctha go dtí go mbaintear ceann amháin nó an ceann eile. Coinníonn an comhéadan cumas duaithníochta an bhloc díscaoilte fiú. <BR> Is cosúil go bhfuil a éifeachtaí cosúil leis na scátháin, N’fheadar cad a tharlóidh má chuirim an ghloine bonn leis?
+thaumictinkerer.research.transvector_interface.2=Dúirt fear nach dtugtar Direwolf20 air ach uair amháin “Is é an rud, níl ach sé thaobh le bloc ...”. ... Sílim gur féidir liom a rá anois go bhfuil miotas busted. Is féidir liom an comhéadan nua seo a cheangal le bloc in aice láimhe, agus ceangailfidh sé an dá phointe sa spás go héifeachtach. <BR> Cé go bhféadfadh sé breathnú ar leithligh ar an tsúil nocht, beidh píopaí, sreanga, agus meicnic eile, idir thaumach agus mundane, araon idirghníomhú leis an mbloc comhéadain amhail is dá mbeidís i dteagmháil leis an mbloc nasctha féin. <BR> Níl le déanamh agam ach an comhéadan a roghnú le mo ghléas beacon a tógadh go speisialta, chun an dá cheann a nascadh, ansin an bloc is mian liom atá nasctha leis an beacon a roghnú, agus ansin tá an dá bhloc nasctha go dtí go mbaintear ceann amháin nó an ceann eile. Coinníonn an comhéadan cumas duaithníochta an bhloc díscaoilte fiú. <BR> <BR> Tá an Dislocator Transvector agam anois freisin. Is cosúil go neartaíonn an bonn scátháin draíochta an éifeacht, ag ligean dom dhá phointe a mhalartú sa spás atá i gceannas. Níl le déanamh agam ach bloc a cheangal leis an Dislocator, ansin ar chomhartha Redstone, déanann sé é a mhalartú leis an mbloc os comhair an dislocator.
+
+thaumictinkerer.research.form_revealer.title=Multiblock Treoir
+thaumictinkerer.research.form_revealer.0=De réir mar a fhoghlaimím níos mó faoi Thaumaturgy, feicim nach mbíonn mo chuid oibre oiriúnach i gcónaí taobh istigh de bhloc amháin, uaireanta struchtúir níos airde ná mé féin fiú, is gá chun mo thascanna a chur i gcrích. Má ghlacaim an chuimhne bhunúsach a chuirtear ar fáil ó inchinn zombie, agus é a chomhcheangal le solas phantasmal nitor, b’fhéidir go mbeidh mé in ann sreangán a dhéanamh a mheabhróidh cá gcaithfidh mé bloic a chur, struchtúr a chríochnú, agus a thaispeáint dom cén bloc Caithfidh mé soláthar a dhéanamh i cibé áiteanna a gcaithfidh siad dul.
+
+thaumictinkerer.research.TT_TELEKENESIS.title=Telekinesis
+thaumictinkerer.research.TT_TELEKENESIS.0=Tar éis féachaint ar an gcaoi a sruthlaíonn créatúir agus earraí araon in uisce thosaigh mé ag smaoineamh, cad a tharlódh dá mbeadh sruth fuinnimh draíochta agam a d’fhéadfadh é sin a dhéanamh?
+thaumictinkerer.research.TT_TELEKENESIS.1=D’éirigh liom patrún fócasach a chruthú a chruthaíonn sruth éadrom draíochta-inslithe le vis, má chuirim an patrún seo le bolt agus cliceáil ar dheis ar an talamh, snámhfaidh gach earra in aice láimhe i dtreo an phointe sin. Ina ionad sin cuirfidh crouching faoi deara go mbeidh na míreanna ag teitheadh ón bpointe sin.
+
+thaumictinkerer.research.TT_DISLOCATE.title=Dislocation
+thaumictinkerer.research.DISLOCATE.0=Tar éis an oiread sin oibre a dhéanamh chun a fháil amach conas bloic a mhalartú, thug mé faoi deara uaireanta go mbeadh moill ann sula bhfeicfear an bloc agus é á mhalartú. N’fheadar cad a tharlódh dá bhféachfainn isteach air seo níos mó?
+thaumictinkerer.research.DISLOCATE.1=Rath! Tar éis roinnt turgnaimh, go leor bloic de chloch chloiche caillte, agus ionradh ar endermen nó dhó, chuir mé permutatio in ionad desiderium, mar sin an éifeacht a theastaíonn le coinneáil air níos faide, agus anois tá patrún agam a fhéadann bloic a stóráil go sealadach chun iad a bhogadh. <BR> Nuair a chuirtear i bhfeidhm é ar fhócas, cliceáil ar chlé ar bhloc chun é a stóráil laistigh den fhócas, ansin cliceáil ar chlé arís chun an bloc a chur.
+
+thaumictinkerer.research.prismarine.title=Ailceimic Uisceach
+
+thaumictinkerer.research.spellbinding_cloth.title=Éadach Litrithe
+thaumictinkerer.research.spellbinding_cloth.lore=An thaumaturge brónach palmtop
+thaumictinkerer.research.spellbinding_cloth.0=Agus mé ag obair le mo thuagh draíochtúil lá amháin, scaoil mé de thaisme é i gcoire draíochta tiubhaithe. Cailleadh an tua, ar ndóigh, ach thug mé faoi deara gurb é an chéad rud a bhí le dul ná an gleo draíochtúil, agus é ag fágáil tuagh plain miotail sular díscaoileadh é. <BR> N’fheadar cad a tharlódh dá ndéanfainn brataithe ar roinnt éadach draíochtúil sa mheascán seo agus gan ach uirlis a scriosadh leis?
+thaumictinkerer.research.spellbinding_cloth.1=Rugadh torthaí i mo thurgnaimh, Scriosfaidh fabraic dhraíochta atá sáithithe sa mheascán draíocht as earra, rud a fhágfaidh go mbeidh sé pristine agus réidh le hath-enchantment. Dealraíonn sé go ndéanann sé damáiste beag don éadach gach uair, áfach.
+
+thaumictinkerer.research.dissimulation.title=Bloc Díshamhlaithe
+thaumictinkerer.research.dissimulation.0=Is cosúil go bhfuil roinnt airíonna optúla neamhghnácha ag an tsubstaint nua seo ar a dtugtar Prismarine. N’fheadar cad a d’fhéadfainn a dhéanamh nuair a bheidh imscrúdú iomlán déanta agam air.
+thaumictinkerer.research.dissimulation.1=Tar éis Prismarine a imscrúdú go hiomlán, fuair mé bealach chun bloic a dhéanamh ar féidir leo, le brú draíochta, breathnú cosúil le haon bhloc eile. <BR> Níl le déanamh agam ach an bloc Díshamhlaithe seo a chur síos, agus ansin teagmháil a dhéanamh le bloc eile ina choinne trí chliceáil ar dheis. N’fheadar an féidir liom an chuimhne dhealraitheach seo ar bhloc eile a úsáid ar bhealach ar bith eile?
+
+
+
+thaumictinkerer.research.repairer.title=Athchóiritheoir Thaumic
+thaumictinkerer.research.repairer.0=Tar éis a fháil amach go bhféadfadh meascán amháin de Essentia a dhícháiliú, ach uirlisí damáiste, thosaigh mé ag smaoineamh, an bhféadfadh ceann eile iad a shocrú? <BR> Géaraíonn sé gur féidir. Má ghlacaim ar mo Athchóiritheoir Thaumic nua agus má chuirim an uirlis isteach, ansin an Essentia ceart a phumpáil isteach don uirlis, ligfidh sé don uirlis a marthanacht nádúrtha a fháil ar ais. Tá sé áisiúil go ligeann na gloiní cosanta úsáideacha dom a fheiceáil cén cineál atá ag teastáil.
+
+thaumictinkerer.research.magnet.title=Maighnéid Thaumacha
+thaumictinkerer.research.magnet.0=Ag cur fócas ina bhfuil m’éifeacht nua telekenesis i gcreat mór-adhmaid agus iarainn, faighim feiste a mheallann nó a athdhéanann míreanna atá ag brath ar an gcomhartha cloch rua. Le roinnt coigeartaithe cliste, is féidir liom na míreanna ba cheart dó a mhealladh nó a aischur a scagadh. <BR> Faighim an mothú go bhfuil bealach ann chun an tarraingt seo a mhéadú, chun níos mó a chur i bhfeidhm ansin ach míreanna a thit.
+thaumictinkerer.research.magnet.1=Ag cur fócas ina bhfuil m’éifeacht nua telekinesis i gcreat de Greatwood agus iarann, faighim feiste a mheallann nó a athdhéanann míreanna atá ag brath ar chomhartha Redstone. Le roinnt coigeartaithe cliste, is féidir liom na míreanna ba cheart dó a mhealladh nó a aischur a scagadh. Is cosúil go méadaíonn <BR> iarann in ionad thaumium, agus níos mó vis a chur leis, an éifeacht, ní míreanna anois, ach meallfar nó aischuirfear créatúir. Is léir nach féidir liom créatúr a chur san fheiste chun é a scagadh, ach is féidir liom croílár a n-anama a ghabháil le péarla foirceanta modhnaithe, agus is cosúil go ndéanann sé sin chomh maith le scagaire.
+
+thaumictinkerer.research.enchanter.title=Enchanter Osmotic
+thaumictinkerer.research.enchanter.0=Is cosúil go bhfuil níos mó eolais ar insileadh is ea is mó a fhéachaim air. Rud éigin faoin gcaoi a dtarraingíonn sé draíocht agus a chuireann isteach méid chomh mór sin i réad chun airíonna nua a thabhairt dó, dar liom go bhféadfadh sé a bheith bainteach le huafás earra ar bhealach éigin. Má dhéanaim imscrúdú níos mó ar insileadh n’fheadar an féidir liom an nasc a aimsiú?
+thaumictinkerer.research.enchanter.1=Fuair mé an nasc idir insileadh agus draíocht! Cé go dteastaíonn méid ollmhór essentia éagsúil chun an réad a insileadh, ní gá go mbeadh i bhfad níos mó i gceist leis an draíocht, toisc gur cumhacht níos ísle é a insileadh, ná an draíocht chomhthimpeallach bhunúsach. Ag obair as an teoiric seo, is féidir liom tábla draíochtúil a thógáil a úsáideann socrú cosúil leis an maitrís insileadh, chun draíocht a chur le huirlis, agus mé in ann a roghnú cén draíocht a shocraíonn ar an uirlis, rud a chiallaíonn gur féidir liom an draíocht a roghnú. Ba chóir go n-oibreodh an struchtúr seo a thógáil, ansin é a spreagadh trí roinnt salis mundus a sprinkling
+
+thaumictinkerer.research.tablet.title=Táibléad Dynamism
+thaumictinkerer.research.tablet.0=Tá Golems an-úsáideach, is deas an rud é féachaint orthu ag fánaíocht anseo agus ansiúd chun mo chuid tairiscintí a dhéanamh. Mar sin féin, uaireanta ní theastaíonn minion uaim rud éigin a dhéanamh dom. Uaireanta, ní theastaíonn uaim ach bloc plain a dhéanann rud amháin ach a dhéanann go maith é. Cuireann an bealach a thóg mé maighnéad timpeall ar fhócas iontas orm: an féidir liom rud éigin a thógáil timpeall ar shéala? Caithfidh mé golems a scrúdú níos mó.
+thaumictinkerer.research.tablet.1=Tá an chuma air gur féidir liom bloc a thógáil timpeall ar shéala a ghiarálfaidh golemancy chun earra a úsáid, gan a bheith ina golem lán-soghluaiste i ndáiríre. Má chuirim an bloc seo síos agus má thugann mé mír dó, úsáidfidh sé an mhír ar an mbloc os a chomhair. Is é sin, fad is atá comhartha Redstone aige. `Is féidir a rá cé acu mianach nó bloc a úsáid. Mar sin féin, gan fardal ar bith ann, titeann aon rud a dhéanann sé isteach sa domhan - b’fhéidir go dtógfadh a chol ceathrar níos soghluaiste é.
+
+thaumictinkerer.research.energetic_nitor.title=Hyperenergetic Nitor
+thaumictinkerer.research.energetic_nitor.0=Ní féidir a shéanadh go bhfuil an Nitor úsáideach. Mar sin féin, tá orm é a chur síos sula bhfeicim rud ar bith annoying. N’fheadar, an bhféadfainn é a dhéanamh infheicthe ó mo phailme ar bhealach dá ndéanfainn é a dhéanamh níos fuinniúla?
+thaumictinkerer.research.energetic_nitor.1=Is cosúil go ndearna Essentia níos mó Fuinnimh agus Solais an cleas. D’éirigh liom nitor níos cumhachtaí a chruthú - dóitear an Nitor Hyperenergetic seo le solas infheicthe ó mo lámh, an oiread sin ionas go bhfágfaidh sé rian fiú agus mé ag bogadh.
