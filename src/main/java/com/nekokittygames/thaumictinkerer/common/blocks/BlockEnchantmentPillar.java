@@ -108,8 +108,6 @@ public class BlockEnchantmentPillar extends TTTileEntity<TileEntityEnchantmentPi
             enchanterLoc = IsEnchanterPos(worldIn, pos.south(2).east(2));
         if(enchanterLoc==null)
             enchanterLoc = IsEnchanterPos(worldIn, pos.north(2).east(2));
-
-        ThaumicTinkerer.logger.info("Enchanter Pos Found - "+ (enchanterLoc != null ? enchanterLoc.toString() : "null"));
         if(enchanterLoc!=null)
         {
             TileEntity te=worldIn.getTileEntity(enchanterLoc);
