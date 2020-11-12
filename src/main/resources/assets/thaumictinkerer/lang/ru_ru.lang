@@ -13,6 +13,7 @@ item.thaumictinkerer:form_revealer.name=Мультиблочный Визуал�
 item.thaumictinkerer:spellbinding_cloth.name=Ткань Поглощения Заклинаний
 item.thaumictinkerer:soul_mould.name=Форма для Души
 item.thaumictinkerer:blood_sword.name=Лезвие Проклятого Духа
+item.thaumictinkerer:mob_aspect.name=Аспект Существа
 
 tile.thaumictinkerer:funnel.name=Воронка для Эссенции
 tile.thaumictinkerer:funnel.0=Больше Переливания
@@ -32,6 +33,9 @@ tile.thaumictinkerer:black_quartz_block.name=Чёрный Кварцевый Б�
 tile.thaumictinkerer:example.name=Placeholder Block
 
 thaumictinkerer.TELEKENESIS.name=Телекинез
+thaumictinkerer.mobaspect.type=Аспект: %s
+thaumictinkerer.mobaspect.invalid=Неверный Аспект
+
 
 thaumictinkerer.config.title=Конфигурация Thaumic Tinkerer
 thaumictinkerer.config.talisman=Использований Талисмана Очищения
