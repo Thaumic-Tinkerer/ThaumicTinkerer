@@ -27,6 +27,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.codechicken.lib.vec.Vector3;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.block.kami.BlockBedrockPortal;
 import thaumic.tinkerer.common.block.transvector.BlockTransvectorDislocator;
 import thaumic.tinkerer.common.lib.LibFeatures;
 
@@ -98,7 +99,7 @@ public class TileTransvectorDislocator extends TileTransvector {
     private boolean checkBlock(ChunkCoordinates coords) {
         Block block = worldObj.getBlock(coords.posX, coords.posY, coords.posZ);
         int meta = worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ);
-
+        if (block instanceof BlockBedrockPortal) { return false; }
         return !(block == ConfigBlocks.blockAiry && meta == 0) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(worldObj, coords.posX, coords.posY, coords.posZ) != -1F || block != Blocks.air;
     }
 
