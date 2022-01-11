@@ -26,40 +26,6 @@ buildScan {
     licenseAgreementUrl = 'https://gradle.com/terms-of-service'
     licenseAgree = 'yes'
 }
-repositories {
-    ivy {
-
-        name 'Forge FS legacy'
-        artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
-    }
-
-    maven {
-        name 'ForgeFS'
-        url 'http://files.minecraftforge.net/maven'
-    }
-    maven {
-        name 'MinecraftS3'
-        url 'http://s3.amazonaws.com/Minecraft.Download/libraries'
-    }
-    maven {
-        name 'DVS1 Maven FS'
-        url 'http://dvs1.progwml6.com/files/maven'
-    }
-    maven { // the repo from which to get NEI and stuff
-        name 'CB Repo'
-        url "http://chickenbones.net/maven/"
-    }
-    maven { // The repo from which to get waila
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
-    maven {
-
-        url  'http://maven.cil.li/'
-    }
-
-
-}
 String changelogLoc = 'https://raw.github.com/Thaumic-Tinkerer/ThaumicTinkerer/changelog/web/changelog'
 
 apply plugin: 'forge'
@@ -101,19 +67,6 @@ if (project.hasProperty("releaseType"))
 
 
     dependencies {
-        compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
-        compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
-        compile "mcp.mobius.waila:Waila:1.5.10_1.7.10"
-        compile "codechicken:ForgeMultipart:1.7.10-1.1.2.331:dev"
-
-        compile 'com.mod-buildcraft:buildcraft:6.4.8:dev'
-        compile "codechicken:NotEnoughItems:1.7.10-1.0.5.118:dev"
-        compile "codechicken:EnderStorage:1.7.10-1.4.7.37:dev"
-        compile "mantle:Mantle:1.7.10-0.3.2.jenkins187:deobf"
-        compile "li.cil.oc:OpenComputers:MC1.7.10-1.5.7.536-dev:api"
-        compile "li.cil.oc:OpenComputers:MC1.7.10-1.5.7.536-dev:dev"
-        compile("tconstruct:TConstruct:1.7.10-1.8.3.build927:deobf") {
-        }
     }
 // some crazy stuff to make sure the chicken stuff is in the mods folder...
 // because it wont work otherwise...  because FML doesnt laod coremods from the classpath
