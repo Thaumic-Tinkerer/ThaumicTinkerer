@@ -75,7 +75,7 @@ public final class ConfigHandler {
         enableKami = Loader.isModLoaded("ThaumicTinkererKami") || propEnableKami.getBoolean(true);
 
         Property propEnableTooltips = config.get(Configuration.CATEGORY_GENERAL, "tooltipIndicators.enabled", true);
-        propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the thauminomicon.";
+        propEnableTooltips.comment = "Set to false to disable the [TT] tooltips in the Thaumonomicon.";
         useTootlipIndicators = propEnableTooltips.getBoolean(true);
 
         Property propEnableSurvivalShareTome = config.get(Configuration.CATEGORY_GENERAL, "shareTome.survival.enabled", true);
@@ -138,11 +138,11 @@ public final class ConfigHandler {
             bedrockDimensionID = propDimensionID.getInt(-19);
 
             Property oreBlacklist = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension ore Blacklist", new String[]{"oreFirestone"});
-            oreBlacklist.comment = "These ores will not be spawned in the bedrock dimension";
+            oreBlacklist.comment = "These oredict tags will not be used to spawn ores in the bedrock dimension";
             OreClusterGenerator.blacklist = oreBlacklist.getStringList();
 
             Property propOreDensity = config.get(Configuration.CATEGORY_GENERAL, "Bedrock Dimension ore density", 1);
-            propOreDensity.comment = "The number of verticle veins of ore per chunk. Default: 1";
+            propOreDensity.comment = "The number of vertical veins of ore per chunk. Default: 1";
             OreClusterGenerator.density = propOreDensity.getInt(1);
 
             Property propShowPlacementMirrorBlocks = config.get(CATEGORY_KAMI_GENERAL, "placementMirror.blocks.show", true);
