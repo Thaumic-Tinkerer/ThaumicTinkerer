@@ -33,12 +33,14 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
 
     @Override
     public void updateEntity() {
-
+        final int aquaChance = 2510 - (int)Math.pow(this.primalTendencies.getAmount(Aspect.WATER), 2.0) * 6;
+        final int aerChance = 2550 - (int)Math.pow(this.primalTendencies.getAmount(Aspect.AIR), 2.0) * 10;
+        
         //Growth
         if (!worldObj.isRemote && worldObj.getBlockLightValue(xCoord, yCoord + 1, zCoord) >= 9) {
             int l = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
             if (l < 7) {
-                if (worldObj.rand.nextInt((((2510 - (int) Math.pow(((TileInfusedGrain) (worldObj.getTileEntity(xCoord, yCoord, zCoord))).primalTendencies.getAmount(Aspect.WATER), 2))) * 6)) == 0) {
+                if (aquaChance <= 0 || worldObj.rand.nextInt(aquaChance) == 0) {
                     ++l;
                     worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l, 3);
                     worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -54,7 +56,7 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
             primalTendencies.merge(aspect,1);
         }
         //Aspect Exchange
-        if (worldObj.rand.nextInt((2550 - ((int) Math.pow(primalTendencies.getAmount(Aspect.AIR), 2))) * 10) == 0 && !aspect.isPrimal()) {
+        if ((aerChance <= 0 || worldObj.rand.nextInt(aerChance) == 0) && !aspect.isPrimal()) {
 
             for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
                 TileEntity entity = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ);
