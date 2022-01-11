@@ -44,7 +44,7 @@ public class AspectCropLootManager {
             int randInt = rand.nextInt(sum);
             for (Map.Entry<ItemStack, Integer> pair : aspectHashmap.entrySet()) {
                 randInt -= pair.getValue();
-                if (randInt <= 0) {
+                if (randInt < 0) {
                     return pair.getKey().copy();
                 }
             }
@@ -57,8 +57,6 @@ public class AspectCropLootManager {
     }
 
     public static void addAspectLoot(Aspect aspect, String target) {
-
-        addAspectLoot(aspect, target, 1);
         for (String ore : OreDictionary.getOreNames()) {
             if (ore.contains(WordUtils.capitalizeFully(target)) || ore.contains(target)) {
                 for (ItemStack stack : OreDictionary.getOres(ore)) {
