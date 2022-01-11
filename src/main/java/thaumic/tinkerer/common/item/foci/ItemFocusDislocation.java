@@ -125,9 +125,26 @@ public class ItemFocusDislocation extends ItemModFocus {
                 }
             } else if (!blacklist.contains(block) && !ThaumcraftApi.portableHoleBlackList.contains(block) && block != null && block.getBlockHardness(world, mop.blockX, mop.blockY, mop.blockZ) != -1F && wand.consumeAllVis(itemstack, player, getCost(tile), true, false)) {
                 if (!world.isRemote) {
-                    world.removeTileEntity(mop.blockX, mop.blockY, mop.blockZ);
-                    world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Blocks.air, 0, 1 | 2);
-                    storePickedBlock(itemstack, block, (short) meta, tile);
+					try {
+						storePickedBlock(itemstack, block, (short) meta, tile);
+						world.removeTileEntity(mop.blockX, mop.blockY, mop.blockZ);
+						world.setBlock(mop.blockX, mop.blockY, mop.blockZ, Blocks.air, 0, 1 | 2);
+					}
+                    catch (Exception e) {
+                        ItemStack pickedBlock = getPickedBlock(itemstack);
+                        String pickedBlockName = (pickedBlock == null ? "a null block (how?)" : "'" + getPickedBlock(itemstack).getUnlocalizedName()) + "'";
+                        ThaumicTinkerer.log.error("Attempting to use Wand Focus: Dislocation on " + pickedBlockName + " resulted in an exception being thrown.");
+                        if(tile!=null)
+                        {
+                            ThaumicTinkerer.log.debug("Tile entity's NBT is as follows: " + getStackTileEntity(itemstack).toString());
+                        }
+                        ThaumicTinkerer.log.debug("Exception details:");
+                        for(Object line : e.getStackTrace())
+                        {
+                            ThaumicTinkerer.log.debug(line.toString());
+                        }
+                        ThaumicTinkerer.log.debug("(End stack trace)");
+                    }
                 }
 
                 for (int i = 0; i < 8; i++) {
