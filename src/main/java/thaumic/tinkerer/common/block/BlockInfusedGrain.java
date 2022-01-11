@@ -187,9 +187,10 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
                 AspectList farmlandAspectList = ((TileInfusedFarmland) world.getTileEntity(x, y - 1, z)).aspectList;
                 for (Aspect aspect : farmlandAspectList.getAspects()) {
                     Random rand = new Random();
+					Aspect newAspect = ResearchManager.getCombinationResult(aspect, currentAspect);
                     if (rand.nextInt(BREEDING_CHANCE) < (getPrimalTendencyCount(world, x, y, z, Aspect.FIRE) + 1) * farmlandAspectList.getAmount(aspect) * farmlandAspectList.getAmount(aspect)) {
-                        if (ResearchManager.getCombinationResult(aspect, currentAspect) != null) {
-                            return ResearchManager.getCombinationResult(aspect, currentAspect);
+                        if (newAspect != null && AspectCropLootManager.getLootForAspect(newAspect) != null) {
+							return newAspect;
                         }
                     }
                 }
