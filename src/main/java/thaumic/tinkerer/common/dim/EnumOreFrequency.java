@@ -48,7 +48,8 @@ public enum EnumOreFrequency {
     SULFUR("oreSulfur", 105),
     TIN("oreTin", 507),
     URANIUM("oreUranium", 112),
-    VINETUM("oreVinteum", 392);
+    VINETUM("oreVinteum", 392),
+	YELLORITE("oreYellorite", 188);
 
     public int freq;
     public String name;
