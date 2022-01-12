@@ -138,7 +138,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
             fertilizeSoil(world, x, y, z, metadata);
         }
         if (metadata >= 7) {
-			i = 75;
+			int i = 75;
             do {
                 ItemStack retItem=AspectCropLootManager.getLootForAspect(getAspect(world, x, y, z));
                 if(retItem!=null)
@@ -162,7 +162,7 @@ public class BlockInfusedGrain extends BlockCrops implements ITTinkererBlock {
                     te.aspectList.add(currentAspect, 1);
                     te.reduceSaturatedAspects();
                     world.markBlockForUpdate(x, y - 1, z);
-					if (te.aspectList.getAmount(currentAspect) => 20) {
+					if (te.aspectList.getAmount(currentAspect) >= 20) {
 						break;
 					}
                 }
