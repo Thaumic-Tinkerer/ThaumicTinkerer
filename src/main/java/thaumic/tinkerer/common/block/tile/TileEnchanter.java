@@ -232,8 +232,6 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     public void markDirty() {
         super.markDirty();
         if (!worldObj.isRemote && !working) {
-            enchantments.clear();
-            levels.clear();
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
     }
