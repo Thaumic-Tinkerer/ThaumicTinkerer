@@ -58,6 +58,7 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
     public boolean working = false;
     ItemStack[] inventorySlots = new ItemStack[2];
+    ItemStack slotZeroLastTick;
     private List<Tuple4Int> pillars = new ArrayList();
 
     public void clearEnchants() {
@@ -91,11 +92,11 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
     @Override
     public void updateEntity() {
-        if (getStackInSlot(0) == null) {
+        if (getStackInSlot(0) == null || slotZeroLastTick != getStackInSlot(0)) {
             enchantments.clear();
             levels.clear();
         }
-
+        slotZeroLastTick = getStackInSlot(0);
         if (working) {
             ItemStack tool = getStackInSlot(0);
             if (tool == null) {
@@ -232,6 +233,9 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     public void markDirty() {
         super.markDirty();
         if (!worldObj.isRemote && !working) {
+            if(slotZeroLastTick != inventorySlots[0]) {
+                clearEnchants();
+            }
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
     }
