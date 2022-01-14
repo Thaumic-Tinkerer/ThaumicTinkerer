@@ -388,13 +388,13 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
 
             if (inventorySlots[i].stackSize <= j) {
                 stackAt = inventorySlots[i];
-                inventorySlots[i] = null;
+                setInventorySlotContents(i, null);
                 return stackAt;
             } else {
                 stackAt = inventorySlots[i].splitStack(j);
 
                 if (inventorySlots[i].stackSize == 0)
-                    inventorySlots[i] = null;
+                    setInventorySlotContents(i, null);
 
                 return stackAt;
             }
@@ -411,6 +411,8 @@ public class TileEnchanter extends TileEntity implements ISidedInventory, IMovab
     @Override
     public void setInventorySlotContents(int i, ItemStack itemstack) {
         inventorySlots[i] = itemstack;
+        if(i==0)
+            clearEnchants();
     }
 
     @Override
