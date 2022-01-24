@@ -33,8 +33,8 @@ public class TileInfusedGrain extends TileEntity implements IAspectContainer {
 
     @Override
     public void updateEntity() {
-        final int aquaChance = 2510 - (int)Math.pow(this.primalTendencies.getAmount(Aspect.WATER), 2.0) * 6;
-        final int aerChance = 2550 - (int)Math.pow(this.primalTendencies.getAmount(Aspect.AIR), 2.0) * 10;
+        final int aquaChance = (2510 - (int)Math.pow(this.primalTendencies.getAmount(Aspect.WATER), 2.0)) * 6;
+        final int aerChance = (2550 - (int)Math.pow(this.primalTendencies.getAmount(Aspect.AIR), 2.0)) * 10;
         
         //Growth
         if (!worldObj.isRemote && worldObj.getBlockLightValue(xCoord, yCoord + 1, zCoord) >= 9) {
