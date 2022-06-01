@@ -33,8 +33,6 @@ fancyGradle {
             resources.setSrcDirs([])
         }
     }
-
-
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 repositories {
@@ -65,34 +63,49 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 minecraft {
     mappings channel: 'stable', version: '39-1.12'
-
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory file('run')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+
+            environment 'MC_VERSION', '1.12.2'
+
+            mods {
+                thaumictinkerer {
+                    source sourceSets.main
+                }
+            }
         }
 
         server {
+            workingDirectory file('run')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
+
+            environment 'MC_VERSION', '1.12.2'
+
+            mods {
+                thaumictinkerer {
+                    source sourceSets.main
+                }
+            }
         }
     }
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:20.1.0'
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
     implementation fg.deobf("curse.maven:jei-238222:3043174")
-
+    implementation 'org.jetbrains:annotations:20.1.0'
     implementation fg.deobf("curse.maven:Hwyla-253449:2568751")
     implementation fg.deobf("curse.maven:opencomputers-223008:2828357")//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
     implementation fg.deobf("curse.maven:actually-additions-228404:3117927")

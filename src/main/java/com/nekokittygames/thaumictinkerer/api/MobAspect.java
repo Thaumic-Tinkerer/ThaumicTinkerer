@@ -4,6 +4,8 @@
 
 package com.nekokittygames.thaumictinkerer.api;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.AspectList;
 
 public class MobAspect {
@@ -46,6 +48,7 @@ public class MobAspect {
         return this;
     }
 
+
     public AspectList getAspects() {
         return aspects;
     }
@@ -73,6 +76,10 @@ public class MobAspect {
         return this;
     }
 
+    public Entity createEntity(World worldObj) {
+        //todo: create entity
+        return null;
+    }
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("MobAspect{");
