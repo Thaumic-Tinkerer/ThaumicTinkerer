@@ -119,7 +119,7 @@ public abstract class TTTileEntity<T extends TileEntity> extends TTBlock {
             TileEntity tile = world.getTileEntity(pos);
             if (tile instanceof TileEntityThaumicTinkerer) {
                 TileEntityThaumicTinkerer base = (TileEntityThaumicTinkerer) tile;
-                boolean powered = world.isBlockIndirectlyGettingPowered(pos) > 0;
+                boolean powered = world.getRedstonePowerFromNeighbors(pos) > 0;
                 boolean wasPowered = base.getRedstonePowered();
                 if (powered && !wasPowered) {
                     if (base.respondsToPulses()) {

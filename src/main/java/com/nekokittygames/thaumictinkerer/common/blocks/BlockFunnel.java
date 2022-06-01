@@ -19,7 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
-import thaumcraft.common.blocks.essentia.BlockJarItem;
 
 public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
 
@@ -34,7 +33,7 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

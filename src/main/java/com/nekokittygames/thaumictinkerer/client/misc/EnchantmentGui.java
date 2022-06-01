@@ -30,7 +30,7 @@ public class EnchantmentGui {
         if(enchantment==null)
             return new ResourceLocation("thaumictinkerer", "textures/enchant_icons/unknown.png");
         ResourceLocation object = Enchantment.REGISTRY.getNameForObject(enchantment);
-        ResourceLocation iconLoc = new ResourceLocation(Objects.requireNonNull(object).getResourceDomain(), "textures/enchant_icons/" + object.getResourcePath() + ".png");
+        ResourceLocation iconLoc = new ResourceLocation(Objects.requireNonNull(object).getNamespace(), "textures/enchant_icons/" + object.getPath() + ".png");
 
         try {
             IResource res = Minecraft.getMinecraft().getResourceManager().getResource(iconLoc);

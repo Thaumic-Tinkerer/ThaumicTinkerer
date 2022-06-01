@@ -56,7 +56,7 @@ public class CommandThaumicTinkererClient extends CommandBase {
                     if (ArrayUtils.contains(TTConfig.blacklistedEnchants, Enchantment.REGISTRY.getIDForObject(enchantment)))
                         continue;
                     ResourceLocation object = Enchantment.REGISTRY.getNameForObject(enchantment);
-                    ResourceLocation iconLoc = new ResourceLocation(object.getResourceDomain(), "textures/enchant_icons/" + object.getResourcePath() + ".png");
+                    ResourceLocation iconLoc = new ResourceLocation(object.getNamespace(), "textures/enchant_icons/" + object.getPath() + ".png");
 
                     try {
                         IResource res = Minecraft.getMinecraft().getResourceManager().getResource(iconLoc);

@@ -38,7 +38,7 @@ public class TTBlock extends Block {
     private static void setBlockName(final TTBlock block, final String blockName) {
         block.setRegistryName(LibMisc.MOD_ID, blockName);
         final ResourceLocation registryName = Objects.requireNonNull(block.getRegistryName());
-        block.setUnlocalizedName(registryName.toString());
+        block.setTranslationKey(registryName.toString());
     }
 
     protected boolean isInCreativeTab() {

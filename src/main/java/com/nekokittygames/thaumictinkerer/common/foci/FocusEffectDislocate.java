@@ -8,12 +8,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.SPacketBlockChange;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -21,7 +17,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,7 +25,9 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.casters.*;
+import thaumcraft.api.casters.FocusEffect;
+import thaumcraft.api.casters.ICaster;
+import thaumcraft.api.casters.Trajectory;
 import thaumcraft.common.lib.utils.BlockUtils;
 
 import javax.annotation.Nullable;
@@ -116,7 +113,7 @@ public class FocusEffectDislocate extends FocusEffect {
     {
         world.captureBlockSnapshots = true;
         world.setBlockState(pos,state,1 | 2);
-        if (tileCmp != null && !tileCmp.hasNoTags()) {
+        if (tileCmp != null && !tileCmp.isEmpty()) {
             TileEntity tile1 = TileEntity.create(world, tileCmp);
             Objects.requireNonNull(tile1).setPos(pos);
             world.setTileEntity(pos, tile1);

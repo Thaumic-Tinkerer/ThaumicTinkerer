@@ -170,10 +170,10 @@ public class ModelManager {
         if(item instanceof IItemVariants)
         {
             for (String variant:((IItemVariants)item).GetVariants()) {
-                ResourceLocation loc=new ResourceLocation(LibMisc.MOD_ID,fullModelLocation.getResourcePath()+"/"+variant);
+                ResourceLocation loc=new ResourceLocation(LibMisc.MOD_ID,fullModelLocation.getPath()+"/"+variant);
                 ModelResourceLocation mrl=new ModelResourceLocation(loc,fullModelLocation.getVariant());
                 try {
-                    ResourceLocation test=new ResourceLocation(LibMisc.MOD_ID,"models/item/"+loc.getResourcePath()+".json");
+                    ResourceLocation test=new ResourceLocation(LibMisc.MOD_ID,"models/item/"+loc.getPath()+".json");
                     if(Minecraft.getMinecraft().getResourceManager().getResource(test)==null) {
                         ThaumicTinkerer.logger.info("Unable to find model file for item: "+item.toString()+" variant: "+variant);
                         Item_Variants_baked.putIfAbsent(item,new HashMap<>());

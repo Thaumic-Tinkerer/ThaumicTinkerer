@@ -6,7 +6,6 @@ import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -47,9 +46,10 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
+
 
     @Override
     public boolean isTranslucent(IBlockState state) {

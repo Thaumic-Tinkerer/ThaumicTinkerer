@@ -473,7 +473,7 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         boolean flag = block.removedByPlayer(iblockstate, world, targetPos, player, false);
 
         if (flag) {
-            block.onBlockDestroyedByPlayer(world, targetPos, iblockstate);
+            block.onPlayerDestroy(world, targetPos, iblockstate);
         }
     }
 

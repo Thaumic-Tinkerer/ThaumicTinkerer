@@ -52,7 +52,7 @@ public class BlockExample extends TTTileEntity<TileEntityExample> {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

@@ -31,7 +31,7 @@ public abstract class TTItem extends Item {
     public static void setItemName(@Nonnull Item item, String itemName) {
         item.setRegistryName(LibMisc.MOD_ID, itemName);
         final ResourceLocation regName = Objects.requireNonNull(item.getRegistryName());
-        item.setUnlocalizedName(regName.toString());
+        item.setTranslationKey(regName.toString());
     }
 
     private boolean isInCreativeTab() {

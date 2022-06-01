@@ -1,132 +1,115 @@
 buildscript {
     repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
         jcenter()
         mavenCentral()
-        maven { url = "http://files.minecraftforge.net/maven" }
         maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            name 'FancyGradle'
+            url 'https://gitlab.com/api/v4/projects/26758973/packages/maven'
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'wtf.gofancy.fancygradle', name: 'wtf.gofancy.fancygradle.gradle.plugin', version: '1.1.+'
     }
 }
-plugins {
-    id 'org.ajoberstar.grgit' version '1.7.2'
-    id "com.wynprice.cursemaven" version "2.1.1"
-}
-final commitId
 
-if (hasProperty("grgit")) { // If there's a valid Git repository, get the latest commit ID
-    commitId = "${grgit.head().abbreviatedId}"
-} else { // Else fall back to NOGIT
-    commitId = "NOGIT"
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'wtf.gofancy.fancygradle'
+
+fancyGradle {
+    patches {
+        resources
+        coremods
+        asm
+        codeChickenLib
+    }
 }
+
+    sourceSets {
+        test {
+            resources.setSrcDirs([])
+        }
+    }
+
+
+//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 repositories {
     mavenCentral()
     maven {
-        name = "thiakil"
-        url = "http://maven.thiakil.com"
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        url "http://dvs1.progwml6.com/files/maven"
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
     }
-    maven { // HWYLA
-        name "TehNuts WAILA fork"
-        url "http://tehnut.info/maven"
+    maven {
+        url "https://cursemaven.com"
     }
-    maven { // OpenComputers
-        name "OpenComputers"
-        url "http://maven.cil.li/"
-    }
-    maven { // TOP
-        name 'tterrag maven'
-        url "http://maven.tterrag.com/"
-    }
-//    maven { // McJty's CompatLayer
-//        name 'K4 maven'
-//        url "http://maven.k-4u.nl/"
-//    }
-    maven { // CraftTweaker (aka MineTweaker3)
-        name 'jared maven'
-        url "http://maven.blamejared.com/"
-    }
-    //maven { // ModMaven, there is a bunch of stuff on there
-    //    name 'ModMaven'
-    //    url "http://modmaven.k-4u.nl/"
-    //}
-    repositories {//Curseforge maven, in case some other maven goes offline
-        maven {
-            name = "CurseForge"
-            url = "http://minecraft.curseforge.com/api/maven/"
-        }
-    }
-    /*maven { //IC2
-        name = "ic2"
-        url = "http://maven.ic2.player.to/"
-    }*/
-    maven { // Redstone Flux
-        name 'CoFH Maven'
-        url "http://maven.covers1624.net/"
-    }
-    maven { // Albedo Lights
-        url 'http://repo.elytradev.com/'
-    }
-    maven { url 'https://jitpack.io' }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
-
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-
-
-version = "${mc_version}-${mod_version}-${commitId}"
+version = "1.12.2-5.1"
 group = "${package_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${mod_name}"
 
 
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
-}
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
 
 minecraft {
-    version = "${mc_version}-${forge_version}"
-    runDir = "run"
+    mappings channel: 'stable', version: '39-1.12'
 
-    replace "@VERSION@", project.version
-    replaceIn "LibMisc.java"
-    if (project.hasProperty('mappings_version'))
-        mappings = project.mappings_version
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    runs {
+        client {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+        }
+
+        server {
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
 }
 
 dependencies {
-    deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
-    runtime "mezz.jei:jei_${mc_version}:${jei_version}"
-    compile "org.apache.httpcomponents:fluent-hc:${httpclient_version}"
-    deobfCompile "curse.maven:Hwyla:2568751"
-    deobfCompile "com.github.azanor:Baubles:${baubles_version}"
-    deobfCompile "opencomputers:OpenComputers:MC${mc_version}:${open_computers_version}"//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
-    deobfCompile "actually-additions:ActuallyAdditions:${mc_version}:${actually_additions_version}"
-    deobfCompile "hammer-lib:HammerCore:1.12.2:2.0.4.7"
-    
-    deobfCompile "thaumcraft:Thaumcraft:1.12.2:6.1.BETA26"
-    deobfCompile "thaumic-additions:ThaumicAdditions:1.12.2:15r"
-    deobfCompile "cofh:RedstoneFlux:1.12-${redstone_flux_version}:deobf"
-    deobfCompile "appeng:appliedenergistics2:rv6-stable-7"
-    deobfCompile "thaumic-energistics:thaumicenergistics:2.1.1"
-    deobfCompile "slimeknights.mantle:Mantle:1.12-${mantle_version}"
-    deobfCompile "slimeknights:TConstruct:1.12-${tconstruct_version}"
-    deobfCompile "curse.maven:botania:2782181"
-    deobfCompile "curse.maven:cyclops-core:2831241"
-    deobfCompile "curse.maven:evilcraft:2811267"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-${probe_version}"//1.1x-1.4.4-55
-    deobfCompile "curse.maven:thaumic-jei:2705304"
-	compile fileTree(dir: 'libs', includes: ['*.jar'])
+    implementation 'org.jetbrains:annotations:20.1.0'
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    implementation fg.deobf("curse.maven:jei-238222:3043174")
+
+    implementation fg.deobf("curse.maven:Hwyla-253449:2568751")
+    //implementation fg.deobf("curse.maven:opencomputers-223008:2828357")//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
+    implementation fg.deobf("curse.maven:actually-additions-228404:3117927")
+    implementation fg.deobf("curse.maven:hammerCore-247401:3611193")
+    implementation fg.deobf('curse.maven:thaumcraft-223628:2629023')
+    implementation fg.deobf('curse.maven:baubles-227083:2518667')
+    implementation fg.deobf("curse.maven:thaumic-additions-232564:3663195")
+    implementation fg.deobf("curse.maven:redstoneFlux-270789:2920436")
+    implementation fg.deobf("curse.maven:appeng-223794:2747063")
+    implementation fg.deobf("curse.maven:thaumic-energistics-223666:2915506")
+    implementation fg.deobf("curse.maven:mantle-74924:2713386")
+    implementation fg.deobf("curse.maven:TConstruct-74072:2809406")
+    implementation fg.deobf("curse.maven:botania-225643:3330934")
+            implementation fg.deobf("curse.maven:cyclops-core-232758:3159497")
+            implementation fg.deobf("curse.maven:evilcraft-74610:2811267")
+            implementation fg.deobf("curse.maven:theoneprobe-245211:2667280")//1.1x-1.4.4-55
+            implementation fg.deobf("curse.maven:thaumic-jei-285492:2705304")
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -139,33 +122,34 @@ dependencies {
     // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
     //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
-    // the deobf configurations:  'deobfCompile' and 'deobfProvided' are the same as the normal compile and provided,
+    // the deobf configurations:  'deobf' and 'deobfProvided' are the same as the normal compile and provided,
     // except that these dependencies get remapped to your current MCP mappings
-    //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+    //deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
-    compile 'org.jetbrains:annotations:15.0'
 }
 
-processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else except the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": "thaumictinkerer",
+                "Specification-Vendor": "Thaumic Tinkerer",
+                "Specification-Version": "1", // We are version 1 of ourselves
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${version}",
+                "Implementation-Vendor" :"Thaumic Tinkerer",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
 }
+
+// Example configuration to allow publishing using the maven-publish task
+// This is the preferred method to reobfuscate your jar file
+jar.finalizedBy('reobfJar')
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
+//publish.dependsOn('reobfJar')

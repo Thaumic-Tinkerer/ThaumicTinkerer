@@ -25,7 +25,7 @@ public class BlockAnimationTablet extends TTTileEntity<TileEntityAnimationTablet
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 
