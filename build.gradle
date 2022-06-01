@@ -94,7 +94,7 @@ dependencies {
     implementation fg.deobf("curse.maven:jei-238222:3043174")
 
     implementation fg.deobf("curse.maven:Hwyla-253449:2568751")
-    //implementation fg.deobf("curse.maven:opencomputers-223008:2828357")//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
+    implementation fg.deobf("curse.maven:opencomputers-223008:2828357")//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
     implementation fg.deobf("curse.maven:actually-additions-228404:3117927")
     implementation fg.deobf("curse.maven:hammerCore-247401:3611193")
     implementation fg.deobf('curse.maven:thaumcraft-223628:2629023')

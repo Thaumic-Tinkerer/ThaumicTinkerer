@@ -2,7 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "side": "blocks/black_quartz",
+      "side": "thaumictinkerer:blocks/black_quartz",
       "north":
       "thaumictinkerer:blocks/black_quartz",
       "south": "#side",

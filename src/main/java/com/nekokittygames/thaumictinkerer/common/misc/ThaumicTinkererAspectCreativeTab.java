@@ -18,7 +18,7 @@ public class ThaumicTinkererAspectCreativeTab extends CreativeTabs {
 
     @Nonnull
     @Override
-    public ItemStack getTabIconItem() {
+    public ItemStack createIcon() {
         return new ItemStack(Objects.requireNonNull(ModItems.mob_aspect));
     }
 }
