@@ -26,6 +26,7 @@ public class ModItems {
     public static final ItemBloodSword blood_sword=nullz();
     public static final ItemMobAspect mob_aspect=nullz();
     public static final ItemCondensedMobAspect condensed_mob_aspect=nullz();
+    public static final ItemCleaningTalisman cleaning_talisman=nullz();
     //public static final ItemFormRevealer form_revealer = nullz();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
@@ -48,7 +49,8 @@ public class ModItems {
                     new ItemSpellbindingCloth(),
                     new ItemBloodSword(),
                     new ItemMobAspect(),
-                    new ItemCondensedMobAspect()
+                    new ItemCondensedMobAspect(),
+                    new ItemCleaningTalisman()
                    // new ItemFormRevealer()
             };
             final IForgeRegistry<Item> registry = event.getRegistry();

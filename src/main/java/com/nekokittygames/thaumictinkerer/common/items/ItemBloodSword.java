@@ -89,7 +89,7 @@ public class ItemBloodSword extends ItemSword {
                     for(Aspect aspect: mobAspect.getAspects().getAspects()) {
                         int amount=mobAspect.getAspects().getAmount(aspect);
                         ItemStack aspectStack=new ItemStack(ModItems.mob_aspect);
-                        aspectStack=ItemMobAspect.setAspectType(aspectStack,aspect);
+                        ItemMobAspect.setAspectType(aspectStack, aspect);
                         aspectStack.setCount(amount);
                         EntityItem item=new EntityItem(event.getEntity().getEntityWorld(),event.getEntityLiving().posX,event.getEntityLiving().posY,event.getEntityLiving().posZ,aspectStack);
                         event.getDrops().add(item);

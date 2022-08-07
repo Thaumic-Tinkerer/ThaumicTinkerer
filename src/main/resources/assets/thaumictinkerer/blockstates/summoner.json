@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumictinkerer:summoner"
+  },
+  "variants": {
+    "normal": {
+      "model": "thaumictinkerer:summoner"
+    },
+    "inventory": {
+      "model": "thaumictinkerer:summoner",
+      "transform": "forge:default-block"
+    }
+  }
+}

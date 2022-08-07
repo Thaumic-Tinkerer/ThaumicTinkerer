@@ -1,4 +1,34 @@
 {
   "entries": [
+    {
+      "key": "TT_CLEANING_TALISMAN",
+      "name": "thaumictinkerer.research.cleaning_talisman.title",
+      "icons": [
+        "thaumictinkerer:cleaning_talisman"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "TT_BLACK_QUARTZ"
+      ],
+      "siblings": [],
+      "meta": [
+      ],
+      "location": [
+        -2,
+        2
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.cleaning_talisman.0",
+          "required_item":["minecraft:potion;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.cleaning_talisman.1",
+          "recipes": [
+            "thaumictinkerer:cleaning_talisman"
+          ]
+        }
+      ]
+    }
   ]
 }

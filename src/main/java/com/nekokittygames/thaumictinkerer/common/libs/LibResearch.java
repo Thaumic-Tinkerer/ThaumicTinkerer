@@ -18,4 +18,7 @@ public class LibResearch {
 
     public static final String TABLET = "TT_TABLET";
     public static final String ENERGETIC_NITOR = "TT_ENERGETIC_NITOR";
+    public static final String SUMMONING = "TT_SUMMONING";
+    public static final String BLOOD_SWORD = "TT_BLOOD_SWORD";
+    public static final String CLEANING_TALISMAN = "TT_CLEANING_TALISMAN";
 }

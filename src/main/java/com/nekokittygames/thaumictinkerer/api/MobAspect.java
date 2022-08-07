@@ -5,6 +5,7 @@
 package com.nekokittygames.thaumictinkerer.api;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.AspectList;
 
@@ -14,19 +15,22 @@ public class MobAspect {
     private float scale;
     private float offset;
     private String prefix="minecraft";
+    private String entityName="";
 
-    public MobAspect(Class<?> entityClass, AspectList aspects, float scale, float offset) {
+    public MobAspect(Class<?> entityClass, String entityName,AspectList aspects, float scale, float offset) {
         this.entityClass = entityClass;
         this.aspects = aspects;
         this.scale = scale;
         this.offset = offset;
+        this.entityName=entityName;
     }
 
-    public MobAspect(Class<?> entityClass, AspectList aspects) {
+    public MobAspect(Class<?> entityClass, String entityName,AspectList aspects) {
         this.entityClass = entityClass;
         this.aspects = aspects;
         this.scale = 1.0f;
         this.offset = 0.0f;
+        this.entityName=entityName;
     }
 
 
@@ -90,5 +94,8 @@ public class MobAspect {
         sb.append(", prefix='").append(prefix).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+    public ResourceLocation getEntityName() {
+        return new ResourceLocation(prefix,entityName);
     }
 }

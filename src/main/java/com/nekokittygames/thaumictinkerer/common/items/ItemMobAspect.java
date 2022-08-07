@@ -88,4 +88,12 @@ public class ItemMobAspect extends TTItem {
         stack.setTagCompound(cmp);
         return stack;
     }
+
+    public static Aspect getAspectType(ItemStack stack) {
+        NBTTagCompound cmp=stack.getTagCompound();
+        if(cmp==null)
+            return null;
+        String aspectName=cmp.getString(ASPECT_NAME);
+        return Aspect.getAspect(aspectName);
+    }
 }

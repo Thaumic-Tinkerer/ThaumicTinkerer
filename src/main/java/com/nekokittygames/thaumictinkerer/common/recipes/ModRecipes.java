@@ -3,6 +3,7 @@ package com.nekokittygames.thaumictinkerer.common.recipes;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.compat.botania.BotaniaCompat;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
+import com.nekokittygames.thaumictinkerer.common.items.ItemMobAspect;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibOreDict;
 import com.nekokittygames.thaumictinkerer.common.libs.LibRecipes;
@@ -118,5 +119,18 @@ public class ModRecipes {
         // Empty for now
         addInfusionCraftingRecipe(LibRecipes.ENCHANTER,new InfusionRecipe(LibResearch.ENCHANTER,new ItemStack(Objects.requireNonNull(ModBlocks.osmotic_enchanter)),1,new AspectList().add(Aspect.ELDRITCH,20).add(Aspect.MIND,10).add(Aspect.ENERGY,20).add(Aspect.MAGIC,50).add(Aspect.VOID,20),new ItemStack(Blocks.ENCHANTING_TABLE),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Blocks.OBSIDIAN),new ItemStack(Objects.requireNonNull(ModItems.spellbinding_cloth)),new ItemStack(ItemsTC.ingots, 1, 0),new ItemStack(ItemsTC.ingots, 1, 0)));
         addInfusionCraftingRecipe(LibRecipes.REPAIRER,new InfusionRecipe(LibResearch.REPAIRER,new ItemStack(Objects.requireNonNull(ModBlocks.repairer)),1,new AspectList().add(Aspect.CRAFT,20).add(Aspect.TOOL,15).add(Aspect.ORDER,10).add(Aspect.MAGIC,15),new ItemStack(BlocksTC.metalBlockThaumium),"plankWood",new ItemStack(Items.LEATHER),new ItemStack(ItemsTC.fabric),new ItemStack(ItemsTC.ingots,1,0),new ItemStack(Items.IRON_INGOT),new ItemStack(Items.GOLD_INGOT),new ItemStack(Items.DIAMOND),new ItemStack(Blocks.COBBLESTONE)));
+        for(Aspect aspect: Aspect.aspects.values()) {
+            ItemStack output=new ItemStack(ModItems.condensed_mob_aspect);
+            ItemMobAspect.setAspectType(output, aspect);
+            ItemStack input = new ItemStack(ModItems.mob_aspect);
+            ItemMobAspect.setAspectType(input, aspect);
+            addInfusionCraftingRecipe(
+                    new ResourceLocation(LibRecipes.CONDENSED_MOB_SOUL.getNamespace(),LibRecipes.CONDENSED_MOB_SOUL.getPath()+aspect.getTag()),
+                    new InfusionRecipe(
+                            LibResearch.SUMMONING,output,2,new AspectList().add(aspect,10),input,input,input,input,input,input,input,input,input
+                    ));
+        }
+        addInfusionCraftingRecipe(LibRecipes.CLEANING_TALISMAN, new InfusionRecipe(LibResearch.CLEANING_TALISMAN,new ItemStack(ModItems.cleaning_talisman),1,new AspectList().add(Aspect.ALCHEMY,10).add(Aspect.TOOL,10).add(Aspect.MAN,10).add(Aspect.LIFE,10),new ItemStack(Items.ENDER_PEARL),"nitor",new ItemStack(Items.GHAST_TEAR),new ItemStack(ModItems.black_quartz),new ItemStack(ModItems.black_quartz),new ItemStack(ModItems.black_quartz),new ItemStack(ModItems.black_quartz)));
+        addInfusionCraftingRecipe(LibRecipes.BLOOD_SWORD, new InfusionRecipe(LibResearch.SUMMONING,new ItemStack(ModItems.blood_sword),3,new AspectList().add(Aspect.DARKNESS,5).add(Aspect.SOUL,10).add(Aspect.MAN,6).add(Aspect.DEATH,10),new ItemStack(ItemsTC.thaumiumSword),new ItemStack(Items.ROTTEN_FLESH),new ItemStack(Items.PORKCHOP),new ItemStack(Items.BEEF),new ItemStack(Items.BONE),new ItemStack(Items.DIAMOND),new ItemStack(Items.GHAST_TEAR)));
     }
 }

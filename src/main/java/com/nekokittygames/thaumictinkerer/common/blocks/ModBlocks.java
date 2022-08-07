@@ -42,6 +42,7 @@ public class ModBlocks {
     public static final BlockBlackQuartz black_quartz_block = nullz();
     public static final BlockAnimationTablet animation_tablet = nullz();
     public static final BlockDummyNitor dummy_nitor=nullz();
+    public static final BlockSummon summoner=nullz();
 
     @Mod.EventBusSubscriber(modid = LibMisc.MOD_ID)
     public static class RegistrationHandler {
@@ -71,6 +72,7 @@ public class ModBlocks {
                     new BlockBlackQuartz(),
                     new BlockAnimationTablet(),
                     new BlockDummyNitor(),
+                    new BlockSummon()
             };
             for(Block block:blocks) {
                 registry.register(block);
@@ -100,6 +102,7 @@ public class ModBlocks {
                     new ItemBlock(animation_tablet),
                     new ItemBlock(black_quartz_block),
                     new ItemBlock(dummy_nitor),
+                    new ItemBlock(summoner)
             };
             final IForgeRegistry<Item> registry = event.getRegistry();
 
@@ -123,6 +126,7 @@ public class ModBlocks {
             registerTileEntity(TileEntityEnchanter.class, LibBlockNames.OSMOTIC_ENCHANTER);
             registerTileEntity(TileEntityEnchantmentPillar.class, LibBlockNames.ENCHANTMENT_PILLAR);
             registerTileEntity(TileEntityAnimationTablet.class, LibBlockNames.ANIMATION_TABLET);
+            registerTileEntity(TileEntitySummon.class,LibBlockNames.SUMMONER);
         }
 
         private static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {

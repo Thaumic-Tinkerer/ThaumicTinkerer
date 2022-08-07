@@ -184,6 +184,37 @@
           ]
         }
       ]
+    },
+    {
+      "key": "TT_SUMMONING",
+      "name": "thaumictinkerer.research.summoning.title",
+      "icons": [
+        "thaumictinkerer:transvector_interface"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "TT_CLEANING_TALISMAN"
+      ],
+      "siblings": [],
+      "meta": [
+      ],
+      "location": [
+        -3,
+        2
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.summoning.0",
+          "required_item":["minecraft:potion;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.summoning.1",
+          "recipes": [
+
+            "thaumictinkerer:blood_sword",
+          ]
+        }
+      ]
     }
   ]
 }

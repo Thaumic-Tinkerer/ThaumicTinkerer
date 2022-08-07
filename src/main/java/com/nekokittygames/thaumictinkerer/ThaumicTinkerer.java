@@ -1,5 +1,6 @@
 package com.nekokittygames.thaumictinkerer;
 
+import com.nekokittygames.thaumictinkerer.api.MobAspects;
 import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
@@ -113,6 +114,7 @@ public class ThaumicTinkerer {
         proxy.registerRenderers();
         initFoci();
         //IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);
+        MobAspects.checkAspects();
 
     }
 

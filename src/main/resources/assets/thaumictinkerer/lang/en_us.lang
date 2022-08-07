@@ -47,6 +47,8 @@ thaumictinkerer.card.experience.name=Experience
 thaumictinkerer.card.experience.text=You notice that a lot of the Tinkering you are doing, is inspired by your experience in life. Gain 25 in Thaumic Tinkerer, At the cost of 4 levels of experience.
 thaumictinkerer.enchanter.badmb=The Multiblock is not fully formed
 
+ttmisc.active=Active
+ttmisc.inactive=Inactive
 ttmisc.mobmagnet.all=All
 ttmisc.mobmagnet.none=None
 ttmisc.mobmagnet.child=Child
@@ -106,14 +108,14 @@ thaumictinkerer.research.TT_TELEKENESIS.1=I have managed to create a focal patte
 
 thaumictinkerer.research.TT_DISLOCATE.title=Dislocation
 thaumictinkerer.research.DISLOCATE.0=After so much work was put into discovering how to exchange blocks, I noticed sometimes there would be a delay before the block appears when being swapped. I wonder what would happen if I look into this more?
-thaumictinkerer.research.DISLOCATE.1=Success! After some experimentation, many lost blocks of cobblestone, and an invasion of endermen or two,  I substituted permutatio for desiderium, so the effect desired to hold on longer, and now I have a pattern that can temporarily store blocks to move them. <BR> Once applied to a focus, left click on a block to store it within the focus, then left click again to place the block.
+thaumictinkerer.research.DISLOCATE.1=After so much work was put into discovering how to exchange blocks, I noticed sometimes there would be a delay before the block appears when being swapped. I wonder what would happen if I look into this more?<BR> Success! After some experimentation, many lost blocks of cobblestone, and an invasion of endermen or two,  I substituted permutatio for desiderium, so the effect desired to hold on longer, and now I have a pattern that can temporarily store blocks to move them. <BR> Once applied to a focus, left click on a block to store it within the focus, then left click again to place the block.
 
 thaumictinkerer.research.prismarine.title=Aquatic Alchemy
 
 thaumictinkerer.research.spellbinding_cloth.title=Spellbinding Cloth
 thaumictinkerer.research.spellbinding_cloth.lore=The sad palmtop thaumaturge
 thaumictinkerer.research.spellbinding_cloth.0=While working with my enchanted axe one day, I accidentally dropped it in a cauldron of concentrated magic. The axe, of course, was lost, but I noticed the first thing to go was the enchantment glow, leaving it a plain metal axe before it dissolved. <BR> I wonder what would happen if I coated some Enchanted cloth in this mixture and just wiped a tool down with it?
-thaumictinkerer.research.spellbinding_cloth.1=My experiments have born fruit, Enchanted fabric soaked in the mixture will wipe an enchantment off an item, leaving it pristine and ready for re-enchantment. It seems to damage the cloth slightly each time, however.
+thaumictinkerer.research.spellbinding_cloth.1=While working with my enchanted axe one day, I accidentally dropped it in a cauldron of concentrated magic. The axe, of course, was lost, but I noticed the first thing to go was the enchantment glow, leaving it a plain metal axe before it dissolved. <BR> I wonder what would happen if I coated some Enchanted cloth in this mixture and just wiped a tool down with it? <BR> My experiments have born fruit, Enchanted fabric soaked in the mixture will wipe an enchantment off an item, leaving it pristine and ready for re-enchantment. It seems to damage the cloth slightly each time, however.
 
 thaumictinkerer.research.dissimulation.title=Dissimulation Block
 thaumictinkerer.research.dissimulation.0=This new substance called Prismarine seems to have some unusual optical properties. I wonder what I could do once I have fully investigated it.
@@ -139,3 +141,7 @@ thaumictinkerer.research.tablet.1=It looks like I can build a block around a sea
 thaumictinkerer.research.energetic_nitor.title=Hyperenergetic Nitor
 thaumictinkerer.research.energetic_nitor.0=One cannot deny the Nitor is useful. However, having to place it down before I see anything is annoying. I wonder, could I somehow make it visible from my palm if I were to make it more energetic?
 thaumictinkerer.research.energetic_nitor.1=Adding in more Energy and Light Essentia seems to have done the trick. I have managed to create a more powerful nitor - this Hyperenergetic Nitor burns with a visible light from my hand, so much so that it will even leave a trail as I move.
+
+thaumictinkerer.research.cleaning_talisman.title=Talisman of Remidium
+thaumictinkerer.research.cleaning_talisman.0=The undead practitioners of the other, older type of magic get annoying. Those poison potions they fling about don't seem to be the normal kind of magic. It starts to make you wonder though, what could you do if you got hold of one of theese, potions, and researched it?
+thaumictinkerer.research.cleaning_talisman.1=The undead practitioners of the other, older type of magic get annoying. Those poison potions they fling about don't seem to be the normal kind of magic. It starts to make you wonder though, what could you do if you got hold of one of theese, potions, and researched it? <BR> After a few days grueling work you come up with a new Talisman. While you couldn't yet reproduce the effects of the potions with true magic, you were able to create a talisman that wipes away the potion effects off of yourself at the cost of your durability.<BR> You just activate it, and place it upon yourself as an amulet, and everytime you come across a potion effect, it will clear it at the cost of itself. It seems to even work against some true magic effects, though at greater cost to itself.
