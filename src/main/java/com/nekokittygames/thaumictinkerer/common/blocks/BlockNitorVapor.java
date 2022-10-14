@@ -2,9 +2,11 @@ package com.nekokittygames.thaumictinkerer.common.blocks;
 
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -23,7 +25,14 @@ public class BlockNitorVapor extends BlockGas {
         this.setTickRandomly(true);
     }
 
-    //@Override
+    @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+        return BlockFaceShape.UNDEFINED;
+        //return super.getBlockFaceShape(worldIn, state, pos, face);
+    }
+
+
+//@Override
     //public int tickRate(World world) {
     //    return world.provider.getDimensionType() == DimensionType.OVERWORLD ? 60 : 20;
     //}
