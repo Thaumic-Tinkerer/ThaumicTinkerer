@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.proxy;
 
 import com.nekokittygames.thaumictinkerer.client.misc.Shaders;
@@ -60,12 +64,12 @@ public class ClientProxy implements ITTProxy {
 
     /**
      * Localize a string
-     * @param unlocalized unlocalised string
+     * @param translationKey unlocalised string
      * @param args arguments to the localisation
      * @return the string fully localised to current locale
      */
     @Override
-    public String localize(String unlocalized, Object... args) {
-        return I18n.format(unlocalized, args);
+    public String localize(String translationKey, Object... args) {
+        return I18n.format(translationKey, args);
     }
 }

@@ -108,7 +108,7 @@ dependencies {
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
     compile "org.apache.httpcomponents:fluent-hc:${httpclient_version}"
-    deobfProvided "mcp.mobius.waila:Hwyla:${hwyla_version}_1.12"
+    deobfCompile "curse.maven:Hwyla:2568751"
     deobfCompile "com.github.azanor:Baubles:${baubles_version}"
     deobfCompile "opencomputers:OpenComputers:MC${mc_version}:${open_computers_version}"//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
     deobfCompile "actually-additions:ActuallyAdditions:${mc_version}:${actually_additions_version}"
@@ -125,6 +125,7 @@ dependencies {
     deobfCompile "curse.maven:cyclops-core:2831241"
     deobfCompile "curse.maven:evilcraft:2811267"
     deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-${probe_version}"//1.1x-1.4.4-55
+    deobfCompile "curse.maven:thaumic-jei:2705304"
 	compile fileTree(dir: 'libs', includes: ['*.jar'])
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..

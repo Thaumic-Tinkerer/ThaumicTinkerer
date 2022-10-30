@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.misc;
 
 import net.minecraftforge.fml.common.Mod;

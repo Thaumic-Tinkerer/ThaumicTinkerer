@@ -4,6 +4,7 @@ import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandRefreshMultiblocks;
+import com.nekokittygames.thaumictinkerer.common.compat.botania.BotaniaCompat;
 import com.nekokittygames.thaumictinkerer.common.config.TTConfig;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectDislocate;
 import com.nekokittygames.thaumictinkerer.common.foci.FocusEffectTelekenesis;
@@ -12,7 +13,8 @@ import com.nekokittygames.thaumictinkerer.common.misc.ThaumicTInkererCreativeTab
 import com.nekokittygames.thaumictinkerer.common.multiblocks.MultiblockManager;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
-import com.nekokittygames.thaumictinkerer.common.recipes.ModRecipes;
+import com.nekokittygames.thaumictinkerer.common.research.theorycraft.AidBlackQuartz;
+import com.nekokittygames.thaumictinkerer.common.research.theorycraft.CardExperience;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -26,8 +28,8 @@ import org.apache.logging.log4j.Logger;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.FocusEngine;
-import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.theorycraft.TheorycraftManager;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -96,6 +98,9 @@ public class ThaumicTinkerer {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/foci"));
+        TheorycraftManager.registerCard(CardExperience.class);
+        TheorycraftManager.registerAid(new AidBlackQuartz(ModBlocks.black_quartz_block));
+        BotaniaCompat.addTheorycraft();
         proxy.registerRenderers();
         initFoci();
         //IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);

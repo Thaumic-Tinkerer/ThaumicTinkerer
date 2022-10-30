@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
@@ -7,14 +11,14 @@ import com.nekokittygames.thaumictinkerer.client.gui.button.IRadioButton;
 import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.common.blocks.BlockMagnet;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
-import com.nekokittygames.thaumictinkerer.common.items.ItemSoulMould;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.packets.PacketMagnetMode;
-import com.nekokittygames.thaumictinkerer.common.packets.PacketMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nonnull;
@@ -29,13 +33,14 @@ public class GuiMagnet extends GuiContainer {
     protected List<GuiTexturedButton> buttonListMM = new ArrayList<>();
     protected List<IRadioButton> radioButtons = new ArrayList<>();
 
-    private TileEntityMagnet magnet;
+    private final TileEntityMagnet magnet;
+    public boolean mob=false;
 
     /**
      * Constructor
      *
-     * @param tileEntity mob magnet to display GUI for
-     * @param container  mo magnet's container
+     * @param tileEntity {@link TileEntityMagnet} to display GUI for
+     * @param container  {@link MagnetContainer} for magnet
      */
     public GuiMagnet(TileEntityMagnet tileEntity, MagnetContainer container) {
         super(container);
@@ -58,17 +63,19 @@ public class GuiMagnet extends GuiContainer {
 
     }
 
-
+    /**
+     * Gets the buttons needed for the magnet
+     */
     protected void getButtons() {
         addButton(new GuiTexturedRadioButton(0, x + 100, y - 13, LibClientResources.GUI_MOBMAGNET, magnet.GetMode() == BlockMagnet.MagnetPull.PUSH,"mode", radioButtons));
-        addButton(new GuiTexturedRadioButton(1, x + 100, y + 8, LibClientResources.GUI_MOBMAGNET, magnet.GetMode() == BlockMagnet.MagnetPull.PULL, "mode",radioButtons));;
+        addButton(new GuiTexturedRadioButton(1, x + 100, y + 8, LibClientResources.GUI_MOBMAGNET, magnet.GetMode() == BlockMagnet.MagnetPull.PULL, "mode",radioButtons));
     }
     /**
      * Adds button to GUI
      *
-     * @param button button to add
-     * @param <T>    type of button to add
-     * @return added button
+     * @param button {@link GuiButton} to add
+     * @param <T>    type of {@link GuiButton} to add
+     * @return added {@link GuiButton}
      */
     @Nonnull
     @Override
@@ -84,11 +91,11 @@ public class GuiMagnet extends GuiContainer {
     }
 
     /**
-     * Callback for button pressed
-     * @param button button that was pressed
+     * Callback for {@link GuiButton} pressed
+     * @param button {@link GuiButton} that was pressed
      */
     @Override
-    protected void actionPerformed(GuiButton button) {
+    protected void actionPerformed(@NotNull GuiButton button) {
         if (button instanceof IRadioButton)
             ((IRadioButton) button).enableFromClick();
         else buttonListMM.get(1).setButtonEnabled(!buttonListMM.get(1).isButtonEnabled());
@@ -115,12 +122,13 @@ public class GuiMagnet extends GuiContainer {
         String pull = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.pull");
         ItemStack stack = magnet.getInventory().getStackInSlot(0);
         String filter;
-        if (stack != ItemStack.EMPTY) {
+        if (stack != ItemStack.EMPTY && stack.getItem()!= Items.AIR) {
             filter = stack.getItem().getItemStackDisplayName(stack);
 
         } else
             filter = ThaumicTinkerer.proxy.localize("ttmisc.mobmagnet.all");
-        fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
+        if(!mob)
+            fontRenderer.drawString(filter, x + xSize / 2 - fontRenderer.getStringWidth(filter) / 2 - 26, y + 16, 0x999999);
         fontRenderer.drawString(push, x + 120, y -11, 0x999999);
         fontRenderer.drawString(pull, x + 120, y + 10, 0x999999);
         GL11.glColor3f(1F, 1F, 1F);

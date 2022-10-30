@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.special.multi;
 
 import com.nekokittygames.thaumictinkerer.api.rendering.IMultiBlockPreviewRenderer;

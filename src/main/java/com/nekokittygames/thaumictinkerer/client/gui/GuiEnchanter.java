@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.gui;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -18,7 +22,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 
@@ -33,9 +36,9 @@ public class GuiEnchanter extends GuiContainer {
     private static final int HEIGHT = 166;
     private static final int WIDTH = 176;
     private TileEntityEnchanter enchanter;
-    private GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
+    private final GuiEnchantmentButton[] enchantButtons = new GuiEnchantmentButton[16];
     private GuiEnchantmentStartButton startButton;
-    private List<String> tooltip = new ArrayList<>();
+    private final List<String> tooltip = new ArrayList<>();
     private int visRequireWidth = 0;
     private int visRequireHeight = 0;
     private int cost=0;
@@ -46,8 +49,8 @@ public class GuiEnchanter extends GuiContainer {
     /**
      * Constructor
      *
-     * @param tileEntity Enchanter to display GUI for
-     * @param container  enchanter's container
+     * @param tileEntity {@link TileEntityEnchanter} to display GUI for
+     * @param container  {@link EnchanterContainer} for tablet
      */
     public GuiEnchanter(TileEntityEnchanter tileEntity, EnchanterContainer container) {
         super(container);
@@ -60,17 +63,17 @@ public class GuiEnchanter extends GuiContainer {
     }
 
     /**
-     * gets the Enchanter this GUI is for
+     * gets the {@link TileEntityEnchanter} this GUI is for
      *
-     * @return enchanter object
+     * @return {@link TileEntityEnchanter} object
      */
     public TileEntityEnchanter getEnchanter() {
         return enchanter;
     }
 
     /**
-     * Sets the Enchanter
-     * @param enchanter enchanter to set
+     * Sets the {@link TileEntityEnchanter}
+     * @param enchanter {@link TileEntityEnchanter} to set
      */
     public void setEnchanter(TileEntityEnchanter enchanter) {
         this.enchanter = enchanter;
@@ -169,12 +172,18 @@ public class GuiEnchanter extends GuiContainer {
         asignEnchantButtons();
 
         int i = 0;
+        int xOffset=0;
         for (Integer enchant : enchanter.getEnchantments()) {
-            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4, y + (i * 26) + 30 + 15);
-            button.enchant = Enchantment.getEnchantmentByID(enchant);
+            if((y + (i * 26) + 30 + 15) +24 >height)
+            {
+                xOffset+=26+14+1;
+                i=0;
+            }
+            GuiFramedEnchantmentButton button = new GuiFramedEnchantmentButton(this, 17 + i * 3, x + xSize + 4+xOffset, y + (i * 26) + 30 + 15);
+            button.setEnchant( Enchantment.getEnchantmentByID(enchant));
             buttonList.add(button);
-            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 1, x + xSize + 24, y + (i * 26) + 30 + 15 - 4, false));
-            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 2, x + xSize + 31, y + (i * 26) + 30 + 15 - 4, true));
+            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 1, x + xSize + 24+xOffset, y + (i * 26) + 30 + 15 - 4, false));
+            buttonList.add(new GuiEnchantmentLevelButton(17 + i * 3 + 2, x + xSize + 31+xOffset, y + (i * 26) + 30 + 15 - 4, true));
             ++i;
         }
         startButton = new GuiEnchantmentStartButton(0, x + 8, y + 58);
@@ -199,7 +208,7 @@ public class GuiEnchanter extends GuiContainer {
      */
     private void asignEnchantButtons() {
         for (int i = 0; i < 16; i++) {
-            enchantButtons[i].enchant = null;
+            enchantButtons[i].setEnchant(null);
             enchantButtons[i].enabled = false;
         }
         ItemStack currentStack = enchanter.getInventory().getStackInSlot(0);
@@ -207,7 +216,7 @@ public class GuiEnchanter extends GuiContainer {
             return;
         int it = 0;
         for (int enchant : enchanter.getCachedEnchantments()) {
-            enchantButtons[it].enchant = Enchantment.getEnchantmentByID(enchant);
+            enchantButtons[it].setEnchant(Enchantment.getEnchantmentByID(enchant));
             enchantButtons[it].enabled = true;
             it++;
             if (it >= 16)
@@ -317,8 +326,8 @@ public class GuiEnchanter extends GuiContainer {
     }
 
     /**
-     * Callback for button pressed
-     * @param button button that was pressed
+     * Callback for {@link GuiButton} pressed
+     * @param button {@link GuiButton} that was pressed
      */
     @Override
     protected void actionPerformed(GuiButton button) {
@@ -328,8 +337,8 @@ public class GuiEnchanter extends GuiContainer {
             PacketHandler.INSTANCE.sendToServer(new PacketStartEnchant(enchanter, Minecraft.getMinecraft().player));
         } else if (button.id <= 16) {
             GuiEnchantmentButton enchantButton = enchantButtons[button.id - 1];
-            if (enchantButton != null && enchantButton.enchant != null) {
-                PacketHandler.INSTANCE.sendToServer(new PacketAddEnchant(enchanter, Enchantment.getEnchantmentID(enchantButton.enchant)));
+            if (enchantButton != null && enchantButton.getEnchant() != null) {
+                PacketHandler.INSTANCE.sendToServer(new PacketAddEnchant(enchanter, Enchantment.getEnchantmentID(enchantButton.getEnchant())));
             }
         } else {
 

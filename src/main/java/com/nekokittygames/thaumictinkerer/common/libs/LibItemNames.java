@@ -11,6 +11,9 @@ public class LibItemNames {
     public static final String FORM_REVEALER = "form_revealer";
     public static final String SPELLBINDING_CLOTH="spellbinding_cloth";
 
+    public static final String BLOOD_SWORD="blood_sword";
+    public static final String MOB_ASPECT="mob_aspect";
     public static final String ICHOR = "ichor";
     public static final String ICHORIUM = "ichorium";
+
 }

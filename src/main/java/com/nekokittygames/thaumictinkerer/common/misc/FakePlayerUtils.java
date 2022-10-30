@@ -249,7 +249,7 @@ public class FakePlayerUtils {
      * @param action The type of interaction to perform.
      * @return If the entity was used.
      */
-    private static boolean processUseEntity(ThaumicFakePlayer player, Entity entity, @Nullable RayTraceResult result, CPacketUseEntity.Action action) {
+    public static boolean processUseEntity(ThaumicFakePlayer player, Entity entity, @Nullable RayTraceResult result, CPacketUseEntity.Action action) {
         if (entity != null) {
             boolean flag = player.canEntityBeSeen(entity);
             double d0 = 36.0D;

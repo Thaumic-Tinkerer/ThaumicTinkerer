@@ -1,11 +1,18 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering;
 
+import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
+import com.nekokittygames.thaumictinkerer.common.helper.IItemVariants;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
 import com.nekokittygames.thaumictinkerer.common.utils.IVariant;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -22,9 +29,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nonnull;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Model manager helper class for loading models
@@ -32,6 +38,8 @@ import java.util.Set;
 @Mod.EventBusSubscriber(value = Side.CLIENT, modid = LibMisc.MOD_ID)
 public class ModelManager {
     private static final ModelManager INSTANCE = new ModelManager();
+
+    private Map<Item, Map<String,ModelResourceLocation>> Item_Variants_baked=new HashMap<>();
     /**
      * default mapper for properties to string
      */
@@ -159,7 +167,43 @@ public class ModelManager {
      */
     private void registerItemModel(final Item item, final ModelResourceLocation fullModelLocation) {
         ModelBakery.registerItemVariants(item, fullModelLocation); // Ensure the custom model is loaded and prevent the default model from being loaded
-        registerItemModel(item, stack -> fullModelLocation);
+        if(item instanceof IItemVariants)
+        {
+            for (String variant:((IItemVariants)item).GetVariants()) {
+                ResourceLocation loc=new ResourceLocation(LibMisc.MOD_ID,fullModelLocation.getResourcePath()+"/"+variant);
+                ModelResourceLocation mrl=new ModelResourceLocation(loc,fullModelLocation.getVariant());
+                try {
+                    ResourceLocation test=new ResourceLocation(LibMisc.MOD_ID,"models/item/"+loc.getResourcePath()+".json");
+                    if(Minecraft.getMinecraft().getResourceManager().getResource(test)==null) {
+                        ThaumicTinkerer.logger.info("Unable to find model file for item: "+item.toString()+" variant: "+variant);
+                        Item_Variants_baked.putIfAbsent(item,new HashMap<>());
+                        Item_Variants_baked.get(item).put(variant,fullModelLocation);
+                        continue;
+                    }
+
+                } catch (IOException e) {
+                    ThaumicTinkerer.logger.info("Unable to find model file for item: "+item.toString()+" variant: "+variant);
+                    Item_Variants_baked.putIfAbsent(item,new HashMap<>());
+                    Item_Variants_baked.get(item).put(variant,fullModelLocation);
+                    continue;
+                }
+                Item_Variants_baked.putIfAbsent(item,new HashMap<>());
+                Item_Variants_baked.get(item).put(variant,mrl);
+                ModelBakery.registerItemVariants(item, mrl);
+            }
+            registerItemModel(item, stack -> {
+                String var=((IItemVariants)item).GetVariant(stack);
+                if(Item_Variants_baked.getOrDefault(stack.getItem(),new HashMap<>()).containsKey(var))
+                    return Item_Variants_baked.getOrDefault(stack.getItem(),new HashMap<>()).get(var);
+                else {
+                    ThaumicTinkerer.logger.error("Variant "+var+" Has been added to item "+stack.getItem().toString()+"since loading. Variant list should  not change");
+                    return fullModelLocation;
+                }
+
+            });
+        }
+        else
+            registerItemModel(item, stack -> fullModelLocation);
     }
 
     /**

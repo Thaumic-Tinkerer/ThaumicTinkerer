@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityRepairer;
@@ -19,7 +23,7 @@ public class TileEntityRepairerRenderer extends TileEntitySpecialRenderer<TileEn
     /**
      * renders the repairer
      *
-     * @param te           tile entity
+     * @param te           {@link TileEntityRepairer} entity
      * @param x            xPos of the block
      * @param y            yPos of the block
      * @param z            zPos of the block

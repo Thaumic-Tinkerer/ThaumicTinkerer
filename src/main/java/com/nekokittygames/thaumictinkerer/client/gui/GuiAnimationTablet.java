@@ -24,15 +24,15 @@ public class GuiAnimationTablet extends GuiContainer {
     private static final int HEIGHT = 166;
     private static final int WIDTH = 176;
     private TileEntityAnimationTablet animation_tablet;
-    private List<GuiTexturedButton> buttonListAT = new ArrayList<>();
-    private List<IRadioButton> radioButtons = new ArrayList<>();
+    private final List<GuiTexturedButton> buttonListAT = new ArrayList<>();
+    private final List<IRadioButton> radioButtons = new ArrayList<>();
     private int x, y;
 
     /**
      * Constructor
      *
-     * @param animation_tablet animation tablet to display GUI for
-     * @param inventorySlotsIn animation tablet's container
+     * @param animation_tablet {@link TileEntityAnimationTablet} to display GUI for
+     * @param inventorySlotsIn {@link AnimationTabletContainer} for Tablet
      */
     public GuiAnimationTablet(TileEntityAnimationTablet animation_tablet, AnimationTabletContainer inventorySlotsIn) {
         super(inventorySlotsIn);
@@ -42,17 +42,17 @@ public class GuiAnimationTablet extends GuiContainer {
     }
 
     /**
-     * Gets the animation tablet
+     * Gets the {@link TileEntityAnimationTablet} the GUI is attached to
      *
-     * @return animation tablet
+     * @return {@link TileEntityAnimationTablet}
      */
     public TileEntityAnimationTablet getAnimationTablet() {
         return animation_tablet;
     }
 
     /**
-     * Sets the animation table
-     * @param animation_tablet animation tablet to set
+     * Sets the {@link TileEntityAnimationTablet} the GUI is attached to
+     * @param animation_tablet {@link TileEntityAnimationTablet} to set
      */
     public void setEnchanter(TileEntityAnimationTablet animation_tablet) {
         this.animation_tablet = animation_tablet;
@@ -88,8 +88,8 @@ public class GuiAnimationTablet extends GuiContainer {
     }
 
     /**
-     * Callback for button Button clicked
-     * @param button button that was clicked
+     * Callback for {@link GuiButton} clicked
+     * @param button {@link GuiButton} that was clicked
      */
     @Override
     protected void actionPerformed(GuiButton button) {
@@ -103,10 +103,10 @@ public class GuiAnimationTablet extends GuiContainer {
     }
 
     /**
-     * Adds a button to the screen
-     * @param button button to add to the screen
-     * @param <T> Type of button to add
-     * @return returns the button
+     * Adds a {@link GuiButton} to the screen
+     * @param button {@link GuiButton} to add to the screen
+     * @param <T> Type of {@link GuiButton} to add
+     * @return returns the {@link GuiButton}
      */
     @Nonnull
     @Override

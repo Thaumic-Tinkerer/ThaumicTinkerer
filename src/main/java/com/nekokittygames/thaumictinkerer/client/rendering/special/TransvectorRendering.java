@@ -1,7 +1,5 @@
 package com.nekokittygames.thaumictinkerer.client.rendering.special;
 
-import com.nekokittygames.thaumictinkerer.ThaumicTinkerer;
-import com.nekokittygames.thaumictinkerer.client.libs.LibClientResources;
 import com.nekokittygames.thaumictinkerer.client.misc.RenderEvents;
 import com.nekokittygames.thaumictinkerer.common.items.ItemConnector;
 import com.nekokittygames.thaumictinkerer.common.libs.LibMisc;
@@ -11,14 +9,12 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
@@ -26,8 +22,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import org.lwjgl.opengl.GL11;
-import thaumcraft.Thaumcraft;
-import thaumcraft.client.fx.FXDispatcher;
 
 /**
  * Renders the transvector interface linking
@@ -38,7 +32,7 @@ public static float lastLineTick=0;
     /**
      * Event called on block rendering
      *
-     * @param evt event object
+     * @param evt {@link RenderWorldLastEvent}  event object
      */
     @SubscribeEvent
     public static void renderBlocks(final RenderWorldLastEvent evt) {
@@ -67,7 +61,6 @@ public static float lastLineTick=0;
             net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
             Minecraft.getMinecraft().entityRenderer.disableLightmap();
             GlStateManager.glLineWidth(4);
-            ;
             Tessellator tessellator = Tessellator.getInstance();
             BufferBuilder buffer = tessellator.getBuffer();
             float blockX = pos.getX();

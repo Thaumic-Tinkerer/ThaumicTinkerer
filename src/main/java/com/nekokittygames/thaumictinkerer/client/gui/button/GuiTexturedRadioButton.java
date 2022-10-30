@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.gui.button;
 
 import net.minecraft.util.ResourceLocation;
@@ -8,8 +12,8 @@ import java.util.List;
  * Textured version of a radio button
  */
 public class GuiTexturedRadioButton extends GuiTexturedButton implements IRadioButton {
-    private List<IRadioButton> linkedButtons;
-    private String groupName;
+    private final List<IRadioButton> linkedButtons;
+    private final String groupName;
 
     /**
      * @param buttonId        id of the button
@@ -38,6 +42,10 @@ public class GuiTexturedRadioButton extends GuiTexturedButton implements IRadioB
         this.groupName="default";
     }
 
+    /**
+     * Gets the group this button is part of
+     * @return Name of the group
+     */
     @Override
     public String getGroup() {
         return groupName;

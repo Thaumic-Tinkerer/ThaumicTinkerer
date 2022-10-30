@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Katrina Knight
+ */
+
 package com.nekokittygames.thaumictinkerer.client.rendering.tileentities;
 
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityFunnel;
@@ -26,7 +30,7 @@ public class TileEntityFunnelRenderer extends TileEntitySpecialRenderer<TileEnti
     /**
      * renders the funnel
      *
-     * @param te           tile entity
+     * @param te           {@link TileEntityFunnel} entity
      * @param x            xPos of the block
      * @param y            yPos of the block
      * @param z            zPos of the block

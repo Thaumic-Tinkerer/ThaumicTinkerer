@@ -4,31 +4,58 @@
       "key": "TT_TRANSVECTOR_INTERFACE",
       "name": "thaumictinkerer.research.transvector_interface.title",
       "icons": [
-        "thaumictinkerer:transvector_interface"
+        "thaumictinkerer:transvector_interface",
+        "thaumictinkerer:transvector_dislocator"
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS"
+        "TT_DISSIMULATION"
       ],
       "siblings": [],
       "meta": [
-        "ROUND"
       ],
       "location": [
         1,
-        -1
+        1
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.transvector_interface.0",
+          "required_item":["minecraft:ender_pearl;4"]
+        },
+        {
+          "text": "thaumictinkerer.research.transvector_interface.1",
           "recipes": [
 
             "thaumictinkerer:transvector_interface",
             "thaumictinkerer:connector"
           ],
-          "required_craft": [
-            "thaumcraft:arcane_workbench"
+          "required_item":["thaumcraft:mirrored_glass;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.transvector_interface.2",
+          "recipes": [
+            "thaumictinkerer:transvector_disslocator",
+            "thaumictinkerer:transvector_interface",
+            "thaumictinkerer:connector"
           ]
+
+        }
+      ]
+    },
+    {
+      "key": "TT_REPAIRER",
+      "name": "thaumictinkerer.research.repairer.title",
+      "icons": ["thaumictinkerer:repairer"],
+      "category": "THAUMIC_TINKERER",
+      "parents": ["INFUSION","~TT_SPELLBINDING_CLOTH"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [5,5],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.repairer.0",
+          "recipes": [ "thaumictinkerer:repairer"]
         }
       ]
     },
@@ -55,10 +82,17 @@
         {
           "text": "thaumictinkerer.research.magnet.0",
           "recipes": [
+            "thaumictinkerer:kinetic_attactor"
+          ],
+          "required_knowledge":["THEORY;BASICS;1","THEORY;THAUMIC_TINKERER;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.magnet.1",
+          "recipes": [
             "thaumictinkerer:corporeal_attactor",
             "thaumictinkerer:kinetic_attactor",
             "thaumictinkerer:soul_mould"
-          ]
+            ]
         }
       ]
     },
@@ -102,15 +136,51 @@
       "meta": [
       ],
       "location": [
-        1,
+        3,
         2
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.enchanter.0",
+          "required_knowledge":["THEORY;INFUSION;2"]
+        },
+        {
+          "text": "thaumictinkerer.research.enchanter.1",
           "recipes": [
             "thaumictinkerer:osmotic_enchanter",
             "thaumictinkerer:osmotic_enchanter_mb"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "TT_TABLET",
+      "name": "thaumictinkerer.research.tablet.title",
+      "icons": [
+        "thaumictinkerer:animation_tablet"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "TT_THAUMIC_MAGNETS",
+        "CONTROLSEALS"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        -3,
+        3
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.tablet.0",
+          "required_knowledge":["THEORY;GOLEMANCY;2"]
+        },
+        {
+          "text": "thaumictinkerer.research.tablet.1",
+          "recipes": [
+            "thaumictinkerer:tablet"
           ]
         }
       ]

@@ -5,10 +5,10 @@
   "description": "An addon to Thaumcraft 6, implementing new content. This mod is a spiritual successor to Elemental Tinkerer. Researches that come from this mod are prefixed by [TT]..",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "http://minecraftforum.net/topic/1813058-",
+  "url": "https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/2552088-thaumic-tinkerer-5-0-thaumcraft-addon-evolve",
   "updateUrl": "",
   "authorList": ["nekosune"],
-  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDiyo, theFlaxbeard.",
+  "credits": "Azanor, TheAtlanticCraft, MartysGames, TheWhiteWolves, mDiyo, theFlaxbeard, Languages: Hesperusrus  & Artleksandr - Russian, DYColdWind - Simplified Chinese.",
   "logoFile": "/assets/thaumictinkerer/textures/logo.png",
   "screenshots": [],
   "dependencies": ["thaumcraft"]

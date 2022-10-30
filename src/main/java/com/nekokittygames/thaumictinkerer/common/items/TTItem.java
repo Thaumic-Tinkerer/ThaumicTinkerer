@@ -28,7 +28,7 @@ public abstract class TTItem extends Item {
             setCreativeTab(ThaumicTinkerer.getTab());
     }
 
-    public static void setItemName(@Nonnull TTItem item, String itemName) {
+    public static void setItemName(@Nonnull Item item, String itemName) {
         item.setRegistryName(LibMisc.MOD_ID, itemName);
         final ResourceLocation regName = Objects.requireNonNull(item.getRegistryName());
         item.setUnlocalizedName(regName.toString());
