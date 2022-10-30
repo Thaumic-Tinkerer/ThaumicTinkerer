@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
 @SuppressWarnings("deprecation")
 public class BlockTransvectorInterface extends TTCamoBlock<TileEntityTransvectorInterface> {
     public BlockTransvectorInterface() {
-        super(LibBlockNames.TRANSVECTOR_INTERFACE, Material.WOOD, true);
+        super(LibBlockNames.TRANSVECTOR_INTERFACE, Material.ROCK, true);
+
     }
 
     @Override

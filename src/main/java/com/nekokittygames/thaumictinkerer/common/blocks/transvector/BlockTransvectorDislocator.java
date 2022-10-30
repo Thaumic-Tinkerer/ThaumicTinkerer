@@ -28,7 +28,7 @@ public class BlockTransvectorDislocator extends TTCamoBlock<TileEntityTransvecto
     public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
     public BlockTransvectorDislocator() {
-        super(LibBlockNames.TRANSVECTOR_DISLOCATOR, Material.WOOD, true);
+        super(LibBlockNames.TRANSVECTOR_DISLOCATOR, Material.ROCK, true);
         setDefaultState(this.getBlockState().getBaseState().withProperty(POWERED, false).withProperty(FACING, EnumFacing.NORTH));
     }
 
