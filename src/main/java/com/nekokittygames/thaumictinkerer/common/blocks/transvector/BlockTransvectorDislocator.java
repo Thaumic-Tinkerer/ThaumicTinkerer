@@ -1,8 +1,11 @@
 package com.nekokittygames.thaumictinkerer.common.blocks.transvector;
 
+import static net.minecraft.block.BlockPistonBase.getFacing;
+
 import com.nekokittygames.thaumictinkerer.common.blocks.TTCamoBlock;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import com.nekokittygames.thaumictinkerer.common.tileentity.transvector.TileEntityTransvectorDislocator;
+import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -18,88 +21,107 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.Random;
+public class BlockTransvectorDislocator
+    extends TTCamoBlock<TileEntityTransvectorDislocator> {
 
-import static net.minecraft.block.BlockPistonBase.getFacing;
+  public static final PropertyBool POWERED = PropertyBool.create("powered");
+  public static final PropertyDirection FACING =
+      PropertyDirection.create("facing");
 
-public class BlockTransvectorDislocator extends TTCamoBlock<TileEntityTransvectorDislocator> {
+  public BlockTransvectorDislocator() {
+    super(LibBlockNames.TRANSVECTOR_DISLOCATOR, Material.ROCK, true);
+    setDefaultState(this.getBlockState()
+                        .getBaseState()
+                        .withProperty(POWERED, false)
+                        .withProperty(FACING, EnumFacing.NORTH));
+  }
 
-    public static final PropertyBool POWERED = PropertyBool.create("powered");
-    public static final PropertyDirection FACING = PropertyDirection.create("facing");
+  @Override
+  protected BlockStateContainer createBlockState() {
+    return new BlockStateContainer(this, POWERED, FACING);
+  }
 
-    public BlockTransvectorDislocator() {
-        super(LibBlockNames.TRANSVECTOR_DISLOCATOR, Material.WOOD, true);
-        setDefaultState(this.getBlockState().getBaseState().withProperty(POWERED, false).withProperty(FACING, EnumFacing.NORTH));
+  @Override
+  public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state,
+                              EntityLivingBase placer, ItemStack stack) {
+    worldIn.setBlockState(
+        pos,
+        state.withProperty(
+            FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer)),
+        2);
+  }
+
+  @Override
+  public IBlockState getStateFromMeta(int meta) {
+    return this.getDefaultState()
+        .withProperty(FACING, getFacing(meta))
+        .withProperty(POWERED, (meta & 8) > 0);
+  }
+
+  @Override
+  public int getMetaFromState(IBlockState state) {
+    int i = 0;
+    i = i | ((EnumFacing)state.getValue(FACING)).getIndex();
+    if ((Boolean)state.getValue(POWERED)) {
+      i |= 8;
     }
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, POWERED, FACING);
-    }
+    return i;
+  }
 
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer)), 2);
-    }
+  @Override
+  public void updateTick(World worldIn, BlockPos pos, IBlockState state,
+                         Random rand) {
+    super.updateTick(worldIn, pos, state, rand);
+  }
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(POWERED, (meta & 8) > 0);
+  @Override
+  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos,
+                              Block blockIn, BlockPos fromPos) {
+    super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+    if (!worldIn.isRemote) {
+      if (state.getValue(POWERED) && !worldIn.isBlockPowered(pos)) {
+        worldIn.setBlockState(pos, state.withProperty(POWERED, false), 2);
+      } else if (!state.getValue(POWERED) && worldIn.isBlockPowered(pos)) {
+        worldIn.setBlockState(pos, state.withProperty(POWERED, true), 2);
+      }
     }
+  }
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        int i = 0;
-        i = i | ((EnumFacing) state.getValue(FACING)).getIndex();
-        if ((Boolean) state.getValue(POWERED)) {
-            i |= 8;
-        }
+  @Override
+  public int tickRate(World par1World) {
+    return 1;
+  }
 
-        return i;
-    }
+  public IBlockState withRotation(IBlockState state, Rotation rot) {
+    return state.withProperty(FACING,
+                              rot.rotate((EnumFacing)state.getValue(FACING)));
+  }
 
-    @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn,pos,state,rand);
-    }
+  public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+    return state.withRotation(
+        mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+  }
 
-    @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
-        if (!worldIn.isRemote) {
-            if (state.getValue(POWERED) && !worldIn.isBlockPowered(pos)) {
-                worldIn.setBlockState(pos, state.withProperty(POWERED, false), 2);
-            } else if (!state.getValue(POWERED) && worldIn.isBlockPowered(pos)) {
-                worldIn.setBlockState(pos, state.withProperty(POWERED, true), 2);
-            }
-        }
-    }
+  public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis) {
+    IBlockState state = world.getBlockState(pos);
+    return !(Boolean)state.getValue(POWERED) &&
+        super.rotateBlock(world, pos, axis);
+  }
 
-    @Override
-    public int tickRate(World par1World) {
-        return 1;
-    }
+  @Override
+  public IBlockState getStateForPlacement(World worldIn, BlockPos pos,
+                                          EnumFacing facing, float hitX,
+                                          float hitY, float hitZ, int meta,
+                                          EntityLivingBase placer) {
+    return this.getDefaultState()
+        .withProperty(FACING,
+                      EnumFacing.getDirectionFromEntityLiving(pos, placer))
+        .withProperty(POWERED, false);
+  }
 
-    public IBlockState withRotation(IBlockState state, Rotation rot) {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
-    }
-
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
-    }
-
-    public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis) {
-        IBlockState state = world.getBlockState(pos);
-        return !(Boolean) state.getValue(POWERED) && super.rotateBlock(world, pos, axis);
-    }
-
-    @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer)).withProperty(POWERED, false);
-    }
-
-    @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntityTransvectorDislocator();
-    }
+  @Override
+  public TileEntity createTileEntity(World world, IBlockState state) {
+    return new TileEntityTransvectorDislocator();
+  }
 }
