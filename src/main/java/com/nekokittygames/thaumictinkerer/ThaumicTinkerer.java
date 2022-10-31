@@ -1,5 +1,7 @@
 package com.nekokittygames.thaumictinkerer;
 
+import com.nekokittygames.thaumictinkerer.api.MobAspect;
+import com.nekokittygames.thaumictinkerer.api.MobAspects;
 import com.nekokittygames.thaumictinkerer.api.ThaumicTinkererAPI;
 import com.nekokittygames.thaumictinkerer.common.blocks.ModBlocks;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandDumpEnchants;
@@ -16,6 +18,7 @@ import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.research.theorycraft.AidBlackQuartz;
 import com.nekokittygames.thaumictinkerer.common.research.theorycraft.CardExperience;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -81,6 +84,9 @@ public class ThaumicTinkerer {
             if(message.key.equalsIgnoreCase("addTabletBlacklist") && message.isStringMessage())
             {
                 ThaumicTinkererAPI.getAnimationTabletBlacklist().add(message.getStringValue());
+            }
+            if(message.key.equalsIgnoreCase("addMobAspect") && message.isNBTMessage()) {
+                MobAspects.getAspects().put(EntityEndermite.class,new MobAspect(EntityEndermite.class,new AspectList()));
             }
         }
     }
