@@ -17,6 +17,8 @@ import com.nekokittygames.thaumictinkerer.common.packets.PacketHandler;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.research.theorycraft.AidBlackQuartz;
 import com.nekokittygames.thaumictinkerer.common.research.theorycraft.CardExperience;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.util.ResourceLocation;
@@ -34,92 +36,107 @@ import thaumcraft.api.casters.FocusEngine;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.theorycraft.TheorycraftManager;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.MOD_VERSION, dependencies = LibMisc.MOD_DEPENDENCIES)
+@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME,
+     version = LibMisc.MOD_VERSION, dependencies = LibMisc.MOD_DEPENDENCIES)
 public class ThaumicTinkerer {
-    public static Logger logger;
+  public static Logger logger;
 
-    private static CreativeTabs tab;
+  private static CreativeTabs tab;
 
-    @SidedProxy(serverSide = "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy", clientSide = "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
-    public static ITTProxy proxy;
+  @SidedProxy(serverSide =
+                  "com.nekokittygames.thaumictinkerer.common.proxy.CommonProxy",
+              clientSide =
+                  "com.nekokittygames.thaumictinkerer.client.proxy.ClientProxy")
+  public static ITTProxy proxy;
 
+  @Mod.Instance(LibMisc.MOD_ID) public static ThaumicTinkerer instance;
 
-    @Mod.Instance(LibMisc.MOD_ID)
-    public static ThaumicTinkerer instance;
+  public static CreativeTabs getTab() { return tab; }
 
-    public static CreativeTabs getTab() {
-        return tab;
+  public static void setTab(CreativeTabs tab) { ThaumicTinkerer.tab = tab; }
+
+  @EventHandler
+  public void preInit(FMLPreInitializationEvent event) {
+    tab = new ThaumicTInkererCreativeTab();
+    logger = event.getModLog();
+
+    proxy.preInit(event);
+    PacketHandler.registerMessages(LibMisc.MOD_ID);
+  }
+
+  @Mod.EventHandler
+  public void serverLoad(FMLServerStartingEvent event) {
+    event.registerServerCommand(new CommandRefreshMultiblocks());
+    event.registerServerCommand(new CommandDumpEnchants());
+  }
+
+  @EventHandler
+  public void processIMC(FMLInterModComms.IMCEvent event) {
+    for (FMLInterModComms.IMCMessage message : event.getMessages()) {
+      if (message.key.equalsIgnoreCase("addDislocateBlacklist") &&
+          message.isStringMessage()) {
+        ThaumicTinkererAPI.getDislocationBlacklist().add(
+            message.getStringValue());
+      }
+      if (message.key.equalsIgnoreCase("addTabletBlacklist") &&
+          message.isStringMessage()) {
+        ThaumicTinkererAPI.getAnimationTabletBlacklist().add(
+            message.getStringValue());
+      }
+      if (message.key.equalsIgnoreCase("addMobAspect") &&
+          message.isNBTMessage()) {
+        MobAspects.getAspects().put(
+            EntityEndermite.class,
+            new MobAspect(EntityEndermite.class, new AspectList()));
+      }
     }
+  }
 
-    public static void setTab(CreativeTabs tab) {
-        ThaumicTinkerer.tab = tab;
+  @EventHandler
+  public void init(FMLInitializationEvent event) {
+    try {
+      MultiblockManager.initMultiblocks();
+    } catch (URISyntaxException | IOException e) {
+      e.printStackTrace();
     }
+    proxy.init(event);
+    ResearchCategories.registerCategory(
+        "THAUMIC_TINKERER", null, new AspectList(),
+        new ResourceLocation("thaumictinkerer",
+                             "textures/items/share_book.png"),
+        new ResourceLocation("thaumictinkerer", "textures/misc/sky1.png"),
+        new ResourceLocation("thaumictinkerer", "textures/misc/sky1.png"));
+    ThaumcraftApi.registerResearchLocation(
+        new ResourceLocation("thaumictinkerer", "research/misc"));
+    ThaumcraftApi.registerResearchLocation(
+        new ResourceLocation("thaumictinkerer", "research/baubles"));
+    ThaumcraftApi.registerResearchLocation(
+        new ResourceLocation("thaumictinkerer", "research/machines"));
+    ThaumcraftApi.registerResearchLocation(
+        new ResourceLocation("thaumictinkerer", "research/foci"));
+    TheorycraftManager.registerCard(CardExperience.class);
+    TheorycraftManager.registerAid(
+        new AidBlackQuartz(ModBlocks.black_quartz_block));
+    BotaniaCompat.addTheorycraft();
+    proxy.registerRenderers();
+    initFoci();
+    // IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);
+  }
 
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        tab = new ThaumicTInkererCreativeTab();
-        logger = event.getModLog();
-
-        proxy.preInit(event);
-        PacketHandler.registerMessages(LibMisc.MOD_ID);
+  private void initFoci() {
+    if (TTConfig.DislocationFocusEnabled)
+      FocusEngine.registerElement(
+          FocusEffectDislocate.class,
+          new ResourceLocation("thaumictinkerer",
+                               "textures/foci_icons/dislocation.png"),
+          15121988);
+    if (TTConfig.TelekenesisFocusEnabled) {
+      logger.info("Initializing Telekenetic powers");
+      FocusEngine.registerElement(
+          FocusEffectTelekenesis.class,
+          new ResourceLocation("thaumictinkerer",
+                               "textures/foci_icons/telekenesis.png"),
+          13566207);
     }
-
-    @Mod.EventHandler
-    public void serverLoad(FMLServerStartingEvent event) {
-        event.registerServerCommand(new CommandRefreshMultiblocks());
-        event.registerServerCommand(new CommandDumpEnchants());
-
-    }
-
-    @EventHandler
-    public void processIMC(FMLInterModComms.IMCEvent event) {
-        for(FMLInterModComms.IMCMessage message:event.getMessages()) {
-            if(message.key.equalsIgnoreCase("addDislocateBlacklist") && message.isStringMessage())
-            {
-                ThaumicTinkererAPI.getDislocationBlacklist().add(message.getStringValue());
-            }
-            if(message.key.equalsIgnoreCase("addTabletBlacklist") && message.isStringMessage())
-            {
-                ThaumicTinkererAPI.getAnimationTabletBlacklist().add(message.getStringValue());
-            }
-            if(message.key.equalsIgnoreCase("addMobAspect") && message.isNBTMessage()) {
-                MobAspects.getAspects().put(EntityEndermite.class,new MobAspect(EntityEndermite.class,new AspectList()));
-            }
-        }
-    }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        try {
-            MultiblockManager.initMultiblocks();
-        } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
-        }
-        proxy.init(event);
-        ResearchCategories.registerCategory("THAUMIC_TINKERER", null, new AspectList(), new ResourceLocation("thaumictinkerer", "textures/items/share_book.png"), new ResourceLocation("thaumictinkerer", "textures/misc/sky1.png"), new ResourceLocation("thaumictinkerer", "textures/misc/sky1.png"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/misc"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/baubles"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/machines"));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation("thaumictinkerer", "research/foci"));
-        TheorycraftManager.registerCard(CardExperience.class);
-        TheorycraftManager.registerAid(new AidBlackQuartz(ModBlocks.black_quartz_block));
-        BotaniaCompat.addTheorycraft();
-        proxy.registerRenderers();
-        initFoci();
-        //IDustTrigger.registerDustTrigger(ModBlocks.osmotic_enchanter);
-
-    }
-
-    private void initFoci() {
-        if(TTConfig.DislocationFocusEnabled)
-            FocusEngine.registerElement(FocusEffectDislocate.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/dislocation.png"), 15121988);
-        if(TTConfig.TelekenesisFocusEnabled) {
-            logger.info("Initializing Telekenetic powers");
-            FocusEngine.registerElement(FocusEffectTelekenesis.class, new ResourceLocation("thaumictinkerer", "textures/foci_icons/telekenesis.png"), 13566207);
-        }
-    }
+  }
 }
-
