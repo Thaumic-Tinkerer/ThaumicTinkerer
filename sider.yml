@@ -1,0 +1,65 @@
+# This is a configuration file to customize code analysis by Sider.
+#
+# For more information, see the documentation:
+# https://help.sider.review/getting-started/custom-configuration
+
+# Customize each tool. If analyses fail, try adjusting each option referencing the following example.
+linter:
+
+#   # Checkstyle example. See https://help.sider.review/tools/java/checkstyle
+#   checkstyle:
+#     root_dir: project/
+#     dependencies:
+#       - "my.company.com:checkstyle-rules:1.0.0"
+#     config: custom-checkstyle.xml
+#     target: src/
+#     exclude: vendor/
+#     ignore: [warning, info]
+#     properties: custom-checkstyle.properties
+
+#   # Misspell example. See https://help.sider.review/tools/others/misspell
+#   misspell:
+#     root_dir: project/
+#     target: [src/, test/]
+#     exclude: ["**/*.min.*"]
+#     locale: UK
+#     ignore: [center, behavior]
+
+#   # PMD Java example. See https://help.sider.review/tools/java/pmd
+#   pmd_java:
+#     root_dir: project/
+#     dependencies:
+#       - "my.company.com:pmd-ruleset:1.2.3"
+#     target: src/
+#     rulesets:
+#       - category/java/errorprone.xml
+#       - your_pmd_custom_rules.xml
+#     encoding: ISO-8859-1
+#     min_priority: 3
+
+#   # ShellCheck example. See https://help.sider.review/tools/shellscript/shellcheck
+#   shellcheck:
+#     root_dir: project/
+#     target:
+#       - "**/*.{sh,bash}"
+#       - shebang: true
+#     include: [SC2104, SC2105]
+#     exclude: [SC1000, SC1118]
+#     enable: all
+#     shell: bash
+#     severity: error
+#     norc: true
+
+# Ignore specific files. Example:
+# ignore:
+#   - "*.pdf"
+#   - "*.mp4"
+#   - "*.min.*"
+#   - "images/**"
+
+# Exclude specific branches. Example:
+# branches:
+#   exclude:
+#     - master
+#     - development
+#     - /^release-.*$/
