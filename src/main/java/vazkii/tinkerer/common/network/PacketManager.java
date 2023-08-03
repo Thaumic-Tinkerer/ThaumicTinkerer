@@ -25,6 +25,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import vazkii.tinkerer.common.lib.LibMisc;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
+import vazkii.tinkerer.common.network.TTFilteredObjectInputStream;
 
 public final class PacketManager implements IPacketHandler {
 
@@ -32,7 +33,7 @@ public final class PacketManager implements IPacketHandler {
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
 		try {
 			ByteArrayInputStream byteStream = new ByteArrayInputStream(packet.data);
-			ObjectInputStream objStream = new ObjectInputStream(byteStream);
+			TTFilteredObjectInputStream objStream = new TTFilteredObjectInputStream(byteStream);
 			IPacket ipacket = (IPacket) objStream.readObject();
 
 			ipacket.handle(manager, player);
