@@ -174,7 +174,7 @@ public class ItemCleansingTalisman extends ItemBase implements IBauble {
                         par1ItemStack.damageItem(damage, player);
                         if(par1ItemStack.getItemDamage()<=0)
                             {
-                                BaublesApi.getBaubles((EntityPlayer) player).setInventorySlotContents(BaubleType.AMULET.ordinal(),null);
+                                BaublesApi.getBaubles((EntityPlayer) player).setInventorySlotContents(0, null);
                             }
                         par2World.playSoundAtEntity(player, "thaumcraft:wand", 0.3F, 0.1F);
                     }
