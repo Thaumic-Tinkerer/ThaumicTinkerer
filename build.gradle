@@ -34,7 +34,7 @@ apply plugin: 'forge'
 
 
 group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "ThaumicTinkerer"
+archivesBaseName = "ThaumicTinkerer-blight"
 
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
@@ -47,7 +47,7 @@ minecraft {
 
 
 }
-version = "2.5-${minecraft.version}"
+version = "2.5.2-${minecraft.version}"
 if (System.getenv("BUILD_NUMBER")!=null)
     version = "$version-${System.getenv().BUILD_NUMBER}"
 if (project.hasProperty("releaseType"))
