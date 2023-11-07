@@ -15,12 +15,13 @@
       "meta": [
       ],
       "location": [
-        1,
-        1
+        0,
+        -6
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.transvector_interface.0",
+          "required_knowledge":["THEORY;ARTIFICE;1"],
           "required_item":["minecraft:ender_pearl;4"]
         },
         {
@@ -30,6 +31,7 @@
             "thaumictinkerer:transvector_interface",
             "thaumictinkerer:connector"
           ],
+          "required_knowledge":["OBSERVATION;ARTIFICE;1","THEORY;THAUMIC_TINKERER;1"],
           "required_item":["thaumcraft:mirrored_glass;1"]
         },
         {
@@ -48,10 +50,9 @@
       "name": "thaumictinkerer.research.repairer.title",
       "icons": ["thaumictinkerer:repairer"],
       "category": "THAUMIC_TINKERER",
-      "parents": ["INFUSION","~TT_SPELLBINDING_CLOTH"],
+      "parents": ["INFUSION","TT_BLACK_QUARTZ"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [5,5],
+      "location": [-3, 2],
       "stages": [
         {
           "text": "thaumictinkerer.research.repairer.0",
@@ -68,15 +69,16 @@
       "category": "THAUMIC_TINKERER",
       "parents": [
         "FIRSTSTEPS",
-        "TT_TELEKENESIS"
+        "TT_TELEKENESIS",
+        "TT_DISSIMULATION"
       ],
       "siblings": [],
       "meta": [
-        "ROUND"
+        "REVERSE"
       ],
       "location": [
-        -4,
-        1
+        -2,
+        -4
       ],
       "stages": [
         {
@@ -104,14 +106,15 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "WARDEDJARS"
+        "WARDEDJARS",
+        "TT_BLACK_QUARTZ"
       ],
       "siblings": [],
       "meta": [
       ],
       "location": [
-        3,
-        1
+        2,
+        2
       ],
       "stages": [
         {
@@ -130,19 +133,23 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "INFUSION"
+        "INFUSION",
+        "TT_REPAIRER",
+        "TT_SPELLBINDING_CLOTH"
       ],
       "siblings": [],
       "meta": [
       ],
       "location": [
-        3,
-        2
+        -5,
+        1
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.enchanter.0",
-          "required_knowledge":["THEORY;INFUSION;2"]
+          "required_knowledge":["THEORY;THAUMIC_TINKERER;2","THEORY;INFUSION;2"],
+          "required_craft": ["minecraft:enchanting_table", "thaumictinkerer:black_quartz_block"],
+          "required_item": ["thaumcraft:enchanted_placeholder;1;0;{ench:[{id:0s,lvl:1s}]}", "thaumcraft:enchanted_placeholder;1;0;{ench:[{id:16s,lvl:1s}]}", "thaumcraft:enchanted_placeholder;1;0;{ench:[{id:70s,lvl:1s}]}"]
         },
         {
           "text": "thaumictinkerer.research.enchanter.1",
@@ -164,18 +171,14 @@
         "TT_THAUMIC_MAGNETS",
         "CONTROLSEALS"
       ],
-      "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
       "location": [
-        -3,
-        3
+        -2,
+        -6
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.tablet.0",
-          "required_knowledge":["THEORY;GOLEMANCY;2"]
+          "required_knowledge":["THEORY;THAUMIC_TINKERER;2","THEORY;GOLEMANCY;2"]
         },
         {
           "text": "thaumictinkerer.research.tablet.1",

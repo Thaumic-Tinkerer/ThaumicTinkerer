@@ -7,6 +7,8 @@ import com.nekokittygames.thaumictinkerer.client.gui.GuiMobMagnet;
 import com.nekokittygames.thaumictinkerer.common.containers.AnimationTabletContainer;
 import com.nekokittygames.thaumictinkerer.common.containers.EnchanterContainer;
 import com.nekokittygames.thaumictinkerer.common.containers.MagnetContainer;
+import com.nekokittygames.thaumictinkerer.common.items.Kami.ichorpouch.ContainerPouch;
+import com.nekokittygames.thaumictinkerer.common.items.Kami.ichorpouch.GuiPouch;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityAnimationTablet;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityEnchanter;
 import com.nekokittygames.thaumictinkerer.common.tileentity.TileEntityMagnet;
@@ -34,6 +36,8 @@ public class GuiProxy implements IGuiHandler {
         if (te instanceof TileEntityAnimationTablet) {
             return new AnimationTabletContainer(entityPlayer.inventory, (TileEntityAnimationTablet) te);
         }
+        if (i == 0)
+            return new ContainerPouch(entityPlayer);
         return null;
     }
 
@@ -57,6 +61,8 @@ public class GuiProxy implements IGuiHandler {
             TileEntityAnimationTablet animationTablet = (TileEntityAnimationTablet) te;
             return new GuiAnimationTablet(animationTablet, new AnimationTabletContainer(entityPlayer.inventory, animationTablet));
         }
+        if (i == 0)
+            return new GuiPouch(new ContainerPouch(entityPlayer));
         return null;
     }
 }

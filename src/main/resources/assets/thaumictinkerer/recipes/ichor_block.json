@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "I I",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumictinkerer:kamiresource",
+      "data": 2
+    }
+  },
+  "result": {
+    "item": "thaumictinkerer:ichor_block",
+    "data": 0
+  }
+}

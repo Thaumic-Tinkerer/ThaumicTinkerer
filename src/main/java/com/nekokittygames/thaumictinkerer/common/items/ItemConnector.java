@@ -21,6 +21,7 @@ public class ItemConnector extends TTItem {
 
     public ItemConnector() {
         super(LibItemNames.CONNECTOR);
+        this.setMaxStackSize(1);
     }
 
     public static BlockPos getTarget(ItemStack stack) {

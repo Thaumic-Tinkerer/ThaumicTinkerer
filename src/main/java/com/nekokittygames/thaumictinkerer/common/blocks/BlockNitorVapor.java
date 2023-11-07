@@ -1,10 +1,12 @@
 package com.nekokittygames.thaumictinkerer.common.blocks;
 
+import com.nekokittygames.thaumictinkerer.common.items.Kami.KamiArmor;
 import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.libs.LibBlockNames;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -53,7 +55,7 @@ public class BlockNitorVapor extends BlockGas {
             List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX() - 1, pos.getY() - 1, pos.getZ() - 1, pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
 
             if (players.isEmpty()) world.setBlockToAir(pos);
-            else if (players.stream().noneMatch(p -> p.inventory.hasItemStack(new ItemStack(ModItems.energetic_nitor))))
+            else if (players.stream().noneMatch(p -> p.inventory.hasItemStack(new ItemStack(ModItems.energetic_nitor)) || (p.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItem() instanceof KamiArmor) && p.getItemStackFromSlot(EntityEquipmentSlot.LEGS).getItemDamage() != 1))
                 world.setBlockToAir(pos);
 
             //world.scheduleBlockUpdate(pos, this, tickRate(world), 0);

@@ -293,6 +293,9 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     private void continueBreaking() {
+        if(player == null)
+            return;
+
         BlockPos targetPos = getTargetBlock();
         if (!rightClick) {
             if (!world.getBlockState(targetPos).getBlock().isAir(world.getBlockState(targetPos), world, pos)) {
@@ -349,7 +352,10 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
         entity.rotationYaw = (float)yaw;
     }
 
-        private void swingHit() {
+    private void swingHit() {
+
+        if(player.get() == null)
+            return;
 
         Vec3d base;
         Vec3d look;
@@ -413,6 +419,9 @@ public class TileEntityAnimationTablet extends TileEntityThaumicTinkerer impleme
     }
 
     private void leftClick(RayTraceResult toUse, BlockPos targetPos) {
+        if(player.get() == null)
+            return;
+
         if (!this.isRemoving || !this.isHittingPosition(targetPos, player.get())) {
 
             ItemStack itm = FakePlayerUtils.leftClickInDirection(getPlayer(), this.world, this.pos, facing, world.getBlockState(pos), toUse);

@@ -189,7 +189,7 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
     }
 
     private void onInventoryChanged(ItemStack stackInSlot) {
-
+        clearEnchants();
         refreshEnchants();
     }
 
@@ -745,16 +745,16 @@ public class TileEntityEnchanter extends TileEntityThaumicTinkerer implements IT
             switch(enchantment.getRarity())
             {
                 case COMMON:
-                    visAmount+=25*getLevels().get(i);
+                    visAmount+=50*getLevels().get(i);
                     break;
                 case UNCOMMON:
-                    visAmount+=35*getLevels().get(i);
+                    visAmount+=90*getLevels().get(i);
                     break;
                 case RARE:
-                    visAmount+=40*getLevels().get(i);
+                    visAmount+=120*getLevels().get(i);
                     break;
                 case VERY_RARE:
-                    visAmount+=50*getLevels().get(i);
+                    visAmount+=300*getLevels().get(i);
             }
             switch (Objects.requireNonNull(enchantment.type)) {
                 case ARMOR:

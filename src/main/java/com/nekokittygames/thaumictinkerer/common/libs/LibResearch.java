@@ -18,4 +18,6 @@ public class LibResearch {
 
     public static final String TABLET = "TT_TABLET";
     public static final String ENERGETIC_NITOR = "TT_ENERGETIC_NITOR";
+
+    public static final String ICHORIUM_TOOLS = "TT_ICHORIUMTOOLS";
 }

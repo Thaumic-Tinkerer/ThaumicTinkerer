@@ -11,13 +11,13 @@
         "FIRSTSTEPS"
       ],
       "meta": [
-        "ROUND"
+        "ROUND", "HIDDEN"
       ],
       "siblings": [],
 
       "location": [
         0,
-        -1
+        0
       ],
       "stages": [
         {
@@ -39,19 +39,20 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS"
+        "FIRSTSTEPS",
+        "TT_SHARE_TOME"
       ],
-      "siblings": [],
       "meta": [
         "ROUND"
       ],
       "location": [
-        2,
+        0,
         2
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.black_quartz.0",
+          "required_knowledge": ["OBSERVATION;BASICS;1"],
           "required_item": [
             "minecraft:quartz"
           ]
@@ -73,19 +74,18 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS"
+        "FIRSTSTEPS",
+        "TT_SHARE_TOME"
       ],
       "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
       "location": [
-        4,
-        5
+        2,
+        0
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.energetic_nitor.0",
+          "required_knowledge": ["OBSERVATION;BAISCS;1", "THEORY;THAUMIC_TINKERER;1", "THEORY;ALCHEMY;1"],
           "required_item": [
             "thaumcraft:nitor_yellow"
           ]
@@ -106,19 +106,17 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "FIRSTSTEPS"
+        "TT_SHARE_TOME"
       ],
       "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
       "location": [
-        5,
-        4
+        0,
+        -2
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.prismarine.0",
+          "required_knowledge": ["OBSERVATION;BASICS;1"],
           "recipes": [
             "thaumictinkerer:prismarine"
           ],
@@ -136,19 +134,18 @@
       ],
       "category": "THAUMIC_TINKERER",
       "parents": [
-        "UNLOCKINFUSION"
+        "UNLOCKINFUSION",
+        "TT_AUROMANCY"
       ],
       "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
       "location": [
-        5,
-        6
+        -3,
+        0
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.spellbinding_cloth.0",
+          "required_knowledge": ["OBSERVATION;ALCHEMY;1", "THEORY;THAUMIC_TINKERER;1", "THEORY;ALCHEMY;1"],
           "required_item": [
             "thaumcraft:fabric"
           ]
@@ -166,12 +163,12 @@
       "name": "thaumictinkerer.research.dissimulation.title",
       "icons": [ "thaumictinkerer:dissimulation" ],
       "category": "THAUMIC_TINKERER",
-      "parents": [ "FIRSTSTEPS" ],
-      "meta": [ "ROUND" ],
-      "location": [ 1,-1 ],
+      "parents": [ "TT_PRISMARINE" ],
+      "location": [ 0, -4 ],
       "stages": [
         {
           "text": "thaumictinkerer.research.dissimulation.0",
+          "required_knowledge": ["OBSERVATION;BASICS;1", "OBSERVATION;ALCHEMY;1"],
           "required_item":["minecraft:prismarine_shard;30"]
         },
         {
@@ -180,7 +177,58 @@
 
         }
       ]
+    },
+    {
+      "key": "TT_AUROMANCY",
+      "name": "thaumictinkerer.research.auromancy.title",
+      "icons": [
+        "thaumictinkerer:textures/misc/advanced_auromancy.png"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "TT_SHARE_TOME",
+        "UNLOCKAUROMANCY"
+      ],
+      "siblings": [],
+      "location": [
+        -2,
+         -2
+      ],
+      "stages": [
+        {
+          "text": "research.UNLOCKAUROMANCY.stage.3"
+        }
+      ]
+    },
+    {
+      "key": "TT_REVEALING",
+      "name": "thaumictinkerer.research.revealing_helm.title",
+      "icons": [
+        "thaumictinkerer:revealing_helm"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "parents": [
+        "TT_SHARE_TOME",
+        "UNLOCKARTIFICE"
+      ],
+      "siblings": [],
+      "location": [
+        -1,
+        1
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.revealing_helm.text",
+          "required_craft":["thaumcraft:goggles"],
+          "required_knowledge":["OBSERVATION;BASICS;1", "OBSERVATION;ARTIFICE;1"]
+        },
+        {
+          "text": "thaumictinkerer.research.revealing_helm.complete.text",
+          "recipes": [
+            "thaumictinkerer:revealing_helm"
+          ]
+        }
+      ]
     }
-
   ]
 }

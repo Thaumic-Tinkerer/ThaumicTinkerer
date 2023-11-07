@@ -108,23 +108,21 @@ public class TileEntityFunnel extends TileEntityThaumicTinkerer implements IAspe
 
     @Override
     public void update() {
-        if (inventory != null && (inventory.getStackInSlot(0) != ItemStack.EMPTY) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)) != null) && (((IEssentiaContainerItem) inventory.getStackInSlot(0).getItem()).getAspects(inventory.getStackInSlot(0)).size() > 0) && !world.isRemote) {
-            IEssentiaContainerItem item = (IEssentiaContainerItem) inventory.getStackInSlot(0).getItem();
-            AspectList aspectList = item.getAspects(inventory.getStackInSlot(0));
+        if (this.inventory != null && this.inventory.getStackInSlot(0) != ItemStack.EMPTY && ((IEssentiaContainerItem)this.inventory.getStackInSlot(0).getItem()).getAspects(this.inventory.getStackInSlot(0)) != null && ((IEssentiaContainerItem)this.inventory.getStackInSlot(0).getItem()).getAspects(this.inventory.getStackInSlot(0)).size() > 0 && !this.world.isRemote) {
+            IEssentiaContainerItem item = (IEssentiaContainerItem)this.inventory.getStackInSlot(0).getItem();
+            AspectList aspectList = item.getAspects(this.inventory.getStackInSlot(0));
             if (aspectList != null && aspectList.size() == 1) {
                 Aspect aspect = aspectList.getAspects()[0];
-                TileEntity tile = world.getTileEntity(pos.down());
+                TileEntity tile = this.world.getTileEntity(this.pos.down());
                 if (tile != null && tile instanceof TileEntityHopper) {
-                    TileEntity hoppered = getHopperFacing(tile.getPos(), tile.getBlockMetadata());
+                    TileEntity hoppered = this.getHopperFacing(tile.getPos(), tile.getBlockMetadata());
                     if (hoppered instanceof TileJarFillable) {
-                        TileJarFillable jar = (TileJarFillable) hoppered;
+                        TileJarFillable jar = (TileJarFillable)hoppered;
                         AspectList JarAspects = jar.getAspects();
-
-                        if (JarAspects != null && JarAspects.size() == 0 && (jar.aspectFilter == null || jar.aspectFilter == aspect) || Objects.requireNonNull(JarAspects).getAspects()[0] == aspect) {
-                            int remain = jar.addToContainer(aspect, speed);
-                            int amt = speed - remain;
-                            item.setAspects(inventory.getStackInSlot(0), aspectList.remove(aspect, amt));
-
+                        if ((jar.aspectFilter == null || jar.aspectFilter == aspect) && (JarAspects != null && JarAspects.size() == 0 || ((AspectList)Objects.requireNonNull(JarAspects)).getAspects()[0] == aspect)) {
+                            int remain = jar.addToContainer(aspect, this.speed);
+                            int amt = this.speed - remain;
+                            item.setAspects(this.inventory.getStackInSlot(0), aspectList.remove(aspect, amt));
                         }
                     }
                 }

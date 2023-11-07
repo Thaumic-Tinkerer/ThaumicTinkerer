@@ -4,21 +4,22 @@
       "key": "TT_TELEKENESIS",
       "name": "thaumictinkerer.research.TT_TELEKENESIS.title",
       "icons": [
-        "thaumictinkerer:textures/foci_icons/telekenesis.png"
+        "focus:thaumictinkerer.TELEKENESIS"
       ],
       "category": "THAUMIC_TINKERER",
       "location": [
-        -5,
-        0
+        -3,
+        -3
       ],
       "parents": [
-        "BASEAUROMANCY"
+        "BASEAUROMANCY",
+        "TT_AUROMANCY"
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.TT_TELEKENESIS.0",
           "required_knowledge": [
-            "THEORY;AUROMANCY;1"
+            "THEORY;AUROMANCY;1","THEORY;THAUMIC_TINKERER;1"
           ]
         },
         {
@@ -30,26 +31,56 @@
       "key": "TT_DISLOCATE",
       "name": "thaumictinkerer.research.TT_DISLOCATE.title",
       "icons": [
-        "thaumictinkerer:textures/foci_icons/dislocation.png"
+        "focus:thaumictinkerer.dislocation"
       ],
       "category": "THAUMIC_TINKERER",
       "location": [
         -5,
-        3
+        -3
       ],
       "parents": [
         "BASEAUROMANCY",
-        "FOCUSEXCHANGE"
+        "FOCUSEXCHANGE",
+        "TT_AUROMANCY"
       ],
       "stages": [
         {
           "text": "thaumictinkerer.research.DISLOCATE.0",
           "required_knowledge": [
-            "THEORY;AUROMANCY;1"
+            "THEORY;AUROMANCY;1","THEORY;THAUMIC_TINKERER;1"
           ]
         },
         {
           "text": "thaumictinkerer.research.DISLOCATE.1"
+        }
+      ]
+    },
+    {
+      "key": "TT_EFREET_FLAME",
+      "name": "thaumictinkerer.research.EFREET_FLAME.title",
+      "icons": [
+        "focus:thaumictinkerer.efreetflame"
+      ],
+      "category": "THAUMIC_TINKERER",
+      "location": [
+        -7,
+        -3
+      ],
+      "parents": [
+        "BASEAUROMANCY",
+        "FOCUSBREAK",
+        "TT_AUROMANCY"
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.EFREET_FLAME.0",
+          "required_knowledge": [
+            "THEORY;AUROMANCY;1","THEORY;THAUMIC_TINKERER;1"
+          ],
+          "required_item": ["thaumcraft:nitor_yellow"]
+        },
+        {
+          "text": "thaumictinkerer.research.EFREET_FLAME.1"
         }
       ]
     }

@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 public class ItemEnergeticNitor extends TTItem {
     public ItemEnergeticNitor() {
         super(LibItemNames.ENERGETIC_NITOR);
+        this.setMaxStackSize(1);
     }
 
     public static void setBlock(BlockPos pos, World world) {

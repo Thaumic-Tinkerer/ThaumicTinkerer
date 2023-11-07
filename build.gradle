@@ -1,39 +1,34 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net/' }
         jcenter()
-        mavenCentral()
-        maven {
-            name 'FancyGradle'
-            url 'https://gitlab.com/api/v4/projects/26758973/packages/maven'
-        }
+        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath group: 'wtf.gofancy.fancygradle', name: 'wtf.gofancy.fancygradle.gradle.plugin', version: '1.1.+'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.wynprice.cursemaven:CurseMaven:2.1.1'
     }
 }
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.wynprice.cursemaven'
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'wtf.gofancy.fancygradle'
+version = "1.12.2-5.1"
+group = "${package_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "${mod_name}"
 
-fancyGradle {
-    patches {
-        resources
-        coremods
-        asm
-        codeChickenLib
-    }
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
 }
 
-    sourceSets {
-        test {
-            resources.setSrcDirs([])
-        }
-    }
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
 
+    mappings = "stable_39"
+    //accessTransformer(file('src/main/resources/META-INF/tk_at.cfg'))
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+}
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
@@ -54,62 +49,32 @@ repositories {
     }
 }
 
-version = "1.12.2-5.1"
-group = "${package_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "${mod_name}"
-
 
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
 
-minecraft {
-    mappings channel: 'stable', version: '39-1.12'
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-        }
-
-        server {
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-        }
-    }
-}
-
 dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
-    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
-    implementation fg.deobf("curse.maven:jei-238222:3043174")
+    deobfCompile("curse.maven:jei-238222:3043174")
 
-    implementation fg.deobf("curse.maven:Hwyla-253449:2568751")
-    //implementation fg.deobf("curse.maven:opencomputers-223008:2828357")//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
-    implementation fg.deobf("curse.maven:actually-additions-228404:3117927")
-    implementation fg.deobf("curse.maven:hammerCore-247401:3611193")
-    implementation fg.deobf('curse.maven:thaumcraft-223628:2629023')
-    implementation fg.deobf('curse.maven:baubles-227083:2518667')
-    implementation fg.deobf("curse.maven:thaumic-additions-232564:3663195")
-    implementation fg.deobf("curse.maven:redstoneFlux-270789:2920436")
-    implementation fg.deobf("curse.maven:appeng-223794:2747063")
-    implementation fg.deobf("curse.maven:thaumic-energistics-223666:2915506")
-    implementation fg.deobf("curse.maven:mantle-74924:2713386")
-    implementation fg.deobf("curse.maven:TConstruct-74072:2809406")
-    implementation fg.deobf("curse.maven:botania-225643:3330934")
-            implementation fg.deobf("curse.maven:cyclops-core-232758:3159497")
-            implementation fg.deobf("curse.maven:evilcraft-74610:2811267")
-            implementation fg.deobf("curse.maven:theoneprobe-245211:2667280")//1.1x-1.4.4-55
-            implementation fg.deobf("curse.maven:thaumic-jei-285492:2705304")
+    deobfCompile("curse.maven:Hwyla-253449:2568751")
+    //deobfCompile("curse.maven:opencomputers-223008:2828357")//li.cil.oc:OpenComputers:MC1.12.1-1.7.0.+"
+    deobfCompile("curse.maven:actually-additions-228404:3117927")
+    //deobfCompile("curse.maven:hammerCore-247401:3611193")
+    deobfCompile('curse.maven:thaumcraft-223628:2629023')
+    deobfCompile('curse.maven:baubles-227083:2518667')
+    //deobfCompile("curse.maven:thaumic-additions-232564:3663195")
+    deobfCompile("curse.maven:redstoneFlux-270789:2920436")
+    deobfCompile("curse.maven:appeng-223794:2747063")
+   // deobfCompile("curse.maven:thaumic-energistics-223666:2915506")
+    deobfCompile("curse.maven:mantle-74924:2713386")
+    deobfCompile("curse.maven:TConstruct-74072:2809406")
+    deobfCompile("curse.maven:botania-225643:3330934")
+    deobfCompile("curse.maven:cyclops-core-232758:3159497")
+    //deobfCompile("curse.maven:evilcraft-74610:2811267")
+    deobfCompile("curse.maven:theoneprobe-245211:2667280")//1.1x-1.4.4-55
+    deobfCompile("curse.maven:thaumic-jei-285492:2705304")
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

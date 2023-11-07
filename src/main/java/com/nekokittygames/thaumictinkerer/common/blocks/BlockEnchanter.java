@@ -13,8 +13,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
@@ -27,6 +30,10 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
         return new TileEntityEnchanter();
     }
 
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return  new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
+    }
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -41,7 +48,7 @@ public class BlockEnchanter extends TTTileEntity<TileEntityEnchanter> {
         if(((TileEntityEnchanter)te).checkLocation())
             player.openGui(ThaumicTinkerer.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
         else
-            player.sendStatusMessage(new TextComponentString("§5§o" + ThaumicTinkerer.proxy.localize("ttmisc.enchanter.incomplete")), true);
+            player.sendStatusMessage(new TextComponentString(TextFormatting.DARK_RED + TextFormatting.BOLD.toString() + ThaumicTinkerer.proxy.localize("ttmisc.enchanter.incomplete")), true);
         return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
 

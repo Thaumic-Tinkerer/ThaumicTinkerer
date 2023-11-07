@@ -1,0 +1,433 @@
+{
+  "entries": [
+    {
+      "key": "TT_ICHOR",
+      "name": "thaumictinkerer.research.ichor.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kamiresource;1;2"
+      ],
+      "parents": [
+        "TT_DIMENSIONALSHARD"
+      ],"meta":["SPIKY","HIDDEN"],
+      "location": [
+        4,
+        -3
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichor.text",
+          "required_knowledge": [
+            "THEORY;BASICS;3","THEORY;ARTIFICE;2","THEORY;INFUSION;2"
+          ],"warp" : "3"
+        },
+        {
+          "text": "thaumictinkerer.research.ichor.text",
+          "required_knowledge": [
+            "THEORY;ATIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft":["thaumictinkerer:ichor"],
+          "recipes":["thaumictinkerer:ichor_block","thaumictinkerer_ichor"],"warp" : "7"
+        },
+        {
+          "text": "thaumictinkerer.research.ichor.complete.text",
+          "recipes":["thaumictinkerer:ichor_block","thaumictinkerer:ichor","thaumictinkerer:ichor_cloth", "thaumictinkerer:ichor_ingot"]
+        }
+      ]
+    },
+    {
+      "key": "TT_DIMENSIONALSHARD",
+      "name": "thaumictinkerer.research.dimensionalshard.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kamiresource;1;0",
+        "thaumictinkerer:kamiresource;1;1"
+      ],
+      "parents": [
+        "ESSENTIATRANSPORT","IMPROVEDSMELTING2","POTIONSPRAYER", "SANESOAP", "LIQUIDDEATH", "BOTTLETAINT", "ARCANESPA", "EVERFULLURN", "METALPURIFICATION", "POTIONSPRAYER",
+        "FOCUSADVANCED", "FOCUSCURSE", "FOCUSPLAN", "FOCUSRIFT", "FOCUSSPELLBAT", "FOCUSCLOUD", "FOCUSSPLIT", "RECHARGEPEDESTAL", "VISAMULET", "WORKBENCHCHARGER", "FOCUSPOUCH",
+        "INFUSIONBOOST", "RUNICSHIELDING", "FORTRESSMASK", "CHARMUNDYING", "VERDANTCHARMS", "CURIOSITYBAND", "PAVINGSTONES",
+        "JARBRAIN", "GOLEMLOGISTICS", "GOLEMVISION", "GOLEMFLYER", "GOLEMCOMBATADV", "SEALLUMBER", "SEALHARVEST", "SEALBUTCHER","SEALSTORE",
+        "FLUXCLEANUP", "RIFTCLOSER",
+        "~LEVITATOR", "~BELLOWS", "~MIRRORHAND", "~MIRRORESSENTIA", "~LAMPGROWTH",  "~LAMPFERTILITY", "~ARCANEPATTERNCRAFTER", "~ARCANEBORE", "~ADVANCEDTURRET", "~GRAPPLEGUN", "~VISGENERATOR"
+      ],"meta":["ROUND"],
+      "location": [
+        2,
+        -3
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.dimensionalshard.text",
+          "required_item": [
+            "thaumictinkerer:kamiresource;1;0",
+            "thaumictinkerer:kamiresource;1;1"
+          ],
+          "required_knowledge": [
+            "THEORY;BASICS;2","THEORY;ARTIFICE;1","THEORY;ALCHEMY;1","THEORY;INFUSION;1","THEORY;AUROMANCY;1"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.dimensionalshard.complete.text"
+        }
+      ]
+    },
+    {
+      "key": "TT_ICHORIUMTOOLS",
+      "name": "thaumictinkerer.research.ichoriumtools.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kamiresource;1;3"
+      ],
+      "parents": [
+        "TT_ICHOR"
+      ],"meta":["HIDDEN"],
+      "location": [
+        6,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichoriumtools.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2"
+          ],
+          "required_item":["thaumictinkerer:ichor_ingot"],
+          "recipes":["thaumictinkerer:ichor_ingot"],"warp" : "5"
+        },
+        {
+          "text": "thaumictinkerer.research.ichoriumtools.complete.text",
+          "recipes":["thaumictinkerer:ichor_ingot","thaumictinkerer:ichorium_sword","thaumictinkerer:ichorium_pick","thaumictinkerer:ichorium_shovel","thaumictinkerer:ichorium_axe"]
+        }
+      ]
+    },
+    {
+      "key": "TT_ICHORARMOR",
+      "name": "thaumictinkerer.research.ichorarmor.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kamiresource;1;4"
+      ],
+      "parents": [
+        "TT_ICHOR"
+      ],"meta":["HIDDEN"],
+      "location": [
+        6,
+        -5
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichorarmor.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2"
+          ],
+          "required_item":["thaumictinkerer:ichor_cloth"],
+          "recipes":["thaumictinkerer:ichor_cloth"],"warp" : "5"
+        },
+        {
+          "text": "thaumictinkerer.research.ichorarmor.complete.text",
+          "recipes":["thaumictinkerer:ichor_cloth","thaumictinkerer:ichor_helm","thaumictinkerer:ichor_chest","thaumictinkerer:ichor_legs","thaumictinkerer:ichor_boots"]
+        }
+      ]
+    },
+    {
+      "key": "TT_KAMIHELM",
+      "name": "thaumictinkerer.research.kamihelm.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kami_helm"
+      ],
+      "parents": [
+        "TT_ICHORARMOR"
+      ],"meta":["HIDDEN"],
+      "location": [
+        3,
+        -7
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.kamihelm.text",
+          "required_knowledge":["THEORY;ARTIFICE;2","THEORY;INFUSION;1"],
+          "required_craft":["thaumictinkerer:ichor_helm"]
+        },
+        {
+          "text": "thaumictinkerer.research.kamihelm.complete.text",
+          "recipes":["thaumictinkerer:kami_helm"]
+        }
+      ]
+    },
+    {"key": "TT_KAMICHEST",
+      "name": "thaumictinkerer.research.kamichest.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kami_chest"
+      ],
+      "parents": [
+        "TT_ICHORARMOR"
+      ],"meta":["HIDDEN"],
+      "location": [5,-7
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.kamichest.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft":["thaumictinkerer:ichor_chest"]
+        },
+        {
+          "text": "thaumictinkerer.research.kamichest.complete.text",
+          "recipes":["thaumictinkerer:kami_chest"]
+        }
+      ]
+    },
+    {
+      "key": "TT_KAMILEGS",
+      "name": "thaumictinkerer.research.kamilegs.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kami_legs"
+      ],
+      "parents": [
+        "TT_ICHORARMOR"
+      ],"meta":["HIDDEN"],
+      "location": [
+        7,
+        -7
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.kamilegs.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft":["thaumictinkerer:ichor_legs"]
+        },
+        {
+          "text": "thaumictinkerer.research.kamilegs.complete.text",
+          "recipes":["thaumictinkerer:kami_legs"]
+        }
+      ]
+    },
+    {
+      "key": "TT_KAMIBOOTS",
+      "name": "thaumictinkerer.research.kamiboots.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:kami_boots"
+      ],
+      "parents": [
+        "TT_ICHORARMOR"
+      ],"meta":["HIDDEN"],
+      "location": [
+        9,
+        -7
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.kamiboots.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft":["thaumictinkerer:ichor_boots"]
+        },
+        {
+          "text": "thaumictinkerer.research.kamiboots.complete.text",
+          "recipes":["thaumictinkerer:kami_boots"]
+        }
+      ]
+    },
+    {
+      "key": "TT_ICHOR_PICK_ADV",
+      "name": "thaumictinkerer.research.ichorium_pick_adv.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:ichorium_pick_adv"
+      ],
+      "parents": [
+        "TT_ICHORIUMTOOLS"
+      ],"meta":["HIDDEN", "REVERSE"],
+      "location": [
+        8,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichorium_pick_adv.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft": [
+            "thaumictinkerer:ichorium_pick"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.ichorium_pick_adv.complete.text",
+          "recipes":["thaumictinkerer:ichorium_pick_adv"]
+        }
+      ]
+    },
+    {
+      "key": "TT_ICHOR_SHOVEL_ADV",
+      "name": "thaumictinkerer.research.ichorium_shovel_adv.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:ichorium_shovel_adv"
+      ],
+      "parents": [
+        "TT_ICHORIUMTOOLS"
+      ],"meta":["HIDDEN", "REVERSE"],
+      "location": [
+        8,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichorium_shovel_adv.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft": [
+            "thaumictinkerer:ichorium_shovel"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.ichorium_shovel_adv.complete.text",
+          "recipes":["thaumictinkerer:ichorium_shovel_adv"]
+        }
+      ]
+    },
+    {
+      "key": "TT_ICHOR_AXE_ADV",
+      "name": "thaumictinkerer.research.ichorium_axe_adv.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:ichorium_axe_adv"
+      ],
+      "parents": [
+        "TT_ICHORIUMTOOLS"
+      ],"meta":["HIDDEN", "REVERSE"],
+      "location": [
+        8,
+        0
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichorium_axe_adv.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2","THEORY;INFUSION;1"
+          ],
+          "required_craft": [
+            "thaumictinkerer:ichorium_axe"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.ichorium_axe_adv.complete.text",
+          "recipes":["thaumictinkerer:ichorium_axe_adv"]
+        }
+      ]
+    },
+    {
+      "key": "TT_ICHOR_SWORD_ADV",
+      "name": "thaumictinkerer.research.ichorium_sword_adv.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:ichorium_sword_adv"
+      ],
+      "parents": [
+        "TT_ICHORIUMTOOLS"
+      ],
+      "meta": [
+        "HIDDEN",
+        "REVERSE"
+      ],
+      "location": [
+        8,
+        2
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.ichorium_sword_adv.text",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;2",
+            "THEORY;INFUSION;1"
+          ],
+          "required_craft": [
+            "thaumictinkerer:ichorium_sword"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.ichorium_sword_adv.complete.text",
+          "recipes": [
+            "thaumictinkerer:ichorium_sword_adv"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "TT_BLACKHOLE_RING",
+      "name": "thaumictinkerer.research.blackhole_ring.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:block_talisman"
+      ],
+      "parents": [
+        "TT_ICHOR_PICK_ADV"
+      ],
+      "meta": [
+        "REVERSE"
+      ],
+      "location": [
+        10,
+        -3
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.blackhole_ring.text",
+          "required_knowledge": [
+            "THEORY;INFUSION;2",
+            "THEORY;THAUMIC_TINKERER;2"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.blackhole_ring.complete.text",
+          "recipes": [
+            "thaumictinkerer:block_talisman"
+            ]
+        }
+      ]
+    },
+    {
+      "key": "TT_PROTO_CLAY",
+      "name": "thaumictinkerer.research.proto_clay.title",
+      "category": "THAUMIC_TINKERER",
+      "icons": [
+        "thaumictinkerer:proto_clay"
+      ],
+      "parents": [
+        "TT_ICHOR_PICK_ADV"
+      ],
+      "meta": [
+        "REVERSE"
+      ],
+      "location": [
+        10,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "thaumictinkerer.research.proto_clay.text",
+          "required_knowledge": [
+            "OBSERVATION;BASICS;1",
+            "THEORY;THAUMIC_TINKERER;1"
+          ]
+        },
+        {
+          "text": "thaumictinkerer.research.proto_clay.complete.text",
+          "recipes": [
+            "thaumictinkerer:proto_clay"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -26,12 +26,8 @@ public class ItemSoulMould extends TTItem {
 
     public ItemSoulMould() {
         super(LibItemNames.SOUL_MOULD);
-        this.addPropertyOverride(new ResourceLocation("thaumictinkerer", "full"), new IItemPropertyGetter() {
-            @Override
-            public float apply(ItemStack itemStack, @Nullable World world, @Nullable EntityLivingBase entityLivingBase) {
-                return getEntityName(itemStack) != null ? 1 : 0;
-            }
-        });
+        this.setMaxStackSize(1);
+        this.addPropertyOverride(new ResourceLocation("thaumictinkerer", "full"), (itemStack, world, entityLivingBase) -> getEntityName(itemStack) != null ? 1 : 0);
     }
 
     public static void setEntityName(ItemStack stack, EntityLivingBase entity) {

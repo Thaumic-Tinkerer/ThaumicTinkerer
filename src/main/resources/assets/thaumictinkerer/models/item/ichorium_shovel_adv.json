@@ -1,0 +1,20 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "thaumictinkerer:items/ichorium_shovel_adv"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "ichoriumshoveladv:awaken": 1
+      },
+      "model": "thaumictinkerer:item/ichorium_shovel_adv1"
+    },
+    {
+      "predicate": {
+        "ichoriumshoveladv:awaken": 2
+      },
+      "model": "thaumictinkerer:item/ichorium_shovel_adv2"
+    }
+  ]
+}

@@ -227,7 +227,7 @@ public class FocusEffectDislocate extends FocusEffect {
 
     @Override
     public int getComplexity() {
-        return 1;
+        return 20;
     }
 
     @Override
@@ -237,7 +237,7 @@ public class FocusEffectDislocate extends FocusEffect {
 
     @Override
     public String getKey() {
-        return "dislocation";
+        return "thaumictinkerer.dislocation";
     }
 
     @Override

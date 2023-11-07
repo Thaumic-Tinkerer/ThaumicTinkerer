@@ -10,7 +10,9 @@ import net.minecraftforge.common.IRarity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.awt.*;
 
 public class ItemSpellbindingCloth extends TTItem {
     public ItemSpellbindingCloth() {
@@ -20,11 +22,6 @@ public class ItemSpellbindingCloth extends TTItem {
         setNoRepair();
     }
 
-    @Override
-    public ItemStack getContainerItem(ItemStack itemStack) {
-        itemStack.setItemDamage(itemStack.getItemDamage()+1);
-        return itemStack;
-    }
 
     @Override
     public boolean hasContainerItem() {
@@ -38,9 +35,21 @@ public class ItemSpellbindingCloth extends TTItem {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
         return false;
     }
 
+    @Nonnull
+    @Override
+    public ItemStack getContainerItem(@Nonnull ItemStack itemStack) {
+        ItemStack newStack = itemStack.copy();
+        newStack.setItemDamage(itemStack.getItemDamage() + 1);
+        return newStack;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRGBDurabilityForDisplay(ItemStack par1ItemStack) {
+        return Color.HSBtoRGB(0.75F, ((float) par1ItemStack.getMaxDamage() - (float) par1ItemStack.getItemDamage()) / par1ItemStack.getMaxDamage() * 0.5F, 1F);
+    }
 }

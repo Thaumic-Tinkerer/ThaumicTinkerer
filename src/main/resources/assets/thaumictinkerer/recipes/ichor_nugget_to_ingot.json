@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "thaumictinkerer:kamiresource",
+      "data": 5
+    }
+  },
+  "result": {
+    "item": "thaumictinkerer:kamiresource",
+    "data": 3
+  }
+}

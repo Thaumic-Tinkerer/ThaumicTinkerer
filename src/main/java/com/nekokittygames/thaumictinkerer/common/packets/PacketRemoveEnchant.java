@@ -74,8 +74,9 @@ public class PacketRemoveEnchant implements IMessage {
                 TileEntity te = world.getTileEntity(packetAddEnchant.getPos());
                 if (te instanceof TileEntityEnchanter) {
                     TileEntityEnchanter enchanter = (TileEntityEnchanter) te;
-                    enchanter.removeEnchant(enchanter.getEnchantments().indexOf(packetAddEnchant.enchantID));
-                    enchanter.removeLevel(enchanter.getEnchantments().indexOf(packetAddEnchant.enchantID));
+                    int te1 = enchanter.getEnchantments().indexOf(packetAddEnchant.enchantID);
+                    enchanter.removeEnchant(te1);
+                    enchanter.removeLevel(te1);
                 }
             }
         }

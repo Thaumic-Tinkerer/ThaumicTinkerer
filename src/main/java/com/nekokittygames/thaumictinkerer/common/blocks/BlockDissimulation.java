@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class BlockDissimulation extends TTCamoBlock<TileEntityDissimulation> {
     public BlockDissimulation() {
-        super(LibBlockNames.DISSIMULATION, Material.WOOD, true);
+        super(LibBlockNames.DISSIMULATION, Material.ROCK, true);
     }
 
     @Override

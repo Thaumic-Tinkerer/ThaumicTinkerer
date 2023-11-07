@@ -19,4 +19,6 @@ public class LibRecipes {
     public static final ResourceLocation REPAIRER = new ResourceLocation(MOD_ID, "repairer");
     public static final ResourceLocation TABLET = new ResourceLocation(MOD_ID, "tablet");
     public static final ResourceLocation ENERGETIC_NITOR = new ResourceLocation(MOD_ID, "energetic_nitor");
+    public static final ResourceLocation ICHORIUM_SWORD = new ResourceLocation(LibMisc.MOD_ID, "ichorium_sword");
+    public static final ResourceLocation ICHORIUM_PICK = new ResourceLocation(LibMisc.MOD_ID, "ichorium_pick");
 }

@@ -1,0 +1,38 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "thaumictinkerer:items/shard_end"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "meta": 1
+            },
+            "model": "thaumictinkerer:item/shard_nether"
+        },
+        {
+            "predicate": {
+                "meta": 2
+            },
+            "model": "thaumictinkerer:item/ichor"
+        },
+        {
+            "predicate": {
+                "meta": 3
+            },
+            "model": "thaumictinkerer:item/ichor_ingot"
+        },
+        {
+            "predicate": {
+                "meta": 4
+            },
+            "model": "thaumictinkerer:item/ichor_cloth"
+        },
+        {
+            "predicate": {
+                "meta": 5
+            },
+            "model": "thaumictinkerer:item/ichor_nugget"
+        }
+    ]
+}

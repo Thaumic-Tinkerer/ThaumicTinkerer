@@ -1,0 +1,13 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "thaumictinkerer:ichor_block"
+    }
+  ],
+  "result": {
+    "item": "thaumictinkerer:kamiresource",
+    "count": 8,
+    "data": 2
+  }
+}
