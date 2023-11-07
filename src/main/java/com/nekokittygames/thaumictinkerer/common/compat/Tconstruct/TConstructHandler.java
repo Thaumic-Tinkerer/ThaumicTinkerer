@@ -52,7 +52,7 @@ public class TConstructHandler {
             if (e.getSide() == Side.CLIENT)
                 setMetalMaterialRenderInfo(ichorium, 0xB26507, 0.7f, 0f, 0.1f);
 
-            TinkerRegistry.addMaterialStats(ichorium, new HeadMaterialStats(637500, 32, TTConfig.IWeaponDamage, 10), new HandleMaterialStats(TTConfig.IWeaponDamage, 63750), new ExtraMaterialStats(220000), new BowMaterialStats(TTConfig.IWeaponDamage, 6.5f, 7));
+            TinkerRegistry.addMaterialStats(ichorium, new HeadMaterialStats(6375, 32, TTConfig.IWeaponDamage, 10), new HandleMaterialStats(TTConfig.IWeaponDamage, 650), new ExtraMaterialStats(2200), new BowMaterialStats(TTConfig.IWeaponDamage, 6.5f, 7));
 
             MaterialIntegration mi = new MaterialIntegration(ichorium, fluidIchorium);
             mi.oreSuffix = "Ichorium";
