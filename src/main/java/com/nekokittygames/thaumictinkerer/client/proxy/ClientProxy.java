@@ -9,9 +9,11 @@ import com.nekokittygames.thaumictinkerer.client.rendering.special.multi.NitorRe
 import com.nekokittygames.thaumictinkerer.client.rendering.tileentities.*;
 import com.nekokittygames.thaumictinkerer.common.commands.CommandThaumicTinkererClient;
 import com.nekokittygames.thaumictinkerer.common.intl.MultiBlockPreviewRendering;
+import com.nekokittygames.thaumictinkerer.common.items.ModItems;
 import com.nekokittygames.thaumictinkerer.common.proxy.GuiProxy;
 import com.nekokittygames.thaumictinkerer.common.proxy.ITTProxy;
 import com.nekokittygames.thaumictinkerer.common.tileentity.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -19,6 +21,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.common.blocks.misc.BlockNitor;
+
+import java.awt.*;
 
 import static com.nekokittygames.thaumictinkerer.ThaumicTinkerer.instance;
 
@@ -50,6 +54,8 @@ public class ClientProxy implements ITTProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiProxy());
+
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler((s, t) -> Color.HSBtoRGB(0.75F, ((float) s.getMaxDamage() - (float) s.getItemDamage()) / s.getMaxDamage() * 0.5F, 1F), ModItems.spellbinding_cloth);
     }
 
     /**

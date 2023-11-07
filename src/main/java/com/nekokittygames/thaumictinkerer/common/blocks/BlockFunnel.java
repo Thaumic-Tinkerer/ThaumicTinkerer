@@ -54,7 +54,7 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        TileEntity te = (TileEntity) worldIn.getTileEntity(pos);
+        TileEntity te = worldIn.getTileEntity(pos);
         if (te instanceof TileEntityFunnel) {
             TileEntityFunnel funnel = (TileEntityFunnel) te;
             if (funnel.getInventory().getStackInSlot(0) == ItemStack.EMPTY)
@@ -112,7 +112,7 @@ public class BlockFunnel extends TTTileEntity<TileEntityFunnel> {
                 ItemStack jar = stack.copy();
                 IEssentiaContainerItem item = (IEssentiaContainerItem) stack.getItem();
                 if (item.getAspects(jar) == null || item.getAspects(jar).getAspects().length == 0) {
-                    jar.setTagCompound(null);
+                    jar.setTagCompound(jar.getTagCompound());
                 }
                 if (!playerIn.inventory.addItemStackToInventory(jar)) {
                     playerIn.dropItem(jar, false);
