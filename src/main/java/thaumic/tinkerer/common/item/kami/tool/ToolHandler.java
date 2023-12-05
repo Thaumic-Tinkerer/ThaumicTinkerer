@@ -187,10 +187,10 @@ public final class ToolHandler {
             if (!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
                 return;
             if (ConfigHandler.bedrockDimensionID != 0 && block == Blocks.bedrock && ((world.provider.isSurfaceWorld() && y < 5) || (y > 253 && world.provider instanceof WorldProviderBedrock))) {
-                world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockBedrockPortal.class));
+                world.setBlock(x, y, z, ThaumicTinkerer.registry.getFirstBlockFromClass(BlockBedrockPortal.class), 0,3);
             }
             if (ConfigHandler.bedrockDimensionID != 0 && world.provider.dimensionId == ConfigHandler.bedrockDimensionID && blk == Blocks.bedrock && y <= 253) {
-                world.setBlock(x, y, z, Blocks.air);
+                world.setBlockToAir(x, y, z);
             }
             if (!player.capabilities.isCreativeMode && blk != Blocks.bedrock) {
             	//tryHarvestBlock((EntityPlayerMP)player,world,x,y,z);
